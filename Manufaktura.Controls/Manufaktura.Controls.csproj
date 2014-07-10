@@ -50,11 +50,17 @@
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\TimeSignature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\BarlineRenderStrategy.cs" />
     <Compile Include="Rendering\ClefRenderStrategy.cs" />
+    <Compile Include="Rendering\DirectionRenderStrategy.cs" />
+    <Compile Include="Rendering\KeyRenderStrategy.cs" />
+    <Compile Include="Rendering\NoteRenderStrategy.cs" />
     <Compile Include="Rendering\RenderStrategy.cs" />
+    <Compile Include="Rendering\RestRenderStrategy.cs" />
     <Compile Include="Rendering\ScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererBase.cs" />
     <Compile Include="Rendering\ScoreRendererState.cs" />
+    <Compile Include="Rendering\TimeSignatureRenderStrategy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
