@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class ClefRenderStrategy : MusicalSymbolRenderStrategy<Clef>
+    public class ClefRenderStrategy : MusicalSymbolRenderStrategy<Clef>
     {
 
         public override void Render(Clef element, ScoreRendererBase renderer)
@@ -15,11 +15,11 @@ namespace Manufaktura.Controls.Rendering
             if (element.ClefPitch == renderer.State.CurrentClef.ClefPitch && element.Line == renderer.State.CurrentClef.Line) return;
 
 
-            currentClefPositionY = lines[4] - 24.4f - (((Clef)symbol).Line - 1) * lineSpacing;
-            currentClef = (Clef)symbol;
-            g.DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
-                currentXPosition, currentClefPositionY);
-            currentXPosition += 20;
+            renderer.State.currentClefPositionY = renderer.State.lines[4] - 24.4f - (element.Line - 1) * renderer.State.lineSpacing;
+            renderer.State.CurrentClef = element;
+            g.DrawString(element.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
+                renderer.State.currentXPosition, renderer.State.currentClefPositionY);
+            renderer.State.currentXPosition += 20;
         }
     }
 }

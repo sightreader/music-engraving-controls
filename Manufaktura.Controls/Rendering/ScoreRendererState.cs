@@ -9,28 +9,28 @@ namespace Manufaktura.Controls.Rendering
     public class ScoreRendererState
     {
         public Clef CurrentClef {get; set;}
-        float currentClefPositionY = 0;
+        public float currentClefPositionY = 0;
 
-        Key currentKey { get; set; }
-        int currentXPosition { get; set; }
-        int lastXPosition { get; set; } //for chords / dla akordów
-        int lastNoteEndXPosition { get; set; } //for many voices / dla wielu głosów
-        int firstNoteInMeasureXPosition { get; set; } //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
-        int lastNoteInMeasureEndXPosition { get; set; } //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
-        int paddingTop { get; private set; }
-        int lineSpacing { get; private set; }
-        float currentStemEndPositionY { get; set; }
-        int numberOfNotesUnderTuplet { get; set; }
-        List<float> previousStemEndPositionsY { get; set; }
-        float currentStemPositionX { get; set; }
-        List<float> previousStemPositionsX { get; set; }
-        List<Point> beamStartPositionsY { get; set; }
-        List<Point> beamEndPositionsY { get; set; }
-        Point tieStartPoint { get; set; }
-        Point slurStartPoint { get; set; }
-        int currentVoice { get; set; }
+        public Key currentKey { get; set; }
+        public int currentXPosition { get; set; }
+        public int lastXPosition { get; set; } //for chords / dla akordów
+        public int lastNoteEndXPosition { get; set; } //for many voices / dla wielu głosów
+        public int firstNoteInMeasureXPosition { get; set; } //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
+        public int lastNoteInMeasureEndXPosition { get; set; } //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
+        public int paddingTop { get; private set; }
+        public int lineSpacing { get; private set; }
+        public float currentStemEndPositionY { get; set; }
+        public int numberOfNotesUnderTuplet { get; set; }
+        public List<float> previousStemEndPositionsY { get; set; }
+        public float currentStemPositionX { get; set; }
+        public List<float> previousStemPositionsX { get; set; }
+        public List<Point> beamStartPositionsY { get; set; }
+        public List<Point> beamEndPositionsY { get; set; }
+        public Point tieStartPoint { get; set; }
+        public Point slurStartPoint { get; set; }
+        public int currentVoice { get; set; }
 
-        int[] lines {get; private set;}
+        public int[] lines { get; private set; }
 
         public ScoreRendererState()
         {
