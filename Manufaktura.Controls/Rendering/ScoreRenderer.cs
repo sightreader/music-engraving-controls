@@ -12,131 +12,22 @@ namespace Manufaktura.Controls.Rendering
         //Zamiast odrębnych strategii rysowania poszczególnych symboli zrobić metody abstrakcyjne DrawLine i DrawSymbol
         //A strategie zrobić tylko w obrębie przenośnej biblioteki
 
+
         public void Render(Score score)
         {
             foreach (Staff staff in score.Staves)
             {
+                var staffRenderStrategy = GetProperRenderStrategy(staff);
+                if (staffRenderStrategy != null) staffRenderStrategy.Render(staff, this);
                 foreach (MusicalSymbol symbol in staff.Elements)
                 {
-
+                    var renderStrategy = GetProperRenderStrategy(symbol);
+                    if (renderStrategy != null) renderStrategy.Render(symbol, this);
                 }
-            }
-
-            float currentClefPositionY = 0;
-            
-            Key currentKey = new Key(0);
-            int currentXPosition = 0;
-            int lastXPosition = 0; //for chords / dla akordów
-            int lastNoteEndXPosition = 0; //for many voices / dla wielu głosów
-            int firstNoteInMeasureXPosition = 0; //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
-            int lastNoteInMeasureEndXPosition = 0; //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
-            const int paddingTop = 20;
-            const int lineSpacing = 6;
-            float currentStemEndPositionY = 0;
-            int numberOfNotesUnderTuplet = 0;
-            List<float> previousStemEndPositionsY = new List<float>();
-            float currentStemPositionX = 0;
-            List<float> previousStemPositionsX = new List<float>();
-            List<Point> beamStartPositionsY = new List<Point>();
-            List<Point> beamEndPositionsY = new List<Point>();
-            PointF tieStartPoint = new PointF();
-            PointF slurStartPoint = new PointF();
-            int currentVoice = 1;
-
-            int[] lines = new int[5];
-
-            //Draw selection box / Rysuj zaznaczenie:
-            if (isSelected)
-            {
-                g.FillRectangle(new SolidBrush(SystemColors.GradientInactiveCaption),
-                    new Rectangle(0, 0, Width, Height));
-            }
-
-            if (drawOnlySelectionAndButtons) return;
-            if (drawOnParentControl && !print && (this.Parent != null))
-            {
-                g = this.Parent.CreateGraphics();
-                g.TranslateTransform(this.Location.X, this.Location.Y);
-            }
-
-            //Draw staff lines / Rysuj pięciolinię
-            string staff = MusicalCharacters.Staff5Lines;
-            for (int i = 0; i < Width / 10; i++)
-                staff = staff + MusicalCharacters.Staff5Lines;
-
-            Point startPoint = new Point(0, paddingTop);
-            Point endPoint = new Point(Width, paddingTop);
-
-            for (int i = 0; i < 5; i++)
-            {
-                g.DrawLine(pen, startPoint, endPoint);
-                lines[i] = paddingTop + i * lineSpacing;
-                startPoint.Y += lineSpacing;
-                endPoint.Y += lineSpacing;
-
-            }
-            //g.DrawString(staff, FontStyles.StaffFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, paddingTop - 3);
-
-
-            try
-            {
-                foreach (MusicalSymbol symbol in incipit) //Perform one pass to determine current clef / Wykonaj jeden przebieg żeby określić bieżący klucz
-                {
-                    if (symbol.Type == MusicalSymbolType.Clef)
-                    {
-                        currentClef = (Clef)symbol;
-                        currentClefPositionY = lines[4] - 24.4f - (((Clef)symbol).Line - 1) * lineSpacing;
-                        currentClef = (Clef)symbol;
-                        g.DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
-                            currentXPosition, currentClefPositionY);
-                        currentXPosition += 20;
-                        break;
-                    }
-                }
-                int[] alterationsWithinOneBar = new int[7];
-                bool firstNoteInIncipit = true;
-                int currentMeasure = 0;
-                foreach (MusicalSymbol symbol in incipit)
-                {
-                    if (symbol.Type == MusicalSymbolType.Clef)
-                    {
-                        
-                    }
-                    else if (symbol.Type == MusicalSymbolType.Key)
-                    {
-                        
-
-                    }
-                    else if (symbol.Type == MusicalSymbolType.TimeSignature)
-                    {
-                        
-                    }
-                    else if (symbol.Type == MusicalSymbolType.Direction)
-                    {
-                        
-
-                    }
-                    else if (symbol.Type == MusicalSymbolType.Note)
-                    {
-                       
-                    }
-                    else if (symbol.Type == MusicalSymbolType.Rest)
-                    {
-                        
-                    }
-                    else if (symbol.Type == MusicalSymbolType.Barline)
-                    {
-                        
-                    }
-
-                    if (currentXPosition > Width - 10) break; //Fell out of control bounds / Wyszło poza długość kontrolki
-                }
-
-
                 //Draw missing stems / Dorysuj brakujące ogonki:
                 Note lastNoteInBeam = null;
                 Note firstNoteInBeam = null;
-                foreach (MusicalSymbol m in incipit)
+                foreach (MusicalSymbol symbol in staff.Elements)
                 {
                     if (m.Type != MusicalSymbolType.Note) continue;
                     Note note = (Note)m;
@@ -191,13 +82,21 @@ namespace Manufaktura.Controls.Rendering
                     }
                     if (lastNoteInBeam == null) continue;
                 }
-
-
             }
-            catch
+
+            //Draw selection box / Rysuj zaznaczenie:
+            /*if (State.isSelected)
             {
-                return;
+                g.FillRectangle(new SolidBrush(SystemColors.GradientInactiveCaption),
+                    new Rectangle(0, 0, Width, Height));
             }
+
+            if (drawOnlySelectionAndButtons) return;
+            if (drawOnParentControl && !print && (this.Parent != null))
+            {
+                g = this.Parent.CreateGraphics();
+                g.TranslateTransform(this.Location.X, this.Location.Y);
+            }*/
         }
     }
 }

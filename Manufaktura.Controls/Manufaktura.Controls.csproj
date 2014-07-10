@@ -45,6 +45,7 @@
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
+    <Compile Include="Model\Point.cs" />
     <Compile Include="Model\Rest.cs" />
     <Compile Include="Model\Score.cs" />
     <Compile Include="Model\Staff.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Rendering\ScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererBase.cs" />
     <Compile Include="Rendering\ScoreRendererState.cs" />
+    <Compile Include="Rendering\StaffRenderStrategy.cs" />
     <Compile Include="Rendering\TimeSignatureRenderStrategy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
