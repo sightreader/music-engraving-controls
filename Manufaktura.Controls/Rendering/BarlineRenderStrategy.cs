@@ -11,15 +11,15 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(Barline element, ScoreRendererBase renderer)
         {
-            if (renderer.State.lastNoteInMeasureEndXPosition > renderer.State.currentXPosition)
+            if (renderer.State.lastNoteInMeasureEndXPosition > renderer.State.CursorPositionX)
             {
-                renderer.State.currentXPosition = renderer.State.lastNoteInMeasureEndXPosition;
+                renderer.State.CursorPositionX = renderer.State.lastNoteInMeasureEndXPosition;
             }
             if (element.RepeatSign == RepeatSignType.None)
             {
-                renderer.State.currentXPosition += 16;
-                renderer.DrawLine(new Point(renderer.State.currentXPosition, renderer.State.lines[4]), new Point(renderer.State.currentXPosition, renderer.State.lines[0]));
-                renderer.State.currentXPosition += 6;
+                renderer.State.CursorPositionX += 16;
+                renderer.DrawLine(new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[4]), new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[0]));
+                renderer.State.CursorPositionX += 6;
             }
             else if (element.RepeatSign == RepeatSignType.Forward)
             {
@@ -31,27 +31,27 @@ namespace Manufaktura.Controls.Rendering
                     if (s.Type == MusicalSymbolType.Barline)
                     {
                         if (((Barline)s).RepeatSign == RepeatSignType.None)
-                            renderer.State.currentXPosition -= 16;
+                            renderer.State.CursorPositionX -= 16;
                     }
                 }
-                renderer.State.currentXPosition += 2;
-                renderer.DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, renderer.State.currentXPosition,
-                    renderer.State.lines[0] - 15.5f);
-                renderer.State.currentXPosition += 20;
+                renderer.State.CursorPositionX += 2;
+                renderer.DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, renderer.State.CursorPositionX,
+                    renderer.State.LinePositions[0] - 15.5f);
+                renderer.State.CursorPositionX += 20;
             }
             else if (element.RepeatSign == RepeatSignType.Backward)
             {
-                renderer.State.currentXPosition -= 2;
-                renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.currentXPosition,
-                    renderer.State.lines[0] - 15.5f);
-                renderer.State.currentXPosition += 6;
+                renderer.State.CursorPositionX -= 2;
+                renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.CursorPositionX,
+                    renderer.State.LinePositions[0] - 15.5f);
+                renderer.State.CursorPositionX += 6;
             }
-            renderer.State.firstNoteInMeasureXPosition = renderer.State.currentXPosition;
+            renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
 
             for (int i = 0; i < 7; i++)
                 renderer.State.alterationsWithinOneBar[i] = 0;
 
-            renderer.State.currentMeasure++;
+            renderer.State.CurrentMeasure++;
         }
     }
 }

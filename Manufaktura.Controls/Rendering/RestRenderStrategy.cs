@@ -10,44 +10,44 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(Rest element, ScoreRendererBase renderer)
         {
-            if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.currentXPosition;
+            if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
             renderer.State.firstNoteInIncipit = false;
 
-            if ((element).Voice > renderer.State.currentVoice)
+            if ((element).Voice > renderer.State.CurrentVoice)
             {
-                renderer.State.currentXPosition = renderer.State.firstNoteInMeasureXPosition;
+                renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
                 renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
             }
-            renderer.State.currentVoice = element.Voice;
+            renderer.State.CurrentVoice = element.Voice;
 
 
-            double restPositionY = (renderer.State.lines[0] - 9);
-            if (renderer.State.print) restPositionY -= 0.6f;
+            double restPositionY = (renderer.State.LinePositions[0] - 9);
+            if (renderer.State.IsPrintMode) restPositionY -= 0.6f;
 
-            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.currentXPosition, restPositionY);
-            renderer.State.lastXPosition = renderer.State.currentXPosition;
+            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY);
+            renderer.State.LastCursorPositionX = renderer.State.CursorPositionX;
 
             //Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
             if (element.MultiMeasure > 1)
             {
-                renderer.DrawString(Convert.ToString(element.MultiMeasure), FontStyles.LyricsFontBold, renderer.State.currentXPosition + 6, restPositionY);
+                renderer.DrawString(Convert.ToString(element.MultiMeasure), FontStyles.LyricsFontBold, renderer.State.CursorPositionX + 6, restPositionY);
             }
 
             //Draw dots / Rysuj kropki:
-            if (element.NumberOfDots > 0) renderer.State.currentXPosition += 16;
+            if (element.NumberOfDots > 0) renderer.State.CursorPositionX += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
-                renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.currentXPosition, restPositionY);
-                renderer.State.currentXPosition += 6;
+                renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY);
+                renderer.State.CursorPositionX += 6;
             }
 
-            if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.currentXPosition += 48;
-            else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.currentXPosition += 28;
-            else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.currentXPosition += 17;
-            else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.currentXPosition += 15;
-            else renderer.State.currentXPosition += 14;
+            if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 48;
+            else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 28;
+            else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 17;
+            else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
+            else renderer.State.CursorPositionX += 14;
 
-            renderer.State.lastNoteEndXPosition = renderer.State.currentXPosition;
+            renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
         }
     }
 }

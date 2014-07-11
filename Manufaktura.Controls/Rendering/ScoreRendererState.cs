@@ -9,15 +9,21 @@ namespace Manufaktura.Controls.Rendering
 {
     public class ScoreRendererState
     {
+        public Score CurrentScore { get; set; }
+        public Staff CurrentStaff { get; set; }
         public Clef CurrentClef {get; set;}
+        public Key CurrentKey { get; set; }
+        public int CurrentMeasure { get; set; }
+        public int CurrentVoice { get; set; }
+
         public double currentClefPositionY = 0;
 
-        public double Width { get; set; }
+        public double PageWidth { get; set; }
         public bool IsManualMode { get; set; }
-        public bool print { get; set; }
-        public Key currentKey { get; set; }
-        public double currentXPosition { get; set; }
-        public double lastXPosition { get; set; } //for chords / dla akordów
+        public bool IsPrintMode { get; set; }
+        
+        public double CursorPositionX { get; set; }
+        public double LastCursorPositionX { get; set; } //for chords / dla akordów
         public double lastNoteEndXPosition { get; set; } //for many voices / dla wielu głosów
         public double firstNoteInMeasureXPosition { get; set; } //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
         public double lastNoteInMeasureEndXPosition { get; set; } //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
@@ -32,21 +38,18 @@ namespace Manufaktura.Controls.Rendering
         public List<Point> beamEndPositionsY { get; set; }
         public Point tieStartPoint { get; set; }
         public Point slurStartPoint { get; set; }
-        public int currentVoice { get; set; }
+        
         public int[] alterationsWithinOneBar { get; set; }
         public bool firstNoteInIncipit { get; set; }
-        public int currentMeasure { get; set; }
-        public Score CurrentScore { get; set; }
-        public Staff CurrentStaff { get; set; }
-
-        public int[] lines { get; private set; }
+        
+        public int[] LinePositions { get; private set; }
 
         public ScoreRendererState()
         {
             CurrentClef = new Clef(ClefType.CClef, 2);
-            currentKey = new Key(0);
-            currentXPosition = 0;
-            lastXPosition = 0; //for chords / dla akordów
+            CurrentKey = new Key(0);
+            CursorPositionX = 0;
+            LastCursorPositionX = 0; //for chords / dla akordów
             lastNoteEndXPosition = 0; //for many voices / dla wielu głosów
             firstNoteInMeasureXPosition = 0; //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
             lastNoteInMeasureEndXPosition = 0; //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
@@ -61,9 +64,9 @@ namespace Manufaktura.Controls.Rendering
             beamEndPositionsY = new List<Point>();
             tieStartPoint = new Point();
             slurStartPoint = new Point();
-            currentVoice = 1;
-            lines = new int[5];
-            Width = 200;
+            CurrentVoice = 1;
+            LinePositions = new int[5];
+            PageWidth = 200;
             
         }
     }

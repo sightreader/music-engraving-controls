@@ -30,7 +30,7 @@ namespace Manufaktura.Controls.Rendering
                 
                 State.alterationsWithinOneBar = new int[7];
                 State.firstNoteInIncipit = true;
-                State.currentMeasure = 0;
+                State.CurrentMeasure = 0;
 
                 foreach (MusicalSymbol symbol in staff.Elements)
                 {
@@ -48,10 +48,10 @@ namespace Manufaktura.Controls.Rendering
                 if (symbol.Type == MusicalSymbolType.Clef)
                 {
                     State.CurrentClef = (Clef)symbol;
-                    State.currentClefPositionY = State.lines[4] - 24.4f - (((Clef)symbol).Line - 1) * State.lineSpacing;
+                    State.currentClefPositionY = State.LinePositions[4] - 24.4f - (((Clef)symbol).Line - 1) * State.lineSpacing;
                     State.CurrentClef = (Clef)symbol;
-                    DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.currentXPosition, State.currentClefPositionY);
-                    State.currentXPosition += 20;
+                    DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.CursorPositionX, State.currentClefPositionY);
+                    State.CursorPositionX += 20;
                     break;
                 }
             }

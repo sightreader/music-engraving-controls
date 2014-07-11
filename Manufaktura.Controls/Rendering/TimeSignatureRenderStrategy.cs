@@ -10,22 +10,22 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
-            double timeSignaturePositionY = (renderer.State.lines[0] - 11);
-            if (renderer.State.print) timeSignaturePositionY -= 0.6f;
+            double timeSignaturePositionY = (renderer.State.LinePositions[0] - 11);
+            if (renderer.State.IsPrintMode) timeSignaturePositionY -= 0.6f;
             if (element.SignatureType == TimeSignatureType.Common)
                 renderer.DrawString(MusicalCharacters.CommonTime, FontStyles.MusicFont, 
-                renderer.State.currentXPosition, timeSignaturePositionY);
+                renderer.State.CursorPositionX, timeSignaturePositionY);
             else if (element.SignatureType == TimeSignatureType.Cut)
                 renderer.DrawString(MusicalCharacters.CutTime, FontStyles.MusicFont, 
-                renderer.State.currentXPosition, timeSignaturePositionY);
+                renderer.State.CursorPositionX, timeSignaturePositionY);
             else
             {
                 renderer.DrawString(Convert.ToString(element.NumberOfBeats),
-                    FontStyles.TimeSignatureFont, renderer.State.currentXPosition, timeSignaturePositionY + 9);
+                    FontStyles.TimeSignatureFont, renderer.State.CursorPositionX, timeSignaturePositionY + 9);
                 renderer.DrawString(Convert.ToString(element.TypeOfBeats),
-                    FontStyles.TimeSignatureFont, renderer.State.currentXPosition, timeSignaturePositionY + 21);
+                    FontStyles.TimeSignatureFont, renderer.State.CursorPositionX, timeSignaturePositionY + 21);
             }
-            renderer.State.currentXPosition += 20;
+            renderer.State.CursorPositionX += 20;
         }
     }
 }

@@ -15,10 +15,10 @@ namespace Manufaktura.Controls.Rendering
             if (element.ClefPitch == renderer.State.CurrentClef.ClefPitch && element.Line == renderer.State.CurrentClef.Line) return;
 
 
-            renderer.State.currentClefPositionY = renderer.State.lines[4] - 24.4f - (element.Line - 1) * renderer.State.lineSpacing;
+            renderer.State.currentClefPositionY = renderer.State.LinePositions[4] - 24.4f - (element.Line - 1) * renderer.State.lineSpacing;
             renderer.State.CurrentClef = element;
-            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.currentXPosition, renderer.State.currentClefPositionY);
-            renderer.State.currentXPosition += 20;
+            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, renderer.State.currentClefPositionY);
+            renderer.State.CursorPositionX += 20;
         }
     }
 }
