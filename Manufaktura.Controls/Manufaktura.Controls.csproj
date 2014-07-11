@@ -35,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Parser\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Barline.cs" />
@@ -46,6 +45,7 @@
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
+    <Compile Include="Parser\MusicXmlParser.cs" />
     <Compile Include="Primitives\Point.cs" />
     <Compile Include="Model\Rest.cs" />
     <Compile Include="Model\Score.cs" />
