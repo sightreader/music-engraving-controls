@@ -21,24 +21,23 @@ namespace Manufaktura.Controls.Rendering
             renderer.State.currentVoice = element.Voice;
 
 
-            float restPositionY = (renderer.State.lines[0] - 9);
+            double restPositionY = (renderer.State.lines[0] - 9);
             if (renderer.State.print) restPositionY -= 0.6f;
 
-            DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), renderer.State.currentXPosition, restPositionY);
+            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.currentXPosition, restPositionY);
             renderer.State.lastXPosition = renderer.State.currentXPosition;
 
             //Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
-            if (((Rest)symbol).MultiMeasure > 1)
+            if (element.MultiMeasure > 1)
             {
-                DrawString(Convert.ToString((element.MultiMeasure),
-                    FontStyles.LyricFontBold, new SolidBrush(symbol.MusicalCharacterColor), renderer.State.currentXPosition + 6, restPositionY);
+                renderer.DrawString(Convert.ToString(element.MultiMeasure), FontStyles.LyricsFontBold, renderer.State.currentXPosition + 6, restPositionY);
             }
 
             //Draw dots / Rysuj kropki:
-            if ((element.NumberOfDots > 0) renderer.State.currentXPosition += 16;
+            if (element.NumberOfDots > 0) renderer.State.currentXPosition += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
-                DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), renderer.State.currentXPosition, restPositionY);
+                renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.currentXPosition, restPositionY);
                 renderer.State.currentXPosition += 6;
             }
 

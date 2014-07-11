@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    public abstract class ScoreRenderer<TCanvas> : ScoreRendererBase  //TODO: SilverlightScoreRenderer, WPFScoreRenderer, itp.
+    public abstract class ScoreRenderer<TCanvas> : ScoreRendererBase
     {
         //TODO: Niech metoda Render w ScoreRenderer będzie taka sama dla wszystkich platform.
         //Zamiast odrębnych strategii rysowania poszczególnych symboli zrobić metody abstrakcyjne DrawLine i DrawSymbol
@@ -15,9 +16,13 @@ namespace Manufaktura.Controls.Rendering
 
         public void Render(Score score)
         {
+            State.CurrentScore = score;
+
             DrawSelectionBox();
             foreach (Staff staff in score.Staves)
             {
+                State.CurrentStaff = staff;
+
                 var staffRenderStrategy = GetProperRenderStrategy(staff);
                 if (staffRenderStrategy != null) staffRenderStrategy.Render(staff, this);
 
@@ -84,7 +89,7 @@ namespace Manufaktura.Controls.Rendering
                                 }
                             }
                         }
-                        float newStemEndPosition = Math.Abs(note.StemEndLocation.X -
+                        double newStemEndPosition = Math.Abs(note.StemEndLocation.X -
                             firstNoteInBeam.StemEndLocation.X) *
                             ((Math.Abs(lastNoteInBeam.StemEndLocation.Y - firstNoteInBeam.StemEndLocation.Y)) /
                             (Math.Abs(lastNoteInBeam.StemEndLocation.X - firstNoteInBeam.StemEndLocation.X)));
@@ -94,15 +99,11 @@ namespace Manufaktura.Controls.Rendering
                         if (lastNoteInBeam.StemEndLocation.Y < firstNoteInBeam.StemEndLocation.Y)
                             newStemEndPosition *= -1;
 
-                        Point newStemEndPoint = new Point(note.StemEndLocation.X,
-                            firstNoteInBeam.StemEndLocation.Y +
-                            newStemEndPosition);
+                        Point newStemEndPoint = new Point(note.StemEndLocation.X, firstNoteInBeam.StemEndLocation.Y + newStemEndPosition);
                         if (note.StemDirection == NoteStemDirection.Down)
-                            g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(note.StemEndLocation.X, note.Location.Y + 25),
-                                new PointF(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5));
+                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 25), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5));
                         else
-                            g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(note.StemEndLocation.X, note.Location.Y + 23),
-                                new PointF(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5));
+                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 23), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5));
 
 
                     }
@@ -116,7 +117,7 @@ namespace Manufaktura.Controls.Rendering
             //Draw selection box / Rysuj zaznaczenie:
             /*if (State.isSelected)
             {
-                g.FillRectangle(new SolidBrush(SystemColors.GradientInactiveCaption),
+                renderer.FillRectangle(new SolidBrush(SystemColors.GradientInactiveCaption),
                     new Rectangle(0, 0, Width, Height));
             }
 
@@ -124,7 +125,7 @@ namespace Manufaktura.Controls.Rendering
             if (drawOnParentControl && !print && (this.Parent != null))
             {
                 g = this.Parent.CreateGraphics();
-                g.TranslateTransform(this.Location.X, this.Location.Y);
+                renderer.TranslateTransform(this.Location.X, this.Location.Y);
             }*/
         }
     }

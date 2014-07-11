@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Controls.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Manufaktura.Controls.Model
         protected string step;
         protected int octave;
         protected int alter;
-        protected float stemDefaultY;
+        protected double stemDefaultY;
         protected bool customStemEndPosition = false;
         protected string noteFlagCharacter = " ";
         protected string noteFlagCharacterRev = " ";
@@ -37,8 +38,8 @@ namespace Manufaktura.Controls.Model
         protected int tremoloLevel = 0; //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
         protected int voice = 1;
         protected int dynamics = 80;
-        protected PointF location = new PointF();
-        protected PointF stemEndLocation = new PointF();
+        protected Point location = new Point();
+        protected Point stemEndLocation = new Point();
 
         #endregion
 
@@ -49,7 +50,7 @@ namespace Manufaktura.Controls.Model
         public NoteSlurType Slur { get { return slur; } set { slur = value; } }
         public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; } }
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
-        public float StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
+        public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
         public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
         public List<LyricsType> Lyrics { get { return lyrics; } set { lyrics = value; } }
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; } }

@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,48 +11,47 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(Barline element, ScoreRendererBase renderer)
         {
-            Barline barline = (Barline)symbol;
-            if (lastNoteInMeasureEndXPosition > currentXPosition)
+            if (renderer.State.lastNoteInMeasureEndXPosition > renderer.State.currentXPosition)
             {
-                currentXPosition = lastNoteInMeasureEndXPosition;
+                renderer.State.currentXPosition = renderer.State.lastNoteInMeasureEndXPosition;
             }
-            if (barline.RepeatSign == RepeatSignType.None)
+            if (element.RepeatSign == RepeatSignType.None)
             {
-                currentXPosition += 16;
-                g.DrawLine(pen, new Point(currentXPosition, lines[4]), new Point(currentXPosition, lines[0]));
-                currentXPosition += 6;
+                renderer.State.currentXPosition += 16;
+                renderer.DrawLine(new Point(renderer.State.currentXPosition, renderer.State.lines[4]), new Point(renderer.State.currentXPosition, renderer.State.lines[0]));
+                renderer.State.currentXPosition += 6;
             }
-            else if (barline.RepeatSign == RepeatSignType.Forward)
+            else if (element.RepeatSign == RepeatSignType.Forward)
             {
                 //Przesuń w lewo jeśli przed znakiem repetycji znajduje się zwykła kreska taktowa
                 //Move to the left if there is a plain measure bar before the repeat sign
-                if (incipit.IndexOf(symbol) > 0)
+                if (renderer.State.CurrentStaff.Elements.IndexOf(element) > 0)
                 {
-                    MusicalSymbol s = incipit[incipit.IndexOf(symbol) - 1];
+                    MusicalSymbol s = renderer.State.CurrentStaff.Elements[renderer.State.CurrentStaff.Elements.IndexOf(element) - 1];
                     if (s.Type == MusicalSymbolType.Barline)
                     {
                         if (((Barline)s).RepeatSign == RepeatSignType.None)
-                            currentXPosition -= 16;
+                            renderer.State.currentXPosition -= 16;
                     }
                 }
-                currentXPosition += 2;
-                DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition,
-                    lines[0] - 15.5f);
-                currentXPosition += 20;
+                renderer.State.currentXPosition += 2;
+                renderer.DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, renderer.State.currentXPosition,
+                    renderer.State.lines[0] - 15.5f);
+                renderer.State.currentXPosition += 20;
             }
-            else if (barline.RepeatSign == RepeatSignType.Backward)
+            else if (element.RepeatSign == RepeatSignType.Backward)
             {
-                currentXPosition -= 2;
-                DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition,
-                    lines[0] - 15.5f);
-                currentXPosition += 6;
+                renderer.State.currentXPosition -= 2;
+                renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.currentXPosition,
+                    renderer.State.lines[0] - 15.5f);
+                renderer.State.currentXPosition += 6;
             }
-            firstNoteInMeasureXPosition = currentXPosition;
+            renderer.State.firstNoteInMeasureXPosition = renderer.State.currentXPosition;
 
             for (int i = 0; i < 7; i++)
-                alterationsWithinOneBar[i] = 0;
+                renderer.State.alterationsWithinOneBar[i] = 0;
 
-            currentMeasure++;
+            renderer.State.currentMeasure++;
         }
     }
 }

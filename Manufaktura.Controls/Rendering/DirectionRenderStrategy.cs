@@ -11,15 +11,14 @@ namespace Manufaktura.Controls.Rendering
         public override void Render(Direction element, ScoreRendererBase renderer)
         {
             //Performance directions / Wskazówki wykonawcze:
-            Direction dir = ((Direction)symbol);
-            float dirPositionY = 0;
-            if (dir.Placement == DirectionPlacementType.Custom)
-                dirPositionY = dir.DefaultY * -1.0f / 2.0f;
-            else if (dir.Placement == DirectionPlacementType.Above)
+            double dirPositionY = 0;
+            if (element.Placement == DirectionPlacementType.Custom)
+                dirPositionY = element.DefaultY * -1.0f / 2.0f;
+            else if (element.Placement == DirectionPlacementType.Above)
                 dirPositionY = 0;
-            else if (dir.Placement == DirectionPlacementType.Below)
+            else if (element.Placement == DirectionPlacementType.Below)
                 dirPositionY = 50;
-            DrawString(dir.Text, FontStyles.DirectionFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, dirPositionY);
+            renderer.DrawString(element.Text, FontStyles.DirectionFont, renderer.State.currentXPosition, dirPositionY);
         }
     }
 }

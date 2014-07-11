@@ -11,7 +11,7 @@ namespace Manufaktura.Controls.Rendering
         public override void Render(Key element, ScoreRendererBase renderer)
         {
             renderer.State.currentKey = element;
-            float flatOrSharpPositionY = 0;
+            double flatOrSharpPositionY = 0;
             bool jumpFourth = false;
             int jumpDirection = 1;
             int octaveShiftSharp = 0; //In G clef sharps (not flats) should be written an octave higher / W kluczu g krzyżyki (bemole nie) powinny być zapisywane o oktawę wyżej
@@ -37,18 +37,17 @@ namespace Manufaktura.Controls.Rendering
                 jumpFourth = true;
                 jumpDirection = -1;
             }
-            for (int i = 0; i < Math.Abs(renderer.State.CurrentKey.Fifths); i++)
+            for (int i = 0; i < Math.Abs(renderer.State.currentKey.Fifths); i++)
             {
 
-                DrawString(element.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
-                    currentXPosition, flatOrSharpPositionY);
+                renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.currentXPosition, flatOrSharpPositionY);
                 if (jumpFourth) flatOrSharpPositionY += 3 * 3 * jumpDirection;
                 else flatOrSharpPositionY += 3 * 4 * jumpDirection;
                 jumpFourth = !jumpFourth;
                 jumpDirection *= -1;
-                currentXPosition += 8;
+                renderer.State.currentXPosition += 8;
             }
-            currentXPosition += 10;
+            renderer.State.currentXPosition += 10;
         }
     }
 }

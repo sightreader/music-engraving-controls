@@ -9,6 +9,12 @@ namespace Manufaktura.Controls.Model
     {
         MusicFont,
         GraceNoteFont,
-        LyricsFont
+        LyricsFont,
+        LyricsFontBold,
+        StaffFont,
+        MiscArticulationFont,
+        TrillFont,
+        DirectionFont,
+        TimeSignatureFont
     }
 }

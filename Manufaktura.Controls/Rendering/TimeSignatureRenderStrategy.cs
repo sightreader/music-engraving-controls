@@ -10,22 +10,22 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
-            float timeSignaturePositionY = (lines[0] - 11);
-            if (print) timeSignaturePositionY -= 0.6f;
-            if (((TimeSignature)symbol).SignatureType == TimeSignatureType.Common)
-                DrawString(MusicalCharacters.CommonTime, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
-                currentXPosition, timeSignaturePositionY);
-            else if (((TimeSignature)symbol).SignatureType == TimeSignatureType.Cut)
-                DrawString(MusicalCharacters.CutTime, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
-                currentXPosition, timeSignaturePositionY);
+            double timeSignaturePositionY = (renderer.State.lines[0] - 11);
+            if (renderer.State.print) timeSignaturePositionY -= 0.6f;
+            if (element.SignatureType == TimeSignatureType.Common)
+                renderer.DrawString(MusicalCharacters.CommonTime, FontStyles.MusicFont, 
+                renderer.State.currentXPosition, timeSignaturePositionY);
+            else if (element.SignatureType == TimeSignatureType.Cut)
+                renderer.DrawString(MusicalCharacters.CutTime, FontStyles.MusicFont, 
+                renderer.State.currentXPosition, timeSignaturePositionY);
             else
             {
-                DrawString(Convert.ToString(((TimeSignature)symbol).NumberOfBeats),
-                    FontStyles.TimeSignatureFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, timeSignaturePositionY + 9);
-                DrawString(Convert.ToString(((TimeSignature)symbol).TypeOfBeats),
-                    FontStyles.TimeSignatureFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, timeSignaturePositionY + 21);
+                renderer.DrawString(Convert.ToString(element.NumberOfBeats),
+                    FontStyles.TimeSignatureFont, renderer.State.currentXPosition, timeSignaturePositionY + 9);
+                renderer.DrawString(Convert.ToString(element.TypeOfBeats),
+                    FontStyles.TimeSignatureFont, renderer.State.currentXPosition, timeSignaturePositionY + 21);
             }
-            currentXPosition += 20;
+            renderer.State.currentXPosition += 20;
         }
     }
 }
