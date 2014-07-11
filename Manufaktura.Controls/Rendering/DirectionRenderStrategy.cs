@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Rendering
                 dirPositionY = 0;
             else if (dir.Placement == DirectionPlacementType.Below)
                 dirPositionY = 50;
-            g.DrawString(dir.Text, FontStyles.DirectionFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, dirPositionY);
+            DrawString(dir.Text, FontStyles.DirectionFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, dirPositionY);
         }
     }
 }

@@ -41,6 +41,7 @@
     <Compile Include="Model\Barline.cs" />
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
+    <Compile Include="Model\FonStyles.cs" />
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="Rendering\DirectionRenderStrategy.cs" />
     <Compile Include="Rendering\KeyRenderStrategy.cs" />
     <Compile Include="Rendering\NoteRenderStrategy.cs" />
-    <Compile Include="Rendering\RenderStrategy.cs" />
+    <Compile Include="Rendering\MusicalSymbolRenderStrategy.cs" />
     <Compile Include="Rendering\RestRenderStrategy.cs" />
     <Compile Include="Rendering\ScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererBase.cs" />

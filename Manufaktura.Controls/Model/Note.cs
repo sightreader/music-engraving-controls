@@ -65,8 +65,8 @@ namespace Manufaktura.Controls.Model
         public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; } }
         public string NoteFlagCharacter { get { return noteFlagCharacter; } }
         public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
-        public PointF Location { get { return location; } set { location = value; } }
-        public PointF StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; } }
+        public Point Location { get { return location; } set { location = value; } }
+        public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; } }
 
         public int NumberOfDots { get { return numberOfDots; } set { numberOfDots = value; } }
         public NoteStemDirection StemDirection { get { return stemDirection; } }

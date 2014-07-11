@@ -9,10 +9,10 @@ namespace Manufaktura.Controls.Rendering
     public class ScoreRendererState
     {
         public Clef CurrentClef {get; set;}
-        public float currentClefPositionY = 0;
+        public double currentClefPositionY = 0;
 
         public Key currentKey { get; set; }
-        public int currentXPosition { get; set; }
+        public double currentXPosition { get; set; }
         public int lastXPosition { get; set; } //for chords / dla akordów
         public int lastNoteEndXPosition { get; set; } //for many voices / dla wielu głosów
         public int firstNoteInMeasureXPosition { get; set; } //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
@@ -29,6 +29,9 @@ namespace Manufaktura.Controls.Rendering
         public Point tieStartPoint { get; set; }
         public Point slurStartPoint { get; set; }
         public int currentVoice { get; set; }
+        public int[] alterationsWithinOneBar { get; set; }
+        public bool firstNoteInIncipit { get; set; }
+        public int currentMeasure { get; set; }
 
         public int[] lines { get; private set; }
 
@@ -54,6 +57,7 @@ namespace Manufaktura.Controls.Rendering
             slurStartPoint = new Point();
             currentVoice = 1;
             lines = new int[5];
+            
         }
     }
 }

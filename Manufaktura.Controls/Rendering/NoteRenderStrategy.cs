@@ -10,101 +10,100 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(Note element, ScoreRendererBase renderer)
         {
-            Note note = ((Note)symbol);
-            if (firstNoteInIncipit) firstNoteInMeasureXPosition = currentXPosition;
-            firstNoteInIncipit = false;
+            if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.currentXPosition;
+            renderer.State.firstNoteInIncipit = false;
 
-            if (note.Voice > currentVoice)
+            if (element.Voice > renderer.State.currentVoice)
             {
-                currentXPosition = firstNoteInMeasureXPosition;
-                lastNoteInMeasureEndXPosition = lastNoteEndXPosition;
+                renderer.State.currentXPosition = renderer.State.firstNoteInMeasureXPosition;
+                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
             }
-            currentVoice = note.Voice;
+            renderer.State.currentVoice = element.Voice;
 
 
 
-            if (note.Tuplet == TupletType.Start) numberOfNotesUnderTuplet = 0;
-            numberOfNotesUnderTuplet++;
+            if (element.Tuplet == TupletType.Start) renderer.State.numberOfNotesUnderTuplet = 0;
+            renderer.State.numberOfNotesUnderTuplet++;
 
-            if (note.IsChordElement) currentXPosition = lastXPosition;
+            if (element.IsChordElement) renderer.State.currentXPosition = renderer.State.lastXPosition;
 
-            float notePositionY = currentClefPositionY + MusicalSymbol.StepDifference(currentClef,
-                note) * ((float)lineSpacing / 2.0f);
-            if (print) notePositionY -= 0.8f;
+            float notePositionY = renderer.State.currentClefPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
+                element) * ((float)renderer.State.lineSpacing / 2.0f);
+            if (renderer.State.print) notePositionY -= 0.8f;
 
-            int numberOfSingleAccidentals = Math.Abs(note.Alter) % 2;
+            int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
             int numberOfDoubleAccidentals =
-                Convert.ToInt32(Math.Floor((double)(Math.Abs(note.Alter) / 2)));
+                Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
 
-            //Move the note a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
-            if (note.Alter - currentKey.StepToAlter(note.Step) != 0)
+            //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
+            if (element.Alter - renderer.State.currentKey.StepToAlter(element.Step) != 0)
             {
-                if (numberOfSingleAccidentals > 0) currentXPosition += 9;
+                if (numberOfSingleAccidentals > 0) renderer.State.currentXPosition += 9;
                 if (numberOfDoubleAccidentals > 0)
-                    currentXPosition += (numberOfDoubleAccidentals) * 9;
+                    renderer.State.currentXPosition += (numberOfDoubleAccidentals) * 9;
 
             }
-            if (note.HasNatural == true) currentXPosition += 9;
+            if (element.HasNatural == true) renderer.State.currentXPosition += 9;
 
-            //Draw a note / Rysuj nutę:
-            if (!note.IsGraceNote)
-                g.DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, notePositionY);
+            //Draw a element / Rysuj nutę:
+            if (!element.IsGraceNote)
+                DrawString(element.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(element.MusicalCharacterColor), renderer.State.currentXPosition, notePositionY);
             else
-                g.DrawString(symbol.MusicalCharacter, FontStyles.GraceNoteFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 1,
+                DrawString(element.MusicalCharacter, FontStyles.GraceNoteFont, new SolidBrush(element.MusicalCharacterColor), renderer.State.currentXPosition + 1,
                     notePositionY + 2);
-            lastXPosition = currentXPosition;
-            note.Location = new PointF(currentXPosition, notePositionY);
+            renderer.State.lastXPosition = renderer.State.currentXPosition;
+            element.Location = new PointF(renderer.State.currentXPosition, notePositionY);
 
             //Ledger lines / Linie dodane
-            float tmpXPos = currentXPosition + 16;
-            if (print) tmpXPos += 1.5f;
-            if (notePositionY + 25.0f > lines[4] + lineSpacing / 2.0f)
+            float tmpXPos = renderer.State.currentXPosition + 16;
+            if (renderer.State.print) tmpXPos += 1.5f;
+            if (notePositionY + 25.0f > renderer.State.lines[4] + renderer.State.lineSpacing / 2.0f)
             {
-                for (int i = lines[4]; i < notePositionY + 24f - lineSpacing / 2.0f; i += lineSpacing)
+                for (int i = renderer.State.lines[4]; i < notePositionY + 24f - renderer.State.lineSpacing / 2.0f; i += renderer.State.lineSpacing)
                 {
 
-                    g.DrawLine(pen, new Point(currentXPosition + 4, i + lineSpacing),
-                        new PointF(tmpXPos, i + lineSpacing));
+                    g.DrawLine(pen, new Point(renderer.State.currentXPosition + 4, i + renderer.State.lineSpacing),
+                        new PointF(tmpXPos, i + renderer.State.lineSpacing));
                 }
             }
-            if (notePositionY + 25.0f < lines[0] - lineSpacing / 2)
+            if (notePositionY + 25.0f < renderer.State.lines[0] - renderer.State.lineSpacing / 2)
             {
 
-                for (int i = lines[0]; i > notePositionY + 26.0f + lineSpacing / 2.0f; i -= lineSpacing)
+                for (int i = renderer.State.lines[0]; i > notePositionY + 26.0f + renderer.State.lineSpacing / 2.0f; i -= renderer.State.lineSpacing)
                 {
 
-                    g.DrawLine(pen, new Point(currentXPosition + 4, i - lineSpacing),
-                        new PointF(tmpXPos, i - lineSpacing));
+                    g.DrawLine(pen, new Point(renderer.State.currentXPosition + 4, i - renderer.State.lineSpacing),
+                        new PointF(tmpXPos, i - renderer.State.lineSpacing));
                 }
             }
 
             //Draw stems (stems are vertical lines, beams are horizontal lines :P)/ Rysuj ogonki: (ogonki to są te w pionie - poziome są belki ;P ;P ;P)
-            if ((note.Duration != MusicalSymbolDuration.Whole) &&
-                (note.Duration != MusicalSymbolDuration.Unknown))
+            if ((element.Duration != MusicalSymbolDuration.Whole) &&
+                (element.Duration != MusicalSymbolDuration.Unknown))
             {
                 float tmpStemPosY;
 
-                tmpStemPosY = note.StemDefaultY * -1.0f / 2.0f;
+                tmpStemPosY = element.StemDefaultY * -1.0f / 2.0f;
 
 
-                if (note.StemDirection == NoteStemDirection.Down)
+                if (element.StemDirection == NoteStemDirection.Down)
                 {
                     //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
                     //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
-                    if (((note.IsChordElement) || xmlIncipit.InnerXml.Length == 0)
-                        || (!(note.CustomStemEndPosition)))
-                        currentStemEndPositionY = notePositionY + 18;
+                    if (((element.IsChordElement) || xmlIncipit.InnerXml.Length == 0)
+                        || (!(element.CustomStemEndPosition)))
+                        renderer.State.currentStemEndPositionY = notePositionY + 18;
                     else
-                        currentStemEndPositionY = tmpStemPosY - 4;
-                    currentStemPositionX = currentXPosition + 7;
-                    if (print) currentStemPositionX += 0.1f;
+                        renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
+                    renderer.State.currentStemPositionX = renderer.State.currentXPosition + 7;
+                    if (renderer.State.print) renderer.State.currentStemPositionX += 0.1f;
 
-                    if (note.BeamList.Count > 0)
-                        if ((note.BeamList[0] != NoteBeamType.Continue) || note.CustomStemEndPosition)
-                            g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(currentStemPositionX, notePositionY - 1 + 28),
-                                new PointF(currentStemPositionX, currentStemEndPositionY + 28));
+                    if (element.BeamList.Count > 0)
+                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
+                            g.DrawLine(new Pen(element.MusicalCharacterColor), new PointF(renderer.State.currentStemPositionX, notePositionY - 1 + 28),
+                                new PointF(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28));
                 }
                 else
                 {
@@ -112,51 +111,51 @@ namespace Manufaktura.Controls.Rendering
                     //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
-                    if ((note.IsChordElement) || xmlIncipit.InnerXml.Length == 0
-                        || (!(note.CustomStemEndPosition)))
-                        currentStemEndPositionY = notePositionY - 25;
+                    if ((element.IsChordElement) || xmlIncipit.InnerXml.Length == 0
+                        || (!(element.CustomStemEndPosition)))
+                        renderer.State.currentStemEndPositionY = notePositionY - 25;
 
                     else
-                        currentStemEndPositionY = tmpStemPosY - 6;
-                    currentStemPositionX = currentXPosition + 13;
-                    if (print) currentStemPositionX += 0.9f;
+                        renderer.State.currentStemEndPositionY = tmpStemPosY - 6;
+                    renderer.State.currentStemPositionX = renderer.State.currentXPosition + 13;
+                    if (renderer.State.print) renderer.State.currentStemPositionX += 0.9f;
 
-                    if (note.BeamList.Count > 0)
-                        if ((note.BeamList[0] != NoteBeamType.Continue) || note.CustomStemEndPosition)
-                            g.DrawLine(pen, new PointF(currentStemPositionX, notePositionY - 7 + 30),
-                                new PointF(currentStemPositionX, currentStemEndPositionY + 28));
+                    if (element.BeamList.Count > 0)
+                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
+                            g.DrawLine(pen, new PointF(renderer.State.currentStemPositionX, notePositionY - 7 + 30),
+                                new PointF(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28));
                 }
-                note.StemEndLocation = new PointF(currentStemPositionX, currentStemEndPositionY);
+                element.StemEndLocation = new PointF(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY);
             }
             //Draw beams / Rysuj belki:
             int beamOffset = 0;
             //Powiększ listę poprzednich pozycji stemów jeśli aktualna liczba belek jest większa
             //Extend the list of previous stem positions if current number of beams is greater than the list size
-            if (previousStemEndPositionsY.Count < ((Note)symbol).BeamList.Count)
+            if (renderer.State.previousStemEndPositionsY.Count < element.BeamList.Count)
             {
-                int tmpCount = previousStemEndPositionsY.Count;
-                for (int i = 0; i < ((Note)symbol).BeamList.Count - tmpCount; i++)
-                    previousStemEndPositionsY.Add(new int());
+                int tmpCount = renderer.State.previousStemEndPositionsY.Count;
+                for (int i = 0; i < element.BeamList.Count - tmpCount; i++)
+                    renderer.State.previousStemEndPositionsY.Add(new int());
             }
-            if (previousStemPositionsX.Count < ((Note)symbol).BeamList.Count)
+            if (renderer.State.previousStemPositionsX.Count < element.BeamList.Count)
             {
-                int tmpCount = previousStemPositionsX.Count;
-                for (int i = 0; i < ((Note)symbol).BeamList.Count - tmpCount; i++)
-                    previousStemPositionsX.Add(new int());
+                int tmpCount = renderer.State.previousStemPositionsX.Count;
+                for (int i = 0; i < element.BeamList.Count - tmpCount; i++)
+                    renderer.State.previousStemPositionsX.Add(new int());
             }
             int beamLoop = 0;
             bool alreadyPaintedNumberOfNotesInTuplet = false;
-            foreach (NoteBeamType beam in ((Note)symbol).BeamList)
+            foreach (NoteBeamType beam in element.BeamList)
             {
 
                 int beamSpaceDirection = 1;
-                if (((Note)symbol).StemDirection == NoteStemDirection.Up) beamSpaceDirection = 1;
+                if (element.StemDirection == NoteStemDirection.Up) beamSpaceDirection = 1;
                 else beamSpaceDirection = -1;
                 //if (beam != NoteBeamType.Single) MessageBox.Show(Convert.ToString(currentStemPositionX));
                 if (beam == NoteBeamType.Start)
                 {
-                    previousStemEndPositionsY[beamLoop] = currentStemEndPositionY;
-                    previousStemPositionsX[beamLoop] = currentStemPositionX;
+                    renderer.State.previousStemEndPositionsY[beamLoop] = renderer.State.currentStemEndPositionY;
+                    renderer.State.previousStemPositionsX[beamLoop] = renderer.State.currentStemPositionX;
 
                 }
                 else if (beam == NoteBeamType.Continue)
@@ -170,13 +169,13 @@ namespace Manufaktura.Controls.Rendering
                 {
                     //MessageBox.Show(Convert.ToString(previousStemPositionsX[beamLoop])
                     //    + "," + Convert.ToString(currentStemPositionX));
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(previousStemPositionsX[beamLoop], previousStemEndPositionsY[beamLoop] + 28
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), new PointF(renderer.State.previousStemPositionsX[beamLoop], renderer.State.previousStemEndPositionsY[beamLoop] + 28
                         + beamOffset * beamSpaceDirection),
-                        new PointF(currentStemPositionX, currentStemEndPositionY + 28
+                        new PointF(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
                             + beamOffset * beamSpaceDirection));
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(previousStemPositionsX[beamLoop], previousStemEndPositionsY[beamLoop]
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), new PointF(renderer.State.previousStemPositionsX[beamLoop], renderer.State.previousStemEndPositionsY[beamLoop]
                         + 28 + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection),
-                        new PointF(currentStemPositionX, currentStemEndPositionY + 28
+                        new PointF(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
                             + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection));
                     //Draw tuplet mark / Rysuj oznaczenie trioli:
                     if ((((Note)symbol).Tuplet == TupletType.Stop) && (!alreadyPaintedNumberOfNotesInTuplet))
@@ -184,47 +183,45 @@ namespace Manufaktura.Controls.Rendering
                         int tmpMod;
                         if (((Note)symbol).StemDirection == NoteStemDirection.Up) tmpMod = 12;
                         else tmpMod = 28;
-                        g.DrawString(Convert.ToString(numberOfNotesUnderTuplet), FontStyles.LyricFont,
+                        DrawString(Convert.ToString(renderer.State.numberOfNotesUnderTuplet), FontStyles.LyricFont,
                             new SolidBrush(symbol.MusicalCharacterColor),
-                            new PointF(previousStemPositionsX[beamLoop] + (currentStemPositionX - previousStemPositionsX[beamLoop]) / 2 - 1,
-                                previousStemEndPositionsY[beamLoop] - (currentStemEndPositionY - previousStemEndPositionsY[beamLoop]) / 2 + tmpMod));
+                            new PointF(renderer.State.previousStemPositionsX[beamLoop] + (renderer.State.currentStemPositionX - renderer.State.previousStemPositionsX[beamLoop]) / 2 - 1,
+                                renderer.State.previousStemEndPositionsY[beamLoop] - (renderer.State.currentStemEndPositionY - renderer.State.previousStemEndPositionsY[beamLoop]) / 2 + tmpMod));
                         alreadyPaintedNumberOfNotesInTuplet = true;
                     }
                 }
                 else if ((beam == NoteBeamType.Single) && (!((Note)symbol).IsChordElement))
                 {   //Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
-                    //Draw a hook only of the lowest note in a chord
-                    float xPos = currentStemPositionX - 4;
-                    if (print) xPos -= 0.9f;
-                    if (((Note)symbol).StemDirection == NoteStemDirection.Down)
+                    //Draw a hook only of the lowest element in a chord
+                    float xPos = renderer.State.currentStemPositionX - 4;
+                    if (renderer.State.print) xPos -= 0.9f;
+                    if (element.StemDirection == NoteStemDirection.Down)
                     {
-                        g.DrawString(((Note)symbol).NoteFlagCharacterRev, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
-                            new PointF(xPos, currentStemEndPositionY + 7));
+                        renderer.DrawString(element.NoteFlagCharacterRev, FontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY + 7));
                     }
                     else
                     {
-                        g.DrawString(((Note)symbol).NoteFlagCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor),
-                            new PointF(xPos, currentStemEndPositionY - 1));
+                        renderer.DrawString(element.NoteFlagCharacter, FontStyles.MusicFont,                             new Point(xPos, renderer.State.currentStemEndPositionY - 1));
                     }
                 }
                 else if (beam == NoteBeamType.ForwardHook)
                 {
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(currentStemPositionX + 6,
-                        currentStemEndPositionY + 28 + beamOffset * beamSpaceDirection),
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), new PointF(currentStemPositionX + 6,
+                        renderer.State.currentStemEndPositionY + 28 + beamOffset * beamSpaceDirection),
                         new PointF(currentStemPositionX, currentStemEndPositionY + 28
                         + beamOffset * beamSpaceDirection));
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(currentStemPositionX + 6,
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), new PointF(currentStemPositionX + 6,
                         currentStemEndPositionY + 29 + beamOffset * beamSpaceDirection),
                         new PointF(currentStemPositionX, currentStemEndPositionY + 29
                         + beamOffset * beamSpaceDirection));
                 }
                 else if (beam == NoteBeamType.BackwardHook)
                 {
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(currentStemPositionX - 6,
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), new PointF(currentStemPositionX - 6,
                         currentStemEndPositionY + 28 + beamOffset * beamSpaceDirection),
                         new PointF(currentStemPositionX, currentStemEndPositionY + 28
                         + beamOffset * beamSpaceDirection));
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), new PointF(currentStemPositionX - 6,
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), new PointF(currentStemPositionX - 6,
                         currentStemEndPositionY + 29 + beamOffset * beamSpaceDirection),
                         new PointF(currentStemPositionX, currentStemEndPositionY + 29
                         + beamOffset * beamSpaceDirection));
@@ -244,16 +241,16 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (((Note)symbol).StemDirection == NoteStemDirection.Down)
                 {
-                    g.DrawArc(new Pen(note.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 6,
+                    g.DrawArc(new Pen(element.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 6,
                         (int)currentXPosition - (int)tieStartPoint.X, 20), 180, 180);
-                    g.DrawArc(new Pen(note.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 7,
+                    g.DrawArc(new Pen(element.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 7,
                         (int)currentXPosition - (int)tieStartPoint.X, 20), 180, 180);
                 }
                 else if (((Note)symbol).StemDirection == NoteStemDirection.Up)
                 {
-                    g.DrawArc(new Pen(note.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 22,
+                    g.DrawArc(new Pen(element.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 22,
                         (int)currentXPosition - (int)tieStartPoint.X, 20), 0, 180);
-                    g.DrawArc(new Pen(note.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 23,
+                    g.DrawArc(new Pen(element.MusicalCharacterColor), new Rectangle((int)tieStartPoint.X + 10, (int)tieStartPoint.Y + 23,
                         (int)currentXPosition - (int)tieStartPoint.X, 20), 0, 180);
                 }
                 if (((Note)symbol).TieType == NoteTieType.StopAndStartAnother)
@@ -272,7 +269,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (((Note)symbol).StemDirection == NoteStemDirection.Down)
                 {
-                    g.DrawBezier(new Pen(note.MusicalCharacterColor, 2), slurStartPoint.X + 10, slurStartPoint.Y + 18,
+                    g.DrawBezier(new Pen(element.MusicalCharacterColor, 2), slurStartPoint.X + 10, slurStartPoint.Y + 18,
                         slurStartPoint.X + 12, slurStartPoint.Y + 9,
                         currentXPosition + 8, notePositionY + 9,
                         currentXPosition + 10, notePositionY + 18);
@@ -285,7 +282,7 @@ namespace Manufaktura.Controls.Rendering
                 }
                 else if (((Note)symbol).StemDirection == NoteStemDirection.Up)
                 {
-                    g.DrawBezier(new Pen(note.MusicalCharacterColor, 2), slurStartPoint.X + 10, slurStartPoint.Y + 30,
+                    g.DrawBezier(new Pen(element.MusicalCharacterColor, 2), slurStartPoint.X + 10, slurStartPoint.Y + 30,
                         slurStartPoint.X + 12, slurStartPoint.Y + 44,
                         currentXPosition + 8, notePositionY + 44,
                         currentXPosition + 10, notePositionY + 30);
@@ -312,7 +309,7 @@ namespace Manufaktura.Controls.Rendering
                 if ((((Note)symbol).Lyrics[j] == LyricsType.Begin) ||
                     (((Note)symbol).Lyrics[j] == LyricsType.Middle))
                     sBuilder.Append("-");
-                g.DrawString(sBuilder.ToString(), FontStyles.LyricFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, textPositionY);
+                DrawString(sBuilder.ToString(), FontStyles.LyricFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, textPositionY);
                 textPositionY += 12;
             }
 
@@ -326,9 +323,9 @@ namespace Manufaktura.Controls.Rendering
                     articulationPosition = notePositionY + 10;
 
                 if (((Note)symbol).Articulation == ArticulationType.Staccato)
-                    g.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, articulationPosition);
+                    DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, articulationPosition);
                 else if (((Note)symbol).Articulation == ArticulationType.Accent)
-                    g.DrawString(">", FontStyles.MiscArticulationFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, articulationPosition + 16);
+                    DrawString(">", FontStyles.MiscArticulationFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, articulationPosition + 16);
 
             }
 
@@ -348,7 +345,7 @@ namespace Manufaktura.Controls.Rendering
                 {
                     trillPos = notePositionY + 10;
                 }
-                g.DrawString("tr", FontStyles.TrillFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, trillPos);
+                DrawString("tr", FontStyles.TrillFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, trillPos);
             }
 
             //Draw tremolos / Rysuj tremola:
@@ -358,17 +355,17 @@ namespace Manufaktura.Controls.Rendering
                 if (((Note)symbol).StemDirection == NoteStemDirection.Up)
                 {
                     currentTremoloPos -= 4;
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), currentXPosition + 9, currentTremoloPos + 1,
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), currentXPosition + 9, currentTremoloPos + 1,
                         currentXPosition + 16, currentTremoloPos - 1);
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), currentXPosition + 9, currentTremoloPos + 2,
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), currentXPosition + 9, currentTremoloPos + 2,
                         currentXPosition + 16, currentTremoloPos);
                 }
                 else
                 {
                     currentTremoloPos += 4;
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), currentXPosition + 3, currentTremoloPos + 11 + 1,
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), currentXPosition + 3, currentTremoloPos + 11 + 1,
                         currentXPosition + 11, currentTremoloPos + 11 - 1);
-                    g.DrawLine(new Pen(note.MusicalCharacterColor), currentXPosition + 3, currentTremoloPos + 11 + 2,
+                    g.DrawLine(new Pen(element.MusicalCharacterColor), currentXPosition + 3, currentTremoloPos + 11 + 2,
                         currentXPosition + 11, currentTremoloPos + 11);
                 }
 
@@ -380,11 +377,11 @@ namespace Manufaktura.Controls.Rendering
                 float ferPos = notePositionY - 9;
                 if (ferPos > lines[0] - 24.4f) ferPos = lines[0] - 24.4f - 9.0f;
 
-                g.DrawArc(new Pen(note.MusicalCharacterColor), new Rectangle(currentXPosition + 5, (int)ferPos + 17,
+                g.DrawArc(new Pen(element.MusicalCharacterColor), new Rectangle(currentXPosition + 5, (int)ferPos + 17,
                        10, 10), 180, 180);
-                g.DrawArc(new Pen(note.MusicalCharacterColor), new Rectangle(currentXPosition + 5, (int)ferPos + 18,
+                g.DrawArc(new Pen(element.MusicalCharacterColor), new Rectangle(currentXPosition + 5, (int)ferPos + 18,
                         10, 10), 180, 180);
-                g.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, ferPos);
+                DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, ferPos);
             }
 
             //Draw accidental signs / Rysuj akcydencje:
@@ -397,12 +394,12 @@ namespace Manufaktura.Controls.Rendering
                     9 * numberOfDoubleAccidentals;
                 for (int i = 0; i < numberOfSingleAccidentals; i++)
                 {
-                    g.DrawString(MusicalCharacters.Sharp, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
+                    DrawString(MusicalCharacters.Sharp, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
                     accPlacement += 9;
                 }
                 for (int i = 0; i < numberOfDoubleAccidentals; i++)
                 {
-                    g.DrawString(MusicalCharacters.DoubleSharp, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
+                    DrawString(MusicalCharacters.DoubleSharp, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
                     accPlacement += 9;
                 }
             }
@@ -415,25 +412,25 @@ namespace Manufaktura.Controls.Rendering
                     9 * numberOfDoubleAccidentals;
                 for (int i = 0; i < numberOfSingleAccidentals; i++)
                 {
-                    g.DrawString(MusicalCharacters.Flat, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
+                    DrawString(MusicalCharacters.Flat, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
                     accPlacement += 9;
                 }
                 for (int i = 0; i < numberOfDoubleAccidentals; i++)
                 {
-                    g.DrawString(MusicalCharacters.DoubleFlat, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
+                    DrawString(MusicalCharacters.DoubleFlat, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), accPlacement, notePositionY);
                     accPlacement += 9;
                 }
             }
             if (((Note)symbol).HasNatural == true)
             {
-                g.DrawString(MusicalCharacters.Natural, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition - 9, notePositionY);
+                DrawString(MusicalCharacters.Natural, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition - 9, notePositionY);
             }
 
             //Draw dots / Rysuj kropki:
             if (((Note)symbol).NumberOfDots > 0) currentXPosition += 16;
             for (int i = 0; i < ((Note)symbol).NumberOfDots; i++)
             {
-                g.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, notePositionY);
+                DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, notePositionY);
                 currentXPosition += 6;
             }
 
@@ -446,7 +443,7 @@ namespace Manufaktura.Controls.Rendering
             else currentXPosition += 14;
 
             //Przesuń trochę w prawo, jeśli nuta ma tekst, żeby litery nie wchodziły na siebie
-            //Move a bit right if the note has a lyric to prevent letters from hiding each other
+            //Move a bit right if the element has a lyric to prevent letters from hiding each other
             if (((Note)symbol).Lyrics.Count > 0)
             {
                 currentXPosition += ((Note)symbol).LyricTexts[0].Length * 2;

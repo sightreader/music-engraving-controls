@@ -35,14 +35,14 @@ namespace Manufaktura.Controls.Rendering
                     }
                 }
                 currentXPosition += 2;
-                g.DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition,
+                DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition,
                     lines[0] - 15.5f);
                 currentXPosition += 20;
             }
             else if (barline.RepeatSign == RepeatSignType.Backward)
             {
                 currentXPosition -= 2;
-                g.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition,
+                DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition,
                     lines[0] - 15.5f);
                 currentXPosition += 6;
             }

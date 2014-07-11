@@ -10,45 +10,45 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(Rest element, ScoreRendererBase renderer)
         {
-            if (firstNoteInIncipit) firstNoteInMeasureXPosition = currentXPosition;
-            firstNoteInIncipit = false;
+            if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.currentXPosition;
+            renderer.State.firstNoteInIncipit = false;
 
-            if (((Rest)symbol).Voice > currentVoice)
+            if ((element).Voice > renderer.State.currentVoice)
             {
-                currentXPosition = firstNoteInMeasureXPosition;
-                lastNoteInMeasureEndXPosition = lastNoteEndXPosition;
+                renderer.State.currentXPosition = renderer.State.firstNoteInMeasureXPosition;
+                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
             }
-            currentVoice = ((Rest)symbol).Voice;
+            renderer.State.currentVoice = element.Voice;
 
 
-            float restPositionY = (lines[0] - 9);
-            if (print) restPositionY -= 0.6f;
+            float restPositionY = (renderer.State.lines[0] - 9);
+            if (renderer.State.print) restPositionY -= 0.6f;
 
-            g.DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, restPositionY);
-            lastXPosition = currentXPosition;
+            DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), renderer.State.currentXPosition, restPositionY);
+            renderer.State.lastXPosition = renderer.State.currentXPosition;
 
             //Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
             if (((Rest)symbol).MultiMeasure > 1)
             {
-                g.DrawString(Convert.ToString(((Rest)symbol).MultiMeasure),
-                    FontStyles.LyricFontBold, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition + 6, restPositionY);
+                DrawString(Convert.ToString((element.MultiMeasure),
+                    FontStyles.LyricFontBold, new SolidBrush(symbol.MusicalCharacterColor), renderer.State.currentXPosition + 6, restPositionY);
             }
 
             //Draw dots / Rysuj kropki:
-            if (((Rest)symbol).NumberOfDots > 0) currentXPosition += 16;
-            for (int i = 0; i < ((Rest)symbol).NumberOfDots; i++)
+            if ((element.NumberOfDots > 0) renderer.State.currentXPosition += 16;
+            for (int i = 0; i < element.NumberOfDots; i++)
             {
-                g.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), currentXPosition, restPositionY);
-                currentXPosition += 6;
+                DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, new SolidBrush(symbol.MusicalCharacterColor), renderer.State.currentXPosition, restPositionY);
+                renderer.State.currentXPosition += 6;
             }
 
-            if (((Rest)symbol).Duration == MusicalSymbolDuration.Whole) currentXPosition += 48;
-            else if (((Rest)symbol).Duration == MusicalSymbolDuration.Half) currentXPosition += 28;
-            else if (((Rest)symbol).Duration == MusicalSymbolDuration.Quarter) currentXPosition += 17;
-            else if (((Rest)symbol).Duration == MusicalSymbolDuration.Eighth) currentXPosition += 15;
-            else currentXPosition += 14;
+            if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.currentXPosition += 48;
+            else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.currentXPosition += 28;
+            else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.currentXPosition += 17;
+            else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.currentXPosition += 15;
+            else renderer.State.currentXPosition += 14;
 
-            lastNoteEndXPosition = currentXPosition;
+            renderer.State.lastNoteEndXPosition = renderer.State.currentXPosition;
         }
     }
 }
