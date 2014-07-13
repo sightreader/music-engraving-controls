@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -144,10 +145,10 @@ namespace Manufaktura.Controls.Parser
                             {
                                 if (directionNode.Name == "sound")
                                 {
-                                    if (directionNode.HasAttribute("tempo"))
-                                        currentTempo = Convert.ToInt32(directionNode.Attributes["tempo"].Value);
-                                    if (directionNode.HasAttribute("dynamics"))
-                                        currentDynamics = Convert.ToInt32(directionNode.Attributes["dynamics"].Value);
+                                    var attribute = elementNode.Attribute(XName.Get("tempo"));
+                                    if (attribute != null) currentTempo = Convert.ToInt32(attribute.Value);
+                                    attribute = elementNode.Attribute(XName.Get("dynamics"));
+                                    if (attribute != null) currentDynamics = Convert.ToInt32(attribute.Value);
                                 }
                                 if (directionNode.Name == "direction-type")
                                 {
@@ -158,22 +159,23 @@ namespace Manufaktura.Controls.Parser
                                             DirectionPlacementType placement = DirectionPlacementType.Above;
                                             int defaultY = 0;
                                             string text = "";
-                                            if (directionTypeNode.HasAttribute("default-y"))
+                                            var attribute = elementNode.Attribute(XName.Get("default-y"));
+                                            if (attribute != null)
                                             {
-                                                defaultY = Convert.ToInt32(directionType.Attributes["default-y"].Value);
+                                                defaultY = Convert.ToInt32(attribute.Value);
                                                 placement = DirectionPlacementType.Custom;
                                             }
-                                            if (directionTypeNode.HasAttribute("placement") &&
-                                                placement != DirectionPlacementType.Custom)
+                                            attribute = elementNode.Attribute(XName.Get("placement"));
+                                            if (attribute != null && placement != DirectionPlacementType.Custom)
                                             {
-                                                if (directionTypeNode.Attributes["placement"].Value == "above")
+                                                if (attribute.Value == "above")
                                                     placement = DirectionPlacementType.Above;
-                                                else if (directionTypeNode.Attributes["placement"].Value == "below")
+                                                else if (attribute.Value == "below")
                                                     placement = DirectionPlacementType.Below;
                                             }
-                                            foreach (XElement dynamicsType in directionType.Descendants())
+                                            foreach (XElement dynamicsType in directionTypeNode.Descendants())
                                             {
-                                                text = dynamicsType.Name;
+                                                text = dynamicsType.Name.LocalName;
                                             }
                                             Direction dir = new Direction();
                                             dir.DefaultY = defaultY;
@@ -262,7 +264,8 @@ namespace Manufaktura.Controls.Parser
                                 }
                                 else if (noteAttribute.Name == "tie")
                                 {
-                                    if (noteAttribute.Attributes["type"].Value == "start")
+                                    var attribute = noteAttribute.Attribute(XName.Get("type"));
+                                    if (attribute.Value == "start")
                                     {
 
                                         if (tieType == NoteTieType.Stop)
@@ -286,12 +289,11 @@ namespace Manufaktura.Controls.Parser
                                 {
                                     if (noteAttribute.Value == "down") stemDirection = NoteStemDirection.Down;
                                     else stemDirection = NoteStemDirection.Up;
-                                    foreach (XmlAttribute xa in noteAttribute.Attributes)
+                                    foreach (XAttribute xa in noteAttribute.Attributes())
                                     {
                                         if (xa.Name == "default-y")
                                         {
-                                            stemDefaultY = float.Parse(xa.Value.Replace('.',
-                                                Convert.ToChar(NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)));
+                                            stemDefaultY = float.Parse(xa.Value.Replace('.',  Convert.ToChar(NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)));
                                             customStemEndPosition = true;
                                         }
                                     }
@@ -310,11 +312,11 @@ namespace Manufaktura.Controls.Parser
                                     {
                                         if (notationAttribute.Name == "tuplet")
                                         {
-                                            if (notationAttribute.Attributes["type"].Value == "start")
+                                            if (notationAttribute.Attribute("type").Value == "start")
                                             {
                                                 tuplet = TupletType.Start;
                                             }
-                                            else if (notationAttribute.Attributes["type"].Value == "stop")
+                                            else if (notationAttribute.Attribute("type").Value == "stop")
                                             {
                                                 tuplet = TupletType.Stop;
                                             }
@@ -324,22 +326,21 @@ namespace Manufaktura.Controls.Parser
                                             DirectionPlacementType placement = DirectionPlacementType.Above;
                                             int defaultY = 0;
                                             string text = "";
-                                            if (((XmlElement)notationAttribute).HasAttribute("default-y"))
+                                            var attribute = noteAttribute.Attribute("default-y");
+                                            if (attribute != null)
                                             {
-                                                defaultY = Convert.ToInt32(notationAttribute.Attributes["default-y"].Value);
+                                                defaultY = Convert.ToInt32(attribute.Value);
                                                 placement = DirectionPlacementType.Custom;
                                             }
-                                            if (((XmlElement)notationAttribute).HasAttribute("placement") &&
-                                                placement != DirectionPlacementType.Custom)
+                                            attribute = noteAttribute.Attribute("placement");
+                                            if (attribute != null && placement != DirectionPlacementType.Custom)
                                             {
-                                                if (notationAttribute.Attributes["placement"].Value == "above")
-                                                    placement = DirectionPlacementType.Above;
-                                                else if (notationAttribute.Attributes["placement"].Value == "below")
-                                                    placement = DirectionPlacementType.Below;
+                                                if (attribute.Value == "above") placement = DirectionPlacementType.Above;
+                                                else if (attribute.Value == "below") placement = DirectionPlacementType.Below;
                                             }
                                             foreach (XElement dynamicsType in notationAttribute.Descendants())
                                             {
-                                                text = dynamicsType.Name;
+                                                text = dynamicsType.Name.LocalName;
                                             }
                                             Direction dir = new Direction();
                                             dir.DefaultY = defaultY;
@@ -360,9 +361,9 @@ namespace Manufaktura.Controls.Parser
                                                     articulation = ArticulationType.Accent;
                                                 }
 
-                                                if (articulationAttribute.Attributes["placement"].Value == "above")
+                                                if (articulationAttribute.Attribute("placement").Value == "above")
                                                     articulationPlacement = ArticulationPlacementType.Above;
-                                                else if (articulationAttribute.Attributes["placement"].Value == "below")
+                                                else if (articulationAttribute.Attribute("placement").Value == "below")
                                                     articulationPlacement = ArticulationPlacementType.Below;
 
                                             }
@@ -373,9 +374,9 @@ namespace Manufaktura.Controls.Parser
                                             {
                                                 if (ornamentAttribute.Name == "trill-mark")
                                                 {
-                                                    if (ornamentAttribute.Attributes["placement"].Value == "above")
+                                                    if (ornamentAttribute.Attribute("placement").Value == "above")
                                                         trillMark = NoteTrillMark.Above;
-                                                    else if (ornamentAttribute.Attributes["placement"].Value == "below")
+                                                    else if (ornamentAttribute.Attribute("placement").Value == "below")
                                                         trillMark = NoteTrillMark.Below;
                                                 }
                                                 else if (ornamentAttribute.Name == "tremolo")
@@ -387,11 +388,11 @@ namespace Manufaktura.Controls.Parser
                                         }
                                         else if (notationAttribute.Name == "slur")
                                         {
-                                            if ((Convert.ToInt32(notationAttribute.Attributes["number"].Value)) != 1)
+                                            if ((Convert.ToInt32(notationAttribute.Attribute("number").Value)) != 1)
                                                 continue;
-                                            if (notationAttribute.Attributes["type"].Value == "start")
+                                            if (notationAttribute.Attribute("type").Value == "start")
                                                 slur = NoteSlurType.Start;
-                                            else if (notationAttribute.Attributes["type"].Value == "stop")
+                                            else if (notationAttribute.Attribute("type").Value == "stop")
                                                 slur = NoteSlurType.Stop;
 
                                         }
@@ -401,8 +402,8 @@ namespace Manufaktura.Controls.Parser
                                         }
                                         else if (notationAttribute.Name == "sound")
                                         {
-                                            if (((XmlElement)notationAttribute).HasAttribute("dynamics"))
-                                                currentDynamics = Convert.ToInt32(notationAttribute.Attributes["dynamics"].Value);
+                                            var attribute = notationAttribute.Attribute("dynamics");
+                                            if (attribute != null) currentDynamics = Convert.ToInt32(attribute.Value);
                                         }
                                     }
                                 }
@@ -482,12 +483,11 @@ namespace Manufaktura.Controls.Parser
                             {
                                 if (barlineAttribute.Name == "repeat")
                                 {
-                                    if (((XmlElement)barlineAttribute).HasAttribute("direction"))
+                                    var attribute = barlineAttribute.Attribute("direction");
+                                    if (attribute != null)
                                     {
-                                        if (barlineAttribute.Attributes["direction"].Value == "forward")
-                                            b.RepeatSign = RepeatSignType.Forward;
-                                        else if (barlineAttribute.Attributes["direction"].Value == "backward")
-                                            b.RepeatSign = RepeatSignType.Backward;
+                                        if (attribute.Value == "forward") b.RepeatSign = RepeatSignType.Forward;
+                                        else if (attribute.Value == "backward") b.RepeatSign = RepeatSignType.Backward;
 
                                         staff.Elements.Add(b);
                                         barlineAlreadyAdded = true;
@@ -505,9 +505,7 @@ namespace Manufaktura.Controls.Parser
                     firstLoop = false;
                 }
             }
-
-          
-            return true;
+            return score;
 
         }
     }
