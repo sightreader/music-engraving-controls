@@ -9,10 +9,12 @@ namespace Manufaktura.Controls.Rendering
 {
     public abstract class ScoreRenderer<TCanvas> : ScoreRendererBase
     {
-        //TODO: Niech metoda Render w ScoreRenderer będzie taka sama dla wszystkich platform.
-        //Zamiast odrębnych strategii rysowania poszczególnych symboli zrobić metody abstrakcyjne DrawLine i DrawSymbol
-        //A strategie zrobić tylko w obrębie przenośnej biblioteki
+        public TCanvas Canvas { get; protected set; }
 
+        public ScoreRenderer(TCanvas canvas)
+        {
+            Canvas = canvas;
+        }
 
         public void Render(Score score)
         {
