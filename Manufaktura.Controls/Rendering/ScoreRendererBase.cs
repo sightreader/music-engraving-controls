@@ -10,20 +10,20 @@ namespace Manufaktura.Controls.Rendering
 {
     public abstract class ScoreRendererBase
     {
-        public ScoreRendererState State { get; private set; }
+        public ScoreRendererState State { get; protected set; }
 
         protected ScoreRendererBase()
         {
             State = new ScoreRendererState();
         }
 
-        public MusicalSymbolRenderStrategy<TElement> GetProperRenderStrategy<TElement>(TElement element)    //TODO: Przetestować porządnie
+        public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)  //TODO: Przetestować porządnie
         {
-            var types = Assembly.GetCallingAssembly().GetTypes().Where(t => t.IsAssignableFrom(typeof(MusicalSymbolRenderStrategy<>)));
+            var types = Assembly.GetCallingAssembly().GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(MusicalSymbolRenderStrategyBase)));
             foreach (var type in types)
             {
-                var instance = Activator.CreateInstance(type) as MusicalSymbolRenderStrategy<TElement>;
-                if (instance.SymbolType == element.GetType()) return instance;
+                var instance = (MusicalSymbolRenderStrategyBase)Activator.CreateInstance(type);
+                if (instance != null && instance.SymbolType == element.GetType()) return instance;
             }
             return null;
         }

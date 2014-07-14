@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls", "Man
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WinForms", "Manufaktura.Controls.WinForms\Manufaktura.Controls.WinForms.csproj", "{17FBBC7D-BD94-4510-87C6-656090D0FCEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Winforms.Test", "Manufaktura.Controls.Winforms.Test\Manufaktura.Controls.Winforms.Test.csproj", "{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

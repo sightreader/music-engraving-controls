@@ -57,6 +57,7 @@
     <Compile Include="Rendering\ClefRenderStrategy.cs" />
     <Compile Include="Rendering\DirectionRenderStrategy.cs" />
     <Compile Include="Rendering\KeyRenderStrategy.cs" />
+    <Compile Include="Rendering\MusicalSymbolRenderStrategyBase.cs" />
     <Compile Include="Rendering\NoteRenderStrategy.cs" />
     <Compile Include="Rendering\MusicalSymbolRenderStrategy.cs" />
     <Compile Include="Rendering\RestRenderStrategy.cs" />

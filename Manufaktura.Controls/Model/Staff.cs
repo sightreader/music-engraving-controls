@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Staff
+    public class Staff : MusicalSymbol
     {
         public List<MusicalSymbol> Elements { get; private set; }
         public Staff()

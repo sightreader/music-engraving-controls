@@ -18,6 +18,7 @@ namespace Manufaktura.Controls.Rendering
 
         public void Render(Score score)
         {
+            State = new ScoreRendererState();
             State.CurrentScore = score;
 
             DrawSelectionBox();

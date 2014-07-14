@@ -10,7 +10,23 @@ namespace Manufaktura.Controls.WinForms
 {
     class GdiPlusScoreRenderer : ScoreRenderer<Graphics>
     {
-        private Dictionary<Model.FontStyles, Font> _fonts = new Dictionary<Model.FontStyles, Font>();
+        private Dictionary<Model.FontStyles, Font> _fonts = new Dictionary<Model.FontStyles, Font>()
+            {
+                {Model.FontStyles.MusicFont, new Font("Polihymnia", 20)},
+                {Model.FontStyles.GraceNoteFont, new Font("Polihymnia", 18)},
+                {Model.FontStyles.StaffFont, new Font("Polihymnia", 23)},
+                {Model.FontStyles.LyricsFont, new Font("Times New Roman", 8)},
+                {Model.FontStyles.LyricsFontBold, new Font("Times New Roman", 10, FontStyle.Bold)},
+                {Model.FontStyles.MiscArticulationFont, new Font("Microsoft Sans Serif", 8, FontStyle.Bold)},
+                {Model.FontStyles.DirectionFont, new Font("Microsoft Sans Serif", 9, FontStyle.Italic | FontStyle.Bold)},
+                {Model.FontStyles.TrillFont, new Font("Times New Roman", 9, FontStyle.Italic | FontStyle.Bold)},
+                {Model.FontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 10, FontStyle.Bold)}
+            };
+
+        public GdiPlusScoreRenderer(Graphics canvas)
+            : base(canvas)
+        {
+        }
 
         public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location)
         {
