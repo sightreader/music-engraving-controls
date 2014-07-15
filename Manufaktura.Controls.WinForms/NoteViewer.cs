@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.WinForms
 {
-    public partial class NoteViewer : UserControl
+    public partial class NoteViewer : Control
     {
-        public NoteViewer()
+        protected override bool DoubleBuffered
         {
-            InitializeComponent();
+            get
+            {
+                return true;    //Important for performance
+            }
+            set
+            {
+                //Do nothing
+            }
         }
 
         public Model.Score DataSource { get; set; }

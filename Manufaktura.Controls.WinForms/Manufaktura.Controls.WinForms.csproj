@@ -43,10 +43,7 @@
   <ItemGroup>
     <Compile Include="GdiPlusScoreRenderer.cs" />
     <Compile Include="NoteViewer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NoteViewer.Designer.cs">
-      <DependentUpon>NoteViewer.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
