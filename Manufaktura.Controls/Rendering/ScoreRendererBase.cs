@@ -8,24 +8,21 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    public abstract class ScoreRendererBase
+    public abstract class ScoreRendererBase //TODO: Coś zrobić z wydajnością, bo spadła w porównaniu do PsamControlLibrary! Sprawdzić czy np. High Quality nie spowalnia
     {
         public ScoreRendererState State { get; protected set; }
+        public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; } 
 
         protected ScoreRendererBase()
         {
             State = new ScoreRendererState();
+            Strategies = Assembly.GetCallingAssembly().GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(MusicalSymbolRenderStrategyBase))).
+                Select(t => Activator.CreateInstance(t)).Cast<MusicalSymbolRenderStrategyBase>().ToArray();
         }
 
         public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)  //TODO: Przetestować porządnie
         {
-            var types = Assembly.GetCallingAssembly().GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(MusicalSymbolRenderStrategyBase)));
-            foreach (var type in types)
-            {
-                var instance = (MusicalSymbolRenderStrategyBase)Activator.CreateInstance(type);
-                if (instance != null && instance.SymbolType == element.GetType()) return instance;
-            }
-            return null;
+            return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
         }
 
         public void DrawString(string text, FontStyles fontStyle, double x, double y)

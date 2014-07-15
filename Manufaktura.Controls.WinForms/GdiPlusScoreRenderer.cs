@@ -23,6 +23,8 @@ namespace Manufaktura.Controls.WinForms
                 {Model.FontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 10, FontStyle.Bold)}
             };
 
+        private Dictionary<double, Pen> _penCache = new Dictionary<double, Pen>();
+
         public GdiPlusScoreRenderer(Graphics canvas)
             : base(canvas)
         {
@@ -35,17 +37,38 @@ namespace Manufaktura.Controls.WinForms
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, double thickness)
         {
-            Canvas.DrawLine(new Pen(Brushes.Black, (float)thickness), new Point((int)startPoint.X, (int)startPoint.Y), new Point((int)endPoint.X, (int)endPoint.Y));
+            Pen pen;
+            if (_penCache.ContainsKey(thickness)) pen = _penCache[thickness];
+            else
+            {
+                pen = new Pen(Brushes.Black, (float)thickness);
+                _penCache.Add(thickness, pen);
+            }
+            Canvas.DrawLine(pen, new Point((int)startPoint.X, (int)startPoint.Y), new Point((int)endPoint.X, (int)endPoint.Y));
         }
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, double thickness)
         {
-            Canvas.DrawArc(new Pen(Brushes.Black, (float)thickness), new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height), (float)startAngle, (float)sweepAngle);
+            Pen pen;
+            if (_penCache.ContainsKey(thickness)) pen = _penCache[thickness];
+            else
+            {
+                pen = new Pen(Brushes.Black, (float)thickness);
+                _penCache.Add(thickness, pen);
+            }
+            Canvas.DrawArc(pen, new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height), (float)startAngle, (float)sweepAngle);
         }
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, double thickness)
         {
-            Canvas.DrawBezier(new Pen(Brushes.Black, (float)thickness), new Point((int)p1.X, (int)p1.Y), new Point((int)p2.X, (int)p2.Y), new Point((int)p3.X, (int)p3.Y), new Point((int)p4.X, (int)p4.Y));
+            Pen pen;
+            if (_penCache.ContainsKey(thickness)) pen = _penCache[thickness];
+            else
+            {
+                pen = new Pen(Brushes.Black, (float)thickness);
+                _penCache.Add(thickness, pen);
+            }
+            Canvas.DrawBezier(pen, new Point((int)p1.X, (int)p1.Y), new Point((int)p2.X, (int)p2.Y), new Point((int)p3.X, (int)p3.Y), new Point((int)p4.X, (int)p4.Y));
         }
     }
 }
