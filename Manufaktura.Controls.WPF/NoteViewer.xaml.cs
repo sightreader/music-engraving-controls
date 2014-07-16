@@ -27,6 +27,12 @@ namespace Manufaktura.Controls.WPF
         {
             InitializeComponent();
             RenderMode = RenderModes.DrawingContext;
+            DataContextChanged += NoteViewer_DataContextChanged;
+        }
+
+        void NoteViewer_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            InvalidateVisual();
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -36,7 +42,7 @@ namespace Manufaktura.Controls.WPF
             if (RenderMode == RenderModes.DrawingContext && DataContext is Score)
             {
                 var renderer = new DrawingContextScoreRenderer(drawingContext);
-                renderer.State.PageWidth = ActualWidth;
+                renderer.State.PageWidth = 1200;
                 renderer.Render((Score)DataContext);
             }
         }

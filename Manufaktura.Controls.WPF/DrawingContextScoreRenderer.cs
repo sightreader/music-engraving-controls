@@ -44,7 +44,7 @@ namespace Manufaktura.Controls.WPF
         {
             Canvas.DrawText(new FormattedText(text, Thread.CurrentThread.CurrentUICulture, FlowDirection.LeftToRight, 
                             Fonts.Get(fontStyle), Fonts.GetSize(fontStyle), new SolidColorBrush(ConvertColor(color))),
-                            new System.Windows.Point(location.X, location.Y));
+                            new System.Windows.Point(location.X + 3d, location.Y));
         }
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen)
