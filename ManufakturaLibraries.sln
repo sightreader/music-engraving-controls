@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WinFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Winforms.Test", "Manufaktura.Controls.Winforms.Test\Manufaktura.Controls.Winforms.Test.csproj", "{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WPF", "Manufaktura.Controls.WPF\Manufaktura.Controls.WPF.csproj", "{878452F2-698F-48F8-8AC1-BEBFE55CFAF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BA1F015-16CF-4916-82C4-3874E9E8E1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{878452F2-698F-48F8-8AC1-BEBFE55CFAF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{878452F2-698F-48F8-8AC1-BEBFE55CFAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{878452F2-698F-48F8-8AC1-BEBFE55CFAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{878452F2-698F-48F8-8AC1-BEBFE55CFAF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -46,6 +46,8 @@
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Parser\MusicXmlParser.cs" />
+    <Compile Include="Primitives\Color.cs" />
+    <Compile Include="Primitives\Pen.cs" />
     <Compile Include="Primitives\Point.cs" />
     <Compile Include="Model\Rest.cs" />
     <Compile Include="Model\Score.cs" />

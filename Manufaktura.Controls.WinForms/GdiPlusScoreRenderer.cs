@@ -23,52 +23,48 @@ namespace Manufaktura.Controls.WinForms
                 {Model.FontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 10, FontStyle.Bold)}
             };
 
-        private Dictionary<double, Pen> _penCache = new Dictionary<double, Pen>();
+        private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
 
-        public GdiPlusScoreRenderer(Graphics canvas)
-            : base(canvas)
+        public GdiPlusScoreRenderer(Graphics canvas) : base(canvas)
         {
         }
 
-        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location)
+        private Pen ConvertPen(Primitives.Pen pen)
         {
-            Canvas.DrawString(text, _fonts[fontStyle], Brushes.Black, new PointF((float)location.X, (float)location.Y));
-        }
-
-        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, double thickness)
-        {
-            Pen pen;
-            if (_penCache.ContainsKey(thickness)) pen = _penCache[thickness];
+            Pen gdiPen;
+            if (_penCache.ContainsKey(pen)) gdiPen = _penCache[pen];
             else
             {
-                pen = new Pen(Brushes.Black, (float)thickness);
-                _penCache.Add(thickness, pen);
+                gdiPen = new Pen(new SolidBrush(ConvertColor(pen.Color)), (float)pen.Thickness);
+                _penCache.Add(pen, gdiPen);
             }
-            Canvas.DrawLine(pen, new Point((int)startPoint.X, (int)startPoint.Y), new Point((int)endPoint.X, (int)endPoint.Y));
+            return gdiPen;
         }
 
-        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, double thickness)
+        private Color ConvertColor(Primitives.Color color) 
         {
-            Pen pen;
-            if (_penCache.ContainsKey(thickness)) pen = _penCache[thickness];
-            else
-            {
-                pen = new Pen(Brushes.Black, (float)thickness);
-                _penCache.Add(thickness, pen);
-            }
-            Canvas.DrawArc(pen, new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height), (float)startAngle, (float)sweepAngle);
+            return Color.FromArgb(color.A, color.R, color.G, color.B);
         }
 
-        public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, double thickness)
+        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location, Primitives.Color color)
         {
-            Pen pen;
-            if (_penCache.ContainsKey(thickness)) pen = _penCache[thickness];
-            else
-            {
-                pen = new Pen(Brushes.Black, (float)thickness);
-                _penCache.Add(thickness, pen);
-            }
-            Canvas.DrawBezier(pen, new Point((int)p1.X, (int)p1.Y), new Point((int)p2.X, (int)p2.Y), new Point((int)p3.X, (int)p3.Y), new Point((int)p4.X, (int)p4.Y));
+            Canvas.DrawString(text, _fonts[fontStyle], new SolidBrush(ConvertColor(color)), new PointF((float)location.X, (float)location.Y));
+        }
+
+        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen)
+        {
+            
+            Canvas.DrawLine(ConvertPen(pen), new Point((int)startPoint.X, (int)startPoint.Y), new Point((int)endPoint.X, (int)endPoint.Y));
+        }
+
+        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen)
+        {
+            Canvas.DrawArc(ConvertPen(pen), new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height), (float)startAngle, (float)sweepAngle);
+        }
+
+        public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen)
+        {
+            Canvas.DrawBezier(ConvertPen(pen), new Point((int)p1.X, (int)p1.Y), new Point((int)p2.X, (int)p2.Y), new Point((int)p3.X, (int)p3.Y), new Point((int)p4.X, (int)p4.Y));
         }
     }
 }
