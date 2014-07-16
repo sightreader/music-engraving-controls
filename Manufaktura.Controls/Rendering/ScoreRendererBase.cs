@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    public abstract class ScoreRendererBase //TODO: Coś zrobić z wydajnością, bo spadła w porównaniu do PsamControlLibrary! Sprawdzić czy np. High Quality nie spowalnia
+    public abstract class ScoreRendererBase
     {
         public ScoreRendererState State { get; protected set; }
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; } 
@@ -20,7 +20,7 @@ namespace Manufaktura.Controls.Rendering
                 Select(t => Activator.CreateInstance(t)).Cast<MusicalSymbolRenderStrategyBase>().ToArray();
         }
 
-        public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)  //TODO: Przetestować porządnie
+        public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
         {
             return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
         }
