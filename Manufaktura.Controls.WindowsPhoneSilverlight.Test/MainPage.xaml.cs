@@ -657,13 +657,9 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight.Test
             Score score = parser.Parse(scoreXml);
 
 
-            noteViewer1.DataContext = score;
-            noteViewer1.RefreshView();
-            noteViewer1.InvalidateArrange();
-            //noteViewer2.DataContext = score;
-            noteViewer2.RefreshView();
-            //noteViewer3.DataContext = score;
-            //noteViewer3.RefreshView();
+            noteViewer1.XmlSource = scoreXml;
+            noteViewer2.ScoreSource = score;
+
         }
 
         // Sample code for building a localized ApplicationBar
