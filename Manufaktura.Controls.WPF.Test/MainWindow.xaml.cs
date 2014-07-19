@@ -35,11 +35,11 @@ namespace Manufaktura.Controls.WPF.Test
             dialog.Filter = "MusicXml (*.xml)|*.xml";
             if (dialog.ShowDialog().Value)
             {
+                string xml = File.ReadAllText(dialog.FileName);
+                noteViewer1.XmlSource = xml;
                 MusicXmlParser parser = new MusicXmlParser();
-                Score score = parser.Parse(File.ReadAllText(dialog.FileName));
-                noteViewer1.DataContext = score;
-                noteViewer2.DataContext = score;
-                noteViewer3.DataContext = score;
+                noteViewer2.RenderMode = NoteViewer.RenderModes.Canvas;
+                noteViewer2.ScoreSource = parser.Parse(xml);
             }
         }
     }

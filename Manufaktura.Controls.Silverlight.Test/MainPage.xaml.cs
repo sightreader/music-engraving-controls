@@ -27,20 +27,21 @@ namespace Manufaktura.Controls.Silverlight.Test
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "MusicXml (*.xml)|*.xml";
             Score score = null;
+            string scoreXml;
             if (dialog.ShowDialog().Value)
             {
                 System.IO.Stream fileStream = dialog.File.OpenRead();
 
                 using (System.IO.StreamReader reader = new System.IO.StreamReader(fileStream))
                 {
-                    MusicXmlParser parser = new MusicXmlParser();
-                    score = parser.Parse(reader.ReadToEnd());
+                    scoreXml = reader.ReadToEnd();
                 }
                 fileStream.Close();
 
-                noteViewer1.DataContext = score;
-                noteViewer2.DataContext = score;
-                noteViewer3.DataContext = score;
+                MusicXmlParser parser = new MusicXmlParser();
+                score = parser.Parse(scoreXml);
+                noteViewer1.ScoreSource = score;
+                noteViewer2.XmlSource = scoreXml;
             }
         }
     }
