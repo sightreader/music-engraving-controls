@@ -58,7 +58,7 @@ namespace Manufaktura.Controls.WPF
             NoteViewer viewer = obj as NoteViewer;
             string xmlSource = args.NewValue as string;
             MusicXmlParser parser = new MusicXmlParser();
-            viewer.ScoreSource = parser.Parse(xmlSource);
+            viewer.ScoreSource = parser.Parse(xmlSource);   //TODO: Nie ustawiać ScoreSource, bo wywalamy binding!!!
         }
 
         public Score ScoreSource

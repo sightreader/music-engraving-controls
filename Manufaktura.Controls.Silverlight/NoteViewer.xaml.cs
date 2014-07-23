@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Silverlight
             NoteViewer viewer = obj as NoteViewer;
             string xmlSource = args.NewValue as string;
             MusicXmlParser parser = new MusicXmlParser();
-            viewer.ScoreSource = parser.Parse(xmlSource);
+            viewer.RenderOnCanvas(parser.Parse(xmlSource));
         }
 
         public Score ScoreSource
@@ -47,8 +47,8 @@ namespace Manufaktura.Controls.Silverlight
         private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             NoteViewer viewer = obj as NoteViewer;
-            Score scoreSource = args.NewValue as Score;
-            viewer.RenderOnCanvas();
+            var score = args.NewValue as Score;
+            viewer.RenderOnCanvas(score);
         }
 
         public NoteViewer()
@@ -56,14 +56,14 @@ namespace Manufaktura.Controls.Silverlight
             InitializeComponent();
         }
 
-        private void RenderOnCanvas()
+        private void RenderOnCanvas(Score score)
         {
-            if (ScoreSource == null) return;
+            if (score == null) return;
             Canvas canvas = new Canvas();
             Content = canvas;
             var renderer = new CanvasScoreRenderer(canvas);
             renderer.State.PageWidth = 1200;
-            renderer.Render(ScoreSource);
+            renderer.Render(score);
         }
 
     }
