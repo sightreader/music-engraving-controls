@@ -9,9 +9,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser
 {
-    public class MusicXmlParser
+    public class MusicXmlParser : ScoreParser<string>
     {
-        public Score Parse(string xmlDocument)
+        public override Score Parse(string xmlDocument)  //TODO: Refactor! Exception handling!
         {
             Score score = new Score();
             int skipMeasures = 0;
@@ -507,6 +507,11 @@ namespace Manufaktura.Controls.Parser
             }
             return score;
 
+        }
+
+        public override string ParseBack(Score score)
+        {
+            throw new NotImplementedException("This parser does not support saving to MusicXml.");
         }
     }
 }

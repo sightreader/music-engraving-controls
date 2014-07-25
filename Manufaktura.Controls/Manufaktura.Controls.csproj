@@ -41,11 +41,16 @@
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\FonStyles.cs" />
+    <Compile Include="Model\IHasDuration.cs" />
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
-    <Compile Include="Parser\MusicXmlParser.cs" />
+    <Compile Include="Parser\Digest\RhythmDigestParser.cs" />
+    <Compile Include="Parser\Digest\RhytmRelativeDigestParser.cs" />
+    <Compile Include="Parser\Digest\SimpleDigestParser.cs" />
+    <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
+    <Compile Include="Parser\ScoreParser.cs" />
     <Compile Include="Primitives\Color.cs" />
     <Compile Include="Primitives\Pen.cs" />
     <Compile Include="Primitives\Point.cs" />

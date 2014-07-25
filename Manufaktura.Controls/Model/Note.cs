@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Note : MusicalSymbol
+    public class Note : MusicalSymbol, IHasDuration
     {
         #region Protected fields
 
