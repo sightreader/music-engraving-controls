@@ -6,12 +6,12 @@ using System.Text;
 
 namespace Manufaktura.Controls.Parser.Digest
 {
-    public class RhythmDigestParser : ScoreParser<string>
+    public class RhythmRelativeDigestParser : ScoreParser<string>
     {
         public bool MarkRests { get; set; }
         public bool IncludeBarlines { get; set; }
 
-        public RhythmDigestParser()
+        public RhythmRelativeDigestParser()
         {
             MarkRests = true;
             IncludeBarlines = true;
@@ -24,9 +24,10 @@ namespace Manufaktura.Controls.Parser.Digest
 
         public override string ParseBack(Model.Score score)
         {
-            if (score == null) throw new ArgumentNullException("Score");
+            if (score == null) throw new ArgumentNullException("Score cannot be null.");
 
             StringBuilder sb = new StringBuilder();
+            IHasDuration previousElement = null;
             foreach (Staff staff in score.Staves)
             {
                 foreach (var element in staff.Elements.Where(el => el is IHasDuration || el is Barline))
@@ -38,9 +39,30 @@ namespace Manufaktura.Controls.Parser.Digest
                     }
                     IHasDuration durationElement = element as IHasDuration;
                     if (durationElement == null) continue;
-                    sb.Append((int)durationElement.Duration);
+
+                    if (previousElement != null)
+                    {
+                        int greaterDuration;
+                        int lesserDuration;
+                        string sign;
+                        if (previousElement.Duration <= durationElement.Duration)
+                        {
+                            greaterDuration = (int)durationElement.Duration;
+                            lesserDuration = (int)previousElement.Duration;
+                            sign = "*";
+                        }
+                        else
+                        {
+                            lesserDuration = (int)durationElement.Duration;
+                            greaterDuration = (int)previousElement.Duration;
+                            sign = "/";
+                        }
+                        sb.Append(sign);
+                        sb.Append(greaterDuration / lesserDuration);
+                    }
                     for (int i = 0; i < durationElement.NumberOfDots; i++) sb.Append(".");
                     if (element is Rest && MarkRests) sb.Append("r");
+                    previousElement = durationElement;
                     sb.Append(" ");
                 }
             }

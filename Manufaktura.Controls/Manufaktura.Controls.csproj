@@ -47,7 +47,7 @@
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Parser\Digest\RhythmDigestParser.cs" />
-    <Compile Include="Parser\Digest\RhytmRelativeDigestParser.cs" />
+    <Compile Include="Parser\Digest\RhythmRelativeDigestParser.cs" />
     <Compile Include="Parser\Digest\SimpleDigestParser.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
     <Compile Include="Parser\ScoreParser.cs" />
