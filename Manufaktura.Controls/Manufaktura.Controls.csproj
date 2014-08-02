@@ -50,6 +50,7 @@
     <Compile Include="Parser\Digest\RhythmRelativeDigestParser.cs" />
     <Compile Include="Parser\Digest\SimpleDigestParser.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
+    <Compile Include="Parser\MusicXml\MusicXmlParsingStrategy.cs" />
     <Compile Include="Parser\ScoreParser.cs" />
     <Compile Include="Primitives\Color.cs" />
     <Compile Include="Primitives\Pen.cs" />

@@ -9,6 +9,6 @@ namespace Manufaktura.Controls.Model
     {
         MusicalSymbolDuration Duration { get; }
 
-        int NumberOfDots { get; }
+        int NumberOfDots { get; set; }
     }
 }
