@@ -74,10 +74,30 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen)
         {
+            PathGeometry pathGeom = new PathGeometry();
+            PathFigure pf = new PathFigure();
+            pf.StartPoint = new Point(rect.X, rect.Y);
+            ArcSegment arcSeg = new ArcSegment(new Point(rect.X, rect.Y), new Size(rect.Width, rect.Height), startAngle, false, SweepDirection.Clockwise, true);
+            pf.Segments.Add(arcSeg);
+            pathGeom.Figures.Add(pf);
+            
+            Path path = new Path();
+            path.Data = pathGeom;
+            Canvas.Children.Add(path);
         }
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen)
         {
+            PathGeometry pathGeom = new PathGeometry();
+            PathFigure pf = new PathFigure();
+            pf.StartPoint = new Point(p1.X, p1.Y);
+            BezierSegment bezierSegment = new BezierSegment(ConvertPoint(p2), ConvertPoint(p3), ConvertPoint(p4), true);
+            pf.Segments.Add(bezierSegment);
+            pathGeom.Figures.Add(pf);
+
+            Path path = new Path();
+            path.Data = pathGeom;
+            Canvas.Children.Add(path);
         }
     }
 }

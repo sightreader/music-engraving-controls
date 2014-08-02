@@ -62,7 +62,7 @@ namespace Manufaktura.Controls.Silverlight
             Canvas canvas = new Canvas();
             Content = canvas;
             var renderer = new CanvasScoreRenderer(canvas);
-            renderer.State.PageWidth = 1200;
+            if (score.Staves.Count > 0) renderer.State.PageWidth = score.Staves[0].Elements.Count * 26;
             renderer.Render(score);
         }
 
