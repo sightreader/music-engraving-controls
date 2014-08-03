@@ -12,9 +12,12 @@ namespace Manufaktura.Controls.Rendering
     {
         public TCanvas Canvas { get; protected set; }
 
+        public List<Exception> Exceptions { get; protected set; }
+
         public ScoreRenderer(TCanvas canvas)
         {
             Canvas = canvas;
+            Exceptions = new List<Exception>();
         }
 
         public void Render(Score score)
@@ -24,23 +27,44 @@ namespace Manufaktura.Controls.Rendering
             DrawSelectionBox();
             foreach (Staff staff in score.Staves)
             {
-                State.CurrentStaff = staff;
-
-                var staffRenderStrategy = GetProperRenderStrategy(staff);
-                if (staffRenderStrategy != null) staffRenderStrategy.Render(staff, this);
-
-                DetermineClef(staff);
-                
-                State.alterationsWithinOneBar = new int[7];
-                State.firstNoteInIncipit = true;
-                State.CurrentMeasure = 0;
-
-                foreach (MusicalSymbol symbol in staff.Elements)
+                try
                 {
-                    var renderStrategy = GetProperRenderStrategy(symbol);
-                    if (renderStrategy != null) renderStrategy.Render(symbol, this);
+                    State.CurrentStaff = staff;
+
+                    try
+                    {
+                        var staffRenderStrategy = GetProperRenderStrategy(staff);
+                        if (staffRenderStrategy != null) staffRenderStrategy.Render(staff, this);
+                    }
+                    catch (Exception ex)
+                    {
+                        Exceptions.Add(ex);
+                    }
+
+                    DetermineClef(staff);
+
+                    State.alterationsWithinOneBar = new int[7];
+                    State.firstNoteInIncipit = true;
+                    State.CurrentMeasure = 0;
+
+                    foreach (MusicalSymbol symbol in staff.Elements)
+                    {
+                        try
+                        {
+                            var renderStrategy = GetProperRenderStrategy(symbol);
+                            if (renderStrategy != null) renderStrategy.Render(symbol, this);
+                        }
+                        catch (Exception ex)
+                        {
+                            Exceptions.Add(ex);
+                        }
+                    }
+                    DrawMissingStems(staff);
                 }
-                DrawMissingStems(staff);
+                catch (Exception ex)
+                {
+                    Exceptions.Add(ex);
+                }
             }          
         }
 

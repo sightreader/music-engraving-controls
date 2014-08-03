@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -33,6 +34,18 @@ namespace Manufaktura.Controls.Silverlight
             MusicXmlParser parser = new MusicXmlParser();
             viewer.RenderOnCanvas(parser.Parse(xmlSource));
         }
+
+        public bool IsDebugMode
+        {
+            get { return (bool)GetValue(IsDebugModeProperty); }
+            set { SetValue(IsDebugModeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsDebugMode.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsDebugModeProperty =
+            DependencyProperty.Register("IsDebugMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
+
+        
 
         public Score ScoreSource
         {
@@ -64,6 +77,25 @@ namespace Manufaktura.Controls.Silverlight
             var renderer = new CanvasScoreRenderer(canvas);
             if (score.Staves.Count > 0) renderer.State.PageWidth = score.Staves[0].Elements.Count * 26;
             renderer.Render(score);
+
+            if (IsDebugMode)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("Kontrolki na kanwasie:");
+                sb.AppendLine();
+                foreach (var element in canvas.Children)
+                {
+                    sb.AppendLine(string.Format("{0} X:{1} Y{2}", element.ToString(), Canvas.GetLeft(element), Canvas.GetTop(element)));
+                }
+                MessageBox.Show(sb.ToString());
+
+                sb.Clear();
+                foreach (Exception ex in renderer.Exceptions)
+                {
+                    sb.AppendLine(ex.ToString());
+                }
+                if (renderer.Exceptions.Count > 0) MessageBox.Show(sb.ToString());
+            }
         }
 
     }
