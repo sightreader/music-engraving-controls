@@ -6,8 +6,12 @@ using System.Text;
 
 namespace Manufaktura.Controls.Parser.Digest
 {
-    class MelodicContourDigestParser : ScoreParser<int[]>
+    public class MelodicContourDigestParser : ScoreParser<int[]>
     {
+        public MelodicContourDigestParser()
+        {
+        }
+
         public override Model.Score Parse(int[] source)
         {
             throw new NotImplementedException();

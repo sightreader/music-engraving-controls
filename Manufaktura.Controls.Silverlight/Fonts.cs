@@ -14,12 +14,13 @@ namespace Manufaktura.Controls.Silverlight
 {
     public static class Fonts
     {
+        private static FontFamily PolihymniaFamily = new DummyControl().dummyTextBlock.FontFamily;
 
         private static Dictionary<Model.FontStyles, FontFamily> _fonts = new Dictionary<Model.FontStyles, FontFamily>()
             {
-                {Model.FontStyles.MusicFont,  new FontFamily("Polihymnia")},
-                {Model.FontStyles.GraceNoteFont, new FontFamily("Polihymnia")},
-                {Model.FontStyles.StaffFont, new FontFamily("Polihymnia")},
+                {Model.FontStyles.MusicFont, PolihymniaFamily},
+                {Model.FontStyles.GraceNoteFont, PolihymniaFamily},
+                {Model.FontStyles.StaffFont, PolihymniaFamily},
                 {Model.FontStyles.LyricsFont, new FontFamily("Segoe UI")},
                 {Model.FontStyles.LyricsFontBold, new FontFamily("Segoe UI")},
                 {Model.FontStyles.MiscArticulationFont, new FontFamily("Microsoft Sans Serif")},

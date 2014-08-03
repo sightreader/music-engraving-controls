@@ -58,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanvasScoreRenderer.cs" />
+    <Compile Include="DummyControl.xaml.cs">
+      <DependentUpon>DummyControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fonts.cs" />
     <Compile Include="NoteViewer.xaml.cs">
       <DependentUpon>NoteViewer.xaml</DependentUpon>
@@ -72,10 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Polihymnia.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DummyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NoteViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
