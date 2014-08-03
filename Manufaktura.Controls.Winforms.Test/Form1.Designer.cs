@@ -36,6 +36,8 @@
             // 
             // noteViewer1
             // 
+            this.noteViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.noteViewer1.DataSource = null;
             this.noteViewer1.Location = new System.Drawing.Point(12, 12);
             this.noteViewer1.Name = "noteViewer1";
@@ -55,6 +57,8 @@
             // 
             // noteViewer2
             // 
+            this.noteViewer2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.noteViewer2.DataSource = null;
             this.noteViewer2.Location = new System.Drawing.Point(12, 106);
             this.noteViewer2.Name = "noteViewer2";
@@ -63,6 +67,8 @@
             // 
             // noteViewer3
             // 
+            this.noteViewer3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.noteViewer3.DataSource = null;
             this.noteViewer3.Location = new System.Drawing.Point(12, 221);
             this.noteViewer3.Name = "noteViewer3";

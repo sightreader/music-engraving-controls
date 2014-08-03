@@ -63,13 +63,17 @@ namespace Manufaktura.Controls.Silverlight
             PathFigure pf = new PathFigure();
             pf.StartPoint = new Point(rect.X, rect.Y);
             ArcSegment arcSeg = new ArcSegment();
-            arcSeg.Point = new Point(rect.X + rect.Width, rect.Y + rect.Height);
+            arcSeg.Point = new Point(rect.X + rect.Width, rect.Y);
             arcSeg.RotationAngle = startAngle;
+            arcSeg.Size = new Size(rect.Width, rect.Height);
+            arcSeg.SweepDirection = sweepAngle < 180 ? SweepDirection.Counterclockwise : SweepDirection.Clockwise;
+            arcSeg.IsLargeArc = sweepAngle > 180;
             pf.Segments.Add(arcSeg);
             pathGeom.Figures.Add(pf);
 
             Path path = new Path();
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
             Canvas.Children.Add(path);
         }
@@ -88,6 +92,7 @@ namespace Manufaktura.Controls.Silverlight
 
             Path path = new Path();
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
             Canvas.Children.Add(path);
         }

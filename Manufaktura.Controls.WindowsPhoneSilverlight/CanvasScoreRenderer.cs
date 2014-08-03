@@ -59,10 +59,42 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen)
         {
+            PathGeometry pathGeom = new PathGeometry();
+            PathFigure pf = new PathFigure();
+            pf.StartPoint = new Point(rect.X, rect.Y);
+            ArcSegment arcSeg = new ArcSegment();
+            arcSeg.Point = new Point(rect.X + rect.Width, rect.Y);
+            arcSeg.RotationAngle = startAngle;
+            arcSeg.Size = new Size(rect.Width, rect.Height);
+            arcSeg.SweepDirection = sweepAngle < 180 ? SweepDirection.Counterclockwise : SweepDirection.Clockwise;
+            arcSeg.IsLargeArc = sweepAngle > 180;
+            pf.Segments.Add(arcSeg);
+            pathGeom.Figures.Add(pf);
+
+            Path path = new Path();
+            path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            path.StrokeThickness = pen.Thickness;
+            path.Data = pathGeom;
+            Canvas.Children.Add(path);
         }
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen)
         {
+            PathGeometry pathGeom = new PathGeometry();
+            PathFigure pf = new PathFigure();
+            pf.StartPoint = new Point(p1.X, p1.Y);
+            BezierSegment bezierSegment = new BezierSegment();
+            bezierSegment.Point1 = ConvertPoint(p2);
+            bezierSegment.Point2 = ConvertPoint(p3);
+            bezierSegment.Point3 = ConvertPoint(p4);
+            pf.Segments.Add(bezierSegment);
+            pathGeom.Figures.Add(pf);
+
+            Path path = new Path();
+            path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            path.StrokeThickness = pen.Thickness;
+            path.Data = pathGeom;
+            Canvas.Children.Add(path);
         }
     }
 }
