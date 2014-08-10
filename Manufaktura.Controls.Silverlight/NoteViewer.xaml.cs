@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace Manufaktura.Controls.Silverlight
 {
     public partial class NoteViewer : UserControl
     {
+        protected CanvasScoreRenderer Renderer { get; set; }
+
         public string XmlSource
         {
             get { return (string)GetValue(XmlSourceProperty); }
@@ -98,9 +101,10 @@ namespace Manufaktura.Controls.Silverlight
             if (score == null) return;
             Canvas canvas = new Canvas();
             Content = canvas;
-            var renderer = new CanvasScoreRenderer(canvas);
-            if (score.Staves.Count > 0) renderer.State.PageWidth = score.Staves[0].Elements.Count * 26;
-            renderer.Render(score);
+            Renderer = new CanvasScoreRenderer(canvas);
+            if (score.Staves.Count > 0) Renderer.State.PageWidth = score.Staves[0].Elements.Count * 26;
+            Renderer.Render(score);
+            canvas.MouseLeftButtonDown += canvas_MouseLeftButtonDown;
 
             if (IsDebugMode)
             {
@@ -114,12 +118,36 @@ namespace Manufaktura.Controls.Silverlight
                 MessageBox.Show(sb.ToString());
 
                 sb.Clear();
-                foreach (Exception ex in renderer.Exceptions)
+                foreach (Exception ex in Renderer.Exceptions)
                 {
                     sb.AppendLine(ex.ToString());
                 }
-                if (renderer.Exceptions.Count > 0) MessageBox.Show(sb.ToString());
+                if (Renderer.Exceptions.Count > 0) MessageBox.Show(sb.ToString());
             }
+        }
+
+        void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            FrameworkElement element = e.OriginalSource as FrameworkElement;
+            if (element == null) return;
+            if (!Renderer.OwnershipDictionary.ContainsKey(element)) return;
+
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
+            SelectedElement = Renderer.OwnershipDictionary[element];
+            ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
+        }
+
+        private void ColorElement(MusicalSymbol element, Color color)
+        {
+            var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElement);
+            foreach (var ownership in ownerships)
+            {
+                TextBlock textBlock = ownership.Key as TextBlock;
+                if (textBlock != null) textBlock.Foreground = new SolidColorBrush(color);
+
+                Shape shape = ownership.Key as Shape;
+                if (shape != null) shape.Stroke = new SolidColorBrush(color);
+            } 
         }
 
     }
