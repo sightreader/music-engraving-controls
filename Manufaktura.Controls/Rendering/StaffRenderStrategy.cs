@@ -21,13 +21,13 @@ namespace Manufaktura.Controls.Rendering
 
             for (int i = 0; i < 5; i++)
             {
-                renderer.DrawLine(startPoint, endPoint);
+                renderer.DrawLine(startPoint, endPoint, element);
                 renderer.State.LinePositions[i] = renderer.State.paddingTop + i * renderer.State.lineSpacing;
                 startPoint.Y += renderer.State.lineSpacing;
                 endPoint.Y += renderer.State.lineSpacing;
 
             }
-            renderer.DrawString(staff, FontStyles.StaffFont, renderer.State.CursorPositionX, renderer.State.paddingTop - 3);
+            renderer.DrawString(staff, FontStyles.StaffFont, renderer.State.CursorPositionX, renderer.State.paddingTop - 3, element);
 
             
         }

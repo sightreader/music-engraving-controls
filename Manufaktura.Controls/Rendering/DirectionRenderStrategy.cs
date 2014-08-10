@@ -18,7 +18,7 @@ namespace Manufaktura.Controls.Rendering
                 dirPositionY = 0;
             else if (element.Placement == DirectionPlacementType.Below)
                 dirPositionY = 50;
-            renderer.DrawString(element.Text, FontStyles.DirectionFont, renderer.State.CursorPositionX, dirPositionY);
+            renderer.DrawString(element.Text, FontStyles.DirectionFont, renderer.State.CursorPositionX, dirPositionY, element);
         }
     }
 }

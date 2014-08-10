@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Manufaktura.Controls">
-      <HintPath>..\Manufaktura.Controls\bin\Debug\Manufaktura.Controls.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -82,8 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Manufaktura.Controls.WinForms\Manufaktura.Controls.WinForms.csproj">
-      <Project>{17FBBC7D-BD94-4510-87C6-656090D0FCEB}</Project>
+      <Project>{17fbbc7d-bd94-4510-87c6-656090d0fceb}</Project>
       <Name>Manufaktura.Controls.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
+      <Project>{52331173-dfd5-47ea-ba7a-72bbbe85d2fa}</Project>
+      <Name>Manufaktura.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

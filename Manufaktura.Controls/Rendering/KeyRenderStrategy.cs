@@ -40,7 +40,7 @@ namespace Manufaktura.Controls.Rendering
             for (int i = 0; i < Math.Abs(renderer.State.CurrentKey.Fifths); i++)
             {
 
-                renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, flatOrSharpPositionY);
+                renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, flatOrSharpPositionY, element);
                 if (jumpFourth) flatOrSharpPositionY += 3 * 3 * jumpDirection;
                 else flatOrSharpPositionY += 3 * 4 * jumpDirection;
                 jumpFourth = !jumpFourth;

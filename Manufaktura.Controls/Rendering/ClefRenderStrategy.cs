@@ -17,7 +17,7 @@ namespace Manufaktura.Controls.Rendering
 
             renderer.State.currentClefPositionY = renderer.State.LinePositions[4] - 24.4f - (element.Line - 1) * renderer.State.lineSpacing;
             renderer.State.CurrentClef = element;
-            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, renderer.State.currentClefPositionY);
+            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, renderer.State.currentClefPositionY, element);
             renderer.State.CursorPositionX += 20;
         }
     }

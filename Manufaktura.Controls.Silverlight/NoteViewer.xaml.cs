@@ -45,6 +45,30 @@ namespace Manufaktura.Controls.Silverlight
         public static readonly DependencyProperty IsDebugModeProperty =
             DependencyProperty.Register("IsDebugMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
 
+
+
+        public bool IsInsertMode
+        {
+            get { return (bool)GetValue(IsInsertModeProperty); }
+            set { SetValue(IsInsertModeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsInsertMode.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsInsertModeProperty =
+            DependencyProperty.Register("IsInsertMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
+
+
+
+        public MusicalSymbol SelectedElement
+        {
+            get { return (MusicalSymbol)GetValue(SelectedElementProperty); }
+            set { SetValue(SelectedElementProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedElement.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedElementProperty =
+            DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null));
+
         
 
         public Score ScoreSource

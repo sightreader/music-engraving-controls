@@ -18,7 +18,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.RepeatSign == RepeatSignType.None)
             {
                 renderer.State.CursorPositionX += 16;
-                renderer.DrawLine(new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[4]), new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[0]));
+                renderer.DrawLine(new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[4]), new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[0]), element);
                 renderer.State.CursorPositionX += 6;
             }
             else if (element.RepeatSign == RepeatSignType.Forward)
@@ -36,14 +36,14 @@ namespace Manufaktura.Controls.Rendering
                 }
                 renderer.State.CursorPositionX += 2;
                 renderer.DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, renderer.State.CursorPositionX,
-                    renderer.State.LinePositions[0] - 15.5f);
+                    renderer.State.LinePositions[0] - 15.5f, element);
                 renderer.State.CursorPositionX += 20;
             }
             else if (element.RepeatSign == RepeatSignType.Backward)
             {
                 renderer.State.CursorPositionX -= 2;
                 renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.CursorPositionX,
-                    renderer.State.LinePositions[0] - 15.5f);
+                    renderer.State.LinePositions[0] - 15.5f, element);
                 renderer.State.CursorPositionX += 6;
             }
             renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;

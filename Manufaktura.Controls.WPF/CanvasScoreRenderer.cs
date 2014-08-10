@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Rendering;
+﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace Manufaktura.Controls.WPF
             return new Point(point.X, point.Y);
         }
 
-        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location, Primitives.Color color)
+        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
             TextBlock textBlock = new TextBlock();
             Typeface typeface = Fonts.Get(fontStyle);
@@ -58,7 +59,7 @@ namespace Manufaktura.Controls.WPF
             Canvas.Children.Add(textBlock);
         }
 
-        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen)
+        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
         {
             var line = new Line();
             line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
@@ -72,7 +73,7 @@ namespace Manufaktura.Controls.WPF
             Canvas.Children.Add(line);
         }
 
-        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen)
+        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
         {
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
@@ -93,7 +94,7 @@ namespace Manufaktura.Controls.WPF
             Canvas.Children.Add(path);
         }
 
-        public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen)
+        public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
         {
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();

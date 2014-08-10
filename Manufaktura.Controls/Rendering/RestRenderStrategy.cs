@@ -24,20 +24,20 @@ namespace Manufaktura.Controls.Rendering
             double restPositionY = (renderer.State.LinePositions[0] - 9);
             if (renderer.State.IsPrintMode) restPositionY -= 0.6f;
 
-            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY);
+            renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
             renderer.State.LastCursorPositionX = renderer.State.CursorPositionX;
 
             //Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
             if (element.MultiMeasure > 1)
             {
-                renderer.DrawString(Convert.ToString(element.MultiMeasure), FontStyles.LyricsFontBold, renderer.State.CursorPositionX + 6, restPositionY);
+                renderer.DrawString(Convert.ToString(element.MultiMeasure), FontStyles.LyricsFontBold, renderer.State.CursorPositionX + 6, restPositionY, element);
             }
 
             //Draw dots / Rysuj kropki:
             if (element.NumberOfDots > 0) renderer.State.CursorPositionX += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
-                renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY);
+                renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
                 renderer.State.CursorPositionX += 6;
             }
 

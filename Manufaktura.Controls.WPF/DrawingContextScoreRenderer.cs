@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Rendering;
+﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,19 +41,19 @@ namespace Manufaktura.Controls.WPF
             return new Point(point.X, point.Y);
         }
 
-        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location, Primitives.Color color)
+        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
             Canvas.DrawText(new FormattedText(text, Thread.CurrentThread.CurrentUICulture, FlowDirection.LeftToRight, 
                             Fonts.Get(fontStyle), Fonts.GetSize(fontStyle), new SolidColorBrush(ConvertColor(color))),
                             new System.Windows.Point(location.X + 3d, location.Y));
         }
 
-        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen)
+        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
         {
             Canvas.DrawLine(ConvertPen(pen), ConvertPoint(startPoint), ConvertPoint(endPoint));
         }
 
-        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen)
+        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
         {
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
@@ -63,7 +64,7 @@ namespace Manufaktura.Controls.WPF
             Canvas.DrawGeometry(null, ConvertPen(pen), pathGeom);
         }
 
-        public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen)
+        public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
         {
             
         }

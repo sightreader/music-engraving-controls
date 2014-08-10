@@ -77,7 +77,7 @@ namespace Manufaktura.Controls.Rendering
                     State.CurrentClef = (Clef)symbol;
                     State.currentClefPositionY = State.LinePositions[4] - 24.4f - (((Clef)symbol).Line - 1) * State.lineSpacing;
                     State.CurrentClef = (Clef)symbol;
-                    DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.CursorPositionX, State.currentClefPositionY);
+                    DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.CursorPositionX, State.currentClefPositionY, symbol);
                     State.CursorPositionX += 20;
                     break;
                 }
@@ -128,9 +128,9 @@ namespace Manufaktura.Controls.Rendering
 
                         Point newStemEndPoint = new Point(note.StemEndLocation.X, firstNoteInBeam.StemEndLocation.Y + newStemEndPosition);
                         if (note.StemDirection == NoteStemDirection.Down)
-                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 25), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5));
+                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 25), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
                         else
-                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 23), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5));
+                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 23), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
 
 
                     }
