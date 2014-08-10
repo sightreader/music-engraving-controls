@@ -81,7 +81,7 @@ namespace Manufaktura.Controls.Silverlight
             if (IsDebugMode)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Kontrolki na kanwasie:");
+                sb.AppendLine("Controls on canvas:");
                 sb.AppendLine();
                 foreach (var element in canvas.Children)
                 {
