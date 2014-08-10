@@ -184,6 +184,7 @@ namespace Manufaktura.Controls.Silverlight
                 int midiPitch = note.MidiPitch + (int)(difference / 3);
                 Debug.WriteLine(string.Format("Difference: {0}   MidiPitch: {1}", difference, midiPitch));
                 note.ApplyMidiPitch(midiPitch);
+                //TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
             }
             RenderOnCanvas(_innerScore);
         }

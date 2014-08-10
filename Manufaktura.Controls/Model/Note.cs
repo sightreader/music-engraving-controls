@@ -70,7 +70,7 @@ namespace Manufaktura.Controls.Model
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; } }
 
         public int NumberOfDots { get { return numberOfDots; } set { numberOfDots = value; } }
-        public NoteStemDirection StemDirection { get { return stemDirection; } }
+        public NoteStemDirection StemDirection { get { return stemDirection; } set { stemDirection = value; } }
         public NoteTieType TieType { get { return tieType; } set { tieType = value; } }
         public List<NoteBeamType> BeamList { get { return beamList; } }
         public MusicalSymbolDuration Duration { get { return duration; } }
