@@ -3,6 +3,7 @@ using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -18,6 +19,10 @@ namespace Manufaktura.Controls.Silverlight
 {
     public partial class NoteViewer : UserControl
     {
+        private bool _isDragging = false;
+        private Point _mousePositionOnStartDragging;
+        private Score _innerScore;
+
         protected CanvasScoreRenderer Renderer { get; set; }
 
         public string XmlSource
@@ -98,20 +103,21 @@ namespace Manufaktura.Controls.Silverlight
 
         private void RenderOnCanvas(Score score)
         {
+            _innerScore = score;
             if (score == null) return;
-            Canvas canvas = new Canvas();
-            Content = canvas;
-            Renderer = new CanvasScoreRenderer(canvas);
+
+            MainCanvas.Children.Clear();
+            Renderer = new CanvasScoreRenderer(MainCanvas);
             if (score.Staves.Count > 0) Renderer.State.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
-            canvas.MouseLeftButtonDown += canvas_MouseLeftButtonDown;
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 
             if (IsDebugMode)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("Controls on canvas:");
                 sb.AppendLine();
-                foreach (var element in canvas.Children)
+                foreach (var element in MainCanvas.Children)
                 {
                     sb.AppendLine(string.Format("{0} X:{1} Y{2}", element.ToString(), Canvas.GetLeft(element), Canvas.GetTop(element)));
                 }
@@ -126,16 +132,7 @@ namespace Manufaktura.Controls.Silverlight
             }
         }
 
-        void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            FrameworkElement element = e.OriginalSource as FrameworkElement;
-            if (element == null) return;
-            if (!Renderer.OwnershipDictionary.ContainsKey(element)) return;
 
-            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
-            SelectedElement = Renderer.OwnershipDictionary[element];
-            ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
-        }
 
         private void ColorElement(MusicalSymbol element, Color color)
         {
@@ -148,6 +145,47 @@ namespace Manufaktura.Controls.Silverlight
                 Shape shape = ownership.Key as Shape;
                 if (shape != null) shape.Stroke = new SolidColorBrush(color);
             } 
+        }
+
+        private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            _isDragging = false;
+            _mousePositionOnStartDragging = default(Point);
+        }
+
+        void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _isDragging = true;
+            _mousePositionOnStartDragging = e.GetPosition(MainCanvas);
+
+            FrameworkElement element = e.OriginalSource as FrameworkElement;
+            if (element == null) return;
+            if (!Renderer.OwnershipDictionary.ContainsKey(element)) return;
+
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
+            SelectedElement = Renderer.OwnershipDictionary[element];
+            ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
+        }
+
+        private void MainCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_isDragging || _innerScore == null)
+            {
+                _mousePositionOnStartDragging = default(Point);
+                return;
+            }
+
+            Point currentPosition = e.GetPosition(MainCanvas);
+            double difference = _mousePositionOnStartDragging.Y - currentPosition.Y;
+
+            Note note = SelectedElement as Note;
+            if (note != null)
+            {
+                int midiPitch = note.MidiPitch + (int)(difference / 3);
+                Debug.WriteLine(string.Format("Difference: {0}   MidiPitch: {1}", difference, midiPitch));
+                note.ApplyMidiPitch(midiPitch);
+            }
+            RenderOnCanvas(_innerScore);
         }
 
     }

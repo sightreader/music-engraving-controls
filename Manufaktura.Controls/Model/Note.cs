@@ -100,6 +100,11 @@ namespace Manufaktura.Controls.Model
             DetermineMusicalCharacter();
         }
 
+        public Note() : this("A", 0, 4, MusicalSymbolDuration.Quarter, NoteStemDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        {
+
+        }
+
         #endregion
 
         #region Private methods
@@ -159,16 +164,10 @@ namespace Manufaktura.Controls.Model
             else return 0;
         }
 
-        #endregion
-
-        #region Public static functions
-
-        public static Note CreateNoteFromMidiPitch(int midiPitch)
+        public void ApplyMidiPitch(int midiPitch)
         {
             int midiPitchInLowestOctave = midiPitch;
-            string step = "A";
-            int alter = 0;
-            int octave = 0;
+
             while (midiPitchInLowestOctave > 32) midiPitchInLowestOctave -= 12;
             if (midiPitchInLowestOctave == 21) { step = "A"; alter = 0; }
             else if (midiPitchInLowestOctave == 22) { step = "B"; alter = -1; }
@@ -193,9 +192,17 @@ namespace Manufaktura.Controls.Model
             else if (midiPitch < 108) octave = 7;
             else if (midiPitch < 120) octave = 8;
 
-            return new Note(step, alter, octave, MusicalSymbolDuration.Unknown, NoteStemDirection.Up,
-                NoteTieType.None,
-                new List<NoteBeamType>());
+        }
+
+        #endregion
+
+        #region Public static functions
+
+        public static Note FromMidiPitch(int midiPitch)
+        {
+            Note note = new Note();
+            note.ApplyMidiPitch(midiPitch);
+            return note;
         }
 
         #endregion
