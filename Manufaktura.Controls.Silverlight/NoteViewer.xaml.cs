@@ -19,8 +19,7 @@ namespace Manufaktura.Controls.Silverlight
 {
     public partial class NoteViewer : UserControl
     {
-        private bool _isDragging = false;
-        private Point _mousePositionOnStartDragging;
+        private DraggingState _draggingState = new DraggingState();
         private Score _innerScore;
 
         protected CanvasScoreRenderer Renderer { get; set; }
@@ -149,45 +148,83 @@ namespace Manufaktura.Controls.Silverlight
 
         private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            _isDragging = false;
-            _mousePositionOnStartDragging = default(Point);
+            MainCanvas.ReleaseMouseCapture();
+            _draggingState.StopDragging();
         }
 
         void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            _isDragging = true;
-            _mousePositionOnStartDragging = e.GetPosition(MainCanvas);
+            MainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
 
+            //Start dragging:
+            _draggingState.StartDragging(e.GetPosition(MainCanvas));
+
+            //Check if element under cursor is staff element:
             FrameworkElement element = e.OriginalSource as FrameworkElement;
             if (element == null) return;
             if (!Renderer.OwnershipDictionary.ContainsKey(element)) return;
 
+            //Set selected element:
             if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
             SelectedElement = Renderer.OwnershipDictionary[element];
+
+            Note note = SelectedElement as Note;
+            if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
+
             ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
         }
 
         private void MainCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!_isDragging || _innerScore == null)
-            {
-                _mousePositionOnStartDragging = default(Point);
-                return;
-            }
+            if (!_draggingState.IsDragging || _innerScore == null) return;
 
             Point currentPosition = e.GetPosition(MainCanvas);
-            double difference = _mousePositionOnStartDragging.Y - currentPosition.Y;
+            double horizontalDifference = Math.Abs(_draggingState.MousePositionOnStartDragging.X - currentPosition.X);
+            if (horizontalDifference > 30)
+            {
+                _draggingState.StopDragging();
+                return;
+            }
+            double difference = _draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 
             Note note = SelectedElement as Note;
             if (note != null)
             {
-                int midiPitch = note.MidiPitch + (int)(difference / 3);
+                int midiPitch = _draggingState.MidiPitchOnStartDragging + (int)(difference / 2);
                 Debug.WriteLine(string.Format("Difference: {0}   MidiPitch: {1}", difference, midiPitch));
-                note.ApplyMidiPitch(midiPitch);
+                note.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
                 //TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
             }
-            RenderOnCanvas(_innerScore);
+            RenderOnCanvas(_innerScore);        //TODO: Przerysowywać tylko wszystkie na prawo od zmienianej nutki. Albo w ogóle tylko tą nutkę, a na MouseLeftButtonUp przerysowywać całość
+                                                //Może najłatwiej to zrobić tak, że Draw... jak zobaczy że ma już taką samą figurę, to ma nie rysować
         }
+
+
+        struct DraggingState
+        {
+            public bool IsDragging { get; private set; }
+            public Point MousePositionOnStartDragging {get; private set;}
+            public int MidiPitchOnStartDragging { get; set; }
+
+            public void StopDragging()
+            {
+                IsDragging = false;
+                MousePositionOnStartDragging = default(Point);
+                MidiPitchOnStartDragging = 0;
+            }
+
+            public void StartDragging(Point startingPosition)
+            {
+                IsDragging = true;
+                MousePositionOnStartDragging = startingPosition;
+            }
+
+        }
+
+
+
+
+
 
     }
 }

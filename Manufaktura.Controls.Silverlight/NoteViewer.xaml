@@ -6,6 +6,6 @@
     mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="400">
     
-    <Canvas x:Name="MainCanvas" MouseLeftButtonDown="canvas_MouseLeftButtonDown" MouseLeftButtonUp="MainCanvas_MouseLeftButtonUp" MouseMove="MainCanvas_MouseMove">
+    <Canvas x:Name="MainCanvas" MouseLeftButtonDown="canvas_MouseLeftButtonDown" MouseLeftButtonUp="MainCanvas_MouseLeftButtonUp" MouseMove="MainCanvas_MouseMove" >
     </Canvas>
 </UserControl>
