@@ -47,10 +47,11 @@ namespace Manufaktura.Controls.Rendering
             if (element.HasNatural == true) renderer.State.CursorPositionX += 9;
 
             //Draw a element / Rysuj nutę:
-            if (!element.IsGraceNote)
-                renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
-            else
+            if (element.IsGraceNote || element.IsCueNote)
                 renderer.DrawString(element.MusicalCharacter, FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 1, notePositionY + 2, element);
+            else 
+                renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
+            
             renderer.State.LastCursorPositionX = renderer.State.CursorPositionX;
             element.Location = new Point(renderer.State.CursorPositionX, notePositionY);
 

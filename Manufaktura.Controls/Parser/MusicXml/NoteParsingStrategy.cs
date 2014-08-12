@@ -33,6 +33,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             ArticulationType articulation = ArticulationType.None;
             bool hasNatural = false;
             bool isGraceNote = false;
+            bool isCueNote = false;
             bool isChordElement = false;
             bool hasFermataSign = false;
             float stemDefaultY = 28;
@@ -85,6 +86,12 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     else if (noteAttribute.Value == "32nd") duration = MusicalSymbolDuration.d32nd;
                     else if (noteAttribute.Value == "64th") duration = MusicalSymbolDuration.d64th;
                     else if (noteAttribute.Value == "128th") duration = MusicalSymbolDuration.d128th;
+
+                    var noteSizeAttribute = noteAttribute.Attributes().FirstOrDefault(a => a.Name == "size");
+                    if (noteSizeAttribute != null)
+                    {
+                        isCueNote = noteSizeAttribute.Value == "cue";
+                    }
                 }
                 else if (noteAttribute.Name == "accidental")
                 {
@@ -278,6 +285,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 nt.ArticulationPlacement = articulationPlacement;
                 nt.HasNatural = hasNatural;
                 nt.IsGraceNote = isGraceNote;
+                nt.IsCueNote = isCueNote;
                 nt.IsChordElement = isChordElement;
                 nt.StemDefaultY = stemDefaultY;
                 nt.CustomStemEndPosition = customStemEndPosition;

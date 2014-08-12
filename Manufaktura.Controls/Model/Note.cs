@@ -62,6 +62,7 @@ namespace Manufaktura.Controls.Model
         public List<string> LyricTexts { get { return lyricTexts; } set { lyricTexts = value; } }
         public bool HasNatural { get { return hasNatural; } set { hasNatural = value; } }
         public bool IsGraceNote { get { return isGraceNote; } set { isGraceNote = value; } }
+        public bool IsCueNote { get; set; }
         public bool IsChordElement { get { return isChordElement; } set { isChordElement = value; } }
         public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; } }
         public string NoteFlagCharacter { get { return noteFlagCharacter; } }
