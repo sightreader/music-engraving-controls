@@ -32,7 +32,7 @@ namespace Manufaktura.Controls.Silverlight
         private static Dictionary<Model.FontStyles, double> _fontSizes = new Dictionary<Model.FontStyles, double>()
         {
                 {Model.FontStyles.MusicFont, 27.5},
-                {Model.FontStyles.GraceNoteFont, 24.5},
+                {Model.FontStyles.GraceNoteFont, 23},
                 {Model.FontStyles.StaffFont, 1.9},
                 {Model.FontStyles.LyricsFont, 11},
                 {Model.FontStyles.LyricsFontBold, 0.8},

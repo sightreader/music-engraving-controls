@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ namespace Manufaktura.Controls.Rendering
     public abstract class ScoreRendererBase
     {
         public ScoreRendererState State { get; protected set; }
+        public ScoreRendererSettings Settings { get; protected set; }
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; } 
 
         protected ScoreRendererBase()
         {
             State = new ScoreRendererState();
+            Settings = new ScoreRendererSettings();
             Strategies = Assembly.GetCallingAssembly().GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(MusicalSymbolRenderStrategyBase))).
                 Select(t => Activator.CreateInstance(t)).Cast<MusicalSymbolRenderStrategyBase>().ToArray();
         }

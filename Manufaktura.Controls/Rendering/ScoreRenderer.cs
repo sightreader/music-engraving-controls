@@ -30,6 +30,11 @@ namespace Manufaktura.Controls.Rendering
                 try
                 {
                     State.CurrentStaff = staff;
+                    if (!Settings.IgnoreCustomElementPositions)
+                    {
+                        double newPageWidth = staff.MeasureWidths.Where(w => w.HasValue).Sum(w => w.Value * Settings.CustomElementPositionRatio);
+                        if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
+                    }
 
                     try
                     {

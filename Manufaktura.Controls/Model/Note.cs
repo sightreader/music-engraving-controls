@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Note : MusicalSymbol, IHasDuration
+    public class Note : MusicalSymbol, IHasDuration, IHasCustomXPosition
     {
         #region Protected fields
 
@@ -81,6 +81,7 @@ namespace Manufaktura.Controls.Model
         public int MidiPitch { get { return midiPitch; } }
         public int Voice { get { return voice; } set { voice = value; } }
         public int Dynamics { get { return dynamics; } set { dynamics = value; } }
+        public double DefaultXPosition { get; set; }
 
         #endregion
 

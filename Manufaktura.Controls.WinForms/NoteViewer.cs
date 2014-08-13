@@ -35,7 +35,7 @@ namespace Manufaktura.Controls.WinForms
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             GdiPlusScoreRenderer renderer = new GdiPlusScoreRenderer(e.Graphics);
-            renderer.State.PageWidth = Width;
+            renderer.Settings.PageWidth = Width;
             renderer.Render(DataSource);
         }
     }

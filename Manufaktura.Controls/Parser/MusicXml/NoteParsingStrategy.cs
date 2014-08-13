@@ -37,11 +37,15 @@ namespace Manufaktura.Controls.Parser.MusicXml
             bool isChordElement = false;
             bool hasFermataSign = false;
             float stemDefaultY = 28;
+            double defaultX = 0;
             bool customStemEndPosition = false;
             int tremoloLevel = 0;
             NoteSlurType slur = NoteSlurType.None;
             NoteTrillMark trillMark = NoteTrillMark.None;
             int voice = 1;
+
+            var defaultXAttribute = element.Attributes().Where(a => a.Name == "default-x").FirstOrDefault();
+            if (defaultXAttribute != null) double.TryParse(defaultXAttribute.Value, out defaultX);
 
             foreach (XElement noteAttribute in element.Elements())
             {
@@ -288,6 +292,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 nt.IsCueNote = isCueNote;
                 nt.IsChordElement = isChordElement;
                 nt.StemDefaultY = stemDefaultY;
+                nt.DefaultXPosition = defaultX;
                 nt.CustomStemEndPosition = customStemEndPosition;
                 nt.CurrentTempo = state.CurrentTempo;
                 nt.TrillMark = trillMark;
@@ -307,6 +312,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 rt.CurrentTempo = state.CurrentTempo;
                 rt.HasFermataSign = hasFermataSign;
                 rt.Voice = voice;
+                rt.DefaultXPosition = defaultX;
                 staff.Elements.Add(rt);
             }
 

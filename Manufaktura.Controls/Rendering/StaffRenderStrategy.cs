@@ -13,11 +13,11 @@ namespace Manufaktura.Controls.Rendering
         {
             //Draw staff lines / Rysuj pięciolinię
             string staff = MusicalCharacters.Staff5Lines;
-            for (int i = 0; i < renderer.State.PageWidth / 10; i++)
+            for (int i = 0; i < renderer.Settings.PageWidth / 10; i++)
                 staff = staff + MusicalCharacters.Staff5Lines;
 
             Point startPoint = new Point(0, renderer.State.paddingTop);
-            Point endPoint = new Point(renderer.State.PageWidth, renderer.State.paddingTop);
+            Point endPoint = new Point(renderer.Settings.PageWidth, renderer.State.paddingTop);
 
             for (int i = 0; i < 5; i++)
             {

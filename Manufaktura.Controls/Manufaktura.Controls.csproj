@@ -41,6 +41,7 @@
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\FonStyles.cs" />
+    <Compile Include="Model\IHasCustomXPosition.cs" />
     <Compile Include="Model\IHasDuration.cs" />
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\MusicalCharacters.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Parser\MusicXml\MusicXmlParserState.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\NoteParsingStrategy.cs" />
+    <Compile Include="Rendering\ScoreRendererSettings.cs" />
     <Compile Include="Parser\MusicXml\SoundParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\TimeParsingStrategy.cs" />
     <Compile Include="Parser\ScoreParser.cs" />

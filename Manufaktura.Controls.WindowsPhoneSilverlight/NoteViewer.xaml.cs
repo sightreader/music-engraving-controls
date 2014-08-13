@@ -63,7 +63,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
             canvas.Background = new SolidColorBrush(Colors.White);
             Content = canvas;
             var renderer = new CanvasScoreRenderer(canvas);
-            renderer.State.PageWidth = 1200;
+            renderer.Settings.PageWidth = 1200;
             renderer.Render(ScoreSource);
         }
 

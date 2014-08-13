@@ -15,11 +15,15 @@ namespace Manufaktura.Controls.Rendering
             {
                 renderer.State.CursorPositionX = renderer.State.lastNoteInMeasureEndXPosition;
             }
+            double? measureWidth = GetCursorPositionForCurrentBarline(renderer);
+            if (!renderer.Settings.IgnoreCustomElementPositions && measureWidth.HasValue) renderer.State.CursorPositionX = measureWidth.Value;
+
             if (element.RepeatSign == RepeatSignType.None)
             {
-                renderer.State.CursorPositionX += 16;
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 16;
+                renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawLine(new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[4]), new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[0]), element);
-                renderer.State.CursorPositionX += 6;
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
             }
             else if (element.RepeatSign == RepeatSignType.Forward)
             {
@@ -31,20 +35,24 @@ namespace Manufaktura.Controls.Rendering
                     if (s.Type == MusicalSymbolType.Barline)
                     {
                         if (((Barline)s).RepeatSign == RepeatSignType.None)
-                            renderer.State.CursorPositionX -= 16;
+                        {
+                            if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX -= 16;
+                        }
                     }
                 }
-                renderer.State.CursorPositionX += 2;
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 2;
+                renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, renderer.State.CursorPositionX,
                     renderer.State.LinePositions[0] - 15.5f, element);
-                renderer.State.CursorPositionX += 20;
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 20;
             }
             else if (element.RepeatSign == RepeatSignType.Backward)
             {
-                renderer.State.CursorPositionX -= 2;
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX -= 2;
+                renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.CursorPositionX,
                     renderer.State.LinePositions[0] - 15.5f, element);
-                renderer.State.CursorPositionX += 6;
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
             }
             renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
 
@@ -52,6 +60,15 @@ namespace Manufaktura.Controls.Rendering
                 renderer.State.alterationsWithinOneBar[i] = 0;
 
             renderer.State.CurrentMeasure++;
+        }
+
+        public double? GetCursorPositionForCurrentBarline(ScoreRendererBase renderer)
+        {
+            Staff staff = renderer.State.CurrentStaff;
+            if (staff.MeasureWidths.Count <= renderer.State.CurrentMeasure) return null;
+            double? width = staff.MeasureWidths[renderer.State.CurrentMeasure];
+            if (!width.HasValue) return null;
+            return renderer.State.LastMeasurePositionX + width * renderer.Settings.CustomElementPositionRatio;
         }
     }
 }

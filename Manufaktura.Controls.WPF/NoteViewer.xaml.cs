@@ -94,7 +94,7 @@ namespace Manufaktura.Controls.WPF
             Canvas canvas = new Canvas();
             Content = canvas;
             var renderer = new CanvasScoreRenderer(canvas);
-            renderer.State.PageWidth = 1200;
+            renderer.Settings.PageWidth = 1200;
             renderer.Render(ScoreSource);
         }
 
@@ -105,7 +105,7 @@ namespace Manufaktura.Controls.WPF
             if (RenderMode == RenderModes.DrawingContext && ScoreSource != null)
             {
                 var renderer = new DrawingContextScoreRenderer(drawingContext);
-                renderer.State.PageWidth = 1200;
+                renderer.Settings.PageWidth = 1200;
                 renderer.Render(ScoreSource);
             }
         }

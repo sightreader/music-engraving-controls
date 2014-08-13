@@ -11,17 +11,22 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(Note element, ScoreRendererBase renderer)
         {
+            //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
+            if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition > 0)
+            {
+                renderer.State.CursorPositionX = renderer.State.LastMeasurePositionX + element.DefaultXPosition * renderer.Settings.CustomElementPositionRatio;
+            }
+
             if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
             renderer.State.firstNoteInIncipit = false;
 
-            if (element.Voice > renderer.State.CurrentVoice)
+            //If it's second voice, rewind position to the beginning of measure (but only if default-x is not set or is ignored):
+            if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0))
             {
                 renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
                 renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
             }
             renderer.State.CurrentVoice = element.Voice;
-
-
 
             if (element.Tuplet == TupletType.Start) renderer.State.numberOfNotesUnderTuplet = 0;
             renderer.State.numberOfNotesUnderTuplet++;
@@ -48,7 +53,7 @@ namespace Manufaktura.Controls.Rendering
 
             //Draw a element / Rysuj nutę:
             if (element.IsGraceNote || element.IsCueNote)
-                renderer.DrawString(element.MusicalCharacter, FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 1, notePositionY + 2, element);
+                renderer.DrawString(element.MusicalCharacter, FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 1, notePositionY + 4, element);
             else 
                 renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
             
@@ -197,11 +202,17 @@ namespace Manufaktura.Controls.Rendering
                     if (renderer.State.IsPrintMode) xPos -= 0.9f;
                     if (element.StemDirection == NoteStemDirection.Down)
                     {
-                        renderer.DrawString(element.NoteFlagCharacterRev, FontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY + 7), element);
+                        if (element.IsGraceNote || element.IsCueNote)
+                            renderer.DrawString(element.NoteFlagCharacterRev, FontStyles.GraceNoteFont, new Point(xPos, renderer.State.currentStemEndPositionY + 11), element);
+                        else
+                            renderer.DrawString(element.NoteFlagCharacterRev, FontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY + 7), element);
                     }
                     else
                     {
-                        renderer.DrawString(element.NoteFlagCharacter, FontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY - 1), element);
+                        if (element.IsGraceNote || element.IsCueNote)
+                            renderer.DrawString(element.NoteFlagCharacter, FontStyles.GraceNoteFont, new Point(xPos + 0.5, renderer.State.currentStemEndPositionY + 3.5), element);
+                        else
+                            renderer.DrawString(element.NoteFlagCharacter, FontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY - 1), element);
                     }
                 }
                 else if (beam == NoteBeamType.ForwardHook)
@@ -429,21 +440,22 @@ namespace Manufaktura.Controls.Rendering
                 renderer.State.CursorPositionX += 6;
             }
 
-
-            if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 50;
-            else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 30;
-            else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 18;
-            else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
-            else if (element.Duration == MusicalSymbolDuration.Unknown) renderer.State.CursorPositionX += 25;
-            else renderer.State.CursorPositionX += 14;
-
-            //Przesuń trochę w prawo, jeśli nuta ma tekst, żeby litery nie wchodziły na siebie
-            //Move a bit right if the element has a lyric to prevent letters from hiding each other
-            if (element.Lyrics.Count > 0)
+            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
-                renderer.State.CursorPositionX += element.LyricTexts[0].Length * 2;
-            }
+                if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 50;
+                else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 30;
+                else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 18;
+                else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
+                else if (element.Duration == MusicalSymbolDuration.Unknown) renderer.State.CursorPositionX += 25;
+                else renderer.State.CursorPositionX += 14;
 
+                //Przesuń trochę w prawo, jeśli nuta ma tekst, żeby litery nie wchodziły na siebie
+                //Move a bit right if the element has a lyric to prevent letters from hiding each other
+                if (element.Lyrics.Count > 0)
+                {
+                    renderer.State.CursorPositionX += element.LyricTexts[0].Length * 2;
+                }
+            }
             renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
         }
     }

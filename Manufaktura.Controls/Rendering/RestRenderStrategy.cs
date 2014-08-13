@@ -10,10 +10,17 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(Rest element, ScoreRendererBase renderer)
         {
+            //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
+            if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition > 0)
+            {
+                renderer.State.CursorPositionX = renderer.State.LastMeasurePositionX + element.DefaultXPosition * renderer.Settings.CustomElementPositionRatio;
+            }
+
             if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
             renderer.State.firstNoteInIncipit = false;
 
-            if ((element).Voice > renderer.State.CurrentVoice)
+            //If it's second voice, rewind position to the beginning of measure (but only if default-x is not set or is ignored):
+            if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0))
             {
                 renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
                 renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
@@ -41,11 +48,14 @@ namespace Manufaktura.Controls.Rendering
                 renderer.State.CursorPositionX += 6;
             }
 
-            if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 48;
-            else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 28;
-            else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 17;
-            else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
-            else renderer.State.CursorPositionX += 14;
+            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
+            {
+                if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 48;
+                else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 28;
+                else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 17;
+                else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
+                else renderer.State.CursorPositionX += 14;
+            }
 
             renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
         }

@@ -14,11 +14,12 @@ namespace Manufaktura.Controls.Rendering
         public Clef CurrentClef {get; set;}
         public Key CurrentKey { get; set; }
         public int CurrentMeasure { get; set; }
+        public double LastMeasurePositionX { get; set; }
+        public double CurrentMeasureWidth { get; set; }
         public int CurrentVoice { get; set; }
 
         public double currentClefPositionY { get; set;}
 
-        public double PageWidth { get; set; }
         public bool IsManualMode { get; set; }
         public bool IsPrintMode { get; set; }
         
@@ -66,9 +67,7 @@ namespace Manufaktura.Controls.Rendering
             slurStartPoint = new Point();
             CurrentVoice = 1;
             LinePositions = new int[5];
-            currentClefPositionY = 0;
-            PageWidth = 200;
-            
+            currentClefPositionY = 0;           
         }
     }
 }

@@ -43,6 +43,16 @@ namespace Manufaktura.Controls.Parser
                     //Skip if measure node is empty:
                     if (!measureNode.HasElements) continue;
 
+                    //Read widths of all measures:
+                    double? measureWidth = null;
+                    var widthAttribute = measureNode.Attributes().FirstOrDefault(a => a.Name == "width");
+                    if (widthAttribute != null)
+                    {
+                        double w;
+                        if (double.TryParse(widthAttribute.Value, out w)) measureWidth = w;
+                    }
+                    staff.MeasureWidths.Add(measureWidth);
+
                     //Parse measure nodes:
                     foreach (XElement elementNode in measureNode.Elements())
                     {

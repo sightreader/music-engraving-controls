@@ -107,7 +107,7 @@ namespace Manufaktura.Controls.Silverlight
 
             MainCanvas.Children.Clear();
             Renderer = new CanvasScoreRenderer(MainCanvas);
-            if (score.Staves.Count > 0) Renderer.State.PageWidth = score.Staves[0].Elements.Count * 26;
+            if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
             if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 
