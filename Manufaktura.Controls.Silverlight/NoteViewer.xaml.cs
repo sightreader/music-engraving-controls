@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,10 @@ namespace Manufaktura.Controls.Silverlight
         {
             NoteViewer viewer = obj as NoteViewer;
             string xmlSource = args.NewValue as string;
+
+            MusicXmlNormalizer normalizer = new MusicXmlNormalizer() { NormalizeSpaceBeforeFirstNotesOfMeasures = true };   //TODO: For testing only
+            xmlSource = normalizer.Parse(xmlSource);
+
             MusicXmlParser parser = new MusicXmlParser();
             viewer.RenderOnCanvas(parser.Parse(xmlSource));
         }
