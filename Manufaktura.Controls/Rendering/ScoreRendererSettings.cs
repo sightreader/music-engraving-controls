@@ -14,7 +14,7 @@ namespace Manufaktura.Controls.Rendering
         public ScoreRendererSettings()
         {
             IgnoreCustomElementPositions = false;
-            CustomElementPositionRatio = 0.7d;
+            CustomElementPositionRatio = 0.6d;
             PageWidth = 200;
         }
     }
