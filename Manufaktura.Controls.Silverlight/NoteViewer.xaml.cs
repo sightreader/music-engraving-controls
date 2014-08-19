@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Silverlight
 {
@@ -40,12 +41,28 @@ namespace Manufaktura.Controls.Silverlight
             NoteViewer viewer = obj as NoteViewer;
             string xmlSource = args.NewValue as string;
 
-            MusicXmlNormalizer normalizer = new MusicXmlNormalizer() { NormalizeSpaceBeforeFirstNotesOfMeasures = true };   //TODO: For testing only
-            xmlSource = normalizer.Parse(xmlSource);
+            XDocument xmlDocument = XDocument.Parse(xmlSource);
+            //Apply transformations:
+            if (viewer.XmlTransformations != null)
+            {
+                foreach (var transformation in viewer.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
+            }
 
             MusicXmlParser parser = new MusicXmlParser();
-            viewer.RenderOnCanvas(parser.Parse(xmlSource));
+            viewer.RenderOnCanvas(parser.Parse(xmlDocument));
         }
+
+        public IEnumerable<XTransformerParser> XmlTransformations
+        {
+            get { return (IEnumerable<XTransformerParser>)GetValue(XmlTransformationsProperty); }
+            set { SetValue(XmlTransformationsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for XmlTransformations.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty XmlTransformationsProperty =
+            DependencyProperty.Register("XmlTransformations", typeof(IEnumerable<XTransformerParser>), typeof(NoteViewer), new PropertyMetadata(null));
+
+        
 
         public bool IsDebugMode
         {

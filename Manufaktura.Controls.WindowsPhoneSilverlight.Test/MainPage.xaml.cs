@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using Manufaktura.Controls.WindowsPhoneSilverlight.Test.Resources;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Model;
+using System.Xml.Linq;
 
 namespace Manufaktura.Controls.WindowsPhoneSilverlight.Test
 {
@@ -654,7 +655,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight.Test
 ";
 
             MusicXmlParser parser = new MusicXmlParser();
-            Score score = parser.Parse(scoreXml);
+            Score score = parser.Parse(XDocument.Parse(scoreXml));
 
 
             noteViewer1.XmlSource = scoreXml;

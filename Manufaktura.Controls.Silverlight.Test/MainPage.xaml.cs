@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Parser.MusicXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Silverlight.Test
 {
@@ -39,8 +41,11 @@ namespace Manufaktura.Controls.Silverlight.Test
                 fileStream.Close();
 
                 MusicXmlParser parser = new MusicXmlParser();
-                score = parser.Parse(scoreXml);
+                score = parser.Parse(XDocument.Parse(scoreXml));
                 noteViewer1.ScoreSource = score;
+
+                MusicXmlNormalizer normalizer = new MusicXmlNormalizer() { NormalizeSpaceBeforeFirstNotesOfMeasures = true };
+                noteViewer2.XmlTransformations = new[] { normalizer };
                 noteViewer2.XmlSource = scoreXml;
             }
         }

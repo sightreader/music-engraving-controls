@@ -13,19 +13,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
     {
         public bool NormalizeSpaceBeforeFirstNotesOfMeasures { get; set; }
 
-        public string Parse(string source)
-        {
-            XDocument document = XDocument.Parse(source);
-            document = Parse(document);
-            StringBuilder sb = new StringBuilder();
-            using (XmlWriter writer = XmlWriter.Create(sb))
-            {
-                document.WriteTo(writer);
-                writer.Flush();
-            }
-            return sb.ToString();
-        }
-
         public override XDocument Parse(XDocument source)   //TODO: Przetestować dokładnie i zrefaktorować
         {
             if (!NormalizeSpaceBeforeFirstNotesOfMeasures) return source;

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Winforms.Test
 {
@@ -27,7 +28,7 @@ namespace Manufaktura.Controls.Winforms.Test
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 MusicXmlParser parser = new MusicXmlParser();
-                Score score = parser.Parse(File.ReadAllText(dialog.FileName));
+                Score score = parser.Parse(XDocument.Parse(File.ReadAllText(dialog.FileName)));
                 noteViewer1.DataSource = score;
                 noteViewer1.Refresh();
                 noteViewer2.DataSource = score;

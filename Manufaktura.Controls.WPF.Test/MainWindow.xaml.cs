@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -39,7 +40,7 @@ namespace Manufaktura.Controls.WPF.Test
                 noteViewer1.XmlSource = xml;
                 MusicXmlParser parser = new MusicXmlParser();
                 noteViewer2.RenderMode = NoteViewer.RenderModes.Canvas;
-                noteViewer2.ScoreSource = parser.Parse(xml);
+                noteViewer2.ScoreSource = parser.Parse(XDocument.Parse(xml));
             }
         }
     }

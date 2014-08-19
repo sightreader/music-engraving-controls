@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Manufaktura.Controls.WPF
 {
@@ -58,7 +59,7 @@ namespace Manufaktura.Controls.WPF
             NoteViewer viewer = obj as NoteViewer;
             string xmlSource = args.NewValue as string;
             MusicXmlParser parser = new MusicXmlParser();
-            viewer.ScoreSource = parser.Parse(xmlSource);   //TODO: Nie ustawiać ScoreSource, bo wywalamy binding!!!
+            viewer.ScoreSource = parser.Parse(XDocument.Parse(xmlSource));   //TODO: Nie ustawiać ScoreSource, bo wywalamy binding!!!
         }
 
         public Score ScoreSource

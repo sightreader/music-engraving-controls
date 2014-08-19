@@ -10,15 +10,14 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser
 {
-    public class MusicXmlParser : ScoreParser<string>
+    public class MusicXmlParser : ScoreParser<XDocument>
     {
-        public override Score Parse(string xmlDocument)  //TODO: Exception handling!
+        public override Score Parse(XDocument xmlDocument)  //TODO: Exception handling!
         {
             Score score = new Score();
             MusicXmlParserState state = new MusicXmlParserState();
 
-            XDocument document = XDocument.Parse(xmlDocument);
-            foreach (XElement staffNode in document.Descendants(XName.Get("part")))
+            foreach (XElement staffNode in xmlDocument.Descendants(XName.Get("part")))
             {
                 Staff staff = new Staff();
                 score.Staves.Add(staff);
@@ -69,7 +68,7 @@ namespace Manufaktura.Controls.Parser
             return score;
         }
 
-        public override string ParseBack(Score score)
+        public override XDocument ParseBack(Score score)
         {
             throw new NotImplementedException("This parser does not support saving to MusicXml.");
         }
