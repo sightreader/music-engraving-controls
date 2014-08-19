@@ -19,10 +19,15 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
             foreach (XElement staffNode in source.Descendants(XName.Get("part")))
             {
+                //
+                // FIRST PASS: Determine median note default-x
+                //
                 List<double> measureWidths = new List<double>();
                 List<double> spacesBeforeFirstNoteOfMeasure = new List<double>();
-                foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")).Skip(1))
+                foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")).Skip(1)) //Don't remove space in first measure
                 {
+                    //TODO: Nie uwzględniać taktu, który następuje zaraz po zmianie metrum/klucza/znaków przykluczowych
+
                     //Read widths of all measures:
                     double? measureWidth = null;
                     var widthAttribute = measureNode.Attributes().FirstOrDefault(a => a.Name == "width");
@@ -38,11 +43,14 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         if (noteDefaultX.HasValue) spacesBeforeFirstNoteOfMeasure.Add(noteDefaultX.Value);
                     }
                 }
-
-                double medianMeasureWidth = UsefulMath.Median(measureWidths.ToArray());
                 double medianNoteDefaultX = UsefulMath.Median(spacesBeforeFirstNoteOfMeasure.ToArray());
                 double averageNoteDefaultX = UsefulMath.Mean(spacesBeforeFirstNoteOfMeasure.ToArray());
-                foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")).Skip(1))
+
+                //
+                // SECOND PASS: Apply calculated median note default-x to all measures
+                //
+                //TODO: Nie uwzględniać taktu, który następuje zaraz po zmianie metrum/klucza/znaków przykluczowych
+                foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")).Skip(1))   //Don't remove space in first measure
                 {
                     double? currentValue = null;
                     XElement firstNoteNode = measureNode.Descendants(XName.Get("note")).FirstOrDefault();

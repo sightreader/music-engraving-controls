@@ -42,14 +42,16 @@ namespace Manufaktura.Controls.Rendering
                 Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
 
             //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
-            if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step) != 0)
+            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0)
             {
-                if (numberOfSingleAccidentals > 0) renderer.State.CursorPositionX += 9;
-                if (numberOfDoubleAccidentals > 0)
-                    renderer.State.CursorPositionX += (numberOfDoubleAccidentals) * 9;
-
+                if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step) != 0)
+                {
+                    if (numberOfSingleAccidentals > 0) renderer.State.CursorPositionX += 9;
+                    if (numberOfDoubleAccidentals > 0)
+                        renderer.State.CursorPositionX += (numberOfDoubleAccidentals) * 9;
+                }
+                if (element.HasNatural == true) renderer.State.CursorPositionX += 9;
             }
-            if (element.HasNatural == true) renderer.State.CursorPositionX += 9;
 
             //Draw a element / Rysuj nutę:
             if (element.IsGraceNote || element.IsCueNote)
