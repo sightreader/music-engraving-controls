@@ -194,6 +194,7 @@ namespace Manufaktura.Controls.Model
             else if (midiPitch < 108) octave = 7;
             else if (midiPitch < 120) octave = 8;
 
+            this.midiPitch = midiPitch; 
         }
 
         #endregion
