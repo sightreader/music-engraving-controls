@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Rendering
                 flatOrSharpPositionY = renderer.State.currentClefPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
                 (new Note("F", 0, renderer.State.CurrentClef.Octave + octaveShiftSharp, MusicalSymbolDuration.Whole, NoteStemDirection.Up,
                     NoteTieType.None, null)))
-                * (renderer.State.lineSpacing / 2);
+                * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = 1;
 
@@ -33,7 +33,7 @@ namespace Manufaktura.Controls.Rendering
                 flatOrSharpPositionY = renderer.State.currentClefPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
                 (new Note("B", 0, renderer.State.CurrentClef.Octave + octaveShiftFlat, MusicalSymbolDuration.Whole, NoteStemDirection.Up,
                     NoteTieType.None, null)))
-                * (renderer.State.lineSpacing / 2);
+                * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = -1;
             }

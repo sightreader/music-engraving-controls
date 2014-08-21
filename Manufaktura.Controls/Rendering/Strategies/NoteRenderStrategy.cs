@@ -34,7 +34,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.IsChordElement) renderer.State.CursorPositionX = renderer.State.LastCursorPositionX;
 
             double notePositionY = renderer.State.currentClefPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
-                element) * ((double)renderer.State.lineSpacing / 2.0f);
+                element) * ((double)renderer.Settings.LineSpacing / 2.0f);
             if (renderer.State.IsPrintMode) notePositionY -= 0.8f;
 
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
@@ -65,23 +65,23 @@ namespace Manufaktura.Controls.Rendering
             //Ledger lines / Linie dodane
             double tmpXPos = renderer.State.CursorPositionX + 16;
             if (renderer.State.IsPrintMode) tmpXPos += 1.5f;
-            if (notePositionY + 25.0f > renderer.State.LinePositions[4] + renderer.State.lineSpacing / 2.0f)
+            if (notePositionY + 25.0f > renderer.State.LinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
             {
-                for (int i = renderer.State.LinePositions[4]; i < notePositionY + 24f - renderer.State.lineSpacing / 2.0f; i += renderer.State.lineSpacing)
+                for (int i = renderer.State.LinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
                 {
 
-                    renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i + renderer.State.lineSpacing),
-                        new Point(tmpXPos, i + renderer.State.lineSpacing), element);
+                    renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
+                        new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
                 }
             }
-            if (notePositionY + 25.0f < renderer.State.LinePositions[0] - renderer.State.lineSpacing / 2)
+            if (notePositionY + 25.0f < renderer.State.LinePositions[0] - renderer.Settings.LineSpacing / 2)
             {
 
-                for (int i = renderer.State.LinePositions[0]; i > notePositionY + 26.0f + renderer.State.lineSpacing / 2.0f; i -= renderer.State.lineSpacing)
+                for (int i = renderer.State.LinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
                 {
 
-                    renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i - renderer.State.lineSpacing),
-                        new Point(tmpXPos, i - renderer.State.lineSpacing), element);
+                    renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
+                        new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
                 }
             }
 

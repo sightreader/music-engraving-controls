@@ -41,6 +41,7 @@ namespace Manufaktura.Controls.Silverlight
             textBlock.FontFamily = Fonts.Get(fontStyle);
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.UseLayoutRounding = true;
             System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
             System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
             Canvas.Children.Add(textBlock);
@@ -52,6 +53,7 @@ namespace Manufaktura.Controls.Silverlight
         {
             var line = new Line();
             line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            line.UseLayoutRounding = true;
 
             line.X1 = startPoint.X;
             line.X2 = endPoint.X;

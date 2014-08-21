@@ -28,8 +28,7 @@ namespace Manufaktura.Controls.Rendering
         public double lastNoteEndXPosition { get; set; } //for many voices / dla wielu głosów
         public double firstNoteInMeasureXPosition { get; set; } //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
         public double lastNoteInMeasureEndXPosition { get; set; } //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
-        public int paddingTop { get; private set; }
-        public int lineSpacing { get; private set; }
+
         public double currentStemEndPositionY { get; set; }
         public int numberOfNotesUnderTuplet { get; set; }
         public List<double> previousStemEndPositionsY { get; set; }
@@ -54,8 +53,6 @@ namespace Manufaktura.Controls.Rendering
             lastNoteEndXPosition = 0; //for many voices / dla wielu głosów
             firstNoteInMeasureXPosition = 0; //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
             lastNoteInMeasureEndXPosition = 0; //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
-            paddingTop = 20;
-            lineSpacing = 6;
             currentStemEndPositionY = 0;
             numberOfNotesUnderTuplet = 0;
             previousStemEndPositionsY = new List<double>();
