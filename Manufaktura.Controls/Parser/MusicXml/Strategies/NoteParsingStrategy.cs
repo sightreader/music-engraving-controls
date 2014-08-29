@@ -41,7 +41,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             double defaultX = 0;
             bool customStemEndPosition = false;
             int tremoloLevel = 0;
-            NoteSlurType slur = NoteSlurType.None;
+            Slur slur = null;
             NoteTrillMark trillMark = NoteTrillMark.None;
             int voice = 1;
 
@@ -234,12 +234,17 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         }
                         else if (notationAttribute.Name == "slur")
                         {
+                            slur = new Slur();
+
                             if ((Convert.ToInt32(notationAttribute.Attribute("number").Value)) != 1)
                                 continue;
                             if (notationAttribute.Attribute("type").Value == "start")
-                                slur = NoteSlurType.Start;
+                                slur.Type = NoteSlurType.Start;
                             else if (notationAttribute.Attribute("type").Value == "stop")
-                                slur = NoteSlurType.Stop;
+                                slur.Type = NoteSlurType.Stop;
+
+                            var placementAttribute = notationAttribute.Attributes().FirstOrDefault(a => a.Name == "placement");
+                            if (placementAttribute != null) slur.Placement = placementAttribute.Value == "above" ? VerticalPlacement.Above : VerticalPlacement.Below;
 
                         }
                         else if (notationAttribute.Name == "fermata")

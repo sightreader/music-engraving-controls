@@ -32,7 +32,7 @@ namespace Manufaktura.Controls.Model
         protected bool isChordElement = false;
         protected int currentTempo = 120;
         protected NoteTrillMark trillMark = NoteTrillMark.None;
-        protected NoteSlurType slur = NoteSlurType.None;
+        protected Slur slur;
         protected bool hasFermataSign = false;
         protected int tremoloLevel = 0; //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
         protected int voice = 1;
@@ -46,7 +46,7 @@ namespace Manufaktura.Controls.Model
 
         public bool CustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
-        public NoteSlurType Slur { get { return slur; } set { slur = value; } }
+        public Slur Slur { get { return slur; } set { slur = value; } }
         public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; } }
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }

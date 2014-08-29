@@ -38,7 +38,7 @@ namespace Manufaktura.Controls.Rendering
         public List<Point> beamStartPositionsY { get; set; }
         public List<Point> beamEndPositionsY { get; set; }
         public Point tieStartPoint { get; set; }
-        public Point slurStartPoint { get; set; }
+        public Point SlurStartPoint { get; set; }
         
         public int[] alterationsWithinOneBar { get; set; }
         public bool firstNoteInIncipit { get; set; }
@@ -62,7 +62,7 @@ namespace Manufaktura.Controls.Rendering
             beamStartPositionsY = new List<Point>();
             beamEndPositionsY = new List<Point>();
             tieStartPoint = new Point();
-            slurStartPoint = new Point();
+            SlurStartPoint = new Point();
             CurrentVoice = 1;
             LinePositions = new int[5];
             currentClefPositionY = 0;           

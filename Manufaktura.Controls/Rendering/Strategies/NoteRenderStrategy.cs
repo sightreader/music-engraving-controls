@@ -321,39 +321,37 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
+        private VerticalPlacement slurStartPlacement = VerticalPlacement.Above;
         private void DrawSlurs(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            if (element.Slur == NoteSlurType.Start)
+            if (element.Slur == null) return;
+            VerticalPlacement slurPlacement;
+            if (element.Slur.Placement.HasValue) slurPlacement = element.Slur.Placement.Value;
+            else slurPlacement = element.StemDirection == NoteStemDirection.Up ? VerticalPlacement.Below : VerticalPlacement.Above;
+
+            if (element.Slur.Type == NoteSlurType.Start)
             {
-                renderer.State.slurStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
+                slurStartPlacement = slurPlacement;
+                if (slurPlacement == VerticalPlacement.Above)
+                    renderer.State.SlurStartPoint = new Point(renderer.State.CursorPositionX, element.StemDirection == NoteStemDirection.Down ? notePositionY : notePositionY + element.StemDefaultY);
+                else
+                    renderer.State.SlurStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
             }
-            else if (element.Slur == NoteSlurType.Stop)
+            else if (element.Slur.Type == NoteSlurType.Stop)
             {
-                if (element.StemDirection == NoteStemDirection.Down)
+                if (slurStartPlacement == VerticalPlacement.Above)
                 {
-                    renderer.DrawBezier(renderer.State.slurStartPoint.X + 10, renderer.State.slurStartPoint.Y + 18,
-                        renderer.State.slurStartPoint.X + 12, renderer.State.slurStartPoint.Y + 9,
-                        renderer.State.CursorPositionX + 8, notePositionY + 9,
-                        renderer.State.CursorPositionX + 10, notePositionY + 18, element);
-                    /*
-                    renderer.DrawArc(pen, new Rectangle((int)slurStartPoint.X + 10, (int)slurStartPoint.Y + 4,
-                        (int)currentXPosition - (int)slurStartPoint.X, 20), 180, 180);
-                    renderer.DrawArc(pen, new Rectangle((int)slurStartPoint.X + 10, (int)slurStartPoint.Y + 5,
-                        (int)currentXPosition - (int)slurStartPoint.X, 20), 180, 180);
-                    */
+                    renderer.DrawBezier(renderer.State.SlurStartPoint.X + 10, renderer.State.SlurStartPoint.Y + 18,
+                        renderer.State.SlurStartPoint.X + 12, renderer.State.SlurStartPoint.Y + 9,
+                        renderer.State.CursorPositionX + 8, (element.StemDirection == NoteStemDirection.Up ? element.StemDefaultY : notePositionY) + 9,
+                        renderer.State.CursorPositionX + 10, (element.StemDirection == NoteStemDirection.Up ? element.StemDefaultY : notePositionY) + 18, element);
                 }
-                else if (element.StemDirection == NoteStemDirection.Up)
+                else if (slurStartPlacement == VerticalPlacement.Below)
                 {
-                    renderer.DrawBezier(renderer.State.slurStartPoint.X + 10, renderer.State.slurStartPoint.Y + 30,
-                        renderer.State.slurStartPoint.X + 12, renderer.State.slurStartPoint.Y + 44,
+                    renderer.DrawBezier(renderer.State.SlurStartPoint.X + 10, renderer.State.SlurStartPoint.Y + 30,
+                        renderer.State.SlurStartPoint.X + 12, renderer.State.SlurStartPoint.Y + 44,
                         renderer.State.CursorPositionX + 8, notePositionY + 44,
                         renderer.State.CursorPositionX + 10, notePositionY + 30, element);
-                    /*
-                    renderer.DrawArc(pen, new Rectangle((int)slurStartPoint.X + 10, (int)slurStartPoint.Y + 24,
-                        (int)currentXPosition - (int)slurStartPoint.X, 20), 0, 180);
-                    renderer.DrawArc(pen, new Rectangle((int)slurStartPoint.X + 10, (int)slurStartPoint.Y + 25,
-                        (int)currentXPosition - (int)slurStartPoint.X, 20), 0, 180);
-                     * */
                 }
             }
         }
@@ -368,6 +366,8 @@ namespace Manufaktura.Controls.Rendering
                 StringBuilder sBuilder = new StringBuilder();
                 sBuilder.Append(lyrics.Text);
 
+                //TODO: Dodać do kalkulacji wyliczoną szerokość stringa w poprzednim lyricu i odkomentować :)
+                //A, i jeszcze wtedy wywalić warunek na middleDistance.
                 //double middleDistanceBetweenTwoLyrics = (renderer.State.CursorPositionX - renderer.State.LastNoteEndXPosition) / 2.0d;
                 // double hyphenXPosition = renderer.State.CursorPositionX - middleDistanceBetweenTwoLyrics;
                 //if ((lyrics.Type == SyllableType.Middle || lyrics.Type == SyllableType.End) && middleDistanceBetweenTwoLyrics > 20)
@@ -375,7 +375,7 @@ namespace Manufaktura.Controls.Rendering
                 //    renderer.DrawString("-", FontStyles.LyricsFont, hyphenXPosition, textPositionY, element);
                 //}
                 //else 
-                if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-"); //TODO: Wyświetlać myślniki między lyricami
+                if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-");
 
                 renderer.DrawString(sBuilder.ToString(), FontStyles.LyricsFont, renderer.State.CursorPositionX, textPositionY, element);
 

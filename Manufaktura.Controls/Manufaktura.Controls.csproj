@@ -49,6 +49,7 @@
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
+    <Compile Include="Model\Slur.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmNotesPerMeasureDigestParser.cs" />
