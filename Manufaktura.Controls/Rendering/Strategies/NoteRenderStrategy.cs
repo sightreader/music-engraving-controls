@@ -43,31 +43,68 @@ namespace Manufaktura.Controls.Rendering
             if (renderer.State.IsPrintMode) notePositionY -= 0.8f;
 
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
-            int numberOfDoubleAccidentals =
-                Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
+            int numberOfDoubleAccidentals = Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
 
-            //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
-            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0)
+            MakeSpaceForAccidentals(renderer, element, 
+                numberOfSingleAccidentals, numberOfDoubleAccidentals); //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
+            DrawNote(renderer, element, notePositionY);                //Draw an element / Rysuj nutę:
+            DrawLedgerLines(renderer, element, notePositionY);         //Ledger lines / Linie dodane
+            DrawStems(renderer, element, notePositionY);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
+            DrawBeams(renderer, element);                              //Draw beams / Rysuj belki
+            DrawTies(renderer, element, notePositionY);                //Draw ties / Rysuj łuki
+            DrawSlurs(renderer, element, notePositionY);               //Draw slurs / Rysuj łuki legatowe:
+            DrawLyrics(renderer, element);                             //Draw lyrics / Rysuj tekst:
+            DrawArticulation(renderer, element, notePositionY);        //Draw articulation / Rysuj artykulację:
+            DrawTrills(renderer, element, notePositionY);              //Draw trills / Rysuj tryle:
+            DrawTremolos(renderer, element, notePositionY);            //Draw tremolos / Rysuj tremola:
+            DrawFermataSign(renderer, element, notePositionY);         //Draw fermata sign / Rysuj symbol fermaty:
+            DrawAccidentals(renderer, element, notePositionY, 
+                numberOfSingleAccidentals, numberOfDoubleAccidentals); //Draw accidentals / Rysuj znaki przygodne:
+            DrawDots(renderer, element, notePositionY);                //Draw dots / Rysuj kropki:
+            
+
+            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
-                if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step) != 0)
-                {
-                    if (numberOfSingleAccidentals > 0) renderer.State.CursorPositionX += 9;
-                    if (numberOfDoubleAccidentals > 0)
-                        renderer.State.CursorPositionX += (numberOfDoubleAccidentals) * 9;
-                }
-                if (element.HasNatural == true) renderer.State.CursorPositionX += 9;
-            }
+                if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 50;
+                else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 30;
+                else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 18;
+                else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
+                else if (element.Duration == MusicalSymbolDuration.Unknown) renderer.State.CursorPositionX += 25;
+                else renderer.State.CursorPositionX += 14;
 
-            //Draw a element / Rysuj nutę:
+                //Przesuń trochę w prawo, jeśli nuta ma tekst, żeby litery nie wchodziły na siebie
+                //Move a bit right if the element has a lyric to prevent letters from hiding each other
+                if (element.Lyrics.Count > 0)
+                {
+                    renderer.State.CursorPositionX += element.LyricTexts[0].Length * 2;
+                }
+            }
+            renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
+        }
+
+        private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if (element.IsGraceNote || element.IsCueNote)
                 renderer.DrawString(element.MusicalCharacter, FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 1, notePositionY + 4, element);
-            else 
+            else
                 renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
-            
+
             renderer.State.LastCursorPositionX = renderer.State.CursorPositionX;
             element.Location = new Point(renderer.State.CursorPositionX, notePositionY);
+        }
 
-            //Ledger lines / Linie dodane
+        private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
+        {
+            int tmpMod;
+            if (renderer.State.TupletPlacement == VerticalPlacement.Above) tmpMod = 6;
+            else tmpMod = 28;
+            renderer.DrawString(Convert.ToString(renderer.State.NumberOfNotesUnderTuplet), FontStyles.LyricsFont,
+                    new Point(renderer.State.previousStemPositionsX[beamLoop] + (renderer.State.currentStemPositionX - renderer.State.previousStemPositionsX[beamLoop]) / 2 - 1,
+                    renderer.State.previousStemEndPositionsY[beamLoop] - (renderer.State.currentStemEndPositionY - renderer.State.previousStemEndPositionsY[beamLoop]) / 2 + tmpMod), element);
+        }
+
+        private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             double tmpXPos = renderer.State.CursorPositionX + 16;
             if (renderer.State.IsPrintMode) tmpXPos += 1.5f;
             if (notePositionY + 25.0f > renderer.State.LinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
@@ -89,8 +126,9 @@ namespace Manufaktura.Controls.Rendering
                         new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
                 }
             }
-
-            //Draw stems (stems are vertical lines, beams are horizontal lines :P)/ Rysuj ogonki: (ogonki to są te w pionie - poziome są belki ;P ;P ;P)
+        }
+        private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if ((element.Duration != MusicalSymbolDuration.Whole) &&
                 (element.Duration != MusicalSymbolDuration.Unknown))
             {
@@ -115,7 +153,7 @@ namespace Manufaktura.Controls.Rendering
 
                     if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
-                            renderer.DrawLine(new Point(renderer.State.currentStemPositionX, notePositionY - 1 + 28), 
+                            renderer.DrawLine(new Point(renderer.State.currentStemPositionX, notePositionY - 1 + 28),
                                 new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28), element);
                 }
                 else
@@ -140,7 +178,10 @@ namespace Manufaktura.Controls.Rendering
                 }
                 element.StemEndLocation = new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY);
             }
-            //Draw beams / Rysuj belki:
+        }
+
+        private void DrawBeams(ScoreRendererBase renderer, Note element)
+        {
             int beamOffset = 0;
             //Powiększ listę poprzednich pozycji stemów jeśli aktualna liczba belek jest większa
             //Extend the list of previous stem positions if current number of beams is greater than the list size
@@ -249,8 +290,10 @@ namespace Manufaktura.Controls.Rendering
                 beamLoop++;
 
             }
+        }
 
-            //Draw ties / Rysuj łuki:
+        private void DrawTies(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if (element.TieType == NoteTieType.Start)
             {
                 renderer.State.tieStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
@@ -277,8 +320,10 @@ namespace Manufaktura.Controls.Rendering
                 }
 
             }
+        }
 
-            //Draw slurs / Rysuj łuki legatowe:
+        private void DrawSlurs(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if (element.Slur == NoteSlurType.Start)
             {
                 renderer.State.slurStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
@@ -312,12 +357,12 @@ namespace Manufaktura.Controls.Rendering
                      * */
                 }
             }
+        }
 
-            //Draw lyrics / Rysuj tekst:
+        private void DrawLyrics(ScoreRendererBase renderer, Note element)
+        {
             int textPositionY = renderer.State.LinePositions[4] + 10;
-            for (int j = 0; (j < (element.Lyrics.Count)) &&
-                (j < (element.LyricTexts.Count))
-                ; j++)
+            for (int j = 0; j < element.Lyrics.Count && j < element.LyricTexts.Count; j++)
             {
                 StringBuilder sBuilder = new StringBuilder();
                 if ((element.Lyrics[j] == LyricsType.End) ||
@@ -330,8 +375,10 @@ namespace Manufaktura.Controls.Rendering
                 renderer.DrawString(sBuilder.ToString(), FontStyles.LyricsFont, renderer.State.CursorPositionX, textPositionY, element);
                 textPositionY += 12;
             }
+        }
 
-            //Draw articulation / Rysuj artykulację:
+        private void DrawArticulation(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if (element.Articulation != ArticulationType.None)
             {
                 double articulationPosition = notePositionY + 10;
@@ -346,8 +393,10 @@ namespace Manufaktura.Controls.Rendering
                     renderer.DrawString(">", FontStyles.MiscArticulationFont, renderer.State.CursorPositionX + 6, articulationPosition + 16, element);
 
             }
+        }
 
-            //Draw trills / Rysuj tryle:
+        private void DrawTrills(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if (element.TrillMark != NoteTrillMark.None)
             {
                 double trillPos = notePositionY - 1;
@@ -365,8 +414,10 @@ namespace Manufaktura.Controls.Rendering
                 }
                 renderer.DrawString("tr", FontStyles.TrillFont, renderer.State.CursorPositionX + 6, trillPos, element);
             }
+        }
 
-            //Draw tremolos / Rysuj tremola:
+        private void DrawTremolos(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             double currentTremoloPos = notePositionY + 18;
             for (int j = 0; j < element.TremoloLevel; j++)
             {
@@ -384,8 +435,10 @@ namespace Manufaktura.Controls.Rendering
                 }
 
             }
+        }
 
-            //Draw fermata sign / Rysuj symbol fermaty:
+        private void DrawFermataSign(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if (element.HasFermataSign)
             {
                 double ferPos = notePositionY - 9;
@@ -397,8 +450,10 @@ namespace Manufaktura.Controls.Rendering
                         10, 10), 180, 180, element);
                 renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.CursorPositionX + 6, ferPos, element);
             }
+        }
 
-            //Draw accidental signs / Rysuj akcydencje:
+        private void DrawAccidentals(ScoreRendererBase renderer, Note element, double notePositionY, int numberOfSingleAccidentals, int numberOfDoubleAccidentals)
+        {
             if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step)
                 - renderer.State.alterationsWithinOneBar[element.StepToStepNumber()] > 0)
             {
@@ -438,42 +493,30 @@ namespace Manufaktura.Controls.Rendering
             {
                 renderer.DrawString(MusicalCharacters.Natural, FontStyles.MusicFont, renderer.State.CursorPositionX - 9, notePositionY, element);
             }
+        }
 
-            //Draw dots / Rysuj kropki:
+        private void DrawDots(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
             if (element.NumberOfDots > 0) renderer.State.CursorPositionX += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
                 renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
                 renderer.State.CursorPositionX += 6;
             }
-
-            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
-            {
-                if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 50;
-                else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 30;
-                else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 18;
-                else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
-                else if (element.Duration == MusicalSymbolDuration.Unknown) renderer.State.CursorPositionX += 25;
-                else renderer.State.CursorPositionX += 14;
-
-                //Przesuń trochę w prawo, jeśli nuta ma tekst, żeby litery nie wchodziły na siebie
-                //Move a bit right if the element has a lyric to prevent letters from hiding each other
-                if (element.Lyrics.Count > 0)
-                {
-                    renderer.State.CursorPositionX += element.LyricTexts[0].Length * 2;
-                }
-            }
-            renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
         }
 
-        private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
+        private void MakeSpaceForAccidentals(ScoreRendererBase renderer, Note element, int numberOfSingleAccidentals, int numberOfDoubleAccidentals)
         {
-            int tmpMod;
-            if (renderer.State.TupletPlacement == VerticalPlacement.Above) tmpMod = 6;
-            else tmpMod = 28;
-            renderer.DrawString(Convert.ToString(renderer.State.NumberOfNotesUnderTuplet), FontStyles.LyricsFont,
-                    new Point(renderer.State.previousStemPositionsX[beamLoop] + (renderer.State.currentStemPositionX - renderer.State.previousStemPositionsX[beamLoop]) / 2 - 1,
-                    renderer.State.previousStemEndPositionsY[beamLoop] - (renderer.State.currentStemEndPositionY - renderer.State.previousStemEndPositionsY[beamLoop]) / 2 + tmpMod), element);
+            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0)
+            {
+                if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step) != 0)
+                {
+                    if (numberOfSingleAccidentals > 0) renderer.State.CursorPositionX += 9;
+                    if (numberOfDoubleAccidentals > 0)
+                        renderer.State.CursorPositionX += (numberOfDoubleAccidentals) * 9;
+                }
+                if (element.HasNatural == true) renderer.State.CursorPositionX += 9;
+            }
         }
     }
 }
