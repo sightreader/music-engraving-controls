@@ -7,24 +7,61 @@ namespace Manufaktura.Controls.Model
 {
     public class Lyrics : IHasCustomYPosition
     {
-        public LyricsType Type { get; set; }
-        public string Text { get; set; }
+        public int Number { get; set; }
+        public SyllableType Type
+        {
+            get
+            {
+                Syllable lastSyllable = Syllables.LastOrDefault();
+                if (lastSyllable == null) return SyllableType.Single;
+                return lastSyllable.Type;
+            }
+        }
+        public string Text
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (Syllable syllable in Syllables)
+                {
+                    sb.Append(syllable.ElisionMark);
+                    sb.Append(syllable.Text);
+                }
+                return sb.ToString();
+            }
+        }
         public double? DefaultYPosition { get; set; }
+
+        public List<Syllable> Syllables { get; set; }
 
         public Lyrics()
         {
-            Text = string.Empty;
+            Syllables = new List<Syllable>();
         }
 
-        public Lyrics(LyricsType type, string text, double? defaultY)
+        public Lyrics(SyllableType type, string text, double? defaultY)
         {
-            Type = type;
-            Text = text ?? string.Empty;
+            Syllables.Add(new Syllable(type, text));
             DefaultYPosition = defaultY;
         }
 
-        public Lyrics(LyricsType type, string text) : this (type, text, null)
+        public Lyrics(SyllableType type, string text) : this (type, text, null)
         { 
+        }
+
+        public class Syllable
+        {
+            public SyllableType Type { get; set; }
+            public string Text { get; set; }
+            public string ElisionMark { get; set; }
+
+            public Syllable() 
+            {
+            }
+
+            public Syllable(SyllableType type, string text)
+            {
+            }
         }
     }
 }

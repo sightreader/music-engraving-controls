@@ -16,7 +16,7 @@ namespace Manufaktura.Controls.Model
     public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
     public enum NoteTieType { None, Start, Stop, StopAndStartAnother };
     public enum TupletType { None, Start, Stop };
-    public enum LyricsType { None, Begin, Middle, End, Single };
+    public enum SyllableType { None, Begin, Middle, End, Single };
     public enum ArticulationType { None, Staccato, Accent };
     public enum VerticalPlacement { Above, Below };
     public enum DirectionPlacementType { Above, Below, Custom };

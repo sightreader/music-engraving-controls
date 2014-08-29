@@ -258,48 +258,54 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set. 
                     //Then reset these tags so the next <syllabic> tag starts another lyric. 
                     Lyrics lyricsInstance = new Lyrics();
+                    Lyrics.Syllable syllable = new Lyrics.Syllable();
                     bool isSylabicSet = false;
-                    bool isTextSet = false; ;
+                    bool isTextSet = false;
+                    var defaultYattribute = noteAttribute.Attributes().FirstOrDefault(a => a.Name == "default-y");
+                    if (defaultYattribute != null) lyricsInstance.DefaultYPosition = UsefulMath.TryParse(defaultYattribute.Value);
+
                     foreach (XElement lyricAttribute in noteAttribute.Elements())
                     {
                         if (lyricAttribute.Name == "syllabic")
                         {
                             if (lyricAttribute.Value == "begin")
                             {
-                                lyricsInstance.Type = LyricsType.Begin;
+                                syllable.Type = SyllableType.Begin;
                             }
                             else if (lyricAttribute.Value == "middle")
                             {
-                                lyricsInstance.Type = LyricsType.Middle;
+                                syllable.Type = SyllableType.Middle;
                             }
                             else if (lyricAttribute.Value == "end")
                             {
-                                lyricsInstance.Type = LyricsType.End;
+                                syllable.Type = SyllableType.End;
                             }
                             else if (lyricAttribute.Value == "single")
                             {
-                                lyricsInstance.Type = LyricsType.Single;
+                                syllable.Type = SyllableType.Single;
                             }
                             isSylabicSet = true;
                         }
                         else if (lyricAttribute.Name == "text")
                         {
-                            lyricsInstance.Text = lyricAttribute.Value;
+                            syllable.Text = lyricAttribute.Value;
                             isTextSet = true;
                         }
-                        else if (lyricAttribute.Name == "default-y")
+                        else if (lyricAttribute.Name == "elision")
                         {
-                            lyricsInstance.DefaultYPosition = UsefulMath.TryParse(lyricAttribute.Value);
+                            syllable.ElisionMark = lyricAttribute.Value;
                         }
 
                         if (isSylabicSet && isTextSet)
                         {
-                            lyrics.Add(lyricsInstance);
-                            lyricsInstance = new Lyrics();
+                            lyricsInstance.Syllables.Add(syllable);
+                            syllable = new Lyrics.Syllable();
                             isSylabicSet = false;
                             isTextSet = false;
                         }
                     }
+
+                    lyrics.Add(lyricsInstance);
                 }
             }
             if (beamList.Count == 0) beamList.Add(NoteBeamType.Single);

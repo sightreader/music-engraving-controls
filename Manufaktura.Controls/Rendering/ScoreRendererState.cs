@@ -24,8 +24,8 @@ namespace Manufaktura.Controls.Rendering
         public bool IsPrintMode { get; set; }
         
         public double CursorPositionX { get; set; }
-        public double LastCursorPositionX { get; set; } //for chords / dla akordów
-        public double lastNoteEndXPosition { get; set; } //for many voices / dla wielu głosów
+        public double LastNotePositionX { get; set; } //for chords / dla akordów
+        public double LastNoteEndXPosition { get; set; } //for many voices / dla wielu głosów
         public double firstNoteInMeasureXPosition { get; set; } //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
         public double lastNoteInMeasureEndXPosition { get; set; } //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
 
@@ -50,8 +50,8 @@ namespace Manufaktura.Controls.Rendering
             CurrentClef = new Clef(ClefType.CClef, 2);
             CurrentKey = new Key(0);
             CursorPositionX = 0;
-            LastCursorPositionX = 0; //for chords / dla akordów
-            lastNoteEndXPosition = 0; //for many voices / dla wielu głosów
+            LastNotePositionX = 0; //for chords / dla akordów
+            LastNoteEndXPosition = 0; //for many voices / dla wielu głosów
             firstNoteInMeasureXPosition = 0; //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
             lastNoteInMeasureEndXPosition = 0; //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
             currentStemEndPositionY = 0;

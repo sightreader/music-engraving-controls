@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
-                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
+                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.LastNoteEndXPosition;
             }
             renderer.State.CurrentVoice = element.Voice;
 
@@ -32,7 +32,7 @@ namespace Manufaktura.Controls.Rendering
             if (renderer.State.IsPrintMode) restPositionY -= 0.6f;
 
             renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
-            renderer.State.LastCursorPositionX = renderer.State.CursorPositionX;
+            renderer.State.LastNotePositionX = renderer.State.CursorPositionX;
 
             //Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
             if (element.MultiMeasure > 1)
@@ -57,7 +57,7 @@ namespace Manufaktura.Controls.Rendering
                 else renderer.State.CursorPositionX += 14;
             }
 
-            renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
+            renderer.State.LastNoteEndXPosition = renderer.State.CursorPositionX;
         }
     }
 }

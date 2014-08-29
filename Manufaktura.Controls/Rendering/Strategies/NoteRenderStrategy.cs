@@ -24,7 +24,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
-                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
+                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.LastNoteEndXPosition;
             }
             renderer.State.CurrentVoice = element.Voice;
 
@@ -36,7 +36,7 @@ namespace Manufaktura.Controls.Rendering
             }
             renderer.State.NumberOfNotesUnderTuplet++;
 
-            if (element.IsChordElement) renderer.State.CursorPositionX = renderer.State.LastCursorPositionX;
+            if (element.IsChordElement) renderer.State.CursorPositionX = renderer.State.LastNotePositionX;
 
             double notePositionY = renderer.State.currentClefPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
                 element) * ((double)renderer.Settings.LineSpacing / 2.0f);
@@ -61,7 +61,6 @@ namespace Manufaktura.Controls.Rendering
             DrawAccidentals(renderer, element, notePositionY, 
                 numberOfSingleAccidentals, numberOfDoubleAccidentals); //Draw accidentals / Rysuj znaki przygodne:
             DrawDots(renderer, element, notePositionY);                //Draw dots / Rysuj kropki
-            
 
             if (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
@@ -79,7 +78,7 @@ namespace Manufaktura.Controls.Rendering
                     renderer.State.CursorPositionX += element.Lyrics[0].Text.Length * 2;
                 }
             }
-            renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
+            renderer.State.LastNoteEndXPosition = renderer.State.CursorPositionX;
         }
 
         private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
@@ -89,7 +88,7 @@ namespace Manufaktura.Controls.Rendering
             else
                 renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
 
-            renderer.State.LastCursorPositionX = renderer.State.CursorPositionX;
+            renderer.State.LastNotePositionX = renderer.State.CursorPositionX;
             element.Location = new Point(renderer.State.CursorPositionX, notePositionY);
         }
 
@@ -361,19 +360,26 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLyrics(ScoreRendererBase renderer, Note element)
         {
-            int textPositionY = renderer.State.LinePositions[4] + 10;
-            for (int j = 0; j < element.Lyrics.Count; j++)
+            double textPositionY = renderer.State.LinePositions[4] + 10;    //Default value if default-y is not set
+            foreach (Lyrics lyrics in element.Lyrics)
             {
+                if (lyrics.DefaultYPosition.HasValue) textPositionY = lyrics.DefaultYPosition.Value * -1 - 20;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne - 20
+
                 StringBuilder sBuilder = new StringBuilder();
-                if ((element.Lyrics[j].Type == LyricsType.End) ||
-                    (element.Lyrics[j].Type == LyricsType.Middle))
-                    sBuilder.Append("-");
-                sBuilder.Append(element.Lyrics[j].Text);
-                if ((element.Lyrics[j].Type == LyricsType.Begin) ||
-                    (element.Lyrics[j].Type == LyricsType.Middle))
-                    sBuilder.Append("-");
+                sBuilder.Append(lyrics.Text);
+
+                //double middleDistanceBetweenTwoLyrics = (renderer.State.CursorPositionX - renderer.State.LastNoteEndXPosition) / 2.0d;
+                // double hyphenXPosition = renderer.State.CursorPositionX - middleDistanceBetweenTwoLyrics;
+                //if ((lyrics.Type == SyllableType.Middle || lyrics.Type == SyllableType.End) && middleDistanceBetweenTwoLyrics > 20)
+                //{
+                //    renderer.DrawString("-", FontStyles.LyricsFont, hyphenXPosition, textPositionY, element);
+                //}
+                //else 
+                if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-"); //TODO: Wyświetlać myślniki między lyricami
+
                 renderer.DrawString(sBuilder.ToString(), FontStyles.LyricsFont, renderer.State.CursorPositionX, textPositionY, element);
-                textPositionY += 12;
+
+                if (!lyrics.DefaultYPosition.HasValue) textPositionY += 12; //Move down if default-y is not set
             }
         }
 
