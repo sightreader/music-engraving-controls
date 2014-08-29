@@ -18,7 +18,7 @@ namespace Manufaktura.Controls.Model
     public enum TupletType { None, Start, Stop };
     public enum LyricsType { None, Begin, Middle, End, Single };
     public enum ArticulationType { None, Staccato, Accent };
-    public enum ArticulationPlacementType { Above, Below };
+    public enum VerticalPlacement { Above, Below };
     public enum DirectionPlacementType { Above, Below, Custom };
     public enum TimeSignatureType { Common, Cut, Numbers };
     public enum NoteTrillMark { None, Above, Below };

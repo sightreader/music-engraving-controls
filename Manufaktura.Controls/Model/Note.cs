@@ -26,7 +26,7 @@ namespace Manufaktura.Controls.Model
         protected TupletType tuplet = TupletType.None;
         protected List<LyricsType> lyrics = new List<LyricsType>();
         protected ArticulationType articulation = ArticulationType.None;
-        protected ArticulationPlacementType articulationPlacement = ArticulationPlacementType.Below;
+        protected VerticalPlacement articulationPlacement = VerticalPlacement.Below;
         protected List<string> lyricTexts = new List<string>();
         protected bool hasNatural = false;
         protected bool isGraceNote = false;
@@ -52,9 +52,10 @@ namespace Manufaktura.Controls.Model
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
         public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
+        public VerticalPlacement? TupletPlacement { get; set; }
         public List<LyricsType> Lyrics { get { return lyrics; } set { lyrics = value; } }
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; } }
-        public ArticulationPlacementType ArticulationPlacement
+        public VerticalPlacement ArticulationPlacement
         {
             get { return articulationPlacement; }
             set { articulationPlacement = value; }

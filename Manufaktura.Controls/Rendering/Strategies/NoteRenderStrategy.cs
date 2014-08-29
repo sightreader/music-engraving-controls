@@ -28,8 +28,13 @@ namespace Manufaktura.Controls.Rendering
             }
             renderer.State.CurrentVoice = element.Voice;
 
-            if (element.Tuplet == TupletType.Start) renderer.State.numberOfNotesUnderTuplet = 0;
-            renderer.State.numberOfNotesUnderTuplet++;
+            if (element.Tuplet == TupletType.Start)
+            {
+                renderer.State.NumberOfNotesUnderTuplet = 0;
+                renderer.State.TupletPlacement = element.TupletPlacement.HasValue ? element.TupletPlacement.Value : 
+                    (element.StemDirection == NoteStemDirection.Down ? VerticalPlacement.Below : VerticalPlacement.Above);
+            }
+            renderer.State.NumberOfNotesUnderTuplet++;
 
             if (element.IsChordElement) renderer.State.CursorPositionX = renderer.State.LastCursorPositionX;
 
@@ -188,12 +193,7 @@ namespace Manufaktura.Controls.Rendering
                     //Draw tuplet mark / Rysuj oznaczenie trioli:
                     if (element.Tuplet == TupletType.Stop && !alreadyPaintedNumberOfNotesInTuplet)
                     {
-                        int tmpMod;
-                        if (element.StemDirection == NoteStemDirection.Up) tmpMod = 12;
-                        else tmpMod = 28;
-                        renderer.DrawString(Convert.ToString(renderer.State.numberOfNotesUnderTuplet), FontStyles.LyricsFont,
-                                new Point(renderer.State.previousStemPositionsX[beamLoop] + (renderer.State.currentStemPositionX - renderer.State.previousStemPositionsX[beamLoop]) / 2 - 1,
-                                renderer.State.previousStemEndPositionsY[beamLoop] - (renderer.State.currentStemEndPositionY - renderer.State.previousStemEndPositionsY[beamLoop]) / 2 + tmpMod), element);
+                        DrawTupletMark(renderer, element, beamLoop);
                         alreadyPaintedNumberOfNotesInTuplet = true;
                     }
                 }
@@ -215,6 +215,11 @@ namespace Manufaktura.Controls.Rendering
                             renderer.DrawString(element.NoteFlagCharacter, FontStyles.GraceNoteFont, new Point(xPos + 0.5, renderer.State.currentStemEndPositionY + 3.5), element);
                         else
                             renderer.DrawString(element.NoteFlagCharacter, FontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY - 1), element);
+                    }
+                    if (element.Tuplet == TupletType.Stop && !alreadyPaintedNumberOfNotesInTuplet)
+                    {
+                        DrawTupletMark(renderer, element, beamLoop);
+                        alreadyPaintedNumberOfNotesInTuplet = true;
                     }
                 }
                 else if (beam == NoteBeamType.ForwardHook)
@@ -330,9 +335,9 @@ namespace Manufaktura.Controls.Rendering
             if (element.Articulation != ArticulationType.None)
             {
                 double articulationPosition = notePositionY + 10;
-                if (element.ArticulationPlacement == ArticulationPlacementType.Above)
+                if (element.ArticulationPlacement == VerticalPlacement.Above)
                     articulationPosition = notePositionY - 10;
-                else if (element.ArticulationPlacement == ArticulationPlacementType.Below)
+                else if (element.ArticulationPlacement == VerticalPlacement.Below)
                     articulationPosition = notePositionY + 10;
 
                 if (element.Articulation == ArticulationType.Staccato)
@@ -459,6 +464,16 @@ namespace Manufaktura.Controls.Rendering
                 }
             }
             renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
+        }
+
+        private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
+        {
+            int tmpMod;
+            if (renderer.State.TupletPlacement == VerticalPlacement.Above) tmpMod = 6;
+            else tmpMod = 28;
+            renderer.DrawString(Convert.ToString(renderer.State.NumberOfNotesUnderTuplet), FontStyles.LyricsFont,
+                    new Point(renderer.State.previousStemPositionsX[beamLoop] + (renderer.State.currentStemPositionX - renderer.State.previousStemPositionsX[beamLoop]) / 2 - 1,
+                    renderer.State.previousStemEndPositionsY[beamLoop] - (renderer.State.currentStemEndPositionY - renderer.State.previousStemEndPositionsY[beamLoop]) / 2 + tmpMod), element);
         }
     }
 }

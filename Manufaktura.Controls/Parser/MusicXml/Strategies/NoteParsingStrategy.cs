@@ -26,10 +26,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
             NoteStemDirection stemDirection = NoteStemDirection.Up;
             NoteTieType tieType = NoteTieType.None;
             TupletType tuplet = TupletType.None;
+            VerticalPlacement? tupletPlacement = null;
             List<NoteBeamType> beamList = new List<NoteBeamType>();
             List<LyricsType> lyric = new List<LyricsType>();
             List<string> lyricText = new List<string>();
-            ArticulationPlacementType articulationPlacement = ArticulationPlacementType.Below;
+            VerticalPlacement articulationPlacement = VerticalPlacement.Below;
             ArticulationType articulation = ArticulationType.None;
             bool hasNatural = false;
             bool isGraceNote = false;
@@ -159,6 +160,12 @@ namespace Manufaktura.Controls.Parser.MusicXml
                             {
                                 tuplet = TupletType.Stop;
                             }
+
+                            if (notationAttribute.Attributes().Any(a => a.Name == "placement"))
+                            {
+                                if (notationAttribute.Attribute("placement").Value == "above") tupletPlacement = VerticalPlacement.Above;
+                                else if (notationAttribute.Attribute("placement").Value == "below") tupletPlacement = VerticalPlacement.Below;
+                            }
                         }
                         if (notationAttribute.Name == "dynamics")
                         {
@@ -201,9 +208,9 @@ namespace Manufaktura.Controls.Parser.MusicXml
                                 }
 
                                 if (articulationAttribute.Attribute("placement").Value == "above")
-                                    articulationPlacement = ArticulationPlacementType.Above;
+                                    articulationPlacement = VerticalPlacement.Above;
                                 else if (articulationAttribute.Attribute("placement").Value == "below")
-                                    articulationPlacement = ArticulationPlacementType.Below;
+                                    articulationPlacement = VerticalPlacement.Below;
 
                             }
                         }
@@ -283,6 +290,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 Note nt = new Note(step, alter, octave, duration, stemDirection, tieType, beamList);
                 nt.NumberOfDots = numberOfDots;
                 nt.Tuplet = tuplet;
+                nt.TupletPlacement = tupletPlacement;
                 nt.Lyrics = lyric;
                 nt.LyricTexts = lyricText;
                 nt.Articulation = articulation;
@@ -308,6 +316,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 Rest rt = new Rest(duration);
                 rt.NumberOfDots = numberOfDots;
                 rt.Tuplet = tuplet;
+                rt.TupletPlacement = tupletPlacement;
                 rt.MultiMeasure = state.SkipMeasures + 1;
                 rt.CurrentTempo = state.CurrentTempo;
                 rt.HasFermataSign = hasFermataSign;

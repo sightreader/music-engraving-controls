@@ -24,6 +24,7 @@ namespace Manufaktura.Controls.Model
         public MusicalSymbolDuration Duration { get { return duration; } }
         public int NumberOfDots { get { return numberOfDots; } set { numberOfDots = value; } }
         public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
+        public VerticalPlacement? TupletPlacement { get; set; }
         public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; } }
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
