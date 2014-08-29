@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Lyrics
+    public class Lyrics : IHasCustomYPosition
     {
         public LyricsType Type { get; set; }
         public string Text { get; set; }
-        public double? DefaultY { get; set; }
+        public double? DefaultYPosition { get; set; }
 
         public Lyrics()
         {
@@ -20,7 +20,7 @@ namespace Manufaktura.Controls.Model
         {
             Type = type;
             Text = text ?? string.Empty;
-            DefaultY = defaultY;
+            DefaultYPosition = defaultY;
         }
 
         public Lyrics(LyricsType type, string text) : this (type, text, null)

@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -285,6 +286,10 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         {
                             lyricsInstance.Text = lyricAttribute.Value;
                             isTextSet = true;
+                        }
+                        else if (lyricAttribute.Name == "default-y")
+                        {
+                            lyricsInstance.DefaultYPosition = UsefulMath.TryParse(lyricAttribute.Value);
                         }
 
                         if (isSylabicSet && isTextSet)

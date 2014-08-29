@@ -29,7 +29,7 @@ namespace Manufaktura.Controls.Model
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
         public int Voice { get { return voice; } set { voice = value; } }
-        public double DefaultXPosition { get; set; }
+        public double? DefaultXPosition { get; set; }
 
         #endregion
 

@@ -11,16 +11,16 @@ namespace Manufaktura.Controls.Rendering
         public override void Render(Rest element, ScoreRendererBase renderer)
         {
             //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
-            if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition > 0)
+            if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
             {
-                renderer.State.CursorPositionX = renderer.State.LastMeasurePositionX + element.DefaultXPosition * renderer.Settings.CustomElementPositionRatio;
+                renderer.State.CursorPositionX = renderer.State.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
             }
 
             if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
             renderer.State.firstNoteInIncipit = false;
 
             //If it's second voice, rewind position to the beginning of measure (but only if default-x is not set or is ignored):
-            if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0))
+            if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
                 renderer.State.lastNoteInMeasureEndXPosition = renderer.State.lastNoteEndXPosition;
@@ -48,7 +48,7 @@ namespace Manufaktura.Controls.Rendering
                 renderer.State.CursorPositionX += 6;
             }
 
-            if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
+            if (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
                 if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 48;
                 else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 28;

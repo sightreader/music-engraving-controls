@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public interface IHasCustomXPosition
+    public interface IHasCustomYPosition
     {
-        double? DefaultXPosition { get; set; }
+        double? DefaultYPosition { get; set; }
     }
 }
