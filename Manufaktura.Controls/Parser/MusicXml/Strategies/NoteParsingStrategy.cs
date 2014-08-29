@@ -28,8 +28,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             TupletType tuplet = TupletType.None;
             VerticalPlacement? tupletPlacement = null;
             List<NoteBeamType> beamList = new List<NoteBeamType>();
-            List<LyricsType> lyric = new List<LyricsType>();
-            List<string> lyricText = new List<string>();
+            List<Lyrics> lyrics = new List<Lyrics>();
             VerticalPlacement articulationPlacement = VerticalPlacement.Below;
             ArticulationType articulation = ArticulationType.None;
             bool hasNatural = false;
@@ -255,34 +254,48 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }
                 else if (noteAttribute.Name == "lyric")
                 {
+                    //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set. 
+                    //Then reset these tags so the next <syllabic> tag starts another lyric. 
+                    Lyrics lyricsInstance = new Lyrics();
+                    bool isSylabicSet = false;
+                    bool isTextSet = false; ;
                     foreach (XElement lyricAttribute in noteAttribute.Elements())
                     {
                         if (lyricAttribute.Name == "syllabic")
                         {
                             if (lyricAttribute.Value == "begin")
                             {
-                                lyric.Add(LyricsType.Begin);
+                                lyricsInstance.Type = LyricsType.Begin;
                             }
                             else if (lyricAttribute.Value == "middle")
                             {
-                                lyric.Add(LyricsType.Middle);
+                                lyricsInstance.Type = LyricsType.Middle;
                             }
                             else if (lyricAttribute.Value == "end")
                             {
-                                lyric.Add(LyricsType.End);
+                                lyricsInstance.Type = LyricsType.End;
                             }
                             else if (lyricAttribute.Value == "single")
                             {
-                                lyric.Add(LyricsType.Single);
+                                lyricsInstance.Type = LyricsType.Single;
                             }
+                            isSylabicSet = true;
                         }
                         else if (lyricAttribute.Name == "text")
                         {
-                            lyricText.Add(lyricAttribute.Value);
+                            lyricsInstance.Text = lyricAttribute.Value;
+                            isTextSet = true;
+                        }
+
+                        if (isSylabicSet && isTextSet)
+                        {
+                            lyrics.Add(lyricsInstance);
+                            lyricsInstance = new Lyrics();
+                            isSylabicSet = false;
+                            isTextSet = false;
                         }
                     }
                 }
-
             }
             if (beamList.Count == 0) beamList.Add(NoteBeamType.Single);
             if (!isRest)
@@ -291,8 +304,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 nt.NumberOfDots = numberOfDots;
                 nt.Tuplet = tuplet;
                 nt.TupletPlacement = tupletPlacement;
-                nt.Lyrics = lyric;
-                nt.LyricTexts = lyricText;
+                nt.Lyrics = lyrics;
                 nt.Articulation = articulation;
                 nt.ArticulationPlacement = articulationPlacement;
                 nt.HasNatural = hasNatural;

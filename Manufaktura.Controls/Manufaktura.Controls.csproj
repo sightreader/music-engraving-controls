@@ -44,6 +44,7 @@
     <Compile Include="Model\IHasCustomXPosition.cs" />
     <Compile Include="Model\IHasDuration.cs" />
     <Compile Include="Model\Key.cs" />
+    <Compile Include="Model\Lyrics.cs" />
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />

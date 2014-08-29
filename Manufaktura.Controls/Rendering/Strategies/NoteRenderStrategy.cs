@@ -47,20 +47,20 @@ namespace Manufaktura.Controls.Rendering
 
             MakeSpaceForAccidentals(renderer, element, 
                 numberOfSingleAccidentals, numberOfDoubleAccidentals); //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
-            DrawNote(renderer, element, notePositionY);                //Draw an element / Rysuj nutę:
+            DrawNote(renderer, element, notePositionY);                //Draw an element / Rysuj nutę
             DrawLedgerLines(renderer, element, notePositionY);         //Ledger lines / Linie dodane
             DrawStems(renderer, element, notePositionY);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
             DrawBeams(renderer, element);                              //Draw beams / Rysuj belki
             DrawTies(renderer, element, notePositionY);                //Draw ties / Rysuj łuki
-            DrawSlurs(renderer, element, notePositionY);               //Draw slurs / Rysuj łuki legatowe:
-            DrawLyrics(renderer, element);                             //Draw lyrics / Rysuj tekst:
+            DrawSlurs(renderer, element, notePositionY);               //Draw slurs / Rysuj łuki legatowe
+            DrawLyrics(renderer, element);                             //Draw lyrics / Rysuj tekst
             DrawArticulation(renderer, element, notePositionY);        //Draw articulation / Rysuj artykulację:
-            DrawTrills(renderer, element, notePositionY);              //Draw trills / Rysuj tryle:
-            DrawTremolos(renderer, element, notePositionY);            //Draw tremolos / Rysuj tremola:
-            DrawFermataSign(renderer, element, notePositionY);         //Draw fermata sign / Rysuj symbol fermaty:
+            DrawTrills(renderer, element, notePositionY);              //Draw trills / Rysuj tryle
+            DrawTremolos(renderer, element, notePositionY);            //Draw tremolos / Rysuj tremola
+            DrawFermataSign(renderer, element, notePositionY);         //Draw fermata sign / Rysuj symbol fermaty
             DrawAccidentals(renderer, element, notePositionY, 
                 numberOfSingleAccidentals, numberOfDoubleAccidentals); //Draw accidentals / Rysuj znaki przygodne:
-            DrawDots(renderer, element, notePositionY);                //Draw dots / Rysuj kropki:
+            DrawDots(renderer, element, notePositionY);                //Draw dots / Rysuj kropki
             
 
             if (renderer.Settings.IgnoreCustomElementPositions || element.DefaultXPosition == 0) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
@@ -76,7 +76,7 @@ namespace Manufaktura.Controls.Rendering
                 //Move a bit right if the element has a lyric to prevent letters from hiding each other
                 if (element.Lyrics.Count > 0)
                 {
-                    renderer.State.CursorPositionX += element.LyricTexts[0].Length * 2;
+                    renderer.State.CursorPositionX += element.Lyrics[0].Text.Length * 2;
                 }
             }
             renderer.State.lastNoteEndXPosition = renderer.State.CursorPositionX;
@@ -362,15 +362,15 @@ namespace Manufaktura.Controls.Rendering
         private void DrawLyrics(ScoreRendererBase renderer, Note element)
         {
             int textPositionY = renderer.State.LinePositions[4] + 10;
-            for (int j = 0; j < element.Lyrics.Count && j < element.LyricTexts.Count; j++)
+            for (int j = 0; j < element.Lyrics.Count; j++)
             {
                 StringBuilder sBuilder = new StringBuilder();
-                if ((element.Lyrics[j] == LyricsType.End) ||
-                    (element.Lyrics[j] == LyricsType.Middle))
+                if ((element.Lyrics[j].Type == LyricsType.End) ||
+                    (element.Lyrics[j].Type == LyricsType.Middle))
                     sBuilder.Append("-");
-                sBuilder.Append(element.LyricTexts[j]);
-                if ((element.Lyrics[j] == LyricsType.Begin) ||
-                    (element.Lyrics[j] == LyricsType.Middle))
+                sBuilder.Append(element.Lyrics[j].Text);
+                if ((element.Lyrics[j].Type == LyricsType.Begin) ||
+                    (element.Lyrics[j].Type == LyricsType.Middle))
                     sBuilder.Append("-");
                 renderer.DrawString(sBuilder.ToString(), FontStyles.LyricsFont, renderer.State.CursorPositionX, textPositionY, element);
                 textPositionY += 12;

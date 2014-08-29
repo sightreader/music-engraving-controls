@@ -24,10 +24,9 @@ namespace Manufaktura.Controls.Model
         protected NoteTieType tieType = NoteTieType.None;
         protected List<NoteBeamType> beamList = new List<NoteBeamType>();
         protected TupletType tuplet = TupletType.None;
-        protected List<LyricsType> lyrics = new List<LyricsType>();
+        protected List<Lyrics> lyrics = new List<Lyrics>();
         protected ArticulationType articulation = ArticulationType.None;
         protected VerticalPlacement articulationPlacement = VerticalPlacement.Below;
-        protected List<string> lyricTexts = new List<string>();
         protected bool hasNatural = false;
         protected bool isGraceNote = false;
         protected bool isChordElement = false;
@@ -53,14 +52,13 @@ namespace Manufaktura.Controls.Model
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
         public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
         public VerticalPlacement? TupletPlacement { get; set; }
-        public List<LyricsType> Lyrics { get { return lyrics; } set { lyrics = value; } }
+        public List<Lyrics> Lyrics { get { return lyrics; } set { lyrics = value; } }
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; } }
         public VerticalPlacement ArticulationPlacement
         {
             get { return articulationPlacement; }
             set { articulationPlacement = value; }
         }
-        public List<string> LyricTexts { get { return lyricTexts; } set { lyricTexts = value; } }
         public bool HasNatural { get { return hasNatural; } set { hasNatural = value; } }
         public bool IsGraceNote { get { return isGraceNote; } set { isGraceNote = value; } }
         public bool IsCueNote { get; set; }
@@ -100,6 +98,7 @@ namespace Manufaktura.Controls.Model
             beamList = noteBeamList;
             tieType = noteTieType;
             midiPitch = MusicalSymbol.ToMidiPitch(step, alter, octave);
+            Lyrics = new List<Lyrics>();
             DetermineMusicalCharacter();
         }
 
