@@ -479,14 +479,10 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.HasFermataSign)
             {
-                double ferPos = notePositionY - 9;
-                if (ferPos > renderer.State.LinePositions[0] - 24.4f) ferPos = renderer.State.LinePositions[0] - 24.4f - 9.0f;
-
-                renderer.DrawArc(new Rectangle(renderer.State.CursorPositionX + 5, (int)ferPos + 17,
-                       10, 10), 180, 180, element);
-                renderer.DrawArc(new Rectangle(renderer.State.CursorPositionX + 5, (int)ferPos + 18,
-                        10, 10), 180, 180, element);
-                renderer.DrawString(MusicalCharacters.Dot, FontStyles.MusicFont, renderer.State.CursorPositionX + 6, ferPos, element);
+                double ferPos = notePositionY - renderer.TextBlockHeight;
+                string fermataVersion = MusicalCharacters.FermataUp;
+                
+                renderer.DrawString(fermataVersion, FontStyles.MusicFont, renderer.State.CursorPositionX, ferPos, element);
             }
         }
 

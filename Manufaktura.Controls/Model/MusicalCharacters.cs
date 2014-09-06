@@ -44,6 +44,9 @@ namespace Manufaktura.Controls.Model
         public const string CutTime = "C";
         public const string RepeatForward = @"\";
         public const string RepeatBackward = @"l";
-
+        public const string Trill = "r";
+        public const string Mordent = "mn";
+        public const string FermataUp = "Y";
+        public const string FermataDown = "Z";
     }
 }
