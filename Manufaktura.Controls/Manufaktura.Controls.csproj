@@ -40,7 +40,8 @@
     <Compile Include="Model\Barline.cs" />
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
-    <Compile Include="Model\FonStyles.cs" />
+    <Compile Include="Model\FontStyles.cs" />
+    <Compile Include="Model\ICanBeElementOfTuplet.cs" />
     <Compile Include="Model\IHasCustomXPosition.cs" />
     <Compile Include="Model\IHasCustomYPosition.cs" />
     <Compile Include="Model\IHasDuration.cs" />
@@ -49,7 +50,9 @@
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
+    <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\Slur.cs" />
+    <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmNotesPerMeasureDigestParser.cs" />

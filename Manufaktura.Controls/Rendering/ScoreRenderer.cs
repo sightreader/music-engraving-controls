@@ -132,7 +132,7 @@ namespace Manufaktura.Controls.Rendering
                             newStemEndPosition *= -1;
 
                         Point newStemEndPoint = new Point(note.StemEndLocation.X, firstNoteInBeam.StemEndLocation.Y + newStemEndPosition);
-                        if (note.StemDirection == NoteStemDirection.Down)
+                        if (note.StemDirection == VerticalDirection.Down)
                             DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 25), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
                         else
                             DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 23), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);

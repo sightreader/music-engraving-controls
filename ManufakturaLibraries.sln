@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30626.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls", "Manufaktura.Controls\Manufaktura.Controls.csproj", "{52331173-DFD5-47EA-BA7A-72BBBE85D2FA}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WindowsPhoneSilverlight", "Manufaktura.Controls.WindowsPhoneSilverlight\Manufaktura.Controls.WindowsPhoneSilverlight.csproj", "{FDD1FA97-2378-402E-8FF8-61F26E46C573}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WindowsPhoneSilverlight.Test", "Manufaktura.Controls.WindowsPhoneSilverlight.Test\Manufaktura.Controls.WindowsPhoneSilverlight.Test.csproj", "{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Tests", "Manufaktura.Controls.Tests\Manufaktura.Controls.Tests.csproj", "{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +129,14 @@ Global
 		{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}.Release|x86.ActiveCfg = Release|x86
 		{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}.Release|x86.Build.0 = Release|x86
 		{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}.Release|x86.Deploy.0 = Release|x86
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

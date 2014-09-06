@@ -12,7 +12,7 @@ namespace Manufaktura.Controls.Model
         d32nd = 32, d64th = 64, d128th = 128, Unknown = 6
     };
     public enum ClefType { GClef, CClef, FClef };
-    public enum NoteStemDirection { Up, Down };
+    public enum VerticalDirection { Up, Down };
     public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
     public enum NoteTieType { None, Start, Stop, StopAndStartAnother };
     public enum TupletType { None, Start, Stop };
@@ -51,6 +51,11 @@ namespace Manufaktura.Controls.Model
         #endregion
 
         #region Public static functions
+
+        public static VerticalPlacement DirectionToPlacement(VerticalDirection direction)
+        {
+            return direction == VerticalDirection.Up ? VerticalPlacement.Above : VerticalPlacement.Below;
+        }
 
         public static int ToMidiPitch(string step, int alter, int octave)
         {

@@ -30,8 +30,9 @@ namespace Manufaktura.Controls.Rendering
         public double lastNoteInMeasureEndXPosition { get; set; } //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
 
         public double currentStemEndPositionY { get; set; }
-        public int NumberOfNotesUnderTuplet { get; set; }
-        public VerticalPlacement TupletPlacement { get; set; }
+
+        public Tuplet TupletState { get; set; }
+
         public List<double> previousStemEndPositionsY { get; set; }
         public double currentStemPositionX { get; set; }
         public List<double> previousStemPositionsX { get; set; }
@@ -55,7 +56,6 @@ namespace Manufaktura.Controls.Rendering
             firstNoteInMeasureXPosition = 0; //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
             lastNoteInMeasureEndXPosition = 0; //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
             currentStemEndPositionY = 0;
-            NumberOfNotesUnderTuplet = 0;
             previousStemEndPositionsY = new List<double>();
             currentStemPositionX = 0;
             previousStemPositionsX = new List<double>();

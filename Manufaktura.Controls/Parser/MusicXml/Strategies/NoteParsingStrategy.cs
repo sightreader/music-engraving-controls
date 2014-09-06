@@ -24,7 +24,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             bool isRest = false;
             int numberOfDots = 0;
             MusicalSymbolDuration duration = MusicalSymbolDuration.Whole;
-            NoteStemDirection stemDirection = NoteStemDirection.Up;
+            VerticalDirection stemDirection = VerticalDirection.Up;
             NoteTieType tieType = NoteTieType.None;
             TupletType tuplet = TupletType.None;
             VerticalPlacement? tupletPlacement = null;
@@ -127,8 +127,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }
                 else if (noteAttribute.Name == "stem")
                 {
-                    if (noteAttribute.Value == "down") stemDirection = NoteStemDirection.Down;
-                    else stemDirection = NoteStemDirection.Up;
+                    if (noteAttribute.Value == "down") stemDirection = VerticalDirection.Down;
+                    else stemDirection = VerticalDirection.Up;
                     foreach (XAttribute xa in noteAttribute.Attributes())
                     {
                         if (xa.Name == "default-y")

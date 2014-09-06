@@ -6,13 +6,11 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Note : MusicalSymbol, IHasDuration, IHasCustomXPosition
+    public class Note : NoteOrRest
     {
         #region Protected fields
 
-        protected int midiPitch;
-        protected int numberOfDots;
-        protected MusicalSymbolDuration duration;
+        protected int midiPitch;      
         protected string step;
         protected int octave;
         protected int alter;
@@ -20,10 +18,10 @@ namespace Manufaktura.Controls.Model
         protected bool customStemEndPosition = false;
         protected string noteFlagCharacter = " ";
         protected string noteFlagCharacterRev = " ";
-        protected NoteStemDirection stemDirection = NoteStemDirection.Up;
+        protected VerticalDirection stemDirection = VerticalDirection.Up;
         protected NoteTieType tieType = NoteTieType.None;
         protected List<NoteBeamType> beamList = new List<NoteBeamType>();
-        protected TupletType tuplet = TupletType.None;
+        
         protected List<Lyrics> lyrics = new List<Lyrics>();
         protected ArticulationType articulation = ArticulationType.None;
         protected VerticalPlacement articulationPlacement = VerticalPlacement.Below;
@@ -37,7 +35,6 @@ namespace Manufaktura.Controls.Model
         protected int tremoloLevel = 0; //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
         protected int voice = 1;
         protected int dynamics = 80;
-        protected Point location = new Point();
         protected Point stemEndLocation = new Point();
 
         #endregion
@@ -50,8 +47,7 @@ namespace Manufaktura.Controls.Model
         public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; } }
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
-        public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
-        public VerticalPlacement? TupletPlacement { get; set; }
+
         public List<Lyrics> Lyrics { get { return lyrics; } set { lyrics = value; } }
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; } }
         public VerticalPlacement ArticulationPlacement
@@ -66,28 +62,27 @@ namespace Manufaktura.Controls.Model
         public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; } }
         public string NoteFlagCharacter { get { return noteFlagCharacter; } }
         public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
-        public Point Location { get { return location; } set { location = value; } }
-        public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; } }
 
-        public int NumberOfDots { get { return numberOfDots; } set { numberOfDots = value; } }
-        public NoteStemDirection StemDirection { get { return stemDirection; } set { stemDirection = value; } }
+        public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; } }
+        public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - Location.Y); } }
+
+        public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; } }
         public NoteTieType TieType { get { return tieType; } set { tieType = value; } }
         public List<NoteBeamType> BeamList { get { return beamList; } }
-        public MusicalSymbolDuration Duration { get { return duration; } }
         public string Step { get { return step; } }
         public int Octave { get { return octave; } }
         public int Alter { get { return alter; } }
         public int MidiPitch { get { return midiPitch; } }
         public int Voice { get { return voice; } set { voice = value; } }
         public int Dynamics { get { return dynamics; } set { dynamics = value; } }
-        public double? DefaultXPosition { get; set; }
+
 
         #endregion
 
         #region Constructor
 
         public Note(string noteStep, int noteAlter, int noteOctave, MusicalSymbolDuration noteDuration,
-            NoteStemDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList)
+            VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList)
         {
             type = MusicalSymbolType.Note;
             duration = noteDuration;
@@ -102,7 +97,7 @@ namespace Manufaktura.Controls.Model
             DetermineMusicalCharacter();
         }
 
-        public Note() : this("A", 0, 4, MusicalSymbolDuration.Quarter, NoteStemDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        public Note() : this("A", 0, 4, MusicalSymbolDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
 
         }

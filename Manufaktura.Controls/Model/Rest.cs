@@ -5,13 +5,10 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Rest : MusicalSymbol, IHasDuration, IHasCustomXPosition
+    public class Rest : NoteOrRest
     {
         #region Protected fields
 
-        protected MusicalSymbolDuration duration;
-        protected int numberOfDots;
-        protected TupletType tuplet = TupletType.None;
         protected int multiMeasure = 0;
         protected int currentTempo = 120;
         protected bool hasFermataSign = false;
@@ -21,15 +18,10 @@ namespace Manufaktura.Controls.Model
 
         #region Properties
 
-        public MusicalSymbolDuration Duration { get { return duration; } }
-        public int NumberOfDots { get { return numberOfDots; } set { numberOfDots = value; } }
-        public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
-        public VerticalPlacement? TupletPlacement { get; set; }
         public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; } }
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
         public int Voice { get { return voice; } set { voice = value; } }
-        public double? DefaultXPosition { get; set; }
 
         #endregion
 
