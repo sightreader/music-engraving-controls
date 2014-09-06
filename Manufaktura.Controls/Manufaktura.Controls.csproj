@@ -48,10 +48,12 @@
     <Compile Include="Model\IRendererAsTextBlock.cs" />
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\Lyrics.cs" />
+    <Compile Include="Model\Mordent.cs" />
     <Compile Include="Model\MusicalCharacters.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\NoteOrRest.cs" />
+    <Compile Include="Model\Ornament.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />

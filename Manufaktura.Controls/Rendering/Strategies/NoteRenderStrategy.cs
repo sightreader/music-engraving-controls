@@ -57,7 +57,8 @@ namespace Manufaktura.Controls.Rendering
             DrawSlurs(renderer, element, noteTextBlockPositionY);               //Draw slurs / Rysuj łuki legatowe
             DrawLyrics(renderer, element);                                      //Draw lyrics / Rysuj tekst
             DrawArticulation(renderer, element, noteTextBlockPositionY);        //Draw articulation / Rysuj artykulację:
-            DrawTrills(renderer, element, noteTextBlockPositionY);              //Draw trills / Rysuj tryle
+            DrawTrills(renderer, element, noteTextBlockPositionY);              //Draw trills / Rysuj tryle //TODO: REFAKTOR - Przenieść do DrawOrnaments
+            DrawOrnaments(renderer, element, noteTextBlockPositionY);           //Draw ornaments / Rysuj ornamenty
             DrawTremolos(renderer, element, noteTextBlockPositionY);            //Draw tremolos / Rysuj tremola
             DrawFermataSign(renderer, element, noteTextBlockPositionY);         //Draw fermata sign / Rysuj symbol fermaty
             DrawAccidentals(renderer, element, noteTextBlockPositionY, 
@@ -454,6 +455,20 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
+        private void DrawOrnaments(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
+            foreach (Ornament ornament in element.Ornaments)
+            {
+                double yPositionShift = ornament.DefaultYPosition.HasValue ? ornament.DefaultYPosition.Value * -1 * 0.6d : (ornament.Placement == VerticalPlacement.Above ? - 20 : 20);
+                Mordent mordent = ornament as Mordent;
+                if (mordent != null)
+                {
+                    renderer.DrawString(MusicalCharacters.MordentShort, FontStyles.GraceNoteFont, renderer.State.CursorPositionX - 2, notePositionY + yPositionShift, element);
+                    renderer.DrawString(MusicalCharacters.Mordent,      FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 4, notePositionY + yPositionShift, element);
+                }
+            }
+        }
+
         private void DrawTremolos(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             double currentTremoloPos = notePositionY + 18;
@@ -471,7 +486,6 @@ namespace Manufaktura.Controls.Rendering
                     renderer.DrawLine(renderer.State.CursorPositionX + 3, currentTremoloPos + 11 + 1, renderer.State.CursorPositionX + 11, currentTremoloPos + 11 - 1, element);
                     renderer.DrawLine(renderer.State.CursorPositionX + 3, currentTremoloPos + 11 + 2, renderer.State.CursorPositionX + 11, currentTremoloPos + 11, element);
                 }
-
             }
         }
 

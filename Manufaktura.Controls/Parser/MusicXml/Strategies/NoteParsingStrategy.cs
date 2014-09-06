@@ -43,6 +43,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             int tremoloLevel = 0;
             Slur slur = null;
             NoteTrillMark trillMark = NoteTrillMark.None;
+            Mordent mordent = null;
             int voice = 1;
 
             var defaultXAttribute = element.Attributes().Where(a => a.Name == "default-x").FirstOrDefault();
@@ -229,6 +230,22 @@ namespace Manufaktura.Controls.Parser.MusicXml
                                 {
                                     tremoloLevel = Convert.ToInt32(ornamentAttribute.Value);
                                 }
+                                else if (ornamentAttribute.Name == "inverted-mordent")
+                                {
+                                    mordent = new Mordent() { IsInverted = true };
+                                    var attr = ornamentAttribute.Attributes().First(a => a.Name == "placement");
+                                    if (attr != null)
+                                    {
+                                        if (attr.Value == "above")
+                                            mordent.Placement = VerticalPlacement.Above;
+                                        else if (attr.Value == "below")
+                                            mordent.Placement = VerticalPlacement.Below;
+                                    }
+                                    attr = ornamentAttribute.Attributes().First(a => a.Name == "default-x");
+                                    if (attr != null) mordent.DefaultXPosition = UsefulMath.TryParse(attr.Value);
+                                    attr = ornamentAttribute.Attributes().First(a => a.Name == "default-y");
+                                    if (attr != null) mordent.DefaultYPosition = UsefulMath.TryParse(attr.Value);
+                                }
                             }
 
                         }
@@ -337,6 +354,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 nt.TremoloLevel = tremoloLevel;
                 nt.Voice = voice;
                 nt.Dynamics = state.CurrentDynamics;
+                if (mordent != null) nt.Ornaments.Add(mordent);
                 staff.Elements.Add(nt);
             }
             else

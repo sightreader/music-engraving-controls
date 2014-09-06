@@ -41,6 +41,7 @@ namespace Manufaktura.Controls.Model
 
         #region Properties
 
+        public List<Ornament> Ornaments { get; private set; }
         public bool CustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
         public Slur Slur { get { return slur; } set { slur = value; } }
@@ -94,6 +95,7 @@ namespace Manufaktura.Controls.Model
             tieType = noteTieType;
             midiPitch = MusicalSymbol.ToMidiPitch(step, alter, octave);
             Lyrics = new List<Lyrics>();
+            Ornaments = new List<Ornament>();
             DetermineMusicalCharacter();
         }
 
