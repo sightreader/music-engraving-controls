@@ -8,6 +8,7 @@ namespace Manufaktura.Controls.Primitives
     public struct Color
     {
         public static Color Black { get { return new Color(0, 0, 0, 255); } }
+        public static Color Red   { get { return new Color(255, 0, 0, 255); } }
 
         public byte A { get; set; }
         public byte R { get; set; }

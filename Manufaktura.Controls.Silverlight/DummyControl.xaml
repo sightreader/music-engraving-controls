@@ -8,5 +8,6 @@
     
     <Grid x:Name="LayoutRoot" Background="White">
         <TextBlock FontFamily="/Manufaktura.Controls.Silverlight;component/Polihymnia.ttf#Polihymnia" x:Name="dummyTextBlock" Text="cdef" FontSize="24"/>
+        <TextBlock FontFamily="/Manufaktura.Controls.Silverlight;component/Euterpe.ttf#Euterpe" x:Name="dummyTextBlock2" Text="\u1d16e" FontSize="24"/>
     </Grid>
 </UserControl>

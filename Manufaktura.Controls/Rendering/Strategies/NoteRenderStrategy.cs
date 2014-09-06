@@ -40,29 +40,29 @@ namespace Manufaktura.Controls.Rendering
 
             if (element.IsChordElement) renderer.State.CursorPositionX = renderer.State.LastNotePositionX;
 
-            double notePositionY = renderer.State.currentClefPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
+            double noteTextBlockPositionY = renderer.State.CurrentClefTextBlockPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
                 element) * ((double)renderer.Settings.LineSpacing / 2.0f);
-            if (renderer.State.IsPrintMode) notePositionY -= 0.8f;
+            if (renderer.State.IsPrintMode) noteTextBlockPositionY -= 0.8f;
 
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
             int numberOfDoubleAccidentals = Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
 
             MakeSpaceForAccidentals(renderer, element, 
-                numberOfSingleAccidentals, numberOfDoubleAccidentals); //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
-            DrawNote(renderer, element, notePositionY);                //Draw an element / Rysuj nutę
-            DrawLedgerLines(renderer, element, notePositionY);         //Ledger lines / Linie dodane
-            DrawStems(renderer, element, notePositionY);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
-            DrawBeams(renderer, element);                              //Draw beams / Rysuj belki
-            DrawTies(renderer, element, notePositionY);                //Draw ties / Rysuj łuki
-            DrawSlurs(renderer, element, notePositionY);               //Draw slurs / Rysuj łuki legatowe
-            DrawLyrics(renderer, element);                             //Draw lyrics / Rysuj tekst
-            DrawArticulation(renderer, element, notePositionY);        //Draw articulation / Rysuj artykulację:
-            DrawTrills(renderer, element, notePositionY);              //Draw trills / Rysuj tryle
-            DrawTremolos(renderer, element, notePositionY);            //Draw tremolos / Rysuj tremola
-            DrawFermataSign(renderer, element, notePositionY);         //Draw fermata sign / Rysuj symbol fermaty
-            DrawAccidentals(renderer, element, notePositionY, 
-                numberOfSingleAccidentals, numberOfDoubleAccidentals); //Draw accidentals / Rysuj znaki przygodne:
-            DrawDots(renderer, element, notePositionY);                //Draw dots / Rysuj kropki
+                numberOfSingleAccidentals, numberOfDoubleAccidentals);          //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
+            DrawNote(renderer, element, noteTextBlockPositionY);                //Draw an element / Rysuj nutę
+            DrawLedgerLines(renderer, element, noteTextBlockPositionY);         //Ledger lines / Linie dodane
+            DrawStems(renderer, element, noteTextBlockPositionY);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
+            DrawBeams(renderer, element);                                       //Draw beams / Rysuj belki
+            DrawTies(renderer, element, noteTextBlockPositionY);                //Draw ties / Rysuj łuki
+            DrawSlurs(renderer, element, noteTextBlockPositionY);               //Draw slurs / Rysuj łuki legatowe
+            DrawLyrics(renderer, element);                                      //Draw lyrics / Rysuj tekst
+            DrawArticulation(renderer, element, noteTextBlockPositionY);        //Draw articulation / Rysuj artykulację:
+            DrawTrills(renderer, element, noteTextBlockPositionY);              //Draw trills / Rysuj tryle
+            DrawTremolos(renderer, element, noteTextBlockPositionY);            //Draw tremolos / Rysuj tremola
+            DrawFermataSign(renderer, element, noteTextBlockPositionY);         //Draw fermata sign / Rysuj symbol fermaty
+            DrawAccidentals(renderer, element, noteTextBlockPositionY, 
+                numberOfSingleAccidentals, numberOfDoubleAccidentals);          //Draw accidentals / Rysuj znaki przygodne:
+            DrawDots(renderer, element, noteTextBlockPositionY);                //Draw dots / Rysuj kropki
 
             if (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
@@ -91,7 +91,7 @@ namespace Manufaktura.Controls.Rendering
                 renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
 
             renderer.State.LastNotePositionX = renderer.State.CursorPositionX;
-            element.Location = new Point(renderer.State.CursorPositionX, notePositionY);
+            element.TextBlockLocation = new Point(renderer.State.CursorPositionX, notePositionY);
         }
 
         private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
@@ -106,19 +106,19 @@ namespace Manufaktura.Controls.Rendering
                 Average(n => n.ActualStemLength);
             averageStemLength += 10;    //Add space
             int placementMod = renderer.State.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
-            double tupletBracketStartXPosition = firstElementInTuplet.Location.X + 6;
-            double tupletBracketStartYPosition = firstElementInTuplet.Location.Y + 25 + averageStemLength * placementMod;
-            double tupletBracketEndXPosition   = element.Location.X + 12;
-            double tupletBracketEndYPosition   = element.Location.Y + 25 + averageStemLength * placementMod;
+            double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X + 6;
+            double tupletBracketStartYPosition = firstElementInTuplet.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
+            double tupletBracketEndXPosition   = element.TextBlockLocation.X + 12;
+            double tupletBracketEndYPosition   = element.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
 
             if (renderer.State.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
             {
                 renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
                                   new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), element);
                 renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-                                  new Point(tupletBracketStartXPosition, firstElementInTuplet.Location.Y + 25 + (averageStemLength - 4) * placementMod), element);
+                                  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
                 renderer.DrawLine(new Point(tupletBracketEndXPosition, tupletBracketEndYPosition),
-                                  new Point(tupletBracketEndXPosition, element.Location.Y + 25 + (averageStemLength - 4) * placementMod), element);
+                                  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
             }
 
             double numberOfNotesYTranslation = 0;

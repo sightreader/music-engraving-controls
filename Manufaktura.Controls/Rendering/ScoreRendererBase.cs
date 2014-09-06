@@ -13,7 +13,8 @@ namespace Manufaktura.Controls.Rendering
     {
         public ScoreRendererState State { get; protected set; }
         public ScoreRendererSettings Settings { get; protected set; }
-        public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; } 
+        public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
+        public double TextBlockHeight { get; protected set; }
 
         protected ScoreRendererBase()
         {
@@ -21,6 +22,7 @@ namespace Manufaktura.Controls.Rendering
             Settings = new ScoreRendererSettings();
             Strategies = Assembly.GetCallingAssembly().GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(MusicalSymbolRenderStrategyBase))).
                 Select(t => Activator.CreateInstance(t)).Cast<MusicalSymbolRenderStrategyBase>().ToArray();
+            TextBlockHeight = 25;
         }
 
         public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)

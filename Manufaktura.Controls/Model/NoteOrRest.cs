@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public abstract class NoteOrRest : MusicalSymbol, IHasDuration, ICanBeElementOfTuplet, IHasCustomXPosition
+    public abstract class NoteOrRest : MusicalSymbol, IHasDuration, ICanBeElementOfTuplet, IHasCustomXPosition, IRendererAsTextBlock
     {
         protected MusicalSymbolDuration duration;
         protected TupletType tuplet = TupletType.None;
@@ -17,6 +17,6 @@ namespace Manufaktura.Controls.Model
         public VerticalPlacement? TupletPlacement { get; set; }
         public int NumberOfDots { get; set; }
         public double? DefaultXPosition { get; set; }
-        public Point Location { get { return location; } set { location = value; } }
+        public Point TextBlockLocation { get { return location; } set { location = value; } }
     }
 }

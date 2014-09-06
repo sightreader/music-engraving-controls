@@ -80,9 +80,10 @@ namespace Manufaktura.Controls.Rendering
                 if (symbol.Type == MusicalSymbolType.Clef)
                 {
                     State.CurrentClef = (Clef)symbol;
-                    State.currentClefPositionY = State.LinePositions[4] - 24.4f - (((Clef)symbol).Line - 1) * Settings.LineSpacing;
+                    State.CurrentClefPositionY = State.LinePositions[4] - (((Clef)symbol).Line - 1) * Settings.LineSpacing;
+                    State.CurrentClefTextBlockPositionY = State.CurrentClefPositionY - TextBlockHeight;
                     State.CurrentClef = (Clef)symbol;
-                    DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.CursorPositionX, State.currentClefPositionY, symbol);
+                    DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, symbol);
                     State.CursorPositionX += 20;
                     break;
                 }
@@ -133,9 +134,9 @@ namespace Manufaktura.Controls.Rendering
 
                         Point newStemEndPoint = new Point(note.StemEndLocation.X, firstNoteInBeam.StemEndLocation.Y + newStemEndPosition);
                         if (note.StemDirection == VerticalDirection.Down)
-                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 25), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
+                            DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y + 25), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
                         else
-                            DrawLine(new Point(note.StemEndLocation.X, note.Location.Y + 23), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
+                            DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y + 23), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
 
 
                     }

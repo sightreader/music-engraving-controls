@@ -16,5 +16,7 @@ namespace Manufaktura.Controls.Primitives
             Thickness = thickness;
             Color = color;
         }
+
+        public Pen(Color color) : this(color, 1) { }
     }
 }

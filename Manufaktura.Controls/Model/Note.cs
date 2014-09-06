@@ -64,7 +64,7 @@ namespace Manufaktura.Controls.Model
         public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
 
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; } }
-        public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - Location.Y); } }
+        public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
 
         public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; } }
         public NoteTieType TieType { get { return tieType; } set { tieType = value; } }

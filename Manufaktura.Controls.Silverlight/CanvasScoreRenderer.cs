@@ -42,6 +42,7 @@ namespace Manufaktura.Controls.Silverlight
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
             textBlock.UseLayoutRounding = true;
+
             System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
             System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
             Canvas.Children.Add(textBlock);

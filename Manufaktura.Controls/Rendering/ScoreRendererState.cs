@@ -17,8 +17,8 @@ namespace Manufaktura.Controls.Rendering
         public double LastMeasurePositionX { get; set; }
         public double CurrentMeasureWidth { get; set; }
         public int CurrentVoice { get; set; }
-
-        public double currentClefPositionY { get; set;}
+        public double CurrentClefPositionY { get; set; }
+        public double CurrentClefTextBlockPositionY { get; set;}
 
         public bool IsManualMode { get; set; }
         public bool IsPrintMode { get; set; }
@@ -65,7 +65,7 @@ namespace Manufaktura.Controls.Rendering
             SlurStartPoint = new Point();
             CurrentVoice = 1;
             LinePositions = new int[5];
-            currentClefPositionY = 0;           
+            CurrentClefTextBlockPositionY = 0;           
         }
     }
 }
