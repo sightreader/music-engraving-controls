@@ -50,8 +50,8 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX -= 2;
                 renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
-                renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.CursorPositionX,
-                    renderer.State.LinePositions[0] - 15.5f, element);
+                renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.CursorPositionX - 17.5,
+                    renderer.State.LinePositions[0] - 15, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
             }
             renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;

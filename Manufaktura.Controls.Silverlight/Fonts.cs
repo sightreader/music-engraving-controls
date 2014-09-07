@@ -33,7 +33,7 @@ namespace Manufaktura.Controls.Silverlight
         {
                 {Model.FontStyles.MusicFont, 27.5},
                 {Model.FontStyles.GraceNoteFont, 20},
-                {Model.FontStyles.StaffFont, 1.9},
+                {Model.FontStyles.StaffFont, 30},
                 {Model.FontStyles.LyricsFont, 11},
                 {Model.FontStyles.LyricsFontBold, 0.8},
                 {Model.FontStyles.MiscArticulationFont, 14},
