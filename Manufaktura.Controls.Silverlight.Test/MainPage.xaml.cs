@@ -49,5 +49,11 @@ namespace Manufaktura.Controls.Silverlight.Test
                 noteViewer2.XmlSource = scoreXml;
             }
         }
+
+        private void Play_Click(object sender, RoutedEventArgs e)
+        {
+            XnaScorePlayer player = new XnaScorePlayer(noteViewer1.ScoreSource);
+            player.Start();
+        }
     }
 }

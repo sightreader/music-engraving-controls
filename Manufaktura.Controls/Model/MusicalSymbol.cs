@@ -129,6 +129,17 @@ namespace Manufaktura.Controls.Model
             return step1int - step2int;
         }
 
+        public static TimeSpan DurationToTime(IHasDuration durationElement, int tempo, MusicalSymbolDuration tempoBase)
+        {
+            double singleNoteDuration = 60d / tempo;
+            double ratio = (double)tempoBase / (double)durationElement.Duration;
+            if (durationElement.NumberOfDots > 0)
+            {
+                ratio += ratio * Math.Pow(0.5, durationElement.NumberOfDots);
+            }
+            return TimeSpan.FromSeconds(singleNoteDuration * ratio);
+        }
+
         #endregion
 
     }

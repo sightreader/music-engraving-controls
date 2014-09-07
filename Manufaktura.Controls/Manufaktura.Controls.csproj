@@ -37,6 +37,8 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\ScorePlayer.cs" />
+    <Compile Include="Audio\ThreadScorePlayer.cs" />
     <Compile Include="Model\Barline.cs" />
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
