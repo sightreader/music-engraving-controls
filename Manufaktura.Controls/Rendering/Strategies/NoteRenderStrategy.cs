@@ -459,12 +459,12 @@ namespace Manufaktura.Controls.Rendering
         {
             foreach (Ornament ornament in element.Ornaments)
             {
-                double yPositionShift = ornament.DefaultYPosition.HasValue ? ornament.DefaultYPosition.Value * -1 * 0.6d : (ornament.Placement == VerticalPlacement.Above ? - 20 : 20);
+                double yPositionShift = ornament.DefaultYPosition.HasValue ? ornament.DefaultYPosition.Value * -1 * 0.5d : (ornament.Placement == VerticalPlacement.Above ? - 20 : 20);
                 Mordent mordent = ornament as Mordent;
                 if (mordent != null)
                 {
                     renderer.DrawString(MusicalCharacters.MordentShort, FontStyles.GraceNoteFont, renderer.State.CursorPositionX - 2, notePositionY + yPositionShift, element);
-                    renderer.DrawString(MusicalCharacters.Mordent,      FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 4, notePositionY + yPositionShift, element);
+                    renderer.DrawString(MusicalCharacters.Mordent,      FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 3.5, notePositionY + yPositionShift, element);
                 }
             }
         }
