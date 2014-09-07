@@ -24,7 +24,7 @@ namespace Manufaktura.Controls.Audio
         }
 
         public abstract void Start();
-        public abstract void PlayElement(MusicalSymbol element);
+        public abstract void PlayElement(MusicalSymbol element, Staff staff);
         public abstract void Stop();
         public abstract void Pause();
 

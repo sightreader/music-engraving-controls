@@ -72,7 +72,7 @@ namespace Manufaktura.Controls.Audio
             }
             else PlayNextElement(null); //If element does not have a duration, play next immediately
 
-            PlayElement(CurrentElement);
+            PlayElement(CurrentElement, staff);
         }
     }
 }

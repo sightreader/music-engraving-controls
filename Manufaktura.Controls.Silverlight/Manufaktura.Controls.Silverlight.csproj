@@ -91,7 +91,18 @@
     <Resource Include="Polihymnia.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="piano_a.wav" />
+    <Resource Include="piano-a.wav" />
+    <Resource Include="piano-bb.wav" />
+    <Resource Include="piano-c.wav" />
+    <Resource Include="piano-cc.wav" />
+    <Resource Include="piano-d.wav" />
+    <Resource Include="piano-e.wav" />
+    <Resource Include="piano-eb.wav" />
+    <Resource Include="piano-f.wav" />
+    <Resource Include="piano-ff.wav" />
+    <Resource Include="piano-g.wav" />
+    <Resource Include="piano-gg.wav" />
+    <Resource Include="piano-b.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions>
