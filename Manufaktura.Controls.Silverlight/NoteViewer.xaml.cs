@@ -168,6 +168,17 @@ namespace Manufaktura.Controls.Silverlight
             } 
         }
 
+        public void Select(MusicalSymbol element)
+        {
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
+            SelectedElement = element;
+
+            Note note = SelectedElement as Note;
+            if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
+
+            ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
+        }
+
         private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             MainCanvas.ReleaseMouseCapture();
@@ -187,13 +198,7 @@ namespace Manufaktura.Controls.Silverlight
             if (!Renderer.OwnershipDictionary.ContainsKey(element)) return;
 
             //Set selected element:
-            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
-            SelectedElement = Renderer.OwnershipDictionary[element];
-
-            Note note = SelectedElement as Note;
-            if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
-
-            ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
+            Select(Renderer.OwnershipDictionary[element]);
         }
 
         private void MainCanvas_MouseMove(object sender, MouseEventArgs e)

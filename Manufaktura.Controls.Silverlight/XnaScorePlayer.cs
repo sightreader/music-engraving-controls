@@ -18,6 +18,7 @@ namespace Manufaktura.Controls.Silverlight
 {
     public class XnaScorePlayer : ThreadScorePlayer
     {
+        public event EventHandler<MusicalSymbolEventArgs> ElementPlayed;
         private Dictionary<int, string> _stepNames;
 
         public XnaScorePlayer(Score score) : base(score)
@@ -41,6 +42,7 @@ namespace Manufaktura.Controls.Silverlight
             if (note == null) return;
             if (note.MidiPitch > 92 || note.MidiPitch < 56) return;
 
+            OnElementPlayed(element);
             int octaveModifier = 0;
             if (note.MidiPitch > 79) octaveModifier = 1;
             if (note.MidiPitch < 68) octaveModifier = -1;
@@ -51,6 +53,21 @@ namespace Manufaktura.Controls.Silverlight
 
             var firstNoteInMeasure = staff.Peek<Note>(element, Staff.PeekType.BeginningOfMeasure, Staff.PeekDirection.Backward);
             effect.Play(element == firstNoteInMeasure ? 0.9f : 0.5f, octaveModifier, 0);
+        }
+
+        protected void OnElementPlayed(MusicalSymbol symbol)
+        {
+            if (ElementPlayed != null) ElementPlayed(this, new MusicalSymbolEventArgs(symbol));
+        }
+
+        public class MusicalSymbolEventArgs : EventArgs
+        {
+            public MusicalSymbol Element { get; set; }
+
+            public MusicalSymbolEventArgs(MusicalSymbol element)
+            {
+                Element = element;
+            }
         }
     }
 }

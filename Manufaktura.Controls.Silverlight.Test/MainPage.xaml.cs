@@ -53,7 +53,14 @@ namespace Manufaktura.Controls.Silverlight.Test
         private void Play_Click(object sender, RoutedEventArgs e)
         {
             XnaScorePlayer player = new XnaScorePlayer(noteViewer1.ScoreSource);
+            player.ElementPlayed += player_ElementPlayed;
             player.Start();
         }
+
+        void player_ElementPlayed(object sender, XnaScorePlayer.MusicalSymbolEventArgs e)
+        {
+            noteViewer1.Dispatcher.BeginInvoke(new Action(() => { noteViewer1.Select(e.Element); }));
+        }
+
     }
 }
