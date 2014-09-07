@@ -26,6 +26,9 @@ namespace Manufaktura.Controls.Silverlight
 
         protected CanvasScoreRenderer Renderer { get; set; }
 
+        public Score InnerScore { get { return _innerScore; } }
+
+
         public string XmlSource
         {
             get { return (string)GetValue(XmlSourceProperty); }
@@ -75,7 +78,6 @@ namespace Manufaktura.Controls.Silverlight
             DependencyProperty.Register("IsDebugMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
 
 
-
         public bool IsInsertMode
         {
             get { return (bool)GetValue(IsInsertModeProperty); }
@@ -85,7 +87,6 @@ namespace Manufaktura.Controls.Silverlight
         // Using a DependencyProperty as the backing store for IsInsertMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsInsertModeProperty =
             DependencyProperty.Register("IsInsertMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
-
 
 
         public MusicalSymbol SelectedElement
@@ -98,7 +99,6 @@ namespace Manufaktura.Controls.Silverlight
         public static readonly DependencyProperty SelectedElementProperty =
             DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null));
 
-        
 
         public Score ScoreSource
         {
