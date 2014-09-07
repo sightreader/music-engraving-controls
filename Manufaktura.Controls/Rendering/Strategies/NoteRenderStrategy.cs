@@ -87,7 +87,7 @@ namespace Manufaktura.Controls.Rendering
         private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             if (element.IsGraceNote || element.IsCueNote)
-                renderer.DrawString(element.MusicalCharacter, FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 1, notePositionY + 4, element);
+                renderer.DrawString(element.MusicalCharacter, FontStyles.GraceNoteFont, renderer.State.CursorPositionX + 1, notePositionY + 7, element);
             else
                 renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
 
@@ -177,7 +177,7 @@ namespace Manufaktura.Controls.Rendering
                         renderer.State.currentStemEndPositionY = notePositionY + 18;
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
-                    renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 7;
+                    renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
                     if (renderer.State.IsPrintMode) renderer.State.currentStemPositionX += 0.1f;
 
                     if (element.BeamList.Count > 0)
@@ -197,7 +197,7 @@ namespace Manufaktura.Controls.Rendering
 
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 6;
-                    renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 13;
+                    renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
                     if (renderer.State.IsPrintMode) renderer.State.currentStemPositionX += 0.9f;
 
                     if (element.BeamList.Count > 0)
@@ -281,7 +281,7 @@ namespace Manufaktura.Controls.Rendering
                     else
                     {
                         if (element.IsGraceNote || element.IsCueNote)
-                            renderer.DrawString(element.NoteFlagCharacter, FontStyles.GraceNoteFont, new Point(xPos + 0.5, renderer.State.currentStemEndPositionY + 3.5), element);
+                            renderer.DrawString(element.NoteFlagCharacter, FontStyles.GraceNoteFont, new Point(xPos + 0.5, renderer.State.currentStemEndPositionY + 6), element);
                         else
                             renderer.DrawString(element.NoteFlagCharacter, FontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY - 1), element);
                     }
@@ -442,16 +442,16 @@ namespace Manufaktura.Controls.Rendering
                 if (element.TrillMark == NoteTrillMark.Above)
                 {
                     trillPos = notePositionY - 1;
-                    if (trillPos > renderer.State.LinePositions[0] - 24.4f)
+                    if (trillPos > renderer.State.LinePositions[0] - renderer.TextBlockHeight)
                     {
-                        trillPos = renderer.State.LinePositions[0] - 24.4f - 1.0f;
+                        trillPos = renderer.State.LinePositions[0] - renderer.TextBlockHeight - 1.0f;
                     }
                 }
                 else if (element.TrillMark == NoteTrillMark.Below)
                 {
                     trillPos = notePositionY + 10;
                 }
-                renderer.DrawString("tr", FontStyles.TrillFont, renderer.State.CursorPositionX + 6, trillPos, element);
+                renderer.DrawString(MusicalCharacters.Trill, FontStyles.MusicFont, renderer.State.CursorPositionX + 6, trillPos, element);
             }
         }
 
