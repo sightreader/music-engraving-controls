@@ -20,6 +20,7 @@ namespace Manufaktura.Controls.Silverlight
     {
         public event EventHandler<MusicalSymbolEventArgs> ElementPlayed;
         private Dictionary<int, string> _stepNames;
+        private static Dictionary<string, SoundEffect> _soundEffectsCache;
 
         public XnaScorePlayer(Score score) : base(score)
         {
@@ -33,24 +34,37 @@ namespace Manufaktura.Controls.Silverlight
             {
                 _stepNames.Add(i, _stepNames[i + 12]);
             }
+            _soundEffectsCache = new Dictionary<string, SoundEffect>();
         }
 
         public override void PlayElement(MusicalSymbol element, Staff staff)
         {
+            if (!(element is NoteOrRest)) return;
+            OnElementPlayed(element);
             if (element is Rest) return;
+
             Note note = element as Note;
             if (note == null) return;
             if (note.MidiPitch > 92 || note.MidiPitch < 56) return;
 
-            OnElementPlayed(element);
+            
             int octaveModifier = 0;
             if (note.MidiPitch > 79) octaveModifier = 1;
             if (note.MidiPitch < 68) octaveModifier = -1;
             
+            SoundEffect effect;
             string soundUri = string.Format("Manufaktura.Controls.Silverlight;component/piano-{0}.wav", _stepNames[note.MidiPitch]);
-            var resourceStream = Application.GetResourceStream(new Uri(soundUri, UriKind.RelativeOrAbsolute));
-            var effect = SoundEffect.FromStream(resourceStream.Stream);
-
+            lock (_soundEffectsCache)
+            {
+                if (_soundEffectsCache.ContainsKey(soundUri)) effect = _soundEffectsCache[soundUri];
+                else
+                {
+                    var resourceStream = Application.GetResourceStream(new Uri(soundUri, UriKind.RelativeOrAbsolute));
+                    effect = SoundEffect.FromStream(resourceStream.Stream);
+                    _soundEffectsCache.Add(soundUri, effect);
+                }
+            }
+            
             var firstNoteInMeasure = staff.Peek<Note>(element, Staff.PeekType.BeginningOfMeasure, Staff.PeekDirection.Backward);
             effect.Play(element == firstNoteInMeasure ? 0.9f : 0.5f, octaveModifier, 0);
         }
