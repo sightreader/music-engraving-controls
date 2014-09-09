@@ -219,7 +219,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         {
                             foreach (XElement ornamentAttribute in notationAttribute.Elements())
                             {
-                                var placementAttribute = ornamentAttribute.Attributes().First(a => a.Name == "placement");
+                                var placementAttribute = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "placement");
                                 if (ornamentAttribute.Name == "trill-mark")
                                 {
                                     if (placementAttribute != null)
@@ -246,9 +246,9 @@ namespace Manufaktura.Controls.Parser.MusicXml
                                             mordent.Placement = VerticalPlacement.Below;
                                     }
 
-                                    var attr = ornamentAttribute.Attributes().First(a => a.Name == "default-x");
+                                    var attr = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "default-x");
                                     if (attr != null) mordent.DefaultXPosition = UsefulMath.TryParse(attr.Value);
-                                    attr = ornamentAttribute.Attributes().First(a => a.Name == "default-y");
+                                    attr = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "default-y");
                                     if (attr != null) mordent.DefaultYPosition = UsefulMath.TryParse(attr.Value);
                                 }
                             }
