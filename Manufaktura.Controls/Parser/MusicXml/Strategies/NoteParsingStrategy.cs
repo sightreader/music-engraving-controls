@@ -219,12 +219,16 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         {
                             foreach (XElement ornamentAttribute in notationAttribute.Elements())
                             {
+                                var placementAttribute = ornamentAttribute.Attributes().First(a => a.Name == "placement");
                                 if (ornamentAttribute.Name == "trill-mark")
                                 {
-                                    if (ornamentAttribute.Attribute("placement").Value == "above")
-                                        trillMark = NoteTrillMark.Above;
-                                    else if (ornamentAttribute.Attribute("placement").Value == "below")
-                                        trillMark = NoteTrillMark.Below;
+                                    if (placementAttribute != null)
+                                    {
+                                        if (placementAttribute.Value == "above")
+                                            trillMark = NoteTrillMark.Above;
+                                        else if (placementAttribute.Value == "below")
+                                            trillMark = NoteTrillMark.Below;
+                                    }
                                 }
                                 else if (ornamentAttribute.Name == "tremolo")
                                 {
@@ -233,15 +237,16 @@ namespace Manufaktura.Controls.Parser.MusicXml
                                 else if (ornamentAttribute.Name == "inverted-mordent")
                                 {
                                     mordent = new Mordent() { IsInverted = true };
-                                    var attr = ornamentAttribute.Attributes().First(a => a.Name == "placement");
-                                    if (attr != null)
+                                    
+                                    if (placementAttribute != null)
                                     {
-                                        if (attr.Value == "above")
+                                        if (placementAttribute.Value == "above")
                                             mordent.Placement = VerticalPlacement.Above;
-                                        else if (attr.Value == "below")
+                                        else if (placementAttribute.Value == "below")
                                             mordent.Placement = VerticalPlacement.Below;
                                     }
-                                    attr = ornamentAttribute.Attributes().First(a => a.Name == "default-x");
+
+                                    var attr = ornamentAttribute.Attributes().First(a => a.Name == "default-x");
                                     if (attr != null) mordent.DefaultXPosition = UsefulMath.TryParse(attr.Value);
                                     attr = ornamentAttribute.Attributes().First(a => a.Name == "default-y");
                                     if (attr != null) mordent.DefaultYPosition = UsefulMath.TryParse(attr.Value);
