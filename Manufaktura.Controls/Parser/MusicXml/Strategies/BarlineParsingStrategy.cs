@@ -25,10 +25,18 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     if (attribute != null)
                     {
                         if (attribute.Value == "forward") b.RepeatSign = RepeatSignType.Forward;
-                        else if (attribute.Value == "backward") b.RepeatSign = RepeatSignType.Backward;
+                        else if (attribute.Value == "backward")
+                        {
+                            b.RepeatSign = RepeatSignType.Backward;
+                            state.BarlineAlreadyAdded = true;
+                        }
+
+                        //Usuń pojedynczą kreskę taktową, jeśli już taka została dodana:
+                        Barline existingBarline = staff.Elements.LastOrDefault() as Barline;
+                        if (existingBarline != null) staff.Elements.Remove(existingBarline);
 
                         staff.Elements.Add(b);
-                        state.BarlineAlreadyAdded = true;
+                        
                     }
 
                 }

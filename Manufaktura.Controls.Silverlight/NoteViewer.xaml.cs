@@ -177,6 +177,10 @@ namespace Manufaktura.Controls.Silverlight
             if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
 
             ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
+
+            var positionElement = element as IHasCustomXPosition;
+            if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}", 
+                positionElement.DefaultXPosition.HasValue ? positionElement.DefaultXPosition.Value.ToString() : "(not set)");
         }
 
         private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
