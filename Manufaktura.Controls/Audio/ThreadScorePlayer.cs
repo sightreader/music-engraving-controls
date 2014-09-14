@@ -58,9 +58,20 @@ namespace Manufaktura.Controls.Audio
             CurrentElement = Enumerator.Current;
 
             Note note = CurrentElement as Note;
-            if (note != null && note.Voice > 1) 
-            { 
-                PlayNextElement(null); return; 
+            if (note != null) 
+            {
+                if (note.Voice > 1)
+                {
+                    PlayNextElement(null); 
+                    return;
+                }
+                Note nextNote = staff.Peek<Note>(note, Staff.PeekType.NextElement);
+                if (nextNote != null && nextNote.IsChordElement)
+                {
+                    PlayElement(CurrentElement, staff);
+                    PlayNextElement(null);
+                    return;
+                }
             }
 
             IHasDuration durationElement = CurrentElement as IHasDuration;

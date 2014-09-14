@@ -15,16 +15,19 @@ namespace Manufaktura.Controls.Model
             MeasureWidths = new List<double?>();
         }
 
-        public TSymbol Peek<TSymbol>(MusicalSymbol relativeTo, PeekType peekType, PeekDirection peekDirection) where TSymbol : MusicalSymbol
+        public TSymbol Peek<TSymbol>(MusicalSymbol relativeTo, PeekType peekType) where TSymbol : MusicalSymbol
         {
-            if (peekDirection == PeekDirection.Forward) throw new NotImplementedException("Peek forward is currently not implemented.");
-
             MusicalSymbol currentSymbol = null;
             TSymbol matchedSymbol = null;
-            for (int i = Elements.IndexOf(relativeTo); i > 0 && i < Elements.Count; i += (int)peekDirection)
+            int indexOfCurrentElement = Elements.IndexOf(relativeTo);
+            for (int i = indexOfCurrentElement; i > 0 && i < Elements.Count; i += Math.Sign((int)peekType))
             {
-                currentSymbol = Elements[i];             
-                if (currentSymbol is TSymbol) matchedSymbol = (TSymbol)currentSymbol;
+                currentSymbol = Elements[i];
+                if (currentSymbol is TSymbol)
+                {
+                    matchedSymbol = (TSymbol)currentSymbol;
+                    if (i > indexOfCurrentElement && peekType == PeekType.NextElement) break;
+                }
 
                 //Conditions to end search:
                 if (currentSymbol is ICanBeElementOfTuplet && peekType == PeekType.BeginningOfTuplet && ((ICanBeElementOfTuplet)currentSymbol).Tuplet == TupletType.Start) break;
@@ -35,14 +38,10 @@ namespace Manufaktura.Controls.Model
 
         public enum PeekType
         {
-            BeginningOfMeasure,
-            BeginningOfTuplet
+            BeginningOfMeasure = -1,
+            BeginningOfTuplet = -2,
+            NextElement = 1
         }
 
-        public enum PeekDirection
-        {
-            Forward = 1,
-            Backward = -1
-        }
     }
 }

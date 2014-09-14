@@ -100,7 +100,7 @@ namespace Manufaktura.Controls.Rendering
             if (renderer.State.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
             Staff staff = renderer.State.CurrentStaff;
 
-            NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, Staff.PeekType.BeginningOfTuplet, Staff.PeekDirection.Backward);
+            NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, Staff.PeekType.BeginningOfTuplet);
             int index = staff.Elements.IndexOf(firstElementInTuplet);
             List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index);
             double averageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == renderer.State.TupletState.TupletPlacement).

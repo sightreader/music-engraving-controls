@@ -65,7 +65,7 @@ namespace Manufaktura.Controls.Silverlight
                 }
             }
             
-            var firstNoteInMeasure = staff.Peek<Note>(element, Staff.PeekType.BeginningOfMeasure, Staff.PeekDirection.Backward);
+            var firstNoteInMeasure = staff.Peek<Note>(element, Staff.PeekType.BeginningOfMeasure);
             effect.Play(element == firstNoteInMeasure ? 0.9f : 0.5f, octaveModifier, 0);
         }
 

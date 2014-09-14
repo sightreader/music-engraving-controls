@@ -26,7 +26,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 List<double> spacesBeforeFirstNoteOfMeasure = new List<double>();
                 foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")).Skip(1)) //Don't remove space in first measure
                 {
-                    if (measureNode.Elements(XName.Get("barline")).Any()) continue; //Nie bierz pod uwagi tych ze znakami repetycji, itp.
+                    //if (measureNode.Elements(XName.Get("barline")).Any()) continue; //Nie bierz pod uwagi tych ze znakami repetycji, itp.
                     //TODO: Nie uwzględniać taktu, który następuje zaraz po zmianie metrum/klucza/znaków przykluczowych
 
                     //Read widths of all measures:
@@ -53,7 +53,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 //TODO: Nie uwzględniać taktu, który następuje zaraz po zmianie metrum/klucza/znaków przykluczowych
                 foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")).Skip(1))   //Don't remove space in first measure
                 {
-                    if (measureNode.Elements(XName.Get("barline")).Any()) continue; //Nie bierz pod uwagi tych ze znakami repetycji, itp.
+                    //if (measureNode.Elements(XName.Get("barline")).Any()) continue; //Nie bierz pod uwagi tych ze znakami repetycji, itp.
 
                     double? currentValue = null;
                     XElement firstNoteNode = measureNode.Descendants(XName.Get("note")).FirstOrDefault();
