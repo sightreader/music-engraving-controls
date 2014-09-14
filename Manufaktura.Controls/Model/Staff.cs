@@ -31,6 +31,7 @@ namespace Manufaktura.Controls.Model
 
                 //Conditions to end search:
                 if (currentSymbol is ICanBeElementOfTuplet && peekType == PeekType.BeginningOfTuplet && ((ICanBeElementOfTuplet)currentSymbol).Tuplet == TupletType.Start) break;
+                if (currentSymbol is ICanBeElementOfTuplet && peekType == PeekType.EndOfTuplet && ((ICanBeElementOfTuplet)currentSymbol).Tuplet == TupletType.Stop) break;
                 if (currentSymbol is Barline && peekType == PeekType.BeginningOfMeasure) break;
             }
             return matchedSymbol;
@@ -40,7 +41,8 @@ namespace Manufaktura.Controls.Model
         {
             BeginningOfMeasure = -1,
             BeginningOfTuplet = -2,
-            NextElement = 1
+            NextElement = 1,
+            EndOfTuplet = 2
         }
 
     }

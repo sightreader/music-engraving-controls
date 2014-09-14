@@ -8,7 +8,7 @@ namespace Manufaktura.Controls.Model
     public interface IHasDuration
     {
         MusicalSymbolDuration Duration { get; }
-
         int NumberOfDots { get; set; }
+        TupletType Tuplet { get; set; }
     }
 }
