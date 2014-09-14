@@ -78,6 +78,7 @@
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\UsefulMath.cs" />
+    <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererSettings.cs" />
     <Compile Include="Parser\MusicXml\Strategies\SoundParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\TimeParsingStrategy.cs" />

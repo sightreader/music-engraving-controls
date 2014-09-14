@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Window
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Tests", "Manufaktura.Controls.Tests\Manufaktura.Controls.Tests.csproj", "{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Test.Web", "Manufaktura.Controls.Test.Web\Manufaktura.Controls.Test.Web.csproj", "{60005E66-A113-45E1-8200-1DB4E37244FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,14 @@ Global
 		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|ARM.ActiveCfg = Release|Any CPU
 		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Release|ARM.ActiveCfg = Release|Any CPU
+		{60005E66-A113-45E1-8200-1DB4E37244FD}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

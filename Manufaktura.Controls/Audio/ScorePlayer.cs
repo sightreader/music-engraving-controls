@@ -14,6 +14,7 @@ namespace Manufaktura.Controls.Audio
         public int Tempo { get; set; }
         public MusicalSymbolDuration TempoBase { get; set; }
         public PlaybackState State { get; set; }
+        public List<Exception> PlaybackExceptions { get; private set; }
 
         protected ScorePlayer(Score score)
         {
@@ -21,6 +22,7 @@ namespace Manufaktura.Controls.Audio
             Tempo = 120;
             TempoBase = MusicalSymbolDuration.Quarter;
             State = PlaybackState.Idle;
+            PlaybackExceptions = new List<Exception>();
         }
 
         public abstract void Start();
