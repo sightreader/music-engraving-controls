@@ -41,6 +41,8 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
             }
         }
 
+        public event EventHandler<PianoKeyPressedEventArgs> PianoKeyPressed;
+
         public int StartingMidiPitch
         {
             get { return (int)GetValue(StartingMidiPitchProperty); }
@@ -93,6 +95,7 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
 
         private void DrawKeys()
         {
+            LayoutRoot.Children.Clear();
             double cursorX = 0;
             for (int pitch = StartingMidiPitch; pitch < StartingMidiPitch + NumberOfKeys; pitch++)
             {
@@ -106,9 +109,11 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
                     zIndex = 10;
                 }
 
-                Button button = new Button();
+                PianoKey button = new PianoKey();
+                button.MidiPitch = pitch;
                 button.Width = keyType == PianoKeyType.Large ? KeyWidth : KeyWidth / 2;
                 button.Height = keyHeight;
+                button.Click += button_Click;
 
                 Canvas.SetLeft(button, pitch > StartingMidiPitch && keyType == PianoKeyType.Small ? cursorX - KeyWidth / 4 : cursorX);
                 Canvas.SetZIndex(button, zIndex);
@@ -118,11 +123,31 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
             }
         }
 
+        void button_Click(object sender, RoutedEventArgs e)
+        {
+            OnPianoKeyPressed((PianoKey)sender);
+        }
+
+        protected void OnPianoKeyPressed (PianoKey key) 
+        {
+            if (PianoKeyPressed != null) PianoKeyPressed(this, new PianoKeyPressedEventArgs(key));
+        }
+
 
         public PianoKeyboard()
         {
             InitializeComponent();
             DrawKeys();
+        }
+
+        public class PianoKeyPressedEventArgs : EventArgs 
+        {
+            public PianoKeyPressedEventArgs (PianoKey key) 
+            {
+                Key = key;
+            }
+
+            public PianoKey Key {get; private set;}
         }
     }
 }

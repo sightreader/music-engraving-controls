@@ -65,6 +65,7 @@
       <DependentUpon>DummyControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fonts.cs" />
+    <Compile Include="Keyboard\PianoKey.cs" />
     <Compile Include="Keyboard\PianoKeyboard.xaml.cs">
       <DependentUpon>PianoKeyboard.xaml</DependentUpon>
     </Compile>
