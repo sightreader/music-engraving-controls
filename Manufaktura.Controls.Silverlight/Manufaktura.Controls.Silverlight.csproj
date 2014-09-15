@@ -65,6 +65,10 @@
       <DependentUpon>DummyControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fonts.cs" />
+    <Compile Include="Keyboard\PianoKeyboard.xaml.cs">
+      <DependentUpon>PianoKeyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboard\PianoKeyType.cs" />
     <Compile Include="NoteViewer.xaml.cs">
       <DependentUpon>NoteViewer.xaml</DependentUpon>
     </Compile>
@@ -79,6 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="DummyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Keyboard\PianoKeyboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
