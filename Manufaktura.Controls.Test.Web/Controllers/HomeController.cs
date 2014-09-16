@@ -33,7 +33,9 @@ namespace Manufaktura.Controls.Test.Web.Controllers
         public static MvcHtmlString RenderIncipitTest()
         {
             StringBuilder sb = new StringBuilder();
-            HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(sb);
+            Dictionary<FontStyles, Manufaktura.Controls.Rendering.Implementations.HtmlCanvasScoreRenderer.HtmlFontInfo> fonts = new Dictionary<FontStyles, Manufaktura.Controls.Rendering.Implementations.HtmlCanvasScoreRenderer.HtmlFontInfo>();
+            fonts.Add(FontStyles.MusicFont, new Manufaktura.Controls.Rendering.Implementations.HtmlCanvasScoreRenderer.HtmlFontInfo("Polihymnia", "fonts/Polihymnia.ttf", 25d));
+            HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(sb, fonts);
             Score score = new Score();
             Staff staff = new Staff();
             score.Staves.Add(staff);
