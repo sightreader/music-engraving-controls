@@ -99,6 +99,11 @@ namespace Manufaktura.Controls.Model
             DetermineMusicalCharacter();
         }
 
+        public Note(MusicalSymbolDuration noteDuration) : this("A", 0, 4, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        {
+
+        }
+
         public Note() : this("A", 0, 4, MusicalSymbolDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
 
@@ -197,6 +202,13 @@ namespace Manufaktura.Controls.Model
         #endregion
 
         #region Public static functions
+
+        public static Note FromMidiPitch(int midiPitch, MusicalSymbolDuration duration)
+        {
+            Note note = new Note(duration);
+            note.ApplyMidiPitch(midiPitch);
+            return note;
+        }
 
         public static Note FromMidiPitch(int midiPitch)
         {

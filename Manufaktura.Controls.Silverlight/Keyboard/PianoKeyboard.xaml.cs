@@ -51,7 +51,7 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
 
         // Using a DependencyProperty as the backing store for StartingMidiPitch.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StartingMidiPitchProperty =
-            DependencyProperty.Register("StartingMidiPitch", typeof(int), typeof(PianoKeyboard), new PropertyMetadata(69, StartingMidiPitchChanged));
+            DependencyProperty.Register("StartingMidiPitch", typeof(int), typeof(PianoKeyboard), new PropertyMetadata(57, StartingMidiPitchChanged));
 
 
         private static void StartingMidiPitchChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args) 
@@ -91,7 +91,54 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
             if (args.NewValue == args.OldValue) return;
             ((PianoKeyboard)obj).DrawKeys();
         }
-        
+
+        public double KeyHeight
+        {
+            get { return (double)GetValue(KeyHeightProperty); }
+            set { SetValue(KeyHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for KeyHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty KeyHeightProperty =
+            DependencyProperty.Register("KeyHeight", typeof(double), typeof(PianoKeyboard), new PropertyMetadata(100d, KeyHeightChanged));
+
+        private static void KeyHeightChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            if (args.NewValue == args.OldValue) return;
+            ((PianoKeyboard)obj).DrawKeys();
+        }
+
+        public Style LargeKeyStyle
+        {
+            get { return (Style)GetValue(LargeKeyStyleProperty); }
+            set { SetValue(LargeKeyStyleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for LargeKeyStyle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LargeKeyStyleProperty =
+            DependencyProperty.Register("LargeKeyStyle", typeof(Style), typeof(PianoKeyboard), new PropertyMetadata(null , LargeKeyStyleChanged));
+
+        private static void LargeKeyStyleChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            if (args.NewValue == args.OldValue) return;
+            ((PianoKeyboard)obj).DrawKeys();
+        }
+
+        public Style SmallKeyStyle
+        {
+            get { return (Style)GetValue(SmallKeyStyleProperty); }
+            set { SetValue(SmallKeyStyleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SmallKeyStyle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SmallKeyStyleProperty =
+            DependencyProperty.Register("SmallKeyStyle", typeof(Style), typeof(PianoKeyboard), new PropertyMetadata(null, SmallKeyStyleChanged));
+
+        private static void SmallKeyStyleChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            if (args.NewValue == args.OldValue) return;
+            ((PianoKeyboard)obj).DrawKeys();
+        }
 
         private void DrawKeys()
         {
@@ -101,11 +148,11 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
             {
                 PianoKeyType keyType = KeyTypes[pitch % 12];
 
-                double keyHeight = 100;
+                double keyHeight = KeyHeight;
                 int zIndex = 0;
                 if (keyType == PianoKeyType.Small) 
                 {
-                    keyHeight = 60;
+                    keyHeight = KeyHeight * 0.6d;
                     zIndex = 10;
                 }
 
@@ -113,6 +160,7 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
                 button.MidiPitch = pitch;
                 button.Width = keyType == PianoKeyType.Large ? KeyWidth : KeyWidth / 2;
                 button.Height = keyHeight;
+                button.Style = keyType == PianoKeyType.Large ? LargeKeyStyle : SmallKeyStyle;
                 button.Click += button_Click;
 
                 Canvas.SetLeft(button, pitch > StartingMidiPitch && keyType == PianoKeyType.Small ? cursorX - KeyWidth / 4 : cursorX);

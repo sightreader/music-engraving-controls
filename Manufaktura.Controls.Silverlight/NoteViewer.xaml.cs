@@ -117,6 +117,19 @@ namespace Manufaktura.Controls.Silverlight
             viewer.RenderOnCanvas(score);
         }
 
+
+        public bool IsSelectable
+        {
+            get { return (bool)GetValue(IsSelectableProperty); }
+            set { SetValue(IsSelectableProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsSelectable.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsSelectableProperty =
+            DependencyProperty.Register("IsSelectable", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
+
+        
+
         public NoteViewer()
         {
             InitializeComponent();
@@ -185,12 +198,14 @@ namespace Manufaktura.Controls.Silverlight
 
         private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (!IsSelectable) return;
             MainCanvas.ReleaseMouseCapture();
             _draggingState.StopDragging();
         }
 
         void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (!IsSelectable) return;
             MainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
 
             //Start dragging:
@@ -207,6 +222,7 @@ namespace Manufaktura.Controls.Silverlight
 
         private void MainCanvas_MouseMove(object sender, MouseEventArgs e)
         {
+            if (!IsSelectable) return;
             if (!_draggingState.IsDragging || _innerScore == null) return;
 
             Point currentPosition = e.GetPosition(MainCanvas);
