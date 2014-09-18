@@ -33,7 +33,7 @@ namespace Manufaktura.Controls.Model
                 case PeekType.NextElement:
                     strategy = new NextElementPeekStrategy<TSymbol>(this);
                     break;
-                case PeekType.HighestNoteInMeasure:
+                case PeekType.HighestNoteInChord:
                     strategy = new HighestNoteInChordPeekStrategy<TSymbol>(this);
                     break;
                 default:

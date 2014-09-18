@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Parser.Digest;
 using Manufaktura.Controls.Parser.MusicXml;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,10 @@ namespace Manufaktura.Controls.Silverlight.Test
                 MusicXmlNormalizer normalizer = new MusicXmlNormalizer() { NormalizeSpaceBeforeFirstNotesOfMeasures = true };
                 noteViewer2.XmlTransformations = new[] { normalizer };
                 noteViewer2.XmlSource = scoreXml;
+
+                MelodicContourDigestParser digestParser = new MelodicContourDigestParser();
+                int[] results = digestParser.ParseBack(score);
+                MessageBox.Show(string.Join(", ", results));
             }
         }
 

@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Parser.Digest
             foreach (Staff staff in score.Staves)
             {
                 Note lastNote = null;
-                foreach (Note note in staff.Elements.OfType<Note>().Where(n => !n.IsChordElement))
+                foreach (Note note in staff.Elements.OfType<Note>().Where(n => !n.IsChordElement).Select(n => staff.Peek<Note>(n, Model.PeekStrategies.PeekType.HighestNoteInChord)))
                 {
                     if (lastNote != null)
                     {
