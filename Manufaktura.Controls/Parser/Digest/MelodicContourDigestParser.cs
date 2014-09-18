@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Parser.Digest
             foreach (Staff staff in score.Staves)
             {
                 Note lastNote = null;
-                foreach (Note note in staff.Elements.OfType<Note>())
+                foreach (Note note in staff.Elements.OfType<Note>().Where(n => !n.IsChordElement))
                 {
                     if (lastNote != null)
                     {

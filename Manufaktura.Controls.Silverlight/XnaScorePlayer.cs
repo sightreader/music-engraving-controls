@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.PeekStrategies;
 using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace Manufaktura.Controls.Silverlight
                 }
             }
             
-            var firstNoteInMeasure = staff.Peek<Note>(element, Staff.PeekType.BeginningOfMeasure);
+            var firstNoteInMeasure = staff.Peek<Note>(element, PeekType.BeginningOfMeasure);
             effect.Play(element == firstNoteInMeasure ? 0.9f : 0.5f, octaveModifier, 0);
         }
 

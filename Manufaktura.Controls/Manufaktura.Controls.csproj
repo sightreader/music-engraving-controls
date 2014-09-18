@@ -56,6 +56,12 @@
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\Ornament.cs" />
+    <Compile Include="Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs" />
+    <Compile Include="Model\PeekStrategies\BeginningOfTupletPeekStrategy.cs" />
+    <Compile Include="Model\PeekStrategies\EndOfTupletPeekStrategy.cs" />
+    <Compile Include="Model\PeekStrategies\HighestNoteInChordPeekStrategy.cs" />
+    <Compile Include="Model\PeekStrategies\NextElementPeekStrategy.cs" />
+    <Compile Include="Model\PeekStrategies\PeekStrategy.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />

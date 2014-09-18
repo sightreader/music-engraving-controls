@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.PeekStrategies;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -69,7 +70,7 @@ namespace Manufaktura.Controls.Audio
                         return;
                     }
 
-                    Note nextNote = staff.Peek<Note>(note, Staff.PeekType.NextElement);
+                    Note nextNote = staff.Peek<Note>(note, PeekType.NextElement);
                     if (nextNote != null && nextNote.IsChordElement)
                     {
                         PlayElement(CurrentElement, staff);
@@ -82,8 +83,8 @@ namespace Manufaktura.Controls.Audio
                 {
                     if (noteOrRest.Tuplet == TupletType.Start)
                     {
-                        NoteOrRest tupletStart = staff.Peek<NoteOrRest>(note, Staff.PeekType.BeginningOfTuplet);
-                        NoteOrRest tupletEnd = staff.Peek<NoteOrRest>(note, Staff.PeekType.EndOfTuplet);
+                        NoteOrRest tupletStart = staff.Peek<NoteOrRest>(note, PeekType.BeginningOfTuplet);
+                        NoteOrRest tupletEnd = staff.Peek<NoteOrRest>(note, PeekType.EndOfTuplet);
                         if (tupletStart != null && tupletEnd != null)
                         {
                             tupletState = new Tuplet();
