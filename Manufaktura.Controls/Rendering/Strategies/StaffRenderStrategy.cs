@@ -9,19 +9,25 @@ namespace Manufaktura.Controls.Rendering
 {
     class StaffRenderStrategy : MusicalSymbolRenderStrategy<Staff>
     {
+        public bool WasSystemChanged { get; set; }
+
         public override void Render(Staff element, ScoreRendererBase renderer)
         {
             double sharpLineModifier = 0.5;
 
-            Point startPoint = new Point(0, renderer.Settings.PaddingTop + sharpLineModifier);
-            Point endPoint = new Point(renderer.Settings.PageWidth, renderer.Settings.PaddingTop + sharpLineModifier);
+            if (!WasSystemChanged)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    renderer.State.LinePositions[renderer.State.CurrentSystem][i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing + sharpLineModifier;
+                }
+            }
 
             for (int i = 0; i < 5; i++)
             {
+                Point startPoint = new Point(0, renderer.State.LinePositions[renderer.State.CurrentSystem][i]);
+                Point endPoint = new Point(renderer.Settings.PageWidth, renderer.State.LinePositions[renderer.State.CurrentSystem][i]);
                 renderer.DrawLine(startPoint, endPoint, element);
-                renderer.State.LinePositions[renderer.State.CurrentSystem][i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing;
-                startPoint.Y += renderer.Settings.LineSpacing;
-                endPoint.Y += renderer.Settings.LineSpacing;
             }
         }
     }

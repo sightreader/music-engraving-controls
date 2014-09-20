@@ -163,9 +163,7 @@ namespace Manufaktura.Controls.Rendering
                 (element.Duration != MusicalSymbolDuration.Unknown))
             {
                 double tmpStemPosY;
-
-                tmpStemPosY = element.StemDefaultY * -1.0f / 2.0f;
-
+                tmpStemPosY = renderer.State.CurrentSystemShiftY + element.StemDefaultY * -1.0f / 2.0f;
 
                 if (element.StemDirection == VerticalDirection.Down)
                 {
@@ -173,8 +171,7 @@ namespace Manufaktura.Controls.Rendering
                     //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
-                    if (((element.IsChordElement) || renderer.State.IsManualMode)
-                        || (!(element.CustomStemEndPosition)))
+                    if (((element.IsChordElement) || renderer.State.IsManualMode) || (!(element.CustomStemEndPosition)))
                         renderer.State.currentStemEndPositionY = notePositionY + 18;
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
@@ -395,7 +392,7 @@ namespace Manufaktura.Controls.Rendering
             double textPositionY = renderer.State.LinePositions[renderer.State.CurrentSystem][4] + 10;    //Default value if default-y is not set
             foreach (Lyrics lyrics in element.Lyrics)
             {
-                if (lyrics.DefaultYPosition.HasValue) textPositionY = lyrics.DefaultYPosition.Value * -1 - 20;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne - 20
+                if (lyrics.DefaultYPosition.HasValue) textPositionY = renderer.State.LinePositions[renderer.State.CurrentSystem][0] + lyrics.DefaultYPosition.Value * -1 - 40;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne -40
 
                 StringBuilder sBuilder = new StringBuilder();
                 sBuilder.Append(lyrics.Text);

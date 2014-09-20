@@ -21,6 +21,8 @@ namespace Manufaktura.Controls.Rendering
         public double CurrentClefPositionY { get; set; }
         public double CurrentClefTextBlockPositionY { get; set;}
 
+        public double CurrentSystemShiftY { get; set; }
+
         public bool IsManualMode { get; set; }
         public bool IsPrintMode { get; set; }
         
