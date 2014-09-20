@@ -30,7 +30,7 @@ namespace Manufaktura.Controls.Rendering
                 try
                 {
                     State.CurrentStaff = staff;
-                    if (!Settings.IgnoreCustomElementPositions)
+                    if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
                     {
                         double newPageWidth = staff.MeasureWidths.Where(w => w.HasValue).Sum(w => w.Value * Settings.CustomElementPositionRatio);
                         if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
@@ -65,6 +65,14 @@ namespace Manufaktura.Controls.Rendering
                         }
                     }
                     DrawMissingStems(staff);
+                    if (State.CurrentStaff.ActualSystemWidths.Count < State.CurrentSystem) State.CurrentStaff.ActualSystemWidths.Add(0);
+                    State.CurrentStaff.ActualSystemWidths[State.CurrentSystem - 1] = State.CursorPositionX;
+
+                    //Draw all lines:
+                    for (int system = 1; system <= State.CurrentSystem; system++) 
+                    {
+                        StaffRenderStrategy.Draw(staff, this, State.LinePositions[system], staff.ActualSystemWidths[system - 1]);
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -22,12 +22,15 @@ namespace Manufaktura.Controls.Rendering
                     renderer.State.LinePositions[renderer.State.CurrentSystem][i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing + sharpLineModifier;
                 }
             }
+        }
 
-            for (int i = 0; i < 5; i++)
+        public static void Draw(Staff staff, ScoreRendererBase renderer, double[] linePositions, double width)
+        {
+            foreach (double position in linePositions)
             {
-                Point startPoint = new Point(0, renderer.State.LinePositions[renderer.State.CurrentSystem][i]);
-                Point endPoint = new Point(renderer.Settings.PageWidth, renderer.State.LinePositions[renderer.State.CurrentSystem][i]);
-                renderer.DrawLine(startPoint, endPoint, element);
+                Point startPoint = new Point(0, position);
+                Point endPoint = new Point(width, position);
+                renderer.DrawLine(startPoint, endPoint, staff);
             }
         }
     }

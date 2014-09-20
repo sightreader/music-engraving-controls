@@ -67,7 +67,7 @@ namespace Manufaktura.Controls.Silverlight
             }
             
             var firstNoteInMeasure = staff.Peek<Note>(element, PeekType.BeginningOfMeasure);
-            effect.Play(element == firstNoteInMeasure ? 0.9f : 0.5f, octaveModifier, 0);
+            effect.Play(element == firstNoteInMeasure ? 0.7f : 0.5f, octaveModifier, 0);
         }
 
         protected void OnElementPlayed(MusicalSymbol symbol)
