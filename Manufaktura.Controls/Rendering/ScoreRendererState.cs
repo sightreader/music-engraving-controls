@@ -13,6 +13,7 @@ namespace Manufaktura.Controls.Rendering
         public Staff CurrentStaff { get; set; }
         public Clef CurrentClef {get; set;}
         public Key CurrentKey { get; set; }
+        public TimeSignature CurrentTimeSignature { get; set; }
         public int CurrentMeasure { get; set; }
         public int CurrentSystem { get; set; }
         public double LastMeasurePositionX { get; set; }

@@ -28,6 +28,12 @@ namespace Manufaktura.Controls.Rendering.Strategies
 
                 strategy = new StaffRenderStrategy() { WasSystemChanged = true };
                 strategy.Render(renderer.State.CurrentStaff, renderer);
+
+                strategy = new KeyRenderStrategy();
+                strategy.Render(renderer.State.CurrentKey, renderer);
+
+                strategy = new TimeSignatureRenderStrategy();
+                strategy.Render(renderer.State.CurrentTimeSignature, renderer);               
             }
         }
     }

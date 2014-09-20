@@ -37,8 +37,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         }
 
                         //Usuń pojedynczą kreskę taktową, jeśli już taka została dodana:
-                        Barline existingBarline = staff.Elements.LastOrDefault() as Barline;
-                        if (existingBarline != null) staff.Elements.Remove(existingBarline);
+                        //Barline existingBarline = staff.Elements.LastOrDefault() as Barline;
+                        //if (existingBarline != null) staff.Elements.Remove(existingBarline);
 
                         staff.Elements.Add(b);
                         
