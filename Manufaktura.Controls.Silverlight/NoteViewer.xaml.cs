@@ -141,7 +141,23 @@ namespace Manufaktura.Controls.Silverlight
         public static readonly DependencyProperty IsSelectableProperty =
             DependencyProperty.Register("IsSelectable", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
 
+
+
+        public double ZoomFactor
+        {
+            get { return (double)GetValue(ZoomFactorProperty); }
+            set { SetValue(ZoomFactorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ZoomFactor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ZoomFactorProperty =
+            DependencyProperty.Register("ZoomFactor", typeof(double), typeof(NoteViewer), new PropertyMetadata(1d, ZoomFactorChanged));
+
         
+        private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            ((NoteViewer)obj).InvalidateMeasure();
+        }
 
         public NoteViewer()
         {
@@ -190,7 +206,7 @@ namespace Manufaktura.Controls.Silverlight
                 double maxWidth = Renderer.State.CurrentStaff.ActualSystemWidths.Max();
                 if (maxWidth > 0) width = maxWidth;
             }
-            return new Size(width, Renderer.State.CurrentSystemShiftY + 100);
+            return new Size(width * ZoomFactor, (Renderer.State.CurrentSystemShiftY + 100) * ZoomFactor);
         }
 
         private void ColorElement(MusicalSymbol element, Color color)
