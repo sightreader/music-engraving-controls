@@ -14,6 +14,7 @@ namespace Manufaktura.Controls.Rendering
         public Clef CurrentClef {get; set;}
         public Key CurrentKey { get; set; }
         public int CurrentMeasure { get; set; }
+        public int CurrentSystem { get; set; }
         public double LastMeasurePositionX { get; set; }
         public double CurrentMeasureWidth { get; set; }
         public int CurrentVoice { get; set; }
@@ -44,10 +45,11 @@ namespace Manufaktura.Controls.Rendering
         public int[] alterationsWithinOneBar { get; set; }
         public bool firstNoteInIncipit { get; set; }
         
-        public int[] LinePositions { get; private set; }
+        public Dictionary<int, double[]> LinePositions { get; private set; }
 
         public ScoreRendererState()
         {
+            CurrentSystem = 1;
             CurrentClef = new Clef(ClefType.CClef, 2);
             CurrentKey = new Key(0);
             CursorPositionX = 0;
@@ -64,7 +66,7 @@ namespace Manufaktura.Controls.Rendering
             tieStartPoint = new Point();
             SlurStartPoint = new Point();
             CurrentVoice = 1;
-            LinePositions = new int[5];
+            LinePositions = new Dictionary<int, double[]>() { { 1, new double[5] } };
             CurrentClefTextBlockPositionY = 0;           
         }
     }

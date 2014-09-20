@@ -44,6 +44,7 @@ namespace Manufaktura.Controls.Silverlight.Test
                 MusicXmlParser parser = new MusicXmlParser();
                 score = parser.Parse(XDocument.Parse(scoreXml));
                 noteViewer1.ScoreSource = score;
+                noteViewer3.ScoreSource = score;
 
                 MusicXmlNormalizer normalizer = new MusicXmlNormalizer() { NormalizeSpaceBeforeFirstNotesOfMeasures = true };
                 noteViewer2.XmlTransformations = new[] { normalizer };
@@ -51,7 +52,7 @@ namespace Manufaktura.Controls.Silverlight.Test
 
                 MelodicContourDigestParser digestParser = new MelodicContourDigestParser();
                 int[] results = digestParser.ParseBack(score);
-                MessageBox.Show(string.Join(", ", results));
+                //MessageBox.Show(string.Join(", ", results));
             }
         }
 

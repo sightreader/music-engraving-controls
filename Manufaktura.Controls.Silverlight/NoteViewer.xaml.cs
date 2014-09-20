@@ -89,6 +89,19 @@ namespace Manufaktura.Controls.Silverlight
             DependencyProperty.Register("IsInsertMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
 
 
+        public bool IsPanoramaMode
+        {
+            get { return (bool)GetValue(IsPanoramaModeProperty); }
+            set { SetValue(IsPanoramaModeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPanoramaMode.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPanoramaModeProperty =
+            DependencyProperty.Register("IsPanoramaMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
+
+        
+        
+
         public MusicalSymbol SelectedElement
         {
             get { return (MusicalSymbol)GetValue(SelectedElementProperty); }
@@ -142,6 +155,7 @@ namespace Manufaktura.Controls.Silverlight
 
             MainCanvas.Children.Clear();
             Renderer = new CanvasScoreRenderer(MainCanvas);
+            Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
             if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
             if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);

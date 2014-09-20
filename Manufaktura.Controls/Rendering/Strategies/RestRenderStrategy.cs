@@ -28,7 +28,7 @@ namespace Manufaktura.Controls.Rendering
             renderer.State.CurrentVoice = element.Voice;
 
 
-            double restPositionY = (renderer.State.LinePositions[0] - 9);
+            double restPositionY = (renderer.State.LinePositions[renderer.State.CurrentSystem][0] - 9);
             if (renderer.State.IsPrintMode) restPositionY -= 0.6f;
 
             renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);

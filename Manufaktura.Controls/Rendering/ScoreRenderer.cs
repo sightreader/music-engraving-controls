@@ -80,7 +80,7 @@ namespace Manufaktura.Controls.Rendering
                 if (symbol.Type == MusicalSymbolType.Clef)
                 {
                     State.CurrentClef = (Clef)symbol;
-                    State.CurrentClefPositionY = State.LinePositions[4] - (((Clef)symbol).Line - 1) * Settings.LineSpacing;
+                    State.CurrentClefPositionY = State.LinePositions[State.CurrentSystem][4] - (((Clef)symbol).Line - 1) * Settings.LineSpacing;
                     State.CurrentClefTextBlockPositionY = State.CurrentClefPositionY - TextBlockHeight;
                     State.CurrentClef = (Clef)symbol;
                     DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, symbol);

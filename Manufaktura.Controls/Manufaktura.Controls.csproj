@@ -62,6 +62,7 @@
     <Compile Include="Model\PeekStrategies\HighestNoteInChordPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\NextElementPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\PeekStrategy.cs" />
+    <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Parser\MusicXml\MusicXmlParserState.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\NoteParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\UsefulMath.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Rendering\Strategies\MusicalSymbolRenderStrategyBase.cs" />
     <Compile Include="Rendering\Strategies\NoteRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\MusicalSymbolRenderStrategy.cs" />
+    <Compile Include="Rendering\Strategies\PrintSuggestionRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\RestRenderStrategy.cs" />
     <Compile Include="Rendering\ScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererBase.cs" />

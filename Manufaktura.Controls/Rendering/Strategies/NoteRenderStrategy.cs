@@ -137,19 +137,19 @@ namespace Manufaktura.Controls.Rendering
         {
             double tmpXPos = renderer.State.CursorPositionX + 16;
             if (renderer.State.IsPrintMode) tmpXPos += 1.5f;
-            if (notePositionY + 25.0f > renderer.State.LinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
+            if (notePositionY + 25.0f > renderer.State.LinePositions[renderer.State.CurrentSystem][4] + renderer.Settings.LineSpacing / 2.0f)
             {
-                for (int i = renderer.State.LinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
+                for (double i = renderer.State.LinePositions[renderer.State.CurrentSystem][4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
                 {
 
                     renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
                         new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
                 }
             }
-            if (notePositionY + 25.0f < renderer.State.LinePositions[0] - renderer.Settings.LineSpacing / 2)
+            if (notePositionY + 25.0f < renderer.State.LinePositions[renderer.State.CurrentSystem][0] - renderer.Settings.LineSpacing / 2)
             {
 
-                for (int i = renderer.State.LinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
+                for (double i = renderer.State.LinePositions[renderer.State.CurrentSystem][0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
                 {
 
                     renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
@@ -392,7 +392,7 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLyrics(ScoreRendererBase renderer, Note element)
         {
-            double textPositionY = renderer.State.LinePositions[4] + 10;    //Default value if default-y is not set
+            double textPositionY = renderer.State.LinePositions[renderer.State.CurrentSystem][4] + 10;    //Default value if default-y is not set
             foreach (Lyrics lyrics in element.Lyrics)
             {
                 if (lyrics.DefaultYPosition.HasValue) textPositionY = lyrics.DefaultYPosition.Value * -1 - 20;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne - 20
@@ -443,9 +443,9 @@ namespace Manufaktura.Controls.Rendering
                 if (element.TrillMark == NoteTrillMark.Above)
                 {
                     trillPos = notePositionY - 1;
-                    if (trillPos > renderer.State.LinePositions[0] - renderer.TextBlockHeight)
+                    if (trillPos > renderer.State.LinePositions[renderer.State.CurrentSystem][0] - renderer.TextBlockHeight)
                     {
-                        trillPos = renderer.State.LinePositions[0] - renderer.TextBlockHeight - 1.0f;
+                        trillPos = renderer.State.LinePositions[renderer.State.CurrentSystem][0] - renderer.TextBlockHeight - 1.0f;
                     }
                 }
                 else if (element.TrillMark == NoteTrillMark.Below)

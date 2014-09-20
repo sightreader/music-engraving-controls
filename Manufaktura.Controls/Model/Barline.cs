@@ -16,6 +16,7 @@ namespace Manufaktura.Controls.Model
         #region Properties
 
         public RepeatSignType RepeatSign { get { return repeatSign; } set { repeatSign = value; } }
+        public HorizontalPlacement Location { get; set; }
 
         #endregion
 
@@ -23,6 +24,7 @@ namespace Manufaktura.Controls.Model
 
         public Barline()
         {
+            Location = HorizontalPlacement.Right;
             type = MusicalSymbolType.Barline;
             repeatSign = RepeatSignType.None;
         }

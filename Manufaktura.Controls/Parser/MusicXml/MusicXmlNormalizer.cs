@@ -16,8 +16,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
         public override XDocument Parse(XDocument source)   //TODO: Przetestować dokładnie i zrefaktorować
         {
             if (!NormalizeSpaceBeforeFirstNotesOfMeasures) return source;
-            //Workaround - pomiń na razie te ze znakiem repetycji do przodu, bo się źle rysują:
-            if (source.Descendants(XName.Get("repeat")).SelectMany(r => r.Attributes().Where(a => a.Name == "direction" && a.Value == "forward")).Any()) return source;
+            //Workaround - pomiń na razie te ze znakiem repetycji, bo się źle rysują:
+            if (source.Descendants(XName.Get("repeat")).Any()) return source;
 
             foreach (XElement staffNode in source.Descendants(XName.Get("part")))
             {

@@ -10,12 +10,13 @@ namespace Manufaktura.Controls.Rendering
         public double PageWidth { get; set; }
         public bool IgnoreCustomElementPositions { get; set; }
         public double CustomElementPositionRatio { get; set; }
-
+        public bool IsPanoramaMode { get; set; }
         public int PaddingTop { get; private set; }
         public int LineSpacing { get; private set; }
 
         public ScoreRendererSettings()
         {
+            IsPanoramaMode = true;
             IgnoreCustomElementPositions = false;
             CustomElementPositionRatio = 0.6d;
             PageWidth = 200;

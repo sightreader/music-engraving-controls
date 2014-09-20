@@ -9,14 +9,15 @@
     d:DesignHeight="500" d:DesignWidth="800">
 
     <Grid x:Name="LayoutRoot" Background="White">
-        <Manufaktura:NoteViewer x:Name="noteViewer1" HorizontalAlignment="Stretch" Height="100" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Manufaktura:NoteViewer x:Name="noteViewer2" HorizontalAlignment="Stretch" Height="100" Margin="10,115,0,0" VerticalAlignment="Top" />
-        <Manufaktura:NoteViewer x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100" Margin="10,220,0,0" VerticalAlignment="Top" />
-        <Button Content="Wczytaj" HorizontalAlignment="Left" Margin="432,382,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Odtwórz" HorizontalAlignment="Left" Margin="526,382,0,0" VerticalAlignment="Top" Width="75" Click="Play_Click"/>
-        <Keyboard:PianoKeyboard HorizontalAlignment="Left" Height="100" Margin="56,433,0,-33" VerticalAlignment="Top" Width="451" KeyWidth="30"/>
+        <StackPanel Orientation="Vertical">
+        <Manufaktura:NoteViewer x:Name="noteViewer1" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top"/>
+        <Manufaktura:NoteViewer x:Name="noteViewer2" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
+        <Manufaktura:NoteViewer x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="200" IsPanoramaMode="False"  VerticalAlignment="Top" />
+        <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Odtwórz" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Play_Click"/>
+        <Keyboard:PianoKeyboard HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="451" KeyWidth="30"/>
 
-
+        </StackPanel>
 
     </Grid>
 </UserControl>

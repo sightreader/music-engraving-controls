@@ -19,6 +19,7 @@ namespace Manufaktura.Controls.Model
     public enum SyllableType { None, Begin, Middle, End, Single };
     public enum ArticulationType { None, Staccato, Accent };
     public enum VerticalPlacement { Above, Below };
+    public enum HorizontalPlacement { Left, Right };
     public enum DirectionPlacementType { Above, Below, Custom };
     public enum TimeSignatureType { Common, Cut, Numbers };
     public enum NoteTrillMark { None, Above, Below };

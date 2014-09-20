@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Rendering
             for (int i = 0; i < 5; i++)
             {
                 renderer.DrawLine(startPoint, endPoint, element);
-                renderer.State.LinePositions[i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing;
+                renderer.State.LinePositions[renderer.State.CurrentSystem][i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing;
                 startPoint.Y += renderer.Settings.LineSpacing;
                 endPoint.Y += renderer.Settings.LineSpacing;
             }

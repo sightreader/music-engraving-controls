@@ -17,6 +17,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
             Barline b = new Barline();
+            var attr = element.Attributes().FirstOrDefault(a => a.Name == "location");
+            if (attr != null)
+            {
+                b.Location = attr.Value == "left" ? HorizontalPlacement.Left : HorizontalPlacement.Right;
+            }
             foreach (XElement barlineAttribute in element.Elements())
             {
                 if (barlineAttribute.Name == "repeat")
