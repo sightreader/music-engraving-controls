@@ -159,6 +159,7 @@ namespace Manufaktura.Controls.Silverlight
             if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
             if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
+            InvalidateMeasure();
 
             if (IsDebugMode)
             {
@@ -180,7 +181,17 @@ namespace Manufaktura.Controls.Silverlight
             }
         }
 
-
+        protected override Size MeasureOverride(Size availableSize)
+        {
+            if (Renderer == null) return base.MeasureOverride(availableSize);
+            double width = availableSize.Width;
+            if (Renderer.State.CurrentStaff != null)
+            {
+                double maxWidth = Renderer.State.CurrentStaff.ActualSystemWidths.Max();
+                if (maxWidth > 0) width = maxWidth;
+            }
+            return new Size(width, Renderer.State.CurrentSystemShiftY + 100);
+        }
 
         private void ColorElement(MusicalSymbol element, Color color)
         {
