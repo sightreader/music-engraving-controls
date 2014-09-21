@@ -30,7 +30,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 Point startPoint = new Point(0, position);
                 Point endPoint = new Point(width, position);
-                renderer.DrawLine(startPoint, endPoint, staff);
+                renderer.DrawLine(startPoint, endPoint, new Pen(Color.Black, 1, -1), staff);
             }
         }
     }

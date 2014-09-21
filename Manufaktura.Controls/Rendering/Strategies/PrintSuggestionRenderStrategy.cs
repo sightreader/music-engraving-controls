@@ -35,8 +35,7 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 strategy = new KeyRenderStrategy();
                 strategy.Render(renderer.State.CurrentKey, renderer);
 
-                strategy = new TimeSignatureRenderStrategy();
-                strategy.Render(renderer.State.CurrentTimeSignature, renderer);               
+                //Time signature is not rendered in new line.            
             }
         }
     }

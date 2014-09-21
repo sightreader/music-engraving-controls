@@ -60,8 +60,9 @@ namespace Manufaktura.Controls.Silverlight
             line.X2 = endPoint.X;
             line.Y1 = startPoint.Y;
             line.Y2 = endPoint.Y;
-
+            System.Windows.Controls.Canvas.SetZIndex(line, (int)pen.ZIndex);
             line.StrokeThickness = pen.Thickness;
+            
             Canvas.Children.Add(line);
 
             OwnershipDictionary.Add(line, owner);
@@ -85,6 +86,7 @@ namespace Manufaktura.Controls.Silverlight
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
+            System.Windows.Controls.Canvas.SetZIndex(path, (int)pen.ZIndex);
             Canvas.Children.Add(path);
 
             OwnershipDictionary.Add(path, owner);
@@ -106,6 +108,7 @@ namespace Manufaktura.Controls.Silverlight
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
+            System.Windows.Controls.Canvas.SetZIndex(path, (int)pen.ZIndex);
             Canvas.Children.Add(path);
 
             OwnershipDictionary.Add(path, owner);

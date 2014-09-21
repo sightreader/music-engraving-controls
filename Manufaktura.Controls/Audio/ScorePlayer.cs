@@ -1,19 +1,29 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
 namespace Manufaktura.Controls.Audio
 {
-    public abstract class ScorePlayer
+    public abstract class ScorePlayer : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private PlaybackState _state;
+        public PlaybackState State
+        {
+            get { return _state; }
+            set { _state = value; OnPropertyChanged("State"); }
+        }
+
         public Score Score { get; protected set; }
         public MusicalSymbol CurrentElement { get; protected set; }
         public IEnumerator<MusicalSymbol> Enumerator { get; protected set; }
         public int Tempo { get; set; }
         public MusicalSymbolDuration TempoBase { get; set; }
-        public PlaybackState State { get; set; }
+
         public List<Exception> PlaybackExceptions { get; private set; }
 
         protected ScorePlayer(Score score)
@@ -30,11 +40,18 @@ namespace Manufaktura.Controls.Audio
         public abstract void Stop();
         public abstract void Pause();
 
+        protected void OnPropertyChanged(string property)
+        {
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(property));
+        }
+
         public enum PlaybackState
         {
             Idle,
             Paused,
             Playing
         }
+
+        
     }
 }
