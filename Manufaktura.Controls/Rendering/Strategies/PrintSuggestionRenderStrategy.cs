@@ -35,7 +35,11 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 strategy = new KeyRenderStrategy();
                 strategy.Render(renderer.State.CurrentKey, renderer);
 
-                //Time signature is not rendered in new line.            
+                //Time signature is not rendered in new line.
+            
+                //Render measure number:
+                renderer.DrawString((renderer.State.CurrentMeasure + 1).ToString(), FontStyles.LyricsFont, 
+                    new Primitives.Point(0, renderer.State.LinePositions[renderer.State.CurrentSystem][0] - 25), renderer.State.CurrentStaff);
             }
         }
     }
