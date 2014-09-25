@@ -52,6 +52,9 @@ namespace Manufaktura.Controls.Silverlight.Test
 
                 MelodicContourDigestParser digestParser = new MelodicContourDigestParser();
                 int[] results = digestParser.ParseBack(score);
+
+                LyricsDigestParser lyricsParser = new LyricsDigestParser();
+                string lyrics = lyricsParser.ParseBack(score);
                 //MessageBox.Show(string.Join(", ", results));
             }
         }

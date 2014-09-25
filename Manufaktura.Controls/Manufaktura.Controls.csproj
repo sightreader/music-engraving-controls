@@ -65,6 +65,7 @@
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\Tuplet.cs" />
+    <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmNotesPerMeasureDigestParser.cs" />
