@@ -230,7 +230,7 @@ namespace Manufaktura.Controls.Silverlight
             Note note = SelectedElement as Note;
             if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
 
-            ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
 
             var positionElement = element as IHasCustomXPosition;
             if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}", 

@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Manufaktura.Controls.Silverlight
 {
@@ -22,6 +23,11 @@ namespace Manufaktura.Controls.Silverlight
         public event EventHandler<MusicalSymbolEventArgs> ElementPlayed;
         private Dictionary<int, string> _stepNames;
         private static Dictionary<string, SoundEffect> _soundEffectsCache;
+        /// <summary>
+        /// Optional Dispatcher object to prevent invalid cross-thread operations. If the player is databound to FrameworkElement,
+        /// set Dispatcher property to FrameworkElement's dispatcher.
+        /// </summary>
+        public Dispatcher Dispatcher { get; set; }
 
         public XnaScorePlayer(Score score) : base(score)
         {
@@ -36,6 +42,36 @@ namespace Manufaktura.Controls.Silverlight
                 _stepNames.Add(i, _stepNames[i + 12]);
             }
             _soundEffectsCache = new Dictionary<string, SoundEffect>();
+        }
+
+        public override void Start()
+        {
+            if (Dispatcher != null && !Dispatcher.CheckAccess())
+            {
+                Dispatcher.BeginInvoke(Start);
+                return;
+            }
+            base.Start();
+        }
+
+        public override void Stop()
+        {
+            if (Dispatcher != null && !Dispatcher.CheckAccess())
+            {
+                Dispatcher.BeginInvoke(Stop);
+                return;
+            }
+            base.Stop();
+        }
+
+        public override void Pause()
+        {
+            if (Dispatcher != null && !Dispatcher.CheckAccess())
+            {
+                Dispatcher.BeginInvoke(Pause);
+                return;
+            }
+            base.Pause();
         }
 
         public override void PlayElement(MusicalSymbol element, Staff staff)
@@ -67,7 +103,7 @@ namespace Manufaktura.Controls.Silverlight
             }
             
             var firstNoteInMeasure = staff.Peek<Note>(element, PeekType.BeginningOfMeasure);
-            effect.Play(element == firstNoteInMeasure ? 0.7f : 0.5f, octaveModifier, 0);
+            effect.Play(element == firstNoteInMeasure ? 0.5f : 0.3f, octaveModifier, 0);
         }
 
         protected void OnElementPlayed(MusicalSymbol symbol)
