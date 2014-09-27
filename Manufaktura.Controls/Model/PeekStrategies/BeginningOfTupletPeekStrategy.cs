@@ -19,9 +19,9 @@ namespace Manufaktura.Controls.Model.PeekStrategies
             for (int i = indexOfCurrentElement; i > 0 && i < Staff.Elements.Count; i--)
             {
                 currentSymbol = Staff.Elements[i];
-                if (currentSymbol is TSymbol)
+                if (currentSymbol is TSymbol && currentSymbol is ICanBeElementOfTuplet)
                 {
-                    matchedSymbol = (TSymbol)currentSymbol;
+                    if (((ICanBeElementOfTuplet)currentSymbol).Tuplet == TupletType.Start) matchedSymbol = (TSymbol)currentSymbol;
                 }
                 if (currentSymbol is ICanBeElementOfTuplet && ((ICanBeElementOfTuplet)currentSymbol).Tuplet == TupletType.Start) break;
             }
