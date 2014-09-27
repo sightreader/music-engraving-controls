@@ -330,19 +330,17 @@ namespace Manufaktura.Controls.Rendering
             }
             else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
             {
+                double arcWidth = renderer.State.CursorPositionX - renderer.State.tieStartPoint.X - 12;
+                double arcHeight = arcWidth * 0.7d;
                 if (element.StemDirection == VerticalDirection.Down)
                 {
-                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 10, renderer.State.tieStartPoint.Y + 6,
-                        renderer.State.CursorPositionX - renderer.State.tieStartPoint.X, 20), 180, 180, element);
-                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 10, renderer.State.tieStartPoint.Y + 7,
-                        renderer.State.CursorPositionX - renderer.State.tieStartPoint.X, 20), 180, 180, element);
+                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 16, renderer.State.tieStartPoint.Y + 6,
+                        arcWidth, arcHeight), 180, 180, new Pen(Color.Black, 1.5), element);
                 }
                 else if (element.StemDirection == VerticalDirection.Up)
                 {
-                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 10, renderer.State.tieStartPoint.Y + 22,
-                        renderer.State.CursorPositionX - renderer.State.tieStartPoint.X, 20), 0, 180, element);
-                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 10, renderer.State.tieStartPoint.Y + 23,
-                        renderer.State.CursorPositionX - renderer.State.tieStartPoint.X, 20), 0, 180, element);
+                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 16, renderer.State.tieStartPoint.Y + 22,
+                        arcWidth, arcHeight), 0, 180, new Pen(Color.Black, 1.5), element);
                 }
                 if (element.TieType == NoteTieType.StopAndStartAnother)
                 {

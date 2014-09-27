@@ -45,6 +45,7 @@ namespace Manufaktura.Controls.Model
             else if (duration == MusicalSymbolDuration.Quarter) musicalCharacter = MusicalCharacters.QuarterRest;
             else if (duration == MusicalSymbolDuration.Eighth) musicalCharacter = MusicalCharacters.EighthRest;
             else if (duration == MusicalSymbolDuration.Sixteenth) musicalCharacter = MusicalCharacters.SixteenthRest;
+            else if (duration == MusicalSymbolDuration.d32nd) musicalCharacter = MusicalCharacters.D32thRest;
         }
 
         #endregion

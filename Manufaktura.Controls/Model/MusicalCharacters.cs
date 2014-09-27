@@ -27,6 +27,7 @@ namespace Manufaktura.Controls.Model
         public const string QuarterRest = "Q";
         public const string EighthRest = "E";
         public const string SixteenthRest = "S";
+        public const string D32thRest = "T";
         public const string WhiteNoteHead = "9";
         public const string BlackNoteHead = "0";
         public const string NoteFlagEighth = "1";
