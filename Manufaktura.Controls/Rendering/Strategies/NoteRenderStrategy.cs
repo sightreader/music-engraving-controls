@@ -171,7 +171,9 @@ namespace Manufaktura.Controls.Rendering
                     //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
-                    if (((element.IsChordElement) || renderer.State.IsManualMode) || (!(element.CustomStemEndPosition)))
+                    if (element.IsChordElement)
+                        renderer.State.currentStemEndPositionY = notePositionY + 18;
+                    else if ((renderer.State.IsManualMode) || (!(element.CustomStemEndPosition)))
                         renderer.State.currentStemEndPositionY = notePositionY + 18 > renderer.State.currentStemEndPositionY ? renderer.State.currentStemEndPositionY : notePositionY + 18;
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
@@ -189,10 +191,10 @@ namespace Manufaktura.Controls.Rendering
                     //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
-                    if ((element.IsChordElement) || renderer.State.IsManualMode
-                        || (!(element.CustomStemEndPosition)))
+                    if (element.IsChordElement)
                         renderer.State.currentStemEndPositionY = notePositionY - 25 < renderer.State.currentStemEndPositionY ? renderer.State.currentStemEndPositionY : notePositionY - 25;
-
+                    else if (renderer.State.IsManualMode || (!(element.CustomStemEndPosition)))
+                        renderer.State.currentStemEndPositionY = notePositionY - 25;
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 6;
                     renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
