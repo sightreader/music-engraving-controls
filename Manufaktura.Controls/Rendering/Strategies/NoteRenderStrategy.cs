@@ -172,13 +172,13 @@ namespace Manufaktura.Controls.Rendering
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
                     if (((element.IsChordElement) || renderer.State.IsManualMode) || (!(element.CustomStemEndPosition)))
-                        renderer.State.currentStemEndPositionY = notePositionY + 18;
+                        renderer.State.currentStemEndPositionY = notePositionY + 18 > renderer.State.currentStemEndPositionY ? renderer.State.currentStemEndPositionY : notePositionY + 18;
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
                     renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
                     if (renderer.State.IsPrintMode) renderer.State.currentStemPositionX += 0.1f;
 
-                    if (element.BeamList.Count > 0 && !(element.IsChordElement && !renderer.State.IsManualMode)) //Nie rysuj ogonków w akordach
+                    if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
                             renderer.DrawLine(new Point(renderer.State.currentStemPositionX, notePositionY - 1 + 28),
                                 new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28), element);
@@ -191,14 +191,14 @@ namespace Manufaktura.Controls.Rendering
                     //so I left default stem drawing routine for chords.
                     if ((element.IsChordElement) || renderer.State.IsManualMode
                         || (!(element.CustomStemEndPosition)))
-                        renderer.State.currentStemEndPositionY = notePositionY - 25;
+                        renderer.State.currentStemEndPositionY = notePositionY - 25 < renderer.State.currentStemEndPositionY ? renderer.State.currentStemEndPositionY : notePositionY - 25;
 
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 6;
                     renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
                     if (renderer.State.IsPrintMode) renderer.State.currentStemPositionX += 0.9f;
 
-                    if (element.BeamList.Count > 0 && !(element.IsChordElement && !renderer.State.IsManualMode))    //Nie rysuj ogonków w akordach
+                    if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
                             renderer.DrawLine(new Point(renderer.State.currentStemPositionX, notePositionY - 7 + 30),
                                 new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28), element);
