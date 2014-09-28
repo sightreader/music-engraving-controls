@@ -19,9 +19,20 @@ namespace Manufaktura.Controls.Audio
         }
 
         public Score Score { get; protected set; }
-        public MusicalSymbol CurrentElement { get; protected set; }
+        private MusicalSymbol _currentElement;
+        public MusicalSymbol CurrentElement
+        {
+            get { return _currentElement; }
+            protected set { _currentElement = value; OnPropertyChanged("CurrentElement"); }
+        }
+
         public IEnumerator<MusicalSymbol> Enumerator { get; protected set; }
-        public int Tempo { get; set; }
+        private int _tempo;
+        public int Tempo
+        {
+            get { return _tempo; }
+            set { _tempo = value; OnPropertyChanged("Tempo"); }
+        }
         public MusicalSymbolDuration TempoBase { get; set; }
 
         public List<Exception> PlaybackExceptions { get; private set; }

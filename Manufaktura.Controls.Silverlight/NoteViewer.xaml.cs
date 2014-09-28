@@ -99,8 +99,20 @@ namespace Manufaktura.Controls.Silverlight
         public static readonly DependencyProperty IsPanoramaModeProperty =
             DependencyProperty.Register("IsPanoramaMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
 
-        
-        
+
+        /// <summary>
+        /// If this property is set to True, the control will calculate it's size to be properly arranged in containers such as ScrollViewer.
+        /// If it is set to False, the control will overlap other controls. Default: True.
+        /// </summary>
+        public bool IsOccupyingSpace
+        {
+            get { return (bool)GetValue(IsOccupyingSpaceProperty); }
+            set { SetValue(IsOccupyingSpaceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsOccupyingSpace.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsOccupyingSpaceProperty =
+            DependencyProperty.Register("IsOccupyingSpace", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
 
         public MusicalSymbol SelectedElement
         {
@@ -176,30 +188,11 @@ namespace Manufaktura.Controls.Silverlight
             Renderer.Render(score);
             if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
             InvalidateMeasure();
-
-            if (IsDebugMode)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Controls on canvas:");
-                sb.AppendLine();
-                foreach (var element in MainCanvas.Children)
-                {
-                    sb.AppendLine(string.Format("{0} X:{1} Y{2}", element.ToString(), Canvas.GetLeft(element), Canvas.GetTop(element)));
-                }
-                MessageBox.Show(sb.ToString());
-
-                sb.Clear();
-                foreach (Exception ex in Renderer.Exceptions)
-                {
-                    sb.AppendLine(ex.ToString());
-                }
-                if (Renderer.Exceptions.Count > 0) MessageBox.Show(sb.ToString());
-            }
         }
 
         protected override Size MeasureOverride(Size availableSize)
         {
-            if (Renderer == null) return base.MeasureOverride(availableSize);
+            if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
             double width = availableSize.Width;
             if (Renderer.State.CurrentStaff != null)
             {
