@@ -65,7 +65,7 @@ namespace Manufaktura.Controls.Audio
                 // Determine tuplet state
                 //
                 NoteOrRest noteOrRest = CurrentElement as NoteOrRest;
-                if (noteOrRest != null)
+                if (noteOrRest != null && noteOrRest.Voice < 2)
                 {
                     if (noteOrRest.Tuplet == TupletType.Start)
                     {

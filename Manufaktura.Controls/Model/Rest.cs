@@ -12,7 +12,6 @@ namespace Manufaktura.Controls.Model
         protected int multiMeasure = 0;
         protected int currentTempo = 120;
         protected bool hasFermataSign = false;
-        protected int voice = 1;
 
         #endregion
 
@@ -21,7 +20,6 @@ namespace Manufaktura.Controls.Model
         public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; } }
         public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
-        public int Voice { get { return voice; } set { voice = value; } }
 
         #endregion
 

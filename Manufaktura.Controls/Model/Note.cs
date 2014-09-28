@@ -33,7 +33,6 @@ namespace Manufaktura.Controls.Model
         protected Slur slur;
         protected bool hasFermataSign = false;
         protected int tremoloLevel = 0; //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
-        protected int voice = 1;
         protected int dynamics = 80;
         protected Point stemEndLocation = new Point();
 
@@ -74,7 +73,6 @@ namespace Manufaktura.Controls.Model
         public int Octave { get { return octave; } }
         public int Alter { get { return alter; } }
         public int MidiPitch { get { return midiPitch; } }
-        public int Voice { get { return voice; } set { voice = value; } }
         public int Dynamics { get { return dynamics; } set { dynamics = value; } }
 
 
