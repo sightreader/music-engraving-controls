@@ -61,16 +61,38 @@ namespace Manufaktura.Controls.Audio
                 }
                 CurrentElement = Enumerator.Current;
 
+                //
+                // Determine tuplet state
+                //
+                NoteOrRest noteOrRest = CurrentElement as NoteOrRest;
+                if (noteOrRest != null)
+                {
+                    if (noteOrRest.Tuplet == TupletType.Start)
+                    {
+                        NoteOrRest tupletStart = staff.Peek<NoteOrRest>(noteOrRest, PeekType.BeginningOfTuplet);
+                        NoteOrRest tupletEnd = staff.Peek<NoteOrRest>(noteOrRest, PeekType.EndOfTuplet);
+                        if (tupletStart != null && tupletEnd != null)
+                        {
+                            tupletState = new Tuplet();
+                            tupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
+                                staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsChordElement)).Count() + 1;
+                        }
+                    }
+                }
+
+                //
+                // Treatment of grace notes and chord elements
+                //
                 Note note = CurrentElement as Note;
                 if (note != null)
                 {
-                    if (note.Voice > 1 || note.IsGraceNote)
+                    if (note.Voice > 1 || note.IsGraceNote) //Skip note if it's a grace note or it's in another voice
                     {
                         PlayNextElement(null);
                         return;
                     }
 
-                    Note nextNote = staff.Peek<Note>(note, PeekType.NextElement);
+                    Note nextNote = staff.Peek<Note>(note, PeekType.NextElement);   //If next note is chord element, play all notes in the chord simultaneously
                     if (nextNote != null && nextNote.IsChordElement)
                     {
                         PlayElement(CurrentElement, staff);
@@ -78,22 +100,10 @@ namespace Manufaktura.Controls.Audio
                         return;
                     }
                 }
-                NoteOrRest noteOrRest = CurrentElement as NoteOrRest;
-                if (noteOrRest != null)
-                {
-                    if (noteOrRest.Tuplet == TupletType.Start)
-                    {
-                        NoteOrRest tupletStart = staff.Peek<NoteOrRest>(note, PeekType.BeginningOfTuplet);
-                        NoteOrRest tupletEnd = staff.Peek<NoteOrRest>(note, PeekType.EndOfTuplet);
-                        if (tupletStart != null && tupletEnd != null)
-                        {
-                            tupletState = new Tuplet();
-                            tupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
-                                staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Count() + 1;
-                        }
-                    }
-                }
 
+                //
+                // Determine duration == next note start time
+                //
                 IHasDuration durationElement = CurrentElement as IHasDuration;
                 if (durationElement != null)
                 {
