@@ -11,7 +11,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
     {
         public Dictionary<FontStyles, HtmlFontInfo> Fonts { get; private set; }
 
-        public HtmlCanvasScoreRenderer(StringBuilder stringBuilder, Dictionary<FontStyles, HtmlFontInfo> fonts)
+        public HtmlCanvasScoreRenderer(StringBuilder stringBuilder, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName = null)
             : base(stringBuilder)
         {
             Fonts = fonts;
@@ -25,9 +25,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 stringBuilder.AppendLine("}");
             }
             stringBuilder.AppendLine("</style>");
-            stringBuilder.AppendLine("<canvas id=\"myCanvas\" width=\"578\" height=\"200\"></canvas>");
+            stringBuilder.AppendLine(string.Format("<canvas id=\"{0}\" width=\"778\" height=\"200\"></canvas>", string.IsNullOrWhiteSpace(canvasName) ? "myCanvas" : canvasName));
             stringBuilder.AppendLine("<script>");
-            stringBuilder.AppendLine("var canvas = document.getElementById('myCanvas');");
+            stringBuilder.AppendLine(string.Format("var canvas = document.getElementById('{0}');", string.IsNullOrWhiteSpace(canvasName) ? "myCanvas" : canvasName));
             stringBuilder.AppendLine("var context = canvas.getContext('2d');");
         }
 
@@ -36,15 +36,16 @@ namespace Manufaktura.Controls.Rendering.Implementations
             if (!Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
             double locationY = location.Y + 25d;
+            double locationX = location.X + 3d;
             Canvas.AppendLine(string.Format("context.font = '{0}pt {1}';", Fonts[fontStyle].Size.ToString(CultureInfo.InvariantCulture), Fonts[fontStyle].Name));
-            Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, location.X.ToString(CultureInfo.InvariantCulture), locationY.ToString(CultureInfo.InvariantCulture)));
+            Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, locationX.ToString(CultureInfo.InvariantCulture), locationY.ToString(CultureInfo.InvariantCulture)));
         }
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, Model.MusicalSymbol owner)
         {
             Canvas.AppendLine("context.beginPath();");
-            Canvas.AppendLine(string.Format("context.moveTo({0}, {1});", startPoint.X, startPoint.Y));
-            Canvas.AppendLine(string.Format("context.lineTo({0}, {1});", endPoint.X, endPoint.Y));
+            Canvas.AppendLine(string.Format("context.moveTo({0}, {1});", startPoint.X.ToString(CultureInfo.InvariantCulture), startPoint.Y.ToString(CultureInfo.InvariantCulture)));
+            Canvas.AppendLine(string.Format("context.lineTo({0}, {1});", endPoint.X.ToString(CultureInfo.InvariantCulture), endPoint.Y.ToString(CultureInfo.InvariantCulture)));
             Canvas.AppendLine("context.stroke();");
         }
 
