@@ -49,13 +49,11 @@
     <Compile Include="Predicates\OrPredicate.cs" />
     <Compile Include="Predicates\SqlPredicate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AdoNetRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\DbRepository.cs" />
     <Compile Include="SortModes\OrderByColumnSortMode.cs" />
     <Compile Include="SortModes\SortMode.cs" />
     <Compile Include="SpecialColumns\DistanceSpecialColumn.cs" />
     <Compile Include="SpecialColumns\SpecialColumn.cs" />
-    <Compile Include="SqlBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
