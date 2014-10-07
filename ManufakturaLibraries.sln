@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Test.Web", "Manufaktura.Controls.Test.Web\Manufaktura.Controls.Test.Web.csproj", "{60005E66-A113-45E1-8200-1DB4E37244FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Orm", "Manufaktura.Orm\Manufaktura.Orm.csproj", "{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Orm.MySql", "Manufaktura.Orm.MySql\Manufaktura.Orm.MySql.csproj", "{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +151,22 @@ Global
 		{60005E66-A113-45E1-8200-1DB4E37244FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60005E66-A113-45E1-8200-1DB4E37244FD}.Release|ARM.ActiveCfg = Release|Any CPU
 		{60005E66-A113-45E1-8200-1DB4E37244FD}.Release|x86.ActiveCfg = Release|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}.Release|x86.ActiveCfg = Release|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
