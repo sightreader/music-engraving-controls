@@ -11,32 +11,37 @@ using Manufaktura.Orm.Builder;
 
 namespace Manufaktura.Orm
 {
-    public abstract class DbRepository<TConnection, TAdapter> : IDisposable
-        where TConnection : DbConnection, new()
-        where TAdapter : DbDataAdapter, new()
-    {
-        public DbConnection Connection { get; protected set; }
-        protected abstract DbConnection CreateConnection(string connectionString);
-        public CommandBuilder DefaultCommandBuilder { get; protected set; }
+    public class DbRepository : IDisposable
+    {       
+        public DialectProvider CommandBuilder { get; protected set; }
+        private bool isConnectionOpen;
 
-        protected DbRepository(CommandBuilder defaultCommandBuilder, string connectionString)
+        public DbRepository(DialectProvider commandBuilder)
         {
-            DefaultCommandBuilder = defaultCommandBuilder;
-            Connection = CreateConnection(connectionString);
+            CommandBuilder = commandBuilder;
+        }
+
+        public DbRepository(string commandBuilderClassName, string commandBuilderAssembly, string connectionString)
+        {
+            throw new NotImplementedException();    //Tu będzie automatyczne tworzenie command buildera w oparciu o dane z pliku konfiguracyjnego
         }
 
         public List<TEntity> LoadAll<TEntity>() where TEntity : Entity, new()
         {
-            return Load<TEntity>(DefaultCommandBuilder);
+            return Load<TEntity>(QueryBuilder.Create());
         }
 
-        public List<TEntity> Load<TEntity>(CommandBuilder builder) where TEntity : Entity, new()
+        public List<TEntity> Load<TEntity>(QueryBuilder builder) where TEntity : Entity, new()
         {
-            DbCommand command = Connection.CreateCommand();
-            Connection.Open();
-            command.Connection = Connection;
-            TAdapter adapter = new TAdapter();
-            adapter.SelectCommand = builder.GetSelectCommand<TEntity>();
+            DbCommand command = CommandBuilder.Connection.CreateCommand();
+            if (!isConnectionOpen)
+            {
+                CommandBuilder.Connection.Open();
+                isConnectionOpen = true;
+            }
+            command.Connection = CommandBuilder.Connection;
+            DbDataAdapter adapter = CommandBuilder.CreateDataAdapter();
+            adapter.SelectCommand = CommandBuilder.GetSelectCommand<TEntity>(builder);
             DataTable table = new DataTable();
             adapter.Fill(table);
             List<TEntity> results = new List<TEntity>();
@@ -47,12 +52,15 @@ namespace Manufaktura.Orm
             return results;
         }
 
-
         public Entity Save(Entity entity)
         {
-            DbCommand command = Connection.CreateCommand();
-            Connection.Open();
-            command = entity.IsNew ? DefaultCommandBuilder.GetInsertCommand(entity) : DefaultCommandBuilder.GetUpdateCommand(entity);
+            DbCommand command = CommandBuilder.Connection.CreateCommand();
+            if (!isConnectionOpen)
+            {
+                CommandBuilder.Connection.Open();
+                isConnectionOpen = true;
+            }
+            command = entity.IsNew ? CommandBuilder.GetInsertCommand(entity) : CommandBuilder.GetUpdateCommand(entity);
             command.ExecuteNonQuery();
             entity.IsNew = false;
             return entity;
@@ -60,6 +68,7 @@ namespace Manufaktura.Orm
 
         public void Dispose()
         {
+            CommandBuilder.Connection.Close();
         }
     }
 

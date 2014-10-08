@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\CommandBuilder.cs" />
+    <Compile Include="Builder\DialectProvider.cs" />
+    <Compile Include="Builder\QueryBuilder.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\MappingAttribute.cs" />
     <Compile Include="Predicates\AndPredicate.cs" />

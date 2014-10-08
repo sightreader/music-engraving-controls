@@ -16,9 +16,24 @@ namespace Manufaktura.Orm.Predicates
             Predicates = predicates;
         }
 
-        public override string GetSql()
+        public override string GetSql(ref int parameterCounter)
         {
-            return string.Join(LogicOperator, Predicates.Where(p => p != null).Select(p => string.Format(" ({0}) ", p.GetSql())));
+            List<string> predicates = new List<string>();
+            foreach (var predicate in Predicates.Where(p => p != null)) 
+            {
+                predicates.Add(predicate.GetSql(ref parameterCounter));
+            }
+            return string.Join(LogicOperator, predicates);
+        }
+
+        public override object[] GetParameterValues()
+        {
+            List<object> parameterValues = new List<object>();
+            foreach (var predicate in Predicates.Where(p => p != null))
+            {
+                parameterValues.AddRange(predicate.GetParameterValues());
+            }
+            return parameterValues.ToArray();
         }
     }
 }

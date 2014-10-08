@@ -9,10 +9,12 @@ namespace Manufaktura.Orm
 {
     public abstract class SqlPredicate
     {
-        public string ParameterName { get; protected set; }
-        public object ParameterValue { get; protected set; }
+        public abstract string GetSql(ref int parameterCounter);
 
-        public abstract string GetSql();
+        public virtual object[] GetParameterValues()
+        {
+            return new object[] {};
+        }
 
         protected SqlPredicate()
         {

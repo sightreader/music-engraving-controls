@@ -8,26 +8,89 @@ using Manufaktura.Orm.Model;
 using System.Text;
 using System.Reflection;
 using Manufaktura.Orm.SortModes;
+using MySql.Data.MySqlClient;
 
 namespace Manufaktura.Orm.Builder
 {
-    public class MySqlCommandBuilder : CommandBuilder
+    public class MySqlDialectProvider : DialectProvider
     {
-        protected MySqlCommandBuilder(DbConnection connection)
-            : base(connection)
+        public MySqlDialectProvider(MySqlConnection connection) : base(connection)
         {
 
         }
 
-        public MySqlCommandBuilder Create(DbConnection connection)
+        public MySqlDialectProvider(string connectionString) : base(new MySqlConnection(connectionString))
         {
-            return new MySqlCommandBuilder(connection);
+
         }
 
-        public override DbCommand GetSelectCommand<TEntity>()
+        public override DbDataAdapter CreateDataAdapter()
         {
+            return new MySqlDataAdapter();
+        }
+
+        public override DbCommand GetSelectCommand<TEntity>(QueryBuilder builder)
+        {
+            int parameterCounter = 0;
+            MappingAttribute typeAttribute = typeof(TEntity).GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
+            if (typeAttribute == null) throw new Exception(string.Format("Nazwa tabeli nie została określona dla typu {0}.", typeof(TEntity).Name));
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT ");
+            bool first = true;
+            foreach (PropertyInfo property in typeof(TEntity).GetProperties())
+            {
+                MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
+                if (attribute == null) continue;
+                if (attribute.IsSpecialColumn) continue;    //Ta kolumna będzie dodana przez klasę SpecialColumn
+                if (!first) sb.Append(", ");
+                sb.Append(string.Format("{0}", attribute.Name));
+                first = false;
+            }
+            foreach (SpecialColumn specialColumn in builder.SpecialColumns)
+            {
+                if (!first) sb.Append(", ");
+                sb.Append(string.Format("{0} AS {1}", specialColumn.GetColumnStatement(), specialColumn.Alias));
+                first = false;
+            }
+            sb.Append(string.Format(" FROM {0}", typeAttribute.Name));
+
+            if (builder.WhereStatement != null)
+            {
+                string sql = builder.WhereStatement.GetSql(ref parameterCounter);   //TODO: Parametry!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                if (!string.IsNullOrWhiteSpace(sql))
+                {
+                    sb.Append(" WHERE ");
+                    sb.Append(sql);
+                }
+            }
+            if (builder.SortModes.Count > 0)
+            {
+                sb.Append(" ORDER BY ");
+                foreach (SortMode sortMode in builder.SortModes)
+                {
+                    sb.Append(sortMode.GetOrderByStatement());
+                }
+            }
+
+            if (builder.Limit > 0)
+            {
+                sb.Append(" LIMIT ");
+                if (builder.Offset > 0) sb.Append(string.Format(" {0},", builder.Offset));
+                sb.Append(string.Format(" {0}", builder.Limit));
+            }
+
             DbCommand command = Connection.CreateCommand();
-            command.CommandText = GetSelectCommandText<TEntity>();
+            command.CommandText = sb.ToString();
+            if (builder.WhereStatement != null)
+            {
+                int paramNumber = 0;
+                foreach (var parameter in builder.WhereStatement.GetParameterValues())
+                {
+                    command.Parameters.Add(new MySqlParameter(string.Format("@P{0}", paramNumber), parameter));
+                    paramNumber++;
+                }
+            }
             return command;
         }
 
@@ -110,58 +173,6 @@ namespace Manufaktura.Orm.Builder
             throw new NotImplementedException();
         }
 
-        private string GetSelectCommandText<TEntity>()
-        {
-            MappingAttribute typeAttribute = typeof(TEntity).GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
-            if (typeAttribute == null) throw new Exception(string.Format("Nazwa tabeli nie została określona dla typu {0}.", typeof(TEntity).Name));
-
-            StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT ");
-            bool first = true;
-            foreach (PropertyInfo property in typeof(TEntity).GetProperties())
-            {
-                MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
-                if (attribute == null) continue;
-                if (attribute.IsSpecialColumn) continue;    //Ta kolumna będzie dodana przez klasę SpecialColumn
-                if (!first) sb.Append(", ");
-                sb.Append(string.Format("{0}", attribute.Name));
-                first = false;
-            }
-            foreach (SpecialColumn specialColumn in SpecialColumns)
-            {
-                if (!first) sb.Append(", ");
-                sb.Append(string.Format("{0} AS {1}", specialColumn.GetColumnStatement(), specialColumn.Alias));
-                first = false;
-            }
-            sb.Append(string.Format(" FROM {0}", typeAttribute.Name));
-
-            if (WhereStatement != null)
-            {
-                string sql = WhereStatement.GetSql();   //TODO: Parametry!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                if (!string.IsNullOrWhiteSpace(sql))
-                {
-                    sb.Append(" WHERE ");
-                    sb.Append(sql);
-                }
-            }
-            if (SortModes.Count > 0)
-            {
-                sb.Append(" ORDER BY ");
-                foreach (SortMode sortMode in SortModes)
-                {
-                    sb.Append(sortMode.GetOrderByStatement());
-                }
-            }
-
-            if (Limit > 0)
-            {
-                sb.Append(" LIMIT ");
-                if (Offset > 0) sb.Append(string.Format(" {0},", Offset));
-                sb.Append(string.Format(" {0}", Limit));
-            }
-            return sb.ToString();
-        }
-
         [Obsolete("Używać parametrów")]
         private string FormatValue(object value)
         {
@@ -169,5 +180,7 @@ namespace Manufaktura.Orm.Builder
             if (value is Guid) return string.Format("'{0}'", value);
             else return value.ToString();
         }
+
+        
     }
 }
