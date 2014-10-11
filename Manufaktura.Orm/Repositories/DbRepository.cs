@@ -15,17 +15,22 @@ namespace Manufaktura.Orm
 {
     public class DbRepository : IDisposable
     {       
-        public DialectProvider CommandBuilder { get; protected set; }
+        public DialectProvider Provider { get; protected set; }
         private bool isConnectionOpen;
 
-        public DbRepository(DialectProvider commandBuilder)
+        public DbRepository(DialectProvider provider)
         {
-            CommandBuilder = commandBuilder;
+            Provider = provider;
         }
 
-        public DbRepository(string commandBuilderClassName, string commandBuilderAssembly, string connectionString)
+        public DbRepository(string providerClassName, string providerAssemblyFile, string connectionString)
         {
-            throw new NotImplementedException();    //Tu będzie automatyczne tworzenie command buildera w oparciu o dane z pliku konfiguracyjnego
+            Assembly assembly = Assembly.LoadFrom(providerAssemblyFile);
+            Type providerType = assembly.GetType(providerClassName);
+            if (providerType == null) 
+                throw new Exception(string.Format("Failed to create dialect provider type {0}. Make sure that namespace is correct.", providerClassName));
+            Provider = Activator.CreateInstance(providerType, connectionString) as DialectProvider;
+            if (Provider == null) throw new Exception(string.Format("Failed to create dialect provider {0}.", providerClassName));
         }
 
         public static MappingAttribute FindIdentity<TEntity>() where TEntity : Entity, new()
@@ -52,15 +57,15 @@ namespace Manufaktura.Orm
 
         public List<TEntity> Load<TEntity>(QueryBuilder builder) where TEntity : Entity, new()
         {
-            DbCommand command = CommandBuilder.Connection.CreateCommand();
+            DbCommand command = Provider.Connection.CreateCommand();
             if (!isConnectionOpen)
             {
-                CommandBuilder.Connection.Open();
+                Provider.Connection.Open();
                 isConnectionOpen = true;
             }
-            command.Connection = CommandBuilder.Connection;
-            DbDataAdapter adapter = CommandBuilder.CreateDataAdapter();
-            adapter.SelectCommand = CommandBuilder.GetSelectCommand<TEntity>(builder);
+            command.Connection = Provider.Connection;
+            DbDataAdapter adapter = Provider.CreateDataAdapter();
+            adapter.SelectCommand = Provider.GetSelectCommand<TEntity>(builder);
             DataTable table = new DataTable();
             adapter.Fill(table);
             List<TEntity> results = new List<TEntity>();
@@ -73,13 +78,13 @@ namespace Manufaktura.Orm
 
         public Entity Save(Entity entity)
         {
-            DbCommand command = CommandBuilder.Connection.CreateCommand();
+            DbCommand command = Provider.Connection.CreateCommand();
             if (!isConnectionOpen)
             {
-                CommandBuilder.Connection.Open();
+                Provider.Connection.Open();
                 isConnectionOpen = true;
             }
-            command = entity.IsNew ? CommandBuilder.GetInsertCommand(entity) : CommandBuilder.GetUpdateCommand(entity);
+            command = entity.IsNew ? Provider.GetInsertCommand(entity) : Provider.GetUpdateCommand(entity);
             command.ExecuteNonQuery();
             entity.IsNew = false;
             return entity;
@@ -87,7 +92,7 @@ namespace Manufaktura.Orm
 
         public void Dispose()
         {
-            CommandBuilder.Connection.Close();
+            Provider.Connection.Close();
         }
     }
 

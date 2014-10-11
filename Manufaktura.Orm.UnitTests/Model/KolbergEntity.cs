@@ -10,10 +10,15 @@ namespace Manufaktura.Orm.UnitTests.Model
 {
     [KnownType(typeof(Melody))]
     [DataContract]
-    public class KolbergEntity : Entity
+    public abstract class KolbergEntity : Entity
     {
         [DataMember]
         [Mapping("Id", IsPrimaryKey = true)]
         public Guid Id { get; set; }
+
+        protected KolbergEntity()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }
