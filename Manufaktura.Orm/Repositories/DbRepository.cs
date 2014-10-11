@@ -28,7 +28,7 @@ namespace Manufaktura.Orm
             throw new NotImplementedException();    //Tu będzie automatyczne tworzenie command buildera w oparciu o dane z pliku konfiguracyjnego
         }
 
-        private MappingAttribute FindIdentity<TEntity>() where TEntity : Entity, new()
+        public static MappingAttribute FindIdentity<TEntity>() where TEntity : Entity, new()
         {
             var properties = typeof(TEntity).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             if (properties == null) return null;
