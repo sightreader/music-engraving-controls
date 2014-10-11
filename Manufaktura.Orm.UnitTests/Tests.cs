@@ -21,7 +21,7 @@ namespace Manufaktura.Orm.UnitTests
             }
             Debug.Assert(melodies != null);
             melodies = repository.Load<Melody>(QueryBuilder.Create().SetWindow(0, 10).SetWhereStatement(
-                new OrPredicate(new LikePredicate("Lyrics", "%dziwce%"), new LikePredicate("Lyrics", "%kurwie%"))));
+                QB.Or(QB.Like("Lyrics", "%dziwce%"), QB.Like("Lyrics", "%kurwie%"))));
         }
     }
 }

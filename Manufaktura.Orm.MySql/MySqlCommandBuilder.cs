@@ -57,7 +57,7 @@ namespace Manufaktura.Orm.Builder
 
             if (builder.WhereStatement != null)
             {
-                string sql = builder.WhereStatement.GetSql(ref parameterCounter);   //TODO: Parametry!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                string sql = builder.WhereStatement.GetSql(ref parameterCounter);
                 if (!string.IsNullOrWhiteSpace(sql))
                 {
                     sb.Append(" WHERE ");

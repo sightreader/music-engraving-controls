@@ -3,27 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Manufaktura.Orm
+namespace Manufaktura.Orm.Predicates
 {
-    public class LikePredicate : SqlPredicate
+    public class LikePredicate : ConditionPredicate
     {
-        public string ParameterName { get; protected set; }
-        public object ParameterValue { get; protected set; }
-
-        public LikePredicate(string parameterName, object parameterValue) 
+        public override string OperatorText
         {
-            ParameterName = parameterName;
-            ParameterValue = parameterValue;
+            get { return "LIKE"; }
         }
 
-        public override string GetSql(ref int parameterCounter)
+        public LikePredicate(string parameterName, object parameterValue) : base(parameterName, parameterValue)
         {
-            return string.Format (" {0} LIKE @P{1} ", ParameterName, parameterCounter++);
-        }
-
-        public override object[] GetParameterValues()
-        {
-            return new[] { ParameterValue };
         }
     }
 }

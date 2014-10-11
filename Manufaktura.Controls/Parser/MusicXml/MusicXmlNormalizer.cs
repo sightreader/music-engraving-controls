@@ -16,8 +16,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
         public override XDocument Parse(XDocument source)   //TODO: Przetestować dokładnie i zrefaktorować
         {
             if (!NormalizeSpaceBeforeFirstNotesOfMeasures) return source;
-            //Workaround - pomiń na razie te ze znakiem repetycji, bo się źle rysują:
-            if (source.Descendants(XName.Get("repeat")).Any()) return source;
+            if (source.Descendants(XName.Get("repeat")).Any()) return source; //Workaround - pomiń na razie te ze znakiem repetycji, bo się źle rysują
+            if (source.Descendants(XName.Get("time")).Count() > 1) return source; //Workaround - pomiń na razie te ze zmianami metrum, bo się źle rysują
 
             foreach (XElement staffNode in source.Descendants(XName.Get("part")))
             {
@@ -84,7 +84,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         currentValue = UsefulMath.TryParse(widthAttribute.Value);
                         if (!currentValue.HasValue) continue;
                         if (widthAttribute != null) widthAttribute.Value = (currentValue.Value - difference).ToString(CultureInfo.InvariantCulture);
-                        
+
                     }
                 }
             }
