@@ -67,10 +67,7 @@ namespace Manufaktura.Orm.Builder
             if (builder.SortModes.Count > 0)
             {
                 sb.Append(" ORDER BY ");
-                foreach (SortMode sortMode in builder.SortModes)
-                {
-                    sb.Append(sortMode.GetOrderByStatement());
-                }
+                sb.Append(string.Join(", ", builder.SortModes.Select(sm => sm.GetOrderByStatement())));
             }
 
             if (builder.Limit > 0)
