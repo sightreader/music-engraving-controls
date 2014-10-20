@@ -16,7 +16,7 @@ namespace Manufaktura.Orm
     public class DbRepository : IDisposable
     {       
         public DialectProvider Provider { get; protected set; }
-        private bool isConnectionOpen;
+        private bool _isConnectionOpen;
 
         public DbRepository(DialectProvider provider)
         {
@@ -58,10 +58,10 @@ namespace Manufaktura.Orm
         public List<TEntity> Load<TEntity>(QueryBuilder builder) where TEntity : Entity, new()
         {
             DbCommand command = Provider.Connection.CreateCommand();
-            if (!isConnectionOpen)
+            if (!_isConnectionOpen)
             {
                 Provider.Connection.Open();
-                isConnectionOpen = true;
+                _isConnectionOpen = true;
             }
             command.Connection = Provider.Connection;
             DbDataAdapter adapter = Provider.CreateDataAdapter();
@@ -79,10 +79,10 @@ namespace Manufaktura.Orm
         public Entity Save(Entity entity)
         {
             DbCommand command = Provider.Connection.CreateCommand();
-            if (!isConnectionOpen)
+            if (!_isConnectionOpen)
             {
                 Provider.Connection.Open();
-                isConnectionOpen = true;
+                _isConnectionOpen = true;
             }
             command = entity.IsNew ? Provider.GetInsertCommand(entity) : Provider.GetUpdateCommand(entity);
             command.ExecuteNonQuery();
@@ -92,7 +92,8 @@ namespace Manufaktura.Orm
 
         public void Dispose()
         {
-            Provider.Connection.Close();
+            if (Provider == null) return;
+            Provider.Dispose();
         }
     }
 
