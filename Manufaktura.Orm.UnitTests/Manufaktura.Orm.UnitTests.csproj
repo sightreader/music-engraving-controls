@@ -66,6 +66,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
+      <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>
+      <Name>Manufaktura.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Orm.MySql\Manufaktura.Orm.MySql.csproj">
       <Project>{a1e0439b-a7ea-4f93-98b1-b33f8f0277d9}</Project>
       <Name>Manufaktura.Orm.MySql</Name>

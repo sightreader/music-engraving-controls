@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Orm.SortModes;
 using Manufaktura.Orm.SpecialColumns;
-using Manufaktura.Orm.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +9,7 @@ using System.Web;
 using Manufaktura.Orm.Builder;
 using System.Reflection;
 using Manufaktura.Orm.Predicates;
+using Manufaktura.Model;
 
 namespace Manufaktura.Orm
 {
@@ -71,7 +71,7 @@ namespace Manufaktura.Orm
             List<TEntity> results = new List<TEntity>();
             foreach (DataRow row in table.Rows)
             {
-                results.Add(Entity.FromRow<TEntity>(row));
+                results.Add(FromRow<TEntity>(row));
             }
             return results;
         }
@@ -94,6 +94,37 @@ namespace Manufaktura.Orm
         {
             if (Provider == null) return;
             Provider.Dispose();
+        }
+
+        public static T FromRow<T>(DataRow row) where T : Entity, new()
+        {
+            T entity = new T();
+            entity.IsNew = false;
+            foreach (DataColumn column in row.Table.Columns)
+            {
+                SetPropertyFromCell(entity, column.ColumnName, row[column.ColumnName]);
+            }
+            return entity;
+        }
+
+        private static void SetPropertyFromCell(Entity entity, string columnName, object cellValue)
+        {
+            if (entity == null) throw new ArgumentNullException("entity");
+
+            var properties = entity.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            foreach (var property in properties)
+            {
+                MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).Cast<MappingAttribute>().FirstOrDefault();
+                if (attribute == null) continue;
+                if (attribute.Name == columnName)
+                {
+                    if (property.PropertyType == typeof(bool) && cellValue is Int16)
+                        cellValue = (Int16)cellValue != 0;
+                    if (cellValue == DBNull.Value) cellValue = null;
+
+                    property.SetValue(entity, cellValue, null);
+                }
+            }
         }
     }
 

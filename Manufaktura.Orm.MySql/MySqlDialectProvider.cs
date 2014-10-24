@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Data.Common;
 using Manufaktura.Orm.SpecialColumns;
-using Manufaktura.Orm.Model;
 using System.Text;
 using System.Reflection;
 using Manufaktura.Orm.SortModes;
 using MySql.Data.MySqlClient;
+using Manufaktura.Model;
 
 namespace Manufaktura.Orm.Builder
 {

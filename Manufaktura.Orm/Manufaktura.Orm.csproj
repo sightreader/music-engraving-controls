@@ -42,8 +42,6 @@
   <ItemGroup>
     <Compile Include="Builder\DialectProvider.cs" />
     <Compile Include="Builder\QueryBuilder.cs" />
-    <Compile Include="Model\Entity.cs" />
-    <Compile Include="Model\MappingAttribute.cs" />
     <Compile Include="Predicates\AndPredicate.cs" />
     <Compile Include="Predicates\ConditionPredicate.cs" />
     <Compile Include="Predicates\EqualsPredicate.cs" />
@@ -62,6 +60,12 @@
     <Compile Include="SortModes\SortMode.cs" />
     <Compile Include="SpecialColumns\DistanceSpecialColumn.cs" />
     <Compile Include="SpecialColumns\SpecialColumn.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
+      <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>
+      <Name>Manufaktura.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

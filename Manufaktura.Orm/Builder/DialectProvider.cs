@@ -1,11 +1,11 @@
 ﻿using Manufaktura.Orm.SortModes;
 using Manufaktura.Orm.SpecialColumns;
-using Manufaktura.Orm.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Web;
+using Manufaktura.Model;
 
 namespace Manufaktura.Orm.Builder
 {

@@ -1,4 +1,4 @@
-﻿using Manufaktura.Orm.Model;
+﻿using Manufaktura.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
