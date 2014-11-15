@@ -11,20 +11,24 @@ namespace Manufaktura.Controls.Rendering.Implementations
     {
         public Dictionary<FontStyles, HtmlFontInfo> Fonts { get; private set; }
 
-        public HtmlCanvasScoreRenderer(StringBuilder stringBuilder, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName = null)
+        public HtmlCanvasScoreRenderer(StringBuilder stringBuilder, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName = null, bool addFontFaceDeclaration = true)
             : base(stringBuilder)
         {
             Fonts = fonts;
 
-            stringBuilder.AppendLine("<style>");
-            foreach (var font in Fonts.Values)
+            if (addFontFaceDeclaration)
             {
-                stringBuilder.AppendLine("@font-face {");
-                stringBuilder.AppendLine(string.Format("font-family: '{0}';", font.Name));
-                stringBuilder.AppendLine(string.Format("src: local('{0}');", font.Uri)); 
-                stringBuilder.AppendLine("}");
+                stringBuilder.AppendLine("<style type=\"text/css\">");
+                foreach (var font in Fonts.Values)
+                {
+                    stringBuilder.AppendLine("@font-face {");
+                    stringBuilder.AppendLine(string.Format("font-family: '{0}';", font.Name));
+                    stringBuilder.AppendLine(string.Format("src: url('{0}') format('{1}');", font.Uri, GetFormatFromUri(font.Uri)));
+                    stringBuilder.AppendLine("}");
+                }
+                stringBuilder.AppendLine("</style>");
             }
-            stringBuilder.AppendLine("</style>");
+
             stringBuilder.AppendLine(string.Format("<canvas id=\"{0}\" width=\"778\" height=\"200\"></canvas>", string.IsNullOrWhiteSpace(canvasName) ? "myCanvas" : canvasName));
             stringBuilder.AppendLine("<script>");
             stringBuilder.AppendLine(string.Format("var canvas = document.getElementById('{0}');", string.IsNullOrWhiteSpace(canvasName) ? "myCanvas" : canvasName));
@@ -55,6 +59,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, Model.MusicalSymbol owner)
         {
+        }
+
+        private string GetFormatFromUri(string uri)
+        {
+            uri = uri.ToLower();
+            if (uri.EndsWith("ttf")) return "truetype";
+            if (uri.EndsWith("woff")) return "woff";
+            return null;
         }
 
         public struct HtmlFontInfo
