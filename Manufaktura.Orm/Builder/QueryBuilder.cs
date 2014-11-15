@@ -13,9 +13,10 @@ namespace Manufaktura.Orm.Builder
         public int Offset { get; protected set; }
         public int Limit { get; protected set; }
         public SqlPredicate WhereStatement { get; protected set; }
-        public List<string> Columns { get; protected set; }
+        public IEnumerable<string> Columns { get; protected set; }
         public List<SpecialColumn> SpecialColumns { get; protected set; }
         public List<SortMode> SortModes { get; protected set; }
+        public bool AreColumnsSpecified { get; protected set; }
 
         protected QueryBuilder()
         {
@@ -51,6 +52,14 @@ namespace Manufaktura.Orm.Builder
         public QueryBuilder AddSortMode(SortMode sortMode)
         {
             SortModes.Add(sortMode);
+            return this;
+        }
+
+        public QueryBuilder SpecifyColumns(IEnumerable<string> columns)
+        {
+            if (columns == null) columns = new List<string>();
+            Columns = columns;
+            AreColumnsSpecified = true;
             return this;
         }
     }

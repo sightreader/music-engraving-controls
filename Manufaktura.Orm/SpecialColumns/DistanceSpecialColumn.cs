@@ -12,16 +12,8 @@ namespace Manufaktura.Orm.SpecialColumns
         public string CoordinateColumnPrefix { get; private set; }
         public int[] Coordinates { get; private set; }
 
-        private string _alias;
-
-        public override string Alias
+        public DistanceSpecialColumn(string alias, string coordinateColumnPrefix, int[] coordinates) : base(alias)
         {
-            get { return _alias; }
-        }
-
-        public DistanceSpecialColumn(string alias, string coordinateColumnPrefix, int[] coordinates)
-        {
-            _alias = alias;
             CoordinateColumnPrefix = coordinateColumnPrefix;
             Coordinates = coordinates;
         }

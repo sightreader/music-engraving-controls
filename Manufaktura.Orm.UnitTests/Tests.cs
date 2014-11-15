@@ -5,6 +5,7 @@ using Manufaktura.Orm.UnitTests.Model;
 using System.Diagnostics;
 using Manufaktura.Orm.Predicates;
 using System.IO;
+using Manufaktura.Orm.SpecialColumns;
 
 namespace Manufaktura.Orm.UnitTests
 {
@@ -24,6 +25,7 @@ namespace Manufaktura.Orm.UnitTests
                 Debug.Assert(melodies != null);
                 melodies = repository.Load<Melody>(QueryBuilder.Create().SetWindow(0, 10).SetWhereStatement(
                     QB.Or(QB.Like("Lyrics", "%dziwce%"), QB.Like("Lyrics", "%kurwie%"))));
+                Debug.Assert(melodies != null);
             }
         }
 
@@ -33,6 +35,16 @@ namespace Manufaktura.Orm.UnitTests
             using (var repository = new DbRepository("Manufaktura.Orm.Builder.MySqlDialectProvider", "Manufaktura.Orm.MySql.dll", "Server=localhost;Database=kolberg-test;Uid=admin;Pwd=123123;"))
             {
                 var melodies = repository.LoadAll<Melody>();
+            }
+        }
+
+        [TestMethod]
+        public void TestSpecifyColumns()
+        {
+            using (var repository = new DbRepository("Manufaktura.Orm.Builder.MySqlDialectProvider", "Manufaktura.Orm.MySql.dll", "Server=localhost;Database=kolberg-test;Uid=admin;Pwd=123123;"))
+            {
+                long count = repository.ExecuteScalar<Melody, long>(QueryBuilder.Create().SpecifyColumns(null).AddSpecialColumn(new CountSpecialColumn("Id", "MelodyCount")));
+                
             }
         }
 

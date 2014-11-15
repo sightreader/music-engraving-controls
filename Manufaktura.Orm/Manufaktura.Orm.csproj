@@ -58,6 +58,7 @@
     <Compile Include="Repositories\DbRepository.cs" />
     <Compile Include="SortModes\OrderByColumnSortMode.cs" />
     <Compile Include="SortModes\SortMode.cs" />
+    <Compile Include="SpecialColumns\CountSpecialColumn.cs" />
     <Compile Include="SpecialColumns\DistanceSpecialColumn.cs" />
     <Compile Include="SpecialColumns\SpecialColumn.cs" />
   </ItemGroup>

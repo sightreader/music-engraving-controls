@@ -57,13 +57,11 @@ namespace Manufaktura.Orm
 
         public List<TEntity> Load<TEntity>(QueryBuilder builder) where TEntity : Entity, new()
         {
-            DbCommand command = Provider.Connection.CreateCommand();
             if (!_isConnectionOpen)
             {
                 Provider.Connection.Open();
                 _isConnectionOpen = true;
             }
-            command.Connection = Provider.Connection;
             DbDataAdapter adapter = Provider.CreateDataAdapter();
             adapter.SelectCommand = Provider.GetSelectCommand<TEntity>(builder);
             DataTable table = new DataTable();
@@ -74,6 +72,17 @@ namespace Manufaktura.Orm
                 results.Add(FromRow<TEntity>(row));
             }
             return results;
+        }
+
+        public TScalar ExecuteScalar<TEntity, TScalar>(QueryBuilder builder) where TEntity : Entity, new()
+        {
+            if (!_isConnectionOpen)
+            {
+                Provider.Connection.Open();
+                _isConnectionOpen = true;
+            }
+            DbCommand command = Provider.GetSelectCommand<TEntity>(builder);
+            return (TScalar)command.ExecuteScalar();
         }
 
         public Entity Save(Entity entity)

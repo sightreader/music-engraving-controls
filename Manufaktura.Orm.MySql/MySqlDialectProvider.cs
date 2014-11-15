@@ -38,14 +38,23 @@ namespace Manufaktura.Orm.Builder
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT ");
             bool first = true;
-            foreach (PropertyInfo property in typeof(TEntity).GetProperties())
+            //Jeśli kolumny nie są wyspecyfikowane, dodaj na podstawie propertiesów:
+            if (!builder.AreColumnsSpecified)
             {
-                MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
-                if (attribute == null) continue;
-                if (attribute.IsSpecialColumn) continue;    //Ta kolumna będzie dodana przez klasę SpecialColumn
-                if (!first) sb.Append(", ");
-                sb.Append(string.Format("{0}", attribute.Name));
-                first = false;
+                foreach (PropertyInfo property in typeof(TEntity).GetProperties())
+                {
+                    MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
+                    if (attribute == null) continue;
+                    if (attribute.IsSpecialColumn) continue;    //Ta kolumna będzie dodana przez klasę SpecialColumn
+                    if (!first) sb.Append(", ");
+                    sb.Append(string.Format("{0}", attribute.Name));
+                    first = false;
+                }
+            }
+            else
+            {
+                if (!builder.SpecialColumns.Any() && !builder.Columns.Any()) sb.Append("*");    //Nie ma żadnych kolumn, ale programista użył SpecifyColumns. Dodaj gwiazdkę.
+                else sb.Append(string.Join(", ", builder.Columns));  //Kolumny są wyspecyfikowane
             }
             foreach (SpecialColumn specialColumn in builder.SpecialColumns)
             {
