@@ -55,9 +55,15 @@ namespace Manufaktura.Controls.Silverlight.Common
             {
                 if (view == null)
                 {
-                    var viewTypes = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(UserControl)));
-                    var matchingViewType = viewTypes.FirstOrDefault(t => t.Name == e.NewValue.GetType().Name.Replace("Model", ""));
-                    if (matchingViewType != null) view = Activator.CreateInstance(matchingViewType) as FrameworkElement;
+                    AppDomain domain = AppDomain.CurrentDomain;
+                    Assembly[] assembliesLoaded = domain.GetAssemblies();
+                    foreach (var assembly in assembliesLoaded)
+                    {
+                        var viewTypes = assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UserControl)));
+                        var matchingViewType = viewTypes.FirstOrDefault(t => t.Name == e.NewValue.GetType().Name.Replace("Model", ""));
+                        if (matchingViewType != null) view = Activator.CreateInstance(matchingViewType) as FrameworkElement;
+                        if (view != null) break;
+                    }
                 }
             }
             catch (Exception ex)
