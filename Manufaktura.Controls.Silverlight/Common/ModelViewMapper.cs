@@ -28,18 +28,22 @@ namespace Manufaktura.Controls.Silverlight.Common
         public static void CurrentViewModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ModelViewMapper mapper = d as ModelViewMapper;
-            FrameworkElement view = null;
+            ViewModel viewModel = e.NewValue as ViewModel;
 
-            if (e.NewValue == null)
-            {
-                mapper.Content = null;
-                return;
-            }
- 
-            //Dopasuj po konfiguracji / Match by configuration:
+            FrameworkElement view = MatchByConfiguration(viewModel) ?? MatchByConvention(viewModel);
+
+            if (view != null) view.DataContext = e.NewValue;
+            mapper.Content = view;
+        }
+
+        public static FrameworkElement MatchByConfiguration(ViewModel viewModel)
+        {
+            if (viewModel == null) return null;
+
+            FrameworkElement view = null;
             try
             {
-                var viewAttribute = e.NewValue.GetType().GetCustomAttributes(typeof(ViewAttribute), true).Cast<ViewAttribute>().FirstOrDefault();
+                var viewAttribute = viewModel.GetType().GetCustomAttributes(typeof(ViewAttribute), true).Cast<ViewAttribute>().FirstOrDefault();
                 if (viewAttribute != null)
                 {
                     view = Activator.CreateInstance(viewAttribute.ViewType) as FrameworkElement;
@@ -49,30 +53,31 @@ namespace Manufaktura.Controls.Silverlight.Common
             {
                 throw new Exception("Error while matching ViewModel with view by configuration.", ex);
             }
+            return view;
+        }
 
-            //Dopasuj po konwencji / Match by convention:
+        public static FrameworkElement MatchByConvention(ViewModel viewModel)
+        {
+            if (viewModel == null) return null;
+
+            FrameworkElement view = null;
             try
             {
-                if (view == null)
+                AppDomain domain = AppDomain.CurrentDomain;
+                Assembly[] assembliesLoaded = domain.GetAssemblies();
+                foreach (var assembly in assembliesLoaded)
                 {
-                    AppDomain domain = AppDomain.CurrentDomain;
-                    Assembly[] assembliesLoaded = domain.GetAssemblies();
-                    foreach (var assembly in assembliesLoaded)
-                    {
-                        var viewTypes = assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UserControl)));
-                        var matchingViewType = viewTypes.FirstOrDefault(t => t.Name == e.NewValue.GetType().Name.Replace("Model", ""));
-                        if (matchingViewType != null) view = Activator.CreateInstance(matchingViewType) as FrameworkElement;
-                        if (view != null) break;
-                    }
+                    var viewTypes = assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(UserControl)));
+                    var matchingViewType = viewTypes.FirstOrDefault(t => t.Name == viewModel.GetType().Name.Replace("Model", ""));
+                    if (matchingViewType != null) view = Activator.CreateInstance(matchingViewType) as FrameworkElement;
+                    if (view != null) break;
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("Error while matching ViewModel with view by convention.", ex);
             }
-
-            if (view != null) view.DataContext = e.NewValue;
-            mapper.Content = view;
+            return view;
         }
 
     }

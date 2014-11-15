@@ -48,6 +48,9 @@ namespace Manufaktura.Orm
 
         public TEntity Load<TEntity>(object id) where TEntity : Entity, new()
         {
+            if (id is SqlPredicate) 
+                throw new ArgumentException("Entity id was expected but SqlPredicate found. You probably wanted to use Load<TEntity>(QueryBuilder.Create().SetWhereStatement(sqlPredicate)).");
+
             MappingAttribute identityMapping = FindIdentity<TEntity>();
             if (identityMapping == null) throw new Exception(string.Format("Entity {0} has no primary key defined.", typeof(TEntity).Name));
             var results = Load<TEntity>(QueryBuilder.Create().SetWhereStatement(QB.Eq(identityMapping.Name, id)));
@@ -57,11 +60,7 @@ namespace Manufaktura.Orm
 
         public List<TEntity> Load<TEntity>(QueryBuilder builder) where TEntity : Entity, new()
         {
-            if (!_isConnectionOpen)
-            {
-                Provider.Connection.Open();
-                _isConnectionOpen = true;
-            }
+            EnsureConnectionOpen();
             DbDataAdapter adapter = Provider.CreateDataAdapter();
             adapter.SelectCommand = Provider.GetSelectCommand<TEntity>(builder);
             DataTable table = new DataTable();
@@ -76,23 +75,28 @@ namespace Manufaktura.Orm
 
         public TScalar ExecuteScalar<TEntity, TScalar>(QueryBuilder builder) where TEntity : Entity, new()
         {
-            if (!_isConnectionOpen)
-            {
-                Provider.Connection.Open();
-                _isConnectionOpen = true;
-            }
+            EnsureConnectionOpen();
             DbCommand command = Provider.GetSelectCommand<TEntity>(builder);
             return (TScalar)command.ExecuteScalar();
         }
 
+        public long Count<TEntity>(string columnName, SqlPredicate whereStatement) where TEntity : Entity, new()
+        {
+            EnsureConnectionOpen();
+            QueryBuilder builder = QueryBuilder.Create().SpecifyColumns(null).AddSpecialColumn(new CountSpecialColumn(columnName, columnName + "Count"));
+            if (whereStatement != null) builder.SetWhereStatement(whereStatement);
+            return ExecuteScalar<TEntity, long>(builder);
+        }
+
+        public long CountAll<TEntity>(string columnName) where TEntity : Entity, new()
+        {
+            return Count<TEntity>(columnName, null);
+        }
+
         public Entity Save(Entity entity)
         {
+            EnsureConnectionOpen();
             DbCommand command = Provider.Connection.CreateCommand();
-            if (!_isConnectionOpen)
-            {
-                Provider.Connection.Open();
-                _isConnectionOpen = true;
-            }
             command = entity.IsNew ? Provider.GetInsertCommand(entity) : Provider.GetUpdateCommand(entity);
             command.ExecuteNonQuery();
             entity.IsNew = false;
@@ -103,6 +107,13 @@ namespace Manufaktura.Orm
         {
             if (Provider == null) return;
             Provider.Dispose();
+        }
+
+        private void EnsureConnectionOpen()
+        {
+            if (_isConnectionOpen) return;
+            Provider.Connection.Open();
+            _isConnectionOpen = true;
         }
 
         public static T FromRow<T>(DataRow row) where T : Entity, new()
