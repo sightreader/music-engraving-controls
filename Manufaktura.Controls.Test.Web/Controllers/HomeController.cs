@@ -32,18 +32,7 @@ namespace Manufaktura.Controls.Test.Web.Controllers
 
         public static MvcHtmlString RenderIncipitTest()
         {
-            StringBuilder sb = new StringBuilder();
-            Dictionary<FontStyles, Manufaktura.Controls.Rendering.Implementations.HtmlCanvasScoreRenderer.HtmlFontInfo> fonts = new Dictionary<FontStyles, Manufaktura.Controls.Rendering.Implementations.HtmlCanvasScoreRenderer.HtmlFontInfo>();
-            fonts.Add(FontStyles.MusicFont, new Manufaktura.Controls.Rendering.Implementations.HtmlCanvasScoreRenderer.HtmlFontInfo("Polihymnia", "fonts/Polihymnia.ttf", 25d));
-            HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(sb, fonts);
-            Score score = new Score();
-            Staff staff = new Staff();
-            score.Staves.Add(staff);
-            staff.Elements.Add(new Clef(ClefType.GClef, 2));
-            staff.Elements.Add(new Note("G", 0, 4, MusicalSymbolDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single }));
-            renderer.Render(score);
-            sb.AppendLine("</script>");
-            return MvcHtmlString.Create(sb.ToString());
+            return null;
         }
     }
 }

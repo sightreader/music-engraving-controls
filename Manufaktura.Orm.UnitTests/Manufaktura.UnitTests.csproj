@@ -46,6 +46,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -66,6 +68,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
+      <Project>{52331173-dfd5-47ea-ba7a-72bbbe85d2fa}</Project>
+      <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
       <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>
       <Name>Manufaktura.Model</Name>

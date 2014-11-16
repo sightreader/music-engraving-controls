@@ -23,15 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Window
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WindowsPhoneSilverlight.Test", "Manufaktura.Controls.WindowsPhoneSilverlight.Test\Manufaktura.Controls.WindowsPhoneSilverlight.Test.csproj", "{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Tests", "Manufaktura.Controls.Tests\Manufaktura.Controls.Tests.csproj", "{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Test.Web", "Manufaktura.Controls.Test.Web\Manufaktura.Controls.Test.Web.csproj", "{60005E66-A113-45E1-8200-1DB4E37244FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Orm", "Manufaktura.Orm\Manufaktura.Orm.csproj", "{B6302EE4-B0FD-41D2-B2D2-1D46DF69D925}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Orm.MySql", "Manufaktura.Orm.MySql\Manufaktura.Orm.MySql.csproj", "{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Orm.UnitTests", "Manufaktura.Orm.UnitTests\Manufaktura.Orm.UnitTests.csproj", "{6CF95B35-3349-40FB-B9B1-CB7404624DA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.UnitTests", "Manufaktura.Orm.UnitTests\Manufaktura.UnitTests.csproj", "{6CF95B35-3349-40FB-B9B1-CB7404624DA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Model", "Manufaktura.Model\Manufaktura.Model.csproj", "{4233DF90-EE27-4F88-953B-3652E6D2B080}"
 EndProject
@@ -139,14 +137,6 @@ Global
 		{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}.Release|x86.ActiveCfg = Release|x86
 		{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}.Release|x86.Build.0 = Release|x86
 		{D3F06FC9-90D9-4D97-A40E-CA7A556AFE0E}.Release|x86.Deploy.0 = Release|x86
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|ARM.ActiveCfg = Release|Any CPU
-		{7C9CB538-8ED5-4ABA-B4FF-78A57E29D8C3}.Release|x86.ActiveCfg = Release|Any CPU
 		{60005E66-A113-45E1-8200-1DB4E37244FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60005E66-A113-45E1-8200-1DB4E37244FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60005E66-A113-45E1-8200-1DB4E37244FD}.Debug|ARM.ActiveCfg = Debug|Any CPU

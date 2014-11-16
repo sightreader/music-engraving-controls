@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Manufaktura.Orm.Builder;
 using Manufaktura.Orm.UnitTests.Model;
@@ -6,6 +7,11 @@ using System.Diagnostics;
 using Manufaktura.Orm.Predicates;
 using System.IO;
 using Manufaktura.Orm.SpecialColumns;
+using Manufaktura.Controls.Rendering.Implementations;
+using Manufaktura.Controls.Model;
+using System.Collections.Generic;
+using Manufaktura.Controls.Parser;
+using System.Xml.Linq;
 
 namespace Manufaktura.Orm.UnitTests
 {
@@ -63,6 +69,32 @@ namespace Manufaktura.Orm.UnitTests
                     repository.Save(melody);
                 }
             }
+        }
+
+        [TestMethod]
+        public void TestRenderHtml()
+        {
+            Dictionary<FontStyles, HtmlFontInfo> fonts = new Dictionary<FontStyles, HtmlFontInfo>();
+            fonts.Add(FontStyles.MusicFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 24d));
+            fonts.Add(FontStyles.GraceNoteFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 12d));
+            fonts.Add(FontStyles.LyricsFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 10d));
+            fonts.Add(FontStyles.TimeSignatureFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 14d));
+            fonts.Add(FontStyles.DirectionFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 10d));
+
+            using (var repository = new DbRepository(new MySqlDialectProvider("Server=localhost;Database=kolberg-test;Uid=admin;Pwd=123123;")))
+            {
+                var melodies = repository.Load<Melody>(QueryBuilder.Create().SetWindow(0, 10));
+                var scores = new List<Score>();
+                foreach (var melody in melodies)
+                {
+                    MusicXmlParser parser = new MusicXmlParser();
+                    scores.Add(parser.Parse(XDocument.Parse(melody.Xml)));
+                }
+                Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(scores, fonts, "scoreCanvas");
+                string html= builder.Build();
+                Console.WriteLine(html);
+            }
+            
         }
     }
 }

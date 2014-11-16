@@ -11,27 +11,12 @@ namespace Manufaktura.Controls.Rendering.Implementations
     {
         public Dictionary<FontStyles, HtmlFontInfo> Fonts { get; private set; }
 
-        public HtmlCanvasScoreRenderer(StringBuilder stringBuilder, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName = null, bool addFontFaceDeclaration = true)
+        public HtmlCanvasScoreRenderer(StringBuilder stringBuilder, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName)
             : base(stringBuilder)
         {
             Fonts = fonts;
 
-            if (addFontFaceDeclaration)
-            {
-                stringBuilder.AppendLine("<style type=\"text/css\">");
-                foreach (var font in Fonts.Values)
-                {
-                    stringBuilder.AppendLine("@font-face {");
-                    stringBuilder.AppendLine(string.Format("font-family: '{0}';", font.Name));
-                    stringBuilder.AppendLine(string.Format("src: url('{0}') format('{1}');", font.Uri, GetFormatFromUri(font.Uri)));
-                    stringBuilder.AppendLine("}");
-                }
-                stringBuilder.AppendLine("</style>");
-            }
-
-            stringBuilder.AppendLine(string.Format("<canvas id=\"{0}\" width=\"778\" height=\"200\"></canvas>", string.IsNullOrWhiteSpace(canvasName) ? "myCanvas" : canvasName));
-            stringBuilder.AppendLine("<script>");
-            stringBuilder.AppendLine(string.Format("var canvas = document.getElementById('{0}');", string.IsNullOrWhiteSpace(canvasName) ? "myCanvas" : canvasName));
+            stringBuilder.AppendLine(string.Format("var canvas = document.getElementById('{0}');", canvasName));
             stringBuilder.AppendLine("var context = canvas.getContext('2d');");
         }
 
@@ -60,28 +45,20 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, Model.MusicalSymbol owner)
         {
         }
+    }
+    public struct HtmlFontInfo
+    {
+        public string Name { get; private set; }
+        public string Uri { get; private set; }
+        public double Size { get; private set; }
 
-        private string GetFormatFromUri(string uri)
+        public HtmlFontInfo(string name, string uri, double size)
+            : this()
         {
-            uri = uri.ToLower();
-            if (uri.EndsWith("ttf")) return "truetype";
-            if (uri.EndsWith("woff")) return "woff";
-            return null;
+            Name = name;
+            Uri = uri;
+            Size = size;
         }
 
-        public struct HtmlFontInfo
-        {
-            public string Name { get; private set; }
-            public string Uri { get; private set; }
-            public double Size { get; private set; }
-
-            public HtmlFontInfo(string name, string uri, double size) : this()
-            {
-                Name = name;
-                Uri = uri;
-                Size = size;
-            }
-
-        }
     }
 }
