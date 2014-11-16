@@ -20,6 +20,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
             CanvasPrefix = canvasPrefix;
         }
 
+        public Score2HtmlCanvasBuilder(Score score, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName)
+            : this(new List<Score> { score }, fonts, canvasName)
+        {
+        }
+
         public string Build()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -38,9 +43,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
             }
             stringBuilder.AppendLine("</style>");
 
-            for (int i = 0; i < Scores.Count(); i++)
+            int count = Scores.Count();
+            for (int i = 0; i < count; i++)
             {
-                string canvasName = string.Format("{0}{1}", CanvasPrefix, i);
+                string canvasName = count == 1 ? CanvasPrefix : string.Format("{0}{1}", CanvasPrefix, i);
 
                 StringBuilder scoreStringBuilder = new StringBuilder();
                 HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(scoreStringBuilder, Fonts, canvasName);
