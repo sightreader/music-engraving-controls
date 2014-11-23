@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
 {
-    class NoteParsingStrategy : MusicXmlParsingStrategy
+    class NoteAndRestParsingStrategy : MusicXmlParsingStrategy
     {
         public override string ElementName
         {

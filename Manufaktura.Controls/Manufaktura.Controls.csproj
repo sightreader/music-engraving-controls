@@ -82,7 +82,7 @@
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParserState.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlParsingStrategy.cs" />
-    <Compile Include="Parser\MusicXml\Strategies\NoteParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
