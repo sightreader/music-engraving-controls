@@ -45,9 +45,13 @@ namespace Manufaktura.Controls.Parser.MusicXml
             NoteTrillMark trillMark = NoteTrillMark.None;
             Mordent mordent = null;
             int voice = 1;
+            bool isVisible = true;
 
             var defaultXAttribute = element.Attributes().Where(a => a.Name == "default-x").FirstOrDefault();
             if (defaultXAttribute != null) double.TryParse(defaultXAttribute.Value, NumberStyles.Number, CultureInfo.InvariantCulture, out defaultX);
+
+            var printObjectAttribute = element.Attributes().Where(a => a.Name == "print-object").FirstOrDefault();
+            if (printObjectAttribute != null) isVisible = "yes".Equals(printObjectAttribute.Value, StringComparison.OrdinalIgnoreCase);
 
             foreach (XElement noteAttribute in element.Elements())
             {
@@ -359,6 +363,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 nt.TremoloLevel = tremoloLevel;
                 nt.Voice = voice;
                 nt.Dynamics = state.CurrentDynamics;
+                nt.IsVisible = isVisible;
                 if (mordent != null) nt.Ornaments.Add(mordent);
                 staff.Elements.Add(nt);
             }
@@ -373,6 +378,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 rt.HasFermataSign = hasFermataSign;
                 rt.Voice = voice;
                 rt.DefaultXPosition = defaultX;
+                rt.IsVisible = isVisible;
                 staff.Elements.Add(rt);
             }
 
