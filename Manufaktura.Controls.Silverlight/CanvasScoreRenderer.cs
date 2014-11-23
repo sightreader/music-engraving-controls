@@ -42,11 +42,12 @@ namespace Manufaktura.Controls.Silverlight
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
             textBlock.UseLayoutRounding = true;
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
 
             System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
             System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
             Canvas.Children.Add(textBlock);
-            
+
             OwnershipDictionary.Add(textBlock, owner);
         }
 
@@ -55,14 +56,14 @@ namespace Manufaktura.Controls.Silverlight
             var line = new Line();
             line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             line.UseLayoutRounding = true;
-
             line.X1 = startPoint.X;
             line.X2 = endPoint.X;
             line.Y1 = startPoint.Y;
             line.Y2 = endPoint.Y;
             System.Windows.Controls.Canvas.SetZIndex(line, (int)pen.ZIndex);
             line.StrokeThickness = pen.Thickness;
-            
+            line.Visibility = BoolToVisibility(owner.IsVisible);
+
             Canvas.Children.Add(line);
 
             OwnershipDictionary.Add(line, owner);
@@ -86,6 +87,7 @@ namespace Manufaktura.Controls.Silverlight
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
+            path.Visibility = BoolToVisibility(owner.IsVisible);
             System.Windows.Controls.Canvas.SetZIndex(path, (int)pen.ZIndex);
             Canvas.Children.Add(path);
 
@@ -108,10 +110,16 @@ namespace Manufaktura.Controls.Silverlight
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
+            path.Visibility = BoolToVisibility(owner.IsVisible);
             System.Windows.Controls.Canvas.SetZIndex(path, (int)pen.ZIndex);
             Canvas.Children.Add(path);
 
             OwnershipDictionary.Add(path, owner);
+        }
+
+        private Visibility BoolToVisibility(bool isVisible)
+        {
+            return isVisible ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

@@ -39,6 +39,7 @@ namespace Manufaktura.Controls.Model
 
         public MusicalSymbolType Type { get { return type; } }
         public string MusicalCharacter { get { return musicalCharacter; } }
+        public bool IsVisible { get; set; }
 
         #endregion
 
@@ -47,6 +48,7 @@ namespace Manufaktura.Controls.Model
         public MusicalSymbol()
         {
             type = MusicalSymbolType.Unknown;
+            IsVisible = true;
         }
 
         #endregion
