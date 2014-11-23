@@ -48,7 +48,7 @@ namespace Manufaktura.Controls.Parser
                     if (widthAttribute != null)
                     {
                         double w;
-                        if (double.TryParse(widthAttribute.Value, out w)) measureWidth = w;
+                        if (double.TryParse(widthAttribute.Value, NumberStyles.Number, CultureInfo.InvariantCulture, out w)) measureWidth = w;
                     }
                     staff.MeasureWidths.Add(measureWidth);
 

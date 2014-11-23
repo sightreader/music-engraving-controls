@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Manufaktura.Controls.Primitives
@@ -35,7 +36,7 @@ namespace Manufaktura.Controls.Primitives
         public static double? TryParse(string s)
         {
             double result;
-            if (double.TryParse(s, out result)) return result;
+            if (double.TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out result)) return result;
             return null;
         }
     }

@@ -47,7 +47,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             int voice = 1;
 
             var defaultXAttribute = element.Attributes().Where(a => a.Name == "default-x").FirstOrDefault();
-            if (defaultXAttribute != null) double.TryParse(defaultXAttribute.Value, out defaultX);
+            if (defaultXAttribute != null) double.TryParse(defaultXAttribute.Value, NumberStyles.Number, CultureInfo.InvariantCulture, out defaultX);
 
             foreach (XElement noteAttribute in element.Elements())
             {
