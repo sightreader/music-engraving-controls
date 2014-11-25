@@ -40,6 +40,7 @@
     <Compile Include="Audio\ScorePlayer.cs" />
     <Compile Include="Audio\ThreadScorePlayer.cs" />
     <Compile Include="Model\Barline.cs" />
+    <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\FontStyles.cs" />

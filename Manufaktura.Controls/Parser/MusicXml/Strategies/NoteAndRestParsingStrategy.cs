@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Builders;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
@@ -18,40 +19,17 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
-            int octave = 0;
-            int alter = 0;
-            string step = "C";
-            bool isRest = false;
-            int numberOfDots = 0;
-            MusicalSymbolDuration duration = MusicalSymbolDuration.Whole;
-            VerticalDirection stemDirection = VerticalDirection.Up;
-            NoteTieType tieType = NoteTieType.None;
-            TupletType tuplet = TupletType.None;
-            VerticalPlacement? tupletPlacement = null;
-            List<NoteBeamType> beamList = new List<NoteBeamType>();
-            List<Lyrics> lyrics = new List<Lyrics>();
-            VerticalPlacement articulationPlacement = VerticalPlacement.Below;
-            ArticulationType articulation = ArticulationType.None;
-            bool hasNatural = false;
-            bool isGraceNote = false;
-            bool isCueNote = false;
-            bool isChordElement = false;
-            bool hasFermataSign = false;
-            float stemDefaultY = 28;
-            double defaultX = 0;
-            bool customStemEndPosition = false;
-            int tremoloLevel = 0;
-            Slur slur = null;
-            NoteTrillMark trillMark = NoteTrillMark.None;
-            Mordent mordent = null;
-            int voice = 1;
-            bool isVisible = true;
+            NoteOrRestBuilder builder = new NoteOrRestBuilder(state);
 
             var defaultXAttribute = element.Attributes().Where(a => a.Name == "default-x").FirstOrDefault();
-            if (defaultXAttribute != null) double.TryParse(defaultXAttribute.Value, NumberStyles.Number, CultureInfo.InvariantCulture, out defaultX);
+            if (defaultXAttribute != null)
+            {
+                var parsedValue = UsefulMath.TryParse(defaultXAttribute.Value);
+                if (parsedValue.HasValue) builder.DefaultX = parsedValue.Value;
+            }
 
             var printObjectAttribute = element.Attributes().Where(a => a.Name == "print-object").FirstOrDefault();
-            if (printObjectAttribute != null) isVisible = "yes".Equals(printObjectAttribute.Value, StringComparison.OrdinalIgnoreCase);
+            if (printObjectAttribute != null) builder.IsVisible = "yes".Equals(printObjectAttribute.Value, StringComparison.OrdinalIgnoreCase);
 
             foreach (XElement noteAttribute in element.Elements())
             {
@@ -62,50 +40,50 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
                         if (pitchAttribute.Name == "step")
                         {
-                            step = pitchAttribute.Value;
+                            builder.Step = pitchAttribute.Value;
                         }
                         else if (pitchAttribute.Name == "octave")
                         {
-                            octave = Convert.ToInt16(pitchAttribute.Value);
+                            builder.Octave = Convert.ToInt16(pitchAttribute.Value);
                         }
                         else if (pitchAttribute.Name == "alter")
                         {
-                            alter = Convert.ToInt16(pitchAttribute.Value);
+                            builder.Alter = Convert.ToInt16(pitchAttribute.Value);
                         }
                     }
                 }
                 else if (noteAttribute.Name == "voice")
                 {
-                    voice = Convert.ToInt32(noteAttribute.Value);
+                    builder.Voice = Convert.ToInt32(noteAttribute.Value);
                 }
                 else if (noteAttribute.Name == "grace")
                 {
-                    isGraceNote = true;
+                    builder.IsGraceNote = true;
                 }
                 else if (noteAttribute.Name == "chord")
                 {
-                    isChordElement = true;
+                    builder.IsChordElement = true;
                 }
                 else if (noteAttribute.Name == "type")
                 {
-                    if (noteAttribute.Value == "whole") duration = MusicalSymbolDuration.Whole;
-                    else if (noteAttribute.Value == "half") duration = MusicalSymbolDuration.Half;
-                    else if (noteAttribute.Value == "quarter") duration = MusicalSymbolDuration.Quarter;
-                    else if (noteAttribute.Value == "eighth") duration = MusicalSymbolDuration.Eighth;
-                    else if (noteAttribute.Value == "16th") duration = MusicalSymbolDuration.Sixteenth;
-                    else if (noteAttribute.Value == "32nd") duration = MusicalSymbolDuration.d32nd;
-                    else if (noteAttribute.Value == "64th") duration = MusicalSymbolDuration.d64th;
-                    else if (noteAttribute.Value == "128th") duration = MusicalSymbolDuration.d128th;
+                    if (noteAttribute.Value == "whole") builder.Duration = MusicalSymbolDuration.Whole;
+                    else if (noteAttribute.Value == "half") builder.Duration = MusicalSymbolDuration.Half;
+                    else if (noteAttribute.Value == "quarter") builder.Duration = MusicalSymbolDuration.Quarter;
+                    else if (noteAttribute.Value == "eighth") builder.Duration = MusicalSymbolDuration.Eighth;
+                    else if (noteAttribute.Value == "16th") builder.Duration = MusicalSymbolDuration.Sixteenth;
+                    else if (noteAttribute.Value == "32nd") builder.Duration = MusicalSymbolDuration.d32nd;
+                    else if (noteAttribute.Value == "64th") builder.Duration = MusicalSymbolDuration.d64th;
+                    else if (noteAttribute.Value == "128th") builder.Duration = MusicalSymbolDuration.d128th;
 
                     var noteSizeAttribute = noteAttribute.Attributes().FirstOrDefault(a => a.Name == "size");
                     if (noteSizeAttribute != null)
                     {
-                        isCueNote = noteSizeAttribute.Value == "cue";
+                        builder.IsCueNote = noteSizeAttribute.Value == "cue";
                     }
                 }
                 else if (noteAttribute.Name == "accidental")
                 {
-                    if (noteAttribute.Value == "natural") hasNatural = true;
+                    if (noteAttribute.Value == "natural") builder.HasNatural = true;
                 }
                 else if (noteAttribute.Name == "tie")
                 {
@@ -113,43 +91,42 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     if (attribute.Value == "start")
                     {
 
-                        if (tieType == NoteTieType.Stop)
-                            tieType = NoteTieType.StopAndStartAnother;
-                        else tieType = NoteTieType.Start;
+                        if (builder.TieType == NoteTieType.Stop) builder.TieType = NoteTieType.StopAndStartAnother;
+                        else builder.TieType = NoteTieType.Start;
                     }
                     else
                     {
-                        tieType = NoteTieType.Stop;
+                        builder.TieType = NoteTieType.Stop;
                     }
                 }
                 else if (noteAttribute.Name == "rest")
                 {
-                    isRest = true;
+                    builder.IsRest = true;
                 }
                 else if (noteAttribute.Name == "dot")
                 {
-                    numberOfDots++;
+                    builder.NumberOfDots++;
                 }
                 else if (noteAttribute.Name == "stem")
                 {
-                    if (noteAttribute.Value == "down") stemDirection = VerticalDirection.Down;
-                    else stemDirection = VerticalDirection.Up;
+                    if (noteAttribute.Value == "down") builder.StemDirection = VerticalDirection.Down;
+                    else builder.StemDirection = VerticalDirection.Up;
                     foreach (XAttribute xa in noteAttribute.Attributes())
                     {
                         if (xa.Name == "default-y")
                         {
-                            stemDefaultY = float.Parse(xa.Value.Replace('.', Convert.ToChar(NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)));
-                            customStemEndPosition = true;
+                            builder.StemDefaultY = float.Parse(xa.Value.Replace('.', Convert.ToChar(NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)));
+                            builder.CustomStemEndPosition = true;
                         }
                     }
                 }
                 else if (noteAttribute.Name == "beam")
                 {
-                    if (noteAttribute.Value == "begin") beamList.Add(NoteBeamType.Start);
-                    else if (noteAttribute.Value == "end") beamList.Add(NoteBeamType.End);
-                    else if (noteAttribute.Value == "continue") beamList.Add(NoteBeamType.Continue);
-                    else if (noteAttribute.Value == "forward hook") beamList.Add(NoteBeamType.ForwardHook);
-                    else if (noteAttribute.Value == "backward hook") beamList.Add(NoteBeamType.BackwardHook);
+                    if (noteAttribute.Value == "begin") builder.BeamList.Add(NoteBeamType.Start);
+                    else if (noteAttribute.Value == "end") builder.BeamList.Add(NoteBeamType.End);
+                    else if (noteAttribute.Value == "continue") builder.BeamList.Add(NoteBeamType.Continue);
+                    else if (noteAttribute.Value == "forward hook") builder.BeamList.Add(NoteBeamType.ForwardHook);
+                    else if (noteAttribute.Value == "backward hook") builder.BeamList.Add(NoteBeamType.BackwardHook);
                 }
                 else if (noteAttribute.Name == "notations")
                 {
@@ -159,17 +136,17 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         {
                             if (notationAttribute.Attribute("type").Value == "start")
                             {
-                                tuplet = TupletType.Start;
+                                builder.Tuplet = TupletType.Start;
                             }
                             else if (notationAttribute.Attribute("type").Value == "stop")
                             {
-                                tuplet = TupletType.Stop;
+                                builder.Tuplet = TupletType.Stop;
                             }
 
                             if (notationAttribute.Attributes().Any(a => a.Name == "placement"))
                             {
-                                if (notationAttribute.Attribute("placement").Value == "above") tupletPlacement = VerticalPlacement.Above;
-                                else if (notationAttribute.Attribute("placement").Value == "below") tupletPlacement = VerticalPlacement.Below;
+                                if (notationAttribute.Attribute("placement").Value == "above") builder.TupletPlacement = VerticalPlacement.Above;
+                                else if (notationAttribute.Attribute("placement").Value == "below") builder.TupletPlacement = VerticalPlacement.Below;
                             }
                         }
                         if (notationAttribute.Name == "dynamics")
@@ -205,17 +182,17 @@ namespace Manufaktura.Controls.Parser.MusicXml
                             {
                                 if (articulationAttribute.Name == "staccato")
                                 {
-                                    articulation = ArticulationType.Staccato;
+                                    builder.Articulation = ArticulationType.Staccato;
                                 }
                                 else if (articulationAttribute.Name == "accent")
                                 {
-                                    articulation = ArticulationType.Accent;
+                                    builder.Articulation = ArticulationType.Accent;
                                 }
 
                                 if (articulationAttribute.Attribute("placement").Value == "above")
-                                    articulationPlacement = VerticalPlacement.Above;
+                                    builder.ArticulationPlacement = VerticalPlacement.Above;
                                 else if (articulationAttribute.Attribute("placement").Value == "below")
-                                    articulationPlacement = VerticalPlacement.Below;
+                                    builder.ArticulationPlacement = VerticalPlacement.Below;
 
                             }
                         }
@@ -229,53 +206,53 @@ namespace Manufaktura.Controls.Parser.MusicXml
                                     if (placementAttribute != null)
                                     {
                                         if (placementAttribute.Value == "above")
-                                            trillMark = NoteTrillMark.Above;
+                                            builder.TrillMark = NoteTrillMark.Above;
                                         else if (placementAttribute.Value == "below")
-                                            trillMark = NoteTrillMark.Below;
+                                            builder.TrillMark = NoteTrillMark.Below;
                                     }
                                 }
                                 else if (ornamentAttribute.Name == "tremolo")
                                 {
-                                    tremoloLevel = Convert.ToInt32(ornamentAttribute.Value);
+                                    builder.TremoloLevel = Convert.ToInt32(ornamentAttribute.Value);
                                 }
                                 else if (ornamentAttribute.Name == "inverted-mordent")
                                 {
-                                    mordent = new Mordent() { IsInverted = true };
-                                    
+                                    builder.Mordent = new Mordent() { IsInverted = true };
+
                                     if (placementAttribute != null)
                                     {
                                         if (placementAttribute.Value == "above")
-                                            mordent.Placement = VerticalPlacement.Above;
+                                            builder.Mordent.Placement = VerticalPlacement.Above;
                                         else if (placementAttribute.Value == "below")
-                                            mordent.Placement = VerticalPlacement.Below;
+                                            builder.Mordent.Placement = VerticalPlacement.Below;
                                     }
 
                                     var attr = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "default-x");
-                                    if (attr != null) mordent.DefaultXPosition = UsefulMath.TryParse(attr.Value);
+                                    if (attr != null) builder.Mordent.DefaultXPosition = UsefulMath.TryParse(attr.Value);
                                     attr = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "default-y");
-                                    if (attr != null) mordent.DefaultYPosition = UsefulMath.TryParse(attr.Value);
+                                    if (attr != null) builder.Mordent.DefaultYPosition = UsefulMath.TryParse(attr.Value);
                                 }
                             }
 
                         }
                         else if (notationAttribute.Name == "slur")
                         {
-                            slur = new Slur();
+                            builder.Slur = new Slur();
 
                             if ((Convert.ToInt32(notationAttribute.Attribute("number").Value)) != 1)
                                 continue;
                             if (notationAttribute.Attribute("type").Value == "start")
-                                slur.Type = NoteSlurType.Start;
+                                builder.Slur.Type = NoteSlurType.Start;
                             else if (notationAttribute.Attribute("type").Value == "stop")
-                                slur.Type = NoteSlurType.Stop;
+                                builder.Slur.Type = NoteSlurType.Stop;
 
                             var placementAttribute = notationAttribute.Attributes().FirstOrDefault(a => a.Name == "placement");
-                            if (placementAttribute != null) slur.Placement = placementAttribute.Value == "above" ? VerticalPlacement.Above : VerticalPlacement.Below;
+                            if (placementAttribute != null) builder.Slur.Placement = placementAttribute.Value == "above" ? VerticalPlacement.Above : VerticalPlacement.Below;
 
                         }
                         else if (notationAttribute.Name == "fermata")
                         {
-                            hasFermataSign = true;
+                            builder.HasFermataSign = true;
                         }
                         else if (notationAttribute.Name == "sound")
                         {
@@ -336,52 +313,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         }
                     }
 
-                    lyrics.Add(lyricsInstance);
+                    builder.Lyrics.Add(lyricsInstance);
                 }
             }
-            if (beamList.Count == 0) beamList.Add(NoteBeamType.Single);
-            if (!isRest)
-            {
-                Note nt = new Note(step, alter, octave, duration, stemDirection, tieType, beamList);
-                nt.NumberOfDots = numberOfDots;
-                nt.Tuplet = tuplet;
-                nt.TupletPlacement = tupletPlacement;
-                nt.Lyrics = lyrics;
-                nt.Articulation = articulation;
-                nt.ArticulationPlacement = articulationPlacement;
-                nt.HasNatural = hasNatural;
-                nt.IsGraceNote = isGraceNote;
-                nt.IsCueNote = isCueNote;
-                nt.IsChordElement = isChordElement;
-                nt.StemDefaultY = stemDefaultY;
-                nt.DefaultXPosition = defaultX;
-                nt.CustomStemEndPosition = customStemEndPosition;
-                nt.CurrentTempo = state.CurrentTempo;
-                nt.TrillMark = trillMark;
-                nt.Slur = slur;
-                nt.HasFermataSign = hasFermataSign;
-                nt.TremoloLevel = tremoloLevel;
-                nt.Voice = voice;
-                nt.Dynamics = state.CurrentDynamics;
-                nt.IsVisible = isVisible;
-                if (mordent != null) nt.Ornaments.Add(mordent);
-                staff.Elements.Add(nt);
-            }
-            else
-            {
-                Rest rt = new Rest(duration);
-                rt.NumberOfDots = numberOfDots;
-                rt.Tuplet = tuplet;
-                rt.TupletPlacement = tupletPlacement;
-                rt.MultiMeasure = state.SkipMeasures + 1;
-                rt.CurrentTempo = state.CurrentTempo;
-                rt.HasFermataSign = hasFermataSign;
-                rt.Voice = voice;
-                rt.DefaultXPosition = defaultX;
-                rt.IsVisible = isVisible;
-                staff.Elements.Add(rt);
-            }
-
+            if (builder.BeamList.Count == 0) builder.BeamList.Add(NoteBeamType.Single);
+            staff.Elements.Add(builder.Build());
         }
     }
 }
