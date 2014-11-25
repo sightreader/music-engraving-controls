@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Controls.Silverlight.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -140,6 +141,16 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
             ((PianoKeyboard)obj).DrawKeys();
         }
 
+        public TypedCommand<PianoKey> PianoKeyPressedCommand
+        {
+            get { return (TypedCommand<PianoKey>)GetValue(PianoKeyPressedCommandProperty); }
+            set { SetValue(PianoKeyPressedCommandProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PianoKeyPressedCommand.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PianoKeyPressedCommandProperty =
+            DependencyProperty.Register("PianoKeyPressedCommand", typeof(TypedCommand<PianoKey>), typeof(PianoKeyboard), new PropertyMetadata(null));
+
         private void DrawKeys()
         {
             LayoutRoot.Children.Clear();
@@ -173,14 +184,17 @@ namespace Manufaktura.Controls.Silverlight.Keyboard
 
         void button_Click(object sender, RoutedEventArgs e)
         {
-            OnPianoKeyPressed((PianoKey)sender);
+            PianoKey key = sender as PianoKey;
+            OnPianoKeyPressed(key);
+            if (PianoKeyPressedCommand == null) return;
+            if (!PianoKeyPressedCommand.CanExecute(key)) return;
+            PianoKeyPressedCommand.Execute(key);
         }
 
         protected void OnPianoKeyPressed (PianoKey key) 
         {
             if (PianoKeyPressed != null) PianoKeyPressed(this, new PianoKeyPressedEventArgs(key));
         }
-
 
         public PianoKeyboard()
         {
