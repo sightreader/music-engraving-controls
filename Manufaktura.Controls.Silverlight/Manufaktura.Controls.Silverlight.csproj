@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanvasScoreRenderer.cs" />
-    <Compile Include="Commands\TypedCommand.cs" />
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Common\ModelViewMapper.cs" />
     <Compile Include="Common\ViewAttribute.cs" />
     <Compile Include="DummyControl.xaml.cs">
