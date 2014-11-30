@@ -29,6 +29,22 @@ namespace Manufaktura.Controls.Silverlight
         /// </summary>
         public Dispatcher Dispatcher { get; set; }
 
+        private MusicalSymbol _threadSafeCurrentElement;
+        public override MusicalSymbol ThreadSafeCurrentElement
+        {
+            get
+            {
+                return _threadSafeCurrentElement;
+            }
+            set
+            {
+                _threadSafeCurrentElement = value;
+                if (Dispatcher != null && !Dispatcher.CheckAccess()) Dispatcher.BeginInvoke(new Action(() => OnPropertyChanged("ThreadSafeCurrentElement")));
+                else OnPropertyChanged("ThreadSafeCurrentElement");
+                
+            }
+        }
+
         public XnaScorePlayer(Score score) : base(score)
         {
             _stepNames = new Dictionary<int, string> { { 68, "gg" }, { 69, "a" }, { 70, "bb" }, { 71, "b" }, { 72, "c" }, { 73, "cc" }, { 74, "d" }, 

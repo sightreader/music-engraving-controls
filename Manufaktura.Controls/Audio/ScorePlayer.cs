@@ -20,7 +20,7 @@ namespace Manufaktura.Controls.Audio
 
         public Score Score { get; protected set; }
         private MusicalSymbol _currentElement;
-        public MusicalSymbol CurrentElement
+        public virtual MusicalSymbol CurrentElement
         {
             get { return _currentElement; }
             protected set { _currentElement = value; OnPropertyChanged("CurrentElement"); }

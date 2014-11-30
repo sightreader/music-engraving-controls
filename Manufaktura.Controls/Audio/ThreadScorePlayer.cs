@@ -15,6 +15,25 @@ namespace Manufaktura.Controls.Audio
         private bool shouldRestart { get; set; }
         private Tuplet tupletState { get; set; }
 
+        public override MusicalSymbol CurrentElement
+        {
+            get
+            {
+                return base.CurrentElement;
+            }
+            protected set
+            {
+                base.CurrentElement = value;
+                ThreadSafeCurrentElement = value;
+            }
+        }
+
+        public abstract MusicalSymbol ThreadSafeCurrentElement
+        {
+            get;
+            set;
+        }
+
         protected ThreadScorePlayer(Score score) : base(score)
         {
             Timer = new Timer(PlayNextElement, null, Timeout.Infinite, Timeout.Infinite);

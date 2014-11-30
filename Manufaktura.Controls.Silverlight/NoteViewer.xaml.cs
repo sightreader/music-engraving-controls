@@ -114,16 +114,23 @@ namespace Manufaktura.Controls.Silverlight
         public static readonly DependencyProperty IsOccupyingSpaceProperty =
             DependencyProperty.Register("IsOccupyingSpace", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
 
+        protected MusicalSymbol SelectedElementInner { get; set; }
+
         public MusicalSymbol SelectedElement
         {
-            get { return (MusicalSymbol)GetValue(SelectedElementProperty); }
+            get { return SelectedElementInner; }
             set { SetValue(SelectedElementProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for SelectedElement.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedElementProperty =
-            DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null));
+            DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null, SelectedElementChanged));
 
+        private static void SelectedElementChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            NoteViewer viewer = (NoteViewer)obj;
+            viewer.Select(args.NewValue as MusicalSymbol);
+        }
 
         public Score ScoreSource
         {
@@ -186,7 +193,7 @@ namespace Manufaktura.Controls.Silverlight
             Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
             if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
-            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
+            if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);
             InvalidateMeasure();
         }
 
@@ -204,7 +211,7 @@ namespace Manufaktura.Controls.Silverlight
 
         private void ColorElement(MusicalSymbol element, Color color)
         {
-            var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElement);
+            var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElementInner);
             foreach (var ownership in ownerships)
             {
                 TextBlock textBlock = ownership.Key as TextBlock;
@@ -217,13 +224,13 @@ namespace Manufaktura.Controls.Silverlight
 
         public void Select(MusicalSymbol element)
         {
-            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
-            SelectedElement = element;
+            if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Black);   //Reset color on previously selected element
+            SelectedElementInner = element;
 
-            Note note = SelectedElement as Note;
+            Note note = SelectedElementInner as Note;
             if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
 
-            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
+            if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);      //Apply color on selected element
 
             var positionElement = element as IHasCustomXPosition;
             if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}", 
@@ -268,7 +275,7 @@ namespace Manufaktura.Controls.Silverlight
             }
             double difference = _draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 
-            Note note = SelectedElement as Note;
+            Note note = SelectedElementInner as Note;
             if (note != null)
             {
                 int midiPitch = _draggingState.MidiPitchOnStartDragging + (int)(difference / 2);

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -58,12 +59,17 @@ namespace Manufaktura.Controls.Silverlight.Test
                 //MessageBox.Show(string.Join(", ", results));
             }
         }
-
+        XnaScorePlayer player;
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            XnaScorePlayer player = new XnaScorePlayer(noteViewer1.ScoreSource);
-            player.ElementPlayed += player_ElementPlayed;
+            player = new XnaScorePlayer(noteViewer1.ScoreSource);
+            //player.ElementPlayed += player_ElementPlayed;
+            player.Dispatcher = noteViewer1.Dispatcher;
+            var binding = new Binding("ThreadSafeCurrentElement");
+            binding.Source = player;
+            noteViewer1.SetBinding(NoteViewer.SelectedElementProperty, binding);
             player.Start();
+            
         }
 
         void player_ElementPlayed(object sender, XnaScorePlayer.MusicalSymbolEventArgs e)
