@@ -60,6 +60,11 @@ namespace Manufaktura.Controls.Silverlight
             _soundEffectsCache = new Dictionary<string, SoundEffect>();
         }
 
+        public XnaScorePlayer(Score score, Dispatcher dispatcher) : this(score)
+        {
+            Dispatcher = dispatcher;
+        }
+
         public override void Start()
         {
             if (Dispatcher != null && !Dispatcher.CheckAccess())

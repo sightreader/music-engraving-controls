@@ -211,6 +211,7 @@ namespace Manufaktura.Controls.Silverlight
 
         private void ColorElement(MusicalSymbol element, Color color)
         {
+            if (Renderer == null) return;   //If SelectedElement value has been changed by binding and renderer has not yet been created, just ignore this method.
             var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElementInner);
             foreach (var ownership in ownerships)
             {
