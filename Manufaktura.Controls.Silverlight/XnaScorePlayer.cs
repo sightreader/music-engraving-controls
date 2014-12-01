@@ -39,8 +39,8 @@ namespace Manufaktura.Controls.Silverlight
             set
             {
                 _threadSafeCurrentElement = value;
-                if (Dispatcher != null && !Dispatcher.CheckAccess()) Dispatcher.BeginInvoke(new Action(() => OnPropertyChanged("ThreadSafeCurrentElement")));
-                else OnPropertyChanged("ThreadSafeCurrentElement");
+                if (Dispatcher != null && !Dispatcher.CheckAccess()) Dispatcher.BeginInvoke(new Action(() => OnPropertyChanged(() => ThreadSafeCurrentElement)));
+                else OnPropertyChanged(() => ThreadSafeCurrentElement);
                 
             }
         }

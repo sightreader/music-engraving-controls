@@ -35,6 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
+      <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>
+      <Name>Manufaktura.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\ScorePlayer.cs" />

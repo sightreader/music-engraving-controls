@@ -12,8 +12,8 @@ namespace Manufaktura.Controls.Audio
     public abstract class ThreadScorePlayer : ScorePlayer
     {
         protected Timer Timer { get; set; }
-        private bool shouldRestart { get; set; }
-        private Tuplet tupletState { get; set; }
+        private bool ShouldRestart { get; set; }
+        private Tuplet TupletState { get; set; }
 
         public override MusicalSymbol CurrentElement
         {
@@ -34,14 +34,31 @@ namespace Manufaktura.Controls.Audio
             set;
         }
 
+        private TimerState currentTimerState;
+
+        public override Score Score
+        {
+            get
+            {
+                return base.Score;
+            }
+            set
+            {
+                if (Timer != null) Stop(); //Tell current timer to stop (it will take it some time)
+                base.Score = value;     //Set new score
+                if (currentTimerState != null) currentTimerState.CancellationToken = true;
+                currentTimerState = new TimerState(value);
+                Timer = new Timer(FetchNextElement, currentTimerState, Timeout.Infinite, Timeout.Infinite);  //Create a new timer and let previous timer stop uninterrupted
+            }
+        }
+
         protected ThreadScorePlayer(Score score) : base(score)
         {
-            Timer = new Timer(PlayNextElement, null, Timeout.Infinite, Timeout.Infinite);
         }
 
         public override void Start()
         {
-            if (State != PlaybackState.Paused) shouldRestart = true;
+            if (State != PlaybackState.Paused) ShouldRestart = true;
             State = PlaybackState.Playing;
             Timer.Change(0, Timeout.Infinite);
         }
@@ -58,18 +75,22 @@ namespace Manufaktura.Controls.Audio
             State = PlaybackState.Paused;
         }
 
-        private void PlayNextElement(object state)
+        private void FetchNextElement(object state)
         {
             try
             {
-                if (shouldRestart)
+                if (ShouldRestart)
                 {
                     CurrentElement = null;
                     Enumerator = null;
-                    shouldRestart = false;
+                    ShouldRestart = false;
                 }
 
-                Staff staff = Score.Staves.FirstOrDefault();
+                TimerState timerState = state as TimerState;
+                if (timerState == null) return;
+                if (timerState.CancellationToken) return;
+                if (timerState.Score == null) return;
+                Staff staff = timerState.Score.Staves.FirstOrDefault();
                 if (staff == null) return;
 
                 if (Enumerator == null) Enumerator = staff.Elements.GetEnumerator();
@@ -80,44 +101,11 @@ namespace Manufaktura.Controls.Audio
                 }
                 CurrentElement = Enumerator.Current;
 
-                //
-                // Determine tuplet state
-                //
-                NoteOrRest noteOrRest = CurrentElement as NoteOrRest;
-                if (noteOrRest != null && noteOrRest.Voice < 2)
+                NoteOrRest noteOrRest = GetCurrentNoteOrRestAndDetermineTupletState(staff);
+                if (ProcessGraceNotesAndChordElements(staff))
                 {
-                    if (noteOrRest.Tuplet == TupletType.Start)
-                    {
-                        NoteOrRest tupletStart = staff.Peek<NoteOrRest>(noteOrRest, PeekType.BeginningOfTuplet);
-                        NoteOrRest tupletEnd = staff.Peek<NoteOrRest>(noteOrRest, PeekType.EndOfTuplet);
-                        if (tupletStart != null && tupletEnd != null)
-                        {
-                            tupletState = new Tuplet();
-                            tupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
-                                staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsChordElement)).Count() + 1;
-                        }
-                    }
-                }
-
-                //
-                // Treatment of grace notes and chord elements
-                //
-                Note note = CurrentElement as Note;
-                if (note != null)
-                {
-                    if (note.Voice > 1 || note.IsGraceNote) //Skip note if it's a grace note or it's in another voice
-                    {
-                        PlayNextElement(null);
-                        return;
-                    }
-
-                    Note nextNote = staff.Peek<Note>(note, PeekType.NextElement);   //If next note is chord element, play all notes in the chord simultaneously
-                    if (nextNote != null && nextNote.IsChordElement)
-                    {
-                        PlayElement(CurrentElement, staff);
-                        PlayNextElement(null);
-                        return;
-                    }
+                    FetchNextElement(timerState);
+                    return;
                 }
 
                 //
@@ -127,13 +115,13 @@ namespace Manufaktura.Controls.Audio
                 if (durationElement != null)
                 {
                     double dueTime = MusicalSymbol.DurationToTime(durationElement, Tempo, TempoBase).TotalMilliseconds;
-                    if (tupletState != null) dueTime = dueTime / tupletState.NumberOfNotesUnderTuplet * ((double)durationElement.Duration / (double)TempoBase);
+                    if (TupletState != null) dueTime = dueTime / TupletState.NumberOfNotesUnderTuplet * ((double)durationElement.Duration / (double)TempoBase);
                     Debug.WriteLine("{0} with {1} dots will be played in {2} ms", durationElement.Duration, durationElement.NumberOfDots, dueTime);
                     Timer.Change((int)dueTime, Timeout.Infinite);
                 }
-                else PlayNextElement(null); //If element does not have a duration, play next immediately
+                else FetchNextElement(timerState); //If element does not have a duration, play next immediately
 
-                if (noteOrRest != null && noteOrRest.Tuplet == TupletType.Stop) tupletState = null;
+                if (noteOrRest != null && noteOrRest.Tuplet == TupletType.Stop) TupletState = null;
 
                 PlayElement(CurrentElement, staff);
             }
@@ -141,6 +129,57 @@ namespace Manufaktura.Controls.Audio
             {
                 PlaybackExceptions.Add(ex);
                 Stop();
+            }
+        }
+
+        private bool ProcessGraceNotesAndChordElements(Staff staff)
+        {
+            Note note = CurrentElement as Note;
+            if (note != null)
+            {
+                if (note.Voice > 1 || note.IsGraceNote) //Skip note if it's a grace note or it's in another voice
+                {
+                    return true;
+                }
+
+                Note nextNote = staff.Peek<Note>(note, PeekType.NextElement);   //If next note is chord element, play all notes in the chord simultaneously
+                if (nextNote != null && nextNote.IsChordElement)
+                {
+                    PlayElement(CurrentElement, staff);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private NoteOrRest GetCurrentNoteOrRestAndDetermineTupletState(Staff staff)
+        {
+            NoteOrRest noteOrRest = CurrentElement as NoteOrRest;
+            if (noteOrRest != null && noteOrRest.Voice < 2)
+            {
+                if (noteOrRest.Tuplet == TupletType.Start)
+                {
+                    NoteOrRest tupletStart = staff.Peek<NoteOrRest>(noteOrRest, PeekType.BeginningOfTuplet);
+                    NoteOrRest tupletEnd = staff.Peek<NoteOrRest>(noteOrRest, PeekType.EndOfTuplet);
+                    if (tupletStart != null && tupletEnd != null)
+                    {
+                        TupletState = new Tuplet();
+                        TupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
+                            staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsChordElement)).Count() + 1;
+                    }
+                }
+            }
+            return noteOrRest;
+        }
+
+        class TimerState
+        {
+            public Score Score { get; private set; }
+            public bool CancellationToken { get; set; }
+
+            public TimerState(Score score)
+            {
+                Score = score;
             }
         }
     }
