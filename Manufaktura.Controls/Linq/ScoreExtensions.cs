@@ -46,6 +46,11 @@ namespace Manufaktura.Controls.Linq
             return ToScore(XDocument.Parse(document));
         }
 
+        public static Score ToScore(this string document, XTransformerParser transformer)
+        {
+            return ToScore(XDocument.Parse(document), transformer);
+        }
+
         public static Score ToScore(this XDocument document)
         {
             return ToScore(document, null);
