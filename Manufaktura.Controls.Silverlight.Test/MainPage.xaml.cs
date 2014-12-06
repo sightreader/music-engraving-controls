@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.Digest;
 using Manufaktura.Controls.Parser.MusicXml;
@@ -42,8 +43,7 @@ namespace Manufaktura.Controls.Silverlight.Test
                 }
                 fileStream.Close();
 
-                MusicXmlParser parser = new MusicXmlParser();
-                score = parser.Parse(XDocument.Parse(scoreXml));
+                score = scoreXml.ToScore();
                 noteViewer1.ScoreSource = score;
                 noteViewer3.ScoreSource = score;
 
