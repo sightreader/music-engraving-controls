@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Entity.cs" />
     <Compile Include="MappingAttribute.cs" />
+    <Compile Include="MVVM\ListViewModelStates.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
