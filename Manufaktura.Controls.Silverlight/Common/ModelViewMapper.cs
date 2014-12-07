@@ -30,20 +30,35 @@ namespace Manufaktura.Controls.Silverlight.Common
             ModelViewMapper mapper = d as ModelViewMapper;
             ViewModel viewModel = e.NewValue as ViewModel;
 
-            FrameworkElement view = MatchByConfiguration(viewModel) ?? MatchByConvention(viewModel);
+            FrameworkElement view = MatchByConfiguration(viewModel, mapper.ViewKind) ?? MatchByConvention(viewModel);
 
             if (view != null) view.DataContext = e.NewValue;
             mapper.Content = view;
         }
 
-        public static FrameworkElement MatchByConfiguration(ViewModel viewModel)
+        public ViewKinds? ViewKind
+        {
+            get { return (ViewKinds?)GetValue(ViewKindProperty); }
+            set { SetValue(ViewKindProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ViewKind.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ViewKindProperty =
+            DependencyProperty.Register("ViewKind", typeof(ViewKinds?), typeof(ModelViewMapper), new PropertyMetadata(null));
+
+        
+
+        public static FrameworkElement MatchByConfiguration(ViewModel viewModel, ViewKinds? desiredKind)
         {
             if (viewModel == null) return null;
 
             FrameworkElement view = null;
             try
             {
-                var viewAttribute = viewModel.GetType().GetCustomAttributes(typeof(ViewAttribute), true).Cast<ViewAttribute>().FirstOrDefault();
+                var viewAttributes = viewModel.GetType().GetCustomAttributes(typeof(ViewAttribute), true);
+                //Jeśli ViewKind na kontrolce jest ustawione, bierz tylko widoki odpowiadające temu ViewKind. Jeśli nie jest ustawione, bierz widoki bez ustawionego ViewKind.
+                var viewAttribute = desiredKind.HasValue ? viewAttributes.Cast<ViewAttribute>().FirstOrDefault(va => va.ViewKind.HasValue && va.ViewKind.Value == desiredKind.Value)
+                                                         : viewAttributes.Cast<ViewAttribute>().FirstOrDefault(va => !va.ViewKind.HasValue);
                 if (viewAttribute != null)
                 {
                     view = Activator.CreateInstance(viewAttribute.ViewType) as FrameworkElement;
