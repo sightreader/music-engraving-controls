@@ -26,7 +26,7 @@ namespace Manufaktura.Controls.AspNetMvc
         }
 
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression, IDictionary<string, object> htmlAttributes)
+        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression)
         {
             if (expression == null)
             {
@@ -36,15 +36,12 @@ namespace Manufaktura.Controls.AspNetMvc
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             string musicXml = metadata.Model == null ? null : metadata.Model.ToString();
 
-            return NoteViewerHelper(htmlHelper, metadata, ExpressionHelper.GetExpressionText(expression), musicXml, htmlAttributes);
+            return NoteViewerHelper(htmlHelper, metadata, ExpressionHelper.GetExpressionText(expression), musicXml);
         }
 
-        private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, ModelMetadata metadata, string name, string musicXml, IDictionary<string, object> htmlAttributes)
+        private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, ModelMetadata metadata, string name, string musicXml)
         {
-            RouteValueDictionary attributes = ToRouteValueDictionary(htmlAttributes);
-            attributes.Remove("musicXml"); // TODO: Do czego to służy?
-
-            //TODO: Gdzie konfigurować fonty?
+            //TODO: Dodatkowy argument ze słownikiem fontów
             Dictionary<FontStyles, HtmlFontInfo> fonts = new Dictionary<FontStyles, HtmlFontInfo>();
             fonts.Add(FontStyles.MusicFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 24d));
             fonts.Add(FontStyles.GraceNoteFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 12d));
