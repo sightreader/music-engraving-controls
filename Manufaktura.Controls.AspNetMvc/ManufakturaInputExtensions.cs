@@ -19,49 +19,33 @@ namespace Manufaktura.Controls.AspNetMvc
         private static int canvasIdCount = 0;
 
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression, object htmlAttributes)
+        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression, Expression<Func<TModel, NoteViewerSettings>> settingsExpression)
         {
-            return NoteViewerFor(htmlHelper, expression, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
-
-        }
-
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression)
-        {
-            if (expression == null)
-            {
-                throw new ArgumentNullException("expression");
-            }
+            if (expression == null) throw new ArgumentNullException("expression");
+            if (settingsExpression == null) throw new ArgumentNullException("settingsExpression");
 
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             string musicXml = metadata.Model == null ? null : metadata.Model.ToString();
+            ModelMetadata settingsMetadata = ModelMetadata.FromLambdaExpression(settingsExpression, htmlHelper.ViewData);
+            NoteViewerSettings settings = settingsMetadata.Model == null ? null : settingsMetadata.Model as NoteViewerSettings;
 
-            return NoteViewerHelper(htmlHelper, metadata, ExpressionHelper.GetExpressionText(expression), musicXml);
+            return NoteViewerHelper(htmlHelper, musicXml, settings);
         }
 
-        private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, ModelMetadata metadata, string name, string musicXml)
+        private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, string musicXml, NoteViewerSettings settings)
         {
-            //TODO: Dodatkowy argument ze słownikiem fontów
-            Dictionary<FontStyles, HtmlFontInfo> fonts = new Dictionary<FontStyles, HtmlFontInfo>();
-            fonts.Add(FontStyles.MusicFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 24d));
-            fonts.Add(FontStyles.GraceNoteFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 12d));
-            fonts.Add(FontStyles.LyricsFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 10d));
-            fonts.Add(FontStyles.TimeSignatureFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 14d));
-            fonts.Add(FontStyles.DirectionFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 10d));
+            if (settings.RenderSurface == NoteViewerSettings.HtmlRenderSurface.Svg)
+                throw new NotImplementedException("Svg support is currently not implemented.");
 
             MusicXmlParser parser = new MusicXmlParser();
             Score score = parser.Parse(XDocument.Parse(musicXml));
 
-            Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(score, fonts, string.Format("scoreCanvas{0}", canvasIdCount));
+            Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(score, settings.Fonts, string.Format("scoreCanvas{0}", canvasIdCount));
+            builder.Height = settings.Height;
             string html = builder.Build();
 
             canvasIdCount++;
             return MvcHtmlString.Create(html);
-        }
-
-        private static RouteValueDictionary ToRouteValueDictionary(IDictionary<string, object> dictionary)
-        {
-            return dictionary == null ? new RouteValueDictionary() : new RouteValueDictionary(dictionary);
         }
     }
 }

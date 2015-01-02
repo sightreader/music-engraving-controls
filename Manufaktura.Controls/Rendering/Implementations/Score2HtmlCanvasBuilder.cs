@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public IEnumerable<Score> Scores { get; protected set; }
         public Dictionary<FontStyles, HtmlFontInfo> Fonts { get; protected set; }
         public string CanvasPrefix { get; private set; }
+        public double Height { get; set; }
 
         public Score2HtmlCanvasBuilder(IEnumerable<Score> scores, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasPrefix)
         {
@@ -18,6 +20,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Scores = scores;
             Fonts = fonts;
             CanvasPrefix = canvasPrefix;
+            Height = 150;
         }
 
         public Score2HtmlCanvasBuilder(Score score, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName)
@@ -52,7 +55,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(scoreStringBuilder, Fonts, canvasName);
                 renderer.Render(Scores.ElementAt(i));
 
-                stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"200\"></canvas>", canvasName));
+                stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", canvasName, Height.ToString(CultureInfo.InvariantCulture)));
                 stringBuilder.AppendLine("<script>");
                 string scriptBody = @"(function() {
                         var canvas = document.getElementById('{0}'),
