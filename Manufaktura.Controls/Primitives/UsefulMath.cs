@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Primitives
 {
-    public class UsefulMath
+    public static class UsefulMath
     {
         public static double Mean(params double[] values) 
         {
@@ -38,6 +38,11 @@ namespace Manufaktura.Controls.Primitives
             double result;
             if (double.TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out result)) return result;
             return null;
+        }
+
+        public static double GradToRadians(double angle)
+        {
+            return angle * (Math.PI / 180d);
         }
     }
 }

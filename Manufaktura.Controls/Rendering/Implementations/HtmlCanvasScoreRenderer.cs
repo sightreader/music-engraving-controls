@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,7 +25,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
             if (!Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
-            double locationY = location.Y + 25d;
+            double locationY = fontStyle == FontStyles.MusicFont || fontStyle == FontStyles.GraceNoteFont ? location.Y + 25d : location.Y + 14d;
             double locationX = location.X + 3d;
             Canvas.AppendLine(string.Format("context.font = '{0}pt {1}';", Fonts[fontStyle].Size.ToString(CultureInfo.InvariantCulture), Fonts[fontStyle].Name));
             Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, locationX.ToString(CultureInfo.InvariantCulture), locationY.ToString(CultureInfo.InvariantCulture)));
@@ -40,10 +41,26 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, Model.MusicalSymbol owner)
         {
+            Canvas.AppendLine("context.beginPath();");
+            Canvas.AppendLine(string.Format("context.arc({0},{1},{2},{3},{4});", rect.X.ToString(CultureInfo.InvariantCulture), rect.Y.ToString(CultureInfo.InvariantCulture),
+                rect.Height.ToString(CultureInfo.InvariantCulture), 
+                UsefulMath.GradToRadians(startAngle).ToString(CultureInfo.InvariantCulture), 
+                UsefulMath.GradToRadians(sweepAngle).ToString(CultureInfo.InvariantCulture)));
+            Canvas.AppendLine("context.stroke();");
         }
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, Model.MusicalSymbol owner)
         {
+            Canvas.AppendLine("context.beginPath();");
+            Canvas.AppendLine(string.Format("context.moveTo({0}, {1});", p1.X.ToString(CultureInfo.InvariantCulture), p1.Y.ToString(CultureInfo.InvariantCulture)));
+            Canvas.AppendLine(string.Format("context.bezierCurveTo({0},{1},{2},{3},{4},{5});", 
+                p2.X.ToString(CultureInfo.InvariantCulture),
+                p2.Y.ToString(CultureInfo.InvariantCulture), 
+                p3.X.ToString(CultureInfo.InvariantCulture),
+                p3.Y.ToString(CultureInfo.InvariantCulture), 
+                p4.X.ToString(CultureInfo.InvariantCulture), 
+                p4.Y.ToString(CultureInfo.InvariantCulture)));
+            Canvas.AppendLine("context.stroke();");
         }
     }
     public struct HtmlFontInfo
