@@ -10,21 +10,19 @@ namespace Manufaktura.Controls.Rendering.Implementations
     public class Score2HtmlCanvasBuilder
     {
         public IEnumerable<Score> Scores { get; protected set; }
-        public Dictionary<FontStyles, HtmlFontInfo> Fonts { get; protected set; }
         public string CanvasPrefix { get; private set; }
-        public double Height { get; set; }
+        public HtmlScoreRendererSettings Settings { get; protected set; }
 
-        public Score2HtmlCanvasBuilder(IEnumerable<Score> scores, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasPrefix)
+        public Score2HtmlCanvasBuilder(IEnumerable<Score> scores, string canvasPrefix, HtmlScoreRendererSettings settings)
         {
             if (string.IsNullOrWhiteSpace(canvasPrefix)) throw new ArgumentNullException("canvasPrefix");
             Scores = scores;
-            Fonts = fonts;
             CanvasPrefix = canvasPrefix;
-            Height = 150;
+            Settings = settings;
         }
 
-        public Score2HtmlCanvasBuilder(Score score, Dictionary<FontStyles, HtmlFontInfo> fonts, string canvasName)
-            : this(new List<Score> { score }, fonts, canvasName)
+        public Score2HtmlCanvasBuilder(Score score, string canvasName, HtmlScoreRendererSettings settings)
+            : this(new List<Score> { score }, canvasName, settings)
         {
         }
 
@@ -33,7 +31,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("<style type=\"text/css\">");
             Dictionary<string, string> fontFaceDictionary = new Dictionary<string, string>();
-            foreach (var font in Fonts.Values)
+            foreach (var font in Settings.Fonts.Values)
             {
                 if (!fontFaceDictionary.ContainsKey(font.Name)) fontFaceDictionary.Add(font.Name, font.Uri);
             }
@@ -52,10 +50,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 string canvasName = count == 1 ? CanvasPrefix : string.Format("{0}{1}", CanvasPrefix, i);
 
                 StringBuilder scoreStringBuilder = new StringBuilder();
-                HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(scoreStringBuilder, Fonts, canvasName);
+                HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(scoreStringBuilder, canvasName, Settings);
                 renderer.Render(Scores.ElementAt(i));
 
-                stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", canvasName, Height.ToString(CultureInfo.InvariantCulture)));
+                stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", canvasName, Settings.Height.ToString(CultureInfo.InvariantCulture)));
                 stringBuilder.AppendLine("<script>");
                 string scriptBody = @"(function() {
                         var canvas = document.getElementById('{0}'),

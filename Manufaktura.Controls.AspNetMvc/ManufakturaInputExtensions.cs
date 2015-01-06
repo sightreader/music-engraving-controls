@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.AspNetMvc
         private static int canvasIdCount = 0;
 
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression, Expression<Func<TModel, NoteViewerSettings>> settingsExpression)
+        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression, Expression<Func<TModel, HtmlScoreRendererSettings>> settingsExpression)
         {
             if (expression == null) throw new ArgumentNullException("expression");
             if (settingsExpression == null) throw new ArgumentNullException("settingsExpression");
@@ -27,21 +27,20 @@ namespace Manufaktura.Controls.AspNetMvc
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             string musicXml = metadata.Model == null ? null : metadata.Model.ToString();
             ModelMetadata settingsMetadata = ModelMetadata.FromLambdaExpression(settingsExpression, htmlHelper.ViewData);
-            NoteViewerSettings settings = settingsMetadata.Model == null ? null : settingsMetadata.Model as NoteViewerSettings;
+            HtmlScoreRendererSettings settings = settingsMetadata.Model == null ? null : settingsMetadata.Model as HtmlScoreRendererSettings;
 
             return NoteViewerHelper(htmlHelper, musicXml, settings);
         }
 
-        private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, string musicXml, NoteViewerSettings settings)
+        private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, string musicXml, HtmlScoreRendererSettings settings)
         {
-            if (settings.RenderSurface == NoteViewerSettings.HtmlRenderSurface.Svg)
+            if (settings.RenderSurface == HtmlScoreRendererSettings.HtmlRenderSurface.Svg)
                 throw new NotImplementedException("Svg support is currently not implemented.");
 
             MusicXmlParser parser = new MusicXmlParser();
             Score score = parser.Parse(XDocument.Parse(musicXml));
 
-            Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(score, settings.Fonts, string.Format("scoreCanvas{0}", canvasIdCount));
-            builder.Height = settings.Height;
+            Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(score, string.Format("scoreCanvas{0}", canvasIdCount), settings);          
             string html = builder.Build();
 
             canvasIdCount++;
