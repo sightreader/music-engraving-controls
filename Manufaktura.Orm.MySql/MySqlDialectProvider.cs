@@ -112,7 +112,8 @@ namespace Manufaktura.Orm.Builder
             sb.Append(typeAttribute.Name);
             sb.Append(" (");
             bool first = true;
-            foreach (var property in entity.GetType().GetProperties())
+            var properties = entity.GetType().GetProperties().ToList();
+            foreach (var property in properties)
             {
                 if (property.GetValue(entity) == null) continue;
                 MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
@@ -125,7 +126,7 @@ namespace Manufaktura.Orm.Builder
             sb.Append(") VALUES (");
             first = true;
             int parameter = 0;
-            foreach (var property in entity.GetType().GetProperties())
+            foreach (var property in properties)
             {
                 if (property.GetValue(entity) == null) continue;
                 MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
