@@ -12,8 +12,23 @@ namespace Manufaktura.Model
         }
         public string Name { get; set; }
 
-        public bool IsPrimaryKey { get; set; }
+        private bool isPrimaryKey;
+        public bool IsPrimaryKey
+        {
+            get
+            {
+                return isPrimaryKey;
+            }
+            set
+            {
+                isPrimaryKey = value;
+                if (value) IsNotNull = true;
+            }
+        }
+
+        public bool IsNotNull { get; set; }
 
         public bool IsSpecialColumn { get; set; }
+        public int Length { get; set; }
     }
 }

@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Model\KolbergEntity.cs" />
     <Compile Include="Model\Melody.cs" />
+    <Compile Include="Model\Provenance.cs" />
+    <Compile Include="Model\ProvenanceToPage.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

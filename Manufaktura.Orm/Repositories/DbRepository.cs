@@ -14,7 +14,7 @@ using Manufaktura.Model;
 namespace Manufaktura.Orm
 {
     public class DbRepository : IDisposable
-    {       
+    {
         public DialectProvider Provider { get; protected set; }
         private bool _isConnectionOpen;
 
@@ -27,7 +27,7 @@ namespace Manufaktura.Orm
         {
             Assembly assembly = Assembly.LoadFrom(providerAssemblyFile);
             Type providerType = assembly.GetType(providerClassName);
-            if (providerType == null) 
+            if (providerType == null)
                 throw new Exception(string.Format("Failed to create dialect provider type {0}. Make sure that namespace is correct.", providerClassName));
             Provider = Activator.CreateInstance(providerType, connectionString) as DialectProvider;
             if (Provider == null) throw new Exception(string.Format("Failed to create dialect provider {0}.", providerClassName));
@@ -48,7 +48,7 @@ namespace Manufaktura.Orm
 
         public TEntity Load<TEntity>(object id) where TEntity : Entity, new()
         {
-            if (id is SqlPredicate) 
+            if (id is SqlPredicate)
                 throw new ArgumentException("Entity id was expected but SqlPredicate found. You probably wanted to use Load<TEntity>(QueryBuilder.Create().SetWhereStatement(sqlPredicate)).");
 
             MappingAttribute identityMapping = FindIdentity<TEntity>();
@@ -101,6 +101,13 @@ namespace Manufaktura.Orm
             command.ExecuteNonQuery();
             entity.IsNew = false;
             return entity;
+        }
+
+        public void UpdateSchema(Entity entity)
+        {
+            EnsureConnectionOpen();
+            var command = Provider.GetUpdateSchemaCommand(entity);
+            if (command != null) command.ExecuteNonQuery();
         }
 
         public void Dispose()

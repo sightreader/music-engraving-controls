@@ -36,6 +36,16 @@ namespace Manufaktura.Orm.UnitTests
         }
 
         [TestMethod]
+        public void TestMySqlUpdateSchema()
+        {
+            using (var repository = new DbRepository(new MySqlDialectProvider("Server=localhost;Database=kolberg-test;Uid=admin;Pwd=123123;")))
+            {
+                repository.UpdateSchema(new Provenance());
+                repository.UpdateSchema(new ProvenanceToPage());
+            }
+        }
+
+        [TestMethod]
         public void TestCreateProvider()
         {
             using (var repository = new DbRepository("Manufaktura.Orm.Builder.MySqlDialectProvider", "Manufaktura.Orm.MySql.dll", "Server=localhost;Database=kolberg-test;Uid=admin;Pwd=123123;"))
@@ -50,7 +60,7 @@ namespace Manufaktura.Orm.UnitTests
             using (var repository = new DbRepository("Manufaktura.Orm.Builder.MySqlDialectProvider", "Manufaktura.Orm.MySql.dll", "Server=localhost;Database=kolberg-test;Uid=admin;Pwd=123123;"))
             {
                 long count = repository.ExecuteScalar<Melody, long>(QueryBuilder.Create().SpecifyColumns(null).AddSpecialColumn(new CountSpecialColumn("Id", "MelodyCount")));
-                
+
             }
         }
 
@@ -90,11 +100,11 @@ namespace Manufaktura.Orm.UnitTests
                     MusicXmlParser parser = new MusicXmlParser();
                     scores.Add(parser.Parse(XDocument.Parse(melody.Xml)));
                 }
-                Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(scores, fonts, "scoreCanvas");
-                string html= builder.Build();
-                Console.WriteLine(html);
+                //Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(scores, fonts, "scoreCanvas");
+                //string html = builder.Build();
+                //Console.WriteLine(html);
             }
-            
+
         }
     }
 }

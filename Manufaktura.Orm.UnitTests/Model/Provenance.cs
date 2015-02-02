@@ -1,0 +1,23 @@
+﻿using Manufaktura.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Manufaktura.Orm.UnitTests.Model
+{
+    [DataContract]
+    [Mapping("provenance")]
+    public class Provenance : KolbergEntity
+    {
+        [DataMember]
+        [Mapping("Name", Length = 255)]
+        public string Name { get; set; }
+
+        [DataMember]
+        [Mapping("AdditionalText", Length = 512)]
+        public string AdditionalText { get; set; }
+    }
+}
