@@ -237,12 +237,17 @@ namespace Manufaktura.Orm.Builder
                 sb.AppendFormat("CREATE TABLE {0} (", typeAttribute.Name);
                 bool first = true;
                 MappingAttribute primaryKeyAttribute = null;
+                var foreignKeyAttributes = new List<MappingAttribute>();
                 foreach (var property in properties)
                 {
                     MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
                     if (attribute == null) continue;
                     if (attribute.IsSpecialColumn) continue;
                     if (attribute.IsPrimaryKey) primaryKeyAttribute = attribute;
+                    if (!string.IsNullOrWhiteSpace(attribute.ForeignColumn) && !string.IsNullOrWhiteSpace(attribute.ForeignTable))
+                    {
+                        foreignKeyAttributes.Add(attribute);
+                    }
                     if (!first) sb.Append(",");
                     sb.AppendFormat(" {0} {1} {2}", attribute.Name, GetDbType(property.PropertyType, attribute), attribute.IsPrimaryKey || attribute.IsNotNull ? "NOT NULL" : "DEFAULT NULL");
                     first = false;
@@ -251,6 +256,13 @@ namespace Manufaktura.Orm.Builder
                 {
                     if (!first) sb.Append(",");
                     sb.AppendFormat(" PRIMARY KEY ({0}), UNIQUE KEY {0}_UNIQUE ({0})", primaryKeyAttribute.Name);
+                }
+                first = false;
+                foreach (var attribute in foreignKeyAttributes)
+                {
+                    if (!first) sb.Append(",");
+                    sb.AppendFormat(" KEY FK_{0}_idx ({0}), CONSTRAINT FK_{0} FOREIGN KEY ({0}) REFERENCES {1} ({2}) ON DELETE NO ACTION ON UPDATE NO ACTION", 
+                        attribute.Name, attribute.ForeignTable, attribute.ForeignColumn);
                 }
                 sb.Append(") ENGINE=InnoDB DEFAULT CHARSET=utf8;");
             }

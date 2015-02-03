@@ -30,5 +30,7 @@ namespace Manufaktura.Model
 
         public bool IsSpecialColumn { get; set; }
         public int Length { get; set; }
+        public string ForeignTable { get; set; }
+        public string ForeignColumn { get; set; }
     }
 }

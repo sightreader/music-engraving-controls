@@ -13,7 +13,7 @@ namespace Manufaktura.Orm.UnitTests.Model
     class ProvenanceToPage : KolbergEntity
     {
         [DataMember]
-        [Mapping("ProvenanceId")]
+        [Mapping("ProvenanceId", ForeignTable="Provenance", ForeignColumn="Id")]
         public Guid ProvenanceId { get; set; }
 
         [DataMember]
