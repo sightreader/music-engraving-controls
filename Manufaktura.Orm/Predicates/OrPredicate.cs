@@ -9,7 +9,7 @@ namespace Manufaktura.Orm.Predicates
     {
         public override string LogicOperator
         {
-            get { return "OR"; }
+            get { return " OR "; }
         }
 
         public OrPredicate(params SqlPredicate[] predicates) : base(predicates)

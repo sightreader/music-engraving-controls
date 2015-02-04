@@ -70,7 +70,7 @@ namespace Manufaktura.Orm.Builder
             if (builder.WhereStatement != null)
             {
                 string sql = builder.WhereStatement.GetSql(ref parameterCounter);
-                if (!string.IsNullOrWhiteSpace(sql))
+                if (!Extensions.IsNullOrWhiteSpaceOrEmptyParentheses(sql))
                 {
                     sb.Append(" WHERE ");
                     sb.Append(sql);

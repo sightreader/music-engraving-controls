@@ -22,5 +22,11 @@ namespace Manufaktura.Model
                 return a.IsPrimaryKey ? 1 : 0;
             });
         }
+
+        public static bool IsNullOrWhiteSpaceOrEmptyParentheses(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s)) return true;
+            return s.Replace(" ", string.Empty).Replace("(", string.Empty).Replace(")", string.Empty).Length == 0;
+        }
     }
 }

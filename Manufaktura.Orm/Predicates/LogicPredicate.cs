@@ -23,7 +23,7 @@ namespace Manufaktura.Orm.Predicates
             {
                 predicates.Add(predicate.GetSql(ref parameterCounter));
             }
-            return string.Join(LogicOperator, predicates);
+            return string.Format("({0})", string.Join(LogicOperator, predicates));
         }
 
         public override object[] GetParameterValues()

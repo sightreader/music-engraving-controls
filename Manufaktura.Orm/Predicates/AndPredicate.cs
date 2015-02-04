@@ -9,7 +9,7 @@ namespace Manufaktura.Orm.Predicates
     {
         public override string LogicOperator
         {
-            get { return "AND"; }
+            get { return " AND "; }
         }
 
         public AndPredicate(params SqlPredicate[] predicates) : base(predicates)
