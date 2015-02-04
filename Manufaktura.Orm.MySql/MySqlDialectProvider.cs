@@ -44,7 +44,7 @@ namespace Manufaktura.Orm.Builder
             //Jeśli kolumny nie są wyspecyfikowane, dodaj na podstawie propertiesów:
             if (!builder.AreColumnsSpecified)
             {
-                foreach (PropertyInfo property in typeof(TEntity).GetProperties())
+                foreach (PropertyInfo property in typeof(TEntity).GetOrderedProperties())
                 {
                     MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
                     if (attribute == null) continue;
@@ -115,7 +115,7 @@ namespace Manufaktura.Orm.Builder
             sb.Append(typeAttribute.Name);
             sb.Append(" (");
             bool first = true;
-            var properties = entity.GetType().GetProperties().ToList();
+            var properties = entity.GetType().GetOrderedProperties().ToList();
             foreach (var property in properties)
             {
                 if (property.GetValue(entity) == null) continue;
@@ -162,7 +162,7 @@ namespace Manufaktura.Orm.Builder
             bool first = true;
             PropertyInfo idProperty = null;
             int parameter = 0;
-            foreach (var property in entity.GetType().GetProperties())
+            foreach (var property in entity.GetType().GetOrderedProperties())
             {
                 if (property.GetValue(entity) == null) continue;
                 MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
@@ -206,7 +206,7 @@ namespace Manufaktura.Orm.Builder
             adapter.Fill(table);
             bool tableExists = table.Rows.Count > 0;
 
-            var properties = entity.GetType().GetProperties().ToList();
+            var properties = entity.GetType().GetOrderedProperties().ToList();
             var sb = new StringBuilder();
             if (tableExists)
             {

@@ -32,5 +32,6 @@ namespace Manufaktura.Model
         public int Length { get; set; }
         public string ForeignTable { get; set; }
         public string ForeignColumn { get; set; }
+        public int Order { get; set; }
     }
 }
