@@ -181,9 +181,10 @@ namespace Manufaktura.Orm.Builder
             }
             if (idProperty == null) throw new Exception("Brak kolumny id.");
             MappingAttribute idAttribute = idProperty.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
-            sb.Append(string.Format(" WHERE {0}={1};", idAttribute.Name, idProperty.GetValue(entity)));
-
-
+            sb.Append(string.Format(" WHERE {0}=@P{1};", idAttribute.Name, parameter));
+            command.Parameters.Add(string.Format("@P{0}", parameter), idProperty.GetValue(entity));
+            parameter++;
+            
             command.CommandText = sb.ToString();
             return command;
         }
