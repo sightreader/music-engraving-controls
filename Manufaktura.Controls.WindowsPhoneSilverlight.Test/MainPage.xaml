@@ -47,7 +47,7 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Background="White">
             <Manufaktura:NoteViewer x:Name="noteViewer1" HorizontalAlignment="Stretch" Height="100" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <Manufaktura:NoteViewer x:Name="noteViewer2" HorizontalAlignment="Stretch" Height="100" Margin="10,115,0,0" VerticalAlignment="Top" />
             <Manufaktura:NoteViewer x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100" Margin="10,220,0,0" VerticalAlignment="Top" />
