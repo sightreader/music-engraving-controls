@@ -2,7 +2,7 @@
 using System;
 using System.Net;
 
-namespace Manufaktura.Controls.Silverlight.Common
+namespace Manufaktura.Model.MVVM
 {
     public class ViewAttribute : Attribute
     {

@@ -14,12 +14,14 @@ using System.Windows.Shapes;
 
 namespace Manufaktura.Controls.WindowsPhoneSilverlight
 {
-    class CanvasScoreRenderer : ScoreRenderer<Canvas>
+    public class CanvasScoreRenderer : ScoreRenderer<Canvas>
     {
+        public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
 
         public CanvasScoreRenderer(Canvas canvas)
             : base(canvas)
         {
+            OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
         }
 
         private Color ConvertColor(Primitives.Color color)
@@ -39,23 +41,32 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
             textBlock.FontFamily = Fonts.Get(fontStyle);
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.UseLayoutRounding = true;
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+
             System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
             System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
             Canvas.Children.Add(textBlock);
+
+            OwnershipDictionary.Add(textBlock, owner);
         }
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
         {
             var line = new Line();
             line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-
+            line.UseLayoutRounding = true;
             line.X1 = startPoint.X;
             line.X2 = endPoint.X;
             line.Y1 = startPoint.Y;
             line.Y2 = endPoint.Y;
-
+            System.Windows.Controls.Canvas.SetZIndex(line, (int)pen.ZIndex);
             line.StrokeThickness = pen.Thickness;
+            line.Visibility = BoolToVisibility(owner.IsVisible);
+
             Canvas.Children.Add(line);
+
+            OwnershipDictionary.Add(line, owner);
         }
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
@@ -76,7 +87,11 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
+            path.Visibility = BoolToVisibility(owner.IsVisible);
+            System.Windows.Controls.Canvas.SetZIndex(path, (int)pen.ZIndex);
             Canvas.Children.Add(path);
+
+            OwnershipDictionary.Add(path, owner);
         }
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
@@ -95,7 +110,16 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
             path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
+            path.Visibility = BoolToVisibility(owner.IsVisible);
+            System.Windows.Controls.Canvas.SetZIndex(path, (int)pen.ZIndex);
             Canvas.Children.Add(path);
+
+            OwnershipDictionary.Add(path, owner);
+        }
+
+        private Visibility BoolToVisibility(bool isVisible)
+        {
+            return isVisible ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

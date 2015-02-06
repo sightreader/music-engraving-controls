@@ -84,13 +84,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CanvasScoreRenderer.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\ViewModelCommand.cs" />
+    <Compile Include="Common\ListContentControl.cs" />
+    <Compile Include="Common\ModelViewMapper.cs" />
     <Compile Include="Fonts.cs" />
+    <Compile Include="Keyboard\PianoKey.cs" />
+    <Compile Include="Keyboard\PianoKeyboard.xaml.cs">
+      <DependentUpon>PianoKeyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboard\PianoKeyType.cs" />
     <Compile Include="NoteViewer.xaml.cs">
       <DependentUpon>NoteViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Keyboard\PianoKeyboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="NoteViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +116,10 @@
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
       <Project>{52331173-dfd5-47ea-ba7a-72bbbe85d2fa}</Project>
       <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
+      <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>
+      <Name>Manufaktura.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
