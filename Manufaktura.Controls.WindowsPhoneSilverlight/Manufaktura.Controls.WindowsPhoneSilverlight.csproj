@@ -83,6 +83,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Audio\PlayMusicalSymbolTimeline.cs" />
+    <Compile Include="Audio\TimelineScorePlayer.cs" />
+    <Compile Include="Audio\XnaScorePlayer.cs" />
     <Compile Include="CanvasScoreRenderer.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\ViewModelCommand.cs" />
@@ -110,6 +113,18 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="piano-a.wav" />
+    <Resource Include="piano-b.wav" />
+    <Resource Include="piano-bb.wav" />
+    <Resource Include="piano-c.wav" />
+    <Resource Include="piano-cc.wav" />
+    <Resource Include="piano-d.wav" />
+    <Resource Include="piano-e.wav" />
+    <Resource Include="piano-eb.wav" />
+    <Resource Include="piano-f.wav" />
+    <Resource Include="piano-ff.wav" />
+    <Resource Include="piano-g.wav" />
+    <Resource Include="piano-gg.wav" />
     <Content Include="Polihymnia.ttf" />
   </ItemGroup>
   <ItemGroup>
