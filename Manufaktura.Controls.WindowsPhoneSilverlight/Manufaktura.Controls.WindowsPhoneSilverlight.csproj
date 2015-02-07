@@ -91,6 +91,9 @@
     <Compile Include="Commands\ViewModelCommand.cs" />
     <Compile Include="Common\ListContentControl.cs" />
     <Compile Include="Common\ModelViewMapper.cs" />
+    <Compile Include="DummyControl.xaml.cs">
+      <DependentUpon>DummyControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fonts.cs" />
     <Compile Include="Keyboard\PianoKey.cs" />
     <Compile Include="Keyboard\PianoKeyboard.xaml.cs">
@@ -103,6 +106,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DummyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Keyboard\PianoKeyboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,7 +132,7 @@
     <Resource Include="piano-ff.wav" />
     <Resource Include="piano-g.wav" />
     <Resource Include="piano-gg.wav" />
-    <Content Include="Polihymnia.ttf" />
+    <Resource Include="Polihymnia.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">

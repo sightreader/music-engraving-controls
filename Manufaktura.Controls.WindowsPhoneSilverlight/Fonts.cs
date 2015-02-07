@@ -14,14 +14,15 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 {
     public static class Fonts
     {
+        private static FontFamily PolihymniaFamily = new DummyControl().dummyTextBlock.FontFamily;
 
         private static Dictionary<Model.FontStyles, FontFamily> _fonts = new Dictionary<Model.FontStyles, FontFamily>()
             {
-                {Model.FontStyles.MusicFont,  new FontFamily("Polihymnia.ttf#Polihymnia")},
-                {Model.FontStyles.GraceNoteFont, new FontFamily("Polihymnia.ttf#Polihymnia")},
-                {Model.FontStyles.StaffFont, new FontFamily("Polihymnia.ttf#Polihymnia")},
-                {Model.FontStyles.LyricsFont, new FontFamily("Times New Roman")},
-                {Model.FontStyles.LyricsFontBold, new FontFamily("Times New Roman")},
+                {Model.FontStyles.MusicFont, PolihymniaFamily},
+                {Model.FontStyles.GraceNoteFont, PolihymniaFamily},
+                {Model.FontStyles.StaffFont, PolihymniaFamily},
+                {Model.FontStyles.LyricsFont, new FontFamily("Segoe UI")},
+                {Model.FontStyles.LyricsFontBold, new FontFamily("Segoe UI")},
                 {Model.FontStyles.MiscArticulationFont, new FontFamily("Microsoft Sans Serif")},
                 {Model.FontStyles.DirectionFont, new FontFamily("Microsoft Sans Serif")},
                 {Model.FontStyles.TrillFont, new FontFamily("Times New Roman")},
