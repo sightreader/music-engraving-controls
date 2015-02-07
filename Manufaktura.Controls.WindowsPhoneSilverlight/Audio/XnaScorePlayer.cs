@@ -127,7 +127,6 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
             var firstNoteInMeasure = staff.Peek<Note>(element, PeekType.BeginningOfMeasure);
             FrameworkDispatcher.Update();
             effect.Play(element == firstNoteInMeasure ? 0.4f : 0.3f, octaveModifier, 0);
-            FrameworkDispatcher.Update();
         }
 
         protected void OnElementPlayed(MusicalSymbol symbol)

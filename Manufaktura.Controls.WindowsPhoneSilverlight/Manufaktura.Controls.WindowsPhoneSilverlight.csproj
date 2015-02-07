@@ -89,6 +89,7 @@
     <Compile Include="CanvasScoreRenderer.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\ViewModelCommand.cs" />
+    <Compile Include="Common\ControllablePanorama.cs" />
     <Compile Include="Common\ListContentControl.cs" />
     <Compile Include="Common\ModelViewMapper.cs" />
     <Compile Include="DummyControl.xaml.cs">
