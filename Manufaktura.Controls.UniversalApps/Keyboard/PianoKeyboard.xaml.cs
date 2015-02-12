@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Manufaktura.Controls.UniversalApps.Keyboard
 {
-    public partial class PianoKeyboard : UserControl
+    public sealed partial class PianoKeyboard : UserControl
     {
         private static Dictionary<int, PianoKeyType> _keyTypes;
         public static Dictionary<int, PianoKeyType> KeyTypes

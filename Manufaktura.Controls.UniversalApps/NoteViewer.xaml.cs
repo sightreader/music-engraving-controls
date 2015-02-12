@@ -23,7 +23,7 @@ using Windows.UI.Xaml.Shapes;
 
 namespace Manufaktura.Controls.UniversalApps
 {
-    public partial class NoteViewer : UserControl
+    public sealed partial class NoteViewer : UserControl
     {
         private DraggingState _draggingState = new DraggingState();
         private Score _innerScore;

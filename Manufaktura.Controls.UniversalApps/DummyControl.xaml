@@ -7,6 +7,6 @@
     d:DesignHeight="300" d:DesignWidth="400">
     
     <Grid x:Name="LayoutRoot" Background="White">
-        <TextBlock Foreground="Black" FontFamily="/Manufaktura.Controls.UniversalApps;component/Polihymnia.ttf#Polihymnia" x:Name="dummyTextBlock" Text="cdefYyZz" FontSize="24"/>
+        <TextBlock Foreground="Black" FontFamily="Polihymnia.ttf#Polihymnia" x:Name="dummyTextBlock" Text="cdefYyZz" FontSize="24"/>
     </Grid>
 </UserControl>
