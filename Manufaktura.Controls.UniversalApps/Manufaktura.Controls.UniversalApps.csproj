@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BEF86ABD-760A-44E8-B1DC-A65C7C0260DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Manufaktura.Controls.UniversalApps</RootNamespace>
+    <AssemblyName>Manufaktura.Controls.UniversalApps</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <Page Include="DummyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Keyboard\PianoKeyboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NoteViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+    <TargetPlatform Include="Windows, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CanvasScoreRenderer.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\ViewModelCommand.cs" />
+    <Compile Include="Common\ListContentControl.cs" />
+    <Compile Include="Common\ModelViewMapper.cs" />
+    <Compile Include="DummyControl.xaml.cs">
+      <DependentUpon>DummyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fonts.cs" />
+    <Compile Include="Keyboard\PianoKey.cs" />
+    <Compile Include="Keyboard\PianoKeyboard.xaml.cs">
+      <DependentUpon>PianoKeyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboard\PianoKeyType.cs" />
+    <Compile Include="NoteViewer.xaml.cs">
+      <DependentUpon>NoteViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Manufaktura.Controls">
+      <HintPath>..\..\Manufaktura.Kolberg\lib\Manufaktura.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Manufaktura.Model">
+      <HintPath>..\..\Manufaktura.Kolberg\lib\Manufaktura.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Polihymnia.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-a.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-b.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-bb.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-c.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-cc.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-d.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-e.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-eb.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-f.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-ff.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-g.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="piano-gg.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Audio\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
