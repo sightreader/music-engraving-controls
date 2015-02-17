@@ -71,6 +71,16 @@
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\Tuplet.cs" />
+    <Compile Include="MusicTheory\Generators\RandomMelodyGenerator.cs" />
+    <Compile Include="MusicTheory\Model\MajorAndMinor\MajorOrMinorScale.cs" />
+    <Compile Include="MusicTheory\Model\Mode.cs" />
+    <Compile Include="MusicTheory\Model\Pentatonic\PentatonicMode.cs" />
+    <Compile Include="MusicTheory\Model\Pentatonic\PentatonicScale.cs" />
+    <Compile Include="MusicTheory\Model\RelativeScale.cs" />
+    <Compile Include="MusicTheory\Model\Scale.cs" />
+    <Compile Include="MusicTheory\Rules\MusicalError.cs" />
+    <Compile Include="MusicTheory\Rules\MusicalRule.cs" />
+    <Compile Include="MusicTheory\Rules\MusicalSymbolRange.cs" />
     <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmDigestParser.cs" />
@@ -124,6 +134,7 @@
     <Compile Include="Rendering\Strategies\StaffRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\TimeSignatureRenderStrategy.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
