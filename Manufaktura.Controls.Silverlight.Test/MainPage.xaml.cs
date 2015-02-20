@@ -15,6 +15,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 
@@ -57,7 +58,7 @@ namespace Manufaktura.Controls.Silverlight.Test
                 LyricsDigestParser lyricsParser = new LyricsDigestParser();
                 string lyrics = lyricsParser.ParseBack(score);
                 //MessageBox.Show(string.Join(", ", results));
-            }
+           }
         }
         XnaScorePlayer player;
         private void Play_Click(object sender, RoutedEventArgs e)

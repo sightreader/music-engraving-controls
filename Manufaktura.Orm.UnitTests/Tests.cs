@@ -18,6 +18,7 @@ namespace Manufaktura.Orm.UnitTests
     [TestClass]
     public class Tests
     {
+
         [TestMethod]
         public void TestMySqlSelect()
         {

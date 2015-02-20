@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Rendering
         }
 
         /// <summary>
-        /// Draws text (i.e. note heads, lyrics, articulation symbols) in black color in proper location with proper fontStyle.
+        /// Draws text (i.e. note heads, lyrics, articulation symbols) in default color in proper location with proper fontStyle.
         /// </summary>
         /// <remarks>
         /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
@@ -43,11 +43,11 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner">Owning MusicalSymbol</param>
         public void DrawString(string text, FontStyles fontStyle, double x, double y, MusicalSymbol owner)
         {
-            DrawString(text, fontStyle, new Point(x, y), Color.Black, owner);
+            DrawString(text, fontStyle, new Point(x, y), Settings.DefaultColor, owner);
         }
 
         /// <summary>
-        /// Draws text (i.e. note heads, lyrics, articulation symbols) in black color in proper location with proper fontStyle.
+        /// Draws text (i.e. note heads, lyrics, articulation symbols) in default color in proper location with proper fontStyle.
         /// </summary>
         /// <remarks>
         /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
@@ -59,7 +59,7 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner">Owning MusicalSymbol</param>
         public void DrawString(string text, FontStyles fontStyle, Point location, MusicalSymbol owner)
         {
-            DrawString(text, fontStyle, location, Color.Black, owner);
+            DrawString(text, fontStyle, location, Settings.DefaultColor, owner);
         }
 
         /// <summary>
@@ -78,11 +78,11 @@ namespace Manufaktura.Controls.Rendering
 
         public void DrawLine(double startX, double startY, double endX, double endY, MusicalSymbol owner)
         {
-            DrawLine(new Point(startX, startY), new Point(endX, endY), new Pen(Color.Black, 1), owner);
+            DrawLine(new Point(startX, startY), new Point(endX, endY), new Pen(Settings.DefaultColor, 1), owner);
         }
         public void DrawLine(Point startPoint, Point endPoint, MusicalSymbol owner)
         {
-            DrawLine(startPoint, endPoint, new Pen(Color.Black, 1), owner);
+            DrawLine(startPoint, endPoint, new Pen(Settings.DefaultColor, 1), owner);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Manufaktura.Controls.Rendering
 
         public void DrawArc(Rectangle rect, double startAngle, double sweepAngle, MusicalSymbol owner)
         {
-            DrawArc(rect, startAngle, sweepAngle, new Pen(Color.Black, 1), owner);
+            DrawArc(rect, startAngle, sweepAngle, new Pen(Settings.DefaultColor, 1), owner);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Manufaktura.Controls.Rendering
 
         public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, MusicalSymbol owner)
         {
-            DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), new Pen(Color.Black, 1), owner);
+            DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), new Pen(Settings.DefaultColor, 1), owner);
         }
         public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, Pen pen, MusicalSymbol owner)
         {

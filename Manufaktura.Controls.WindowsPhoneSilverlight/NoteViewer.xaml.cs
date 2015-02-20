@@ -40,7 +40,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
         {
             NoteViewer viewer = obj as NoteViewer;
             string xmlSource = args.NewValue as string;
-
+            
             XDocument xmlDocument = XDocument.Parse(xmlSource);
             //Apply transformations:
             if (viewer.XmlTransformations != null)
@@ -188,6 +188,8 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
             MainCanvas.Children.Clear();
             Renderer = new CanvasScoreRenderer(MainCanvas);
             Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
+            var brush = Foreground as SolidColorBrush;
+            if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
             if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
             if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);

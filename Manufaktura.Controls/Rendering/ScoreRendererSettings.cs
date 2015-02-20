@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Controls.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Manufaktura.Controls.Rendering
         public bool IsPanoramaMode { get; set; }
         public int PaddingTop { get; private set; }
         public int LineSpacing { get; private set; }
+        public Color DefaultColor { get; set; }
 
         public ScoreRendererSettings()
         {
@@ -22,6 +24,7 @@ namespace Manufaktura.Controls.Rendering
             PageWidth = 200;
             PaddingTop = 20;
             LineSpacing = 6;
+            DefaultColor = Color.Black;
         }
     }
 }

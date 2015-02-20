@@ -337,12 +337,12 @@ namespace Manufaktura.Controls.Rendering
                 if (element.StemDirection == VerticalDirection.Down)
                 {
                     renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 16, renderer.State.tieStartPoint.Y + 6,
-                        arcWidth, arcHeight), 180, 180, new Pen(Color.Black, 1.5), element);
+                        arcWidth, arcHeight), 180, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
                 }
                 else if (element.StemDirection == VerticalDirection.Up)
                 {
                     renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 16, renderer.State.tieStartPoint.Y + 22,
-                        arcWidth, arcHeight), 0, 180, new Pen(Color.Black, 1.5), element);
+                        arcWidth, arcHeight), 0, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
                 }
                 if (element.TieType == NoteTieType.StopAndStartAnother)
                 {
