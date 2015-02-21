@@ -24,9 +24,14 @@ namespace Manufaktura.Controls.UniversalApps
             OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
         }
 
-        private Color ConvertColor(Primitives.Color color)
+        public Color ConvertColor(Primitives.Color color)
         {
             return Color.FromArgb(color.A, color.R, color.G, color.B);
+        }
+
+        public Primitives.Color ConvertColor(Color color)
+        {
+            return new Primitives.Color(color.R, color.G, color.B, color.A);
         }
 
         private Point ConvertPoint(Primitives.Point point)

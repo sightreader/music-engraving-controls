@@ -187,6 +187,8 @@ namespace Manufaktura.Controls.WPF
             MainCanvas.Children.Clear();
             Renderer = new CanvasScoreRenderer(MainCanvas);
             Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
+            var brush = Foreground as SolidColorBrush;
+            if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
             if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
             if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
