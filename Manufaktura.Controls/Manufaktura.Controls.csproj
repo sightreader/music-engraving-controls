@@ -71,16 +71,6 @@
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\Tuplet.cs" />
-    <Compile Include="MusicTheory\Generators\RandomMelodyGenerator.cs" />
-    <Compile Include="MusicTheory\Model\MajorAndMinor\MajorOrMinorScale.cs" />
-    <Compile Include="MusicTheory\Model\Mode.cs" />
-    <Compile Include="MusicTheory\Model\Pentatonic\PentatonicMode.cs" />
-    <Compile Include="MusicTheory\Model\Pentatonic\PentatonicScale.cs" />
-    <Compile Include="MusicTheory\Model\RelativeScale.cs" />
-    <Compile Include="MusicTheory\Model\Scale.cs" />
-    <Compile Include="MusicTheory\Rules\MusicalError.cs" />
-    <Compile Include="MusicTheory\Rules\MusicalRule.cs" />
-    <Compile Include="MusicTheory\Rules\MusicalSymbolRange.cs" />
     <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
     <Compile Include="Parser\Digest\RhythmDigestParser.cs" />

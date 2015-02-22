@@ -1,15 +1,15 @@
-﻿using Manufaktura.Controls.MusicTheory.Rules;
+﻿using Manufaktura.Music.MusicTheory.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Controls.MusicTheory.Model
+namespace Manufaktura.Music.MusicTheory.Model
 {
     public class PentatonicMode : Mode
     {
         private PentatonicScale scale = new PentatonicScale();
-        public override RelativeScale Scale
+        public override Gamut Gamut
         {
             get { return scale; }
         }

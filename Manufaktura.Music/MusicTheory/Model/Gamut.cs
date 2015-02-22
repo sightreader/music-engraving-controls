@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Controls.MusicTheory.Model
+namespace Manufaktura.Music.MusicTheory.Model
 {
-    public abstract class RelativeScale
+    public abstract class Gamut
     {
         public abstract IEnumerable<int> Intervals { get; }
     }

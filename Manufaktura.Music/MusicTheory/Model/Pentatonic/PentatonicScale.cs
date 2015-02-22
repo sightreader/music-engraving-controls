@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Controls.MusicTheory.Model
+namespace Manufaktura.Music.MusicTheory.Model
 {
-    public class PentatonicScale : RelativeScale
+    public class PentatonicScale : Gamut
     {
         public override IEnumerable<int> Intervals
         {

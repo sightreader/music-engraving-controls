@@ -1,11 +1,11 @@
 ﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.MusicTheory.Model;
+using Manufaktura.Music.MusicTheory.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Controls.MusicTheory.Generators
+namespace Manufaktura.Music.MusicTheory.Generators
 {
     public class RandomMelodyGenerator
     {
@@ -17,7 +17,7 @@ namespace Manufaktura.Controls.MusicTheory.Generators
             var staff = new Staff();
             score.Staves.Add(staff);
 
-            foreach (var interval in Scale.Mode.Scale.Intervals)
+            foreach (var interval in Scale.Mode.Gamut.Intervals)
             {
 
             }
