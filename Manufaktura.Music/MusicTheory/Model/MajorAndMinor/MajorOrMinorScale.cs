@@ -10,9 +10,11 @@ namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
     {
         public Key Key { get; protected set; }
 
-        protected MajorOrMinorScale() : base(0)
+        protected MajorOrMinorScale(Key key) : base(0)
         {
-
+            Key = key;
         }
+
+        
     }
 }

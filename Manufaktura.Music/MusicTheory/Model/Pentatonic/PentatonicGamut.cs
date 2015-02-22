@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Manufaktura.Music.MusicTheory.Model
 {
-    public class PentatonicScale : Gamut
+    public class PentatonicGamut : Gamut
     {
         public override IEnumerable<int> Intervals
         {

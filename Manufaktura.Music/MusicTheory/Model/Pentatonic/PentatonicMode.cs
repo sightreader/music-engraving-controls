@@ -8,7 +8,7 @@ namespace Manufaktura.Music.MusicTheory.Model
 {
     public class PentatonicMode : Mode
     {
-        private PentatonicScale scale = new PentatonicScale();
+        private PentatonicGamut scale = new PentatonicGamut();
         public override Gamut Gamut
         {
             get { return scale; }
