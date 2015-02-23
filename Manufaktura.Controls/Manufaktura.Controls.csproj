@@ -49,6 +49,7 @@
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\FontStyles.cs" />
+    <Compile Include="Model\Helpers\Step.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />
     <Compile Include="Model\IHasCustomXPosition.cs" />
     <Compile Include="Model\IHasCustomYPosition.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Model\PeekStrategies\HighestNoteInChordPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\NextElementPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\PeekStrategy.cs" />
+    <Compile Include="Model\Helpers\Pitch.cs" />
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\Tuplet.cs" />

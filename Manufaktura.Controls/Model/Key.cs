@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Controls.Model.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,10 @@ namespace Manufaktura.Controls.Model
 {
     public class Key : MusicalSymbol
     {
-        private readonly string[] MajorSharpTonics = new[] { "G", "D", "A", "E", "B", "F", "C" };
-        private readonly string[] MajorFlatTonics = new[] { "F", "B", "E", "A", "D", "G", "C" };
-        private readonly string[] MinorSharpTonics = new[] { "e", "h", "f", "c", "g", "d", "a" };
-        private readonly string[] MinorFlatTonics = new[] { "d", "g", "c", "f", "b", "e", "a" };
+        private static readonly string[] MajorSharpTonics = new[] { "G", "D", "A", "E", "B", "F", "C" };
+        private static readonly string[] MajorFlatTonics = new[] { "F", "B", "E", "A", "D", "G", "C" };
+        private static readonly string[] MinorSharpTonics = new[] { "e", "h", "f", "c", "g", "d", "a" };
+        private static readonly string[] MinorFlatTonics = new[] { "d", "g", "c", "f", "b", "e", "a" };
 
         #region Private fields
 
@@ -41,6 +42,24 @@ namespace Manufaktura.Controls.Model
         #endregion
 
         #region Public methods
+
+        public static Key FromTonic (Step step, bool isMinor, bool isFlat) //TODO: To nie zadziała, za chuja
+        {
+            if (step == Step.C || step == Step.A) return new Key(0);
+            string[] arrayToUse = null;
+            if (isMinor && isFlat) arrayToUse = MinorFlatTonics;
+            if (isMinor && !isFlat) arrayToUse = MinorSharpTonics;
+            if (!isMinor && isFlat) arrayToUse = MajorFlatTonics;
+            if (!isMinor && !isFlat) arrayToUse = MajorSharpTonics;
+            int fifths = arrayToUse.ToList().IndexOf(step.StepName) + 1 + step.Alter;
+            return new Key(fifths);
+        }
+
+        public static Key FromMidiPitch(int midiPitch, bool isMinor, bool isFlat)
+        {
+            var step = Pitch.FromMidiPitch(midiPitch).ToStep();
+            return Key.FromTonic(step, isMinor, isFlat);
+        }
 
         public int StepToAlter(string step)
         {
@@ -78,12 +97,6 @@ namespace Manufaktura.Controls.Model
             }
 
             return 0;
-        }
-
-        public static Tuple<string, int> GetTonic(Key key, bool isMinor)
-        {
-            if (key.Fifths == 0) return isMinor ? new Tuple<string,int>("a", 0) : new Tuple<string,int>("C", 0);
-            return new Tuple<string, int>("X", 0);  //TODO: Dokończyć. I zrobić sensowną klasę zamiast Tuple.
         }
 
         #endregion

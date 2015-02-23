@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
     {
         public Key Key { get; protected set; }
 
-        protected MajorOrMinorScale(Key key) : base(0)
+        protected MajorOrMinorScale(int midiPitch, bool isMinor, bool isFlat) : base(midiPitch)
         {
-            Key = key;
+            Key = Key.FromMidiPitch(midiPitch, isMinor, isFlat);
         }
 
         
