@@ -7,6 +7,8 @@ namespace Manufaktura.Controls.Model.Helpers
 {
     public class Step
     {
+        
+
         public string StepName { get; set; }
         public int Alter { get; set; }
 
@@ -24,9 +26,14 @@ namespace Manufaktura.Controls.Model.Helpers
             return new Step { StepName = pitch.StepName, Alter = pitch.Alter };
         }
 
+        public Pitch ToPitch()
+        {
+            return Pitch.FromStep(this);
+        }
+
         public static Step C
         {
-            get { return new Step { StepName = "C", Alter = 0}; }
+            get { return new Step { StepName = "C", Alter = 0 }; }
         }
 
         public static Step D

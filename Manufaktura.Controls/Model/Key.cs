@@ -8,11 +8,6 @@ namespace Manufaktura.Controls.Model
 {
     public class Key : MusicalSymbol
     {
-        private static readonly string[] MajorSharpTonics = new[] { "G", "D", "A", "E", "B", "F", "C" };
-        private static readonly string[] MajorFlatTonics = new[] { "F", "B", "E", "A", "D", "G", "C" };
-        private static readonly string[] MinorSharpTonics = new[] { "e", "h", "f", "c", "g", "d", "a" };
-        private static readonly string[] MinorFlatTonics = new[] { "d", "g", "c", "f", "b", "e", "a" };
-
         #region Private fields
 
         private int fifths;
@@ -43,22 +38,15 @@ namespace Manufaktura.Controls.Model
 
         #region Public methods
 
-        public static Key FromTonic (Step step, bool isMinor, bool isFlat) //TODO: To nie zadziała, za chuja
+        public static Key FromTonic(Step step, bool isFlat)
         {
-            if (step == Step.C || step == Step.A) return new Key(0);
-            string[] arrayToUse = null;
-            if (isMinor && isFlat) arrayToUse = MinorFlatTonics;
-            if (isMinor && !isFlat) arrayToUse = MinorSharpTonics;
-            if (!isMinor && isFlat) arrayToUse = MajorFlatTonics;
-            if (!isMinor && !isFlat) arrayToUse = MajorSharpTonics;
-            int fifths = arrayToUse.ToList().IndexOf(step.StepName) + 1 + step.Alter;
-            return new Key(fifths);
+            return new Key(CircleOfFifths.CalculateFifths(step, isFlat));
         }
 
-        public static Key FromMidiPitch(int midiPitch, bool isMinor, bool isFlat)
+        public static Key FromMidiPitch(int midiPitch, bool isFlat)
         {
-            var step = Pitch.FromMidiPitch(midiPitch).ToStep();
-            return Key.FromTonic(step, isMinor, isFlat);
+            //TODO: Uwzględniać tonacje mollowe, bo przecież kwinty liczymy od durowych!
+            return new Key(CircleOfFifths.CalculateFifths(midiPitch, isFlat));
         }
 
         public int StepToAlter(string step)

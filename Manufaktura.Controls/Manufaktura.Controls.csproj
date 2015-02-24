@@ -49,6 +49,8 @@
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\FontStyles.cs" />
+    <Compile Include="Model\Helpers\CircleOfFifths.cs" />
+    <Compile Include="Model\Helpers\Interval.cs" />
     <Compile Include="Model\Helpers\Step.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />
     <Compile Include="Model\IHasCustomXPosition.cs" />
