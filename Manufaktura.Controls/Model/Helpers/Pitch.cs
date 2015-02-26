@@ -13,6 +13,14 @@ namespace Manufaktura.Controls.Model.Helpers
             {"C", 60}, {"D", 62}, {"E", 64}, {"F", 65}, {"G", 67}, {"A", 69}, {"B", 71}
         };
 
+        public static Pitch C4 { get { return Pitch.FromStep(Step.C, 4); } }
+        public static Pitch D4 { get { return Pitch.FromStep(Step.D, 4); } }
+        public static Pitch E4 { get { return Pitch.FromStep(Step.E, 4); } }
+        public static Pitch F4 { get { return Pitch.FromStep(Step.F, 4); } }
+        public static Pitch G4 { get { return Pitch.FromStep(Step.G, 4); } }
+        public static Pitch A4 { get { return Pitch.FromStep(Step.A, 4); } }
+        public static Pitch B4 { get { return Pitch.FromStep(Step.B, 4); } }
+
         public int MidiPitch { get; set; }
 
 
@@ -35,9 +43,9 @@ namespace Manufaktura.Controls.Model.Helpers
             return new Pitch { StepName = note.Step, Alter = note.Alter, MidiPitch = note.MidiPitch };
         }
 
-        public static Pitch FromStep(Step step)
+        public static Pitch FromStep(Step step, int octaveNumber = 4)
         {
-            return new Pitch { StepName = step.StepName, Alter = step.Alter, MidiPitch = pitches[step.StepName] + step.Alter };
+            return new Pitch { StepName = step.StepName, Alter = step.Alter, MidiPitch = pitches[step.StepName] + step.Alter + (octaveNumber - 4) * 12 };
         }
 
         public static Pitch FromMidiPitch(int midiPitch)

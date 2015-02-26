@@ -7,11 +7,11 @@ namespace Manufaktura.Controls.Model.Helpers
 {
     public static class CircleOfFifths
     {
-        public static int CalculateFifths(int midiPitch, bool isFlatScale)
+        public static int CalculateFifths(int midiPitch, bool isMinorScale, bool isFlatScale)
         {
             var fifths = 0;
-            var midiPitchOfC = 60;
-            var currentPitch = midiPitchOfC;
+            var tonicMidiPitch = Pitch.C4.MidiPitch - (isMinorScale ? Interval.MinorThird : Interval.Unison);
+            var currentPitch = tonicMidiPitch;
             while (currentPitch != midiPitch)
             {
                 if (!isFlatScale)
@@ -42,9 +42,9 @@ namespace Manufaktura.Controls.Model.Helpers
             return fifths;
         }
 
-        public static int CalculateFifths(Step step, bool isFlatScale)
+        public static int CalculateFifths(Step step, bool isMinorScale, bool isFlatScale)
         {
-            return CalculateFifths(step.ToPitch().MidiPitch, isFlatScale);
+            return CalculateFifths(step.ToPitch(4).MidiPitch, isMinorScale, isFlatScale);
         }
     }
 }

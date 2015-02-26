@@ -26,9 +26,9 @@ namespace Manufaktura.Controls.Model.Helpers
             return new Step { StepName = pitch.StepName, Alter = pitch.Alter };
         }
 
-        public Pitch ToPitch()
+        public Pitch ToPitch(int octaveNumber = 4)
         {
-            return Pitch.FromStep(this);
+            return Pitch.FromStep(this, octaveNumber);
         }
 
         public static Step C

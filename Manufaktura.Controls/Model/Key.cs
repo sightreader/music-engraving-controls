@@ -38,15 +38,14 @@ namespace Manufaktura.Controls.Model
 
         #region Public methods
 
-        public static Key FromTonic(Step step, bool isFlat)
+        public static Key FromTonic(Step step, bool isMinorScale, bool isFlatScale)
         {
-            return new Key(CircleOfFifths.CalculateFifths(step, isFlat));
+            return new Key(CircleOfFifths.CalculateFifths(step, isMinorScale, isFlatScale));
         }
 
-        public static Key FromMidiPitch(int midiPitch, bool isFlat)
+        public static Key FromMidiPitch(int midiPitch, bool isMinorScale, bool isFlatScale)
         {
-            //TODO: Uwzględniać tonacje mollowe, bo przecież kwinty liczymy od durowych!
-            return new Key(CircleOfFifths.CalculateFifths(midiPitch, isFlat));
+            return new Key(CircleOfFifths.CalculateFifths(midiPitch, isMinorScale, isFlatScale));
         }
 
         public int StepToAlter(string step)
