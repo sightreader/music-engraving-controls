@@ -8,17 +8,18 @@ namespace Manufaktura.Music.MusicTheory.Model
 {
     public abstract class Scale
     {
-        public abstract Mode Mode { get; }
+        public Mode Mode { get; protected set; }
         public abstract int StartingMidiPitch { get; protected set; }
 
-        protected Scale(int startingMidiPitch)
+        protected Scale(Mode mode, int startingMidiPitch)
         {
+            Mode = mode;
             StartingMidiPitch = startingMidiPitch;
         }
 
         public IEnumerable<Note> BuildSteps(int startingStep, int numberOfSteps)
         {
-            return Mode.Gamut.BuildSteps(StartingMidiPitch, startingStep, numberOfSteps);
+            return Mode.BuildSteps(StartingMidiPitch, startingStep, numberOfSteps);
         }
     }
 }

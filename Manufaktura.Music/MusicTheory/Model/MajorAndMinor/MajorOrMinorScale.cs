@@ -13,17 +13,22 @@ namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
         public Step Tonic { get; protected set; }
 
         protected MajorOrMinorScale(int midiPitch, bool isMinor, bool isFlatScale)
-            : base(midiPitch)
+            : base(GetMode(isMinor), midiPitch)
         {
             Key = Key.FromMidiPitch(midiPitch, isMinor, isFlatScale);
             Tonic = Pitch.FromMidiPitch(midiPitch);
         }
 
         protected MajorOrMinorScale(Step step, bool isMinor, bool isFlatScale)
-            : base(Pitch.FromStep(step).MidiPitch)
+            : base(GetMode(isMinor), Pitch.FromStep(step).MidiPitch)
         {
             Key = Key.FromTonic(step, isMinor, isFlatScale);
             Tonic = step;
+        }
+
+        public static Mode GetMode(bool isMinor)
+        {
+            return isMinor ? (Mode)new MinorMode() : new MajorMode();
         }
     }
 }

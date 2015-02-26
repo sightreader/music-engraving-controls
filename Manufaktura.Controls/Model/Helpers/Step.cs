@@ -7,8 +7,6 @@ namespace Manufaktura.Controls.Model.Helpers
 {
     public class Step
     {
-        
-
         public string StepName { get; set; }
         public int Alter { get; set; }
 

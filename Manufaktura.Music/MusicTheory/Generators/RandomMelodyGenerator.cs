@@ -17,7 +17,7 @@ namespace Manufaktura.Music.MusicTheory.Generators
             var staff = new Staff();
             score.Staves.Add(staff);
 
-            foreach (var interval in Scale.Mode.Gamut.Intervals)
+            foreach (var interval in Scale.Mode.Intervals)
             {
 
             }

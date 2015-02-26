@@ -42,11 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MusicTheory\Generators\RandomMelodyGenerator.cs" />
-    <Compile Include="MusicTheory\Model\Gamut.cs" />
+    <Compile Include="MusicTheory\Model\MajorAndMinor\MajorMode.cs" />
     <Compile Include="MusicTheory\Model\MajorAndMinor\MajorOrMinorScale.cs" />
+    <Compile Include="MusicTheory\Model\MajorAndMinor\MajorScale.cs" />
+    <Compile Include="MusicTheory\Model\MajorAndMinor\MinorMode.cs" />
     <Compile Include="MusicTheory\Model\Mode.cs" />
     <Compile Include="MusicTheory\Model\Pentatonic\PentatonicMode.cs" />
-    <Compile Include="MusicTheory\Model\Pentatonic\PentatonicGamut.cs" />
     <Compile Include="MusicTheory\Model\Scale.cs" />
     <Compile Include="MusicTheory\Rules\MusicalError.cs" />
     <Compile Include="MusicTheory\Rules\MusicalRule.cs" />

@@ -8,10 +8,9 @@ namespace Manufaktura.Music.MusicTheory.Model
 {
     public class PentatonicMode : Mode
     {
-        private PentatonicGamut scale = new PentatonicGamut();
-        public override Gamut Gamut
+        public override IEnumerable<int> Intervals
         {
-            get { return scale; }
+            get { return new[] { 2, 2, 1, 2, 2 }; }
         }
 
         public override IEnumerable<MusicalRule> Rules
