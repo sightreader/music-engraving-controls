@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Manufaktura.Music.MusicTheory.Model
     public abstract class Scale
     {
         public Mode Mode { get; protected set; }
-        public abstract int StartingMidiPitch { get; protected set; }
+        public int StartingMidiPitch { get; protected set; }
 
         protected Scale(Mode mode, int startingMidiPitch)
         {
@@ -17,9 +18,9 @@ namespace Manufaktura.Music.MusicTheory.Model
             StartingMidiPitch = startingMidiPitch;
         }
 
-        public IEnumerable<Note> BuildSteps(int startingStep, int numberOfSteps)
+        public IEnumerable<Pitch> BuildScale(int startingStep, int numberOfSteps)
         {
-            return Mode.BuildSteps(StartingMidiPitch, startingStep, numberOfSteps);
+            return Mode.BuildScale(StartingMidiPitch, startingStep, numberOfSteps);
         }
     }
 }
