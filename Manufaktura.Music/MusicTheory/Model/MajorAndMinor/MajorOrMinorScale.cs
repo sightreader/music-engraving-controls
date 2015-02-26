@@ -15,16 +15,14 @@ namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
         protected MajorOrMinorScale(int midiPitch, bool isMinor, bool isFlatScale)
             : base(midiPitch)
         {
-            //TODO: Uwzględniać tonacje mollowe, bo przecież kwinty liczymy od durowych!
-            Key = Key.FromMidiPitch(midiPitch, isFlatScale);
+            Key = Key.FromMidiPitch(midiPitch, isMinor, isFlatScale);
             Tonic = Pitch.FromMidiPitch(midiPitch);
         }
 
         protected MajorOrMinorScale(Step step, bool isMinor, bool isFlatScale)
             : base(Pitch.FromStep(step).MidiPitch)
         {
-            //TODO: Uwzględniać tonacje mollowe, bo przecież kwinty liczymy od durowych!
-            Key = Key.FromTonic(step, isFlatScale);
+            Key = Key.FromTonic(step, isMinor, isFlatScale);
             Tonic = step;
         }
     }
