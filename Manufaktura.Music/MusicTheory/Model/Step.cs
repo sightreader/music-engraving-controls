@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Controls.Model.Helpers
+namespace Manufaktura.Music.Model
 {
     public class Step
     {
@@ -14,10 +14,6 @@ namespace Manufaktura.Controls.Model.Helpers
         {
         }
 
-        public static Step FromNote(Note note)
-        {
-            return new Step { StepName = note.Step, Alter = note.Alter };
-        }
 
         public static Step FromPitch(Pitch pitch)
         {

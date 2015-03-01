@@ -1,5 +1,4 @@
-﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.Helpers;
+﻿using Manufaktura.Music.Model;
 using Manufaktura.Music.MusicTheory.Rules;
 using System;
 using System.Collections.Generic;

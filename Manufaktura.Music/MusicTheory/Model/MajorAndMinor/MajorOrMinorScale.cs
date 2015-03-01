@@ -1,5 +1,4 @@
-﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.Helpers;
+﻿using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +8,20 @@ namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
 {
     public abstract class MajorOrMinorScale : Scale
     {
-        public Key Key { get; protected set; }
+        public int Fifths { get; protected set; }
         public Step Tonic { get; protected set; }
 
-        protected MajorOrMinorScale(int midiPitch, bool isMinor, bool isFlatScale)
-            : base(GetMode(isMinor), midiPitch)
+        protected MajorOrMinorScale(int midiPitch, bool isMinorScale, bool isFlatScale)
+            : base(GetMode(isMinorScale), midiPitch)
         {
-            Key = Key.FromMidiPitch(midiPitch, isMinor, isFlatScale);
             Tonic = Pitch.FromMidiPitch(midiPitch);
+            Fifths = CircleOfFifths.CalculateFifths(Tonic, isMinorScale, isFlatScale);
         }
 
-        protected MajorOrMinorScale(Step step, bool isMinor, bool isFlatScale)
-            : base(GetMode(isMinor), Pitch.FromStep(step).MidiPitch)
+        protected MajorOrMinorScale(Step step, bool isMinorScale, bool isFlatScale)
+            : base(GetMode(isMinorScale), Pitch.FromStep(step).MidiPitch)
         {
-            Key = Key.FromTonic(step, isMinor, isFlatScale);
+            Fifths = CircleOfFifths.CalculateFifths(step, isMinorScale, isFlatScale);
             Tonic = step;
         }
 

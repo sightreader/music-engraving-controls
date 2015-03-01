@@ -1,4 +1,4 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Music.Model;
 using Manufaktura.Music.MusicTheory.Model;
 using System;
 using System.Collections.Generic;
@@ -11,18 +11,15 @@ namespace Manufaktura.Music.MusicTheory.Generators
     {
         public Scale Scale { get; set; }
 
-        public Score Generate()
+        public IEnumerable<Pitch> Generate()
         {
-            var score = new Score();
-            var staff = new Staff();
-            score.Staves.Add(staff);
 
             foreach (var interval in Scale.Mode.Intervals)
             {
 
             }
 
-            return score;
+            return null;
         }
     }
 }
