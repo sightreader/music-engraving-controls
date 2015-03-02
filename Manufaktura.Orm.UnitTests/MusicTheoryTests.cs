@@ -1,4 +1,4 @@
-﻿using Manufaktura.Controls.Model.Helpers;
+﻿using Manufaktura.Music.Model;
 using Manufaktura.Music.MusicTheory.Model.MajorAndMinor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -32,6 +32,13 @@ namespace Manufaktura.Orm.UnitTests
 
             majorScale = new MajorScale(Step.B, true);
             Debug.WriteLine("B-dur??"); //TODO: Rzucać wyjątek w takiej sytuacji, bo powinno być B, a nie H
+            foreach (var pitch in majorScale.BuildScale(1, 8))
+            {
+                Debug.WriteLine(pitch.ToString());
+            }
+
+            majorScale = new MajorScale(Step.Bb, true);
+            Debug.WriteLine("B-dur");
             foreach (var pitch in majorScale.BuildScale(1, 8))
             {
                 Debug.WriteLine(pitch.ToString());
