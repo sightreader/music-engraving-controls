@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
+namespace Manufaktura.Music.Model.MajorAndMinor
 {
     public class MajorMode : Mode
     {

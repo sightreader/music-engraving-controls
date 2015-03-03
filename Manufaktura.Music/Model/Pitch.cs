@@ -40,16 +40,16 @@ namespace Manufaktura.Music.Model
             return new Pitch { StepName = step.StepName, Alter = step.Alter, MidiPitch = pitches[step.StepName] + step.Alter + (octaveNumber - 4) * 12 };
         }
 
-        public static Pitch FromMidiPitch(int midiPitch)
+        public static Pitch FromMidiPitch(int midiPitch, MidiPitchTranslationMode mode)
         {
             var pitch = new Pitch();
-            pitch.ApplyMidiPitch(midiPitch);
+            pitch.ApplyMidiPitch(midiPitch, mode);
             return pitch;
         }
 
         public override string ToString()
         {
-            return string.Format("{0}{1}", StepName, AlterToSigns(Alter) );
+            return string.Format("{0}{1}", StepName, AlterToSigns(Alter));
         }
 
         private static string AlterToSigns(int alter)
@@ -62,23 +62,66 @@ namespace Manufaktura.Music.Model
             return sb.ToString();
         }
 
-        public void ApplyMidiPitch(int midiPitch)
+        public void ApplyMidiPitch(int midiPitch, MidiPitchTranslationMode mode)
         {
             int midiPitchInLowestOctave = midiPitch;
 
-            while (midiPitchInLowestOctave > 32) midiPitchInLowestOctave -= 12;
-            if (midiPitchInLowestOctave == 21) { StepName = "A"; Alter = 0; }
-            else if (midiPitchInLowestOctave == 22) { StepName = "B"; Alter = -1; }
-            else if (midiPitchInLowestOctave == 23) { StepName = "B"; Alter = 0; }
-            else if (midiPitchInLowestOctave == 24) { StepName = "C"; Alter = 0; }
-            else if (midiPitchInLowestOctave == 25) { StepName = "C"; Alter = 1; }
-            else if (midiPitchInLowestOctave == 26) { StepName = "D"; Alter = 0; }
-            else if (midiPitchInLowestOctave == 27) { StepName = "E"; Alter = -1; }
-            else if (midiPitchInLowestOctave == 28) { StepName = "E"; Alter = 0; }
-            else if (midiPitchInLowestOctave == 29) { StepName = "F"; Alter = 0; }
-            else if (midiPitchInLowestOctave == 30) { StepName = "F"; Alter = 1; }
-            else if (midiPitchInLowestOctave == 31) { StepName = "G"; Alter = 0; }
-            else if (midiPitchInLowestOctave == 32) { StepName = "G"; Alter = 1; }
+            while (midiPitchInLowestOctave > 32)
+            {
+                midiPitchInLowestOctave -= 12;
+            }
+
+            switch (mode)
+            {
+                case MidiPitchTranslationMode.Auto:
+                    if (midiPitchInLowestOctave == 21) { StepName = "A"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 22) { StepName = "B"; Alter = -1; }
+                    else if (midiPitchInLowestOctave == 23) { StepName = "B"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 24) { StepName = "C"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 25) { StepName = "C"; Alter = 1; }
+                    else if (midiPitchInLowestOctave == 26) { StepName = "D"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 27) { StepName = "E"; Alter = -1; }
+                    else if (midiPitchInLowestOctave == 28) { StepName = "E"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 29) { StepName = "F"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 30) { StepName = "F"; Alter = 1; }
+                    else if (midiPitchInLowestOctave == 31) { StepName = "G"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 32) { StepName = "G"; Alter = 1; }
+                    break;
+
+                case MidiPitchTranslationMode.Sharps:
+                    if (midiPitchInLowestOctave == 21) { StepName = "A"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 22) { StepName = "A"; Alter = 1; }
+                    else if (midiPitchInLowestOctave == 23) { StepName = "B"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 24) { StepName = "C"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 25) { StepName = "C"; Alter = 1; }
+                    else if (midiPitchInLowestOctave == 26) { StepName = "D"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 27) { StepName = "D"; Alter = 1; }
+                    else if (midiPitchInLowestOctave == 28) { StepName = "E"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 29) { StepName = "F"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 30) { StepName = "F"; Alter = 1; }
+                    else if (midiPitchInLowestOctave == 31) { StepName = "G"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 32) { StepName = "G"; Alter = 1; }
+                    break;
+
+                case MidiPitchTranslationMode.Flats:
+                    if (midiPitchInLowestOctave == 21) { StepName = "A"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 22) { StepName = "B"; Alter = -1; }
+                    else if (midiPitchInLowestOctave == 23) { StepName = "B"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 24) { StepName = "C"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 25) { StepName = "D"; Alter = -1; }
+                    else if (midiPitchInLowestOctave == 26) { StepName = "D"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 27) { StepName = "E"; Alter = -1; }
+                    else if (midiPitchInLowestOctave == 28) { StepName = "E"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 29) { StepName = "F"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 30) { StepName = "G"; Alter = -1; }
+                    else if (midiPitchInLowestOctave == 31) { StepName = "G"; Alter = 0; }
+                    else if (midiPitchInLowestOctave == 32) { StepName = "A"; Alter = -1; }
+                    break;
+
+                default:
+                    throw new NotImplementedException("Unsupported midi pitch translation mode.");
+            }
+
 
             if (midiPitch < 24) Octave = 0;
             else if (midiPitch < 36) Octave = 1;
@@ -91,6 +134,10 @@ namespace Manufaktura.Music.Model
             else if (midiPitch < 120) Octave = 8;
 
             this.MidiPitch = midiPitch;
+        }
+        public enum MidiPitchTranslationMode
+        {
+            Auto, Sharps, Flats
         }
     }
 }

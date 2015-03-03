@@ -1,11 +1,11 @@
 ﻿using Manufaktura.Music.Model;
-using Manufaktura.Music.MusicTheory.Model;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Music.MusicTheory.Generators
+namespace Manufaktura.Music.Generators
 {
     public class RandomMelodyGenerator
     {

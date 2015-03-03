@@ -1,10 +1,10 @@
-﻿using Manufaktura.Music.MusicTheory.Rules;
+﻿using Manufaktura.Music.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Music.MusicTheory.Model
+namespace Manufaktura.Music.Model
 {
     public class PentatonicMode : Mode
     {

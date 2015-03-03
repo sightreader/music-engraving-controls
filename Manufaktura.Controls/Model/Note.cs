@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Primitives;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Manufaktura.Controls.Model
     {
         #region Protected fields
 
-        protected int midiPitch;      
+        protected int midiPitch;
         protected string step;
         protected int octave;
         protected int alter;
@@ -21,7 +22,7 @@ namespace Manufaktura.Controls.Model
         protected VerticalDirection stemDirection = VerticalDirection.Up;
         protected NoteTieType tieType = NoteTieType.None;
         protected List<NoteBeamType> beamList = new List<NoteBeamType>();
-        
+
         protected List<Lyrics> lyrics = new List<Lyrics>();
         protected ArticulationType articulation = ArticulationType.None;
         protected VerticalPlacement articulationPlacement = VerticalPlacement.Below;
@@ -69,10 +70,10 @@ namespace Manufaktura.Controls.Model
         public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; } }
         public NoteTieType TieType { get { return tieType; } set { tieType = value; } }
         public List<NoteBeamType> BeamList { get { return beamList; } }
-        public string Step { get { return step; } }
-        public int Octave { get { return octave; } }
-        public int Alter { get { return alter; } }
-        public int MidiPitch { get { return midiPitch; } }
+        public string Step { get { return step; } protected set { step = value; } }
+        public int Octave { get { return octave; } protected set { octave = value; } }
+        public int Alter { get { return alter; } protected set { alter = value; } }
+        public int MidiPitch { get { return midiPitch; } protected set { midiPitch = value; } }
         public int Dynamics { get { return dynamics; } set { dynamics = value; } }
 
 
@@ -97,12 +98,14 @@ namespace Manufaktura.Controls.Model
             DetermineMusicalCharacter();
         }
 
-        public Note(MusicalSymbolDuration noteDuration) : this("A", 0, 4, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        public Note(MusicalSymbolDuration noteDuration)
+            : this("A", 0, 4, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
 
         }
 
-        public Note() : this("A", 0, 4, MusicalSymbolDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        public Note()
+            : this("A", 0, 4, MusicalSymbolDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
 
         }
@@ -166,37 +169,6 @@ namespace Manufaktura.Controls.Model
             else return 0;
         }
 
-        public void ApplyMidiPitch(int midiPitch)
-        {
-            int midiPitchInLowestOctave = midiPitch;
-
-            while (midiPitchInLowestOctave > 32) midiPitchInLowestOctave -= 12;
-            if (midiPitchInLowestOctave == 21) { step = "A"; alter = 0; }
-            else if (midiPitchInLowestOctave == 22) { step = "B"; alter = -1; }
-            else if (midiPitchInLowestOctave == 23) { step = "B"; alter = 0; }
-            else if (midiPitchInLowestOctave == 24) { step = "C"; alter = 0; }
-            else if (midiPitchInLowestOctave == 25) { step = "C"; alter = 1; }
-            else if (midiPitchInLowestOctave == 26) { step = "D"; alter = 0; }
-            else if (midiPitchInLowestOctave == 27) { step = "E"; alter = -1; }
-            else if (midiPitchInLowestOctave == 28) { step = "E"; alter = 0; }
-            else if (midiPitchInLowestOctave == 29) { step = "F"; alter = 0; }
-            else if (midiPitchInLowestOctave == 30) { step = "F"; alter = 1; }
-            else if (midiPitchInLowestOctave == 31) { step = "G"; alter = 0; }
-            else if (midiPitchInLowestOctave == 32) { step = "G"; alter = 1; }
-
-            if (midiPitch < 24) octave = 0;
-            else if (midiPitch < 36) octave = 1;
-            else if (midiPitch < 48) octave = 2;
-            else if (midiPitch < 60) octave = 3;
-            else if (midiPitch < 72) octave = 4;
-            else if (midiPitch < 84) octave = 5;
-            else if (midiPitch < 96) octave = 6;
-            else if (midiPitch < 108) octave = 7;
-            else if (midiPitch < 120) octave = 8;
-
-            this.midiPitch = midiPitch; 
-        }
-
         #endregion
 
         #region Public static functions
@@ -204,14 +176,22 @@ namespace Manufaktura.Controls.Model
         public static Note FromMidiPitch(int midiPitch, MusicalSymbolDuration duration)
         {
             Note note = new Note(duration);
-            note.ApplyMidiPitch(midiPitch);
+            var pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
+            note.Alter = pitch.Alter;
+            note.Octave = pitch.Octave;
+            note.Step = pitch.StepName;
+            note.MidiPitch = midiPitch;
             return note;
         }
 
         public static Note FromMidiPitch(int midiPitch)
         {
             Note note = new Note();
-            note.ApplyMidiPitch(midiPitch);
+            var pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
+            note.Alter = pitch.Alter;
+            note.Octave = pitch.Octave;
+            note.Step = pitch.StepName;
+            note.MidiPitch = midiPitch;
             return note;
         }
 

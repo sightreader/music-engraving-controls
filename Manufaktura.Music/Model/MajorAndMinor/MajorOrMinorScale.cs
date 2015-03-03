@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
+namespace Manufaktura.Music.Model.MajorAndMinor
 {
     public abstract class MajorOrMinorScale : Scale
     {
@@ -12,14 +12,14 @@ namespace Manufaktura.Music.MusicTheory.Model.MajorAndMinor
         public Step Tonic { get; protected set; }
 
         protected MajorOrMinorScale(int midiPitch, bool isMinorScale, bool isFlatScale)
-            : base(GetMode(isMinorScale), midiPitch)
+            : base(GetMode(isMinorScale), midiPitch, isFlatScale ? Pitch.MidiPitchTranslationMode.Flats : Pitch.MidiPitchTranslationMode.Sharps)
         {
-            Tonic = Pitch.FromMidiPitch(midiPitch);
+            Tonic = Pitch.FromMidiPitch(midiPitch, MidiPitchTranslationMode);
             Fifths = CircleOfFifths.CalculateFifths(Tonic, isMinorScale, isFlatScale);
         }
 
-        protected MajorOrMinorScale(Step step, bool isMinorScale, bool isFlatScale)
-            : base(GetMode(isMinorScale), Pitch.FromStep(step).MidiPitch)
+        protected MajorOrMinorScale(Step step, bool isMinorScale, bool isFlatScale) 
+            : base(GetMode(isMinorScale), Pitch.FromStep(step).MidiPitch, isFlatScale ? Pitch.MidiPitchTranslationMode.Flats : Pitch.MidiPitchTranslationMode.Sharps)
         {
             Fifths = CircleOfFifths.CalculateFifths(step, isMinorScale, isFlatScale);
             Tonic = step;

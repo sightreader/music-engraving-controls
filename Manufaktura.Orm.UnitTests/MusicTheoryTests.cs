@@ -1,5 +1,5 @@
 ﻿using Manufaktura.Music.Model;
-using Manufaktura.Music.MusicTheory.Model.MajorAndMinor;
+using Manufaktura.Music.Model.MajorAndMinor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
