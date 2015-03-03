@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
+using Manufaktura.Music.UnitTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -16,35 +17,20 @@ namespace Manufaktura.Orm.UnitTests
         [TestMethod]
         public void BuildMajorScaleTest()
         {
-            var majorScale = new MajorScale(Step.G, false);
-            Debug.WriteLine("G-dur");
-            foreach (var pitch in majorScale.BuildScale(1, 8))
-            {
-                Debug.WriteLine(pitch.ToString());
-            }
+            var scale = new MajorScale(Step.G, false);
+            var steps = scale.BuildScale(1, 8);
+            Assert.IsTrue(MusicalAssertions.StepsMatch(steps, Step.G, Step.A, Step.B, Step.C, Step.D, Step.E, Step.FSharp, Step.G));
 
-            majorScale = new MajorScale(Step.B, false);
-            Debug.WriteLine("H-dur");
-            foreach (var pitch in majorScale.BuildScale(1, 8))
-            {
-                Debug.WriteLine(pitch.ToString());
-            }
+            scale = new MajorScale(Step.B, false);
+            steps = scale.BuildScale(1, 8);
+            Assert.IsTrue(MusicalAssertions.StepsMatch(steps, Step.B, Step.CSharp, Step.DSharp, Step.E, Step.FSharp, Step.GSharp, Step.ASharp, Step.B));
 
+            scale = new MajorScale(Step.Bb, true);
+            steps = scale.BuildScale(1, 8);
+            Assert.IsTrue(MusicalAssertions.StepsMatch(steps, Step.Bb, Step.C, Step.D, Step.Eb, Step.F, Step.G, Step.A, Step.Bb));
+
+            Assert.IsTrue(MusicalAssertions.ThrowsMalformedScaleException(() => scale = new MajorScale(Step.B, true)));
             
-
-            majorScale = new MajorScale(Step.Bb, true);
-            Debug.WriteLine("B-dur");
-            foreach (var pitch in majorScale.BuildScale(1, 8))
-            {
-                Debug.WriteLine(pitch.ToString());
-            }
-
-            majorScale = new MajorScale(Step.B, true);
-            Debug.WriteLine("B-dur??");
-            foreach (var pitch in majorScale.BuildScale(1, 8))  //To powinno rzucić wyjątek:
-            {
-                Debug.WriteLine(pitch.ToString());
-            }
         }
     }
 }
