@@ -10,31 +10,31 @@ namespace Manufaktura.Music.Model
         public static int CalculateFifths(int midiPitch, bool isMinorScale, bool isFlatScale)
         {
             var fifths = 0;
-            var tonicMidiPitch = Pitch.C4.MidiPitch - (isMinorScale ? Interval.MinorThird : Interval.Unison);
+            var tonicMidiPitch = Pitch.C4.MidiPitch - (isMinorScale ? Interval.MinorThird.Halftones : Interval.PerfectUnison.Halftones);
             var currentPitch = tonicMidiPitch;
             while (currentPitch != midiPitch)
             {
                 if (!isFlatScale)
                 {
-                    if (currentPitch - midiPitch > Interval.PerfectFifth)
+                    if (currentPitch - midiPitch > Interval.PerfectFifth.Halftones)
                     {
-                        currentPitch -= Interval.Octave;
+                        currentPitch -= Interval.PerfectOctave.Halftones;
                     }
                     else
                     {
-                        currentPitch += Interval.PerfectFifth;
+                        currentPitch += Interval.PerfectFifth.Halftones;
                         fifths++;
                     }
                 }
                 else
                 {
-                    if (currentPitch - midiPitch < Interval.PerfectFifth * -1)
+                    if (currentPitch - midiPitch < Interval.PerfectFifth.MakeDescending().Halftones)
                     {
-                        currentPitch += Interval.Octave;
+                        currentPitch += Interval.PerfectOctave.Halftones;
                     }
                     else
                     {
-                        currentPitch -= Interval.PerfectFifth;
+                        currentPitch -= Interval.PerfectFifth.Halftones;
                         fifths--;
                     }
                 }

@@ -34,20 +34,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MusicTheory\Model\CircleOfFifths.cs" />
-    <Compile Include="MusicTheory\Model\Interval.cs" />
-    <Compile Include="MusicTheory\Model\Pitch.cs" />
-    <Compile Include="MusicTheory\Model\Step.cs" />
-    <Compile Include="MusicTheory\Generators\RandomMelodyGenerator.cs" />
-    <Compile Include="MusicTheory\Model\MajorAndMinor\MajorMode.cs" />
-    <Compile Include="MusicTheory\Model\MajorAndMinor\MajorOrMinorScale.cs" />
-    <Compile Include="MusicTheory\Model\MajorAndMinor\MajorScale.cs" />
-    <Compile Include="MusicTheory\Model\MajorAndMinor\MinorMode.cs" />
-    <Compile Include="MusicTheory\Model\Mode.cs" />
-    <Compile Include="MusicTheory\Model\Pentatonic\PentatonicMode.cs" />
-    <Compile Include="MusicTheory\Model\Scale.cs" />
-    <Compile Include="MusicTheory\Rules\MusicalError.cs" />
-    <Compile Include="MusicTheory\Rules\MusicalRule.cs" />
+    <Compile Include="Model\CircleOfFifths.cs" />
+    <Compile Include="Model\Interval.cs" />
+    <Compile Include="Model\IntervalBase.cs" />
+    <Compile Include="Model\MalformedScaleException.cs" />
+    <Compile Include="Model\Pitch.cs" />
+    <Compile Include="Model\Step.cs" />
+    <Compile Include="Generators\RandomMelodyGenerator.cs" />
+    <Compile Include="Model\MajorAndMinor\MajorMode.cs" />
+    <Compile Include="Model\MajorAndMinor\MajorOrMinorScale.cs" />
+    <Compile Include="Model\MajorAndMinor\MajorScale.cs" />
+    <Compile Include="Model\MajorAndMinor\MinorMode.cs" />
+    <Compile Include="Model\Mode.cs" />
+    <Compile Include="Model\Pentatonic\PentatonicMode.cs" />
+    <Compile Include="Model\Scale.cs" />
+    <Compile Include="Rules\MusicalError.cs" />
+    <Compile Include="Rules\MusicalRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
