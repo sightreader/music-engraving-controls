@@ -25,6 +25,21 @@ namespace Manufaktura.Music.Model
             return Pitch.FromStep(this, octaveNumber);
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0}{1}", StepName, AlterToSigns(Alter));
+        }
+
+        protected static string AlterToSigns(int alter)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < Math.Abs(alter); i++)
+            {
+                sb.Append(alter < 0 ? "b" : "#");
+            }
+            return sb.ToString();
+        }
+
         public static Step Cb
         {
             get { return new Step { StepName = "C", Alter = -1 }; }
@@ -148,6 +163,21 @@ namespace Manufaktura.Music.Model
         public static bool operator !=(Step s1, string s)
         {
             return !s1.StepName.Equals(s, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static implicit operator Step(string s)
+        {
+            if (s == null)
+                throw new ArgumentNullException("s");
+            if (!new[] { "A", "B", "C", "D", "E", "F", "G" }.Contains(s.ToUpper()))
+                throw new InvalidCastException(string.Format("{0} is not a valid step name.", s));
+
+            return new Step { StepName = s, Alter = 0 };
+        }
+
+        public static implicit operator string(Step s)
+        {
+            return s.StepName;
         }
     }
 }

@@ -18,10 +18,16 @@ namespace Manufaktura.Music.Model.MajorAndMinor
             Fifths = CircleOfFifths.CalculateFifths(Tonic, isMinorScale, isFlatScale);
         }
 
-        protected MajorOrMinorScale(Step step, bool isMinorScale, bool isFlatScale) 
+        protected MajorOrMinorScale(Step step, bool isMinorScale, bool isFlatScale)
             : base(GetMode(isMinorScale), Pitch.FromStep(step).MidiPitch, isFlatScale ? Pitch.MidiPitchTranslationMode.Flats : Pitch.MidiPitchTranslationMode.Sharps)
         {
             Fifths = CircleOfFifths.CalculateFifths(step, isMinorScale, isFlatScale);
+            if (CircleOfFifths.GetAlterOfStepFromNumberOfFifths(step, Fifths) != step.Alter)
+            {
+                throw new MalformedScaleException(string.Format("There is no {0} {1} scale beginning on step {2}.", 
+                    isMinorScale ? "minor" : "major", isFlatScale ? "flat" : (Math.Abs(Fifths) > 0 ? "sharp" : "natural"), step));
+            }
+
             Tonic = step;
         }
 

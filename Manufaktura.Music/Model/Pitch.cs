@@ -49,17 +49,7 @@ namespace Manufaktura.Music.Model
 
         public override string ToString()
         {
-            return string.Format("{0}{1}", StepName, AlterToSigns(Alter));
-        }
-
-        private static string AlterToSigns(int alter)
-        {
-            var sb = new StringBuilder();
-            for (int i = 0; i < Math.Abs(alter); i++)
-            {
-                sb.Append(alter < 0 ? "b" : "#");
-            }
-            return sb.ToString();
+            return string.Format("{0}{1}{2}", StepName, AlterToSigns(Alter), Octave);
         }
 
         public void ApplyMidiPitch(int midiPitch, MidiPitchTranslationMode mode)

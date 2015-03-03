@@ -7,5 +7,14 @@ namespace Manufaktura.Music.Model
 {
     public class MalformedScaleException : Exception
     {
+        public MalformedScaleException(string message) : base(message)
+        {
+
+        }
+
+        public MalformedScaleException(string message, Exception innerException) : base(message, innerException)
+        {
+
+        }
     }
 }
