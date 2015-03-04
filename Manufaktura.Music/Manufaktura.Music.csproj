@@ -37,6 +37,7 @@
     <Compile Include="Model\CircleOfFifths.cs" />
     <Compile Include="Model\Interval.cs" />
     <Compile Include="Model\IntervalBase.cs" />
+    <Compile Include="Model\MajorAndMinor\MinorScale.cs" />
     <Compile Include="Model\MalformedScaleException.cs" />
     <Compile Include="Model\Pitch.cs" />
     <Compile Include="Model\Step.cs" />

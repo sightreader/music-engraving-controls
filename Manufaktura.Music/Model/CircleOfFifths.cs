@@ -10,8 +10,8 @@ namespace Manufaktura.Music.Model
         public static int CalculateFifths(int midiPitch, bool isMinorScale, bool isFlatScale)
         {
             var fifths = 0;
-            var tonicMidiPitch = Pitch.C4.MidiPitch - (isMinorScale ? Interval.MinorThird.Halftones : Interval.PerfectUnison.Halftones);
-            var currentPitch = tonicMidiPitch;
+            var neutralScaleTonicMidiPitch = isMinorScale ? Pitch.A3.MidiPitch : Pitch.C4.MidiPitch;
+            var currentPitch = neutralScaleTonicMidiPitch;
             while (currentPitch != midiPitch)
             {
                 if (!isFlatScale)
@@ -39,7 +39,7 @@ namespace Manufaktura.Music.Model
                     }
                 }
             }
-            return fifths;
+            return fifths % 12;
         }
 
         public static int CalculateFifths(Step step, bool isMinorScale, bool isFlatScale)

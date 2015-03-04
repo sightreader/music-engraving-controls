@@ -12,6 +12,8 @@ namespace Manufaktura.Music.Model
             {"C", 60}, {"D", 62}, {"E", 64}, {"F", 65}, {"G", 67}, {"A", 69}, {"B", 71}
         };
 
+        public static Pitch A3 { get { return Pitch.FromStep(Step.A, 3); } }
+        public static Pitch B3 { get { return Pitch.FromStep(Step.B, 3); } }
         public static Pitch C4 { get { return Pitch.FromStep(Step.C, 4); } }
         public static Pitch D4 { get { return Pitch.FromStep(Step.D, 4); } }
         public static Pitch E4 { get { return Pitch.FromStep(Step.E, 4); } }

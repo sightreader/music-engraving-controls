@@ -62,6 +62,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Model\KolbergEntity.cs" />
     <Compile Include="Model\Melody.cs" />
     <Compile Include="Model\Provenance.cs" />
