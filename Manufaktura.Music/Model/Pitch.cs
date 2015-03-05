@@ -36,6 +36,20 @@ namespace Manufaktura.Music.Model
             return Step.FromPitch(this);
         }
 
+        public static Pitch operator+ (Pitch pitch, Interval interval)
+        {
+            return Translate(pitch, interval, MidiPitchTranslationMode.Auto);
+        }
+
+        public static Pitch operator-(Pitch pitch, Interval interval)
+        {
+            return Translate(pitch, interval.MakeDescending(), MidiPitchTranslationMode.Auto);
+        }
+
+        public static Pitch Translate(Pitch pitch, Interval interval, MidiPitchTranslationMode mode)
+        {
+            return Pitch.FromMidiPitch(pitch.MidiPitch + interval.Halftones, mode);
+        }
 
         public static Pitch FromStep(Step step, int octaveNumber = 4)
         {

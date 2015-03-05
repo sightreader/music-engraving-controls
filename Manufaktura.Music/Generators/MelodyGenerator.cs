@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Manufaktura.Music.Generators
 {
-    public class RandomMelodyGenerator
+    public class MelodyGenerator
     {
         public Scale Scale { get; set; }
 

@@ -38,6 +38,24 @@ namespace Manufaktura.Music.Model
             }
             return intervalsList[index];
         }
+
+        public int PitchToStepNumber(Pitch pitch)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsIntervalDiatonic(IEnumerable<Pitch> scale, Pitch pitch, Interval interval)
+        {
+            var scalePitches = scale.Select(p => p.MidiPitch);
+            var newMidiPith = (pitch + interval).MidiPitch;
+            return scalePitches.Contains(newMidiPith);
+        }
+
+        public Pitch TranslatePitch(IEnumerable<Pitch> scale, Pitch pitch, IntervalBase interval)
+        {
+            var concreteInterval = interval as Interval;
+            throw new NotImplementedException();
+        }
         
     }
 }
