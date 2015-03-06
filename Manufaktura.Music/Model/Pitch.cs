@@ -38,17 +38,17 @@ namespace Manufaktura.Music.Model
 
         public static Pitch operator+ (Pitch pitch, Interval interval)
         {
-            return Translate(pitch, interval, MidiPitchTranslationMode.Auto);
+            return pitch.Translate(interval, MidiPitchTranslationMode.Auto);
         }
 
         public static Pitch operator-(Pitch pitch, Interval interval)
         {
-            return Translate(pitch, interval.MakeDescending(), MidiPitchTranslationMode.Auto);
+            return pitch.Translate(interval.MakeDescending(), MidiPitchTranslationMode.Auto);
         }
 
-        public static Pitch Translate(Pitch pitch, Interval interval, MidiPitchTranslationMode mode)
+        public Pitch Translate(Interval interval, MidiPitchTranslationMode mode)
         {
-            return Pitch.FromMidiPitch(pitch.MidiPitch + interval.Halftones, mode);
+            return Pitch.FromMidiPitch(MidiPitch + interval.Halftones, mode);
         }
 
         public static Pitch FromStep(Step step, int octaveNumber = 4)

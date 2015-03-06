@@ -145,6 +145,12 @@ namespace Manufaktura.Music.Model
             get { return new Step { StepName = "B", Alter = 1 }; }
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is Step) return this == (Step)obj;
+            return base.Equals(obj);
+        }
+
         public static bool operator ==(Step s1, Step s2)
         {
             return s1.StepName.Equals(s2.StepName, StringComparison.OrdinalIgnoreCase) && s1.Alter == s2.Alter;

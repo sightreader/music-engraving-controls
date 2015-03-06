@@ -12,8 +12,9 @@ using Manufaktura.Controls.Model;
 using System.Collections.Generic;
 using Manufaktura.Controls.Parser;
 using System.Xml.Linq;
+using Manufaktura.Orm;
 
-namespace Manufaktura.Orm.UnitTests
+namespace Manufaktura.UnitTests
 {
     [TestClass]
     public class Tests

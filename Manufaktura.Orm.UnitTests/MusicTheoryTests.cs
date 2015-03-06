@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manufaktura.Orm.UnitTests
+namespace Manufaktura.UnitTests
 {
     [TestClass]
     public class MusicTheoryTests
@@ -43,8 +43,42 @@ namespace Manufaktura.Orm.UnitTests
             scale = new MinorScale(Step.E, false);
             steps = scale.BuildScale(1, 8);
             MusicalAssertions.StepsMatch(steps, Step.E, Step.FSharp, Step.G, Step.A, Step.B, Step.C, Step.D, Step.E).Assert();
+        }
 
-            
+        [TestMethod]
+        public void DiatonicIntervalTranslationsTest()
+        {
+            var scale = new MajorScale(Step.G, false);
+            var pitches = scale.BuildScale(1, 8);
+
+            var secondStep = pitches.ElementAt(1);
+            var translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Unison);
+            Assert.AreEqual(translatedPitch, Step.A);
+            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Second);
+            Assert.AreEqual(translatedPitch, Step.B);
+            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Third);
+            Assert.AreEqual(translatedPitch, Step.C);
+            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Fourth);
+            Assert.AreEqual(translatedPitch, Step.D);
+            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Fifth);
+            Assert.AreEqual(translatedPitch, Step.E);
+            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Sixth);
+            Assert.AreEqual(translatedPitch, Step.FSharp);
+            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Seventh);
+            Assert.AreEqual(translatedPitch, Step.G);
+            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Octave);
+            Assert.AreEqual(translatedPitch, Step.A);
+        }
+
+        [TestMethod]
+        public void ChromaticIntervalTranslationsTest()
+        {
+            var scale = new MajorScale(Step.G, false);
+            var pitches = scale.BuildScale(1, 8);
+
+            var secondStep = pitches.ElementAt(1);
+            var translatedPitch = scale.TranslatePitch(secondStep, Interval.MajorThird);
+            Assert.AreEqual(translatedPitch, Step.CSharp);
         }
     }
 }
