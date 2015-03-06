@@ -20,7 +20,7 @@ namespace Manufaktura.Music.MelodicTrails
 
         public abstract int MaxNotes { get; }
 
-        public IEnumerable<Pitch> BuildMelody(Pitch startingPitch, Mode mode)
+        public IEnumerable<Pitch> BuildMelody(Scale scale, Pitch startingPitch)
         {
             if (MinNotes < 1) throw new ArgumentException("MinNotes must be greater than 0.", "MinNotes");
             if (MinNotes > MaxNotes) throw new ArgumentException("MinNotes must not be greater than MaxNotes.", "MinNotes");
@@ -29,13 +29,22 @@ namespace Manufaktura.Music.MelodicTrails
             var numberOfNotes = randomGenerator.Next(MinNotes, MaxNotes);
 
             var sumOfWeights = AllowedIntervals.Sum(ai => ai.Value);
-            var sortedIntervals = AllowedIntervals.OrderBy(ai => ai.Value);
+            var sortedIntervals = AllowedIntervals.OrderBy(ai => ai.Value).ToList();
+            var newSortedIntervals = new List<KeyValuePair<IntervalBase, double>>();
+            double previousValues = 0;
+            foreach (var kvp in sortedIntervals)
+            {
+                newSortedIntervals.Add(new KeyValuePair<IntervalBase, double>(kvp.Key, kvp.Value + previousValues));
+                previousValues += kvp.Value;
+            }
+            sortedIntervals = newSortedIntervals;
+
             var melody = new List<Pitch> { startingPitch };
             for (var i = 1; i < numberOfNotes; i++)
             {
                 var randomNumber = randomGenerator.NextDouble() * sumOfWeights;
-                var interval = sortedIntervals.Where(ai => ai.Value >= randomNumber).First().Key;
-                //melody.Add(Pitch.Translate(startingPitch, interval, pitchTranslationMode));
+                var interval = sortedIntervals.Where(ai => (double)ai.Value >= randomNumber).First().Key;
+                melody.Add(scale.TranslatePitch(melody.Last(), interval));
             }
             return melody;
         }

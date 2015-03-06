@@ -1,4 +1,5 @@
-﻿using Manufaktura.Music.Model;
+﻿using Manufaktura.Music.MelodicTrails;
+using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using Manufaktura.Music.UnitTests;
 using Manufaktura.UnitTests.Helpers;
@@ -79,6 +80,16 @@ namespace Manufaktura.UnitTests
             var secondStep = pitches.ElementAt(1);
             var translatedPitch = scale.TranslatePitch(secondStep, Interval.MajorThird);
             Assert.AreEqual(translatedPitch, Step.CSharp);
+        }
+
+        [TestMethod]
+        public void MelodyGenerationTest()
+        {
+            var scale = new MajorScale(Step.G, false);
+            var melodicTrail = new HeadMotiveMelodicTrail();
+            var melody = melodicTrail.BuildMelody(scale, Pitch.G4);
+            melody = melodicTrail.BuildMelody(scale, Pitch.G4);
+            melody = melodicTrail.BuildMelody(scale, Pitch.G4);
         }
     }
 }

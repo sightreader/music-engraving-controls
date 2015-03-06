@@ -8,6 +8,6 @@ namespace Manufaktura.Music.MelodicTrails
 {
     public interface IMelodicTrail
     {
-        IEnumerable<Pitch> BuildMelody(Pitch startingPitch, Mode mode);
+        IEnumerable<Pitch> BuildMelody(Scale scale, Pitch startingPitch);
     }
 }

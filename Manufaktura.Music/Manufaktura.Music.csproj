@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Generators\RhythmGenerator.cs" />
+    <Compile Include="MelodicTrails\HeadMotiveMelodicTrail.cs" />
     <Compile Include="MelodicTrails\IMelodicTrail.cs" />
     <Compile Include="MelodicTrails\RandomIntervalsMelodicTrail.cs" />
     <Compile Include="Model\CircleOfFifths.cs" />
