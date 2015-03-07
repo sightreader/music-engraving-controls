@@ -8,6 +8,9 @@ namespace Manufaktura.Music.MelodicTrails
 {
     public interface IMelodicTrail
     {
+        Pitch MaxPitch { get; set; }
+        Pitch MinPitch { get; set; }
         IEnumerable<Pitch> BuildMelody(Scale scale, Pitch startingPitch);
+
     }
 }

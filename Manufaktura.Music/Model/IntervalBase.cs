@@ -17,7 +17,17 @@ namespace Manufaktura.Music.Model
         public Interval ToInterval(int halftones)
         {
             return new Interval(this.Steps, halftones);
-        } 
+        }
+
+        public IntervalBase MakeDescending()
+        {
+            return new IntervalBase(Math.Abs(Steps) * -1);
+        }
+
+        public IntervalBase MakeAscending()
+        {
+            return new IntervalBase(Math.Abs(Steps));
+        }
 
         public static IntervalBase Unison { get { return new IntervalBase(1); } }
         public static IntervalBase Second { get { return new IntervalBase(2); } }

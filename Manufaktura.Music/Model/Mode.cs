@@ -38,14 +38,6 @@ namespace Manufaktura.Music.Model
             }
             return intervalsList[index];
         }
-
-
-
-        public Pitch TranslatePitch(IEnumerable<Pitch> scale, Pitch pitch, IntervalBase interval)
-        {
-            var concreteInterval = interval as Interval;
-            throw new NotImplementedException();
-        }
         
     }
 }

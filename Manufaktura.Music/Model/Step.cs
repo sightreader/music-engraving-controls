@@ -161,16 +161,6 @@ namespace Manufaktura.Music.Model
             return !s1.StepName.Equals(s2.StepName, StringComparison.OrdinalIgnoreCase) || !(s1.Alter == s2.Alter);
         }
 
-        public static bool operator ==(Step s1, string s)
-        {
-            return s1.StepName.Equals(s, StringComparison.OrdinalIgnoreCase);
-        }
-
-        public static bool operator !=(Step s1, string s)
-        {
-            return !s1.StepName.Equals(s, StringComparison.OrdinalIgnoreCase);
-        }
-
         public static implicit operator Step(string s)
         {
             if (s == null)

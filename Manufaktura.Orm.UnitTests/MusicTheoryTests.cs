@@ -86,7 +86,7 @@ namespace Manufaktura.UnitTests
         public void MelodyGenerationTest()
         {
             var scale = new MajorScale(Step.G, false);
-            var melodicTrail = new HeadMotiveMelodicTrail();
+            var melodicTrail = new HeadMotiveMelodicTrail(Pitch.G3, Pitch.C6);
             var melody = melodicTrail.BuildMelody(scale, Pitch.G4);
             melody = melodicTrail.BuildMelody(scale, Pitch.G4);
             melody = melodicTrail.BuildMelody(scale, Pitch.G4);

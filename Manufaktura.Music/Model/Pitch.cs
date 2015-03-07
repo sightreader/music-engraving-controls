@@ -12,6 +12,7 @@ namespace Manufaktura.Music.Model
             {"C", 60}, {"D", 62}, {"E", 64}, {"F", 65}, {"G", 67}, {"A", 69}, {"B", 71}
         };
 
+        public static Pitch G3 { get { return Pitch.FromStep(Step.G, 3); } }
         public static Pitch A3 { get { return Pitch.FromStep(Step.A, 3); } }
         public static Pitch B3 { get { return Pitch.FromStep(Step.B, 3); } }
         public static Pitch C4 { get { return Pitch.FromStep(Step.C, 4); } }
@@ -21,6 +22,21 @@ namespace Manufaktura.Music.Model
         public static Pitch G4 { get { return Pitch.FromStep(Step.G, 4); } }
         public static Pitch A4 { get { return Pitch.FromStep(Step.A, 4); } }
         public static Pitch B4 { get { return Pitch.FromStep(Step.B, 4); } }
+        public static Pitch C5 { get { return Pitch.FromStep(Step.C, 5); } }
+        public static Pitch D5 { get { return Pitch.FromStep(Step.D, 5); } }
+        public static Pitch E5 { get { return Pitch.FromStep(Step.E, 5); } }
+        public static Pitch F5 { get { return Pitch.FromStep(Step.F, 5); } }
+        public static Pitch G5 { get { return Pitch.FromStep(Step.G, 5); } }
+        public static Pitch A5 { get { return Pitch.FromStep(Step.A, 5); } }
+        public static Pitch B5 { get { return Pitch.FromStep(Step.B, 5); } }
+        public static Pitch C6 { get { return Pitch.FromStep(Step.C, 6); } }
+        public static Pitch D6 { get { return Pitch.FromStep(Step.D, 6); } }
+        public static Pitch E6 { get { return Pitch.FromStep(Step.E, 6); } }
+        public static Pitch F6 { get { return Pitch.FromStep(Step.F, 6); } }
+        public static Pitch G6 { get { return Pitch.FromStep(Step.G, 6); } }
+        public static Pitch A6 { get { return Pitch.FromStep(Step.A, 6); } }
+        public static Pitch B6 { get { return Pitch.FromStep(Step.B, 6); } }
+        public static Pitch C7 { get { return Pitch.FromStep(Step.C, 7); } }
 
         public int MidiPitch { get; set; }
         public int Octave { get; set; }
@@ -36,12 +52,12 @@ namespace Manufaktura.Music.Model
             return Step.FromPitch(this);
         }
 
-        public static Pitch operator+ (Pitch pitch, Interval interval)
+        public static Pitch operator +(Pitch pitch, Interval interval)
         {
             return pitch.Translate(interval, MidiPitchTranslationMode.Auto);
         }
 
-        public static Pitch operator-(Pitch pitch, Interval interval)
+        public static Pitch operator -(Pitch pitch, Interval interval)
         {
             return pitch.Translate(interval.MakeDescending(), MidiPitchTranslationMode.Auto);
         }
@@ -53,7 +69,7 @@ namespace Manufaktura.Music.Model
 
         public static Pitch FromStep(Step step, int octaveNumber = 4)
         {
-            return new Pitch { StepName = step.StepName, Alter = step.Alter, MidiPitch = pitches[step.StepName] + step.Alter + (octaveNumber - 4) * 12 };
+            return new Pitch { StepName = step.StepName, Alter = step.Alter, MidiPitch = pitches[step.StepName] + step.Alter + (octaveNumber - 4) * 12, Octave = octaveNumber };
         }
 
         public static Pitch FromMidiPitch(int midiPitch, MidiPitchTranslationMode mode)
@@ -141,6 +157,37 @@ namespace Manufaktura.Music.Model
 
             this.MidiPitch = midiPitch;
         }
+
+        public static bool operator >(Pitch p1, Pitch p2)
+        {
+            return p1.MidiPitch > p2.MidiPitch;
+        }
+
+        public static bool operator >=(Pitch p1, Pitch p2)
+        {
+            return p1.MidiPitch >= p2.MidiPitch;
+        }
+
+        public static bool operator <(Pitch p1, Pitch p2)
+        {
+            return p1.MidiPitch < p2.MidiPitch;
+        }
+
+        public static bool operator <=(Pitch p1, Pitch p2)
+        {
+            return p1.MidiPitch <= p2.MidiPitch;
+        }
+
+        public static bool operator ==(Pitch p1, Pitch p2)
+        {
+            return p1.MidiPitch == p2.MidiPitch;
+        }
+
+        public static bool operator !=(Pitch p1, Pitch p2)
+        {
+            return p1.MidiPitch != p2.MidiPitch;
+        }
+
         public enum MidiPitchTranslationMode
         {
             Auto, Sharps, Flats

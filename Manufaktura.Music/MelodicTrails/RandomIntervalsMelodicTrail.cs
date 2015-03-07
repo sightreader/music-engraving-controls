@@ -20,6 +20,20 @@ namespace Manufaktura.Music.MelodicTrails
 
         public abstract int MaxNotes { get; }
 
+        public Pitch MaxPitch { get; set; }
+        public Pitch MinPitch { get; set; }
+
+        protected RandomIntervalsMelodicTrail()
+        {
+            MinPitch = Pitch.FromMidiPitch(0, Pitch.MidiPitchTranslationMode.Auto);
+            MaxPitch = Pitch.FromMidiPitch(int.MaxValue, Pitch.MidiPitchTranslationMode.Auto);
+        }
+
+        protected virtual IntervalBase OnAmbitusExceeded(IntervalBase generatedInterval, Pitch generatedPitch)
+        {
+            return generatedInterval;
+        }
+
         public IEnumerable<Pitch> BuildMelody(Scale scale, Pitch startingPitch)
         {
             if (MinNotes < 1) throw new ArgumentException("MinNotes must be greater than 0.", "MinNotes");
@@ -43,8 +57,14 @@ namespace Manufaktura.Music.MelodicTrails
             for (var i = 1; i < numberOfNotes; i++)
             {
                 var randomNumber = randomGenerator.NextDouble() * sumOfWeights;
-                var interval = sortedIntervals.Where(ai => (double)ai.Value >= randomNumber).First().Key;
-                melody.Add(scale.TranslatePitch(melody.Last(), interval));
+                var interval = sortedIntervals.Where(ai => ai.Value >= randomNumber).First().Key;
+                var newPitch = scale.TranslatePitch(melody.Last(), interval);
+                if (newPitch > MaxPitch || newPitch < MinPitch)
+                {
+                    interval = OnAmbitusExceeded(interval, newPitch);
+                    newPitch = scale.TranslatePitch(melody.Last(), interval);
+                }
+                melody.Add(newPitch);
             }
             return melody;
         }
