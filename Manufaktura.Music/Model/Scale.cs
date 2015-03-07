@@ -52,13 +52,24 @@ namespace Manufaktura.Music.Model
             return Pitch.FromMidiPitch(pitch.MidiPitch + interval.Halftones, MidiPitchTranslationMode);
         }
 
-        public Pitch TranslatePitch(Pitch pitch, IntervalBase interval)
+        public Pitch TranslatePitch(Pitch pitch, DiatonicInterval interval)
         {
             var stepNumber = StepToStepNumber(pitch.ToStep());
             var halfTones = 0;
-            for (var i = 0; i < interval.Steps - 1; i++)
+            if (interval.Steps == 0) throw new ArithmeticException("There is no interval with 0 steps.");
+            if (interval.Steps > 0) 
+            { 
+                for (var i = 0; i < interval.Steps - 1; i++)
+                {
+                    halfTones += Mode.GetIntervalAfterStep(stepNumber + i);
+                }
+            }
+            else if (interval.Steps < 0)
             {
-                halfTones += Mode.GetIntervalAfterStep(stepNumber + i);
+                for (var i = 0; i > interval.Steps + 1; i--)
+                {
+                    halfTones -= Mode.GetIntervalBeforeStep(stepNumber + i);
+                }
             }
             return Pitch.FromMidiPitch(pitch.MidiPitch + halfTones, MidiPitchTranslationMode);
         }

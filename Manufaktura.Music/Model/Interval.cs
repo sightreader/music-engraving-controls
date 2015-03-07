@@ -6,7 +6,7 @@ using System.Text;
 namespace Manufaktura.Music.Model
 {
 
-    public class Interval : IntervalBase
+    public class Interval : DiatonicInterval
     {
         public int Halftones { get; protected set; }
 
@@ -28,9 +28,8 @@ namespace Manufaktura.Music.Model
         public static new Interval PerfectUnison { get { return new Interval(1, 0); } }
         public static Interval AugmentedUnison { get { return new Interval(1, HalfTone); ; } }
         public static Interval MinorSecond { get { return new Interval(2, HalfTone); } }
-
         public static Interval MajorSecond { get { return new Interval(2, WholeTone); } }
-
+        public static Interval AugmentedSecond { get { return new Interval(2, 3); } }
         public static Interval DimnishedThird { get { return new Interval(3, 2); } }
         public static Interval MinorThird { get { return new Interval(3, 3); } }
         public static Interval MajorThird { get { return new Interval(3, 4); } }

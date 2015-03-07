@@ -29,14 +29,30 @@ namespace Manufaktura.Music.Model
 
         public int GetIntervalAfterStep(int step)
         {
-            if (step < 1) throw new ArgumentException("Step must be greater than 0.", "step");
-            var index = step - 1;
             var intervalsList = Intervals.ToList();
-            while (index >= intervalsList.Count)
-            {
-                index -= intervalsList.Count;
-            }
+            var index = NormalizeIndex(step - 1);
             return intervalsList[index];
+        }
+
+        public int GetIntervalBeforeStep(int step)
+        {
+            var intervalsList = Intervals.ToList();
+            var index = NormalizeIndex(step - 2);
+            return intervalsList[index];
+        }
+
+        private int NormalizeIndex(int stepIndex)
+        {
+            var intervalsList = Intervals.ToList();
+            while (stepIndex < 0)
+            {
+                stepIndex += intervalsList.Count;
+            }
+            while (stepIndex >= intervalsList.Count)
+            {
+                stepIndex -= intervalsList.Count;
+            }
+            return stepIndex;
         }
         
     }

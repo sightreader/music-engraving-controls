@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.MajorAndMinor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace Manufaktura.Controls.Model
         public static Key FromTonic(Step step, bool isMinorScale, bool isFlatScale)
         {
             return new Key(CircleOfFifths.CalculateFifths(step, isMinorScale, isFlatScale));
+        }
+
+        public static Key FromScale(MajorOrMinorScale scale)
+        {
+            return new Key(scale.Fifths);
         }
 
         public static Key FromMidiPitch(int midiPitch, bool isMinorScale, bool isFlatScale)

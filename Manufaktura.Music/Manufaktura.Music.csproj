@@ -35,12 +35,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Generators\RhythmGenerator.cs" />
+    <Compile Include="MelodicTrails\AnabasisMelodicTrail.cs" />
     <Compile Include="MelodicTrails\HeadMotiveMelodicTrail.cs" />
     <Compile Include="MelodicTrails\IMelodicTrail.cs" />
+    <Compile Include="MelodicTrails\KatabasisMelodicTrail.cs" />
+    <Compile Include="MelodicTrails\MetabasisMelodicTrail.cs" />
     <Compile Include="MelodicTrails\RandomIntervalsMelodicTrail.cs" />
     <Compile Include="Model\CircleOfFifths.cs" />
     <Compile Include="Model\Interval.cs" />
-    <Compile Include="Model\IntervalBase.cs" />
+    <Compile Include="Model\DiatonicInterval.cs" />
     <Compile Include="Model\MajorAndMinor\MinorScale.cs" />
     <Compile Include="Model\MalformedScaleException.cs" />
     <Compile Include="Model\Pitch.cs" />

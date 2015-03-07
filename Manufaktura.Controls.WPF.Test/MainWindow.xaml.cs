@@ -1,5 +1,8 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Music.MelodicTrails;
+using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.MajorAndMinor;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -28,6 +31,37 @@ namespace Manufaktura.Controls.WPF.Test
         public MainWindow()
         {
             InitializeComponent();
+
+            var scale = new MajorScale(Step.G, false);
+            IMelodicTrail melodicTrail = new AnabasisMelodicTrail(Pitch.G3, Pitch.C6);
+            var notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
+            var score = new Score();
+            var staff = new Staff();
+            staff.Elements.Add(new Clef(ClefType.GClef, 2));
+            staff.Elements.Add(Controls.Model.Key.FromScale(scale));
+            staff.Elements.AddRange(notes);
+            score.Staves.Add(staff);
+            noteViewer1.ScoreSource = score;
+
+            melodicTrail = new KatabasisMelodicTrail(Pitch.G3, Pitch.C6);
+            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
+            score = new Score();
+            staff = new Staff();
+            staff.Elements.Add(new Clef(ClefType.GClef, 2));
+            staff.Elements.Add(Controls.Model.Key.FromScale(scale));
+            staff.Elements.AddRange(notes);
+            score.Staves.Add(staff);
+            noteViewer2.ScoreSource = score;
+
+            melodicTrail = new MetabasisMelodicTrail(Pitch.G3, Pitch.C6);
+            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
+            score = new Score();
+            staff = new Staff();
+            staff.Elements.Add(new Clef(ClefType.GClef, 2));
+            staff.Elements.Add(Controls.Model.Key.FromScale(scale));
+            staff.Elements.AddRange(notes);
+            score.Staves.Add(staff);
+            noteViewer3.ScoreSource = score;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

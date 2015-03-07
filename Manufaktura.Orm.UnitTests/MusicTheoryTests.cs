@@ -53,21 +53,21 @@ namespace Manufaktura.UnitTests
             var pitches = scale.BuildScale(1, 8);
 
             var secondStep = pitches.ElementAt(1);
-            var translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Unison);
+            var translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Unison);
             Assert.AreEqual(translatedPitch, Step.A);
-            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Second);
+            translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Second);
             Assert.AreEqual(translatedPitch, Step.B);
-            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Third);
+            translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Third);
             Assert.AreEqual(translatedPitch, Step.C);
-            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Fourth);
+            translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Fourth);
             Assert.AreEqual(translatedPitch, Step.D);
-            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Fifth);
+            translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Fifth);
             Assert.AreEqual(translatedPitch, Step.E);
-            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Sixth);
+            translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Sixth);
             Assert.AreEqual(translatedPitch, Step.FSharp);
-            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Seventh);
+            translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Seventh);
             Assert.AreEqual(translatedPitch, Step.G);
-            translatedPitch = scale.TranslatePitch(secondStep, IntervalBase.Octave);
+            translatedPitch = scale.TranslatePitch(secondStep, DiatonicInterval.Octave);
             Assert.AreEqual(translatedPitch, Step.A);
         }
 
@@ -86,8 +86,13 @@ namespace Manufaktura.UnitTests
         public void MelodyGenerationTest()
         {
             var scale = new MajorScale(Step.G, false);
-            var melodicTrail = new HeadMotiveMelodicTrail(Pitch.G3, Pitch.C6);
+            IMelodicTrail melodicTrail = new HeadMotiveMelodicTrail(Pitch.G3, Pitch.C6);
             var melody = melodicTrail.BuildMelody(scale, Pitch.G4);
+            melody = melodicTrail.BuildMelody(scale, Pitch.G4);
+            melody = melodicTrail.BuildMelody(scale, Pitch.G4);
+
+            melodicTrail = new AnabasisMelodicTrail(Pitch.G3, Pitch.C6);
+            melody = melodicTrail.BuildMelody(scale, Pitch.G4);
             melody = melodicTrail.BuildMelody(scale, Pitch.G4);
             melody = melodicTrail.BuildMelody(scale, Pitch.G4);
         }

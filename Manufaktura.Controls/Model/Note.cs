@@ -169,6 +169,15 @@ namespace Manufaktura.Controls.Model
             else return 0;
         }
 
+        public void ApplyMidiPitch(int midiPitch)
+        {
+            var pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
+            Alter = pitch.Alter;
+            Octave = pitch.Octave;
+            Step = pitch.StepName;
+            MidiPitch = midiPitch;
+        }
+
         #endregion
 
         #region Public static functions
@@ -176,22 +185,34 @@ namespace Manufaktura.Controls.Model
         public static Note FromMidiPitch(int midiPitch, MusicalSymbolDuration duration)
         {
             Note note = new Note(duration);
-            var pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
-            note.Alter = pitch.Alter;
-            note.Octave = pitch.Octave;
-            note.Step = pitch.StepName;
-            note.MidiPitch = midiPitch;
+            note.ApplyMidiPitch(midiPitch);
             return note;
         }
 
         public static Note FromMidiPitch(int midiPitch)
         {
             Note note = new Note();
-            var pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
+            note.ApplyMidiPitch(midiPitch);
+            return note;
+        }
+
+        public static Note FromPitch(Pitch pitch, MusicalSymbolDuration duration)
+        {
+            Note note = new Note(duration);
             note.Alter = pitch.Alter;
             note.Octave = pitch.Octave;
             note.Step = pitch.StepName;
-            note.MidiPitch = midiPitch;
+            note.MidiPitch = pitch.MidiPitch;
+            return note;
+        }
+
+        public static Note FromPitch(Pitch pitch)
+        {
+            Note note = new Note();
+            note.Alter = pitch.Alter;
+            note.Octave = pitch.Octave;
+            note.Step = pitch.StepName;
+            note.MidiPitch = pitch.MidiPitch;
             return note;
         }
 

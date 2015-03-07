@@ -14,7 +14,7 @@ namespace Manufaktura.Music.MelodicTrails
         /// <summary>
         /// Allowed intervals with weights
         /// </summary>
-        public abstract Dictionary<IntervalBase, double> AllowedIntervals { get; }
+        public abstract Dictionary<DiatonicInterval, double> AllowedIntervals { get; }
 
         public abstract int MinNotes { get; }
 
@@ -29,7 +29,7 @@ namespace Manufaktura.Music.MelodicTrails
             MaxPitch = Pitch.FromMidiPitch(int.MaxValue, Pitch.MidiPitchTranslationMode.Auto);
         }
 
-        protected virtual IntervalBase OnAmbitusExceeded(IntervalBase generatedInterval, Pitch generatedPitch)
+        protected virtual DiatonicInterval OnAmbitusExceeded(DiatonicInterval generatedInterval, Pitch generatedPitch)
         {
             return generatedInterval;
         }
@@ -44,11 +44,11 @@ namespace Manufaktura.Music.MelodicTrails
 
             var sumOfWeights = AllowedIntervals.Sum(ai => ai.Value);
             var sortedIntervals = AllowedIntervals.OrderBy(ai => ai.Value).ToList();
-            var newSortedIntervals = new List<KeyValuePair<IntervalBase, double>>();
+            var newSortedIntervals = new List<KeyValuePair<DiatonicInterval, double>>();
             double previousValues = 0;
             foreach (var kvp in sortedIntervals)
             {
-                newSortedIntervals.Add(new KeyValuePair<IntervalBase, double>(kvp.Key, kvp.Value + previousValues));
+                newSortedIntervals.Add(new KeyValuePair<DiatonicInterval, double>(kvp.Key, kvp.Value + previousValues));
                 previousValues += kvp.Value;
             }
             sortedIntervals = newSortedIntervals;
