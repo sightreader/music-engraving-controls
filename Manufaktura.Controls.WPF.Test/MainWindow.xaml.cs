@@ -35,23 +35,19 @@ namespace Manufaktura.Controls.WPF.Test
             var scale = new MajorScale(Step.G, false);
             IMelodicTrail melodicTrail = new AnabasisMelodicTrail(Pitch.G3, Pitch.C6, 4, 12);
             var notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
-            var score = new Score();
-            var staff = new Staff();
-            staff.Elements.Add(new Clef(ClefType.GClef, 2));
-            staff.Elements.Add(Controls.Model.Key.FromScale(scale));
-            staff.Elements.AddRange(notes);
-            score.Staves.Add(staff);
+            var score = Score.CreateOneStaffScore();
+            score.FirstStaff.Elements.Add(new Clef(ClefType.GClef, 2));
+            score.FirstStaff.Elements.Add(Controls.Model.Key.FromScale(scale));
+            score.FirstStaff.Elements.AddRange(notes);
             noteViewer1.ScoreSource = score;
 
             melodicTrail = new KatabasisMelodicTrail(Pitch.G3, Pitch.C6, 4, 12);
             notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
-            score = new Score();
-            staff = new Staff();
+            var staff = new Staff();
             staff.Elements.Add(new Clef(ClefType.GClef, 2));
             staff.Elements.Add(Controls.Model.Key.FromScale(scale));
             staff.Elements.AddRange(notes);
-            score.Staves.Add(staff);
-            noteViewer2.ScoreSource = score;
+            noteViewer2.ScoreSource = staff.ToOneStaffScore();
 
             melodicTrail = new MetabasisMelodicTrail(Pitch.G3, Pitch.C6, 4, 12);
             notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));

@@ -44,5 +44,14 @@ namespace Manufaktura.Controls.Primitives
         {
             return angle * (Math.PI / 180d);
         }
+
+        public static string NumberToOrdinal(int number)
+        {
+            if (number == 1) return "1st";
+            if (number == 2) return "2nd";
+            if (number == 3) return "3rd";
+            if (number > 3) return number + "th";
+            else return number.ToString();
+        }
     }
 }

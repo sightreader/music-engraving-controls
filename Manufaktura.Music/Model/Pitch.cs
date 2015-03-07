@@ -35,19 +35,33 @@ namespace Manufaktura.Music.Model
         public static Pitch C5 { get { return Pitch.FromStep(Step.C, 5); } }
         public static Pitch CSharp5 { get { return Pitch.FromStep(Step.CSharp, 5); } }
         public static Pitch D5 { get { return Pitch.FromStep(Step.D, 5); } }
+        public static Pitch DSharp5 { get { return Pitch.FromStep(Step.DSharp, 5); } }
         public static Pitch E5 { get { return Pitch.FromStep(Step.E, 5); } }
+        public static Pitch ESharp5 { get { return Pitch.FromStep(Step.ESharp, 5); } }
         public static Pitch F5 { get { return Pitch.FromStep(Step.F, 5); } }
+        public static Pitch FSharp5 { get { return Pitch.FromStep(Step.FSharp, 5); } }
         public static Pitch G5 { get { return Pitch.FromStep(Step.G, 5); } }
+        public static Pitch GSharp5 { get { return Pitch.FromStep(Step.GSharp, 5); } }
         public static Pitch A5 { get { return Pitch.FromStep(Step.A, 5); } }
+        public static Pitch ASharp5 { get { return Pitch.FromStep(Step.ASharp, 5); } }
         public static Pitch B5 { get { return Pitch.FromStep(Step.B, 5); } }
+        public static Pitch BSharp5 { get { return Pitch.FromStep(Step.BSharp, 5); } }
         public static Pitch C6 { get { return Pitch.FromStep(Step.C, 6); } }
+        public static Pitch CSharp6 { get { return Pitch.FromStep(Step.CSharp, 6); } }
         public static Pitch D6 { get { return Pitch.FromStep(Step.D, 6); } }
+        public static Pitch DSharp6 { get { return Pitch.FromStep(Step.DSharp, 6); } }
         public static Pitch E6 { get { return Pitch.FromStep(Step.E, 6); } }
+        public static Pitch ESharp6 { get { return Pitch.FromStep(Step.ESharp, 6); } }
         public static Pitch F6 { get { return Pitch.FromStep(Step.F, 6); } }
+        public static Pitch FSharp6 { get { return Pitch.FromStep(Step.FSharp, 6); } }
         public static Pitch G6 { get { return Pitch.FromStep(Step.G, 6); } }
+        public static Pitch GSharp6 { get { return Pitch.FromStep(Step.GSharp, 6); } }
         public static Pitch A6 { get { return Pitch.FromStep(Step.A, 6); } }
+        public static Pitch ASharp6 { get { return Pitch.FromStep(Step.ASharp, 6); } }
         public static Pitch B6 { get { return Pitch.FromStep(Step.B, 6); } }
+        public static Pitch BSharp6 { get { return Pitch.FromStep(Step.BSharp, 6); } }
         public static Pitch C7 { get { return Pitch.FromStep(Step.C, 7); } }
+        public static Pitch CSharp7 { get { return Pitch.FromStep(Step.CSharp, 7); } }
 
         public int MidiPitch { get; set; }
         public int Octave { get; set; }

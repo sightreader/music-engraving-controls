@@ -10,7 +10,7 @@ namespace Manufaktura.Music.Model
     {
         public override IEnumerable<int> Intervals
         {
-            get { return new[] { 2, 2, 1, 2, 2 }; }
+            get { return new[] { 2, 2, 1, 2, 2 }; } //TODO: Lol, to jest średniowieczny heksachord, a nie pentatonika :P
         }
 
         public override IEnumerable<MusicalRule> Rules

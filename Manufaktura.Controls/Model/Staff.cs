@@ -19,6 +19,13 @@ namespace Manufaktura.Controls.Model
             ActualSystemWidths = new List<double>();
         }
 
+        public Score ToOneStaffScore()
+        {
+            var score = new Score();
+            score.Staves.Add(this);
+            return score;
+        }
+
         public TSymbol Peek<TSymbol>(MusicalSymbol relativeTo, PeekType peekType) where TSymbol : MusicalSymbol
         {
             PeekStrategy<TSymbol> strategy;
