@@ -33,7 +33,7 @@ namespace Manufaktura.Controls.WPF.Test
             InitializeComponent();
 
             var scale = new MajorScale(Step.G, false);
-            IMelodicTrail melodicTrail = new AnabasisMelodicTrail(Pitch.G3, Pitch.C6);
+            IMelodicTrail melodicTrail = new AnabasisMelodicTrail(Pitch.G3, Pitch.C6, 4, 12);
             var notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
             var score = new Score();
             var staff = new Staff();
@@ -43,7 +43,7 @@ namespace Manufaktura.Controls.WPF.Test
             score.Staves.Add(staff);
             noteViewer1.ScoreSource = score;
 
-            melodicTrail = new KatabasisMelodicTrail(Pitch.G3, Pitch.C6);
+            melodicTrail = new KatabasisMelodicTrail(Pitch.G3, Pitch.C6, 4, 12);
             notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
             score = new Score();
             staff = new Staff();
@@ -53,7 +53,7 @@ namespace Manufaktura.Controls.WPF.Test
             score.Staves.Add(staff);
             noteViewer2.ScoreSource = score;
 
-            melodicTrail = new MetabasisMelodicTrail(Pitch.G3, Pitch.C6);
+            melodicTrail = new MetabasisMelodicTrail(Pitch.G3, Pitch.C6, 4, 12);
             notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
             score = new Score();
             staff = new Staff();

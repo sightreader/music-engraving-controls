@@ -16,10 +16,8 @@ namespace Manufaktura.Music.MelodicTrails
         /// </summary>
         public abstract Dictionary<DiatonicInterval, double> AllowedIntervals { get; }
 
-        public abstract int MinNotes { get; }
-
-        public abstract int MaxNotes { get; }
-
+        public int MinNotes { get; set; }
+        public int MaxNotes { get; set; }
         public Pitch MaxPitch { get; set; }
         public Pitch MinPitch { get; set; }
 
@@ -27,6 +25,16 @@ namespace Manufaktura.Music.MelodicTrails
         {
             MinPitch = Pitch.FromMidiPitch(0, Pitch.MidiPitchTranslationMode.Auto);
             MaxPitch = Pitch.FromMidiPitch(int.MaxValue, Pitch.MidiPitchTranslationMode.Auto);
+            MinNotes = 2;
+            MaxNotes = 10;
+        }
+
+        protected RandomIntervalsMelodicTrail(Pitch minPitch, Pitch maxPitch, int minNotes, int maxNotes)
+        {
+            MinPitch = minPitch;
+            MaxPitch = maxPitch;
+            MinNotes = minNotes;
+            MaxNotes = maxNotes;
         }
 
         protected virtual DiatonicInterval OnAmbitusExceeded(DiatonicInterval generatedInterval, Pitch generatedPitch)

@@ -21,20 +21,10 @@ namespace Manufaktura.Music.MelodicTrails
             get { return allowedIntervals; }
         }
 
-        public override int MinNotes
+        public AnabasisMelodicTrail(Pitch minPitch, Pitch maxPitch, int minNotes, int maxNotes)
+            : base(minPitch, maxPitch, minNotes, maxNotes)
         {
-            get { return 6; }
-        }
 
-        public override int MaxNotes
-        {
-            get { return 12; }
-        }
-
-        public AnabasisMelodicTrail(Pitch minPitch, Pitch maxPitch)
-        {
-            MinPitch = minPitch;
-            MaxPitch = maxPitch;
         }
     }
 }

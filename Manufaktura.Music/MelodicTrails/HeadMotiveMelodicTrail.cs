@@ -27,20 +27,9 @@ namespace Manufaktura.Music.MelodicTrails
             get { return allowedIntervals; }
         }
 
-        public override int MinNotes
+        public HeadMotiveMelodicTrail(Pitch minPitch, Pitch maxPitch, int minNotes, int maxNotes)
+            : base(minPitch, maxPitch, minNotes, maxNotes)
         {
-            get { return 2; }
-        }
-
-        public override int MaxNotes
-        {
-            get { return 5; }
-        }
-
-        public HeadMotiveMelodicTrail(Pitch minPitch, Pitch maxPitch)
-        {
-            MinPitch = minPitch;
-            MaxPitch = maxPitch;
         }
 
         protected override DiatonicInterval OnAmbitusExceeded(DiatonicInterval generatedInterval, Pitch generatedPitch)
