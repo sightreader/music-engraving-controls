@@ -25,7 +25,7 @@ namespace Manufaktura.Music.Model
         public static int WholeTone = 2;
         public static int Tritone = 6;
 
-        public static new Interval PerfectUnison { get { return new Interval(1, 0); } }
+        public static Interval PerfectUnison { get { return new Interval(1, 0); } }
         public static Interval AugmentedUnison { get { return new Interval(1, HalfTone); ; } }
         public static Interval MinorSecond { get { return new Interval(2, HalfTone); } }
         public static Interval MajorSecond { get { return new Interval(2, WholeTone); } }

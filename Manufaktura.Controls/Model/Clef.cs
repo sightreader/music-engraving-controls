@@ -87,6 +87,56 @@ namespace Manufaktura.Controls.Model
             else return new Clef(ClefType.GClef, 2);
         }
 
+        public static Clef Treble
+        {
+            get { return new Clef(ClefType.GClef, 2); }
+        }
+
+        public static Clef FrenchViolin
+        {
+            get { return new Clef(ClefType.GClef, 1); }
+        }
+
+        public static Clef Soprano
+        {
+            get { return new Clef(ClefType.CClef, 1); }
+        }
+
+        public static Clef Mezzosoprano
+        {
+            get { return new Clef(ClefType.CClef, 2); }
+        }
+
+        public static Clef Alto
+        {
+            get { return new Clef(ClefType.CClef, 3); }
+        }
+
+        public static Clef Tenor
+        {
+            get { return new Clef(ClefType.CClef, 4); }
+        }
+
+        public static Clef BaritoneC
+        {
+            get { return new Clef(ClefType.CClef, 5); }
+        }
+
+        public static Clef BaritoneF
+        {
+            get { return new Clef(ClefType.FClef, 3); }
+        }
+
+        public static Clef Bass
+        {
+            get { return new Clef(ClefType.FClef, 4); }
+        }
+
+        public static Clef Subbass
+        {
+            get { return new Clef(ClefType.FClef, 5); }
+        }
+
         #endregion
 
     }

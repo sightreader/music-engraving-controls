@@ -1,4 +1,6 @@
 ﻿using Manufaktura.Controls.Primitives;
+using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.MajorAndMinor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +47,22 @@ namespace Manufaktura.Controls.Model
         {
             var score = new Score();
             score.Staves.Add(new Staff());
+            return score;
+        }
+
+        public static Score CreateOneStaffScore(Clef clef, Step tonic, bool isMinorScale, bool isFlatScale)
+        {
+            var score = CreateOneStaffScore();
+            score.FirstStaff.Elements.Add(clef);
+            score.FirstStaff.Elements.Add(Key.FromTonic(tonic, isMinorScale, isFlatScale));
+            return score;
+        }
+
+        public static Score CreateOneStaffScore(Clef clef, MajorOrMinorScale scale)
+        {
+            var score = CreateOneStaffScore();
+            score.FirstStaff.Elements.Add(clef);
+            score.FirstStaff.Elements.Add(Key.FromScale(scale));
             return score;
         }
     }
