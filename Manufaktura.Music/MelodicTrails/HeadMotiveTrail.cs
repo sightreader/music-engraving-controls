@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Manufaktura.Music.MelodicTrails
 {
-    public class HeadMotiveMelodicTrail : RandomIntervalsMelodicTrail
+    public class HeadMotiveTrail : RandomIntervalsMelodicTrail
     {
         private Dictionary<DiatonicInterval, double> allowedIntervals = new Dictionary<DiatonicInterval, double>
         {
@@ -27,7 +27,7 @@ namespace Manufaktura.Music.MelodicTrails
             get { return allowedIntervals; }
         }
 
-        public HeadMotiveMelodicTrail(Pitch minPitch, Pitch maxPitch, int minNotes, int maxNotes)
+        public HeadMotiveTrail(Pitch minPitch, Pitch maxPitch, int minNotes, int maxNotes)
             : base(minPitch, maxPitch, minNotes, maxNotes)
         {
         }
