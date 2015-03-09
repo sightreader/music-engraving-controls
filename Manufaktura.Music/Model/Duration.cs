@@ -61,7 +61,19 @@ namespace Manufaktura.Music.Model
             return d1.Denominator != d2.Denominator || d1.Dots != d2.Dots;
         }
 
-        //TODO: Operatory dodawania (składanie wartości rytmicznych)
+        public static Duration operator +(Duration d1, Duration d2)
+        {
+            var sum = d1.ToProportion() + d2.ToProportion();
+            sum = sum.Normalize();
+            return new Duration(sum.Denominator);
+        }
+
+        public static Duration operator -(Duration d1, Duration d2)
+        {
+            var sum = d1.ToProportion() - d2.ToProportion();
+            sum = sum.Normalize();
+            return new Duration(sum.Denominator);
+        }
 
         public static Duration Whole { get { return new Duration(1); } }
         public static Duration Half { get { return new Duration(2); } }

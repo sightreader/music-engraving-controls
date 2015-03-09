@@ -20,7 +20,7 @@ namespace Manufaktura.Music.Model
         public Tempo(Duration beatUnit, int beatsPerMinute)
         {
             BeatUnit = beatUnit;
-            BeatsPerMinute = BeatsPerMinute;
+            BeatsPerMinute = beatsPerMinute;
         }
 
         public static Tempo Allegro { get { return new Tempo(Duration.Quarter, 120); } }

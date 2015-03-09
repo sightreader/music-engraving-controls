@@ -49,6 +49,41 @@ namespace Manufaktura.Music.Model
         public static Proportion Sesquiseptima { get { return new Proportion(8, 7); } }
         public static Proportion Sesquioctava { get { return new Proportion(9, 8); } }
 
+        private static int GetCommonDenominator(Proportion d1, Proportion d2)
+        {
+            return d1.Denominator * d2.Denominator;
+        }
+
+        public static bool operator ==(Proportion p1, decimal d)
+        {
+            return p1.DecimalValue == d;
+        }
+
+        public static bool operator !=(Proportion p1, decimal d)
+        {
+            return p1.DecimalValue != d;
+        }
+
+        public static bool operator ==(Proportion p1, double d)
+        {
+            return p1.DoubleValue == d;
+        }
+
+        public static bool operator !=(Proportion p1, double d)
+        {
+            return p1.DoubleValue != d;
+        }
+
+        public static bool operator ==(Proportion p1, int i)
+        {
+            return p1.DoubleValue == i;
+        }
+
+        public static bool operator !=(Proportion p1, int i)
+        {
+            return p1.DoubleValue != i;
+        }
+
         public static Proportion operator *(Proportion p1, Proportion p2)
         {
             return new Proportion(p1.Numerator * p2.Numerator, p1.Denominator * p2.Denominator).Normalize();
@@ -62,6 +97,22 @@ namespace Manufaktura.Music.Model
         public static double operator *(Proportion p1, double d2)
         {
             return p1.DoubleValue * d2;
+        }
+
+        public static Proportion operator +(Proportion d1, Proportion d2)
+        {
+            if (d1.Denominator == d2.Denominator) return new Proportion(d1.Numerator + d2.Numerator, d1.Denominator);
+            var commonDenominator = GetCommonDenominator(d1, d2);
+            var numeratorSum = d1.Numerator * d2.Denominator + d2.Numerator * d1.Denominator;
+            return new Proportion(numeratorSum, commonDenominator).Normalize();
+        }
+
+        public static Proportion operator -(Proportion d1, Proportion d2)
+        {
+            if (d1.Denominator == d2.Denominator) return new Proportion(d1.Numerator - d2.Numerator, d1.Denominator);
+            var commonDenominator = GetCommonDenominator(d1, d2);
+            var numeratorSum = d1.Numerator * d2.Denominator - d2.Numerator * d1.Denominator;
+            return new Proportion(numeratorSum, commonDenominator).Normalize();
         }
     }
 }
