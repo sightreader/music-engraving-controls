@@ -41,6 +41,7 @@
     <Compile Include="MelodicTrails\MovementType.cs" />
     <Compile Include="MelodicTrails\RandomIntervalsMelodicTrail.cs" />
     <Compile Include="Model\CircleOfFifths.cs" />
+    <Compile Include="Model\Duration.cs" />
     <Compile Include="Model\HistoricIntervalNames.cs" />
     <Compile Include="Model\Interval.cs" />
     <Compile Include="Model\DiatonicInterval.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Model\Mode.cs" />
     <Compile Include="Model\Pentatonic\PentatonicMode.cs" />
     <Compile Include="Model\Scale.cs" />
+    <Compile Include="Model\Tempo.cs" />
     <Compile Include="Rules\MusicalError.cs" />
     <Compile Include="Rules\MusicalRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
