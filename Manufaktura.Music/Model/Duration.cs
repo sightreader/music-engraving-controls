@@ -31,6 +31,38 @@ namespace Manufaktura.Music.Model
             return new Proportion(duration.Denominator, Denominator);
         }
 
+        public Proportion ToProportion()
+        {
+            return new Proportion(1, Denominator);
+        }
+
+        public double ToDouble()
+        {
+            return ToProportion().DoubleValue;
+        }
+
+        public decimal ToDecimal()
+        {
+            return ToProportion().DecimalValue;
+        }
+
+        public Duration WithoutDots()
+        {
+            return new Duration(Denominator);
+        }
+
+        public static bool operator== (Duration d1, Duration d2) 
+        {
+            return d1.Denominator == d2.Denominator && d1.Dots == d2.Dots;
+        }
+
+        public static bool operator!= (Duration d1, Duration d2) 
+        {
+            return d1.Denominator != d2.Denominator || d1.Dots != d2.Dots;
+        }
+
+        //TODO: Operatory dodawania (składanie wartości rytmicznych)
+
         public static Duration Whole { get { return new Duration(1); } }
         public static Duration Half { get { return new Duration(2); } }
         public static Duration Quarter { get { return new Duration(4); } }
