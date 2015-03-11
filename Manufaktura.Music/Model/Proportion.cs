@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
-    public class Proportion
+    public struct Proportion
     {
         public int Numerator { get; set; }
         public int Denominator { get; set; }
@@ -24,7 +24,7 @@ namespace Manufaktura.Music.Model
             }
         }
 
-        public Proportion(int numerator, int denominator)
+        public Proportion(int numerator, int denominator) : this()
         {
             Numerator = numerator;
             Denominator = denominator;

@@ -9,6 +9,13 @@ namespace Manufaktura.Music.Model
     {
         public int Denominator { get; private set; }
         public int Dots { get; set; }
+        public RhythmicDuration WithoutDots
+        {
+            get
+            {
+                return new RhythmicDuration(Denominator);
+            }
+        }
 
         public RhythmicDuration(int denominator, int dots) : this()
         {
@@ -46,10 +53,7 @@ namespace Manufaktura.Music.Model
             return ToProportion().DecimalValue;
         }
 
-        public RhythmicDuration WithoutDots()
-        {
-            return new RhythmicDuration(Denominator);
-        }
+
 
         public static bool operator== (RhythmicDuration d1, RhythmicDuration d2) 
         {

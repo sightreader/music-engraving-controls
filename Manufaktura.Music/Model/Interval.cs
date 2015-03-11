@@ -16,9 +16,14 @@ namespace Manufaktura.Music.Model
             Halftones = halftones;
         }
 
-        public Interval MakeDescending()
+        public new Interval MakeDescending()
         {
             return new Interval(Math.Abs(Steps) * -1, Math.Abs(Halftones) * -1);
+        }
+
+        public new Interval MakeAscending()
+        {
+            return new Interval(Math.Abs(Steps), Math.Abs(Halftones));
         }
 
         public static int HalfTone = 1;

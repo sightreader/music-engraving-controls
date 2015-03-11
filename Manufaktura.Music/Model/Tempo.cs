@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
-    public class Tempo
+    public struct Tempo
     {
         public RhythmicDuration BeatUnit { get; set; }
         public int BeatsPerMinute {get; set;}
@@ -17,7 +17,7 @@ namespace Manufaktura.Music.Model
             }
         }
 
-        public Tempo(RhythmicDuration beatUnit, int beatsPerMinute)
+        public Tempo(RhythmicDuration beatUnit, int beatsPerMinute) : this()
         {
             BeatUnit = beatUnit;
             BeatsPerMinute = beatsPerMinute;

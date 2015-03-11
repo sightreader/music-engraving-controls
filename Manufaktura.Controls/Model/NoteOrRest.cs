@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Model
         { 
             get 
             {
-                return Duration.WithoutDots();
+                return Duration.WithoutDots;
             }
         }
         public int NumberOfDots
