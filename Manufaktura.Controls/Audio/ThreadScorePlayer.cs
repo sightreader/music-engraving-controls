@@ -114,9 +114,9 @@ namespace Manufaktura.Controls.Audio
                 IHasDuration durationElement = CurrentElement as IHasDuration;
                 if (durationElement != null)
                 {
-                    double dueTime = MusicalSymbol.DurationToTime(durationElement, Tempo, TempoBase).TotalMilliseconds;
-                    if (TupletState != null) dueTime = dueTime / TupletState.NumberOfNotesUnderTuplet * ((double)durationElement.Duration / (double)TempoBase);
-                    Debug.WriteLine("{0} with {1} dots will be played in {2} ms", durationElement.Duration, durationElement.NumberOfDots, dueTime);
+                    double dueTime = MusicalSymbol.DurationToTime(durationElement, Tempo).TotalMilliseconds;
+                    if (TupletState != null) dueTime = dueTime / TupletState.NumberOfNotesUnderTuplet * ((double)durationElement.BaseDuration.Denominator / (double)Tempo.BeatUnit.Denominator);
+                    Debug.WriteLine("{0} with {1} dots will be played in {2} ms", durationElement.BaseDuration, durationElement.NumberOfDots, dueTime);
                     Timer.Change((int)dueTime, Timeout.Infinite);
                 }
                 else FetchNextElement(timerState); //If element does not have a duration, play next immediately

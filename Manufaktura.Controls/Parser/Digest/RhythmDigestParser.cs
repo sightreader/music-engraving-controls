@@ -38,7 +38,7 @@ namespace Manufaktura.Controls.Parser.Digest
                     }
                     IHasDuration durationElement = element as IHasDuration;
                     if (durationElement == null) continue;
-                    sb.Append((int)durationElement.Duration);
+                    sb.Append((int)durationElement.BaseDuration.Denominator);
                     for (int i = 0; i < durationElement.NumberOfDots; i++) sb.Append(".");
                     if (element is Rest && MarkRests) sb.Append("r");
                     sb.Append(" ");

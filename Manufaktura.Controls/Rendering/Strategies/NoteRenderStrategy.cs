@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,11 +69,10 @@ namespace Manufaktura.Controls.Rendering
 
             if (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
-                if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 50;
-                else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 30;
-                else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 18;
-                else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
-                else if (element.Duration == MusicalSymbolDuration.Unknown) renderer.State.CursorPositionX += 25;
+                if (element.Duration == RhythmicDuration.Whole) renderer.State.CursorPositionX += 50;
+                else if (element.Duration == RhythmicDuration.Half) renderer.State.CursorPositionX += 30;
+                else if (element.Duration == RhythmicDuration.Quarter) renderer.State.CursorPositionX += 18;
+                else if (element.Duration == RhythmicDuration.Eighth) renderer.State.CursorPositionX += 15;
                 else renderer.State.CursorPositionX += 14;
 
                 //Przesuń trochę w prawo, jeśli nuta ma tekst, żeby litery nie wchodziły na siebie
@@ -159,8 +159,7 @@ namespace Manufaktura.Controls.Rendering
         }
         private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            if ((element.Duration != MusicalSymbolDuration.Whole) &&
-                (element.Duration != MusicalSymbolDuration.Unknown))
+            if (element.Duration != RhythmicDuration.Whole)
             {
                 double tmpStemPosY;
                 tmpStemPosY = renderer.State.CurrentSystemShiftY + element.StemDefaultY * -1.0f / 2.0f;

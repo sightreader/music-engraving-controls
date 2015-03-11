@@ -7,7 +7,7 @@ namespace Manufaktura.Music.Model
 {
     public class Tempo
     {
-        public Duration BeatUnit { get; set; }
+        public RhythmicDuration BeatUnit { get; set; }
         public int BeatsPerMinute {get; set;}
         public TimeSpan BeatTimeSpan
         {
@@ -17,14 +17,14 @@ namespace Manufaktura.Music.Model
             }
         }
 
-        public Tempo(Duration beatUnit, int beatsPerMinute)
+        public Tempo(RhythmicDuration beatUnit, int beatsPerMinute)
         {
             BeatUnit = beatUnit;
             BeatsPerMinute = beatsPerMinute;
         }
 
-        public static Tempo Allegro { get { return new Tempo(Duration.Quarter, 120); } }
-        public static Tempo Andante { get { return new Tempo(Duration.Quarter, 80); } }
-        public static Tempo Adagio { get { return new Tempo(Duration.Quarter, 40); } }
+        public static Tempo Allegro { get { return new Tempo(RhythmicDuration.Quarter, 120); } }
+        public static Tempo Andante { get { return new Tempo(RhythmicDuration.Quarter, 80); } }
+        public static Tempo Adagio { get { return new Tempo(RhythmicDuration.Quarter, 40); } }
     }
 }

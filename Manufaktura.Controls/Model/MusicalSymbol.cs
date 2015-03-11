@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,6 @@ using System.Text;
 namespace Manufaktura.Controls.Model
 {
     public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction };
-    public enum MusicalSymbolDuration : int
-    {
-        Whole = 1, Half = 2, Quarter = 4, Eighth = 8, Sixteenth = 16,
-        d32nd = 32, d64th = 64, d128th = 128, Unknown = 6
-    };
     public enum ClefType { GClef, CClef, FClef };
     public enum VerticalDirection { Up, Down };
     public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
@@ -132,10 +128,11 @@ namespace Manufaktura.Controls.Model
             return step1int - step2int;
         }
 
-        public static TimeSpan DurationToTime(IHasDuration durationElement, int tempo, MusicalSymbolDuration tempoBase)
+        [Obsolete("Use Duration.ToTimeSpan() instead")]
+        public static TimeSpan DurationToTime(IHasDuration durationElement, Tempo tempo)
         {
-            double singleNoteDuration = 60d / tempo;
-            double ratio = (double)tempoBase / (double)durationElement.Duration;
+            double singleNoteDuration = 60d / tempo.BeatsPerMinute;
+            double ratio = (double)tempo.BeatUnit.Denominator / (double)durationElement.BaseDuration.Denominator;
             if (durationElement.NumberOfDots > 0)
             {
                 ratio += ratio * Math.Pow(0.5, durationElement.NumberOfDots);

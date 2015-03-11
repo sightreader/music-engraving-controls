@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Parser.MusicXml;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model.Builders
 {
-    public class NoteOrRestBuilder
+    public class NoteOrRestBuilder : IHasDuration
     {
         public MusicXmlParserState State { get; protected set; }
 
@@ -15,7 +16,7 @@ namespace Manufaktura.Controls.Model.Builders
         public string Step { get; set; }
         public bool IsRest { get; set; }
         public int NumberOfDots { get; set; }
-        public MusicalSymbolDuration Duration { get; set; }
+        public RhythmicDuration BaseDuration { get; set; }
         public VerticalDirection StemDirection { get; set; }
         public NoteTieType TieType { get; set; }
         public TupletType Tuplet { get; set; }
@@ -48,7 +49,7 @@ namespace Manufaktura.Controls.Model.Builders
             Step = "C";
             IsRest = false;
             NumberOfDots = 0;
-            Duration = MusicalSymbolDuration.Whole;
+            BaseDuration = RhythmicDuration.Whole;
             StemDirection = VerticalDirection.Up;
             TieType = NoteTieType.None;
             Tuplet = TupletType.None;
@@ -77,7 +78,7 @@ namespace Manufaktura.Controls.Model.Builders
         {
             if (!IsRest)
             {
-                Note nt = new Note(Step, Alter, Octave, Duration, StemDirection, TieType, BeamList);
+                Note nt = new Note(Step, Alter, Octave, BaseDuration, StemDirection, TieType, BeamList);
                 nt.NumberOfDots = NumberOfDots;
                 nt.Tuplet = Tuplet;
                 nt.TupletPlacement = TupletPlacement;
@@ -104,7 +105,7 @@ namespace Manufaktura.Controls.Model.Builders
             }
             else
             {
-                Rest rt = new Rest(Duration);
+                Rest rt = new Rest(BaseDuration);
                 rt.NumberOfDots = NumberOfDots;
                 rt.Tuplet = Tuplet;
                 rt.TupletPlacement = TupletPlacement;

@@ -81,11 +81,11 @@ namespace Manufaktura.Controls.Model
 
         #region Constructor
 
-        public Note(string noteStep, int noteAlter, int noteOctave, MusicalSymbolDuration noteDuration,
+        public Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
             VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList)
         {
             type = MusicalSymbolType.Note;
-            duration = noteDuration;
+            Duration = noteDuration;
             step = noteStep;
             octave = noteOctave;
             alter = noteAlter;
@@ -98,14 +98,14 @@ namespace Manufaktura.Controls.Model
             DetermineMusicalCharacter();
         }
 
-        public Note(MusicalSymbolDuration noteDuration)
+        public Note(RhythmicDuration noteDuration)
             : this("A", 0, 4, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
 
         }
 
         public Note()
-            : this("A", 0, 4, MusicalSymbolDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+            : this("A", 0, 4, RhythmicDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
 
         }
@@ -116,37 +116,37 @@ namespace Manufaktura.Controls.Model
 
         private void DetermineMusicalCharacter()
         {
-            if (duration == MusicalSymbolDuration.Whole) musicalCharacter = MusicalCharacters.WholeNote;
-            else if (duration == MusicalSymbolDuration.Half) musicalCharacter = MusicalCharacters.WhiteNoteHead;
-            else if (duration == MusicalSymbolDuration.Quarter) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (duration == MusicalSymbolDuration.Eighth) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (duration == MusicalSymbolDuration.Sixteenth) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (duration == MusicalSymbolDuration.d32nd) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (duration == MusicalSymbolDuration.d64th) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (duration == MusicalSymbolDuration.d128th) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (duration == MusicalSymbolDuration.Unknown) musicalCharacter = MusicalCharacters.BlackNoteHead;
+            if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicalCharacters.WholeNote;
+            else if (BaseDuration == RhythmicDuration.Half) musicalCharacter = MusicalCharacters.WhiteNoteHead;
+            else if (BaseDuration == RhythmicDuration.Quarter) musicalCharacter = MusicalCharacters.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.Eighth) musicalCharacter = MusicalCharacters.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicalCharacters.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicalCharacters.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D64th) musicalCharacter = MusicalCharacters.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D128th) musicalCharacter = MusicalCharacters.BlackNoteHead;
+            else musicalCharacter = MusicalCharacters.BlackNoteHead;
 
-            if (duration == MusicalSymbolDuration.Eighth)
+            if (BaseDuration == RhythmicDuration.Eighth)
             {
                 noteFlagCharacter = MusicalCharacters.NoteFlagEighth;
                 noteFlagCharacterRev = MusicalCharacters.NoteFlagEighthRev;
             }
-            else if (duration == MusicalSymbolDuration.Sixteenth)
+            else if (BaseDuration == RhythmicDuration.Sixteenth)
             {
                 noteFlagCharacter = MusicalCharacters.NoteFlagSixteenth;
                 noteFlagCharacterRev = MusicalCharacters.NoteFlagSixteenthRev;
             }
-            else if (duration == MusicalSymbolDuration.d32nd)
+            else if (BaseDuration == RhythmicDuration.D32nd)
             {
                 noteFlagCharacter = MusicalCharacters.NoteFlag32nd;
                 noteFlagCharacterRev = MusicalCharacters.NoteFlag32ndRev;
             }
-            else if (duration == MusicalSymbolDuration.d64th)
+            else if (BaseDuration == RhythmicDuration.D64th)
             {
                 noteFlagCharacter = MusicalCharacters.NoteFlag64th;
                 noteFlagCharacterRev = MusicalCharacters.NoteFlag64thRev;
             }
-            else if (duration == MusicalSymbolDuration.d128th)
+            else if (BaseDuration == RhythmicDuration.D128th)
             {
                 noteFlagCharacter = MusicalCharacters.NoteFlag128th;
                 noteFlagCharacterRev = MusicalCharacters.NoteFlag128thRev;
@@ -182,7 +182,7 @@ namespace Manufaktura.Controls.Model
 
         #region Public static functions
 
-        public static Note FromMidiPitch(int midiPitch, MusicalSymbolDuration duration)
+        public static Note FromMidiPitch(int midiPitch, RhythmicDuration duration)
         {
             Note note = new Note(duration);
             note.ApplyMidiPitch(midiPitch);
@@ -196,7 +196,7 @@ namespace Manufaktura.Controls.Model
             return note;
         }
 
-        public static Note FromPitch(Pitch pitch, MusicalSymbolDuration duration)
+        public static Note FromPitch(Pitch pitch, RhythmicDuration duration)
         {
             Note note = new Note(duration);
             note.Alter = pitch.Alter;

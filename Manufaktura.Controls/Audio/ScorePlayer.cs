@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Model.MVVM;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,21 +29,19 @@ namespace Manufaktura.Controls.Audio
         }
 
         public IEnumerator<MusicalSymbol> Enumerator { get; protected set; }
-        private int _tempo;
-        public int Tempo
+        private Tempo _tempo;
+        public Tempo Tempo
         {
             get { return _tempo; }
             set { _tempo = value; OnPropertyChanged(() => Tempo); }
         }
-        public MusicalSymbolDuration TempoBase { get; set; }
 
         public List<Exception> PlaybackExceptions { get; private set; }
 
         protected ScorePlayer(Score score)
         {
             Score = score;
-            Tempo = 120;
-            TempoBase = MusicalSymbolDuration.Quarter;
+            Tempo = Tempo.Allegro;
             State = PlaybackState.Idle;
             PlaybackExceptions = new List<Exception>();
         }

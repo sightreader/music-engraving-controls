@@ -21,11 +21,11 @@ namespace Manufaktura.Orm.UnitTests
         [TestMethod]
         public void DurationTest()
         {
-            Assert.IsTrue(Duration.Half + Duration.Half == Duration.Whole);
-            Assert.IsTrue(Duration.Quarter + Duration.Eighth == Duration.Eighth + Duration.Quarter);
-            Assert.IsTrue(Duration.Half.ToTimeSpan(Tempo.Allegro) + Duration.Half.ToTimeSpan(Tempo.Allegro) == Duration.Whole.ToTimeSpan(Tempo.Allegro));
-            Assert.IsTrue(Duration.Half.ToFractionOf(Duration.Whole) == 0.5);
-            Assert.IsFalse (Duration.Half.ToTimeSpan(Tempo.Allegro) + Duration.Half.ToTimeSpan(Tempo.Allegro) == Duration.Whole.ToTimeSpan(Tempo.Adagio));
+            Assert.IsTrue(RhythmicDuration.Half + RhythmicDuration.Half == RhythmicDuration.Whole);
+            Assert.IsTrue(RhythmicDuration.Quarter + RhythmicDuration.Eighth == RhythmicDuration.Eighth + RhythmicDuration.Quarter);
+            Assert.IsTrue(RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) + RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) == RhythmicDuration.Whole.ToTimeSpan(Tempo.Allegro));
+            Assert.IsTrue(RhythmicDuration.Half.ToFractionOf(RhythmicDuration.Whole) == 0.5);
+            Assert.IsFalse (RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) + RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) == RhythmicDuration.Whole.ToTimeSpan(Tempo.Adagio));
         }
 
     }

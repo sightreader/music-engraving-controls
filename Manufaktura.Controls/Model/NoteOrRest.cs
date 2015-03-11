@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Primitives;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,33 @@ namespace Manufaktura.Controls.Model
 {
     public abstract class NoteOrRest : MusicalSymbol, IHasDuration, ICanBeElementOfTuplet, IHasCustomXPosition, IRendererAsTextBlock
     {
-        protected MusicalSymbolDuration duration;
+
         protected TupletType tuplet = TupletType.None;
         protected Point location = new Point();
 
         public int Voice { get; set; }
-        public MusicalSymbolDuration Duration { get { return duration; } }
+        public RhythmicDuration Duration { get; protected set; }
+        public RhythmicDuration BaseDuration 
+        { 
+            get 
+            {
+                return Duration.WithoutDots();
+            }
+        }
+        public int NumberOfDots
+        {
+            get
+            {
+                return Duration.Dots;
+            }
+            set
+            {
+                Duration = new RhythmicDuration(BaseDuration.Denominator, value);
+            }
+        }
         public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
         public VerticalPlacement? TupletPlacement { get; set; }
-        public int NumberOfDots { get; set; }
+        
         public double? DefaultXPosition { get; set; }
         public Point TextBlockLocation { get { return location; } set { location = value; } }
 

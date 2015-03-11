@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,10 +26,10 @@ namespace Manufaktura.Controls.Model
 
         #region Constructor
 
-        public Rest(MusicalSymbolDuration restDuration)
+        public Rest(RhythmicDuration restDuration)
         {
             type = MusicalSymbolType.Rest;
-            duration = restDuration;
+            Duration = restDuration;
             DetermineMusicalCharacter();
         }
 
@@ -38,12 +39,12 @@ namespace Manufaktura.Controls.Model
 
         private void DetermineMusicalCharacter()
         {
-            if (duration == MusicalSymbolDuration.Whole) musicalCharacter = MusicalCharacters.WholeRest;
-            else if (duration == MusicalSymbolDuration.Half) musicalCharacter = MusicalCharacters.HalfRest;
-            else if (duration == MusicalSymbolDuration.Quarter) musicalCharacter = MusicalCharacters.QuarterRest;
-            else if (duration == MusicalSymbolDuration.Eighth) musicalCharacter = MusicalCharacters.EighthRest;
-            else if (duration == MusicalSymbolDuration.Sixteenth) musicalCharacter = MusicalCharacters.SixteenthRest;
-            else if (duration == MusicalSymbolDuration.d32nd) musicalCharacter = MusicalCharacters.D32thRest;
+            if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicalCharacters.WholeRest;
+            else if (BaseDuration == RhythmicDuration.Half) musicalCharacter = MusicalCharacters.HalfRest;
+            else if (BaseDuration == RhythmicDuration.Quarter) musicalCharacter = MusicalCharacters.QuarterRest;
+            else if (BaseDuration == RhythmicDuration.Eighth) musicalCharacter = MusicalCharacters.EighthRest;
+            else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicalCharacters.SixteenthRest;
+            else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicalCharacters.D32thRest;
         }
 
         #endregion

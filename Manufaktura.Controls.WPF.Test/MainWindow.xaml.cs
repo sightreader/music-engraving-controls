@@ -34,19 +34,19 @@ namespace Manufaktura.Controls.WPF.Test
 
             var scale = MajorScale.G;
             IMelodicTrail melodicTrail = new ConjunctMovementTrail(MovementType.Anabasis, Pitch.G3, Pitch.C6, 8, 12);
-            var notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
+            var notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole));
             var score = Score.CreateOneStaffScore(Clef.Treble, scale);
             score.FirstStaff.Elements.AddRange(notes);
             noteViewer1.ScoreSource = score;
 
             melodicTrail = new ConjunctMovementTrail(MovementType.Katabasis, Pitch.G3, Pitch.C6, 8, 12);
-            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
+            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole));
             score = Score.CreateOneStaffScore(Clef.Bass, scale);
             score.FirstStaff.Elements.AddRange(notes);
             noteViewer2.ScoreSource = score;
 
             melodicTrail = new ConjunctMovementTrail(MovementType.Metabasis, Pitch.G3, Pitch.C6, 8, 12);
-            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, MusicalSymbolDuration.Whole));
+            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole));
             score = new Score();
             var staff = new Staff();
             staff.Elements.Add(Clef.Treble);

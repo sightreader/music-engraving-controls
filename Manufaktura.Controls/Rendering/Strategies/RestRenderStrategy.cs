@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,10 +51,10 @@ namespace Manufaktura.Controls.Rendering
 
             if (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
-                if (element.Duration == MusicalSymbolDuration.Whole) renderer.State.CursorPositionX += 48;
-                else if (element.Duration == MusicalSymbolDuration.Half) renderer.State.CursorPositionX += 28;
-                else if (element.Duration == MusicalSymbolDuration.Quarter) renderer.State.CursorPositionX += 17;
-                else if (element.Duration == MusicalSymbolDuration.Eighth) renderer.State.CursorPositionX += 15;
+                if (element.Duration == RhythmicDuration.Whole) renderer.State.CursorPositionX += 48;
+                else if (element.Duration == RhythmicDuration.Half) renderer.State.CursorPositionX += 28;
+                else if (element.Duration == RhythmicDuration.Quarter) renderer.State.CursorPositionX += 17;
+                else if (element.Duration == RhythmicDuration.Eighth) renderer.State.CursorPositionX += 15;
                 else renderer.State.CursorPositionX += 14;
             }
 

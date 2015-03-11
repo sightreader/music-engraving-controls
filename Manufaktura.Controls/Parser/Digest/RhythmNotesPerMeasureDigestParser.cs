@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Parser.Digest
                     IHasDuration rhythmicElement = element as IHasDuration;
                     if (rhythmicElement == null) continue;
 
-                    double fractionOfMeasure = timeSignatureBase / (double)rhythmicElement.Duration;
+                    double fractionOfMeasure = timeSignatureBase / (double)rhythmicElement.BaseDuration.Denominator;
                     if (rhythmicElement.NumberOfDots > 0)
                     {
                         fractionOfMeasure += fractionOfMeasure * (1 / Math.Pow(2, rhythmicElement.NumberOfDots));

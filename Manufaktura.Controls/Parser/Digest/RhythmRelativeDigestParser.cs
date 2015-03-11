@@ -45,16 +45,16 @@ namespace Manufaktura.Controls.Parser.Digest
                         int greaterDuration;
                         int lesserDuration;
                         string sign;
-                        if (previousElement.Duration <= durationElement.Duration)
+                        if (previousElement.BaseDuration <= durationElement.BaseDuration)
                         {
-                            greaterDuration = (int)durationElement.Duration;
-                            lesserDuration = (int)previousElement.Duration;
+                            greaterDuration = (int)durationElement.BaseDuration.Denominator;
+                            lesserDuration = (int)previousElement.BaseDuration.Denominator;
                             sign = "*";
                         }
                         else
                         {
-                            lesserDuration = (int)durationElement.Duration;
-                            greaterDuration = (int)previousElement.Duration;
+                            lesserDuration = (int)durationElement.BaseDuration.Denominator;
+                            greaterDuration = (int)previousElement.BaseDuration.Denominator;
                             sign = "/";
                         }
                         sb.Append(sign);

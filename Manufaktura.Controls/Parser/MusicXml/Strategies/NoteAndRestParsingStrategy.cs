@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Builders;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -66,14 +67,14 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }
                 else if (noteAttribute.Name == "type")
                 {
-                    if (noteAttribute.Value == "whole") builder.Duration = MusicalSymbolDuration.Whole;
-                    else if (noteAttribute.Value == "half") builder.Duration = MusicalSymbolDuration.Half;
-                    else if (noteAttribute.Value == "quarter") builder.Duration = MusicalSymbolDuration.Quarter;
-                    else if (noteAttribute.Value == "eighth") builder.Duration = MusicalSymbolDuration.Eighth;
-                    else if (noteAttribute.Value == "16th") builder.Duration = MusicalSymbolDuration.Sixteenth;
-                    else if (noteAttribute.Value == "32nd") builder.Duration = MusicalSymbolDuration.d32nd;
-                    else if (noteAttribute.Value == "64th") builder.Duration = MusicalSymbolDuration.d64th;
-                    else if (noteAttribute.Value == "128th") builder.Duration = MusicalSymbolDuration.d128th;
+                    if (noteAttribute.Value == "whole") builder.BaseDuration = RhythmicDuration.Whole;
+                    else if (noteAttribute.Value == "half") builder.BaseDuration = RhythmicDuration.Half;
+                    else if (noteAttribute.Value == "quarter") builder.BaseDuration = RhythmicDuration.Quarter;
+                    else if (noteAttribute.Value == "eighth") builder.BaseDuration = RhythmicDuration.Eighth;
+                    else if (noteAttribute.Value == "16th") builder.BaseDuration = RhythmicDuration.Sixteenth;
+                    else if (noteAttribute.Value == "32nd") builder.BaseDuration = RhythmicDuration.D32nd;
+                    else if (noteAttribute.Value == "64th") builder.BaseDuration = RhythmicDuration.D64th;
+                    else if (noteAttribute.Value == "128th") builder.BaseDuration = RhythmicDuration.D128th;
 
                     var noteSizeAttribute = noteAttribute.Attributes().FirstOrDefault(a => a.Name == "size");
                     if (noteSizeAttribute != null)
