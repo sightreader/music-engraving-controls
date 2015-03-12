@@ -25,7 +25,9 @@ namespace Manufaktura.Orm.UnitTests
             Assert.IsTrue(RhythmicDuration.Quarter + RhythmicDuration.Eighth == RhythmicDuration.Eighth + RhythmicDuration.Quarter);
             Assert.IsTrue(RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) + RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) == RhythmicDuration.Whole.ToTimeSpan(Tempo.Allegro));
             Assert.IsTrue(RhythmicDuration.Half.ToFractionOf(RhythmicDuration.Whole) == 0.5);
-            Assert.IsFalse (RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) + RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) == RhythmicDuration.Whole.ToTimeSpan(Tempo.Adagio));
+            var halfNoteTimeSpan = RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro);
+            var wholeNoteTimeSpan = RhythmicDuration.Whole.ToTimeSpan(Tempo.Adagio);
+            Assert.IsFalse (halfNoteTimeSpan + halfNoteTimeSpan == wholeNoteTimeSpan);
         }
 
     }

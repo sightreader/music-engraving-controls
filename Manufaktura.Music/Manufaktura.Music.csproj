@@ -41,6 +41,7 @@
     <Compile Include="MelodicTrails\MovementType.cs" />
     <Compile Include="MelodicTrails\RandomIntervalsMelodicTrail.cs" />
     <Compile Include="Model\CircleOfFifths.cs" />
+    <Compile Include="Model\MajorAndMinor\MajorAndMinorScaleFlags.cs" />
     <Compile Include="Model\RhythmicDuration.cs" />
     <Compile Include="Model\HistoricIntervalNames.cs" />
     <Compile Include="Model\Interval.cs" />

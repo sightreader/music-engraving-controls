@@ -36,11 +36,40 @@ namespace Manufaktura.Controls.Model
             get { return GetStaff(4); }
         }
 
+        public Staff FifthStaff
+        {
+            get { return GetStaff(5); }
+        }
+
+        public Staff SixthStaff
+        {
+            get { return GetStaff(6); }
+        }
+
+        public Staff SeventhStaff
+        {
+            get { return GetStaff(7); }
+        }
+
+        public Staff EighthStaff
+        {
+            get { return GetStaff(8); }
+        }
+
         protected Staff GetStaff(int staffNumber)
         {
             if (staffNumber < 1) throw new ArgumentException("Staff number must be greater than 0.", "staffNumber");
             if (Staves.Count < staffNumber) throw new IndexOutOfRangeException(string.Format("There is no {0} staff in the score.", UsefulMath.NumberToOrdinal(staffNumber)));
             return Staves[staffNumber - 1];
+        }
+
+        public Score AddStaff(Clef clef, TimeSignature timeSignature, Step tonic, bool isMinorScale, bool isFlatScale)
+        {
+            var staff = new Staff();
+            staff.Elements.Add(clef);
+            staff.Elements.Add(Key.FromTonic(tonic, isMinorScale, isFlatScale));
+            Staves.Add(staff);
+            return this;
         }
 
         public static Score CreateOneStaffScore()
