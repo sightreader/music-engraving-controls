@@ -39,9 +39,9 @@ namespace Manufaktura.Controls.Model
 
         #region Public methods
 
-        public static Key FromTonic(Step step, bool isMinorScale, bool isFlatScale)
+        public static Key FromTonic(Step step, MajorAndMinorScaleFlags flags)
         {
-            return new Key(CircleOfFifths.CalculateFifths(step, isMinorScale, isFlatScale));
+            return new Key(CircleOfFifths.CalculateFifths(step, flags));
         }
 
         public static Key FromScale(MajorOrMinorScale scale)
@@ -49,9 +49,9 @@ namespace Manufaktura.Controls.Model
             return new Key(scale.Fifths);
         }
 
-        public static Key FromMidiPitch(int midiPitch, bool isMinorScale, bool isFlatScale)
+        public static Key FromMidiPitch(int midiPitch, MajorAndMinorScaleFlags flags)
         {
-            return new Key(CircleOfFifths.CalculateFifths(midiPitch, isMinorScale, isFlatScale));
+            return new Key(CircleOfFifths.CalculateFifths(midiPitch, flags));
         }
 
         public int StepToAlter(string step)

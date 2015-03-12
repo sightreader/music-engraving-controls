@@ -63,11 +63,11 @@ namespace Manufaktura.Controls.Model
             return Staves[staffNumber - 1];
         }
 
-        public Score AddStaff(Clef clef, TimeSignature timeSignature, Step tonic, bool isMinorScale, bool isFlatScale)
+        public Score AddStaff(Clef clef, TimeSignature timeSignature, Step tonic, MajorAndMinorScaleFlags flags)
         {
             var staff = new Staff();
             staff.Elements.Add(clef);
-            staff.Elements.Add(Key.FromTonic(tonic, isMinorScale, isFlatScale));
+            staff.Elements.Add(Key.FromTonic(tonic, flags));
             Staves.Add(staff);
             return this;
         }
@@ -79,11 +79,11 @@ namespace Manufaktura.Controls.Model
             return score;
         }
 
-        public static Score CreateOneStaffScore(Clef clef, Step tonic, bool isMinorScale, bool isFlatScale)
+        public static Score CreateOneStaffScore(Clef clef, Step tonic, MajorAndMinorScaleFlags flags)
         {
             var score = CreateOneStaffScore();
             score.FirstStaff.Elements.Add(clef);
-            score.FirstStaff.Elements.Add(Key.FromTonic(tonic, isMinorScale, isFlatScale));
+            score.FirstStaff.Elements.Add(Key.FromTonic(tonic, flags));
             return score;
         }
 

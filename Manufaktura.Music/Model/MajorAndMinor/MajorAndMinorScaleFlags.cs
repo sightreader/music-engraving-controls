@@ -7,7 +7,7 @@ namespace Manufaktura.Music.Model.MajorAndMinor
 {
     public struct MajorAndMinorScaleFlags
     {
-        public bool IsMinor { get; set; }   //TODO: Zamienić na enumy Major,Minor / Flat, Sharp
+        public bool IsMinor { get; set; }
         public bool IsFlat { get; set; }
 
         private MajorAndMinorScaleFlags(bool isMinor, bool isFlat) : this()

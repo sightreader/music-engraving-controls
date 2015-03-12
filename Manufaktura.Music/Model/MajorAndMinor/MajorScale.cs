@@ -8,7 +8,7 @@ namespace Manufaktura.Music.Model.MajorAndMinor
 {
     public class MajorScale : MajorOrMinorScale
     {
-        public MajorScale(Step step, bool isFlat) : base(step, false, isFlat)
+        public MajorScale(Step step, bool isFlat) : base(step, isFlat ? MajorAndMinorScaleFlags.MajorFlat : MajorAndMinorScaleFlags.MajorSharp)
         {
         }
 

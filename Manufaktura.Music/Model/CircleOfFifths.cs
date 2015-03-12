@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Music.Model.MajorAndMinor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +8,14 @@ namespace Manufaktura.Music.Model
 {
     public static class CircleOfFifths
     {
-        public static int CalculateFifths(int midiPitch, bool isMinorScale, bool isFlatScale)
+        public static int CalculateFifths(int midiPitch, MajorAndMinorScaleFlags flags)
         {
             var fifths = 0;
-            var neutralScaleTonicMidiPitch = isMinorScale ? Pitch.A3.MidiPitch : Pitch.C4.MidiPitch;
+            var neutralScaleTonicMidiPitch = flags.IsMinor ? Pitch.A3.MidiPitch : Pitch.C4.MidiPitch;
             var currentPitch = neutralScaleTonicMidiPitch;
             while (currentPitch != midiPitch)
             {
-                if (!isFlatScale)
+                if (!flags.IsFlat)
                 {
                     if (currentPitch - midiPitch > Interval.PerfectFifth.Halftones)
                     {
@@ -42,9 +43,9 @@ namespace Manufaktura.Music.Model
             return fifths % 12;
         }
 
-        public static int CalculateFifths(Step step, bool isMinorScale, bool isFlatScale)
+        public static int CalculateFifths(Step step, MajorAndMinorScaleFlags flags)
         {
-            return CalculateFifths(step.ToPitch(4).MidiPitch, isMinorScale, isFlatScale);
+            return CalculateFifths(step.ToPitch(4).MidiPitch, flags);
         }
 
         public static int GetAlterOfStepFromNumberOfFifths(Step step, int fifths)

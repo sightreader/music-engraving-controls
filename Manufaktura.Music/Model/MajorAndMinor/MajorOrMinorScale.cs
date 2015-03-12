@@ -11,21 +11,21 @@ namespace Manufaktura.Music.Model.MajorAndMinor
         public int Fifths { get; protected set; }
         public Step Tonic { get; protected set; }
 
-        protected MajorOrMinorScale(int midiPitch, bool isMinorScale, bool isFlatScale)
-            : base(GetMode(isMinorScale), midiPitch, isFlatScale ? Pitch.MidiPitchTranslationMode.Flats : Pitch.MidiPitchTranslationMode.Sharps)
+        protected MajorOrMinorScale(int midiPitch, MajorAndMinorScaleFlags flags)
+            : base(GetMode(flags.IsMinor), midiPitch, flags.IsFlat ? Pitch.MidiPitchTranslationMode.Flats : Pitch.MidiPitchTranslationMode.Sharps)
         {
             Tonic = Pitch.FromMidiPitch(midiPitch, MidiPitchTranslationMode);
-            Fifths = CircleOfFifths.CalculateFifths(Tonic, isMinorScale, isFlatScale);
+            Fifths = CircleOfFifths.CalculateFifths(Tonic, flags);
         }
 
-        protected MajorOrMinorScale(Step step, bool isMinorScale, bool isFlatScale)
-            : base(GetMode(isMinorScale), Pitch.FromStep(step).MidiPitch, isFlatScale ? Pitch.MidiPitchTranslationMode.Flats : Pitch.MidiPitchTranslationMode.Sharps)
+        protected MajorOrMinorScale(Step step, MajorAndMinorScaleFlags flags)
+            : base(GetMode(flags.IsMinor), Pitch.FromStep(step).MidiPitch, flags.IsFlat ? Pitch.MidiPitchTranslationMode.Flats : Pitch.MidiPitchTranslationMode.Sharps)
         {
-            Fifths = CircleOfFifths.CalculateFifths(step, isMinorScale, isFlatScale);
+            Fifths = CircleOfFifths.CalculateFifths(step, flags);
             if (CircleOfFifths.GetAlterOfStepFromNumberOfFifths(step, Fifths) != step.Alter)
             {
-                throw new MalformedScaleException(string.Format("There is no {0} {1} scale beginning on step {2}.", 
-                    isMinorScale ? "minor" : "major", isFlatScale ? "flat" : (Math.Abs(Fifths) > 0 ? "sharp" : "natural"), step));
+                throw new MalformedScaleException(string.Format("There is no {0} {1} scale beginning on step {2}.",
+                    flags.IsMinor ? "minor" : "major", flags.IsFlat ? "flat" : (Math.Abs(Fifths) > 0 ? "sharp" : "natural"), step));
             }
 
             Tonic = step;
