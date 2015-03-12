@@ -64,23 +64,23 @@ namespace Manufaktura.Music.Model
             }
             if (fifths > 0)
             {
-                if (step == "C") return alterTable[1];
-                else if (step == "D") return alterTable[3];
-                else if (step == "E") return alterTable[5];
-                else if (step == "F") return alterTable[0];
-                else if (step == "G") return alterTable[2];
-                else if (step == "A") return alterTable[4];
-                else if (step == "B") return alterTable[6];
+                if (step.StepName == "C") return alterTable[1];
+                else if (step.StepName == "D") return alterTable[3];
+                else if (step.StepName == "E") return alterTable[5];
+                else if (step.StepName == "F") return alterTable[0];
+                else if (step.StepName == "G") return alterTable[2];
+                else if (step.StepName == "A") return alterTable[4];
+                else if (step.StepName == "B") return alterTable[6];
             }
             else if (fifths < 0)
             {
-                if (step == "C") return alterTable[5] * -1;
-                else if (step == "D") return alterTable[3] * -1;
-                else if (step == "E") return alterTable[1] * -1;
-                else if (step == "F") return alterTable[6] * -1;
-                else if (step == "G") return alterTable[4] * -1;
-                else if (step == "A") return alterTable[2] * -1;
-                else if (step == "B") return alterTable[0] * -1;
+                if (step.StepName == "C") return alterTable[5] * -1;
+                else if (step.StepName == "D") return alterTable[3] * -1;
+                else if (step.StepName == "E") return alterTable[1] * -1;
+                else if (step.StepName == "F") return alterTable[6] * -1;
+                else if (step.StepName == "G") return alterTable[4] * -1;
+                else if (step.StepName == "A") return alterTable[2] * -1;
+                else if (step.StepName == "B") return alterTable[0] * -1;
             }
 
             return 0;

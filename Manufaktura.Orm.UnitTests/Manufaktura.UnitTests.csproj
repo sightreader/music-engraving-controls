@@ -69,7 +69,7 @@
     <Compile Include="Model\Provenance.cs" />
     <Compile Include="Model\ProvenanceToPage.cs" />
     <Compile Include="MusicTheoryTests.cs" />
-    <Compile Include="Tests.cs" />
+    <Compile Include="OrmTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

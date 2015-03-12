@@ -17,7 +17,7 @@ using Manufaktura.Orm;
 namespace Manufaktura.UnitTests
 {
     [TestClass]
-    public class Tests
+    public class OrmTests
     {
 
         [TestMethod]
