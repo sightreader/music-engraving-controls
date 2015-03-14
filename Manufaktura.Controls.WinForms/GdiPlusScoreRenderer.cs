@@ -6,22 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 
 namespace Manufaktura.Controls.WinForms
 {
     class GdiPlusScoreRenderer : ScoreRenderer<Graphics>
     {
-        private Dictionary<Model.FontStyles, Font> _fonts = new Dictionary<Model.FontStyles, Font>()
+        private Dictionary<MusicFontStyles, Font> _fonts = new Dictionary<MusicFontStyles, Font>()
             {
-                {Model.FontStyles.MusicFont, new Font("Polihymnia", 20)},
-                {Model.FontStyles.GraceNoteFont, new Font("Polihymnia", 18)},
-                {Model.FontStyles.StaffFont, new Font("Polihymnia", 23)},
-                {Model.FontStyles.LyricsFont, new Font("Times New Roman", 8)},
-                {Model.FontStyles.LyricsFontBold, new Font("Times New Roman", 10, FontStyle.Bold)},
-                {Model.FontStyles.MiscArticulationFont, new Font("Microsoft Sans Serif", 8, FontStyle.Bold)},
-                {Model.FontStyles.DirectionFont, new Font("Microsoft Sans Serif", 9, FontStyle.Italic | FontStyle.Bold)},
-                {Model.FontStyles.TrillFont, new Font("Times New Roman", 9, FontStyle.Italic | FontStyle.Bold)},
-                {Model.FontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 10, FontStyle.Bold)}
+                {MusicFontStyles.MusicFont, new Font("Polihymnia", 20)},
+                {MusicFontStyles.GraceNoteFont, new Font("Polihymnia", 18)},
+                {MusicFontStyles.StaffFont, new Font("Polihymnia", 23)},
+                {MusicFontStyles.LyricsFont, new Font("Times New Roman", 8)},
+                {MusicFontStyles.LyricsFontBold, new Font("Times New Roman", 10, FontStyle.Bold)},
+                {MusicFontStyles.MiscArticulationFont, new Font("Microsoft Sans Serif", 8, FontStyle.Bold)},
+                {MusicFontStyles.DirectionFont, new Font("Microsoft Sans Serif", 9, FontStyle.Italic | FontStyle.Bold)},
+                {MusicFontStyles.TrillFont, new Font("Times New Roman", 9, FontStyle.Italic | FontStyle.Bold)},
+                {MusicFontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 10, FontStyle.Bold)}
             };
 
         private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
@@ -47,7 +48,7 @@ namespace Manufaktura.Controls.WinForms
             return Color.FromArgb(color.A, color.R, color.G, color.B);
         }
 
-        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
+        public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
             Canvas.DrawString(text, _fonts[fontStyle], new SolidBrush(ConvertColor(color)), new PointF((float)location.X, (float)location.Y));
         }

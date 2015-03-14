@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Controls.Model.Fonts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,38 +13,38 @@ namespace Manufaktura.Controls.WPF
     {
         private static FontFamily PolihymniaFamily = new FontFamily(new Uri("pack://application:,,,/Manufaktura.Controls.WPF;component/"), "./#Polihymnia");
 
-        private static Dictionary<Model.FontStyles, Typeface> _fonts = new Dictionary<Model.FontStyles, Typeface>()
+        private static Dictionary<MusicFontStyles, Typeface> _fonts = new Dictionary<MusicFontStyles, Typeface>()
             {
-                {Model.FontStyles.MusicFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
-                {Model.FontStyles.GraceNoteFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
-                {Model.FontStyles.StaffFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
-                {Model.FontStyles.LyricsFont, new Typeface("Times New Roman")},
-                {Model.FontStyles.LyricsFontBold, new Typeface("Times New Roman")},
-                {Model.FontStyles.MiscArticulationFont, new Typeface("Microsoft Sans Serif")},
-                {Model.FontStyles.DirectionFont, new Typeface("Microsoft Sans Serif")},
-                {Model.FontStyles.TrillFont, new Typeface("Times New Roman")},
-                {Model.FontStyles.TimeSignatureFont, new Typeface(new FontFamily("Microsoft Sans Serif"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal)}
+                {MusicFontStyles.MusicFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
+                {MusicFontStyles.GraceNoteFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
+                {MusicFontStyles.StaffFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
+                {MusicFontStyles.LyricsFont, new Typeface("Times New Roman")},
+                {MusicFontStyles.LyricsFontBold, new Typeface("Times New Roman")},
+                {MusicFontStyles.MiscArticulationFont, new Typeface("Microsoft Sans Serif")},
+                {MusicFontStyles.DirectionFont, new Typeface("Microsoft Sans Serif")},
+                {MusicFontStyles.TrillFont, new Typeface("Times New Roman")},
+                {MusicFontStyles.TimeSignatureFont, new Typeface(new FontFamily("Microsoft Sans Serif"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal)}
             };
 
-        private static Dictionary<Model.FontStyles, double> _fontSizes = new Dictionary<Model.FontStyles, double>()
+        private static Dictionary<MusicFontStyles, double> _fontSizes = new Dictionary<MusicFontStyles, double>()
         {
-                {Model.FontStyles.MusicFont, 27.5},
-                {Model.FontStyles.GraceNoteFont, 20},
-                {Model.FontStyles.StaffFont, 30.5},
-                {Model.FontStyles.LyricsFont, 11},
-                {Model.FontStyles.LyricsFontBold, 0.8},
-                {Model.FontStyles.MiscArticulationFont, 14},
-                {Model.FontStyles.DirectionFont, 11},
-                {Model.FontStyles.TrillFont, 14},
-                {Model.FontStyles.TimeSignatureFont, 14.5}
+                {MusicFontStyles.MusicFont, 27.5},
+                {MusicFontStyles.GraceNoteFont, 20},
+                {MusicFontStyles.StaffFont, 30.5},
+                {MusicFontStyles.LyricsFont, 11},
+                {MusicFontStyles.LyricsFontBold, 0.8},
+                {MusicFontStyles.MiscArticulationFont, 14},
+                {MusicFontStyles.DirectionFont, 11},
+                {MusicFontStyles.TrillFont, 14},
+                {MusicFontStyles.TimeSignatureFont, 14.5}
         };
 
-        public static Typeface Get(Model.FontStyles style)
+        public static Typeface Get(MusicFontStyles style)
         {
             return _fonts[style];
         }
 
-        public static double GetSize(Model.FontStyles style)
+        public static double GetSize(MusicFontStyles style)
         {
             return _fontSizes[style];
         }
