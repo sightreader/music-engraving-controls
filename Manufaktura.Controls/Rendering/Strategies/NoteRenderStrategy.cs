@@ -373,8 +373,8 @@ namespace Manufaktura.Controls.Rendering
                 {
                     renderer.DrawBezier(renderer.State.SlurStartPoint.X + 10, renderer.State.SlurStartPoint.Y + 18,
                         renderer.State.SlurStartPoint.X + 12, renderer.State.SlurStartPoint.Y + 9,
-                        renderer.State.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY : notePositionY) + 9,
-                        renderer.State.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY : notePositionY) + 18, element);
+                        renderer.State.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + renderer.State.CurrentSystemShiftY: notePositionY + 9),
+                        renderer.State.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + renderer.State.CurrentSystemShiftY + 9 : notePositionY + 18), element);
                 }
                 else if (slurStartPlacement == VerticalPlacement.Below)
                 {
