@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Note : NoteOrRest
+    public class Note : NoteOrRest, IHasPitch
     {
         #region Protected fields
 
@@ -117,40 +117,40 @@ namespace Manufaktura.Controls.Model
 
         private void DetermineMusicalCharacter()
         {
-            if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicalCharacters.WholeNote;
-            else if (BaseDuration == RhythmicDuration.Half) musicalCharacter = MusicalCharacters.WhiteNoteHead;
-            else if (BaseDuration == RhythmicDuration.Quarter) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.Eighth) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D64th) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D128th) musicalCharacter = MusicalCharacters.BlackNoteHead;
-            else musicalCharacter = MusicalCharacters.BlackNoteHead;
+            if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeNote;
+            else if (BaseDuration == RhythmicDuration.Half) musicalCharacter = MusicFont.WhiteNoteHead;
+            else if (BaseDuration == RhythmicDuration.Quarter) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.Eighth) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D64th) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D128th) musicalCharacter = MusicFont.BlackNoteHead;
+            else musicalCharacter = MusicFont.BlackNoteHead;
 
             if (BaseDuration == RhythmicDuration.Eighth)
             {
-                noteFlagCharacter = MusicalCharacters.NoteFlagEighth;
-                noteFlagCharacterRev = MusicalCharacters.NoteFlagEighthRev;
+                noteFlagCharacter = MusicFont.NoteFlagEighth;
+                noteFlagCharacterRev = MusicFont.NoteFlagEighthRev;
             }
             else if (BaseDuration == RhythmicDuration.Sixteenth)
             {
-                noteFlagCharacter = MusicalCharacters.NoteFlagSixteenth;
-                noteFlagCharacterRev = MusicalCharacters.NoteFlagSixteenthRev;
+                noteFlagCharacter = MusicFont.NoteFlagSixteenth;
+                noteFlagCharacterRev = MusicFont.NoteFlagSixteenthRev;
             }
             else if (BaseDuration == RhythmicDuration.D32nd)
             {
-                noteFlagCharacter = MusicalCharacters.NoteFlag32nd;
-                noteFlagCharacterRev = MusicalCharacters.NoteFlag32ndRev;
+                noteFlagCharacter = MusicFont.NoteFlag32nd;
+                noteFlagCharacterRev = MusicFont.NoteFlag32ndRev;
             }
             else if (BaseDuration == RhythmicDuration.D64th)
             {
-                noteFlagCharacter = MusicalCharacters.NoteFlag64th;
-                noteFlagCharacterRev = MusicalCharacters.NoteFlag64thRev;
+                noteFlagCharacter = MusicFont.NoteFlag64th;
+                noteFlagCharacterRev = MusicFont.NoteFlag64thRev;
             }
             else if (BaseDuration == RhythmicDuration.D128th)
             {
-                noteFlagCharacter = MusicalCharacters.NoteFlag128th;
-                noteFlagCharacterRev = MusicalCharacters.NoteFlag128thRev;
+                noteFlagCharacter = MusicFont.NoteFlag128th;
+                noteFlagCharacterRev = MusicFont.NoteFlag128thRev;
             }
         }
 

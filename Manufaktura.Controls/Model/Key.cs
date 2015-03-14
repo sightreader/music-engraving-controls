@@ -1,4 +1,5 @@
-﻿using Manufaktura.Music.Model;
+﻿using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System;
 using System.Collections.Generic;
@@ -7,17 +8,36 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Key : MusicalSymbol
+    public class Key : MusicalSymbol, IRenderedAsTextBlock
     {
         #region Private fields
 
         private int fifths;
+        private string musicalCharacter;
+        private MusicFont musicFont = new PolihymniaFont();
 
         #endregion
 
         #region Properties
 
         public int Fifths { get { return fifths; } }
+        public Primitives.Point TextBlockLocation
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+        public MusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+
+        public string MusicalCharacter
+        {
+            get { return musicalCharacter; }
+        }
 
         #endregion
 
@@ -28,9 +48,9 @@ namespace Manufaktura.Controls.Model
             type = MusicalSymbolType.Key;
             fifths = numberOfFifths;
             if (fifths > 0)
-                musicalCharacter = MusicalCharacters.Sharp;
+                musicalCharacter = MusicFont.Sharp;
             else if (fifths < 0)
-                musicalCharacter = MusicalCharacters.Flat;
+                musicalCharacter = MusicFont.Flat;
             else
                 musicalCharacter = " ";
         }
@@ -60,6 +80,8 @@ namespace Manufaktura.Controls.Model
         }
 
         #endregion
+
+
 
     }
 }

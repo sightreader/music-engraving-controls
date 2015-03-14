@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
@@ -91,7 +92,7 @@ namespace Manufaktura.Controls.Rendering
                     State.CurrentClefPositionY = State.LinePositions[State.CurrentSystem][4] - (((Clef)symbol).Line - 1) * Settings.LineSpacing;
                     State.CurrentClefTextBlockPositionY = State.CurrentClefPositionY - TextBlockHeight;
                     State.CurrentClef = (Clef)symbol;
-                    DrawString(symbol.MusicalCharacter, FontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, symbol);
+                    DrawString(State.CurrentClef.MusicalCharacter, MusicFontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, symbol);
                     State.CursorPositionX += 20;
                     break;
                 }

@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace Manufaktura.Controls.Rendering
 {
     public class ScoreRendererState
     {
+        public MusicFont CurrentFont { get; set; }
         public Score CurrentScore { get; set; }
         public Staff CurrentStaff { get; set; }
         public Clef CurrentClef {get; set;}
@@ -52,6 +54,7 @@ namespace Manufaktura.Controls.Rendering
 
         public ScoreRendererState()
         {
+            CurrentFont = new PolihymniaFont();
             CurrentSystem = 1;
             CurrentClef = new Clef(ClefType.CClef, 2);
             CurrentKey = new Key(0);

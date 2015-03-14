@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.Primitives;
 using System;
@@ -41,7 +42,7 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="fontStyle">Fontstyle of text</param>
         /// <param name="location">Location of text block</param>
         /// <param name="owner">Owning MusicalSymbol</param>
-        public void DrawString(string text, FontStyles fontStyle, double x, double y, MusicalSymbol owner)
+        public void DrawString(string text, MusicFontStyles fontStyle, double x, double y, MusicalSymbol owner)
         {
             DrawString(text, fontStyle, new Point(x, y), Settings.DefaultColor, owner);
         }
@@ -57,7 +58,7 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="fontStyle">Fontstyle of text</param>
         /// <param name="location">Location of text block</param>
         /// <param name="owner">Owning MusicalSymbol</param>
-        public void DrawString(string text, FontStyles fontStyle, Point location, MusicalSymbol owner)
+        public void DrawString(string text, MusicFontStyles fontStyle, Point location, MusicalSymbol owner)
         {
             DrawString(text, fontStyle, location, Settings.DefaultColor, owner);
         }
@@ -74,7 +75,7 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="location">Location of text block</param>
         /// <param name="color">Color of text</param>
         /// <param name="owner">Owning MusicalSymbol</param>
-        public abstract void DrawString(string text, FontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
+        public abstract void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
 
         public void DrawLine(double startX, double startY, double endX, double endY, MusicalSymbol owner)
         {

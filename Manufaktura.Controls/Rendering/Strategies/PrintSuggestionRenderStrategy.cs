@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 //Time signature is not rendered in new line.
             
                 //Render measure number:
-                renderer.DrawString((renderer.State.CurrentMeasure + 1).ToString(), FontStyles.LyricsFont, 
+                renderer.DrawString((renderer.State.CurrentMeasure + 1).ToString(), MusicFontStyles.LyricsFont, 
                     new Primitives.Point(0, renderer.State.LinePositions[renderer.State.CurrentSystem][0] - 25), renderer.State.CurrentStaff);
             }
         }

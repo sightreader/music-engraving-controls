@@ -55,12 +55,14 @@ namespace Manufaktura.Controls.Model
             public string Text { get; set; }
             public string ElisionMark { get; set; }
 
-            public Syllable() 
+            public Syllable()
             {
             }
 
             public Syllable(SyllableType type, string text)
             {
+                Type = type;
+                Text = text;
             }
         }
     }

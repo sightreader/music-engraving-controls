@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Controls.Model
+namespace Manufaktura.Controls.Model.Fonts
 {
-    public enum FontStyles
+    public enum MusicFontStyles
     {
         MusicFont,
         GraceNoteFont,

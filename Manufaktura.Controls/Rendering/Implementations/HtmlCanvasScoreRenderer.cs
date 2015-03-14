@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
             stringBuilder.AppendLine("var context = canvas.getContext('2d');");
         }
 
-        public override void DrawString(string text, FontStyles fontStyle, Primitives.Point location, Primitives.Color color, Model.MusicalSymbol owner)
+        public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, Model.MusicalSymbol owner)
         {
             if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
-            double locationY = fontStyle == FontStyles.MusicFont ? location.Y + 25d : location.Y + 14d;
+            double locationY = fontStyle == MusicFontStyles.MusicFont ? location.Y + 25d : location.Y + 14d;
             double locationX = location.X + 3d;
             Canvas.AppendLine(string.Format("context.font = '{0}pt {1}';", TypedSettings.Fonts[fontStyle].Size.ToString(CultureInfo.InvariantCulture), TypedSettings.Fonts[fontStyle].Name));
             Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, locationX.ToString(CultureInfo.InvariantCulture), locationY.ToString(CultureInfo.InvariantCulture)));

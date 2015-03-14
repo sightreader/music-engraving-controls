@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Manufaktura.Controls.Rendering
                 dirPositionY = 0;
             else if (element.Placement == DirectionPlacementType.Below)
                 dirPositionY = 50;
-            renderer.DrawString(element.Text, FontStyles.DirectionFont, renderer.State.CursorPositionX, dirPositionY, element);
+            renderer.DrawString(element.Text, MusicFontStyles.DirectionFont, renderer.State.CursorPositionX, dirPositionY, element);
         }
     }
 }

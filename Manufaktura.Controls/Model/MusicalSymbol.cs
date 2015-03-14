@@ -28,13 +28,10 @@ namespace Manufaktura.Controls.Model
     {
         private bool isVisible;
         protected MusicalSymbolType type;
-        protected string musicalCharacter = " ";
-
 
         #region Properties
 
         public MusicalSymbolType Type { get { return type; } }
-        public string MusicalCharacter { get { return musicalCharacter; } }
         public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(() => IsVisible); } }
 
         #endregion
@@ -60,7 +57,7 @@ namespace Manufaktura.Controls.Model
         public static int StepDifference(Clef a, Note b)
         {
             int step1int = 0, step2int = 0;
-            string step1 = a.ClefPitch.StepName;
+            string step1 = a.Pitch.StepName;
             string step2 = b.Step;
             if (step1 == "C") step1int = 0;
             else if (step1 == "D") step1int = 1;
@@ -70,7 +67,7 @@ namespace Manufaktura.Controls.Model
             else if (step1 == "A") step1int = 5;
             else if (step1 == "B") step1int = 6;
 
-            step1int += a.ClefPitch.Octave * 7;
+            step1int += a.Pitch.Octave * 7;
 
             if (step2 == "C") step2int = 0;
             else if (step2 == "D") step2int = 1;

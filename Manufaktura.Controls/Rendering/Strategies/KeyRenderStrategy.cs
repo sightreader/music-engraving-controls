@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Manufaktura.Controls.Rendering
             if (renderer.State.CurrentKey.Fifths > 0)
             {
                 flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
-                (new Note("F", 0, renderer.State.CurrentClef.ClefPitch.Octave + octaveShiftSharp, RhythmicDuration.Whole, VerticalDirection.Up,
+                (new Note("F", 0, renderer.State.CurrentClef.Pitch.Octave + octaveShiftSharp, RhythmicDuration.Whole, VerticalDirection.Up,
                     NoteTieType.None, null)))
                 * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
@@ -32,7 +33,7 @@ namespace Manufaktura.Controls.Rendering
             else if (renderer.State.CurrentKey.Fifths < 0)
             {
                 flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
-                (new Note("B", 0, renderer.State.CurrentClef.ClefPitch.Octave + octaveShiftFlat, RhythmicDuration.Whole, VerticalDirection.Up,
+                (new Note("B", 0, renderer.State.CurrentClef.Pitch.Octave + octaveShiftFlat, RhythmicDuration.Whole, VerticalDirection.Up,
                     NoteTieType.None, null)))
                 * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
@@ -41,7 +42,7 @@ namespace Manufaktura.Controls.Rendering
             for (int i = 0; i < Math.Abs(renderer.State.CurrentKey.Fifths); i++)
             {
 
-                renderer.DrawString(element.MusicalCharacter, FontStyles.MusicFont, renderer.State.CursorPositionX, flatOrSharpPositionY, element);
+                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, flatOrSharpPositionY, element);
                 if (jumpFourth) flatOrSharpPositionY += 3 * 3 * jumpDirection;
                 else flatOrSharpPositionY += 3 * 4 * jumpDirection;
                 jumpFourth = !jumpFourth;

@@ -1,4 +1,5 @@
-﻿using Manufaktura.Music.Model;
+﻿using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,20 +7,39 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class Clef : MusicalSymbol
+    public class Clef : MusicalSymbol, IHasPitch, IRenderedAsTextBlock
     {
         #region Private fields
 
         private ClefType typeOfClef;
         private int line;
+        private string musicalCharacter;
+        private MusicFont musicFont = new PolihymniaFont();
 
         #endregion
 
         #region Properties
 
-        public Pitch ClefPitch { get; private set; }
+        public Pitch Pitch { get; private set; }
         public ClefType TypeOfClef { get { return typeOfClef; } }
         public int Line { get { return line; } }
+        public Primitives.Point TextBlockLocation
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+        public MusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+
+        public string MusicalCharacter
+        {
+            get { return musicalCharacter; }
+        }
         
         #endregion
 
@@ -32,18 +52,18 @@ namespace Manufaktura.Controls.Model
             line = whichLine;
             if (typeOfClef == ClefType.GClef)
             {
-                musicalCharacter = MusicalCharacters.GClef;
-                ClefPitch = Pitch.FromStep(Step.G, 4);
+                musicalCharacter = MusicFont.GClef;
+                Pitch = Pitch.FromStep(Step.G, 4);
             }
             else if (typeOfClef == ClefType.FClef)
             {
-                musicalCharacter = MusicalCharacters.FClef;
-                ClefPitch = Pitch.FromStep(Step.F, 3);
+                musicalCharacter = MusicFont.FClef;
+                Pitch = Pitch.FromStep(Step.F, 3);
             }
             else if (typeOfClef == ClefType.CClef)
             {
-                musicalCharacter = MusicalCharacters.CClef;
-                ClefPitch = Pitch.FromStep(Step.C, 4);
+                musicalCharacter = MusicFont.CClef;
+                Pitch = Pitch.FromStep(Step.C, 4);
             }
         }
 
@@ -138,6 +158,8 @@ namespace Manufaktura.Controls.Model
         }
 
         #endregion
+
+
 
     }
 }

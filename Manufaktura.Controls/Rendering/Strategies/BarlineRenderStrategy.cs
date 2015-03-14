@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace Manufaktura.Controls.Rendering
                 }
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 2;
                 if (element.Location == HorizontalPlacement.Right)  renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
-                renderer.DrawString(MusicalCharacters.RepeatForward, FontStyles.StaffFont, renderer.State.CursorPositionX,
+                renderer.DrawString(renderer.State.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, renderer.State.CursorPositionX,
                     renderer.State.LinePositions[renderer.State.CurrentSystem][0] - 15.5f, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 20;
             }
@@ -43,7 +44,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX -= 2;
                 if (element.Location == HorizontalPlacement.Right) renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
-                renderer.DrawString(MusicalCharacters.RepeatBackward, FontStyles.StaffFont, renderer.State.CursorPositionX - 17.5,
+                renderer.DrawString(renderer.State.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, renderer.State.CursorPositionX - 17.5,
                     renderer.State.LinePositions[renderer.State.CurrentSystem][0] - 15, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
             }

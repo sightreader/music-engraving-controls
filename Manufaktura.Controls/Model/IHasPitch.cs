@@ -1,4 +1,4 @@
-﻿using Manufaktura.Controls.Primitives;
+﻿using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    interface IRendererAsTextBlock
+    public interface IHasPitch
     {
-        Point TextBlockLocation { get; set; }
+        Pitch Pitch { get; }
     }
 }

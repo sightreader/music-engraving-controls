@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
 using Manufaktura.Controls.Rendering.Implementations;
 using System;
@@ -11,13 +12,13 @@ namespace Manufaktura.Controls.Rendering.Implementations
 {
     public class HtmlScoreRendererSettings : ScoreRendererSettings
     {
-        public Dictionary<FontStyles, HtmlFontInfo> Fonts { get; private set; }
+        public Dictionary<MusicFontStyles, HtmlFontInfo> Fonts { get; private set; }
         public HtmlRenderSurface RenderSurface { get; set; }
         public double Height { get; set; }
 
         public HtmlScoreRendererSettings()
         {
-            Fonts = new Dictionary<FontStyles, HtmlFontInfo>();
+            Fonts = new Dictionary<MusicFontStyles, HtmlFontInfo>();
             RenderSurface = HtmlRenderSurface.Canvas;
             Height = 150;
             IsPanoramaMode = true;
