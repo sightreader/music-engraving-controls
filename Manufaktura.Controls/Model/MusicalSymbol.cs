@@ -1,6 +1,8 @@
-﻿using Manufaktura.Music.Model;
+﻿using Manufaktura.Model.MVVM;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -22,20 +24,18 @@ namespace Manufaktura.Controls.Model
     public enum NoteSlurType { None, Start, Stop };
     public enum RepeatSignType { None, Forward, Backward };
 
-    public abstract class MusicalSymbol
+    public abstract class MusicalSymbol : ViewModel
     {
-        #region Protected fields
-
+        private bool isVisible;
         protected MusicalSymbolType type;
         protected string musicalCharacter = " ";
 
-        #endregion
 
         #region Properties
 
         public MusicalSymbolType Type { get { return type; } }
         public string MusicalCharacter { get { return musicalCharacter; } }
-        public bool IsVisible { get; set; }
+        public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(() => IsVisible); } }
 
         #endregion
 
@@ -44,7 +44,7 @@ namespace Manufaktura.Controls.Model
         public MusicalSymbol()
         {
             type = MusicalSymbolType.Unknown;
-            IsVisible = true;
+            isVisible = true;
         }
 
         #endregion
@@ -56,7 +56,7 @@ namespace Manufaktura.Controls.Model
             return direction == VerticalDirection.Up ? VerticalPlacement.Above : VerticalPlacement.Below;
         }
 
-       
+
         public static int StepDifference(Clef a, Note b)
         {
             int step1int = 0, step2int = 0;
@@ -98,6 +98,8 @@ namespace Manufaktura.Controls.Model
         }
 
         #endregion
+
+
 
     }
 }

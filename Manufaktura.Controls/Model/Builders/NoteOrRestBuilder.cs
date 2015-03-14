@@ -92,7 +92,6 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.StemDefaultY = StemDefaultY;
                 nt.DefaultXPosition = DefaultX;
                 nt.CustomStemEndPosition = CustomStemEndPosition;
-                nt.CurrentTempo = State.CurrentTempo;
                 nt.TrillMark = TrillMark;
                 nt.Slur = Slur;
                 nt.HasFermataSign = HasFermataSign;
@@ -110,7 +109,6 @@ namespace Manufaktura.Controls.Model.Builders
                 rt.Tuplet = Tuplet;
                 rt.TupletPlacement = TupletPlacement;
                 rt.MultiMeasure = State.SkipMeasures + 1;
-                rt.CurrentTempo = State.CurrentTempo;
                 rt.HasFermataSign = HasFermataSign;
                 rt.Voice = Voice;
                 rt.DefaultXPosition = DefaultX;
