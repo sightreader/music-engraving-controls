@@ -87,6 +87,7 @@
     <Compile Include="Parser\MusicXml\Strategies\AttributeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\BarlineParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\ClefParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\ClefWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\DirectionParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\DirectionTypeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\KeyParsingStrategy.cs" />
@@ -94,6 +95,8 @@
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParserState.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs" />
     <Compile Include="Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
