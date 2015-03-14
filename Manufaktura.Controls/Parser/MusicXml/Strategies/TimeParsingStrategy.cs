@@ -16,15 +16,15 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
-            uint numberOfBeats = 4;
-            uint beatType = 4;
+            int numberOfBeats = 4;
+            int beatType = 4;
             TimeSignatureType sType = TimeSignatureType.Numbers;
             foreach (XElement timeAttribute in element.Elements())
             {
                 if (timeAttribute.Name == "beats")
-                    numberOfBeats = Convert.ToUInt32(timeAttribute.Value);
+                    numberOfBeats = int.Parse(timeAttribute.Value);
                 if (timeAttribute.Name == "beat-type")
-                    beatType = Convert.ToUInt32(timeAttribute.Value);
+                    beatType = int.Parse(timeAttribute.Value);
             }
             if (element.Attributes().Count() > 0)
             {

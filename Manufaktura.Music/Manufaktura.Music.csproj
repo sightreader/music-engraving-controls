@@ -50,6 +50,7 @@
     <Compile Include="Model\MalformedScaleException.cs" />
     <Compile Include="Model\Pitch.cs" />
     <Compile Include="Model\Proportion.cs" />
+    <Compile Include="Model\RhythmicUnit.cs" />
     <Compile Include="Model\Step.cs" />
     <Compile Include="Generators\MelodyGenerator.cs" />
     <Compile Include="Model\MajorAndMinor\MajorMode.cs" />
@@ -60,14 +61,15 @@
     <Compile Include="Model\Pentatonic\PentatonicMode.cs" />
     <Compile Include="Model\Scale.cs" />
     <Compile Include="Model\Tempo.cs" />
+    <Compile Include="RhythmicTrails\IRhythmicTrail.cs" />
+    <Compile Include="RhythmicTrails\LimitedPatternsRhythmicTrail.cs" />
+    <Compile Include="RhythmicTrails\PolonaiseRhythmicTrail.cs" />
     <Compile Include="Rules\MusicalError.cs" />
     <Compile Include="Rules\MusicalRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\MusicalAssertions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RhythmicTrails\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

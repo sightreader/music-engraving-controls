@@ -53,7 +53,10 @@ namespace Manufaktura.Music.Model
             return ToProportion().DecimalValue;
         }
 
-
+        public RhythmicUnit ToRhythmicUnit(bool isRest)
+        {
+            return new RhythmicUnit(this, isRest);
+        }
 
         public static bool operator== (RhythmicDuration d1, RhythmicDuration d2) 
         {
@@ -112,5 +115,32 @@ namespace Manufaktura.Music.Model
         public static RhythmicDuration D64th { get { return new RhythmicDuration(64); } }
         public static RhythmicDuration D128th { get { return new RhythmicDuration(128); } }
         public static RhythmicDuration D256th { get { return new RhythmicDuration(256); } }
+
+        public static RhythmicDuration Parse(string s)
+        {
+            return new RhythmicDuration(int.Parse(s));
+        }
+
+        public static bool TryParse(string s, out RhythmicDuration duration)
+        {
+            int val;
+            if (!int.TryParse(s, out val))
+            {
+                duration = default(RhythmicDuration);
+                return false;
+            }
+            duration = new RhythmicDuration(val);
+            return true;
+        }
+
+        public static IEnumerable<RhythmicDuration> Parse(string s, string separator)
+        {
+            var result = new List<RhythmicDuration>();
+            foreach (var substring in s.Split(separator.ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
+            {
+                result.Add(Parse(substring));
+            }
+            return result;
+        }
     }
 }

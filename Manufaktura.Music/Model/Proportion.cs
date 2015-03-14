@@ -41,6 +41,8 @@ namespace Manufaktura.Music.Model
 
         public static Proportion Dupla { get { return new Proportion(2, 1); } }
         public static Proportion Tripla { get { return new Proportion(3, 1); } }
+        public static Proportion Quadrupla { get { return new Proportion(4, 1); } }
+        public static Proportion Quintupla { get { return new Proportion(5, 1); } }
         public static Proportion Sesquialtera { get { return new Proportion(3, 2); } }
         public static Proportion Sesquitertia { get { return new Proportion(4, 3); } }
         public static Proportion Sesquiquarta { get { return new Proportion(5, 4); } }

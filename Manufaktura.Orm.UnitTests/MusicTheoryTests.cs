@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Music.MelodicTrails;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
+using Manufaktura.Music.RhythmicTrails;
 using Manufaktura.Music.UnitTests;
 using Manufaktura.UnitTests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -95,6 +96,12 @@ namespace Manufaktura.UnitTests
             melody = melodicTrail.BuildMelody(scale, Pitch.G4);
             melody = melodicTrail.BuildMelody(scale, Pitch.G4);
             melody = melodicTrail.BuildMelody(scale, Pitch.G4);
+        }
+
+        [TestMethod]
+        public void RhythmGenerationTest()
+        {
+            var rhythm = new PolonaiseRhythmicTrail().BuildRhythm(8);
         }
     }
 }
