@@ -71,6 +71,14 @@ namespace Manufaktura.Music.Model
         {
         }
 
+        public Pitch(string stepName, int alter, int octaveNumber)
+        {
+            StepName = stepName;
+            Alter = alter;
+            MidiPitch = pitches[stepName] + alter + (octaveNumber - 4) * 12;
+            Octave = octaveNumber;
+        }
+
 
         public Step ToStep()
         {
@@ -211,6 +219,48 @@ namespace Manufaktura.Music.Model
         public static bool operator !=(Pitch p1, Pitch p2)
         {
             return p1.MidiPitch != p2.MidiPitch;
+        }
+
+        /// <summary>
+        /// TODO: Sprawdzić czy ta metoda daje takie same efekty jak konstruktor klasy Pitch i ewentualnie wywalić
+        /// </summary>
+        /// <param name="stepName"></param>
+        /// <param name="alter"></param>
+        /// <param name="octave"></param>
+        /// <returns></returns>
+        public static int CalculateMidiPitch(string stepName, int alter, int octave)
+        {
+            int pitch;
+            if (stepName == "A") pitch = 21;
+            else if (stepName == "B") pitch = 23;
+            else if (stepName == "C") pitch = 24;
+            else if (stepName == "D") pitch = 26;
+            else if (stepName == "E") pitch = 28;
+            else if (stepName == "F") pitch = 29;
+            else if (stepName == "G") pitch = 31;
+            else return 0;
+            //Dźwięki A i B(H) są w standardzie MIDI w oktawie 0:
+            //Notes A0 and B0 are in octave 0 in MIDI standard:
+            if ((stepName == "A") || (stepName == "B")) pitch = pitch + octave * 12;
+            else pitch = pitch + (octave - 1) * 12;  //The other are in octave 1 / A pozostałe w pierwszej oktawie
+            pitch = pitch + alter;
+            return pitch;
+        }
+
+        public static int FrequencyToMidiPitch(double freq)
+        {
+            double i = 0;
+            //27,5 Hz to częstotliwość dźwięku A subkontra (najniższego w standardzie MIDI)
+            //27,5 Hz is the frequency of note A0 (the lowest in MIDI standard)
+            while (true)
+            {
+                if ((freq < 27.5f * Math.Pow(2, 1.0f / 36) * Math.Pow(2, i / 12)) &&
+                    (freq >= 27.5f * Math.Pow(2, -1.0f / 18) * Math.Pow(2, i / 12)))
+                    break;
+                i++;
+                if (i > 100) break;
+            }
+            return (int)i + 21;
         }
 
         public enum MidiPitchTranslationMode

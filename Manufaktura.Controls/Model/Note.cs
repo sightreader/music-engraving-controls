@@ -92,7 +92,7 @@ namespace Manufaktura.Controls.Model
             stemDirection = noteStemDirection;
             beamList = noteBeamList;
             tieType = noteTieType;
-            midiPitch = MusicalSymbol.ToMidiPitch(step, alter, octave);
+            midiPitch = new Pitch(step, alter, octave).MidiPitch;
             Lyrics = new List<Lyrics>();
             Ornaments = new List<Ornament>();
             DetermineMusicalCharacter();

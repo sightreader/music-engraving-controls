@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,21 +11,16 @@ namespace Manufaktura.Controls.Model
         #region Private fields
 
         private ClefType typeOfClef;
-        private int clefPitch;
         private int line;
-        private string step = "G";
-        private int octave = 4;
 
         #endregion
 
         #region Properties
 
-        public string Step { get { return step; } }
-        public int Octave { get { return octave; } }
+        public Pitch ClefPitch { get; private set; }
         public ClefType TypeOfClef { get { return typeOfClef; } }
         public int Line { get { return line; } }
-        public int ClefPitch { get { return clefPitch; } }
-
+        
         #endregion
 
         #region Constructor
@@ -34,24 +30,20 @@ namespace Manufaktura.Controls.Model
             type = MusicalSymbolType.Clef;
             typeOfClef = clefType;
             line = whichLine;
-            clefPitch = MusicalSymbol.ToClefMidiPitch(typeOfClef);
             if (typeOfClef == ClefType.GClef)
             {
                 musicalCharacter = MusicalCharacters.GClef;
-                step = "G";
-                octave = 4;
+                ClefPitch = Pitch.FromStep(Step.G, 4);
             }
             else if (typeOfClef == ClefType.FClef)
             {
                 musicalCharacter = MusicalCharacters.FClef;
-                step = "F";
-                octave = 3;
+                ClefPitch = Pitch.FromStep(Step.F, 3);
             }
             else if (typeOfClef == ClefType.CClef)
             {
                 musicalCharacter = MusicalCharacters.CClef;
-                step = "C";
-                octave = 4;
+                ClefPitch = Pitch.FromStep(Step.C, 4);
             }
         }
 
@@ -85,6 +77,14 @@ namespace Manufaktura.Controls.Model
                 else return currentClef;
             }
             else return new Clef(ClefType.GClef, 2);
+        }
+
+        public static int GetClefMidiPitch(ClefType type)
+        {
+            if (type == ClefType.CClef) return 60;
+            else if (type == ClefType.FClef) return 53;
+            else if (type == ClefType.GClef) return 67;
+            else return 0;
         }
 
         public static Clef Treble
