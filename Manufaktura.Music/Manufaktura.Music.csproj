@@ -67,8 +67,9 @@
     <Compile Include="RhythmicTrails\PolonaiseRhythmicTrail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tuning\AlgorithmicTuningSystem.cs" />
+    <Compile Include="Tuning\FifthDictionary.cs" />
     <Compile Include="Tuning\PythagoreanTuning.cs" />
-    <Compile Include="Tuning\TemperatedTuningSystem.cs" />
+    <Compile Include="Tuning\TemperedTuningSystem.cs" />
     <Compile Include="Tuning\TuningSystem.cs" />
     <Compile Include="UnitTests\MusicalAssertions.cs" />
   </ItemGroup>

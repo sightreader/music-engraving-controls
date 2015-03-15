@@ -46,7 +46,10 @@ namespace Manufaktura.Music.Model
             return this;
         }
 
-        
+        public override string ToString()
+        {
+            return string.Format("{0} / {1}", Numerator, Denominator);
+        }
 
         public static Proportion Dupla { get { return new Proportion(2, 1); } }
         public static Proportion Tripla { get { return new Proportion(3, 1); } }
@@ -134,6 +137,23 @@ namespace Manufaktura.Music.Model
             var commonDenominator = GetCommonDenominator(d1, d2);
             var numeratorSum = d1.Numerator * d2.Denominator - d2.Numerator * d1.Denominator;
             return new Proportion(numeratorSum, commonDenominator).Normalize();
+        }
+
+        public static Proportion GetApproximatedProportionFromCents(double cents, int precision = 6)
+        {
+            if (precision < 1 || precision > 20)
+                throw new ArgumentException("Precision must be between 1 and 20.", "precision");
+
+            var decimalValue = UsefulMath.CentsToProportion(cents);
+            var normalizedValue = decimalValue;
+            var denominator = 1;
+            var maxDenominator = Math.Pow(10, precision);
+            while (normalizedValue % 10 != 0 && denominator <= maxDenominator)
+            {
+                denominator *= 10;
+                normalizedValue *= 10;
+            }
+            return new Proportion((int)normalizedValue, denominator).Normalize();
         }
     }
 }

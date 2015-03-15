@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Manufaktura.Music.Tuning
 {
-    public abstract class TemperatedTuningSystem : TuningSystem
+    class FifthDictionary
     {
     }
 }
