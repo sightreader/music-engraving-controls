@@ -1,5 +1,4 @@
 ﻿using Manufaktura.Music.Model;
-using Manufaktura.Music.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,6 @@ namespace Manufaktura.Music.Model
     public abstract class Mode
     {
         public abstract IEnumerable<int> Intervals { get; }
-        public abstract IEnumerable<MusicalRule> Rules { get; }
 
         public IEnumerable<Pitch> BuildScale(int startingMidiPitch, Pitch.MidiPitchTranslationMode translationMode, int startingStep, int numberOfSteps)
         {

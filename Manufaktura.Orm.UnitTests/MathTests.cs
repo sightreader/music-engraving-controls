@@ -25,6 +25,7 @@ namespace Manufaktura.Orm.UnitTests
         public void CentsTest()
         {
             Assert.AreEqual(Proportion.Dupla.Cents, 1200);
+            Assert.AreEqual(UsefulMath.CentsToProportion(1200), Proportion.Dupla.DoubleValue);
         }
 
         [TestMethod]

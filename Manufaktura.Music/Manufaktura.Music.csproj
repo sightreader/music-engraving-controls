@@ -65,14 +65,14 @@
     <Compile Include="RhythmicTrails\IRhythmicTrail.cs" />
     <Compile Include="RhythmicTrails\LimitedPatternsRhythmicTrail.cs" />
     <Compile Include="RhythmicTrails\PolonaiseRhythmicTrail.cs" />
-    <Compile Include="Rules\MusicalError.cs" />
-    <Compile Include="Rules\MusicalRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tuning\AlgorithmicTuningSystem.cs" />
+    <Compile Include="Tuning\PythagoreanTuning.cs" />
+    <Compile Include="Tuning\TemperatedTuningSystem.cs" />
+    <Compile Include="Tuning\TuningSystem.cs" />
     <Compile Include="UnitTests\MusicalAssertions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tuning\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

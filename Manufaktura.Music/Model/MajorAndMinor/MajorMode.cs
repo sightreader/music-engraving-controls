@@ -11,10 +11,5 @@ namespace Manufaktura.Music.Model.MajorAndMinor
         {
             get { return new[] { 2, 2, 1, 2, 2, 2, 1 }; }
         }
-
-        public override IEnumerable<Rules.MusicalRule> Rules
-        {
-            get { throw new NotImplementedException(); }
-        }
     }
 }
