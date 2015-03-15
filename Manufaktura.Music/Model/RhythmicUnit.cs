@@ -20,5 +20,10 @@ namespace Manufaktura.Music.Model
         {
             return RhythmicDuration.Parse(s, separator).Select(d => d.ToRhythmicUnit(false));
         }
+
+        public static IEnumerable<RhythmicUnit> Parse(params int[] durations)
+        {
+            return RhythmicDuration.Parse(durations).Select(d => new RhythmicUnit(d, false)).ToArray();
+        }
     }
 }

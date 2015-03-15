@@ -142,5 +142,10 @@ namespace Manufaktura.Music.Model
             }
             return result;
         }
+
+        public static IEnumerable<RhythmicDuration> Parse(params int[] durations)
+        {
+            return durations.Select(i => new RhythmicDuration(i)).ToArray();
+        }
     }
 }

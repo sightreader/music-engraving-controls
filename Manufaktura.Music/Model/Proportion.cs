@@ -23,6 +23,13 @@ namespace Manufaktura.Music.Model
                 return (double)Numerator / (double)Denominator;
             }
         }
+        public double Cents
+        {
+            get
+            {
+                return 1200 * Math.Log(DoubleValue, 2);
+            }
+        }
 
         public Proportion(int numerator, int denominator) : this()
         {
@@ -39,6 +46,8 @@ namespace Manufaktura.Music.Model
             return this;
         }
 
+        
+
         public static Proportion Dupla { get { return new Proportion(2, 1); } }
         public static Proportion Tripla { get { return new Proportion(3, 1); } }
         public static Proportion Quadrupla { get { return new Proportion(4, 1); } }
@@ -54,6 +63,16 @@ namespace Manufaktura.Music.Model
         private static int GetCommonDenominator(Proportion d1, Proportion d2)
         {
             return d1.Denominator * d2.Denominator;
+        }
+
+        public static bool operator ==(Proportion p1, Proportion p2)
+        {
+            return p1.DecimalValue == p2.DecimalValue;
+        }
+
+        public static bool operator !=(Proportion p1, Proportion p2)
+        {
+            return p1.DecimalValue != p2.DecimalValue;
         }
 
         public static bool operator ==(Proportion p1, decimal d)

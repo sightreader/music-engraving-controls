@@ -17,8 +17,8 @@ namespace Manufaktura.Music.RhythmicTrails
         {
             get 
             { 
-                return new[] { RhythmicUnit.Parse("8 16 16 8 8 8 8", " ").ToArray(), 
-                               RhythmicUnit.Parse("8 8 8 8 8 8", " ").ToArray()};
+                return new[] { RhythmicUnit.Parse(8, 16, 16, 8, 8, 8, 8).ToArray(), 
+                               RhythmicUnit.Parse(8, 8, 8, 8, 8, 8).ToArray()};
             }
         }
     }

@@ -16,6 +16,15 @@ namespace Manufaktura.Orm.UnitTests
         {
             Assert.AreEqual((Proportion.Sesquialtera + new Proportion(1, 2)).DecimalValue, 2);
             Assert.IsTrue((Proportion.Sesquialtera + new Proportion(1, 2)) == 2);
+            Assert.IsTrue(Proportion.Sesquialtera == new Proportion(6, 4));
+            Assert.IsTrue(Proportion.Sesquialtera == new Proportion(6, 4).Normalize());
+            Assert.IsTrue(new Proportion(8, 12).Normalize().Denominator == 3);
+        }
+
+        [TestMethod]
+        public void CentsTest()
+        {
+            Assert.AreEqual(Proportion.Dupla.Cents, 1200);
         }
 
         [TestMethod]

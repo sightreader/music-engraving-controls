@@ -247,6 +247,11 @@ namespace Manufaktura.Music.Model
             return pitch;
         }
 
+        /// <summary>
+        /// Converts frequency to midi pitch in a simple naive way, using equal temperament.
+        /// </summary>
+        /// <param name="freq">Frequency</param>
+        /// <returns>Midi pitch</returns>
         public static int FrequencyToMidiPitch(double freq)
         {
             double i = 0;

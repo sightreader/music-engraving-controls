@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Manufaktura.Controls.Primitives
+namespace Manufaktura.Music.Model
 {
     public static class UsefulMath
     {
@@ -43,6 +43,11 @@ namespace Manufaktura.Controls.Primitives
         public static double GradToRadians(double angle)
         {
             return angle * (Math.PI / 180d);
+        }
+
+        public static double CentsToProportion(double cents)
+        {
+            return Math.Pow(2, cents / 1200);
         }
 
         public static string NumberToOrdinal(int number)

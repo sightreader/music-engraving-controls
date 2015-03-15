@@ -51,10 +51,10 @@ namespace Manufaktura.Controls.Model
             Voice = 1;
         }
 
+        public static NoteOrRest FromRhythmicUnit(RhythmicUnit unit)
+        {
+            return unit.IsRest ? (NoteOrRest)new Rest(unit.Duration) : new Note(unit.Duration);
+        }
 
-
-
-
-       
     }
 }

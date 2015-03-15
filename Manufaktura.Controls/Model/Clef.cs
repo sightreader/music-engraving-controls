@@ -76,6 +76,13 @@ namespace Manufaktura.Controls.Model
             if (n.MidiPitch < 55) return new Clef(ClefType.FClef, 4);
             else return new Clef(ClefType.GClef, 2);
         }
+
+        /// <summary>
+        /// This methods selects a appropriate clef for a note to make the note comfortably visible in the staff.
+        /// </summary>
+        /// <param name="n">Note</param>
+        /// <param name="currentClef">Current clef</param>
+        /// <returns>Appropriate clef</returns>
         public static Clef SuggestClefForANote(Note n, Clef currentClef)
         {
             if (currentClef.TypeOfClef == ClefType.GClef)
@@ -97,14 +104,6 @@ namespace Manufaktura.Controls.Model
                 else return currentClef;
             }
             else return new Clef(ClefType.GClef, 2);
-        }
-
-        public static int GetClefMidiPitch(ClefType type)
-        {
-            if (type == ClefType.CClef) return 60;
-            else if (type == ClefType.FClef) return 53;
-            else if (type == ClefType.GClef) return 67;
-            else return 0;
         }
 
         public static Clef Treble

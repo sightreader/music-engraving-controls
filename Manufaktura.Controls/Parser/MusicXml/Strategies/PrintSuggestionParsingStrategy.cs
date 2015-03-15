@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

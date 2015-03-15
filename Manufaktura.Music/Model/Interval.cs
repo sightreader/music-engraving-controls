@@ -39,6 +39,7 @@ namespace Manufaktura.Music.Model
         public static Interval MinorThird { get { return new Interval(3, 3); } }
         public static Interval MajorThird { get { return new Interval(3, 4); } }
         public static Interval AugmentedThird { get { return new Interval(3, 5); } }
+        public static Interval DimnishedFourth { get { return new Interval(4, 4); } }
         public static Interval PerfectFourth { get { return new Interval(4, 5); } }
         public static Interval AugmentedFourth { get { return new Interval(4, Tritone); } }
         public static Interval DimnishedFifth { get { return new Interval(5, Tritone); } }
@@ -50,6 +51,7 @@ namespace Manufaktura.Music.Model
         public static Interval DimnishedSeventh { get { return new Interval(7, 9); } }
         public static Interval MinorSeventh { get { return new Interval(7, 10); } }
         public static Interval MajorSeventh { get { return new Interval(7, 11); } }
+        public static Interval AugmentedSeventh { get { return new Interval(7, 12); } }
         public static Interval DimnishedOctave { get { return new Interval(8, 11); } }
         public static Interval PerfectOctave { get { return new Interval(8, 12); } }
     }

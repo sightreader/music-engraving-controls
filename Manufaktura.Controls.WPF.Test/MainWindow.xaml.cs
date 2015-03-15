@@ -3,6 +3,7 @@ using Manufaktura.Controls.Parser;
 using Manufaktura.Music.MelodicTrails;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
+using Manufaktura.Music.RhythmicTrails;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -34,19 +35,27 @@ namespace Manufaktura.Controls.WPF.Test
 
             var scale = MajorScale.G;
             IMelodicTrail melodicTrail = new ConjunctMovementTrail(MovementType.Anabasis, Pitch.G3, Pitch.C6, 8, 12);
-            var notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole));
+            IRhythmicTrail rhytmicTrail = new PolonaiseRhythmicTrail();
+            var rhythmicUnits = rhytmicTrail.BuildRhythm(4).ToArray();
+            var melody = melodicTrail.BuildMelody(scale, Pitch.G4).ToArray();
+            var notes = new List<Note>();
+            for (int i=0; i<melody.Count(); i++) 
+            {
+                notes.Add(Note.FromPitch(melody[i], rhythmicUnits[i].Duration));
+            }
+           
             var score = Score.CreateOneStaffScore(Clef.Treble, scale);
             score.FirstStaff.Elements.AddRange(notes);
             noteViewer1.ScoreSource = score;
 
             melodicTrail = new ConjunctMovementTrail(MovementType.Katabasis, Pitch.G3, Pitch.C6, 8, 12);
-            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole));
+            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole)).ToList();
             score = Score.CreateOneStaffScore(Clef.Bass, scale);
             score.FirstStaff.Elements.AddRange(notes);
             noteViewer2.ScoreSource = score;
 
             melodicTrail = new ConjunctMovementTrail(MovementType.Metabasis, Pitch.G3, Pitch.C6, 8, 12);
-            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole));
+            notes = melodicTrail.BuildMelody(scale, Pitch.G4).Select(p => Note.FromPitch(p, RhythmicDuration.Whole)).ToList();
             score = new Score();
             var staff = new Staff();
             staff.Elements.Add(Clef.Treble);

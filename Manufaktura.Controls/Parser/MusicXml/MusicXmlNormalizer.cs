@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Primitives;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
