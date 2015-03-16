@@ -71,6 +71,7 @@
     <Compile Include="MusicTheoryTests.cs" />
     <Compile Include="OrmTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TuningTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">

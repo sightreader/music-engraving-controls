@@ -30,6 +30,8 @@ namespace Manufaktura.Orm.UnitTests
             var second1 = new Proportion(9, 8);
             var second2 = Proportion.GetApproximatedProportionFromCents(second1.Cents);
             Assert.AreEqual((int)second1.Cents, (int)second2.Cents);
+
+            var pureFifth = Proportion.Sesquialtera.Cents;
         }
 
         [TestMethod]

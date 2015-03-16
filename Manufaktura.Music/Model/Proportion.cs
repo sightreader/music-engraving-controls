@@ -31,6 +31,19 @@ namespace Manufaktura.Music.Model
             }
         }
 
+        public Proportion FractionalPart
+        {
+            get
+            {
+                var prop = new Proportion(Numerator, Denominator);
+                while (prop.Numerator > prop.Denominator)
+                {
+                    prop.Numerator -= prop.Denominator;
+                }
+                return prop;
+            }
+        }
+
         public Proportion(int numerator, int denominator) : this()
         {
             Numerator = numerator;

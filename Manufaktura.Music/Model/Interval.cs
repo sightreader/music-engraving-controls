@@ -26,9 +26,23 @@ namespace Manufaktura.Music.Model
             return new Interval(Math.Abs(Steps), Math.Abs(Halftones));
         }
 
+        public override string ToString()
+        {
+            if (this == PerfectUnison) return "Perfect unison";
+            if (this == PerfectFifth) return "Perfect fifth";
+            if (this == PerfectFourth) return "Perfect fourth";
+            if (this == PerfectOctave) return "Perfect octave";
+            return string.Format("Steps: {0}, Halftones: {1}", Steps, Halftones);
+        }
+
         public static int HalfTone = 1;
         public static int WholeTone = 2;
         public static int Tritone = 6;
+
+        public static Interval Between(Pitch p1, Pitch p2)
+        {
+            return new Interval(p2.ToStep().ToStepNumber() - p1.ToStep().ToStepNumber() + 1, (p2.MidiPitch - p1.MidiPitch) % 12);
+        } 
 
         public static Interval PerfectUnison { get { return new Interval(1, 0); } }
         public static Interval AugmentedUnison { get { return new Interval(1, HalfTone); ; } }

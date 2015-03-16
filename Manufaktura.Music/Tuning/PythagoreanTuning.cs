@@ -6,8 +6,11 @@ using System.Text;
 
 namespace Manufaktura.Music.Tuning
 {
-    public class PythagoreanTuning : AlgorithmicTuningSystem
+    public class PythagoreanTuning : RegularTuningSystem
     {
-        public readonly Proportion PythagoreanFifth = Proportion.Sesquialtera;
+        public override TunedInterval Generator
+        {
+            get { return new TunedInterval(Interval.PerfectFifth, Proportion.Sesquialtera); }
+        }
     }
 }

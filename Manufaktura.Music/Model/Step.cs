@@ -40,6 +40,18 @@ namespace Manufaktura.Music.Model
             return sb.ToString();
         }
 
+        public int ToStepNumber()
+        {
+            if (StepName == "C") return 1;
+            else if (StepName == "D") return 2;
+            else if (StepName == "E") return 3;
+            else if (StepName == "F") return 4;
+            else if (StepName == "G") return 5;
+            else if (StepName == "A") return 6;
+            else if (StepName == "B") return 7;
+            else return 0;
+        }
+
         public static Step Cb
         {
             get { return new Step { StepName = "C", Alter = -1 }; }
