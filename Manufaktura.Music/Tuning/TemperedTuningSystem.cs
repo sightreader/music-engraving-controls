@@ -11,5 +11,9 @@ namespace Manufaktura.Music.Tuning
     /// </summary>
     public abstract class TemperedTuningSystem : TuningSystem
     {
+        public override IEnumerable<double> TuneScale(Model.Scale scale)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

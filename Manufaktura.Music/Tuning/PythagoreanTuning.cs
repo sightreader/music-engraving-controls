@@ -12,5 +12,11 @@ namespace Manufaktura.Music.Tuning
         {
             get { return new TunedInterval(Interval.PerfectFifth, Proportion.Sesquialtera); }
         }
+
+        public override int GeneratorPassesToFormOctave
+        {
+            get { return 12; }
+        }
+
     }
 }

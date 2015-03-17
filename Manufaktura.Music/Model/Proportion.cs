@@ -91,6 +91,30 @@ namespace Manufaktura.Music.Model
             return p1.DecimalValue != p2.DecimalValue;
         }
 
+        public static bool operator >(Proportion p1, Proportion p2)
+        {
+            if (p1.Denominator == p2.Denominator) return p1.Numerator > p2.Numerator;
+            return p1.Numerator * p2.Denominator > p2.Numerator * p1.Denominator;
+        }
+
+        public static bool operator <(Proportion p1, Proportion p2)
+        {
+            if (p1.Denominator == p2.Denominator) return p1.Numerator < p2.Numerator;
+            return p1.Numerator * p2.Denominator < p2.Numerator * p1.Denominator;
+        }
+
+        public static bool operator >=(Proportion p1, Proportion p2)
+        {
+            if (p1.Denominator == p2.Denominator) return p1.Numerator >= p2.Numerator;
+            return p1.Numerator * p2.Denominator >= p2.Numerator * p1.Denominator;
+        }
+
+        public static bool operator <=(Proportion p1, Proportion p2)
+        {
+            if (p1.Denominator == p2.Denominator) return p1.Numerator <= p2.Numerator;
+            return p1.Numerator * p2.Denominator <= p2.Numerator * p1.Denominator;
+        }
+
         public static bool operator ==(Proportion p1, decimal d)
         {
             return p1.DecimalValue == d;
@@ -134,6 +158,16 @@ namespace Manufaktura.Music.Model
         public static double operator *(Proportion p1, double d2)
         {
             return p1.DoubleValue * d2;
+        }
+
+        public static Proportion operator *(Proportion p1, int d2)
+        {
+            return new Proportion(p1.Numerator * d2, p1.Denominator).Normalize();
+        }
+
+        public static Proportion operator /(Proportion p1, int d2)
+        {
+            return new Proportion(p1.Numerator, p1.Denominator * d2).Normalize();
         }
 
         public static Proportion operator +(Proportion d1, Proportion d2)

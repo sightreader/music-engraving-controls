@@ -8,6 +8,6 @@ namespace Manufaktura.Music.Tuning
 {
     public abstract class TuningSystem
     {
-        public abstract Dictionary<Interval, double> Build(Pitch startingPitch);
+        public abstract IEnumerable<double> TuneScale(Scale scale);
     }
 }
