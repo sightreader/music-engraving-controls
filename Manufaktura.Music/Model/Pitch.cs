@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Music;
+using Manufaktura.Music.Tuning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,6 +94,13 @@ namespace Manufaktura.Music.Model
         public Step ToStep()
         {
             return Step.FromPitch(this);
+        }
+
+        public TunedPitch Tune(TunedPitch standardPitch, TuningSystem tuningSystem)
+        {
+            var matchingKey = tuningSystem.AllIntervalRatios.Keys.FirstOrDefault(bi => bi.StartingPitch == standardPitch && bi.EndingPitch == this);
+            var freq = standardPitch.Frequency * UsefulMath.CentsToProportion(tuningSystem.AllIntervalRatios[matchingKey]);
+            return new TunedPitch(this, freq);
         }
 
         public static Pitch operator +(Pitch pitch, Interval interval)

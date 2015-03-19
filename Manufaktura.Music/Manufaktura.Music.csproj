@@ -63,6 +63,7 @@
     <Compile Include="Model\Pentatonic\PentatonicMode.cs" />
     <Compile Include="Model\Scale.cs" />
     <Compile Include="Model\Tempo.cs" />
+    <Compile Include="Model\TunedPitch.cs" />
     <Compile Include="Model\UsefulMath.cs" />
     <Compile Include="RhythmicTrails\IRhythmicTrail.cs" />
     <Compile Include="RhythmicTrails\LimitedPatternsRhythmicTrail.cs" />

@@ -13,7 +13,6 @@ namespace Manufaktura.Music.Tuning
     public abstract class RegularTuningSystem : TuningSystem
     {
         public abstract TunedInterval Generator { get; }
-        public Dictionary<BoundInterval, double> AllIntervalRatios {get; protected set;}
         public Pitch StartingPitch { get; protected set; }
 
         /// <summary>
