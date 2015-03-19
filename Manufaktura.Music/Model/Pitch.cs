@@ -98,8 +98,9 @@ namespace Manufaktura.Music.Model
 
         public TunedPitch Tune(TunedPitch standardPitch, TuningSystem tuningSystem)
         {
-            var matchingKey = tuningSystem.AllIntervalRatios.Keys.FirstOrDefault(bi => bi.StartingPitch == standardPitch && bi.EndingPitch == this);
-            var freq = standardPitch.Frequency * UsefulMath.CentsToProportion(tuningSystem.AllIntervalRatios[matchingKey]);
+            var logarythmicProportion = tuningSystem.AllIntervalRatios[new BoundInterval(standardPitch, this)];
+            var freq = standardPitch.Frequency * UsefulMath.CentsToLinear(logarythmicProportion);
+            freq *= (this.Octave - standardPitch.Octave) + 1;
             return new TunedPitch(this, freq);
         }
 

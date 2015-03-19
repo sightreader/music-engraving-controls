@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.Intervals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Manufaktura.Music.Tuning
         protected RegularTuningSystem(Pitch startingPitch)
         {
             StartingPitch = startingPitch;
-            AllIntervalRatios = new Dictionary<BoundInterval, double>();
+            AllIntervalRatios = new TuningDictionary();
             GenerateIntervals();
         }
 

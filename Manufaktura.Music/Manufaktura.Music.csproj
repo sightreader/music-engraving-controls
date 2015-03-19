@@ -43,6 +43,7 @@
     <Compile Include="Model\IHasPitch.cs" />
     <Compile Include="Model\Intervals\BoundInterval.cs" />
     <Compile Include="Model\CircleOfFifths.cs" />
+    <Compile Include="Model\Intervals\TuningDictionary.cs" />
     <Compile Include="Model\MajorAndMinor\MajorAndMinorScaleFlags.cs" />
     <Compile Include="Model\RhythmicDuration.cs" />
     <Compile Include="Model\HistoricIntervalNames.cs" />

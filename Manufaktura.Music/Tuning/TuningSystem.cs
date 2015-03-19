@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.Intervals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,6 @@ namespace Manufaktura.Music.Tuning
     {
         public abstract IEnumerable<double> TuneScale(Scale scale);
 
-        //TODO: Zamienić na jakieś IntervalDictionary czy coś, żeby dynamicznie liczyło każdy możliwy interwał
-        public Dictionary<BoundInterval, double> AllIntervalRatios { get; protected set; }
+        public TuningDictionary AllIntervalRatios { get; protected set; }
     }
 }

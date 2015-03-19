@@ -191,7 +191,7 @@ namespace Manufaktura.Music.Model
             if (precision < 1 || precision > 20)
                 throw new ArgumentException("Precision must be between 1 and 20.", "precision");
 
-            var decimalValue = UsefulMath.CentsToProportion(cents);
+            var decimalValue = UsefulMath.CentsToLinear(cents);
             var normalizedValue = decimalValue;
             var denominator = 1;
             var maxDenominator = Math.Pow(10, precision);

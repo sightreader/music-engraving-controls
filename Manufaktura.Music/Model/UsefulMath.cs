@@ -45,7 +45,7 @@ namespace Manufaktura.Music.Model
             return angle * (Math.PI / 180d);
         }
 
-        public static double CentsToProportion(double cents)
+        public static double CentsToLinear(double cents)
         {
             return Math.Pow(2, cents / 1200);
         }
