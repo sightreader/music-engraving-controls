@@ -22,20 +22,20 @@ namespace Manufaktura.Controls.Rendering
             if (renderer.State.CurrentClef.TypeOfClef == ClefType.FClef) octaveShiftFlat = -1;
             if (renderer.State.CurrentKey.Fifths > 0)
             {
-                flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
-                (new Note("F", 0, renderer.State.CurrentClef.Pitch.Octave + octaveShiftSharp, RhythmicDuration.Whole, VerticalDirection.Up,
-                    NoteTieType.None, null)))
-                * (renderer.Settings.LineSpacing / 2);
+                flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY 
+                    + Pitch.StepDistance(renderer.State.CurrentClef, 
+                      Pitch.FromStep(Step.F, renderer.State.CurrentClef.Pitch.Octave + octaveShiftSharp)) 
+                      * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = 1;
 
             }
             else if (renderer.State.CurrentKey.Fifths < 0)
             {
-                flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
-                (new Note("B", 0, renderer.State.CurrentClef.Pitch.Octave + octaveShiftFlat, RhythmicDuration.Whole, VerticalDirection.Up,
-                    NoteTieType.None, null)))
-                * (renderer.Settings.LineSpacing / 2);
+                flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY + 
+                    Pitch.StepDistance(renderer.State.CurrentClef,
+                    Pitch.FromStep(Step.B, renderer.State.CurrentClef.Pitch.Octave + octaveShiftFlat)) 
+                    * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = -1;
             }

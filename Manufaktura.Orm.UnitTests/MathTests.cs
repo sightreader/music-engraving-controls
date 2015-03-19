@@ -1,4 +1,5 @@
-﻿using Manufaktura.Music.Model;
+﻿using Manufaktura.Controls.Model;
+using Manufaktura.Music.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

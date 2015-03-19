@@ -53,35 +53,6 @@ namespace Manufaktura.Controls.Model
             return direction == VerticalDirection.Up ? VerticalPlacement.Above : VerticalPlacement.Below;
         }
 
-
-        public static int StepDifference(Clef a, Note b)
-        {
-            int step1int = 0, step2int = 0;
-            string step1 = a.Pitch.StepName;
-            string step2 = b.Step;
-            if (step1 == "C") step1int = 0;
-            else if (step1 == "D") step1int = 1;
-            else if (step1 == "E") step1int = 2;
-            else if (step1 == "F") step1int = 3;
-            else if (step1 == "G") step1int = 4;
-            else if (step1 == "A") step1int = 5;
-            else if (step1 == "B") step1int = 6;
-
-            step1int += a.Pitch.Octave * 7;
-
-            if (step2 == "C") step2int = 0;
-            else if (step2 == "D") step2int = 1;
-            else if (step2 == "E") step2int = 2;
-            else if (step2 == "F") step2int = 3;
-            else if (step2 == "G") step2int = 4;
-            else if (step2 == "A") step2int = 5;
-            else if (step2 == "B") step2int = 6;
-
-            step2int += b.Octave * 7;
-
-            return step1int - step2int;
-        }
-
         [Obsolete("Use Duration.ToTimeSpan() instead")]
         public static TimeSpan DurationToTime(IHasDuration durationElement, Tempo tempo)
         {

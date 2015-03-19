@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Controls.Music;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -219,6 +220,37 @@ namespace Manufaktura.Music.Model
         public static bool operator !=(Pitch p1, Pitch p2)
         {
             return p1.MidiPitch != p2.MidiPitch;
+        }
+
+        public static int StepDistance(Pitch p1, Pitch p2)
+        {
+            return (p1.ToStepNumber() - 1 + p1.Octave * 7) - (p2.ToStepNumber() -1 + p2.Octave * 7);
+        }
+
+        public static int StepDistance(IHasPitch h1, Pitch p2)
+        {
+            return StepDistance(h1.Pitch, p2);
+        }
+
+        public static int StepDistance(Pitch p1, IHasPitch h2)
+        {
+            return StepDistance(p1, h2.Pitch);
+        }
+
+        public static int StepDistance(IHasPitch h1, IHasPitch h2)
+        {
+            return StepDistance(h1.Pitch, h2.Pitch);
+        }
+
+        public static IEnumerable<Pitch> ChromaticRange(Pitch p1, Pitch p2, MidiPitchTranslationMode translationMode)
+        {
+            if (p1 == p2) yield return p1;
+            int direction = p1 < p2 ? 1 : -1;
+            var pitch = p1;
+            while (pitch != p2)
+            {
+                yield return pitch = Pitch.FromMidiPitch(pitch.MidiPitch + direction, translationMode);
+            }
         }
 
         /// <summary>

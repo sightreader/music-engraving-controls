@@ -43,8 +43,8 @@ namespace Manufaktura.Controls.Rendering
 
             if (element.IsChordElement) renderer.State.CursorPositionX = renderer.State.LastNotePositionX;
 
-            double noteTextBlockPositionY = renderer.State.CurrentClefTextBlockPositionY + MusicalSymbol.StepDifference(renderer.State.CurrentClef,
-                element) * ((double)renderer.Settings.LineSpacing / 2.0f);
+            double noteTextBlockPositionY = renderer.State.CurrentClefTextBlockPositionY + Pitch.StepDistance(renderer.State.CurrentClef.Pitch,
+                element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
             if (renderer.State.IsPrintMode) noteTextBlockPositionY -= 0.8f;
 
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;

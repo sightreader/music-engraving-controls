@@ -59,7 +59,6 @@
     <Compile Include="Model\IHasCustomXPosition.cs" />
     <Compile Include="Model\IHasCustomYPosition.cs" />
     <Compile Include="Model\IHasDuration.cs" />
-    <Compile Include="Model\IHasPitch.cs" />
     <Compile Include="Model\IRenderedAsTextBlock.cs" />
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\Lyrics.cs" />

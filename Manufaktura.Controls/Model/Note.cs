@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Primitives;
+﻿using Manufaktura.Controls.Music;
+using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -100,7 +101,7 @@ namespace Manufaktura.Controls.Model
 
         public Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
             VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList) :
-            this(new Music.Model.Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)
+            this(new Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)
         {
 
         }

@@ -40,7 +40,8 @@
     <Compile Include="MelodicTrails\IMelodicTrail.cs" />
     <Compile Include="MelodicTrails\MovementType.cs" />
     <Compile Include="MelodicTrails\RandomIntervalsMelodicTrail.cs" />
-    <Compile Include="Model\Intervals\BuiltInterval.cs" />
+    <Compile Include="Model\IHasPitch.cs" />
+    <Compile Include="Model\Intervals\BoundInterval.cs" />
     <Compile Include="Model\CircleOfFifths.cs" />
     <Compile Include="Model\MajorAndMinor\MajorAndMinorScaleFlags.cs" />
     <Compile Include="Model\RhythmicDuration.cs" />
