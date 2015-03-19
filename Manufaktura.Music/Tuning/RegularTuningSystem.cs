@@ -13,8 +13,8 @@ namespace Manufaktura.Music.Tuning
     public abstract class RegularTuningSystem : TuningSystem
     {
         public abstract TunedInterval Generator { get; }
-        public abstract int GeneratorPassesToFormOctave { get; }
-        public double[] AllIntervalRatios {get; protected set;}
+        public Dictionary<BoundInterval, double> AllIntervalRatios {get; protected set;}
+        public Pitch StartingPitch { get; protected set; }
 
         /// <summary>
         /// Returns a comma between last interval and perfect octave (a Pythagorean Comma in Pythagorean Tuning).
@@ -25,26 +25,34 @@ namespace Manufaktura.Music.Tuning
             protected set;
         }
 
-        //TODO: Zrobić jednak w konstruktorze Step i budować od tego stopnia. 
-        //TODO: Słownik <Step, Step, double> z interwałami od konkretnych stopni.
-        protected RegularTuningSystem()
+        protected RegularTuningSystem(Pitch startingPitch)
         {
-            AllIntervalRatios = GenerateIntervals(GeneratorPassesToFormOctave);
+            StartingPitch = startingPitch;
+            AllIntervalRatios = new Dictionary<BoundInterval, double>();
+            GenerateIntervals();
         }
 
-        private double[] GenerateIntervals(int iterations)
+        private void GenerateIntervals()
         {
             var intervals = new List<double>();
 
             var currentProportion = new Proportion(1, 1);
-            for (int i = 0; i < iterations; i++)
+            var currentPitch = StartingPitch;
+            var endPitch = StartingPitch.OctaveUp();
+            do
             {
                 currentProportion = (currentProportion * Generator.IntervalProportion).Normalize();
-                while (currentProportion > Proportion.Dupla) currentProportion /= 2;
+                currentPitch = currentPitch.Translate(Generator.Interval, Pitch.MidiPitchTranslationMode.Auto);
+                while (currentProportion > Proportion.Dupla)
+                {
+                    currentProportion /= 2;
+                    currentPitch = currentPitch.OctaveDown();
+                }
+                AllIntervalRatios[new BoundInterval(StartingPitch, currentPitch)] = currentProportion.Cents;
                 intervals.Add(currentProportion.Cents);
             }
+            while (Math.Abs(currentPitch.MidiPitch - endPitch.MidiPitch) % 12 != 0);
             CommaBetweenLastIntervalAndPerfectOctave = intervals.Last();
-            return intervals.Except(new [] {intervals.Last()}).OrderBy(d => d).ToArray();
         }
 
 

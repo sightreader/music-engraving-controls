@@ -80,6 +80,15 @@ namespace Manufaktura.Music.Model
             Octave = octaveNumber;
         }
 
+        public Pitch OctaveUp()
+        {
+            return new Pitch(StepName, Alter, Octave + 1);
+        }
+
+        public Pitch OctaveDown()
+        {
+            return new Pitch(StepName, Alter, Octave - 1);
+        }
 
         public Step ToStep()
         {
@@ -224,7 +233,7 @@ namespace Manufaktura.Music.Model
 
         public static int StepDistance(Pitch p1, Pitch p2)
         {
-            return (p1.ToStepNumber() - 1 + p1.Octave * 7) - (p2.ToStepNumber() -1 + p2.Octave * 7);
+            return (p2.ToStepNumber() - 1 + p2.Octave * 7) - (p1.ToStepNumber() -1 + p1.Octave * 7);
         }
 
         public static int StepDistance(IHasPitch h1, Pitch p2)

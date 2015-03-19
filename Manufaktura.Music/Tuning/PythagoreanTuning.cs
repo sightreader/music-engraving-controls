@@ -13,10 +13,10 @@ namespace Manufaktura.Music.Tuning
             get { return new TunedInterval(Interval.PerfectFifth, Proportion.Sesquialtera); }
         }
 
-        public override int GeneratorPassesToFormOctave
+        public PythagoreanTuning(Pitch startingPitch)
+            : base(startingPitch)
         {
-            get { return 12; }
-        }
 
+        }
     }
 }

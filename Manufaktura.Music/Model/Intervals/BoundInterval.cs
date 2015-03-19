@@ -23,5 +23,10 @@ namespace Manufaktura.Music.Model
             StartingPitch = pitch1;
             EndingPitch = pitch1.Translate(interval, translationMode);
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0}-{1} {2}", StartingPitch, EndingPitch, base.ToString());
+        }
     }
 }

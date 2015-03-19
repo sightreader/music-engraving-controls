@@ -15,7 +15,7 @@ namespace Manufaktura.Orm.UnitTests
         [TestMethod]
         public void TuningTest()
         {
-            var tuning = new PythagoreanTuning();
+            var tuning = new PythagoreanTuning(Pitch.C4);
             var comma = tuning.CommaBetweenLastIntervalAndPerfectOctave;
             
         }
