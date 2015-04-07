@@ -13,7 +13,7 @@ namespace Manufaktura.Music.Tuning
     /// </summary>
     public abstract class RegularTuningSystem : TuningSystem
     {
-        public abstract TunedInterval Generator { get; }
+        public abstract TunedInterval GetGenerator(int tuningIteration);
         public Pitch StartingPitch { get; protected set; }
 
         /// <summary>
@@ -32,17 +32,19 @@ namespace Manufaktura.Music.Tuning
             GenerateIntervals();
         }
 
-        private void GenerateIntervals()
+        protected virtual void GenerateIntervals()
         {
             var intervals = new List<double>();
 
             var currentProportion = new Proportion(1, 1);
             var currentPitch = StartingPitch;
             var endPitch = StartingPitch.OctaveUp();
+            var iteration = 0;
             do
             {
-                currentProportion = (currentProportion * Generator.IntervalProportion).Normalize();
-                currentPitch = currentPitch.Translate(Generator.Interval, Pitch.MidiPitchTranslationMode.Auto);
+                var generator = GetGenerator(iteration);
+                currentProportion = (currentProportion * generator.IntervalProportion).Normalize();
+                currentPitch = currentPitch.Translate(generator.Interval, Pitch.MidiPitchTranslationMode.Auto);
                 while (currentProportion > Proportion.Dupla)
                 {
                     currentProportion /= 2;
@@ -50,6 +52,7 @@ namespace Manufaktura.Music.Tuning
                 }
                 AllIntervalRatios[new BoundInterval(StartingPitch, currentPitch)] = currentProportion.Cents;
                 intervals.Add(currentProportion.Cents);
+                iteration++;
             }
             while (Math.Abs(currentPitch.MidiPitch - endPitch.MidiPitch) % 12 != 0);
             CommaBetweenLastIntervalAndPerfectOctave = intervals.Last();

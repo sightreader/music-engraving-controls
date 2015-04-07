@@ -8,9 +8,9 @@ namespace Manufaktura.Music.Tuning
 {
     public class PythagoreanTuning : RegularTuningSystem
     {
-        public override TunedInterval Generator
+        public override TunedInterval GetGenerator(int tuningIteration)
         {
-            get { return new TunedInterval(Interval.PerfectFifth, Proportion.Sesquialtera); }
+            return new TunedInterval(Interval.PerfectFifth, Proportion.Sesquialtera);
         }
 
         public PythagoreanTuning(Pitch startingPitch)

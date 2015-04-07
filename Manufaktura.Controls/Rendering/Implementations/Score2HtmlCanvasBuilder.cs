@@ -55,11 +55,18 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
                 stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", canvasName, Settings.Height.ToString(CultureInfo.InvariantCulture)));
                 stringBuilder.AppendLine("<script>");
+
+                if (Settings.InjectGoogleWebFontLoader)
+                {
+                    stringBuilder.Append(GetGoogleWebFontLoaderScript());
+                }
+
                 string scriptBody = @"(function() {
                         var canvas = document.getElementById('{0}'),
                         context = canvas.getContext('2d');
 
                         window.addEventListener('resize', resizeCanvas, false);
+                        window.setTimeout(resizeCanvas, 2000);
 
                         function resizeCanvas() {
                                 canvas.width = window.innerWidth;
@@ -76,6 +83,29 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 stringBuilder.AppendLine("</script></div>");
             }
             return stringBuilder.ToString();
+        }
+
+        private string GetGoogleWebFontLoaderScript()
+        {
+            var sb = new StringBuilder();
+
+            sb.Append(@"(function() {
+                       var wf = document.createElement('script');
+                       wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                           '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                       wf.type = 'text/javascript';
+                       wf.async = 'true';
+                       var s = document.getElementsByTagName('script')[0];
+                       s.parentNode.insertBefore(wf, s);
+                     })();");
+            var families = string.Join(",", Settings.Fonts.Select(font => string.Format("'{0}'", font.Value.Name)));
+            var script = string.Format(@"WebFont.load(@@@
+                            custom: @@@
+                              families: [{0}]
+                            ***
+                          ***);", families);
+            sb.Append(script.Replace("***", "}").Replace("@@@", "{"));
+            return sb.ToString();
         }
 
         private string GetFormatFromUri(string uri)

@@ -15,6 +15,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public Dictionary<MusicFontStyles, HtmlFontInfo> Fonts { get; private set; }
         public HtmlRenderSurface RenderSurface { get; set; }
         public double Height { get; set; }
+        public bool InjectGoogleWebFontLoader { get; set; }
 
         public HtmlScoreRendererSettings()
         {
@@ -22,6 +23,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             RenderSurface = HtmlRenderSurface.Canvas;
             Height = 150;
             IsPanoramaMode = true;
+            InjectGoogleWebFontLoader = false;
         }
 
         public enum HtmlRenderSurface

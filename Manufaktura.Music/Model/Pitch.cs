@@ -242,7 +242,7 @@ namespace Manufaktura.Music.Model
 
         public static int StepDistance(Pitch p1, Pitch p2)
         {
-            return (p2.ToStepNumber() - 1 + p2.Octave * 7) - (p1.ToStepNumber() -1 + p1.Octave * 7);
+            return (p1.ToStepNumber() - 1 + p1.Octave * 7) - (p2.ToStepNumber() -1 + p2.Octave * 7);    //Kolejność p1 - p2 jest dobra. Ze względów historycznych :)
         }
 
         public static int StepDistance(IHasPitch h1, Pitch p2)
