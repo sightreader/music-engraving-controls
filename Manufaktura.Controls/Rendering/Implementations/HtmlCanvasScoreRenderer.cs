@@ -27,8 +27,22 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
             if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
-            double locationY = fontStyle == MusicFontStyles.MusicFont ? location.Y + 25d : location.Y + 14d;
             double locationX = location.X + 3d;
+            double locationY;
+            switch (fontStyle)
+            {
+                case MusicFontStyles.MusicFont:
+                    locationY = location.Y + 25d;
+                    break;
+                case MusicFontStyles.GraceNoteFont:
+                    locationY = location.Y + 17.5d;
+                    locationX += 0.7d;
+                    break;
+                default:
+                    locationY = location.Y + 14d;
+                    break;
+            }
+            
             Canvas.AppendLine(string.Format("context.font = '{0}pt {1}';", TypedSettings.Fonts[fontStyle].Size.ToString(CultureInfo.InvariantCulture), TypedSettings.Fonts[fontStyle].Name));
             Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, locationX.ToString(CultureInfo.InvariantCulture), locationY.ToString(CultureInfo.InvariantCulture)));
         }
