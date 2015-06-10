@@ -13,7 +13,7 @@ namespace Manufaktura.Controls.Rendering
     public abstract class ScoreRendererBase
     {
         public ScoreRendererState State { get; protected set; }
-        public ScoreRendererSettings Settings { get; protected set; }
+        public ScoreRendererSettings Settings { get; internal set; }
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
         public double TextBlockHeight { get; protected set; }
 

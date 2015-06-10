@@ -11,7 +11,7 @@ namespace Manufaktura.Controls.Rendering
 {
     public abstract class ScoreRenderer<TCanvas> : ScoreRendererBase
     {
-        public TCanvas Canvas { get; protected set; }
+        public TCanvas Canvas { get; internal set; }
 
         public List<Exception> Exceptions { get; protected set; }
 

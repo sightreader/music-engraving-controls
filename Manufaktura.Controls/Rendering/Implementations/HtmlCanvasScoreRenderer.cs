@@ -10,9 +10,11 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class HtmlCanvasScoreRenderer : ScoreRenderer<StringBuilder>
+    public class HtmlCanvasScoreRenderer : HtmlScoreRenderer
     {
-        public HtmlScoreRendererSettings TypedSettings { get { return Settings as HtmlScoreRendererSettings; } }
+        public HtmlCanvasScoreRenderer() : base(null)
+        {
+        }
 
         public HtmlCanvasScoreRenderer(StringBuilder stringBuilder, string canvasName, HtmlScoreRendererSettings settings)
             : base(stringBuilder)

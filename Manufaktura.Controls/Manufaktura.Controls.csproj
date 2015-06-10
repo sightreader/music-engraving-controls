@@ -101,8 +101,12 @@
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />
+    <Compile Include="Rendering\Implementations\HtmlScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRendererSettings.cs" />
+    <Compile Include="Rendering\Implementations\HtmlSvgScoreRenderer.cs" />
+    <Compile Include="Rendering\Implementations\Score2HtmlBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlCanvasBuilder.cs" />
+    <Compile Include="Rendering\Implementations\Score2HtmlSvgBuilder.cs" />
     <Compile Include="Rendering\ScoreRendererSettings.cs" />
     <Compile Include="Parser\MusicXml\Strategies\SoundParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\TimeParsingStrategy.cs" />

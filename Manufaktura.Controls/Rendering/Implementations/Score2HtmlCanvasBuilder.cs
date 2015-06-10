@@ -7,12 +7,8 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class Score2HtmlCanvasBuilder
+    public class Score2HtmlCanvasBuilder : Score2HtmlBuilder<HtmlCanvasScoreRenderer>
     {
-        public IEnumerable<Score> Scores { get; protected set; }
-        public string CanvasPrefix { get; private set; }
-        public HtmlScoreRendererSettings Settings { get; protected set; }
-
         public Score2HtmlCanvasBuilder(IEnumerable<Score> scores, string canvasPrefix, HtmlScoreRendererSettings settings)
         {
             if (string.IsNullOrWhiteSpace(canvasPrefix)) throw new ArgumentNullException("canvasPrefix");
@@ -26,10 +22,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
         }
 
-        public string Build()
+        public override void BuildFontInformation(StringBuilder stringBuilder)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("<style type=\"text/css\">");
             Dictionary<string, string> fontFaceDictionary = new Dictionary<string, string>();
             foreach (var font in Settings.Fonts.Values)
             {
@@ -42,30 +36,29 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 stringBuilder.AppendLine(string.Format("src: url('{0}') format('{1}');", fontFace.Value, GetFormatFromUri(fontFace.Value)));
                 stringBuilder.AppendLine("}");
             }
+        }
+
+        public override void BuildScoreListHeaderStart(StringBuilder stringBuilder)
+        {
+            stringBuilder.AppendLine("<style type=\"text/css\">");
+        }
+
+        public override void BuildScoreListHeaderEnd(StringBuilder stringBuilder)
+        {
             stringBuilder.AppendLine("</style>");
+        }
 
-            int count = Scores.Count();
-            for (int i = 0; i < count; i++)
-            {
-                string canvasName = count == 1 ? CanvasPrefix : string.Format("{0}{1}", CanvasPrefix, i);
+        public override void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName)
+        {
+            stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", scoreElementName, Settings.Height.ToString(CultureInfo.InvariantCulture)));
+            stringBuilder.AppendLine("<script>");
 
-                StringBuilder scoreStringBuilder = new StringBuilder();
-                HtmlCanvasScoreRenderer renderer = new HtmlCanvasScoreRenderer(scoreStringBuilder, canvasName, Settings);
-                renderer.Render(Scores.ElementAt(i));
-
-                stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", canvasName, Settings.Height.ToString(CultureInfo.InvariantCulture)));
-                stringBuilder.AppendLine("<script>");
-
-                if (Settings.InjectGoogleWebFontLoader)
-                {
-                    stringBuilder.Append(GetGoogleWebFontLoaderScript());
-                }
-
-                string scriptBody = @"(function() {
+            string scriptBody = @"(function() {
                         var canvas = document.getElementById('{0}'),
                         context = canvas.getContext('2d');
 
                         window.addEventListener('resize', resizeCanvas, false);
+                        window.setTimeout(resizeCanvas, 200);
                         window.setTimeout(resizeCanvas, 2000);
 
                         function resizeCanvas() {
@@ -78,35 +71,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
                                 {1}
                         }
                     })();".Replace("{", "@@@").Replace("}", "***").Replace("@@@0***", "{0}").Replace("@@@1***", "{1}");
-                scriptBody = string.Format(scriptBody, canvasName, scoreStringBuilder.ToString()).Replace("@@@", "{").Replace("***", "}");
-                stringBuilder.AppendLine(scriptBody);
-                stringBuilder.AppendLine("</script></div>");
-            }
-            return stringBuilder.ToString();
+            scriptBody = string.Format(scriptBody, scoreElementName, scoreStringBuilder.ToString()).Replace("@@@", "{").Replace("***", "}");
+            stringBuilder.AppendLine(scriptBody);
+            stringBuilder.AppendLine("</script></div>");
         }
 
-        private string GetGoogleWebFontLoaderScript()
-        {
-            var sb = new StringBuilder();
-
-            sb.Append(@"(function() {
-                       var wf = document.createElement('script');
-                       wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                           '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                       wf.type = 'text/javascript';
-                       wf.async = 'true';
-                       var s = document.getElementsByTagName('script')[0];
-                       s.parentNode.insertBefore(wf, s);
-                     })();");
-            var families = string.Join(",", Settings.Fonts.Select(font => string.Format("'{0}'", font.Value.Name)));
-            var script = string.Format(@"WebFont.load(@@@
-                            custom: @@@
-                              families: [{0}]
-                            ***
-                          ***);", families);
-            sb.Append(script.Replace("***", "}").Replace("@@@", "{"));
-            return sb.ToString();
-        }
 
         private string GetFormatFromUri(string uri)
         {
@@ -115,5 +84,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             if (uri.EndsWith("woff")) return "woff";
             return null;
         }
+
+
     }
 }
