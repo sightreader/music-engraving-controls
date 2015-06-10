@@ -34,13 +34,17 @@ namespace Manufaktura.Controls.AspNetMvc
 
         private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, string musicXml, HtmlScoreRendererSettings settings)
         {
-            if (settings.RenderSurface == HtmlScoreRendererSettings.HtmlRenderSurface.Svg)
-                throw new NotImplementedException("Svg support is currently not implemented.");
 
             MusicXmlParser parser = new MusicXmlParser();
             Score score = parser.Parse(XDocument.Parse(musicXml));
 
-            Score2HtmlCanvasBuilder builder = new Score2HtmlCanvasBuilder(score, string.Format("scoreCanvas{0}", canvasIdCount), settings);          
+            IScore2HtmlBuilder builder;
+            if (settings.RenderSurface == HtmlScoreRendererSettings.HtmlRenderSurface.Canvas)
+                builder = new Score2HtmlCanvasBuilder(score, string.Format("scoreCanvas{0}", canvasIdCount), settings);
+            else if (settings.RenderSurface == HtmlScoreRendererSettings.HtmlRenderSurface.Svg)
+                builder = new Score2HtmlSvgBuilder(score, string.Format("scoreCanvas{0}", canvasIdCount), settings);
+            else throw new NotImplementedException("Unsupported rendering engine.");
+              
             string html = builder.Build();
 
             canvasIdCount++;

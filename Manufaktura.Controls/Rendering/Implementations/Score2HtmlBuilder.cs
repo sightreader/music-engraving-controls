@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public abstract class Score2HtmlBuilder<TRenderer> where TRenderer : HtmlScoreRenderer, new()
+    public abstract class Score2HtmlBuilder<TRenderer> : IScore2HtmlBuilder where TRenderer : HtmlScoreRenderer, new()
     {
         public IEnumerable<Score> Scores { get; protected set; }
         public string CanvasPrefix { get; protected set; }
