@@ -15,6 +15,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public Dictionary<MusicFontStyles, HtmlFontInfo> Fonts { get; private set; }
         public HtmlRenderSurface RenderSurface { get; set; }
         public double Height { get; set; }
+        public double MusicalFontShiftX { get; set; }
+        public double MusicalFontShiftY { get; set; }
 
         public HtmlScoreRendererSettings()
         {

@@ -27,19 +27,19 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
             if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
-            double locationX = location.X + 3.5d;
+            double locationX = location.X + 3.5d + TypedSettings.MusicalFontShiftX;
             double locationY;
             switch (fontStyle)
             {
                 case MusicFontStyles.MusicFont:
-                    locationY = location.Y + 25d;
+                    locationY = location.Y + 25d + TypedSettings.MusicalFontShiftY;
                     break;
                 case MusicFontStyles.GraceNoteFont:
-                    locationY = location.Y + 17.5d;
+                    locationY = location.Y + 17.5d + TypedSettings.MusicalFontShiftY;
                     locationX += 0.7d;
                     break;
                 default:
-                    locationY = location.Y + 13d;
+                    locationY = location.Y + 13d + TypedSettings.MusicalFontShiftY;
                     break;
             }
 
