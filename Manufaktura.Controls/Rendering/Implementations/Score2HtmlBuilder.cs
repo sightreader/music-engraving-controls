@@ -6,42 +6,44 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public abstract class Score2HtmlBuilder<TRenderer> : IScore2HtmlBuilder where TRenderer : HtmlScoreRenderer, new()
+    public abstract class Score2HtmlBuilder<TRenderer, TCanvas> : IScore2HtmlBuilder where TRenderer : HtmlScoreRenderer<TCanvas>, new()
     {
         public IEnumerable<Score> Scores { get; protected set; }
         public string CanvasPrefix { get; protected set; }
         public HtmlScoreRendererSettings Settings { get; protected set; }
 
-        public abstract void BuildFontInformation(StringBuilder stringBuilder);
-        public abstract void BuildScoreListHeaderStart(StringBuilder sbstringBuilder);
-        public abstract void BuildScoreListHeaderEnd(StringBuilder stringBuilder);
-        public abstract void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName);
+        public abstract void BuildFontInformation(TCanvas canvas);
+        public abstract void BuildScoreListHeaderStart(TCanvas canvas);
+        public abstract void BuildScoreListHeaderEnd(TCanvas canvas);
+        public abstract void BuildScoreElementWrapper(TCanvas canvas, TCanvas scoreCanvas, Score score, string scoreElementName);
+        public abstract string GetHtmlStringFromCanvas(TCanvas canvas);
+        public abstract TCanvas CreateCanvas();
 
         public string Build()
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            BuildScoreListHeaderStart(stringBuilder);
-            BuildFontInformation(stringBuilder);
-            BuildScoreListHeaderEnd(stringBuilder);
+            TCanvas canvas = CreateCanvas();
+            BuildScoreListHeaderStart(canvas);
+            BuildFontInformation(canvas);
+            BuildScoreListHeaderEnd(canvas);
 
             int count = Scores.Count();
             for (int i = 0; i < count; i++)
             {
                 string canvasName = count == 1 ? CanvasPrefix : string.Format("{0}{1}", CanvasPrefix, i);
 
-                StringBuilder scoreStringBuilder = new StringBuilder();
+                TCanvas scoreCanvas = CreateCanvas();
                 var renderer = new TRenderer()
                 {
-                    Canvas = scoreStringBuilder,
+                    Canvas = scoreCanvas,
                     ScoreElementName = canvasName,
                     Settings = this.Settings
                 };
                 var score = Scores.ElementAt(i);
                 renderer.Render(score);
 
-                BuildScoreElementWrapper(stringBuilder, scoreStringBuilder, score, canvasName);
+                BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName);
             }
-            return stringBuilder.ToString();
+            return GetHtmlStringFromCanvas(canvas);
         }
     }
 }

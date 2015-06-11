@@ -5,16 +5,14 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public abstract class HtmlScoreRenderer : ScoreRenderer<StringBuilder>
+    public abstract class HtmlScoreRenderer<TCanvas> : ScoreRenderer<TCanvas>
     {
         public HtmlScoreRendererSettings TypedSettings { get { return Settings as HtmlScoreRendererSettings; } }
         public string ScoreElementName { get; set; }
-        protected HtmlScoreRenderer(StringBuilder sb)
-            : base(sb)
+        protected HtmlScoreRenderer(TCanvas canvas)
+            : base(canvas)
         {
         }
 
-
-        
     }
 }

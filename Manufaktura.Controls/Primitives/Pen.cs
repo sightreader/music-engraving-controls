@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Manufaktura.Music.Extensions;
 
 namespace Manufaktura.Controls.Primitives
 {
@@ -11,7 +12,8 @@ namespace Manufaktura.Controls.Primitives
         public Color Color { get; set; }
         public double ZIndex { get; set; }
 
-        public Pen(Color color, double thickness, double zIndex) : this()
+        public Pen(Color color, double thickness, double zIndex)
+            : this()
         {
             Thickness = thickness;
             Color = color;
@@ -21,5 +23,13 @@ namespace Manufaktura.Controls.Primitives
         public Pen(Color color, double thickness) : this(color, thickness, 0) { }
 
         public Pen(Color color) : this(color, 1, 0) { }
+
+        public string ToCss()
+        {
+            return string.Format("stroke:rgb({0},{1},{2});stroke-width:{3}", Color.R.ToStringInvariant(),
+                Color.G.ToStringInvariant(),
+                Color.B.ToStringInvariant(),
+                Thickness.ToStringInvariant());
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class HtmlCanvasScoreRenderer : HtmlScoreRenderer
+    public class HtmlCanvasScoreRenderer : HtmlScoreRenderer<StringBuilder>
     {
         public HtmlCanvasScoreRenderer() : base(null)
         {

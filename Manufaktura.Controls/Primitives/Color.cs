@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Manufaktura.Music.Extensions;
 
 namespace Manufaktura.Controls.Primitives
 {
@@ -21,6 +22,14 @@ namespace Manufaktura.Controls.Primitives
             R = r;
             G = g;
             B = b;
+        }
+
+        public string ToCss()
+        {
+            return string.Format("rgb({0},{1},{2})", 
+                R.ToStringInvariant(),
+                G.ToStringInvariant(),
+                B.ToStringInvariant());
         }
 
         

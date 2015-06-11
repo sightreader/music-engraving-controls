@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class Score2HtmlCanvasBuilder : Score2HtmlBuilder<HtmlCanvasScoreRenderer>
+    public class Score2HtmlCanvasBuilder : Score2HtmlBuilder<HtmlCanvasScoreRenderer, StringBuilder>
     {
         public Score2HtmlCanvasBuilder(IEnumerable<Score> scores, string canvasPrefix, HtmlScoreRendererSettings settings)
         {
@@ -86,5 +86,15 @@ namespace Manufaktura.Controls.Rendering.Implementations
         }
 
 
+
+        public override string GetHtmlStringFromCanvas(StringBuilder canvas)
+        {
+            return canvas.ToString();
+        }
+
+        public override StringBuilder CreateCanvas()
+        {
+            return new StringBuilder();
+        }
     }
 }
