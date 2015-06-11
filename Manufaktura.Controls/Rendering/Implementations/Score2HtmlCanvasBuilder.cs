@@ -24,6 +24,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void BuildFontInformation(StringBuilder stringBuilder)
         {
+            stringBuilder.AppendLine("<style type=\"text/css\">");
+
             Dictionary<string, string> fontFaceDictionary = new Dictionary<string, string>();
             foreach (var font in Settings.Fonts.Values)
             {
@@ -33,18 +35,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
             {
                 stringBuilder.AppendLine("@font-face {");
                 stringBuilder.AppendLine(string.Format("font-family: '{0}';", fontFace.Key));
-                stringBuilder.AppendLine(string.Format("src: url('{0}') format('{1}');", fontFace.Value, GetFormatFromUri(fontFace.Value)));
+                stringBuilder.AppendLine(string.Format("src: url('{0}') format('{1}');", fontFace.Value, GetFontFormatFromUri(fontFace.Value)));
                 stringBuilder.AppendLine("}");
             }
-        }
 
-        public override void BuildScoreListHeaderStart(StringBuilder stringBuilder)
-        {
-            stringBuilder.AppendLine("<style type=\"text/css\">");
-        }
-
-        public override void BuildScoreListHeaderEnd(StringBuilder stringBuilder)
-        {
             stringBuilder.AppendLine("</style>");
         }
 
@@ -75,17 +69,6 @@ namespace Manufaktura.Controls.Rendering.Implementations
             stringBuilder.AppendLine(scriptBody);
             stringBuilder.AppendLine("</script></div>");
         }
-
-
-        private string GetFormatFromUri(string uri)
-        {
-            uri = uri.ToLower();
-            if (uri.EndsWith("ttf")) return "truetype";
-            if (uri.EndsWith("woff")) return "woff";
-            return null;
-        }
-
-
 
         public override string GetHtmlStringFromCanvas(StringBuilder canvas)
         {

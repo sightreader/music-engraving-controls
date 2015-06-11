@@ -13,8 +13,6 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public HtmlScoreRendererSettings Settings { get; protected set; }
 
         public abstract void BuildFontInformation(TCanvas canvas);
-        public abstract void BuildScoreListHeaderStart(TCanvas canvas);
-        public abstract void BuildScoreListHeaderEnd(TCanvas canvas);
         public abstract void BuildScoreElementWrapper(TCanvas canvas, TCanvas scoreCanvas, Score score, string scoreElementName);
         public abstract string GetHtmlStringFromCanvas(TCanvas canvas);
         public abstract TCanvas CreateCanvas();
@@ -22,9 +20,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public string Build()
         {
             TCanvas canvas = CreateCanvas();
-            BuildScoreListHeaderStart(canvas);
             BuildFontInformation(canvas);
-            BuildScoreListHeaderEnd(canvas);
 
             int count = Scores.Count();
             for (int i = 0; i < count; i++)
@@ -44,6 +40,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName);
             }
             return GetHtmlStringFromCanvas(canvas);
+        }
+
+        protected string GetFontFormatFromUri(string uri)
+        {
+            uri = uri.ToLower();
+            if (uri.EndsWith("ttf")) return "truetype";
+            if (uri.EndsWith("woff")) return "woff";
+            return null;
         }
     }
 }

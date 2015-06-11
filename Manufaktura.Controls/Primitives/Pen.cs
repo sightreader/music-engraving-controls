@@ -26,7 +26,7 @@ namespace Manufaktura.Controls.Primitives
 
         public string ToCss()
         {
-            return string.Format("stroke:rgb({0},{1},{2});stroke-width:{3}", Color.R.ToStringInvariant(),
+            return string.Format("fill:none;stroke:rgb({0},{1},{2});stroke-width:{3}", Color.R.ToStringInvariant(),
                 Color.G.ToStringInvariant(),
                 Color.B.ToStringInvariant(),
                 Thickness.ToStringInvariant());
