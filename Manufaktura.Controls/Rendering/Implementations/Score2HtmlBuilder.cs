@@ -12,6 +12,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public string CanvasPrefix { get; protected set; }
         public HtmlScoreRendererSettings Settings { get; protected set; }
 
+        private readonly FontFormat[] fontFormats = new FontFormat[] {
+            new FontFormat("ttf", "truetype", false),
+            new FontFormat("woff", "woff", false),
+            new FontFormat("woff2", "woff2", false),
+            new FontFormat("otf", "opentype", false),
+            new FontFormat("svg", "svg", true)
+        };
+
         public abstract void BuildFontInformation(TCanvas canvas);
         public abstract void BuildScoreElementWrapper(TCanvas canvas, TCanvas scoreCanvas, Score score, string scoreElementName);
         public abstract string GetHtmlStringFromCanvas(TCanvas canvas);
@@ -42,12 +50,52 @@ namespace Manufaktura.Controls.Rendering.Implementations
             return GetHtmlStringFromCanvas(canvas);
         }
 
-        protected string GetFontFormatFromUri(string uri)
+        protected FontFormat GetFontFormatFromUri(string uri)
         {
-            if (uri.EndsWith("ttf", StringComparison.OrdinalIgnoreCase)) return "truetype";
-            if (uri.EndsWith("woff", StringComparison.OrdinalIgnoreCase)) return "woff";
-            if (uri.EndsWith("svg", StringComparison.OrdinalIgnoreCase)) return "svg";
-            return null;
+            return fontFormats.FirstOrDefault(ff => uri.EndsWith(ff.Extension, StringComparison.OrdinalIgnoreCase));
+        }
+
+        protected string GetFontFaceDeclaration()
+        {
+            var stringBuilder = new StringBuilder();
+            Dictionary<string, List<string>> fontFaceDictionary = new Dictionary<string, List<string>>();
+            foreach (var font in Settings.Fonts.Values)
+            {
+                if (!fontFaceDictionary.ContainsKey(font.Name)) fontFaceDictionary.Add(font.Name, font.Uris);
+            }
+            foreach (var fontFace in fontFaceDictionary)
+            {
+                stringBuilder.AppendLine("@font-face {");
+                stringBuilder.AppendLine(string.Format("font-family: '{0}';", fontFace.Key));
+                stringBuilder.Append("src: ");
+                bool first = true;
+                foreach (var uri in fontFace.Value)
+                {
+                    if (!first) stringBuilder.AppendLine(", ");
+                    var fontFormat = GetFontFormatFromUri(uri);
+                    stringBuilder.Append(string.Format("url('{0}{1}') format('{2}') ",
+                        uri,
+                        fontFormat.CanHaveMultipleFonts ? "#" + fontFace.Key : "",
+                        fontFormat.FormatName));
+                    first = false;
+                }
+                stringBuilder.AppendLine("}");
+            }
+            return stringBuilder.ToString();
+        }
+
+        public class FontFormat
+        {
+            public string Extension { get; set; }
+            public string FormatName { get; set; }
+            public bool CanHaveMultipleFonts { get; set; }
+
+            public FontFormat(string extension, string name, bool canHaveMultipleFonts)
+            {
+                Extension = extension;
+                FormatName = name;
+                CanHaveMultipleFonts = canHaveMultipleFonts;
+            }
         }
     }
 }

@@ -25,22 +25,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void BuildFontInformation(XElement canvas)
         {
-            var stringBuilder = new StringBuilder();
-            Dictionary<string, string> fontFaceDictionary = new Dictionary<string, string>();
-            foreach (var font in Settings.Fonts.Values)
-            {
-                if (!fontFaceDictionary.ContainsKey(font.Name)) fontFaceDictionary.Add(font.Name, font.Uri);
-            }
-            foreach (var fontFace in fontFaceDictionary)
-            {
-                stringBuilder.AppendLine("@font-face {");
-                stringBuilder.AppendLine(string.Format("font-family: '{0}';", fontFace.Key));
-                stringBuilder.AppendLine(string.Format("src: url('{0}') format('{1}');", fontFace.Value, GetFontFormatFromUri(fontFace.Value)));
-                stringBuilder.AppendLine("}");
-            }
-
             var element = new XElement("style", new XAttribute("type", "text/css"));
-            element.Value = stringBuilder.ToString();
+            element.Value = GetFontFaceDeclaration();
             canvas.Add(element);
         }
 

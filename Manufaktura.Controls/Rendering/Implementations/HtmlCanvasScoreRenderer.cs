@@ -72,14 +72,15 @@ namespace Manufaktura.Controls.Rendering.Implementations
     public struct HtmlFontInfo
     {
         public string Name { get; private set; }
-        public string Uri { get; private set; }
+        public List<string> Uris { get; private set; }
         public double Size { get; private set; }
 
-        public HtmlFontInfo(string name, string uri, double size)
+        public HtmlFontInfo(string name, double size, params string[] uris)
             : this()
         {
+            Uris = new List<string>();
             Name = name;
-            Uri = uri;
+            Uris.AddRange(uris);
             Size = size;
         }
 
