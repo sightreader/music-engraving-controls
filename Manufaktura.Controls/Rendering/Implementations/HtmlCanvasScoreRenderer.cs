@@ -31,24 +31,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
             if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
-            double locationX = location.X + 3d + TypedSettings.MusicalFontShiftX;
-            double locationY;
-            switch (fontStyle)
-            {
-                case MusicFontStyles.MusicFont:
-                    locationY = location.Y + 25d + TypedSettings.MusicalFontShiftY;
-                    break;
-                case MusicFontStyles.GraceNoteFont:
-                    locationY = location.Y + 17.5d + TypedSettings.MusicalFontShiftY;
-                    locationX += 0.7d;
-                    break;
-                default:
-                    locationY = location.Y + 14d + TypedSettings.MusicalFontShiftY;
-                    break;
-            }
+            location = TranslateTextLocation(location, fontStyle);
 
             Canvas.AppendLine(string.Format("context.font = '{0}pt {1}';", TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(), TypedSettings.Fonts[fontStyle].Name));
-            Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, locationX.ToStringInvariant(), locationY.ToStringInvariant()));
+            Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, location.X.ToStringInvariant(), location.Y.ToStringInvariant()));
         }
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, Model.MusicalSymbol owner)

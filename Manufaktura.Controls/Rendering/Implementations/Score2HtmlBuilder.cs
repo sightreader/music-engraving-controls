@@ -44,9 +44,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         protected string GetFontFormatFromUri(string uri)
         {
-            uri = uri.ToLower();
-            if (uri.EndsWith("ttf")) return "truetype";
-            if (uri.EndsWith("woff")) return "woff";
+            if (uri.EndsWith("ttf", StringComparison.OrdinalIgnoreCase)) return "truetype";
+            if (uri.EndsWith("woff", StringComparison.OrdinalIgnoreCase)) return "woff";
+            if (uri.EndsWith("svg", StringComparison.OrdinalIgnoreCase)) return "svg";
             return null;
         }
     }

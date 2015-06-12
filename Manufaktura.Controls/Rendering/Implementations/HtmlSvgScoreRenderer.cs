@@ -27,26 +27,12 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
             if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
-            double locationX = location.X + 3.5d + TypedSettings.MusicalFontShiftX;
-            double locationY;
-            switch (fontStyle)
-            {
-                case MusicFontStyles.MusicFont:
-                    locationY = location.Y + 25d + TypedSettings.MusicalFontShiftY;
-                    break;
-                case MusicFontStyles.GraceNoteFont:
-                    locationY = location.Y + 17.5d + TypedSettings.MusicalFontShiftY;
-                    locationX += 0.7d;
-                    break;
-                default:
-                    locationY = location.Y + 13d + TypedSettings.MusicalFontShiftY;
-                    break;
-            }
+            location = TranslateTextLocation(location, fontStyle);
 
             var element = new XElement("text",
-                new XAttribute("x", locationX.ToStringInvariant()),
-                new XAttribute("y", locationY.ToStringInvariant()),
-                new XAttribute("style", string.Format("font-color:{0}; font-size:{1}; font-family: {2};",
+                new XAttribute("x", location.X.ToStringInvariant()),
+                new XAttribute("y", location.Y.ToStringInvariant()),
+                new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
                     color.ToCss(), 
                     TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
                     TypedSettings.Fonts[fontStyle].Name)));
@@ -74,7 +60,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                     rect.Y.ToStringInvariant(),
                     rect.Height.ToStringInvariant(),
                     rect.Width.ToStringInvariant(),
-                    startAngle.ToStringInvariant(),
+                    sweepAngle.ToStringInvariant(),
                     0,
                     1,
                     (rect.X + rect.Width).ToStringInvariant(),
