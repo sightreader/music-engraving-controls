@@ -15,5 +15,6 @@ namespace Manufaktura.Controls.Primitives
             this.X = x;
             this.Y = y;
         }
+
     }
 }

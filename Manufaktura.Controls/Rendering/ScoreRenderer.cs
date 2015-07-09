@@ -44,7 +44,7 @@ namespace Manufaktura.Controls.Rendering
             if (clef == null) return;
 
             State.CurrentClef = clef;
-            State.CurrentClefPositionY = State.LinePositions[State.CurrentSystem][4] - ((clef.Line - 1) * Settings.LineSpacing);
+            State.CurrentClefPositionY = State.LinePositions[State.CurrentSystem][State.CurrentLine][4] - ((clef.Line - 1) * Settings.LineSpacing);
             State.CurrentClefTextBlockPositionY = State.CurrentClefPositionY - TextBlockHeight;
             State.CurrentClef = clef;
             DrawString(State.CurrentClef.MusicalCharacter, MusicFontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, clef);
@@ -165,8 +165,11 @@ namespace Manufaktura.Controls.Rendering
             //Draw all lines:
             for (int system = 1; system <= State.CurrentSystem; system++)
             {
-                StaffRenderStrategy.Draw(staff, this, State.LinePositions[system], staff.ActualSystemWidths[system - 1]);
+                StaffRenderStrategy.Draw(staff, this, State.LinePositions[system][State.CurrentLine], staff.ActualSystemWidths[system - 1]);
             }
+            BreakToNextStaff();
         }
+
+        
     }
 }

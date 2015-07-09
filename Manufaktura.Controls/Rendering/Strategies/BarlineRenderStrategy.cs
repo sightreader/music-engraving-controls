@@ -24,8 +24,8 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 16;
                 if (element.Location == HorizontalPlacement.Right) renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
-                renderer.DrawLine(new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[renderer.State.CurrentSystem][4]),
-                                  new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[renderer.State.CurrentSystem][0]), element);
+                renderer.DrawLine(new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][4]),
+                                  new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0]), element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
             }
             else if (element.RepeatSign == RepeatSignType.Forward)
@@ -37,7 +37,7 @@ namespace Manufaktura.Controls.Rendering
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 2;
                 if (element.Location == HorizontalPlacement.Right)  renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawString(renderer.State.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, renderer.State.CursorPositionX,
-                    renderer.State.LinePositions[renderer.State.CurrentSystem][0] - 15.5f, element);
+                    renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 15.5f, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 20;
             }
             else if (element.RepeatSign == RepeatSignType.Backward)
@@ -45,7 +45,7 @@ namespace Manufaktura.Controls.Rendering
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX -= 2;
                 if (element.Location == HorizontalPlacement.Right) renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawString(renderer.State.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, renderer.State.CursorPositionX - 17.5,
-                    renderer.State.LinePositions[renderer.State.CurrentSystem][0] - 15, element);
+                    renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 15, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
             }
             renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;

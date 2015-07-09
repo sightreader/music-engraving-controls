@@ -1,20 +1,21 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
     public abstract class ScoreRendererBase
     {
-        public ScoreRendererState State { get; protected set; }
         public ScoreRendererSettings Settings { get; internal set; }
+
+        public ScoreRendererState State { get; protected set; }
+
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
+
         public double TextBlockHeight { get; protected set; }
 
         protected ScoreRendererBase()
@@ -26,10 +27,72 @@ namespace Manufaktura.Controls.Rendering
             TextBlockHeight = 25;
         }
 
-        public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
+        public void DrawArc(Rectangle rect, double startAngle, double sweepAngle, MusicalSymbol owner)
         {
-            return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
+            DrawArc(rect, startAngle, sweepAngle, new Pen(Settings.DefaultColor, 1), owner);
         }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
+        /// not draw anything at all, draw in transparent color, etc.
+        /// </remarks>
+        /// <param name="rect"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="sweepAngle"></param>
+        /// <param name="pen"></param>
+        /// <param name="owner"></param>
+        public abstract void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner);
+
+        public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, MusicalSymbol owner)
+        {
+            DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), new Pen(Settings.DefaultColor, 1), owner);
+        }
+
+        public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, Pen pen, MusicalSymbol owner)
+        {
+            DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), pen, owner);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
+        /// not draw anything at all, draw in transparent color, etc.
+        /// </remarks>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <param name="p3"></param>
+        /// <param name="p4"></param>
+        /// <param name="pen"></param>
+        /// <param name="owner"></param>
+        public abstract void DrawBezier(Point p1, Point p2, Point p3, Point p4, Pen pen, MusicalSymbol owner);
+
+        public void DrawLine(double startX, double startY, double endX, double endY, MusicalSymbol owner)
+        {
+            DrawLine(new Point(startX, startY), new Point(endX, endY), new Pen(Settings.DefaultColor, 1), owner);
+        }
+
+        public void DrawLine(Point startPoint, Point endPoint, MusicalSymbol owner)
+        {
+            DrawLine(startPoint, endPoint, new Pen(Settings.DefaultColor, 1), owner);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
+        /// not draw anything at all, draw in transparent color, etc.
+        /// </remarks>
+        /// <param name="startPoint"></param>
+        /// <param name="endPoint"></param>
+        /// <param name="pen"></param>
+        /// <param name="owner"></param>
+        public abstract void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner);
 
         /// <summary>
         /// Draws text (i.e. note heads, lyrics, articulation symbols) in default color in proper location with proper fontStyle.
@@ -77,70 +140,48 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner">Owning MusicalSymbol</param>
         public abstract void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
 
-        public void DrawLine(double startX, double startY, double endX, double endY, MusicalSymbol owner)
+        public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
         {
-            DrawLine(new Point(startX, startY), new Point(endX, endY), new Pen(Settings.DefaultColor, 1), owner);
-        }
-        public void DrawLine(Point startPoint, Point endPoint, MusicalSymbol owner)
-        {
-            DrawLine(startPoint, endPoint, new Pen(Settings.DefaultColor, 1), owner);
+            return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
-        /// not draw anything at all, draw in transparent color, etc.
-        /// </remarks>
-        /// <param name="startPoint"></param>
-        /// <param name="endPoint"></param>
-        /// <param name="pen"></param>
-        /// <param name="owner"></param>
-        public abstract void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner);
-
-        public void DrawArc(Rectangle rect, double startAngle, double sweepAngle, MusicalSymbol owner)
+        internal void BreakToNextStaff(double distance = 0)
         {
-            DrawArc(rect, startAngle, sweepAngle, new Pen(Settings.DefaultColor, 1), owner);
+            if (State.CurrentScore.Staves.Count < 2)
+            {
+                return;
+            }
+
+            ReturnCarriage();
+            double shift = distance == 0 ? State.CurrentStaffHeight + Settings.LineSpacing : distance;
+            State.CurrentSystemShiftY += shift;
+
+            List<double> newLinePositions = new List<double>();
+            foreach (var position in State.LinePositions[State.CurrentSystem][State.CurrentLine]) newLinePositions.Add(position + shift);
+            State.LinePositions[State.CurrentSystem].Add(State.CurrentLine, newLinePositions.ToArray());
+            State.LastMeasurePositionX = 0;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
-        /// not draw anything at all, draw in transparent color, etc.
-        /// </remarks>
-        /// <param name="rect"></param>
-        /// <param name="startAngle"></param>
-        /// <param name="sweepAngle"></param>
-        /// <param name="pen"></param>
-        /// <param name="owner"></param>
-        public abstract void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner);
+        internal void BreakSystem(double distance = 0)
+        {
+            if (State.CurrentStaff.ActualSystemWidths.Count < State.CurrentSystem) State.CurrentStaff.ActualSystemWidths.Add(0);
+            State.CurrentStaff.ActualSystemWidths[State.CurrentSystem - 1] = State.CursorPositionX;
+            ReturnCarriage();
 
-        public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, MusicalSymbol owner)
-        {
-            DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), new Pen(Settings.DefaultColor, 1), owner);
-        }
-        public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, Pen pen, MusicalSymbol owner)
-        {
-            DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), pen, owner);
+            var currentStaffNumber = State.CurrentScore.Staves.IndexOf(State.CurrentStaff) + 1;
+            double shift = distance == 0 ? (State.CurrentStaffHeight + Settings.LineSpacing) * currentStaffNumber : distance;
+            State.CurrentSystemShiftY += shift;
+
+            List<double> newLinePositions = new List<double>();
+            foreach (var position in State.LinePositions[State.CurrentSystem][State.CurrentLine]) newLinePositions.Add(position + shift);
+            State.CurrentSystem++;
+            State.LinePositions[State.CurrentSystem].Add(State.CurrentLine, newLinePositions.ToArray());
+            State.LastMeasurePositionX = 0;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
-        /// not draw anything at all, draw in transparent color, etc.
-        /// </remarks>
-        /// <param name="p1"></param>
-        /// <param name="p2"></param>
-        /// <param name="p3"></param>
-        /// <param name="p4"></param>
-        /// <param name="pen"></param>
-        /// <param name="owner"></param>
-        public abstract void DrawBezier(Point p1, Point p2, Point p3, Point p4, Pen pen, MusicalSymbol owner);
-        
+        internal void ReturnCarriage()
+        {
+            State.CursorPositionX = 0;
+        }
     }
 }

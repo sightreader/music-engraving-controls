@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    renderer.State.LinePositions[renderer.State.CurrentSystem][i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing + sharpLineModifier;
+                    renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing + sharpLineModifier;
                 }
             }
         }
