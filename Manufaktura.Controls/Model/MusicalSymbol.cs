@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction };
+    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
     public enum ClefType { GClef, CClef, FClef };
     public enum VerticalDirection { Up, Down };
     public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };

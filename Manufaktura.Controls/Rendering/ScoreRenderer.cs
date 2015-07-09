@@ -1,11 +1,10 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -30,73 +29,26 @@ namespace Manufaktura.Controls.Rendering
             {
                 try
                 {
-                    State.CurrentStaff = staff;
-                    if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
-                    {
-                        double newPageWidth = staff.MeasureWidths.Where(w => w.HasValue).Sum(w => w.Value * Settings.CustomElementPositionRatio);
-                        if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
-                    }
-
-                    try
-                    {
-                        var staffRenderStrategy = GetProperRenderStrategy(staff);
-                        if (staffRenderStrategy != null) staffRenderStrategy.Render(staff, this);
-                    }
-                    catch (Exception ex)
-                    {
-                        Exceptions.Add(ex);
-                    }
-
-                    DetermineClef(staff);
-
-                    State.alterationsWithinOneBar = new int[7];
-                    State.firstNoteInIncipit = true;
-                    State.CurrentMeasure = 0;
-
-                    foreach (MusicalSymbol symbol in staff.Elements)
-                    {
-                        try
-                        {
-                            var renderStrategy = GetProperRenderStrategy(symbol);
-                            if (renderStrategy != null) renderStrategy.Render(symbol, this);
-                        }
-                        catch (Exception ex)
-                        {
-                            Exceptions.Add(ex);
-                        }
-                    }
-                    DrawMissingStems(staff);
-                    if (State.CurrentStaff.ActualSystemWidths.Count < State.CurrentSystem) State.CurrentStaff.ActualSystemWidths.Add(0);
-                    State.CurrentStaff.ActualSystemWidths[State.CurrentSystem - 1] = State.CursorPositionX;
-
-                    //Draw all lines:
-                    for (int system = 1; system <= State.CurrentSystem; system++) 
-                    {
-                        StaffRenderStrategy.Draw(staff, this, State.LinePositions[system], staff.ActualSystemWidths[system - 1]);
-                    }
+                    RenderStaff(staff);
                 }
                 catch (Exception ex)
                 {
                     Exceptions.Add(ex);
                 }
-            }          
+            }
         }
 
         private void DetermineClef(Staff staff)
         {
-            foreach (MusicalSymbol symbol in staff.Elements) //Perform one pass to determine current clef / Wykonaj jeden przebieg żeby określić bieżący klucz
-            {
-                if (symbol.Type == MusicalSymbolType.Clef)
-                {
-                    State.CurrentClef = (Clef)symbol;
-                    State.CurrentClefPositionY = State.LinePositions[State.CurrentSystem][4] - (((Clef)symbol).Line - 1) * Settings.LineSpacing;
-                    State.CurrentClefTextBlockPositionY = State.CurrentClefPositionY - TextBlockHeight;
-                    State.CurrentClef = (Clef)symbol;
-                    DrawString(State.CurrentClef.MusicalCharacter, MusicFontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, symbol);
-                    State.CursorPositionX += 20;
-                    break;
-                }
-            }
+            var clef = staff.Elements.FirstOrDefault(MusicalSymbolType.Clef) as Clef; //Perform one pass to determine current clef / Wykonaj jeden przebieg żeby określić bieżący klucz
+            if (clef == null) return;
+
+            State.CurrentClef = clef;
+            State.CurrentClefPositionY = State.LinePositions[State.CurrentSystem][4] - ((clef.Line - 1) * Settings.LineSpacing);
+            State.CurrentClefTextBlockPositionY = State.CurrentClefPositionY - TextBlockHeight;
+            State.CurrentClef = clef;
+            DrawString(State.CurrentClef.MusicalCharacter, MusicFontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, clef);
+            State.CursorPositionX += 20;
         }
 
         private void DrawMissingStems(Staff staff)
@@ -146,8 +98,6 @@ namespace Manufaktura.Controls.Rendering
                             DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y + 25), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
                         else
                             DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y + 23), new Point(newStemEndPoint.X, newStemEndPoint.Y + 23 + 5), note);
-
-
                     }
                 }
                 if (lastNoteInBeam == null) continue;
@@ -169,6 +119,54 @@ namespace Manufaktura.Controls.Rendering
                 g = this.Parent.CreateGraphics();
                 renderer.TranslateTransform(this.Location.X, this.Location.Y);
             }*/
+        }
+
+        private void RenderStaff(Staff staff)
+        {
+            State.CurrentStaff = staff;
+            if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
+            {
+                double newPageWidth = staff.MeasureWidths.Where(w => w.HasValue).Sum(w => w.Value * Settings.CustomElementPositionRatio);
+                if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
+            }
+
+            try
+            {
+                var staffRenderStrategy = GetProperRenderStrategy(staff);
+                if (staffRenderStrategy != null) staffRenderStrategy.Render(staff, this);
+            }
+            catch (Exception ex)
+            {
+                Exceptions.Add(ex);
+            }
+
+            DetermineClef(staff);
+
+            State.alterationsWithinOneBar = new int[7];
+            State.firstNoteInIncipit = true;
+            State.CurrentMeasure = 0;
+
+            foreach (MusicalSymbol symbol in staff.Elements)
+            {
+                try
+                {
+                    var renderStrategy = GetProperRenderStrategy(symbol);
+                    if (renderStrategy != null) renderStrategy.Render(symbol, this);
+                }
+                catch (Exception ex)
+                {
+                    Exceptions.Add(ex);
+                }
+            }
+            DrawMissingStems(staff);
+            if (State.CurrentStaff.ActualSystemWidths.Count < State.CurrentSystem) State.CurrentStaff.ActualSystemWidths.Add(0);
+            State.CurrentStaff.ActualSystemWidths[State.CurrentSystem - 1] = State.CursorPositionX;
+
+            //Draw all lines:
+            for (int system = 1; system <= State.CurrentSystem; system++)
+            {
+                StaffRenderStrategy.Draw(staff, this, State.LinePositions[system], staff.ActualSystemWidths[system - 1]);
+            }
         }
     }
 }

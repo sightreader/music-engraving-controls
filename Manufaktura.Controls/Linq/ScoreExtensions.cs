@@ -1,18 +1,37 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.Digest;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Linq
 {
     public static class ScoreExtensions
     {
-        public static string ToLyricsDigest (this Score score) 
+        public static MusicalSymbol FirstOrDefault(this IEnumerable<MusicalSymbol> musicalSymbols, MusicalSymbolType type)
+        {
+            return musicalSymbols.FirstOrDefault(ms => ms.Type == type);
+        }
+
+        public static IEnumerable<MusicalSymbol> OfType(this IEnumerable<MusicalSymbol> musicalSymbols, MusicalSymbolType type)
+        {
+            return musicalSymbols.Where(ms => ms.Type == type);
+        }
+
+        public static Score ReadMusicXmlScoreToEnd(this StreamReader reader)
+        {
+            return ToScore(reader.ReadToEnd());
+        }
+
+        public static int[] ToIntervals(this Score score)
+        {
+            MelodicContourDigestParser parser = new MelodicContourDigestParser();
+            return parser.ParseBack(score);
+        }
+
+        public static string ToLyricsDigest(this Score score)
         {
             LyricsDigestParser parser = new LyricsDigestParser();
             return parser.ParseBack(score);
@@ -26,19 +45,8 @@ namespace Manufaktura.Controls.Linq
 
         public static string ToRhythmDigest(this Score score, bool markRests, bool includeBarlines)
         {
-            RhythmDigestParser parser = new RhythmDigestParser {MarkRests = markRests, IncludeBarlines = includeBarlines};
+            RhythmDigestParser parser = new RhythmDigestParser { MarkRests = markRests, IncludeBarlines = includeBarlines };
             return parser.ParseBack(score);
-        }
-
-        public static int[] ToIntervals(this Score score)
-        {
-            MelodicContourDigestParser parser = new MelodicContourDigestParser();
-            return parser.ParseBack(score);
-        }
-
-        public static Score ReadMusicXmlScoreToEnd(this StreamReader reader)
-        {
-            return ToScore(reader.ReadToEnd());
         }
 
         public static Score ToScore(this string document)

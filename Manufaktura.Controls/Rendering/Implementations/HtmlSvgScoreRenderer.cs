@@ -11,6 +11,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
 {
     public class HtmlSvgScoreRenderer : HtmlScoreRenderer<XElement>
     {
+        private const string EmptyCharacterWithWidth = "j";
         public HtmlSvgScoreRenderer()
             : base(null)
         {
@@ -33,10 +34,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 new XAttribute("x", location.X.ToStringInvariant()),
                 new XAttribute("y", location.Y.ToStringInvariant()),
                 new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
-                    color.ToCss(), 
+                    color.ToCss(),
                     TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
                     TypedSettings.Fonts[fontStyle].Name)));
-            element.Value = text;
+            element.Value = TypedSettings.Fonts[fontStyle].Name == "Polihymnia" ? string.Format("{0}{1}", text, EmptyCharacterWithWidth) : text;
             Canvas.Add(element);
         }
 
