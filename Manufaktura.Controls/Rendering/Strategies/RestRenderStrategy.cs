@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,18 @@ namespace Manufaktura.Controls.Rendering
 {
     class RestRenderStrategy : MusicalSymbolRenderStrategy<Rest>
     {
+        private readonly IMeasurementService measurementService;
+        public RestRenderStrategy(IMeasurementService measurementService)
+        {
+            this.measurementService = measurementService;
+        }
+
         public override void Render(Rest element, ScoreRendererBase renderer)
         {
             //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
             if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
             {
-                renderer.State.CursorPositionX = renderer.State.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
+                renderer.State.CursorPositionX = measurementService.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
             }
 
             if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
@@ -25,7 +32,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
-                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.LastNoteEndXPosition;
+                measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
             renderer.State.CurrentVoice = element.Voice;
 
@@ -34,7 +41,7 @@ namespace Manufaktura.Controls.Rendering
             if (renderer.State.IsPrintMode) restPositionY -= 0.6f;
 
             renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
-            renderer.State.LastNotePositionX = renderer.State.CursorPositionX;
+            measurementService.LastNotePositionX = renderer.State.CursorPositionX;
 
             //Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
             if (element.MultiMeasure > 1)
@@ -59,7 +66,7 @@ namespace Manufaktura.Controls.Rendering
                 else renderer.State.CursorPositionX += 14;
             }
 
-            renderer.State.LastNoteEndXPosition = renderer.State.CursorPositionX;
+            measurementService.LastNoteEndXPosition = renderer.State.CursorPositionX;
         }
     }
 }

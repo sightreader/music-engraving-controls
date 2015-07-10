@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,20 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class NoteRenderStrategy : MusicalSymbolRenderStrategy<Note>
+    public class NoteRenderStrategy : MusicalSymbolRenderStrategy<Note>
     {
+        private readonly IMeasurementService measurementService;
+        public NoteRenderStrategy(IMeasurementService measurementService)
+        {
+            this.measurementService = measurementService;
+        }
+
         public override void Render(Note element, ScoreRendererBase renderer)
         {
             //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
             if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
             {
-                renderer.State.CursorPositionX = renderer.State.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
+                renderer.State.CursorPositionX = measurementService.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
             }
 
             if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
@@ -27,21 +34,21 @@ namespace Manufaktura.Controls.Rendering
             if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
-                renderer.State.lastNoteInMeasureEndXPosition = renderer.State.LastNoteEndXPosition;
+                measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
             renderer.State.CurrentVoice = element.Voice;
 
             if (element.Tuplet == TupletType.Start)
             {
                 Tuplet tuplet = new Tuplet();
-                renderer.State.TupletState = tuplet;
+                measurementService.TupletState = tuplet;
                 tuplet.NumberOfNotesUnderTuplet = 0;
                 tuplet.TupletPlacement = element.TupletPlacement.HasValue ? element.TupletPlacement.Value : 
                     (element.StemDirection == VerticalDirection.Down ? VerticalPlacement.Below : VerticalPlacement.Above);
             }
-            if (renderer.State.TupletState != null && !element.IsChordElement) renderer.State.TupletState.NumberOfNotesUnderTuplet++;
+            if (measurementService.TupletState != null && !element.IsChordElement) measurementService.TupletState.NumberOfNotesUnderTuplet++;
 
-            if (element.IsChordElement) renderer.State.CursorPositionX = renderer.State.LastNotePositionX;
+            if (element.IsChordElement) renderer.State.CursorPositionX = measurementService.LastNotePositionX;
 
             double noteTextBlockPositionY = renderer.State.CurrentClefTextBlockPositionY + Pitch.StepDistance(renderer.State.CurrentClef.Pitch,
                 element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
@@ -83,7 +90,7 @@ namespace Manufaktura.Controls.Rendering
                     renderer.State.CursorPositionX += element.Lyrics[0].Text.Length * 2;
                 }
             }
-            renderer.State.LastNoteEndXPosition = renderer.State.CursorPositionX;
+            measurementService.LastNoteEndXPosition = renderer.State.CursorPositionX;
         }
 
         private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
@@ -93,28 +100,28 @@ namespace Manufaktura.Controls.Rendering
             else
                 renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
 
-            renderer.State.LastNotePositionX = renderer.State.CursorPositionX;
+            measurementService.LastNotePositionX = renderer.State.CursorPositionX;
             element.TextBlockLocation = new Point(renderer.State.CursorPositionX, notePositionY);
         }
 
         private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
         {
-            if (renderer.State.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
+            if (measurementService.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
             Staff staff = renderer.State.CurrentStaff;
 
             NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, PeekType.BeginningOfTuplet);
             int index = staff.Elements.IndexOf(firstElementInTuplet);
             List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index);
-            double averageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == renderer.State.TupletState.TupletPlacement).
+            double averageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == measurementService.TupletState.TupletPlacement).
                 Average(n => n.ActualStemLength);
             averageStemLength += 10;    //Add space
-            int placementMod = renderer.State.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
+            int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
             double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X + 6;
             double tupletBracketStartYPosition = firstElementInTuplet.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
             double tupletBracketEndXPosition   = element.TextBlockLocation.X + 12;
             double tupletBracketEndYPosition   = element.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
 
-            if (renderer.State.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
+            if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
             {
                 renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
                                   new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), element);
@@ -125,11 +132,11 @@ namespace Manufaktura.Controls.Rendering
             }
 
             double numberOfNotesYTranslation = 0;
-            if (renderer.State.TupletState.TupletPlacement == VerticalPlacement.Above) numberOfNotesYTranslation -= 18; //If text should appear above the tuplet, move a bit to up
+            if (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above) numberOfNotesYTranslation -= 18; //If text should appear above the tuplet, move a bit to up
             //If bracket is not drawn, move up or down to fill space
-            if (!renderer.State.TupletState.AreSingleBeamsPresentUnderTuplet) numberOfNotesYTranslation += 10 * (renderer.State.TupletState.TupletPlacement == VerticalPlacement.Above ? 1 : -1);
+            if (!measurementService.TupletState.AreSingleBeamsPresentUnderTuplet) numberOfNotesYTranslation += 10 * (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? 1 : -1);
 
-            renderer.DrawString(Convert.ToString(renderer.State.TupletState.NumberOfNotesUnderTuplet), MusicFontStyles.LyricsFont,
+            renderer.DrawString(Convert.ToString(measurementService.TupletState.NumberOfNotesUnderTuplet), MusicFontStyles.LyricsFont,
                     new Point(tupletBracketStartXPosition  + ( tupletBracketEndXPosition - tupletBracketStartXPosition ) / 2 - 6,
                               tupletBracketStartYPosition  + ( tupletBracketEndYPosition - tupletBracketStartYPosition ) / 2 + numberOfNotesYTranslation), element);
         }
@@ -214,17 +221,17 @@ namespace Manufaktura.Controls.Rendering
             int beamOffset = 0;
             //Powiększ listę poprzednich pozycji stemów jeśli aktualna liczba belek jest większa
             //Extend the list of previous stem positions if current number of beams is greater than the list size
-            if (renderer.State.previousStemEndPositionsY.Count < element.BeamList.Count)
+            if (measurementService.previousStemEndPositionsY.Count < element.BeamList.Count)
             {
-                int tmpCount = renderer.State.previousStemEndPositionsY.Count;
+                int tmpCount = measurementService.previousStemEndPositionsY.Count;
                 for (int i = 0; i < element.BeamList.Count - tmpCount; i++)
-                    renderer.State.previousStemEndPositionsY.Add(new int());
+                    measurementService.previousStemEndPositionsY.Add(new int());
             }
-            if (renderer.State.previousStemPositionsX.Count < element.BeamList.Count)
+            if (measurementService.previousStemPositionsX.Count < element.BeamList.Count)
             {
-                int tmpCount = renderer.State.previousStemPositionsX.Count;
+                int tmpCount = measurementService.previousStemPositionsX.Count;
                 for (int i = 0; i < element.BeamList.Count - tmpCount; i++)
-                    renderer.State.previousStemPositionsX.Add(new int());
+                    measurementService.previousStemPositionsX.Add(new int());
             }
             int beamLoop = 0;
             foreach (NoteBeamType beam in element.BeamList)
@@ -236,8 +243,8 @@ namespace Manufaktura.Controls.Rendering
                 //if (beam != NoteBeamType.Single) MessageBox.Show(Convert.ToString(currentStemPositionX));
                 if (beam == NoteBeamType.Start)
                 {
-                    renderer.State.previousStemEndPositionsY[beamLoop] = renderer.State.currentStemEndPositionY;
-                    renderer.State.previousStemPositionsX[beamLoop] = renderer.State.currentStemPositionX;
+                    measurementService.previousStemEndPositionsY[beamLoop] = renderer.State.currentStemEndPositionY;
+                    measurementService.previousStemPositionsX[beamLoop] = renderer.State.currentStemPositionX;
 
                 }
                 else if (beam == NoteBeamType.Continue)
@@ -251,19 +258,19 @@ namespace Manufaktura.Controls.Rendering
                 {
                     //MessageBox.Show(Convert.ToString(previousStemPositionsX[beamLoop])
                     //    + "," + Convert.ToString(currentStemPositionX));
-                    renderer.DrawLine(new Point(renderer.State.previousStemPositionsX[beamLoop], renderer.State.previousStemEndPositionsY[beamLoop] + 28
+                    renderer.DrawLine(new Point(measurementService.previousStemPositionsX[beamLoop], measurementService.previousStemEndPositionsY[beamLoop] + 28
                         + beamOffset * beamSpaceDirection),
                         new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
                             + beamOffset * beamSpaceDirection), element);
-                    renderer.DrawLine(new Point(renderer.State.previousStemPositionsX[beamLoop], renderer.State.previousStemEndPositionsY[beamLoop]
+                    renderer.DrawLine(new Point(measurementService.previousStemPositionsX[beamLoop], measurementService.previousStemEndPositionsY[beamLoop]
                         + 28 + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection),
                         new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
                             + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection), element);
                     //Draw tuplet mark / Rysuj oznaczenie trioli:
-                    if (element.Tuplet == TupletType.Stop && renderer.State.TupletState != null)
+                    if (element.Tuplet == TupletType.Stop && measurementService.TupletState != null)
                     {
                         DrawTupletMark(renderer, element, beamLoop);
-                        renderer.State.TupletState = null;
+                        measurementService.TupletState = null;
                     }
                 }
                 else if ((beam == NoteBeamType.Single) && (!element.IsChordElement))
@@ -285,13 +292,13 @@ namespace Manufaktura.Controls.Rendering
                         else
                             renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY - 1), element);
                     }
-                    if (renderer.State.TupletState != null)
+                    if (measurementService.TupletState != null)
                     {
-                        renderer.State.TupletState.AreSingleBeamsPresentUnderTuplet = true;
+                        measurementService.TupletState.AreSingleBeamsPresentUnderTuplet = true;
                         if (element.Tuplet == TupletType.Stop)
                         {
                             DrawTupletMark(renderer, element, beamLoop);
-                            renderer.State.TupletState = null;
+                            measurementService.TupletState = null;
                         }
                     }
                 }
@@ -328,25 +335,25 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.TieType == NoteTieType.Start)
             {
-                renderer.State.tieStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
+                measurementService.tieStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
             }
             else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
             {
-                double arcWidth = renderer.State.CursorPositionX - renderer.State.tieStartPoint.X - 12;
+                double arcWidth = renderer.State.CursorPositionX - measurementService.tieStartPoint.X - 12;
                 double arcHeight = arcWidth * 0.7d;
                 if (element.StemDirection == VerticalDirection.Down)
                 {
-                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 16, renderer.State.tieStartPoint.Y + 6,
+                    renderer.DrawArc(new Rectangle(measurementService.tieStartPoint.X + 16, measurementService.tieStartPoint.Y + 6,
                         arcWidth, arcHeight), 180, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
                 }
                 else if (element.StemDirection == VerticalDirection.Up)
                 {
-                    renderer.DrawArc(new Rectangle(renderer.State.tieStartPoint.X + 16, renderer.State.tieStartPoint.Y + 22,
+                    renderer.DrawArc(new Rectangle(measurementService.tieStartPoint.X + 16, measurementService.tieStartPoint.Y + 22,
                         arcWidth, arcHeight), 0, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
                 }
                 if (element.TieType == NoteTieType.StopAndStartAnother)
                 {
-                    renderer.State.tieStartPoint = new Point(renderer.State.CursorPositionX + 2, notePositionY);
+                    measurementService.tieStartPoint = new Point(renderer.State.CursorPositionX + 2, notePositionY);
                 }
 
             }
@@ -364,23 +371,23 @@ namespace Manufaktura.Controls.Rendering
             {
                 slurStartPlacement = slurPlacement;
                 if (slurPlacement == VerticalPlacement.Above)
-                    renderer.State.SlurStartPoint = new Point(renderer.State.CursorPositionX, element.StemDirection == VerticalDirection.Down ? notePositionY : notePositionY + element.StemDefaultY);
+                    measurementService.SlurStartPoint = new Point(renderer.State.CursorPositionX, element.StemDirection == VerticalDirection.Down ? notePositionY : notePositionY + element.StemDefaultY);
                 else
-                    renderer.State.SlurStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
+                    measurementService.SlurStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
             }
             else if (element.Slur.Type == NoteSlurType.Stop)
             {
                 if (slurStartPlacement == VerticalPlacement.Above)
                 {
-                    renderer.DrawBezier(renderer.State.SlurStartPoint.X + 10, renderer.State.SlurStartPoint.Y + 18,
-                        renderer.State.SlurStartPoint.X + 12, renderer.State.SlurStartPoint.Y + 9,
+                    renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 18,
+                        measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 9,
                         renderer.State.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + renderer.State.CurrentSystemShiftY: notePositionY + 9),
                         renderer.State.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + renderer.State.CurrentSystemShiftY + 9 : notePositionY + 18), element);
                 }
                 else if (slurStartPlacement == VerticalPlacement.Below)
                 {
-                    renderer.DrawBezier(renderer.State.SlurStartPoint.X + 10, renderer.State.SlurStartPoint.Y + 30,
-                        renderer.State.SlurStartPoint.X + 12, renderer.State.SlurStartPoint.Y + 44,
+                    renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 30,
+                        measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 44,
                         renderer.State.CursorPositionX + 8, notePositionY + 44,
                         renderer.State.CursorPositionX + 10, notePositionY + 30, element);
                 }

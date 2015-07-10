@@ -21,7 +21,7 @@ namespace Manufaktura.Controls.IoC
             var types = assembly.GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(T)));
             foreach (var type in types)
             {
-                var constructors = type.GetConstructors(BindingFlags.Public);
+                var constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
                 if (!constructors.Any()) yield return Activator.CreateInstance(type) as T;
                 foreach (var constructor in constructors)
                 {
@@ -38,8 +38,8 @@ namespace Manufaktura.Controls.IoC
             var constructorParameters = constructor.GetParameters();
             foreach (var parameter in constructorParameters)
             {
-                var matchingService = createdServices.FirstOrDefault(cs => parameter.ParameterType == cs.GetType() || 
-                    cs.GetType().IsSubclassOf(parameter.ParameterType));
+                var matchingService = createdServices.FirstOrDefault(cs => parameter.ParameterType == cs.GetType() ||
+                    parameter.ParameterType.IsAssignableFrom(cs.GetType()));
                 if (matchingService == null) break;
                 matchedParameterList.Add(matchingService);
             }

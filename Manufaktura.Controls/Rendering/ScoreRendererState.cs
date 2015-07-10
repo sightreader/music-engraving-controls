@@ -1,11 +1,13 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Manufaktura.Controls.Rendering
 {
+    [Obsolete("It will be soon replaced by services")]
     public class ScoreRendererState
     {
         public int[] alterationsWithinOneBar { get; set; }
@@ -48,6 +50,8 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
+        public LineDictionary LinePositions { get; private set; }
+
         public double currentStemEndPositionY { get; set; }
 
         public double currentStemPositionX { get; set; }
@@ -70,28 +74,7 @@ namespace Manufaktura.Controls.Rendering
 
         public bool IsPrintMode { get; set; }
 
-        public double LastMeasurePositionX { get; set; }
 
-        public double LastNoteEndXPosition { get; set; }
-
-        //for many voices / dla wielu głosów
-        //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
-        public double lastNoteInMeasureEndXPosition { get; set; }
-
-        public double LastNotePositionX { get; set; } //for chords / dla akordów
-
-        public LineDictionary LinePositions { get; private set; }
-
-        public List<double> previousStemEndPositionsY { get; set; }
-
-        public List<double> previousStemPositionsX { get; set; }
-
-        public Point SlurStartPoint { get; set; }
-
-        public Point tieStartPoint { get; set; }
-
-        //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
-        public Tuplet TupletState { get; set; }
 
         public ScoreRendererState()
         {
@@ -100,20 +83,17 @@ namespace Manufaktura.Controls.Rendering
             CurrentClef = new Clef(ClefType.CClef, 2);
             CurrentKey = new Key(0);
             CursorPositionX = 0;
-            LastNotePositionX = 0; //for chords / dla akordów
-            LastNoteEndXPosition = 0; //for many voices / dla wielu głosów
             firstNoteInMeasureXPosition = 0; //for many voices - starting point for all voices / dla wielu głosów - punkt rozpoczęcia wszystkich głosów
-            lastNoteInMeasureEndXPosition = 0; //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
             currentStemEndPositionY = 0;
-            previousStemEndPositionsY = new List<double>();
+            
             currentStemPositionX = 0;
-            previousStemPositionsX = new List<double>();
+            LinePositions = new LineDictionary();
+
             beamStartPositionsY = new List<Point>();
             beamEndPositionsY = new List<Point>();
-            tieStartPoint = new Point();
-            SlurStartPoint = new Point();
+            
             CurrentVoice = 1;
-            LinePositions = new LineDictionary();
+            
             CurrentClefTextBlockPositionY = 0;
         }
     }

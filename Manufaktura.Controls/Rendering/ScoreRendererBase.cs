@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Manufaktura.Controls.Rendering
 {
     public abstract class ScoreRendererBase
     {
+        private IMeasurementService measurementService = new MeasurementService();
         public ScoreRendererSettings Settings { get; internal set; }
 
         public ScoreRendererState State { get; protected set; }
@@ -25,6 +27,7 @@ namespace Manufaktura.Controls.Rendering
         {
             State = new ScoreRendererState();
             Settings = new ScoreRendererSettings();
+            resolver.AddService(measurementService);
             Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
             TextBlockHeight = 25;
         }
@@ -161,7 +164,7 @@ namespace Manufaktura.Controls.Rendering
             List<double> newLinePositions = new List<double>();
             foreach (var position in State.LinePositions[State.CurrentSystem][State.CurrentLine]) newLinePositions.Add(position + shift);
             State.LinePositions[State.CurrentSystem].Add(State.CurrentLine, newLinePositions.ToArray());
-            State.LastMeasurePositionX = 0;
+            measurementService.LastMeasurePositionX = 0;
         }
 
         internal void BreakSystem(double distance = 0)
@@ -178,7 +181,7 @@ namespace Manufaktura.Controls.Rendering
             foreach (var position in State.LinePositions[State.CurrentSystem][State.CurrentLine]) newLinePositions.Add(position + shift);
             State.CurrentSystem++;
             State.LinePositions[State.CurrentSystem].Add(State.CurrentLine, newLinePositions.ToArray());
-            State.LastMeasurePositionX = 0;
+            measurementService.LastMeasurePositionX = 0;
         }
 
         internal void ReturnCarriage()

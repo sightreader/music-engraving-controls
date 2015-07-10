@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,17 @@ namespace Manufaktura.Controls.Rendering
 {
     class BarlineRenderStrategy : MusicalSymbolRenderStrategy<Barline>
     {
+        private readonly IMeasurementService measurementService;
+        public BarlineRenderStrategy(IMeasurementService measurementService)
+        {
+            this.measurementService = measurementService;
+        }
+
         public override void Render(Barline element, ScoreRendererBase renderer)
         {
-            if (renderer.State.lastNoteInMeasureEndXPosition > renderer.State.CursorPositionX)
+            if (measurementService.lastNoteInMeasureEndXPosition > renderer.State.CursorPositionX)
             {
-                renderer.State.CursorPositionX = renderer.State.lastNoteInMeasureEndXPosition;
+                renderer.State.CursorPositionX = measurementService.lastNoteInMeasureEndXPosition;
             }
 
             double? measureWidth = GetCursorPositionForCurrentBarline(renderer);
@@ -23,7 +30,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.RepeatSign == RepeatSignType.None)
             {
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 16;
-                if (element.Location == HorizontalPlacement.Right) renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
+                if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawLine(new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][4]),
                                   new Point(renderer.State.CursorPositionX, renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0]), element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
@@ -35,7 +42,7 @@ namespace Manufaktura.Controls.Rendering
                         renderer.State.CursorPositionX -= 8;   //TODO: Temporary workaround!!
                 }
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 2;
-                if (element.Location == HorizontalPlacement.Right)  renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
+                if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawString(renderer.State.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, renderer.State.CursorPositionX,
                     renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 15.5f, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 20;
@@ -43,7 +50,7 @@ namespace Manufaktura.Controls.Rendering
             else if (element.RepeatSign == RepeatSignType.Backward)
             {
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX -= 2;
-                if (element.Location == HorizontalPlacement.Right) renderer.State.LastMeasurePositionX = renderer.State.CursorPositionX;
+                if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = renderer.State.CursorPositionX;
                 renderer.DrawString(renderer.State.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, renderer.State.CursorPositionX - 17.5,
                     renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 15, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) renderer.State.CursorPositionX += 6;
@@ -65,7 +72,7 @@ namespace Manufaktura.Controls.Rendering
             if (staff.MeasureWidths.Count <= renderer.State.CurrentMeasure) return null;
             double? width = staff.MeasureWidths[renderer.State.CurrentMeasure];
             if (!width.HasValue) return null;
-            return renderer.State.LastMeasurePositionX + width * renderer.Settings.CustomElementPositionRatio;
+            return measurementService.LastMeasurePositionX + width * renderer.Settings.CustomElementPositionRatio;
         }
     }
 }
