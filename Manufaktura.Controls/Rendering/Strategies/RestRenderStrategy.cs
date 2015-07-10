@@ -38,7 +38,6 @@ namespace Manufaktura.Controls.Rendering
 
 
             double restPositionY = (renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 9);
-            if (renderer.State.IsPrintMode) restPositionY -= 0.6f;
 
             renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
             measurementService.LastNotePositionX = renderer.State.CursorPositionX;

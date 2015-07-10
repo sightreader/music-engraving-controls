@@ -137,7 +137,9 @@
     <Compile Include="Rendering\ScoreRendererState.cs" />
     <Compile Include="Rendering\Strategies\StaffRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\TimeSignatureRenderStrategy.cs" />
+    <Compile Include="Services\AlterationService.cs" />
     <Compile Include="Services\CurrencyService.cs" />
+    <Compile Include="Services\IAlterationService.cs" />
     <Compile Include="Services\ICurrencyService.cs" />
     <Compile Include="Services\IMeasurementService.cs" />
     <Compile Include="Services\MeasurementService.cs" />

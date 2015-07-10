@@ -14,9 +14,11 @@ namespace Manufaktura.Controls.Rendering
     public class NoteRenderStrategy : MusicalSymbolRenderStrategy<Note>
     {
         private readonly IMeasurementService measurementService;
-        public NoteRenderStrategy(IMeasurementService measurementService)
+        private readonly IAlterationService alterationService;
+        public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService)
         {
             this.measurementService = measurementService;
+            this.alterationService = alterationService;
         }
 
         public override void Render(Note element, ScoreRendererBase renderer)
@@ -52,7 +54,6 @@ namespace Manufaktura.Controls.Rendering
 
             double noteTextBlockPositionY = renderer.State.CurrentClefTextBlockPositionY + Pitch.StepDistance(renderer.State.CurrentClef.Pitch,
                 element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
-            if (renderer.State.IsPrintMode) noteTextBlockPositionY -= 0.8f;
 
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
             int numberOfDoubleAccidentals = Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
@@ -144,7 +145,6 @@ namespace Manufaktura.Controls.Rendering
         private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             double tmpXPos = renderer.State.CursorPositionX + 16;
-            if (renderer.State.IsPrintMode) tmpXPos += 1.5f;
             if (notePositionY + 25.0f > renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][4] + renderer.Settings.LineSpacing / 2.0f)
             {
                 for (double i = renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
@@ -185,7 +185,6 @@ namespace Manufaktura.Controls.Rendering
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
                     renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
-                    if (renderer.State.IsPrintMode) renderer.State.currentStemPositionX += 0.1f;
 
                     if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
@@ -205,7 +204,6 @@ namespace Manufaktura.Controls.Rendering
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 6;
                     renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
-                    if (renderer.State.IsPrintMode) renderer.State.currentStemPositionX += 0.9f;
 
                     if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
@@ -277,7 +275,6 @@ namespace Manufaktura.Controls.Rendering
                 {   //Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
                     //Draw a hook only of the lowest element in a chord
                     double xPos = renderer.State.currentStemPositionX - 4;
-                    if (renderer.State.IsPrintMode) xPos -= 0.9f;
                     if (element.StemDirection == VerticalDirection.Down)
                     {
                         if (element.IsGraceNote || element.IsCueNote)
@@ -507,11 +504,9 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawAccidentals(ScoreRendererBase renderer, Note element, double notePositionY, int numberOfSingleAccidentals, int numberOfDoubleAccidentals)
         {
-            if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step)
-                - renderer.State.alterationsWithinOneBar[element.StepToStepNumber()] > 0)
+            if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) > 0)
             {
-                renderer.State.alterationsWithinOneBar[element.StepToStepNumber()] =
-                    element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step);
+                alterationService.Set(element.Step, element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step));
                 double accPlacement = renderer.State.CursorPositionX - 9 * numberOfSingleAccidentals - 9 * numberOfDoubleAccidentals;
                 for (int i = 0; i < numberOfSingleAccidentals; i++)
                 {
@@ -524,11 +519,9 @@ namespace Manufaktura.Controls.Rendering
                     accPlacement += 9;
                 }
             }
-            else if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step)
-                - renderer.State.alterationsWithinOneBar[element.StepToStepNumber()] < 0)
+            else if (element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) < 0)
             {
-                renderer.State.alterationsWithinOneBar[element.StepToStepNumber()] =
-                    element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step);
+                alterationService.Set(element.Step, element.Alter - renderer.State.CurrentKey.StepToAlter(element.Step));
                 double accPlacement = renderer.State.CursorPositionX - 9 * numberOfSingleAccidentals -
                     9 * numberOfDoubleAccidentals;
                 for (int i = 0; i < numberOfSingleAccidentals; i++)

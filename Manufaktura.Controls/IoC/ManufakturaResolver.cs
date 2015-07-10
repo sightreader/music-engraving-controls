@@ -15,6 +15,11 @@ namespace Manufaktura.Controls.IoC
             createdServices.Add(service);
         }
 
+        public void AddServices(params object[] services)
+        {
+            createdServices.AddRange(services);
+        }
+
         public IEnumerable<T> ResolveAll<T>() where T:class
         {
             var assembly = Assembly.GetExecutingAssembly();

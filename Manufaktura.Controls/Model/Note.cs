@@ -159,17 +159,7 @@ namespace Manufaktura.Controls.Model
 
         #region Public methods
 
-        public int StepToStepNumber()
-        {
-            if (Step == "C") return 0;
-            else if (Step == "D") return 1;
-            else if (Step == "E") return 2;
-            else if (Step == "F") return 3;
-            else if (Step == "G") return 4;
-            else if (Step == "A") return 5;
-            else if (Step == "B") return 6;
-            else return 0;
-        }
+        
 
         public void ApplyMidiPitch(int midiPitch)
         {

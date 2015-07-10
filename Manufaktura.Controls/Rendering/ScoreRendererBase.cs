@@ -12,7 +12,8 @@ namespace Manufaktura.Controls.Rendering
 {
     public abstract class ScoreRendererBase
     {
-        private IMeasurementService measurementService = new MeasurementService();
+        protected IMeasurementService measurementService = new MeasurementService();
+        protected IAlterationService alterationService = new AlterationService();
         public ScoreRendererSettings Settings { get; internal set; }
 
         public ScoreRendererState State { get; protected set; }
@@ -27,7 +28,7 @@ namespace Manufaktura.Controls.Rendering
         {
             State = new ScoreRendererState();
             Settings = new ScoreRendererSettings();
-            resolver.AddService(measurementService);
+            resolver.AddServices(measurementService, alterationService);
             Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
             TextBlockHeight = 25;
         }

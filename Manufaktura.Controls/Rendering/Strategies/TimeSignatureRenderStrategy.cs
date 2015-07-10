@@ -14,7 +14,6 @@ namespace Manufaktura.Controls.Rendering
             renderer.State.CurrentTimeSignature = element;
 
             double timeSignaturePositionY = (renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 11);
-            if (renderer.State.IsPrintMode) timeSignaturePositionY -= 0.6f;
             if (element.SignatureType == TimeSignatureType.Common)
                 renderer.DrawString(renderer.State.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 
                 renderer.State.CursorPositionX, timeSignaturePositionY, element);

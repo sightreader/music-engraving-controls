@@ -12,9 +12,11 @@ namespace Manufaktura.Controls.Rendering
     class BarlineRenderStrategy : MusicalSymbolRenderStrategy<Barline>
     {
         private readonly IMeasurementService measurementService;
-        public BarlineRenderStrategy(IMeasurementService measurementService)
+        private readonly IAlterationService alterationService;
+        public BarlineRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService)
         {
             this.measurementService = measurementService;
+            this.alterationService = alterationService;
         }
 
         public override void Render(Barline element, ScoreRendererBase renderer)
@@ -59,9 +61,7 @@ namespace Manufaktura.Controls.Rendering
 
             if (element.Location == HorizontalPlacement.Right)   //Start new measure only if it's right barline
             {
-                for (int i = 0; i < 7; i++)
-                    renderer.State.alterationsWithinOneBar[i] = 0;
-
+                alterationService.Reset();
                 renderer.State.CurrentMeasure++;
             }
         }

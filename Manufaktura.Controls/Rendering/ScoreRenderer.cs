@@ -142,7 +142,7 @@ namespace Manufaktura.Controls.Rendering
 
             DetermineClef(staff);
 
-            State.alterationsWithinOneBar = new int[7];
+            alterationService.Reset();
             State.firstNoteInIncipit = true;
             State.CurrentMeasure = 0;
 
