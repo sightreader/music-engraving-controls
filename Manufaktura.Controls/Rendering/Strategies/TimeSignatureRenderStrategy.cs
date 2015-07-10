@@ -11,8 +11,6 @@ namespace Manufaktura.Controls.Rendering
     {
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
-            renderer.State.CurrentTimeSignature = element;
-
             double timeSignaturePositionY = (renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 11);
             if (element.SignatureType == TimeSignatureType.Common)
                 renderer.DrawString(renderer.State.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 

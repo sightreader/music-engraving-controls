@@ -58,8 +58,6 @@ namespace Manufaktura.Controls.Rendering
 
         public double CurrentSystemShiftY { get; set; }
 
-        public TimeSignature CurrentTimeSignature { get; set; }
-
         public int CurrentVoice { get; set; }
 
         public double CursorPositionX { get; set; }
