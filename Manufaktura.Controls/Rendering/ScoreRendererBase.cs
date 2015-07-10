@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.IoC;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using System;
@@ -16,14 +17,15 @@ namespace Manufaktura.Controls.Rendering
 
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 
+        private ManufakturaResolver resolver = new ManufakturaResolver();
+
         public double TextBlockHeight { get; protected set; }
 
         protected ScoreRendererBase()
         {
             State = new ScoreRendererState();
             Settings = new ScoreRendererSettings();
-            Strategies = Assembly.GetCallingAssembly().GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(MusicalSymbolRenderStrategyBase))).
-                Select(t => Activator.CreateInstance(t)).Cast<MusicalSymbolRenderStrategyBase>().ToArray();
+            Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
             TextBlockHeight = 25;
         }
 
