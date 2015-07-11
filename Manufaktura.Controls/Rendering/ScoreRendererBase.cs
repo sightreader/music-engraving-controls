@@ -155,7 +155,10 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
             ReturnCarriage();
 
-            scoreService.CurrentSystem.Height = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing ) * scoreService.CurrentScore.Staves.Count : distance;
+            if (scoreService.CurrentSystem.Height == 0)
+            {
+                scoreService.CurrentSystem.Height = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count : distance;
+            }
 
             List<double> newLinePositions = new List<double>();
             foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height);
