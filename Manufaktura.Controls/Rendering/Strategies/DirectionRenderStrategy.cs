@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace Manufaktura.Controls.Rendering
 {
     public class DirectionRenderStrategy : MusicalSymbolRenderStrategy<Direction>
     {
+        private readonly IScoreService scoreService;
+        public DirectionRenderStrategy(IScoreService scoreService)
+        {
+            this.scoreService = scoreService;
+        }
+
         public override void Render(Direction element, ScoreRendererBase renderer)
         {
             //Performance directions / Wskazówki wykonawcze:
@@ -19,7 +26,7 @@ namespace Manufaktura.Controls.Rendering
                 dirPositionY = 0;
             else if (element.Placement == DirectionPlacementType.Below)
                 dirPositionY = 50;
-            renderer.DrawString(element.Text, MusicFontStyles.DirectionFont, renderer.State.CursorPositionX, dirPositionY, element);
+            renderer.DrawString(element.Text, MusicFontStyles.DirectionFont, scoreService.CursorPositionX, dirPositionY, element);
         }
     }
 }

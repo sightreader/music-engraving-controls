@@ -22,21 +22,11 @@ namespace Manufaktura.Controls.Rendering
 
 
 
-
-
-        public double CursorPositionX { get; set; }
-
-        public bool firstNoteInIncipit { get; set; }
-
-
-
         public bool IsManualMode { get; set; }
 
         public ScoreRendererState()
         {
             
-            
-            CursorPositionX = 0;
             currentStemEndPositionY = 0;
             
             currentStemPositionX = 0;

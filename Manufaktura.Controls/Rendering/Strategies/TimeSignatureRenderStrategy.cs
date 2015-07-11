@@ -20,18 +20,18 @@ namespace Manufaktura.Controls.Rendering
             double timeSignaturePositionY = (scoreService.CurrentLinePositions[0] - 11);
             if (element.SignatureType == TimeSignatureType.Common)
                 renderer.DrawString(renderer.Settings.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 
-                renderer.State.CursorPositionX, timeSignaturePositionY, element);
+                scoreService.CursorPositionX, timeSignaturePositionY, element);
             else if (element.SignatureType == TimeSignatureType.Cut)
                 renderer.DrawString(renderer.Settings.CurrentFont.CutTime, MusicFontStyles.MusicFont, 
-                renderer.State.CursorPositionX, timeSignaturePositionY, element);
+                scoreService.CursorPositionX, timeSignaturePositionY, element);
             else
             {
                 renderer.DrawString(Convert.ToString(element.NumberOfBeats),
-                    MusicFontStyles.TimeSignatureFont, renderer.State.CursorPositionX, timeSignaturePositionY + 9, element);
+                    MusicFontStyles.TimeSignatureFont, scoreService.CursorPositionX, timeSignaturePositionY + 9, element);
                 renderer.DrawString(Convert.ToString(element.TypeOfBeats),
-                    MusicFontStyles.TimeSignatureFont, renderer.State.CursorPositionX, timeSignaturePositionY + 21, element);
+                    MusicFontStyles.TimeSignatureFont, scoreService.CursorPositionX, timeSignaturePositionY + 21, element);
             }
-            renderer.State.CursorPositionX += 20;
+            scoreService.CursorPositionX += 20;
         }
     }
 }

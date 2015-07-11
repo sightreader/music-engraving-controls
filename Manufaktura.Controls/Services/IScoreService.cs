@@ -5,13 +5,11 @@ namespace Manufaktura.Controls.Services
 {
     public interface IScoreService
     {
+        IEnumerable<Measure> AllMeasures { get; }
+
         Clef CurrentClef { get; set; }
 
         Key CurrentKey { get; set; }
-
-        int CurrentVoice { get; set; }
-        IEnumerable<Measure> AllMeasures { get; }
-        StaffSystem[] Systems { get; }
 
         double[] CurrentLinePositions { get; }
 
@@ -31,7 +29,13 @@ namespace Manufaktura.Controls.Services
 
         int CurrentSystemNo { get; }
 
+        int CurrentVoice { get; set; }
+
+        double CursorPositionX { get; set; }
+
         LineDictionary LinePositions { get; }
+
+        StaffSystem[] Systems { get; }
 
         void BeginNewMeasure();
 

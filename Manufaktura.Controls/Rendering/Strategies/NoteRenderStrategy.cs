@@ -28,16 +28,15 @@ namespace Manufaktura.Controls.Rendering
             //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
             if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
             {
-                renderer.State.CursorPositionX = measurementService.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
+                scoreService.CursorPositionX = measurementService.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
             }
 
-            if (renderer.State.firstNoteInIncipit) scoreService.CurrentMeasure.FirstNoteInMeasureXPosition = renderer.State.CursorPositionX;
-            renderer.State.firstNoteInIncipit = false;
+            if (scoreService.CurrentMeasure.FirstNoteInMeasureXPosition == 0) scoreService.CurrentMeasure.FirstNoteInMeasureXPosition = scoreService.CursorPositionX;
 
             //If it's second voice, rewind position to the beginning of measure (but only if default-x is not set or is ignored):
             if (element.Voice > scoreService.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
-                renderer.State.CursorPositionX = scoreService.CurrentMeasure.FirstNoteInMeasureXPosition;
+                scoreService.CursorPositionX = scoreService.CurrentMeasure.FirstNoteInMeasureXPosition;
                 measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
             scoreService.CurrentVoice = element.Voice;
@@ -52,7 +51,7 @@ namespace Manufaktura.Controls.Rendering
             }
             if (measurementService.TupletState != null && !element.IsChordElement) measurementService.TupletState.NumberOfNotesUnderTuplet++;
 
-            if (element.IsChordElement) renderer.State.CursorPositionX = measurementService.LastNotePositionX;
+            if (element.IsChordElement) scoreService.CursorPositionX = measurementService.LastNotePositionX;
 
             double noteTextBlockPositionY = scoreService.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(scoreService.CurrentClef.Pitch,
                 element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
@@ -80,31 +79,31 @@ namespace Manufaktura.Controls.Rendering
 
             if (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
             {
-                if (element.Duration == RhythmicDuration.Whole) renderer.State.CursorPositionX += 50;
-                else if (element.Duration == RhythmicDuration.Half) renderer.State.CursorPositionX += 30;
-                else if (element.Duration == RhythmicDuration.Quarter) renderer.State.CursorPositionX += 18;
-                else if (element.Duration == RhythmicDuration.Eighth) renderer.State.CursorPositionX += 15;
-                else renderer.State.CursorPositionX += 14;
+                if (element.Duration == RhythmicDuration.Whole) scoreService.CursorPositionX += 50;
+                else if (element.Duration == RhythmicDuration.Half) scoreService.CursorPositionX += 30;
+                else if (element.Duration == RhythmicDuration.Quarter) scoreService.CursorPositionX += 18;
+                else if (element.Duration == RhythmicDuration.Eighth) scoreService.CursorPositionX += 15;
+                else scoreService.CursorPositionX += 14;
 
                 //Przesuń trochę w prawo, jeśli nuta ma tekst, żeby litery nie wchodziły na siebie
                 //Move a bit right if the element has a lyric to prevent letters from hiding each other
                 if (element.Lyrics.Count > 0)
                 {
-                    renderer.State.CursorPositionX += element.Lyrics[0].Text.Length * 2;
+                    scoreService.CursorPositionX += element.Lyrics[0].Text.Length * 2;
                 }
             }
-            measurementService.LastNoteEndXPosition = renderer.State.CursorPositionX;
+            measurementService.LastNoteEndXPosition = scoreService.CursorPositionX;
         }
 
         private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             if (element.IsGraceNote || element.IsCueNote)
-                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.GraceNoteFont, renderer.State.CursorPositionX + 1, notePositionY + 7, element);
+                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1, notePositionY + 7, element);
             else
-                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
+                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
 
-            measurementService.LastNotePositionX = renderer.State.CursorPositionX;
-            element.TextBlockLocation = new Point(renderer.State.CursorPositionX, notePositionY);
+            measurementService.LastNotePositionX = scoreService.CursorPositionX;
+            element.TextBlockLocation = new Point(scoreService.CursorPositionX, notePositionY);
         }
 
         private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
@@ -146,13 +145,13 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            double tmpXPos = renderer.State.CursorPositionX + 16;
+            double tmpXPos = scoreService.CursorPositionX + 16;
             if (notePositionY + 25.0f > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
             {
                 for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
                 {
 
-                    renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
+                    renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
                         new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
                 }
             }
@@ -162,7 +161,7 @@ namespace Manufaktura.Controls.Rendering
                 for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
                 {
 
-                    renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
+                    renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
                         new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
                 }
             }
@@ -188,7 +187,7 @@ namespace Manufaktura.Controls.Rendering
                         renderer.State.currentStemEndPositionY = notePositionY + 18 > renderer.State.currentStemEndPositionY ? renderer.State.currentStemEndPositionY : notePositionY + 18;
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
-                    renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
+                    renderer.State.currentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
 
                     if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
@@ -207,7 +206,7 @@ namespace Manufaktura.Controls.Rendering
                         renderer.State.currentStemEndPositionY = notePositionY - 25;
                     else
                         renderer.State.currentStemEndPositionY = tmpStemPosY - 6;
-                    renderer.State.currentStemPositionX = renderer.State.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
+                    renderer.State.currentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
 
                     if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
@@ -336,11 +335,11 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.TieType == NoteTieType.Start)
             {
-                measurementService.tieStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
+                measurementService.tieStartPoint = new Point(scoreService.CursorPositionX, notePositionY);
             }
             else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
             {
-                double arcWidth = renderer.State.CursorPositionX - measurementService.tieStartPoint.X - 12;
+                double arcWidth = scoreService.CursorPositionX - measurementService.tieStartPoint.X - 12;
                 double arcHeight = arcWidth * 0.7d;
                 if (element.StemDirection == VerticalDirection.Down)
                 {
@@ -354,7 +353,7 @@ namespace Manufaktura.Controls.Rendering
                 }
                 if (element.TieType == NoteTieType.StopAndStartAnother)
                 {
-                    measurementService.tieStartPoint = new Point(renderer.State.CursorPositionX + 2, notePositionY);
+                    measurementService.tieStartPoint = new Point(scoreService.CursorPositionX + 2, notePositionY);
                 }
 
             }
@@ -372,9 +371,9 @@ namespace Manufaktura.Controls.Rendering
             {
                 slurStartPlacement = slurPlacement;
                 if (slurPlacement == VerticalPlacement.Above)
-                    measurementService.SlurStartPoint = new Point(renderer.State.CursorPositionX, element.StemDirection == VerticalDirection.Down ? notePositionY : notePositionY + element.StemDefaultY);
+                    measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, element.StemDirection == VerticalDirection.Down ? notePositionY : notePositionY + element.StemDefaultY);
                 else
-                    measurementService.SlurStartPoint = new Point(renderer.State.CursorPositionX, notePositionY);
+                    measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, notePositionY);
             }
             else if (element.Slur.Type == NoteSlurType.Stop)
             {
@@ -382,15 +381,15 @@ namespace Manufaktura.Controls.Rendering
                 {
                     renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 18,
                         measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 9,
-                        renderer.State.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) : notePositionY + 9),
-                        renderer.State.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) + 9 : notePositionY + 18), element);
+                        scoreService.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) : notePositionY + 9),
+                        scoreService.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) + 9 : notePositionY + 18), element);
                 }
                 else if (slurStartPlacement == VerticalPlacement.Below)
                 {
                     renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 30,
                         measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 44,
-                        renderer.State.CursorPositionX + 8, notePositionY + 44,
-                        renderer.State.CursorPositionX + 10, notePositionY + 30, element);
+                        scoreService.CursorPositionX + 8, notePositionY + 44,
+                        scoreService.CursorPositionX + 10, notePositionY + 30, element);
                 }
             }
         }
@@ -407,8 +406,8 @@ namespace Manufaktura.Controls.Rendering
 
                 //TODO: Dodać do kalkulacji wyliczoną szerokość stringa w poprzednim lyricu i odkomentować :)
                 //A, i jeszcze wtedy wywalić warunek na middleDistance.
-                //double middleDistanceBetweenTwoLyrics = (renderer.State.CursorPositionX - renderer.State.LastNoteEndXPosition) / 2.0d;
-                // double hyphenXPosition = renderer.State.CursorPositionX - middleDistanceBetweenTwoLyrics;
+                //double middleDistanceBetweenTwoLyrics = (scoreService.CursorPositionX - renderer.State.LastNoteEndXPosition) / 2.0d;
+                // double hyphenXPosition = scoreService.CursorPositionX - middleDistanceBetweenTwoLyrics;
                 //if ((lyrics.Type == SyllableType.Middle || lyrics.Type == SyllableType.End) && middleDistanceBetweenTwoLyrics > 20)
                 //{
                 //    renderer.DrawString("-", FontStyles.LyricsFont, hyphenXPosition, textPositionY, element);
@@ -416,7 +415,7 @@ namespace Manufaktura.Controls.Rendering
                 //else 
                 if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-");
 
-                renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, renderer.State.CursorPositionX, textPositionY, element);
+                renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, scoreService.CursorPositionX, textPositionY, element);
 
                 if (!lyrics.DefaultYPosition.HasValue) textPositionY += 12; //Move down if default-y is not set
             }
@@ -433,9 +432,9 @@ namespace Manufaktura.Controls.Rendering
                     articulationPosition = notePositionY + 10;
 
                 if (element.Articulation == ArticulationType.Staccato)
-                    renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, renderer.State.CursorPositionX + 6, articulationPosition, element);
+                    renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, articulationPosition, element);
                 else if (element.Articulation == ArticulationType.Accent)
-                    renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, renderer.State.CursorPositionX + 6, articulationPosition + 16, element);
+                    renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, scoreService.CursorPositionX + 6, articulationPosition + 16, element);
 
             }
         }
@@ -457,7 +456,7 @@ namespace Manufaktura.Controls.Rendering
                 {
                     trillPos = notePositionY + 10;
                 }
-                renderer.DrawString(renderer.Settings.CurrentFont.Trill, MusicFontStyles.MusicFont, renderer.State.CursorPositionX + 6, trillPos, element);
+                renderer.DrawString(renderer.Settings.CurrentFont.Trill, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, trillPos, element);
             }
         }
 
@@ -469,8 +468,8 @@ namespace Manufaktura.Controls.Rendering
                 Mordent mordent = ornament as Mordent;
                 if (mordent != null)
                 {
-                    renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, renderer.State.CursorPositionX - 2, notePositionY + yPositionShift, element);
-                    renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, renderer.State.CursorPositionX + 3.5, notePositionY + yPositionShift, element);
+                    renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 2, notePositionY + yPositionShift, element);
+                    renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 3.5, notePositionY + yPositionShift, element);
                 }
             }
         }
@@ -483,14 +482,14 @@ namespace Manufaktura.Controls.Rendering
                 if (element.StemDirection == VerticalDirection.Up)
                 {
                     currentTremoloPos -= 4;
-                    renderer.DrawLine(renderer.State.CursorPositionX + 9, currentTremoloPos + 1, renderer.State.CursorPositionX + 16, currentTremoloPos - 1, element);
-                    renderer.DrawLine(renderer.State.CursorPositionX + 9, currentTremoloPos + 2, renderer.State.CursorPositionX + 16, currentTremoloPos, element);
+                    renderer.DrawLine(scoreService.CursorPositionX + 9, currentTremoloPos + 1, scoreService.CursorPositionX + 16, currentTremoloPos - 1, element);
+                    renderer.DrawLine(scoreService.CursorPositionX + 9, currentTremoloPos + 2, scoreService.CursorPositionX + 16, currentTremoloPos, element);
                 }
                 else
                 {
                     currentTremoloPos += 4;
-                    renderer.DrawLine(renderer.State.CursorPositionX + 3, currentTremoloPos + 11 + 1, renderer.State.CursorPositionX + 11, currentTremoloPos + 11 - 1, element);
-                    renderer.DrawLine(renderer.State.CursorPositionX + 3, currentTremoloPos + 11 + 2, renderer.State.CursorPositionX + 11, currentTremoloPos + 11, element);
+                    renderer.DrawLine(scoreService.CursorPositionX + 3, currentTremoloPos + 11 + 1, scoreService.CursorPositionX + 11, currentTremoloPos + 11 - 1, element);
+                    renderer.DrawLine(scoreService.CursorPositionX + 3, currentTremoloPos + 11 + 2, scoreService.CursorPositionX + 11, currentTremoloPos + 11, element);
                 }
             }
         }
@@ -502,7 +501,7 @@ namespace Manufaktura.Controls.Rendering
                 double ferPos = notePositionY - renderer.TextBlockHeight;
                 string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
 
-                renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, ferPos, element);
+                renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
             }
         }
 
@@ -511,7 +510,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) > 0)
             {
                 alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
-                double accPlacement = renderer.State.CursorPositionX - 9 * numberOfSingleAccidentals - 9 * numberOfDoubleAccidentals;
+                double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals - 9 * numberOfDoubleAccidentals;
                 for (int i = 0; i < numberOfSingleAccidentals; i++)
                 {
                     renderer.DrawString(renderer.Settings.CurrentFont.Sharp, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
@@ -526,7 +525,7 @@ namespace Manufaktura.Controls.Rendering
             else if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) < 0)
             {
                 alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
-                double accPlacement = renderer.State.CursorPositionX - 9 * numberOfSingleAccidentals -
+                double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals -
                     9 * numberOfDoubleAccidentals;
                 for (int i = 0; i < numberOfSingleAccidentals; i++)
                 {
@@ -541,17 +540,17 @@ namespace Manufaktura.Controls.Rendering
             }
             if (element.HasNatural == true)
             {
-                renderer.DrawString(renderer.Settings.CurrentFont.Natural, MusicFontStyles.MusicFont, renderer.State.CursorPositionX - 9, notePositionY, element);
+                renderer.DrawString(renderer.Settings.CurrentFont.Natural, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 9, notePositionY, element);
             }
         }
 
         private void DrawDots(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            if (element.NumberOfDots > 0) renderer.State.CursorPositionX += 16;
+            if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
-                renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, notePositionY, element);
-                renderer.State.CursorPositionX += 6;
+                renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
+                scoreService.CursorPositionX += 6;
             }
         }
 
@@ -561,11 +560,11 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) != 0)
                 {
-                    if (numberOfSingleAccidentals > 0) renderer.State.CursorPositionX += 9;
+                    if (numberOfSingleAccidentals > 0) scoreService.CursorPositionX += 9;
                     if (numberOfDoubleAccidentals > 0)
-                        renderer.State.CursorPositionX += (numberOfDoubleAccidentals) * 9;
+                        scoreService.CursorPositionX += (numberOfDoubleAccidentals) * 9;
                 }
-                if (element.HasNatural == true) renderer.State.CursorPositionX += 9;
+                if (element.HasNatural == true) scoreService.CursorPositionX += 9;
             }
         }
     }

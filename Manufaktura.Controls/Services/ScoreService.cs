@@ -73,13 +73,14 @@ namespace Manufaktura.Controls.Services
 
         public int CurrentVoice { get; set; }
 
+        public double CursorPositionX { get; set; }
+
         public LineDictionary LinePositions { get; private set; }
 
         public StaffSystem[] Systems
         {
             get { return systems.ToArray(); }
         }
-
 
         public ScoreService()
         {

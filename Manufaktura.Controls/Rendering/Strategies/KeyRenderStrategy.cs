@@ -49,14 +49,14 @@ namespace Manufaktura.Controls.Rendering
             for (int i = 0; i < Math.Abs(scoreService.CurrentKey.Fifths); i++)
             {
 
-                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, flatOrSharpPositionY, element);
+                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
                 if (jumpFourth) flatOrSharpPositionY += 3 * 3 * jumpDirection;
                 else flatOrSharpPositionY += 3 * 4 * jumpDirection;
                 jumpFourth = !jumpFourth;
                 jumpDirection *= -1;
-                renderer.State.CursorPositionX += 8;
+                scoreService.CursorPositionX += 8;
             }
-            renderer.State.CursorPositionX += 10;
+            scoreService.CursorPositionX += 10;
         }
     }
 }

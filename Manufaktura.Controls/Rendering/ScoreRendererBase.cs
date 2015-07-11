@@ -154,7 +154,7 @@ namespace Manufaktura.Controls.Rendering
 
         internal void BreakSystem(double distance = 0)
         {
-            scoreService.CurrentSystem.Width = State.CursorPositionX;
+            scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
             ReturnCarriage();
 
             scoreService.CurrentSystem.Height = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing ) * scoreService.CurrentScore.Staves.Count : distance;
@@ -198,7 +198,7 @@ namespace Manufaktura.Controls.Rendering
 
         internal void ReturnCarriage()
         {
-            State.CursorPositionX = 0;
+            scoreService.CursorPositionX = 0;
         }
     }
 }

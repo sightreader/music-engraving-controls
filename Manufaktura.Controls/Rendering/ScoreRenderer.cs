@@ -48,9 +48,9 @@ namespace Manufaktura.Controls.Rendering
 
             scoreService.CurrentClef = clef;
             var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
-            clef.TextBlockLocation = new Point(State.CursorPositionX, clefPositionY - TextBlockHeight);
+            clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - TextBlockHeight);
             DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
-            State.CursorPositionX += 20;
+            scoreService.CursorPositionX += 20;
         }
 
         private void DrawMissingStems(Staff staff)
@@ -135,7 +135,6 @@ namespace Manufaktura.Controls.Rendering
             DetermineClef(staff);
 
             alterationService.Reset();
-            State.firstNoteInIncipit = true;
 
             foreach (MusicalSymbol symbol in staff.Elements)
             {
@@ -150,9 +149,7 @@ namespace Manufaktura.Controls.Rendering
                 }
             }
             DrawMissingStems(staff);
-            scoreService.CurrentSystem.Width = State.CursorPositionX;
-            //scoreService.CurrentSystem.Width = scoreService.Systems.Sum(s => s.Width);
-            //if (scoreService.CurrentSystem.Width == 0) scoreService.CurrentSystem.Width = State.CursorPositionX;
+            scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
 
             //Draw all lines:
             for (int system = 1; system <= scoreService.CurrentSystemNo; system++)
