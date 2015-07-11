@@ -157,13 +157,12 @@ namespace Manufaktura.Controls.Rendering
                 }
             }
             DrawMissingStems(staff);
-            if (scoreService.CurrentStaff.ActualSystemWidths.Count < scoreService.CurrentSystemNo) scoreService.CurrentStaff.ActualSystemWidths.Add(0);
-            scoreService.CurrentStaff.ActualSystemWidths[scoreService.CurrentSystemNo - 1] = State.CursorPositionX;
+            scoreService.CurrentSystem.Width = State.CursorPositionX;
 
             //Draw all lines:
             for (int system = 1; system <= scoreService.CurrentSystemNo; system++)
             {
-                StaffRenderStrategy.Draw(staff, this, scoreService.LinePositions[system][scoreService.CurrentStaffNo], staff.ActualSystemWidths[system - 1]);
+                StaffRenderStrategy.Draw(staff, this, scoreService.LinePositions[system][scoreService.CurrentStaffNo], scoreService.Systems[system - 1].Width);
             }
             BreakToNextStaff();
         }

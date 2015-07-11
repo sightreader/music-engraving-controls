@@ -121,5 +121,11 @@ namespace Manufaktura.Controls.Services
             }
             CurrentSystem = systems[currentSystemIndex + 1];
         }
+
+
+        public StaffSystem[] Systems
+        {
+            get { return systems.ToArray(); }
+        }
     }
 }

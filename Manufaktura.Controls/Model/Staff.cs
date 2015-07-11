@@ -10,13 +10,11 @@ namespace Manufaktura.Controls.Model
     {
         public List<MusicalSymbol> Elements { get; private set; }
         public List<double?> MeasureWidths { get; private set; }
-        public List<double> ActualSystemWidths { get; set; }
 
         public Staff()
         {
             Elements = new List<MusicalSymbol>();
             MeasureWidths = new List<double?>();
-            ActualSystemWidths = new List<double>();
         }
 
         public Score ToOneStaffScore()

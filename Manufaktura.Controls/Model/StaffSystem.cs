@@ -7,5 +7,6 @@ namespace Manufaktura.Controls.Model
 {
     public class StaffSystem
     {
+        public double Width { get; set; }
     }
 }

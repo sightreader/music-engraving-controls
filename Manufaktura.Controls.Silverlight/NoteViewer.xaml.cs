@@ -203,11 +203,10 @@ namespace Manufaktura.Controls.Silverlight
         {
             if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
             double width = availableSize.Width;
-            if (Renderer.CurrentStaff != null)
-            {
-                double maxWidth = Renderer.CurrentStaff.ActualSystemWidths.Max();
-                if (maxWidth > 0) width = maxWidth;
-            }
+
+            double maxWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
+            if (maxWidth > 0) width = maxWidth;
+
             return new Size(width * ZoomFactor, (Renderer.State.CurrentSystemShiftY + 100) * ZoomFactor);
         }
 

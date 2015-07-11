@@ -15,5 +15,7 @@ namespace Manufaktura.Controls.Model
             Staff = staff;
             System = system;
         }
+
+        public double Width { get; set; }
     }
 }

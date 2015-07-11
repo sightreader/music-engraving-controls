@@ -15,14 +15,11 @@ namespace Manufaktura.Controls.Rendering
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
 
-        public Staff CurrentStaff
-        {
-            get { return scoreService.CurrentStaff; }
-        }
-
         public ScoreRendererSettings Settings { get; internal set; }
 
         public ScoreRendererState State { get; protected set; }
+
+        public ScoreInfo ScoreInformation { get { return new ScoreInfo(scoreService); } }
 
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 
@@ -157,8 +154,7 @@ namespace Manufaktura.Controls.Rendering
 
         internal void BreakSystem(double distance = 0)
         {
-            if (scoreService.CurrentStaff.ActualSystemWidths.Count < scoreService.CurrentSystemNo) scoreService.CurrentStaff.ActualSystemWidths.Add(0);
-            scoreService.CurrentStaff.ActualSystemWidths[scoreService.CurrentSystemNo - 1] = State.CursorPositionX;
+            scoreService.CurrentSystem.Width = State.CursorPositionX;
             ReturnCarriage();
 
             var currentStaffNumber = scoreService.CurrentStaffNo + 1;

@@ -6,6 +6,7 @@ namespace Manufaktura.Controls.Services
     public interface IScoreService
     {
         IEnumerable<Measure> AllMeasures { get; }
+        StaffSystem[] Systems { get; }
 
         double[] CurrentLinePositions { get; }
 
