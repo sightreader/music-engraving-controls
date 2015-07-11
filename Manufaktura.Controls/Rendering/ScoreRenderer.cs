@@ -122,21 +122,11 @@ namespace Manufaktura.Controls.Rendering
 
         private void RenderStaff(Staff staff)
         {
-            scoreService.BeginNewStaff();
+            BreakToNextStaff();
             if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
             {
                 double newPageWidth = staff.MeasureWidths.Where(w => w.HasValue).Sum(w => w.Value * Settings.CustomElementPositionRatio);
                 if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
-            }
-
-            try
-            {
-                var staffRenderStrategy = GetProperRenderStrategy(staff);
-                if (staffRenderStrategy != null) staffRenderStrategy.Render(staff, this);
-            }
-            catch (Exception ex)
-            {
-                Exceptions.Add(ex);
             }
 
             DetermineClef(staff);
@@ -164,9 +154,6 @@ namespace Manufaktura.Controls.Rendering
             {
                 StaffRenderStrategy.Draw(staff, this, scoreService.LinePositions[system, scoreService.CurrentStaffNo], scoreService.Systems[system - 1].Width);
             }
-            BreakToNextStaff();
         }
-
-        
     }
 }

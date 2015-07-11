@@ -24,9 +24,6 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
                 strategy.Render(renderer.State.CurrentClef, renderer);
 
-                strategy = new StaffRenderStrategy(scoreService) { WasSystemChanged = true };
-                strategy.Render(scoreService.CurrentStaff, renderer);
-
                 strategy = new KeyRenderStrategy();
                 strategy.Render(renderer.State.CurrentKey, renderer);
 
