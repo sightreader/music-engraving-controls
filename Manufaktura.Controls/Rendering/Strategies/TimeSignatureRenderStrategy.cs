@@ -19,10 +19,10 @@ namespace Manufaktura.Controls.Rendering
         {
             double timeSignaturePositionY = (scoreService.CurrentLinePositions[0] - 11);
             if (element.SignatureType == TimeSignatureType.Common)
-                renderer.DrawString(renderer.State.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 
+                renderer.DrawString(renderer.Settings.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 
                 renderer.State.CursorPositionX, timeSignaturePositionY, element);
             else if (element.SignatureType == TimeSignatureType.Cut)
-                renderer.DrawString(renderer.State.CurrentFont.CutTime, MusicFontStyles.MusicFont, 
+                renderer.DrawString(renderer.Settings.CurrentFont.CutTime, MusicFontStyles.MusicFont, 
                 renderer.State.CursorPositionX, timeSignaturePositionY, element);
             else
             {

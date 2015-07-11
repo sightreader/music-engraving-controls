@@ -20,10 +20,10 @@ namespace Manufaktura.Controls.Rendering
         public override void Render(Clef element, ScoreRendererBase renderer)
         {
             //Don't draw clef if it's current clef:
-            if (!WasSystemChanged && element.Pitch == renderer.State.CurrentClef.Pitch && element.Line == renderer.State.CurrentClef.Line) return;
+            if (!WasSystemChanged && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
 
             element.TextBlockLocation = new Primitives.Point(renderer.State.CursorPositionX,  scoreService.CurrentLinePositions[4] - 24.4f - (element.Line - 1) * renderer.Settings.LineSpacing);
-            renderer.State.CurrentClef = element;
+            scoreService.CurrentClef = element;
             renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
             renderer.State.CursorPositionX += 20;
         }

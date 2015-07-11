@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -10,36 +11,42 @@ namespace Manufaktura.Controls.Rendering
 {
     public class KeyRenderStrategy : MusicalSymbolRenderStrategy<Key>
     {
+        private readonly IScoreService scoreService;
+        public KeyRenderStrategy(IScoreService scoreService)
+        {
+            this.scoreService = scoreService;
+        }
+
         public override void Render(Key element, ScoreRendererBase renderer)
         {
-            renderer.State.CurrentKey = element;
+            scoreService.CurrentKey = element;
             double flatOrSharpPositionY = 0;
             bool jumpFourth = false;
             int jumpDirection = 1;
             int octaveShiftSharp = 0; //In G clef sharps (not flats) should be written an octave higher / W kluczu g krzyżyki (bemole nie) powinny być zapisywane o oktawę wyżej
-            if (renderer.State.CurrentClef.TypeOfClef == ClefType.GClef) octaveShiftSharp = 1;
+            if (scoreService.CurrentClef.TypeOfClef == ClefType.GClef) octaveShiftSharp = 1;
             int octaveShiftFlat = 0;
-            if (renderer.State.CurrentClef.TypeOfClef == ClefType.FClef) octaveShiftFlat = -1;
-            if (renderer.State.CurrentKey.Fifths > 0)
+            if (scoreService.CurrentClef.TypeOfClef == ClefType.FClef) octaveShiftFlat = -1;
+            if (scoreService.CurrentKey.Fifths > 0)
             {
-                flatOrSharpPositionY = renderer.State.CurrentClef.TextBlockLocation.Y
-                    + Pitch.StepDistance(renderer.State.CurrentClef, 
-                      Pitch.FromStep(Step.F, renderer.State.CurrentClef.Pitch.Octave + octaveShiftSharp)) 
+                flatOrSharpPositionY = scoreService.CurrentClef.TextBlockLocation.Y
+                    + Pitch.StepDistance(scoreService.CurrentClef,
+                      Pitch.FromStep(Step.F, scoreService.CurrentClef.Pitch.Octave + octaveShiftSharp)) 
                       * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = 1;
 
             }
-            else if (renderer.State.CurrentKey.Fifths < 0)
+            else if (scoreService.CurrentKey.Fifths < 0)
             {
-                flatOrSharpPositionY = renderer.State.CurrentClef.TextBlockLocation.Y + 
-                    Pitch.StepDistance(renderer.State.CurrentClef,
-                    Pitch.FromStep(Step.B, renderer.State.CurrentClef.Pitch.Octave + octaveShiftFlat)) 
+                flatOrSharpPositionY = scoreService.CurrentClef.TextBlockLocation.Y +
+                    Pitch.StepDistance(scoreService.CurrentClef,
+                    Pitch.FromStep(Step.B, scoreService.CurrentClef.Pitch.Octave + octaveShiftFlat)) 
                     * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = -1;
             }
-            for (int i = 0; i < Math.Abs(renderer.State.CurrentKey.Fifths); i++)
+            for (int i = 0; i < Math.Abs(scoreService.CurrentKey.Fifths); i++)
             {
 
                 renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, flatOrSharpPositionY, element);

@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Primitives;
+﻿using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Manufaktura.Controls.Rendering
         public int PaddingTop { get; private set; }
         public int LineSpacing { get; private set; }
         public Color DefaultColor { get; set; }
+        public MusicFont CurrentFont { get; set; }
 
         public ScoreRendererSettings()
         {
@@ -25,6 +27,7 @@ namespace Manufaktura.Controls.Rendering
             PaddingTop = 20;
             LineSpacing = 6;
             DefaultColor = Color.Black;
+            CurrentFont = new PolihymniaFont();
         }
     }
 }

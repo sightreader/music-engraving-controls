@@ -14,19 +14,7 @@ namespace Manufaktura.Controls.Rendering
 
         public List<Point> beamStartPositionsY { get; set; }
 
-        public Clef CurrentClef { get; set; }
-
-        public MusicFont CurrentFont { get; set; }
-
-        public Key CurrentKey { get; set; }
-
-
-
-        public double CurrentMeasureWidth { get; set; }
-
-
-
-
+        
 
         public double currentStemEndPositionY { get; set; }
 
@@ -34,7 +22,7 @@ namespace Manufaktura.Controls.Rendering
 
 
 
-        public int CurrentVoice { get; set; }
+
 
         public double CursorPositionX { get; set; }
 
@@ -46,9 +34,8 @@ namespace Manufaktura.Controls.Rendering
 
         public ScoreRendererState()
         {
-            CurrentFont = new PolihymniaFont();
-            CurrentClef = new Clef(ClefType.CClef, 2);
-            CurrentKey = new Key(0);
+            
+            
             CursorPositionX = 0;
             currentStemEndPositionY = 0;
             
@@ -57,7 +44,7 @@ namespace Manufaktura.Controls.Rendering
             beamStartPositionsY = new List<Point>();
             beamEndPositionsY = new List<Point>();
             
-            CurrentVoice = 1;
+           
             
         }
     }

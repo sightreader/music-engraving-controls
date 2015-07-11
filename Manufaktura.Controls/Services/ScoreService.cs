@@ -7,12 +7,17 @@ namespace Manufaktura.Controls.Services
     public class ScoreService : IScoreService
     {
         private List<Measure> allMeasures = new List<Measure>();
+
         private List<StaffSystem> systems = new List<StaffSystem>();
 
         public IEnumerable<Measure> AllMeasures
         {
             get { return allMeasures; }
         }
+
+        public Clef CurrentClef { get; set; }
+
+        public Key CurrentKey { get; set; }
 
         public double[] CurrentLinePositions
         {
@@ -66,11 +71,22 @@ namespace Manufaktura.Controls.Services
             get { return systems.IndexOf(CurrentSystem) + 1; }
         }
 
+        public int CurrentVoice { get; set; }
+
         public LineDictionary LinePositions { get; private set; }
+
+        public StaffSystem[] Systems
+        {
+            get { return systems.ToArray(); }
+        }
+
 
         public ScoreService()
         {
             LinePositions = new LineDictionary();
+            CurrentClef = new Clef(ClefType.CClef, 2);
+            CurrentKey = new Key(0);
+            CurrentVoice = 1;
         }
 
         public void BeginNewMeasure()
@@ -124,12 +140,6 @@ namespace Manufaktura.Controls.Services
                 return;
             }
             CurrentSystem = systems[currentSystemIndex + 1];
-        }
-
-
-        public StaffSystem[] Systems
-        {
-            get { return systems.ToArray(); }
         }
 
         public void ReturnToFirstSystem()

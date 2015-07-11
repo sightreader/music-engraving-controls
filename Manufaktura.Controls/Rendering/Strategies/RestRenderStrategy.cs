@@ -31,12 +31,12 @@ namespace Manufaktura.Controls.Rendering
             renderer.State.firstNoteInIncipit = false;
 
             //If it's second voice, rewind position to the beginning of measure (but only if default-x is not set or is ignored):
-            if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
+            if (element.Voice > scoreService.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 renderer.State.CursorPositionX = scoreService.CurrentMeasure.FirstNoteInMeasureXPosition;
                 measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
-            renderer.State.CurrentVoice = element.Voice;
+            scoreService.CurrentVoice = element.Voice;
 
 
             double restPositionY = (scoreService.CurrentLinePositions[0] - 9);
@@ -54,7 +54,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.NumberOfDots > 0) renderer.State.CursorPositionX += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
-                renderer.DrawString(renderer.State.CurrentFont.Dot, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
+                renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
                 renderer.State.CursorPositionX += 6;
             }
 

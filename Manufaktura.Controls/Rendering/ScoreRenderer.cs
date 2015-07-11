@@ -46,11 +46,10 @@ namespace Manufaktura.Controls.Rendering
             var clef = staff.Elements.FirstOrDefault(MusicalSymbolType.Clef) as Clef; //Perform one pass to determine current clef / Wykonaj jeden przebieg żeby określić bieżący klucz
             if (clef == null) return;
 
-            State.CurrentClef = clef;
+            scoreService.CurrentClef = clef;
             var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
-            State.CurrentClef.TextBlockLocation = new Point(State.CursorPositionX, clefPositionY - TextBlockHeight);
-            State.CurrentClef = clef;
-            DrawString(State.CurrentClef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
+            clef.TextBlockLocation = new Point(State.CursorPositionX, clefPositionY - TextBlockHeight);
+            DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             State.CursorPositionX += 20;
         }
 

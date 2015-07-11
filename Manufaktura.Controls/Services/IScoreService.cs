@@ -5,6 +5,11 @@ namespace Manufaktura.Controls.Services
 {
     public interface IScoreService
     {
+        Clef CurrentClef { get; set; }
+
+        Key CurrentKey { get; set; }
+
+        int CurrentVoice { get; set; }
         IEnumerable<Measure> AllMeasures { get; }
         StaffSystem[] Systems { get; }
 

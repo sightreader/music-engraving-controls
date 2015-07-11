@@ -22,10 +22,10 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 renderer.BreakSystem(element.SystemDistance);
 
                 MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
-                strategy.Render(renderer.State.CurrentClef, renderer);
+                strategy.Render(scoreService.CurrentClef, renderer);
 
-                strategy = new KeyRenderStrategy();
-                strategy.Render(renderer.State.CurrentKey, renderer);
+                strategy = new KeyRenderStrategy(scoreService);
+                strategy.Render(scoreService.CurrentKey, renderer);
 
                 //Time signature is not rendered in new line.
             
