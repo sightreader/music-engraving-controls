@@ -35,5 +35,7 @@ namespace Manufaktura.Controls.Services
         void BeginNewStaff();
 
         void BeginNewSystem();
+
+        void ReturnToFirstSystem();
     }
 }

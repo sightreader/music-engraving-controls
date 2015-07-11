@@ -131,5 +131,10 @@ namespace Manufaktura.Controls.Services
         {
             get { return systems.ToArray(); }
         }
+
+        public void ReturnToFirstSystem()
+        {
+            CurrentSystem = systems.FirstOrDefault();
+        }
     }
 }

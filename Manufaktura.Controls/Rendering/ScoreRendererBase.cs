@@ -188,8 +188,10 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CurrentStaff.Height = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing + 30 : distance;
 
             List<double> newLinePositions = new List<double>();
+            scoreService.ReturnToFirstSystem();
             foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentStaff.Height);
             scoreService.BeginNewStaff();
+
             scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
             measurementService.LastMeasurePositionX = 0;
         }
