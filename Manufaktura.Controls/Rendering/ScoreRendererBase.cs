@@ -3,24 +3,28 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Manufaktura.Controls.Rendering
 {
     public abstract class ScoreRendererBase
     {
-        protected IMeasurementService measurementService = new MeasurementService();
         protected IAlterationService alterationService = new AlterationService();
+        protected IMeasurementService measurementService = new MeasurementService();
+        protected IScoreService scoreService = new ScoreService();
+        private ManufakturaResolver resolver = new ManufakturaResolver();
+
+        public Staff CurrentStaff
+        {
+            get { return scoreService.CurrentStaff; }
+        }
+
         public ScoreRendererSettings Settings { get; internal set; }
 
         public ScoreRendererState State { get; protected set; }
 
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
-
-        private ManufakturaResolver resolver = new ManufakturaResolver();
 
         public double TextBlockHeight { get; protected set; }
 
@@ -28,7 +32,7 @@ namespace Manufaktura.Controls.Rendering
         {
             State = new ScoreRendererState();
             Settings = new ScoreRendererSettings();
-            resolver.AddServices(measurementService, alterationService);
+            resolver.AddServices(measurementService, alterationService, scoreService);
             Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
             TextBlockHeight = 25;
         }
@@ -151,37 +155,37 @@ namespace Manufaktura.Controls.Rendering
             return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
         }
 
+        internal void BreakSystem(double distance = 0)
+        {
+            if (scoreService.CurrentStaff.ActualSystemWidths.Count < scoreService.CurrentSystemNo) scoreService.CurrentStaff.ActualSystemWidths.Add(0);
+            scoreService.CurrentStaff.ActualSystemWidths[scoreService.CurrentSystemNo - 1] = State.CursorPositionX;
+            ReturnCarriage();
+
+            var currentStaffNumber = scoreService.CurrentStaffNo + 1;
+            double shift = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing) * currentStaffNumber : distance;
+            State.CurrentSystemShiftY += shift;
+
+            List<double> newLinePositions = new List<double>();
+            foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + shift);
+            scoreService.BeginNewSystem();
+            scoreService.LinePositions[scoreService.CurrentSystemNo].Add(scoreService.CurrentStaffNo, newLinePositions.ToArray());
+            measurementService.LastMeasurePositionX = 0;
+        }
+
         internal void BreakToNextStaff(double distance = 0)
         {
-            if (State.CurrentScore.Staves.Count < 2)
+            if (scoreService.CurrentScore.Staves.Count < 2)
             {
                 return;
             }
 
             ReturnCarriage();
-            double shift = distance == 0 ? State.CurrentStaffHeight + Settings.LineSpacing : distance;
+            double shift = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing : distance;
             State.CurrentSystemShiftY += shift;
 
             List<double> newLinePositions = new List<double>();
-            foreach (var position in State.LinePositions[State.CurrentSystem][State.CurrentLine]) newLinePositions.Add(position + shift);
-            State.LinePositions[State.CurrentSystem].Add(State.CurrentLine, newLinePositions.ToArray());
-            measurementService.LastMeasurePositionX = 0;
-        }
-
-        internal void BreakSystem(double distance = 0)
-        {
-            if (State.CurrentStaff.ActualSystemWidths.Count < State.CurrentSystem) State.CurrentStaff.ActualSystemWidths.Add(0);
-            State.CurrentStaff.ActualSystemWidths[State.CurrentSystem - 1] = State.CursorPositionX;
-            ReturnCarriage();
-
-            var currentStaffNumber = State.CurrentScore.Staves.IndexOf(State.CurrentStaff) + 1;
-            double shift = distance == 0 ? (State.CurrentStaffHeight + Settings.LineSpacing) * currentStaffNumber : distance;
-            State.CurrentSystemShiftY += shift;
-
-            List<double> newLinePositions = new List<double>();
-            foreach (var position in State.LinePositions[State.CurrentSystem][State.CurrentLine]) newLinePositions.Add(position + shift);
-            State.CurrentSystem++;
-            State.LinePositions[State.CurrentSystem].Add(State.CurrentLine, newLinePositions.ToArray());
+            foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + shift);
+            scoreService.LinePositions[scoreService.CurrentSystemNo].Add(scoreService.CurrentStaffNo, newLinePositions.ToArray());
             measurementService.LastMeasurePositionX = 0;
         }
 

@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,13 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class StaffRenderStrategy : MusicalSymbolRenderStrategy<Staff>
+    public class StaffRenderStrategy : MusicalSymbolRenderStrategy<Staff>
     {
+        private readonly IScoreService scoreService;
+        public StaffRenderStrategy(IScoreService scoreService)
+        {
+            this.scoreService = scoreService;
+        }
         public bool WasSystemChanged { get; set; }
 
         public override void Render(Staff element, ScoreRendererBase renderer)
@@ -19,7 +25,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing + sharpLineModifier;
+                    scoreService.CurrentLinePositions[i] = renderer.Settings.PaddingTop + i * renderer.Settings.LineSpacing + sharpLineModifier;
                 }
             }
         }

@@ -9,12 +9,14 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class RestRenderStrategy : MusicalSymbolRenderStrategy<Rest>
+    public class RestRenderStrategy : MusicalSymbolRenderStrategy<Rest>
     {
         private readonly IMeasurementService measurementService;
-        public RestRenderStrategy(IMeasurementService measurementService)
+        private readonly IScoreService scoreService;
+        public RestRenderStrategy(IMeasurementService measurementService, IScoreService scoreService)
         {
             this.measurementService = measurementService;
+            this.scoreService = scoreService;
         }
 
         public override void Render(Rest element, ScoreRendererBase renderer)
@@ -25,19 +27,19 @@ namespace Manufaktura.Controls.Rendering
                 renderer.State.CursorPositionX = measurementService.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
             }
 
-            if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
+            if (renderer.State.firstNoteInIncipit) scoreService.CurrentMeasure.FirstNoteInMeasureXPosition = renderer.State.CursorPositionX;
             renderer.State.firstNoteInIncipit = false;
 
             //If it's second voice, rewind position to the beginning of measure (but only if default-x is not set or is ignored):
             if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
-                renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
+                renderer.State.CursorPositionX = scoreService.CurrentMeasure.FirstNoteInMeasureXPosition;
                 measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
             renderer.State.CurrentVoice = element.Voice;
 
 
-            double restPositionY = (renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 9);
+            double restPositionY = (scoreService.CurrentLinePositions[0] - 9);
 
             renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, restPositionY, element);
             measurementService.LastNotePositionX = renderer.State.CursorPositionX;

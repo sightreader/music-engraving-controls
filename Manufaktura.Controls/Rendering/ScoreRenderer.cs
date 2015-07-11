@@ -22,8 +22,7 @@ namespace Manufaktura.Controls.Rendering
 
         public void Render(Score score)
         {
-            State.CurrentScore = score;
-
+            scoreService.BeginNewScore(score);
             DrawSelectionBox();
             foreach (Staff staff in score.Staves)
             {
@@ -44,7 +43,7 @@ namespace Manufaktura.Controls.Rendering
             if (clef == null) return;
 
             State.CurrentClef = clef;
-            State.CurrentClefPositionY = State.LinePositions[State.CurrentSystem][State.CurrentLine][4] - ((clef.Line - 1) * Settings.LineSpacing);
+            State.CurrentClefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
             State.CurrentClefTextBlockPositionY = State.CurrentClefPositionY - TextBlockHeight;
             State.CurrentClef = clef;
             DrawString(State.CurrentClef.MusicalCharacter, MusicFontStyles.MusicFont, State.CursorPositionX, State.CurrentClefTextBlockPositionY, clef);
@@ -123,7 +122,7 @@ namespace Manufaktura.Controls.Rendering
 
         private void RenderStaff(Staff staff)
         {
-            State.CurrentStaff = staff;
+            scoreService.BeginNewStaff();
             if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
             {
                 double newPageWidth = staff.MeasureWidths.Where(w => w.HasValue).Sum(w => w.Value * Settings.CustomElementPositionRatio);
@@ -144,7 +143,6 @@ namespace Manufaktura.Controls.Rendering
 
             alterationService.Reset();
             State.firstNoteInIncipit = true;
-            State.CurrentMeasure = 0;
 
             foreach (MusicalSymbol symbol in staff.Elements)
             {
@@ -159,13 +157,13 @@ namespace Manufaktura.Controls.Rendering
                 }
             }
             DrawMissingStems(staff);
-            if (State.CurrentStaff.ActualSystemWidths.Count < State.CurrentSystem) State.CurrentStaff.ActualSystemWidths.Add(0);
-            State.CurrentStaff.ActualSystemWidths[State.CurrentSystem - 1] = State.CursorPositionX;
+            if (scoreService.CurrentStaff.ActualSystemWidths.Count < scoreService.CurrentSystemNo) scoreService.CurrentStaff.ActualSystemWidths.Add(0);
+            scoreService.CurrentStaff.ActualSystemWidths[scoreService.CurrentSystemNo - 1] = State.CursorPositionX;
 
             //Draw all lines:
-            for (int system = 1; system <= State.CurrentSystem; system++)
+            for (int system = 1; system <= scoreService.CurrentSystemNo; system++)
             {
-                StaffRenderStrategy.Draw(staff, this, State.LinePositions[system][State.CurrentLine], staff.ActualSystemWidths[system - 1]);
+                StaffRenderStrategy.Draw(staff, this, scoreService.LinePositions[system][scoreService.CurrentStaffNo], staff.ActualSystemWidths[system - 1]);
             }
             BreakToNextStaff();
         }

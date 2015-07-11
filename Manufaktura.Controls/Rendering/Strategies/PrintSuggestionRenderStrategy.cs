@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,13 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Strategies
 {
-    class PrintSuggestionRenderStrategy : MusicalSymbolRenderStrategy<PrintSuggestion>
+    public class PrintSuggestionRenderStrategy : MusicalSymbolRenderStrategy<PrintSuggestion>
     {
+        private readonly IScoreService scoreService;
+        public PrintSuggestionRenderStrategy(IScoreService scoreService)
+        {
+            this.scoreService = scoreService;
+        }
         public override void Render(PrintSuggestion element, ScoreRendererBase renderer)
         {
             if (element.IsSystemBreak && !renderer.Settings.IsPanoramaMode)
@@ -17,11 +23,11 @@ namespace Manufaktura.Controls.Rendering.Strategies
 
                 
 
-                MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy() { WasSystemChanged = true };
+                MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
                 strategy.Render(renderer.State.CurrentClef, renderer);
 
-                strategy = new StaffRenderStrategy() { WasSystemChanged = true };
-                strategy.Render(renderer.State.CurrentStaff, renderer);
+                strategy = new StaffRenderStrategy(scoreService) { WasSystemChanged = true };
+                strategy.Render(scoreService.CurrentStaff, renderer);
 
                 strategy = new KeyRenderStrategy();
                 strategy.Render(renderer.State.CurrentKey, renderer);
@@ -29,8 +35,8 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 //Time signature is not rendered in new line.
             
                 //Render measure number:
-                renderer.DrawString((renderer.State.CurrentMeasure + 1).ToString(), MusicFontStyles.LyricsFont,
-                    new Primitives.Point(0, renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 25), renderer.State.CurrentStaff);
+                renderer.DrawString((scoreService.CurrentMeasureNo).ToString(), MusicFontStyles.LyricsFont,
+                    new Primitives.Point(0, scoreService.CurrentLinePositions[0] - 25), scoreService.CurrentStaff);
             }
         }
     }

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class KeyRenderStrategy : MusicalSymbolRenderStrategy<Key>
+    public class KeyRenderStrategy : MusicalSymbolRenderStrategy<Key>
     {
         public override void Render(Key element, ScoreRendererBase renderer)
         {

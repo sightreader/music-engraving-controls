@@ -15,10 +15,12 @@ namespace Manufaktura.Controls.Rendering
     {
         private readonly IMeasurementService measurementService;
         private readonly IAlterationService alterationService;
-        public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService)
+        private readonly IScoreService scoreService;
+        public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService)
         {
             this.measurementService = measurementService;
             this.alterationService = alterationService;
+            this.scoreService = scoreService;
         }
 
         public override void Render(Note element, ScoreRendererBase renderer)
@@ -29,13 +31,13 @@ namespace Manufaktura.Controls.Rendering
                 renderer.State.CursorPositionX = measurementService.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
             }
 
-            if (renderer.State.firstNoteInIncipit) renderer.State.firstNoteInMeasureXPosition = renderer.State.CursorPositionX;
+            if (renderer.State.firstNoteInIncipit) scoreService.CurrentMeasure.FirstNoteInMeasureXPosition = renderer.State.CursorPositionX;
             renderer.State.firstNoteInIncipit = false;
 
             //If it's second voice, rewind position to the beginning of measure (but only if default-x is not set or is ignored):
             if (element.Voice > renderer.State.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
-                renderer.State.CursorPositionX = renderer.State.firstNoteInMeasureXPosition;
+                renderer.State.CursorPositionX = scoreService.CurrentMeasure.FirstNoteInMeasureXPosition;
                 measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
             renderer.State.CurrentVoice = element.Voice;
@@ -108,7 +110,7 @@ namespace Manufaktura.Controls.Rendering
         private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
         {
             if (measurementService.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
-            Staff staff = renderer.State.CurrentStaff;
+            Staff staff = scoreService.CurrentStaff;
 
             NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, PeekType.BeginningOfTuplet);
             int index = staff.Elements.IndexOf(firstElementInTuplet);
@@ -145,19 +147,19 @@ namespace Manufaktura.Controls.Rendering
         private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             double tmpXPos = renderer.State.CursorPositionX + 16;
-            if (notePositionY + 25.0f > renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][4] + renderer.Settings.LineSpacing / 2.0f)
+            if (notePositionY + 25.0f > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
             {
-                for (double i = renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
+                for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
                 {
 
                     renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
                         new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
                 }
             }
-            if (notePositionY + 25.0f < renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - renderer.Settings.LineSpacing / 2)
+            if (notePositionY + 25.0f < scoreService.CurrentLinePositions[0] - renderer.Settings.LineSpacing / 2)
             {
 
-                for (double i = renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
+                for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
                 {
 
                     renderer.DrawLine(new Point(renderer.State.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
@@ -393,10 +395,10 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLyrics(ScoreRendererBase renderer, Note element)
         {
-            double textPositionY = renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][4] + 10;    //Default value if default-y is not set
+            double textPositionY = scoreService.CurrentLinePositions[4] + 10;    //Default value if default-y is not set
             foreach (Lyrics lyrics in element.Lyrics)
             {
-                if (lyrics.DefaultYPosition.HasValue) textPositionY = renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] + lyrics.DefaultYPosition.Value * -1 - 40;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne -40
+                if (lyrics.DefaultYPosition.HasValue) textPositionY = scoreService.CurrentLinePositions[0] + lyrics.DefaultYPosition.Value * -1 - 40;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne -40
 
                 StringBuilder sBuilder = new StringBuilder();
                 sBuilder.Append(lyrics.Text);
@@ -444,9 +446,9 @@ namespace Manufaktura.Controls.Rendering
                 if (element.TrillMark == NoteTrillMark.Above)
                 {
                     trillPos = notePositionY - 1;
-                    if (trillPos > renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - renderer.TextBlockHeight)
+                    if (trillPos > scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight)
                     {
-                        trillPos = renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - renderer.TextBlockHeight - 1.0f;
+                        trillPos = scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight - 1.0f;
                     }
                 }
                 else if (element.TrillMark == NoteTrillMark.Below)

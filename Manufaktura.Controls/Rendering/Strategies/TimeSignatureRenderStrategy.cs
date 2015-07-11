@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,16 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class TimeSignatureRenderStrategy : MusicalSymbolRenderStrategy<TimeSignature>
+    public class TimeSignatureRenderStrategy : MusicalSymbolRenderStrategy<TimeSignature>
     {
+        private readonly IScoreService scoreService;
+        public TimeSignatureRenderStrategy(IScoreService scoreService)
+        {
+            this.scoreService = scoreService;
+        }
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
-            double timeSignaturePositionY = (renderer.State.LinePositions[renderer.State.CurrentSystem][renderer.State.CurrentLine][0] - 11);
+            double timeSignaturePositionY = (scoreService.CurrentLinePositions[0] - 11);
             if (element.SignatureType == TimeSignatureType.Common)
                 renderer.DrawString(renderer.State.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 
                 renderer.State.CursorPositionX, timeSignaturePositionY, element);

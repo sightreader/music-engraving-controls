@@ -63,6 +63,7 @@
     <Compile Include="Model\IRenderedAsTextBlock.cs" />
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\Lyrics.cs" />
+    <Compile Include="Model\Measure.cs" />
     <Compile Include="Model\Mordent.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\Note.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\SafeDictionary.cs" />
     <Compile Include="Model\Slur.cs" />
+    <Compile Include="Model\StaffSystem.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
@@ -142,11 +144,11 @@
     <Compile Include="Services\IAlterationService.cs" />
     <Compile Include="Services\ICurrencyService.cs" />
     <Compile Include="Services\IMeasurementService.cs" />
+    <Compile Include="Services\IScoreService.cs" />
     <Compile Include="Services\MeasurementService.cs" />
+    <Compile Include="Services\ScoreService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Rendering\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

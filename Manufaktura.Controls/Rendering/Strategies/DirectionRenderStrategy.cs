@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class DirectionRenderStrategy : MusicalSymbolRenderStrategy<Direction>
+    public class DirectionRenderStrategy : MusicalSymbolRenderStrategy<Direction>
     {
         public override void Render(Direction element, ScoreRendererBase renderer)
         {
