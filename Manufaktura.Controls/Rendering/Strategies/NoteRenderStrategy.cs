@@ -172,7 +172,9 @@ namespace Manufaktura.Controls.Rendering
             if (element.Duration != RhythmicDuration.Whole)
             {
                 double tmpStemPosY;
-                tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) + element.StemDefaultY * -1.0f / 2.0f;
+                tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) +
+                    scoreService.CurrentScore.Staves.Take(scoreService.CurrentStaffNo - 1).Sum(s => s.Height) + 
+                    element.StemDefaultY * -1.0f / 2.0f;
 
                 if (element.StemDirection == VerticalDirection.Down)
                 {
