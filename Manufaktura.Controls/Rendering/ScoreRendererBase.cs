@@ -185,7 +185,7 @@ namespace Manufaktura.Controls.Rendering
             }
 
             ReturnCarriage();
-            scoreService.CurrentStaff.Height = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing : distance;
+            scoreService.CurrentStaff.Height = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing + 30 : distance;
 
             List<double> newLinePositions = new List<double>();
             foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentStaff.Height);
