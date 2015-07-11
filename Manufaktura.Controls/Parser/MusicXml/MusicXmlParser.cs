@@ -56,7 +56,6 @@ namespace Manufaktura.Controls.Parser
                     //Parse measure nodes:
                     foreach (XElement elementNode in measureNode.Elements())
                     {
-                        if (elementNode.HasElements == false) continue;
                         MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(elementNode);
                         if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, elementNode);
                     }
