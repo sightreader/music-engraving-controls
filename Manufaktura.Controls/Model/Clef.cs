@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Music;
+using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,10 @@ namespace Manufaktura.Controls.Model
         public Pitch Pitch { get; private set; }
         public ClefType TypeOfClef { get { return typeOfClef; } }
         public int Line { get { return line; } }
-        public Primitives.Point TextBlockLocation
+        public Point TextBlockLocation
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
         public MusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 

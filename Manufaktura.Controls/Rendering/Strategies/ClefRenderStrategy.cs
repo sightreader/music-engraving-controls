@@ -22,9 +22,9 @@ namespace Manufaktura.Controls.Rendering
             //Don't draw clef if it's current clef:
             if (!WasSystemChanged && element.Pitch == renderer.State.CurrentClef.Pitch && element.Line == renderer.State.CurrentClef.Line) return;
 
-            renderer.State.CurrentClefTextBlockPositionY = scoreService.CurrentLinePositions[4] - 24.4f - (element.Line - 1) * renderer.Settings.LineSpacing;
+            element.TextBlockLocation = new Primitives.Point(renderer.State.CursorPositionX,  scoreService.CurrentLinePositions[4] - 24.4f - (element.Line - 1) * renderer.Settings.LineSpacing);
             renderer.State.CurrentClef = element;
-            renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, renderer.State.CursorPositionX, renderer.State.CurrentClefTextBlockPositionY, element);
+            renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
             renderer.State.CursorPositionX += 20;
         }
     }

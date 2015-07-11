@@ -22,7 +22,7 @@ namespace Manufaktura.Controls.Rendering
             if (renderer.State.CurrentClef.TypeOfClef == ClefType.FClef) octaveShiftFlat = -1;
             if (renderer.State.CurrentKey.Fifths > 0)
             {
-                flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY 
+                flatOrSharpPositionY = renderer.State.CurrentClef.TextBlockLocation.Y
                     + Pitch.StepDistance(renderer.State.CurrentClef, 
                       Pitch.FromStep(Step.F, renderer.State.CurrentClef.Pitch.Octave + octaveShiftSharp)) 
                       * (renderer.Settings.LineSpacing / 2);
@@ -32,7 +32,7 @@ namespace Manufaktura.Controls.Rendering
             }
             else if (renderer.State.CurrentKey.Fifths < 0)
             {
-                flatOrSharpPositionY = renderer.State.CurrentClefTextBlockPositionY + 
+                flatOrSharpPositionY = renderer.State.CurrentClef.TextBlockLocation.Y + 
                     Pitch.StepDistance(renderer.State.CurrentClef,
                     Pitch.FromStep(Step.B, renderer.State.CurrentClef.Pitch.Octave + octaveShiftFlat)) 
                     * (renderer.Settings.LineSpacing / 2);

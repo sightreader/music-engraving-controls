@@ -18,8 +18,6 @@ namespace Manufaktura.Controls.Rendering
 
         public double CurrentClefPositionY { get; set; }
 
-        public double CurrentClefTextBlockPositionY { get; set; }
-
         public MusicFont CurrentFont { get; set; }
 
         public Key CurrentKey { get; set; }
@@ -63,7 +61,6 @@ namespace Manufaktura.Controls.Rendering
             
             CurrentVoice = 1;
             
-            CurrentClefTextBlockPositionY = 0;
         }
     }
 }

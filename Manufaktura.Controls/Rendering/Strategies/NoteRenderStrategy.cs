@@ -54,7 +54,7 @@ namespace Manufaktura.Controls.Rendering
 
             if (element.IsChordElement) renderer.State.CursorPositionX = measurementService.LastNotePositionX;
 
-            double noteTextBlockPositionY = renderer.State.CurrentClefTextBlockPositionY + Pitch.StepDistance(renderer.State.CurrentClef.Pitch,
+            double noteTextBlockPositionY = renderer.State.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(renderer.State.CurrentClef.Pitch,
                 element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
 
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
