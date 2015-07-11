@@ -49,8 +49,8 @@ namespace Manufaktura.Controls.Silverlight.Test
                 noteViewer3.ScoreSource = score;
 
                 MusicXmlNormalizer normalizer = new MusicXmlNormalizer() { NormalizeSpaceBeforeFirstNotesOfMeasures = true };
-                noteViewer2.XmlTransformations = new[] { normalizer };
-                noteViewer2.XmlSource = scoreXml;
+                //noteViewer2.XmlTransformations = new[] { normalizer };
+                //noteViewer2.XmlSource = scoreXml;
 
                 MelodicContourDigestParser digestParser = new MelodicContourDigestParser();
                 int[] results = digestParser.ParseBack(score);

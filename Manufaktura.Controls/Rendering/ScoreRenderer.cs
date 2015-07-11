@@ -35,6 +35,10 @@ namespace Manufaktura.Controls.Rendering
                     Exceptions.Add(ex);
                 }
             }
+            if (Settings.IsPanoramaMode && scoreService.CurrentSystem.Height == 0)
+            {
+                scoreService.CurrentSystem.Height = (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count;
+            }
         }
 
         private void DetermineClef(Staff staff)
