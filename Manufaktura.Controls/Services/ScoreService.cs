@@ -16,7 +16,7 @@ namespace Manufaktura.Controls.Services
 
         public double[] CurrentLinePositions
         {
-            get { return LinePositions[CurrentSystemNo][CurrentStaffNo]; }
+            get { return LinePositions[CurrentSystemNo, CurrentStaffNo]; }
         }
 
         public Measure CurrentMeasure
@@ -46,7 +46,7 @@ namespace Manufaktura.Controls.Services
         {
             get
             {
-                return LinePositions[CurrentSystemNo][CurrentStaffNo].Max() - LinePositions[CurrentSystemNo][CurrentStaffNo].Min();
+                return LinePositions[CurrentSystemNo, CurrentStaffNo].Max() - LinePositions[CurrentSystemNo, CurrentStaffNo].Min();
             }
         }
 

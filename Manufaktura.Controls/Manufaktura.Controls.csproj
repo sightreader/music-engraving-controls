@@ -76,7 +76,7 @@
     <Compile Include="Model\PeekStrategies\NextElementPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\PeekStrategy.cs" />
     <Compile Include="Model\PrintSuggestion.cs" />
-    <Compile Include="Model\SafeDictionary.cs" />
+    <Compile Include="Model\LineDictionary.cs" />
     <Compile Include="Model\ScoreInfo.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\StaffSystem.cs" />

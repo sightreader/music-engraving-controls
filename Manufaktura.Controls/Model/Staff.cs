@@ -10,6 +10,7 @@ namespace Manufaktura.Controls.Model
     {
         public List<MusicalSymbol> Elements { get; private set; }
         public List<double?> MeasureWidths { get; private set; }
+        public double Height { get; set; }
 
         public Staff()
         {

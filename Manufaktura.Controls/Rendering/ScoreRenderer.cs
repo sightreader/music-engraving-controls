@@ -162,7 +162,7 @@ namespace Manufaktura.Controls.Rendering
             //Draw all lines:
             for (int system = 1; system <= scoreService.CurrentSystemNo; system++)
             {
-                StaffRenderStrategy.Draw(staff, this, scoreService.LinePositions[system][scoreService.CurrentStaffNo], scoreService.Systems[system - 1].Width);
+                StaffRenderStrategy.Draw(staff, this, scoreService.LinePositions[system, scoreService.CurrentStaffNo], scoreService.Systems[system - 1].Width);
             }
             BreakToNextStaff();
         }

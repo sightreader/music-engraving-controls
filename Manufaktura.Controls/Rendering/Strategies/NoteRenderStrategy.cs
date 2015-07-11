@@ -172,7 +172,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Duration != RhythmicDuration.Whole)
             {
                 double tmpStemPosY;
-                tmpStemPosY = renderer.State.CurrentSystemShiftY + element.StemDefaultY * -1.0f / 2.0f;
+                tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) + element.StemDefaultY * -1.0f / 2.0f;
 
                 if (element.StemDirection == VerticalDirection.Down)
                 {
@@ -380,8 +380,8 @@ namespace Manufaktura.Controls.Rendering
                 {
                     renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 18,
                         measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 9,
-                        renderer.State.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + renderer.State.CurrentSystemShiftY: notePositionY + 9),
-                        renderer.State.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + renderer.State.CurrentSystemShiftY + 9 : notePositionY + 18), element);
+                        renderer.State.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) : notePositionY + 9),
+                        renderer.State.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) + 9 : notePositionY + 18), element);
                 }
                 else if (slurStartPlacement == VerticalPlacement.Below)
                 {

@@ -37,7 +37,6 @@ namespace Manufaktura.Controls.Rendering
         public double currentStemPositionX { get; set; }
 
 
-        public double CurrentSystemShiftY { get; set; }
 
         public int CurrentVoice { get; set; }
 

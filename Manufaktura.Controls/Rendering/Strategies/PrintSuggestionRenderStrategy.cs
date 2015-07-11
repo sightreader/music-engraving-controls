@@ -21,8 +21,6 @@ namespace Manufaktura.Controls.Rendering.Strategies
             {
                 renderer.BreakSystem(element.SystemDistance);
 
-                
-
                 MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
                 strategy.Render(renderer.State.CurrentClef, renderer);
 

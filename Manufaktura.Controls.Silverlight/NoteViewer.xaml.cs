@@ -207,7 +207,7 @@ namespace Manufaktura.Controls.Silverlight
             double maxWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
             if (maxWidth > 0) width = maxWidth;
 
-            return new Size(width * ZoomFactor, (Renderer.State.CurrentSystemShiftY + 100) * ZoomFactor);
+            return new Size(width * ZoomFactor, (Renderer.ScoreInformation.Systems.Sum(s => s.Height) + 100) * ZoomFactor);
         }
 
         private void ColorElement(MusicalSymbol element, Color color)

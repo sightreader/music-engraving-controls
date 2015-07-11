@@ -157,14 +157,12 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CurrentSystem.Width = State.CursorPositionX;
             ReturnCarriage();
 
-            var currentStaffNumber = scoreService.CurrentStaffNo + 1;
-            double shift = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing) * currentStaffNumber : distance;
-            State.CurrentSystemShiftY += shift;
+            scoreService.CurrentSystem.Height = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing ) * scoreService.CurrentScore.Staves.Count : distance;
 
             List<double> newLinePositions = new List<double>();
-            foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + shift);
+            foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height);
             scoreService.BeginNewSystem();
-            scoreService.LinePositions[scoreService.CurrentSystemNo].Add(scoreService.CurrentStaffNo, newLinePositions.ToArray());
+            scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
             measurementService.LastMeasurePositionX = 0;
         }
 
@@ -176,12 +174,11 @@ namespace Manufaktura.Controls.Rendering
             }
 
             ReturnCarriage();
-            double shift = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing : distance;
-            State.CurrentSystemShiftY += shift;
+            scoreService.CurrentStaff.Height = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing : distance;
 
             List<double> newLinePositions = new List<double>();
-            foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + shift);
-            scoreService.LinePositions[scoreService.CurrentSystemNo].Add(scoreService.CurrentStaffNo, newLinePositions.ToArray());
+            foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentScore.Staves.Take(scoreService.CurrentStaffNo).Sum(s => s.Height));
+            scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
             measurementService.LastMeasurePositionX = 0;
         }
 
