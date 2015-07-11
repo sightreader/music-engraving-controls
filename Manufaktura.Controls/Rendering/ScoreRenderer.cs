@@ -47,8 +47,8 @@ namespace Manufaktura.Controls.Rendering
             if (clef == null) return;
 
             State.CurrentClef = clef;
-            State.CurrentClefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
-            State.CurrentClef.TextBlockLocation = new Point(State.CursorPositionX, State.CurrentClefPositionY - TextBlockHeight);
+            var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
+            State.CurrentClef.TextBlockLocation = new Point(State.CursorPositionX, clefPositionY - TextBlockHeight);
             State.CurrentClef = clef;
             DrawString(State.CurrentClef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             State.CursorPositionX += 20;

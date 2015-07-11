@@ -16,8 +16,6 @@ namespace Manufaktura.Controls.Rendering
 
         public Clef CurrentClef { get; set; }
 
-        public double CurrentClefPositionY { get; set; }
-
         public MusicFont CurrentFont { get; set; }
 
         public Key CurrentKey { get; set; }
