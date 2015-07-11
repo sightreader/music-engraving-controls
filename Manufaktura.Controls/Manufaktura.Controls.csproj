@@ -137,11 +137,12 @@
     <Compile Include="Rendering\Strategies\RestRenderStrategy.cs" />
     <Compile Include="Rendering\ScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererBase.cs" />
-    <Compile Include="Rendering\ScoreRendererState.cs" />
     <Compile Include="Rendering\Strategies\StaffRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\TimeSignatureRenderStrategy.cs" />
     <Compile Include="Services\AlterationService.cs" />
+    <Compile Include="Services\BeamingService.cs" />
     <Compile Include="Services\IAlterationService.cs" />
+    <Compile Include="Services\IBeamingService.cs" />
     <Compile Include="Services\IMeasurementService.cs" />
     <Compile Include="Services\IScoreService.cs" />
     <Compile Include="Services\MeasurementService.cs" />

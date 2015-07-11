@@ -16,11 +16,13 @@ namespace Manufaktura.Controls.Rendering
         private readonly IMeasurementService measurementService;
         private readonly IAlterationService alterationService;
         private readonly IScoreService scoreService;
-        public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService)
+        private readonly IBeamingService beamingService;
+        public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService, IBeamingService beamingService)
         {
             this.measurementService = measurementService;
             this.alterationService = alterationService;
             this.scoreService = scoreService;
+            this.beamingService = beamingService;
         }
 
         public override void Render(Note element, ScoreRendererBase renderer)
@@ -182,17 +184,17 @@ namespace Manufaktura.Controls.Rendering
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
                     if (element.IsChordElement)
-                        renderer.State.currentStemEndPositionY = notePositionY + 18;
-                    else if ((renderer.State.IsManualMode) || (!(element.CustomStemEndPosition)))
-                        renderer.State.currentStemEndPositionY = notePositionY + 18 > renderer.State.currentStemEndPositionY ? renderer.State.currentStemEndPositionY : notePositionY + 18;
+                        beamingService.CurrentStemEndPositionY = notePositionY + 18;
+                    else if ((renderer.Settings.IsManualMode) || (!(element.CustomStemEndPosition)))
+                        beamingService.CurrentStemEndPositionY = notePositionY + 18 > beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY + 18;
                     else
-                        renderer.State.currentStemEndPositionY = tmpStemPosY - 4;
-                    renderer.State.currentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
+                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
+                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
 
                     if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
-                            renderer.DrawLine(new Point(renderer.State.currentStemPositionX, notePositionY - 1 + 28),
-                                new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28), element);
+                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 1 + 28),
+                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
                 }
                 else
                 {
@@ -201,19 +203,19 @@ namespace Manufaktura.Controls.Rendering
                     //Stems of chord elements were displayed wrong when I used default-y
                     //so I left default stem drawing routine for chords.
                     if (element.IsChordElement)
-                        renderer.State.currentStemEndPositionY = notePositionY - 25 < renderer.State.currentStemEndPositionY ? renderer.State.currentStemEndPositionY : notePositionY - 25;
-                    else if (renderer.State.IsManualMode || (!(element.CustomStemEndPosition)))
-                        renderer.State.currentStemEndPositionY = notePositionY - 25;
+                        beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
+                    else if (renderer.Settings.IsManualMode || (!(element.CustomStemEndPosition)))
+                        beamingService.CurrentStemEndPositionY = notePositionY - 25;
                     else
-                        renderer.State.currentStemEndPositionY = tmpStemPosY - 6;
-                    renderer.State.currentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
+                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
+                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
 
                     if (element.BeamList.Count > 0)
                         if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
-                            renderer.DrawLine(new Point(renderer.State.currentStemPositionX, notePositionY - 7 + 30),
-                                new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28), element);
+                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 7 + 30),
+                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
                 }
-                element.StemEndLocation = new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY);
+                element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
             }
         }
 
@@ -244,8 +246,8 @@ namespace Manufaktura.Controls.Rendering
                 //if (beam != NoteBeamType.Single) MessageBox.Show(Convert.ToString(currentStemPositionX));
                 if (beam == NoteBeamType.Start)
                 {
-                    measurementService.previousStemEndPositionsY[beamLoop] = renderer.State.currentStemEndPositionY;
-                    measurementService.previousStemPositionsX[beamLoop] = renderer.State.currentStemPositionX;
+                    measurementService.previousStemEndPositionsY[beamLoop] = beamingService.CurrentStemEndPositionY;
+                    measurementService.previousStemPositionsX[beamLoop] = beamingService.CurrentStemPositionX;
 
                 }
                 else if (beam == NoteBeamType.Continue)
@@ -261,11 +263,11 @@ namespace Manufaktura.Controls.Rendering
                     //    + "," + Convert.ToString(currentStemPositionX));
                     renderer.DrawLine(new Point(measurementService.previousStemPositionsX[beamLoop], measurementService.previousStemEndPositionsY[beamLoop] + 28
                         + beamOffset * beamSpaceDirection),
-                        new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
                             + beamOffset * beamSpaceDirection), element);
                     renderer.DrawLine(new Point(measurementService.previousStemPositionsX[beamLoop], measurementService.previousStemEndPositionsY[beamLoop]
                         + 28 + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection),
-                        new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
                             + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection), element);
                     //Draw tuplet mark / Rysuj oznaczenie trioli:
                     if (element.Tuplet == TupletType.Stop && measurementService.TupletState != null)
@@ -277,20 +279,20 @@ namespace Manufaktura.Controls.Rendering
                 else if ((beam == NoteBeamType.Single) && (!element.IsChordElement))
                 {   //Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
                     //Draw a hook only of the lowest element in a chord
-                    double xPos = renderer.State.currentStemPositionX - 4;
+                    double xPos = beamingService.CurrentStemPositionX - 4;
                     if (element.StemDirection == VerticalDirection.Down)
                     {
                         if (element.IsGraceNote || element.IsCueNote)
-                            renderer.DrawString(element.NoteFlagCharacterRev, MusicFontStyles.GraceNoteFont, new Point(xPos, renderer.State.currentStemEndPositionY + 11), element);
+                            renderer.DrawString(element.NoteFlagCharacterRev, MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 11), element);
                         else
-                            renderer.DrawString(element.NoteFlagCharacterRev, MusicFontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY + 7), element);
+                            renderer.DrawString(element.NoteFlagCharacterRev, MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 7), element);
                     }
                     else
                     {
                         if (element.IsGraceNote || element.IsCueNote)
-                            renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.GraceNoteFont, new Point(xPos + 0.5, renderer.State.currentStemEndPositionY + 6), element);
+                            renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.GraceNoteFont, new Point(xPos + 0.5, beamingService.CurrentStemEndPositionY + 6), element);
                         else
-                            renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.MusicFont, new Point(xPos, renderer.State.currentStemEndPositionY - 1), element);
+                            renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY - 1), element);
                     }
                     if (measurementService.TupletState != null)
                     {
@@ -304,24 +306,24 @@ namespace Manufaktura.Controls.Rendering
                 }
                 else if (beam == NoteBeamType.ForwardHook)
                 {
-                    renderer.DrawLine(new Point(renderer.State.currentStemPositionX + 6,
-                        renderer.State.currentStemEndPositionY + 28 + beamOffset * beamSpaceDirection),
-                        new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
+                    renderer.DrawLine(new Point(beamingService.CurrentStemPositionX + 6,
+                        beamingService.CurrentStemEndPositionY + 28 + beamOffset * beamSpaceDirection),
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
                         + beamOffset * beamSpaceDirection), element);
-                    renderer.DrawLine(new Point(renderer.State.currentStemPositionX + 6,
-                        renderer.State.currentStemEndPositionY + 29 + beamOffset * beamSpaceDirection),
-                        new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 29
+                    renderer.DrawLine(new Point(beamingService.CurrentStemPositionX + 6,
+                        beamingService.CurrentStemEndPositionY + 29 + beamOffset * beamSpaceDirection),
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 29
                         + beamOffset * beamSpaceDirection), element);
                 }
                 else if (beam == NoteBeamType.BackwardHook)
                 {
-                    renderer.DrawLine(new Point(renderer.State.currentStemPositionX - 6,
-                        renderer.State.currentStemEndPositionY + 28 + beamOffset * beamSpaceDirection),
-                        new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 28
+                    renderer.DrawLine(new Point(beamingService.CurrentStemPositionX - 6,
+                        beamingService.CurrentStemEndPositionY + 28 + beamOffset * beamSpaceDirection),
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
                         + beamOffset * beamSpaceDirection), element);
-                    renderer.DrawLine(new Point(renderer.State.currentStemPositionX - 6,
-                        renderer.State.currentStemEndPositionY + 29 + beamOffset * beamSpaceDirection),
-                        new Point(renderer.State.currentStemPositionX, renderer.State.currentStemEndPositionY + 29
+                    renderer.DrawLine(new Point(beamingService.CurrentStemPositionX - 6,
+                        beamingService.CurrentStemEndPositionY + 29 + beamOffset * beamSpaceDirection),
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 29
                         + beamOffset * beamSpaceDirection), element);
                 }
 

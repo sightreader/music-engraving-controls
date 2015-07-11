@@ -13,11 +13,10 @@ namespace Manufaktura.Controls.Rendering
         protected IAlterationService alterationService = new AlterationService();
         protected IMeasurementService measurementService = new MeasurementService();
         protected IScoreService scoreService = new ScoreService();
+        protected IBeamingService beamingService = new BeamingService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
 
         public ScoreRendererSettings Settings { get; internal set; }
-
-        public ScoreRendererState State { get; protected set; }
 
         public ScoreInfo ScoreInformation { get { return new ScoreInfo(scoreService); } }
 
@@ -27,9 +26,8 @@ namespace Manufaktura.Controls.Rendering
 
         protected ScoreRendererBase()
         {
-            State = new ScoreRendererState();
             Settings = new ScoreRendererSettings();
-            resolver.AddServices(measurementService, alterationService, scoreService);
+            resolver.AddServices(measurementService, alterationService, scoreService, beamingService);
             Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
             TextBlockHeight = 25;
         }
