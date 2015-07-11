@@ -148,6 +148,8 @@ namespace Manufaktura.Controls.Rendering
             }
             DrawMissingStems(staff);
             scoreService.CurrentSystem.Width = State.CursorPositionX;
+            //scoreService.CurrentSystem.Width = scoreService.Systems.Sum(s => s.Width);
+            //if (scoreService.CurrentSystem.Width == 0) scoreService.CurrentSystem.Width = State.CursorPositionX;
 
             //Draw all lines:
             for (int system = 1; system <= scoreService.CurrentSystemNo; system++)

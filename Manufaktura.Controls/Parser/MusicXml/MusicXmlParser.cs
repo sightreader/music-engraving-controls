@@ -19,6 +19,7 @@ namespace Manufaktura.Controls.Parser
 
             foreach (XElement staffNode in xmlDocument.Descendants(XName.Get("part")))
             {
+                state.FirstLoop = true;
                 Staff staff = new Staff();
                 score.Staves.Add(staff);
                 foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")))
