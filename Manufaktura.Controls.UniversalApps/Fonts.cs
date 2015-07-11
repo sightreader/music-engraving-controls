@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Manufaktura.Controls.Model.Fonts;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows;
@@ -11,38 +12,38 @@ namespace Manufaktura.Controls.UniversalApps
     {
         private static FontFamily PolihymniaFamily = new FontFamily("Polihymnia.ttf#Polihymnia");
 
-        private static Dictionary<Model.FontStyles, FontFamily> _fonts = new Dictionary<Model.FontStyles, FontFamily>()
+        private static Dictionary<MusicFontStyles, FontFamily> _fonts = new Dictionary<MusicFontStyles, FontFamily>()
             {
-                {Model.FontStyles.MusicFont, PolihymniaFamily},
-                {Model.FontStyles.GraceNoteFont, PolihymniaFamily},
-                {Model.FontStyles.StaffFont, PolihymniaFamily},
-                {Model.FontStyles.LyricsFont, new FontFamily("Segoe UI")},
-                {Model.FontStyles.LyricsFontBold, new FontFamily("Segoe UI")},
-                {Model.FontStyles.MiscArticulationFont, new FontFamily("Microsoft Sans Serif")},
-                {Model.FontStyles.DirectionFont, new FontFamily("Microsoft Sans Serif")},
-                {Model.FontStyles.TrillFont, new FontFamily("Times New Roman")},
-                {Model.FontStyles.TimeSignatureFont, new FontFamily("Microsoft Sans Serif")}
+                {MusicFontStyles.MusicFont, PolihymniaFamily},
+                {MusicFontStyles.GraceNoteFont, PolihymniaFamily},
+                {MusicFontStyles.StaffFont, PolihymniaFamily},
+                {MusicFontStyles.LyricsFont, new FontFamily("Segoe UI")},
+                {MusicFontStyles.LyricsFontBold, new FontFamily("Segoe UI")},
+                {MusicFontStyles.MiscArticulationFont, new FontFamily("Microsoft Sans Serif")},
+                {MusicFontStyles.DirectionFont, new FontFamily("Microsoft Sans Serif")},
+                {MusicFontStyles.TrillFont, new FontFamily("Times New Roman")},
+                {MusicFontStyles.TimeSignatureFont, new FontFamily("Microsoft Sans Serif")}
             };
 
-        private static Dictionary<Model.FontStyles, double> _fontSizes = new Dictionary<Model.FontStyles, double>()
+        private static Dictionary<MusicFontStyles, double> _fontSizes = new Dictionary<MusicFontStyles, double>()
         {
-                {Model.FontStyles.MusicFont, 27.5},
-                {Model.FontStyles.GraceNoteFont, 20},
-                {Model.FontStyles.StaffFont, 30},
-                {Model.FontStyles.LyricsFont, 11},
-                {Model.FontStyles.LyricsFontBold, 0.8},
-                {Model.FontStyles.MiscArticulationFont, 14},
-                {Model.FontStyles.DirectionFont, 11},
-                {Model.FontStyles.TrillFont, 14},
-                {Model.FontStyles.TimeSignatureFont, 14.5}
+                {MusicFontStyles.MusicFont, 27.5},
+                {MusicFontStyles.GraceNoteFont, 20},
+                {MusicFontStyles.StaffFont, 30},
+                {MusicFontStyles.LyricsFont, 11},
+                {MusicFontStyles.LyricsFontBold, 0.8},
+                {MusicFontStyles.MiscArticulationFont, 14},
+                {MusicFontStyles.DirectionFont, 11},
+                {MusicFontStyles.TrillFont, 14},
+                {MusicFontStyles.TimeSignatureFont, 14.5}
         };
 
-        public static FontFamily Get(Model.FontStyles style)
+        public static FontFamily Get(MusicFontStyles style)
         {
             return _fonts[style];
         }
 
-        public static double GetSize(Model.FontStyles style)
+        public static double GetSize(MusicFontStyles style)
         {
             return _fontSizes[style];
         }

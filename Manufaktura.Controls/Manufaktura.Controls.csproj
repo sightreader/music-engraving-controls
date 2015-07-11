@@ -53,7 +53,7 @@
     <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
-    <Compile Include="Model\Fonts\FontStyles.cs" />
+    <Compile Include="Model\Fonts\MusicFontStyles.cs" />
     <Compile Include="Model\Fonts\MusicFont.cs" />
     <Compile Include="Model\Fonts\PolihymniaFont.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />

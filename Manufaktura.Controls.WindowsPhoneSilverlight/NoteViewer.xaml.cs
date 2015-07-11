@@ -200,13 +200,13 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
         {
             if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
             double width = availableSize.Width;
-            if (Renderer.State.CurrentStaff != null)
-            {
-                double maxWidth = Renderer.State.CurrentStaff.ActualSystemWidths.Max();
-                if (maxWidth > 0) width = maxWidth;
-            }
-            return new Size(width * ZoomFactor, (Renderer.State.CurrentSystemShiftY + 100) * ZoomFactor);
+
+            double maxWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
+            if (maxWidth > 0) width = maxWidth;
+
+            return new Size(width * ZoomFactor, (Renderer.ScoreInformation.Systems.Sum(s => s.Height) + 100) * ZoomFactor);
         }
+
 
         private void ColorElement(MusicalSymbol element, Color color)
         {

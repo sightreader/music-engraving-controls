@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace Manufaktura.Controls.UniversalApps
             return new Point(point.X, point.Y);
         }
 
-        public override void DrawString(string text, Model.FontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
+        public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
             TextBlock textBlock = new TextBlock();
             textBlock.FontSize = Fonts.GetSize(fontStyle);
