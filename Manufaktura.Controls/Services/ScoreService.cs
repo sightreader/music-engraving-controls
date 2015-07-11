@@ -78,6 +78,10 @@ namespace Manufaktura.Controls.Services
             var measure = new Measure(CurrentStaff, CurrentSystem);
             allMeasures.Add(measure);
             CurrentMeasure = measure;
+            if (CurrentMeasureNo <= CurrentStaff.MeasureWidths.Count && CurrentStaff.MeasureWidths[CurrentMeasureNo - 1].HasValue)
+            {
+                measure.Width = CurrentStaff.MeasureWidths[CurrentMeasureNo - 1].Value;
+            }
         }
 
         public void BeginNewScore(Score score)
