@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering.Strategies;
 using Manufaktura.Controls.Services;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +12,27 @@ namespace Manufaktura.Controls.Rendering
     public abstract class ScoreRendererBase
     {
         protected IAlterationService alterationService = new AlterationService();
+        protected IBeamingService beamingService = new BeamingService();
         protected IMeasurementService measurementService = new MeasurementService();
         protected IScoreService scoreService = new ScoreService();
-        protected IBeamingService beamingService = new BeamingService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
 
-        public ScoreRendererSettings Settings { get; internal set; }
+        public IFinishingTouch[] FinishingTouches { get; private set; }
 
         public ScoreInfo ScoreInformation { get { return new ScoreInfo(scoreService); } }
 
+        public ScoreRendererSettings Settings { get; internal set; }
+
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 
-        public double TextBlockHeight { get; protected set; }
+
 
         protected ScoreRendererBase()
         {
             Settings = new ScoreRendererSettings();
             resolver.AddServices(measurementService, alterationService, scoreService, beamingService);
             Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
-            TextBlockHeight = 25;
+            FinishingTouches = resolver.ResolveAll<IFinishingTouch>().ToArray();
         }
 
         public void DrawArc(Rectangle rect, double startAngle, double sweepAngle, MusicalSymbol owner)
@@ -178,6 +181,7 @@ namespace Manufaktura.Controls.Rendering
                 for (int i = 0; i < 5; i++)
                 {
                     scoreService.CurrentLinePositions[i] = Settings.PaddingTop + i * Settings.LineSpacing + sharpLineModifier;
+                    scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
                 }
                 return;
             }

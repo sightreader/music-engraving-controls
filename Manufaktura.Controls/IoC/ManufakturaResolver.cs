@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.IoC
         public IEnumerable<T> ResolveAll<T>() where T:class
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var types = assembly.GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(T)));
+            var types = assembly.GetTypes().Where(t => !t.IsAbstract && (t.IsSubclassOf(typeof(T)) || typeof(T).IsAssignableFrom(t)));
             foreach (var type in types)
             {
                 var constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);

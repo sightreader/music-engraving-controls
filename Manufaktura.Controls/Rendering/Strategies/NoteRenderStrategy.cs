@@ -280,7 +280,7 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.HasFermataSign)
             {
-                double ferPos = notePositionY - renderer.TextBlockHeight;
+                double ferPos = notePositionY - renderer.Settings.TextBlockHeight;
                 string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
 
                 renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
@@ -500,9 +500,9 @@ namespace Manufaktura.Controls.Rendering
                 if (element.TrillMark == NoteTrillMark.Above)
                 {
                     trillPos = notePositionY - 1;
-                    if (trillPos > scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight)
+                    if (trillPos > scoreService.CurrentLinePositions[0] - renderer.Settings.TextBlockHeight)
                     {
-                        trillPos = scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight - 1.0f;
+                        trillPos = scoreService.CurrentLinePositions[0] - renderer.Settings.TextBlockHeight - 1.0f;
                     }
                 }
                 else if (element.TrillMark == NoteTrillMark.Below)

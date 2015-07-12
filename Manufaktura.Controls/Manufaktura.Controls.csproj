@@ -129,6 +129,10 @@
     <Compile Include="Rendering\Strategies\BarlineRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\ClefRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\DirectionRenderStrategy.cs" />
+    <Compile Include="Rendering\Strategies\DrawAllLinesFinishingTouch.cs" />
+    <Compile Include="Rendering\Strategies\DrawLinesBetweenStavesFinishingTouch.cs" />
+    <Compile Include="Rendering\Strategies\DrawMissingStemsFinishingTouch.cs" />
+    <Compile Include="Rendering\Strategies\IFinishingTouch.cs" />
     <Compile Include="Rendering\Strategies\KeyRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\MusicalSymbolRenderStrategyBase.cs" />
     <Compile Include="Rendering\Strategies\NoteRenderStrategy.cs" />
@@ -137,7 +141,6 @@
     <Compile Include="Rendering\Strategies\RestRenderStrategy.cs" />
     <Compile Include="Rendering\ScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererBase.cs" />
-    <Compile Include="Rendering\Strategies\StaffRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\TimeSignatureRenderStrategy.cs" />
     <Compile Include="Services\AlterationService.cs" />
     <Compile Include="Services\BeamingService.cs" />
