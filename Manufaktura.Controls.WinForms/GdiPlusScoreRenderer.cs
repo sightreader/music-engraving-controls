@@ -50,7 +50,7 @@ namespace Manufaktura.Controls.WinForms
 
         public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
-            Canvas.DrawString(text, _fonts[fontStyle], new SolidBrush(ConvertColor(color)), new PointF((float)location.X, (float)location.Y));
+            Canvas.DrawString(text, _fonts[fontStyle], new SolidBrush(ConvertColor(color)), new PointF((float)location.X - 1.5f, (float)location.Y));
         }
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
