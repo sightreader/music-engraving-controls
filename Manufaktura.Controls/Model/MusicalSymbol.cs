@@ -1,40 +1,59 @@
 ﻿using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
-    public enum ClefType { GClef, CClef, FClef };
-    public enum VerticalDirection { Up, Down };
-    public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
-    public enum NoteTieType { None, Start, Stop, StopAndStartAnother };
-    public enum TupletType { None, Start, Stop };
-    public enum SyllableType { None, Begin, Middle, End, Single };
     public enum ArticulationType { None, Staccato, Accent };
-    public enum VerticalPlacement { Above, Below };
-    public enum HorizontalPlacement { Left, Right };
+
+    public enum ClefType { GClef, CClef, FClef };
+
     public enum DirectionPlacementType { Above, Below, Custom };
-    public enum TimeSignatureType { Common, Cut, Numbers };
-    public enum NoteTrillMark { None, Above, Below };
+
+    public enum HorizontalPlacement { Left, Right };
+
+    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
+
+    public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
+
     public enum NoteSlurType { None, Start, Stop };
+
+    public enum NoteTieType { None, Start, Stop, StopAndStartAnother };
+
+    public enum NoteTrillMark { None, Above, Below };
+
     public enum RepeatSignType { None, Forward, Backward };
+
+    public enum SyllableType { None, Begin, Middle, End, Single };
+
+    public enum TimeSignatureType { Common, Cut, Numbers };
+
+    public enum TupletType { None, Start, Stop };
+
+    public enum VerticalDirection { Up, Down };
+
+    public enum VerticalPlacement { Above, Below };
 
     public abstract class MusicalSymbol : ViewModel
     {
-        private bool isVisible;
         protected MusicalSymbolType type;
+        private bool isVisible;
 
         #region Properties
 
-        public MusicalSymbolType Type { get { return type; } }
+        public static NullMusicalSymbol Null
+        {
+            get
+            {
+                return new NullMusicalSymbol();
+            }
+        }
+
         public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(() => IsVisible); } }
 
-        #endregion
+        public MusicalSymbolType Type { get { return type; } }
+
+        #endregion Properties
 
         #region Constructor
 
@@ -44,7 +63,7 @@ namespace Manufaktura.Controls.Model
             isVisible = true;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Public static functions
 
@@ -65,9 +84,6 @@ namespace Manufaktura.Controls.Model
             return TimeSpan.FromSeconds(singleNoteDuration * ratio);
         }
 
-        #endregion
-
-
-
+        #endregion Public static functions
     }
 }
