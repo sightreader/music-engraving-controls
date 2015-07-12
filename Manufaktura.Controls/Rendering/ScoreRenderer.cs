@@ -8,6 +8,10 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Base class for rendering scores on specific canvas.
+    /// </summary>
+    /// <typeparam name="TCanvas">Canvas object</typeparam>
     public abstract class ScoreRenderer<TCanvas> : ScoreRendererBase
     {
         public TCanvas Canvas { get; internal set; }
@@ -20,6 +24,10 @@ namespace Manufaktura.Controls.Rendering
             Exceptions = new List<Exception>();
         }
 
+        /// <summary>
+        /// Render score on canvas.
+        /// </summary>
+        /// <param name="score">Score</param>
         public void Render(Score score)
         {
             scoreService.BeginNewScore(score);
@@ -35,6 +43,9 @@ namespace Manufaktura.Controls.Rendering
                     Exceptions.Add(ex);
                 }
             }
+            DrawLinesBetweenStaves();
+
+            //Set height of current system in Panorama mode. This is used for determining the size of the control:
             if (Settings.IsPanoramaMode && scoreService.CurrentSystem.Height == 0)
             {
                 scoreService.CurrentSystem.Height = (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count;
@@ -51,6 +62,21 @@ namespace Manufaktura.Controls.Rendering
             clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - TextBlockHeight);
             DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             scoreService.CursorPositionX += 20;
+        }
+
+        private void DrawLinesBetweenStaves()
+        {
+            for (var i = 0; i < scoreService.CurrentScore.Staves.Count - 1; i++)
+            {
+                var staff = scoreService.CurrentScore.Staves[i];
+                foreach (var system in scoreService.Systems)
+                {
+                    foreach (var measure in scoreService.AllMeasures.Where(m => m.Barline != null && m.System == system && m.Staff == staff))
+                    {
+                        DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
+                    }
+                }
+            }
         }
 
         private void DrawMissingStems(Staff staff)
@@ -133,7 +159,6 @@ namespace Manufaktura.Controls.Rendering
             }
 
             DetermineClef(staff);
-
             alterationService.Reset();
 
             foreach (MusicalSymbol symbol in staff.Elements)

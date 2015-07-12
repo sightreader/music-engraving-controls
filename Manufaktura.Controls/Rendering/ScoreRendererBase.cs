@@ -164,6 +164,7 @@ namespace Manufaktura.Controls.Rendering
             foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height);
             scoreService.BeginNewSystem();
             scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
+            scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
             measurementService.LastMeasurePositionX = 0;
         }
 
@@ -194,6 +195,7 @@ namespace Manufaktura.Controls.Rendering
             scoreService.BeginNewStaff();
 
             scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
+            scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
             measurementService.LastMeasurePositionX = 0;
         }
 

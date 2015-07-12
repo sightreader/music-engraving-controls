@@ -90,6 +90,7 @@ namespace Manufaktura.Controls.Services
             CurrentScore = score;
             systems.Clear();
             allMeasures.Clear();
+            LinePositions.Clear();
         }
 
         public void BeginNewStaff()

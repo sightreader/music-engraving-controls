@@ -37,6 +37,8 @@ namespace Manufaktura.Controls.Rendering
                 if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
                 renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
                                   new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), element);
+                scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
+                scoreService.CurrentMeasure.Barline = element;
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
             }
             else if (element.RepeatSign == RepeatSignType.Forward)
@@ -59,7 +61,6 @@ namespace Manufaktura.Controls.Rendering
                     scoreService.CurrentLinePositions[0] - 15, element);
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
             }
-            //scoreService.CurrentMeasure.FirstNoteInMeasureXPosition = scoreService.CursorPositionX;
 
             if (element.Location == HorizontalPlacement.Right)   //Start new measure only if it's right barline
             {
