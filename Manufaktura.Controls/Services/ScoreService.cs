@@ -24,28 +24,16 @@ namespace Manufaktura.Controls.Services
             get { return LinePositions[CurrentSystemNo, CurrentStaffNo]; }
         }
 
-        public Measure CurrentMeasure
-        {
-            get;
-            private set;
-        }
+        public Measure CurrentMeasure { get; private set; }
 
         public int CurrentMeasureNo
         {
             get { return AllMeasures.Where(m => m.Staff == CurrentStaff).ToList().IndexOf(CurrentMeasure) + 1; }
         }
 
-        public Score CurrentScore
-        {
-            get;
-            private set;
-        }
+        public Score CurrentScore { get; private set; }
 
-        public Staff CurrentStaff
-        {
-            get;
-            private set;
-        }
+        public Staff CurrentStaff { get; private set; }
 
         public double CurrentStaffHeight
         {
@@ -60,11 +48,7 @@ namespace Manufaktura.Controls.Services
             get { return CurrentScore.Staves.IndexOf(CurrentStaff) + 1; }
         }
 
-        public StaffSystem CurrentSystem
-        {
-            get;
-            private set;
-        }
+        public StaffSystem CurrentSystem { get; private set; }
 
         public int CurrentSystemNo
         {
@@ -127,7 +111,7 @@ namespace Manufaktura.Controls.Services
                 return;
             }
             CurrentStaff = CurrentScore.Staves[currentStaffIndex + 1];
-            BeginNewMeasure();  //TODO: Nie wiem czy to w dobrym miejscu jest
+            BeginNewMeasure();
         }
 
         public void BeginNewSystem()

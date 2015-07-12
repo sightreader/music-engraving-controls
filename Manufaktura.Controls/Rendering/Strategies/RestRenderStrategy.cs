@@ -33,7 +33,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Voice > scoreService.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 scoreService.CursorPositionX = scoreService.CurrentMeasure.FirstNoteInMeasureXPosition;
-                measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
+                measurementService.LastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
             scoreService.CurrentVoice = element.Voice;
 

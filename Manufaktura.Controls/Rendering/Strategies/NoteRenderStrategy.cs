@@ -13,10 +13,12 @@ namespace Manufaktura.Controls.Rendering
 {
     public class NoteRenderStrategy : MusicalSymbolRenderStrategy<Note>
     {
-        private readonly IMeasurementService measurementService;
         private readonly IAlterationService alterationService;
-        private readonly IScoreService scoreService;
         private readonly IBeamingService beamingService;
+        private readonly IMeasurementService measurementService;
+        private readonly IScoreService scoreService;
+        private VerticalPlacement slurStartPlacement = VerticalPlacement.Above;
+
         public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService, IBeamingService beamingService)
         {
             this.measurementService = measurementService;
@@ -39,7 +41,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Voice > scoreService.CurrentVoice && (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue))
             {
                 scoreService.CursorPositionX = scoreService.CurrentMeasure.FirstNoteInMeasureXPosition;
-                measurementService.lastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
+                measurementService.LastNoteInMeasureEndXPosition = measurementService.LastNoteEndXPosition;
             }
             scoreService.CurrentVoice = element.Voice;
 
@@ -48,7 +50,7 @@ namespace Manufaktura.Controls.Rendering
                 Tuplet tuplet = new Tuplet();
                 measurementService.TupletState = tuplet;
                 tuplet.NumberOfNotesUnderTuplet = 0;
-                tuplet.TupletPlacement = element.TupletPlacement.HasValue ? element.TupletPlacement.Value : 
+                tuplet.TupletPlacement = element.TupletPlacement.HasValue ? element.TupletPlacement.Value :
                     (element.StemDirection == VerticalDirection.Down ? VerticalPlacement.Below : VerticalPlacement.Above);
             }
             if (measurementService.TupletState != null && !element.IsChordElement) measurementService.TupletState.NumberOfNotesUnderTuplet++;
@@ -61,7 +63,7 @@ namespace Manufaktura.Controls.Rendering
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
             int numberOfDoubleAccidentals = Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
 
-            MakeSpaceForAccidentals(renderer, element, 
+            MakeSpaceForAccidentals(renderer, element,
                 numberOfSingleAccidentals, numberOfDoubleAccidentals);          //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
             DrawNote(renderer, element, noteTextBlockPositionY);                //Draw an element / Rysuj nutę
             DrawLedgerLines(renderer, element, noteTextBlockPositionY);         //Ledger lines / Linie dodane
@@ -75,7 +77,7 @@ namespace Manufaktura.Controls.Rendering
             DrawOrnaments(renderer, element, noteTextBlockPositionY);           //Draw ornaments / Rysuj ornamenty
             DrawTremolos(renderer, element, noteTextBlockPositionY);            //Draw tremolos / Rysuj tremola
             DrawFermataSign(renderer, element, noteTextBlockPositionY);         //Draw fermata sign / Rysuj symbol fermaty
-            DrawAccidentals(renderer, element, noteTextBlockPositionY, 
+            DrawAccidentals(renderer, element, noteTextBlockPositionY,
                 numberOfSingleAccidentals, numberOfDoubleAccidentals);          //Draw accidentals / Rysuj znaki przygodne:
             DrawDots(renderer, element, noteTextBlockPositionY);                //Draw dots / Rysuj kropki
 
@@ -97,125 +99,59 @@ namespace Manufaktura.Controls.Rendering
             measurementService.LastNoteEndXPosition = scoreService.CursorPositionX;
         }
 
-        private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
+        private void DrawAccidentals(ScoreRendererBase renderer, Note element, double notePositionY, int numberOfSingleAccidentals, int numberOfDoubleAccidentals)
         {
-            if (element.IsGraceNote || element.IsCueNote)
-                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1, notePositionY + 7, element);
-            else
-                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
-
-            measurementService.LastNotePositionX = scoreService.CursorPositionX;
-            element.TextBlockLocation = new Point(scoreService.CursorPositionX, notePositionY);
-        }
-
-        private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
-        {
-            if (measurementService.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
-            Staff staff = scoreService.CurrentStaff;
-
-            NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, PeekType.BeginningOfTuplet);
-            int index = staff.Elements.IndexOf(firstElementInTuplet);
-            List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index);
-            double averageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == measurementService.TupletState.TupletPlacement).
-                Average(n => n.ActualStemLength);
-            averageStemLength += 10;    //Add space
-            int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
-            double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X + 6;
-            double tupletBracketStartYPosition = firstElementInTuplet.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
-            double tupletBracketEndXPosition   = element.TextBlockLocation.X + 12;
-            double tupletBracketEndYPosition   = element.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
-
-            if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
+            if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) > 0)
             {
-                renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-                                  new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), element);
-                renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-                                  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
-                renderer.DrawLine(new Point(tupletBracketEndXPosition, tupletBracketEndYPosition),
-                                  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
-            }
-
-            double numberOfNotesYTranslation = 0;
-            if (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above) numberOfNotesYTranslation -= 18; //If text should appear above the tuplet, move a bit to up
-            //If bracket is not drawn, move up or down to fill space
-            if (!measurementService.TupletState.AreSingleBeamsPresentUnderTuplet) numberOfNotesYTranslation += 10 * (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? 1 : -1);
-
-            renderer.DrawString(Convert.ToString(measurementService.TupletState.NumberOfNotesUnderTuplet), MusicFontStyles.LyricsFont,
-                    new Point(tupletBracketStartXPosition  + ( tupletBracketEndXPosition - tupletBracketStartXPosition ) / 2 - 6,
-                              tupletBracketStartYPosition  + ( tupletBracketEndYPosition - tupletBracketStartYPosition ) / 2 + numberOfNotesYTranslation), element);
-        }
-
-        private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
-        {
-            double tmpXPos = scoreService.CursorPositionX + 16;
-            if (notePositionY + 25.0f > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
-            {
-                for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
+                alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
+                double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals - 9 * numberOfDoubleAccidentals;
+                for (int i = 0; i < numberOfSingleAccidentals; i++)
                 {
-
-                    renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
-                        new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
+                    renderer.DrawString(renderer.Settings.CurrentFont.Sharp, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
+                    accPlacement += 9;
+                }
+                for (int i = 0; i < numberOfDoubleAccidentals; i++)
+                {
+                    renderer.DrawString(renderer.Settings.CurrentFont.DoubleSharp, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
+                    accPlacement += 9;
                 }
             }
-            if (notePositionY + 25.0f < scoreService.CurrentLinePositions[0] - renderer.Settings.LineSpacing / 2)
+            else if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) < 0)
             {
-
-                for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
+                alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
+                double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals -
+                    9 * numberOfDoubleAccidentals;
+                for (int i = 0; i < numberOfSingleAccidentals; i++)
                 {
-
-                    renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
-                        new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
+                    renderer.DrawString(renderer.Settings.CurrentFont.Flat, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
+                    accPlacement += 9;
+                }
+                for (int i = 0; i < numberOfDoubleAccidentals; i++)
+                {
+                    renderer.DrawString(renderer.Settings.CurrentFont.DoubleFlat, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
+                    accPlacement += 9;
                 }
             }
-        }
-        private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
-        {
-            if (element.Duration != RhythmicDuration.Whole)
+            if (element.HasNatural == true)
             {
-                double tmpStemPosY;
-                tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) +
-                    scoreService.CurrentScore.Staves.Take(scoreService.CurrentStaffNo - 1).Sum(s => s.Height) + 
-                    element.StemDefaultY * -1.0f / 2.0f;
+                renderer.DrawString(renderer.Settings.CurrentFont.Natural, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 9, notePositionY, element);
+            }
+        }
 
-                if (element.StemDirection == VerticalDirection.Down)
-                {
-                    //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
-                    //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
-                    //Stems of chord elements were displayed wrong when I used default-y
-                    //so I left default stem drawing routine for chords.
-                    if (element.IsChordElement)
-                        beamingService.CurrentStemEndPositionY = notePositionY + 18;
-                    else if ((renderer.Settings.IsManualMode) || (!(element.CustomStemEndPosition)))
-                        beamingService.CurrentStemEndPositionY = notePositionY + 18 > beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY + 18;
-                    else
-                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
-                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
+        private void DrawArticulation(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
+            if (element.Articulation != ArticulationType.None)
+            {
+                double articulationPosition = notePositionY + 10;
+                if (element.ArticulationPlacement == VerticalPlacement.Above)
+                    articulationPosition = notePositionY - 10;
+                else if (element.ArticulationPlacement == VerticalPlacement.Below)
+                    articulationPosition = notePositionY + 10;
 
-                    if (element.BeamList.Count > 0)
-                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
-                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 1 + 28),
-                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
-                }
-                else
-                {
-                    //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
-                    //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
-                    //Stems of chord elements were displayed wrong when I used default-y
-                    //so I left default stem drawing routine for chords.
-                    if (element.IsChordElement)
-                        beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
-                    else if (renderer.Settings.IsManualMode || (!(element.CustomStemEndPosition)))
-                        beamingService.CurrentStemEndPositionY = notePositionY - 25;
-                    else
-                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
-                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0); 
-
-                    if (element.BeamList.Count > 0)
-                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
-                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 7 + 30),
-                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
-                }
-                element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+                if (element.Articulation == ArticulationType.Staccato)
+                    renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, articulationPosition, element);
+                else if (element.Articulation == ArticulationType.Accent)
+                    renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, scoreService.CursorPositionX + 6, articulationPosition + 16, element);
             }
         }
 
@@ -224,31 +160,29 @@ namespace Manufaktura.Controls.Rendering
             int beamOffset = 0;
             //Powiększ listę poprzednich pozycji stemów jeśli aktualna liczba belek jest większa
             //Extend the list of previous stem positions if current number of beams is greater than the list size
-            if (measurementService.previousStemEndPositionsY.Count < element.BeamList.Count)
+            if (beamingService.PreviousStemEndPositionsY.Count < element.BeamList.Count)
             {
-                int tmpCount = measurementService.previousStemEndPositionsY.Count;
+                int tmpCount = beamingService.PreviousStemEndPositionsY.Count;
                 for (int i = 0; i < element.BeamList.Count - tmpCount; i++)
-                    measurementService.previousStemEndPositionsY.Add(new int());
+                    beamingService.PreviousStemEndPositionsY.Add(new int());
             }
-            if (measurementService.previousStemPositionsX.Count < element.BeamList.Count)
+            if (beamingService.PreviousStemPositionsX.Count < element.BeamList.Count)
             {
-                int tmpCount = measurementService.previousStemPositionsX.Count;
+                int tmpCount = beamingService.PreviousStemPositionsX.Count;
                 for (int i = 0; i < element.BeamList.Count - tmpCount; i++)
-                    measurementService.previousStemPositionsX.Add(new int());
+                    beamingService.PreviousStemPositionsX.Add(new int());
             }
             int beamLoop = 0;
             foreach (NoteBeamType beam in element.BeamList)
             {
-
                 int beamSpaceDirection = 1;
                 if (element.StemDirection == VerticalDirection.Up) beamSpaceDirection = 1;
                 else beamSpaceDirection = -1;
                 //if (beam != NoteBeamType.Single) MessageBox.Show(Convert.ToString(currentStemPositionX));
                 if (beam == NoteBeamType.Start)
                 {
-                    measurementService.previousStemEndPositionsY[beamLoop] = beamingService.CurrentStemEndPositionY;
-                    measurementService.previousStemPositionsX[beamLoop] = beamingService.CurrentStemPositionX;
-
+                    beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.CurrentStemEndPositionY;
+                    beamingService.PreviousStemPositionsX[beamLoop] = beamingService.CurrentStemPositionX;
                 }
                 else if (beam == NoteBeamType.Continue)
                 {
@@ -261,11 +195,11 @@ namespace Manufaktura.Controls.Rendering
                 {
                     //MessageBox.Show(Convert.ToString(previousStemPositionsX[beamLoop])
                     //    + "," + Convert.ToString(currentStemPositionX));
-                    renderer.DrawLine(new Point(measurementService.previousStemPositionsX[beamLoop], measurementService.previousStemEndPositionsY[beamLoop] + 28
+                    renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop] + 28
                         + beamOffset * beamSpaceDirection),
                         new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
                             + beamOffset * beamSpaceDirection), element);
-                    renderer.DrawLine(new Point(measurementService.previousStemPositionsX[beamLoop], measurementService.previousStemEndPositionsY[beamLoop]
+                    renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop]
                         + 28 + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection),
                         new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
                             + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection), element);
@@ -329,39 +263,103 @@ namespace Manufaktura.Controls.Rendering
 
                 beamOffset += 4;
                 beamLoop++;
-
             }
         }
 
-        private void DrawTies(ScoreRendererBase renderer, Note element, double notePositionY)
+        private void DrawDots(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            if (element.TieType == NoteTieType.Start)
+            if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
+            for (int i = 0; i < element.NumberOfDots; i++)
             {
-                measurementService.tieStartPoint = new Point(scoreService.CursorPositionX, notePositionY);
-            }
-            else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
-            {
-                double arcWidth = scoreService.CursorPositionX - measurementService.tieStartPoint.X - 12;
-                double arcHeight = arcWidth * 0.7d;
-                if (element.StemDirection == VerticalDirection.Down)
-                {
-                    renderer.DrawArc(new Rectangle(measurementService.tieStartPoint.X + 16, measurementService.tieStartPoint.Y + 6,
-                        arcWidth, arcHeight), 180, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
-                }
-                else if (element.StemDirection == VerticalDirection.Up)
-                {
-                    renderer.DrawArc(new Rectangle(measurementService.tieStartPoint.X + 16, measurementService.tieStartPoint.Y + 22,
-                        arcWidth, arcHeight), 0, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
-                }
-                if (element.TieType == NoteTieType.StopAndStartAnother)
-                {
-                    measurementService.tieStartPoint = new Point(scoreService.CursorPositionX + 2, notePositionY);
-                }
-
+                renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
+                scoreService.CursorPositionX += 6;
             }
         }
 
-        private VerticalPlacement slurStartPlacement = VerticalPlacement.Above;
+        private void DrawFermataSign(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
+            if (element.HasFermataSign)
+            {
+                double ferPos = notePositionY - renderer.TextBlockHeight;
+                string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
+
+                renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
+            }
+        }
+
+        private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
+            double tmpXPos = scoreService.CursorPositionX + 16;
+            if (notePositionY + 25.0f > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
+            {
+                for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
+                {
+                    renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
+                        new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
+                }
+            }
+            if (notePositionY + 25.0f < scoreService.CurrentLinePositions[0] - renderer.Settings.LineSpacing / 2)
+            {
+                for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
+                {
+                    renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
+                        new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
+                }
+            }
+        }
+
+        private void DrawLyrics(ScoreRendererBase renderer, Note element)
+        {
+            double textPositionY = scoreService.CurrentLinePositions[4] + 10;    //Default value if default-y is not set
+            foreach (Lyrics lyrics in element.Lyrics)
+            {
+                if (lyrics.DefaultYPosition.HasValue) textPositionY = scoreService.CurrentLinePositions[0] + lyrics.DefaultYPosition.Value * -1 - 40;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne -40
+
+                StringBuilder sBuilder = new StringBuilder();
+                sBuilder.Append(lyrics.Text);
+
+                //TODO: Dodać do kalkulacji wyliczoną szerokość stringa w poprzednim lyricu i odkomentować :)
+                //A, i jeszcze wtedy wywalić warunek na middleDistance.
+                //double middleDistanceBetweenTwoLyrics = (scoreService.CursorPositionX - renderer.State.LastNoteEndXPosition) / 2.0d;
+                // double hyphenXPosition = scoreService.CursorPositionX - middleDistanceBetweenTwoLyrics;
+                //if ((lyrics.Type == SyllableType.Middle || lyrics.Type == SyllableType.End) && middleDistanceBetweenTwoLyrics > 20)
+                //{
+                //    renderer.DrawString("-", FontStyles.LyricsFont, hyphenXPosition, textPositionY, element);
+                //}
+                //else
+                if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-");
+
+                renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, scoreService.CursorPositionX, textPositionY, element);
+
+                if (!lyrics.DefaultYPosition.HasValue) textPositionY += 12; //Move down if default-y is not set
+            }
+        }
+
+        private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
+            if (element.IsGraceNote || element.IsCueNote)
+                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1, notePositionY + 7, element);
+            else
+                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
+
+            measurementService.LastNotePositionX = scoreService.CursorPositionX;
+            element.TextBlockLocation = new Point(scoreService.CursorPositionX, notePositionY);
+        }
+
+        private void DrawOrnaments(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
+            foreach (Ornament ornament in element.Ornaments)
+            {
+                double yPositionShift = ornament.DefaultYPosition.HasValue ? ornament.DefaultYPosition.Value * -1 * 0.5d : (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
+                Mordent mordent = ornament as Mordent;
+                if (mordent != null)
+                {
+                    renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 2, notePositionY + yPositionShift, element);
+                    renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 3.5, notePositionY + yPositionShift, element);
+                }
+            }
+        }
+
         private void DrawSlurs(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             if (element.Slur == null) return;
@@ -396,82 +394,80 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
-        private void DrawLyrics(ScoreRendererBase renderer, Note element)
+        private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            double textPositionY = scoreService.CurrentLinePositions[4] + 10;    //Default value if default-y is not set
-            foreach (Lyrics lyrics in element.Lyrics)
+            if (element.Duration != RhythmicDuration.Whole)
             {
-                if (lyrics.DefaultYPosition.HasValue) textPositionY = scoreService.CurrentLinePositions[0] + lyrics.DefaultYPosition.Value * -1 - 40;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne -40
+                double tmpStemPosY;
+                tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) +
+                    scoreService.CurrentScore.Staves.Take(scoreService.CurrentStaffNo - 1).Sum(s => s.Height) +
+                    element.StemDefaultY * -1.0f / 2.0f;
 
-                StringBuilder sBuilder = new StringBuilder();
-                sBuilder.Append(lyrics.Text);
-
-                //TODO: Dodać do kalkulacji wyliczoną szerokość stringa w poprzednim lyricu i odkomentować :)
-                //A, i jeszcze wtedy wywalić warunek na middleDistance.
-                //double middleDistanceBetweenTwoLyrics = (scoreService.CursorPositionX - renderer.State.LastNoteEndXPosition) / 2.0d;
-                // double hyphenXPosition = scoreService.CursorPositionX - middleDistanceBetweenTwoLyrics;
-                //if ((lyrics.Type == SyllableType.Middle || lyrics.Type == SyllableType.End) && middleDistanceBetweenTwoLyrics > 20)
-                //{
-                //    renderer.DrawString("-", FontStyles.LyricsFont, hyphenXPosition, textPositionY, element);
-                //}
-                //else 
-                if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-");
-
-                renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, scoreService.CursorPositionX, textPositionY, element);
-
-                if (!lyrics.DefaultYPosition.HasValue) textPositionY += 12; //Move down if default-y is not set
-            }
-        }
-
-        private void DrawArticulation(ScoreRendererBase renderer, Note element, double notePositionY)
-        {
-            if (element.Articulation != ArticulationType.None)
-            {
-                double articulationPosition = notePositionY + 10;
-                if (element.ArticulationPlacement == VerticalPlacement.Above)
-                    articulationPosition = notePositionY - 10;
-                else if (element.ArticulationPlacement == VerticalPlacement.Below)
-                    articulationPosition = notePositionY + 10;
-
-                if (element.Articulation == ArticulationType.Staccato)
-                    renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, articulationPosition, element);
-                else if (element.Articulation == ArticulationType.Accent)
-                    renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, scoreService.CursorPositionX + 6, articulationPosition + 16, element);
-
-            }
-        }
-
-        private void DrawTrills(ScoreRendererBase renderer, Note element, double notePositionY)
-        {
-            if (element.TrillMark != NoteTrillMark.None)
-            {
-                double trillPos = notePositionY - 1;
-                if (element.TrillMark == NoteTrillMark.Above)
+                if (element.StemDirection == VerticalDirection.Down)
                 {
-                    trillPos = notePositionY - 1;
-                    if (trillPos > scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight)
-                    {
-                        trillPos = scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight - 1.0f;
-                    }
+                    //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
+                    //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
+                    //Stems of chord elements were displayed wrong when I used default-y
+                    //so I left default stem drawing routine for chords.
+                    if (element.IsChordElement)
+                        beamingService.CurrentStemEndPositionY = notePositionY + 18;
+                    else if ((renderer.Settings.IsManualMode) || (!(element.CustomStemEndPosition)))
+                        beamingService.CurrentStemEndPositionY = notePositionY + 18 > beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY + 18;
+                    else
+                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
+                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
+
+                    if (element.BeamList.Count > 0)
+                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
+                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 1 + 28),
+                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
                 }
-                else if (element.TrillMark == NoteTrillMark.Below)
+                else
                 {
-                    trillPos = notePositionY + 10;
+                    //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
+                    //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
+                    //Stems of chord elements were displayed wrong when I used default-y
+                    //so I left default stem drawing routine for chords.
+                    if (element.IsChordElement)
+                        beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
+                    else if (renderer.Settings.IsManualMode || (!(element.CustomStemEndPosition)))
+                        beamingService.CurrentStemEndPositionY = notePositionY - 25;
+                    else
+                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
+                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+
+                    if (element.BeamList.Count > 0)
+                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
+                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 7 + 30),
+                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
                 }
-                renderer.DrawString(renderer.Settings.CurrentFont.Trill, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, trillPos, element);
+                element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
             }
         }
 
-        private void DrawOrnaments(ScoreRendererBase renderer, Note element, double notePositionY)
+        private void DrawTies(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            foreach (Ornament ornament in element.Ornaments)
+            if (element.TieType == NoteTieType.Start)
             {
-                double yPositionShift = ornament.DefaultYPosition.HasValue ? ornament.DefaultYPosition.Value * -1 * 0.5d : (ornament.Placement == VerticalPlacement.Above ? - 20 : 20);
-                Mordent mordent = ornament as Mordent;
-                if (mordent != null)
+                measurementService.TieStartPoint = new Point(scoreService.CursorPositionX, notePositionY);
+            }
+            else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
+            {
+                double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X - 12;
+                double arcHeight = arcWidth * 0.7d;
+                if (element.StemDirection == VerticalDirection.Down)
                 {
-                    renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 2, notePositionY + yPositionShift, element);
-                    renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 3.5, notePositionY + yPositionShift, element);
+                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 16, measurementService.TieStartPoint.Y + 6,
+                        arcWidth, arcHeight), 180, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
+                }
+                else if (element.StemDirection == VerticalDirection.Up)
+                {
+                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 16, measurementService.TieStartPoint.Y + 22,
+                        arcWidth, arcHeight), 0, 180, new Pen(renderer.Settings.DefaultColor, 1.5), element);
+                }
+                if (element.TieType == NoteTieType.StopAndStartAnother)
+                {
+                    measurementService.TieStartPoint = new Point(scoreService.CursorPositionX + 2, notePositionY);
                 }
             }
         }
@@ -496,64 +492,62 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
-        private void DrawFermataSign(ScoreRendererBase renderer, Note element, double notePositionY)
+        private void DrawTrills(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            if (element.HasFermataSign)
+            if (element.TrillMark != NoteTrillMark.None)
             {
-                double ferPos = notePositionY - renderer.TextBlockHeight;
-                string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
-
-                renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
+                double trillPos = notePositionY - 1;
+                if (element.TrillMark == NoteTrillMark.Above)
+                {
+                    trillPos = notePositionY - 1;
+                    if (trillPos > scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight)
+                    {
+                        trillPos = scoreService.CurrentLinePositions[0] - renderer.TextBlockHeight - 1.0f;
+                    }
+                }
+                else if (element.TrillMark == NoteTrillMark.Below)
+                {
+                    trillPos = notePositionY + 10;
+                }
+                renderer.DrawString(renderer.Settings.CurrentFont.Trill, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, trillPos, element);
             }
         }
 
-        private void DrawAccidentals(ScoreRendererBase renderer, Note element, double notePositionY, int numberOfSingleAccidentals, int numberOfDoubleAccidentals)
+        private void DrawTupletMark(ScoreRendererBase renderer, Note element, int beamLoop)
         {
-            if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) > 0)
-            {
-                alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
-                double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals - 9 * numberOfDoubleAccidentals;
-                for (int i = 0; i < numberOfSingleAccidentals; i++)
-                {
-                    renderer.DrawString(renderer.Settings.CurrentFont.Sharp, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
-                    accPlacement += 9;
-                }
-                for (int i = 0; i < numberOfDoubleAccidentals; i++)
-                {
-                    renderer.DrawString(renderer.Settings.CurrentFont.DoubleSharp, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
-                    accPlacement += 9;
-                }
-            }
-            else if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) < 0)
-            {
-                alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
-                double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals -
-                    9 * numberOfDoubleAccidentals;
-                for (int i = 0; i < numberOfSingleAccidentals; i++)
-                {
-                    renderer.DrawString(renderer.Settings.CurrentFont.Flat, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
-                    accPlacement += 9;
-                }
-                for (int i = 0; i < numberOfDoubleAccidentals; i++)
-                {
-                    renderer.DrawString(renderer.Settings.CurrentFont.DoubleFlat, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
-                    accPlacement += 9;
-                }
-            }
-            if (element.HasNatural == true)
-            {
-                renderer.DrawString(renderer.Settings.CurrentFont.Natural, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 9, notePositionY, element);
-            }
-        }
+            if (measurementService.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
+            Staff staff = scoreService.CurrentStaff;
 
-        private void DrawDots(ScoreRendererBase renderer, Note element, double notePositionY)
-        {
-            if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
-            for (int i = 0; i < element.NumberOfDots; i++)
+            NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, PeekType.BeginningOfTuplet);
+            int index = staff.Elements.IndexOf(firstElementInTuplet);
+            List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index);
+            double averageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == measurementService.TupletState.TupletPlacement).
+                Average(n => n.ActualStemLength);
+            averageStemLength += 10;    //Add space
+            int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
+            double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X + 6;
+            double tupletBracketStartYPosition = firstElementInTuplet.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
+            double tupletBracketEndXPosition = element.TextBlockLocation.X + 12;
+            double tupletBracketEndYPosition = element.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
+
+            if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
             {
-                renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
-                scoreService.CursorPositionX += 6;
+                renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
+                                  new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), element);
+                renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
+                                  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
+                renderer.DrawLine(new Point(tupletBracketEndXPosition, tupletBracketEndYPosition),
+                                  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
             }
+
+            double numberOfNotesYTranslation = 0;
+            if (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above) numberOfNotesYTranslation -= 18; //If text should appear above the tuplet, move a bit to up
+            //If bracket is not drawn, move up or down to fill space
+            if (!measurementService.TupletState.AreSingleBeamsPresentUnderTuplet) numberOfNotesYTranslation += 10 * (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? 1 : -1);
+
+            renderer.DrawString(Convert.ToString(measurementService.TupletState.NumberOfNotesUnderTuplet), MusicFontStyles.LyricsFont,
+                    new Point(tupletBracketStartXPosition + (tupletBracketEndXPosition - tupletBracketStartXPosition) / 2 - 6,
+                              tupletBracketStartYPosition + (tupletBracketEndYPosition - tupletBracketStartYPosition) / 2 + numberOfNotesYTranslation), element);
         }
 
         private void MakeSpaceForAccidentals(ScoreRendererBase renderer, Note element, int numberOfSingleAccidentals, int numberOfDoubleAccidentals)

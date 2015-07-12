@@ -13,8 +13,14 @@ namespace Manufaktura.Controls.Services
 
         public double CurrentStemPositionX { get; set; }
 
+        public List<double> PreviousStemEndPositionsY { get; set; }
+
+        public List<double> PreviousStemPositionsX { get; set; }
+
         public BeamingService()
         {
+            PreviousStemEndPositionsY = new List<double>();
+            PreviousStemPositionsX = new List<double>();
             BeamStartPositionsY = new List<Point>();
             BeamEndPositionsY = new List<Point>();
         }

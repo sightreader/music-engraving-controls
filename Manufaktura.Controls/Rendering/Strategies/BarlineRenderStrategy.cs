@@ -23,9 +23,9 @@ namespace Manufaktura.Controls.Rendering
 
         public override void Render(Barline element, ScoreRendererBase renderer)
         {
-            if (measurementService.lastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
+            if (measurementService.LastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
             {
-                scoreService.CursorPositionX = measurementService.lastNoteInMeasureEndXPosition;
+                scoreService.CursorPositionX = measurementService.LastNoteInMeasureEndXPosition;
             }
 
             double? measureWidth = GetCursorPositionForCurrentBarline(renderer);
