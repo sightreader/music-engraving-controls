@@ -45,6 +45,8 @@ namespace Manufaktura.Controls.Services
 
         void BeginNewSystem();
 
+        Measure GetCorrespondingMeasure(Measure measure, Staff otherStaff);
+
         void ReturnToFirstSystem();
     }
 }

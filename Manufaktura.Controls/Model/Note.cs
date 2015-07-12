@@ -99,6 +99,12 @@ namespace Manufaktura.Controls.Model
 
         }
 
+        public Note(Pitch notePitch, RhythmicDuration noteDuration, VerticalDirection noteStemDirection)
+            : this(notePitch, noteDuration, noteStemDirection, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        {
+
+        }
+
         public Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
             VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList) :
             this(new Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)

@@ -128,6 +128,14 @@ namespace Manufaktura.Controls.Services
             CurrentSystem = systems[currentSystemIndex + 1];
         }
 
+        public Measure GetCorrespondingMeasure(Measure measure, Staff otherStaff)
+        {
+            var measureIndex = allMeasures.Where(m => m.Staff == measure.Staff).ToList().IndexOf(measure);
+            var measuresInOthersStaff = allMeasures.Where(m => m.Staff == otherStaff).ToList();
+            if (measuresInOthersStaff.Count <= measureIndex) return null;
+            return measuresInOthersStaff[measureIndex];
+        }
+
         public void ReturnToFirstSystem()
         {
             CurrentSystem = systems.FirstOrDefault();
