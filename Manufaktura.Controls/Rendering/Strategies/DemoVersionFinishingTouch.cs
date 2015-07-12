@@ -3,10 +3,7 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Strategies
 {
@@ -15,7 +12,12 @@ namespace Manufaktura.Controls.Rendering.Strategies
         public void PerformOnScore(Score score, ScoreRendererBase renderer)
         {
 #if DemoVersion
-            renderer.DrawString("DEMO", MusicFontStyles.LyricsFont, new Point(0, 0), Color.Red, MusicalSymbol.Null);
+            foreach (var location in new[] {
+                new Point(0, 0),
+                new Point(renderer.ScoreInformation.Systems.Max(s => s.Width) - 30, 0)})
+            {
+                renderer.DrawString("DEMO", MusicFontStyles.LyricsFont, location, Color.Red, MusicalSymbol.Null);
+            }
 #endif
         }
 

@@ -43,13 +43,14 @@ namespace Manufaktura.Controls.Rendering
                     Exceptions.Add(ex);
                 }
             }
-            foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnScore(score, this);
 
             //Set height of current system in Panorama mode. This is used for determining the size of the control:
             if (Settings.IsPanoramaMode && scoreService.CurrentSystem.Height == 0)
             {
                 scoreService.CurrentSystem.Height = (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count;
             }
+
+            foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnScore(score, this);
         }
 
         private void DetermineClef(Staff staff)
