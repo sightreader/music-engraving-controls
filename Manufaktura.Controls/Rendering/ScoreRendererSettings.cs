@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
-using System;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -22,9 +21,6 @@ namespace Manufaktura.Controls.Rendering
         /// True, to ignore element positions which are implicitly set in MusicXml file
         /// </summary>
         public bool IgnoreCustomElementPositions { get; set; }
-
-        [Obsolete("I don't know where this came from")]
-        public bool IsManualMode { get; set; }
 
         /// <summary>
         /// If true, all system breaks are ignored (the score is displayed in single staff system).

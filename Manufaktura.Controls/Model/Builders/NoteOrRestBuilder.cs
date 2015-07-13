@@ -91,7 +91,7 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.IsChordElement = IsChordElement;
                 nt.StemDefaultY = StemDefaultY;
                 nt.DefaultXPosition = DefaultX;
-                nt.CustomStemEndPosition = CustomStemEndPosition;
+                nt.HasCustomStemEndPosition = CustomStemEndPosition;
                 nt.TrillMark = TrillMark;
                 nt.Slur = Slur;
                 nt.HasFermataSign = HasFermataSign;

@@ -66,6 +66,7 @@
     <Compile Include="Model\Measure.cs" />
     <Compile Include="Model\Mordent.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
+    <Compile Include="Model\MusicalSymbolCollection.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\NullMusicalSymbol.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="Model\PeekStrategies\PeekStrategy.cs" />
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\LineDictionary.cs" />
+    <Compile Include="Model\Rules\StaffRule.cs" />
+    <Compile Include="Model\Rules\NoteStemRule.cs" />
     <Compile Include="Model\ScoreInfo.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\StaffSystem.cs" />

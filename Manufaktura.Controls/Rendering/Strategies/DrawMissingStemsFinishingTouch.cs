@@ -29,7 +29,7 @@ namespace Manufaktura.Controls.Rendering.Strategies
                     }
                     if (note.BeamList[0] == NoteBeamType.Continue)
                     {
-                        if (note.CustomStemEndPosition) continue;
+                        if (note.HasCustomStemEndPosition) continue;
                         for (int i = staff.Elements.IndexOf(note) + 1; i < staff.Elements.Count; i++)
                         {
                             if (staff.Elements[i].Type != MusicalSymbolType.Note) continue;

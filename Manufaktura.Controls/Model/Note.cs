@@ -3,8 +3,6 @@ using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
@@ -12,71 +10,93 @@ namespace Manufaktura.Controls.Model
     {
         #region Protected fields
 
-        protected Pitch pitch;
-        protected double stemDefaultY;
-        protected bool customStemEndPosition = false;
-        protected string noteFlagCharacter = " ";
-        protected string noteFlagCharacterRev = " ";
-        protected VerticalDirection stemDirection = VerticalDirection.Up;
-        protected NoteTieType tieType = NoteTieType.None;
-        protected List<NoteBeamType> beamList = new List<NoteBeamType>();
-
-        protected List<Lyrics> lyrics = new List<Lyrics>();
         protected ArticulationType articulation = ArticulationType.None;
         protected VerticalPlacement articulationPlacement = VerticalPlacement.Below;
-        protected bool hasNatural = false;
-        protected bool isGraceNote = false;
-        protected bool isChordElement = false;
+        protected List<NoteBeamType> beamList = new List<NoteBeamType>();
         protected int currentTempo = 120;
-        protected NoteTrillMark trillMark = NoteTrillMark.None;
-        protected Slur slur;
-        protected bool hasFermataSign = false;
-        protected int tremoloLevel = 0; //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
+        protected bool customStemEndPosition = false;
         protected int dynamics = 80;
+        protected bool hasFermataSign = false;
+        protected bool hasNatural = false;
+        protected bool isChordElement = false;
+        protected bool isGraceNote = false;
+        protected List<Lyrics> lyrics = new List<Lyrics>();
+        protected string noteFlagCharacter = " ";
+        protected string noteFlagCharacterRev = " ";
+        protected Pitch pitch;
+        protected Slur slur;
+        protected double stemDefaultY;
+        protected VerticalDirection stemDirection = VerticalDirection.Up;
         protected Point stemEndLocation = new Point();
+        protected NoteTieType tieType = NoteTieType.None;
+        protected int tremoloLevel = 0;
+        protected NoteTrillMark trillMark = NoteTrillMark.None;
+        //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
 
-        #endregion
+        #endregion Protected fields
 
         #region Properties
 
-        public List<Ornament> Ornaments { get; private set; }
-        public bool CustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
-        public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
-        public Slur Slur { get { return slur; } set { slur = value; OnPropertyChanged(() => Slur); } }
-        public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
+        public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
+        public bool SubjectToNoteStemRule { get; private set; }
 
-        public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
+        public int Alter { get { return pitch.Alter; } }
 
-        public List<Lyrics> Lyrics { get { return lyrics; } set { lyrics = value; OnPropertyChanged(() => Lyrics); } }
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; OnPropertyChanged(() => Articulation); } }
+
         public VerticalPlacement ArticulationPlacement
         {
             get { return articulationPlacement; }
             set { articulationPlacement = value; }
         }
-        public bool HasNatural { get { return hasNatural; } set { hasNatural = value; } }
-        public bool IsGraceNote { get { return isGraceNote; } set { isGraceNote = value; OnPropertyChanged(() => IsGraceNote); } }
-        public bool IsCueNote { get; set; }
-        public bool IsChordElement { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsChordElement); } }
-        public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
-        public string NoteFlagCharacter { get { return noteFlagCharacter; } }
-        public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
 
-        public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
-        public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
-
-        public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(() => StemDirection); } }
-        public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
         public List<NoteBeamType> BeamList { get { return beamList; } }
-        public string Step { get { return pitch.StepName; } }
-        public int Octave { get { return pitch.Octave; } }
-        public int Alter { get { return pitch.Alter; } }
-        public int MidiPitch { get { return pitch.MidiPitch; } }
-        public Pitch Pitch { get { return pitch; } set { pitch = value; OnPropertyChanged(() => Pitch); } }
+
         public int Dynamics { get { return dynamics; } set { dynamics = value; } }
 
+        public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
-        #endregion
+        public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
+
+        public bool HasNatural { get { return hasNatural; } set { hasNatural = value; } }
+
+        public bool IsChordElement { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsChordElement); } }
+
+        public bool IsCueNote { get; set; }
+
+        public bool IsGraceNote { get { return isGraceNote; } set { isGraceNote = value; OnPropertyChanged(() => IsGraceNote); } }
+
+        public List<Lyrics> Lyrics { get { return lyrics; } set { lyrics = value; OnPropertyChanged(() => Lyrics); } }
+
+        public int MidiPitch { get { return pitch.MidiPitch; } }
+
+        public string NoteFlagCharacter { get { return noteFlagCharacter; } }
+
+        public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
+
+        public int Octave { get { return pitch.Octave; } }
+
+        public List<Ornament> Ornaments { get; private set; }
+
+        public Pitch Pitch { get { return pitch; } set { pitch = value; OnPropertyChanged(() => Pitch); } }
+
+        public Slur Slur { get { return slur; } set { slur = value; OnPropertyChanged(() => Slur); } }
+
+        public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
+
+        public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(() => StemDirection); } }
+
+        public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
+
+        public string Step { get { return pitch.StepName; } }
+
+        public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
+
+        public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
+
+        public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
+
+        #endregion Properties
 
         #region Constructor
 
@@ -96,29 +116,31 @@ namespace Manufaktura.Controls.Model
         public Note(RhythmicDuration noteDuration)
             : this("A", 0, 4, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
-
         }
 
         public Note(Pitch notePitch, RhythmicDuration noteDuration, VerticalDirection noteStemDirection)
             : this(notePitch, noteDuration, noteStemDirection, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
+        }
 
+        public Note(Pitch notePitch, RhythmicDuration noteDuration, bool determineStemDirectionOnAddingToStaff = true)
+            : this(notePitch, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        {
+            SubjectToNoteStemRule = determineStemDirectionOnAddingToStaff;
         }
 
         public Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
             VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList) :
             this(new Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)
         {
-
         }
 
         public Note()
             : this("A", 0, 4, RhythmicDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
-
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Private methods
 
@@ -161,18 +183,22 @@ namespace Manufaktura.Controls.Model
             }
         }
 
-        #endregion
+        #endregion Private methods
 
         #region Public methods
-
-        
 
         public void ApplyMidiPitch(int midiPitch)
         {
             pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
         }
 
-        #endregion
+        public double GetLineInSpecificClef(Clef clef)
+        {
+            var stepDistance = (double)Pitch.StepDistance(this, clef);
+            return clef.Line + (stepDistance / 2);
+        }
+
+        #endregion Public methods
 
         #region Public static functions
 
@@ -204,7 +230,6 @@ namespace Manufaktura.Controls.Model
             return note;
         }
 
-        #endregion
-
+        #endregion Public static functions
     }
 }

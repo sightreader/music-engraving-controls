@@ -396,53 +396,53 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            if (element.Duration != RhythmicDuration.Whole)
+            if (element.Duration == RhythmicDuration.Whole) return;
+
+            double tmpStemPosY;
+            tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) +
+                scoreService.CurrentScore.Staves.Take(scoreService.CurrentStaffNo - 1).Sum(s => s.Height) +
+                element.StemDefaultY * -1.0f / 2.0f;
+
+            if (element.StemDirection == VerticalDirection.Down)
             {
-                double tmpStemPosY;
-                tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) +
-                    scoreService.CurrentScore.Staves.Take(scoreService.CurrentStaffNo - 1).Sum(s => s.Height) +
-                    element.StemDefaultY * -1.0f / 2.0f;
-
-                if (element.StemDirection == VerticalDirection.Down)
-                {
-                    //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
-                    //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
-                    //Stems of chord elements were displayed wrong when I used default-y
-                    //so I left default stem drawing routine for chords.
-                    if (element.IsChordElement)
-                        beamingService.CurrentStemEndPositionY = notePositionY + 18;
-                    else if ((renderer.Settings.IsManualMode) || (!(element.CustomStemEndPosition)))
-                        beamingService.CurrentStemEndPositionY = notePositionY + 18 > beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY + 18;
-                    else
-                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
-                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
-
-                    if (element.BeamList.Count > 0)
-                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
-                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 1 + 28),
-                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
-                }
+                //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
+                //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
+                //Stems of chord elements were displayed wrong when I used default-y
+                //so I left default stem drawing routine for chords.
+                if (element.IsChordElement)
+                    beamingService.CurrentStemEndPositionY = notePositionY + 18;
+                else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
+                    beamingService.CurrentStemEndPositionY = notePositionY + 18;
                 else
-                {
-                    //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
-                    //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
-                    //Stems of chord elements were displayed wrong when I used default-y
-                    //so I left default stem drawing routine for chords.
-                    if (element.IsChordElement)
-                        beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
-                    else if (renderer.Settings.IsManualMode || (!(element.CustomStemEndPosition)))
-                        beamingService.CurrentStemEndPositionY = notePositionY - 25;
-                    else
-                        beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
-                    beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+                    beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
+                beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
 
-                    if (element.BeamList.Count > 0)
-                        if ((element.BeamList[0] != NoteBeamType.Continue) || element.CustomStemEndPosition)
-                            renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 7 + 30),
-                                new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
-                }
-                element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+                if (element.BeamList.Count > 0)
+                    if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
+                        renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 1 + 28),
+                            new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
             }
+            else
+            {
+                //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
+                //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
+                //Stems of chord elements were displayed wrong when I used default-y
+                //so I left default stem drawing routine for chords.
+                if (element.IsChordElement)
+                    beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
+                else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
+                    beamingService.CurrentStemEndPositionY = notePositionY - 25;
+                else
+                    beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
+                beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+
+                if (element.BeamList.Count > 0)
+                    if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
+                        renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 7 + 30),
+                            new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
+            }
+            element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+
         }
 
         private void DrawTies(ScoreRendererBase renderer, Note element, double notePositionY)

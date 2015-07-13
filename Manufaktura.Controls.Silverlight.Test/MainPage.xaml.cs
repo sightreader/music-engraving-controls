@@ -3,6 +3,8 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.Digest;
 using Manufaktura.Controls.Parser.MusicXml;
+using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.MajorAndMinor;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +28,17 @@ namespace Manufaktura.Controls.Silverlight.Test
         public MainPage()
         {
             InitializeComponent();
+
+            var score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
+            score.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.F4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.A4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.B4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.C5, RhythmicDuration.Quarter));
+            noteViewer1.ScoreSource = score;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
