@@ -88,11 +88,11 @@ namespace Manufaktura.UnitTests
         public void TestRenderHtml()
         {
             Dictionary<MusicFontStyles, HtmlFontInfo> fonts = new Dictionary<MusicFontStyles, HtmlFontInfo>();
-            fonts.Add(MusicFontStyles.MusicFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 24d));
-            fonts.Add(MusicFontStyles.GraceNoteFont, new HtmlFontInfo("Polihymnia", "../fonts/Polihymnia.ttf", 12d));
-            fonts.Add(MusicFontStyles.LyricsFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 10d));
-            fonts.Add(MusicFontStyles.TimeSignatureFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 14d));
-            fonts.Add(MusicFontStyles.DirectionFont, new HtmlFontInfo("Open Sans", "../fonts/OpenSans-Regular.ttf", 10d));
+            fonts.Add(MusicFontStyles.MusicFont, new HtmlFontInfo("Polihymnia", 24d, "../fonts/Polihymnia.ttf"));
+            fonts.Add(MusicFontStyles.GraceNoteFont, new HtmlFontInfo("Polihymnia", 12d,"../fonts/Polihymnia.ttf"));
+            fonts.Add(MusicFontStyles.LyricsFont, new HtmlFontInfo("Open Sans", 10d, "../fonts/OpenSans-Regular.ttf"));
+            fonts.Add(MusicFontStyles.TimeSignatureFont, new HtmlFontInfo("Open Sans", 14d,"../fonts/OpenSans-Regular.ttf"));
+            fonts.Add(MusicFontStyles.DirectionFont, new HtmlFontInfo("Open Sans", 10d, "../fonts/OpenSans-Regular.ttf"));
 
             using (var repository = new DbRepository(new MySqlDialectProvider("Server=localhost;Database=kolberg-test;Uid=admin;Pwd=123123;")))
             {

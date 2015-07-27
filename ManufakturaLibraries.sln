@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Window
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Music", "Manufaktura.Music\Manufaktura.Music.csproj", "{995E7584-262D-462C-A83A-208924C2548B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Android", "Manufaktura.Controls.Android\Manufaktura.Controls.Android.csproj", "{2B8969BB-C2CA-4719-B6D3-789B7EA42866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -271,6 +273,16 @@ Global
 		{995E7584-262D-462C-A83A-208924C2548B}.Release|ARM.ActiveCfg = Release|Any CPU
 		{995E7584-262D-462C-A83A-208924C2548B}.Release|x64.ActiveCfg = Release|Any CPU
 		{995E7584-262D-462C-A83A-208924C2548B}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Release|ARM.ActiveCfg = Release|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Release|x64.ActiveCfg = Release|Any CPU
+		{2B8969BB-C2CA-4719-B6D3-789B7EA42866}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

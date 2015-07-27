@@ -48,6 +48,12 @@ namespace Manufaktura.Controls.Model
             staff.ApplyRules(item);
         }
 
+        public void AddRange(IEnumerable<MusicalSymbol> items)
+        {
+            innerList.AddRange(items);
+            foreach (var item in items) staff.ApplyRules(item);
+        }
+
         public void Clear()
         {
             innerList.Clear();
