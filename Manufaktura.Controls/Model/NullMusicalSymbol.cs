@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    public class NullMusicalSymbol : MusicalSymbol
+    public sealed class NullMusicalSymbol : MusicalSymbol
     {
     }
 }

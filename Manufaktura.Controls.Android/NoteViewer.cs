@@ -31,6 +31,12 @@ namespace Manufaktura.Controls.Android
 
         protected AndroidScoreRenderer Renderer { get; set; }
 
+        public NoteViewer(global::Android.Content.Context context)
+            : base(context)
+        {
+
+        }
+
         protected override void OnDraw(Canvas canvas)
         {
             if (ScoreSource == null)

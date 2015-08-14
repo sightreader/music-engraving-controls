@@ -41,24 +41,53 @@ namespace Manufaktura.Controls.Rendering
         }
 
         /// <summary>
-        ///
+        /// Draws arc.
         /// </summary>
         /// <remarks>
         /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
         /// not draw anything at all, draw in transparent color, etc.
         /// </remarks>
-        /// <param name="rect"></param>
-        /// <param name="startAngle"></param>
-        /// <param name="sweepAngle"></param>
-        /// <param name="pen"></param>
-        /// <param name="owner"></param>
+        /// <param name="rect">Rectangle within which arc should be drawn</param>
+        /// <param name="startAngle">Start angle</param>
+        /// <param name="sweepAngle">Sweep angle</param>
+        /// <param name="pen">Pen settings</param>
+        /// <param name="owner">Owning symbol</param>
         public abstract void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner);
 
+        /// <summary>
+        /// Draws Bezier curve.
+        /// </summary>
+        /// <param name="x1">Start point X</param>
+        /// <param name="y1">Start point Y</param>
+        /// <param name="x2">Control point 1 X</param>
+        /// <param name="y2">Control point 1 Y</param>
+        /// <param name="x3">Control point 2 X</param>
+        /// <param name="y3">Control point 2 Y</param>
+        /// <param name="x4">End point X</param>
+        /// <param name="y4">End point Y</param>
+        /// <param name="owner">Owning symbol</param>
         public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, MusicalSymbol owner)
         {
             DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), new Pen(Settings.DefaultColor, 1), owner);
         }
 
+        /// <summary>
+        /// Draws Bezier curve.
+        /// </summary>
+        /// <remarks>
+        /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
+        /// not draw anything at all, draw in transparent color, etc.
+        /// </remarks>
+        /// <param name="x1">Start point X</param>
+        /// <param name="y1">Start point Y</param>
+        /// <param name="x2">Control point 1 X</param>
+        /// <param name="y2">Control point 1 Y</param>
+        /// <param name="x3">Control point 2 X</param>
+        /// <param name="y3">Control point 2 Y</param>
+        /// <param name="x4">End point X</param>
+        /// <param name="y4">End point Y</param>
+        /// <param name="pen">Pen settings</param>
+        /// <param name="owner">Owning symbol</param>
         public void DrawBezier(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, Pen pen, MusicalSymbol owner)
         {
             DrawBezier(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4), pen, owner);

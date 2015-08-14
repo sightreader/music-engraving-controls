@@ -3,6 +3,10 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Model.Rules
 {
+    /// <summary>
+    /// Rule that applies proper stem direction for notes on the staff.
+    /// Every note on third line and above has downward stem direction.
+    /// </summary>
     public class NoteStemRule : StaffRule<Note>
     {
         public override void Apply(Staff staff, Note newElement)

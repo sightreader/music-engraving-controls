@@ -54,6 +54,10 @@ namespace Manufaktura.Controls.Model
             return strategy.Peek(relativeTo);
         }
 
+        /// <summary>
+        /// Wraps the staff with a score (creates a new score with this staff).
+        /// </summary>
+        /// <returns>Score</returns>
         public Score ToOneStaffScore()
         {
             var score = new Score();

@@ -74,6 +74,9 @@ namespace Manufaktura.Controls.Services
             CurrentVoice = 1;
         }
 
+        /// <summary>
+        /// Begins new measure.
+        /// </summary>
         public void BeginNewMeasure()
         {
             var measure = new Measure(CurrentStaff, CurrentSystem);
@@ -85,6 +88,10 @@ namespace Manufaktura.Controls.Services
             }
         }
 
+        /// <summary>
+        /// Resets settings to begin a new score.
+        /// </summary>
+        /// <param name="score">Score</param>
         public void BeginNewScore(Score score)
         {
             CurrentScore = score;
@@ -93,6 +100,9 @@ namespace Manufaktura.Controls.Services
             LinePositions.Clear();
         }
 
+        /// <summary>
+        /// Begins a new staff.
+        /// </summary>
         public void BeginNewStaff()
         {
             if (!systems.Any()) BeginNewSystem();
@@ -115,6 +125,9 @@ namespace Manufaktura.Controls.Services
             BeginNewMeasure();
         }
 
+        /// <summary>
+        /// Begins a new system.
+        /// </summary>
         public void BeginNewSystem()
         {
             var currentSystemIndex = systems.IndexOf(CurrentSystem);
@@ -128,6 +141,12 @@ namespace Manufaktura.Controls.Services
             CurrentSystem = systems[currentSystemIndex + 1];
         }
 
+        /// <summary>
+        /// Searches for the corresponding measure (a measure with the same measure number) in other staff.
+        /// </summary>
+        /// <param name="measure">Examined measure</param>
+        /// <param name="otherStaff">Searched staff</param>
+        /// <returns>Corresponding measure</returns>
         public Measure GetCorrespondingMeasure(Measure measure, Staff otherStaff)
         {
             var measureIndex = allMeasures.Where(m => m.Staff == measure.Staff).ToList().IndexOf(measure);
@@ -136,6 +155,9 @@ namespace Manufaktura.Controls.Services
             return measuresInOthersStaff[measureIndex];
         }
 
+        /// <summary>
+        /// Resets CurrentSystem to first system.
+        /// </summary>
         public void ReturnToFirstSystem()
         {
             CurrentSystem = systems.FirstOrDefault();

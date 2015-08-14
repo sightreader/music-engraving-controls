@@ -59,6 +59,14 @@
       <Project>{52331173-dfd5-47ea-ba7a-72bbbe85d2fa}</Project>
       <Name>Manufaktura.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
+      <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>
+      <Name>Manufaktura.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
+      <Project>{995e7584-262d-462c-a83a-208924c2548b}</Project>
+      <Name>Manufaktura.Music</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

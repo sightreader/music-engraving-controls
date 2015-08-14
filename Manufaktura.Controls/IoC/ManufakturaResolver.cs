@@ -6,20 +6,36 @@ using System.Text;
 
 namespace Manufaktura.Controls.IoC
 {
+    /// <summary>
+    /// Simple dependency resolver.
+    /// </summary>
     public class ManufakturaResolver
     {
         private List<object> createdServices = new List<object>();
 
+        /// <summary>
+        /// Register object which will be used as a dependency when needed.
+        /// </summary>
+        /// <param name="service">Any object</param>
         public void AddService(object service)
         {
             createdServices.Add(service);
         }
 
+        /// <summary>
+        /// Register objects which will be used as dependencies when needed.
+        /// </summary>
+        /// <param name="service">Any objects</param>
         public void AddServices(params object[] services)
         {
             createdServices.AddRange(services);
         }
 
+        /// <summary>
+        /// Create objects of type T. If the constructor has dependencies they will be matched from createdServices list.
+        /// </summary>
+        /// <typeparam name="T">Type of objects to create</typeparam>
+        /// <returns>Created object<s/returns>
         public IEnumerable<T> ResolveAll<T>() where T:class
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -27,7 +43,7 @@ namespace Manufaktura.Controls.IoC
             foreach (var type in types)
             {
                 var constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
-                if (!constructors.Any()) yield return Activator.CreateInstance(type) as T;
+                if (!constructors.Any()) yield return ExpressionActivator.CreateInstance<T>(type);
                 foreach (var constructor in constructors)
                 {
                     object[] matchedParameters;

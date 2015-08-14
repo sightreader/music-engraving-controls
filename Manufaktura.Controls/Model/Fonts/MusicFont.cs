@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model.Fonts
 {
+    /// <summary>
+    /// Character mapping definition for music font.
+    /// </summary>
     public abstract class MusicFont
     {
         public string Staff5Lines { get; protected set; }

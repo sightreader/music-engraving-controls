@@ -11,6 +11,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
         IEnumerable<Score> Scores { get; }
         string CanvasPrefix { get; }
         HtmlScoreRendererSettings Settings { get; }
+
+        /// <summary>
+        /// Build html code for displaying Scores based on Settings.
+        /// </summary>
+        /// <returns>Html code to render scores on client side</returns>
         string Build();
     }
 }

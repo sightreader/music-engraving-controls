@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model.Fonts
 {
+    /// <summary>
+    /// Character mapping for font Polihymnia
+    /// </summary>
     public class PolihymniaFont : MusicFont
     {
         public PolihymniaFont() 

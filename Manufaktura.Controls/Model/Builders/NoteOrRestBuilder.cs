@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model.Builders
 {
+    /// <summary>
+    /// Helper class to build notes and rests.
+    /// </summary>
     public class NoteOrRestBuilder : IHasDuration
     {
         public MusicXmlParserState State { get; protected set; }

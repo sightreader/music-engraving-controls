@@ -4,6 +4,9 @@ using Manufaktura.Controls.Services;
 
 namespace Manufaktura.Controls.Rendering.Strategies
 {
+    /// <summary>
+    /// Draws lines of the staff
+    /// </summary>
     public class DrawAllLinesFinishingTouch : IFinishingTouch
     {
         private readonly IScoreService scoreService;
