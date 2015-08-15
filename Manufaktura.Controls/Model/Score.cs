@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a score.
+    /// </summary>
     public class Score
     {
         public List<Staff> Staves { get; private set; }

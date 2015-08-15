@@ -11,16 +11,12 @@ namespace Manufaktura.Controls.Model
         #region Protected fields
 
         protected int multiMeasure = 0;
-        protected int currentTempo = 120;
-        protected bool hasFermataSign = false;
 
         #endregion
 
         #region Properties
 
         public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; } }
-        public int CurrentTempo { get { return currentTempo; } set { currentTempo = value; } }
-        public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
 
         #endregion
 

@@ -56,6 +56,9 @@ namespace Manufaktura.Controls.Audio
         {
         }
 
+        /// <summary>
+        /// Start playback.
+        /// </summary>
         public override void Start()
         {
             if (State != PlaybackState.Paused) ShouldRestart = true;
@@ -63,12 +66,18 @@ namespace Manufaktura.Controls.Audio
             Timer.Change(0, Timeout.Infinite);
         }
 
+        /// <summary>
+        /// Stop playback.
+        /// </summary>
         public override void Stop()
         {
             Timer.Change(Timeout.Infinite, Timeout.Infinite);
             State = PlaybackState.Idle;
         }
 
+        /// <summary>
+        /// Pause playback.
+        /// </summary>
         public override void Pause()
         {
             Timer.Change(Timeout.Infinite, Timeout.Infinite);

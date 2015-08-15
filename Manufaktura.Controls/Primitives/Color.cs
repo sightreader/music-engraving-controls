@@ -6,6 +6,9 @@ using Manufaktura.Music.Extensions;
 
 namespace Manufaktura.Controls.Primitives
 {
+    /// <summary>
+    /// Represents a color in RGB color space.
+    /// </summary>
     public struct Color
     {
         public static Color Black { get { return new Color(0, 0, 0, 255); } }

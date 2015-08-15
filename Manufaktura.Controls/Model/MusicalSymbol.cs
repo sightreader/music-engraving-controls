@@ -34,6 +34,9 @@ namespace Manufaktura.Controls.Model
 
     public enum VerticalPlacement { Above, Below };
 
+    /// <summary>
+    /// Base class for all musical symbols
+    /// </summary>
     public abstract class MusicalSymbol : ViewModel
     {
         protected MusicalSymbolType type;

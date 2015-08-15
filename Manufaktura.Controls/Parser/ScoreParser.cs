@@ -6,6 +6,10 @@ using System.Text;
 
 namespace Manufaktura.Controls.Parser
 {
+    /// <summary>
+    /// Base score parser class.
+    /// </summary>
+    /// <typeparam name="TSource"></typeparam>
     public abstract class ScoreParser<TSource> : Parser<Score, TSource>
     {
     }

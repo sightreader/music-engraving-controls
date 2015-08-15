@@ -25,7 +25,7 @@ namespace Manufaktura.Controls.IoC
         /// <summary>
         /// Register objects which will be used as dependencies when needed.
         /// </summary>
-        /// <param name="service">Any objects</param>
+        /// <param name="services">Any objects</param>
         public void AddServices(params object[] services)
         {
             createdServices.AddRange(services);
@@ -35,7 +35,7 @@ namespace Manufaktura.Controls.IoC
         /// Create objects of type T. If the constructor has dependencies they will be matched from createdServices list.
         /// </summary>
         /// <typeparam name="T">Type of objects to create</typeparam>
-        /// <returns>Created object<s/returns>
+        /// <returns>Created object</returns>
         public IEnumerable<T> ResolveAll<T>() where T:class
         {
             var assembly = Assembly.GetExecutingAssembly();

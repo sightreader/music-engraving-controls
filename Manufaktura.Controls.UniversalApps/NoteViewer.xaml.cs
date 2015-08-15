@@ -28,7 +28,7 @@ namespace Manufaktura.Controls.UniversalApps
         private DraggingState _draggingState = new DraggingState();
         private Score _innerScore;
 
-        protected CanvasScoreRenderer Renderer { get; set; }
+        private CanvasScoreRenderer Renderer { get; set; }
 
         public Score InnerScore { get { return _innerScore; } }
 
@@ -118,7 +118,7 @@ namespace Manufaktura.Controls.UniversalApps
         public static readonly DependencyProperty IsOccupyingSpaceProperty =
             DependencyProperty.Register("IsOccupyingSpace", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
 
-        protected MusicalSymbol SelectedElementInner { get; set; }
+        private MusicalSymbol SelectedElementInner { get; set; }
 
         public MusicalSymbol SelectedElement
         {

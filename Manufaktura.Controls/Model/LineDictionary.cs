@@ -2,6 +2,9 @@
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Dictionary that stores vertical location of lines in staves and systems.
+    /// </summary>
     public class LineDictionary
     {
         private Dictionary<int, Dictionary<int, double[]>> innerDictionary = new Dictionary<int, Dictionary<int, double[]>>();

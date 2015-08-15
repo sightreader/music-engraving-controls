@@ -140,7 +140,6 @@ namespace Manufaktura.Controls.Rendering
         /// </remarks>
         /// <param name="text">Text to draw</param>
         /// <param name="fontStyle">Fontstyle of text</param>
-        /// <param name="location">Location of text block</param>
         /// <param name="owner">Owning MusicalSymbol</param>
         public void DrawString(string text, MusicFontStyles fontStyle, double x, double y, MusicalSymbol owner)
         {

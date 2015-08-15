@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
-    class BarlineRenderStrategy : MusicalSymbolRenderStrategy<Barline>
+    public class BarlineRenderStrategy : MusicalSymbolRenderStrategy<Barline>
     {
         private readonly IMeasurementService measurementService;
         private readonly IAlterationService alterationService;

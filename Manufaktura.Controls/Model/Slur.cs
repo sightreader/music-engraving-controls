@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a slur.
+    /// </summary>
     public class Slur
     {
         public int Number { get; set; }

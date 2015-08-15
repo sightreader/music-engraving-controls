@@ -5,8 +5,17 @@ using System.Reflection;
 
 namespace Manufaktura.Controls.IoC
 {
+    /// <summary>
+    /// Helper class to create objects using expression tree compilation.
+    /// </summary>
     public class ExpressionActivator
     {
+        /// <summary>
+        /// Create instance of type <typeparam name="T" />.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static T CreateInstance<T>(Type type) where T : class
         {
             var expr = Expression.Lambda(Expression.New(type));

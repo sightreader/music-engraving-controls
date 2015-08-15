@@ -32,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\comments.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
@@ -110,6 +111,7 @@
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
+    <Compile Include="Primitives\KolbergColors.cs" />
     <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRendererSettings.cs" />

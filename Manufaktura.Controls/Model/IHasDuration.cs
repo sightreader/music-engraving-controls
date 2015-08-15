@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Indicates that element has rhythmic duration.
+    /// </summary>
     public interface IHasDuration
     {
         /// <summary>

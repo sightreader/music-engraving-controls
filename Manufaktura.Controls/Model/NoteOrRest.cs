@@ -8,9 +8,13 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Base class that represents note or rest.
+    /// </summary>
     public abstract class NoteOrRest : MusicalSymbol, IHasDuration, ICanBeElementOfTuplet, IHasCustomXPosition, IRenderedAsTextBlock
     {
         protected string musicalCharacter;
+        protected bool hasFermataSign = false;
         protected TupletType tuplet = TupletType.None;
         protected Point location = new Point();
         private MusicFont musicFont = new PolihymniaFont();
@@ -29,6 +33,9 @@ namespace Manufaktura.Controls.Model
                 return Duration.WithoutDots;
             }
         }
+
+        public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; OnPropertyChanged(() => HasFermataSign); } }
+
         public int NumberOfDots
         {
             get

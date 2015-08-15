@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a key signature.
+    /// </summary>
     public class Key : MusicalSymbol, IRenderedAsTextBlock
     {
         #region Private fields

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents text directions.
+    /// </summary>
     public class Direction : MusicalSymbol
     {
         #region Protected fields
@@ -17,14 +20,20 @@ namespace Manufaktura.Controls.Model
 
         #region Properties
 
-        public string Text { get { return text; } set { text = value; } }
-        public DirectionPlacementType Placement { get { return placement; } set { placement = value; } }
-        public int DefaultY { get { return defaultY; } set { defaultY = value; } }
+        /// <summary>
+        /// Direction text.
+        /// </summary>
+        public string Text { get { return text; } set { text = value; OnPropertyChanged(() => Text); } }
+        public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(() => Placement); } }
+        public int DefaultY { get { return defaultY; } set { defaultY = value; OnPropertyChanged(() => DefaultY); } }
 
         #endregion
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of Direction.
+        /// </summary>
         public Direction()
         {
             type = MusicalSymbolType.Direction;

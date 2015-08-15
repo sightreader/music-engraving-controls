@@ -10,6 +10,12 @@ namespace Manufaktura.Controls.Linq
 {
     public static class ScoreExtensions
     {
+        /// <summary>
+        /// Returns first symbol with specific MusicalSymbolType.
+        /// </summary>
+        /// <param name="musicalSymbols">Sequence to search</param>
+        /// <param name="type">Type of musical symbol</param>
+        /// <returns>Found element od default</returns>
         public static MusicalSymbol FirstOrDefault(this IEnumerable<MusicalSymbol> musicalSymbols, MusicalSymbolType type)
         {
             return musicalSymbols.FirstOrDefault(ms => ms.Type == type);
@@ -37,6 +43,11 @@ namespace Manufaktura.Controls.Linq
             return parser.ParseBack(score);
         }
 
+        /// <summary>
+        /// Calculates rhythmic digest of specified score.
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
         public static string ToRhythmDigest(this Score score)
         {
             RhythmDigestParser parser = new RhythmDigestParser();
@@ -49,6 +60,11 @@ namespace Manufaktura.Controls.Linq
             return parser.ParseBack(score);
         }
 
+        /// <summary>
+        /// Converts MusicXml string to Score.
+        /// </summary>
+        /// <param name="document">MuicXml document as string</param>
+        /// <returns>Score</returns>
         public static Score ToScore(this string document)
         {
             return ToScore(XDocument.Parse(document));

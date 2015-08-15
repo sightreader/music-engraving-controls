@@ -15,8 +15,14 @@ namespace Manufaktura.Controls.Services
             get { return allMeasures; }
         }
 
+        /// <summary>
+        /// Current clef.
+        /// </summary>
         public Clef CurrentClef { get; set; }
 
+        /// <summary>
+        /// Current key.
+        /// </summary>
         public Key CurrentKey { get; set; }
 
         public double[] CurrentLinePositions
@@ -24,17 +30,32 @@ namespace Manufaktura.Controls.Services
             get { return LinePositions[CurrentSystemNo, CurrentStaffNo]; }
         }
 
+        /// <summary>
+        /// Current measure.
+        /// </summary>
         public Measure CurrentMeasure { get; private set; }
 
+        /// <summary>
+        /// Current measure number.
+        /// </summary>
         public int CurrentMeasureNo
         {
             get { return AllMeasures.Where(m => m.Staff == CurrentStaff).ToList().IndexOf(CurrentMeasure) + 1; }
         }
 
+        /// <summary>
+        /// Current score.
+        /// </summary>
         public Score CurrentScore { get; private set; }
 
+        /// <summary>
+        /// Current staff.
+        /// </summary>
         public Staff CurrentStaff { get; private set; }
 
+        /// <summary>
+        /// Current staff height.
+        /// </summary>
         public double CurrentStaffHeight
         {
             get
@@ -43,24 +64,45 @@ namespace Manufaktura.Controls.Services
             }
         }
 
+        /// <summary>
+        /// Current staff number.
+        /// </summary>
         public int CurrentStaffNo
         {
             get { return CurrentScore.Staves.IndexOf(CurrentStaff) + 1; }
         }
 
+        /// <summary>
+        /// Current system.
+        /// </summary>
         public StaffSystem CurrentSystem { get; private set; }
 
+        /// <summary>
+        /// Current system number.
+        /// </summary>
         public int CurrentSystemNo
         {
             get { return systems.IndexOf(CurrentSystem) + 1; }
         }
 
+        /// <summary>
+        /// Current voice.
+        /// </summary>
         public int CurrentVoice { get; set; }
 
+        /// <summary>
+        /// Current horizontal cursor position.
+        /// </summary>
         public double CursorPositionX { get; set; }
 
+        /// <summary>
+        /// Dictionary of line positions in the score.
+        /// </summary>
         public LineDictionary LinePositions { get; private set; }
 
+        /// <summary>
+        /// All systems in the score.
+        /// </summary>
         public StaffSystem[] Systems
         {
             get { return systems.ToArray(); }

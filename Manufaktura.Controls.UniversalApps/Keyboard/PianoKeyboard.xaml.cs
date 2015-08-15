@@ -189,7 +189,7 @@ namespace Manufaktura.Controls.UniversalApps.Keyboard
             PianoKeyPressedCommand.ExecuteCommand(key);
         }
 
-        protected void OnPianoKeyPressed(PianoKey key)
+        private void OnPianoKeyPressed(PianoKey key)
         {
             if (PianoKeyPressed != null) PianoKeyPressed(this, new PianoKeyPressedEventArgs(key));
         }

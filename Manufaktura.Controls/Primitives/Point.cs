@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Primitives
 {
+    /// <summary>
+    /// Represents a 2D point.
+    /// </summary>
     public struct Point
     {
         public double X { get; set; }

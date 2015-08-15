@@ -10,27 +10,25 @@ namespace Manufaktura.Controls.Model
     {
         #region Protected fields
 
-        protected ArticulationType articulation = ArticulationType.None;
-        protected VerticalPlacement articulationPlacement = VerticalPlacement.Below;
-        protected List<NoteBeamType> beamList = new List<NoteBeamType>();
-        protected int currentTempo = 120;
-        protected bool customStemEndPosition = false;
-        protected int dynamics = 80;
-        protected bool hasFermataSign = false;
-        protected bool hasNatural = false;
-        protected bool isChordElement = false;
-        protected bool isGraceNote = false;
-        protected List<Lyrics> lyrics = new List<Lyrics>();
-        protected string noteFlagCharacter = " ";
-        protected string noteFlagCharacterRev = " ";
-        protected Pitch pitch;
-        protected Slur slur;
-        protected double stemDefaultY;
-        protected VerticalDirection stemDirection = VerticalDirection.Up;
-        protected Point stemEndLocation = new Point();
-        protected NoteTieType tieType = NoteTieType.None;
-        protected int tremoloLevel = 0;
-        protected NoteTrillMark trillMark = NoteTrillMark.None;
+        private ArticulationType articulation = ArticulationType.None;
+        private VerticalPlacement articulationPlacement = VerticalPlacement.Below;
+        private List<NoteBeamType> beamList = new List<NoteBeamType>();
+        private bool customStemEndPosition = false;
+        private int dynamics = 80;
+        private bool hasNatural = false;
+        private bool isChordElement = false;
+        private bool isGraceNote = false;
+        private List<Lyrics> lyrics = new List<Lyrics>();
+        private string noteFlagCharacter = " ";
+        private string noteFlagCharacterRev = " ";
+        private Pitch pitch;
+        private Slur slur;
+        private double stemDefaultY;
+        private VerticalDirection stemDirection = VerticalDirection.Up;
+        private Point stemEndLocation = new Point();
+        private NoteTieType tieType = NoteTieType.None;
+        private int tremoloLevel = 0;
+        private NoteTrillMark trillMark = NoteTrillMark.None;
         //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
 
         #endregion Protected fields
@@ -56,9 +54,7 @@ namespace Manufaktura.Controls.Model
 
         public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
-        public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; } }
-
-        public bool HasNatural { get { return hasNatural; } set { hasNatural = value; } }
+        public bool HasNatural { get { return hasNatural; } set { hasNatural = value; OnPropertyChanged(() => HasNatural); } }
 
         public bool IsChordElement { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsChordElement); } }
 
@@ -187,6 +183,10 @@ namespace Manufaktura.Controls.Model
 
         #region Public methods
 
+        /// <summary>
+        /// Changes pitch of the note to the specific midi pitch.
+        /// </summary>
+        /// <param name="midiPitch">Midi pitch</param>
         public void ApplyMidiPitch(int midiPitch)
         {
             pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
@@ -202,6 +202,12 @@ namespace Manufaktura.Controls.Model
 
         #region Public static functions
 
+        /// <summary>
+        /// Creates a new instance of Note from given midi pitch and duration.
+        /// </summary>
+        /// <param name="midiPitch">Midi pitch</param>
+        /// <param name="duration">Duration</param>
+        /// <returns></returns>
         public static Note FromMidiPitch(int midiPitch, RhythmicDuration duration)
         {
             Note note = new Note(duration);
@@ -209,6 +215,10 @@ namespace Manufaktura.Controls.Model
             return note;
         }
 
+        /// <summary>
+        /// Creates a new instance of Note from given midi pitch.
+        /// </summary>
+        /// <param name="midiPitch">Midi pitch</param>
         public static Note FromMidiPitch(int midiPitch)
         {
             Note note = new Note();
@@ -216,6 +226,11 @@ namespace Manufaktura.Controls.Model
             return note;
         }
 
+        /// <summary>
+        /// Creates a new instance of Note from given pitch and duration.
+        /// </summary>
+        /// <param name="midiPitch">Pitch</param>
+        /// <param name="duration">Duration</param>
         public static Note FromPitch(Pitch pitch, RhythmicDuration duration)
         {
             Note note = new Note(duration);
@@ -223,6 +238,10 @@ namespace Manufaktura.Controls.Model
             return note;
         }
 
+        /// <summary>
+        /// Creates a new instance of Note from given pitch.
+        /// </summary>
+        /// <param name="midiPitch">Pitch</param>
         public static Note FromPitch(Pitch pitch)
         {
             Note note = new Note();
