@@ -20,6 +20,6 @@ namespace Manufaktura.Controls.Model
         /// Text representing the musical symbol
         /// </summary>
         string MusicalCharacter { get; }
-        MusicFont MusicFont { get; set; }
+        IMusicFont MusicFont { get; set; }
     }
 }

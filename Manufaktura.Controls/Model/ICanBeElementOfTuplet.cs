@@ -11,6 +11,10 @@ namespace Manufaktura.Controls.Model
     interface ICanBeElementOfTuplet
     {
         TupletType Tuplet { get; set; }
+
+        /// <summary>
+        /// Vertical placement of tuplet sign.
+        /// </summary>
         VerticalPlacement? TupletPlacement { get; set; }
     }
 }

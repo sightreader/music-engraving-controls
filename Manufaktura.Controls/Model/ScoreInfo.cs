@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Score auxiliary information.
+    /// </summary>
     public class ScoreInfo
     {
         public IEnumerable<Measure> AllMeasures { get; private set; }

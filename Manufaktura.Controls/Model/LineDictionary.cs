@@ -9,6 +9,12 @@ namespace Manufaktura.Controls.Model
     {
         private Dictionary<int, Dictionary<int, double[]>> innerDictionary = new Dictionary<int, Dictionary<int, double[]>>();
 
+        /// <summary>
+        /// Gets or sets line positions in specific system and staff
+        /// </summary>
+        /// <param name="system">System number</param>
+        /// <param name="staff">Staff number</param>
+        /// <returns>Array of vertical line positions</returns>
         public double[] this[int system, int staff]
         {
             get
@@ -37,6 +43,9 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        /// <summary>
+        /// Clears the dictionary.
+        /// </summary>
         public void Clear()
         {
             innerDictionary.Clear();

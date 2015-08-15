@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a single word
+    /// </summary>
     public class Lyrics : IHasCustomYPosition
     {
         public int Number { get; set; }
@@ -32,6 +35,9 @@ namespace Manufaktura.Controls.Model
         }
         public double? DefaultYPosition { get; set; }
 
+        /// <summary>
+        /// Syllables that form a single word
+        /// </summary>
         public List<Syllable> Syllables { get; set; }
 
         public Lyrics()

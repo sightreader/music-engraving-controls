@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Model
         private ClefType typeOfClef;
         private int line;
         private string musicalCharacter;
-        private MusicFont musicFont = new PolihymniaFont();
+        private IMusicFont musicFont = new PolihymniaFont();
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace Manufaktura.Controls.Model
             get;
             set;
         }
-        public MusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 
         public string MusicalCharacter
         {

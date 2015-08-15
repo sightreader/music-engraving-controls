@@ -2,6 +2,9 @@
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Staff system information.
+    /// </summary>
     public class StaffSystem
     {
         public double Height { get; set; }

@@ -2,7 +2,6 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
-using Manufaktura.Controls.Rendering.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +18,10 @@ namespace Manufaktura.Controls.Rendering
 
         public List<Exception> Exceptions { get; protected set; }
 
+        /// <summary>
+        /// Initializes a new ScoreRendere with specific canvas object.
+        /// </summary>
+        /// <param name="canvas"></param>
         public ScoreRenderer(TCanvas canvas)
         {
             Canvas = canvas;
@@ -26,7 +29,7 @@ namespace Manufaktura.Controls.Rendering
         }
 
         /// <summary>
-        /// Render score on canvas.
+        /// Renders score on canvas.
         /// </summary>
         /// <param name="score">Score</param>
         public void Render(Score score)

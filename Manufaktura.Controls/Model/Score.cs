@@ -1,10 +1,7 @@
-﻿using Manufaktura.Controls.Primitives;
-using Manufaktura.Music.Model;
+﻿using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
@@ -13,42 +10,12 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class Score
     {
-        public List<Staff> Staves { get; private set; }
-        public Score()
-        {
-            Staves = new List<Staff>();
-        }
-
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
         /// </summary>
-        public Staff FirstStaff
+        public Staff EighthStaff
         {
-            get { return GetStaff(1); }
-        }
-
-        /// <summary>
-        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
-        /// </summary>
-        public Staff SecondStaff
-        {
-            get { return GetStaff(2); }
-        }
-
-        /// <summary>
-        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
-        /// </summary>
-        public Staff ThirdStaff
-        {
-            get { return GetStaff(3); }
-        }
-
-        /// <summary>
-        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
-        /// </summary>
-        public Staff FourthStaff
-        {
-            get { return GetStaff(4); }
+            get { return GetStaff(8); }
         }
 
         /// <summary>
@@ -62,25 +29,17 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
         /// </summary>
-        public Staff SixthStaff
+        public Staff FirstStaff
         {
-            get { return GetStaff(6); }
+            get { return GetStaff(1); }
         }
 
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
         /// </summary>
-        public Staff SeventhStaff
+        public Staff FourthStaff
         {
-            get { return GetStaff(7); }
-        }
-
-        /// <summary>
-        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
-        /// </summary>
-        public Staff EighthStaff
-        {
-            get { return GetStaff(8); }
+            get { return GetStaff(4); }
         }
 
         /// <summary>
@@ -94,25 +53,51 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
         /// </summary>
+        public Staff SecondStaff
+        {
+            get { return GetStaff(2); }
+        }
+
+        /// <summary>
+        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
+        /// </summary>
+        public Staff SeventhStaff
+        {
+            get { return GetStaff(7); }
+        }
+
+        /// <summary>
+        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
+        /// </summary>
+        public Staff SixthStaff
+        {
+            get { return GetStaff(6); }
+        }
+
+        public List<Staff> Staves { get; private set; }
+
+        /// <summary>
+        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
+        /// </summary>
         public Staff TenthStaff
         {
             get { return GetStaff(10); }
         }
 
-        protected Staff GetStaff(int staffNumber)
+        /// <summary>
+        /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
+        /// </summary>
+        public Staff ThirdStaff
         {
-            if (staffNumber < 1) throw new ArgumentException("Staff number must be greater than 0.", "staffNumber");
-            if (Staves.Count < staffNumber) throw new IndexOutOfRangeException(string.Format("There is no {0} staff in the score.", UsefulMath.NumberToOrdinal(staffNumber)));
-            return Staves[staffNumber - 1];
+            get { return GetStaff(3); }
         }
 
-        public Score AddStaff(Clef clef, TimeSignature timeSignature, Step tonic, MajorAndMinorScaleFlags flags)
+        /// <summary>
+        /// Initializes a new empty score.
+        /// </summary>
+        public Score()
         {
-            var staff = new Staff();
-            staff.Elements.Add(clef);
-            staff.Elements.Add(Key.FromTonic(tonic, flags));
-            Staves.Add(staff);
-            return this;
+            Staves = new List<Staff>();
         }
 
         /// <summary>
@@ -126,6 +111,10 @@ namespace Manufaktura.Controls.Model
             return score;
         }
 
+        /// <summary>
+        /// Creates a score with just one staff (other staves can be added later).
+        /// </summary>
+        /// <returns>A new score</returns>
         public static Score CreateOneStaffScore(Clef clef, Step tonic, MajorAndMinorScaleFlags flags)
         {
             var score = CreateOneStaffScore();
@@ -146,6 +135,30 @@ namespace Manufaktura.Controls.Model
             score.FirstStaff.Elements.Add(clef);
             score.FirstStaff.Elements.Add(Key.FromScale(scale));
             return score;
+        }
+
+        /// <summary>
+        /// Adds a new staff to the score.
+        /// </summary>
+        /// <param name="clef">Clef</param>
+        /// <param name="timeSignature">Time signature</param>
+        /// <param name="tonic">Tonic of key</param>
+        /// <param name="flags">Scale flags</param>
+        /// <returns>This score</returns>
+        public Score AddStaff(Clef clef, TimeSignature timeSignature, Step tonic, MajorAndMinorScaleFlags flags)
+        {
+            var staff = new Staff();
+            staff.Elements.Add(clef);
+            staff.Elements.Add(Key.FromTonic(tonic, flags));
+            Staves.Add(staff);
+            return this;
+        }
+
+        private Staff GetStaff(int staffNumber)
+        {
+            if (staffNumber < 1) throw new ArgumentException("Staff number must be greater than 0.", "staffNumber");
+            if (Staves.Count < staffNumber) throw new IndexOutOfRangeException(string.Format("There is no {0} staff in the score.", UsefulMath.NumberToOrdinal(staffNumber)));
+            return Staves[staffNumber - 1];
         }
     }
 }

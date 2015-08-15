@@ -9,12 +9,21 @@ using System.Threading;
 
 namespace Manufaktura.Controls.Audio
 {
+    /// <summary>
+    /// Implementation of ScorePlayer that uses System.Threading.Timer to play notes at the appropriate time.
+    /// </summary>
     public abstract class ThreadScorePlayer : ScorePlayer
     {
+        /// <summary>
+        /// Timer used to play notes at the appropriate time.
+        /// </summary>
         protected Timer Timer { get; set; }
         private bool ShouldRestart { get; set; }
         private Tuplet TupletState { get; set; }
 
+        /// <summary>
+        /// Currently played element
+        /// </summary>
         public override MusicalSymbol CurrentElement
         {
             get
@@ -28,6 +37,9 @@ namespace Manufaktura.Controls.Audio
             }
         }
 
+        /// <summary>
+        /// Currently played element (thread-safe)
+        /// </summary>
         public abstract MusicalSymbol ThreadSafeCurrentElement
         {
             get;
@@ -36,6 +48,9 @@ namespace Manufaktura.Controls.Audio
 
         private TimerState currentTimerState;
 
+        /// <summary>
+        /// Score played by this instance of player
+        /// </summary>
         public override Score Score
         {
             get
@@ -52,6 +67,10 @@ namespace Manufaktura.Controls.Audio
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of ThreadScorePlayer for specific score.
+        /// </summary>
+        /// <param name="score">Score</param>
         protected ThreadScorePlayer(Score score) : base(score)
         {
         }

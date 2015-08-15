@@ -100,7 +100,6 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.HasFermataSign = HasFermataSign;
                 nt.TremoloLevel = TremoloLevel;
                 nt.Voice = Voice;
-                nt.Dynamics = State.CurrentDynamics;
                 nt.IsVisible = IsVisible;
                 if (Mordent != null) nt.Ornaments.Add(Mordent);
                 return nt;

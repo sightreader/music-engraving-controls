@@ -25,8 +25,6 @@ namespace Manufaktura.Controls.Rendering
 
         public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 
-
-
         protected ScoreRendererBase()
         {
             Settings = new ScoreRendererSettings();
@@ -108,27 +106,41 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner"></param>
         public abstract void DrawBezier(Point p1, Point p2, Point p3, Point p4, Pen pen, MusicalSymbol owner);
 
+        /// <summary>
+        /// Draws line from startPoint to endPoint.
+        /// </summary>
+        /// <param name="startX">Start point X coordinate.</param>
+        /// <param name="startY">Start point Y coordinate.</param>
+        /// <param name="endX">End point Y coordinate.</param>
+        /// <param name="endY">End point Y coordinate.</param>
+        /// <param name="owner">Owner element</param>
         public void DrawLine(double startX, double startY, double endX, double endY, MusicalSymbol owner)
         {
             DrawLine(new Point(startX, startY), new Point(endX, endY), new Pen(Settings.DefaultColor, 1), owner);
         }
 
+        /// <summary>
+        /// Draws line from startPoint to endPoint.
+        /// </summary>
+        /// <param name="startPoint">Start point</param>
+        /// <param name="endPoint">End point</param>
+        /// <param name="owner">Owner element</param>
         public void DrawLine(Point startPoint, Point endPoint, MusicalSymbol owner)
         {
             DrawLine(startPoint, endPoint, new Pen(Settings.DefaultColor, 1), owner);
         }
 
         /// <summary>
-        ///
+        /// Draws line from startPoint to endPoint with specific pen.
         /// </summary>
         /// <remarks>
         /// Be aware of owner.IsVisible property. You should decide how to implement invisibility, for example
         /// not draw anything at all, draw in transparent color, etc.
         /// </remarks>
-        /// <param name="startPoint"></param>
-        /// <param name="endPoint"></param>
-        /// <param name="pen"></param>
-        /// <param name="owner"></param>
+        /// <param name="startPoint">Start point</param>
+        /// <param name="endPoint">End point</param>
+        /// <param name="pen">Pen</param>
+        /// <param name="owner">Owner element</param>
         public abstract void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner);
 
         /// <summary>
@@ -175,11 +187,6 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="color">Color of text</param>
         /// <param name="owner">Owning MusicalSymbol</param>
         public abstract void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
-
-        public MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
-        {
-            return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
-        }
 
         internal void BreakSystem(double distance = 0)
         {
@@ -234,6 +241,11 @@ namespace Manufaktura.Controls.Rendering
         internal void ReturnCarriage()
         {
             scoreService.CursorPositionX = 0;
+        }
+
+        protected MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
+        {
+            return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
         }
     }
 }

@@ -17,13 +17,13 @@ namespace Manufaktura.Controls.Model
         protected bool hasFermataSign = false;
         protected TupletType tuplet = TupletType.None;
         protected Point location = new Point();
-        private MusicFont musicFont = new PolihymniaFont();
+        private IMusicFont musicFont = new PolihymniaFont();
 
         public string MusicalCharacter
         {
             get { return musicalCharacter; }
         }
-        public MusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
         public int Voice { get; set; }
         public RhythmicDuration Duration { get; protected set; }
         public RhythmicDuration BaseDuration 

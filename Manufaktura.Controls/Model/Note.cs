@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a note.
+    /// </summary>
     public class Note : NoteOrRest, IHasPitch
     {
         #region Protected fields
@@ -14,7 +17,6 @@ namespace Manufaktura.Controls.Model
         private VerticalPlacement articulationPlacement = VerticalPlacement.Below;
         private List<NoteBeamType> beamList = new List<NoteBeamType>();
         private bool customStemEndPosition = false;
-        private int dynamics = 80;
         private bool hasNatural = false;
         private bool isChordElement = false;
         private bool isGraceNote = false;
@@ -36,7 +38,6 @@ namespace Manufaktura.Controls.Model
         #region Properties
 
         public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
-        public bool SubjectToNoteStemRule { get; private set; }
 
         public int Alter { get { return pitch.Alter; } }
 
@@ -50,16 +51,26 @@ namespace Manufaktura.Controls.Model
 
         public List<NoteBeamType> BeamList { get { return beamList; } }
 
-        public int Dynamics { get { return dynamics; } set { dynamics = value; } }
-
         public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
+        /// <summary>
+        /// Indicates that the note has a natural sign.
+        /// </summary>
         public bool HasNatural { get { return hasNatural; } set { hasNatural = value; OnPropertyChanged(() => HasNatural); } }
 
+        /// <summary>
+        /// Indicates that the note belongs to a chord.
+        /// </summary>
         public bool IsChordElement { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsChordElement); } }
 
+        /// <summary>
+        /// Indicates that the note is cue note.
+        /// </summary>
         public bool IsCueNote { get; set; }
 
+        /// <summary>
+        /// Indicates that the note is grace note.
+        /// </summary>
         public bool IsGraceNote { get { return isGraceNote; } set { isGraceNote = value; OnPropertyChanged(() => IsGraceNote); } }
 
         public List<Lyrics> Lyrics { get { return lyrics; } set { lyrics = value; OnPropertyChanged(() => Lyrics); } }
@@ -70,10 +81,19 @@ namespace Manufaktura.Controls.Model
 
         public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
 
+        /// <summary>
+        /// Gets octave number of the note's pitch.
+        /// </summary>
         public int Octave { get { return pitch.Octave; } }
 
+        /// <summary>
+        /// List of ornaments applied on the note.
+        /// </summary>
         public List<Ornament> Ornaments { get; private set; }
 
+        /// <summary>
+        /// Pitch of note.
+        /// </summary>
         public Pitch Pitch { get { return pitch; } set { pitch = value; OnPropertyChanged(() => Pitch); } }
 
         public Slur Slur { get { return slur; } set { slur = value; OnPropertyChanged(() => Slur); } }
@@ -84,7 +104,12 @@ namespace Manufaktura.Controls.Model
 
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
 
+        /// <summary>
+        /// Step of note.
+        /// </summary>
         public string Step { get { return pitch.StepName; } }
+
+        public bool SubjectToNoteStemRule { get; private set; }
 
         public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
 
@@ -96,6 +121,14 @@ namespace Manufaktura.Controls.Model
 
         #region Constructor
 
+        /// <summary>
+        /// Creates a new instance of a Note.
+        /// </summary>
+        /// <param name="notePitch">Pitch</param>
+        /// <param name="noteDuration">Duration</param>
+        /// <param name="noteStemDirection">Stem direction</param>
+        /// <param name="noteTieType">Tie type</param>
+        /// <param name="noteBeamList">Beam list</param>
         public Note(Pitch notePitch, RhythmicDuration noteDuration, VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList)
         {
             type = MusicalSymbolType.Note;
@@ -109,30 +142,49 @@ namespace Manufaktura.Controls.Model
             DetermineMusicalCharacter();
         }
 
+        /// <summary>
+        /// Create a new A4 note with a specific duration.
+        /// </summary>
+        /// <param name="noteDuration">Duration</param>
         public Note(RhythmicDuration noteDuration)
             : this("A", 0, 4, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
         }
 
+        /// <summary>
+        /// Creates a new note with specific pitch, duration and stem direction.
+        /// </summary>
+        /// <param name="notePitch">Pitch</param>
+        /// <param name="noteDuration">Duration</param>
+        /// <param name="noteStemDirection">Stem direction</param>
         public Note(Pitch notePitch, RhythmicDuration noteDuration, VerticalDirection noteStemDirection)
             : this(notePitch, noteDuration, noteStemDirection, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
         }
 
+        /// <summary>
+        /// Creates a new note with specific pitch and duration. Stem direction can be automatically determined upon adding the note to a staff.
+        /// </summary>
+        /// <param name="notePitch">Pitch</param>
+        /// <param name="noteDuration">Duration</param>
+        /// <param name="determineStemDirectionOnAddingToStaff">If true, stem direction will be automatically determined when note is added to a staff.</param>
         public Note(Pitch notePitch, RhythmicDuration noteDuration, bool determineStemDirectionOnAddingToStaff = true)
             : this(notePitch, noteDuration, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
             SubjectToNoteStemRule = determineStemDirectionOnAddingToStaff;
         }
 
-        public Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
-            VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList) :
-            this(new Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)
+        /// <summary>
+        /// Creates a new A4 quarter note.
+        /// </summary>
+        public Note()
+            : this("A", 0, 4, RhythmicDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
         {
         }
 
-        public Note()
-            : this("A", 0, 4, RhythmicDuration.Quarter, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Single })
+        internal Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
+            VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList) :
+            this(new Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)
         {
         }
 
@@ -241,7 +293,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Creates a new instance of Note from given pitch.
         /// </summary>
-        /// <param name="midiPitch">Pitch</param>
+        /// <param name="pitch">Pitch</param>
         public static Note FromPitch(Pitch pitch)
         {
             Note note = new Note();

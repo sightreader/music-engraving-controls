@@ -44,6 +44,9 @@ namespace Manufaktura.Controls.Model
 
         #region Properties
 
+        /// <summary>
+        /// Returns a new instance of null musical symbol
+        /// </summary>
         public static NullMusicalSymbol Null
         {
             get
@@ -52,6 +55,9 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
+        /// </summary>
         public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(() => IsVisible); } }
 
         public MusicalSymbolType Type { get { return type; } }

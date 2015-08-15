@@ -10,7 +10,7 @@ namespace Manufaktura.Model.MVVM
 {
     public abstract class ViewModel : INotifyPropertyChanged
     {
-        public static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
+        private static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
         {
             var memberExpression = propertyLambda.Body as MemberExpression;
             if (memberExpression == null) throw new Exception("Could not evaluate lambda expression.");

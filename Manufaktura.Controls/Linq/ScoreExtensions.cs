@@ -26,6 +26,11 @@ namespace Manufaktura.Controls.Linq
             return musicalSymbols.Where(ms => ms.Type == type);
         }
 
+        /// <summary>
+        /// Creates a Score from stream.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static Score ReadMusicXmlScoreToEnd(this StreamReader reader)
         {
             return ToScore(reader.ReadToEnd());
@@ -80,6 +85,12 @@ namespace Manufaktura.Controls.Linq
             return ToScore(document, null);
         }
 
+        /// <summary>
+        /// Reads a score from MusicXml document with specific XTransformerParser.
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="transformer"></param>
+        /// <returns></returns>
         public static Score ToScore(this XDocument document, XTransformerParser transformer)
         {
             MusicXmlParser parser = new MusicXmlParser();

@@ -24,6 +24,9 @@ namespace Manufaktura.Controls.Model
         /// Direction text.
         /// </summary>
         public string Text { get { return text; } set { text = value; OnPropertyChanged(() => Text); } }
+        /// <summary>
+        /// Direction placement.
+        /// </summary>
         public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(() => Placement); } }
         public int DefaultY { get { return defaultY; } set { defaultY = value; OnPropertyChanged(() => DefaultY); } }
 

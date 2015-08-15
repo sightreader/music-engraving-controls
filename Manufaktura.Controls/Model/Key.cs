@@ -17,7 +17,7 @@ namespace Manufaktura.Controls.Model
 
         private int fifths;
         private string musicalCharacter;
-        private MusicFont musicFont = new PolihymniaFont();
+        private IMusicFont musicFont = new PolihymniaFont();
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace Manufaktura.Controls.Model
                 throw new NotImplementedException();
             }
         }
-        public MusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 
         public string MusicalCharacter
         {

@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a staff.
+    /// </summary>
     public class Staff : MusicalSymbol
     {
         public MusicalSymbolCollection Elements { get; private set; }
@@ -14,8 +17,14 @@ namespace Manufaktura.Controls.Model
 
         public List<double?> MeasureWidths { get; private set; }
 
+        /// <summary>
+        /// Rules to apply when adding notes to the staff.
+        /// </summary>
         public List<StaffRule> Rules { get; private set; }
 
+        /// <summary>
+        /// Initializes a new Staff.
+        /// </summary>
         public Staff()
         {
             Elements = new MusicalSymbolCollection(this);

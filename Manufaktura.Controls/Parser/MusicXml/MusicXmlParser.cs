@@ -10,6 +10,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser
 {
+    /// <summary>
+    /// Parser that parsers xml documents into scores.
+    /// </summary>
     public class MusicXmlParser : ScoreParser<XDocument>
     {
         public override Score Parse(XDocument xmlDocument)  //TODO: Exception handling!

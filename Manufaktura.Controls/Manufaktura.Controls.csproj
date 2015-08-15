@@ -56,7 +56,7 @@
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Fonts\MusicFontStyles.cs" />
-    <Compile Include="Model\Fonts\MusicFont.cs" />
+    <Compile Include="Model\Fonts\IMusicFont.cs" />
     <Compile Include="Model\Fonts\PolihymniaFont.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />
     <Compile Include="Model\IHasCustomXPosition.cs" />

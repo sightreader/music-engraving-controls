@@ -16,12 +16,16 @@ namespace Manufaktura.Controls.Model
 
         #region Properties
 
-        public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; } }
+        public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; OnPropertyChanged(() => MultiMeasure); } }
 
         #endregion
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new Rest with specific duration
+        /// </summary>
+        /// <param name="restDuration">Duration</param>
         public Rest(RhythmicDuration restDuration)
         {
             type = MusicalSymbolType.Rest;

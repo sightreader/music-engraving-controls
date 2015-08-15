@@ -91,10 +91,22 @@ namespace Manufaktura.Controls.Audio
         /// </summary>
         public abstract void Pause();
 
+        /// <summary>
+        /// Playback state
+        /// </summary>
         public enum PlaybackState
         {
+            /// <summary>
+            /// Playback has not started yet
+            /// </summary>
             Idle,
+            /// <summary>
+            /// Playback is paused
+            /// </summary>
             Paused,
+            /// <summary>
+            /// Playing in progress
+            /// </summary>
             Playing
         }
 

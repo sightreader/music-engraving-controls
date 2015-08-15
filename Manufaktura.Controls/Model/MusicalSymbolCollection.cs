@@ -4,11 +4,17 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Encapsulates a list of musical symbols. Applies custom rules upon adding new elements.
+    /// </summary>
     public class MusicalSymbolCollection : IList<MusicalSymbol>, ICollection<MusicalSymbol>, IEnumerable<MusicalSymbol>
     {
         private List<MusicalSymbol> innerList = new List<MusicalSymbol>();
         private Staff staff;
 
+        /// <summary>
+        /// Returns the number of elements in list.
+        /// </summary>
         public int Count
         {
             get { return innerList.Count; }

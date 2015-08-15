@@ -25,6 +25,9 @@ namespace Manufaktura.Controls.Model
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of Barline.
+        /// </summary>
         public Barline()
         {
             Location = HorizontalPlacement.Right;

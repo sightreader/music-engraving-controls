@@ -3,12 +3,15 @@ using Manufaktura.Controls.Primitives;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Initial settings of score renderer.
+    /// </summary>
     public class ScoreRendererSettings
     {
         /// <summary>
         /// Key mapping for current font
         /// </summary>
-        public MusicFont CurrentFont { get; set; }
+        public IMusicFont CurrentFont { get; set; }
 
         public double CustomElementPositionRatio { get; set; }
 
