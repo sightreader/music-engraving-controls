@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a rhythmic duration.
+    /// </summary>
     public struct RhythmicDuration
     {
         public int Denominator { get; private set; }

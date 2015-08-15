@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Helper class for calculations involving the circle of fifths. 
+    /// </summary>
     public static class CircleOfFifths
     {
         public static int CalculateFifths(int midiPitch, MajorAndMinorScaleFlags flags)

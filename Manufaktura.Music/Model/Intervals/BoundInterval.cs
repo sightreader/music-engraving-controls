@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents an interval with starting pitch (for example "a perfect fifth up from C4")
+    /// </summary>
     public class BoundInterval : Interval
     {
         public Pitch StartingPitch { get; protected set; }

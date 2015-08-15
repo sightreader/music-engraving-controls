@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a pitch with a specific frequency (i.e. A4 at 440Hz)
+    /// </summary>
     public class TunedPitch : Pitch
     {
         public double Frequency { get; protected set; }

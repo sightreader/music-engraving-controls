@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a pitch.
+    /// </summary>
     public class Pitch : Step
     {
         private static Dictionary<string, int> pitches = new Dictionary<string, int>

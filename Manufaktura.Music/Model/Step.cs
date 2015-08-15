@@ -5,16 +5,31 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a step.
+    /// </summary>
     public class Step
     {
+        /// <summary>
+        /// Step name.
+        /// </summary>
+        /// <remarks>Valid step names are: A, B, C, D, E, F, G</remarks>
         public string StepName { get; set; }
+
+        /// <summary>
+        /// Number of sharps (positive number) or flats (negative number)
+        /// </summary>
         public int Alter { get; set; }
 
         protected Step()
         {
         }
 
-
+        /// <summary>
+        /// Creates a new instance of step from specified pitch
+        /// </summary>
+        /// <param name="pitch"></param>
+        /// <returns></returns>
         public static Step FromPitch(Pitch pitch)
         {
             return new Step { StepName = pitch.StepName, Alter = pitch.Alter };

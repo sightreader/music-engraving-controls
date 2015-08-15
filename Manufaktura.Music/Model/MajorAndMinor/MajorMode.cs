@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model.MajorAndMinor
 {
+    /// <summary>
+    /// Represents a major mode.
+    /// </summary>
     public class MajorMode : Mode
     {
         public override IEnumerable<int> Intervals

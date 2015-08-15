@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a mode (i.e. dorian, phrygian, pentatonic, 12-tone, etc.)
+    /// </summary>
     public abstract class Mode
     {
         public abstract IEnumerable<int> Intervals { get; }

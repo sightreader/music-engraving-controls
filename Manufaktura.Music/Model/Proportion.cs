@@ -5,10 +5,17 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a fraction with integer numerator and denominator.
+    /// </summary>
     public struct Proportion
     {
         public int Numerator { get; set; }
         public int Denominator { get; set; }
+
+        /// <summary>
+        /// Decimal value of the fraction
+        /// </summary>
         public decimal DecimalValue
         {
             get
@@ -16,6 +23,10 @@ namespace Manufaktura.Music.Model
                 return (decimal)Numerator / (decimal)Denominator;
             }
         }
+
+        /// <summary>
+        /// Double value of the fraction
+        /// </summary>
         public double DoubleValue
         {
             get
@@ -23,6 +34,10 @@ namespace Manufaktura.Music.Model
                 return (double)Numerator / (double)Denominator;
             }
         }
+
+        /// <summary>
+        /// Double value of the fraction in cents
+        /// </summary>
         public double Cents
         {
             get
@@ -31,6 +46,9 @@ namespace Manufaktura.Music.Model
             }
         }
 
+        /// <summary>
+        /// Returns a fractional part (without whole part)
+        /// </summary>
         public Proportion FractionalPart
         {
             get
@@ -50,6 +68,10 @@ namespace Manufaktura.Music.Model
             Denominator = denominator;
         }
 
+        /// <summary>
+        /// Normalizes the fraction.
+        /// </summary>
+        /// <returns></returns>
         public Proportion Normalize()
         {
             for (int i = Denominator; i > 1; i--)
@@ -76,6 +98,12 @@ namespace Manufaktura.Music.Model
         public static Proportion Sesquiseptima { get { return new Proportion(8, 7); } }
         public static Proportion Sesquioctava { get { return new Proportion(9, 8); } }
 
+        /// <summary>
+        /// Returns a common denominator of two proportions.
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         private static int GetCommonDenominator(Proportion d1, Proportion d2)
         {
             return d1.Denominator * d2.Denominator;

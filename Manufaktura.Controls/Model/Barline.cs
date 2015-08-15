@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a barline.
+    /// </summary>
     public class Barline : MusicalSymbol
     {
         #region Private fields

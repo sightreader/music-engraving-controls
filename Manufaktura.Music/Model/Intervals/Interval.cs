@@ -16,11 +16,19 @@ namespace Manufaktura.Music.Model
             Halftones = halftones;
         }
 
+        /// <summary>
+        /// Converts interval to descending interval.
+        /// </summary>
+        /// <returns>Descending interval</returns>
         public new Interval MakeDescending()
         {
             return new Interval(Math.Abs(Steps) * -1, Math.Abs(Halftones) * -1);
         }
 
+        /// <summary>
+        /// Converts interval to ascending interval.
+        /// </summary>
+        /// <returns>Ascending interval</returns>
         public new Interval MakeAscending()
         {
             return new Interval(Math.Abs(Steps), Math.Abs(Halftones));
@@ -35,10 +43,25 @@ namespace Manufaktura.Music.Model
             return string.Format("Steps: {0}, Halftones: {1}", Steps, Halftones);
         }
 
+        /// <summary>
+        /// Returns one halftone.
+        /// </summary>
         public static int HalfTone = 1;
+        /// <summary>
+        /// Returns number of halftones in whole tone (2).
+        /// </summary>
         public static int WholeTone = 2;
+        /// <summary>
+        /// Returns number of halftones in tritone (6).
+        /// </summary>
         public static int Tritone = 6;
 
+        /// <summary>
+        /// Returns an interval between two pitches.
+        /// </summary>
+        /// <param name="p1">First pitch</param>
+        /// <param name="p2">Second pitch</param>
+        /// <returns>Interval between two pitches.</returns>
         public static Interval Between(Pitch p1, Pitch p2)
         {
             return new Interval(p2.ToStep().ToStepNumber() - p1.ToStep().ToStepNumber() + 1, (p2.MidiPitch - p1.MidiPitch) % 12);

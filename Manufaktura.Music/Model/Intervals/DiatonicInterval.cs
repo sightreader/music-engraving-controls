@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents an interval in diatonic scale (with unspecified size such as major, minor or perfect).
+    /// </summary>
     public class DiatonicInterval
     {
         public int Steps { get; protected set; }
