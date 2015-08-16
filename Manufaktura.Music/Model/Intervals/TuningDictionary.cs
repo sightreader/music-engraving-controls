@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Manufaktura.Music.Model.Intervals
 {
+    [Obsolete("Alpha version. Don't use it :)")]
     public class TuningDictionary : Dictionary<BoundInterval, double>
     {
         public new double this[BoundInterval interval]

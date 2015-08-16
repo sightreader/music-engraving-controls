@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Music.MelodicTrails
 {
@@ -16,9 +15,24 @@ namespace Manufaktura.Music.MelodicTrails
         /// </summary>
         public abstract Dictionary<DiatonicInterval, double> AllowedIntervals { get; }
 
-        public int MinNotes { get; set; }
+        /// <summary>
+        /// Maximum number of notes to generate.
+        /// </summary>
         public int MaxNotes { get; set; }
+
+        /// <summary>
+        /// Highest allowed pitch.
+        /// </summary>
         public Pitch MaxPitch { get; set; }
+
+        /// <summary>
+        /// Minimum number of notes to generate.
+        /// </summary>
+        public int MinNotes { get; set; }
+
+        /// <summary>
+        /// Lowest allowed pitch.
+        /// </summary>
         public Pitch MinPitch { get; set; }
 
         protected RandomIntervalsMelodicTrail()
@@ -29,17 +43,19 @@ namespace Manufaktura.Music.MelodicTrails
             MaxNotes = 10;
         }
 
+        /// <summary>
+        /// Initializes a new instance of RandomIntervalsMelodicTrail.
+        /// </summary>
+        /// <param name="minPitch">Lowest allowed pitch.</param>
+        /// <param name="maxPitch">Highest allowed pitch.</param>
+        /// <param name="minNotes">Minimum number of notes to generate.</param>
+        /// <param name="maxNotes">Maximum number of notes to generate.</param>
         protected RandomIntervalsMelodicTrail(Pitch minPitch, Pitch maxPitch, int minNotes, int maxNotes)
         {
             MinPitch = minPitch;
             MaxPitch = maxPitch;
             MinNotes = minNotes;
             MaxNotes = maxNotes;
-        }
-
-        protected virtual DiatonicInterval OnAmbitusExceeded(DiatonicInterval generatedInterval, Pitch generatedPitch)
-        {
-            return generatedInterval;
         }
 
         public IEnumerable<Pitch> BuildMelody(Scale scale, Pitch startingPitch)
@@ -75,6 +91,11 @@ namespace Manufaktura.Music.MelodicTrails
                 melody.Add(newPitch);
             }
             return melody;
+        }
+
+        protected virtual DiatonicInterval OnAmbitusExceeded(DiatonicInterval generatedInterval, Pitch generatedPitch)
+        {
+            return generatedInterval;
         }
     }
 }

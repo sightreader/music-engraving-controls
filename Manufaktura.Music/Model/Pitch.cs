@@ -132,6 +132,12 @@ namespace Manufaktura.Music.Model
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of pitch with specific step name, alteration and octave number.
+        /// </summary>
+        /// <param name="stepName"></param>
+        /// <param name="alter"></param>
+        /// <param name="octaveNumber"></param>
         public Pitch(string stepName, int alter, int octaveNumber)
         {
             StepName = stepName;
@@ -140,11 +146,19 @@ namespace Manufaktura.Music.Model
             Octave = octaveNumber;
         }
 
+        /// <summary>
+        /// Translates a pitch up an octave.
+        /// </summary>
+        /// <returns>Translated pitch</returns>
         public Pitch OctaveUp()
         {
             return new Pitch(StepName, Alter, Octave + 1);
         }
 
+        /// <summary>
+        /// Translates a pitch down an octave.
+        /// </summary>
+        /// <returns>Translated pitch</returns>
         public Pitch OctaveDown()
         {
             return new Pitch(StepName, Alter, Octave - 1);
@@ -173,6 +187,12 @@ namespace Manufaktura.Music.Model
             return pitch.Translate(interval.MakeDescending(), MidiPitchTranslationMode.Auto);
         }
 
+        /// <summary>
+        /// Translates Pitch by specific interval.
+        /// </summary>
+        /// <param name="interval"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
         public Pitch Translate(Interval interval, MidiPitchTranslationMode mode)
         {
             return Pitch.FromMidiPitch(MidiPitch + interval.Halftones, mode);
@@ -183,6 +203,12 @@ namespace Manufaktura.Music.Model
             return new Pitch { StepName = step.StepName, Alter = step.Alter, MidiPitch = pitches[step.StepName] + step.Alter + (octaveNumber - 4) * 12, Octave = octaveNumber };
         }
 
+        /// <summary>
+        /// Creates a Pitch from midi pitch.
+        /// </summary>
+        /// <param name="midiPitch">Midi pitch</param>
+        /// <param name="mode">Ambigous name resolving mode</param>
+        /// <returns>Pitch</returns>
         public static Pitch FromMidiPitch(int midiPitch, MidiPitchTranslationMode mode)
         {
             var pitch = new Pitch();
@@ -299,26 +325,57 @@ namespace Manufaktura.Music.Model
             return p1.MidiPitch != p2.MidiPitch;
         }
 
+        /// <summary>
+        /// Calculates distance between two pitches.
+        /// </summary>
+        /// <param name="p1">First pitch</param>
+        /// <param name="p2">Second pitch</param>
+        /// <returns>Step distance</returns>
         public static int StepDistance(Pitch p1, Pitch p2)
         {
             return (p1.ToStepNumber() - 1 + p1.Octave * 7) - (p2.ToStepNumber() -1 + p2.Octave * 7);    //Kolejność p1 - p2 jest dobra. Ze względów historycznych :)
         }
 
+        /// <summary>
+        /// Calculates distance between a pitch and a pitch of element that has a pitch.
+        /// </summary>
+        /// <param name="h2">Element with pitch</param>
+        /// <param name="p1">Pitch</param>
+        /// <returns>Distance in steps</returns>
         public static int StepDistance(IHasPitch h1, Pitch p2)
         {
             return StepDistance(h1.Pitch, p2);
         }
 
+        /// <summary>
+        /// Calculates distance between a pitch and a pitch of element that has a pitch.
+        /// </summary>
+        /// <param name="p1">Pitch</param>
+        /// <param name="h2">Element with pitch</param>
+        /// <returns>Distance in steps</returns>
         public static int StepDistance(Pitch p1, IHasPitch h2)
         {
             return StepDistance(p1, h2.Pitch);
         }
 
+        /// <summary>
+        /// Calculates distance between pitches of two elements that have pitch.
+        /// </summary>
+        /// <param name="h1">First element with pitch</param>
+        /// <param name="h2">Second element with pitch</param>
+        /// <returns>Distance in steps</returns>
         public static int StepDistance(IHasPitch h1, IHasPitch h2)
         {
             return StepDistance(h1.Pitch, h2.Pitch);
         }
 
+        /// <summary>
+        /// Enumerates pitches in chromatic range between two pitches.
+        /// </summary>
+        /// <param name="p1">First pitch</param>
+        /// <param name="p2">Second pitch</param>
+        /// <param name="translationMode">Pitch naming mode</param>
+        /// <returns>Enumerator of range of pitches</returns>
         public static IEnumerable<Pitch> ChromaticRange(Pitch p1, Pitch p2, MidiPitchTranslationMode translationMode)
         {
             if (p1 == p2) yield return p1;
@@ -377,9 +434,23 @@ namespace Manufaktura.Music.Model
             return (int)i + 21;
         }
 
+        /// <summary>
+        /// Way of resolving enharmonically ambigous pitch after translation by interval.
+        /// </summary>
         public enum MidiPitchTranslationMode
         {
-            Auto, Sharps, Flats
+            /// <summary>
+            /// If resulting pitch is enharmonically ambigous, pitch name will be determined automatically.
+            /// </summary>
+            Auto,
+            /// <summary>
+            /// If resulting pitch is enharmonically ambigous, augmented step will be preferred.
+            /// </summary>
+            Sharps,
+            /// <summary>
+            /// If resulting pitch is enharmonically ambigous, dimnished step will be preferred.
+            /// </summary>
+            Flats
         }
     }
 }
