@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -10,16 +9,18 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class Lyrics : IHasCustomYPosition
     {
+        public double? DefaultYPosition { get; set; }
+
         public int Number { get; set; }
-        public SyllableType Type
-        {
-            get
-            {
-                Syllable lastSyllable = Syllables.LastOrDefault();
-                if (lastSyllable == null) return SyllableType.Single;
-                return lastSyllable.Type;
-            }
-        }
+
+        /// <summary>
+        /// Syllables that form a single word
+        /// </summary>
+        public List<Syllable> Syllables { get; set; }
+
+        /// <summary>
+        /// String value of word
+        /// </summary>
         public string Text
         {
             get
@@ -33,12 +34,19 @@ namespace Manufaktura.Controls.Model
                 return sb.ToString();
             }
         }
-        public double? DefaultYPosition { get; set; }
 
         /// <summary>
-        /// Syllables that form a single word
+        /// Type of last (or only) syllable in word.
         /// </summary>
-        public List<Syllable> Syllables { get; set; }
+        public SyllableType Type
+        {
+            get
+            {
+                Syllable lastSyllable = Syllables.LastOrDefault();
+                if (lastSyllable == null) return SyllableType.Single;
+                return lastSyllable.Type;
+            }
+        }
 
         public Lyrics()
         {
@@ -51,15 +59,18 @@ namespace Manufaktura.Controls.Model
             DefaultYPosition = defaultY;
         }
 
-        public Lyrics(SyllableType type, string text) : this (type, text, null)
-        { 
+        public Lyrics(SyllableType type, string text)
+            : this(type, text, null)
+        {
         }
 
         public class Syllable
         {
-            public SyllableType Type { get; set; }
-            public string Text { get; set; }
             public string ElisionMark { get; set; }
+
+            public string Text { get; set; }
+
+            public SyllableType Type { get; set; }
 
             public Syllable()
             {

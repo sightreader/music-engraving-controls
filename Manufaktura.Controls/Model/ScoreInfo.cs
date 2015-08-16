@@ -1,9 +1,7 @@
 ﻿using Manufaktura.Controls.Services;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
@@ -12,7 +10,14 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class ScoreInfo
     {
+        /// <summary>
+        /// All measures in the score (from every staff and system).
+        /// </summary>
         public IEnumerable<Measure> AllMeasures { get; private set; }
+
+        /// <summary>
+        /// All systems in the score.
+        /// </summary>
         public IEnumerable<StaffSystem> Systems { get; private set; }
 
         public ScoreInfo(IScoreService scoreService)

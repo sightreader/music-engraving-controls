@@ -1,8 +1,4 @@
 ﻿using Manufaktura.Music.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
@@ -15,7 +11,12 @@ namespace Manufaktura.Controls.Model
         /// Represents duration without dots
         /// </summary>
         RhythmicDuration BaseDuration { get; }
+
+        /// <summary>
+        /// Number of dots
+        /// </summary>
         int NumberOfDots { get; set; }
+
         TupletType Tuplet { get; set; }
     }
 }

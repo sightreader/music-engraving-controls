@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Manufaktura.Controls.Model
+﻿namespace Manufaktura.Controls.Model
 {
     /// <summary>
     /// Represents text directions.
@@ -12,25 +7,27 @@ namespace Manufaktura.Controls.Model
     {
         #region Protected fields
 
-        protected string text = "";
+        protected int defaultY = 0;
         protected DirectionPlacementType placement = DirectionPlacementType.Above;
-        protected int defaultY = 0;   
+        protected string text = "";
 
-        #endregion
+        #endregion Protected fields
 
         #region Properties
+
+        public int DefaultY { get { return defaultY; } set { defaultY = value; OnPropertyChanged(() => DefaultY); } }
+
+        /// <summary>
+        /// Direction placement.
+        /// </summary>
+        public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(() => Placement); } }
 
         /// <summary>
         /// Direction text.
         /// </summary>
         public string Text { get { return text; } set { text = value; OnPropertyChanged(() => Text); } }
-        /// <summary>
-        /// Direction placement.
-        /// </summary>
-        public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(() => Placement); } }
-        public int DefaultY { get { return defaultY; } set { defaultY = value; OnPropertyChanged(() => DefaultY); } }
 
-        #endregion
+        #endregion Properties
 
         #region Constructor
 
@@ -42,6 +39,6 @@ namespace Manufaktura.Controls.Model
             type = MusicalSymbolType.Direction;
         }
 
-        #endregion
+        #endregion Constructor
     }
 }

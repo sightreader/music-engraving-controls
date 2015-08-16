@@ -1,10 +1,6 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
@@ -13,28 +9,39 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public abstract class NoteOrRest : MusicalSymbol, IHasDuration, ICanBeElementOfTuplet, IHasCustomXPosition, IRenderedAsTextBlock
     {
-        protected string musicalCharacter;
         protected bool hasFermataSign = false;
-        protected TupletType tuplet = TupletType.None;
         protected Point location = new Point();
+        protected string musicalCharacter;
+        protected TupletType tuplet = TupletType.None;
+        private RhythmicDuration duration;
         private IMusicFont musicFont = new PolihymniaFont();
 
-        public string MusicalCharacter
+        public RhythmicDuration BaseDuration
         {
-            get { return musicalCharacter; }
-        }
-        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
-        public int Voice { get; set; }
-        public RhythmicDuration Duration { get; protected set; }
-        public RhythmicDuration BaseDuration 
-        { 
-            get 
+            get
             {
                 return Duration.WithoutDots;
             }
         }
 
+        public double? DefaultXPosition { get; set; }
+
+        public RhythmicDuration Duration { get { return duration; } set { duration = value; OnPropertyChanged(() => Duration); } }
+
+        /// <summary>
+        /// Indicates if note has fermata sign
+        /// </summary>
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; OnPropertyChanged(() => HasFermataSign); } }
+
+        public string MusicalCharacter
+        {
+            get { return musicalCharacter; }
+        }
+
+        /// <summary>
+        /// Music font used to draw the note
+        /// </summary>
+        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 
         public int NumberOfDots
         {
@@ -47,11 +54,14 @@ namespace Manufaktura.Controls.Model
                 Duration = new RhythmicDuration(BaseDuration.Denominator, value);
             }
         }
-        public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
-        public VerticalPlacement? TupletPlacement { get; set; }
-        
-        public double? DefaultXPosition { get; set; }
+
         public Point TextBlockLocation { get { return location; } set { location = value; } }
+
+        public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
+
+        public VerticalPlacement? TupletPlacement { get; set; }
+
+        public int Voice { get; set; }
 
         protected NoteOrRest()
         {
@@ -62,6 +72,5 @@ namespace Manufaktura.Controls.Model
         {
             return unit.IsRest ? (NoteOrRest)new Rest(unit.Duration) : new Note(unit.Duration);
         }
-
     }
 }

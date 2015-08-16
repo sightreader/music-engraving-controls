@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Manufaktura.Controls.Model
+﻿namespace Manufaktura.Controls.Model
 {
     /// <summary>
     /// Indicates that class represents element of tuplet
     /// </summary>
-    interface ICanBeElementOfTuplet
+    internal interface ICanBeElementOfTuplet
     {
         TupletType Tuplet { get; set; }
 
