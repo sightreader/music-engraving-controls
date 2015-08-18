@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Strategies
 {
+    /// <summary>
+    /// Finishing touch that draws lines between staves if multiple staves are present in the score.
+    /// </summary>
     public class DrawLinesBetweenStavesFinishingTouch : IFinishingTouch
     {
         private readonly IScoreService scoreService;

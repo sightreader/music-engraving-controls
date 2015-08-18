@@ -1,26 +1,19 @@
 ﻿using Manufaktura.Music.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
     public class Rest : NoteOrRest
     {
-        #region Protected fields
+        private bool fullMeasure;
+        private int multiMeasure = 0;
 
-        protected int multiMeasure = 0;
-
-        #endregion
-
-        #region Properties
+        public bool FullMeasure
+        {
+            get { return fullMeasure; }
+            set { fullMeasure = value; OnPropertyChanged(() => FullMeasure); }
+        }
 
         public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; OnPropertyChanged(() => MultiMeasure); } }
-
-        #endregion
-
-        #region Constructor
 
         /// <summary>
         /// Initializes a new Rest with specific duration
@@ -33,10 +26,6 @@ namespace Manufaktura.Controls.Model
             DetermineMusicalCharacter();
         }
 
-        #endregion
-
-        #region Private methods
-
         private void DetermineMusicalCharacter()
         {
             if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeRest;
@@ -46,8 +35,5 @@ namespace Manufaktura.Controls.Model
             else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicFont.SixteenthRest;
             else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicFont.D32ndRest;
         }
-
-        #endregion
-
     }
 }

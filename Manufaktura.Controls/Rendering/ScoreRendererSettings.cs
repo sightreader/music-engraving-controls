@@ -47,6 +47,9 @@ namespace Manufaktura.Controls.Rendering
 
         internal double TextBlockHeight { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of ScoreRendererSettings
+        /// </summary>
         public ScoreRendererSettings()
         {
             IsPanoramaMode = true;

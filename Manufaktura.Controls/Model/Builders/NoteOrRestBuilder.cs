@@ -1,9 +1,6 @@
 ﻿using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Music.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model.Builders
 {
@@ -12,36 +9,65 @@ namespace Manufaktura.Controls.Model.Builders
     /// </summary>
     public class NoteOrRestBuilder : IHasDuration
     {
-        public MusicXmlParserState State { get; protected set; }
+        public int Alter { get; set; }
+
+        public ArticulationType Articulation { get; set; }
+
+        public VerticalPlacement ArticulationPlacement { get; set; }
+
+        public RhythmicDuration BaseDuration { get; set; }
+
+        public List<NoteBeamType> BeamList { get; set; }
+
+        public bool CustomStemEndPosition { get; set; }
+
+        public double DefaultX { get; set; }
+
+        public bool FullMeasure { get; set; }
+
+        public bool HasFermataSign { get; set; }
+
+        public bool HasNatural { get; set; }
+
+        public bool IsChordElement { get; set; }
+
+        public bool IsCueNote { get; set; }
+
+        public bool IsGraceNote { get; set; }
+
+        public bool IsRest { get; set; }
+
+        public bool IsVisible { get; set; }
+
+        public List<Lyrics> Lyrics { get; set; }
+
+        public Mordent Mordent { get; set; }
+
+        public int NumberOfDots { get; set; }
 
         public int Octave { get; set; }
-        public int Alter { get; set; }
-        public string Step { get; set; }
-        public bool IsRest { get; set; }
-        public int NumberOfDots { get; set; }
-        public RhythmicDuration BaseDuration { get; set; }
-        public VerticalDirection StemDirection { get; set; }
-        public NoteTieType TieType { get; set; }
-        public TupletType Tuplet { get; set; }
-        public VerticalPlacement? TupletPlacement { get; set; }
-        public List<NoteBeamType> BeamList { get; set; }
-        public List<Lyrics> Lyrics { get; set; }
-        public VerticalPlacement ArticulationPlacement { get; set; }
-        public ArticulationType Articulation { get; set; }
-        public bool HasNatural { get; set; }
-        public bool IsGraceNote { get; set; }
-        public bool IsCueNote { get; set; }
-        public bool IsChordElement { get; set; }
-        public bool HasFermataSign { get; set; }
-        public float StemDefaultY { get; set; }
-        public double DefaultX { get; set; }
-        public bool CustomStemEndPosition { get; set; }
-        public int TremoloLevel { get; set; }
+
         public Slur Slur { get; set; }
+
+        public MusicXmlParserState State { get; protected set; }
+
+        public float StemDefaultY { get; set; }
+
+        public VerticalDirection StemDirection { get; set; }
+
+        public string Step { get; set; }
+
+        public NoteTieType TieType { get; set; }
+
+        public int TremoloLevel { get; set; }
+
         public NoteTrillMark TrillMark { get; set; }
-        public Mordent Mordent { get; set; }
+
+        public TupletType Tuplet { get; set; }
+
+        public VerticalPlacement? TupletPlacement { get; set; }
+
         public int Voice { get; set; }
-        public bool IsVisible { get; set; }
 
         public NoteOrRestBuilder(MusicXmlParserState state)
         {
@@ -115,6 +141,7 @@ namespace Manufaktura.Controls.Model.Builders
                 rt.Voice = Voice;
                 rt.DefaultXPosition = DefaultX;
                 rt.IsVisible = IsVisible;
+                rt.FullMeasure = FullMeasure;
                 return rt;
             }
         }

@@ -1,13 +1,9 @@
 ﻿using Manufaktura.Controls.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 {
-    class ClefWritingStrategy : MusicXmlWritingStrategy<Clef>
+    internal class ClefWritingStrategy : MusicXmlWritingStrategy<Clef>
     {
         public override string ElementName
         {

@@ -1,17 +1,14 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Builders;
-using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
 {
-    class NoteAndRestParsingStrategy : MusicXmlParsingStrategy
+    internal class NoteAndRestParsingStrategy : MusicXmlParsingStrategy
     {
         public override string ElementName
         {
@@ -28,6 +25,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 var parsedValue = UsefulMath.TryParse(defaultXAttribute.Value);
                 if (parsedValue.HasValue) builder.DefaultX = parsedValue.Value;
             }
+            var fullMeasureAttribute = element.Attributes().Where(a => a.Name == "measure").FirstOrDefault();
+            if (fullMeasureAttribute != null)
+            {
+                if (fullMeasureAttribute != null) builder.FullMeasure = "yes".Equals(fullMeasureAttribute.Value, StringComparison.OrdinalIgnoreCase);
+            }
 
             var printObjectAttribute = element.Attributes().Where(a => a.Name == "print-object").FirstOrDefault();
             if (printObjectAttribute != null) builder.IsVisible = "yes".Equals(printObjectAttribute.Value, StringComparison.OrdinalIgnoreCase);
@@ -38,7 +40,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 {
                     foreach (XElement pitchAttribute in noteAttribute.Elements())
                     {
-
                         if (pitchAttribute.Name == "step")
                         {
                             builder.Step = pitchAttribute.Value;
@@ -91,7 +92,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     var attribute = noteAttribute.Attribute(XName.Get("type"));
                     if (attribute.Value == "start")
                     {
-
                         if (builder.TieType == NoteTieType.Stop) builder.TieType = NoteTieType.StopAndStartAnother;
                         else builder.TieType = NoteTieType.Start;
                     }
@@ -194,7 +194,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                                     builder.ArticulationPlacement = VerticalPlacement.Above;
                                 else if (articulationAttribute.Attribute("placement").Value == "below")
                                     builder.ArticulationPlacement = VerticalPlacement.Below;
-
                             }
                         }
                         else if (notationAttribute.Name == "ornaments")
@@ -234,7 +233,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                                     if (attr != null) builder.Mordent.DefaultYPosition = UsefulMath.TryParse(attr.Value);
                                 }
                             }
-
                         }
                         else if (notationAttribute.Name == "slur")
                         {
@@ -249,7 +247,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
                             var placementAttribute = notationAttribute.Attributes().FirstOrDefault(a => a.Name == "placement");
                             if (placementAttribute != null) builder.Slur.Placement = placementAttribute.Value == "above" ? VerticalPlacement.Above : VerticalPlacement.Below;
-
                         }
                         else if (notationAttribute.Name == "fermata")
                         {
@@ -264,8 +261,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }
                 else if (noteAttribute.Name == "lyric")
                 {
-                    //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set. 
-                    //Then reset these tags so the next <syllabic> tag starts another lyric. 
+                    //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set.
+                    //Then reset these tags so the next <syllabic> tag starts another lyric.
                     Lyrics lyricsInstance = new Lyrics();
                     Lyrics.Syllable syllable = new Lyrics.Syllable();
                     bool isSylabicSet = false;
@@ -318,7 +315,16 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }
             }
             if (builder.BeamList.Count == 0) builder.BeamList.Add(NoteBeamType.Single);
-            staff.Elements.Add(builder.Build());
+
+            var noteOrRest = builder.Build();
+            var rest = noteOrRest as Rest;
+            if (rest != null)
+            {
+                var timeSignature = staff.Elements.OfType<TimeSignature>().LastOrDefault();
+                if (timeSignature != null) rest.Duration = new RhythmicDuration(timeSignature.NumberOfBeats / timeSignature.TypeOfBeats);
+            }
+
+            staff.Elements.Add(noteOrRest);
         }
     }
 }

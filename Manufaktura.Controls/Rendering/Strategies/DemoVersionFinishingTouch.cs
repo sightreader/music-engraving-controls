@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Strategies
 {
+    /// <summary>
+    /// Draws text "Demo" in the corners of controls.
+    /// </summary>
     public class DemoVersionFinishingTouch : IFinishingTouch
     {
         public void PerformOnScore(Score score, ScoreRendererBase renderer)

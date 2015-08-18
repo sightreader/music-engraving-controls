@@ -14,9 +14,21 @@ namespace Manufaktura.Controls.Primitives
         public static Color Black { get { return new Color(0, 0, 0, 255); } }
         public static Color Red   { get { return new Color(255, 0, 0, 255); } }
 
+        /// <summary>
+        /// Alpha value
+        /// </summary>
         public byte A { get; set; }
+        /// <summary>
+        /// Red value
+        /// </summary>
         public byte R { get; set; }
+        /// <summary>
+        /// Green value
+        /// </summary>
         public byte G { get; set; }
+        /// <summary>
+        /// Blue value
+        /// </summary>
         public byte B { get; set; }
 
         public Color(byte r, byte g, byte b, byte a) : this()
@@ -27,6 +39,10 @@ namespace Manufaktura.Controls.Primitives
             B = b;
         }
 
+        /// <summary>
+        /// Converts color to CSS format
+        /// </summary>
+        /// <returns></returns>
         public string ToCss()
         {
             return string.Format("rgb({0},{1},{2})", 

@@ -28,7 +28,13 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public enum HtmlRenderSurface
         {
+            /// <summary>
+            /// Indicates that the score will be rendered on HTML Canvas
+            /// </summary>
             Canvas,
+            /// <summary>
+            /// Indicates that the score will be renderer in SVG tag
+            /// </summary>
             Svg
         }
     }

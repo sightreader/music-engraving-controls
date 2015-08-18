@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Primitives
 {
+    /// <summary>
+    /// Represents a rectangle on 2D surface.
+    /// </summary>
     public struct Rectangle
     {
         public double X { get; set; }
