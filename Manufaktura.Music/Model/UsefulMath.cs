@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
@@ -7,7 +6,17 @@ namespace Manufaktura.Music.Model
 {
     public static class UsefulMath
     {
-        public static double Mean(params double[] values) 
+        public static double CentsToLinear(double cents)
+        {
+            return Math.Pow(2, cents / 1200);
+        }
+
+        public static double GradToRadians(double angle)
+        {
+            return angle * (Math.PI / 180d);
+        }
+
+        public static double Mean(params double[] values)
         {
             if (values == null) throw new ArgumentNullException("values");
             return (double)values.Sum(t => t) / values.Count();
@@ -30,24 +39,6 @@ namespace Manufaktura.Music.Model
             {
                 return sortedValues[midIndex];
             }
-
-        }
-
-        public static double? TryParse(string s)
-        {
-            double result;
-            if (double.TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out result)) return result;
-            return null;
-        }
-
-        public static double GradToRadians(double angle)
-        {
-            return angle * (Math.PI / 180d);
-        }
-
-        public static double CentsToLinear(double cents)
-        {
-            return Math.Pow(2, cents / 1200);
         }
 
         public static string NumberToOrdinal(int number)
@@ -57,6 +48,20 @@ namespace Manufaktura.Music.Model
             if (number == 3) return "3rd";
             if (number > 3) return number + "th";
             else return number.ToString();
+        }
+
+        public static double? TryParse(string s)
+        {
+            double result;
+            if (double.TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out result)) return result;
+            return null;
+        }
+
+        public static int? TryParseInt(string s)
+        {
+            int result;
+            if (int.TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out result)) return result;
+            return null;
         }
     }
 }
