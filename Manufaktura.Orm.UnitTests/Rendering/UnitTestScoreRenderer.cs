@@ -3,6 +3,7 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering;
 using System;
+using System.Linq;
 
 namespace Manufaktura.Orm.UnitTests.Rendering
 {
@@ -25,7 +26,7 @@ namespace Manufaktura.Orm.UnitTests.Rendering
         public override void DrawBezier(Point p1, Point p2, Point p3, Point p4, Pen pen, MusicalSymbol owner)
         {
             var entry = new ScoreRenderingTestEntry();
-            entry.Location = new Point(p1.X, p1.Y);
+            entry.Location = GetTopLeftPoint(p1, p2, p3, p4);
             entry.Type = owner.Type;
             Canvas.Put(entry);
         }
@@ -46,6 +47,11 @@ namespace Manufaktura.Orm.UnitTests.Rendering
             entry.Text = text;
             entry.Type = owner.Type;
             Canvas.Put(entry);
+        }
+
+        private Point GetTopLeftPoint(params Point[] points)
+        {
+            return new Point(points.Min(p => p.X), points.Min(p => p.Y));
         }
     }
 }
