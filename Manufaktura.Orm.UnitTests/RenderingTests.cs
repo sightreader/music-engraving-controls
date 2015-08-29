@@ -30,8 +30,11 @@ namespace Manufaktura.UnitTests
                 var score = parser.Parse(xDocument);
                 renderer.Render(score);
                 currentResults.Persist(Path.GetFileName(file));
-                previousResults.Load(Path.GetFileName(file));
-                PerformAssertions(currentResults, previousResults);
+                if (previousResults != null)
+                {
+                    previousResults.Load(Path.GetFileName(file));
+                    PerformAssertions(currentResults, previousResults);
+                }
             }
             
         }
@@ -43,8 +46,10 @@ namespace Manufaktura.UnitTests
 
         private IScoreRenderingTestResultsRepository GetPreviousResults(string resultsPath)
         {
-            var directory = Directory.EnumerateDirectories(resultsPath).Max(d => GetDirectoryDate(d));
-            return new ScoreRenderingTestResultsRepository(resultsPath);
+            if (!Directory.Exists(resultsPath)) Directory.CreateDirectory(resultsPath);
+            var directory = Directory.EnumerateDirectories(resultsPath).OrderBy(d => GetDirectoryDate(Path.GetFileName(d))).LastOrDefault();
+            if (string.IsNullOrWhiteSpace(directory)) return null;
+            return new ScoreRenderingTestResultsRepository(directory);
         }
 
         private DateTime GetDirectoryDate(string directory)

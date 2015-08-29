@@ -72,6 +72,7 @@
     <Compile Include="OrmTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderingTests.cs" />
+    <Compile Include="Rendering\IRenderingAssertionRule.cs" />
     <Compile Include="Rendering\IScoreRenderingTestResultsRepository.cs" />
     <Compile Include="Rendering\ScoreRenderingTestEntry.cs" />
     <Compile Include="Rendering\ScoreRenderingTestResultsRepository.cs" />

@@ -15,22 +15,37 @@ namespace Manufaktura.Orm.UnitTests.Rendering
 
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
         {
-            throw new NotImplementedException();
+            var entry = new ScoreRenderingTestEntry();
+            entry.Location = new Point(rect.X, rect.Y);
+            entry.Size = new Point(rect.Width, rect.Height);
+            entry.Type = owner.Type;
+            Canvas.Put(entry);
         }
 
         public override void DrawBezier(Point p1, Point p2, Point p3, Point p4, Pen pen, MusicalSymbol owner)
         {
-            throw new NotImplementedException();
+            var entry = new ScoreRenderingTestEntry();
+            entry.Location = new Point(p1.X, p1.Y);
+            entry.Type = owner.Type;
+            Canvas.Put(entry);
         }
 
         public override void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner)
         {
-            throw new NotImplementedException();
+            var entry = new ScoreRenderingTestEntry();
+            entry.Location = startPoint;
+            entry.Size = new Point(endPoint.X - startPoint.X, endPoint.Y - startPoint.Y);
+            entry.Type = owner.Type;
+            Canvas.Put(entry);
         }
 
         public override void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner)
         {
-            throw new NotImplementedException();
+            var entry = new ScoreRenderingTestEntry();
+            entry.Location = location;
+            entry.Text = text;
+            entry.Type = owner.Type;
+            Canvas.Put(entry);
         }
     }
 }

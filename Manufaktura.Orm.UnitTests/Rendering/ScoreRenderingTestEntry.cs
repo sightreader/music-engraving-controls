@@ -11,10 +11,10 @@ namespace Manufaktura.Orm.UnitTests.Rendering
     public class ScoreRenderingTestEntry
     {
         public Point Location { get; set; }
-        public double Width { get; set; }
-        public double Height { get; set; }
+        public Point Size { get; set; }
         public int StaffNo { get; set; }
         public int StaffIndex { get; set; }
         public MusicalSymbolType Type { get; set; }
+        public string Text { get; set; }
     }
 }
