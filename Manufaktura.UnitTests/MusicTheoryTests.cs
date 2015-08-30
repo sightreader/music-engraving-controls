@@ -103,5 +103,23 @@ namespace Manufaktura.UnitTests
         {
             var rhythm = new PolonaiseRhythmicTrail().BuildRhythm(8);
         }
+
+        [TestMethod]
+        public void ChordsTest()
+        {
+            var chord = Chord.CreateChord(Pitch.C4, 0, 2, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G).Assert();
+            chord = Chord.CreateChord(Pitch.G4, 0, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.G, Step.B, Step.D).Assert();
+            chord = Chord.Create7thChord(Pitch.C4, 0, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G, Step.Bb).Assert();
+            chord = Chord.Create7thChord(Pitch.C4, 1, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.E, Step.G, Step.Bb, Step.C).Assert();
+            chord = Chord.Create7thChord(Pitch.C4, 2, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches,  Step.G, Step.Bb, Step.C, Step.E).Assert();
+            chord = Chord.Create7thChord(Pitch.C4, 3, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.Bb, Step.C, Step.E, Step.G).Assert();
+            MusicalAssertions.Throws<ArgumentException>(() => Chord.Create7thChord(Pitch.C4, 4, MajorScale.C)).Assert();
+        }
     }
 }

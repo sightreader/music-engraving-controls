@@ -13,15 +13,6 @@ namespace Manufaktura.UnitTests.Rendering
         {
         }
 
-        private void SetIndexes(ScoreRenderingTestEntry entry, MusicalSymbol symbol)
-        {
-            entry.Type = symbol.Type;
-            var matchingStaff = CurrentScore.Staves.FirstOrDefault(s => s.Elements.Contains(symbol));
-            if (matchingStaff == null) return;
-            entry.StaffNo = CurrentScore.Staves.IndexOf(matchingStaff) + 1;
-            entry.StaffIndex = CurrentScore.Staves[entry.StaffNo - 1].Elements.IndexOf(symbol);
-        }
-
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
         {
             var entry = new ScoreRenderingTestEntry();
@@ -69,6 +60,15 @@ namespace Manufaktura.UnitTests.Rendering
         private Point GetTopLeftPoint(params Point[] points)
         {
             return new Point(points.Min(p => p.X), points.Min(p => p.Y));
+        }
+
+        private void SetIndexes(ScoreRenderingTestEntry entry, MusicalSymbol symbol)
+        {
+            entry.Type = symbol.Type;
+            var matchingStaff = CurrentScore.Staves.FirstOrDefault(s => s.Elements.Contains(symbol));
+            if (matchingStaff == null) return;
+            entry.StaffNo = CurrentScore.Staves.IndexOf(matchingStaff) + 1;
+            entry.StaffIndex = CurrentScore.Staves[entry.StaffNo - 1].Elements.IndexOf(symbol);
         }
     }
 }
