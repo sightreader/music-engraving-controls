@@ -15,6 +15,7 @@ namespace Manufaktura.Controls.Rendering
     public abstract class ScoreRenderer<TCanvas> : ScoreRendererBase
     {
         public TCanvas Canvas { get; internal set; }
+        protected Score CurrentScore { get; set; }
 
         public List<Exception> Exceptions { get; protected set; }
 
@@ -34,6 +35,7 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="score">Score</param>
         public void Render(Score score)
         {
+            CurrentScore = score;
             scoreService.BeginNewScore(score);
             foreach (Staff staff in score.Staves)
             {

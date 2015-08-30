@@ -137,6 +137,10 @@ namespace Manufaktura.Controls.Services
         public void BeginNewScore(Score score)
         {
             CurrentScore = score;
+            CurrentStaff = null;
+            CurrentMeasure = null;
+            CurrentClef = null;
+            CurrentKey = null;
             systems.Clear();
             allMeasures.Clear();
             LinePositions.Clear();

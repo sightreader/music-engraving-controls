@@ -63,5 +63,12 @@ namespace Manufaktura.Music.Model
             if (int.TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out result)) return result;
             return null;
         }
+
+        public static DateTime? TryParseDateTime(string s)
+        {
+            DateTime result;
+            if (DateTime.TryParse(s, out result)) return result;
+            return null;
+        }
     }
 }

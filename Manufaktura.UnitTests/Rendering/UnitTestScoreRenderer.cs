@@ -13,12 +13,21 @@ namespace Manufaktura.UnitTests.Rendering
         {
         }
 
+        private void SetIndexes(ScoreRenderingTestEntry entry, MusicalSymbol symbol)
+        {
+            entry.Type = symbol.Type;
+            var matchingStaff = CurrentScore.Staves.FirstOrDefault(s => s.Elements.Contains(symbol));
+            if (matchingStaff == null) return;
+            entry.StaffNo = CurrentScore.Staves.IndexOf(matchingStaff) + 1;
+            entry.StaffIndex = CurrentScore.Staves[entry.StaffNo - 1].Elements.IndexOf(symbol);
+        }
+
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
         {
             var entry = new ScoreRenderingTestEntry();
             entry.Location = GetTopLeftPoint(new Point(rect.X, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
             entry.Size = GetSize(new Point(rect.X, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
-            entry.Type = owner.Type;
+            SetIndexes(entry, owner);
             Canvas.Put(entry);
         }
 
@@ -28,6 +37,7 @@ namespace Manufaktura.UnitTests.Rendering
             entry.Location = GetTopLeftPoint(p1, p2, p3, p4);
             entry.Size = GetSize(p1, p2, p3, p4);
             entry.Type = owner.Type;
+            SetIndexes(entry, owner);
             Canvas.Put(entry);
         }
 
@@ -37,6 +47,7 @@ namespace Manufaktura.UnitTests.Rendering
             entry.Location = GetTopLeftPoint(startPoint, endPoint);
             entry.Size = GetSize(startPoint, endPoint);
             entry.Type = owner.Type;
+            SetIndexes(entry, owner);
             Canvas.Put(entry);
         }
 
@@ -46,6 +57,7 @@ namespace Manufaktura.UnitTests.Rendering
             entry.Location = location;
             entry.Text = text;
             entry.Type = owner.Type;
+            SetIndexes(entry, owner);
             Canvas.Put(entry);
         }
 

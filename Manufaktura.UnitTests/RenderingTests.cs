@@ -1,13 +1,11 @@
-﻿using Manufaktura.Controls.Parser;
+﻿using Manufaktura.Controls.IoC;
+using Manufaktura.Controls.Parser;
 using Manufaktura.Music.Model;
 using Manufaktura.UnitTests.Rendering;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Manufaktura.UnitTests
@@ -15,14 +13,13 @@ namespace Manufaktura.UnitTests
     [TestClass]
     public class RenderingTests
     {
-        const string inputPath = @"D:\Dokumenty\Manufaktura programów\Dane do bazy";
-        const string outputPath = @"D:\Dokumenty\Manufaktura programów\UnitTests";
-        const string inProgressPath = @"D:\Dokumenty\Manufaktura programów\UnitTests\InProgress";
+        private const string inProgressPath = @"D:\Dokumenty\Manufaktura programów\UnitTests\InProgress";
+        private const string inputPath = @"D:\Dokumenty\Manufaktura programów\UnitTests\Data";
+        private const string outputPath = @"D:\Dokumenty\Manufaktura programów\UnitTests";
 
         [TestMethod]
         public void TestRendering()
         {
-            
             var currentResults = new ScoreRenderingTestResultsRepository(GetDirectoryPath(inProgressPath));
             var previousResults = GetPreviousResults(outputPath);
             var renderer = new UnitTestScoreRenderer(currentResults);
@@ -32,6 +29,8 @@ namespace Manufaktura.UnitTests
                 var parser = new MusicXmlParser();
                 var score = parser.Parse(xDocument);
                 renderer.Render(score);
+                Assert.IsTrue(!renderer.Exceptions.Any(), "Exceptions occured while rendering.");
+
                 currentResults.Persist(Path.GetFileName(file));
                 if (previousResults != null)
                 {
@@ -39,40 +38,58 @@ namespace Manufaktura.UnitTests
                     PerformAssertions(currentResults, previousResults);
                 }
             }
-            File.Move(currentResults.DataPath, Path.GetDirectoryName(previousResults.DataPath));
+            var successPath = Path.Combine(outputPath, Path.GetFileName(currentResults.DataPath));
+            Directory.Move(currentResults.DataPath, successPath);
         }
 
-        private void PerformAssertions(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults)
+        private DateTime? GetDirectoryDate(string directory)
         {
-            //TODO: Asercje
+            if (directory.Length < 14) return null;
+            var year = UsefulMath.TryParseInt(directory.Substring(0, 4));
+            if (!year.HasValue) return null;
+            var month = UsefulMath.TryParseInt(directory.Substring(4, 2));
+            if (!month.HasValue) return null;
+            var day = UsefulMath.TryParseInt(directory.Substring(6, 2));
+            if (!day.HasValue) return null;
+            var hour = UsefulMath.TryParseInt(directory.Substring(8, 2));
+            if (!hour.HasValue) return null;
+            var minute = UsefulMath.TryParseInt(directory.Substring(10, 2));
+            if (!minute.HasValue) return null;
+            var second = UsefulMath.TryParseInt(directory.Substring(12, 2));
+            if (!second.HasValue) return null;
+            return new DateTime(year.Value, month.Value, day.Value).AddHours(hour.Value).AddMinutes(minute.Value).AddSeconds(second.Value);
+        }
+
+        private string GetDirectoryPath(string folderPath)
+        {
+            var name = DateTime.Now.ToString("yyyyMMddHHmmss");
+            //while (Directory.Exists(name))
+            //{
+            //    int? number = null;
+            //    var splitName = name.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+            //    if (splitName.Length > 1) number = UsefulMath.TryParseInt(splitName[1]);
+            //    name = DateTime.Now.ToString("yyyyMMddHHmmSS") + "_" + (number.HasValue ? number.Value + 1 : 2);
+            //}
+            return Path.Combine(folderPath, name);
         }
 
         private IScoreRenderingTestResultsRepository GetPreviousResults(string resultsPath)
         {
             if (!Directory.Exists(resultsPath)) Directory.CreateDirectory(resultsPath);
             var directory = Directory.EnumerateDirectories(resultsPath, "*", SearchOption.TopDirectoryOnly)
+                .Where(d => GetDirectoryDate(Path.GetFileName(d)) != null)
                 .OrderBy(d => GetDirectoryDate(Path.GetFileName(d))).LastOrDefault();
             if (string.IsNullOrWhiteSpace(directory)) return null;
             return new ScoreRenderingTestResultsRepository(directory);
         }
 
-        private DateTime GetDirectoryDate(string directory)
+        private void PerformAssertions(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults)
         {
-            if (directory.Length < 8) return DateTime.MinValue;
-            return new DateTime(int.Parse(directory.Substring(0, 4)), int.Parse(directory.Substring(4, 2)), int.Parse(directory.Substring(6, 2)));
-        }
-
-        private string GetDirectoryPath(string folderPath)
-        {
-            var name = DateTime.Now.ToString("yyyy-MM-dd").Replace("-", string.Empty);
-            while (Directory.Exists(name))
+            var rules = new ManufakturaResolver().ResolveAll<IRenderingAssertionRule>();
+            foreach (var rule in rules)
             {
-                int? number = null;
-                var splitName = name.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-                if (splitName.Length > 1) number = UsefulMath.TryParseInt(splitName[1]);
-                name = DateTime.Now.ToString("yyyy-MM-dd").Replace("-", string.Empty) + "_" + (number.HasValue ? number.Value + 1 : 2);
+                var results = rule.Assert(currentResults, previousResults);
             }
-            return Path.Combine(folderPath, name);
         }
     }
 }

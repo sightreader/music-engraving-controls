@@ -1,12 +1,15 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace Manufaktura.UnitTests.Rendering
 {
@@ -38,6 +41,34 @@ namespace Manufaktura.UnitTests.Rendering
 
         public void Load(string fileName)
         {
+            var document = XDocument.Load(Path.Combine(dataPath, fileName));
+            elements.Clear();
+            foreach (var resultNode in document.Descendants().Where(d => d.Name == "Result"))
+            {
+                var entry = new ScoreRenderingTestEntry();
+                var x = resultNode.Elements().FirstOrDefault(d => d.Name == "LocationX");
+                var y = resultNode.Elements().FirstOrDefault(d => d.Name == "LocationY");
+                if (x != null && y != null)
+                {
+                    entry.Location = new Point(double.Parse(x.Value, CultureInfo.InvariantCulture), double.Parse(y.Value, CultureInfo.InvariantCulture));
+                }
+                x = resultNode.Elements().FirstOrDefault(d => d.Name == "SizeX");
+                y = resultNode.Elements().FirstOrDefault(d => d.Name == "SizeY");
+                if (x != null && y != null)
+                {
+                    entry.Size = new Point(double.Parse(x.Value, CultureInfo.InvariantCulture), double.Parse(y.Value, CultureInfo.InvariantCulture));
+                }
+                x = resultNode.Elements().FirstOrDefault(d => d.Name == "Type");
+                if (x != null) entry.Type = (MusicalSymbolType)Enum.Parse(typeof(MusicalSymbolType), x.Value);
+                x = resultNode.Elements().FirstOrDefault(d => d.Name == "StaffNo");
+                if (x != null) entry.StaffNo = int.Parse(x.Value);
+                x = resultNode.Elements().FirstOrDefault(d => d.Name == "StaffIndex");
+                if (x != null) entry.StaffIndex = int.Parse(x.Value);
+                x = resultNode.Elements().FirstOrDefault(d => d.Name == "Text");
+                if (x != null) entry.Text = x.Value;
+                elements.Add(entry);
+            }
+            
         }
 
         public void Persist(string fileName)

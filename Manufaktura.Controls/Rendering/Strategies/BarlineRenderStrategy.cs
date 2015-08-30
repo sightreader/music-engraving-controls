@@ -2,23 +2,29 @@
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
     public class BarlineRenderStrategy : MusicalSymbolRenderStrategy<Barline>
     {
-        private readonly IMeasurementService measurementService;
         private readonly IAlterationService alterationService;
+        private readonly IMeasurementService measurementService;
         private readonly IScoreService scoreService;
+
         public BarlineRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService)
         {
             this.measurementService = measurementService;
             this.alterationService = alterationService;
             this.scoreService = scoreService;
+        }
+
+        public double? GetCursorPositionForCurrentBarline(ScoreRendererBase renderer)
+        {
+            Staff staff = scoreService.CurrentStaff;
+            if (staff.MeasureWidths.Count < scoreService.CurrentMeasureNo) return null;
+            double? width = staff.MeasureWidths[scoreService.CurrentMeasureNo - 1];
+            if (!width.HasValue) return null;
+            return measurementService.LastMeasurePositionX + width * renderer.Settings.CustomElementPositionRatio;
         }
 
         public override void Render(Barline element, ScoreRendererBase renderer)
@@ -54,7 +60,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (scoreService.CurrentStaff.Elements.IndexOf(element) > 0)
                 {
-                        scoreService.CursorPositionX -= 8;   //TODO: Temporary workaround!!
+                    scoreService.CursorPositionX -= 8;   //TODO: Temporary workaround!!
                 }
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 2;
                 if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
@@ -76,15 +82,6 @@ namespace Manufaktura.Controls.Rendering
                 alterationService.Reset();
                 scoreService.BeginNewMeasure();
             }
-        }
-
-        public double? GetCursorPositionForCurrentBarline(ScoreRendererBase renderer)
-        {
-            Staff staff = scoreService.CurrentStaff;
-            if (staff.MeasureWidths.Count < scoreService.CurrentMeasureNo) return null;
-            double? width = staff.MeasureWidths[scoreService.CurrentMeasureNo - 1];
-            if (!width.HasValue) return null;
-            return measurementService.LastMeasurePositionX + width * renderer.Settings.CustomElementPositionRatio;
         }
     }
 }
