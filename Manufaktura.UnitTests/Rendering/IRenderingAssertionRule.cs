@@ -8,6 +8,6 @@ namespace Manufaktura.UnitTests.Rendering
 {
     interface IRenderingAssertionRule
     {
-        Dictionary<ScoreRenderingTestEntry, string> Assert(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults);
+        Dictionary<ScoreRenderingTestEntry, List<string>> Assert(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults);
     }
 }
