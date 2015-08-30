@@ -4,6 +4,7 @@ using Manufaktura.Music.Model;
 using Manufaktura.UnitTests.Rendering;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -63,13 +64,6 @@ namespace Manufaktura.UnitTests
         private string GetDirectoryPath(string folderPath)
         {
             var name = DateTime.Now.ToString("yyyyMMddHHmmss");
-            //while (Directory.Exists(name))
-            //{
-            //    int? number = null;
-            //    var splitName = name.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
-            //    if (splitName.Length > 1) number = UsefulMath.TryParseInt(splitName[1]);
-            //    name = DateTime.Now.ToString("yyyyMMddHHmmSS") + "_" + (number.HasValue ? number.Value + 1 : 2);
-            //}
             return Path.Combine(folderPath, name);
         }
 
@@ -85,11 +79,14 @@ namespace Manufaktura.UnitTests
 
         private void PerformAssertions(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults)
         {
+            var allResults = new List<string>();
             var rules = new ManufakturaResolver().ResolveAll<IRenderingAssertionRule>();
             foreach (var rule in rules)
             {
                 var results = rule.Assert(currentResults, previousResults);
+                allResults.AddRange(results.Values.SelectMany(v => v));
             }
+            if (allResults.Any()) Assert.Fail(string.Join(Environment.NewLine, allResults));
         }
     }
 }

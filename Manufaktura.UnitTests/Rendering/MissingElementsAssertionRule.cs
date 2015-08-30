@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Manufaktura.Orm.UnitTests.Rendering
+namespace Manufaktura.UnitTests.Rendering
 {
     public class MissingElementsAssertionRule : IRenderingAssertionRule
     {

@@ -74,6 +74,7 @@
     <Compile Include="RenderingTests.cs" />
     <Compile Include="Rendering\IRenderingAssertionRule.cs" />
     <Compile Include="Rendering\IScoreRenderingTestResultsRepository.cs" />
+    <Compile Include="Rendering\MislocatedElementsAssertionRule.cs" />
     <Compile Include="Rendering\MissingElementsAssertionRule.cs" />
     <Compile Include="Rendering\ScoreRenderingTestEntry.cs" />
     <Compile Include="Rendering\ScoreRenderingTestResultsRepository.cs" />
