@@ -1,6 +1,6 @@
 ﻿using Manufaktura.Controls.Parser;
 using Manufaktura.Music.Model;
-using Manufaktura.Orm.UnitTests.Rendering;
+using Manufaktura.UnitTests.Rendering;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -15,12 +15,15 @@ namespace Manufaktura.UnitTests
     [TestClass]
     public class RenderingTests
     {
+        const string inputPath = @"D:\Dokumenty\Manufaktura programów\Dane do bazy";
+        const string outputPath = @"D:\Dokumenty\Manufaktura programów\UnitTests";
+        const string inProgressPath = @"D:\Dokumenty\Manufaktura programów\UnitTests\InProgress";
+
         [TestMethod]
         public void TestRendering()
         {
-            var inputPath = @"D:\Dokumenty\Manufaktura programów\Dane do bazy";
-            var outputPath = @"D:\Dokumenty\Manufaktura programów\UnitTests";
-            var currentResults = new ScoreRenderingTestResultsRepository(GetDirectoryPath(outputPath));
+            
+            var currentResults = new ScoreRenderingTestResultsRepository(GetDirectoryPath(inProgressPath));
             var previousResults = GetPreviousResults(outputPath);
             var renderer = new UnitTestScoreRenderer(currentResults);
             foreach (var file in Directory.EnumerateFiles(inputPath, "*.xml", SearchOption.AllDirectories))
@@ -36,18 +39,19 @@ namespace Manufaktura.UnitTests
                     PerformAssertions(currentResults, previousResults);
                 }
             }
-            
+            File.Move(currentResults.DataPath, Path.GetDirectoryName(previousResults.DataPath));
         }
 
         private void PerformAssertions(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults)
         {
-
+            //TODO: Asercje
         }
 
         private IScoreRenderingTestResultsRepository GetPreviousResults(string resultsPath)
         {
             if (!Directory.Exists(resultsPath)) Directory.CreateDirectory(resultsPath);
-            var directory = Directory.EnumerateDirectories(resultsPath).OrderBy(d => GetDirectoryDate(Path.GetFileName(d))).LastOrDefault();
+            var directory = Directory.EnumerateDirectories(resultsPath, "*", SearchOption.TopDirectoryOnly)
+                .OrderBy(d => GetDirectoryDate(Path.GetFileName(d))).LastOrDefault();
             if (string.IsNullOrWhiteSpace(directory)) return null;
             return new ScoreRenderingTestResultsRepository(directory);
         }

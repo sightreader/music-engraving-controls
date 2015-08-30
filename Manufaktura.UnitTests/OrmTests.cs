@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Manufaktura.Orm.Builder;
-using Manufaktura.Orm.UnitTests.Model;
+using Manufaktura.UnitTests.Model;
 using System.Diagnostics;
 using Manufaktura.Orm.Predicates;
 using System.IO;

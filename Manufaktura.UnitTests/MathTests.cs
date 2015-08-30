@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manufaktura.Orm.UnitTests
+namespace Manufaktura.UnitTests
 {
     [TestClass]
     public class MathTests

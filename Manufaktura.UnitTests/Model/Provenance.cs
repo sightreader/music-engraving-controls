@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manufaktura.Orm.UnitTests.Model
+namespace Manufaktura.UnitTests.Model
 {
     [DataContract]
     [Mapping("provenance")]

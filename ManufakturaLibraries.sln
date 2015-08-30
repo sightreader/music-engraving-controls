@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Orm", "Manufakt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Orm.MySql", "Manufaktura.Orm.MySql\Manufaktura.Orm.MySql.csproj", "{A1E0439B-A7EA-4F93-98B1-B33F8F0277D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.UnitTests", "Manufaktura.Orm.UnitTests\Manufaktura.UnitTests.csproj", "{6CF95B35-3349-40FB-B9B1-CB7404624DA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.UnitTests", "Manufaktura.UnitTests\Manufaktura.UnitTests.csproj", "{6CF95B35-3349-40FB-B9B1-CB7404624DA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Model", "Manufaktura.Model\Manufaktura.Model.csproj", "{4233DF90-EE27-4F88-953B-3652E6D2B080}"
 EndProject

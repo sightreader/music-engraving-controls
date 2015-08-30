@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace Manufaktura.Orm.UnitTests.Rendering
+namespace Manufaktura.UnitTests.Rendering
 {
     public interface IScoreRenderingTestResultsRepository : IEnumerable<ScoreRenderingTestEntry>
     {
-        void Persist(string fileName);
+        string DataPath { get; }
+
         void Load(string fileName);
+
+        void Persist(string fileName);
 
         void Put(ScoreRenderingTestEntry entry);
     }

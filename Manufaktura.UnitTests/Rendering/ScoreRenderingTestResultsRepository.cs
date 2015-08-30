@@ -1,20 +1,25 @@
-﻿using Manufaktura.Controls.Primitives;
+﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using System.Linq;
-using Manufaktura.Controls.Model;
 
-namespace Manufaktura.Orm.UnitTests.Rendering
+namespace Manufaktura.UnitTests.Rendering
 {
     public class ScoreRenderingTestResultsRepository : IScoreRenderingTestResultsRepository
     {
         private string dataPath = string.Empty;
 
         private List<ScoreRenderingTestEntry> elements = new List<ScoreRenderingTestEntry>();
+
+        public string DataPath
+        {
+            get { return dataPath; }
+        }
 
         public ScoreRenderingTestResultsRepository(string folderPath)
         {
@@ -29,6 +34,10 @@ namespace Manufaktura.Orm.UnitTests.Rendering
         IEnumerator IEnumerable.GetEnumerator()
         {
             return elements.GetEnumerator();
+        }
+
+        public void Load(string fileName)
+        {
         }
 
         public void Persist(string fileName)
@@ -69,18 +78,11 @@ namespace Manufaktura.Orm.UnitTests.Rendering
                 }
                 writer.WriteEndElement();
             }
-
         }
 
         public void Put(ScoreRenderingTestEntry entry)
         {
             elements.Add(entry);
-        }
-
-
-        public void Load(string fileName)
-        {
-            
         }
     }
 }

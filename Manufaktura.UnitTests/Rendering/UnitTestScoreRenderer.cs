@@ -2,10 +2,9 @@
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering;
-using System;
 using System.Linq;
 
-namespace Manufaktura.Orm.UnitTests.Rendering
+namespace Manufaktura.UnitTests.Rendering
 {
     public class UnitTestScoreRenderer : ScoreRenderer<IScoreRenderingTestResultsRepository>
     {
@@ -17,8 +16,8 @@ namespace Manufaktura.Orm.UnitTests.Rendering
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
         {
             var entry = new ScoreRenderingTestEntry();
-            entry.Location = new Point(rect.X, rect.Y);
-            entry.Size = new Point(rect.Width, rect.Height);
+            entry.Location = GetTopLeftPoint(new Point(rect.X, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
+            entry.Size = GetSize(new Point(rect.X, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
             entry.Type = owner.Type;
             Canvas.Put(entry);
         }
@@ -27,6 +26,7 @@ namespace Manufaktura.Orm.UnitTests.Rendering
         {
             var entry = new ScoreRenderingTestEntry();
             entry.Location = GetTopLeftPoint(p1, p2, p3, p4);
+            entry.Size = GetSize(p1, p2, p3, p4);
             entry.Type = owner.Type;
             Canvas.Put(entry);
         }
@@ -34,8 +34,8 @@ namespace Manufaktura.Orm.UnitTests.Rendering
         public override void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner)
         {
             var entry = new ScoreRenderingTestEntry();
-            entry.Location = startPoint;
-            entry.Size = new Point(endPoint.X - startPoint.X, endPoint.Y - startPoint.Y);
+            entry.Location = GetTopLeftPoint(startPoint, endPoint);
+            entry.Size = GetSize(startPoint, endPoint);
             entry.Type = owner.Type;
             Canvas.Put(entry);
         }
@@ -47,6 +47,11 @@ namespace Manufaktura.Orm.UnitTests.Rendering
             entry.Text = text;
             entry.Type = owner.Type;
             Canvas.Put(entry);
+        }
+
+        private Point GetSize(params Point[] points)
+        {
+            return new Point(points.Max(p => p.X) - points.Min(p => p.X), points.Max(p => p.Y) - points.Min(p => p.Y));
         }
 
         private Point GetTopLeftPoint(params Point[] points)
