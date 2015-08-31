@@ -49,15 +49,21 @@ namespace Manufaktura.UnitTests
         {
             var chord = TertianHarmony.CreateChord(Pitch.C4, 0, MajorScale.C);
             MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G).Assert();
+            Assert.AreEqual(Step.C, chord.Name);
             chord = TertianHarmony.CreateChord(Pitch.G4, 0, MajorScale.C);
+            Assert.AreEqual(Step.G, chord.Name);
             MusicalAssertions.StepsMatch(chord.Pitches, Step.G, Step.B, Step.D).Assert();
             chord = TertianHarmony.Create7thChord(Pitch.C4, 0, MajorScale.C);
+            Assert.AreEqual(Step.C, chord.Name);
             MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G, Step.Bb).Assert();
             chord = TertianHarmony.Create7thChord(Pitch.C4, 1, MajorScale.C);
+            Assert.AreEqual(Step.C, chord.Name);
             MusicalAssertions.StepsMatch(chord.Pitches, Step.E, Step.G, Step.Bb, Step.C).Assert();
             chord = TertianHarmony.Create7thChord(Pitch.C4, 2, MajorScale.C);
+            Assert.AreEqual(Step.C, chord.Name);
             MusicalAssertions.StepsMatch(chord.Pitches, Step.G, Step.Bb, Step.C, Step.E).Assert();
             chord = TertianHarmony.Create7thChord(Pitch.C4, 3, MajorScale.C);
+            Assert.AreEqual(Step.C, chord.Name);
             MusicalAssertions.StepsMatch(chord.Pitches, Step.Bb, Step.C, Step.E, Step.G).Assert();
             MusicalAssertions.Throws<ArgumentException>(() => TertianHarmony.Create7thChord(Pitch.C4, 4, MajorScale.C)).Assert();
         }

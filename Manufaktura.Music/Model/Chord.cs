@@ -1,4 +1,4 @@
-﻿using Manufaktura.Music.Model.MajorAndMinor;
+﻿using Manufaktura.Controls.Music;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +9,37 @@ namespace Manufaktura.Music.Model
     {
         private List<Pitch> pitches;
 
+        public Pitch Base
+        {
+            get { return pitches.First(); }
+        }
+
+        public Step Name
+        {
+            get;
+            private set;
+        }
+
         public IEnumerable<Pitch> Pitches
         {
             get { return pitches; }
         }
 
+        public Pitch Position
+        {
+            get { return pitches.Last(); }
+        }
+
         public Chord(IEnumerable<Pitch> pitches)
+            : this()
         {
             this.pitches = new List<Pitch>(pitches.OrderBy(p => p));
+            this.Name = this.pitches.First();
+        }
+
+        public Chord(IEnumerable<IHasPitch> pitchedElements)
+            : this(pitchedElements.Select(p => p.Pitch))
+        {
         }
 
         public Chord Invert(int inversion)
