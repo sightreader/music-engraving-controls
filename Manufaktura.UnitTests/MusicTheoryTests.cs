@@ -1,16 +1,13 @@
 ﻿using Manufaktura.Music.MelodicTrails;
 using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.Harmony;
 using Manufaktura.Music.Model.MajorAndMinor;
 using Manufaktura.Music.RhythmicTrails;
 using Manufaktura.Music.UnitTests;
 using Manufaktura.UnitTests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Manufaktura.UnitTests
 {
@@ -48,6 +45,35 @@ namespace Manufaktura.UnitTests
         }
 
         [TestMethod]
+        public void ChordsTest()
+        {
+            var chord = TertianHarmony.CreateChord(Pitch.C4, 0, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G).Assert();
+            chord = TertianHarmony.CreateChord(Pitch.G4, 0, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.G, Step.B, Step.D).Assert();
+            chord = TertianHarmony.Create7thChord(Pitch.C4, 0, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G, Step.Bb).Assert();
+            chord = TertianHarmony.Create7thChord(Pitch.C4, 1, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.E, Step.G, Step.Bb, Step.C).Assert();
+            chord = TertianHarmony.Create7thChord(Pitch.C4, 2, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.G, Step.Bb, Step.C, Step.E).Assert();
+            chord = TertianHarmony.Create7thChord(Pitch.C4, 3, MajorScale.C);
+            MusicalAssertions.StepsMatch(chord.Pitches, Step.Bb, Step.C, Step.E, Step.G).Assert();
+            MusicalAssertions.Throws<ArgumentException>(() => TertianHarmony.Create7thChord(Pitch.C4, 4, MajorScale.C)).Assert();
+        }
+
+        [TestMethod]
+        public void ChromaticIntervalTranslationsTest()
+        {
+            var scale = new MajorScale(Step.G, false);
+            var pitches = scale.BuildScale(1, 8);
+
+            var secondStep = pitches.ElementAt(1);
+            var translatedPitch = scale.TranslatePitch(secondStep, Interval.MajorThird);
+            Assert.AreEqual(translatedPitch, Step.CSharp);
+        }
+
+        [TestMethod]
         public void DiatonicIntervalTranslationsTest()
         {
             var scale = new MajorScale(Step.G, false);
@@ -73,17 +99,6 @@ namespace Manufaktura.UnitTests
         }
 
         [TestMethod]
-        public void ChromaticIntervalTranslationsTest()
-        {
-            var scale = new MajorScale(Step.G, false);
-            var pitches = scale.BuildScale(1, 8);
-
-            var secondStep = pitches.ElementAt(1);
-            var translatedPitch = scale.TranslatePitch(secondStep, Interval.MajorThird);
-            Assert.AreEqual(translatedPitch, Step.CSharp);
-        }
-
-        [TestMethod]
         public void MelodyGenerationTest()
         {
             var scale = new MajorScale(Step.G, false);
@@ -102,24 +117,6 @@ namespace Manufaktura.UnitTests
         public void RhythmGenerationTest()
         {
             var rhythm = new PolonaiseRhythmicTrail().BuildRhythm(8);
-        }
-
-        [TestMethod]
-        public void ChordsTest()
-        {
-            var chord = Chord.CreateChord(Pitch.C4, 0, 2, MajorScale.C);
-            MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G).Assert();
-            chord = Chord.CreateChord(Pitch.G4, 0, MajorScale.C);
-            MusicalAssertions.StepsMatch(chord.Pitches, Step.G, Step.B, Step.D).Assert();
-            chord = Chord.Create7thChord(Pitch.C4, 0, MajorScale.C);
-            MusicalAssertions.StepsMatch(chord.Pitches, Step.C, Step.E, Step.G, Step.Bb).Assert();
-            chord = Chord.Create7thChord(Pitch.C4, 1, MajorScale.C);
-            MusicalAssertions.StepsMatch(chord.Pitches, Step.E, Step.G, Step.Bb, Step.C).Assert();
-            chord = Chord.Create7thChord(Pitch.C4, 2, MajorScale.C);
-            MusicalAssertions.StepsMatch(chord.Pitches,  Step.G, Step.Bb, Step.C, Step.E).Assert();
-            chord = Chord.Create7thChord(Pitch.C4, 3, MajorScale.C);
-            MusicalAssertions.StepsMatch(chord.Pitches, Step.Bb, Step.C, Step.E, Step.G).Assert();
-            MusicalAssertions.Throws<ArgumentException>(() => Chord.Create7thChord(Pitch.C4, 4, MajorScale.C)).Assert();
         }
     }
 }
