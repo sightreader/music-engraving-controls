@@ -42,6 +42,12 @@ namespace Manufaktura.Music.Model
         {
         }
 
+        public Chord ApplyAlteration(int pitchIndex, int alter)
+        {
+            pitches[pitchIndex] = pitches[pitchIndex].Flatten();
+            return this;
+        }
+
         public Chord Invert(int inversion)
         {
             if (inversion >= pitches.Count) throw new ArgumentException("Inversion must be less than number of pitches.");
