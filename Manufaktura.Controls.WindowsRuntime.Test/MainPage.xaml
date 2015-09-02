@@ -9,7 +9,7 @@
     xmlns:Keyboard="using:Manufaktura.Controls.UniversalApps.Keyboard" 
     mc:Ignorable="d">
 
-    <Grid x:Name="LayoutRoot" Background="White">
+    <Grid x:Name="LayoutRoot" Background="Gainsboro">
         <StackPanel Orientation="Vertical">
             <Manufaktura:NoteViewer x:Name="noteViewer1" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top"/>
             <Manufaktura:NoteViewer x:Name="noteViewer2" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />

@@ -44,11 +44,12 @@ namespace Manufaktura.Controls.WindowsRuntime.Test
         private async Task LoadFilesAsync()
         {
             FileOpenPicker dialog = new FileOpenPicker();
+            dialog.ViewMode = PickerViewMode.Thumbnail;
             Score score = null;
             string scoreXml;
 
             var result = await dialog.PickSingleFileAsync();
-
+            
             using (System.IO.Stream fileStream = (await result.OpenAsync(Windows.Storage.FileAccessMode.Read)).AsStreamForRead())
             {
 
