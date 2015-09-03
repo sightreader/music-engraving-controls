@@ -7,6 +7,8 @@ namespace Manufaktura.Controls.Services
     {
         IEnumerable<Measure> AllMeasures { get; }
 
+        IEnumerable<Part> AllParts { get; }
+
         Clef CurrentClef { get; set; }
 
         Key CurrentKey { get; set; }

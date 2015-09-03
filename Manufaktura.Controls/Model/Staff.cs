@@ -17,10 +17,14 @@ namespace Manufaktura.Controls.Model
 
         public List<double?> MeasureWidths { get; private set; }
 
+        public Part Part { get; internal set; }
+
         /// <summary>
         /// Rules to apply when adding notes to the staff.
         /// </summary>
         public List<StaffRule> Rules { get; private set; }
+
+        public Score Score { get; internal set; }
 
         /// <summary>
         /// Initializes a new Staff.

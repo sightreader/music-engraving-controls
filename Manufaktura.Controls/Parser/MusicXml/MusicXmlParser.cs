@@ -25,6 +25,8 @@ namespace Manufaktura.Controls.Parser
                 state.FirstLoop = true;
                 Staff staff = new Staff();
                 score.Staves.Add(staff);
+                var part = new Part(staff);
+                score.Parts.Add(part);
                 foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")))
                 {
                     state.BarlineAlreadyAdded = false;

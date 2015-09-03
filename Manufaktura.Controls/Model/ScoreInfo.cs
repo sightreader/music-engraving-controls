@@ -15,6 +15,8 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public IEnumerable<Measure> AllMeasures { get; private set; }
 
+        public IEnumerable<Part> AllParts { get; private set; }
+
         /// <summary>
         /// All systems in the score.
         /// </summary>

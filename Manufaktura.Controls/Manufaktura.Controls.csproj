@@ -73,6 +73,7 @@
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\NullMusicalSymbol.cs" />
     <Compile Include="Model\Ornament.cs" />
+    <Compile Include="Model\Part.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfTupletPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\EndOfTupletPeekStrategy.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Model\Rules\NoteStemRule.cs" />
     <Compile Include="Model\ScoreInfo.cs" />
     <Compile Include="Model\Slur.cs" />
+    <Compile Include="Model\StaffCollection.cs" />
     <Compile Include="Model\StaffSystem.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs" />
     <Compile Include="Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\StavesAttributeParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />

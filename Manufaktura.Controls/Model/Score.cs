@@ -50,6 +50,8 @@ namespace Manufaktura.Controls.Model
             get { return GetStaff(9); }
         }
 
+        public List<Part> Parts { get; private set; }
+
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Manufaktura.Controls.Model
             get { return GetStaff(6); }
         }
 
-        public List<Staff> Staves { get; private set; }
+        public StaffCollection Staves { get; private set; }
 
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -97,7 +99,8 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public Score()
         {
-            Staves = new List<Staff>();
+            Staves = new StaffCollection(this);
+            Parts = new List<Part>();
         }
 
         /// <summary>
