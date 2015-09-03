@@ -49,6 +49,8 @@ namespace Manufaktura.Controls.Model.Builders
 
         public Slur Slur { get; set; }
 
+        public Staff Staff { get; set; }
+
         public MusicXmlParserState State { get; protected set; }
 
         public float StemDefaultY { get; set; }
@@ -127,6 +129,7 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.TremoloLevel = TremoloLevel;
                 nt.Voice = Voice;
                 nt.IsVisible = IsVisible;
+                nt.Staff = Staff;
                 if (Mordent != null) nt.Ornaments.Add(Mordent);
                 return nt;
             }
@@ -142,6 +145,7 @@ namespace Manufaktura.Controls.Model.Builders
                 rt.DefaultXPosition = DefaultX;
                 rt.IsVisible = IsVisible;
                 rt.FullMeasure = FullMeasure;
+                rt.Staff = Staff;
                 return rt;
             }
         }

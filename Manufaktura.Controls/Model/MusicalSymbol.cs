@@ -60,6 +60,8 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(() => IsVisible); } }
 
+        public Staff Staff { get; internal set; }
+
         public MusicalSymbolType Type { get { return type; } }
 
         #endregion Properties

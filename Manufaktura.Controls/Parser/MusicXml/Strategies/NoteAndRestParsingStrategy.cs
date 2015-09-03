@@ -28,7 +28,13 @@ namespace Manufaktura.Controls.Parser.MusicXml
             var fullMeasureAttribute = element.Attributes().Where(a => a.Name == "measure").FirstOrDefault();
             if (fullMeasureAttribute != null)
             {
-                if (fullMeasureAttribute != null) builder.FullMeasure = "yes".Equals(fullMeasureAttribute.Value, StringComparison.OrdinalIgnoreCase);
+                builder.FullMeasure = "yes".Equals(fullMeasureAttribute.Value, StringComparison.OrdinalIgnoreCase);
+            }
+            var staffElement = element.Elements().Where(a => a.Name == "staff").FirstOrDefault();
+            if (staffElement != null)
+            {
+                int? staffNumber = UsefulMath.TryParseInt(staffElement.Value) ?? 1;
+                builder.Staff = staff.Score.Staves.ElementAt(staffNumber.Value - 1);    //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
             }
 
             var printObjectAttribute = element.Attributes().Where(a => a.Name == "print-object").FirstOrDefault();
@@ -324,7 +330,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 if (timeSignature != null) rest.Duration = new RhythmicDuration(timeSignature.NumberOfBeats / timeSignature.TypeOfBeats);
             }
 
-            staff.Elements.Add(noteOrRest);
+            var correctStaff = noteOrRest.Staff ?? staff;
+            correctStaff.Elements.Add(noteOrRest);
         }
     }
 }

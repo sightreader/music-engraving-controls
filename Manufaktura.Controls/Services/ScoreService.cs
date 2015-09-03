@@ -7,18 +7,12 @@ namespace Manufaktura.Controls.Services
     public class ScoreService : IScoreService
     {
         private List<Measure> allMeasures = new List<Measure>();
-        private List<Part> allParts = new List<Part>();
 
         private List<StaffSystem> systems = new List<StaffSystem>();
 
         public IEnumerable<Measure> AllMeasures
         {
             get { return allMeasures; }
-        }
-
-        public IEnumerable<Part> AllParts
-        {
-            get { return allParts; }
         }
 
         /// <summary>

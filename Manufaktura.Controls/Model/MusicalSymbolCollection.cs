@@ -52,12 +52,17 @@ namespace Manufaktura.Controls.Model
         {
             innerList.Add(item);
             staff.ApplyRules(item);
+            item.Staff = staff;
         }
 
         public void AddRange(IEnumerable<MusicalSymbol> items)
         {
             innerList.AddRange(items);
-            foreach (var item in items) staff.ApplyRules(item);
+            foreach (var item in items)
+            {
+                staff.ApplyRules(item);
+                item.Staff = staff;
+            }
         }
 
         public void Clear()
@@ -103,6 +108,7 @@ namespace Manufaktura.Controls.Model
         public void Insert(int index, MusicalSymbol item)
         {
             innerList.Insert(index, item);
+            item.Staff = staff;
             staff.ApplyRules(item);
         }
 

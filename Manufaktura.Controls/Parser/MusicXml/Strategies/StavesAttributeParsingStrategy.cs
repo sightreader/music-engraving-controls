@@ -23,6 +23,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 var part = staff.Score.Parts.Last();
                 newStaff.Part = part;
                 part.Staves.Add(newStaff);
+                staff.Score.Staves.Add(newStaff);
             }
         }
     }
