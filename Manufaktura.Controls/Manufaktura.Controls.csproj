@@ -106,7 +106,7 @@
     <Compile Include="Parser\MusicXml\Strategies\MeasureStyleParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParserState.cs" />
-    <Compile Include="Parser\MusicXml\Strategies\MusicalSymbolMusicXmlParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\GenericMusicXmlParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs" />

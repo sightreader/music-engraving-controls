@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,16 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }
 
             }
-            staff.Elements.Add(new Clef(typeOfClef, line));
+            var clef = new Clef(typeOfClef, line);
+            var staffElement = element.Attributes().Where(a => a.Name == "number").FirstOrDefault();
+            if (staffElement != null)
+            {
+                int? staffNumber = UsefulMath.TryParseInt(staffElement.Value) ?? 1;
+                clef.Staff = staff.Score.Staves.ElementAt(staffNumber.Value - 1);    //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
+            }
+
+            var correctStaff = clef.Staff ?? staff;
+            correctStaff.Elements.Add(clef);
         }
     }
 }
