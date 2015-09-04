@@ -21,7 +21,7 @@ namespace Manufaktura.Controls.Model.Builders
 
         public bool CustomStemEndPosition { get; set; }
 
-        public double DefaultX { get; set; }
+        public double? DefaultX { get; set; }
 
         public bool FullMeasure { get; set; }
 
@@ -95,7 +95,6 @@ namespace Manufaktura.Controls.Model.Builders
             IsChordElement = false;
             HasFermataSign = false;
             StemDefaultY = 28;
-            DefaultX = 0;
             CustomStemEndPosition = false;
             TremoloLevel = 0;
             Slur = null;
