@@ -66,7 +66,19 @@ namespace Manufaktura.Controls.Parser
                     }
 
                     if (!state.BarlineAlreadyAdded)
-                        staff.Elements.Add(new Barline());
+                    {
+                        if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+                        {
+                            foreach (var s in staff.Part.Staves)
+                            {
+                                s.Elements.Add(new Barline());
+                            }
+                        }
+                        else
+                        {
+                            staff.Elements.Add(new Barline());
+                        }
+                    }
                     state.FirstLoop = false;
                 }
             }

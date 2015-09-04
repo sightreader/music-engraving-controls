@@ -44,5 +44,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
         }
 
         public bool BarlineAlreadyAdded { get; set; }
+
+        public double LastSystemDistance { get; set; }
     }
 }

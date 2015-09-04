@@ -39,7 +39,21 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     }
                 }
             }
-            staff.Elements.Add(new TimeSignature(sType, numberOfBeats, beatType));
+
+
+            if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+            {
+                foreach (var s in staff.Part.Staves)
+                {
+                    var t = new TimeSignature(sType, numberOfBeats, beatType);
+                    s.Elements.Add(t);
+                }
+            }
+            else
+            {
+                var t = new TimeSignature(sType, numberOfBeats, beatType);
+                staff.Elements.Add(t);
+            }
         }
     }
 }
