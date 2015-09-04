@@ -61,6 +61,13 @@ namespace Manufaktura.Controls.Parser
                         MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(elementNode);
                         if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, elementNode);
                     }
+                    //TODO: Automatycznie określać szerokość taktów na podstawie default-x elementów?
+                    //var width = staff.MeasureWidths.Last();
+                    //if (!width.HasValue)
+                    //{
+                    //    staff.MeasureWidths.Remove(width);
+                    //    staff.MeasureWidths.Add(300);
+                    //}
 
                     if (!state.BarlineAlreadyAdded)
                     {
