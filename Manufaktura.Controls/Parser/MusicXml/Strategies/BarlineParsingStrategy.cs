@@ -9,15 +9,16 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
 {
-    class BarlineParsingStrategy : GenericMusicXmlParsingStrategy<Barline>
+    class BarlineParsingStrategy : MusicXmlParsingStrategy
     {
         public override string ElementName
         {
             get { return "barline"; }
         }
 
-        protected override void ParseElementInner(Barline b, MusicXmlParserState state, Staff staff, XElement element)
+        public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
+            var b = new Barline();
             var attr = element.Attributes().FirstOrDefault(a => a.Name == "location");
             if (attr != null)
             {
@@ -41,7 +42,17 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         //Barline existingBarline = staff.Elements.LastOrDefault() as Barline;
                         //if (existingBarline != null) staff.Elements.Remove(existingBarline);
 
-                        AddToCorrectStaff(b, staff);
+                        if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+                        {
+                            foreach (var s in staff.Part.Staves)
+                            {
+                                s.Elements.Add(b);
+                            }
+                        }
+                        else
+                        {
+                            staff.Elements.Add(b);
+                        }
                         
                     }
 

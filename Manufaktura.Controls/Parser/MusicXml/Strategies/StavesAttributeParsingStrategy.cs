@@ -16,11 +16,12 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
+            var part = staff.Score.Parts.Last();
+            staff.Part = part;
             var stavesCount = Convert.ToInt32(element.Value);
             for (var i = 1; i < stavesCount; i++)
             {
                 var newStaff = new Staff();
-                var part = staff.Score.Parts.Last();
                 newStaff.Part = part;
                 part.Staves.Add(newStaff);
                 staff.Score.Staves.Add(newStaff);

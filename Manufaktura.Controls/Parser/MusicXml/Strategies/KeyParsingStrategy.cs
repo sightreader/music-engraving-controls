@@ -1,13 +1,11 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
 {
-    class KeyParsingStrategy : MusicXmlParsingStrategy
+    internal class KeyParsingStrategy : MusicXmlParsingStrategy
     {
         public override string ElementName
         {
@@ -20,7 +18,19 @@ namespace Manufaktura.Controls.Parser.MusicXml
             {
                 if (keyAttribute.Name == "fifths")
                 {
-                    staff.Elements.Add(new Key(Convert.ToInt16(keyAttribute.Value)));
+                    if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+                    {
+                        foreach (var s in staff.Part.Staves)
+                        {
+                            var key = new Key(Convert.ToInt16(keyAttribute.Value));
+                            s.Elements.Add(key);
+                        }
+                    }
+                    else
+                    {
+                        var key = new Key(Convert.ToInt16(keyAttribute.Value));
+                        staff.Elements.Add(key);
+                    }
                 }
             }
         }
