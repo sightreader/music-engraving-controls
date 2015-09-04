@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser.MusicXml;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -51,11 +52,7 @@ namespace Manufaktura.Controls.Parser
                     //Read widths of all measures:
                     double? measureWidth = null;
                     var widthAttribute = measureNode.Attributes().FirstOrDefault(a => a.Name == "width");
-                    if (widthAttribute != null)
-                    {
-                        double w;
-                        if (double.TryParse(widthAttribute.Value, NumberStyles.Number, CultureInfo.InvariantCulture, out w)) measureWidth = w;
-                    }
+                    if (widthAttribute != null) measureWidth = UsefulMath.TryParse(widthAttribute.Value);
                     staff.MeasureWidths.Add(measureWidth);
 
                     //Parse measure nodes:
@@ -64,6 +61,13 @@ namespace Manufaktura.Controls.Parser
                         MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(elementNode);
                         if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, elementNode);
                     }
+                    //TODO: Automatycznie określać szerokość taktów na podstawie default-x elementów?
+                    //var width = staff.MeasureWidths.Last();
+                    //if (!width.HasValue)
+                    //{
+                    //    staff.MeasureWidths.Remove(width);
+                    //    staff.MeasureWidths.Add(300);
+                    //}
 
                     if (!state.BarlineAlreadyAdded)
                     {
