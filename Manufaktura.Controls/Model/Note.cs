@@ -9,7 +9,7 @@ namespace Manufaktura.Controls.Model
     /// <summary>
     /// Represents a note.
     /// </summary>
-    public class Note : NoteOrRest, IHasPitch
+    public class Note : NoteOrRest, IHasPitch, ICanBeElementOfChord
     {
         #region Protected fields
 

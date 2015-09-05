@@ -66,6 +66,10 @@ namespace Manufaktura.Controls.Model
                     strategy = new NextElementPeekStrategy<TSymbol>(this);
                     break;
 
+                case PeekType.PreviousElement:
+                    strategy = new PreviousElementPeekStrategy<TSymbol>(this);
+                    break;
+
                 case PeekType.HighestNoteInChord:
                     strategy = new HighestNoteInChordPeekStrategy<TSymbol>(this);
                     break;

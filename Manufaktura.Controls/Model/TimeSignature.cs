@@ -1,39 +1,11 @@
 ﻿using Manufaktura.Music.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
     public class TimeSignature : MusicalSymbol
     {
-        #region Protected fields
-
-        protected TimeSignatureType signatureType;
         protected Proportion numberValue;
-
-        #endregion
-
-        #region Properties
-
-        public TimeSignatureType SignatureType { get { return signatureType; } set { signatureType = value; } }
-        public int NumberOfBeats { get { return numberValue.Numerator; } }
-        public int TypeOfBeats { get { return numberValue.Denominator; } }
-        public Proportion NumberValue { get { return numberValue; } set { numberValue = value; OnPropertyChanged(() => NumberValue); } }
-
-        #endregion
-
-        #region Constructor
-
-        public TimeSignature(TimeSignatureType sType, int beats, int beatType)
-        {
-            type = MusicalSymbolType.TimeSignature;
-            numberValue = new Proportion(beats, beatType);
-            signatureType = sType;
-        }
-
-        #endregion
+        protected TimeSignatureType signatureType;
 
         public static TimeSignature CommonTime
         {
@@ -49,6 +21,32 @@ namespace Manufaktura.Controls.Model
             {
                 return new TimeSignature(TimeSignatureType.Cut, 2, 2);
             }
+        }
+
+        public int NumberOfBeats { get { return numberValue.Numerator; } }
+
+        public Proportion NumberValue { get { return numberValue; } set { numberValue = value; OnPropertyChanged(() => NumberValue); } }
+
+        public TimeSignatureType SignatureType { get { return signatureType; } set { signatureType = value; } }
+
+        public int TypeOfBeats { get { return numberValue.Denominator; } }
+
+        /// <summary>
+        /// Returns how many whole notes can be fitted into one measure.
+        /// </summary>
+        public double WholeNoteCapacity
+        {
+            get
+            {
+                return numberValue.DoubleValue;
+            }
+        }
+
+        public TimeSignature(TimeSignatureType sType, int beats, int beatType)
+        {
+            type = MusicalSymbolType.TimeSignature;
+            numberValue = new Proportion(beats, beatType);
+            signatureType = sType;
         }
     }
 }

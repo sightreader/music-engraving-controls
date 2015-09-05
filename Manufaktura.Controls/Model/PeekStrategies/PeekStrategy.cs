@@ -23,6 +23,7 @@ namespace Manufaktura.Controls.Model.PeekStrategies
         BeginningOfMeasure,
         BeginningOfTuplet,
         NextElement,
+        PreviousElement,
         EndOfTuplet,
         HighestNoteInChord
     }

@@ -61,6 +61,7 @@
     <Compile Include="Model\Fonts\MusicFontStyles.cs" />
     <Compile Include="Model\Fonts\IMusicFont.cs" />
     <Compile Include="Model\Fonts\PolihymniaFont.cs" />
+    <Compile Include="Model\ICanBeElementOfChord.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />
     <Compile Include="Model\IHasCustomXPosition.cs" />
     <Compile Include="Model\IHasCustomYPosition.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Model\PeekStrategies\HighestNoteInChordPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\NextElementPeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\PeekStrategy.cs" />
+    <Compile Include="Model\PeekStrategies\PreviousElementPeekStrategy.cs" />
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\LineDictionary.cs" />
     <Compile Include="Model\Rules\AutomaticAddMeasuresRule.cs" />
