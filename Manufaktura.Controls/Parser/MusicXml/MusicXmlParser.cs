@@ -17,6 +17,7 @@ namespace Manufaktura.Controls.Parser
         public override Score Parse(XDocument xmlDocument)  //TODO: Exception handling!
         {
             Score score = new Score();
+            var firstSystem = new StaffSystem();
             MusicXmlParserState state = new MusicXmlParserState();
 
             foreach (XElement defaultSettingsNode in xmlDocument.Descendants().Where(d => d.Name == "defaults" || d.Name == "identification"))
@@ -38,7 +39,7 @@ namespace Manufaktura.Controls.Parser
                 score.Parts.Add(part);
                 foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")))
                 {
-                    var measure = new Measure(staff, null);
+                    var measure = new Measure(staff, firstSystem);
                     staff.Measures.Add(measure);
                     state.BarlineAlreadyAdded = false;
                     if (measureNode.Parent.Name == "part")  //Don't take the other voices than the upper into account / Nie uwzględniaj innych głosów niż górny
@@ -67,6 +68,11 @@ namespace Manufaktura.Controls.Parser
                     {
                         MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(elementNode);
                         if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, elementNode);
+                    }
+
+                    foreach (var partStaff in part.Staves.Skip(1))
+                    {
+                        partStaff.Measures.Add(new Measure(partStaff, measure.System));
                     }
 
                     if (!state.BarlineAlreadyAdded)

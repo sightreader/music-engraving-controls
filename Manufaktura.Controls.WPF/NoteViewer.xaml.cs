@@ -20,7 +20,7 @@ namespace Manufaktura.Controls.WPF
     {
         // Using a DependencyProperty as the backing store for IsAsync.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsAsyncProperty =
-            DependencyProperty.Register("IsAsync", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
+            DependencyProperty.Register("IsAsync", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
 
         // Using a DependencyProperty as the backing store for IsDebugMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDebugModeProperty =

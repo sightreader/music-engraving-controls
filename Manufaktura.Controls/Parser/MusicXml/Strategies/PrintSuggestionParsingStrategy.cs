@@ -19,6 +19,12 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 foreach (var s in staff.Part.Staves)
                 {
                     var suggestion = CreateSuggestion(element, state);
+                    if (suggestion.IsSystemBreak)
+                    {
+                        var system = new StaffSystem();
+                        staff.Measures.Last().System = system;
+                        if (!staff.Score.Systems.Contains(system)) staff.Score.Systems.Add(system);
+                    }
                     s.Elements.Add(suggestion);
                 }
             }
@@ -26,6 +32,12 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             {
                 var suggestion = CreateSuggestion(element, state);
                 staff.Elements.Add(suggestion);
+                if (suggestion.IsSystemBreak)
+                {
+                    var system = new StaffSystem();
+                    staff.Measures.Last().System = system;
+                    if (!staff.Score.Systems.Contains(system)) staff.Score.Systems.Add(system);
+                }
             }
         }
 

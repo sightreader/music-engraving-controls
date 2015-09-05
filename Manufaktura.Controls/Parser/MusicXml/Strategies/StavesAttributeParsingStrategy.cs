@@ -21,7 +21,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             var stavesCount = Convert.ToInt32(element.Value);
             for (var i = 1; i < stavesCount; i++)
             {
-                var newStaff = new Staff();
+                var newStaff = new Staff() { MeasureAddingRule = Staff.MeasureAddingRuleEnum.AddMeasuresManually };
                 newStaff.Part = part;
                 part.Staves.Add(newStaff);
                 staff.Score.Staves.Add(newStaff);

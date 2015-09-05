@@ -37,24 +37,29 @@ namespace Manufaktura.Controls.Formatting
         {
             foreach (var staff in score.Staves)
             {
+                StaffSystem lastSystem = null;
                 foreach (var measure in staff.Measures)
                 {
-                    var marginLeft = staff.Measures.IndexOf(measure) == 0 ? 85 : 14;
+                    var marginLeft = lastSystem == null || score.Systems.IndexOf(measure.System) != score.Systems.IndexOf(lastSystem) ? 85 : 14;    //First symbol in system should have bigger margin
                     double x = marginLeft;
                     foreach (var element in measure.Elements)
                     {
                         if (!measure.Width.HasValue) throw new Exception("Measure does not have width. Run SetMeasureWidths first.");
-                        var chordElement = element as ICanBeElementOfChord;
-                        if (chordElement != null && chordElement.IsChordElement) continue;
+
                         var durationElement = element as IHasDuration;
                         if (durationElement == null) continue;
                         var defaultXElement = element as IHasCustomXPosition;
                         if (defaultXElement == null) continue;
+
                         defaultXElement.DefaultXPosition = x;
+                        var chordElement = element as ICanBeElementOfChord;
+                        if (chordElement != null && chordElement.IsChordElement) continue;
+
                         var time = staff.Peek<TimeSignature>(element, Model.PeekStrategies.PeekType.PreviousElement);
-                        var duration = durationElement.BaseDuration.ToDouble() * time.WholeNoteCapacity;    //TODO: Dots!
+                        var duration = durationElement.BaseDuration.AddDots(durationElement.NumberOfDots).ToDouble() * time.WholeNoteCapacity;    //TODO: Dots!
                         x += (measure.Width.Value - marginLeft) * duration;
                     }
+                    lastSystem = measure.System;
                 }
             }
         }
@@ -74,7 +79,7 @@ namespace Manufaktura.Controls.Formatting
                             staffMeasure = staff.Measures[index];
                         else
                         {
-                            staffMeasure = new Measure(staff, null);
+                            staffMeasure = new Measure(staff, measure.System);
                             staff.Measures.Add(staffMeasure);
                         }
                         staffMeasure.Width = averageMeasureWidth;

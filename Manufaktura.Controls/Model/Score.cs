@@ -56,6 +56,8 @@ namespace Manufaktura.Controls.Model
 
         public List<Part> Parts { get; private set; }
 
+        public List<StaffSystem> Systems { get; private set; }
+
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
         /// </summary>
@@ -105,6 +107,7 @@ namespace Manufaktura.Controls.Model
         {
             Staves = new StaffCollection(this);
             Parts = new List<Part>();
+            Systems = new List<StaffSystem>();
             DefaultPageSettings = new Page();
         }
 

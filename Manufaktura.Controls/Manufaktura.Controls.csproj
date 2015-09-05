@@ -133,7 +133,7 @@
     <Compile Include="Rendering\Implementations\HtmlScoreRendererSettings.cs" />
     <Compile Include="Rendering\Implementations\HtmlSvgScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\IScore2HtmlBuilder.cs" />
-    <Compile Include="Rendering\Implementations\PerformanceMeasuringScoreRenderer.cs" />
+    <Compile Include="Rendering\PerformanceMeasuringScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlCanvasBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlSvgBuilder.cs" />
