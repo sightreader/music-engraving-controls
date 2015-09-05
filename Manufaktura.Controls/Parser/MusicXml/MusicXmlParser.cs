@@ -64,16 +64,23 @@ namespace Manufaktura.Controls.Parser
                     if (!measureNode.HasElements) continue;
 
                     //Parse measure nodes:
-                    foreach (XElement elementNode in measureNode.Elements())
+                    foreach (XElement elementNode in measureNode.Elements().Where(e => e.Name == "attributes"))
+                    {
+                        MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(elementNode);
+                        if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, elementNode);
+                    }
+                    foreach (var partStaff in part.Staves.Skip(1))
+                    {
+                        partStaff.Measures.Add(new Measure(partStaff, measure.System));
+                    }
+
+                    //Parse measure nodes:
+                    foreach (XElement elementNode in measureNode.Elements().Where(e => e.Name != "attributes"))
                     {
                         MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(elementNode);
                         if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, elementNode);
                     }
 
-                    foreach (var partStaff in part.Staves.Skip(1))
-                    {
-                        partStaff.Measures.Add(new Measure(partStaff, measure.System));
-                    }
 
                     if (!state.BarlineAlreadyAdded)
                     {

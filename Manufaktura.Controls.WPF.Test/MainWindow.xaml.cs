@@ -73,8 +73,8 @@ namespace Manufaktura.Controls.WPF.Test
             {
                 string xml = File.ReadAllText(dialog.FileName);
                 noteViewer1.XmlSource = xml;
-                MusicXmlParser parser = new MusicXmlParser();
-                noteViewer2.ScoreSource = parser.Parse(XDocument.Parse(xml));
+                //MusicXmlParser parser = new MusicXmlParser();
+                //noteViewer2.ScoreSource = parser.Parse(XDocument.Parse(xml));
             }
         }
     }

@@ -42,8 +42,6 @@ namespace Manufaktura.Controls.Model
         protected MusicalSymbolType type;
         private bool isVisible;
 
-        #region Properties
-
         /// <summary>
         /// Returns a new instance of null musical symbol
         /// </summary>
@@ -55,6 +53,8 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        public Guid Id { get; private set; }
+
         /// <summary>
         /// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
         /// </summary>
@@ -64,17 +64,12 @@ namespace Manufaktura.Controls.Model
 
         public MusicalSymbolType Type { get { return type; } }
 
-        #endregion Properties
-
-        #region Constructor
-
         public MusicalSymbol()
         {
             type = MusicalSymbolType.Unknown;
             isVisible = true;
+            Id = Guid.NewGuid();
         }
-
-        #endregion Constructor
 
         #region Public static functions
 
