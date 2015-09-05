@@ -48,6 +48,9 @@
   <ItemGroup>
     <Compile Include="Audio\ScorePlayer.cs" />
     <Compile Include="Audio\ThreadScorePlayer.cs" />
+    <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Formatting\DefaultScoreFormatter.cs" />
+    <Compile Include="Formatting\IScoreFormatter.cs" />
     <Compile Include="IoC\ExpressionActivator.cs" />
     <Compile Include="IoC\ManufakturaResolver.cs" />
     <Compile Include="Linq\ScoreExtensions.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\NullMusicalSymbol.cs" />
     <Compile Include="Model\Ornament.cs" />
+    <Compile Include="Model\Page.cs" />
     <Compile Include="Model\Part.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfTupletPeekStrategy.cs" />
@@ -84,6 +88,7 @@
     <Compile Include="Model\LineDictionary.cs" />
     <Compile Include="Model\Rules\StaffRule.cs" />
     <Compile Include="Model\Rules\NoteStemRule.cs" />
+    <Compile Include="Model\ScoreEncoding.cs" />
     <Compile Include="Model\ScoreInfo.cs" />
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\StaffCollection.cs" />
@@ -102,6 +107,7 @@
     <Compile Include="Parser\MusicXml\Strategies\ClefWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\DirectionParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\DirectionTypeParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\EncodingParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\KeyParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MeasureStyleParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
@@ -111,6 +117,7 @@
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs" />
     <Compile Include="Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\PageLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\StavesAttributeParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />

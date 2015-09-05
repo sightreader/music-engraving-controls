@@ -1,12 +1,9 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Music.Model;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser
@@ -20,6 +17,16 @@ namespace Manufaktura.Controls.Parser
         {
             Score score = new Score();
             MusicXmlParserState state = new MusicXmlParserState();
+
+            foreach (XElement defaultSettingsNode in xmlDocument.Descendants().Where(d => d.Name == "defaults" || d.Name == "identification"))
+            {
+                foreach (XElement settingNode in defaultSettingsNode.Elements())
+                {
+                    var dummyStaff = new Staff { Score = score };   //Nasty workaround
+                    MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(settingNode);
+                    if (parsingStrategy != null) parsingStrategy.ParseElement(state, dummyStaff, settingNode);
+                }
+            }
 
             foreach (XElement staffNode in xmlDocument.Descendants(XName.Get("part")))
             {
@@ -86,6 +93,10 @@ namespace Manufaktura.Controls.Parser
                     state.FirstLoop = false;
                 }
             }
+
+            //Sibelius hack:
+            if (score.Encoding.Software.Any(s => s.Contains("Sibelius"))) new DefaultScoreFormatter().Format(score);
+
             return score;
         }
 

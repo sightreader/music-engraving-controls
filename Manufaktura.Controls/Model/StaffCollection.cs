@@ -76,7 +76,7 @@ namespace Manufaktura.Controls.Model
             innerList.CopyTo(array, arrayIndex);
         }
 
-        public IEnumerator<MusicalSymbol> GetEnumerator()
+        public IEnumerator<Staff> GetEnumerator()
         {
             return innerList.GetEnumerator();
         }
