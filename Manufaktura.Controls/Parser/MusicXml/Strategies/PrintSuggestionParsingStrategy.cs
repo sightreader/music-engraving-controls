@@ -41,7 +41,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             if (node != null)
             {
                 suggestion.SystemDistance = UsefulMath.TryParse(node.Value) ?? 0;
-                state.LastSystemDistance = suggestion.SystemDistance;
+                state.LastSystemDistance = suggestion.SystemDistance.HasValue ? suggestion.SystemDistance.Value : 0;
             }
             if (suggestion.SystemDistance == 0) suggestion.SystemDistance = state.LastSystemDistance;
 

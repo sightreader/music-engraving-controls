@@ -88,7 +88,11 @@ namespace Manufaktura.Controls.Parser
             }
 
             //Sibelius hack:
-            if (score.Encoding.Software.Any(s => s.Contains("Sibelius"))) new DefaultScoreFormatter().Format(score);
+            if (score.Encoding.Software.Any(s => s.Contains("Sibelius")))
+            {
+                score.DefaultPageSettings.DefaultSystemDistance *= 1.39;
+                new DefaultScoreFormatter().Format(score);
+            }
 
             foreach (var staff in score.Staves) staff.MeasureAddingRule = Staff.MeasureAddingRuleEnum.AddMeasureOnInsertingBarline;
             return score;

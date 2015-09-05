@@ -124,6 +124,7 @@
     <Compile Include="Parser\MusicXml\Strategies\PageLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\StavesAttributeParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\SystemLayoutParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />

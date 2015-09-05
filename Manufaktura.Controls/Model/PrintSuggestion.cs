@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Distance between systems
         /// </summary>
-        public double SystemDistance { get; set; }
+        public double? SystemDistance { get; set; }
 
     }
 }
