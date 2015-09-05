@@ -1,10 +1,5 @@
-﻿using Manufaktura.Controls.Linq;
-using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Primitives;
+﻿using Manufaktura.Controls.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -15,9 +10,6 @@ namespace Manufaktura.Controls.Rendering
     public abstract class ScoreRenderer<TCanvas> : ScoreRendererBase
     {
         public TCanvas Canvas { get; internal set; }
-        protected Score CurrentScore { get; set; }
-
-        public List<Exception> Exceptions { get; protected set; }
 
         /// <summary>
         /// Initializes a new ScoreRendere with specific canvas object.
@@ -26,14 +18,13 @@ namespace Manufaktura.Controls.Rendering
         public ScoreRenderer(TCanvas canvas)
         {
             Canvas = canvas;
-            Exceptions = new List<Exception>();
         }
 
         /// <summary>
         /// Renders score on canvas.
         /// </summary>
         /// <param name="score">Score</param>
-        public void Render(Score score)
+        public override sealed void Render(Score score)
         {
             CurrentScore = score;
             scoreService.BeginNewScore(score);
@@ -56,47 +47,6 @@ namespace Manufaktura.Controls.Rendering
             }
 
             foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnScore(score, this);
-        }
-
-        private void DetermineClef(Staff staff)
-        {
-            var clef = staff.Elements.FirstOrDefault(MusicalSymbolType.Clef) as Clef;
-            if (clef == null) return;
-
-            scoreService.CurrentClef = clef;
-            var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
-            clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - Settings.TextBlockHeight);
-            DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
-            scoreService.CursorPositionX += 20;
-        }
-
-        private void RenderStaff(Staff staff)
-        {
-            BreakToNextStaff();
-            if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
-            {
-                double newPageWidth = staff.Measures.Where(m => m.Width.HasValue).Sum(m => m.Width.Value * Settings.CustomElementPositionRatio);
-                if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
-            }
-
-            DetermineClef(staff);
-            alterationService.Reset();
-
-            foreach (MusicalSymbol symbol in staff.Elements)
-            {
-                try
-                {
-                    var renderStrategy = GetProperRenderStrategy(symbol);
-                    if (renderStrategy != null) renderStrategy.Render(symbol, this);
-                }
-                catch (Exception ex)
-                {
-                    Exceptions.Add(ex);
-                }
-            }
-
-            scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
-            foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnStaff(staff, this);
         }
     }
 }

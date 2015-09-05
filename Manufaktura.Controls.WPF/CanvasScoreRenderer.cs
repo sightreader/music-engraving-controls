@@ -88,6 +88,7 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
         {
+            if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
             pf.StartPoint = new Point(rect.X, rect.Y);

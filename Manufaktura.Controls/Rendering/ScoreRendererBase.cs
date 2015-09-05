@@ -1,9 +1,11 @@
 ﻿using Manufaktura.Controls.IoC;
+using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Strategies;
 using Manufaktura.Controls.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,13 +19,17 @@ namespace Manufaktura.Controls.Rendering
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
 
-        public IFinishingTouch[] FinishingTouches { get; private set; }
+        public virtual Score CurrentScore { get; internal set; }
 
-        public ScoreInfo ScoreInformation { get { return new ScoreInfo(scoreService); } }
+        public virtual List<Exception> Exceptions { get; protected set; }
 
-        public ScoreRendererSettings Settings { get; internal set; }
+        public virtual IFinishingTouch[] FinishingTouches { get; private set; }
 
-        public MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
+        public virtual ScoreInfo ScoreInformation { get { return new ScoreInfo(scoreService); } }
+
+        public virtual ScoreRendererSettings Settings { get; internal set; }
+
+        internal virtual MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 
         protected ScoreRendererBase()
         {
@@ -31,6 +37,7 @@ namespace Manufaktura.Controls.Rendering
             resolver.AddServices(measurementService, alterationService, scoreService, beamingService);
             Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
             FinishingTouches = resolver.ResolveAll<IFinishingTouch>().ToArray();
+            Exceptions = new List<Exception>();
         }
 
         public void DrawArc(Rectangle rect, double startAngle, double sweepAngle, MusicalSymbol owner)
@@ -188,6 +195,8 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner">Owning MusicalSymbol</param>
         public abstract void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
 
+        public abstract void Render(Score score);
+
         internal void BreakSystem(double distance = 0)
         {
             scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
@@ -243,9 +252,50 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CursorPositionX = 0;
         }
 
+        protected void DetermineClef(Staff staff)
+        {
+            var clef = staff.Elements.FirstOrDefault(MusicalSymbolType.Clef) as Clef;
+            if (clef == null) return;
+
+            scoreService.CurrentClef = clef;
+            var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
+            clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - Settings.TextBlockHeight);
+            DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
+            scoreService.CursorPositionX += 20;
+        }
+
         protected MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
         {
             return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
+        }
+
+        protected void RenderStaff(Staff staff)
+        {
+            BreakToNextStaff();
+            if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
+            {
+                double newPageWidth = staff.Measures.Where(m => m.Width.HasValue).Sum(m => m.Width.Value * Settings.CustomElementPositionRatio);
+                if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
+            }
+
+            DetermineClef(staff);
+            alterationService.Reset();
+
+            foreach (MusicalSymbol symbol in staff.Elements)
+            {
+                try
+                {
+                    var renderStrategy = GetProperRenderStrategy(symbol);
+                    if (renderStrategy != null) renderStrategy.Render(symbol, this);
+                }
+                catch (Exception ex)
+                {
+                    Exceptions.Add(ex);
+                }
+            }
+
+            scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
+            foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnStaff(staff, this);
         }
     }
 }
