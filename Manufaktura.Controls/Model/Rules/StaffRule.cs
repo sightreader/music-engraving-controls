@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Manufaktura.Model.MVVM;
+using System;
 
 namespace Manufaktura.Controls.Model.Rules
 {
@@ -22,31 +20,31 @@ namespace Manufaktura.Controls.Model.Rules
         /// <returns></returns>
         public abstract bool Condition(Staff staff, TSymbol newElement);
 
-        internal override bool Condition(Staff staff, MusicalSymbol newElement)
-        {
-            var typedSymbol = newElement as TSymbol;
-            if (typedSymbol == null) return false;
-            return Condition(staff, typedSymbol);
-        }
-
-        internal override void Apply(Staff staff, MusicalSymbol newElement)
+        internal override void Apply(Staff staff, ViewModel newElement)
         {
             var typedSymbol = newElement as TSymbol;
             if (typedSymbol == null) throw new InvalidCastException(string.Format("Element must be of type {0}.", typeof(TSymbol).Name));
             Apply(staff, typedSymbol);
+        }
+
+        internal override bool Condition(Staff staff, ViewModel newElement)
+        {
+            var typedSymbol = newElement as TSymbol;
+            if (typedSymbol == null) return false;
+            return Condition(staff, typedSymbol);
         }
     }
 
     public abstract class StaffRule
     {
         /// <summary>
-        /// Applies rule to staff and newElement.
-        /// </summary>
-        internal abstract bool Condition(Staff staff, MusicalSymbol newElement);
-
-        /// <summary>
         /// Condition that must be satisfied for this rule to be applied.
         /// </summary>
-        internal abstract void Apply(Staff staff, MusicalSymbol newElement);
+        internal abstract void Apply(Staff staff, ViewModel newElement);
+
+        /// <summary>
+        /// Applies rule to staff and newElement.
+        /// </summary>
+        internal abstract bool Condition(Staff staff, ViewModel newElement);
     }
 }

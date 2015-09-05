@@ -75,7 +75,7 @@ namespace Manufaktura.Controls.Rendering
             BreakToNextStaff();
             if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
             {
-                double newPageWidth = staff.MeasureWidths.Where(w => w.HasValue).Sum(w => w.Value * Settings.CustomElementPositionRatio);
+                double newPageWidth = staff.Measures.Where(m => m.Width.HasValue).Sum(m => m.Width.Value * Settings.CustomElementPositionRatio);
                 if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
             }
 

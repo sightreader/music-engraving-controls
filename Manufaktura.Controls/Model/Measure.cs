@@ -1,4 +1,6 @@
-﻿namespace Manufaktura.Controls.Model
+﻿using System.Collections.Generic;
+
+namespace Manufaktura.Controls.Model
 {
     /// <summary>
     /// Measure information.
@@ -14,6 +16,8 @@
         /// Location of right barline in measure
         /// </summary>
         public double BarlineLocationX { get; set; }
+
+        public List<MusicalSymbol> Elements { get; private set; }
 
         /// <summary>
         /// Position of first note in measure
@@ -33,7 +37,7 @@
         /// <summary>
         /// Width of measure.
         /// </summary>
-        public double Width { get; set; }
+        public double? Width { get; set; }
 
         /// <summary>
         /// Createa a new instance of Measure in specific staff in specific system.
@@ -44,6 +48,7 @@
         {
             Staff = staff;
             System = system;
+            Elements = new List<MusicalSymbol>();
         }
     }
 }

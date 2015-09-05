@@ -15,7 +15,9 @@ namespace Manufaktura.Controls.Model
 
         public double Height { get; set; }
 
-        public List<double?> MeasureWidths { get; private set; }
+        public MeasureAddingRuleEnum MeasureAddingRule { get; set; }
+
+        public List<Measure> Measures { get; private set; }
 
         public Part Part { get; internal set; }
 
@@ -32,8 +34,15 @@ namespace Manufaktura.Controls.Model
         public Staff()
         {
             Elements = new MusicalSymbolCollection(this);
-            MeasureWidths = new List<double?>();
-            Rules = new List<StaffRule> { new NoteStemRule() };
+            Rules = new List<StaffRule> { new NoteStemRule(), new ManualAddMeasuresRule(), new AutomaticAddMeasuresRule() };
+            Measures = new List<Measure>();
+            MeasureAddingRule = MeasureAddingRuleEnum.AddMeasureOnInsertingBarline;
+        }
+
+        public enum MeasureAddingRuleEnum
+        {
+            AddMeasureOnInsertingBarline,
+            AddMeasuresManually
         }
 
         public TSymbol Peek<TSymbol>(MusicalSymbol relativeTo, PeekType peekType) where TSymbol : MusicalSymbol

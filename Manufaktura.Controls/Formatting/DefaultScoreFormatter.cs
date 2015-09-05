@@ -37,13 +37,17 @@ namespace Manufaktura.Controls.Formatting
             int index = 0;
             foreach (var system in GetSystems(score))
             {
-                var measureWidth = score.DefaultPageSettings.Width / system.Count();
+                var averageMeasureWidth = score.DefaultPageSettings.Width / system.Count();
                 foreach (var measure in system)
                 {
-                    if (score.FirstStaff.MeasureWidths.Count > index)
-                        score.FirstStaff.MeasureWidths[index] = measureWidth;
-                    else
-                        score.FirstStaff.MeasureWidths.Add(measureWidth);
+                    foreach (var staff in score.Staves)
+                    {
+                        measure.Width = averageMeasureWidth;
+                        if (staff.Measures.Count > index)
+                            staff.Measures[index] = measure;
+                        else
+                            staff.Measures.Add(measure);
+                    }
                     index++;
                 }
             }

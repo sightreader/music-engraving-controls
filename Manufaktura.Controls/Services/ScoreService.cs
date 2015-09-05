@@ -124,9 +124,9 @@ namespace Manufaktura.Controls.Services
             var measure = new Measure(CurrentStaff, CurrentSystem);
             allMeasures.Add(measure);
             CurrentMeasure = measure;
-            if (CurrentMeasureNo <= CurrentStaff.MeasureWidths.Count && CurrentStaff.MeasureWidths[CurrentMeasureNo - 1].HasValue)
+            if (CurrentMeasureNo <= CurrentStaff.Measures.Count && CurrentStaff.Measures[CurrentMeasureNo - 1].Width.HasValue)
             {
-                measure.Width = CurrentStaff.MeasureWidths[CurrentMeasureNo - 1].Value;
+                measure.Width = CurrentStaff.Measures[CurrentMeasureNo - 1].Width.Value;
             }
         }
 

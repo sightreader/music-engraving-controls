@@ -21,8 +21,8 @@ namespace Manufaktura.Controls.Rendering
         public double? GetCursorPositionForCurrentBarline(ScoreRendererBase renderer)
         {
             Staff staff = scoreService.CurrentStaff;
-            if (staff.MeasureWidths.Count < scoreService.CurrentMeasureNo) return null;
-            double? width = staff.MeasureWidths[scoreService.CurrentMeasureNo - 1];
+            if (staff.Measures.Count < scoreService.CurrentMeasureNo) return null;
+            double? width = staff.Measures[scoreService.CurrentMeasureNo - 1].Width;
             if (!width.HasValue) return null;
             return measurementService.LastMeasurePositionX + width * renderer.Settings.CustomElementPositionRatio;
         }

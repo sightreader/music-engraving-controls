@@ -86,6 +86,8 @@
     <Compile Include="Model\PeekStrategies\PeekStrategy.cs" />
     <Compile Include="Model\PrintSuggestion.cs" />
     <Compile Include="Model\LineDictionary.cs" />
+    <Compile Include="Model\Rules\AutomaticAddMeasuresRule.cs" />
+    <Compile Include="Model\Rules\ManualAddMeasuresRule.cs" />
     <Compile Include="Model\Rules\StaffRule.cs" />
     <Compile Include="Model\Rules\NoteStemRule.cs" />
     <Compile Include="Model\ScoreEncoding.cs" />

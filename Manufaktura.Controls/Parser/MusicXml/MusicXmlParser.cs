@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Formatting;
+﻿using Manufaktura.Controls.Extensions;
+using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Music.Model;
@@ -31,12 +32,14 @@ namespace Manufaktura.Controls.Parser
             foreach (XElement staffNode in xmlDocument.Descendants(XName.Get("part")))
             {
                 state.FirstLoop = true;
-                Staff staff = new Staff();
+                Staff staff = new Staff() { MeasureAddingRule = Staff.MeasureAddingRuleEnum.AddMeasuresManually };
                 score.Staves.Add(staff);
                 var part = new Part(staff);
                 score.Parts.Add(part);
                 foreach (XElement measureNode in staffNode.Descendants(XName.Get("measure")))
                 {
+                    var measure = new Measure(staff, null);
+                    staff.Measures.Add(measure);
                     state.BarlineAlreadyAdded = false;
                     if (measureNode.Parent.Name == "part")  //Don't take the other voices than the upper into account / Nie uwzględniaj innych głosów niż górny
                     {
@@ -53,14 +56,11 @@ namespace Manufaktura.Controls.Parser
                     //Skip measure if needed:
                     if (state.SkipMeasures > 0) { state.SkipMeasures--; continue; }
 
+                    //Read width measure:
+                    measure.Width = measureNode.ParseAttribute<double>("width");
+
                     //Skip if measure node is empty:
                     if (!measureNode.HasElements) continue;
-
-                    //Read widths of all measures:
-                    double? measureWidth = null;
-                    var widthAttribute = measureNode.Attributes().FirstOrDefault(a => a.Name == "width");
-                    if (widthAttribute != null) measureWidth = UsefulMath.TryParse(widthAttribute.Value);
-                    staff.MeasureWidths.Add(measureWidth);
 
                     //Parse measure nodes:
                     foreach (XElement elementNode in measureNode.Elements())
@@ -68,13 +68,6 @@ namespace Manufaktura.Controls.Parser
                         MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(elementNode);
                         if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, elementNode);
                     }
-                    //TODO: Automatycznie określać szerokość taktów na podstawie default-x elementów?
-                    //var width = staff.MeasureWidths.Last();
-                    //if (!width.HasValue)
-                    //{
-                    //    staff.MeasureWidths.Remove(width);
-                    //    staff.MeasureWidths.Add(300);
-                    //}
 
                     if (!state.BarlineAlreadyAdded)
                     {
@@ -97,6 +90,7 @@ namespace Manufaktura.Controls.Parser
             //Sibelius hack:
             if (score.Encoding.Software.Any(s => s.Contains("Sibelius"))) new DefaultScoreFormatter().Format(score);
 
+            foreach (var staff in score.Staves) staff.MeasureAddingRule = Staff.MeasureAddingRuleEnum.AddMeasureOnInsertingBarline;
             return score;
         }
 
