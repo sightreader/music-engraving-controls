@@ -53,9 +53,9 @@ namespace Manufaktura.Controls.Rendering
                 tuplet.TupletPlacement = element.TupletPlacement.HasValue ? element.TupletPlacement.Value :
                     (element.StemDirection == VerticalDirection.Down ? VerticalPlacement.Below : VerticalPlacement.Above);
             }
-            if (measurementService.TupletState != null && !element.IsChordElement) measurementService.TupletState.NumberOfNotesUnderTuplet++;
+            if (measurementService.TupletState != null && !element.IsUpperMemberOfChord) measurementService.TupletState.NumberOfNotesUnderTuplet++;
 
-            if (element.IsChordElement) scoreService.CursorPositionX = measurementService.LastNotePositionX;
+            if (element.IsUpperMemberOfChord) scoreService.CursorPositionX = measurementService.LastNotePositionX;
 
             double noteTextBlockPositionY = scoreService.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(scoreService.CurrentClef.Pitch,
                 element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
@@ -210,7 +210,7 @@ namespace Manufaktura.Controls.Rendering
                         measurementService.TupletState = null;
                     }
                 }
-                else if ((beam == NoteBeamType.Single) && (!element.IsChordElement))
+                else if ((beam == NoteBeamType.Single) && (!element.IsUpperMemberOfChord))
                 {   //Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
                     //Draw a hook only of the lowest element in a chord
                     double xPos = beamingService.CurrentStemPositionX - 4;
@@ -409,7 +409,7 @@ namespace Manufaktura.Controls.Rendering
                 //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                 //Stems of chord elements were displayed wrong when I used default-y
                 //so I left default stem drawing routine for chords.
-                if (element.IsChordElement)
+                if (element.IsUpperMemberOfChord)
                     beamingService.CurrentStemEndPositionY = notePositionY + 18;
                 else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
                     beamingService.CurrentStemEndPositionY = notePositionY + 18;
@@ -428,7 +428,7 @@ namespace Manufaktura.Controls.Rendering
                 //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                 //Stems of chord elements were displayed wrong when I used default-y
                 //so I left default stem drawing routine for chords.
-                if (element.IsChordElement)
+                if (element.IsUpperMemberOfChord)
                     beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
                 else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
                     beamingService.CurrentStemEndPositionY = notePositionY - 25;

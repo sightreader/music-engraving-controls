@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Strategy for rendering a TimeSignature.
+    /// </summary>
     public class TimeSignatureRenderStrategy : MusicalSymbolRenderStrategy<TimeSignature>
     {
         private readonly IScoreService scoreService;

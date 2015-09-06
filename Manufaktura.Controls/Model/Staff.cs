@@ -12,14 +12,26 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class Staff : MusicalSymbol
     {
+        /// <summary>
+        /// Elements in Staff
+        /// </summary>
         public MusicalSymbolCollection Elements { get; private set; }
 
+        /// <summary>
+        /// Height of Staff
+        /// </summary>
         public double Height { get; set; }
 
         public MeasureAddingRuleEnum MeasureAddingRule { get; set; }
 
+        /// <summary>
+        /// Measures in Staff
+        /// </summary>
         public List<Measure> Measures { get; private set; }
 
+        /// <summary>
+        /// Parent Part
+        /// </summary>
         public Part Part { get; internal set; }
 
         /// <summary>
@@ -27,6 +39,9 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public List<StaffRule> Rules { get; private set; }
 
+        /// <summary>
+        /// Parent Score
+        /// </summary>
         public Score Score { get; internal set; }
 
         public override MusicalSymbolType Type
@@ -48,12 +63,28 @@ namespace Manufaktura.Controls.Model
             MeasureAddingRule = MeasureAddingRuleEnum.AddMeasureOnInsertingBarline;
         }
 
+        /// <summary>
+        /// Way of adding new Measures
+        /// </summary>
         public enum MeasureAddingRuleEnum
         {
+            /// <summary>
+            /// Measure is added automatically when new Barline is addes to Staff's Elements collection.
+            /// </summary>
             AddMeasureOnInsertingBarline,
+            /// <summary>
+            /// Measures can be added only manually. This setting is used by MusicXml parsers.
+            /// </summary>
             AddMeasuresManually
         }
 
+        /// <summary>
+        /// Retrieves a symbol that meats specific requirements and is relative to specific symbol. 
+        /// </summary>
+        /// <typeparam name="TSymbol">Type of symbol</typeparam>
+        /// <param name="relativeTo"></param>
+        /// <param name="peekType"></param>
+        /// <returns></returns>
         public TSymbol Peek<TSymbol>(MusicalSymbol relativeTo, PeekType peekType) where TSymbol : MusicalSymbol
         {
             PeekStrategy<TSymbol> strategy;

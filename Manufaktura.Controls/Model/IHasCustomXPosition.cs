@@ -5,6 +5,10 @@
     /// </summary>
     public interface IHasCustomXPosition
     {
+
+        /// <summary>
+        /// Default X position of element
+        /// </summary>
         double? DefaultXPosition { get; set; }
     }
 }

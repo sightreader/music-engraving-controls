@@ -2,6 +2,9 @@
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Represents a rest.
+    /// </summary>
     public class Rest : NoteOrRest
     {
         private bool fullMeasure;
@@ -13,6 +16,9 @@ namespace Manufaktura.Controls.Model
             set { fullMeasure = value; OnPropertyChanged(() => FullMeasure); }
         }
 
+        /// <summary>
+        /// Indicates if this Rest is multimeasure.
+        /// </summary>
         public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; OnPropertyChanged(() => MultiMeasure); } }
 
         public override MusicalSymbolType Type

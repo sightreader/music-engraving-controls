@@ -9,7 +9,7 @@ namespace Manufaktura.Controls.Model
     /// <summary>
     /// Represents a note.
     /// </summary>
-    public class Note : NoteOrRest, IHasPitch, ICanBeElementOfChord
+    public class Note : NoteOrRest, IHasPitch, ICanBeUpperMemberOfChord
     {
         private ArticulationType articulation = ArticulationType.None;
         private VerticalPlacement articulationPlacement = VerticalPlacement.Below;
@@ -55,7 +55,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Indicates that the note belongs to a chord.
         /// </summary>
-        public bool IsChordElement { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsChordElement); } }
+        public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsUpperMemberOfChord); } }
 
         /// <summary>
         /// Indicates that the note is cue note.

@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Strategies
 {
+    /// <summary>
+    /// Strategy for rendering a print suggestion.
+    /// </summary>
     public class PrintSuggestionRenderStrategy : MusicalSymbolRenderStrategy<PrintSuggestion>
     {
         private readonly IScoreService scoreService;

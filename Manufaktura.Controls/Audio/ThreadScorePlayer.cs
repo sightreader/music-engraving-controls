@@ -171,7 +171,7 @@ namespace Manufaktura.Controls.Audio
                 }
 
                 Note nextNote = staff.Peek<Note>(note, PeekType.NextElement);   //If next note is chord element, play all notes in the chord simultaneously
-                if (nextNote != null && nextNote.IsChordElement)
+                if (nextNote != null && nextNote.IsUpperMemberOfChord)
                 {
                     PlayElement(CurrentElement, staff);
                     return true;
@@ -193,7 +193,7 @@ namespace Manufaktura.Controls.Audio
                     {
                         TupletState = new Tuplet();
                         TupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
-                            staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsChordElement)).Count() + 1;
+                            staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsUpperMemberOfChord)).Count() + 1;
                     }
                 }
             }

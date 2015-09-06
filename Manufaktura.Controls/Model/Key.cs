@@ -43,6 +43,10 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of key
+        /// </summary>
+        /// <param name="numberOfFifths"></param>
         public Key(int numberOfFifths)
         {
             fifths = numberOfFifths;
@@ -54,21 +58,43 @@ namespace Manufaktura.Controls.Model
                 musicalCharacter = " ";
         }
 
+        /// <summary>
+        /// Creates a new instance of Key from given midi pitch.
+        /// </summary>
+        /// <param name="midiPitch">Midi pitch</param>
+        /// <param name="flags">Flags</param>
+        /// <returns>Key</returns>
         public static Key FromMidiPitch(int midiPitch, MajorAndMinorScaleFlags flags)
         {
             return new Key(CircleOfFifths.CalculateFifths(midiPitch, flags));
         }
 
+        /// <summary>
+        /// Creates a new instance of Key from given Scale
+        /// </summary>
+        /// <param name="scale"></param>
+        /// <returns></returns>
         public static Key FromScale(MajorOrMinorScale scale)
         {
             return new Key(scale.Fifths);
         }
 
+        /// <summary>
+        /// Creates a new instance of Key from given step.
+        /// </summary>
+        /// <param name="step"></param>
+        /// <param name="flags"></param>
+        /// <returns></returns>
         public static Key FromTonic(Step step, MajorAndMinorScaleFlags flags)
         {
             return new Key(CircleOfFifths.CalculateFifths(step, flags));
         }
 
+        /// <summary>
+        /// Returns the alteration of specific step.
+        /// </summary>
+        /// <param name="step"></param>
+        /// <returns></returns>
         public int StepToAlter(string step)
         {
             return CircleOfFifths.GetAlterOfStepFromNumberOfFifths(step, Fifths);

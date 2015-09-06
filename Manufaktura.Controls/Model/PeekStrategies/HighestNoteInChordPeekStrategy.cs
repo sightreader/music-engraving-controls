@@ -20,7 +20,7 @@ namespace Manufaktura.Controls.Model.PeekStrategies
             {
                 Note currentNote = Staff.Elements[i] as Note;
                 if (currentNote == null) continue;
-                if (currentNote.IsChordElement) chordElements.Add(currentNote);
+                if (currentNote.IsUpperMemberOfChord) chordElements.Add(currentNote);
                 else break;
             }
             return chordElements.First(n => n.MidiPitch == chordElements.Max(n1 => n1.MidiPitch)) as TSymbol;

@@ -48,6 +48,9 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        /// <summary>
+        /// Initializes a new insance of Lyrics.
+        /// </summary>
         public Lyrics()
         {
             Syllables = new List<Syllable>();

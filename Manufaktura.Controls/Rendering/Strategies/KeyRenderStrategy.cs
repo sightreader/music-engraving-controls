@@ -8,7 +8,10 @@ using System.Linq;
 using System.Text;
 
 namespace Manufaktura.Controls.Rendering
-{
+{   
+    /// <summary>
+    /// Strategy for rendering a Key.
+    /// </summary>
     public class KeyRenderStrategy : MusicalSymbolRenderStrategy<Key>
     {
         private readonly IScoreService scoreService;

@@ -17,26 +17,6 @@ namespace Manufaktura.Controls.Formatting
         private Dictionary<StaffSystem, IEnumerable<Measure>> GetSystems(Score score)
         {
             return score.FirstStaff.Measures.GroupBy(m => m.System).ToDictionary(g => g.Key, g => g.Select(m => m));
-            /*
-            var systems = new List<List<Measure>>();
-            var measures = new List<Measure>();
-            var currentSystem = new StaffSystem(score);
-            foreach (var element in score.FirstStaff.Elements)
-            {
-                if (element is Barline)
-                {
-                    measures.Add(new Measure(score.FirstStaff, currentSystem));
-                }
-                var suggestion = element as PrintSuggestion;
-                if (suggestion != null && (suggestion.IsSystemBreak || suggestion.IsPageBreak))
-                {
-                    systems.Add(measures);
-                    measures = new List<Measure>();
-                    currentSystem = new StaffSystem(score);
-                }
-            }
-            return systems;
-             * */
         }
 
         private void SetElementPositions(Score score)
@@ -47,23 +27,26 @@ namespace Manufaktura.Controls.Formatting
                 foreach (var measure in staff.Measures)
                 {
                     var marginLeft = lastSystem == null || score.Systems.IndexOf(measure.System) != score.Systems.IndexOf(lastSystem) ? 85 : 14;    //First symbol in system should have bigger margin
-                    double x = marginLeft;
-                    foreach (var element in measure.Elements)
+                    foreach (var group in measure.Elements.GroupBy(e => e is NoteOrRest ? ((NoteOrRest)e).Voice : 1))
                     {
-                        if (!measure.Width.HasValue) throw new Exception("Measure does not have width. Run SetMeasureWidths first.");
+                        double x = marginLeft;
+                        foreach (var element in group)
+                        {
+                            if (!measure.Width.HasValue) throw new Exception("Measure does not have width. Run SetMeasureWidths first.");
 
-                        var durationElement = element as IHasDuration;
-                        if (durationElement == null) continue;
-                        var defaultXElement = element as IHasCustomXPosition;
-                        if (defaultXElement == null) continue;
+                            var durationElement = element as IHasDuration;
+                            if (durationElement == null) continue;
+                            var defaultXElement = element as IHasCustomXPosition;
+                            if (defaultXElement == null) continue;
 
-                        defaultXElement.DefaultXPosition = x;
-                        var chordElement = element as ICanBeElementOfChord;
-                        if (chordElement != null && chordElement.IsChordElement) continue;
+                            defaultXElement.DefaultXPosition = x;
+                            var chordElement = element as ICanBeUpperMemberOfChord;
+                            if (chordElement != null && chordElement.IsUpperMemberOfChord) continue;
 
-                        var time = staff.Peek<TimeSignature>(element, Model.PeekStrategies.PeekType.PreviousElement);
-                        var duration = durationElement.BaseDuration.AddDots(durationElement.NumberOfDots).ToDouble() * time.WholeNoteCapacity;    //TODO: Dots!
-                        x += (measure.Width.Value - marginLeft) * duration;
+                            var time = staff.Peek<TimeSignature>(element, Model.PeekStrategies.PeekType.PreviousElement);
+                            var duration = durationElement.BaseDuration.AddDots(durationElement.NumberOfDots).ToDouble() * time.WholeNoteCapacity;    //TODO: Dots!
+                            x += (measure.Width.Value - marginLeft) * duration;
+                        }
                     }
                     lastSystem = measure.System;
                 }

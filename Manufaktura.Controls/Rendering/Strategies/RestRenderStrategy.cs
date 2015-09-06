@@ -9,6 +9,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Strategy for rendering a Rest.
+    /// </summary>
     public class RestRenderStrategy : MusicalSymbolRenderStrategy<Rest>
     {
         private readonly IMeasurementService measurementService;

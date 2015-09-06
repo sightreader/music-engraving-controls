@@ -5,6 +5,9 @@ using Manufaktura.Controls.Services;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Strategy for rendering a Barline.
+    /// </summary>
     public class BarlineRenderStrategy : MusicalSymbolRenderStrategy<Barline>
     {
         private readonly IAlterationService alterationService;

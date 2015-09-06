@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Postprocessing
 {
+    /// <summary>
+    /// Adds brackets for parts.
+    /// </summary>
     public class AddBracketsFinishingTouch : IFinishingTouch
     {
         public void PerformOnScore(Score score, ScoreRendererBase renderer)

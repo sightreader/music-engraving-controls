@@ -17,6 +17,9 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         int NumberOfDots { get; set; }
 
+        /// <summary>
+        /// Tuplet type
+        /// </summary>
         TupletType Tuplet { get; set; }
     }
 }

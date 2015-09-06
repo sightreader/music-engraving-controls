@@ -63,12 +63,17 @@ namespace Manufaktura.Controls.Model
 
         public virtual MusicalSymbolType Type { get { return MusicalSymbolType.Unknown; } }
 
-        public MusicalSymbol()
+        protected MusicalSymbol()
         {
             isVisible = true;
             Id = Guid.NewGuid();
         }
 
+        /// <summary>
+        /// Converts a VerticalDirection to VerticalPlacement.
+        /// </summary>
+        /// <param name="direction">VerticalDirection to convert to VerticalPlacement.</param>
+        /// <returns>VerticalPlacement converted from VerticalDirection.</returns>
         public static VerticalPlacement DirectionToPlacement(VerticalDirection direction)
         {
             return direction == VerticalDirection.Up ? VerticalPlacement.Above : VerticalPlacement.Below;

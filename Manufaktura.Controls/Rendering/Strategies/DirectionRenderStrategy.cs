@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Strategy for rendering a Direction.
+    /// </summary>
     public class DirectionRenderStrategy : MusicalSymbolRenderStrategy<Direction>
     {
         private readonly IScoreService scoreService;

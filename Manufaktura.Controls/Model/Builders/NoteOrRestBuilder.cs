@@ -118,7 +118,7 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.HasNatural = HasNatural;
                 nt.IsGraceNote = IsGraceNote;
                 nt.IsCueNote = IsCueNote;
-                nt.IsChordElement = IsChordElement;
+                nt.IsUpperMemberOfChord = IsChordElement;
                 nt.StemDefaultY = StemDefaultY;
                 nt.DefaultXPosition = DefaultX;
                 nt.HasCustomStemEndPosition = CustomStemEndPosition;

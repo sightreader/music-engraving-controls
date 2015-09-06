@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Strategy for rendering a Clef.
+    /// </summary>
     public class ClefRenderStrategy : MusicalSymbolRenderStrategy<Clef>
     {
         private readonly IScoreService scoreService;

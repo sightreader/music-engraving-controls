@@ -16,6 +16,9 @@ namespace Manufaktura.Controls.Model
         private RhythmicDuration duration;
         private IMusicFont musicFont = new PolihymniaFont();
 
+        /// <summary>
+        /// Duration without dots.
+        /// </summary>
         public RhythmicDuration BaseDuration
         {
             get
@@ -61,6 +64,9 @@ namespace Manufaktura.Controls.Model
 
         public VerticalPlacement? TupletPlacement { get; set; }
 
+        /// <summary>
+        /// Voice number.
+        /// </summary>
         public int Voice { get; set; }
 
         protected NoteOrRest()
@@ -68,6 +74,11 @@ namespace Manufaktura.Controls.Model
             Voice = 1;
         }
 
+        /// <summary>
+        /// Creates a Note or a Rest from RhythmicUnit.
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <returns></returns>
         public static NoteOrRest FromRhythmicUnit(RhythmicUnit unit)
         {
             return unit.IsRest ? (NoteOrRest)new Rest(unit.Duration) : new Note(unit.Duration);

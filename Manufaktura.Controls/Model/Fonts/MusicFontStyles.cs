@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model.Fonts
 {
+    /// <summary>
+    /// Music font styles.
+    /// </summary>
     public enum MusicFontStyles
     {
         MusicFont,
