@@ -34,6 +34,13 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 var system = new StaffSystem(staff.Score);
                 staff.Measures.Last().System = system;
                 staff.Score.Systems.Add(system);
+                if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+                {
+                    foreach (var s in staff.Part.Staves)
+                    {
+                        s.Measures.Last().System = system;
+                    }
+                }
             }
         }
 
