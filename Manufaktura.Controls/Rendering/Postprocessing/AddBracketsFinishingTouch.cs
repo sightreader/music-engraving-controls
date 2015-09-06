@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
         {
             foreach (var part in score.Parts)
             {
-                if (!part.Staves.Any()) continue;
+                if (part.Staves.Count < 2) continue;
                 foreach (var system in score.Systems)
                 {
                     DrawBracket(system, part, renderer);
