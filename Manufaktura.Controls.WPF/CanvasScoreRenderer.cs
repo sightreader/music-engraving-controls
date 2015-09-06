@@ -114,6 +114,29 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
         {
+            TextBlock textBlock = new TextBlock();
+            Typeface typeface = Fonts.Get(fontStyle);
+            textBlock.FontSize = 200;
+            textBlock.FontFamily = typeface.FontFamily;
+            textBlock.FontStretch = typeface.Stretch;
+            textBlock.FontStyle = typeface.Style;
+            textBlock.FontWeight = typeface.Weight;
+            textBlock.Text = text;
+            textBlock.Margin = new Thickness(0, -25, 0, 0);
+            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+
+            var viewBox = new Viewbox();
+            viewBox.Child = textBlock;
+            viewBox.Width = size.Width;
+            viewBox.Height = size.Height;
+            viewBox.Stretch = Stretch.Fill;
+            viewBox.RenderTransform = new ScaleTransform(1, 1.9);
+            System.Windows.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
+            System.Windows.Controls.Canvas.SetTop(viewBox, location.Y);
+            Canvas.Children.Add(viewBox);
+
+            OwnershipDictionary.Add(textBlock, owner);
         }
 
         private Visibility BoolToVisibility(bool isVisible)
