@@ -31,6 +31,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
         private void Draw(Staff staff, ScoreRendererBase renderer, double[] linePositions, double width)
         {
+            renderer.DrawLine(0, linePositions[0], 0, linePositions[4], staff);
             foreach (double position in linePositions)
             {
                 Point startPoint = new Point(0, position);

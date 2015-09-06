@@ -23,9 +23,10 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
                 var staff = scoreService.CurrentScore.Staves[i];
                 foreach (var system in scoreService.CurrentScore.Systems)
                 {
+                    if (system.LinePositions == null) continue;
+                    renderer.DrawLine(0, system.LinePositions[i + 1][4], 0, system.LinePositions[i + 2][0], staff);
                     foreach (var measure in staff.Measures.Where(m => m.Barline != null && m.System == system))
                     {
-                        if (system.LinePositions == null) continue;
                         renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
                     }
                 }
