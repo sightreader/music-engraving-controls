@@ -113,6 +113,7 @@
     <Compile Include="Parser\MusicXml\Strategies\DirectionTypeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\EncodingParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\KeyParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\MeasureParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MeasureStyleParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParserState.cs" />

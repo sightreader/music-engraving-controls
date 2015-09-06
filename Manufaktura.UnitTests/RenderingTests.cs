@@ -29,6 +29,11 @@ namespace Manufaktura.UnitTests
                 var xDocument = XDocument.Load(file);
                 var parser = new MusicXmlParser();
                 var score = parser.Parse(xDocument);
+                foreach(var staff in score.Staves) 
+                {
+                    Assert.IsTrue(staff.Measures.Where(m => m.Number.HasValue).GroupBy(m => m.Number.Value).All(g => g.Count() == 1), "Duplicate measure numbers detected.");
+                }
+                
                 renderer.Render(score);
                 Assert.IsTrue(!renderer.Exceptions.Any(), "Exceptions occured while rendering.");
 

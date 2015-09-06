@@ -24,6 +24,8 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public double FirstNoteInMeasureXPosition { get; set; }
 
+        public int? Number { get; set; }
+
         /// <summary>
         /// Staff to which this measure belongs
         /// </summary>
@@ -49,6 +51,11 @@ namespace Manufaktura.Controls.Model
             Staff = staff;
             System = system;
             Elements = new List<MusicalSymbol>();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Measure {0}", Number.HasValue ? Number.Value.ToString() : "(unnumbered)");
         }
     }
 }
