@@ -6,14 +6,9 @@ namespace Manufaktura.Controls.Services
 {
     public class ScoreService : IScoreService
     {
-        private List<Measure> allMeasures = new List<Measure>();
 
         private List<StaffSystem> systems = new List<StaffSystem>();
 
-        public IEnumerable<Measure> AllMeasures
-        {
-            get { return allMeasures; }
-        }
 
         /// <summary>
         /// Current clef.
@@ -40,7 +35,7 @@ namespace Manufaktura.Controls.Services
         /// </summary>
         public int CurrentMeasureNo
         {
-            get { return AllMeasures.Where(m => m.Staff == CurrentStaff).ToList().IndexOf(CurrentMeasure) + 1; }
+            get { return CurrentStaff.Measures.IndexOf(CurrentMeasure) + 1; }
         }
 
         /// <summary>
@@ -121,12 +116,13 @@ namespace Manufaktura.Controls.Services
         /// </summary>
         public void BeginNewMeasure()
         {
-            var measure = new Measure(CurrentStaff, CurrentSystem);
-            allMeasures.Add(measure);
-            CurrentMeasure = measure;
+            if (CurrentMeasure == null) CurrentMeasure = CurrentStaff.Measures.First();
+            else if (CurrentStaff.Measures.IndexOf(CurrentMeasure) + 1 >= CurrentStaff.Measures.Count) return;
+            else CurrentMeasure = CurrentStaff.Measures[CurrentStaff.Measures.IndexOf(CurrentMeasure) + 1];
+
             if (CurrentMeasureNo <= CurrentStaff.Measures.Count && CurrentStaff.Measures[CurrentMeasureNo - 1].Width.HasValue)
             {
-                measure.Width = CurrentStaff.Measures[CurrentMeasureNo - 1].Width.Value;
+                CurrentMeasure.Width = CurrentStaff.Measures[CurrentMeasureNo - 1].Width.Value;
             }
         }
 
@@ -142,7 +138,6 @@ namespace Manufaktura.Controls.Services
             CurrentClef = null;
             CurrentKey = null;
             systems.Clear();
-            allMeasures.Clear();
             LinePositions.Clear();
         }
 
@@ -195,8 +190,8 @@ namespace Manufaktura.Controls.Services
         /// <returns>Corresponding measure</returns>
         public Measure GetCorrespondingMeasure(Measure measure, Staff otherStaff)
         {
-            var measureIndex = allMeasures.Where(m => m.Staff == measure.Staff).ToList().IndexOf(measure);
-            var measuresInOthersStaff = allMeasures.Where(m => m.Staff == otherStaff).ToList();
+            var measureIndex = measure.Staff.Measures.IndexOf(measure);
+            var measuresInOthersStaff = otherStaff.Measures;
             if (measuresInOthersStaff.Count <= measureIndex) return null;
             return measuresInOthersStaff[measureIndex];
         }

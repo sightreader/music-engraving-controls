@@ -24,7 +24,7 @@ namespace Manufaktura.Controls.Model
 
         public ScoreInfo(IScoreService scoreService)
         {
-            AllMeasures = new ReadOnlyCollection<Measure>(scoreService.AllMeasures.ToList());
+            AllMeasures = new ReadOnlyCollection<Measure>(scoreService.CurrentScore.Staves.SelectMany(s => s.Measures).ToList());
             Systems = new ReadOnlyCollection<StaffSystem>(scoreService.Systems.ToList());
         }
     }

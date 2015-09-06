@@ -21,11 +21,11 @@ namespace Manufaktura.Controls.Rendering.Strategies
             for (var i = 0; i < scoreService.CurrentScore.Staves.Count - 1; i++)
             {
                 var staff = scoreService.CurrentScore.Staves[i];
-                foreach (var system in scoreService.Systems)
+                foreach (var system in scoreService.CurrentScore.Systems)
                 {
-                    foreach (var measure in scoreService.AllMeasures.Where(m => m.Barline != null && m.System == system && m.Staff == staff))
+                    foreach (var measure in staff.Measures.Where(m => m.Barline != null && m.System == system))
                     {
-                        renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
+                        //renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
                     }
                 }
             }

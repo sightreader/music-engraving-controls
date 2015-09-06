@@ -5,8 +5,6 @@ namespace Manufaktura.Controls.Services
 {
     public interface IScoreService
     {
-        IEnumerable<Measure> AllMeasures { get; }
-
         Clef CurrentClef { get; set; }
 
         Key CurrentKey { get; set; }
