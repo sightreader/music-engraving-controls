@@ -14,14 +14,19 @@ namespace Manufaktura.Controls.Formatting
             return score;
         }
 
-        private IEnumerable<IEnumerable<Measure>> GetSystems(Score score)
+        private Dictionary<StaffSystem, IEnumerable<Measure>> GetSystems(Score score)
         {
+            return score.FirstStaff.Measures.GroupBy(m => m.System).ToDictionary(g => g.Key, g => g.Select(m => m));
+            /*
             var systems = new List<List<Measure>>();
             var measures = new List<Measure>();
             var currentSystem = new StaffSystem(score);
             foreach (var element in score.FirstStaff.Elements)
             {
-                if (element is Barline) measures.Add(new Measure(score.FirstStaff, currentSystem));
+                if (element is Barline)
+                {
+                    measures.Add(new Measure(score.FirstStaff, currentSystem));
+                }
                 var suggestion = element as PrintSuggestion;
                 if (suggestion != null && (suggestion.IsSystemBreak || suggestion.IsPageBreak))
                 {
@@ -31,6 +36,7 @@ namespace Manufaktura.Controls.Formatting
                 }
             }
             return systems;
+             * */
         }
 
         private void SetElementPositions(Score score)
@@ -67,10 +73,10 @@ namespace Manufaktura.Controls.Formatting
         private void SetMeasureWidths(Score score)
         {
             int index = 0;
-            foreach (var system in GetSystems(score))
+            foreach (var measuresInSystem in GetSystems(score).Values)
             {
-                var averageMeasureWidth = score.DefaultPageSettings.Width / system.Count();
-                foreach (var measure in system)
+                var averageMeasureWidth = score.DefaultPageSettings.Width / measuresInSystem.Count();
+                foreach (var measure in measuresInSystem)
                 {
                     foreach (var staff in score.Staves)
                     {
