@@ -29,6 +29,14 @@ namespace Manufaktura.Controls.Model
 
         public TimeSignatureType SignatureType { get { return signatureType; } set { signatureType = value; } }
 
+        public override MusicalSymbolType Type
+        {
+            get
+            {
+                return MusicalSymbolType.TimeSignature;
+            }
+        }
+
         public int TypeOfBeats { get { return numberValue.Denominator; } }
 
         /// <summary>
@@ -44,7 +52,6 @@ namespace Manufaktura.Controls.Model
 
         public TimeSignature(TimeSignatureType sType, int beats, int beatType)
         {
-            type = MusicalSymbolType.TimeSignature;
             numberValue = new Proportion(beats, beatType);
             signatureType = sType;
         }

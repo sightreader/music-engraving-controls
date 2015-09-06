@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Manufaktura.Music.Model
 {
@@ -159,6 +160,13 @@ namespace Manufaktura.Music.Model
         public RhythmicUnit ToRhythmicUnit(bool isRest)
         {
             return new RhythmicUnit(this, isRest);
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < Dots; i++) sb.Append(".");
+            return string.Format("{0}{1}", Denominator, sb);
         }
 
         public TimeSpan ToTimeSpan(Tempo tempo)

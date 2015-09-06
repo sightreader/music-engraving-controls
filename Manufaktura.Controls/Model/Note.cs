@@ -11,8 +11,6 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class Note : NoteOrRest, IHasPitch, ICanBeElementOfChord
     {
-        #region Protected fields
-
         private ArticulationType articulation = ArticulationType.None;
         private VerticalPlacement articulationPlacement = VerticalPlacement.Below;
         private List<NoteBeamType> beamList = new List<NoteBeamType>();
@@ -32,10 +30,6 @@ namespace Manufaktura.Controls.Model
         private int tremoloLevel = 0;
         private NoteTrillMark trillMark = NoteTrillMark.None;
         //1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
-
-        #endregion Protected fields
-
-        #region Properties
 
         public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
 
@@ -117,9 +111,13 @@ namespace Manufaktura.Controls.Model
 
         public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
 
-        #endregion Properties
-
-        #region Constructor
+        public override MusicalSymbolType Type
+        {
+            get
+            {
+                return MusicalSymbolType.Note;
+            }
+        }
 
         /// <summary>
         /// Creates a new instance of a Note.
@@ -131,7 +129,6 @@ namespace Manufaktura.Controls.Model
         /// <param name="noteBeamList">Beam list</param>
         public Note(Pitch notePitch, RhythmicDuration noteDuration, VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList)
         {
-            type = MusicalSymbolType.Note;
             Duration = noteDuration;
             pitch = notePitch;
             stemDirection = noteStemDirection;
@@ -188,72 +185,6 @@ namespace Manufaktura.Controls.Model
         {
         }
 
-        #endregion Constructor
-
-        #region Private methods
-
-        private void DetermineMusicalCharacter()
-        {
-            if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeNote;
-            else if (BaseDuration == RhythmicDuration.Half) musicalCharacter = MusicFont.WhiteNoteHead;
-            else if (BaseDuration == RhythmicDuration.Quarter) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.Eighth) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D64th) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D128th) musicalCharacter = MusicFont.BlackNoteHead;
-            else musicalCharacter = MusicFont.BlackNoteHead;
-
-            if (BaseDuration == RhythmicDuration.Eighth)
-            {
-                noteFlagCharacter = MusicFont.NoteFlagEighth;
-                noteFlagCharacterRev = MusicFont.NoteFlagEighthRev;
-            }
-            else if (BaseDuration == RhythmicDuration.Sixteenth)
-            {
-                noteFlagCharacter = MusicFont.NoteFlagSixteenth;
-                noteFlagCharacterRev = MusicFont.NoteFlagSixteenthRev;
-            }
-            else if (BaseDuration == RhythmicDuration.D32nd)
-            {
-                noteFlagCharacter = MusicFont.NoteFlag32nd;
-                noteFlagCharacterRev = MusicFont.NoteFlag32ndRev;
-            }
-            else if (BaseDuration == RhythmicDuration.D64th)
-            {
-                noteFlagCharacter = MusicFont.NoteFlag64th;
-                noteFlagCharacterRev = MusicFont.NoteFlag64thRev;
-            }
-            else if (BaseDuration == RhythmicDuration.D128th)
-            {
-                noteFlagCharacter = MusicFont.NoteFlag128th;
-                noteFlagCharacterRev = MusicFont.NoteFlag128thRev;
-            }
-        }
-
-        #endregion Private methods
-
-        #region Public methods
-
-        /// <summary>
-        /// Changes pitch of the note to the specific midi pitch.
-        /// </summary>
-        /// <param name="midiPitch">Midi pitch</param>
-        public void ApplyMidiPitch(int midiPitch)
-        {
-            pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
-        }
-
-        public double GetLineInSpecificClef(Clef clef)
-        {
-            var stepDistance = (double)Pitch.StepDistance(this, clef);
-            return clef.Line + (stepDistance / 2);
-        }
-
-        #endregion Public methods
-
-        #region Public static functions
-
         /// <summary>
         /// Creates a new instance of Note from given midi pitch and duration.
         /// </summary>
@@ -301,6 +232,63 @@ namespace Manufaktura.Controls.Model
             return note;
         }
 
-        #endregion Public static functions
+        /// <summary>
+        /// Changes pitch of the note to the specific midi pitch.
+        /// </summary>
+        /// <param name="midiPitch">Midi pitch</param>
+        public void ApplyMidiPitch(int midiPitch)
+        {
+            pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
+        }
+
+        public double GetLineInSpecificClef(Clef clef)
+        {
+            var stepDistance = (double)Pitch.StepDistance(this, clef);
+            return clef.Line + (stepDistance / 2);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
+        }
+
+        private void DetermineMusicalCharacter()
+        {
+            if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeNote;
+            else if (BaseDuration == RhythmicDuration.Half) musicalCharacter = MusicFont.WhiteNoteHead;
+            else if (BaseDuration == RhythmicDuration.Quarter) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.Eighth) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D64th) musicalCharacter = MusicFont.BlackNoteHead;
+            else if (BaseDuration == RhythmicDuration.D128th) musicalCharacter = MusicFont.BlackNoteHead;
+            else musicalCharacter = MusicFont.BlackNoteHead;
+
+            if (BaseDuration == RhythmicDuration.Eighth)
+            {
+                noteFlagCharacter = MusicFont.NoteFlagEighth;
+                noteFlagCharacterRev = MusicFont.NoteFlagEighthRev;
+            }
+            else if (BaseDuration == RhythmicDuration.Sixteenth)
+            {
+                noteFlagCharacter = MusicFont.NoteFlagSixteenth;
+                noteFlagCharacterRev = MusicFont.NoteFlagSixteenthRev;
+            }
+            else if (BaseDuration == RhythmicDuration.D32nd)
+            {
+                noteFlagCharacter = MusicFont.NoteFlag32nd;
+                noteFlagCharacterRev = MusicFont.NoteFlag32ndRev;
+            }
+            else if (BaseDuration == RhythmicDuration.D64th)
+            {
+                noteFlagCharacter = MusicFont.NoteFlag64th;
+                noteFlagCharacterRev = MusicFont.NoteFlag64thRev;
+            }
+            else if (BaseDuration == RhythmicDuration.D128th)
+            {
+                noteFlagCharacter = MusicFont.NoteFlag128th;
+                noteFlagCharacterRev = MusicFont.NoteFlag128thRev;
+            }
+        }
     }
 }

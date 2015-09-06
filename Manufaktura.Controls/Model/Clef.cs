@@ -2,10 +2,6 @@
 using Manufaktura.Controls.Music;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
@@ -16,14 +12,26 @@ namespace Manufaktura.Controls.Model
     {
         #region Private fields
 
-        private ClefType typeOfClef;
         private int line;
         private string musicalCharacter;
         private IMusicFont musicFont = new PolihymniaFont();
+        private ClefType typeOfClef;
 
-        #endregion
+        #endregion Private fields
 
         #region Properties
+
+        /// <summary>
+        /// Clef line
+        /// </summary>
+        public int Line { get { return line; } }
+
+        public string MusicalCharacter
+        {
+            get { return musicalCharacter; }
+        }
+
+        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 
         /// <summary>
         /// Pitch of clef.
@@ -33,32 +41,28 @@ namespace Manufaktura.Controls.Model
         /// </remarks>
         public Pitch Pitch { get; private set; }
 
-        /// <summary>
-        /// Type of clef (C-clef, G-clef or F-clef)
-        /// </summary>
-        public ClefType TypeOfClef { get { return typeOfClef; } }
-
-        /// <summary>
-        /// Clef line
-        /// </summary>
-        public int Line { get { return line; } }
-
-
         public Point TextBlockLocation
         {
             get;
             set;
         }
-        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 
-        public string MusicalCharacter
-        {
-            get { return musicalCharacter; }
-        }
-        
-        #endregion
+        /// <summary>
+        /// Type of clef (C-clef, G-clef or F-clef)
+        /// </summary>
+        public ClefType TypeOfClef { get { return typeOfClef; } }
+
+        #endregion Properties
 
         #region Constructor
+
+        public override MusicalSymbolType Type
+        {
+            get
+            {
+                return MusicalSymbolType.Clef;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of Clef.
@@ -67,7 +71,6 @@ namespace Manufaktura.Controls.Model
         /// <param name="whichLine">Line</param>
         public Clef(ClefType clefType, int whichLine)
         {
-            type = MusicalSymbolType.Clef;
             typeOfClef = clefType;
             line = whichLine;
             if (typeOfClef == ClefType.GClef)
@@ -87,9 +90,89 @@ namespace Manufaktura.Controls.Model
             }
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Public static functions
+
+        /// <summary>
+        /// Returns a new instance of alto clef.
+        /// </summary>
+        public static Clef Alto
+        {
+            get { return new Clef(ClefType.CClef, 3); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of baritone "C" clef.
+        /// </summary>
+        public static Clef BaritoneC
+        {
+            get { return new Clef(ClefType.CClef, 5); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of baritone "F" clef.
+        /// </summary>
+        public static Clef BaritoneF
+        {
+            get { return new Clef(ClefType.FClef, 3); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of bass clef.
+        /// </summary>
+        public static Clef Bass
+        {
+            get { return new Clef(ClefType.FClef, 4); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of french violin clef.
+        /// </summary>
+        public static Clef FrenchViolin
+        {
+            get { return new Clef(ClefType.GClef, 1); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of mezzosoprano clef.
+        /// </summary>
+        public static Clef Mezzosoprano
+        {
+            get { return new Clef(ClefType.CClef, 2); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of soprano clef.
+        /// </summary>
+        public static Clef Soprano
+        {
+            get { return new Clef(ClefType.CClef, 1); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of subbass clef.
+        /// </summary>
+        public static Clef Subbass
+        {
+            get { return new Clef(ClefType.FClef, 5); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of tenor clef.
+        /// </summary>
+        public static Clef Tenor
+        {
+            get { return new Clef(ClefType.CClef, 4); }
+        }
+
+        /// <summary>
+        /// Returns a new instance of treble clef.
+        /// </summary>
+        public static Clef Treble
+        {
+            get { return new Clef(ClefType.GClef, 2); }
+        }
 
         /// <summary>
         /// This methods selects a appropriate clef for a note to make the note comfortably visible in the staff.
@@ -131,89 +214,11 @@ namespace Manufaktura.Controls.Model
             else return new Clef(ClefType.GClef, 2);
         }
 
-        /// <summary>
-        /// Returns a new instance of treble clef.
-        /// </summary>
-        public static Clef Treble
+        public override string ToString()
         {
-            get { return new Clef(ClefType.GClef, 2); }
+            return string.Format("{0} {1} on line {2}", base.ToString(), TypeOfClef.ToString(), Line);
         }
 
-        /// <summary>
-        /// Returns a new instance of french violin clef.
-        /// </summary>
-        public static Clef FrenchViolin
-        {
-            get { return new Clef(ClefType.GClef, 1); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of soprano clef.
-        /// </summary>
-        public static Clef Soprano
-        {
-            get { return new Clef(ClefType.CClef, 1); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of mezzosoprano clef.
-        /// </summary>
-        public static Clef Mezzosoprano
-        {
-            get { return new Clef(ClefType.CClef, 2); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of alto clef.
-        /// </summary>
-        public static Clef Alto
-        {
-            get { return new Clef(ClefType.CClef, 3); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of tenor clef.
-        /// </summary>
-        public static Clef Tenor
-        {
-            get { return new Clef(ClefType.CClef, 4); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of baritone "C" clef.
-        /// </summary>
-        public static Clef BaritoneC
-        {
-            get { return new Clef(ClefType.CClef, 5); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of baritone "F" clef.
-        /// </summary>
-        public static Clef BaritoneF
-        {
-            get { return new Clef(ClefType.FClef, 3); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of bass clef.
-        /// </summary>
-        public static Clef Bass
-        {
-            get { return new Clef(ClefType.FClef, 4); }
-        }
-
-        /// <summary>
-        /// Returns a new instance of subbass clef.
-        /// </summary>
-        public static Clef Subbass
-        {
-            get { return new Clef(ClefType.FClef, 5); }
-        }
-
-        #endregion
-
-
-
+        #endregion Public static functions
     }
 }

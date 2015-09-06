@@ -15,15 +15,27 @@ namespace Manufaktura.Controls.Model
 
         public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; OnPropertyChanged(() => MultiMeasure); } }
 
+        public override MusicalSymbolType Type
+        {
+            get
+            {
+                return MusicalSymbolType.Rest;
+            }
+        }
+
         /// <summary>
         /// Initializes a new Rest with specific duration
         /// </summary>
         /// <param name="restDuration">Duration</param>
         public Rest(RhythmicDuration restDuration)
         {
-            type = MusicalSymbolType.Rest;
             Duration = restDuration;
             DetermineMusicalCharacter();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", base.ToString(), Duration.ToString());
         }
 
         private void DetermineMusicalCharacter()

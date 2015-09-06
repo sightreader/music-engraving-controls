@@ -36,7 +36,7 @@ namespace Manufaktura.UnitTests
                 if (previousResults != null)
                 {
                     previousResults.Load(Path.GetFileName(file));
-                    PerformAssertions(currentResults, previousResults);
+                    PerformAssertions(currentResults, previousResults, Path.GetFileName(file));
                 }
             }
             var successPath = Path.Combine(outputPath, Path.GetFileName(currentResults.DataPath));
@@ -77,14 +77,14 @@ namespace Manufaktura.UnitTests
             return new ScoreRenderingTestResultsRepository(directory);
         }
 
-        private void PerformAssertions(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults)
+        private void PerformAssertions(IScoreRenderingTestResultsRepository currentResults, IScoreRenderingTestResultsRepository previousResults, string fileName)
         {
             var allResults = new List<string>();
             var rules = new ManufakturaResolver().ResolveAll<IRenderingAssertionRule>();
             foreach (var rule in rules)
             {
                 var results = rule.Assert(currentResults, previousResults);
-                allResults.AddRange(results.Values.SelectMany(v => v));
+                allResults.AddRange(results.Values.SelectMany(v => v).Select(s => string.Format("{0}: {1}", fileName, s)));
             }
             if (allResults.Any()) Assert.Fail(string.Join(Environment.NewLine, allResults));
         }

@@ -29,16 +29,19 @@
 
         #endregion Properties
 
-        #region Constructor
+        public override MusicalSymbolType Type
+        {
+            get
+            {
+                return MusicalSymbolType.Direction;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of Direction.
         /// </summary>
         public Direction()
         {
-            type = MusicalSymbolType.Direction;
         }
-
-        #endregion Constructor
     }
 }

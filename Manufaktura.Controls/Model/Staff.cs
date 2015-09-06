@@ -28,6 +28,14 @@ namespace Manufaktura.Controls.Model
 
         public Score Score { get; internal set; }
 
+        public override MusicalSymbolType Type
+        {
+            get
+            {
+                return MusicalSymbolType.Staff;
+            }
+        }
+
         /// <summary>
         /// Initializes a new Staff.
         /// </summary>

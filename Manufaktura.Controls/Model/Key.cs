@@ -2,9 +2,6 @@
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
@@ -13,17 +10,19 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class Key : MusicalSymbol, IRenderedAsTextBlock
     {
-        #region Private fields
-
         private int fifths;
         private string musicalCharacter;
         private IMusicFont musicFont = new PolihymniaFont();
 
-        #endregion
-
-        #region Properties
-
         public int Fifths { get { return fifths; } }
+
+        public string MusicalCharacter
+        {
+            get { return musicalCharacter; }
+        }
+
+        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+
         public Primitives.Point TextBlockLocation
         {
             get
@@ -35,20 +34,17 @@ namespace Manufaktura.Controls.Model
                 throw new NotImplementedException();
             }
         }
-        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 
-        public string MusicalCharacter
+        public override MusicalSymbolType Type
         {
-            get { return musicalCharacter; }
+            get
+            {
+                return MusicalSymbolType.Key;
+            }
         }
-
-        #endregion
-
-        #region Constructor
 
         public Key(int numberOfFifths)
         {
-            type = MusicalSymbolType.Key;
             fifths = numberOfFifths;
             if (fifths > 0)
                 musicalCharacter = MusicFont.Sharp;
@@ -58,13 +54,9 @@ namespace Manufaktura.Controls.Model
                 musicalCharacter = " ";
         }
 
-        #endregion
-
-        #region Public methods
-
-        public static Key FromTonic(Step step, MajorAndMinorScaleFlags flags)
+        public static Key FromMidiPitch(int midiPitch, MajorAndMinorScaleFlags flags)
         {
-            return new Key(CircleOfFifths.CalculateFifths(step, flags));
+            return new Key(CircleOfFifths.CalculateFifths(midiPitch, flags));
         }
 
         public static Key FromScale(MajorOrMinorScale scale)
@@ -72,9 +64,9 @@ namespace Manufaktura.Controls.Model
             return new Key(scale.Fifths);
         }
 
-        public static Key FromMidiPitch(int midiPitch, MajorAndMinorScaleFlags flags)
+        public static Key FromTonic(Step step, MajorAndMinorScaleFlags flags)
         {
-            return new Key(CircleOfFifths.CalculateFifths(midiPitch, flags));
+            return new Key(CircleOfFifths.CalculateFifths(step, flags));
         }
 
         public int StepToAlter(string step)
@@ -82,9 +74,9 @@ namespace Manufaktura.Controls.Model
             return CircleOfFifths.GetAlterOfStepFromNumberOfFifths(step, Fifths);
         }
 
-        #endregion
-
-
-
+        public override string ToString()
+        {
+            return string.Format("{0} with {1} generator intervals.", base.ToString(), Fifths);
+        }
     }
 }

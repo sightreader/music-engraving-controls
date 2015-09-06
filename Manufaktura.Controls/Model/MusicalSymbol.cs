@@ -12,7 +12,7 @@ namespace Manufaktura.Controls.Model
 
     public enum HorizontalPlacement { Left, Right };
 
-    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
+    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction, Staff, PrintSuggestion };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
 
     public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
 
@@ -39,7 +39,6 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public abstract class MusicalSymbol : ViewModel
     {
-        protected MusicalSymbolType type;
         private bool isVisible;
 
         /// <summary>
@@ -62,16 +61,13 @@ namespace Manufaktura.Controls.Model
 
         public Staff Staff { get; internal set; }
 
-        public MusicalSymbolType Type { get { return type; } }
+        public virtual MusicalSymbolType Type { get { return MusicalSymbolType.Unknown; } }
 
         public MusicalSymbol()
         {
-            type = MusicalSymbolType.Unknown;
             isVisible = true;
             Id = Guid.NewGuid();
         }
-
-        #region Public static functions
 
         public static VerticalPlacement DirectionToPlacement(VerticalDirection direction)
         {
@@ -90,6 +86,9 @@ namespace Manufaktura.Controls.Model
             return TimeSpan.FromSeconds(singleNoteDuration * ratio);
         }
 
-        #endregion Public static functions
+        public override string ToString()
+        {
+            return Type.ToString();
+        }
     }
 }
