@@ -22,6 +22,13 @@ namespace Manufaktura.Controls.Extensions
             return childElement.Value;
         }
 
+        public static string ParseChildElement(this XElement element, string name)
+        {
+            var childElement = element.Descendants().FirstOrDefault(d => d.Name == name);
+            if (childElement == null) return null;
+            return childElement.Value;
+        }
+
         public static Nullable<T> ParseChildElement<T>(this XElement element, string name) where T : struct
         {
             var childElement = element.Descendants().FirstOrDefault(d => d.Name == name);

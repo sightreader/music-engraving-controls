@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Extensions;
+using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.Harmony;
 using Manufaktura.Music.Model.MajorAndMinor;
@@ -15,7 +16,8 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
-            staff.Elements.Add(new ChordSign(new TertianHarmony().CreateChord(Pitch.C4, 0, 2, MajorScale.C)));
+            var stepName = element.ParseChildElement("root-step");
+            staff.Elements.Add(new ChordSign(new TertianHarmony().CreateChord(new Pitch(stepName, 0, 4), 0, 2, MajorScale.C)));
         }
     }
 }

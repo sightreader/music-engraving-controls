@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a chord.
+    /// </summary>
     public struct Chord
     {
         private List<Pitch> pitches;
