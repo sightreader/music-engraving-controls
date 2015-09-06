@@ -58,6 +58,9 @@ namespace Manufaktura.Controls.Model.Fonts
             MordentShort = "n";
             FermataUp = "Y";
             FermataDown = "Z";
+            LeftBracket = "{";
+            RightBracket = "}";
+            LeftSquareBracket = "[";
         }
 
         public string BlackNoteHead
@@ -273,6 +276,25 @@ namespace Manufaktura.Controls.Model.Fonts
         public string WholeRest
         {
             get; private set;
+        }
+
+
+        public string LeftBracket
+        {
+            get;
+            private set;
+        }
+
+        public string LeftSquareBracket
+        {
+            get;
+            private set;
+        }
+
+        public string RightBracket
+        {
+            get;
+            private set;
         }
     }
 }

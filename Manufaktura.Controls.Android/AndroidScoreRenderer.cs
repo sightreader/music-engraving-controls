@@ -73,5 +73,9 @@ namespace Manufaktura.Controls.Android
         {
             foreach (var typeface in typefaces.Values) typeface.Dispose();
         }
+
+        public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Size size, Primitives.Color color, Model.MusicalSymbol owner)
+        {
+        }
     }
 }

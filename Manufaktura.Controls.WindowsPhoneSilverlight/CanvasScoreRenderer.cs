@@ -1,16 +1,10 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
-using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
 namespace Manufaktura.Controls.WindowsPhoneSilverlight
@@ -33,46 +27,6 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
         public Primitives.Color ConvertColor(Color color)
         {
             return new Primitives.Color(color.R, color.G, color.B, color.A);
-        }
-
-        private Point ConvertPoint(Primitives.Point point)
-        {
-            return new Point(point.X, point.Y);
-        }
-
-        public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
-        {
-            TextBlock textBlock = new TextBlock();
-            textBlock.FontSize = Fonts.GetSize(fontStyle);
-            textBlock.FontFamily = Fonts.Get(fontStyle);
-            textBlock.Text = text;
-            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
-            textBlock.UseLayoutRounding = true;
-            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
-
-            System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
-            System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
-            Canvas.Children.Add(textBlock);
-
-            OwnershipDictionary.Add(textBlock, owner);
-        }
-
-        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
-        {
-            var line = new Line();
-            line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-            line.UseLayoutRounding = true;
-            line.X1 = startPoint.X;
-            line.X2 = endPoint.X;
-            line.Y1 = startPoint.Y;
-            line.Y2 = endPoint.Y;
-            System.Windows.Controls.Canvas.SetZIndex(line, (int)pen.ZIndex);
-            line.StrokeThickness = pen.Thickness;
-            line.Visibility = BoolToVisibility(owner.IsVisible);
-
-            Canvas.Children.Add(line);
-
-            OwnershipDictionary.Add(line, owner);
         }
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
@@ -123,9 +77,53 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
             OwnershipDictionary.Add(path, owner);
         }
 
+        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
+        {
+            var line = new Line();
+            line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            line.UseLayoutRounding = true;
+            line.X1 = startPoint.X;
+            line.X2 = endPoint.X;
+            line.Y1 = startPoint.Y;
+            line.Y2 = endPoint.Y;
+            System.Windows.Controls.Canvas.SetZIndex(line, (int)pen.ZIndex);
+            line.StrokeThickness = pen.Thickness;
+            line.Visibility = BoolToVisibility(owner.IsVisible);
+
+            Canvas.Children.Add(line);
+
+            OwnershipDictionary.Add(line, owner);
+        }
+
+        public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
+        {
+            TextBlock textBlock = new TextBlock();
+            textBlock.FontSize = Fonts.GetSize(fontStyle);
+            textBlock.FontFamily = Fonts.Get(fontStyle);
+            textBlock.Text = text;
+            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.UseLayoutRounding = true;
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+
+            System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
+            System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
+            Canvas.Children.Add(textBlock);
+
+            OwnershipDictionary.Add(textBlock, owner);
+        }
+
+        public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+        {
+        }
+
         private Visibility BoolToVisibility(bool isVisible)
         {
             return isVisible ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private Point ConvertPoint(Primitives.Point point)
+        {
+            return new Point(point.X, point.Y);
         }
     }
 }

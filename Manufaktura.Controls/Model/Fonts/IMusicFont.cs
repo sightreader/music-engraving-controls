@@ -39,6 +39,10 @@
 
         string HalfRest { get; }
 
+        string LeftBracket { get; }
+
+        string LeftSquareBracket { get; }
+
         string Mordent { get; }
 
         string MordentShort { get; }
@@ -72,6 +76,8 @@
         string RepeatBackward { get; }
 
         string RepeatForward { get; }
+
+        string RightBracket { get; }
 
         string Sharp { get; }
 

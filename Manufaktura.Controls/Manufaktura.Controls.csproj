@@ -78,7 +78,7 @@
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\NullMusicalSymbol.cs" />
     <Compile Include="Model\Ornament.cs" />
-    <Compile Include="Model\Page.cs" />
+    <Compile Include="Model\ScorePage.cs" />
     <Compile Include="Model\Part.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfTupletPeekStrategy.cs" />
@@ -131,6 +131,7 @@
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />
+    <Compile Include="Primitives\Size.cs" />
     <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRendererSettings.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Rendering\Implementations\Score2HtmlBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlCanvasBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlSvgBuilder.cs" />
+    <Compile Include="Rendering\Postprocessing\AddBracketsFinishingTouch.cs" />
     <Compile Include="Rendering\ScoreRendererSettings.cs" />
     <Compile Include="Parser\MusicXml\Strategies\SoundParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\TimeParsingStrategy.cs" />

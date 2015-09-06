@@ -4,7 +4,6 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Postprocessing;
-using Manufaktura.Controls.Rendering.Strategies;
 using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
@@ -195,6 +194,8 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="color">Color of text</param>
         /// <param name="owner">Owning MusicalSymbol</param>
         public abstract void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
+
+        public abstract void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner);
 
         public abstract void Render(Score score);
 

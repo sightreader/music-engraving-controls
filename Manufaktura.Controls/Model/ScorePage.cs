@@ -1,6 +1,6 @@
 ﻿namespace Manufaktura.Controls.Model
 {
-    public class Page
+    public class ScorePage
     {
         public double? Height { get; set; }
 

@@ -52,6 +52,10 @@ namespace Manufaktura.UnitTests.Rendering
             Canvas.Put(entry);
         }
 
+        public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)
+        {
+        }
+
         private Point GetSize(params Point[] points)
         {
             return new Point(points.Max(p => p.X) - points.Min(p => p.X), points.Max(p => p.Y) - points.Min(p => p.Y));

@@ -1,10 +1,6 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Rendering.Implementations
@@ -12,6 +8,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
     public class HtmlSvgScoreRenderer : HtmlScoreRenderer<XElement>
     {
         private const string EmptyCharacterWithWidth = "j";
+
         public HtmlSvgScoreRenderer()
             : base(null)
         {
@@ -21,36 +18,6 @@ namespace Manufaktura.Controls.Rendering.Implementations
             : base(element)
         {
             Settings = settings;
-        }
-
-
-        public override void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, Model.MusicalSymbol owner)
-        {
-            if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
-
-            location = TranslateTextLocation(location, fontStyle);
-
-            var element = new XElement("text",
-                new XAttribute("x", location.X.ToStringInvariant()),
-                new XAttribute("y", location.Y.ToStringInvariant()),
-                new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
-                    color.ToCss(),
-                    TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
-                    TypedSettings.Fonts[fontStyle].Name)));
-            element.Value = TypedSettings.Fonts[fontStyle].Name == "Polihymnia" ? string.Format("{0}{1}", text, EmptyCharacterWithWidth) : text;
-            Canvas.Add(element);
-        }
-
-        public override void DrawLine(Point startPoint, Point endPoint, Pen pen, Model.MusicalSymbol owner)
-        {
-            var element = new XElement("line",
-                new XAttribute("x1", startPoint.X.ToStringInvariant()),
-                new XAttribute("y1", startPoint.Y.ToStringInvariant()),
-                new XAttribute("x2", endPoint.X.ToStringInvariant()),
-                new XAttribute("y2", endPoint.Y.ToStringInvariant()),
-                new XAttribute("style", pen.ToCss()));
-
-            Canvas.Add(element);
         }
 
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, Model.MusicalSymbol owner)
@@ -86,6 +53,39 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 new XAttribute("style", pen.ToCss()));
 
             Canvas.Add(element);
+        }
+
+        public override void DrawLine(Point startPoint, Point endPoint, Pen pen, Model.MusicalSymbol owner)
+        {
+            var element = new XElement("line",
+                new XAttribute("x1", startPoint.X.ToStringInvariant()),
+                new XAttribute("y1", startPoint.Y.ToStringInvariant()),
+                new XAttribute("x2", endPoint.X.ToStringInvariant()),
+                new XAttribute("y2", endPoint.Y.ToStringInvariant()),
+                new XAttribute("style", pen.ToCss()));
+
+            Canvas.Add(element);
+        }
+
+        public override void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, Model.MusicalSymbol owner)
+        {
+            if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
+
+            location = TranslateTextLocation(location, fontStyle);
+
+            var element = new XElement("text",
+                new XAttribute("x", location.X.ToStringInvariant()),
+                new XAttribute("y", location.Y.ToStringInvariant()),
+                new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
+                    color.ToCss(),
+                    TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
+                    TypedSettings.Fonts[fontStyle].Name)));
+            element.Value = TypedSettings.Fonts[fontStyle].Name == "Polihymnia" ? string.Format("{0}{1}", text, EmptyCharacterWithWidth) : text;
+            Canvas.Add(element);
+        }
+
+        public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
+        {
         }
     }
 }

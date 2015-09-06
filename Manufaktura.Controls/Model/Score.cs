@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class Score
     {
-        public Page DefaultPageSettings { get; private set; }
+        public ScorePage DefaultPageSettings { get; private set; }
 
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -108,7 +108,7 @@ namespace Manufaktura.Controls.Model
             Staves = new StaffCollection(this);
             Parts = new List<Part>();
             Systems = new List<StaffSystem>();
-            DefaultPageSettings = new Page();
+            DefaultPageSettings = new ScorePage();
         }
 
         /// <summary>
