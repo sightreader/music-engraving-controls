@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Model.Rules;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,6 +98,13 @@ namespace Manufaktura.Controls.Model
             var score = new Score();
             score.Staves.Add(this);
             return score;
+        }
+
+        public override string ToString()
+        {
+            if (Score == null || !Score.Staves.Contains(this)) string.Format("Staff (detached from score).");
+            if (Part == null || !Part.Staves.Contains(this)) return string.Format("Staff ({0} in score).", UsefulMath.NumberToOrdinal(Score.Staves.IndexOf(this) + 1));
+            return string.Format("Staff {0} of part {1} ({2} in score).", Part.Staves.IndexOf(this) + 1, Part.PartId, UsefulMath.NumberToOrdinal(Score.Staves.IndexOf(this) + 1));
         }
 
         internal void ApplyRules(MusicalSymbol item)

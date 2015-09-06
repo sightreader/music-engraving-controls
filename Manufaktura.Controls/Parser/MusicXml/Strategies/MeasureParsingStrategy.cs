@@ -18,7 +18,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             var system = staff.Score.Systems.LastOrDefault();
             if (system == null)
             {
-                system = new StaffSystem();
+                system = new StaffSystem(staff.Score);
                 staff.Score.Systems.Add(system);
             }
             var measure = new Measure(staff, system);

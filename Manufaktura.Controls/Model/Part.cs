@@ -4,6 +4,10 @@ namespace Manufaktura.Controls.Model
 {
     public class Part
     {
+        public string Name { get; set; }
+
+        public string PartId { get; set; }
+
         public List<Staff> Staves { get; private set; }
 
         public Part(IEnumerable<Staff> staves)

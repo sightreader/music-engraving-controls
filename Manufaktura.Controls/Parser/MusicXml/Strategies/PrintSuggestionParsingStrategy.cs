@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
             if (suggestion != null && suggestion.IsSystemBreak)
             {
-                var system = new StaffSystem();
+                var system = new StaffSystem(staff.Score);
                 staff.Measures.Last().System = system;
                 staff.Score.Systems.Add(system);
             }

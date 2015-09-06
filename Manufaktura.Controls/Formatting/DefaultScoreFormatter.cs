@@ -18,7 +18,7 @@ namespace Manufaktura.Controls.Formatting
         {
             var systems = new List<List<Measure>>();
             var measures = new List<Measure>();
-            var currentSystem = new StaffSystem();
+            var currentSystem = new StaffSystem(score);
             foreach (var element in score.FirstStaff.Elements)
             {
                 if (element is Barline) measures.Add(new Measure(score.FirstStaff, currentSystem));
@@ -27,7 +27,7 @@ namespace Manufaktura.Controls.Formatting
                 {
                     systems.Add(measures);
                     measures = new List<Measure>();
-                    currentSystem = new StaffSystem();
+                    currentSystem = new StaffSystem(score);
                 }
             }
             return systems;

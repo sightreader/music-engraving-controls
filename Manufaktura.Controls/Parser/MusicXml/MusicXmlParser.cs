@@ -17,7 +17,7 @@ namespace Manufaktura.Controls.Parser
         public override Score Parse(XDocument xmlDocument)  //TODO: Exception handling!
         {
             Score score = new Score();
-            var firstSystem = new StaffSystem();
+            var firstSystem = new StaffSystem(score);
             MusicXmlParserState state = new MusicXmlParserState();
 
             foreach (XElement defaultSettingsNode in xmlDocument.Descendants().Where(d => d.Name == "defaults" || d.Name == "identification"))
@@ -30,15 +30,16 @@ namespace Manufaktura.Controls.Parser
                 }
             }
 
-            foreach (XElement staffNode in xmlDocument.Descendants(XName.Get("part")))
+            foreach (XElement partNode in xmlDocument.Descendants(XName.Get("part")))
             {
+                var partId = partNode.ParseAttribute("id");
                 state.FirstLoop = true;
                 Staff staff = new Staff() { MeasureAddingRule = Staff.MeasureAddingRuleEnum.AddMeasuresManually };
                 score.Staves.Add(staff);
-                var part = new Part(staff);
+                var part = score.Parts.FirstOrDefault(p => p.PartId == partId) ?? new Part(staff) { PartId = partId };
                 staff.Part = part;
                 score.Parts.Add(part);
-                foreach (XElement node in staffNode.Elements())
+                foreach (XElement node in partNode.Elements())
                 {
                     MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(node);
                     if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, node);

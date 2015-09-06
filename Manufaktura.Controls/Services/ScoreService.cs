@@ -169,7 +169,7 @@ namespace Manufaktura.Controls.Services
             var currentSystemIndex = Systems.IndexOf(CurrentSystem);
             if (currentSystemIndex == Systems.Count - 1)
             {
-                var newSystem = new StaffSystem();
+                var newSystem = new StaffSystem(CurrentScore);
                 Systems.Add(newSystem);
                 CurrentSystem = newSystem;
                 return;

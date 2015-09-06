@@ -168,7 +168,7 @@ namespace Manufaktura.Controls.Model
         private Staff GetStaff(int staffNumber)
         {
             if (staffNumber < 1) throw new ArgumentException("Staff number must be greater than 0.", "staffNumber");
-            if (Staves.Count < staffNumber) throw new IndexOutOfRangeException(string.Format("There is no {0} staff in the score.", UsefulMath.NumberToOrdinal(staffNumber)));
+            if (Staves.Count < staffNumber) return null;
             return Staves[staffNumber - 1];
         }
     }
