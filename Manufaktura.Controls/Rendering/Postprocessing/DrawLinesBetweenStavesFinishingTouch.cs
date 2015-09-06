@@ -2,7 +2,7 @@
 using Manufaktura.Controls.Services;
 using System.Linq;
 
-namespace Manufaktura.Controls.Rendering.Strategies
+namespace Manufaktura.Controls.Rendering.Postprocessing
 {
     /// <summary>
     /// Finishing touch that draws lines between staves if multiple staves are present in the score.
@@ -25,7 +25,8 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 {
                     foreach (var measure in staff.Measures.Where(m => m.Barline != null && m.System == system))
                     {
-                        //renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
+                        if (system.LinePositions == null) continue;
+                        renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
                     }
                 }
             }

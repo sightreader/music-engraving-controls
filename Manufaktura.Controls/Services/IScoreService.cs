@@ -33,7 +33,7 @@ namespace Manufaktura.Controls.Services
 
         LineDictionary LinePositions { get; }
 
-        StaffSystem[] Systems { get; }
+        List<StaffSystem> Systems { get; }
 
         void BeginNewMeasure();
 

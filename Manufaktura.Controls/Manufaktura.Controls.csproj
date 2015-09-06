@@ -155,12 +155,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\Strategies\BarlineRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\ClefRenderStrategy.cs" />
-    <Compile Include="Rendering\Strategies\DemoVersionFinishingTouch.cs" />
+    <Compile Include="Rendering\Postprocessing\DemoVersionFinishingTouch.cs" />
     <Compile Include="Rendering\Strategies\DirectionRenderStrategy.cs" />
-    <Compile Include="Rendering\Strategies\DrawAllLinesFinishingTouch.cs" />
-    <Compile Include="Rendering\Strategies\DrawLinesBetweenStavesFinishingTouch.cs" />
-    <Compile Include="Rendering\Strategies\DrawMissingStemsFinishingTouch.cs" />
-    <Compile Include="Rendering\Strategies\IFinishingTouch.cs" />
+    <Compile Include="Rendering\Postprocessing\DrawAllLinesFinishingTouch.cs" />
+    <Compile Include="Rendering\Postprocessing\DrawLinesBetweenStavesFinishingTouch.cs" />
+    <Compile Include="Rendering\Postprocessing\DrawMissingStemsFinishingTouch.cs" />
+    <Compile Include="Rendering\Postprocessing\IFinishingTouch.cs" />
     <Compile Include="Rendering\Strategies\KeyRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\MusicalSymbolRenderStrategyBase.cs" />
     <Compile Include="Rendering\Strategies\NoteRenderStrategy.cs" />

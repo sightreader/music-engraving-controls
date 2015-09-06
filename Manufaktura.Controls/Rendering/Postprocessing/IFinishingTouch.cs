@@ -1,6 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 
-namespace Manufaktura.Controls.Rendering.Strategies
+namespace Manufaktura.Controls.Rendering.Postprocessing
 {
     /// <summary>
     /// Indicates that the class will be used as finishing touch when drawing score or staff.

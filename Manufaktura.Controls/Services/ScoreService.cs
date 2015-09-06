@@ -6,10 +6,6 @@ namespace Manufaktura.Controls.Services
 {
     public class ScoreService : IScoreService
     {
-
-        private List<StaffSystem> systems = new List<StaffSystem>();
-
-
         /// <summary>
         /// Current clef.
         /// </summary>
@@ -77,7 +73,7 @@ namespace Manufaktura.Controls.Services
         /// </summary>
         public int CurrentSystemNo
         {
-            get { return systems.IndexOf(CurrentSystem) + 1; }
+            get { return Systems.IndexOf(CurrentSystem) + 1; }
         }
 
         /// <summary>
@@ -98,9 +94,9 @@ namespace Manufaktura.Controls.Services
         /// <summary>
         /// All systems in the score.
         /// </summary>
-        public StaffSystem[] Systems
+        public List<StaffSystem> Systems
         {
-            get { return systems.ToArray(); }
+            get { return CurrentScore.Systems; }
         }
 
         public ScoreService()
@@ -137,7 +133,6 @@ namespace Manufaktura.Controls.Services
             CurrentMeasure = null;
             CurrentClef = null;
             CurrentKey = null;
-            systems.Clear();
             LinePositions.Clear();
         }
 
@@ -146,8 +141,8 @@ namespace Manufaktura.Controls.Services
         /// </summary>
         public void BeginNewStaff()
         {
-            if (!systems.Any()) BeginNewSystem();
-            CurrentSystem = systems.First();
+            if (!Systems.Any()) BeginNewSystem();
+            CurrentSystem = Systems.First();
 
             if (CurrentStaff == null)
             {
@@ -171,15 +166,15 @@ namespace Manufaktura.Controls.Services
         /// </summary>
         public void BeginNewSystem()
         {
-            var currentSystemIndex = systems.IndexOf(CurrentSystem);
-            if (currentSystemIndex == systems.Count - 1)
+            var currentSystemIndex = Systems.IndexOf(CurrentSystem);
+            if (currentSystemIndex == Systems.Count - 1)
             {
                 var newSystem = new StaffSystem();
-                systems.Add(newSystem);
+                Systems.Add(newSystem);
                 CurrentSystem = newSystem;
                 return;
             }
-            CurrentSystem = systems[currentSystemIndex + 1];
+            CurrentSystem = Systems[currentSystemIndex + 1];
         }
 
         /// <summary>
@@ -201,7 +196,7 @@ namespace Manufaktura.Controls.Services
         /// </summary>
         public void ReturnToFirstSystem()
         {
-            CurrentSystem = systems.FirstOrDefault();
+            CurrentSystem = Systems.FirstOrDefault();
         }
     }
 }

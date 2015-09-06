@@ -5,7 +5,7 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using System.Linq;
 
-namespace Manufaktura.Controls.Rendering.Strategies
+namespace Manufaktura.Controls.Rendering.Postprocessing
 {
     /// <summary>
     /// Draws text "Demo" in the corners of controls.

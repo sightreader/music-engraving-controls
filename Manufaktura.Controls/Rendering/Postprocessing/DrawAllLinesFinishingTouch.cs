@@ -2,7 +2,7 @@
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
 
-namespace Manufaktura.Controls.Rendering.Strategies
+namespace Manufaktura.Controls.Rendering.Postprocessing
 {
     /// <summary>
     /// Draws lines of the staff
@@ -24,6 +24,7 @@ namespace Manufaktura.Controls.Rendering.Strategies
         {
             foreach (var system in scoreService.Systems)
             {
+                if (system.LinePositions == null) continue;
                 Draw(staff, renderer, system.LinePositions[scoreService.CurrentStaffNo], system.Width);
             }
         }

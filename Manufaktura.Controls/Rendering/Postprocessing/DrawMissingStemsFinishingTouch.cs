@@ -3,7 +3,7 @@ using Manufaktura.Controls.Primitives;
 using System;
 using System.Linq;
 
-namespace Manufaktura.Controls.Rendering.Strategies
+namespace Manufaktura.Controls.Rendering.Postprocessing
 {
     internal class DrawMissingStemsFinishingTouch : IFinishingTouch
     {

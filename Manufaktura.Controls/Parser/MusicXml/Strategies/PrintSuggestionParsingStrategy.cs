@@ -14,30 +14,26 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
+            PrintSuggestion suggestion = null;
             if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
             {
                 foreach (var s in staff.Part.Staves)
                 {
-                    var suggestion = CreateSuggestion(element, state);
-                    if (suggestion.IsSystemBreak)
-                    {
-                        var system = new StaffSystem();
-                        staff.Measures.Last().System = system;
-                        if (!staff.Score.Systems.Contains(system)) staff.Score.Systems.Add(system);
-                    }
+                    suggestion = CreateSuggestion(element, state);
                     s.Elements.Add(suggestion);
                 }
             }
             else
             {
-                var suggestion = CreateSuggestion(element, state);
+                suggestion = CreateSuggestion(element, state);
                 staff.Elements.Add(suggestion);
-                if (suggestion.IsSystemBreak)
-                {
-                    var system = new StaffSystem();
-                    staff.Measures.Last().System = system;
-                    if (!staff.Score.Systems.Contains(system)) staff.Score.Systems.Add(system);
-                }
+            }
+
+            if (suggestion != null && suggestion.IsSystemBreak)
+            {
+                var system = new StaffSystem();
+                staff.Measures.Last().System = system;
+                staff.Score.Systems.Add(system);
             }
         }
 
@@ -46,7 +42,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             PrintSuggestion suggestion = new PrintSuggestion();
 
             //Page breaks are treated as system breaks. Manufaktura.Controls currently doesn't support page breaks.
-            var attribute = element.Attributes().FirstOrDefault(a => a.Name == "new-system" || a.Name == "new-page");   
+            var attribute = element.Attributes().FirstOrDefault(a => a.Name == "new-system" || a.Name == "new-page");
             if (attribute != null) suggestion.IsSystemBreak = attribute.Value == "yes";
 
             var node = element.Descendants().FirstOrDefault(n => n.Name == "system-distance");

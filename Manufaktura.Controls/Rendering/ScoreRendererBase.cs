@@ -3,6 +3,7 @@ using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering.Postprocessing;
 using Manufaktura.Controls.Rendering.Strategies;
 using Manufaktura.Controls.Services;
 using System;
