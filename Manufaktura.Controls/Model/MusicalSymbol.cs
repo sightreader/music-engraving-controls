@@ -12,7 +12,7 @@ namespace Manufaktura.Controls.Model
 
     public enum HorizontalPlacement { Left, Right };
 
-    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction, Staff, PrintSuggestion };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
+    public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction, Staff, PrintSuggestion, ChordSign };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
 
     public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
 
