@@ -48,6 +48,21 @@ namespace Manufaktura.Controls.Extensions
             foreach (var el in childElements) yield return el.Value;
         }
 
+        public static void ParseNodeWithDictionaryValue<T>(this XElement element, Action<T> useParseResultAction, string name, params dynamic[] valueFactory)
+        {
+            var childElement = element.Descendants().FirstOrDefault(d => d.Name == name);
+            if (childElement == null) return;
+            var matchedValue = valueFactory.FirstOrDefault(f => f.Key == childElement.Value);
+            if (matchedValue != null) useParseResultAction(matchedValue.Value);
+        }
+
+        public static void ParseNodeWithDictionaryValue<T>(this XElement element, Action<T> useParseResultAction, string name, Dictionary<string, T> values)
+        {
+            var childElement = element.Descendants().FirstOrDefault(d => d.Name == name);
+            if (childElement == null) return;
+            if (values.ContainsKey(childElement.Value)) useParseResultAction(values[childElement.Value]);
+        }
+
         private static Nullable<T> ParseValue<T>(string value, string name) where T : struct
         {
             if (typeof(T) == typeof(int)) return UsefulMath.TryParseInt(value) as Nullable<T>;
