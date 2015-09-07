@@ -10,6 +10,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="Gainsboro">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
             <Manufaktura:NoteViewer x:Name="noteViewer1" HorizontalAlignment="Stretch" IsPanoramaMode="False"  IsOccupyingSpace="True" VerticalAlignment="Top"/>
             <Manufaktura:NoteViewer x:Name="noteViewer2" HorizontalAlignment="Stretch" IsPanoramaMode="True" IsOccupyingSpace="True" VerticalAlignment="Top" />
@@ -19,6 +20,7 @@
             <Keyboard:PianoKeyboard HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="451" KeyWidth="30"/>
 
         </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

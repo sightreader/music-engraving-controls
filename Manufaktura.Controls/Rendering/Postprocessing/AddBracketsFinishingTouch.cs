@@ -27,6 +27,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
         private void DrawBracket(StaffSystem system, Part part, ScoreRendererBase renderer)
         {
+            if (system.LinePositions == null) return;
             var location = new Point(-30, system.LinePositions[1][0]);
             var size = new Size(25, system.LinePositions[part.Staves.Count][4] - system.LinePositions[1][0]);
             renderer.DrawStringInBounds(renderer.Settings.CurrentFont.LeftBracket, Model.Fonts.MusicFontStyles.MusicFont, location, size, Color.Black, part.Staves.First());

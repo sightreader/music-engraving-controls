@@ -66,6 +66,8 @@ namespace Manufaktura.Controls.UniversalApps
         private DraggingState _draggingState = new DraggingState();
         private Score _innerScore;
 
+        private Color previousColor;
+
         public Score InnerScore { get { return _innerScore; } }
 
         public bool IsAsync
@@ -149,7 +151,7 @@ namespace Manufaktura.Controls.UniversalApps
 
         public void Select(MusicalSymbol element)
         {
-            if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Black);   //Reset color on previously selected element
+            if (SelectedElementInner != null) ColorElement(SelectedElementInner, previousColor);   //Reset color on previously selected element
             SelectedElementInner = element;
 
             Note note = SelectedElementInner as Note;
@@ -226,10 +228,20 @@ namespace Manufaktura.Controls.UniversalApps
             foreach (var ownership in ownerships)
             {
                 TextBlock textBlock = ownership.Key as TextBlock;
-                if (textBlock != null) textBlock.Foreground = new SolidColorBrush(color);
+                if (textBlock != null)
+                {
+                    var brush = textBlock.Foreground as SolidColorBrush;
+                    if (brush != null) previousColor = brush.Color;
+                    textBlock.Foreground = new SolidColorBrush(color);
+                }
 
                 Shape shape = ownership.Key as Shape;
-                if (shape != null) shape.Stroke = new SolidColorBrush(color);
+                if (shape != null)
+                {
+                    var brush = shape.Stroke as SolidColorBrush;
+                    if (brush != null) previousColor = brush.Color;
+                    shape.Stroke = new SolidColorBrush(color);
+                }
             }
         }
 
