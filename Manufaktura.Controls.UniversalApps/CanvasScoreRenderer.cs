@@ -33,6 +33,8 @@ namespace Manufaktura.Controls.UniversalApps
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
         {
+            rect = rect.Translate(CurrentScore.DefaultPageSettings);
+
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
             pf.StartPoint = new Point(rect.X, rect.Y);
@@ -58,6 +60,11 @@ namespace Manufaktura.Controls.UniversalApps
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
         {
+            p1 = p1.Translate(CurrentScore.DefaultPageSettings);
+            p2 = p2.Translate(CurrentScore.DefaultPageSettings);
+            p3 = p3.Translate(CurrentScore.DefaultPageSettings);
+            p4 = p4.Translate(CurrentScore.DefaultPageSettings);
+
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
             pf.StartPoint = new Point(p1.X, p1.Y);
@@ -81,6 +88,9 @@ namespace Manufaktura.Controls.UniversalApps
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
         {
+            startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
+            endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
+
             var line = new Line();
             line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             line.UseLayoutRounding = true;
@@ -99,6 +109,8 @@ namespace Manufaktura.Controls.UniversalApps
 
         public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
+            location = location.Translate(CurrentScore.DefaultPageSettings);
+
             TextBlock textBlock = new TextBlock();
             textBlock.FontSize = Fonts.GetSize(fontStyle);
             textBlock.FontFamily = Fonts.Get(fontStyle);
@@ -116,6 +128,27 @@ namespace Manufaktura.Controls.UniversalApps
 
         public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
         {
+            location = location.Translate(CurrentScore.DefaultPageSettings);
+
+            TextBlock textBlock = new TextBlock();
+            textBlock.FontFamily = Fonts.Get(fontStyle);
+            textBlock.FontSize = 200;
+            textBlock.Text = text;
+            textBlock.Margin = new Thickness(0, -25, 0, 0);
+            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+
+            var viewBox = new Viewbox();
+            viewBox.Child = textBlock;
+            viewBox.Width = size.Width;
+            viewBox.Height = size.Height;
+            viewBox.Stretch = Stretch.Fill;
+            viewBox.RenderTransform = new ScaleTransform() { ScaleX = 1, ScaleY = 1.9 };
+            Windows.UI.Xaml.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
+            Windows.UI.Xaml.Controls.Canvas.SetTop(viewBox, location.Y);
+            Canvas.Children.Add(viewBox);
+
+            OwnershipDictionary.Add(textBlock, owner);
         }
 
         private Visibility BoolToVisibility(bool isVisible)

@@ -19,6 +19,10 @@ namespace Manufaktura.Controls.UniversalApps
 {
     public sealed partial class NoteViewer : UserControl
     {
+        // Using a DependencyProperty as the backing store for IsAsync.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsAsyncProperty =
+            DependencyProperty.Register("IsAsync", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
+
         // Using a DependencyProperty as the backing store for IsDebugMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDebugModeProperty =
             DependencyProperty.Register("IsDebugMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
@@ -63,6 +67,12 @@ namespace Manufaktura.Controls.UniversalApps
         private Score _innerScore;
 
         public Score InnerScore { get { return _innerScore; } }
+
+        public bool IsAsync
+        {
+            get { return (bool)GetValue(IsAsyncProperty); }
+            set { SetValue(IsAsyncProperty, value); }
+        }
 
         public bool IsDebugMode
         {
@@ -155,12 +165,24 @@ namespace Manufaktura.Controls.UniversalApps
         protected override Size MeasureOverride(Size availableSize)
         {
             if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
-            double width = availableSize.Width;
 
-            double maxWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
+            double width = availableSize.Width;
+            var pageWidth = (Renderer.CurrentScore.DefaultPageSettings.MarginLeft ?? 0) +
+                (Renderer.CurrentScore.DefaultPageSettings.Width ?? 0) +
+                (Renderer.CurrentScore.DefaultPageSettings.MarginRight ?? 0);
+            var maxSystemWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
+            double maxWidth = pageWidth > maxSystemWidth ? pageWidth : maxSystemWidth;
             if (maxWidth > 0) width = maxWidth;
 
-            return new Size(width * ZoomFactor, (Renderer.ScoreInformation.Systems.Sum(s => s.Height) + 100) * ZoomFactor);
+            var pageHeight = (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) +
+                (Renderer.CurrentScore.DefaultPageSettings.Height ?? 0) * (Renderer.CurrentScore.Pages.Count / 2) +
+                (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0);
+            var maxSystemHeight = Renderer.ScoreInformation.Systems.Sum(s => s.Height);
+            if (maxSystemHeight == 0) maxSystemHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height);
+            if (maxSystemHeight == 0) maxSystemHeight = 100;
+            var maxHeight = pageHeight > maxSystemHeight ? pageHeight : maxSystemHeight;
+
+            return new Size(width * ZoomFactor, maxHeight * ZoomFactor);
         }
 
         private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
