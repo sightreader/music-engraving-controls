@@ -34,6 +34,12 @@ namespace Manufaktura.Controls.Services
             get { return CurrentStaff.Measures.IndexOf(CurrentMeasure) + 1; }
         }
 
+        public ScorePage CurrentPage
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Current score.
         /// </summary>
@@ -84,7 +90,11 @@ namespace Manufaktura.Controls.Services
         /// <summary>
         /// Current horizontal cursor position.
         /// </summary>
-        public double CursorPositionX { get; set; }
+        public double CursorPositionX
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Dictionary of line positions in the score.
@@ -129,6 +139,7 @@ namespace Manufaktura.Controls.Services
         public void BeginNewScore(Score score)
         {
             CurrentScore = score;
+            CurrentPage = score.DefaultPageSettings;
             CurrentStaff = null;
             CurrentMeasure = null;
             CurrentClef = null;

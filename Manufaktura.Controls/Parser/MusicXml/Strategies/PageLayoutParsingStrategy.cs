@@ -20,6 +20,10 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             var score = staff.Score;
             score.DefaultPageSettings.Width = element.ParseChildElement<double>("page-width");
             score.DefaultPageSettings.Height = element.ParseChildElement<double>("page-height");
+            score.DefaultPageSettings.MarginLeft = element.ParseChildElement<double>("left-margin");
+            score.DefaultPageSettings.MarginRight = element.ParseChildElement<double>("right-margin");
+            score.DefaultPageSettings.MarginTop = element.ParseChildElement<double>("top-margin");
+            score.DefaultPageSettings.MarginBottom = element.ParseChildElement<double>("bottom-margin");
         }
     }
 }

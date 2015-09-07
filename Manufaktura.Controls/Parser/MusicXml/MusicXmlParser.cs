@@ -18,6 +18,7 @@ namespace Manufaktura.Controls.Parser
         {
             Score score = new Score();
             var firstSystem = new StaffSystem(score);
+            score.Pages.Last().Systems.Add(firstSystem);
             MusicXmlParserState state = new MusicXmlParserState();
 
             foreach (XElement defaultSettingsNode in xmlDocument.Descendants().Where(d => d.Name == "defaults" || d.Name == "identification"))

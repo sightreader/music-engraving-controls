@@ -29,9 +29,15 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 staff.Elements.Add(suggestion);
             }
 
-            if (suggestion != null && suggestion.IsSystemBreak)
+            if (suggestion.IsPageBreak)
+            {
+                var page = new ScorePage();
+                staff.Score.Pages.Add(page);
+            }
+            if (suggestion.IsSystemBreak)
             {
                 var system = new StaffSystem(staff.Score);
+                staff.Score.Pages.Last().Systems.Add(system);
                 staff.Measures.Last().System = system;
                 staff.Score.Systems.Add(system);
                 if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
@@ -48,9 +54,11 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
         {
             PrintSuggestion suggestion = new PrintSuggestion();
 
-            //Page breaks are treated as system breaks. Manufaktura.Controls currently doesn't support page breaks.
-            var attribute = element.Attributes().FirstOrDefault(a => a.Name == "new-system" || a.Name == "new-page");
+            var attribute = element.Attributes().FirstOrDefault(a => a.Name == "new-system");
             if (attribute != null) suggestion.IsSystemBreak = attribute.Value == "yes";
+            attribute = element.Attributes().FirstOrDefault(a => a.Name == "new-page");
+            if (attribute != null) suggestion.IsPageBreak = attribute.Value == "yes";
+            if (suggestion.IsPageBreak) suggestion.IsSystemBreak = true;    //Page breaks are treated as system breaks. Manufaktura.Controls currently doesn't support page breaks.
 
             var node = element.Descendants().FirstOrDefault(n => n.Name == "system-distance");
             if (node != null)

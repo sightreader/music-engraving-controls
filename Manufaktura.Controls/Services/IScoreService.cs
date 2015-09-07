@@ -15,6 +15,8 @@ namespace Manufaktura.Controls.Services
 
         int CurrentMeasureNo { get; }
 
+        ScorePage CurrentPage { get; set; }
+
         Score CurrentScore { get; }
 
         Staff CurrentStaff { get; }

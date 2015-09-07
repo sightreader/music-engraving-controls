@@ -9,7 +9,7 @@ namespace Manufaktura.Controls.Model.Rules
     {
         public override void Apply(Staff staff, MusicalSymbol newElement)
         {
-            var currentMeasure = staff.Measures.LastOrDefault();    //TODO: TO nie może być nullem - poprawić
+            var currentMeasure = staff.Measures.LastOrDefault();
             if (currentMeasure != null)
             {
                 currentMeasure.Elements.Add(newElement);

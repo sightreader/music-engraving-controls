@@ -33,6 +33,8 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
         {
+            rect = rect.Translate(CurrentScore.DefaultPageSettings);
+
             if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
@@ -58,6 +60,11 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
         {
+            p1 = p1.Translate(CurrentScore.DefaultPageSettings);
+            p2 = p2.Translate(CurrentScore.DefaultPageSettings);
+            p3 = p3.Translate(CurrentScore.DefaultPageSettings);
+            p4 = p4.Translate(CurrentScore.DefaultPageSettings);
+
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
             pf.StartPoint = new Point(p1.X, p1.Y);
@@ -80,6 +87,9 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
         {
+            startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
+            endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
+
             var line = new Line();
             line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             line.X1 = startPoint.X;
@@ -95,6 +105,8 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
+            location = location.Translate(CurrentScore.DefaultPageSettings);
+
             TextBlock textBlock = new TextBlock();
             Typeface typeface = Fonts.Get(fontStyle);
             textBlock.FontSize = Fonts.GetSize(fontStyle);
@@ -114,6 +126,8 @@ namespace Manufaktura.Controls.WPF
 
         public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
         {
+            location = location.Translate(CurrentScore.DefaultPageSettings);
+
             TextBlock textBlock = new TextBlock();
             Typeface typeface = Fonts.Get(fontStyle);
             textBlock.FontSize = 200;

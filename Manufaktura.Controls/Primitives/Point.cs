@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Manufaktura.Controls.Model;
 
 namespace Manufaktura.Controls.Primitives
 {
@@ -11,6 +8,7 @@ namespace Manufaktura.Controls.Primitives
     public struct Point
     {
         public double X { get; set; }
+
         public double Y { get; set; }
 
         public Point(double x, double y) : this()
@@ -19,5 +17,9 @@ namespace Manufaktura.Controls.Primitives
             this.Y = y;
         }
 
+        public Point Translate(ScorePage page)
+        {
+            return new Point(this.X + (page.MarginLeft ?? 0), this.Y + (page.MarginTop ?? 0));
+        }
     }
 }
