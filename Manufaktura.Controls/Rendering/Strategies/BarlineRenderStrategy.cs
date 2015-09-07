@@ -39,7 +39,7 @@ namespace Manufaktura.Controls.Rendering
 
             double? measureWidth = GetCursorPositionForCurrentBarline(renderer);
             if (!renderer.Settings.IgnoreCustomElementPositions && measureWidth.HasValue && element.Location == HorizontalPlacement.Right) scoreService.CursorPositionX = measureWidth.Value;
-            else
+            else if (element.RepeatSign == RepeatSignType.None)
             {
                 //If measure width is not set, get barline location from the first staff:
                 if (scoreService.CurrentStaff != scoreService.CurrentScore.FirstStaff)

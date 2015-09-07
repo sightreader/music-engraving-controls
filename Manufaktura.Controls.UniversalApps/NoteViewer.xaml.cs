@@ -176,13 +176,22 @@ namespace Manufaktura.Controls.UniversalApps
             double maxWidth = pageWidth > maxSystemWidth ? pageWidth : maxSystemWidth;
             if (maxWidth > 0) width = maxWidth;
 
-            var pageHeight = (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) +
-                (Renderer.CurrentScore.DefaultPageSettings.Height ?? 0) * (Renderer.CurrentScore.Pages.Count / 2) +
-                (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0);
-            var maxSystemHeight = Renderer.ScoreInformation.Systems.Sum(s => s.Height);
-            if (maxSystemHeight == 0) maxSystemHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height);
-            if (maxSystemHeight == 0) maxSystemHeight = 100;
-            var maxHeight = pageHeight > maxSystemHeight ? pageHeight : maxSystemHeight;
+            double maxHeight;
+            if (!IsPanoramaMode)
+            {
+                var pageHeight = (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) +
+                    (Renderer.CurrentScore.DefaultPageSettings.Height ?? 0) * (Renderer.CurrentScore.Pages.Count / 2) +
+                    (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0);
+                var maxSystemHeight = Renderer.ScoreInformation.Systems.Sum(s => s.Height);
+                if (maxSystemHeight == 0) maxSystemHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height);
+                if (maxSystemHeight == 0) maxSystemHeight = 100;
+                maxHeight = pageHeight > maxSystemHeight ? pageHeight : maxSystemHeight;
+            }
+            else
+            {
+                maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height);
+                if (maxHeight == 0) maxHeight = 100;
+            }
 
             return new Size(width * ZoomFactor, maxHeight * ZoomFactor);
         }
