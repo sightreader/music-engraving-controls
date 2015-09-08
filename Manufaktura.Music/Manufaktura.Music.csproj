@@ -83,6 +83,14 @@
     <Compile Include="Tuning\TunedInterval.cs" />
     <Compile Include="Tuning\TuningSystem.cs" />
     <Compile Include="UnitTests\MusicalAssertions.cs" />
+    <Compile Include="Xml\IXHelper.cs" />
+    <Compile Include="Xml\IXHelperResult.cs" />
+    <Compile Include="Xml\XAttributeHelper.cs" />
+    <Compile Include="Xml\XExtensions.cs" />
+    <Compile Include="Xml\XElementHelper.cs" />
+    <Compile Include="Xml\XHelperBase.cs" />
+    <Compile Include="Xml\XHelperExistsResult.cs" />
+    <Compile Include="Xml\XHelperHasValueResult.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Builders;
 using Manufaktura.Music.Model;
+using Manufaktura.Music.Xml;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -21,28 +22,12 @@ namespace Manufaktura.Controls.Parser.MusicXml
         {
             NoteOrRestBuilder builder = new NoteOrRestBuilder(state);
 
-            var defaultXAttribute = element.Attributes().Where(a => a.Name == "default-x").FirstOrDefault();
-            if (defaultXAttribute != null)
-            {
-                var parsedValue = UsefulMath.TryParse(defaultXAttribute.Value);
-                if (parsedValue.HasValue) builder.DefaultX = parsedValue.Value;
-            }
-            var fullMeasureAttribute = element.Attributes().Where(a => a.Name == "measure").FirstOrDefault();
-            if (fullMeasureAttribute != null)
-            {
-                builder.FullMeasure = "yes".Equals(fullMeasureAttribute.Value, StringComparison.OrdinalIgnoreCase);
-            }
-            var staffElement = element.Elements().Where(a => a.Name == "staff").FirstOrDefault();
-            if (staffElement != null)
-            {
-                int? staffNumber = UsefulMath.TryParseInt(staffElement.Value) ?? 1;
-                builder.Staff = staff.Score.Staves.ElementAt(staffNumber.Value - 1);    //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
-            }
+            element.IfAttribute("default-x").HasValue<double>().Then(m => builder.DefaultX = m);
+            element.IfAttribute("measure").HasValue("yes").Then(m => builder.FullMeasure = true);
+            element.IfDescendant("staff").HasValue<int>().Then(m => builder.Staff = staff.Score.Staves.ElementAt(m - 1)); //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
+            element.IfAttribute("print-object").HasValue("yes").Then(m => builder.IsVisible = true);
 
-            var printObjectAttribute = element.Attributes().Where(a => a.Name == "print-object").FirstOrDefault();
-            if (printObjectAttribute != null) builder.IsVisible = "yes".Equals(printObjectAttribute.Value, StringComparison.OrdinalIgnoreCase);
-
-            element.ParseNodeWithDictionaryValue<RhythmicDuration>(m => builder.BaseDuration = m, "type", new Dictionary<string, RhythmicDuration> {
+            element.IfDescendant("type").HasValue(new Dictionary<string, RhythmicDuration> {
                  { "whole", RhythmicDuration.Whole },
                  { "half", RhythmicDuration.Half },
                  { "quarter",  RhythmicDuration.Quarter },
@@ -50,7 +35,15 @@ namespace Manufaktura.Controls.Parser.MusicXml
                  { "16th",  RhythmicDuration.Sixteenth },
                  { "32nd",  RhythmicDuration.D32nd },
                  { "64th",  RhythmicDuration.D64th },
-                 { "128th",  RhythmicDuration.D128th }});
+                 { "128th",  RhythmicDuration.D128th }}).Then(m => builder.BaseDuration = m);
+
+            element.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);
+            element.IfDescendant("voice").HasValue<int>().Then(m => builder.Voice = m);
+            element.IfDescendant("grace").Exists().Then(() => builder.IsGraceNote = true);
+            element.IfDescendant("chord").Exists().Then(() => builder.IsChordElement = true);
+            element.IfAttribute("accidental").HasValue("natural").Then(() => builder.HasNatural = true);
+            element.IfAttribute("rest").Exists().Then(() => builder.IsRest = true);
+            element.ForEachDescendant("dot", f => f.Exists().Then(() => builder.NumberOfDots++));
 
             foreach (XElement noteNode in element.Elements())
             {
@@ -72,39 +65,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         }
                     }
                 }
-                else if (noteNode.Name == "voice")
-                {
-                    builder.Voice = Convert.ToInt32(noteNode.Value);
-                }
-                else if (noteNode.Name == "grace")
-                {
-                    builder.IsGraceNote = true;
-                }
-                else if (noteNode.Name == "chord")
-                {
-                    builder.IsChordElement = true;
-                }
-                else if (noteNode.Name == "type")
-                {
-                    /*if (noteNode.Value == "whole") builder.BaseDuration = RhythmicDuration.Whole;
-                    else if (noteNode.Value == "half") builder.BaseDuration = RhythmicDuration.Half;
-                    else if (noteNode.Value == "quarter") builder.BaseDuration = RhythmicDuration.Quarter;
-                    else if (noteNode.Value == "eighth") builder.BaseDuration = RhythmicDuration.Eighth;
-                    else if (noteNode.Value == "16th") builder.BaseDuration = RhythmicDuration.Sixteenth;
-                    else if (noteNode.Value == "32nd") builder.BaseDuration = RhythmicDuration.D32nd;
-                    else if (noteNode.Value == "64th") builder.BaseDuration = RhythmicDuration.D64th;
-                    else if (noteNode.Value == "128th") builder.BaseDuration = RhythmicDuration.D128th;
-                    */
-                    var noteSizeAttribute = noteNode.Attributes().FirstOrDefault(a => a.Name == "size");
-                    if (noteSizeAttribute != null)
-                    {
-                        builder.IsCueNote = noteSizeAttribute.Value == "cue";
-                    }
-                }
-                else if (noteNode.Name == "accidental")
-                {
-                    if (noteNode.Value == "natural") builder.HasNatural = true;
-                }
                 else if (noteNode.Name == "tie")
                 {
                     var attribute = noteNode.Attribute(XName.Get("type"));
@@ -117,14 +77,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     {
                         builder.TieType = NoteTieType.Stop;
                     }
-                }
-                else if (noteNode.Name == "rest")
-                {
-                    builder.IsRest = true;
-                }
-                else if (noteNode.Name == "dot")
-                {
-                    builder.NumberOfDots++;
                 }
                 else if (noteNode.Name == "stem")
                 {
