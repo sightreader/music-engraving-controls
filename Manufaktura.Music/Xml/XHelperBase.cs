@@ -11,6 +11,13 @@ namespace Manufaktura.Music.Xml
             return new XHelperExistsResult(ElementExists());
         }
 
+        public XHelperHasValueResult<string> HasAnyValue()
+        {
+            if (!ElementExists()) return new XHelperHasValueResult<string>();
+            var value = GetValue();
+            return !string.IsNullOrWhiteSpace(value) ? new XHelperHasValueResult<string>(value) : new XHelperHasValueResult<string>();
+        }
+
         public XHelperHasValueResult<T> HasValue<T>(Dictionary<string, T> values)
         {
             if (ElementExists() && values.ContainsKey(GetValue())) return new XHelperHasValueResult<T>(values[GetValue()]);
@@ -39,6 +46,7 @@ namespace Manufaktura.Music.Xml
         {
             if (typeof(T) == typeof(int)) return UsefulMath.TryParseInt(value) as Nullable<T>;
             if (typeof(T) == typeof(double)) return UsefulMath.TryParse(value) as Nullable<T>;
+            if (typeof(T) == typeof(float)) return UsefulMath.TryParse(value) as Nullable<T>;
             if (typeof(T) == typeof(DateTime)) return UsefulMath.TryParseDateTime(value) as Nullable<T>;
             throw new NotImplementedException("Type not supported");
         }

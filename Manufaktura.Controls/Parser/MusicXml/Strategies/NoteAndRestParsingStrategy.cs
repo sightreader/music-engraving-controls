@@ -45,53 +45,41 @@ namespace Manufaktura.Controls.Parser.MusicXml
             element.IfAttribute("rest").Exists().Then(() => builder.IsRest = true);
             element.ForEachDescendant("dot", f => f.Exists().Then(() => builder.NumberOfDots++));
 
+            var pitchElement = element.Elements().FirstOrDefault(e => e.Name == "pitch");
+            if (pitchElement != null)
+            {
+                pitchElement.IfElement("step").HasAnyValue().Then(v => builder.Step = v);
+                pitchElement.IfElement("octave").HasValue<int>().Then(v => builder.Octave = v);
+                pitchElement.IfElement("alter").HasValue<int>().Then(v => builder.Alter = v);
+            }
+
+            var tieElement = element.Elements().FirstOrDefault(e => e.Name == "tie");
+            if (tieElement != null)
+            {
+                tieElement.IfAttribute("type").HasValue("start").Then(v =>
+                {
+                    if (builder.TieType == NoteTieType.Stop) builder.TieType = NoteTieType.StopAndStartAnother;
+                    else builder.TieType = NoteTieType.Start;
+                }).Otherwise(() => builder.TieType = NoteTieType.Stop);
+            }
+
+            element.IfElement("stem").HasValue("down")
+                .Then(() => builder.StemDirection = VerticalDirection.Down)
+                .Otherwise(() => builder.StemDirection = VerticalDirection.Up);
+            var stemElement = element.Elements().FirstOrDefault(e => e.Name == "stem");
+            if (stemElement != null)
+            {
+                stemElement.IfAttribute("default-y").HasValue<float>().Then(v =>
+                {
+                    builder.StemDefaultY = v;
+                    builder.CustomStemEndPosition = true;
+                });
+            }
+
+            //TODO: Refactor to Manufaktura.Music.Xml API
             foreach (XElement noteNode in element.Elements())
             {
-                if (noteNode.Name == "pitch")
-                {
-                    foreach (XElement pitchAttribute in noteNode.Elements())
-                    {
-                        if (pitchAttribute.Name == "step")
-                        {
-                            builder.Step = pitchAttribute.Value;
-                        }
-                        else if (pitchAttribute.Name == "octave")
-                        {
-                            builder.Octave = Convert.ToInt16(pitchAttribute.Value);
-                        }
-                        else if (pitchAttribute.Name == "alter")
-                        {
-                            builder.Alter = Convert.ToInt16(pitchAttribute.Value);
-                        }
-                    }
-                }
-                else if (noteNode.Name == "tie")
-                {
-                    var attribute = noteNode.Attribute(XName.Get("type"));
-                    if (attribute.Value == "start")
-                    {
-                        if (builder.TieType == NoteTieType.Stop) builder.TieType = NoteTieType.StopAndStartAnother;
-                        else builder.TieType = NoteTieType.Start;
-                    }
-                    else
-                    {
-                        builder.TieType = NoteTieType.Stop;
-                    }
-                }
-                else if (noteNode.Name == "stem")
-                {
-                    if (noteNode.Value == "down") builder.StemDirection = VerticalDirection.Down;
-                    else builder.StemDirection = VerticalDirection.Up;
-                    foreach (XAttribute xa in noteNode.Attributes())
-                    {
-                        if (xa.Name == "default-y")
-                        {
-                            builder.StemDefaultY = float.Parse(xa.Value.Replace('.', Convert.ToChar(NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator)));
-                            builder.CustomStemEndPosition = true;
-                        }
-                    }
-                }
-                else if (noteNode.Name == "beam")
+                if (noteNode.Name == "beam")
                 {
                     if (noteNode.Value == "begin") builder.BeamList.Add(NoteBeamType.Start);
                     else if (noteNode.Value == "end") builder.BeamList.Add(NoteBeamType.End);

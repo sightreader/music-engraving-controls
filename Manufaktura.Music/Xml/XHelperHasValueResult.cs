@@ -31,14 +31,22 @@ namespace Manufaktura.Music.Xml
             HasValue = false;
         }
 
-        public void Then(Action<T> action)
+        public IXHelperResult Then(Action<T> action)
         {
             if (HasValue && action != null) action(Value);
+            return this;
         }
 
-        public void Then(Action action)
+        public IXHelperResult Then(Action action)
         {
             if (HasValue && action != null) action();
+            return this;
+        }
+
+        public IXHelperResult Otherwise(Action action)
+        {
+            if (!HasValue && action != null) action();
+            return this;
         }
     }
 }

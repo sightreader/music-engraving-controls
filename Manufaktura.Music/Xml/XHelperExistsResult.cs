@@ -11,9 +11,16 @@ namespace Manufaktura.Music.Xml
             this.exists = exists;
         }
 
-        public void Then(Action action)
+        public IXHelperResult Otherwise(Action action)
+        {
+            if (!exists && action != null) action();
+            return this;
+        }
+
+        public IXHelperResult Then(Action action)
         {
             if (exists && action != null) action();
+            return this;
         }
     }
 }

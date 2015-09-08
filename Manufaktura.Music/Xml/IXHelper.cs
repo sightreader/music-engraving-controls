@@ -11,6 +11,7 @@ namespace Manufaktura.Music.Xml
         XHelperHasValueResult<T> HasValue<T>(Dictionary<string, T> values);
         XHelperHasValueResult<T> HasValue<T>() where T : struct;
         XHelperHasValueResult<string> HasValue(string s);
+        XHelperHasValueResult<string> HasAnyValue();
 
     }
 }
