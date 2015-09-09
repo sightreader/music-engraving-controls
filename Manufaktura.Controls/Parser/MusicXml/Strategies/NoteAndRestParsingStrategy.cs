@@ -70,13 +70,13 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     builder.CustomStemEndPosition = true;
                 });
 
-            element.IfElement("beam").HasValue(new Dictionary<string, NoteBeamType> {
+            element.ForEachDescendant("beam", h => h.HasValue(new Dictionary<string, NoteBeamType> {
                 {"begin", NoteBeamType.Start},
                 {"end", NoteBeamType.End},
                 {"continue", NoteBeamType.Continue},
                 {"forward hook", NoteBeamType.ForwardHook},
                 {"backward hook", NoteBeamType.BackwardHook}
-            }).Then(v => builder.BeamList.Add(v));
+            }).Then(v => builder.BeamList.Add(v)));
 
             var notationsNode = element.GetElement("notations");
             var tupletNode = notationsNode.GetElement("tuplet");
