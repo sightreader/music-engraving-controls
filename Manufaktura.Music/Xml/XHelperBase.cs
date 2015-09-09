@@ -8,7 +8,7 @@ namespace Manufaktura.Music.Xml
     {
         public XHelperExistsResult Exists()
         {
-            return new XHelperExistsResult(ElementExists());
+            return new XHelperExistsResult(ElementExists(), GetObject());
         }
 
         public XHelperHasValueResult<string> HasAnyValue()
@@ -41,6 +41,8 @@ namespace Manufaktura.Music.Xml
         protected abstract bool ElementExists();
 
         protected abstract string GetValue();
+
+        protected abstract object GetObject();
 
         private static Nullable<T> ParseValue<T>(string value) where T : struct
         {

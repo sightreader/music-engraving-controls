@@ -20,5 +20,10 @@ namespace Manufaktura.Music.Xml
         {
             return element.Value;
         }
+
+        protected override object GetObject()
+        {
+            return element;
+        }
     }
 }

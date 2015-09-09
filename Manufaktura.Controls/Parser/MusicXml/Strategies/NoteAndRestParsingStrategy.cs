@@ -5,7 +5,6 @@ using Manufaktura.Music.Model;
 using Manufaktura.Music.Xml;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -24,10 +23,10 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
             element.IfAttribute("default-x").HasValue<double>().Then(m => builder.DefaultX = m);
             element.IfAttribute("measure").HasValue("yes").Then(m => builder.FullMeasure = true);
-            element.IfDescendant("staff").HasValue<int>().Then(m => builder.Staff = staff.Score.Staves.ElementAt(m - 1)); //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
             element.IfAttribute("print-object").HasValue("yes").Then(m => builder.IsVisible = true);
-
-            element.IfDescendant("type").HasValue(new Dictionary<string, RhythmicDuration> {
+            element.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);
+            element.IfElement("staff").HasValue<int>().Then(m => builder.Staff = staff.Score.Staves.ElementAt(m - 1)); //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
+            element.IfElement("type").HasValue(new Dictionary<string, RhythmicDuration> {
                  { "whole", RhythmicDuration.Whole },
                  { "half", RhythmicDuration.Half },
                  { "quarter",  RhythmicDuration.Quarter },
@@ -37,12 +36,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
                  { "64th",  RhythmicDuration.D64th },
                  { "128th",  RhythmicDuration.D128th }}).Then(m => builder.BaseDuration = m);
 
-            element.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);
-            element.IfDescendant("voice").HasValue<int>().Then(m => builder.Voice = m);
-            element.IfDescendant("grace").Exists().Then(() => builder.IsGraceNote = true);
-            element.IfDescendant("chord").Exists().Then(() => builder.IsChordElement = true);
-            element.IfAttribute("accidental").HasValue("natural").Then(() => builder.HasNatural = true);
-            element.IfAttribute("rest").Exists().Then(() => builder.IsRest = true);
+            element.IfElement("voice").HasValue<int>().Then(m => builder.Voice = m);
+            element.IfElement("grace").Exists().Then(() => builder.IsGraceNote = true);
+            element.IfElement("chord").Exists().Then(() => builder.IsChordElement = true);
+            element.IfElement("accidental").HasValue("natural").Then(() => builder.HasNatural = true);
+            element.IfElement("rest").Exists().Then(() => builder.IsRest = true);
             element.ForEachDescendant("dot", f => f.Exists().Then(() => builder.NumberOfDots++));
 
             var pitchElement = element.Elements().FirstOrDefault(e => e.Name == "pitch");
@@ -66,48 +64,41 @@ namespace Manufaktura.Controls.Parser.MusicXml
             element.IfElement("stem").HasValue("down")
                 .Then(() => builder.StemDirection = VerticalDirection.Down)
                 .Otherwise(() => builder.StemDirection = VerticalDirection.Up);
-            var stemElement = element.Elements().FirstOrDefault(e => e.Name == "stem");
-            if (stemElement != null)
-            {
-                stemElement.IfAttribute("default-y").HasValue<float>().Then(v =>
+            element.GetElement("stem").IfAttribute("default-y").HasValue<float>().Then(v =>
                 {
                     builder.StemDefaultY = v;
                     builder.CustomStemEndPosition = true;
                 });
-            }
+
+            element.IfElement("beam").HasValue(new Dictionary<string, NoteBeamType> {
+                {"begin", NoteBeamType.Start},
+                {"end", NoteBeamType.End},
+                {"continue", NoteBeamType.Continue},
+                {"forward hook", NoteBeamType.ForwardHook},
+                {"backward hook", NoteBeamType.BackwardHook}
+            }).Then(v => builder.BeamList.Add(v));
+
+            var notationsNode = element.GetElement("notations");
+            var tupletNode = notationsNode.GetElement("tuplet");
+            tupletNode.IfAttribute("type").HasValue(new Dictionary<string, TupletType> {
+                        {"start", TupletType.Start},
+                        {"stop", TupletType.Stop},
+                    }).Then(v => builder.Tuplet = v);
+            tupletNode.IfAttribute("placement").HasValue(new Dictionary<string, VerticalPlacement> {
+                        {"above", VerticalPlacement.Above},
+                        {"below", VerticalPlacement.Below},
+                    }).Then(v => builder.TupletPlacement = v);
+
+            notationsNode.IfElement("fermata").HasAnyValue().Then(() => builder.HasFermataSign = true);
+            notationsNode.IfElement("sound").Exists().Then(e => e.IfAttribute("dynamics").HasValue<int>().Then(v => state.CurrentDynamics = v));
 
             //TODO: Refactor to Manufaktura.Music.Xml API
             foreach (XElement noteNode in element.Elements())
             {
-                if (noteNode.Name == "beam")
-                {
-                    if (noteNode.Value == "begin") builder.BeamList.Add(NoteBeamType.Start);
-                    else if (noteNode.Value == "end") builder.BeamList.Add(NoteBeamType.End);
-                    else if (noteNode.Value == "continue") builder.BeamList.Add(NoteBeamType.Continue);
-                    else if (noteNode.Value == "forward hook") builder.BeamList.Add(NoteBeamType.ForwardHook);
-                    else if (noteNode.Value == "backward hook") builder.BeamList.Add(NoteBeamType.BackwardHook);
-                }
-                else if (noteNode.Name == "notations")
+                if (noteNode.Name == "notations")
                 {
                     foreach (XElement notationNode in noteNode.Elements())
                     {
-                        if (notationNode.Name == "tuplet")
-                        {
-                            if (notationNode.Attribute("type").Value == "start")
-                            {
-                                builder.Tuplet = TupletType.Start;
-                            }
-                            else if (notationNode.Attribute("type").Value == "stop")
-                            {
-                                builder.Tuplet = TupletType.Stop;
-                            }
-
-                            if (notationNode.Attributes().Any(a => a.Name == "placement"))
-                            {
-                                if (notationNode.Attribute("placement").Value == "above") builder.TupletPlacement = VerticalPlacement.Above;
-                                else if (notationNode.Attribute("placement").Value == "below") builder.TupletPlacement = VerticalPlacement.Below;
-                            }
-                        }
                         if (notationNode.Name == "dynamics")
                         {
                             DirectionPlacementType placement = DirectionPlacementType.Above;
@@ -206,15 +197,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
                             var placement = notationNode.ParseAttribute("placement");
                             if (!string.IsNullOrWhiteSpace(placement)) builder.Slur.Placement = placement == "above" ? VerticalPlacement.Above : VerticalPlacement.Below;
-                        }
-                        else if (notationNode.Name == "fermata")
-                        {
-                            builder.HasFermataSign = true;
-                        }
-                        else if (notationNode.Name == "sound")
-                        {
-                            var dynamics = notationNode.ParseAttribute<int>("dynamics");
-                            if (dynamics.HasValue) state.CurrentDynamics = dynamics.Value;
                         }
                     }
                 }
