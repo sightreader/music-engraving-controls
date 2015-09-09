@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Music.Model;
+using Manufaktura.Music.Xml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
             var b = new Barline();
-            var attr = element.Attributes().FirstOrDefault(a => a.Name == "location");
-            if (attr != null)
-            {
-                b.Location = attr.Value == "left" ? HorizontalPlacement.Left : HorizontalPlacement.Right;
-            }
+
+            element.IfAttribute("location").HasValue("left")
+                .Then(() => b.Location = HorizontalPlacement.Left)
+                .Otherwise(() => b.Location = HorizontalPlacement.Right);
+
             foreach (XElement barlineAttribute in element.Elements())
             {
                 if (barlineAttribute.Name == "repeat")

@@ -23,7 +23,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
             element.IfAttribute("default-x").HasValue<double>().Then(m => builder.DefaultX = m);
             element.IfAttribute("measure").HasValue("yes").Then(m => builder.FullMeasure = true);
-            element.IfAttribute("print-object").HasValue("yes").Then(m => builder.IsVisible = true);
+            element.IfAttribute("print-object").HasValue(new Dictionary<string, bool> {
+                {"yes", true}, {"no", false}}).Then(m => builder.IsVisible = m);
             element.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);
             element.IfElement("staff").HasValue<int>().Then(m => builder.Staff = staff.Score.Staves.ElementAt(m - 1)); //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
             element.IfElement("type").HasValue(new Dictionary<string, RhythmicDuration> {
@@ -258,12 +259,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
             if (builder.BeamList.Count == 0) builder.BeamList.Add(NoteBeamType.Single);
 
             var noteOrRest = builder.Build();
-            var rest = noteOrRest as Rest;
-            if (rest != null)
-            {
-                var timeSignature = staff.Elements.OfType<TimeSignature>().LastOrDefault();
-                if (timeSignature != null) rest.Duration = new RhythmicDuration(timeSignature.NumberOfBeats / timeSignature.TypeOfBeats);
-            }
 
             var correctStaff = noteOrRest.Staff ?? staff;
             correctStaff.Elements.Add(noteOrRest);
