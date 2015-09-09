@@ -93,6 +93,39 @@ namespace Manufaktura.Controls.Parser.MusicXml
             notationsNode.IfElement("fermata").HasAnyValue().Then(() => builder.HasFermataSign = true);
             notationsNode.IfElement("sound").Exists().Then(e => e.IfAttribute("dynamics").HasValue<int>().Then(v => state.CurrentDynamics = v));
 
+            notationsNode.IfHasElement("dynamics").Then(d =>
+            {
+                var dir = new Direction();
+                d.IfAttribute("default-y").HasValue<int>().Then(v =>
+                {
+                    dir.DefaultY = v;
+                    dir.Placement = DirectionPlacementType.Custom;
+                });
+                d.IfAttribute("placement").HasValue(new Dictionary<string, DirectionPlacementType>
+                {
+                    {"above", DirectionPlacementType.Above},
+                    {"below", DirectionPlacementType.Below}
+                }).Then(v =>
+                {
+                    if (dir.Placement != DirectionPlacementType.Custom) dir.Placement = v;
+                });
+                foreach (XElement dynamicsType in d.Elements())
+                {
+                    dir.Text = dynamicsType.Name.LocalName;
+                }
+                staff.Elements.Add(dir);
+            });
+
+            notationsNode.IfHasElement("articulations").Then(d =>
+            {
+                d.IfElement("staccato").HasAnyValue().Then(() => builder.Articulation = ArticulationType.Staccato);
+                d.IfElement("accent").HasAnyValue().Then(() => builder.Articulation = ArticulationType.Accent);
+                d.IfAttribute("placement").HasValue(new Dictionary<string, VerticalPlacement> {
+                        {"above", VerticalPlacement.Above},
+                        {"below", VerticalPlacement.Below},
+                    }).Then(v => builder.ArticulationPlacement = v);
+            });
+
             //TODO: Refactor to Manufaktura.Music.Xml API
             foreach (XElement noteNode in element.Elements())
             {
@@ -100,53 +133,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 {
                     foreach (XElement notationNode in noteNode.Elements())
                     {
-                        if (notationNode.Name == "dynamics")
-                        {
-                            DirectionPlacementType placement = DirectionPlacementType.Above;
-                            int defaultY = 0;
-                            string text = "";
-                            var attribute = noteNode.Attribute("default-y");
-                            if (attribute != null)
-                            {
-                                defaultY = Convert.ToInt32(attribute.Value);
-                                placement = DirectionPlacementType.Custom;
-                            }
-                            attribute = noteNode.Attribute("placement");
-                            if (attribute != null && placement != DirectionPlacementType.Custom)
-                            {
-                                if (attribute.Value == "above") placement = DirectionPlacementType.Above;
-                                else if (attribute.Value == "below") placement = DirectionPlacementType.Below;
-                            }
-                            foreach (XElement dynamicsType in notationNode.Elements())
-                            {
-                                text = dynamicsType.Name.LocalName;
-                            }
-                            Direction dir = new Direction();
-                            dir.DefaultY = defaultY;
-                            dir.Placement = placement;
-                            dir.Text = text;
-                            staff.Elements.Add(dir);
-                        }
-                        else if (notationNode.Name == "articulations")
-                        {
-                            foreach (XElement articulationAttribute in notationNode.Elements())
-                            {
-                                if (articulationAttribute.Name == "staccato")
-                                {
-                                    builder.Articulation = ArticulationType.Staccato;
-                                }
-                                else if (articulationAttribute.Name == "accent")
-                                {
-                                    builder.Articulation = ArticulationType.Accent;
-                                }
-
-                                if (articulationAttribute.Attribute("placement").Value == "above")
-                                    builder.ArticulationPlacement = VerticalPlacement.Above;
-                                else if (articulationAttribute.Attribute("placement").Value == "below")
-                                    builder.ArticulationPlacement = VerticalPlacement.Below;
-                            }
-                        }
-                        else if (notationNode.Name == "ornaments")
+                        if (notationNode.Name == "ornaments")
                         {
                             foreach (XElement ornamentAttribute in notationNode.Elements())
                             {

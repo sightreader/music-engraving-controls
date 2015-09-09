@@ -448,7 +448,7 @@ namespace Manufaktura.Controls.Rendering
                 beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
             }
 
-            var uglyModifier = element.StemDirection == VerticalDirection.Down ? 1 : 7;
+            var uglyModifier = element.StemDirection == VerticalDirection.Down ? 3 : 7;
             if (element.BeamList.Count > 0)
                 if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
                     renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - uglyModifier + 30),

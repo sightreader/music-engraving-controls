@@ -39,5 +39,11 @@ namespace Manufaktura.Music.Xml
             if (element == null) return null;
             return element.Elements().FirstOrDefault(x => x.Name == name);
         }
+
+        public static XHelperExistsResult IfHasElement(this XElement element, string name)
+        {
+            var child = element == null ? null : element.Elements().FirstOrDefault(x => x.Name == name);
+            return new XHelperExistsResult(child != null, child);
+        }
     }
 }
