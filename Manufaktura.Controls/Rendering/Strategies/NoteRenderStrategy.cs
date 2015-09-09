@@ -27,6 +27,18 @@ namespace Manufaktura.Controls.Rendering
             this.beamingService = beamingService;
         }
 
+        private double CalculateNotePositionY(Note element, ScoreRendererBase renderer)
+        {
+            return scoreService.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(scoreService.CurrentClef.Pitch,
+                element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
+        }
+
+        private double GetMaxVertDistanceBetweenNotes(ScoreRendererBase renderer, params Note[] notes)
+        {
+            var distances = notes.Select(n => CalculateNotePositionY(n, renderer));
+            return distances.Max() - distances.Min();
+        }
+
         public override void Render(Note element, ScoreRendererBase renderer)
         {
             //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
@@ -57,8 +69,7 @@ namespace Manufaktura.Controls.Rendering
 
             if (element.IsUpperMemberOfChord) scoreService.CursorPositionX = measurementService.LastNotePositionX;
 
-            double noteTextBlockPositionY = scoreService.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(scoreService.CurrentClef.Pitch,
-                element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
+            double noteTextBlockPositionY = CalculateNotePositionY(element, renderer);
 
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
             int numberOfDoubleAccidentals = Convert.ToInt32(Math.Floor((double)(Math.Abs(element.Alter) / 2)));
@@ -416,11 +427,6 @@ namespace Manufaktura.Controls.Rendering
                 else
                     beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
                 beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
-
-                if (element.BeamList.Count > 0)
-                    if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
-                        renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 1 + 28),
-                            new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
             }
             else
             {
@@ -431,16 +437,22 @@ namespace Manufaktura.Controls.Rendering
                 if (element.IsUpperMemberOfChord)
                     beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
                 else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
+                {
+                    //var notesUnderBeam = beamingService.GetAllNotesUnderOneBeam(element);
+                    //var maxDistance = notesUnderBeam == null || !notesUnderBeam.Any() ? 0 : GetMaxVertDistanceBetweenNotes(renderer, notesUnderBeam.ToArray());
+                    //maxDistance *= 2;
                     beamingService.CurrentStemEndPositionY = notePositionY - 25;
+                }
                 else
                     beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
                 beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
-
-                if (element.BeamList.Count > 0)
-                    if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
-                        renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - 7 + 30),
-                            new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
             }
+
+            var uglyModifier = element.StemDirection == VerticalDirection.Down ? 1 : 7;
+            if (element.BeamList.Count > 0)
+                if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
+                    renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - uglyModifier + 30),
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
             element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 
         }
