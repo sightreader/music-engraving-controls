@@ -51,8 +51,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 pitchElement.IfElement("alter").HasValue<int>().Then(v => builder.Alter = v);
             }
 
-            var tieElement = element.Elements().FirstOrDefault(e => e.Name == "tie");
-            if (tieElement != null)
+            var tieElements = element.Elements().Where(e => e.Name == "tie");
+            foreach (var tieElement in tieElements)
             {
                 tieElement.IfAttribute("type").HasValue("start").Then(v =>
                 {
