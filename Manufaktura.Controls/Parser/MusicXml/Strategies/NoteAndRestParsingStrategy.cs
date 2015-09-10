@@ -44,13 +44,10 @@ namespace Manufaktura.Controls.Parser.MusicXml
             element.IfElement("rest").Exists().Then(() => builder.IsRest = true);
             element.ForEachDescendant("dot", f => f.Exists().Then(() => builder.NumberOfDots++));
 
-            var pitchElement = element.Elements().FirstOrDefault(e => e.Name == "pitch");
-            if (pitchElement != null)
-            {
-                pitchElement.IfElement("step").HasAnyValue().Then(v => builder.Step = v);
-                pitchElement.IfElement("octave").HasValue<int>().Then(v => builder.Octave = v);
-                pitchElement.IfElement("alter").HasValue<int>().Then(v => builder.Alter = v);
-            }
+            var pitchElement = element.IfElement("pitch").Exists().ThenReturnResult();
+            pitchElement.IfElement("step").HasAnyValue().Then(v => builder.Step = v);
+            pitchElement.IfElement("octave").HasValue<int>().Then(v => builder.Octave = v);
+            pitchElement.IfElement("alter").HasValue<int>().Then(v => builder.Alter = v);
 
             var tieElements = element.Elements().Where(e => e.Name == "tie");
             foreach (var tieElement in tieElements)
@@ -126,122 +123,94 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     }).Then(v => builder.ArticulationPlacement = v);
             });
 
-            //TODO: Refactor to Manufaktura.Music.Xml API
-            foreach (XElement noteNode in element.Elements())
+            var ornamentsNode = notationsNode.GetElement("ornaments");
+            ornamentsNode.GetElement("trill-mark").IfAttribute("placement").HasValue(new Dictionary<string, NoteTrillMark> {
+                {"above", NoteTrillMark.Above},
+                {"below", NoteTrillMark.Below}
+            }).Then(v => builder.TrillMark = v);
+            ornamentsNode.IfElement("tremolo").HasValue<int>().Then(v => builder.TremoloLevel = v);
+
+            var invMordentNode = ornamentsNode
+                .IfElement("inverted-mordent")
+                .Exists()
+                .Then(e => new Mordent() { IsInverted = true })
+                .AndReturnResult();
+            invMordentNode.IfAttribute("placement").HasValue(new Dictionary<string, VerticalPlacement> {
+                {"above", VerticalPlacement.Above},
+                {"below", VerticalPlacement.Below}
+            }).Then(v => builder.Mordent.Placement = v);
+            invMordentNode.IfAttribute("default-x").HasValue<double>().Then(v => builder.Mordent.DefaultXPosition = v);
+            invMordentNode.IfAttribute("default-y").HasValue<double>().Then(v => builder.Mordent.DefaultYPosition = v);
+
+            var slurNode = notationsNode.IfElement("slur").Exists().Then(s => builder.Slur = new Slur()).AndReturnResult();
+            var number = slurNode.IfAttribute("number").HasValue<int>().Then(v => { }).AndReturnResult();
+            if (number == 1)
             {
-                if (noteNode.Name == "notations")
+                slurNode.IfAttribute("type").HasValue(new Dictionary<string, NoteSlurType> {
+                    {"start", NoteSlurType.Start},
+                    {"stop", NoteSlurType.Stop}
+                }).Then(v => builder.Slur.Type = v);
+                slurNode.IfAttribute("placement").HasValue(new Dictionary<string, VerticalPlacement> {
+                    {"above", VerticalPlacement.Above},
+                    {"below", VerticalPlacement.Below}
+            }).Then(v => builder.Mordent.Placement = v);
+            }
+
+            //TODO: Refactor to Manufaktura.Music.Xml API
+            var lyricNodes = element.Elements().Where(n => n.Name == "lyric");
+            foreach (var lNode in lyricNodes)
+            {
+                //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set.
+                //Then reset these tags so the next <syllabic> tag starts another lyric.
+                Lyrics lyricsInstance = new Lyrics();
+                Lyrics.Syllable syllable = new Lyrics.Syllable();
+                bool isSylabicSet = false;
+                bool isTextSet = false;
+                var defaultYattribute = lNode.Attributes().FirstOrDefault(a => a.Name == "default-y");
+                if (defaultYattribute != null) lyricsInstance.DefaultYPosition = UsefulMath.TryParse(defaultYattribute.Value);
+
+                foreach (XElement lyricAttribute in lNode.Elements())
                 {
-                    foreach (XElement notationNode in noteNode.Elements())
+                    if (lyricAttribute.Name == "syllabic")
                     {
-                        if (notationNode.Name == "ornaments")
+                        if (lyricAttribute.Value == "begin")
                         {
-                            foreach (XElement ornamentAttribute in notationNode.Elements())
-                            {
-                                var placementAttribute = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "placement");
-                                if (ornamentAttribute.Name == "trill-mark")
-                                {
-                                    if (placementAttribute != null)
-                                    {
-                                        if (placementAttribute.Value == "above")
-                                            builder.TrillMark = NoteTrillMark.Above;
-                                        else if (placementAttribute.Value == "below")
-                                            builder.TrillMark = NoteTrillMark.Below;
-                                    }
-                                }
-                                else if (ornamentAttribute.Name == "tremolo")
-                                {
-                                    builder.TremoloLevel = Convert.ToInt32(ornamentAttribute.Value);
-                                }
-                                else if (ornamentAttribute.Name == "inverted-mordent")
-                                {
-                                    builder.Mordent = new Mordent() { IsInverted = true };
-
-                                    if (placementAttribute != null)
-                                    {
-                                        if (placementAttribute.Value == "above")
-                                            builder.Mordent.Placement = VerticalPlacement.Above;
-                                        else if (placementAttribute.Value == "below")
-                                            builder.Mordent.Placement = VerticalPlacement.Below;
-                                    }
-
-                                    var attr = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "default-x");
-                                    if (attr != null) builder.Mordent.DefaultXPosition = UsefulMath.TryParse(attr.Value);
-                                    attr = ornamentAttribute.Attributes().FirstOrDefault(a => a.Name == "default-y");
-                                    if (attr != null) builder.Mordent.DefaultYPosition = UsefulMath.TryParse(attr.Value);
-                                }
-                            }
+                            syllable.Type = SyllableType.Begin;
                         }
-                        else if (notationNode.Name == "slur")
+                        else if (lyricAttribute.Value == "middle")
                         {
-                            builder.Slur = new Slur();
-
-                            var number = notationNode.ParseAttribute<int>("number");
-                            if (number.HasValue && number != 1)
-                                continue;
-                            if (notationNode.ParseAttribute("type") == "start")
-                                builder.Slur.Type = NoteSlurType.Start;
-                            else if (notationNode.ParseAttribute("type") == "stop")
-                                builder.Slur.Type = NoteSlurType.Stop;
-
-                            var placement = notationNode.ParseAttribute("placement");
-                            if (!string.IsNullOrWhiteSpace(placement)) builder.Slur.Placement = placement == "above" ? VerticalPlacement.Above : VerticalPlacement.Below;
+                            syllable.Type = SyllableType.Middle;
                         }
+                        else if (lyricAttribute.Value == "end")
+                        {
+                            syllable.Type = SyllableType.End;
+                        }
+                        else if (lyricAttribute.Value == "single")
+                        {
+                            syllable.Type = SyllableType.Single;
+                        }
+                        isSylabicSet = true;
                     }
-                }
-                else if (noteNode.Name == "lyric")
-                {
-                    //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set.
-                    //Then reset these tags so the next <syllabic> tag starts another lyric.
-                    Lyrics lyricsInstance = new Lyrics();
-                    Lyrics.Syllable syllable = new Lyrics.Syllable();
-                    bool isSylabicSet = false;
-                    bool isTextSet = false;
-                    var defaultYattribute = noteNode.Attributes().FirstOrDefault(a => a.Name == "default-y");
-                    if (defaultYattribute != null) lyricsInstance.DefaultYPosition = UsefulMath.TryParse(defaultYattribute.Value);
-
-                    foreach (XElement lyricAttribute in noteNode.Elements())
+                    else if (lyricAttribute.Name == "text")
                     {
-                        if (lyricAttribute.Name == "syllabic")
-                        {
-                            if (lyricAttribute.Value == "begin")
-                            {
-                                syllable.Type = SyllableType.Begin;
-                            }
-                            else if (lyricAttribute.Value == "middle")
-                            {
-                                syllable.Type = SyllableType.Middle;
-                            }
-                            else if (lyricAttribute.Value == "end")
-                            {
-                                syllable.Type = SyllableType.End;
-                            }
-                            else if (lyricAttribute.Value == "single")
-                            {
-                                syllable.Type = SyllableType.Single;
-                            }
-                            isSylabicSet = true;
-                        }
-                        else if (lyricAttribute.Name == "text")
-                        {
-                            syllable.Text = lyricAttribute.Value;
-                            isTextSet = true;
-                        }
-                        else if (lyricAttribute.Name == "elision")
-                        {
-                            syllable.ElisionMark = lyricAttribute.Value;
-                        }
-
-                        if (isSylabicSet && isTextSet)
-                        {
-                            lyricsInstance.Syllables.Add(syllable);
-                            syllable = new Lyrics.Syllable();
-                            isSylabicSet = false;
-                            isTextSet = false;
-                        }
+                        syllable.Text = lyricAttribute.Value;
+                        isTextSet = true;
+                    }
+                    else if (lyricAttribute.Name == "elision")
+                    {
+                        syllable.ElisionMark = lyricAttribute.Value;
                     }
 
-                    builder.Lyrics.Add(lyricsInstance);
+                    if (isSylabicSet && isTextSet)
+                    {
+                        lyricsInstance.Syllables.Add(syllable);
+                        syllable = new Lyrics.Syllable();
+                        isSylabicSet = false;
+                        isTextSet = false;
+                    }
                 }
+
+                builder.Lyrics.Add(lyricsInstance);
             }
             if (builder.BeamList.Count == 0) builder.BeamList.Add(NoteBeamType.Single);
 

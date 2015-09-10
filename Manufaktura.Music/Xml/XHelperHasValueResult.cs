@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Music.Xml
 {
@@ -31,7 +28,18 @@ namespace Manufaktura.Music.Xml
             HasValue = false;
         }
 
-        public IXHelperResult Then(Action<T> action)
+        public T AndReturnResult()
+        {
+            return HasValue ? value : default(T);
+        }
+
+        public IXHelperResult Otherwise(Action action)
+        {
+            if (!HasValue && action != null) action();
+            return this;
+        }
+
+        public IXHelperResult<T> Then(Action<T> action)
         {
             if (HasValue && action != null) action(Value);
             return this;
@@ -43,10 +51,9 @@ namespace Manufaktura.Music.Xml
             return this;
         }
 
-        public IXHelperResult Otherwise(Action action)
+        public T ThenReturnResult()
         {
-            if (!HasValue && action != null) action();
-            return this;
+            return AndReturnResult();
         }
     }
 }
