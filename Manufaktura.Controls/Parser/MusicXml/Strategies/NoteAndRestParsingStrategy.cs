@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
-            NoteOrRestBuilder builder = new NoteOrRestBuilder(state);
+            var builder = new NoteOrRestBuilder(state);
 
             element.IfAttribute("default-x").HasValue<double>().Then(m => builder.DefaultX = m);
             element.IfAttribute("measure").HasValue("yes").Then(m => builder.FullMeasure = true);
@@ -156,62 +156,37 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }).Then(v => builder.Slur.Placement = v);
             }
 
-            //TODO: Refactor to Manufaktura.Music.Xml API
-            var lyricNodes = element.Elements().Where(n => n.Name == "lyric");
-            foreach (var lNode in lyricNodes)
+            foreach (var lNode in element.Elements().Where(n => n.Name == "lyric"))
             {
-                //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set.
-                //Then reset these tags so the next <syllabic> tag starts another lyric.
                 Lyrics lyricsInstance = new Lyrics();
                 Lyrics.Syllable syllable = new Lyrics.Syllable();
                 bool isSylabicSet = false;
                 bool isTextSet = false;
-                var defaultYattribute = lNode.Attributes().FirstOrDefault(a => a.Name == "default-y");
-                if (defaultYattribute != null) lyricsInstance.DefaultYPosition = UsefulMath.TryParse(defaultYattribute.Value);
+                lNode.IfAttribute("default-y").HasValue<double>().Then(v => lyricsInstance.DefaultYPosition = v);
+                lNode.IfElement("syllabic").HasValue(new Dictionary<string, SyllableType> {
+                    {"begin", SyllableType.Begin},
+                    {"middle", SyllableType.Middle},
+                    {"end", SyllableType.End},
+                    {"single", SyllableType.Single}
+                    }).Then(v => {
+                        syllable.Type = v;
+                        isSylabicSet = true;});
+                lNode.IfElement("text").HasAnyValue().Then(v => {
+                    syllable.Text = v;
+                    isTextSet = true;
+                });
+                lNode.IfElement("elision").HasAnyValue().Then(v => syllable.ElisionMark = v);
 
-                foreach (XElement lyricAttribute in lNode.Elements())
+                if (isSylabicSet && isTextSet)
                 {
-                    if (lyricAttribute.Name == "syllabic")
-                    {
-                        if (lyricAttribute.Value == "begin")
-                        {
-                            syllable.Type = SyllableType.Begin;
-                        }
-                        else if (lyricAttribute.Value == "middle")
-                        {
-                            syllable.Type = SyllableType.Middle;
-                        }
-                        else if (lyricAttribute.Value == "end")
-                        {
-                            syllable.Type = SyllableType.End;
-                        }
-                        else if (lyricAttribute.Value == "single")
-                        {
-                            syllable.Type = SyllableType.Single;
-                        }
-                        isSylabicSet = true;
-                    }
-                    else if (lyricAttribute.Name == "text")
-                    {
-                        syllable.Text = lyricAttribute.Value;
-                        isTextSet = true;
-                    }
-                    else if (lyricAttribute.Name == "elision")
-                    {
-                        syllable.ElisionMark = lyricAttribute.Value;
-                    }
-
-                    if (isSylabicSet && isTextSet)
-                    {
-                        lyricsInstance.Syllables.Add(syllable);
-                        syllable = new Lyrics.Syllable();
-                        isSylabicSet = false;
-                        isTextSet = false;
-                    }
+                    lyricsInstance.Syllables.Add(syllable);
+                    syllable = new Lyrics.Syllable();
+                    isSylabicSet = false;
+                    isTextSet = false;
                 }
-
                 builder.Lyrics.Add(lyricsInstance);
             }
+
             if (builder.BeamList.Count == 0) builder.BeamList.Add(NoteBeamType.Single);
 
             var noteOrRest = builder.Build();
