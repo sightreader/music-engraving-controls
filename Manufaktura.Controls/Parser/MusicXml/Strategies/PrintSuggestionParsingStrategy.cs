@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
+using Manufaktura.Music.Xml;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -54,18 +55,15 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
         {
             PrintSuggestion suggestion = new PrintSuggestion();
 
-            var attribute = element.Attributes().FirstOrDefault(a => a.Name == "new-system");
-            if (attribute != null) suggestion.IsSystemBreak = attribute.Value == "yes";
-            attribute = element.Attributes().FirstOrDefault(a => a.Name == "new-page");
-            if (attribute != null) suggestion.IsPageBreak = attribute.Value == "yes";
+            element.IfAttribute("new-system").HasValue("yes").Then(() => suggestion.IsSystemBreak = true);
+            element.IfAttribute("new-page").HasValue("yes").Then(() => suggestion.IsPageBreak = true);
             if (suggestion.IsPageBreak) suggestion.IsSystemBreak = true;    //Page breaks are treated as system breaks. Manufaktura.Controls currently doesn't support page breaks.
 
-            var node = element.Descendants().FirstOrDefault(n => n.Name == "system-distance");
-            if (node != null)
+            element.IfDescendant("system-distance").Exists().Then(n =>
             {
-                suggestion.SystemDistance = UsefulMath.TryParse(node.Value) ?? 0;
+                suggestion.SystemDistance = UsefulMath.TryParse(n.Value) ?? 0;
                 state.LastSystemDistance = suggestion.SystemDistance.HasValue ? suggestion.SystemDistance.Value : 0;
-            }
+            });
             if (suggestion.SystemDistance == 0) suggestion.SystemDistance = state.LastSystemDistance;
 
             return suggestion;
