@@ -144,7 +144,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
             var slurNode = notationsNode.IfElement("slur").Exists().Then(s => builder.Slur = new Slur()).AndReturnResult();
             var number = slurNode.IfAttribute("number").HasValue<int>().Then(v => { }).AndReturnResult();
-            if (number == 1)
+            if (number < 2)
             {
                 slurNode.IfAttribute("type").HasValue(new Dictionary<string, NoteSlurType> {
                     {"start", NoteSlurType.Start},
@@ -153,7 +153,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 slurNode.IfAttribute("placement").HasValue(new Dictionary<string, VerticalPlacement> {
                     {"above", VerticalPlacement.Above},
                     {"below", VerticalPlacement.Below}
-            }).Then(v => builder.Mordent.Placement = v);
+                }).Then(v => builder.Slur.Placement = v);
             }
 
             //TODO: Refactor to Manufaktura.Music.Xml API
