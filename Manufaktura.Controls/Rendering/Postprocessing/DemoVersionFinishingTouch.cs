@@ -1,4 +1,4 @@
-﻿#define DemoVersion
+﻿//#define DemoVersion
 
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;

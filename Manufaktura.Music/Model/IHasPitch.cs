@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Manufaktura.Controls.Music
+namespace Manufaktura.Music.Model
 {
     /// <summary>
     /// Indicates that element has pitch.

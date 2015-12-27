@@ -1,5 +1,5 @@
-﻿using Manufaktura.Controls.Music;
-using Manufaktura.Controls.Primitives;
+﻿using Manufaktura.Controls.Primitives;
+using Manufaktura.Music;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -53,11 +53,6 @@ namespace Manufaktura.Controls.Model
         public bool HasNatural { get { return hasNatural; } set { hasNatural = value; OnPropertyChanged(() => HasNatural); } }
 
         /// <summary>
-        /// Indicates that the note belongs to a chord.
-        /// </summary>
-        public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsUpperMemberOfChord); } }
-
-        /// <summary>
         /// Indicates that the note is cue note.
         /// </summary>
         public bool IsCueNote { get; set; }
@@ -66,6 +61,11 @@ namespace Manufaktura.Controls.Model
         /// Indicates that the note is grace note.
         /// </summary>
         public bool IsGraceNote { get { return isGraceNote; } set { isGraceNote = value; OnPropertyChanged(() => IsGraceNote); } }
+
+        /// <summary>
+        /// Indicates that the note belongs to a chord.
+        /// </summary>
+        public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsUpperMemberOfChord); } }
 
         public List<Lyrics> Lyrics { get { return lyrics; } set { lyrics = value; OnPropertyChanged(() => Lyrics); } }
 

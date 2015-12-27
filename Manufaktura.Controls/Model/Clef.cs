@@ -1,6 +1,6 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Music;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Music;
 using Manufaktura.Music.Model;
 
 namespace Manufaktura.Controls.Model
