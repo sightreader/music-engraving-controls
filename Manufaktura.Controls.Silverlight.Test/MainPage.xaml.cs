@@ -31,7 +31,9 @@ namespace Manufaktura.Controls.Silverlight.Test
 
             var score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
             score.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Quarter));
-            score.FirstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Quarter));
+            score.FirstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true}) ;
+            score.FirstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
+            score.FirstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Quarter) { Voice = 2 } );
             score.FirstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter));
             score.FirstStaff.Elements.Add(new Note(Pitch.F4, RhythmicDuration.Quarter));
             score.FirstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter));

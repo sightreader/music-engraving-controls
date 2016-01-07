@@ -133,7 +133,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             var invMordentNode = ornamentsNode
                 .IfElement("inverted-mordent")
                 .Exists()
-                .Then(e => new Mordent() { IsInverted = true })
+                .Then(e => builder.Mordent = new Mordent() { IsInverted = true })
                 .AndReturnResult();
             invMordentNode.IfAttribute("placement").HasValue(new Dictionary<string, VerticalPlacement> {
                 {"above", VerticalPlacement.Above},

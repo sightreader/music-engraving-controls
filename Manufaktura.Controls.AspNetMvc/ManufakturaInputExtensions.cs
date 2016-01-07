@@ -59,7 +59,7 @@ namespace Manufaktura.Controls.AspNetMvc
             MusicXmlParser parser = new MusicXmlParser();
             Score score = parser.Parse(XDocument.Parse(musicXml));
 
-            return NoteViewerHelper(htmlHelper, musicXml, settings);
+            return NoteViewerHelper(htmlHelper, score, settings);
         }
     }
 }
