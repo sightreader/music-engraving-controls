@@ -31,6 +31,9 @@ namespace Manufaktura.Controls.Silverlight
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
         {
+            if (!Settings.IsPanoramaMode) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+
+            if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
             pf.StartPoint = new Point(rect.X, rect.Y);
@@ -56,6 +59,14 @@ namespace Manufaktura.Controls.Silverlight
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
         {
+            if (!Settings.IsPanoramaMode)
+            {
+                p1 = p1.Translate(CurrentScore.DefaultPageSettings);
+                p2 = p2.Translate(CurrentScore.DefaultPageSettings);
+                p3 = p3.Translate(CurrentScore.DefaultPageSettings);
+                p4 = p4.Translate(CurrentScore.DefaultPageSettings);
+            }
+
             PathGeometry pathGeom = new PathGeometry();
             PathFigure pf = new PathFigure();
             pf.StartPoint = new Point(p1.X, p1.Y);
@@ -71,7 +82,6 @@ namespace Manufaktura.Controls.Silverlight
             path.StrokeThickness = pen.Thickness;
             path.Data = pathGeom;
             path.Visibility = BoolToVisibility(owner.IsVisible);
-            System.Windows.Controls.Canvas.SetZIndex(path, (int)pen.ZIndex);
             Canvas.Children.Add(path);
 
             OwnershipDictionary.Add(path, owner);
@@ -79,6 +89,12 @@ namespace Manufaktura.Controls.Silverlight
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
         {
+            if (!Settings.IsPanoramaMode)
+            {
+                startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
+                endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
+            }
+
             var line = new Line();
             line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
             line.UseLayoutRounding = true;
@@ -97,14 +113,14 @@ namespace Manufaktura.Controls.Silverlight
 
         public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
         {
+            if (!Settings.IsPanoramaMode) location = location.Translate(CurrentScore.DefaultPageSettings);
+
             TextBlock textBlock = new TextBlock();
             textBlock.FontSize = Fonts.GetSize(fontStyle);
             textBlock.FontFamily = Fonts.Get(fontStyle);
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
-            textBlock.UseLayoutRounding = true;
             textBlock.Visibility = BoolToVisibility(owner.IsVisible);
-
             System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
             System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
             Canvas.Children.Add(textBlock);
@@ -114,6 +130,27 @@ namespace Manufaktura.Controls.Silverlight
 
         public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
         {
+            if (!Settings.IsPanoramaMode) location = location.Translate(CurrentScore.DefaultPageSettings);
+
+            TextBlock textBlock = new TextBlock();
+            textBlock.FontFamily = Fonts.Get(fontStyle);
+            textBlock.FontSize = 200;
+            textBlock.Text = text;
+            textBlock.Margin = new Thickness(0, -25, 0, 0);
+            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+
+            var viewBox = new Viewbox();
+            viewBox.Child = textBlock;
+            viewBox.Width = size.Width;
+            viewBox.Height = size.Height;
+            viewBox.Stretch = Stretch.Fill;
+            viewBox.RenderTransform = new ScaleTransform { ScaleX = 1, ScaleY = 1.9 };
+            System.Windows.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
+            System.Windows.Controls.Canvas.SetTop(viewBox, location.Y);
+            Canvas.Children.Add(viewBox);
+
+            OwnershipDictionary.Add(textBlock, owner);
         }
 
         private Visibility BoolToVisibility(bool isVisible)

@@ -13,6 +13,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Silverlight
 {
+    /// <summary>
+    /// Interaction logic for NoteViewer.xaml
+    /// </summary>
     public partial class NoteViewer : UserControl
     {
         // Using a DependencyProperty as the backing store for IsDebugMode.  This enables animation, styling, binding, etc...
@@ -41,7 +44,7 @@ namespace Manufaktura.Controls.Silverlight
 
         // Using a DependencyProperty as the backing store for SelectedElement.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedElementProperty =
-            DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null, SelectedElementChanged));
+            DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null));
 
         // Using a DependencyProperty as the backing store for XmlSourceProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty XmlSourceProperty =
@@ -102,7 +105,7 @@ namespace Manufaktura.Controls.Silverlight
 
         public MusicalSymbol SelectedElement
         {
-            get { return SelectedElementInner; }
+            get { return (MusicalSymbol)GetValue(SelectedElementProperty); }
             set { SetValue(SelectedElementProperty, value); }
         }
 
@@ -126,8 +129,6 @@ namespace Manufaktura.Controls.Silverlight
 
         protected CanvasScoreRenderer Renderer { get; set; }
 
-        protected MusicalSymbol SelectedElementInner { get; set; }
-
         public NoteViewer()
         {
             InitializeComponent();
@@ -135,13 +136,13 @@ namespace Manufaktura.Controls.Silverlight
 
         public void Select(MusicalSymbol element)
         {
-            if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Black);   //Reset color on previously selected element
-            SelectedElementInner = element;
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
+            SelectedElement = element;
 
-            Note note = SelectedElementInner as Note;
+            var note = SelectedElement as Note;
             if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
 
-            if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);      //Apply color on selected element
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
 
             var positionElement = element as IHasCustomXPosition;
             if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}",
@@ -151,12 +152,42 @@ namespace Manufaktura.Controls.Silverlight
         protected override Size MeasureOverride(Size availableSize)
         {
             if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
-            double width = availableSize.Width;
 
-            double maxWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
+            double width = availableSize.Width;
+            var pageWidth = (Renderer.CurrentScore.DefaultPageSettings.MarginLeft ?? 0) +
+                (Renderer.CurrentScore.DefaultPageSettings.Width ?? 0) +
+                (Renderer.CurrentScore.DefaultPageSettings.MarginRight ?? 0);
+            var maxSystemWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
+            double maxWidth = pageWidth > maxSystemWidth ? pageWidth : maxSystemWidth;
             if (maxWidth > 0) width = maxWidth;
 
-            return new Size(width * ZoomFactor, (Renderer.ScoreInformation.Systems.Sum(s => s.Height) + 100) * ZoomFactor);
+            var maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height + Renderer.Settings.LineSpacing * 5);
+            if (maxHeight < 72) maxHeight = 72 * Renderer.CurrentScore.Staves.Count;
+            if (!IsPanoramaMode)
+            {
+                maxHeight *= Renderer.CurrentScore.Systems.Count;
+                maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) * 2;
+                maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0) * 2;
+            }
+
+            /*double maxHeight;
+            if (!IsPanoramaMode)
+            {
+                var pageHeight = (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) +
+                    (Renderer.CurrentScore.DefaultPageSettings.Height ?? 0) * (Renderer.CurrentScore.Pages.Count / 2) +
+                    (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0);
+                var maxSystemHeight = Renderer.ScoreInformation.Systems.Sum(s => s.Height);
+                if (maxSystemHeight == 0) maxSystemHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height);
+                if (maxSystemHeight == 0) maxSystemHeight = 100 * Renderer.CurrentScore.Staves.Count;
+                maxHeight = pageHeight > maxSystemHeight ? pageHeight : maxSystemHeight;
+            }
+            else
+            {
+                maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height + Renderer.Settings.LineSpacing * 5);
+                if (maxHeight < 72) maxHeight = 72 * Renderer.CurrentScore.Staves.Count;
+            }*/
+
+            return new Size(width * ZoomFactor, maxHeight * ZoomFactor);
         }
 
         private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -164,12 +195,6 @@ namespace Manufaktura.Controls.Silverlight
             NoteViewer viewer = obj as NoteViewer;
             var score = args.NewValue as Score;
             viewer.RenderOnCanvas(score);
-        }
-
-        private static void SelectedElementChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
-        {
-            NoteViewer viewer = (NoteViewer)obj;
-            viewer.Select(args.NewValue as MusicalSymbol);
         }
 
         private static void XmlSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -212,8 +237,7 @@ namespace Manufaktura.Controls.Silverlight
 
         private void ColorElement(MusicalSymbol element, Color color)
         {
-            if (Renderer == null) return;   //If SelectedElement value has been changed by binding and renderer has not yet been created, just ignore this method.
-            var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElementInner);
+            var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElement);
             foreach (var ownership in ownerships)
             {
                 TextBlock textBlock = ownership.Key as TextBlock;
@@ -222,6 +246,11 @@ namespace Manufaktura.Controls.Silverlight
                 Shape shape = ownership.Key as Shape;
                 if (shape != null) shape.Stroke = new SolidColorBrush(color);
             }
+        }
+
+        private CanvasScoreRenderer CreateRenderer(Canvas canvas)
+        {
+            return new CanvasScoreRenderer(MainCanvas);
         }
 
         private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -245,13 +274,12 @@ namespace Manufaktura.Controls.Silverlight
             }
             double difference = _draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 
-            Note note = SelectedElementInner as Note;
+            Note note = SelectedElement as Note;
             if (note != null)
             {
                 int midiPitch = _draggingState.MidiPitchOnStartDragging + (int)(difference / 2);
                 Debug.WriteLine(string.Format("Difference: {0}   MidiPitch: {1}", difference, midiPitch));
                 note.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
-                //TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
             }
             RenderOnCanvas(_innerScore);        //TODO: Przerysowywać tylko wszystkie na prawo od zmienianej nutki. Albo w ogóle tylko tą nutkę, a na MouseLeftButtonUp przerysowywać całość
             //Może najłatwiej to zrobić tak, że Draw... jak zobaczy że ma już taką samą figurę, to ma nie rysować
@@ -263,13 +291,13 @@ namespace Manufaktura.Controls.Silverlight
             if (score == null) return;
 
             MainCanvas.Children.Clear();
-            Renderer = new CanvasScoreRenderer(MainCanvas);
+            Renderer = CreateRenderer(MainCanvas);
             Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
             var brush = Foreground as SolidColorBrush;
             if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
             if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
             Renderer.Render(score);
-            if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);
+            if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
             InvalidateMeasure();
         }
 

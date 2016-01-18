@@ -12,8 +12,6 @@ namespace Manufaktura.Controls.Model
     {
         public ScorePage DefaultPageSettings { get; private set; }
 
-        public List<ScorePage> Pages { get; private set; }
-
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
         /// </summary>
@@ -56,9 +54,9 @@ namespace Manufaktura.Controls.Model
             get { return GetStaff(9); }
         }
 
-        public List<Part> Parts { get; private set; }
+        public List<ScorePage> Pages { get; private set; }
 
-        public List<StaffSystem> Systems { get; private set; }
+        public List<Part> Parts { get; private set; }
 
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -85,6 +83,8 @@ namespace Manufaktura.Controls.Model
         }
 
         public StaffCollection Staves { get; private set; }
+
+        public List<StaffSystem> Systems { get; private set; }
 
         /// <summary>
         /// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -167,6 +167,32 @@ namespace Manufaktura.Controls.Model
             staff.Elements.Add(Key.FromTonic(tonic, flags));
             Staves.Add(staff);
             return this;
+        }
+
+        /// <summary>
+        /// Creates a new score with the same number of staves. Every element of every staff is the same object as in the source score.
+        /// </summary>
+        /// <returns></returns>
+        public Score CreateEntangledScore()
+        {
+            var entangledScore = new Score();
+            foreach (var system in Systems)
+            {
+                var entangledSystem = new StaffSystem(entangledScore);
+                entangledScore.Systems.Add(entangledSystem);
+            }
+            foreach (var page in Pages)
+            {
+                var entangledPage = new ScorePage();
+                entangledScore.Pages.Add(entangledPage);
+            }
+            foreach (var staff in Staves)
+            {
+                var entangledStaff = new Staff();
+                foreach (var element in staff.Elements) entangledStaff.Elements.Add(element);
+                entangledScore.Staves.Add(entangledStaff);
+            }
+            return entangledScore;
         }
 
         private Staff GetStaff(int staffNumber)
