@@ -57,7 +57,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
         /// </summary>
-        public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(() => IsVisible); } }
+        public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(nameof(IsVisible)); } }
 
         public Staff Staff { get; internal set; }
 
