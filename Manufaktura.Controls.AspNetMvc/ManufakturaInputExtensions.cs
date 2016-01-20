@@ -28,12 +28,14 @@ namespace Manufaktura.Controls.AspNetMvc
         }
 
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Score score, Expression<Func<TModel, HtmlScoreRendererSettings>> settingsExpression)
+        public static MvcHtmlString NoteViewerFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, Score>> expression, Expression<Func<TModel, HtmlScoreRendererSettings>> settingsExpression)
         {
-            if (score == null) throw new ArgumentNullException("score");
+            if (expression == null) throw new ArgumentNullException("expression");
             if (settingsExpression == null) throw new ArgumentNullException("settingsExpression");
 
-            ModelMetadata settingsMetadata = ModelMetadata.FromLambdaExpression(settingsExpression, htmlHelper.ViewData);
+			ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+			Score score = metadata.Model == null ? null : metadata.Model as Score;
+			ModelMetadata settingsMetadata = ModelMetadata.FromLambdaExpression(settingsExpression, htmlHelper.ViewData);
             HtmlScoreRendererSettings settings = settingsMetadata.Model == null ? null : settingsMetadata.Model as HtmlScoreRendererSettings;
 
             return NoteViewerHelper(htmlHelper, score, settings);
