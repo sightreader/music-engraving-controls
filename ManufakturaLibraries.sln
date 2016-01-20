@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Androi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.XamlForHtml5", "Manufaktura.Controls.XamlForHtml5\Manufaktura.Controls.XamlForHtml5.csproj", "{65BDA4A0-DD01-4FD7-B84A-2688A8653205}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.XamlForHtml5.Test", "Manufaktura.Controls.XamlForHtml5.Test\Manufaktura.Controls.XamlForHtml5.Test.csproj", "{AFA2B5C2-FA43-4C65-B015-2109671F6011}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -444,6 +446,30 @@ Global
 		{65BDA4A0-DD01-4FD7-B84A-2688A8653205}.Release|x64.Build.0 = Release|Any CPU
 		{65BDA4A0-DD01-4FD7-B84A-2688A8653205}.Release|x86.ActiveCfg = Release|Any CPU
 		{65BDA4A0-DD01-4FD7-B84A-2688A8653205}.Release|x86.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|x64.Build.0 = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Debug|x86.Build.0 = Debug|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|ARM.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|ARM.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|x64.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|x64.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|x86.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Demo Release|x86.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|ARM.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|x64.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|x64.Build.0 = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|x86.ActiveCfg = Release|Any CPU
+		{AFA2B5C2-FA43-4C65-B015-2109671F6011}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
