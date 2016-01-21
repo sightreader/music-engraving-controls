@@ -51,14 +51,13 @@ namespace Manufaktura.Controls.Parser.Digest
 					var sb = new StringBuilder();
 					sb.Append(noteOrRest.Duration.Denominator);
 					for (var i = 0; i < noteOrRest.Duration.Dots; i++) sb.Append(".");
-					strings.Add(sb.ToString());
 					var note = element as Note;
 					if (note != null)
 					{
 						sb.Append("_");
 						sb.Append(note.MidiPitch);
-						strings.Add(sb.ToString());
 					}
+					strings.Add(sb.ToString());
 				}
 				
 				var barline = element as Barline;
