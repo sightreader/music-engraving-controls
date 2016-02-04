@@ -6,24 +6,38 @@ namespace Manufaktura.Controls.Model.Rules
     {
         public override void Apply(Staff staff, MusicalSymbol newElement)
         {
-            var currentMeasure = staff.Measures.LastOrDefault();
-            if (currentMeasure == null)
-            {
-                currentMeasure = new Measure(staff, null);
-                staff.Measures.Add(currentMeasure);
-                currentMeasure.Elements.Add(newElement);
-                return;
-            }
-            var barline = newElement as Barline;
-            if (barline != null)
-            {
-                currentMeasure.Elements.Add(barline);
-                staff.Measures.Add(currentMeasure);
-                return;
-            }
+			var currentMeasure = staff.Measures.LastOrDefault();
+			if (currentMeasure == null)
+			{
+				currentMeasure = new Measure(staff, GetSystem(staff)) { Number = staff.Measures.Count + 1 };
+				staff.Measures.Add(currentMeasure);
+			}
+
+			var barline = newElement as Barline;
+			if (barline != null)
+			{
+				currentMeasure.Elements.Add(barline);
+				staff.Measures.Add(new Measure(staff, GetSystem(staff)) { Number = staff.Measures.Count + 1 });
+				return;
+			}
 
             currentMeasure.Elements.Add(newElement);
         }
+
+		private static StaffSystem GetSystem (Staff staff)
+		{
+			StaffSystem system = null;
+			if (staff.Score != null)
+			{
+				system = staff.Score.Systems.LastOrDefault();
+				if (system == null)
+				{
+					system = new StaffSystem(staff.Score);
+					staff.Score.Systems.Add(system);
+				}
+			}
+			return system;
+		}
 
         public override bool Condition(Staff staff, MusicalSymbol newElement)
         {

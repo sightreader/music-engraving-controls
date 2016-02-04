@@ -30,7 +30,8 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
             if (system.LinePositions == null) return;
             var location = new Point(-30, system.LinePositions[1][0]);
             var size = new Size(25, system.LinePositions[part.Staves.Count][4] - system.LinePositions[1][0]);
-            renderer.DrawStringInBounds(renderer.Settings.CurrentFont.LeftBracket, Model.Fonts.MusicFontStyles.MusicFont, location, size, Color.Black, part.Staves.First());
+            renderer.DrawStringInBounds(renderer.Settings.CurrentFont.LeftBracket, Model.Fonts.MusicFontStyles.MusicFont, location, size, 
+				renderer.Settings.DefaultColor, part.Staves.First());
         }
     }
 }

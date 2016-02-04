@@ -7,6 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI;
 using Windows.Foundation;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Shapes;
 
 namespace Manufaktura.Controls.XamlForHtml5
 {
@@ -32,7 +33,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			/*if (!Settings.IsPanoramaMode) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+			if (!Settings.IsPanoramaMode) rect = rect.Translate(CurrentScore.DefaultPageSettings);
 
 			if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
 			PathGeometry pathGeom = new PathGeometry();
@@ -55,7 +56,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 			Canvas.SetZIndex(path, (int)pen.ZIndex);
 			Canvas.Children.Add(path);
 
-			OwnershipDictionary.Add(path, owner);*/
+			OwnershipDictionary.Add(path, owner);
 		}
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
@@ -68,7 +69,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 				p4 = p4.Translate(CurrentScore.DefaultPageSettings);
 			}
 
-			/*PathGeometry pathGeom = new PathGeometry();
+			PathGeometry pathGeom = new PathGeometry();
 			PathFigure pf = new PathFigure();
 			pf.StartPoint = new Point(p1.X, p1.Y);
 			BezierSegment bezierSegment = new BezierSegment();
@@ -85,7 +86,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 			path.Visibility = BoolToVisibility(owner.IsVisible);
 			Canvas.Children.Add(path);
 
-			OwnershipDictionary.Add(path, owner);*/
+			OwnershipDictionary.Add(path, owner);
 		}
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
@@ -96,7 +97,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 				endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
 			}
 
-			/*var line = new Line();
+			var line = new Line();
 			line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
 			line.UseLayoutRounding = true;
 			line.X1 = startPoint.X;
@@ -109,7 +110,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
 			Canvas.Children.Add(line);
 
-			OwnershipDictionary.Add(line, owner);*/
+			OwnershipDictionary.Add(line, owner);
 		}
 
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
