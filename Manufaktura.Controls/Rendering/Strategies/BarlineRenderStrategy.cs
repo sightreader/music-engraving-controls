@@ -33,6 +33,9 @@ namespace Manufaktura.Controls.Rendering
 
 		public override void Render(Barline element, ScoreRendererBase renderer)
 		{
+			var lightPen = new Pen(element.CoalesceColor(renderer), 1);
+			var thickPen = new Pen(element.CoalesceColor(renderer), 3);
+
 			if (measurementService.LastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
 			{
 				scoreService.CursorPositionX = measurementService.LastNoteInMeasureEndXPosition;
@@ -54,8 +57,18 @@ namespace Manufaktura.Controls.Rendering
 			{
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 16;
 				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
-								  new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), element);
+				if (element.Style == BarlineStyle.LightHeavy)
+				{
+					renderer.DrawLine(new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[4]),
+									  new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[0]), lightPen, element);
+					renderer.DrawLine(new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[4]),
+									  new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[0]), thickPen, element);
+				}
+				else
+				{
+					renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
+									  new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), lightPen, element);
+				}
 				scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
 				scoreService.CurrentMeasure.Barline = element;
 				if (!IsLastBarline(element) && (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue)) scoreService.CursorPositionX += 6;

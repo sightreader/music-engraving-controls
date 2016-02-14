@@ -16,7 +16,7 @@ namespace Manufaktura.Controls.Rendering
         public double CustomElementPositionRatio { get; set; }
 
         /// <summary>
-        /// Default font color
+        /// Default color
         /// </summary>
         public Color DefaultColor { get; set; }
 

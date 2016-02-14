@@ -25,6 +25,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 .Then(() => b.Location = HorizontalPlacement.Left)
                 .Otherwise(() => b.Location = HorizontalPlacement.Right);
 
+			element.IfElement("bar-style").HasValue("light-heavy").Then(() => b.Style = BarlineStyle.LightHeavy);
+
             foreach (XElement barlineAttribute in element.Elements())
             {
                 if (barlineAttribute.Name == "repeat")

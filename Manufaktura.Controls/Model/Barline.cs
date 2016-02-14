@@ -1,31 +1,38 @@
 ﻿namespace Manufaktura.Controls.Model
 {
-    /// <summary>
-    /// Represents a barline.
-    /// </summary>
-    public class Barline : MusicalSymbol
-    {
-        private RepeatSignType repeatSign;
+	/// <summary>
+	/// Represents a barline.
+	/// </summary>
+	public class Barline : MusicalSymbol
+	{
+		private RepeatSignType repeatSign;
 
-        public HorizontalPlacement Location { get; set; }
+		/// <summary>
+		/// Initializes a new instance of Barline.
+		/// </summary>
+		public Barline()
+		{
+			Location = HorizontalPlacement.Right;
+			repeatSign = RepeatSignType.None;
+		}
 
-        public RepeatSignType RepeatSign { get { return repeatSign; } set { repeatSign = value; } }
+		public Barline(BarlineStyle style) : this()
+		{
+			Style = style;
+		}
 
-        public override MusicalSymbolType Type
-        {
-            get
-            {
-                return MusicalSymbolType.Barline;
-            }
-        }
+		public HorizontalPlacement Location { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of Barline.
-        /// </summary>
-        public Barline()
-        {
-            Location = HorizontalPlacement.Right;
-            repeatSign = RepeatSignType.None;
-        }
-    }
+		public RepeatSignType RepeatSign { get { return repeatSign; } set { repeatSign = value; } }
+
+		public BarlineStyle Style { get; set; } = BarlineStyle.Regular;
+
+		public override MusicalSymbolType Type
+		{
+			get
+			{
+				return MusicalSymbolType.Barline;
+			}
+		}
+	}
 }
