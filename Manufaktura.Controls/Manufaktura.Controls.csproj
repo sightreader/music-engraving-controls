@@ -68,6 +68,7 @@
     <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
+    <Compile Include="Model\Events\InvalidateEventArgs.cs" />
     <Compile Include="Model\Fonts\MusicFontStyles.cs" />
     <Compile Include="Model\Fonts\IMusicFont.cs" />
     <Compile Include="Model\Fonts\PolihymniaFont.cs" />

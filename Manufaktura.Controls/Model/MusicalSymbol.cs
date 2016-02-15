@@ -71,6 +71,8 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(nameof(IsVisible)); } }
 
+		public Measure Measure { get; internal set; }
+
 		public Staff Staff { get; internal set; }
 
 		public virtual MusicalSymbolType Type { get { return MusicalSymbolType.Unknown; } }
@@ -105,6 +107,12 @@ namespace Manufaktura.Controls.Model
 		public override string ToString()
 		{
 			return Type.ToString();
+		}
+
+		protected override void OnPropertyChanged(string propertyName)
+		{
+			base.OnPropertyChanged(propertyName);
+			Staff?.FireMeasureInvalidated(this, Measure);
 		}
 	}
 }

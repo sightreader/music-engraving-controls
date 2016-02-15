@@ -13,6 +13,7 @@ namespace Manufaktura.Controls.Model.Rules
             if (currentMeasure != null)
             {
                 currentMeasure.Elements.Add(newElement);
+				newElement.Measure = currentMeasure;
             }
         }
 

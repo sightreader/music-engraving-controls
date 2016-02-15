@@ -7,6 +7,18 @@ namespace Manufaktura.Model.MVVM
 {
 	public abstract class ViewModel : INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected void OnPropertyChanged<T>(Expression<Func<T>> propertyLambda)
+		{
+			OnPropertyChanged(GetPropertyName(propertyLambda));
+		}
+
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
 		private static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
 		{
 			var memberExpression = propertyLambda.Body as MemberExpression;
@@ -14,19 +26,6 @@ namespace Manufaktura.Model.MVVM
 			var propertyInfo = memberExpression.Member as PropertyInfo;
 			if (propertyInfo == null) throw new ArgumentException("Lambda should point at property.");
 			return propertyInfo.Name;
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyLambda)
-		{
-			PropertyChangedEventHandler handler = PropertyChanged;
-			if (handler != null) handler(this, new PropertyChangedEventArgs(GetPropertyName(propertyLambda)));
-		}
-
-		protected virtual void OnPropertyChanged(string propertyName)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

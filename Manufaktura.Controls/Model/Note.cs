@@ -88,7 +88,14 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Pitch of note.
         /// </summary>
-        public Pitch Pitch { get { return pitch; } set { pitch = value; OnPropertyChanged(() => Pitch); } }
+        public Pitch Pitch
+		{
+			get { return pitch; }
+			set
+			{
+				pitch = value; OnPropertyChanged(() => Pitch);
+			}
+		}
 
         public Slur Slur { get { return slur; } set { slur = value; OnPropertyChanged(() => Slur); } }
 
@@ -238,7 +245,7 @@ namespace Manufaktura.Controls.Model
         /// <param name="midiPitch">Midi pitch</param>
         public void ApplyMidiPitch(int midiPitch)
         {
-            pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
+            Pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
         }
 
         public double GetLineInSpecificClef(Clef clef)

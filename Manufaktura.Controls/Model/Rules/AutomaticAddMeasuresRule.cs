@@ -17,11 +17,13 @@ namespace Manufaktura.Controls.Model.Rules
 			if (barline != null)
 			{
 				currentMeasure.Elements.Add(barline);
+				barline.Measure = currentMeasure;
 				staff.Measures.Add(new Measure(staff, GetSystem(staff)) { Number = staff.Measures.Count + 1 });
 				return;
 			}
 
             currentMeasure.Elements.Add(newElement);
+			newElement.Measure = currentMeasure;
         }
 
 		private static StaffSystem GetSystem (Staff staff)
