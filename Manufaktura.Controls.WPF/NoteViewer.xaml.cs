@@ -20,7 +20,7 @@ namespace Manufaktura.Controls.WPF
 	{
 		// Using a DependencyProperty as the backing store for InvalidatingMode.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty InvalidatingModeProperty =
-			DependencyProperty.Register("InvalidatingMode", typeof(InvalidatingModes), typeof(NoteViewer), new PropertyMetadata(InvalidatingModes.RedrawAllScore));
+			DependencyProperty.Register("InvalidatingMode", typeof(InvalidatingModes), typeof(NoteViewer), new PropertyMetadata(InvalidatingModes.RedrawInvalidatedRegion));
 
 		// Using a DependencyProperty as the backing store for IsAsync.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty IsAsyncProperty =
@@ -239,7 +239,10 @@ namespace Manufaktura.Controls.WPF
 			}
 
 			MusicXmlParser parser = new MusicXmlParser();
-			viewer.RenderOnCanvas(parser.Parse(xmlDocument));
+			var score = parser.Parse(xmlDocument);
+			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
+			viewer.RenderOnCanvas(score);
+			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
 		private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
