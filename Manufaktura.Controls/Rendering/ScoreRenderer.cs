@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
+using System.Linq;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -20,11 +21,30 @@ namespace Manufaktura.Controls.Rendering
             Canvas = canvas;
         }
 
-        /// <summary>
-        /// Renders score on canvas.
-        /// </summary>
-        /// <param name="score">Score</param>
-        public override sealed void Render(Score score)
+		public sealed override void Render(Measure measure)
+		{
+			var measureIndex = measure.Staff.Measures.IndexOf(measure);
+			var previousMeasure = measureIndex < 1 ? null : measure.Staff.Measures[measureIndex - 1];
+			scoreService.CursorPositionX = previousMeasure?.BarlineLocationX ?? 0;
+			foreach (MusicalSymbol symbol in measure.Staff.Elements.Where(e => measure == null || measure.Elements.Contains(e)))
+			{
+				try
+				{
+					var renderStrategy = GetProperRenderStrategy(symbol);
+					if (renderStrategy != null) renderStrategy.Render(symbol, this);
+				}
+				catch (Exception ex)
+				{
+					Exceptions.Add(ex);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Renders score on canvas.
+		/// </summary>
+		/// <param name="score">Score</param>
+		public override sealed void Render(Score score)
         {
             CurrentScore = score;
             scoreService.BeginNewScore(score);

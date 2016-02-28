@@ -214,6 +214,8 @@ namespace Manufaktura.Controls.Rendering
 
 		public abstract void Render(Score score);
 
+		public abstract void Render(Measure measure);
+
 		internal void BreakSystem(double distance = 0)
 		{
 			//var sumOfMeasures = scoreService.AllMeasures

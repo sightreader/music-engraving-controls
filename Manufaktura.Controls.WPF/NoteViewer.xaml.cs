@@ -18,6 +18,10 @@ namespace Manufaktura.Controls.WPF
 	/// </summary>
 	public partial class NoteViewer : UserControl
 	{
+		// Using a DependencyProperty as the backing store for InvalidatingMode.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty InvalidatingModeProperty =
+			DependencyProperty.Register("InvalidatingMode", typeof(InvalidatingModes), typeof(NoteViewer), new PropertyMetadata(InvalidatingModes.RedrawAllScore));
+
 		// Using a DependencyProperty as the backing store for IsAsync.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty IsAsyncProperty =
 			DependencyProperty.Register("IsAsync", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
@@ -63,6 +67,7 @@ namespace Manufaktura.Controls.WPF
 			DependencyProperty.Register("ZoomFactor", typeof(double), typeof(NoteViewer), new PropertyMetadata(1d, ZoomFactorChanged));
 
 		private DraggingState _draggingState = new DraggingState();
+
 		private Score _innerScore;
 
 		public NoteViewer()
@@ -70,7 +75,19 @@ namespace Manufaktura.Controls.WPF
 			InitializeComponent();
 		}
 
+		public enum InvalidatingModes
+		{
+			RedrawAllScore,
+			RedrawInvalidatedRegion
+		}
+
 		public Score InnerScore { get { return _innerScore; } }
+
+		public InvalidatingModes InvalidatingMode
+		{
+			get { return (InvalidatingModes)GetValue(InvalidatingModeProperty); }
+			set { SetValue(InvalidatingModeProperty, value); }
+		}
 
 		public bool IsAsync
 		{
@@ -204,7 +221,9 @@ namespace Manufaktura.Controls.WPF
 		{
 			NoteViewer viewer = obj as NoteViewer;
 			var score = args.NewValue as Score;
+			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
 			viewer.RenderOnCanvas(score);
+			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
 		private static void XmlSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -292,8 +311,28 @@ namespace Manufaktura.Controls.WPF
 				note.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
 													//TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
 			}
-			RenderOnCanvas(_innerScore);        //TODO: Przerysowywać tylko wszystkie na prawo od zmienianej nutki. Albo w ogóle tylko tą nutkę, a na MouseLeftButtonUp przerysowywać całość
-												//Może najłatwiej to zrobić tak, że Draw... jak zobaczy że ma już taką samą figurę, to ma nie rysować
+
+			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
+		}
+
+		private void RenderOnCanvas(Measure measure)
+		{
+			if (Renderer == null) Renderer = CreateRenderer(MainCanvas);
+			foreach (var element in measure.Elements)
+			{
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
+				foreach (var frameworkElement in frameworkElements)
+				{
+					Renderer.Canvas.Children.Remove(frameworkElement);
+				}
+			}
+
+			var brush = Foreground as SolidColorBrush;
+			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
+
+			Renderer.Render(measure);
+			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
+			InvalidateMeasure();
 		}
 
 		private void RenderOnCanvas(Score score)
@@ -310,6 +349,16 @@ namespace Manufaktura.Controls.WPF
 			Renderer.Render(score);
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
+		}
+
+		private void Score_MeasureInvalidated(object sender, Model.Events.InvalidateEventArgs<Measure> e)
+		{
+			if (InvalidatingMode != InvalidatingModes.RedrawInvalidatedRegion) return;
+			var score = (sender as MusicalSymbol)?.Staff?.Score;
+			if (score == null) return;
+			score.MeasureInvalidated -= Score_MeasureInvalidated;
+			RenderOnCanvas(e.InvalidatedObject);
+			score.MeasureInvalidated += Score_MeasureInvalidated;
 		}
 
 		private struct DraggingState
