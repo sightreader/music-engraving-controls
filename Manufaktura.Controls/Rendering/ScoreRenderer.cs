@@ -24,16 +24,18 @@ namespace Manufaktura.Controls.Rendering
 		public sealed override void Render(Measure measure)
 		{
 			scoreService.ReturnToFirstSystem();
-			scoreService.MoveTo(measure);
+			scoreService.MoveTo(measure, Settings);
 			measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
 			measurementService.LastNoteEndXPosition = scoreService.CursorPositionX;
 			measurementService.LastNotePositionX = scoreService.CursorPositionX;
 			measurementService.LastNoteInMeasureEndXPosition = scoreService.CursorPositionX;
 			alterationService.Reset();
-			foreach (MusicalSymbol symbol in measure.Staff.Elements.Where(e => measure.Elements.Contains(e)))
+			foreach (MusicalSymbol symbol in measure.Elements.Where(e => !(e is Barline)))
 			{
 				try
 				{
+					var noteOrRest = symbol as NoteOrRest;
+					if (noteOrRest != null) scoreService.CurrentVoice = noteOrRest.Voice;
 					var renderStrategy = GetProperRenderStrategy(symbol);
 					var clefRenderStrategy = renderStrategy as ClefRenderStrategy;
 					if (clefRenderStrategy != null) clefRenderStrategy.WasSystemChanged = measure.Staff.Elements.OfType<Clef>().Any();

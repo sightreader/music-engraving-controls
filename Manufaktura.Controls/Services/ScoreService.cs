@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -202,7 +203,7 @@ namespace Manufaktura.Controls.Services
 			return measuresInOthersStaff[measureIndex];
 		}
 
-		public void MoveTo(Measure measure)
+		public void MoveTo(Measure measure, ScoreRendererSettings rendererSettings)
 		{
 			var measureIndex = measure.Staff.Measures.IndexOf(measure);
 			var previousMeasure = measureIndex < 1 ? null : measure.Staff.Measures[measureIndex - 1];
@@ -214,6 +215,7 @@ namespace Manufaktura.Controls.Services
 			if (firstNoteOrRest != null)
 			{
 				CurrentClef = measure.Staff.Peek<Clef>(firstNoteOrRest, Model.PeekStrategies.PeekType.PreviousElement);
+				CurrentClef.TextBlockLocation = new Primitives.Point(CursorPositionX, CurrentLinePositions[4] - 24.4f - (CurrentClef.Line - 1) * rendererSettings.LineSpacing);
 				CurrentKey = measure.Staff.Peek<Key>(firstNoteOrRest, Model.PeekStrategies.PeekType.PreviousElement);
 			}
 			

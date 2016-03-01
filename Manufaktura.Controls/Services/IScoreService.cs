@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Services
@@ -47,7 +48,7 @@ namespace Manufaktura.Controls.Services
 
 		Measure GetCorrespondingMeasure(Measure measure, Staff otherStaff);
 
-		void MoveTo(Measure measure);
+		void MoveTo(Measure measure, ScoreRendererSettings rendererSettings);
 
 		void ReturnToFirstSystem();
 	}

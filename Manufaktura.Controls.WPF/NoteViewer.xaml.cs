@@ -321,7 +321,7 @@ namespace Manufaktura.Controls.WPF
 		private void RenderOnCanvas(Measure measure)
 		{
 			if (Renderer == null) Renderer = CreateRenderer(MainCanvas);
-			foreach (var element in measure.Elements)
+			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
 			{
 				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
 				foreach (var frameworkElement in frameworkElements)
