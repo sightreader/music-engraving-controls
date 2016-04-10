@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Audio\ScorePlayer.cs" />
     <Compile Include="Audio\ThreadScorePlayer.cs" />
+    <Compile Include="Extensions\ScoreMath.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Formatting\DefaultScoreFormatter.cs" />
     <Compile Include="Formatting\IScoreFormatter.cs" />

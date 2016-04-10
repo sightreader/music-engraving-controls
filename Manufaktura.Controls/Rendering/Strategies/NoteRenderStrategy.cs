@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Extensions;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Primitives;
@@ -180,26 +181,30 @@ namespace Manufaktura.Controls.Rendering
 			int beamLoop = 0;
 			foreach (NoteBeamType beam in element.BeamList)
 			{
-				int beamSpaceDirection = 1;
-				if (element.StemDirection == VerticalDirection.Up) beamSpaceDirection = 1;
-				else beamSpaceDirection = -1;
-				//if (beam != NoteBeamType.Single) MessageBox.Show(Convert.ToString(currentStemPositionX));
+				var beamSpaceDirection = element.StemDirection == VerticalDirection.Up ? 1 : -1;
 				if (beam == NoteBeamType.Start)
 				{
-					beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.CurrentStemEndPositionY;
+					if (beamLoop == 0)
+					{
+						beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.CurrentStemEndPositionY;
+					}
+					else
+					{
+						beamingService.SomeMoreComplexBeamsToDraw.Add(beamLoop, beamingService.CurrentStemPositionX);
+					}
 					beamingService.PreviousStemPositionsX[beamLoop] = beamingService.CurrentStemPositionX;
 				}
 				else if (beam == NoteBeamType.Continue)
 				{
-					//int prevStemPosY = currentStemEndPositionY;
-					//currentStemEndPositionY = previousStemEndPositionsY[i];
-					//renderer.DrawLine(pen, new Point(currentStemPositionX, prevStemPosY + 28),
-					//    new Point(currentStemPositionX, currentStemEndPositionY + 28));
 				}
 				else if (beam == NoteBeamType.End)
 				{
-					//MessageBox.Show(Convert.ToString(previousStemPositionsX[beamLoop])
-					//    + "," + Convert.ToString(currentStemPositionX));
+					if (beamingService.SomeMoreComplexBeamsToDraw.ContainsKey(beamLoop))
+					{
+						beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.PreviousStemEndPositionsY[0] + ScoreMath.StemEnd(beamingService.PreviousStemPositionsX[0],
+								beamingService.PreviousStemEndPositionsY[0], beamingService.SomeMoreComplexBeamsToDraw[beamLoop], beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+						beamingService.SomeMoreComplexBeamsToDraw.Remove(beamLoop);
+					}
 					renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop] + 28
 						+ beamOffset * beamSpaceDirection),
 						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28

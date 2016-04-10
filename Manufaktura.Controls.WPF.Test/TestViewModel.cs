@@ -3,6 +3,7 @@ using Manufaktura.Controls.Primitives;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
+using System.Collections.Generic;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -27,7 +28,11 @@ namespace Manufaktura.Controls.WPF.Test
 			firstStaff.Elements.Add(new Barline());
 			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)));
 			firstStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
-			
+
+			score.FirstStaff.Elements.Add(new Note(Pitch.A5, RhythmicDuration.Eighth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Start }));
+			score.FirstStaff.Elements.Add(new Note(Pitch.C5, RhythmicDuration.Sixteenth.AddDots(1), VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Continue, NoteBeamType.Start }));
+			score.FirstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.D32nd, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.End, NoteBeamType.End, NoteBeamType.BackwardHook }));
+
 			var secondStaff = new Staff();
 			score.Staves.Add(secondStaff);
 			secondStaff.Elements.Add(Clef.Bass);

@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Primitives;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Manufaktura.Controls.Services
 {
@@ -19,7 +20,9 @@ namespace Manufaktura.Controls.Services
 
         public List<double> PreviousStemPositionsX { get; set; }
 
-        public BeamingService()
+		public Dictionary<int, double> SomeMoreComplexBeamsToDraw { get; } = new Dictionary<int, double>();
+
+		public BeamingService()
         {
             PreviousStemEndPositionsY = new List<double>();
             PreviousStemPositionsX = new List<double>();
