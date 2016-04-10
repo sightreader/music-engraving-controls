@@ -22,13 +22,23 @@ namespace Manufaktura.Controls.Rendering
 
         public override void Render(Clef element, ScoreRendererBase renderer)
         {
-            //Don't draw clef if it's current clef:
-            if (!WasSystemChanged && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
+			if (element.OctaveChange > 0)
+			{
+				renderer.DrawString((8 * element.OctaveChange).ToString(), MusicFontStyles.DirectionFont, element.TextBlockLocation.X + 6, element.TextBlockLocation.Y, element);
+			}
+			if (element.OctaveChange < 0)
+			{
+				renderer.DrawString((8 * element.OctaveChange * -1).ToString(), MusicFontStyles.DirectionFont, element.TextBlockLocation.X + 6, element.TextBlockLocation.Y + 42, element);
+			}
+
+			//Don't draw clef if it's current clef:
+			if (!WasSystemChanged && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
 
             element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX,  scoreService.CurrentLinePositions[4] - 24.4f - (element.Line - 1) * renderer.Settings.LineSpacing);
             scoreService.CurrentClef = element;
             renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
-            scoreService.CursorPositionX += 20;
+
+			scoreService.CursorPositionX += 20;
         }
     }
 }
