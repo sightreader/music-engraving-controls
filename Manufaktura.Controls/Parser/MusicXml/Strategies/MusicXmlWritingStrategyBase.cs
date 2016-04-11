@@ -17,11 +17,11 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         static MusicXmlWritingStrategyBase()
         {
-            var strategyTypes = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(MusicXmlWritingStrategyBase)) && !t.IsAbstract);
+            var strategyTypes = typeof(MusicXmlWritingStrategyBase).GetTypeInfo().Assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(MusicXmlWritingStrategyBase)) && !t.IsAbstract);
             List<MusicXmlWritingStrategyBase> strategies = new List<MusicXmlWritingStrategyBase>();
-            foreach (Type type in strategyTypes)
+            foreach (var type in strategyTypes)
             {
-                strategies.Add(Activator.CreateInstance(type) as MusicXmlWritingStrategyBase);
+                strategies.Add(Activator.CreateInstance(type.AsType()) as MusicXmlWritingStrategyBase);
             }
             _strategies = strategies.ToArray();
         }

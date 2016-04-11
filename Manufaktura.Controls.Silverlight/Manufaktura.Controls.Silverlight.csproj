@@ -94,9 +94,9 @@
     <Compile Include="Audio\XnaScorePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
-      <Project>{52331173-dfd5-47ea-ba7a-72bbbe85d2fa}</Project>
-      <Name>Manufaktura.Controls</Name>
+    <ProjectReference Include="..\Manufaktura.Controls.Legacy\Manufaktura.Controls.Legacy.csproj">
+      <Project>{67598cd4-69bb-4f75-991b-344fcc88bbe2}</Project>
+      <Name>Manufaktura.Controls.Legacy</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
       <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>

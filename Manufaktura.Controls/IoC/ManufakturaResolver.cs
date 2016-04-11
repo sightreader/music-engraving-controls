@@ -38,18 +38,18 @@ namespace Manufaktura.Controls.IoC
         /// <returns>Created object</returns>
         public IEnumerable<T> ResolveAll<T>() where T:class
         {
-            var assemblies = new List<Assembly> {Assembly.GetExecutingAssembly()};
-            if (!assemblies.Contains(typeof(T).Assembly)) assemblies.Add(typeof(T).Assembly);
-            var types = assemblies.SelectMany(a => a.GetTypes()).Where(t => !t.IsAbstract && (t.IsSubclassOf(typeof(T)) || typeof(T).IsAssignableFrom(t)));
+            var assemblies = new List<Assembly> {GetType().GetTypeInfo().Assembly};
+            if (!assemblies.Contains(typeof(T).GetTypeInfo().Assembly)) assemblies.Add(typeof(T).GetTypeInfo().Assembly);
+            var types = assemblies.SelectMany(a => a.DefinedTypes).Where(t => !t.IsAbstract && (t.IsSubclassOf(typeof(T)) || typeof(T).GetTypeInfo().IsAssignableFrom(t)));
             foreach (var type in types)
             {
-                var constructors = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
-                if (!constructors.Any()) yield return ExpressionActivator.CreateInstance<T>(type);
+                var constructors = type.DeclaredConstructors;
+                if (!constructors.Any()) yield return ExpressionActivator.CreateInstance<T>(type.AsType());
                 foreach (var constructor in constructors)
                 {
                     object[] matchedParameters;
                     if (TryBindParameters(constructor, out matchedParameters))
-                        yield return Activator.CreateInstance(type, matchedParameters) as T;
+                        yield return Activator.CreateInstance(type.AsType(), matchedParameters) as T;
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace Manufaktura.Controls.IoC
             foreach (var parameter in constructorParameters)
             {
                 var matchingService = createdServices.FirstOrDefault(cs => parameter.ParameterType == cs.GetType() ||
-                    parameter.ParameterType.IsAssignableFrom(cs.GetType()));
+                    parameter.ParameterType.GetTypeInfo().IsAssignableFrom(cs.GetType().GetTypeInfo()));
                 if (matchingService == null) break;
                 matchedParameterList.Add(matchingService);
             }
