@@ -10,7 +10,7 @@ namespace Manufaktura.Model
     {
         public static IEnumerable<PropertyInfo> GetOrderedProperties(this Type type)
         {
-            return type.GetTypeInfo().DeclaredProperties.OrderBy(p =>
+            return type.GetProperties().OrderBy(p =>
             {
                 MappingAttribute a = p.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
                 return a == null ? 0 : a.Order;
