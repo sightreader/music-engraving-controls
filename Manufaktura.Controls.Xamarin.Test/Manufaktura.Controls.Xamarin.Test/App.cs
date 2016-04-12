@@ -9,27 +9,43 @@ namespace Manufaktura.Controls.Xamarin.Test
 {
 	public class App : Application
 	{
+		NoteViewer noteViewer = new NoteViewer();
+		Button button = new Button();
+		TestViewModel vm = new TestViewModel();
 		public App()
 		{
+			button.Clicked += Button_Clicked;
+			noteViewer.HeightRequest = 100;
 			// The root page of your application
 			MainPage = new ContentPage
 			{
 				Content = new StackLayout
 				{
+					BackgroundColor = Color.White,
 					VerticalOptions = LayoutOptions.Center,
 					Children = {
 						new Label {
 							XAlign = TextAlignment.Center,
 							Text = "Welcome to Xamarin Forms!"
-						}
+						},
+						noteViewer,
+						button 
 					}
 				}
 			};
+			
+		}
+
+		private void Button_Clicked(object sender, EventArgs e)
+		{
+			
 		}
 
 		protected override void OnStart()
 		{
-			// Handle when your app starts
+			MainPage.BindingContext = vm;
+			vm.LoadTestData();
+			noteViewer.SetBinding<TestViewModel>(NoteViewer.ScoreSourceProperty, s => s.Data);
 		}
 
 		protected override void OnSleep()

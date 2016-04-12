@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -16,15 +15,25 @@ namespace Manufaktura.Controls.Xamarin
 
 		public Dictionary<VisualElement, MusicalSymbol> OwnershipDictionary { get; private set; }
 
-		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
+		public Color ConvertColor(Primitives.Color color)
+		{
+			return Color.FromRgba(color.R, color.G, color.B, color.A);
+		}
+
+		public Primitives.Color ConvertColor(Color color)
+		{
+			return new Primitives.Color((byte)(color.R * 255), (byte)(color.G * 255), (byte)(color.B * 255), (byte)(color.A * 255));
+		}
+
+		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
 		}
 
-		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Pen pen, MusicalSymbol owner)
+		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
 		{
 		}
 
-		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Pen pen, MusicalSymbol owner)
+		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
 		{
 			if (!Settings.IsPanoramaMode)
 			{
@@ -37,6 +46,7 @@ namespace Manufaktura.Controls.Xamarin
 			line.AnchorY = startPoint.Y;
 			line.WidthRequest = endPoint.X - startPoint.X;
 			line.HeightRequest = 1;
+			line.Color = Color.Black;
 
 			Canvas.Children.Add(line);
 
@@ -54,6 +64,7 @@ namespace Manufaktura.Controls.Xamarin
 			label.FontFamily = Fonts.Get(fontStyle).FontFamily;
 			label.FontAttributes = Fonts.Get(fontStyle).Attributes;
 			label.FontSize = Fonts.Get(fontStyle).FontSize;
+			label.TextColor = Color.Black;
 
 			Canvas.Children.Add(label);
 

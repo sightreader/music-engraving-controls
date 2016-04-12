@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
-using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Manufaktura.Controls.Xamarin
 {
-	public abstract class NoteViewer : AbsoluteLayout
+	public class NoteViewer : AbsoluteLayout
 	{
 		// Using a BindableProperty as the backing store for InvalidatingMode.  This enables animation, styling, binding, etc...
 		public static readonly BindableProperty InvalidatingModeProperty =
@@ -168,15 +167,17 @@ namespace Manufaktura.Controls.Xamarin
 				positionElement.DefaultXPosition.HasValue ? positionElement.DefaultXPosition.Value.ToString() : "(not set)");
 		}
 
-		private static void ScoreSourceChanged(BindableObject obj, Score newValue, Score oldValue)
+		private static void ScoreSourceChanged(BindableObject obj, Score oldValue, Score newValue)
 		{
 			NoteViewer viewer = obj as NoteViewer;
+			if (oldValue != null) oldValue.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
+			if (newValue == null) return;
 			newValue.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
 			viewer.RenderOnCanvas(newValue);
 			newValue.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
-		private static void XmlSourceChanged(BindableObject obj, string newValue, string oldValue)
+		private static void XmlSourceChanged(BindableObject obj, string oldValue, string newValue)
 		{
 			NoteViewer viewer = obj as NoteViewer;
 
@@ -194,7 +195,7 @@ namespace Manufaktura.Controls.Xamarin
 			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
-		private static void ZoomFactorChanged(BindableObject obj, double newValue, double oldValue)
+		private static void ZoomFactorChanged(BindableObject obj, double oldValue, double newValue)
 		{
 			((NoteViewer)obj).InvalidateMeasure();
 		}
@@ -221,7 +222,6 @@ namespace Manufaktura.Controls.Xamarin
 				}
 			}
 
-
 			Renderer.Render(measure);
 			if (SelectedElement != null) ColorElement(SelectedElement, Color.Fuchsia);
 			InvalidateMeasure();
@@ -233,9 +233,9 @@ namespace Manufaktura.Controls.Xamarin
 			if (score == null) return;
 
 			Children.Clear();
-			//Renderer = CreateRenderer(this);
+			Renderer = CreateRenderer(this);
 			Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
-			//Renderer.Settings.DefaultColor = Renderer.ConvertColor(Color.Black);
+			Renderer.Settings.DefaultColor = Renderer.ConvertColor(Color.Black);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
 			Renderer.Render(score);
 			if (SelectedElement != null) ColorElement(SelectedElement, Color.Fuchsia);
