@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.Xamarin.Shapes;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -27,10 +28,12 @@ namespace Manufaktura.Controls.Xamarin
 
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
+			var arc = new Arc();
 		}
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
 		{
+			var bezierCurve = new BezierCurve();
 		}
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
@@ -42,8 +45,8 @@ namespace Manufaktura.Controls.Xamarin
 			}
 
 			var line = new BoxView();
-			line.AnchorX = startPoint.X;
-			line.AnchorY = startPoint.Y;
+			line.TranslationX = startPoint.X;
+			line.TranslationY = startPoint.Y;
 			line.WidthRequest = endPoint.X - startPoint.X;
 			line.HeightRequest = 1;
 			line.Color = Color.Black;
@@ -58,8 +61,8 @@ namespace Manufaktura.Controls.Xamarin
 			if (!Settings.IsPanoramaMode) location = location.Translate(CurrentScore.DefaultPageSettings);
 
 			var label = new Label();
-			label.AnchorX = location.X;
-			label.AnchorY = location.Y;
+			label.TranslationX = location.X;
+			label.TranslationY = location.Y;
 			label.Text = text;
 			label.FontFamily = Fonts.Get(fontStyle).FontFamily;
 			label.FontAttributes = Fonts.Get(fontStyle).Attributes;
