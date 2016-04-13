@@ -30,11 +30,13 @@ namespace Manufaktura.Controls.WPF.Test
 			firstStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
 
 			var note = new Note(Pitch.A5, RhythmicDuration.Eighth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Start });
-			note.Lyrics = new List<Lyrics>();
-			note.Lyrics.Add(new Lyrics() { Syllables = new List<Lyrics.Syllable>() { new Lyrics.Syllable (SyllableType.Begin, "xxx") }  });
+			note.Lyrics.Add(new Lyrics(SyllableType.Begin, "Xxx"));
+			//note.Lyrics = new List<Lyrics>();
+			//note.Lyrics.Add(new Lyrics() { Syllables = new List<Lyrics.Syllable>() { new Lyrics.Syllable (SyllableType.Begin, "xxx") }  });
 			score.FirstStaff.Elements.Add(note);
 			score.FirstStaff.Elements.Add(new Note(Pitch.C5, RhythmicDuration.Sixteenth.AddDots(1), VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Continue, NoteBeamType.Start }));
 			score.FirstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.D32nd, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.End, NoteBeamType.End, NoteBeamType.BackwardHook }));
+			score.FirstStaff.Elements.Add(new MetronomeDirection(new Tempo(RhythmicDuration.Eighth, 120), DirectionPlacementType.Above));
 
 			var secondStaff = new Staff();
 			score.Staves.Add(secondStaff);

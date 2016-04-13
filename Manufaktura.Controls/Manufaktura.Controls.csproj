@@ -82,6 +82,7 @@
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\Lyrics.cs" />
     <Compile Include="Model\Measure.cs" />
+    <Compile Include="Model\MetronomeDirection.cs" />
     <Compile Include="Model\Mordent.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
     <Compile Include="Model\MusicalSymbolCollection.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Model\TimeSignature.cs" />
     <Compile Include="Primitives\Rectangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\Snippets\Beams.cs" />
     <Compile Include="Rendering\Strategies\BarlineRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\ClefRenderStrategy.cs" />
     <Compile Include="Rendering\Postprocessing\DemoVersionFinishingTouch.cs" />

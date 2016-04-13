@@ -8,6 +8,7 @@ using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -287,7 +288,7 @@ namespace Manufaktura.Controls.Rendering
 
 		protected MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
 		{
-			return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
+			return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType()) ?? Strategies.FirstOrDefault(s => s.SymbolType.GetTypeInfo().IsAssignableFrom(element.GetType().GetTypeInfo()));
 		}
 
 		protected void RenderStaff(Staff staff)

@@ -4,86 +4,85 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    /// <summary>
-    /// Represents a single word
-    /// </summary>
-    public class Lyrics : IHasCustomYPosition
-    {
-        public double? DefaultYPosition { get; set; }
+	/// <summary>
+	/// Represents a single word
+	/// </summary>
+	public class Lyrics : IHasCustomYPosition
+	{
+		/// <summary>
+		/// Initializes a new insance of Lyrics.
+		/// </summary>
+		public Lyrics()
+		{
+		}
 
-        public int Number { get; set; }
+		public Lyrics(SyllableType type, string text, double? defaultY)
+		{
+			Syllables.Add(new Syllable(type, text));
+			DefaultYPosition = defaultY;
+		}
 
-        /// <summary>
-        /// Syllables that form a single word
-        /// </summary>
-        public List<Syllable> Syllables { get; set; }
+		public Lyrics(SyllableType type, string text)
+			: this(type, text, null)
+		{
+		}
 
-        /// <summary>
-        /// String value of word
-        /// </summary>
-        public string Text
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (Syllable syllable in Syllables)
-                {
-                    sb.Append(syllable.ElisionMark);
-                    sb.Append(syllable.Text);
-                }
-                return sb.ToString();
-            }
-        }
+		public double? DefaultYPosition { get; set; }
 
-        /// <summary>
-        /// Type of last (or only) syllable in word.
-        /// </summary>
-        public SyllableType Type
-        {
-            get
-            {
-                Syllable lastSyllable = Syllables.LastOrDefault();
-                if (lastSyllable == null) return SyllableType.Single;
-                return lastSyllable.Type;
-            }
-        }
+		public int Number { get; set; }
 
-        /// <summary>
-        /// Initializes a new insance of Lyrics.
-        /// </summary>
-        public Lyrics()
-        {
-            Syllables = new List<Syllable>();
-        }
+		/// <summary>
+		/// Syllables that form a single word
+		/// </summary>
+		public List<Syllable> Syllables { get; set; } = new List<Syllable>();
 
-        public Lyrics(SyllableType type, string text, double? defaultY)
-        {
-            Syllables.Add(new Syllable(type, text));
-            DefaultYPosition = defaultY;
-        }
+		/// <summary>
+		/// String value of word
+		/// </summary>
+		public string Text
+		{
+			get
+			{
+				StringBuilder sb = new StringBuilder();
+				foreach (Syllable syllable in Syllables)
+				{
+					sb.Append(syllable.ElisionMark);
+					sb.Append(syllable.Text);
+				}
+				return sb.ToString();
+			}
+		}
 
-        public Lyrics(SyllableType type, string text)
-            : this(type, text, null)
-        {
-        }
+		/// <summary>
+		/// Type of last (or only) syllable in word.
+		/// </summary>
+		public SyllableType Type
+		{
+			get
+			{
+				Syllable lastSyllable = Syllables.LastOrDefault();
+				if (lastSyllable == null) return SyllableType.Single;
+				return lastSyllable.Type;
+			}
+		}
 
-        public class Syllable
-        {
-            public string ElisionMark { get; set; }
+		public class Syllable
+		{
+			public Syllable()
+			{
+			}
 
-            public string Text { get; set; }
+			public Syllable(SyllableType type, string text)
+			{
+				Type = type;
+				Text = text;
+			}
 
-            public SyllableType Type { get; set; }
+			public string ElisionMark { get; set; }
 
-            public Syllable()
-            {
-            }
+			public string Text { get; set; }
 
-            public Syllable(SyllableType type, string text)
-            {
-                Type = type;
-                Text = text;
-            }
-        }
-    }
+			public SyllableType Type { get; set; }
+		}
+	}
 }
