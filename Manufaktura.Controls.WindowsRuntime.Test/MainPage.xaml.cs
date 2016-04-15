@@ -4,7 +4,6 @@ using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.Digest;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.UniversalApps;
-using Manufaktura.Controls.UniversalApps.Audio;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,22 +80,13 @@ namespace Manufaktura.Controls.WindowsRuntime.Test
 
         }
 
-        MediaElementScorePlayer player;
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            player = new MediaElementScorePlayer(noteViewer1.ScoreSource);
-            //player.ElementPlayed += player_ElementPlayed;
-            player.Dispatcher = noteViewer1.Dispatcher;
             var binding = new Binding { Path = new PropertyPath("ThreadSafeCurrentElement") };
-            binding.Source = player;
             noteViewer1.SetBinding(NoteViewer.SelectedElementProperty, binding);
-            player.Start();
+
 
         }
 
-        void player_ElementPlayed(object sender, MediaElementScorePlayer.MusicalSymbolEventArgs e)
-        {
-            noteViewer1.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new DispatchedHandler(() => { noteViewer1.Select(e.Element); }));
-        }
     }
 }

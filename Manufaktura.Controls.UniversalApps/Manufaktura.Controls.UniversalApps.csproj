@@ -62,7 +62,6 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audio\MediaElementScorePlayer.cs" />
     <Compile Include="CanvasScoreRenderer.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\ViewModelCommand.cs" />
@@ -134,6 +133,9 @@
       <Project>{995e7584-262d-462c-a83a-208924c2548b}</Project>
       <Name>Manufaktura.Music</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Audio\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

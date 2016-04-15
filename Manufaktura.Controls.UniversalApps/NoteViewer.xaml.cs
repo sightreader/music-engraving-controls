@@ -166,6 +166,8 @@ namespace Manufaktura.Controls.UniversalApps
 
 		protected override Size MeasureOverride(Size availableSize)
 		{
+			foreach (var c in MainCanvas.Children) c.Measure(availableSize);	//Ta linijka zapobiega znikaniu tekstu - nie wiem czemu znika.
+
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
 
 			double width = availableSize.Width;
