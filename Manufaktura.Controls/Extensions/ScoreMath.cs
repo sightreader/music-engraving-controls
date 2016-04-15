@@ -14,6 +14,7 @@
 			var firstToMiddleX = middleNoteX - firstNoteX;
 			var lastToFirstX = lastNoteX - firstNoteX;
 			var lastToFirstY = lastNoteY - firstNoteY;
+			if (lastToFirstX == 0) return 0;
 			return (firstToMiddleX * lastToFirstY) / lastToFirstX;
 		}
 	}
