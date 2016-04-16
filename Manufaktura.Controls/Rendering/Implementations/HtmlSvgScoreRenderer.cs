@@ -28,7 +28,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                     rect.Y.ToStringInvariant(),
                     rect.Height.ToStringInvariant(),
                     rect.Width.ToStringInvariant(),
-                    sweepAngle.ToStringInvariant(),
+                    (sweepAngle / 2).ToStringInvariant(),
                     0,
                     1,
                     (rect.X + rect.Width).ToStringInvariant(),
