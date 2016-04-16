@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,7 +23,7 @@ namespace Manufaktura.Controls.Services
 
 		public double CurrentStemPositionX { get; set; }
 
-		public ICollection<Tuple<int, double, bool>> HooksToDraw { get; } = new List<Tuple<int, double, bool>>();
+		public ICollection<Hook> HooksToDraw { get; } = new List<Hook>();
 		public List<double> PreviousStemEndPositionsY { get; set; }
 
 		public List<double> PreviousStemPositionsX { get; set; }

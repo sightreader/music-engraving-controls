@@ -1,5 +1,4 @@
 ﻿using Manufaktura.Controls.Extensions;
-using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.PeekStrategies;
@@ -13,23 +12,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 {
 	public static class Beams
 	{
-		public static void Hook(IBeamingService beamingService, ScoreRendererBase renderer, Note element, int beamSpaceDirection, int beamNumber, int beamOffset, bool forward)
-		{
-			int hookLength = forward ? 6 : -6;
-			double hookPositionY = beamingService.CurrentStemEndPositionY;
-			if (beamNumber > 0)
-			{
-				hookPositionY = beamingService.PreviousStemEndPositionsY[0] + ScoreMath.StemEnd(beamingService.PreviousStemPositionsX[0], beamingService.PreviousStemEndPositionsY[0],
-					beamingService.CurrentStemPositionX + hookLength, beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
-			}
-
-			renderer.DrawLine(new Point(beamingService.CurrentStemPositionX + hookLength,
-				hookPositionY + 28 + beamOffset * beamSpaceDirection),
-				new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
-				+ beamOffset * beamSpaceDirection), new Pen { Color = renderer.Settings.DefaultColor, Thickness = 2 }, element);
-		}
-
-		public static void Flag (IBeamingService beamingService, IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, Note element, int beamSpaceDirection, int beamNumber, int beamOffset)
+		public static void Flag(IBeamingService beamingService, IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, Note element, int beamSpaceDirection, int beamNumber, int beamOffset)
 		{
 			//Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
 			//Draw a hook only of the lowest element in a chord
@@ -57,6 +40,25 @@ namespace Manufaktura.Controls.Rendering.Snippets
 					measurementService.TupletState = null;
 				}
 			}
+		}
+
+		public static void Hook(IBeamingService beamingService, ScoreRendererBase renderer, Note element, Hook hook, int beamSpaceDirection)
+		{
+			int hookLength = hook.IsForward ? 6 : -6;
+			int beamOffset = hook.BeamNumber * 4;
+			double hookStartPositionY = hook.HookStartPositionY;
+			double hookEndPositionY = hook.HookStartPositionY;
+			if (hook.BeamNumber > 0)
+			{
+				hookEndPositionY = beamingService.PreviousStemEndPositionsY[0] + ScoreMath.StemEnd(beamingService.PreviousStemPositionsX[0], beamingService.PreviousStemEndPositionsY[0],
+					hook.HookStartPositionX + hookLength, beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+			}
+
+
+				renderer.DrawLine(new Point(hook.HookStartPositionX + hookLength, hookEndPositionY + 28 + beamOffset * beamSpaceDirection),
+					new Point(hook.HookStartPositionX, hookStartPositionY + 28 + beamOffset * beamSpaceDirection), 
+					new Pen { Color = renderer.Settings.DefaultColor, Thickness = 2 }, element);
+			//}
 		}
 
 		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, Note element, int beamLoop)

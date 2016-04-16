@@ -204,6 +204,12 @@ namespace Manufaktura.Controls.Rendering
 								beamingService.PreviousStemEndPositionsY[0], beamingService.SomeMoreComplexBeamsToDraw[beamLoop], beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 						beamingService.SomeMoreComplexBeamsToDraw.Remove(beamLoop);
 					}
+					foreach (var hook in beamingService.HooksToDraw.ToArray())	//ToArray, żeby nie modyfikować enumerable
+					{
+						Beams.Hook(beamingService, renderer, element, hook, beamSpaceDirection);
+						beamingService.HooksToDraw.Remove(hook);
+					}
+
 					renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop] + 28
 						+ beamOffset * beamSpaceDirection),
 						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
@@ -225,11 +231,14 @@ namespace Manufaktura.Controls.Rendering
 				}
 				else if (beam == NoteBeamType.ForwardHook)
 				{
-					Beams.Hook(beamingService, renderer, element, beamSpaceDirection, beamLoop, beamOffset, true);
+					var hook = new Hook(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY, beamLoop, true);
+					if (beamLoop == 0) Beams.Hook(beamingService, renderer, element, hook, beamSpaceDirection);
+					else beamingService.HooksToDraw.Add(hook);
 				}
 				else if (beam == NoteBeamType.BackwardHook)
 				{
-					Beams.Hook(beamingService, renderer, element, beamSpaceDirection, beamLoop, beamOffset, false);
+					Beams.Hook(beamingService, renderer, element, new Hook(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY, beamLoop, false), 
+						beamSpaceDirection);
 				}
 
 				beamOffset += 4;
