@@ -32,7 +32,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                     0,
                     1,
                     (rect.X + rect.Width).ToStringInvariant(),
-                    (rect.Y + rect.Height).ToStringInvariant())),
+                    rect.Y.ToStringInvariant())),
                 new XAttribute("style", pen.ToCss()));
 
             Canvas.Add(element);
