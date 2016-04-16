@@ -437,7 +437,7 @@ namespace Manufaktura.Controls.Rendering
 				double arcHeight = arcWidth * 0.7d;
 				if (element.StemDirection == VerticalDirection.Down)
 				{
-					renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 16, measurementService.TieStartPoint.Y + 6,
+					renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 16, measurementService.TieStartPoint.Y + 22,
 						arcWidth, arcHeight), 180, 180, new Pen(renderer.CoalesceColor(element), 1.5), element);
 				}
 				else if (element.StemDirection == VerticalDirection.Up)

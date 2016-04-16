@@ -59,7 +59,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 				new Pen { Color = renderer.Settings.DefaultColor, Thickness = 2 }, element);
 		}
 
-		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, Note element, int beamLoop)
+		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, NoteOrRest element, int beamLoop)
 		{
 			if (measurementService.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
 			Staff staff = scoreService.CurrentStaff;
@@ -91,9 +91,24 @@ namespace Manufaktura.Controls.Rendering.Snippets
 																															//If bracket is not drawn, move up or down to fill space
 			if (!measurementService.TupletState.AreSingleBeamsPresentUnderTuplet) numberOfNotesYTranslation += 10 * (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? 1 : -1);
 
-			renderer.DrawString(Convert.ToString(measurementService.TupletState.NumberOfNotesUnderTuplet), MusicFontStyles.LyricsFont,
+			var allElementsUnderTuplet = elementsUnderTuplet.OfType<NoteOrRest>().ToList();
+			allElementsUnderTuplet.Add(element);
+			var tupletNumber = CalculateTupletNumber(allElementsUnderTuplet);
+			renderer.DrawString(Convert.ToString(tupletNumber), MusicFontStyles.LyricsFont,
 					new Point(tupletBracketStartXPosition + (tupletBracketEndXPosition - tupletBracketStartXPosition) / 2 - 6,
 							  tupletBracketStartYPosition + (tupletBracketEndYPosition - tupletBracketStartYPosition) / 2 + numberOfNotesYTranslation), element);
+		}
+
+		private static int CalculateTupletNumber<TElement>(IEnumerable<TElement> elements) where TElement : ICanBeElementOfTuplet, IHasDuration
+		{
+			double weight = 0;
+			double smallestDenominator = elements.Min(p => p.BaseDuration.Denominator);
+			foreach (var element in elements)
+			{
+				if (element.TupletWeightOverride.HasValue) weight += element.TupletWeightOverride.Value;
+				else weight += smallestDenominator / element.BaseDuration.Denominator;
+			}
+			return (int)weight;
 		}
 	}
 }

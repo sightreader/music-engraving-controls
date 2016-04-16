@@ -40,9 +40,10 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(Clef.Bass);
 			secondStaff.Elements.Add(new Key(0));
 			secondStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Eighth) { Tuplet = TupletType.Start });
-			secondStaff.Elements.Add(new Note(Pitch.D3, RhythmicDuration.Eighth));
-			secondStaff.Elements.Add(new Note(Pitch.E3, RhythmicDuration.Eighth) { Tuplet = TupletType.Stop } );
+			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Eighth) { Tuplet = TupletType.Start, TupletWeightOverride = 1 });
+			secondStaff.Elements.Add(new Note(Pitch.D3, RhythmicDuration.Sixteenth) { TupletWeightOverride = 0.5 });
+			secondStaff.Elements.Add(new Note(Pitch.F3, RhythmicDuration.Sixteenth) {  TupletWeightOverride = 0.5});
+			secondStaff.Elements.Add(new Note(Pitch.E3, RhythmicDuration.Eighth) { Tuplet = TupletType.Stop, TupletWeightOverride = 1 } );
 			secondStaff.Elements.Add(new Barline());
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
