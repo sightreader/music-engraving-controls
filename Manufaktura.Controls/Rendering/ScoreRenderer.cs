@@ -46,6 +46,7 @@ namespace Manufaktura.Controls.Rendering
 					Exceptions.Add(ex);
 				}
 			}
+			foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnMeasure(measure, this);
 		}
 
 		/// <summary>

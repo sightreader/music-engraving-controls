@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using System;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
 
@@ -16,7 +17,11 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
             this.scoreService = scoreService;
         }
 
-        public void PerformOnScore(Score score, ScoreRendererBase renderer)
+		public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
+		{
+		}
+
+		public void PerformOnScore(Score score, ScoreRendererBase renderer)
         {
         }
 
