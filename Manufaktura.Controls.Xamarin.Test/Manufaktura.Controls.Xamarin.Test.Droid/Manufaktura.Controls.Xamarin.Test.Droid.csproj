@@ -115,6 +115,10 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Manufaktura.Controls.Xamarin.Droid\Manufaktura.Controls.Xamarin.Droid.csproj">
+      <Project>{234e9eec-8c1d-4a51-9683-dfcba24a70bb}</Project>
+      <Name>Manufaktura.Controls.Xamarin.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls.Xamarin.Test\Manufaktura.Controls.Xamarin.Test.csproj">
       <Name>Manufaktura.Controls.Xamarin.Test</Name>
     </ProjectReference>

@@ -41,6 +41,14 @@
       <HintPath>..\packages\Xamarin.Forms.2.1.0.6529\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Manufaktura.Controls, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Manufaktura.NewWebsite\Manufaktura.NewWebsite\lib\Manufaktura.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Manufaktura.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Manufaktura.NewWebsite\Manufaktura.NewWebsite\lib\Manufaktura.Model.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -88,10 +96,16 @@
     <Compile Include="Renderers\ArcRenderer.cs" />
     <Compile Include="Renderers\BezierCurveRenderer.cs" />
     <Compile Include="Renderers\LineRenderer.cs" />
+    <Compile Include="Renderers\TextRenderer.cs" />
+    <Compile Include="Renderers\TypeTranslator.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Polihymnia.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>

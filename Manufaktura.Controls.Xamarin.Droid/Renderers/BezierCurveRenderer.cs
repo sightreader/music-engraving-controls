@@ -11,7 +11,9 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 	{
 		protected override void OnDraw(Canvas canvas)
 		{
-			base.OnDraw(canvas);
+			var paint = new Paint();
+			paint.Color = Element.Color.ToAndroidColor();
 		}
+
 	}
 }

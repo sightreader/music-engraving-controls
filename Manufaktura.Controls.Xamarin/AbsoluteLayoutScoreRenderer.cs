@@ -29,11 +29,33 @@ namespace Manufaktura.Controls.Xamarin
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
 			var arc = new Arc();
+			arc.TranslationX = rect.X;
+			arc.TranslationY = rect.Y;
+			arc.RX = rect.Width;
+			arc.RY = rect.Height;
+			arc.Thickness = pen.Thickness;
+			arc.Color = pen.Color;
+
+			Canvas.Children.Add(arc);
+			OwnershipDictionary.Add(arc, owner);
 		}
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
 		{
 			var bezierCurve = new BezierCurve();
+			bezierCurve.Thickness = pen.Thickness;
+			bezierCurve.Color = pen.Color;
+			bezierCurve.TranslationX = p1.X;
+			bezierCurve.TranslationY = p1.Y;
+			bezierCurve.X2 = p2.X;
+			bezierCurve.Y2 = p2.Y;
+			bezierCurve.X3 = p3.X;
+			bezierCurve.Y3 = p3.Y;
+			bezierCurve.X4 = p4.X;
+			bezierCurve.Y4 = p4.Y;
+
+			Canvas.Children.Add(bezierCurve);
+			OwnershipDictionary.Add(bezierCurve, owner);
 		}
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
@@ -44,15 +66,15 @@ namespace Manufaktura.Controls.Xamarin
 				endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
 			}
 
-			var line = new BoxView();
+			var line = new Line();
 			line.TranslationX = startPoint.X;
 			line.TranslationY = startPoint.Y;
-			line.WidthRequest = endPoint.X - startPoint.X;
-			line.HeightRequest = 1;
-			line.Color = Color.Black;
+			line.EndX = endPoint.X;
+			line.EndY = endPoint.Y;
+			line.Color = pen.Color;
+			line.Thickness = pen.Thickness;
 
 			Canvas.Children.Add(line);
-
 			OwnershipDictionary.Add(line, owner);
 		}
 
@@ -60,7 +82,7 @@ namespace Manufaktura.Controls.Xamarin
 		{
 			if (!Settings.IsPanoramaMode) location = location.Translate(CurrentScore.DefaultPageSettings);
 
-			var label = new Label();
+			var label = new Text();
 			label.TranslationX = location.X;
 			label.TranslationY = location.Y;
 			label.Text = text;
@@ -70,7 +92,6 @@ namespace Manufaktura.Controls.Xamarin
 			label.TextColor = Color.Black;
 
 			Canvas.Children.Add(label);
-
 			OwnershipDictionary.Add(label, owner);
 		}
 

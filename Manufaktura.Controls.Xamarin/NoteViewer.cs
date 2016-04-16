@@ -177,6 +177,11 @@ namespace Manufaktura.Controls.Xamarin
 			newValue.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
+		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		{
+			return new SizeRequest();
+		}
+
 		private static void XmlSourceChanged(BindableObject obj, string oldValue, string newValue)
 		{
 			NoteViewer viewer = obj as NoteViewer;
@@ -239,7 +244,7 @@ namespace Manufaktura.Controls.Xamarin
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
 			Renderer.Render(score);
 			if (SelectedElement != null) ColorElement(SelectedElement, Color.Fuchsia);
-			InvalidateMeasure();
+			//InvalidateMeasure();
 		}
 
 		private void Score_MeasureInvalidated(object sender, Model.Events.InvalidateEventArgs<Measure> e)
