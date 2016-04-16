@@ -54,11 +54,9 @@ namespace Manufaktura.Controls.Rendering.Snippets
 					hook.HookStartPositionX + hookLength, beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 			}
 
-
-				renderer.DrawLine(new Point(hook.HookStartPositionX + hookLength, hookEndPositionY + 28 + beamOffset * beamSpaceDirection),
-					new Point(hook.HookStartPositionX, hookStartPositionY + 28 + beamOffset * beamSpaceDirection), 
-					new Pen { Color = renderer.Settings.DefaultColor, Thickness = 2 }, element);
-			//}
+			renderer.DrawLine(new Point(hook.HookStartPositionX + hookLength, hookEndPositionY + 28 + beamOffset * beamSpaceDirection),
+				new Point(hook.HookStartPositionX, hookStartPositionY + 28 + beamOffset * beamSpaceDirection),
+				new Pen { Color = renderer.Settings.DefaultColor, Thickness = 2 }, element);
 		}
 
 		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, Note element, int beamLoop)

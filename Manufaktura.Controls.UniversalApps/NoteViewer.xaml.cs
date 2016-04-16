@@ -166,33 +166,12 @@ namespace Manufaktura.Controls.UniversalApps
 
 		protected override Size MeasureOverride(Size availableSize)
 		{
-			foreach (var c in MainCanvas.Children) c.Measure(availableSize);	//Ta linijka zapobiega znikaniu tekstu - nie wiem czemu znika.
-
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
 
-			double width = availableSize.Width;
-			var pageWidth = (Renderer.CurrentScore.DefaultPageSettings.MarginLeft ?? 0) +
-				(Renderer.CurrentScore.DefaultPageSettings.Width ?? 0) +
-				(Renderer.CurrentScore.DefaultPageSettings.MarginRight ?? 0);
-			var maxSystemWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
-			double maxWidth = pageWidth > maxSystemWidth ? pageWidth : maxSystemWidth;
-			if (maxWidth > 0) width = maxWidth;
-
-			var maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height + Renderer.Settings.LineSpacing * 5);
-
-			if (!IsPanoramaMode)
-			{
-				if (maxHeight < 72) maxHeight = 72 * Renderer.CurrentScore.Staves.Count;
-				maxHeight *= Renderer.CurrentScore.Systems.Count;
-				maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) * 2;
-				maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0) * 2;
-			}
-			else
-			{
-				if (maxHeight < 124) maxHeight = 124 * Renderer.CurrentScore.Staves.Count;
-			}
-
-			return new Size(width * ZoomFactor, maxHeight * ZoomFactor);
+			foreach (var c in MainCanvas.Children) c.Measure(availableSize);    //Ta linijka zapobiega znikaniu tekstu - nie wiem czemu znika.
+			var xx = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetLeft(c) + c.ActualWidth);
+			var yy = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetTop(c) + c.ActualHeight);
+			return new Size(xx, yy);
 		}
 
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)

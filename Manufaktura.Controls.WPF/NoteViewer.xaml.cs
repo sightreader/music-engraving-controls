@@ -179,42 +179,11 @@ namespace Manufaktura.Controls.WPF
 		protected override Size MeasureOverride(Size availableSize)
 		{
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
+			foreach (var child in MainCanvas.Children.OfType<FrameworkElement>()) child.Measure(availableSize);
 
-			double width = availableSize.Width;
-			var pageWidth = (Renderer.CurrentScore.DefaultPageSettings.MarginLeft ?? 0) +
-				(Renderer.CurrentScore.DefaultPageSettings.Width ?? 0) +
-				(Renderer.CurrentScore.DefaultPageSettings.MarginRight ?? 0);
-			var maxSystemWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
-			double maxWidth = pageWidth > maxSystemWidth ? pageWidth : maxSystemWidth;
-			if (maxWidth > 0) width = maxWidth;
-
-			var maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height + Renderer.Settings.LineSpacing * 5);
-			if (maxHeight < 72) maxHeight = 72 * Renderer.CurrentScore.Staves.Count;
-			if (!IsPanoramaMode)
-			{
-				maxHeight *= Renderer.CurrentScore.Systems.Count;
-				maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) * 2;
-				maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0) * 2;
-			}
-
-			/*double maxHeight;
-            if (!IsPanoramaMode)
-            {
-                var pageHeight = (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) +
-                    (Renderer.CurrentScore.DefaultPageSettings.Height ?? 0) * (Renderer.CurrentScore.Pages.Count / 2) +
-                    (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0);
-                var maxSystemHeight = Renderer.ScoreInformation.Systems.Sum(s => s.Height);
-                if (maxSystemHeight == 0) maxSystemHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height);
-                if (maxSystemHeight == 0) maxSystemHeight = 100 * Renderer.CurrentScore.Staves.Count;
-                maxHeight = pageHeight > maxSystemHeight ? pageHeight : maxSystemHeight;
-            }
-            else
-            {
-                maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height + Renderer.Settings.LineSpacing * 5);
-                if (maxHeight < 72) maxHeight = 72 * Renderer.CurrentScore.Staves.Count;
-            }*/
-
-			return new Size(width * ZoomFactor, maxHeight * ZoomFactor);
+			var xx = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetLeft(c) + c.ActualWidth);
+			var yy = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetTop(c) + c.ActualHeight);
+			return new Size(xx, yy);
 		}
 
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
