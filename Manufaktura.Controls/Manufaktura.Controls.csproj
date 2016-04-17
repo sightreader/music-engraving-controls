@@ -57,10 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\ScorePlayer.cs" />
+    <Compile Include="Extensions\StaffBuilder.cs" />
     <Compile Include="Extensions\ScoreMath.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Formatting\DefaultScoreFormatter.cs" />
+    <Compile Include="Formatting\IRebeamStrategy.cs" />
     <Compile Include="Formatting\IScoreFormatter.cs" />
+    <Compile Include="Formatting\RebeamMode.cs" />
+    <Compile Include="Formatting\SimpleRebeamStrategy.cs" />
     <Compile Include="IoC\ExpressionActivator.cs" />
     <Compile Include="IoC\ManufakturaResolver.cs" />
     <Compile Include="Linq\ScoreExtensions.cs" />

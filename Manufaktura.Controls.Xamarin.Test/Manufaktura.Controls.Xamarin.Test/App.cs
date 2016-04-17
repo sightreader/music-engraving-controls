@@ -25,11 +25,10 @@ namespace Manufaktura.Controls.Xamarin.Test
 					VerticalOptions = LayoutOptions.Center,
 					Children = {
 						new Label {
-							XAlign = TextAlignment.Center,
+							HorizontalTextAlignment = TextAlignment.Center,
 							Text = "Welcome to Xamarin Forms!"
 						},
-						noteViewer,
-						button 
+						noteViewer
 					}
 				}
 			};

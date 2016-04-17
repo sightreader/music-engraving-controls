@@ -1,9 +1,8 @@
-﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Primitives;
+﻿using Manufaktura.Controls.Extensions;
+using Manufaktura.Controls.Model;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
-using System.Collections.Generic;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -19,8 +18,34 @@ namespace Manufaktura.Controls.WPF.Test
 
 		public void LoadTestData()
 		{
-			var score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
+			var score = Score.CreateOneStaffScore(Clef.Alto, new MajorScale(Step.C, false));
 			var firstStaff = score.FirstStaff;
+
+			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 4, 4));
+
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4)
+				.AddRhythm(8, 32)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.AddDots(2, 0)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4)
+				.AddRhythm(8, 8)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4)
+				.AddRhythm(32, 32, 32, 16, 16, 32)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
+				.AddRhythm(8, 32, 16, 32)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+
+			/*
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
 			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { TieType = NoteTieType.Start });
 			firstStaff.Elements.Add(new Barline() { CustomColor = KolbergColors.OsterodeWheat });
@@ -28,7 +53,6 @@ namespace Manufaktura.Controls.WPF.Test
 			firstStaff.Elements.Add(new Barline());
 			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)));
 			firstStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
-
 
 			score.FirstStaff.Elements.Add(new Note(Pitch.C5, RhythmicDuration.Sixteenth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Start, NoteBeamType.ForwardHook }));
 			score.FirstStaff.Elements.Add(new Note(Pitch.F4, RhythmicDuration.Eighth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Continue  }));
@@ -51,6 +75,7 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(new Barline());
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
 			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
+			*/
 
 			Data = score;
 		}

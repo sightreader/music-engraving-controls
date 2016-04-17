@@ -179,7 +179,7 @@ namespace Manufaktura.Controls.Xamarin
 
 		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
 		{
-			return new SizeRequest();
+			return new SizeRequest(new Size(widthConstraint, heightConstraint));
 		}
 
 		private static void XmlSourceChanged(BindableObject obj, string oldValue, string newValue)

@@ -108,7 +108,7 @@ namespace Manufaktura.Controls.Model
 			set { articulationPlacement = value; }
 		}
 
-		public List<NoteBeamType> BeamList { get { return beamList; } }
+		public List<NoteBeamType> BeamList { get { return beamList; } set { beamList = value; OnPropertyChanged(() => BeamList); } }
 
 		public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
@@ -175,7 +175,7 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public string Step { get { return pitch.StepName; } }
 
-		public bool SubjectToNoteStemRule { get; private set; }
+		public bool SubjectToNoteStemRule { get; set; }
 
 		public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
 
