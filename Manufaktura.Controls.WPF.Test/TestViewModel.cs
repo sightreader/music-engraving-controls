@@ -45,6 +45,55 @@ namespace Manufaktura.Controls.WPF.Test
 				.ApplyStemDirection(VerticalDirection.Up)
 				.Rebeam());
 
+
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4)
+				.AddRhythm(8, 32)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.AddDots(2, 0)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4)
+				.AddRhythm(8, 8)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4)
+				.AddRhythm(32, 32, 32, 32, 8)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4)
+				.AddRhythm(8, 16, 16)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+
+
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
+				.AddRhythm(8, 16, 32, 32)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4)
+				.AddRhythm(8, 16)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.AddDots(1, 0)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4)
+				.AddRhythm(8, 32)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.AddDots(2, 0)
+				.Rebeam());
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4)
+				.AddRhythm(32, 16, 8)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.AddDots(0, 1, 0)
+				.Rebeam());
+
 			/*
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
 			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { TieType = NoteTieType.Start });

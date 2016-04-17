@@ -1,8 +1,11 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Manufaktura.Controls.Extensions
 {
@@ -42,50 +45,16 @@ namespace Manufaktura.Controls.Extensions
 			return pitches;
 		}
 
-		public static IEnumerable<Note> Rebeam(this IEnumerable<Note> notes)
+		public static IEnumerable<NoteOrRest> Rebeam(this IEnumerable<NoteOrRest> notes, RebeamMode mode = RebeamMode.Simple)
 		{
-			Note previousNote = null;
-			Note currentNote = null;
-			Note nextNote = null;
-			var noteArray = notes.ToArray();
-			for (int i=0; i< noteArray.Length; i++)
-			{
-				previousNote = i == 0 ? null : noteArray[i - 1];
-				currentNote = noteArray[i];
-				nextNote = i == noteArray.Length - 1 ? null : noteArray[i + 1];
-
-				currentNote.BeamList.Clear();
-				var numberOfBeams = Math.Log(currentNote.BaseDuration.Denominator, 2) - 2;
-				var numberOfBeamsOnPreviousNote = previousNote == null ? 0 : Math.Log(previousNote.BaseDuration.Denominator, 2) - 2;
-				var numberOfBeamsOnNextNote  = nextNote == null ? 0 : Math.Log(nextNote.BaseDuration.Denominator, 2) - 2;
-				for (var b = 0; b < numberOfBeams; b++)
-				{
-					if (previousNote == null)
-					{
-						if (nextNote != null && numberOfBeamsOnNextNote < b + 1)
-						{
-							currentNote.BeamList.Add(NoteBeamType.ForwardHook);
-						}
-						else currentNote.BeamList.Add(NoteBeamType.Start);
-					}
-					else if (nextNote == null)
-					{
-						if (previousNote != null && numberOfBeamsOnPreviousNote < b + 1)
-						{
-							currentNote.BeamList.Add(NoteBeamType.BackwardHook);
-						}
-						else currentNote.BeamList.Add(NoteBeamType.End);
-					}
-					else
-					{
-						if (numberOfBeamsOnPreviousNote >= b + 1 && numberOfBeamsOnNextNote >= b + 1) currentNote.BeamList.Add(NoteBeamType.Continue);
-						else if (numberOfBeamsOnPreviousNote < b + 1 && numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(NoteBeamType.ForwardHook);
-						else if (numberOfBeamsOnPreviousNote < b + 1) currentNote.BeamList.Add(NoteBeamType.Start);
-						else if (numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(NoteBeamType.End);
-					}
-				}
-			}
-			return notes;
+			var strategies = typeof(IRebeamStrategy).GetTypeInfo().Assembly.DefinedTypes
+				.Where(t => !t.IsAbstract && typeof(IRebeamStrategy).GetTypeInfo().IsAssignableFrom(t))
+				.Select(t => Expression.Lambda(Expression.New(t.AsType())).Compile().DynamicInvoke())
+				.Cast<IRebeamStrategy>()
+				.ToArray();
+			var matchingStrategy = strategies.FirstOrDefault(s => s.Mode == mode);
+			if (matchingStrategy == null) throw new Exception($"Rebeam strategy not found for rebeam mode {mode}.");
+			return matchingStrategy.Rebeam(notes);
 		}
 	}
 }
