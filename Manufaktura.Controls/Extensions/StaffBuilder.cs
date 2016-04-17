@@ -23,6 +23,13 @@ namespace Manufaktura.Controls.Extensions
 			return notes;
 		}
 
+		public static IEnumerable<Note> AddPitches(this IEnumerable<RhythmicDuration> durations, params Pitch[] pitches)
+		{
+			if (pitches.Length != durations.Count()) throw new Exception("Durations must have the same count as pitches.");
+			var i = 0;
+			return durations.Select(d => new Note(pitches[i++], d)).ToArray();
+		}
+
 		public static IEnumerable<Note> AddRhythm(this IEnumerable<Pitch> pitches, params int[] durations)
 		{
 			if (pitches.Count() != durations.Length) throw new Exception("Durations must have the same count as pitches.");
@@ -43,6 +50,16 @@ namespace Manufaktura.Controls.Extensions
 		public static IEnumerable<Pitch> FromPitches(params Pitch[] pitches)
 		{
 			return pitches;
+		}
+
+		public static IEnumerable<RhythmicDuration> FromRhythm(params RhythmicDuration[] durations)
+		{
+			return durations;
+		}
+
+		public static IEnumerable<RhythmicDuration> FromRhythm(params int[] durations)
+		{
+			return RhythmicDuration.Parse(durations);
 		}
 
 		public static IEnumerable<NoteOrRest> Rebeam(this IEnumerable<NoteOrRest> notes, RebeamMode mode = RebeamMode.Simple)

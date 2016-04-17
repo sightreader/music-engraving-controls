@@ -30,8 +30,8 @@ namespace Manufaktura.Controls.WPF.Test
 				.AddDots(2, 0)
 				.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4)
-				.AddRhythm(8, 8)
+				.FromRhythm(8, 8)
+				.AddPitches(Pitch.C4, Pitch.E4)
 				.ApplyStemDirection(VerticalDirection.Up)
 				.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
