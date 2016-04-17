@@ -19,6 +19,8 @@ namespace Manufaktura.Controls.Services
 
 		public List<Point> BeamStartPositionsY { get; set; }
 
+		public double CurrentBeamAngle { get; set; }
+
 		public double CurrentStemEndPositionY { get; set; }
 
 		public double CurrentStemPositionX { get; set; }

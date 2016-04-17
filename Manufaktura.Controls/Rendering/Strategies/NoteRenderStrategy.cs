@@ -200,24 +200,24 @@ namespace Manufaktura.Controls.Rendering
 				{
 					if (beamingService.SomeMoreComplexBeamsToDraw.ContainsKey(beamLoop))
 					{
-						beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.PreviousStemEndPositionsY[0] + ScoreMath.StemEnd(beamingService.PreviousStemPositionsX[0],
+						beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.PreviousStemEndPositionsY[0] + UsefulMath.StemEnd(beamingService.PreviousStemPositionsX[0],
 								beamingService.PreviousStemEndPositionsY[0], beamingService.SomeMoreComplexBeamsToDraw[beamLoop], beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 						beamingService.SomeMoreComplexBeamsToDraw.Remove(beamLoop);
 					}
 					foreach (var hook in beamingService.HooksToDraw.ToArray())	//ToArray, żeby nie modyfikować enumerable
 					{
-						Beams.Hook(beamingService, renderer, element, hook, beamSpaceDirection);
+						//Beams.Hook(beamingService, renderer, element, hook, beamSpaceDirection);
 						beamingService.HooksToDraw.Remove(hook);
 					}
 
-					renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop] + 28
+					/*renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop] + 28
 						+ beamOffset * beamSpaceDirection),
 						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
 							+ beamOffset * beamSpaceDirection), element);
 					renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop]
 						+ 28 + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection),
 						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
-							+ 1 * beamSpaceDirection + beamOffset * beamSpaceDirection), element);
+							+ 1 * beamSpaceDirection + beamOffset * beamSpaceDirection), element);*/
 					//Draw tuplet mark / Rysuj oznaczenie trioli:
 					if (element.Tuplet == TupletType.Stop && measurementService.TupletState != null)
 					{
@@ -237,8 +237,8 @@ namespace Manufaktura.Controls.Rendering
 				}
 				else if (beam == NoteBeamType.BackwardHook)
 				{
-					Beams.Hook(beamingService, renderer, element, new Hook(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY, beamLoop, false), 
-						beamSpaceDirection);
+					//Beams.Hook(beamingService, renderer, element, new Hook(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY, beamLoop, false), 
+					//	beamSpaceDirection);
 				}
 
 				beamOffset += 4;

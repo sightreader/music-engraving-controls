@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Audio\ScorePlayer.cs" />
     <Compile Include="Extensions\StaffBuilder.cs" />
-    <Compile Include="Extensions\ScoreMath.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Formatting\DefaultScoreFormatter.cs" />
     <Compile Include="Formatting\IRebeamStrategy.cs" />
@@ -69,6 +68,7 @@
     <Compile Include="IoC\ManufakturaResolver.cs" />
     <Compile Include="Linq\ScoreExtensions.cs" />
     <Compile Include="Model\Barline.cs" />
+    <Compile Include="Model\BeamGroup.cs" />
     <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Direction.cs" />
@@ -159,6 +159,7 @@
     <Compile Include="Rendering\Implementations\Score2HtmlCanvasBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlSvgBuilder.cs" />
     <Compile Include="Rendering\Postprocessing\AddBracketsFinishingTouch.cs" />
+    <Compile Include="Rendering\Postprocessing\DrawBeamsFinishingTouch.cs" />
     <Compile Include="Rendering\ScoreRendererSettings.cs" />
     <Compile Include="Parser\MusicXml\Strategies\SoundParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\TimeParsingStrategy.cs" />

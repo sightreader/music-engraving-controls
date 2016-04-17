@@ -4,6 +4,7 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			double hookEndPositionY = hook.HookStartPositionY;
 			if (hook.BeamNumber > 0)
 			{
-				hookEndPositionY = beamingService.PreviousStemEndPositionsY[0] + ScoreMath.StemEnd(beamingService.PreviousStemPositionsX[0], beamingService.PreviousStemEndPositionsY[0],
+				hookEndPositionY = beamingService.PreviousStemEndPositionsY[0] + UsefulMath.StemEnd(beamingService.PreviousStemPositionsX[0], beamingService.PreviousStemEndPositionsY[0],
 					hook.HookStartPositionX + hookLength, beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 			}
 

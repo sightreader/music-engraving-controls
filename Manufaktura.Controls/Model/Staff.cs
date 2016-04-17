@@ -44,6 +44,8 @@ namespace Manufaktura.Controls.Model
 			AddMeasuresManually
 		}
 
+		public ICollection<BeamGroup> BeamGroups { get; private set; } = new List<BeamGroup>();
+
 		/// <summary>
 		/// Elements in Staff
 		/// </summary>
