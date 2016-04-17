@@ -1,10 +1,8 @@
-﻿using Manufaktura.Controls.Extensions;
-using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
-using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,23 +39,6 @@ namespace Manufaktura.Controls.Rendering.Snippets
 					measurementService.TupletState = null;
 				}
 			}
-		}
-
-		public static void Hook(IBeamingService beamingService, ScoreRendererBase renderer, Note element, Hook hook, int beamSpaceDirection)
-		{
-			int hookLength = hook.IsForward ? 6 : -6;
-			int beamOffset = hook.BeamNumber * 4;
-			double hookStartPositionY = hook.HookStartPositionY;
-			double hookEndPositionY = hook.HookStartPositionY;
-			if (hook.BeamNumber > 0)
-			{
-				hookEndPositionY = beamingService.PreviousStemEndPositionsY[0] + UsefulMath.StemEnd(beamingService.PreviousStemPositionsX[0], beamingService.PreviousStemEndPositionsY[0],
-					hook.HookStartPositionX + hookLength, beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
-			}
-
-			renderer.DrawLine(new Point(hook.HookStartPositionX + hookLength, hookEndPositionY + 28 + beamOffset * beamSpaceDirection),
-				new Point(hook.HookStartPositionX, hookStartPositionY + 28 + beamOffset * beamSpaceDirection),
-				new Pen { Color = renderer.Settings.DefaultColor, Thickness = 2 }, element);
 		}
 
 		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, NoteOrRest element, int beamLoop)

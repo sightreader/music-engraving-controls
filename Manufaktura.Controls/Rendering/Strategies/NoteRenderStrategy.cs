@@ -1,5 +1,4 @@
-﻿using Manufaktura.Controls.Extensions;
-using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Snippets;
@@ -67,7 +66,7 @@ namespace Manufaktura.Controls.Rendering
 			DrawNote(renderer, element, noteTextBlockPositionY);                //Draw an element / Rysuj nutę
 			DrawLedgerLines(renderer, element, noteTextBlockPositionY);         //Ledger lines / Linie dodane
 			DrawStems(renderer, element, noteTextBlockPositionY);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
-			DrawBeams(renderer, element);                                       //Draw beams / Rysuj belki
+			DrawFlagsAndTupletMarks(renderer, element);                         //Draw beams / Rysuj belki
 			DrawTies(renderer, element, noteTextBlockPositionY);                //Draw ties / Rysuj łuki
 			DrawSlurs(renderer, element, noteTextBlockPositionY);               //Draw slurs / Rysuj łuki legatowe
 			DrawLyrics(renderer, element);                                      //Draw lyrics / Rysuj tekst
@@ -160,7 +159,28 @@ namespace Manufaktura.Controls.Rendering
 			}
 		}
 
-		private void DrawBeams(ScoreRendererBase renderer, Note element)
+		private void DrawDots(ScoreRendererBase renderer, Note element, double notePositionY)
+		{
+			if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
+			for (int i = 0; i < element.NumberOfDots; i++)
+			{
+				renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
+				scoreService.CursorPositionX += 6;
+			}
+		}
+
+		private void DrawFermataSign(ScoreRendererBase renderer, Note element, double notePositionY)
+		{
+			if (element.HasFermataSign)
+			{
+				double ferPos = notePositionY - renderer.Settings.TextBlockHeight;
+				string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
+
+				renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
+			}
+		}
+
+		private void DrawFlagsAndTupletMarks(ScoreRendererBase renderer, Note element)
 		{
 			int beamOffset = 0;
 			//Powiększ listę poprzednich pozycji stemów jeśli aktualna liczba belek jest większa
@@ -187,37 +207,10 @@ namespace Manufaktura.Controls.Rendering
 					{
 						beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.CurrentStemEndPositionY;
 					}
-					else
-					{
-						beamingService.SomeMoreComplexBeamsToDraw.Add(beamLoop, beamingService.CurrentStemPositionX);
-					}
 					beamingService.PreviousStemPositionsX[beamLoop] = beamingService.CurrentStemPositionX;
-				}
-				else if (beam == NoteBeamType.Continue)
-				{
 				}
 				else if (beam == NoteBeamType.End)
 				{
-					if (beamingService.SomeMoreComplexBeamsToDraw.ContainsKey(beamLoop))
-					{
-						beamingService.PreviousStemEndPositionsY[beamLoop] = beamingService.PreviousStemEndPositionsY[0] + UsefulMath.StemEnd(beamingService.PreviousStemPositionsX[0],
-								beamingService.PreviousStemEndPositionsY[0], beamingService.SomeMoreComplexBeamsToDraw[beamLoop], beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
-						beamingService.SomeMoreComplexBeamsToDraw.Remove(beamLoop);
-					}
-					foreach (var hook in beamingService.HooksToDraw.ToArray())	//ToArray, żeby nie modyfikować enumerable
-					{
-						//Beams.Hook(beamingService, renderer, element, hook, beamSpaceDirection);
-						beamingService.HooksToDraw.Remove(hook);
-					}
-
-					/*renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop] + 28
-						+ beamOffset * beamSpaceDirection),
-						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
-							+ beamOffset * beamSpaceDirection), element);
-					renderer.DrawLine(new Point(beamingService.PreviousStemPositionsX[beamLoop], beamingService.PreviousStemEndPositionsY[beamLoop]
-						+ 28 + 1 * beamSpaceDirection + beamOffset * beamSpaceDirection),
-						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28
-							+ 1 * beamSpaceDirection + beamOffset * beamSpaceDirection), element);*/
 					//Draw tuplet mark / Rysuj oznaczenie trioli:
 					if (element.Tuplet == TupletType.Stop && measurementService.TupletState != null)
 					{
@@ -229,41 +222,9 @@ namespace Manufaktura.Controls.Rendering
 				{
 					Beams.Flag(beamingService, measurementService, scoreService, renderer, element, beamSpaceDirection, beamLoop, beamOffset);
 				}
-				else if (beam == NoteBeamType.ForwardHook)
-				{
-					var hook = new Hook(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY, beamLoop, true);
-					if (beamLoop == 0) Beams.Hook(beamingService, renderer, element, hook, beamSpaceDirection);
-					else beamingService.HooksToDraw.Add(hook);
-				}
-				else if (beam == NoteBeamType.BackwardHook)
-				{
-					//Beams.Hook(beamingService, renderer, element, new Hook(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY, beamLoop, false), 
-					//	beamSpaceDirection);
-				}
 
 				beamOffset += 4;
 				beamLoop++;
-			}
-		}
-
-		private void DrawDots(ScoreRendererBase renderer, Note element, double notePositionY)
-		{
-			if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
-			for (int i = 0; i < element.NumberOfDots; i++)
-			{
-				renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
-				scoreService.CursorPositionX += 6;
-			}
-		}
-
-		private void DrawFermataSign(ScoreRendererBase renderer, Note element, double notePositionY)
-		{
-			if (element.HasFermataSign)
-			{
-				double ferPos = notePositionY - renderer.Settings.TextBlockHeight;
-				string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
-
-				renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
 			}
 		}
 

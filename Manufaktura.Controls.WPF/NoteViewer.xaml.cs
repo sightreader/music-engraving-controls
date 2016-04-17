@@ -179,11 +179,16 @@ namespace Manufaktura.Controls.WPF
 		protected override Size MeasureOverride(Size availableSize)
 		{
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
-			foreach (var child in MainCanvas.Children.OfType<FrameworkElement>()) child.Measure(availableSize);
+			var children = MainCanvas.Children.OfType<FrameworkElement>();
+			foreach (var child in children) child.Measure(availableSize);
 
-			var xx = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetLeft(c) + c.ActualWidth);
-			var yy = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetTop(c) + c.ActualHeight);
-			return new Size(xx, yy);
+			if (children.Any())
+			{
+				var xx = children.Max(c => Canvas.GetLeft(c) + c.ActualWidth);
+				var yy = children.Max(c => Canvas.GetTop(c) + c.ActualHeight);
+				return new Size(xx, yy);
+			}
+			return base.MeasureOverride(availableSize);
 		}
 
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
