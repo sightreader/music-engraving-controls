@@ -177,10 +177,10 @@ namespace Manufaktura.Controls.Xamarin
 			newValue.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
-		{
-			return new SizeRequest(new Size(widthConstraint, heightConstraint));
-		}
+		//protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		//{
+		//	return new SizeRequest(new Size(widthConstraint, heightConstraint));
+		//}
 
 		private static void XmlSourceChanged(BindableObject obj, string oldValue, string newValue)
 		{

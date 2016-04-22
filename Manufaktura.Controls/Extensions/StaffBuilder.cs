@@ -37,6 +37,13 @@ namespace Manufaktura.Controls.Extensions
 			return pitches.Select(p => new Note(p, units.Dequeue().Duration)).ToArray();
 		}
 
+		public static IEnumerable<Note> AddRhythm(this IEnumerable<Pitch> pitches, string durations)
+		{
+			var units = new Queue<RhythmicUnit>(RhythmicUnit.Parse(durations, " "));
+			if (pitches.Count() != units.Count) throw new Exception("Durations must have the same count as pitches.");
+			return pitches.Select(p => new Note(p, units.Dequeue().Duration)).ToArray();
+		}
+
 		public static IEnumerable<Note> ApplyStemDirection(this IEnumerable<Note> notes, VerticalDirection direction)
 		{
 			foreach (var n in notes)
@@ -60,6 +67,11 @@ namespace Manufaktura.Controls.Extensions
 		public static IEnumerable<RhythmicDuration> FromRhythm(params int[] durations)
 		{
 			return RhythmicDuration.Parse(durations);
+		}
+
+		public static IEnumerable<RhythmicDuration> FromRhythm(string durations)
+		{
+			return RhythmicDuration.Parse(durations, " ");
 		}
 
 		public static IEnumerable<NoteOrRest> Rebeam(this IEnumerable<NoteOrRest> notes, RebeamMode mode = RebeamMode.Simple)

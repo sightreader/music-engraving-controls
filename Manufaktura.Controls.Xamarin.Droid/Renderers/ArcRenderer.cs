@@ -4,7 +4,7 @@ using Manufaktura.Controls.Xamarin.Shapes;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(Arc), typeof(ArcRenderer))]
+//[assembly: ExportRenderer(typeof(Arc), typeof(ArcRenderer))]
 
 namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 {

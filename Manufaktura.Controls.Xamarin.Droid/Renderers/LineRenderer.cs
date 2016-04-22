@@ -18,5 +18,9 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 			//canvas.DrawLine((float)Element.X, (float)Element.Y, (float)Element.EndX, (float)Element.EndY, paint);
 		}
 
+		protected override void Dispose(bool disposing)
+		{
+			//base.Dispose (disposing);
+		}
 	}
 }
