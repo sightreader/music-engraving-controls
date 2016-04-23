@@ -24,6 +24,12 @@ namespace Manufaktura.Controls.WPF.Test
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 4, 4));
 
 			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4)
+				.AddRhythm(16, 32, 16, 32, 8, 8)
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+
+			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm("8.. 32")
 				.ApplyStemDirection(VerticalDirection.Up)

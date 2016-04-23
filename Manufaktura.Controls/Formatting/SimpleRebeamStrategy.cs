@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Formatting
 					{
 						if (nextNote != null && numberOfBeamsOnNextNote < b + 1)
 						{
-							currentNote.BeamList.Add(NoteBeamType.ForwardHook);
+							currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote));
 						}
 						else currentNote.BeamList.Add(NoteBeamType.Start);
 					}
@@ -39,20 +39,29 @@ namespace Manufaktura.Controls.Formatting
 					{
 						if (previousNote != null && numberOfBeamsOnPreviousNote < b + 1)
 						{
-							currentNote.BeamList.Add(NoteBeamType.BackwardHook);
+							currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote));
 						}
 						else currentNote.BeamList.Add(NoteBeamType.End);
 					}
 					else
 					{
 						if (numberOfBeamsOnPreviousNote >= b + 1 && numberOfBeamsOnNextNote >= b + 1) currentNote.BeamList.Add(NoteBeamType.Continue);
-						else if (numberOfBeamsOnPreviousNote < b + 1 && numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(NoteBeamType.ForwardHook);
+						else if (numberOfBeamsOnPreviousNote < b + 1 && numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote));
 						else if (numberOfBeamsOnPreviousNote < b + 1) currentNote.BeamList.Add(NoteBeamType.Start);
 						else if (numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(NoteBeamType.End);
 					}
 				}
 			}
 			return notes;
+		}
+
+		private NoteBeamType DetermineHookDirection(List<NoteOrRest> notes, Note currentNote)
+		{
+			if (currentNote == notes.Last()) return NoteBeamType.BackwardHook;
+			if (currentNote == notes.First()) return NoteBeamType.ForwardHook;
+			var smallestDenominator = notes.Min(n => n.BaseDuration.Denominator);
+			var currentBeat = notes.Take(notes.IndexOf(currentNote)).Sum(n => (1 / (double)n.BaseDuration.Denominator) * smallestDenominator);
+			return currentBeat - Math.Floor(currentBeat) >= Math.Ceiling(currentBeat) - currentBeat ? NoteBeamType.ForwardHook : NoteBeamType.BackwardHook;
 		}
 	}
 }
