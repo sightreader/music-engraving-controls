@@ -34,7 +34,7 @@ namespace Manufaktura.Controls.WPF.Test
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm("8.. 32")
 				.ApplyStemDirection(VerticalDirection.Up)
-				.AddLyrics("i mru-ga"));
+				.AddLyrics("i mru-"));
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromRhythm(8, 8)
 				.AddPitches(Pitch.C4, Pitch.E4)
@@ -87,7 +87,7 @@ namespace Manufaktura.Controls.WPF.Test
 				.ApplyStemDirection(VerticalDirection.Up)
 				.AddDots(0, 1, 0));
 
-			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(Formatting.RebeamMode.ToBeats);
+			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(Formatting.RebeamMode.ToLyrics);
 
 			/*
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
