@@ -15,7 +15,7 @@ namespace Manufaktura.Controls.Xamarin.Test
 		public App()
 		{
 			button.Clicked += Button_Clicked;
-			noteViewer.HeightRequest = 100;
+			noteViewer.HeightRequest = 300;
 			// The root page of your application
 			MainPage = new ContentPage
 			{

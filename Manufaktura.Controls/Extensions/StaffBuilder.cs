@@ -85,5 +85,25 @@ namespace Manufaktura.Controls.Extensions
 			if (matchingStrategy == null) throw new Exception($"Rebeam strategy not found for rebeam mode {mode}.");
 			return matchingStrategy.Rebeam(notes);
 		}
+
+		public static IEnumerable<NoteOrRest>[] SplitByBeats(this IEnumerable<NoteOrRest> notes, TimeSignature timeSignature)
+		{
+			var groups = new List<List<NoteOrRest>>();
+			var queue = new Queue<NoteOrRest>(notes);
+
+			while (queue.Count > 0)
+			{
+				var sum = 0d;
+				var currentGroup = new List<NoteOrRest>();
+				while (sum < 1)
+				{
+					var currentNote = queue.Dequeue();
+					currentGroup.Add(currentNote);
+					sum += ((1d + Enumerable.Range(1, currentNote.NumberOfDots).Sum(r => Math.Pow(0.5d, r))) / currentNote.BaseDuration.Denominator) * timeSignature.TypeOfBeats;
+				}
+				groups.Add(currentGroup);
+			}
+			return groups.ToArray();
+		}
 	}
 }

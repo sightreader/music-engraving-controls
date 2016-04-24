@@ -24,6 +24,7 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 		protected override void OnDraw(Canvas canvas)
 		{
 			base.OnDraw(canvas);
+			return;
 			var paint = new Paint();
 			paint.Color = Element.Color.ToAndroidColor();
 			canvas.DrawArc((float)Element.X, (float)Element.Y, (float)Element.RX, (float)Element.RY, 0, (float)Element.SweepAngle, false, paint);

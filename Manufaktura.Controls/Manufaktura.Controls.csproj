@@ -59,9 +59,11 @@
     <Compile Include="Audio\ScorePlayer.cs" />
     <Compile Include="Extensions\StaffBuilder.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Formatting\BeatRebeamStrategy.cs" />
     <Compile Include="Formatting\DefaultScoreFormatter.cs" />
     <Compile Include="Formatting\IRebeamStrategy.cs" />
     <Compile Include="Formatting\IScoreFormatter.cs" />
+    <Compile Include="Formatting\LyricsRebeamStrategy.cs" />
     <Compile Include="Formatting\RebeamMode.cs" />
     <Compile Include="Formatting\SimpleRebeamStrategy.cs" />
     <Compile Include="IoC\ExpressionActivator.cs" />

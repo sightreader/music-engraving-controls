@@ -3,6 +3,7 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
+using System.Linq;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -26,78 +27,80 @@ namespace Manufaktura.Controls.WPF.Test
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4)
 				.AddRhythm(16, 32, 16, 32, 8, 8)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+				//.Rebeam());
 
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm("8.. 32")
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+			//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromRhythm(8, 8)
 				.AddPitches(Pitch.C4, Pitch.E4)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+			//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4)
 				.AddRhythm(32, 32, 32, 16, 16, 32)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+			//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
 				.AddRhythm(8, 32, 16, 32)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+			//.Rebeam());
 
 
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm(8, 32)
 				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(2, 0)
-				.Rebeam());
+				.AddDots(2, 0));
+			//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm(8, 8)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+			//.Rebeam());
 
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4)
 				.AddRhythm(32, 32, 32, 32, 8)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+			//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4)
 				.AddRhythm(8, 16, 16)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+			//.Rebeam());
 
 
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
 				.AddRhythm(8, 16, 32, 32)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+				.ApplyStemDirection(VerticalDirection.Up));
+				//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm(8, 16)
 				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(1, 0)
-				.Rebeam());
+				.AddDots(1, 0));
+			//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm(8, 32)
 				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(2, 0)
-				.Rebeam());
+				.AddDots(2, 0));
+			//.Rebeam());
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4)
 				.AddRhythm(32, 16, 8)
 				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(0, 1, 0)
-				.Rebeam());
+				.AddDots(0, 1, 0));
+			//.Rebeam());
+
+			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(Formatting.RebeamMode.ToBeats);
 
 			/*
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
