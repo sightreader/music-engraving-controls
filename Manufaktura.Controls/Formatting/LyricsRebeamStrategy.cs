@@ -1,5 +1,5 @@
-﻿using Manufaktura.Controls.Model;
-using System;
+﻿using Manufaktura.Controls.Extensions;
+using Manufaktura.Controls.Model;
 using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Formatting
@@ -10,7 +10,12 @@ namespace Manufaktura.Controls.Formatting
 
 		public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes)
 		{
-			throw new NotImplementedException();
+			var splittedNotes = notes.SplitByLyrics();
+			foreach (var noteGroup in splittedNotes)
+			{
+				noteGroup.Rebeam();
+			}
+			return notes;
 		}
 	}
 }

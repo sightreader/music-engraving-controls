@@ -23,6 +23,37 @@ namespace Manufaktura.Controls.Extensions
 			return notes;
 		}
 
+		public static IEnumerable<NoteOrRest> AddLyrics(this IEnumerable<NoteOrRest> notes, string text)
+		{
+			var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+			var noteQueue = new Queue<NoteOrRest>(notes);
+			var syllableQueue = new Queue<Lyrics.Syllable>();
+			foreach (var word in words)
+			{
+				var syllables = word.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+				foreach (var syllable in syllables)
+				{
+					var syllableType = SyllableType.Middle;
+					if (syllables.Length == 1) syllableType = SyllableType.Single;
+					else if (syllable == syllables.Last()) syllableType = SyllableType.End;
+					else if (syllable == syllables.First()) syllableType = SyllableType.Begin;
+
+					syllableQueue.Enqueue(new Lyrics.Syllable { Text = syllable, Type = syllableType });
+				}
+			}
+
+			while (noteQueue.Count > 0 && syllableQueue.Count > 0)
+			{
+				var note = noteQueue.Dequeue() as Note;
+				if (note == null) continue;
+				var syllable = syllableQueue.Dequeue();
+
+				note.Lyrics = new List<Lyrics> { new Lyrics(syllable.Type, syllable.Text) };
+			}
+
+			return notes;
+		}
+
 		public static IEnumerable<Note> AddPitches(this IEnumerable<RhythmicDuration> durations, params Pitch[] pitches)
 		{
 			if (pitches.Length != durations.Count()) throw new Exception("Durations must have the same count as pitches.");
@@ -102,6 +133,27 @@ namespace Manufaktura.Controls.Extensions
 					sum += ((1d + Enumerable.Range(1, currentNote.NumberOfDots).Sum(r => Math.Pow(0.5d, r))) / currentNote.BaseDuration.Denominator) * timeSignature.TypeOfBeats;
 				}
 				groups.Add(currentGroup);
+			}
+			return groups.ToArray();
+		}
+
+		public static IEnumerable<NoteOrRest>[] SplitByLyrics(this IEnumerable<NoteOrRest> notes)
+		{
+			var groups = new List<List<NoteOrRest>>();
+			var queue = new Queue<NoteOrRest>(notes);
+
+			var currentGroup = new List<NoteOrRest>();
+			while (queue.Count > 0)
+			{
+				var currentNote = queue.Dequeue() as Note;
+				currentGroup.Add(currentNote);
+				if (currentNote == null) continue;
+
+				if (currentNote.Lyrics.Any(l => l.Syllables.Any(s => s.Type == SyllableType.End || s.Type == SyllableType.Single)))
+				{
+					groups.Add(currentGroup);
+					currentGroup = new List<NoteOrRest>();
+				}
 			}
 			return groups.ToArray();
 		}
