@@ -17,5 +17,10 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 			Control.Typeface = font;
 		}
 
+		public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
+		{
+			return new SizeRequest(new Size(100, 100), new Size(100, 100));
+			return base.GetDesiredSize(widthConstraint, heightConstraint);
+		}
 	}
 }
