@@ -3,6 +3,7 @@ using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Music.Model;
+using Manufaktura.Music.Xml;
 using System;
 using System.Linq;
 using System.Xml.Linq;
@@ -47,8 +48,38 @@ namespace Manufaktura.Controls.Parser
                 }
             }
 
-            //Sibelius hack:
-            if (score.Encoding?.Software?.Any(s => s.Contains("Sibelius")) ?? false)
+			var partListNode = xmlDocument.Descendants(XName.Get("part-list"));
+			PartGroup currentPartGroup = null;
+			foreach (var partListElementNode in partListNode.Elements())
+			{
+				if (partListElementNode.Name == "part-group")
+				{
+					partListElementNode.IfAttribute("type").HasValue("start").Then(() =>
+					{
+						currentPartGroup = new PartGroup() { Number = score.PartGroups.Count + 1 };
+						score.PartGroups.Add(currentPartGroup);
+					});
+					partListElementNode.IfAttribute("type").HasValue("stop").Then(() => currentPartGroup = null);
+					if (currentPartGroup != null)
+					{
+						partListElementNode.IfElement("group-barline").HasValue(new System.Collections.Generic.Dictionary<string, GroupBarlineType>
+						{
+							{ "Yes", GroupBarlineType.Enabled },
+							{ "No", GroupBarlineType.Disabled },
+							{ "Mensurstrich", GroupBarlineType.Mensurstrich }
+						}).Then(r => currentPartGroup.GroupBarline = r);
+					}
+				}
+				if (partListElementNode.Name == "score-part" && currentPartGroup != null)
+				{
+					var scorePartId = partListElementNode.IfAttribute("id").HasAnyValue().ThenReturnResult();
+					var matchingScorePart = score.Parts.FirstOrDefault(p => p.PartId == scorePartId);
+					if (matchingScorePart != null) matchingScorePart.Group = currentPartGroup;
+				}
+			}
+
+			//Sibelius hack:
+			if (score.Encoding?.Software?.Any(s => s.Contains("Sibelius")) ?? false)
             {
                 score.DefaultPageSettings.DefaultSystemDistance *= 1.39;
                 new DefaultScoreFormatter().Format(score);

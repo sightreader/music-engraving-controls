@@ -78,6 +78,7 @@ namespace Manufaktura.Controls.Model
 
 		public List<ScorePage> Pages { get; private set; }
 
+		public List<PartGroup> PartGroups { get; private set; } = new List<PartGroup>();
 		public List<Part> Parts { get; private set; }
 
 		/// <summary>

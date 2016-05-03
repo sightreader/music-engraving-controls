@@ -30,6 +30,8 @@ namespace Manufaktura.Controls.WPF.Test
 				.ApplyStemDirection(VerticalDirection.Up)
 				.AddLyrics("Wlazł ko-tek na pło-tek"));
 
+			firstStaff.Elements.Add(new Barline());
+
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm("8.. 32")
@@ -48,6 +50,8 @@ namespace Manufaktura.Controls.WPF.Test
 				.AddRhythm(8, 32, 16, 32)
 				.ApplyStemDirection(VerticalDirection.Up));
 
+			firstStaff.Elements.Add(new Barline());
+
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm(8, 32)
@@ -57,6 +61,8 @@ namespace Manufaktura.Controls.WPF.Test
 				.FromPitches(Pitch.C4, Pitch.E4)
 				.AddRhythm(8, 8)
 				.ApplyStemDirection(VerticalDirection.Up));
+
+			firstStaff.Elements.Add(new Barline());
 
 			firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4)
@@ -120,6 +126,22 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
 			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
 			*/
+
+			var secondStaff = new Staff();
+			score.Staves.Add(secondStaff);
+			secondStaff.Elements.Add(Clef.Bass);
+			secondStaff.Elements.Add(new Key(0));
+			secondStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
+			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Eighth) { Tuplet = TupletType.Start });
+			secondStaff.Elements.Add(new Note(Pitch.D3, RhythmicDuration.Eighth));
+			secondStaff.Elements.Add(new Note(Pitch.E3, RhythmicDuration.Eighth) { Tuplet = TupletType.Stop });
+			secondStaff.Elements.Add(new Barline());
+			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
+			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
+			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
+			secondStaff.Elements.Add(new Barline());
+			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
+			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
 
 			Data = score;
 		}

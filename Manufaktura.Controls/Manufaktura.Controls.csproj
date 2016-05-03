@@ -79,6 +79,7 @@
     <Compile Include="Model\Fonts\IMusicFont.cs" />
     <Compile Include="Model\Fonts\PolihymniaFont.cs" />
     <Compile Include="Model\ChordSign.cs" />
+    <Compile Include="Model\GroupBarlineType.cs" />
     <Compile Include="Model\Hook.cs" />
     <Compile Include="Model\ICanBeElementOfChord.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\NullMusicalSymbol.cs" />
     <Compile Include="Model\Ornament.cs" />
+    <Compile Include="Model\PartGroup.cs" />
     <Compile Include="Model\ScorePage.cs" />
     <Compile Include="Model\Part.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs" />
