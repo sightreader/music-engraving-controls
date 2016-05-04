@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -70,15 +71,11 @@ namespace Manufaktura.Controls.WPF
 
 		private Score _innerScore;
 
+		private Color previousColor;
+
 		public NoteViewer()
 		{
 			InitializeComponent();
-		}
-
-		public enum InvalidatingModes
-		{
-			RedrawAllScore,
-			RedrawInvalidatedRegion
 		}
 
 		public Score InnerScore { get { return _innerScore; } }
@@ -163,7 +160,7 @@ namespace Manufaktura.Controls.WPF
 
 		public void Select(MusicalSymbol element)
 		{
-			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
+			if (SelectedElement != null) ColorElement(SelectedElement, previousColor);   //Reset color on previously selected element
 			SelectedElement = element;
 
 			var note = SelectedElement as Note;
@@ -243,20 +240,26 @@ namespace Manufaktura.Controls.WPF
 
 		private void ColorElement(MusicalSymbol element, Color color)
 		{
+			if (Renderer == null) return;   //If SelectedElement value has been changed by binding and renderer has not yet been created, just ignore this method.
 			var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElement);
 			foreach (var ownership in ownerships)
 			{
 				TextBlock textBlock = ownership.Key as TextBlock;
-				if (textBlock != null) textBlock.Foreground = new SolidColorBrush(color);
+				if (textBlock != null)
+				{
+					var brush = textBlock.Foreground as SolidColorBrush;
+					if (brush != null) previousColor = brush.Color;
+					textBlock.Foreground = new SolidColorBrush(color);
+				}
 
 				Shape shape = ownership.Key as Shape;
-				if (shape != null) shape.Stroke = new SolidColorBrush(color);
+				if (shape != null)
+				{
+					var brush = shape.Stroke as SolidColorBrush;
+					if (brush != null) previousColor = brush.Color;
+					shape.Stroke = new SolidColorBrush(color);
+				}
 			}
-		}
-
-		private CanvasScoreRenderer CreateRenderer(Canvas canvas)
-		{
-			return IsAsync ? new DispatcherCanvasScoreRenderer(Dispatcher, canvas) : new CanvasScoreRenderer(MainCanvas);
 		}
 
 		private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -294,7 +297,7 @@ namespace Manufaktura.Controls.WPF
 
 		private void RenderOnCanvas(Measure measure)
 		{
-			if (Renderer == null) Renderer = CreateRenderer(MainCanvas);
+			if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
 			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
 			{
 				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
@@ -318,7 +321,7 @@ namespace Manufaktura.Controls.WPF
 			if (score == null) return;
 
 			MainCanvas.Children.Clear();
-			Renderer = CreateRenderer(MainCanvas);
+			Renderer = new CanvasScoreRenderer(MainCanvas);
 			Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
 			var brush = Foreground as SolidColorBrush;
 			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);

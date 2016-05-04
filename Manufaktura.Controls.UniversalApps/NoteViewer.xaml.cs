@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,6 +20,10 @@ namespace Manufaktura.Controls.UniversalApps
 {
 	public sealed partial class NoteViewer : UserControl
 	{
+		// Using a DependencyProperty as the backing store for InvalidatingMode.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty InvalidatingModeProperty =
+			DependencyProperty.Register("InvalidatingMode", typeof(InvalidatingModes), typeof(NoteViewer), new PropertyMetadata(InvalidatingModes.RedrawInvalidatedRegion));
+
 		// Using a DependencyProperty as the backing store for IsAsync.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty IsAsyncProperty =
 			DependencyProperty.Register("IsAsync", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
@@ -49,7 +54,7 @@ namespace Manufaktura.Controls.UniversalApps
 
 		// Using a DependencyProperty as the backing store for SelectedElement.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty SelectedElementProperty =
-			DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null, SelectedElementChanged));
+			DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null));
 
 		// Using a DependencyProperty as the backing store for XmlSourceProperty.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty XmlSourceProperty =
@@ -74,6 +79,12 @@ namespace Manufaktura.Controls.UniversalApps
 		}
 
 		public Score InnerScore { get { return _innerScore; } }
+
+		public InvalidatingModes InvalidatingMode
+		{
+			get { return (InvalidatingModes)GetValue(InvalidatingModeProperty); }
+			set { SetValue(InvalidatingModeProperty, value); }
+		}
 
 		public bool IsAsync
 		{
@@ -123,7 +134,7 @@ namespace Manufaktura.Controls.UniversalApps
 
 		public MusicalSymbol SelectedElement
 		{
-			get { return SelectedElementInner; }
+			get { return (MusicalSymbol)GetValue(SelectedElementProperty); }
 			set { SetValue(SelectedElementProperty, value); }
 		}
 
@@ -147,17 +158,15 @@ namespace Manufaktura.Controls.UniversalApps
 
 		private CanvasScoreRenderer Renderer { get; set; }
 
-		private MusicalSymbol SelectedElementInner { get; set; }
-
 		public void Select(MusicalSymbol element)
 		{
-			if (SelectedElementInner != null) ColorElement(SelectedElementInner, previousColor);   //Reset color on previously selected element
-			SelectedElementInner = element;
+			if (SelectedElement != null) ColorElement(SelectedElement, previousColor);   //Reset color on previously selected element
+			SelectedElement = element;
 
-			Note note = SelectedElementInner as Note;
+			var note = SelectedElement as Note;
 			if (note != null) _draggingState.MidiPitchOnStartDragging = note.MidiPitch;
 
-			if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);      //Apply color on selected element
+			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
 
 			var positionElement = element as IHasCustomXPosition;
 			if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}",
@@ -183,13 +192,9 @@ namespace Manufaktura.Controls.UniversalApps
 		{
 			NoteViewer viewer = obj as NoteViewer;
 			var score = args.NewValue as Score;
+			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
 			viewer.RenderOnCanvas(score);
-		}
-
-		private static void SelectedElementChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
-		{
-			NoteViewer viewer = (NoteViewer)obj;
-			viewer.Select(args.NewValue as MusicalSymbol);
+			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
 		private static void XmlSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -205,7 +210,10 @@ namespace Manufaktura.Controls.UniversalApps
 			}
 
 			MusicXmlParser parser = new MusicXmlParser();
-			viewer.RenderOnCanvas(parser.Parse(xmlDocument));
+			var score = parser.Parse(xmlDocument);
+			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
+			viewer.RenderOnCanvas(score);
+			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
 		}
 
 		private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -216,7 +224,7 @@ namespace Manufaktura.Controls.UniversalApps
 		private void ColorElement(MusicalSymbol element, Color color)
 		{
 			if (Renderer == null) return;   //If SelectedElement value has been changed by binding and renderer has not yet been created, just ignore this method.
-			var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElementInner);
+			var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElement);
 			foreach (var ownership in ownerships)
 			{
 				TextBlock textBlock = ownership.Key as TextBlock;
@@ -251,7 +259,7 @@ namespace Manufaktura.Controls.UniversalApps
 			}
 			double difference = _draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 
-			Note note = SelectedElementInner as Note;
+			Note note = SelectedElement as Note;
 			if (note != null)
 			{
 				int midiPitch = _draggingState.MidiPitchOnStartDragging + (int)(difference / 2);
@@ -259,8 +267,7 @@ namespace Manufaktura.Controls.UniversalApps
 				note.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
 													//TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
 			}
-			RenderOnCanvas(_innerScore);        //TODO: Przerysowywać tylko wszystkie na prawo od zmienianej nutki. Albo w ogóle tylko tą nutkę, a na MouseLeftButtonUp przerysowywać całość
-												//Może najłatwiej to zrobić tak, że Draw... jak zobaczy że ma już taką samą figurę, to ma nie rysować
+			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
 		}
 
 		private void MainCanvas_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -279,7 +286,6 @@ namespace Manufaktura.Controls.UniversalApps
 			//Set selected element:
 			Select(Renderer.OwnershipDictionary[element]);
 		}
-
 
 		private void MainCanvas_PointerReleased(object sender, PointerRoutedEventArgs e)
 		{
@@ -300,8 +306,38 @@ namespace Manufaktura.Controls.UniversalApps
 			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
 			Renderer.Render(score);
-			if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);
+			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
+		}
+
+		private void RenderOnCanvas(Measure measure)
+		{
+			if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
+			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
+			{
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
+				foreach (var frameworkElement in frameworkElements)
+				{
+					Renderer.Canvas.Children.Remove(frameworkElement);
+				}
+			}
+
+			var brush = Foreground as SolidColorBrush;
+			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
+
+			Renderer.Render(measure);
+			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
+			InvalidateMeasure();
+		}
+
+		private void Score_MeasureInvalidated(object sender, Model.Events.InvalidateEventArgs<Measure> e)
+		{
+			if (InvalidatingMode != InvalidatingModes.RedrawInvalidatedRegion) return;
+			var score = (sender as MusicalSymbol)?.Staff?.Score;
+			if (score == null) return;
+			score.MeasureInvalidated -= Score_MeasureInvalidated;
+			RenderOnCanvas(e.InvalidatedObject);
+			score.MeasureInvalidated += Score_MeasureInvalidated;
 		}
 
 		private struct DraggingState
