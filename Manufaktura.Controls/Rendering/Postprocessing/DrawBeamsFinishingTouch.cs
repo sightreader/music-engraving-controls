@@ -43,12 +43,13 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 						beamGroup.Start = note.StemEndLocation;
 						staff.BeamGroups.Add(beamGroup);
 					}
+					if (beamGroup != null) beamGroup.Members.Add(nr);
 					if (note.BeamList.First() == NoteBeamType.End)
 					{
 						beamGroup.End = note.StemEndLocation;
+						beamGroup = null;
 					}
 				}
-				if (beamGroup != null) beamGroup.Members.Add(nr);
 			}
 		}
 
