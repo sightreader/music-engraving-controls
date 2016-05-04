@@ -20,55 +20,18 @@ namespace Manufaktura.Controls.UniversalApps
 {
 	public sealed partial class NoteViewer : UserControl
 	{
-		// Using a DependencyProperty as the backing store for InvalidatingMode.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty InvalidatingModeProperty =
-			DependencyProperty.Register("InvalidatingMode", typeof(InvalidatingModes), typeof(NoteViewer), new PropertyMetadata(InvalidatingModes.RedrawInvalidatedRegion));
+		public static readonly DependencyProperty InvalidatingModeProperty = DependencyPropertyEx.Register<NoteViewer, InvalidatingModes>(v => v.InvalidatingMode, InvalidatingModes.RedrawInvalidatedRegion);
+		public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
+		public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
+		public static readonly DependencyProperty IsPanoramaModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsPanoramaMode, true);
+		public static readonly DependencyProperty IsSelectableProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsSelectable, true);
+		public static readonly DependencyProperty ScoreSourceProperty = DependencyPropertyEx.Register<NoteViewer, Score>(v => v.ScoreSource, null, ScoreSourceChanged);
+		public static readonly DependencyProperty SelectedElementProperty = DependencyPropertyEx.Register<NoteViewer, MusicalSymbol>(v => v.SelectedElement, null);
+		public static readonly DependencyProperty XmlSourceProperty = DependencyPropertyEx.Register<NoteViewer, string>(v => v.XmlSource, null, XmlSourceChanged);
+		public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
+		public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
 
-		// Using a DependencyProperty as the backing store for IsAsync.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsAsyncProperty =
-			DependencyProperty.Register("IsAsync", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
-
-		// Using a DependencyProperty as the backing store for IsDebugMode.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsDebugModeProperty =
-			DependencyProperty.Register("IsDebugMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
-
-		// Using a DependencyProperty as the backing store for IsInsertMode.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsInsertModeProperty =
-			DependencyProperty.Register("IsInsertMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
-
-		// Using a DependencyProperty as the backing store for IsOccupyingSpace.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsOccupyingSpaceProperty =
-			DependencyProperty.Register("IsOccupyingSpace", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
-
-		// Using a DependencyProperty as the backing store for IsPanoramaMode.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsPanoramaModeProperty =
-			DependencyProperty.Register("IsPanoramaMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
-
-		// Using a DependencyProperty as the backing store for IsSelectable.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsSelectableProperty =
-			DependencyProperty.Register("IsSelectable", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
-
-		// Using a DependencyProperty as the backing store for ScoreSource.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty ScoreSourceProperty =
-			DependencyProperty.Register("ScoreSource", typeof(Score), typeof(NoteViewer), new PropertyMetadata(null, ScoreSourceChanged));
-
-		// Using a DependencyProperty as the backing store for SelectedElement.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty SelectedElementProperty =
-			DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null));
-
-		// Using a DependencyProperty as the backing store for XmlSourceProperty.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty XmlSourceProperty =
-			DependencyProperty.Register("XmlSource", typeof(string), typeof(NoteViewer), new PropertyMetadata(null, XmlSourceChanged));
-
-		// Using a DependencyProperty as the backing store for XmlTransformations.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty XmlTransformationsProperty =
-			DependencyProperty.Register("XmlTransformations", typeof(IEnumerable<XTransformerParser>), typeof(NoteViewer), new PropertyMetadata(null));
-
-		// Using a DependencyProperty as the backing store for ZoomFactor.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty ZoomFactorProperty =
-			DependencyProperty.Register("ZoomFactor", typeof(double), typeof(NoteViewer), new PropertyMetadata(1d, ZoomFactorChanged));
-
-		private DraggingState _draggingState = new DraggingState();
+		private DraggingState<Point> _draggingState = new DraggingState<Point>();
 		private Score _innerScore;
 
 		private Color previousColor;
@@ -86,18 +49,6 @@ namespace Manufaktura.Controls.UniversalApps
 		{
 			get { return (InvalidatingModes)GetValue(InvalidatingModeProperty); }
 			set { SetValue(InvalidatingModeProperty, value); }
-		}
-
-		public bool IsAsync
-		{
-			get { return (bool)GetValue(IsAsyncProperty); }
-			set { SetValue(IsAsyncProperty, value); }
-		}
-
-		public bool IsDebugMode
-		{
-			get { return (bool)GetValue(IsDebugModeProperty); }
-			set { SetValue(IsDebugModeProperty, value); }
 		}
 
 		public bool IsInsertMode
@@ -367,28 +318,6 @@ namespace Manufaktura.Controls.UniversalApps
 			score.MeasureInvalidated -= Score_MeasureInvalidated;
 			RenderOnCanvas(e.InvalidatedObject);
 			score.MeasureInvalidated += Score_MeasureInvalidated;
-		}
-
-		private struct DraggingState
-		{
-			public bool IsDragging { get; private set; }
-
-			public int MidiPitchOnStartDragging { get; set; }
-
-			public Point MousePositionOnStartDragging { get; private set; }
-
-			public void StartDragging(Point startingPosition)
-			{
-				IsDragging = true;
-				MousePositionOnStartDragging = startingPosition;
-			}
-
-			public void StopDragging()
-			{
-				IsDragging = false;
-				MousePositionOnStartDragging = default(Point);
-				MidiPitchOnStartDragging = 0;
-			}
 		}
 	}
 }

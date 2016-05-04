@@ -154,6 +154,7 @@
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />
     <Compile Include="Primitives\Size.cs" />
+    <Compile Include="Rendering\DraggingState.cs" />
     <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRendererSettings.cs" />

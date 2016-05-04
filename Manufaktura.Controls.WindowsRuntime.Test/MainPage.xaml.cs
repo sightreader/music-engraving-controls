@@ -56,7 +56,7 @@ namespace Manufaktura.Controls.WindowsRuntime.Test
             using (Stream fileStream = (await result.OpenAsync(Windows.Storage.FileAccessMode.Read)).AsStreamForRead())
             {
 
-                using (StreamReader reader = new System.IO.StreamReader(fileStream))
+                using (StreamReader reader = new StreamReader(fileStream))
                 {
                     scoreXml = reader.ReadToEnd();
                 }
