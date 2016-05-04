@@ -5,7 +5,9 @@ using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Xml;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser
@@ -59,14 +61,16 @@ namespace Manufaktura.Controls.Parser
 						currentPartGroup = new PartGroup() { Number = score.PartGroups.Count + 1 };
 						score.PartGroups.Add(currentPartGroup);
 					});
+
 					partListElementNode.IfAttribute("type").HasValue("stop").Then(() => currentPartGroup = null);
 					if (currentPartGroup != null)
 					{
-						partListElementNode.IfElement("group-barline").HasValue(new System.Collections.Generic.Dictionary<string, GroupBarlineType>
+						partListElementNode.IfElement("group-barline").HasValue<GroupBarlineType>(d =>
 						{
-							{ "Yes", GroupBarlineType.Enabled },
-							{ "No", GroupBarlineType.Disabled },
-							{ "Mensurstrich", GroupBarlineType.Mensurstrich }
+							d.Add("Yes", GroupBarlineType.Enabled);
+							d.Add("No", GroupBarlineType.Disabled);
+							d.Add("Mensurstrich", GroupBarlineType.Mensurstrich);
+							return d;
 						}).Then(r => currentPartGroup.GroupBarline = r);
 					}
 				}
