@@ -78,8 +78,11 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public List<ScorePage> Pages { get; private set; }
+
 		public List<PartGroup> PartGroups { get; private set; } = new List<PartGroup>();
+
 		public List<Part> Parts { get; private set; }
+
 		public SafetySettings Safety { get; } = new SafetySettings();
 
 		/// <summary>
@@ -161,6 +164,15 @@ namespace Manufaktura.Controls.Model
 			score.FirstStaff.Elements.Add(clef);
 			score.FirstStaff.Elements.Add(Key.FromScale(scale));
 			return score;
+		}
+
+		public static void SanityCheck(Score score, object control)
+		{
+			if (score == null) return;
+
+			if (score.Safety.BoundControl != null && !score.Safety.AllowBindingToMultipleControls && score.Safety.BoundControl != control)
+				throw new Exception($"Score \"{score.ToString()}\" is already bound to {score.Safety.BoundControl.ToString()}. Binding to multiple controls can affect performance and cause rendering issues. You can disable this exception by setting score.Safety.AllowBindingToMultipleControls to true.");
+			score.Safety.BoundControl = control;
 		}
 
 		/// <summary>

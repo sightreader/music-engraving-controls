@@ -141,26 +141,13 @@ namespace Manufaktura.Controls.UniversalApps
 			return base.MeasureOverride(availableSize);
 		}
 
-		private static void SanityCheck(Score oldScore, Score score, NoteViewer viewer)
-		{
-			if (oldScore != null)
-			{
-				oldScore.Safety.BoundControl = null;
-			}
-			if (score != null)
-			{
-				if (score.Safety.BoundControl != null && !score.Safety.AllowBindingToMultipleControls && score.Safety.BoundControl != viewer)
-					throw new Exception($"Score \"{score.ToString()}\" is already bound to {score.Safety.BoundControl.ToString()}. Binding to multiple controls can affect performance and cause rendering issues. You can disable this exception by setting score.Safety.AllowBindingToMultipleControls to true.");
-				score.Safety.BoundControl = viewer;
-			}
-		}
-
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 		{
 			NoteViewer viewer = obj as NoteViewer;
 			var oldScore = args.OldValue as Score;
 			var score = args.NewValue as Score;
-			SanityCheck(oldScore, score, viewer);
+			if (oldScore != null) oldScore.Safety.BoundControl = null;
+			Score.SanityCheck(score, viewer);
 
 			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
 			viewer.RenderOnCanvas(score);
