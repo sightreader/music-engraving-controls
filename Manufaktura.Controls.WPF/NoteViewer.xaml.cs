@@ -139,8 +139,6 @@ namespace Manufaktura.Controls.WPF
 			return base.MeasureOverride(availableSize);
 		}
 
-
-
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 		{
 			NoteViewer viewer = obj as NoteViewer;

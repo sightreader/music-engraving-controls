@@ -25,6 +25,11 @@ namespace Manufaktura.Controls.Rendering
 		{
 			scoreService.ReturnToFirstSystem();
 			scoreService.MoveTo(measure, Settings);
+			if (Settings.IsPanoramaMode && scoreService.CurrentSystemNo != 1)
+			{
+				scoreService.ReturnToFirstSystem(); //W trybie panoramy system zawsze jest pierwszy
+				scoreService.CurrentClef.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4] - 24.4f - (scoreService.CurrentClef.Line - 1) * Settings.LineSpacing);
+			}
 			measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
 			measurementService.LastNoteEndXPosition = scoreService.CursorPositionX;
 			measurementService.LastNotePositionX = scoreService.CursorPositionX;
