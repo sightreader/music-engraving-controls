@@ -53,10 +53,10 @@ namespace Manufaktura.Controls.WindowsRuntime.Test
 
             var result = await dialog.PickSingleFileAsync();
             
-            using (System.IO.Stream fileStream = (await result.OpenAsync(Windows.Storage.FileAccessMode.Read)).AsStreamForRead())
+            using (Stream fileStream = (await result.OpenAsync(Windows.Storage.FileAccessMode.Read)).AsStreamForRead())
             {
 
-                using (System.IO.StreamReader reader = new System.IO.StreamReader(fileStream))
+                using (StreamReader reader = new System.IO.StreamReader(fileStream))
                 {
                     scoreXml = reader.ReadToEnd();
                 }
@@ -64,7 +64,7 @@ namespace Manufaktura.Controls.WindowsRuntime.Test
 
                 score = scoreXml.ToScore();
                 noteViewer1.ScoreSource = score;
-                noteViewer3.ScoreSource = score;
+                //noteViewer3.ScoreSource = score;
 
                 MusicXmlNormalizer normalizer = new MusicXmlNormalizer() { NormalizeSpaceBeforeFirstNotesOfMeasures = true };
                 noteViewer2.XmlTransformations = new[] { normalizer };

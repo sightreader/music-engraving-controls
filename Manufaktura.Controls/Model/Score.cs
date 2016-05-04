@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model.Events;
+﻿using Manufaktura.Controls.Model.Assertions;
+using Manufaktura.Controls.Model.Events;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System;
@@ -77,9 +78,9 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public List<ScorePage> Pages { get; private set; }
-
 		public List<PartGroup> PartGroups { get; private set; } = new List<PartGroup>();
 		public List<Part> Parts { get; private set; }
+		public SafetySettings Safety { get; } = new SafetySettings();
 
 		/// <summary>
 		/// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -204,6 +205,11 @@ namespace Manufaktura.Controls.Model
 				entangledScore.Staves.Add(entangledStaff);
 			}
 			return entangledScore;
+		}
+
+		public override string ToString()
+		{
+			return $"{Staves.Count}-staff score";
 		}
 
 		private Staff GetStaff(int staffNumber)

@@ -69,6 +69,7 @@
     <Compile Include="IoC\ExpressionActivator.cs" />
     <Compile Include="IoC\ManufakturaResolver.cs" />
     <Compile Include="Linq\ScoreExtensions.cs" />
+    <Compile Include="Model\Assertions\SafetySettings.cs" />
     <Compile Include="Model\Barline.cs" />
     <Compile Include="Model\BeamGroup.cs" />
     <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
