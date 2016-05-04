@@ -114,6 +114,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Audio\PlayMusicalSymbolTimeline.cs" />
+    <Compile Include="Audio\ThreadScorePlayer.cs" />
     <Compile Include="Audio\TimelineScorePlayer.cs" />
     <Compile Include="Audio\XnaScorePlayer.cs" />
     <Compile Include="CanvasScoreRenderer.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Common\ControllablePanorama.cs" />
     <Compile Include="Common\ListContentControl.cs" />
     <Compile Include="Common\ModelViewMapper.cs" />
+    <Compile Include="DependencyPropertyEx.cs" />
     <Compile Include="DummyControl.xaml.cs">
       <DependentUpon>DummyControl.xaml</DependentUpon>
     </Compile>
