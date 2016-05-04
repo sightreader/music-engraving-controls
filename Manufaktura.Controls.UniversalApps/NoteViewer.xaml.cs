@@ -167,11 +167,16 @@ namespace Manufaktura.Controls.UniversalApps
 		protected override Size MeasureOverride(Size availableSize)
 		{
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
+			var children = MainCanvas.Children.OfType<UIElement>();
+			foreach (var child in children) child.Measure(availableSize);
 
-			foreach (var c in MainCanvas.Children) c.Measure(availableSize);    //Ta linijka zapobiega znikaniu tekstu - nie wiem czemu znika.
-			var xx = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetLeft(c) + c.ActualWidth);
-			var yy = MainCanvas.Children.OfType<FrameworkElement>().Max(c => Canvas.GetTop(c) + c.ActualHeight);
-			return new Size(xx, yy);
+			if (children.Any())
+			{
+				var xx = children.Max(c => Canvas.GetLeft(c) + c.DesiredSize.Width);
+				var yy = children.Max(c => Canvas.GetTop(c) + c.DesiredSize.Height);
+				return new Size(xx, yy);
+			}
+			return base.MeasureOverride(availableSize);
 		}
 
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)

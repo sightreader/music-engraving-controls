@@ -179,13 +179,13 @@ namespace Manufaktura.Controls.WPF
 		protected override Size MeasureOverride(Size availableSize)
 		{
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
-			var children = MainCanvas.Children.OfType<FrameworkElement>();
+			var children = MainCanvas.Children.OfType<UIElement>();
 			foreach (var child in children) child.Measure(availableSize);
 
 			if (children.Any())
 			{
-				var xx = children.Max(c => Canvas.GetLeft(c) + c.ActualWidth);
-				var yy = children.Max(c => Canvas.GetTop(c) + c.ActualHeight);
+				var xx = children.Max(c => Canvas.GetLeft(c) + c.DesiredSize.Width);
+				var yy = children.Max(c => Canvas.GetTop(c) + c.DesiredSize.Height);
 				return new Size(xx, yy);
 			}
 			return base.MeasureOverride(availableSize);
