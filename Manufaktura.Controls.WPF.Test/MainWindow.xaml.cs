@@ -92,5 +92,11 @@ namespace Manufaktura.Controls.WPF.Test
 				delta += systemSpacing;
 			}
 		}
+
+		private void Button_Click_2(object sender, RoutedEventArgs e)
+		{
+			var elements = noteViewer1.InnerScore.Staves.SelectMany(s => s.Elements).Where(x => x.Measure != null && x.Measure.System == noteViewer1.InnerScore.Systems[1]);
+			foreach (var element in elements) element.CustomColor = Primitives.Color.Red;
+		}
 	}
 }

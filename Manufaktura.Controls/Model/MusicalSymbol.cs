@@ -3,6 +3,7 @@ using Manufaktura.Controls.Rendering;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.Model
 {
@@ -43,6 +44,7 @@ namespace Manufaktura.Controls.Model
 	/// </summary>
 	public abstract class MusicalSymbol : ViewModel
 	{
+		private Color? customColor;
 		private bool isVisible;
 
 		protected MusicalSymbol()
@@ -62,14 +64,14 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
-		public Color? CustomColor { get; set; }
+		public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(); } }
 
 		public Guid Id { get; private set; }
 
 		/// <summary>
 		/// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
 		/// </summary>
-		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(nameof(IsVisible)); } }
+		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(); } }
 
 		public Measure Measure { get; internal set; }
 
@@ -109,7 +111,7 @@ namespace Manufaktura.Controls.Model
 			return Type.ToString();
 		}
 
-		protected override void OnPropertyChanged(string propertyName)
+		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			base.OnPropertyChanged(propertyName);
 			Staff?.FireMeasureInvalidated(this, Measure);

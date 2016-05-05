@@ -172,7 +172,7 @@ namespace Manufaktura.Controls.WPF
 			}
 
 			var alreadyMovedElements = new List<FrameworkElement>();
-			foreach (var element in system.Score.Staves.SelectMany(s => s.Elements).Where(e => e.Measure.System == system).Distinct())
+			foreach (var element in system.Score.Staves.SelectMany(s => s.Elements).Where(e => e.Measure != null && e.Measure.System == system).Distinct())
 			{
 				var frameworkElements = OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
 				foreach (var frameworkElement in frameworkElements)

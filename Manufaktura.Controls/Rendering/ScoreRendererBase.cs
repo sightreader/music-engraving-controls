@@ -219,8 +219,6 @@ namespace Manufaktura.Controls.Rendering
 
 		internal void BreakSystem(double distance = 0)
 		{
-			//var sumOfMeasures = scoreService.AllMeasures
-			//    .Where(m => m.Width.HasValue && m.System == scoreService.CurrentSystem && m.Staff == scoreService.CurrentStaff).Sum(m => m.Width.Value);
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
 			ReturnCarriage();
 

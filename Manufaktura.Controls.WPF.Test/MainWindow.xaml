@@ -12,6 +12,7 @@
             <WPF:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
         <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             <Button Content="gsefse" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <Button Content="Koloruj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
         </StackPanel>
     </ScrollViewer>
 </Window>

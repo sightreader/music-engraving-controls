@@ -131,9 +131,7 @@ namespace Manufaktura.Controls.WPF
 
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
 
-			var positionElement = element as IHasCustomXPosition;
-			if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}",
-				positionElement.DefaultXPosition.HasValue ? positionElement.DefaultXPosition.Value.ToString() : "(not set)");
+			Debug.WriteLine($"{element?.ToString()} Measure: {element?.Measure?.ToString()} System: {element?.Measure?.System?.ToString()}");
 		}
 
 		protected override Size MeasureOverride(Size availableSize)
