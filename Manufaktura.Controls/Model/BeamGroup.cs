@@ -3,19 +3,21 @@ using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Model
 {
-	public class BeamGroup
+	public class BeamGroup : MusicalSymbol
 	{
-		public BeamGroup()
+		public BeamGroup(Staff staff)
 		{
-		}
-
-		public BeamGroup(Point start, Point end, double angle)
-		{
+			Staff = staff;
 		}
 
 		public double Angle => Point.BeamAngle(Start, End);
-		public Point End { get; set; }
+		public Point End { get; internal set; }
 		public ICollection<NoteOrRest> Members { get; set; } = new List<NoteOrRest>();
-		public Point Start { get; set; }
+		public Point Start { get; internal set; }
+
+		public override string ToString()
+		{
+			return $"Beam group of {Members.Count} members with angle {Angle}.";
+		}
 	}
 }

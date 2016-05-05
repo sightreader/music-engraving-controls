@@ -268,6 +268,16 @@ namespace Manufaktura.Controls.WPF
 		private void RenderOnCanvas(Measure measure)
 		{
 			if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
+			var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
+			foreach (var beamGroup in beamGroupsForThisMeasure)
+			{
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == beamGroup).Select(d => d.Key).ToList();
+				foreach (var frameworkElement in frameworkElements)
+				{
+					Renderer.Canvas.Children.Remove(frameworkElement);
+				}
+			}
+
 			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
 			{
 				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();

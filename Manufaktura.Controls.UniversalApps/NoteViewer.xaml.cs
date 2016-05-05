@@ -36,8 +36,6 @@ namespace Manufaktura.Controls.UniversalApps
 
 		private Color previousColor;
 
-		private bool renderingInProgress;
-
 		public NoteViewer()
 		{
 			InitializeComponent();
@@ -253,9 +251,6 @@ namespace Manufaktura.Controls.UniversalApps
 
 		private void RenderOnCanvas(Score score)
 		{
-			if (renderingInProgress) return;
-			renderingInProgress = true;
-
 			_innerScore = score;
 			if (score == null) return;
 
@@ -268,16 +263,21 @@ namespace Manufaktura.Controls.UniversalApps
 			Renderer.Render(score);
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
-
-			renderingInProgress = false;
 		}
 
 		private void RenderOnCanvas(Measure measure)
 		{
-			if (renderingInProgress) return;
-			renderingInProgress = true;
-
 			if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
+			var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
+			foreach (var beamGroup in beamGroupsForThisMeasure)
+			{
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == beamGroup).Select(d => d.Key).ToList();
+				foreach (var frameworkElement in frameworkElements)
+				{
+					Renderer.Canvas.Children.Remove(frameworkElement);
+				}
+			}
+
 			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
 			{
 				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
@@ -293,8 +293,6 @@ namespace Manufaktura.Controls.UniversalApps
 			Renderer.Render(measure);
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
-
-			renderingInProgress = false;
 		}
 
 		private void Score_MeasureInvalidated(object sender, Model.Events.InvalidateEventArgs<Measure> e)
