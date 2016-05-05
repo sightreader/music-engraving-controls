@@ -233,7 +233,7 @@ namespace Manufaktura.Controls.Rendering
 			foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height);
 			scoreService.BeginNewSystem();
 			scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
-			scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
+			scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 			measurementService.LastMeasurePositionX = 0;
 		}
 
@@ -247,7 +247,7 @@ namespace Manufaktura.Controls.Rendering
 				for (int i = 0; i < 5; i++)
 				{
 					scoreService.CurrentLinePositions[i] = Settings.PaddingTop + i * Settings.LineSpacing + sharpLineModifier;
-					scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
+					scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 				}
 				return;
 			}
@@ -265,7 +265,7 @@ namespace Manufaktura.Controls.Rendering
 			scoreService.BeginNewStaff();
 
 			scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
-			scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
+			scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 			measurementService.LastMeasurePositionX = 0;
 		}
 

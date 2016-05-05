@@ -35,7 +35,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
             }
         }
 
-        private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragmentInSystem staffFragment, StaffSystem system)
+        private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system)
         {
             renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], staffFragment);
             foreach (double position in staffFragment.LinePositions)

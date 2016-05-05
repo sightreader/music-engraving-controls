@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Model
 	{
 		public StaffSystem(Score score)
 		{
-			this.Score = score;
+			Score = score;
 		}
 
 		/// <summary>
@@ -25,23 +25,14 @@ namespace Manufaktura.Controls.Model
 		{
 			get
 			{
-				var staffNumber = 1;
 				if (!Staves.Any()) return null;
-				return Staves.ToDictionary(s => staffNumber++, s => s.LinePositions);
-			}
-			set
-			{
-				while (Staves.Count < value.Count) Staves.Add(new StaffFragmentInSystem());
-				foreach (var kvp in value)
-				{
-					Staves[kvp.Key - 1].LinePositions = kvp.Value;
-				}
+				return Staves.ToDictionary(s => s.Staff.Score.Staves.IndexOf(s.Staff) + 1, s => s.LinePositions);
 			}
 		}
 
 		public Score Score { get; internal set; }
 
-		public List<StaffFragmentInSystem> Staves { get; internal set; } = new List<StaffFragmentInSystem>();
+		public List<StaffFragment> Staves { get; internal set; } = new List<StaffFragment>();
 
 		/// <summary>
 		/// Width of staff.
@@ -51,6 +42,20 @@ namespace Manufaktura.Controls.Model
 		public override string ToString()
 		{
 			return string.Format("Staff system {0}", Score.Systems.IndexOf(this) + 1);
+		}
+
+		internal void BuildStaffFragments(Dictionary<Staff, double[]> linePositions)
+		{
+			foreach (var kvp in linePositions)
+			{
+				var staffFragmentForThisStaff = Staves.FirstOrDefault(s => s.Staff == kvp.Key);
+				if (staffFragmentForThisStaff == null)
+				{
+					staffFragmentForThisStaff = new StaffFragment(kvp.Key);
+					Staves.Add(staffFragmentForThisStaff);
+				}
+				staffFragmentForThisStaff.LinePositions = kvp.Value;
+			}
 		}
 	}
 }
