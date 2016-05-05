@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Interactivity;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
 using System;
@@ -245,22 +246,8 @@ namespace Manufaktura.Controls.WPF
 			if (!_draggingState.IsDragging || _innerScore == null) return;
 
 			Point currentPosition = e.GetPosition(MainCanvas);
-			double horizontalDifference = Math.Abs(_draggingState.MousePositionOnStartDragging.X - currentPosition.X);
-			if (horizontalDifference > 30)
-			{
-				_draggingState.StopDragging();
-				return;
-			}
-			double difference = _draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
-
-			Note note = SelectedElement as Note;
-			if (note != null)
-			{
-				int midiPitch = _draggingState.MidiPitchOnStartDragging + (int)(difference / 2);
-				Debug.WriteLine(string.Format("Difference: {0}   MidiPitch: {1}", difference, midiPitch));
-				note.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
-													//TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
-			}
+			var strategy = DraggingStrategy.For(SelectedElement);
+			if (strategy != null) strategy.Drag(SelectedElement, _draggingState, _draggingState.MidiPitchOnStartDragging, CanvasScoreRenderer.ConvertPoint(_draggingState.MousePositionOnStartDragging), CanvasScoreRenderer.ConvertPoint(currentPosition));
 
 			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
 		}

@@ -1,4 +1,4 @@
-﻿namespace Manufaktura.Controls.Rendering
+﻿namespace Manufaktura.Controls.Interactivity
 {
 	public struct DraggingState<TPoint> where TPoint : struct
 	{

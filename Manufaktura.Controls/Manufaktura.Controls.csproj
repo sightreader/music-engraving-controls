@@ -66,6 +66,9 @@
     <Compile Include="Formatting\LyricsRebeamStrategy.cs" />
     <Compile Include="Formatting\RebeamMode.cs" />
     <Compile Include="Formatting\SimpleRebeamStrategy.cs" />
+    <Compile Include="Interactivity\DraggingStrategy.cs" />
+    <Compile Include="Interactivity\IDraggingStrategy.cs" />
+    <Compile Include="Interactivity\NoteDraggingStrategy.cs" />
     <Compile Include="IoC\ExpressionActivator.cs" />
     <Compile Include="IoC\ManufakturaResolver.cs" />
     <Compile Include="Linq\ScoreExtensions.cs" />
@@ -156,7 +159,7 @@
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />
     <Compile Include="Primitives\Size.cs" />
-    <Compile Include="Rendering\DraggingState.cs" />
+    <Compile Include="Interactivity\DraggingState.cs" />
     <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRendererSettings.cs" />

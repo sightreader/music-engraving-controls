@@ -22,6 +22,16 @@ namespace Manufaktura.Controls.WPF
 
 		public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
 
+		public static Point ConvertPoint(Primitives.Point point)
+		{
+			return new Point(point.X, point.Y);
+		}
+
+		public static Primitives.Point ConvertPoint(Point point)
+		{
+			return new Primitives.Point(point.X, point.Y);
+		}
+
 		public Color ConvertColor(Primitives.Color color)
 		{
 			return Color.FromArgb(color.A, color.R, color.G, color.B);
@@ -199,11 +209,6 @@ namespace Manufaktura.Controls.WPF
 				_penCache.Add(pen, wpfPen);
 			}
 			return wpfPen;
-		}
-
-		private Point ConvertPoint(Primitives.Point point)
-		{
-			return new Point(point.X, point.Y);
 		}
 
 		private void Move(FrameworkElement element, Point delta)
