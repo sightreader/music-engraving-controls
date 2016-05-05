@@ -19,6 +19,7 @@ namespace Manufaktura.Controls.WPF
 	/// </summary>
 	public partial class NoteViewer : UserControl
 	{
+		public static readonly DependencyProperty CurrentPageProperty = DependencyPropertyEx.Register<NoteViewer, int>(v => v.CurrentPage, 1);
 		public static readonly DependencyProperty InvalidatingModeProperty = DependencyPropertyEx.Register<NoteViewer, InvalidatingModes>(v => v.InvalidatingMode, InvalidatingModes.RedrawInvalidatedRegion);
 		public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
 		public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
@@ -29,7 +30,6 @@ namespace Manufaktura.Controls.WPF
 		public static readonly DependencyProperty XmlSourceProperty = DependencyPropertyEx.Register<NoteViewer, string>(v => v.XmlSource, null, XmlSourceChanged);
 		public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
 		public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
-
 		private DraggingState<Point> _draggingState = new DraggingState<Point>();
 
 		private Score _innerScore;
@@ -39,6 +39,12 @@ namespace Manufaktura.Controls.WPF
 		public NoteViewer()
 		{
 			InitializeComponent();
+		}
+
+		public int CurrentPage
+		{
+			get { return (int)GetValue(CurrentPageProperty); }
+			set { SetValue(CurrentPageProperty, value); }
 		}
 
 		public Score InnerScore { get { return _innerScore; } }
@@ -147,9 +153,7 @@ namespace Manufaktura.Controls.WPF
 			if (oldScore != null) oldScore.Safety.BoundControl = null;
 			Score.SanityCheck(score, viewer);
 
-			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
-			viewer.RenderOnCanvas(score);
-			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
+			viewer.BindAndRender(score);
 		}
 
 		private static void XmlSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -166,14 +170,21 @@ namespace Manufaktura.Controls.WPF
 
 			MusicXmlParser parser = new MusicXmlParser();
 			var score = parser.Parse(xmlDocument);
-			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
-			viewer.RenderOnCanvas(score);
-			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
+			viewer.BindAndRender(score);
 		}
 
 		private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 		{
 			((NoteViewer)obj).InvalidateMeasure();
+		}
+
+		private void BindAndRender(Score score)
+		{
+			score.MeasureInvalidated -= Score_MeasureInvalidated;
+			score.ScoreInvalidated -= Score_ScoreInvalidated;
+			RenderOnCanvas(score);
+			score.MeasureInvalidated += Score_MeasureInvalidated;
+			score.ScoreInvalidated += Score_ScoreInvalidated;
 		}
 
 		private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -294,6 +305,11 @@ namespace Manufaktura.Controls.WPF
 			score.MeasureInvalidated -= Score_MeasureInvalidated;
 			RenderOnCanvas(e.InvalidatedObject);
 			score.MeasureInvalidated += Score_MeasureInvalidated;
+		}
+
+		private void Score_ScoreInvalidated(object sender, Model.Events.InvalidateEventArgs<Score> e)
+		{
+			RenderOnCanvas(e.InvalidatedObject);
 		}
 	}
 }

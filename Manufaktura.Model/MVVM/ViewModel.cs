@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Model.MVVM
 {
@@ -14,7 +15,7 @@ namespace Manufaktura.Model.MVVM
 			OnPropertyChanged(GetPropertyName(propertyLambda));
 		}
 
-		protected virtual void OnPropertyChanged(string propertyName)
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}

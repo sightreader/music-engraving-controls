@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Rendering;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Manufaktura.Controls.Services
@@ -113,7 +112,7 @@ namespace Manufaktura.Controls.Services
 		/// <summary>
 		/// All systems in the score.
 		/// </summary>
-		public List<StaffSystem> Systems
+		public SystemCollection Systems
 		{
 			get { return CurrentScore.Systems; }
 		}
@@ -218,7 +217,6 @@ namespace Manufaktura.Controls.Services
 				CurrentClef.TextBlockLocation = new Primitives.Point(CursorPositionX, CurrentLinePositions[4] - 24.4f - (CurrentClef.Line - 1) * rendererSettings.LineSpacing);
 				CurrentKey = measure.Staff.Peek<Key>(firstNoteOrRest, Model.PeekStrategies.PeekType.PreviousElement);
 			}
-			
 		}
 
 		/// <summary>

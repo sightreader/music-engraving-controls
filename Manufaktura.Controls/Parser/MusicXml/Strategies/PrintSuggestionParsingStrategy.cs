@@ -57,7 +57,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
             element.IfAttribute("new-system").HasValue("yes").Then(() => suggestion.IsSystemBreak = true);
             element.IfAttribute("new-page").HasValue("yes").Then(() => suggestion.IsPageBreak = true);
-            if (suggestion.IsPageBreak) suggestion.IsSystemBreak = true;    //Page breaks are treated as system breaks. Manufaktura.Controls currently doesn't support page breaks.
+            if (suggestion.IsPageBreak) suggestion.IsSystemBreak = true;    //Page breaks are treated also as system breaks.
 
             element.IfDescendant("system-distance").Exists().Then(n =>
             {

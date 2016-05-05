@@ -82,8 +82,7 @@ namespace Manufaktura.Controls.WPF.Test
 
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			var note = noteViewerTest.ScoreSource.FirstStaff.Elements.OfType<Note>().ElementAt(7);
-			note.Pitch = Pitch.F4;
+			
 		}
 	}
 }

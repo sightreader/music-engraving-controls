@@ -21,7 +21,8 @@ namespace Manufaktura.Controls.Model
 			Staves.StaffInvalidated += HandleStaves_StaffInvalidated;
 			Staves.MeasureInvalidated += HandleStaves_MeasureInvalidated;
 			Parts = new List<Part>();
-			Systems = new List<StaffSystem>();
+			Systems = new SystemCollection(this);
+			Systems.ScoreInvalidated += Systems_ScoreInvalidated;
 			Pages = new List<ScorePage>();
 			Pages.Add(new ScorePage());
 			DefaultPageSettings = new ScorePage();
@@ -29,7 +30,7 @@ namespace Manufaktura.Controls.Model
 
 		public event EventHandler<InvalidateEventArgs<Measure>> MeasureInvalidated;
 
-		public event EventHandler<InvalidateEventArgs<ScorePage>> PageInvalidated;
+		public event EventHandler<InvalidateEventArgs<Score>> ScoreInvalidated;
 
 		public event EventHandler<InvalidateEventArgs<Staff>> StaffInvalidated;
 
@@ -111,7 +112,7 @@ namespace Manufaktura.Controls.Model
 
 		public StaffCollection Staves { get; private set; }
 
-		public List<StaffSystem> Systems { get; private set; }
+		public SystemCollection Systems { get; private set; }
 
 		/// <summary>
 		/// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -239,6 +240,11 @@ namespace Manufaktura.Controls.Model
 		private void HandleStaves_StaffInvalidated(object sender, InvalidateEventArgs<Staff> e)
 		{
 			StaffInvalidated?.Invoke(sender, e);
+		}
+
+		private void Systems_ScoreInvalidated(object sender, InvalidateEventArgs<Score> e)
+		{
+			ScoreInvalidated?.Invoke(sender, e);
 		}
 	}
 }

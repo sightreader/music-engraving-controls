@@ -120,6 +120,7 @@
     <Compile Include="Model\Slur.cs" />
     <Compile Include="Model\StaffCollection.cs" />
     <Compile Include="Model\StaffSystem.cs" />
+    <Compile Include="Model\SystemCollection.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />

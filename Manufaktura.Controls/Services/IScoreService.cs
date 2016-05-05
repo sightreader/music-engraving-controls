@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Rendering;
-using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Services
 {
@@ -36,7 +35,7 @@ namespace Manufaktura.Controls.Services
 
 		LineDictionary LinePositions { get; }
 
-		List<StaffSystem> Systems { get; }
+		SystemCollection Systems { get; }
 
 		void BeginNewMeasure();
 
