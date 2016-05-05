@@ -32,7 +32,8 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 				foreach (var system in scoreService.CurrentScore.Systems)
 				{
 					if (system.LinePositions == null) continue;
-					renderer.DrawLine(0, system.LinePositions[i + 1][4], 0, system.LinePositions[i + 2][0], staff);
+					var staffFragment = system.Staves[i];
+					renderer.DrawLine(0, system.LinePositions[i + 1][4], 0, system.LinePositions[i + 2][0], staffFragment);
 					foreach (var measure in staff.Measures.Where(m => m.Barline != null && m.System == system))
 					{
 						if (measure.Barline?.Style == BarlineStyle.LightHeavy)

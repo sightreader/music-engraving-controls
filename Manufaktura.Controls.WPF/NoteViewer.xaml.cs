@@ -115,6 +115,12 @@ namespace Manufaktura.Controls.WPF
 
 		protected CanvasScoreRenderer Renderer { get; set; }
 
+		public void MoveLayout(StaffSystem system, Point delta)
+		{
+			if (Renderer == null) return;
+			Renderer.MoveLayout(system, delta);
+		}
+
 		public void Select(MusicalSymbol element)
 		{
 			if (SelectedElement != null) ColorElement(SelectedElement, previousColor);   //Reset color on previously selected element

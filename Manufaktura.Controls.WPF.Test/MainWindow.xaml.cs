@@ -80,9 +80,17 @@ namespace Manufaktura.Controls.WPF.Test
 			vm.LoadTestData();
 		}
 
+		
+		int systemSpacing = 0;
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			
+			int delta = 0;
+			systemSpacing += 2;
+			foreach (var system in noteViewer1.InnerScore.Systems)
+			{
+				noteViewer1.MoveLayout(system, new Point(0, delta));
+				delta += systemSpacing;
+			}
 		}
 	}
 }
