@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.WPF
 		public static readonly DependencyProperty XmlSourceProperty = DependencyPropertyEx.Register<NoteViewer, string>(v => v.XmlSource, null, XmlSourceChanged);
 		public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
 		public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
-		private DraggingState<Point> _draggingState = new DraggingState<Point>();
+		private DraggingState _draggingState = new DraggingState();
 
 		private Score _innerScore;
 
@@ -198,7 +198,7 @@ namespace Manufaktura.Controls.WPF
 			MainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
 
 			//Start dragging:
-			_draggingState.StartDragging(e.GetPosition(MainCanvas));
+			_draggingState.StartDragging(CanvasScoreRenderer.ConvertPoint(e.GetPosition(MainCanvas)));
 
 			//Check if element under cursor is staff element:
 			FrameworkElement element = e.OriginalSource as FrameworkElement;
@@ -247,7 +247,7 @@ namespace Manufaktura.Controls.WPF
 
 			Point currentPosition = e.GetPosition(MainCanvas);
 			var strategy = DraggingStrategy.For(SelectedElement);
-			if (strategy != null) strategy.Drag(SelectedElement, _draggingState, _draggingState.MidiPitchOnStartDragging, CanvasScoreRenderer.ConvertPoint(_draggingState.MousePositionOnStartDragging), CanvasScoreRenderer.ConvertPoint(currentPosition));
+			if (strategy != null) strategy.Drag(SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
 
 			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
 		}

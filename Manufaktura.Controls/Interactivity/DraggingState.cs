@@ -1,14 +1,16 @@
-﻿namespace Manufaktura.Controls.Interactivity
+﻿using Manufaktura.Controls.Primitives;
+
+namespace Manufaktura.Controls.Interactivity
 {
-	public struct DraggingState<TPoint> where TPoint : struct
+	public struct DraggingState
 	{
 		public bool IsDragging { get; private set; }
 
 		public int MidiPitchOnStartDragging { get; set; }
 
-		public TPoint MousePositionOnStartDragging { get; private set; }
+		public Point MousePositionOnStartDragging { get; private set; }
 
-		public void StartDragging(TPoint startingPosition)
+		public void StartDragging(Point startingPosition)
 		{
 			IsDragging = true;
 			MousePositionOnStartDragging = startingPosition;
@@ -17,7 +19,7 @@
 		public void StopDragging()
 		{
 			IsDragging = false;
-			MousePositionOnStartDragging = default(TPoint);
+			MousePositionOnStartDragging = default(Point);
 			MidiPitchOnStartDragging = 0;
 		}
 	}

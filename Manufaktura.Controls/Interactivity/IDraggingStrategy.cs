@@ -7,6 +7,6 @@ namespace Manufaktura.Controls.Interactivity
 	{
 		Type ElementType { get; }
 
-		void Drag<TPoint>(object draggedElement, DraggingState<TPoint> draggingState, int midiPitchOnStartDragging, Point startPosition, Point currentPosition) where TPoint : struct;
+		void Drag(object draggedElement, DraggingState draggingState, Point currentPosition);
 	}
 }

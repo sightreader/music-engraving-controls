@@ -32,7 +32,7 @@ namespace Manufaktura.Controls.UniversalApps
 		public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
 		public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
 
-		private DraggingState<Point> _draggingState = new DraggingState<Point>();
+		private DraggingState _draggingState = new DraggingState();
 		private Score _innerScore;
 
 		private Color previousColor;
@@ -232,7 +232,7 @@ namespace Manufaktura.Controls.UniversalApps
 			MainCanvas.CapturePointer(e.Pointer);  //Capture mouse to receive events even if the pointer is outside the control
 
 			//Start dragging:
-			_draggingState.StartDragging(e.GetCurrentPoint(MainCanvas).Position);
+			_draggingState.StartDragging(CanvasScoreRenderer.ConvertPoint(e.GetCurrentPoint(MainCanvas).Position));
 
 			//Check if element under cursor is staff element:
 			FrameworkElement element = e.OriginalSource as FrameworkElement;

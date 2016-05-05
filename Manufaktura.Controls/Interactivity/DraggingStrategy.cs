@@ -29,19 +29,19 @@ namespace Manufaktura.Controls.Interactivity
 	{
 		public Type ElementType => typeof(TElement);
 
-		public void Drag<TPoint>(object draggedElement, DraggingState<TPoint> draggingState, int midiPitchOnStartDragging, Point startPosition, Point currentPosition) where TPoint : struct
+		public void Drag(object draggedElement, DraggingState draggingState, Point currentPosition)
 		{
-			double horizontalDifference = Math.Abs(startPosition.X - currentPosition.X);
+			double horizontalDifference = Math.Abs(draggingState.MousePositionOnStartDragging.X - currentPosition.X);
 			if (horizontalDifference > 30)
 			{
 				draggingState.StopDragging();
 				return;
 			}
-			double delta = startPosition.Y - currentPosition.Y;
+			double delta = draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 
-			DragInternal((TElement)draggedElement, midiPitchOnStartDragging, delta);
+			DragInternal((TElement)draggedElement, draggingState, delta);
 		}
 
-		protected abstract void DragInternal(TElement draggedElement, int midiPitchOnStartDragging, double delta);
+		protected abstract void DragInternal(TElement draggedElement, DraggingState draggingState, double delta);
 	}
 }
