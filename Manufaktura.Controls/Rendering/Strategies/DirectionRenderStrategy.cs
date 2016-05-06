@@ -25,7 +25,7 @@ namespace Manufaktura.Controls.Rendering
 			//Performance directions / Wskazówki wykonawcze:
 			double dirPositionY = 0;
 			if (element.Placement == DirectionPlacementType.Custom)
-				dirPositionY = scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo][0] + renderer.TenthsToPixels(element.DefaultYPosition.Value);
+				dirPositionY = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.DefaultYPosition.Value);
 			else if (element.Placement == DirectionPlacementType.Above)
 				dirPositionY = 0;
 			else if (element.Placement == DirectionPlacementType.Below)

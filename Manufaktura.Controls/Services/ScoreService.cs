@@ -77,6 +77,8 @@ namespace Manufaktura.Controls.Services
 			get { return CurrentScore.Staves.IndexOf(CurrentStaff) + 1; }
 		}
 
+		public double CurrentStaffTop => LinePositions[CurrentSystemNo, CurrentStaffNo][0];
+
 		/// <summary>
 		/// Current system.
 		/// </summary>

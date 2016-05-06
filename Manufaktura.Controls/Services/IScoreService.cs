@@ -25,6 +25,7 @@ namespace Manufaktura.Controls.Services
 
 		int CurrentStaffNo { get; }
 
+		double CurrentStaffTop { get; }
 		StaffSystem CurrentSystem { get; }
 
 		int CurrentSystemNo { get; }
@@ -34,7 +35,6 @@ namespace Manufaktura.Controls.Services
 		double CursorPositionX { get; set; }
 
 		LineDictionary LinePositions { get; }
-
 		SystemCollection Systems { get; }
 
 		void BeginNewMeasure();

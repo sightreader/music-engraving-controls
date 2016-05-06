@@ -19,11 +19,11 @@ namespace Manufaktura.Controls.Interactivity
 			lastElement.SuppressEvents = true;
 
 			firstElement.StemEndLocation = new Primitives.Point(firstElement.StemEndLocation.X, firstElement.StemEndLocation.Y + smallDelta);
-			firstElement.StemDefaultY = firstElement.TextBlockLocation.Y - 25 + (firstElement.StemEndLocation.Y);	//TODO: Przesunąć dla kolejnych pięciolinii
+			firstElement.StemDefaultY = firstElement.TextBlockLocation.Y - 25 + (firstElement.StemEndLocation.Y);
 			firstElement.HasCustomStemEndPosition = true;
 
 			lastElement.StemEndLocation = new Primitives.Point(lastElement.StemEndLocation.X, lastElement.StemEndLocation.Y + smallDelta);
-			lastElement.StemDefaultY = lastElement.TextBlockLocation.Y - 25 + (lastElement.StemEndLocation.Y); //TODO: Przesunąć dla kolejnych pięciolinii
+			lastElement.StemDefaultY = lastElement.TextBlockLocation.Y - 25 + (lastElement.StemEndLocation.Y);
 			lastElement.HasCustomStemEndPosition = true;
 
 			firstElement.SuppressEvents = false;
