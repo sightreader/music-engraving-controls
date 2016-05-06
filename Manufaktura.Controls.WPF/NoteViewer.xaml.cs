@@ -185,6 +185,7 @@ namespace Manufaktura.Controls.WPF
 
 		private void BindAndRender(Score score)
 		{
+			if (score == null) return;
 			score.MeasureInvalidated -= Score_MeasureInvalidated;
 			score.ScoreInvalidated -= Score_ScoreInvalidated;
 			RenderOnCanvas(score);

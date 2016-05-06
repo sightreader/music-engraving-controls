@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Extensions;
+using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
@@ -17,7 +18,7 @@ namespace Manufaktura.Controls.WPF.Test
 			set { data = value; OnPropertyChanged(() => Data); }
 		}
 
-		public void LoadTestData()
+		public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
 		{
 			var score = Score.CreateOneStaffScore(Clef.Alto, new MajorScale(Step.C, false));
 			var firstStaff = score.FirstStaff;
@@ -25,8 +26,14 @@ namespace Manufaktura.Controls.WPF.Test
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 4, 4));
 
 			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4)
-				.AddRhythm(16, 32, 16, 32, 8, 8)
+				.FromPitches(Pitch.C4, Pitch.C4, Pitch.C4, Pitch.C4)
+				.AddRhythm("16. 32 16 16")
+				.ApplyStemDirection(VerticalDirection.Up)
+				.Rebeam());
+
+			firstStaff.Elements.AddRange(StaffBuilder
+				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
+				.AddRhythm(16, 32, 16, 32, 8, 8, 16)
 				.ApplyStemDirection(VerticalDirection.Up)
 				.AddLyrics("Wlazł ko-tek na pło-tek"));
 			firstStaff.Elements.Add(new MetronomeDirection(Tempo.Allegro, DirectionPlacementType.Above));
@@ -94,7 +101,7 @@ namespace Manufaktura.Controls.WPF.Test
 				.ApplyStemDirection(VerticalDirection.Up)
 				.AddDots(0, 1, 0));
 
-			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(Formatting.RebeamMode.ToLyrics);
+			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(Formatting.RebeamMode.ToBeats, hookDirectionAlgorithm);
 
 			/*
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));

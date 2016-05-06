@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Formatting
 	{
 		public RebeamMode Mode => RebeamMode.ToBeats;
 
-		public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes)
+		public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
 		{
 			var staff = notes.FirstOrDefault(n => n.Staff != null)?.Staff;
 			if (staff == null) throw new Exception($"Staff property is null. Notes must be added to staff before using {nameof(BeatRebeamStrategy)}.");
@@ -21,7 +21,7 @@ namespace Manufaktura.Controls.Formatting
 			var splittedNotes = notes.SplitByBeats(timeSignature);
 			foreach (var noteGroup in splittedNotes)
 			{
-				noteGroup.Rebeam();
+				noteGroup.Rebeam(RebeamMode.Simple, hookDirectionAlgorithm);
 			}
 			return notes;
 		}

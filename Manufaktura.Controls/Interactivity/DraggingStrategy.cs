@@ -12,11 +12,13 @@ namespace Manufaktura.Controls.Interactivity
 {
 	public static class DraggingStrategy
 	{
-		private static Lazy<IEnumerable<IDraggingStrategy>> strategies = new Lazy<IEnumerable<IDraggingStrategy>>(() =>
-			typeof(IDraggingStrategy)
+		public static ICollection<Assembly> AssembliesToSearchForStrategies = new List<Assembly> { typeof(IDraggingStrategy)
 			.GetTypeInfo()
-			.Assembly
-			.DefinedTypes
+			.Assembly };
+
+		private static Lazy<IEnumerable<IDraggingStrategy>> strategies = new Lazy<IEnumerable<IDraggingStrategy>>(() =>
+			AssembliesToSearchForStrategies
+			.SelectMany(a => a.DefinedTypes)
 			.Where(t => !t.IsAbstract && typeof(IDraggingStrategy).GetTypeInfo().IsAssignableFrom(t))
 			.Select(t => Expression.Lambda(Expression.New(t.AsType())).Compile().DynamicInvoke())
 			.Cast<IDraggingStrategy>().ToList());
@@ -42,9 +44,7 @@ namespace Manufaktura.Controls.Interactivity
 			}
 			double delta = draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 			double smallDelta = draggingState.MousePreviousPosition.Y - currentPosition.Y;
-			Debug.WriteLine($"delta: {delta} smalldelta: {smallDelta} InitPos: {draggingState.MousePositionOnStartDragging} PrevPos: {draggingState.MousePreviousPosition} CurrentPos: {currentPosition}");
 			draggingState.MousePreviousPosition = currentPosition;
-			
 
 			DragInternal(renderer, (TElement)draggedElement, draggingState, delta, smallDelta);
 		}

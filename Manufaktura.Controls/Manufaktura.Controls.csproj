@@ -61,6 +61,7 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Formatting\BeatRebeamStrategy.cs" />
     <Compile Include="Formatting\DefaultScoreFormatter.cs" />
+    <Compile Include="Formatting\HookDirectionAlgorithm.cs" />
     <Compile Include="Formatting\IRebeamStrategy.cs" />
     <Compile Include="Formatting\IScoreFormatter.cs" />
     <Compile Include="Formatting\LyricsRebeamStrategy.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Interactivity\IDraggingStrategy.cs" />
     <Compile Include="Interactivity\LyricsDraggingStrategy.cs" />
     <Compile Include="Interactivity\NoteDraggingStrategy.cs" />
+    <Compile Include="Interactivity\RestDraggingStrategy.cs" />
     <Compile Include="IoC\ExpressionActivator.cs" />
     <Compile Include="IoC\ManufakturaResolver.cs" />
     <Compile Include="Linq\ScoreExtensions.cs" />
@@ -89,7 +91,6 @@
     <Compile Include="Model\Fonts\PolihymniaFont.cs" />
     <Compile Include="Model\ChordSign.cs" />
     <Compile Include="Model\GroupBarlineType.cs" />
-    <Compile Include="Model\Hook.cs" />
     <Compile Include="Model\ICanBeElementOfChord.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />
     <Compile Include="Model\IHasCustomXPosition.cs" />

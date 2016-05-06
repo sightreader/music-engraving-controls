@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Music.MelodicTrails;
 using Manufaktura.Music.Model;
@@ -12,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
+using Manufaktura.Controls.Formatting;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -23,7 +25,7 @@ namespace Manufaktura.Controls.WPF.Test
 		public MainWindow()
 		{
 			InitializeComponent();
-			LoadTestModel();
+			LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
 			/*
 			var scale = MajorScale.G;
 			IMelodicTrail melodicTrail = new ConjunctMovementTrail(MovementType.Anabasis, Pitch.G3, Pitch.C6, 8, 12);
@@ -71,13 +73,13 @@ namespace Manufaktura.Controls.WPF.Test
 			}
 		}
 
-		private async void LoadTestModel()
+		private async void LoadTestModel(HookDirectionAlgorithm hookDirectionAlgorithm)
 		{
 			//await Task.Factory.StartNew(() => Thread.Sleep(1000));
 			var vm = new TestViewModel();
 
 			DataContext = vm;
-			vm.LoadTestData();
+			vm.LoadTestData(hookDirectionAlgorithm);
 		}
 
 		
@@ -97,6 +99,24 @@ namespace Manufaktura.Controls.WPF.Test
 		{
 			var elements = noteViewer1.InnerScore.Staves.SelectMany(s => s.Elements).Where(x => x.Measure != null && x.Measure.System == noteViewer1.InnerScore.Systems[1]);
 			foreach (var element in elements) element.CustomColor = Primitives.Color.Red;
+		}
+
+		private void Button_Click_3(object sender, RoutedEventArgs e)
+		{
+			DataContext = null;
+			LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
+		}
+
+		private void Button_Click_4(object sender, RoutedEventArgs e)
+		{
+			DataContext = null;
+			LoadTestModel(HookDirectionAlgorithm.Second);
+		}
+
+		private void Button_Click_5(object sender, RoutedEventArgs e)
+		{
+			DataContext = null;
+			LoadTestModel(HookDirectionAlgorithm.Third);
 		}
 	}
 }

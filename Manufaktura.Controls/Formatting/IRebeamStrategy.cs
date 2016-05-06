@@ -7,6 +7,6 @@ namespace Manufaktura.Controls.Formatting
 	{
 		RebeamMode Mode { get; }
 
-		IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes);
+		IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate);
 	}
 }

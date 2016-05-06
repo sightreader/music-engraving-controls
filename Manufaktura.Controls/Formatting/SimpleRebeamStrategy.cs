@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Manufaktura.Controls.Formatting
 	{
 		public RebeamMode Mode => RebeamMode.Simple;
 
-		public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes)
+		public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
 		{
 			Note previousNote = null;
 			Note currentNote = null;
@@ -31,7 +32,7 @@ namespace Manufaktura.Controls.Formatting
 					{
 						if (nextNote != null && numberOfBeamsOnNextNote < b + 1)
 						{
-							currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote));
+							currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote, hookDirectionAlgorithm));
 						}
 						else currentNote.BeamList.Add(NoteBeamType.Start);
 					}
@@ -39,14 +40,14 @@ namespace Manufaktura.Controls.Formatting
 					{
 						if (previousNote != null && numberOfBeamsOnPreviousNote < b + 1)
 						{
-							currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote));
+							currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote, hookDirectionAlgorithm));
 						}
 						else currentNote.BeamList.Add(NoteBeamType.End);
 					}
 					else
 					{
 						if (numberOfBeamsOnPreviousNote >= b + 1 && numberOfBeamsOnNextNote >= b + 1) currentNote.BeamList.Add(NoteBeamType.Continue);
-						else if (numberOfBeamsOnPreviousNote < b + 1 && numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote));
+						else if (numberOfBeamsOnPreviousNote < b + 1 && numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(DetermineHookDirection(notes.ToList(), currentNote, hookDirectionAlgorithm));
 						else if (numberOfBeamsOnPreviousNote < b + 1) currentNote.BeamList.Add(NoteBeamType.Start);
 						else if (numberOfBeamsOnNextNote < b + 1) currentNote.BeamList.Add(NoteBeamType.End);
 					}
@@ -55,13 +56,33 @@ namespace Manufaktura.Controls.Formatting
 			return notes;
 		}
 
-		private NoteBeamType DetermineHookDirection(List<NoteOrRest> notes, Note currentNote)
+		private NoteBeamType DetermineHookDirection(List<NoteOrRest> notes, Note currentNote, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
 		{
 			if (currentNote == notes.Last()) return NoteBeamType.BackwardHook;
 			if (currentNote == notes.First()) return NoteBeamType.ForwardHook;
-			var smallestDenominator = notes.Min(n => n.BaseDuration.Denominator);
-			var currentBeat = notes.Take(notes.IndexOf(currentNote)).Sum(n => (1 / (double)n.BaseDuration.Denominator) * smallestDenominator);
-			return currentBeat - Math.Floor(currentBeat) >= Math.Ceiling(currentBeat) - currentBeat ? NoteBeamType.ForwardHook : NoteBeamType.BackwardHook;
+
+			int pulse;
+			double currentBeat;
+			switch (hookDirectionAlgorithm)
+			{
+				case HookDirectionAlgorithm.ProductionCandidate:
+					pulse = notes.Min(n => n.BaseDuration.Denominator);
+					currentBeat = notes.Take(notes.IndexOf(currentNote)).Sum(n => n.Duration.ToDouble() * pulse);
+					return currentBeat + currentNote.Duration.ToDouble() * pulse > Math.Ceiling(currentBeat) ? NoteBeamType.ForwardHook : NoteBeamType.BackwardHook;
+
+				case HookDirectionAlgorithm.Second:
+					pulse = notes.Min(n => n.BaseDuration.Denominator);
+					currentBeat = notes.Take(notes.IndexOf(currentNote)).Sum(n => n.Duration.ToDouble() * pulse);
+					return currentBeat - Math.Floor(currentBeat) >= Math.Ceiling(currentBeat) - currentBeat ? NoteBeamType.ForwardHook : NoteBeamType.BackwardHook;
+
+				case HookDirectionAlgorithm.Third:
+					pulse = (int)notes.Pulse();
+					currentBeat = notes.Take(notes.IndexOf(currentNote)).Sum(n => (1d / pulse * n.BaseDuration.Denominator));
+					return currentBeat - Math.Floor(currentBeat) > Math.Ceiling(currentBeat) - currentBeat ? NoteBeamType.ForwardHook : NoteBeamType.BackwardHook;
+
+				default:
+					throw new Exception("Unknown hook direction algorithm.");
+			}
 		}
 	}
 }

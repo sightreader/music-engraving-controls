@@ -106,7 +106,7 @@ namespace Manufaktura.Controls.Extensions
 			return RhythmicDuration.Parse(durations, " ");
 		}
 
-		public static IEnumerable<NoteOrRest> Rebeam(this IEnumerable<NoteOrRest> notes, RebeamMode mode = RebeamMode.Simple)
+		public static IEnumerable<NoteOrRest> Rebeam(this IEnumerable<NoteOrRest> notes, RebeamMode mode = RebeamMode.Simple, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
 		{
 			var strategies = typeof(IRebeamStrategy).GetTypeInfo().Assembly.DefinedTypes
 				.Where(t => !t.IsAbstract && typeof(IRebeamStrategy).GetTypeInfo().IsAssignableFrom(t))
@@ -115,7 +115,7 @@ namespace Manufaktura.Controls.Extensions
 				.ToArray();
 			var matchingStrategy = strategies.FirstOrDefault(s => s.Mode == mode);
 			if (matchingStrategy == null) throw new Exception($"Rebeam strategy not found for rebeam mode {mode}.");
-			return matchingStrategy.Rebeam(notes);
+			return matchingStrategy.Rebeam(notes, hookDirectionAlgorithm);
 		}
 
 		public static IEnumerable<NoteOrRest>[] SplitByBeats(this IEnumerable<NoteOrRest> notes, TimeSignature timeSignature)
@@ -127,8 +127,9 @@ namespace Manufaktura.Controls.Extensions
 			{
 				var sum = 0d;
 				var currentGroup = new List<NoteOrRest>();
-				while (sum < 1)
+				while (sum == 0 || sum - Math.Floor(sum) != 0)
 				{
+					if (queue.Count == 0) break;
 					var currentNote = queue.Dequeue();
 					currentGroup.Add(currentNote);
 					sum += ((1d + Enumerable.Range(1, currentNote.NumberOfDots).Sum(r => Math.Pow(0.5d, r))) / currentNote.BaseDuration.Denominator) * timeSignature.TypeOfBeats;
