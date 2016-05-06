@@ -65,7 +65,6 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(); } }
-
 		public Guid Id { get; private set; }
 
 		/// <summary>
@@ -74,10 +73,9 @@ namespace Manufaktura.Controls.Model
 		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(); } }
 
 		public Measure Measure { get; internal set; }
-
 		public Staff Staff { get; internal set; }
-
 		public virtual MusicalSymbolType Type { get { return MusicalSymbolType.Unknown; } }
+		internal bool SuppressEvents { get; set; }
 
 		/// <summary>
 		/// Converts a VerticalDirection to VerticalPlacement.
@@ -113,6 +111,7 @@ namespace Manufaktura.Controls.Model
 
 		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
+			if (SuppressEvents) return;
 			base.OnPropertyChanged(propertyName);
 			Staff?.FireMeasureInvalidated(this, Measure);
 		}

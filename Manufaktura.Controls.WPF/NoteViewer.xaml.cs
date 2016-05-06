@@ -247,7 +247,10 @@ namespace Manufaktura.Controls.WPF
 
 			Point currentPosition = e.GetPosition(MainCanvas);
 			var strategy = DraggingStrategy.For(SelectedElement);
-			if (strategy != null) strategy.Drag(SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
+			if (strategy != null)
+			{
+				strategy.Drag(SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
+			}
 
 			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
 		}

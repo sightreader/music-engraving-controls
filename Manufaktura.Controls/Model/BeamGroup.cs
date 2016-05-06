@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Primitives;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Manufaktura.Controls.Model
 {
@@ -18,6 +19,11 @@ namespace Manufaktura.Controls.Model
 		public override string ToString()
 		{
 			return $"Beam group of {Members.Count} members with angle {Angle}.";
+		}
+
+		internal void InvalidateMeasure()
+		{
+			Staff?.FireMeasureInvalidated(this, Members.FirstOrDefault(m => m.Measure != null)?.Measure);
 		}
 	}
 }

@@ -97,9 +97,7 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
-
 		public int Alter { get { return pitch.Alter; } }
-
 		public ArticulationType Articulation { get { return articulation; } set { articulation = value; OnPropertyChanged(() => Articulation); } }
 
 		public VerticalPlacement ArticulationPlacement
@@ -109,7 +107,6 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public List<NoteBeamType> BeamList { get { return beamList; } set { beamList = value; OnPropertyChanged(() => BeamList); } }
-
 		public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
 		/// <summary>
@@ -133,11 +130,8 @@ namespace Manufaktura.Controls.Model
 		public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsUpperMemberOfChord); } }
 
 		public List<Lyrics> Lyrics { get { return lyrics; } set { lyrics = value; OnPropertyChanged(() => Lyrics); } }
-
 		public int MidiPitch { get { return pitch.MidiPitch; } }
-
 		public string NoteFlagCharacter { get { return noteFlagCharacter; } }
-
 		public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
 
 		/// <summary>
@@ -163,11 +157,8 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public Slur Slur { get { return slur; } set { slur = value; OnPropertyChanged(() => Slur); } }
-
 		public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
-
 		public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(() => StemDirection); } }
-
 		public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
 
 		/// <summary>
@@ -176,11 +167,8 @@ namespace Manufaktura.Controls.Model
 		public string Step { get { return pitch.StepName; } }
 
 		public bool SubjectToNoteStemRule { get; set; }
-
 		public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
-
 		public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
-
 		public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
 
 		public override MusicalSymbolType Type
@@ -190,6 +178,8 @@ namespace Manufaktura.Controls.Model
 				return MusicalSymbolType.Note;
 			}
 		}
+
+		internal bool IgnoreStemLengthCalculation { get; set; }
 
 		/// <summary>
 		/// Creates a new instance of Note from given midi pitch and duration.

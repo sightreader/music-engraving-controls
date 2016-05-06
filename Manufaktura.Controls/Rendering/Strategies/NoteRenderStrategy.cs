@@ -383,7 +383,7 @@ namespace Manufaktura.Controls.Rendering
 				if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
 					renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - uglyModifier + 30),
 						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
-			element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+			if(!element.IgnoreStemLengthCalculation) element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 		}
 
 		private void DrawTies(ScoreRendererBase renderer, Note element, double notePositionY)

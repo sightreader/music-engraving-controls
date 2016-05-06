@@ -66,6 +66,7 @@
     <Compile Include="Formatting\LyricsRebeamStrategy.cs" />
     <Compile Include="Formatting\RebeamMode.cs" />
     <Compile Include="Formatting\SimpleRebeamStrategy.cs" />
+    <Compile Include="Interactivity\BeamGroupDraggingStrategy.cs" />
     <Compile Include="Interactivity\DraggingStrategy.cs" />
     <Compile Include="Interactivity\IDraggingStrategy.cs" />
     <Compile Include="Interactivity\NoteDraggingStrategy.cs" />

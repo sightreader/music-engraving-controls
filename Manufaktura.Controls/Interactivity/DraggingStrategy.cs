@@ -38,10 +38,19 @@ namespace Manufaktura.Controls.Interactivity
 				return;
 			}
 			double delta = draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
+			double smallDelta = draggingState.MousePreviousPosition.Y - currentPosition.Y;
+			draggingState.MousePreviousPosition = currentPosition;
 
-			DragInternal((TElement)draggedElement, draggingState, delta);
+			DragInternal((TElement)draggedElement, draggingState, delta, smallDelta);
 		}
 
-		protected abstract void DragInternal(TElement draggedElement, DraggingState draggingState, double delta);
+		/// <summary>
+		/// Performs dragging operation
+		/// </summary>
+		/// <param name="draggedElement">Dragged element</param>
+		/// <param name="draggingState">Dragging state</param>
+		/// <param name="delta">Delta between start position and current position</param>
+		/// <param name="smallDelta">Delta between previous position and current position</param>
+		protected abstract void DragInternal(TElement draggedElement, DraggingState draggingState, double delta, double smallDelta);
 	}
 }
