@@ -29,6 +29,7 @@ namespace Manufaktura.Controls.WPF.Test
 				.AddRhythm(16, 32, 16, 32, 8, 8)
 				.ApplyStemDirection(VerticalDirection.Up)
 				.AddLyrics("Wlazł ko-tek na pło-tek"));
+			firstStaff.Elements.Add(new MetronomeDirection(Tempo.Allegro, DirectionPlacementType.Above));
 
 			firstStaff.Elements.Add(new Barline());
 

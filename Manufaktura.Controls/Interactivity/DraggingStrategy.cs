@@ -21,7 +21,8 @@ namespace Manufaktura.Controls.Interactivity
 
 		public static IDraggingStrategy For(MusicalSymbol draggedElement)
 		{
-			return strategies.Value.FirstOrDefault(s => s.ElementType == draggedElement.GetType());
+			return strategies.Value.FirstOrDefault(s => s.ElementType == draggedElement.GetType()) ??
+				strategies.Value.FirstOrDefault(s => draggedElement.GetType().GetTypeInfo().IsSubclassOf(s.ElementType));
 		}
 	}
 
