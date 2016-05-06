@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model.Events;
+﻿using Manufaktura.Controls.Model.Collections;
+using Manufaktura.Controls.Model.Events;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Model.Rules;
 using Manufaktura.Music.Model;

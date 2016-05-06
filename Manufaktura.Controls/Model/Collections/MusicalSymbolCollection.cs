@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
-namespace Manufaktura.Controls.Model
+namespace Manufaktura.Controls.Model.Collections
 {
 	/// <summary>
 	/// Encapsulates a list of musical symbols. Applies custom rules upon adding new elements.
 	/// </summary>
-	public class MusicalSymbolCollection : IList<MusicalSymbol>, ICollection<MusicalSymbol>, IEnumerable<MusicalSymbol>
+	public class MusicalSymbolCollection : ItemManagingCollection<MusicalSymbol>
 	{
-		private List<MusicalSymbol> innerList = new List<MusicalSymbol>();
 		private Staff staff;
 
 		public MusicalSymbolCollection(Staff staff)
@@ -17,113 +14,25 @@ namespace Manufaktura.Controls.Model
 			this.staff = staff;
 		}
 
-		/// <summary>
-		/// Returns the number of elements in list.
-		/// </summary>
-		public int Count
+		protected override void BindEvents(MusicalSymbol item)
 		{
-			get { return innerList.Count; }
 		}
 
-		public bool IsFixedSize
+		protected override void ManageItemOnAdd(MusicalSymbol item)
 		{
-			get { return false; }
-		}
-
-		public bool IsReadOnly
-		{
-			get { return false; }
-		}
-
-		public MusicalSymbol this[int index]
-		{
-			get
-			{
-				return innerList[index];
-			}
-			set
-			{
-				innerList[index] = value;
-				staff.ApplyRules(value);
-			}
-		}
-
-		public void Add(MusicalSymbol item)
-		{
-			innerList.Add(item);
 			staff.ApplyRules(item);
 			item.Staff = staff;
 		}
 
-		public void AddRange(IEnumerable<MusicalSymbol> items)
+		protected override void ManageItemOnRemove(MusicalSymbol item)
 		{
-			innerList.AddRange(items);
-			foreach (var item in items)
-			{
-				staff.ApplyRules(item);
-				item.Staff = staff;
-			}
+			item.Staff = null;
 		}
 
-		public void Clear()
+		protected override void UnbindEvents(MusicalSymbol item)
 		{
-			innerList.Clear();
 		}
 
-		public bool Contains(MusicalSymbol item)
-		{
-			return innerList.Contains(item);
-		}
 
-		public bool Contains(object value)
-		{
-			return innerList.Contains(value);
-		}
-
-		public void CopyTo(MusicalSymbol[] array, int arrayIndex)
-		{
-			innerList.CopyTo(array, arrayIndex);
-		}
-
-		public IEnumerator<MusicalSymbol> GetEnumerator()
-		{
-			return innerList.GetEnumerator();
-		}
-
-		public List<MusicalSymbol> GetRange(int index, int count)
-		{
-			return innerList.GetRange(index, count);
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return innerList.GetEnumerator();
-		}
-
-		public int IndexOf(MusicalSymbol item)
-		{
-			return innerList.IndexOf(item);
-		}
-
-		public void Insert(int index, MusicalSymbol item)
-		{
-			innerList.Insert(index, item);
-			item.Staff = staff;
-			staff.ApplyRules(item);
-		}
-
-		public bool Remove(MusicalSymbol item)
-		{
-			return innerList.Remove(item);
-		}
-
-		public void RemoveAt(int index)
-		{
-			innerList.RemoveAt(index);
-		}
-
-		private void HandleItem_MeasureInvalidated(object sender, Events.InvalidateEventArgs<Measure> e)
-		{
-		}
 	}
 }

@@ -80,6 +80,7 @@
     <Compile Include="Model\BeamGroup.cs" />
     <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
     <Compile Include="Model\Clef.cs" />
+    <Compile Include="Model\Collections\ItemManagingCollection.cs" />
     <Compile Include="Model\Collections\LyricsCollection.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Events\InvalidateEventArgs.cs" />

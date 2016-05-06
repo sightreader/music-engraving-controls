@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model.Assertions;
+using Manufaktura.Controls.Model.Collections;
 using Manufaktura.Controls.Model.Events;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
