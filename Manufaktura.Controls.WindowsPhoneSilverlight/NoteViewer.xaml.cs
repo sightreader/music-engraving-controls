@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Interactivity;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
 using System;
@@ -27,7 +28,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 		public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
 		public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
 
-		private DraggingState<Point> _draggingState = new DraggingState<Point>();
+		private DraggingState _draggingState = new DraggingState();
 		private Score _innerScore;
 
 		public NoteViewer()
@@ -176,7 +177,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 			MainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
 
 			//Start dragging:
-			_draggingState.StartDragging(e.GetPosition(MainCanvas));
+			_draggingState.StartDragging(CanvasScoreRenderer.ConvertPoint(e.GetPosition(MainCanvas)));
 
 			//Check if element under cursor is staff element:
 			FrameworkElement element = e.OriginalSource as FrameworkElement;
@@ -214,22 +215,12 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 			if (!_draggingState.IsDragging || _innerScore == null) return;
 
 			Point currentPosition = e.GetPosition(MainCanvas);
-			double horizontalDifference = Math.Abs(_draggingState.MousePositionOnStartDragging.X - currentPosition.X);
-			if (horizontalDifference > 30)
+			var strategy = DraggingStrategy.For(SelectedElement);
+			if (strategy != null)
 			{
-				_draggingState.StopDragging();
-				return;
+				strategy.Drag(Renderer, SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
 			}
-			double difference = _draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 
-			Note note = SelectedElementInner as Note;
-			if (note != null)
-			{
-				int midiPitch = _draggingState.MidiPitchOnStartDragging + (int)(difference / 2);
-				Debug.WriteLine(string.Format("Difference: {0}   MidiPitch: {1}", difference, midiPitch));
-				note.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
-													//TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
-			}
 			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
 		}
 
@@ -252,13 +243,26 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 		private void RenderOnCanvas(Measure measure)
 		{
 			if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
+			var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
+			foreach (var beamGroup in beamGroupsForThisMeasure)
+			{
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == beamGroup).Select(d => d.Key).ToList();
+				frameworkElements.RemoveAllFrom(Renderer.Canvas);
+			}
+
 			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
 			{
-				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
-				foreach (var frameworkElement in frameworkElements)
+				var note = element as Note;
+				if (note != null)
 				{
-					Renderer.Canvas.Children.Remove(frameworkElement);
+					foreach (var lyric in note.Lyrics)
+					{
+						var lyricsFrameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == lyric).Select(d => d.Key).ToList();
+						lyricsFrameworkElements.RemoveAllFrom(Renderer.Canvas);
+					}
 				}
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
+				frameworkElements.RemoveAllFrom(Renderer.Canvas);
 			}
 
 			var brush = Foreground as SolidColorBrush;

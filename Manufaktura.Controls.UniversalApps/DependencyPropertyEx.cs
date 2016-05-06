@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace Manufaktura.Controls.UniversalApps
 {
@@ -14,6 +16,15 @@ namespace Manufaktura.Controls.UniversalApps
 		public static DependencyProperty Register<TControl, TProperty>(Expression<Func<TControl, TProperty>> property, TProperty defaultValue, PropertyChangedCallback propertyChangedCallback)
 		{
 			return DependencyProperty.Register(GetPropertyName(property), typeof(TProperty), typeof(TControl), new PropertyMetadata(defaultValue, propertyChangedCallback));
+		}
+
+		public static IEnumerable<FrameworkElement> RemoveAllFrom(this IEnumerable<FrameworkElement> frameworkElements, Canvas canvas)
+		{
+			foreach (var frameworkElement in frameworkElements)
+			{
+				canvas.Children.Remove(frameworkElement);
+			}
+			return frameworkElements;
 		}
 
 		private static string GetPropertyName<TControl, TProperty>(Expression<Func<TControl, TProperty>> propertyLambda)
