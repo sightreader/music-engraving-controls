@@ -65,6 +65,7 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(); } }
+
 		public Guid Id { get; private set; }
 
 		/// <summary>
@@ -72,9 +73,12 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(); } }
 
-		public Measure Measure { get; internal set; }
-		public Staff Staff { get; internal set; }
+		public virtual Measure Measure { get; internal set; }
+
+		public virtual Staff Staff { get; internal set; }
+
 		public virtual MusicalSymbolType Type { get { return MusicalSymbolType.Unknown; } }
+
 		internal bool SuppressEvents { get; set; }
 
 		/// <summary>
@@ -107,6 +111,11 @@ namespace Manufaktura.Controls.Model
 		public override string ToString()
 		{
 			return Type.ToString();
+		}
+
+		internal void InvalidateMeasure()
+		{
+			Staff?.FireMeasureInvalidated(this, Measure);
 		}
 
 		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

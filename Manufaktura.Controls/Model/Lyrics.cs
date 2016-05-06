@@ -9,6 +9,8 @@ namespace Manufaktura.Controls.Model
 	/// </summary>
 	public class Lyrics : MusicalSymbol, IHasCustomYPosition
 	{
+		private double? defaultYPosition;
+
 		/// <summary>
 		/// Initializes a new insance of Lyrics.
 		/// </summary>
@@ -19,7 +21,7 @@ namespace Manufaktura.Controls.Model
 		public Lyrics(SyllableType type, string text, double? defaultY)
 		{
 			Syllables.Add(new Syllable(type, text));
-			DefaultYPosition = defaultY;
+			defaultYPosition = defaultY;
 		}
 
 		public Lyrics(SyllableType type, string text)
@@ -27,9 +29,46 @@ namespace Manufaktura.Controls.Model
 		{
 		}
 
-		public double? DefaultYPosition { get; set; }
+		public double? DefaultYPosition
+		{
+			get
+			{
+				return defaultYPosition;
+			}
+			set
+			{
+				defaultYPosition = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public override Measure Measure
+		{
+			get
+			{
+				return Note.Measure;
+			}
+
+			internal set
+			{
+			}
+		}
+
+		public Note Note { get; internal set; }
 
 		public int Number { get; set; }
+
+		public override Staff Staff
+		{
+			get
+			{
+				return Note.Staff;
+			}
+
+			internal set
+			{
+			}
+		}
 
 		/// <summary>
 		/// Syllables that form a single word

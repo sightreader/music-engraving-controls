@@ -48,7 +48,8 @@ namespace Manufaktura.Controls.Extensions
 				if (note == null) continue;
 				var syllable = syllableQueue.Dequeue();
 
-				note.Lyrics = new List<Lyrics> { new Lyrics(syllable.Type, syllable.Text) };
+				note.Lyrics.Clear();
+				note.Lyrics.Add(new Lyrics(syllable.Type, syllable.Text));
 			}
 
 			return notes;

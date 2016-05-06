@@ -13,17 +13,25 @@ namespace Manufaktura.Controls.Model
 
 		public double Angle => Point.BeamAngle(Start, End);
 		public Point End { get; internal set; }
+
+		public override Measure Measure
+		{
+			get
+			{
+				return Members.FirstOrDefault(m => m.Measure != null)?.Measure;
+			}
+
+			internal set
+			{
+			}
+		}
+
 		public ICollection<NoteOrRest> Members { get; set; } = new List<NoteOrRest>();
 		public Point Start { get; internal set; }
 
 		public override string ToString()
 		{
 			return $"Beam group of {Members.Count} members with angle {Angle}.";
-		}
-
-		internal void InvalidateMeasure()
-		{
-			Staff?.FireMeasureInvalidated(this, Members.FirstOrDefault(m => m.Measure != null)?.Measure);
 		}
 	}
 }

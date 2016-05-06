@@ -70,6 +70,7 @@
     <Compile Include="Interactivity\DirectionDraggingStrategy.cs" />
     <Compile Include="Interactivity\DraggingStrategy.cs" />
     <Compile Include="Interactivity\IDraggingStrategy.cs" />
+    <Compile Include="Interactivity\LyricsDraggingStrategy.cs" />
     <Compile Include="Interactivity\NoteDraggingStrategy.cs" />
     <Compile Include="IoC\ExpressionActivator.cs" />
     <Compile Include="IoC\ManufakturaResolver.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Model\BeamGroup.cs" />
     <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
     <Compile Include="Model\Clef.cs" />
+    <Compile Include="Model\Collections\LyricsCollection.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Events\InvalidateEventArgs.cs" />
     <Compile Include="Model\Fonts\MusicFontStyles.cs" />
@@ -99,7 +101,7 @@
     <Compile Include="Model\MetronomeDirection.cs" />
     <Compile Include="Model\Mordent.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
-    <Compile Include="Model\MusicalSymbolCollection.cs" />
+    <Compile Include="Model\Collections\MusicalSymbolCollection.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\NullMusicalSymbol.cs" />
@@ -123,10 +125,10 @@
     <Compile Include="Model\ScoreEncoding.cs" />
     <Compile Include="Model\ScoreInfo.cs" />
     <Compile Include="Model\Slur.cs" />
-    <Compile Include="Model\StaffCollection.cs" />
+    <Compile Include="Model\Collections\StaffCollection.cs" />
     <Compile Include="Model\StaffFragment.cs" />
     <Compile Include="Model\StaffSystem.cs" />
-    <Compile Include="Model\SystemCollection.cs" />
+    <Compile Include="Model\Collections\SystemCollection.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />

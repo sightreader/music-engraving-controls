@@ -251,12 +251,12 @@ namespace Manufaktura.Controls.Rendering
 
 		private void DrawLyrics(ScoreRendererBase renderer, Note element)
 		{
-			double textPositionY = scoreService.CurrentLinePositions[4] + 10;    //Default value if default-y is not set
+			double versePositionY = scoreService.CurrentLinePositions[4] + 10;    //Default value if default-y is not set
 			foreach (Lyrics lyrics in element.Lyrics)
 			{
-				lyrics.Measure = scoreService.CurrentMeasure;
-				lyrics.Staff = scoreService.CurrentStaff;
-				if (lyrics.DefaultYPosition.HasValue) textPositionY = scoreService.CurrentLinePositions[0] + renderer.TenthsToPixels(lyrics.DefaultYPosition.Value) * -1;
+				var textPosition = lyrics.DefaultYPosition.HasValue ?
+					scoreService.CurrentLinePositions[0] + renderer.TenthsToPixels(lyrics.DefaultYPosition.Value) :
+					versePositionY;
 
 				StringBuilder sBuilder = new StringBuilder();
 				sBuilder.Append(lyrics.Text);
@@ -272,9 +272,9 @@ namespace Manufaktura.Controls.Rendering
 				//else
 				if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-");
 
-				renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, scoreService.CursorPositionX, textPositionY, lyrics);
+				renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, scoreService.CursorPositionX, textPosition, lyrics);
 
-				if (!lyrics.DefaultYPosition.HasValue) textPositionY += 12; //Move down if default-y is not set
+				if (!lyrics.DefaultYPosition.HasValue) versePositionY += 12; //Move down if default-y is not set
 			}
 		}
 

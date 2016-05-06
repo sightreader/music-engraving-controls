@@ -30,7 +30,7 @@ namespace Manufaktura.Controls.Xamarin.Test
 			firstStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
 
 			var note = new Note(Pitch.A5, RhythmicDuration.Eighth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Start });
-			note.Lyrics = new List<Lyrics>();
+			note.Lyrics.Clear();
 			note.Lyrics.Add(new Lyrics() { Syllables = new List<Lyrics.Syllable>() { new Lyrics.Syllable (SyllableType.Begin, "xxx") }  });
 			score.FirstStaff.Elements.Add(note);
 			score.FirstStaff.Elements.Add(new Note(Pitch.C5, RhythmicDuration.Sixteenth.AddDots(1), VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Continue, NoteBeamType.Start }));
