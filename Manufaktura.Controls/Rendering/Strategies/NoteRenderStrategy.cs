@@ -254,7 +254,7 @@ namespace Manufaktura.Controls.Rendering
 			double textPositionY = scoreService.CurrentLinePositions[4] + 10;    //Default value if default-y is not set
 			foreach (Lyrics lyrics in element.Lyrics)
 			{
-				if (lyrics.DefaultYPosition.HasValue) textPositionY = scoreService.CurrentLinePositions[0] + lyrics.DefaultYPosition.Value * -1 - 40;  //TODO: Sprawdzić względem czego jest default-y i usunąć to durne -40
+				if (lyrics.DefaultYPosition.HasValue) textPositionY = scoreService.CurrentLinePositions[0] + renderer.TenthsToPixels(lyrics.DefaultYPosition.Value) * -1;
 
 				StringBuilder sBuilder = new StringBuilder();
 				sBuilder.Append(lyrics.Text);
@@ -291,7 +291,7 @@ namespace Manufaktura.Controls.Rendering
 		{
 			foreach (Ornament ornament in element.Ornaments)
 			{
-				double yPositionShift = ornament.DefaultYPosition.HasValue ? ornament.DefaultYPosition.Value * -1 * 0.5d : (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
+				double yPositionShift = ornament.DefaultYPosition.HasValue ? renderer.TenthsToPixels(ornament.DefaultYPosition.Value) * -1 : (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
 				Mordent mordent = ornament as Mordent;
 				if (mordent != null)
 				{
