@@ -213,9 +213,19 @@ namespace Manufaktura.Controls.Rendering
 
 		public abstract void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner);
 
+		public double PixelsToTenths(double pixels)
+		{
+			return 10d * (pixels / Settings.LineSpacing);
+		}
+
 		public abstract void Render(Score score);
 
 		public abstract void Render(Measure measure);
+
+		public double TenthsToPixels(double tenths)
+		{
+			return Settings.LineSpacing * (tenths / 10d);
+		}
 
 		internal void BreakSystem(double distance = 0)
 		{

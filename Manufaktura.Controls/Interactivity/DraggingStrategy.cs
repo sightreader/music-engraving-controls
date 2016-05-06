@@ -1,7 +1,9 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -30,7 +32,7 @@ namespace Manufaktura.Controls.Interactivity
 	{
 		public Type ElementType => typeof(TElement);
 
-		public void Drag(object draggedElement, DraggingState draggingState, Point currentPosition)
+		public void Drag(ScoreRendererBase renderer, object draggedElement, DraggingState draggingState, Point currentPosition)
 		{
 			double horizontalDifference = Math.Abs(draggingState.MousePositionOnStartDragging.X - currentPosition.X);
 			if (horizontalDifference > 30)
@@ -40,9 +42,11 @@ namespace Manufaktura.Controls.Interactivity
 			}
 			double delta = draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 			double smallDelta = draggingState.MousePreviousPosition.Y - currentPosition.Y;
+			Debug.WriteLine($"delta: {delta} smalldelta: {smallDelta} InitPos: {draggingState.MousePositionOnStartDragging} PrevPos: {draggingState.MousePreviousPosition} CurrentPos: {currentPosition}");
 			draggingState.MousePreviousPosition = currentPosition;
+			
 
-			DragInternal((TElement)draggedElement, draggingState, delta, smallDelta);
+			DragInternal(renderer, (TElement)draggedElement, draggingState, delta, smallDelta);
 		}
 
 		/// <summary>
@@ -52,6 +56,6 @@ namespace Manufaktura.Controls.Interactivity
 		/// <param name="draggingState">Dragging state</param>
 		/// <param name="delta">Delta between start position and current position</param>
 		/// <param name="smallDelta">Delta between previous position and current position</param>
-		protected abstract void DragInternal(TElement draggedElement, DraggingState draggingState, double delta, double smallDelta);
+		protected abstract void DragInternal(ScoreRendererBase renderer, TElement draggedElement, DraggingState draggingState, double delta, double smallDelta);
 	}
 }

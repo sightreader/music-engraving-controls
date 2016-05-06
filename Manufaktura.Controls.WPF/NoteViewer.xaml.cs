@@ -249,7 +249,7 @@ namespace Manufaktura.Controls.WPF
 			var strategy = DraggingStrategy.For(SelectedElement);
 			if (strategy != null)
 			{
-				strategy.Drag(SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
+				strategy.Drag(Renderer, SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
 			}
 
 			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);

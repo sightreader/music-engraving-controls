@@ -43,7 +43,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         text = dynamicsType.Name.LocalName;
                     }
                     Direction dir = new Direction();
-                    dir.DefaultY = defaultY;
+                    dir.DefaultYPosition = defaultY;
                     dir.Placement = placement;
                     dir.Text = text;
                     staff.Elements.Add(dir);

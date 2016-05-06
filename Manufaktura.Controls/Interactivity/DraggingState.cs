@@ -1,8 +1,9 @@
 ﻿using Manufaktura.Controls.Primitives;
+using System.Diagnostics;
 
 namespace Manufaktura.Controls.Interactivity
 {
-	public struct DraggingState
+	public class DraggingState
 	{
 		public bool IsDragging { get; private set; }
 
@@ -16,6 +17,7 @@ namespace Manufaktura.Controls.Interactivity
 			IsDragging = true;
 			MousePositionOnStartDragging = startingPosition;
 			MousePreviousPosition = startingPosition;
+			Debug.WriteLine("Dragging started");
 		}
 
 		public void StopDragging()
@@ -24,6 +26,7 @@ namespace Manufaktura.Controls.Interactivity
 			MousePositionOnStartDragging = default(Point);
 			MousePreviousPosition = default(Point);
 			MidiPitchOnStartDragging = 0;
+			Debug.WriteLine("Dragging stopped");
 		}
 	}
 }

@@ -95,7 +95,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 var dir = new Direction();
                 d.IfAttribute("default-y").HasValue<int>().Then(v =>
                 {
-                    dir.DefaultY = v;
+                    dir.DefaultYPosition = v;
                     dir.Placement = DirectionPlacementType.Custom;
                 });
                 d.IfAttribute("placement").HasValue(new Dictionary<string, DirectionPlacementType>

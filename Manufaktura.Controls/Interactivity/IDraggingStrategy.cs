@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering;
 using System;
 
 namespace Manufaktura.Controls.Interactivity
@@ -7,6 +8,6 @@ namespace Manufaktura.Controls.Interactivity
 	{
 		Type ElementType { get; }
 
-		void Drag(object draggedElement, DraggingState draggingState, Point currentPosition);
+		void Drag(ScoreRendererBase renderer, object draggedElement, DraggingState draggingState, Point currentPosition);
 	}
 }

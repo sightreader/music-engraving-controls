@@ -3,13 +3,13 @@
     /// <summary>
     /// Represents text directions.
     /// </summary>
-    public class Direction : MusicalSymbol
+    public class Direction : MusicalSymbol, IHasCustomYPosition
     {
-        protected int defaultY = 0;
+        protected double? defaultY = 0;
         protected DirectionPlacementType placement = DirectionPlacementType.Above;
         protected string text = "";
 
-        public int DefaultY { get { return defaultY; } set { defaultY = value; OnPropertyChanged(() => DefaultY); } }
+        public double? DefaultYPosition { get { return defaultY; } set { defaultY = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Direction placement.

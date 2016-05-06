@@ -1,11 +1,12 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Rendering;
 using System.Linq;
 
 namespace Manufaktura.Controls.Interactivity
 {
 	public class BeamGroupDraggingStrategy : DraggingStrategy<BeamGroup>
 	{
-		protected override void DragInternal(BeamGroup draggedElement, DraggingState draggingState, double delta, double smallDelta)
+		protected override void DragInternal(ScoreRendererBase renderer, BeamGroup draggedElement, DraggingState draggingState, double delta, double smallDelta)
 		{
 			if (draggedElement.Members.OfType<Note>().Count() < 2) return;
 			var firstElement = draggedElement.Members.OfType<Note>().First();
