@@ -340,9 +340,7 @@ namespace Manufaktura.Controls.Rendering
 			if (element.Duration == RhythmicDuration.Whole) return;
 
 			double tmpStemPosY;
-			tmpStemPosY = scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) +
-				scoreService.CurrentScore.Staves.Take(scoreService.CurrentStaffNo - 1).Sum(s => s.Height) +
-				element.StemDefaultY * -1.0f / 2.0f;
+			tmpStemPosY = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.StemDefaultY);
 
 			if (element.StemDirection == VerticalDirection.Down)
 			{
@@ -383,7 +381,7 @@ namespace Manufaktura.Controls.Rendering
 				if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
 					renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - uglyModifier + 30),
 						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
-			if(!element.IgnoreStemLengthCalculation) element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+			element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 		}
 
 		private void DrawTies(ScoreRendererBase renderer, Note element, double notePositionY)

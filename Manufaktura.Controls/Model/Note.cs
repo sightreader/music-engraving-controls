@@ -179,8 +179,6 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
-		internal bool IgnoreStemLengthCalculation { get; set; }
-
 		/// <summary>
 		/// Creates a new instance of Note from given midi pitch and duration.
 		/// </summary>
