@@ -7,7 +7,7 @@ namespace Manufaktura.Controls.Model
 	/// <summary>
 	/// Represents a single word
 	/// </summary>
-	public class Lyrics : IHasCustomYPosition
+	public class Lyrics : MusicalSymbol, IHasCustomYPosition
 	{
 		/// <summary>
 		/// Initializes a new insance of Lyrics.
@@ -64,6 +64,11 @@ namespace Manufaktura.Controls.Model
 				if (lastSyllable == null) return SyllableType.Single;
 				return lastSyllable.Type;
 			}
+		}
+
+		public override string ToString()
+		{
+			return $"Lyrics \"{Text}\"";
 		}
 
 		public class Syllable

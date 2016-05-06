@@ -262,19 +262,22 @@ namespace Manufaktura.Controls.WPF
 			foreach (var beamGroup in beamGroupsForThisMeasure)
 			{
 				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == beamGroup).Select(d => d.Key).ToList();
-				foreach (var frameworkElement in frameworkElements)
-				{
-					Renderer.Canvas.Children.Remove(frameworkElement);
-				}
+				frameworkElements.RemoveAllFrom(Renderer.Canvas);
 			}
 
 			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
 			{
-				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
-				foreach (var frameworkElement in frameworkElements)
+				var note = element as Note;
+				if (note != null)
 				{
-					Renderer.Canvas.Children.Remove(frameworkElement);
+					foreach (var lyric in note.Lyrics)
+					{
+						var lyricsFrameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == lyric).Select(d => d.Key).ToList();
+						lyricsFrameworkElements.RemoveAllFrom(Renderer.Canvas);
+					}
 				}
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
+				frameworkElements.RemoveAllFrom(Renderer.Canvas);
 			}
 
 			var brush = Foreground as SolidColorBrush;
