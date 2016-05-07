@@ -231,13 +231,12 @@ namespace Manufaktura.Controls.Rendering
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
 			ReturnCarriage();
 
-			if (scoreService.CurrentSystem.Height == 0)
-			{
-				scoreService.CurrentSystem.Height = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count : distance;
-			}
+			var averageSystemHeight = (scoreService.CurrentScore.DefaultPageSettings.DefaultStaffDistance * scoreService.CurrentScore.Staves.Count - 1) +
+				Settings.LineSpacing * 4 * scoreService.CurrentScore.Staves.Count;
+			if (scoreService.CurrentSystem.Height == 0) scoreService.CurrentSystem.Height = averageSystemHeight.Value;
 
 			List<double> newLinePositions = new List<double>();
-			foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height);
+			foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height + distance);
 			scoreService.BeginNewSystem();
 			scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
 			scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));

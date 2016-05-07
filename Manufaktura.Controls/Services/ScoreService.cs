@@ -60,7 +60,7 @@ namespace Manufaktura.Controls.Services
 		public Staff CurrentStaff { get; private set; }
 
 		/// <summary>
-		/// Current staff height.
+		/// Current staff height. Computed by line positions.
 		/// </summary>
 		public double CurrentStaffHeight
 		{

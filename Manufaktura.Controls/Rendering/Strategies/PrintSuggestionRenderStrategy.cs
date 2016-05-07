@@ -22,7 +22,7 @@ namespace Manufaktura.Controls.Rendering.Strategies
         {
             if (element.IsSystemBreak && !renderer.Settings.IsPanoramaMode)
             {
-                renderer.BreakSystem(element.SystemDistance ?? scoreService.CurrentScore.DefaultPageSettings.DefaultSystemDistance ?? 0);
+                renderer.BreakSystem(renderer.TenthsToPixels(element.SystemDistance ?? scoreService.CurrentScore.DefaultPageSettings.DefaultSystemDistance ?? 0));
 
                 MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
                 strategy.Render(scoreService.CurrentClef, renderer);
