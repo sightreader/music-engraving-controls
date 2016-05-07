@@ -13,7 +13,7 @@ namespace Manufaktura.Controls.Interactivity
 			draggedElement.SuppressEvents = true;
 			draggedElement.Placement = DirectionPlacementType.Custom;
 			draggedElement.SuppressEvents = false;
-			draggedElement.DefaultYPosition -= renderer.PixelsToTenths(smallDelta);
+			draggedElement.DefaultYPosition += renderer.PixelsToTenths(smallDelta);
 		}
 	}
 }

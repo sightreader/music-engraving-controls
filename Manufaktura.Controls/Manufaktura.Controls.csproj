@@ -188,7 +188,6 @@
     <Compile Include="Parser\MusicXml\Strategies\ClefParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\ClefWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\DirectionParsingStrategy.cs" />
-    <Compile Include="Parser\MusicXml\Strategies\DirectionTypeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\EncodingParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\HarmonyParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\KeyParsingStrategy.cs" />
