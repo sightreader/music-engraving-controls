@@ -42,8 +42,8 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 						if (note.HasCustomStemEndPosition) continue;
 						for (int i = staff.Elements.IndexOf(note) + 1; i < staff.Elements.Count; i++)
 						{
-							if (staff.Elements[i].Type != MusicalSymbolType.Note) continue;
-							Note note2 = (Note)staff.Elements[i];
+							Note note2 = staff.Elements[i] as Note;
+							if (note2 == null) continue;
 							if (note2.BeamList.Count > 0)
 							{
 								if (note2.BeamList[0] == NoteBeamType.End)

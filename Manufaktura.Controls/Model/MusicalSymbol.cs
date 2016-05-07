@@ -19,8 +19,6 @@ namespace Manufaktura.Controls.Model
 
 	public enum HorizontalPlacement { Left, Right };
 
-	public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction, Staff, PrintSuggestion, ChordSign };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
-
 	public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
 
 	public enum NoteSlurType { None, Start, Stop };
@@ -79,8 +77,6 @@ namespace Manufaktura.Controls.Model
 
 		public virtual Staff Staff { get; internal set; }
 
-		public virtual MusicalSymbolType Type { get { return MusicalSymbolType.Unknown; } }
-
 		internal bool SuppressEvents { get; set; }
 
 		/// <summary>
@@ -108,11 +104,6 @@ namespace Manufaktura.Controls.Model
 		public Color CoalesceColor(ScoreRendererBase renderer)
 		{
 			return CustomColor.HasValue ? CustomColor.Value : renderer.Settings.DefaultColor;
-		}
-
-		public override string ToString()
-		{
-			return Type.ToString();
 		}
 
 		internal void InvalidateMeasure()

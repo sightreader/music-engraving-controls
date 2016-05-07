@@ -180,14 +180,6 @@ namespace Manufaktura.Controls.Model
 		public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
 		public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
 
-		public override MusicalSymbolType Type
-		{
-			get
-			{
-				return MusicalSymbolType.Note;
-			}
-		}
-
 		/// <summary>
 		/// Creates a new instance of Note from given midi pitch and duration.
 		/// </summary>

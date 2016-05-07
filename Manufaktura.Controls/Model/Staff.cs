@@ -79,14 +79,6 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public Score Score { get; internal set; }
 
-		public override MusicalSymbolType Type
-		{
-			get
-			{
-				return MusicalSymbolType.Staff;
-			}
-		}
-
 		/// <summary>
 		/// Retrieves a symbol that meats specific requirements and is relative to specific symbol.
 		/// </summary>

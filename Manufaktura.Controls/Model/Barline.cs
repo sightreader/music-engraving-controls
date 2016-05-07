@@ -26,13 +26,5 @@
 		public RepeatSignType RepeatSign { get { return repeatSign; } set { repeatSign = value; } }
 
 		public BarlineStyle Style { get; set; } = BarlineStyle.Regular;
-
-		public override MusicalSymbolType Type
-		{
-			get
-			{
-				return MusicalSymbolType.Barline;
-			}
-		}
 	}
 }

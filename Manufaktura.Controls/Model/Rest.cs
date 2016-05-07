@@ -38,14 +38,6 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; OnPropertyChanged(() => MultiMeasure); } }
 
-		public override MusicalSymbolType Type
-		{
-			get
-			{
-				return MusicalSymbolType.Rest;
-			}
-		}
-
 		public override string ToString()
 		{
 			return string.Format("{0} {1}", base.ToString(), Duration.ToString());
