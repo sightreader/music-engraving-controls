@@ -254,8 +254,8 @@ namespace Manufaktura.Controls.Rendering
 				for (int i = 0; i < 5; i++)
 				{
 					scoreService.CurrentLinePositions[i] = Settings.PaddingTop + i * Settings.LineSpacing + sharpLineModifier;
-					scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 				}
+				scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 				return;
 			}
 			if (scoreService.CurrentScore.Staves.Count < 2)
