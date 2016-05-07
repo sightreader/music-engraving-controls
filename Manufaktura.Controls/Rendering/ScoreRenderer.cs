@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace Manufaktura.Controls.Rendering
@@ -23,6 +24,7 @@ namespace Manufaktura.Controls.Rendering
 
 		public sealed override void Render(Measure measure)
 		{
+			Contract.Assert(measure != null);
 			scoreService.ReturnToFirstSystem();
 			scoreService.MoveTo(measure, Settings);
 			if (Settings.IsPanoramaMode && scoreService.CurrentSystemNo != 1)
