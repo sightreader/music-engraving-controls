@@ -10,9 +10,9 @@ namespace Manufaktura.Controls.Interactivity
 			draggedElement.SuppressEvents = true;
 			if (!draggedElement.DefaultYPosition.HasValue)
 			{
-				draggedElement.DefaultYPosition = renderer.PixelsToTenths(30);
+				draggedElement.DefaultYPosition = renderer.PixelsToTenths(-30);
 			}
-			draggedElement.DefaultYPosition -= renderer.PixelsToTenths(smallDelta);
+			draggedElement.DefaultYPosition += renderer.PixelsToTenths(smallDelta);
 			draggedElement.SuppressEvents = false;
 			draggedElement.InvalidateMeasure();
 		}

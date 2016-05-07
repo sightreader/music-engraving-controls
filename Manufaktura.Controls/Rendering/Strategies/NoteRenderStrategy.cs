@@ -255,7 +255,7 @@ namespace Manufaktura.Controls.Rendering
 			foreach (Lyrics lyrics in element.Lyrics)
 			{
 				var textPosition = lyrics.DefaultYPosition.HasValue ?
-					scoreService.CurrentLinePositions[0] + renderer.TenthsToPixels(lyrics.DefaultYPosition.Value) :
+					scoreService.CurrentLinePositions[0] - renderer.TenthsToPixels(lyrics.DefaultYPosition.Value) :
 					versePositionY;
 
 				StringBuilder sBuilder = new StringBuilder();
