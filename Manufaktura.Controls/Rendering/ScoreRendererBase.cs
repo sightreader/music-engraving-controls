@@ -1,5 +1,4 @@
 ﻿using Manufaktura.Controls.IoC;
-using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
@@ -265,7 +264,7 @@ namespace Manufaktura.Controls.Rendering
 			}
 
 			ReturnCarriage();
-			scoreService.CurrentStaff.Height = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing + 30 : distance;
+			scoreService.CurrentStaff.Height = scoreService.CurrentStaffHeight + distance;
 
 			List<double> newLinePositions = new List<double>();
 			scoreService.ReturnToFirstSystem();
@@ -301,7 +300,9 @@ namespace Manufaktura.Controls.Rendering
 
 		protected void RenderStaff(Staff staff)
 		{
-			BreakToNextStaff();
+			if (!staff.Score.DefaultPageSettings.DefaultStaffDistance.HasValue) staff.Score.DefaultPageSettings.DefaultStaffDistance = PixelsToTenths(Settings.LineSpacing * 6); //TODO: Zastanowić się gdzie ustawiać tę domyślną wartość
+
+			BreakToNextStaff(TenthsToPixels(staff.Score.DefaultPageSettings.DefaultStaffDistance ?? 0));
 			if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
 			{
 				double newPageWidth = staff.Measures.Where(m => m.Width.HasValue).Sum(m => m.Width.Value * Settings.CustomElementPositionRatio);
