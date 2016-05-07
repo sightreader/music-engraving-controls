@@ -11,28 +11,6 @@ namespace Manufaktura.Controls.Linq
 	public static class ScoreExtensions
 	{
 		/// <summary>
-		/// Returns first symbol with specific MusicalSymbolType.
-		/// </summary>
-		/// <param name="musicalSymbols">Sequence to search</param>
-		/// <param name="type">Type of musical symbol</param>
-		/// <returns>Found element od default</returns>
-		public static MusicalSymbol FirstOrDefault(this IEnumerable<MusicalSymbol> musicalSymbols, MusicalSymbolType type)
-		{
-			return musicalSymbols.FirstOrDefault(ms => ms.Type == type);
-		}
-
-		/// <summary>
-		/// Returns enumerator of symbols with specific MusicalSymbolType.
-		/// </summary>
-		/// <param name="musicalSymbols">Sequence to search</param>
-		/// <param name="type">Type of musical symbol</param>
-		/// <returns>Enumerator of symbols with specific MusicalSymbolType</returns>
-		public static IEnumerable<MusicalSymbol> OfType(this IEnumerable<MusicalSymbol> musicalSymbols, MusicalSymbolType type)
-		{
-			return musicalSymbols.Where(ms => ms.Type == type);
-		}
-
-		/// <summary>
 		/// Returns the largest denominator (pulse) of note collection
 		/// </summary>
 		/// <param name="noteOrRests"></param>

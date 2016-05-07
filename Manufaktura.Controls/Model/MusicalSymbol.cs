@@ -13,6 +13,8 @@ namespace Manufaktura.Controls.Model
 
 	public enum ClefType { GClef, CClef, FClef };
 
+	public enum DesiredHookDirections { Any, ForwardHook, BackwardHook };
+
 	public enum DirectionPlacementType { Above, Below, Custom };
 
 	public enum HorizontalPlacement { Left, Right };

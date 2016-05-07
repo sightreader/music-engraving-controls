@@ -4,6 +4,10 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Model.Collections
 {
+	/// <summary>
+	/// Collection that performs special actions on items on adding and removing.
+	/// </summary>
+	/// <typeparam name="TItem">Item type</typeparam>
 	public abstract class ItemManagingCollection<TItem> : IList<TItem>, ICollection<TItem>, IEnumerable<TItem>
 	{
 		private List<TItem> innerList = new List<TItem>();

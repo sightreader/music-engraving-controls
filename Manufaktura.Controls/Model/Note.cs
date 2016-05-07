@@ -15,6 +15,7 @@ namespace Manufaktura.Controls.Model
 		private VerticalPlacement articulationPlacement = VerticalPlacement.Below;
 		private List<NoteBeamType> beamList = new List<NoteBeamType>();
 		private bool customStemEndPosition = false;
+		private DesiredHookDirections desiredHookDirection = DesiredHookDirections.Any;
 		private bool hasNatural = false;
 		private bool isChordElement = false;
 		private bool isGraceNote = false;
@@ -29,7 +30,6 @@ namespace Manufaktura.Controls.Model
 		private NoteTieType tieType = NoteTieType.None;
 		private int tremoloLevel = 0;
 		private NoteTrillMark trillMark = NoteTrillMark.None;
-		//1 - eights (quavers), 2 - sixteenths (semiquavers), etc. / 1 - ósemki, 2 - szesnastki, itp.
 
 		/// <summary>
 		/// Creates a new instance of a Note.
@@ -108,6 +108,14 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public List<NoteBeamType> BeamList { get { return beamList; } set { beamList = value; OnPropertyChanged(() => BeamList); } }
+
+		public DesiredHookDirections DesiredHookDirection
+		{
+			get { return desiredHookDirection; }
+
+			set { desiredHookDirection = value; OnPropertyChanged(); }
+		}
+
 		public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
 		/// <summary>

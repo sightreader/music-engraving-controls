@@ -284,7 +284,7 @@ namespace Manufaktura.Controls.Rendering
 
 		protected void DetermineClef(Staff staff)
 		{
-			var clef = staff.Elements.FirstOrDefault(MusicalSymbolType.Clef) as Clef;
+			var clef = staff.Elements.OfType<Clef>().FirstOrDefault();
 			if (clef == null) return;
 
 			scoreService.CurrentClef = clef;

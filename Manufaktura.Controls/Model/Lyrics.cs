@@ -46,7 +46,7 @@ namespace Manufaktura.Controls.Model
 		{
 			get
 			{
-				return Note.Measure;
+				return Note?.Measure;
 			}
 
 			internal set
@@ -62,7 +62,7 @@ namespace Manufaktura.Controls.Model
 		{
 			get
 			{
-				return Note.Staff;
+				return Note?.Staff;
 			}
 
 			internal set

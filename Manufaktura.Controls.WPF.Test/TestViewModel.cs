@@ -101,7 +101,8 @@ namespace Manufaktura.Controls.WPF.Test
 				.ApplyStemDirection(VerticalDirection.Up)
 				.AddDots(0, 1, 0));
 
-			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(Formatting.RebeamMode.ToBeats, hookDirectionAlgorithm);
+			firstStaff.Elements.OfType<Note>().FirstOrDefault(n => n.Pitch == Pitch.E4 && n.BaseDuration == RhythmicDuration.D32nd).DesiredHookDirection = DesiredHookDirections.ForwardHook;
+			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(RebeamMode.ToBeats, hookDirectionAlgorithm);
 
 			/*
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));

@@ -26,7 +26,7 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
-		public ICollection<NoteOrRest> Members { get; set; } = new List<NoteOrRest>();
+		public ICollection<NoteOrRest> Members { get; private set; } = new List<NoteOrRest>();
 		public Point Start { get; internal set; }
 
 		public override string ToString()

@@ -58,6 +58,8 @@ namespace Manufaktura.Controls.Formatting
 
 		private NoteBeamType DetermineHookDirection(List<NoteOrRest> notes, Note currentNote, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
 		{
+			if (currentNote.DesiredHookDirection == DesiredHookDirections.BackwardHook) return NoteBeamType.BackwardHook;
+			if (currentNote.DesiredHookDirection == DesiredHookDirections.ForwardHook) return NoteBeamType.ForwardHook;
 			if (currentNote == notes.Last()) return NoteBeamType.BackwardHook;
 			if (currentNote == notes.First()) return NoteBeamType.ForwardHook;
 
