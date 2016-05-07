@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 namespace Manufaktura.Controls.Interactivity
 {
+	/// <summary>
+	/// Dragging state holder
+	/// </summary>
 	public class DraggingState
 	{
 		public bool IsDragging { get; private set; }

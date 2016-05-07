@@ -130,10 +130,5 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 		{
 			return isVisible ? Visibility.Visible : Visibility.Collapsed;
 		}
-
-		private Point ConvertPoint(Primitives.Point point)
-		{
-			return new Point(point.X, point.Y);
-		}
 	}
 }

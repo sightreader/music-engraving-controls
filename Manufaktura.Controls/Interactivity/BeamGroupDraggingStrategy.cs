@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Interactivity
 {
+	/// <summary>
+	/// Strategy of dragging beam groups
+	/// </summary>
 	public class BeamGroupDraggingStrategy : DraggingStrategy<BeamGroup>
 	{
 		protected override void DragInternal(ScoreRendererBase renderer, BeamGroup draggedElement, DraggingState draggingState, double delta, double smallDelta)
