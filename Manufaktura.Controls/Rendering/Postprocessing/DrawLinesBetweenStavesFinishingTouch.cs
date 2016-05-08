@@ -41,6 +41,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
 					if (system.LinePositions == null) continue;
 					var staffFragment = system.Staves[i];
+					if (!system.LinePositions.ContainsKey(i + 1) || !system.LinePositions.ContainsKey(i + 2)) continue;
 					renderer.DrawLine(0, system.LinePositions[i + 1][4], 0, system.LinePositions[i + 2][0], staffFragment);
 					foreach (var measure in staff.Measures.Where(m => m.Barline != null && m.System == system))
 					{

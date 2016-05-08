@@ -49,8 +49,8 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, PeekType.BeginningOfTuplet);
 			int index = staff.Elements.IndexOf(firstElementInTuplet);
 			List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index);
-			double averageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == measurementService.TupletState.TupletPlacement).
-				Average(n => n.ActualStemLength);
+			var elementsUnderTupletForAverageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == measurementService.TupletState.TupletPlacement).ToList();
+			double averageStemLength = elementsUnderTupletForAverageStemLength.Count == 0 ? 0 : elementsUnderTupletForAverageStemLength.Average(n => n.ActualStemLength);
 			averageStemLength += 10;    //Add space
 			int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
 			double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X + 6;
