@@ -30,8 +30,8 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
+		public ScorePage Page { get; internal set; }
 		public Score Score { get; internal set; }
-
 		public List<StaffFragment> Staves { get; internal set; } = new List<StaffFragment>();
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace Manufaktura.Controls.Model
 
 		public override string ToString()
 		{
-			return string.Format("Staff system {0}", Score.Systems.IndexOf(this) + 1);
+			return string.Format("Staff system {0}", Score.Systems.ToList().IndexOf(this) + 1);
 		}
 
 		internal void BuildStaffFragments(Dictionary<Staff, double[]> linePositions)

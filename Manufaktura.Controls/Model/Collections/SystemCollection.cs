@@ -7,11 +7,13 @@ namespace Manufaktura.Controls.Model.Collections
 	public class SystemCollection : ItemManagingCollection<StaffSystem>
 	{
 		private List<StaffSystem> innerList = new List<StaffSystem>();
+		private ScorePage page;
 		private Score score;
 
-		public SystemCollection(Score score)
+		public SystemCollection(ScorePage page)
 		{
-			this.score = score;
+			this.score = page.Score;
+			this.page = page;
 		}
 
 		public event EventHandler<InvalidateEventArgs<Score>> ScoreInvalidated;
@@ -23,11 +25,13 @@ namespace Manufaktura.Controls.Model.Collections
 		protected override void ManageItemOnAdd(StaffSystem item)
 		{
 			item.Score = score;
+			item.Page = page;
 		}
 
 		protected override void ManageItemOnRemove(StaffSystem item)
 		{
 			item.Score = null;
+			item.Page = null;
 		}
 
 		protected override void UnbindEvents(StaffSystem item)

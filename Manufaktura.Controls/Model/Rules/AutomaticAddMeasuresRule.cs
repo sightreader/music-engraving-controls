@@ -35,7 +35,7 @@ namespace Manufaktura.Controls.Model.Rules
 				if (system == null)
 				{
 					system = new StaffSystem(staff.Score);
-					staff.Score.Systems.Add(system);
+					staff.Score.Pages.Last().Systems.Add(system);
 				}
 			}
 			return system;

@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             if (system == null)
             {
                 system = new StaffSystem(staff.Score);
-                staff.Score.Systems.Add(system);
+				staff.Score.Pages.Last().Systems.Add(system);
             }
             var measure = new Measure(staff, system);
             measure.Number = element.ParseAttribute<int>("number");

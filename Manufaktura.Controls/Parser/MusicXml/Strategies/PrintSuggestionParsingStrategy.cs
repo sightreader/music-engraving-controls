@@ -32,15 +32,14 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
             if (suggestion.IsPageBreak)
             {
-                var page = new ScorePage();
+                var page = new ScorePage(staff.Score);
                 staff.Score.Pages.Add(page);
             }
             if (suggestion.IsSystemBreak)
             {
                 var system = new StaffSystem(staff.Score);
-                staff.Score.Pages.Last().Systems.Add(system);
                 staff.Measures.Last().System = system;
-                staff.Score.Systems.Add(system);
+				staff.Score.Pages.Last().Systems.Add(system);
                 if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
                 {
                     foreach (var s in staff.Part.Staves)

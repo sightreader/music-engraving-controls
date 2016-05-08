@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Collections;
 using Manufaktura.Controls.Rendering;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Manufaktura.Controls.Services
@@ -90,7 +91,7 @@ namespace Manufaktura.Controls.Services
 		/// </summary>
 		public int CurrentSystemNo
 		{
-			get { return Systems.IndexOf(CurrentSystem) + 1; }
+			get { return Systems.ToList().IndexOf(CurrentSystem) + 1; }
 		}
 
 		/// <summary>
@@ -115,7 +116,7 @@ namespace Manufaktura.Controls.Services
 		/// <summary>
 		/// All systems in the score.
 		/// </summary>
-		public SystemCollection Systems
+		public IReadOnlyList<StaffSystem> Systems
 		{
 			get { return CurrentScore.Systems; }
 		}
@@ -180,11 +181,11 @@ namespace Manufaktura.Controls.Services
 		/// </summary>
 		public void BeginNewSystem()
 		{
-			var currentSystemIndex = Systems.IndexOf(CurrentSystem);
+			var currentSystemIndex = Systems.ToList().IndexOf(CurrentSystem);
 			if (currentSystemIndex == Systems.Count - 1)
 			{
 				var newSystem = new StaffSystem(CurrentScore);
-				Systems.Add(newSystem);
+				CurrentScore.Pages.Last().Systems.Add(newSystem);
 				CurrentSystem = newSystem;
 				return;
 			}

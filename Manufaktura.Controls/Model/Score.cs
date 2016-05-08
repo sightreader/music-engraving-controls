@@ -5,6 +5,8 @@ using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Manufaktura.Controls.Model
 {
@@ -22,11 +24,9 @@ namespace Manufaktura.Controls.Model
 			Staves.StaffInvalidated += HandleStaves_StaffInvalidated;
 			Staves.MeasureInvalidated += HandleStaves_MeasureInvalidated;
 			Parts = new List<Part>();
-			Systems = new SystemCollection(this);
-			Systems.ScoreInvalidated += Systems_ScoreInvalidated;
 			Pages = new List<ScorePage>();
-			Pages.Add(new ScorePage());
-			DefaultPageSettings = new ScorePage();
+			Pages.Add(new ScorePage(this));
+			DefaultPageSettings = new ScorePage(this);
 		}
 
 		public event EventHandler<InvalidateEventArgs<Measure>> MeasureInvalidated;
@@ -113,7 +113,7 @@ namespace Manufaktura.Controls.Model
 
 		public StaffCollection Staves { get; private set; }
 
-		public SystemCollection Systems { get; private set; }
+		public IReadOnlyList<StaffSystem> Systems => new ReadOnlyCollection<StaffSystem>(Pages.SelectMany(p => p.Systems).ToList());
 
 		/// <summary>
 		/// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -192,33 +192,6 @@ namespace Manufaktura.Controls.Model
 			staff.Elements.Add(Key.FromTonic(tonic, flags));
 			Staves.Add(staff);
 			return this;
-		}
-
-		/// <summary>
-		/// Creates a new score with the same number of staves. Every element of every staff is the same object as in the source score.
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete("Test. Do not use.")]
-		public Score CreateEntangledScore()
-		{
-			var entangledScore = new Score();
-			foreach (var system in Systems)
-			{
-				var entangledSystem = new StaffSystem(entangledScore);
-				entangledScore.Systems.Add(entangledSystem);
-			}
-			foreach (var page in Pages)
-			{
-				var entangledPage = new ScorePage();
-				entangledScore.Pages.Add(entangledPage);
-			}
-			foreach (var staff in Staves)
-			{
-				var entangledStaff = new Staff();
-				foreach (var element in staff.Elements) entangledStaff.Elements.Add(element);
-				entangledScore.Staves.Add(entangledStaff);
-			}
-			return entangledScore;
 		}
 
 		public override string ToString()
