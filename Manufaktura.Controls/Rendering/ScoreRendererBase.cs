@@ -302,7 +302,7 @@ namespace Manufaktura.Controls.Rendering
 			if (!staff.Score.DefaultPageSettings.DefaultStaffDistance.HasValue) staff.Score.DefaultPageSettings.DefaultStaffDistance = PixelsToTenths(Settings.LineSpacing * 6); //TODO: Zastanowić się gdzie ustawiać tę domyślną wartość
 
 			BreakToNextStaff(TenthsToPixels(staff.Score.DefaultPageSettings.DefaultStaffDistance ?? 0));
-			if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
+			if (!Settings.IgnoreCustomElementPositions && Settings.RenderingMode == ScoreRenderingModes.Panorama)
 			{
 				double newPageWidth = staff.Measures.Where(m => m.Width.HasValue).Sum(m => m.Width.Value * Settings.CustomElementPositionRatio);
 				if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
@@ -313,6 +313,7 @@ namespace Manufaktura.Controls.Rendering
 
 			foreach (MusicalSymbol symbol in staff.Elements)
 			{
+				//TODO: Renderowanie jednej strony
 				try
 				{
 					var renderStrategy = GetProperRenderStrategy(symbol);

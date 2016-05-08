@@ -27,7 +27,7 @@ namespace Manufaktura.Controls.Rendering
 			Contract.Assert(measure != null);
 			scoreService.ReturnToFirstSystem();
 			scoreService.MoveTo(measure, Settings);
-			if (Settings.IsPanoramaMode && scoreService.CurrentSystemNo != 1)
+			if (Settings.RenderingMode == ScoreRenderingModes.Panorama && scoreService.CurrentSystemNo != 1)
 			{
 				scoreService.ReturnToFirstSystem(); //W trybie panoramy system zawsze jest pierwszy
 				scoreService.CurrentClef.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4] - 24.4f - (scoreService.CurrentClef.Line - 1) * Settings.LineSpacing);
@@ -77,7 +77,7 @@ namespace Manufaktura.Controls.Rendering
             }
 
             //Set height of current system in Panorama mode. This is used for determining the size of the control:
-            if (Settings.IsPanoramaMode && scoreService.CurrentSystem != null && scoreService.CurrentSystem.Height == 0)
+            if (Settings.RenderingMode == ScoreRenderingModes.Panorama && scoreService.CurrentSystem != null && scoreService.CurrentSystem.Height == 0)
             {
                 scoreService.CurrentSystem.Height = (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count;
             }

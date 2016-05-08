@@ -235,6 +235,7 @@
     <Compile Include="Model\TimeSignature.cs" />
     <Compile Include="Primitives\Rectangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\ScoreRenderingModes.cs" />
     <Compile Include="Rendering\Snippets\Beams.cs" />
     <Compile Include="Rendering\Strategies\BarlineRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\ClefRenderStrategy.cs" />

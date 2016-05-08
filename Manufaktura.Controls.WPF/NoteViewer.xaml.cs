@@ -2,7 +2,6 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -20,12 +19,12 @@ namespace Manufaktura.Controls.WPF
 	/// </summary>
 	public partial class NoteViewer : UserControl
 	{
-		public static readonly DependencyProperty CurrentPageProperty = DependencyPropertyEx.Register<NoteViewer, int>(v => v.CurrentPage, 1);
+		public static readonly DependencyProperty CurrentPageProperty = DependencyPropertyEx.Register<NoteViewer, int>(v => v.CurrentPage, 1, CurrentPageChanged);
 		public static readonly DependencyProperty InvalidatingModeProperty = DependencyPropertyEx.Register<NoteViewer, InvalidatingModes>(v => v.InvalidatingMode, InvalidatingModes.RedrawInvalidatedRegion);
 		public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
 		public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
-		public static readonly DependencyProperty IsPanoramaModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsPanoramaMode, true);
 		public static readonly DependencyProperty IsSelectableProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsSelectable, true);
+		public static readonly DependencyProperty RenderingModeProperty = DependencyPropertyEx.Register<NoteViewer, ScoreRenderingModes>(v => v.RenderingMode, ScoreRenderingModes.Panorama, RenderingModeChanged);
 		public static readonly DependencyProperty ScoreSourceProperty = DependencyPropertyEx.Register<NoteViewer, Score>(v => v.ScoreSource, null, ScoreSourceChanged);
 		public static readonly DependencyProperty SelectedElementProperty = DependencyPropertyEx.Register<NoteViewer, MusicalSymbol>(v => v.SelectedElement, null);
 		public static readonly DependencyProperty XmlSourceProperty = DependencyPropertyEx.Register<NoteViewer, string>(v => v.XmlSource, null, XmlSourceChanged);
@@ -72,16 +71,16 @@ namespace Manufaktura.Controls.WPF
 			set { SetValue(IsOccupyingSpaceProperty, value); }
 		}
 
-		public bool IsPanoramaMode
-		{
-			get { return (bool)GetValue(IsPanoramaModeProperty); }
-			set { SetValue(IsPanoramaModeProperty, value); }
-		}
-
 		public bool IsSelectable
 		{
 			get { return (bool)GetValue(IsSelectableProperty); }
 			set { SetValue(IsSelectableProperty, value); }
+		}
+
+		public ScoreRenderingModes RenderingMode
+		{
+			get { return (ScoreRenderingModes)GetValue(RenderingModeProperty); }
+			set { SetValue(RenderingModeProperty, value); }
 		}
 
 		public Score ScoreSource
@@ -148,6 +147,14 @@ namespace Manufaktura.Controls.WPF
 				return new Size(xx, yy);
 			}
 			return base.MeasureOverride(availableSize);
+		}
+
+		private static void CurrentPageChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		{
+		}
+
+		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		{
 		}
 
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -296,7 +303,7 @@ namespace Manufaktura.Controls.WPF
 
 			MainCanvas.Children.Clear();
 			Renderer = new CanvasScoreRenderer(MainCanvas);
-			Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
+			Renderer.Settings.RenderingMode = RenderingMode;
 			var brush = Foreground as SolidColorBrush;
 			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;

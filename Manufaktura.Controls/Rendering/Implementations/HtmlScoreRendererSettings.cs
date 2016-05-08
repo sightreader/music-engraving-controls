@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Fonts = new Dictionary<MusicFontStyles, HtmlFontInfo>();
             RenderSurface = HtmlRenderSurface.Canvas;
             Height = 150;
-            IsPanoramaMode = true;
+			RenderingMode = ScoreRenderingModes.Panorama;
         }
 
         public enum HtmlRenderSurface
