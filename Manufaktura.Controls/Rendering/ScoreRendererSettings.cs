@@ -29,6 +29,11 @@ namespace Manufaktura.Controls.Rendering
 		/// </summary>
 		public IMusicFont CurrentFont { get; set; }
 
+		/// <summary>
+		/// Page to display if renderer is in SinglePage mode.
+		/// </summary>
+		public int CurrentPage { get; set; }
+
 		public double CustomElementPositionRatio { get; set; }
 
 		/// <summary>

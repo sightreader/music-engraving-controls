@@ -304,6 +304,7 @@ namespace Manufaktura.Controls.WPF
 			MainCanvas.Children.Clear();
 			Renderer = new CanvasScoreRenderer(MainCanvas);
 			Renderer.Settings.RenderingMode = RenderingMode;
+			Renderer.Settings.CurrentPage = CurrentPage;
 			var brush = Foreground as SolidColorBrush;
 			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;

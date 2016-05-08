@@ -313,7 +313,12 @@ namespace Manufaktura.Controls.Rendering
 
 			foreach (MusicalSymbol symbol in staff.Elements)
 			{
-				//TODO: Renderowanie jednej strony
+				if (Settings.RenderingMode == ScoreRenderingModes.SinglePage)
+				{
+					var page = staff.Score.Pages.FirstOrDefault(p => p.Systems.Contains(symbol.Measure.System));
+					var pageNumber = page == null ? -1 : staff.Score.Pages.IndexOf(page) + 1;
+					if (pageNumber != Settings.CurrentPage) continue;
+				}
 				try
 				{
 					var renderStrategy = GetProperRenderStrategy(symbol);

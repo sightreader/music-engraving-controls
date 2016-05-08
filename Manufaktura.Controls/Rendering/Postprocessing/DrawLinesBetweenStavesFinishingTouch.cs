@@ -31,6 +31,14 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 				var staff = scoreService.CurrentScore.Staves[i];
 				foreach (var system in scoreService.CurrentScore.Systems)
 				{
+					if (renderer.Settings.RenderingMode ==  ScoreRenderingModes.SinglePage)
+					{
+						continue;
+						var page = staff.Score.Pages.FirstOrDefault(p => p.Systems.Contains(system));
+						var pageNumber = page == null ? -1 : staff.Score.Pages.IndexOf(page) + 1;
+						if (pageNumber != renderer.Settings.CurrentPage) continue;
+					}
+
 					if (system.LinePositions == null) continue;
 					var staffFragment = system.Staves[i];
 					renderer.DrawLine(0, system.LinePositions[i + 1][4], 0, system.LinePositions[i + 2][0], staffFragment);
