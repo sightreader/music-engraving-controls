@@ -210,7 +210,7 @@ namespace Manufaktura.Controls.Services
 		{
 			var measureIndex = measure.Staff.Measures.IndexOf(measure);
 			var previousMeasure = measureIndex < 1 ? null : measure.Staff.Measures[measureIndex - 1];
-			if (previousMeasure != null && previousMeasure.System != measure.System) CursorPositionX = 0; //Issue #40 - jeśli takt był w innym systemie, to wyzeruj karetkę
+			if (rendererSettings.RenderingMode != ScoreRenderingModes.Panorama && previousMeasure != null && previousMeasure.System != measure.System) CursorPositionX = 0; //Issue #40 - jeśli takt był w innym systemie, to wyzeruj karetkę
 			else CursorPositionX = previousMeasure?.BarlineLocationX ?? 0;
 
 			CurrentStaff = measure.Staff;
