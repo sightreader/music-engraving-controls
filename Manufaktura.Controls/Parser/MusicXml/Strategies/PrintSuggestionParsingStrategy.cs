@@ -37,9 +37,9 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             }
             if (suggestion.IsSystemBreak)
             {
-                var system = new StaffSystem(staff.Score);
+				state.CurrentSystemNo++;
+                var system = NewSystem(state, staff);
                 staff.Measures.Last().System = system;
-				staff.Score.Pages.Last().Systems.Add(system);
                 if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
                 {
                     foreach (var s in staff.Part.Staves)
@@ -49,6 +49,17 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 }
             }
         }
+
+		private static StaffSystem NewSystem(MusicXmlParserState state, Staff staff)
+		{
+			if (staff == staff.Score.Staves.First())
+			{
+				var system = new StaffSystem(staff.Score);
+				staff.Score.Pages.Last().Systems.Add(system);
+				return system;
+			}
+			return staff.Score.Systems[state.CurrentSystemNo - 1];
+		}
 
         private PrintSuggestion CreateSuggestion(XElement element, MusicXmlParserState state)
         {

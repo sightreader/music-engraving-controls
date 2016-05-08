@@ -33,6 +33,8 @@ namespace Manufaktura.Controls.Parser
 
 			foreach (XElement partNode in xmlDocument.Descendants(XName.Get("part")))
 			{
+				state.CurrentSystemNo = 1;
+
 				var partId = partNode.ParseAttribute("id");
 				state.FirstLoop = true;
 				Staff staff = new Staff() { MeasureAddingRule = Staff.MeasureAddingRuleEnum.AddMeasuresManually };
