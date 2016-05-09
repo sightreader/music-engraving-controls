@@ -30,8 +30,6 @@
 			set { firstLoop = value; }
 		}
 
-		public double LastSystemDistance { get; set; }
-
 		public string PartID
 		{
 			get { return partID; }

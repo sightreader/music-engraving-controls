@@ -301,8 +301,9 @@ namespace Manufaktura.Controls.Rendering
 		protected void RenderStaff(Staff staff)
 		{
 			if (!staff.Score.DefaultPageSettings.DefaultStaffDistance.HasValue) staff.Score.DefaultPageSettings.DefaultStaffDistance = PixelsToTenths(Settings.LineSpacing * 6); //TODO: Zastanowić się gdzie ustawiać tę domyślną wartość
+			var staffDistance = scoreService.CurrentPage.DefaultStaffDistance ?? staff.Score.DefaultPageSettings.DefaultStaffDistance.Value;	//TODO: Bez sensu jest sprawdzanie tu Currentpage.DefaultStaffDistance, bo strony zmieniają się kawałek dalej. Tu jest pierwsza strona
 
-			BreakToNextStaff(TenthsToPixels(staff.Score.DefaultPageSettings.DefaultStaffDistance ?? 0));
+			BreakToNextStaff(TenthsToPixels(staffDistance));
 			if (!Settings.IgnoreCustomElementPositions && Settings.RenderingMode == ScoreRenderingModes.Panorama)
 			{
 				double newPageWidth = staff.Measures.Where(m => m.Width.HasValue).Sum(m => m.Width.Value * Settings.CustomElementPositionRatio);
