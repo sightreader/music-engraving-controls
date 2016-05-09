@@ -231,9 +231,10 @@ namespace Manufaktura.Controls.Rendering
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
 			ReturnCarriage();
 
-			var averageSystemHeight = (scoreService.CurrentScore.DefaultPageSettings.DefaultStaffDistance * scoreService.CurrentScore.Staves.Count - 1) +
+			var staffDistance = TenthsToPixels(scoreService.CurrentPage.DefaultStaffDistance ?? scoreService.CurrentScore.DefaultPageSettings.DefaultStaffDistance ?? 0);
+			var averageSystemHeight = (staffDistance * scoreService.CurrentScore.Staves.Count - 1) +
 				Settings.LineSpacing * 4 * scoreService.CurrentScore.Staves.Count;
-			if (scoreService.CurrentSystem.Height == 0) scoreService.CurrentSystem.Height = averageSystemHeight.Value;
+			if (scoreService.CurrentSystem.Height == 0) scoreService.CurrentSystem.Height = averageSystemHeight;
 
 			List<double> newLinePositions = new List<double>();
 			foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height + distance);
