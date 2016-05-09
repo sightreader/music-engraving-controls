@@ -1,48 +1,30 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Manufaktura.Controls.WPF
 {
-	public class CanvasScoreRenderer : ScoreRenderer<Canvas>
+	public class DispatcherCanvasScoreRenderer : CanvasScoreRenderer
 	{
-		private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
+		private Dispatcher dispatcher;
+		private Queue<FrameworkElement> renderingQueue = new Queue<FrameworkElement>();
 
-		public CanvasScoreRenderer(Canvas canvas)
-			: base(canvas)
+		public DispatcherCanvasScoreRenderer(Canvas canvas, Dispatcher dispatcher) : base(canvas)
 		{
-			OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
+			this.dispatcher = dispatcher;
 		}
 
-		public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
+		public int BufferSize { get; } = 50;
 
-		public static Point ConvertPoint(Primitives.Point point)
-		{
-			return new Point(point.X, point.Y);
-		}
-
-		public static Primitives.Point ConvertPoint(Point point)
-		{
-			return new Primitives.Point(point.X, point.Y);
-		}
-
-		public Color ConvertColor(Primitives.Color color)
-		{
-			return Color.FromArgb(color.A, color.R, color.G, color.B);
-		}
-
-		public Primitives.Color ConvertColor(Color color)
-		{
-			return new Primitives.Color(color.R, color.G, color.B, color.A);
-		}
-
-		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
+		public override async void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
 			if (!EnsureProperPage(owner)) return;
 			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
@@ -65,7 +47,7 @@ namespace Manufaktura.Controls.WPF
 			path.StrokeThickness = pen.Thickness;
 			path.Data = pathGeom;
 			path.Visibility = BoolToVisibility(owner.IsVisible);
-			Canvas.Children.Add(path);
+			renderingQueue.Enqueue(path);
 
 			OwnershipDictionary.Add(path, owner);
 		}
@@ -96,9 +78,11 @@ namespace Manufaktura.Controls.WPF
 			path.StrokeThickness = pen.Thickness;
 			path.Data = pathGeom;
 			path.Visibility = BoolToVisibility(owner.IsVisible);
-			Canvas.Children.Add(path);
+			renderingQueue.Enqueue(path);
 
 			OwnershipDictionary.Add(path, owner);
+
+			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
@@ -118,9 +102,11 @@ namespace Manufaktura.Controls.WPF
 			line.Y2 = endPoint.Y;
 			line.StrokeThickness = pen.Thickness;
 			line.Visibility = BoolToVisibility(owner.IsVisible);
-			Canvas.Children.Add(line);
+			renderingQueue.Enqueue(line);
 
 			OwnershipDictionary.Add(line, owner);
+
+			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
@@ -140,9 +126,11 @@ namespace Manufaktura.Controls.WPF
 			textBlock.Visibility = BoolToVisibility(owner.IsVisible);
 			System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
 			System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
-			Canvas.Children.Add(textBlock);
+			renderingQueue.Enqueue(textBlock);
 
 			OwnershipDictionary.Add(textBlock, owner);
+
+			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
@@ -170,58 +158,25 @@ namespace Manufaktura.Controls.WPF
 			viewBox.RenderTransform = new ScaleTransform(1, 1.9);
 			System.Windows.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
 			System.Windows.Controls.Canvas.SetTop(viewBox, location.Y);
-			Canvas.Children.Add(viewBox);
+			renderingQueue.Enqueue(viewBox);
 
 			OwnershipDictionary.Add(textBlock, owner);
+
+			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
-		public void MoveLayout(StaffSystem system, Point delta)
+		private void FlushBuffer()
 		{
-			foreach (var staffFragment in system.Staves)
+			dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
 			{
-				var systemElements = OwnershipDictionary.Where(d => d.Value == staffFragment).Select(d => d.Key).ToList();
-				foreach (var frameworkElement in systemElements)
+				lock (renderingQueue)
 				{
-					Move(frameworkElement, delta);
+					while (renderingQueue.Any())
+					{
+						Canvas.Children.Add(renderingQueue.Dequeue());
+					}
 				}
-			}
-
-			var alreadyMovedElements = new List<FrameworkElement>();
-			foreach (var element in system.Score.Staves.SelectMany(s => s.Elements).Where(e => e.Measure != null && e.Measure.System == system).Distinct())
-			{
-				var frameworkElements = OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
-				foreach (var frameworkElement in frameworkElements)
-				{
-					if (alreadyMovedElements.Contains(frameworkElement)) continue;
-					Move(frameworkElement, delta);
-					alreadyMovedElements.Add(frameworkElement);
-				}
-			}
-		}
-
-		protected Visibility BoolToVisibility(bool isVisible)
-		{
-			return isVisible ? Visibility.Visible : Visibility.Collapsed;
-		}
-
-		protected Pen ConvertPen(Primitives.Pen pen)
-		{
-			Pen wpfPen;
-			if (_penCache.ContainsKey(pen)) wpfPen = _penCache[pen];
-			else
-			{
-				wpfPen = new Pen(new SolidColorBrush(ConvertColor(pen.Color)), pen.Thickness);
-				_penCache.Add(pen, wpfPen);
-			}
-			return wpfPen;
-		}
-
-		private void Move(FrameworkElement element, Point delta)
-		{
-			var translation = new TranslateTransform();
-			translation.X = delta.X;
-			translation.Y = delta.Y;
-			element.RenderTransform = translation;
+			}));
 		}
 	}
 }

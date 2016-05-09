@@ -7,7 +7,7 @@
     <StackPanel Orientation="Vertical">
 
             <WPF:NoteViewer ScoreSource="{Binding Data}" RenderingMode="AllPages" IsOccupyingSpace="True" x:Name="noteViewerTest" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <WPF:NoteViewer RenderingMode="SinglePage" CurrentPage="1" IsOccupyingSpace="True" x:Name="noteViewer1" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <WPF:NoteViewer RenderingMode="AllPages" CurrentPage="1" IsOccupyingSpace="True" x:Name="noteViewer1" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <WPF:NoteViewer RenderingMode="Panorama" x:Name="noteViewer2" HorizontalAlignment="Stretch" IsOccupyingSpace="True" VerticalAlignment="Top" />
             <WPF:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
         <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CanvasScoreRenderer.cs" />
     <Compile Include="DependencyPropertyEx.cs" />
+    <Compile Include="DispatcherCanvasScoreRenderer.cs" />
     <Compile Include="DrawingContextScoreRenderer.cs" />
     <Compile Include="Fonts.cs" />
     <Compile Include="NoteViewer.xaml.cs">
