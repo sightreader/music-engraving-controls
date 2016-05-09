@@ -21,7 +21,7 @@ namespace Manufaktura.Controls.Rendering.Strategies
 		{
 			if (element.IsSystemBreak && renderer.Settings.RenderingMode != ScoreRenderingModes.Panorama)
 			{
-				renderer.BreakSystem(renderer.TenthsToPixels(element.SystemDistance ?? scoreService.CurrentScore.DefaultPageSettings.DefaultSystemDistance ?? 0));
+				renderer.BreakSystem(renderer.TenthsToPixels(element.SystemDistance ?? scoreService.CurrentScore.DefaultPageSettings.DefaultSystemDistance ?? 0), element.IsPageBreak);
 
 				MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
 				strategy.Render(scoreService.CurrentClef, renderer);

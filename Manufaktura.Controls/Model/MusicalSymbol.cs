@@ -65,7 +65,6 @@ namespace Manufaktura.Controls.Model
 		}
 
 		public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(); } }
-
 		public Guid Id { get; private set; }
 
 		/// <summary>
@@ -74,7 +73,9 @@ namespace Manufaktura.Controls.Model
 		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(); } }
 
 		public virtual Measure Measure { get; internal set; }
+		public ScorePage Page => Measure?.System?.Page;
 
+		public int? PageNumber => Page == null ? null : Staff?.Score?.Pages?.IndexOf(Page) + 1;
 		public virtual Staff Staff { get; internal set; }
 
 		internal bool SuppressEvents { get; set; }

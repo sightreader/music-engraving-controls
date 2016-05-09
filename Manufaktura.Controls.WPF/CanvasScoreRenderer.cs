@@ -44,6 +44,7 @@ namespace Manufaktura.Controls.WPF
 
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
+			if (!EnsureProperPage(owner)) return;
 			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
 
 			if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
@@ -71,6 +72,7 @@ namespace Manufaktura.Controls.WPF
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
 		{
+			if (!EnsureProperPage(owner)) return;
 			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
 			{
 				p1 = p1.Translate(CurrentScore.DefaultPageSettings);
@@ -101,6 +103,7 @@ namespace Manufaktura.Controls.WPF
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
 		{
+			if (!EnsureProperPage(owner)) return;
 			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
 			{
 				startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
@@ -122,6 +125,7 @@ namespace Manufaktura.Controls.WPF
 
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
 		{
+			if (!EnsureProperPage(owner)) return;
 			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
 			TextBlock textBlock = new TextBlock();
@@ -143,6 +147,7 @@ namespace Manufaktura.Controls.WPF
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
 		{
+			if (!EnsureProperPage(owner)) return;
 			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
 			TextBlock textBlock = new TextBlock();

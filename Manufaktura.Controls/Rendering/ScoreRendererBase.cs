@@ -226,7 +226,7 @@ namespace Manufaktura.Controls.Rendering
 			return Settings.LineSpacing * (tenths / 10d);
 		}
 
-		internal void BreakSystem(double distance = 0)
+		internal void BreakSystem(double distance = 0, bool breakPage = false)
 		{
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
 			ReturnCarriage();
@@ -237,7 +237,17 @@ namespace Manufaktura.Controls.Rendering
 			if (scoreService.CurrentSystem.Height == 0) scoreService.CurrentSystem.Height = averageSystemHeight;
 
 			List<double> newLinePositions = new List<double>();
-			foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height + distance);
+			if (breakPage && Settings.RenderingMode == ScoreRenderingModes.SinglePage)
+			{
+				newLinePositions = scoreService.LinePositions[1, scoreService.CurrentStaffNo].ToList();
+			}
+			else
+			{
+				var initialPositions = scoreService.CurrentLinePositions;
+				foreach (var position in initialPositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height + distance);
+			}
+
+
 			scoreService.BeginNewSystem();
 			scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
 			scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
@@ -315,12 +325,6 @@ namespace Manufaktura.Controls.Rendering
 
 			foreach (MusicalSymbol symbol in staff.Elements)
 			{
-				if (Settings.RenderingMode == ScoreRenderingModes.SinglePage)
-				{
-					var page = staff.Score.Pages.FirstOrDefault(p => p.Systems.Contains(symbol.Measure.System));
-					var pageNumber = page == null ? -1 : staff.Score.Pages.IndexOf(page) + 1;
-					if (pageNumber != Settings.CurrentPage) continue;
-				}
 				try
 				{
 					var renderStrategy = GetProperRenderStrategy(symbol);
@@ -333,6 +337,7 @@ namespace Manufaktura.Controls.Rendering
 			}
 
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
+
 			foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnStaff(staff, this);
 		}
 	}
