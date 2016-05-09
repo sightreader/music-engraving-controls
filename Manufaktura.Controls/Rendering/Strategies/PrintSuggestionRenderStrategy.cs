@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Services;
+using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Strategies
 {
@@ -33,6 +34,16 @@ namespace Manufaktura.Controls.Rendering.Strategies
 				//Render measure number:
 				renderer.DrawString((scoreService.CurrentMeasureNo).ToString(), MusicFontStyles.LyricsFont,
 					new Primitives.Point(0, scoreService.CurrentLinePositions[0] - 25), scoreService.CurrentStaff);
+			}
+
+			//Issue #44: Jeśli jesteśmy w trybie panoramy, to trzeba uzupełnić line positions dla pozostałych systemów:
+			if (renderer.Settings.RenderingMode == ScoreRenderingModes.Panorama)
+			{
+				var firstSystem = scoreService.Systems.First();
+				foreach (var system in scoreService.Systems)
+				{
+					system.BuildStaffFragments(firstSystem.LinePositions.ToDictionary(p => scoreService.CurrentScore.Staves[p.Key - 1], p => p.Value));
+				}
 			}
 		}
 	}
