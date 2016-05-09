@@ -86,13 +86,7 @@ namespace Manufaktura.Controls.WPF.Test
 		int systemSpacing = 0;
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			int delta = 0;
-			systemSpacing += 2;
-			foreach (var system in noteViewer1.InnerScore.Systems)
-			{
-				noteViewer1.MoveLayout(system, new Point(0, delta));
-				delta += systemSpacing;
-			}
+			noteViewer1.CurrentPage++;
 		}
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -103,20 +97,18 @@ namespace Manufaktura.Controls.WPF.Test
 
 		private void Button_Click_3(object sender, RoutedEventArgs e)
 		{
-			DataContext = null;
-			LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
+			noteViewer1.RenderingMode = Rendering.ScoreRenderingModes.Panorama;
 		}
 
 		private void Button_Click_4(object sender, RoutedEventArgs e)
 		{
-			DataContext = null;
-			LoadTestModel(HookDirectionAlgorithm.Second);
+			noteViewer1.RenderingMode = Rendering.ScoreRenderingModes.SinglePage;
+			noteViewer1.CurrentPage = 1;
 		}
 
 		private void Button_Click_5(object sender, RoutedEventArgs e)
 		{
-			DataContext = null;
-			LoadTestModel(HookDirectionAlgorithm.Third);
+			noteViewer1.RenderingMode = Rendering.ScoreRenderingModes.AllPages;
 		}
 	}
 }

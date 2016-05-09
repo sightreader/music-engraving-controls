@@ -151,10 +151,16 @@ namespace Manufaktura.Controls.WPF
 
 		private static void CurrentPageChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 		{
+			var noteViewer = obj as NoteViewer;
+			if (noteViewer.InnerScore == null) return;
+			noteViewer.BindAndRender(noteViewer.InnerScore);
 		}
 
 		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 		{
+			var noteViewer = obj as NoteViewer;
+			if (noteViewer.InnerScore == null) return;
+			noteViewer.BindAndRender(noteViewer.InnerScore);
 		}
 
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
