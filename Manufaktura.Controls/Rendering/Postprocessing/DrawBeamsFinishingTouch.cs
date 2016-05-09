@@ -68,6 +68,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 					{
 						var beamOffset = 28 + 4 * (beamNumber - 1) * (currentNote.StemDirection == VerticalDirection.Up ? 1 : -1);
 						var stemEnd = beamGroup.Start.TranslateHorizontallyAndMaintainAngle(beamGroup.Angle, currentNote.StemEndLocation.X - beamGroup.Start.X);
+						currentNote.StemStartLocation = stemEnd;
 						if (beamType == NoteBeamType.ForwardHook || beamType == NoteBeamType.BackwardHook)
 						{
 							var hookLength = beamType == NoteBeamType.ForwardHook ? 6 : -6;

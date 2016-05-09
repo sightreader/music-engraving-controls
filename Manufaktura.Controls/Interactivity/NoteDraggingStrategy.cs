@@ -13,8 +13,22 @@ namespace Manufaktura.Controls.Interactivity
 		{
 			Contract.Assert(draggedElement != null);
 			int midiPitch = draggingState.MidiPitchOnStartDragging + (int)(delta / 2);
+			draggedElement.SuppressEvents = true;
 			draggedElement.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
 														  //TODO: Ustalanie kierunku ogonka. Sprawdzić czy gdzieś to nie jest już zrobione, np. w PSAMie
+
+			DetermineStemDirection(draggedElement);
+
+			draggedElement.SuppressEvents = false;
+			draggedElement.InvalidateMeasure();
+		}
+
+		public static void DetermineStemDirection (Note draggedElement)
+		{
+			if (draggedElement.TextBlockLocation.Y < draggedElement.StemStartLocation.Y)
+				draggedElement.StemDirection = VerticalDirection.Down;
+			else
+				draggedElement.StemDirection = VerticalDirection.Up;
 		}
 	}
 }

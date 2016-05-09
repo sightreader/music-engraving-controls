@@ -32,6 +32,13 @@ namespace Manufaktura.Controls.Interactivity
 			firstElement.StemDefaultY -= smallDelta;
 			lastElement.StemDefaultY -= smallDelta;
 
+			foreach (var element in draggedElement.Members.OfType<Note>())
+			{
+				element.SuppressEvents = true;
+				NoteDraggingStrategy.DetermineStemDirection(element);
+				element.SuppressEvents = false;
+			}
+
 			firstElement.SuppressEvents = false;
 			lastElement.SuppressEvents = false;
 			draggedElement.InvalidateMeasure();

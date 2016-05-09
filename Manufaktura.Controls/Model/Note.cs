@@ -170,6 +170,8 @@ namespace Manufaktura.Controls.Model
 		public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(() => StemDirection); } }
 		public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
 
+		public Point StemStartLocation { get; internal set; }
+
 		/// <summary>
 		/// Step of note.
 		/// </summary>
