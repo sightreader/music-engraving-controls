@@ -1,181 +1,72 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Manufaktura.Controls.WPF
 {
 	public class DispatcherCanvasScoreRenderer : CanvasScoreRenderer
 	{
-		private Dispatcher dispatcher;
-		private Queue<FrameworkElement> renderingQueue = new Queue<FrameworkElement>();
+		private NoteViewer control;
+		private Queue<Action> renderingQueue = new Queue<Action>();
 
-		public DispatcherCanvasScoreRenderer(Canvas canvas, Dispatcher dispatcher) : base(canvas)
+		public DispatcherCanvasScoreRenderer(Canvas canvas, NoteViewer control) : base(canvas)
 		{
-			this.dispatcher = dispatcher;
+			this.control = control;
 		}
 
-		public int BufferSize { get; } = 50;
+		public int BufferSize { get; } = 5;
 
-		public override async void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
+		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+			renderingQueue.Enqueue(() => base.DrawArc(rect, startAngle, sweepAngle, pen, owner));
 
-			if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
-			PathGeometry pathGeom = new PathGeometry();
-			PathFigure pf = new PathFigure();
-			pf.StartPoint = new Point(rect.X, rect.Y);
-			ArcSegment arcSeg = new ArcSegment();
-			arcSeg.Point = new Point(rect.X + rect.Width, rect.Y);
-			arcSeg.RotationAngle = startAngle;
-			arcSeg.Size = new Size(rect.Width, rect.Height);
-			arcSeg.SweepDirection = sweepAngle < 180 ? SweepDirection.Counterclockwise : SweepDirection.Clockwise;
-			arcSeg.IsLargeArc = sweepAngle > 180;
-			pf.Segments.Add(arcSeg);
-			pathGeom.Figures.Add(pf);
-
-			Path path = new Path();
-			path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-			path.StrokeThickness = pen.Thickness;
-			path.Data = pathGeom;
-			path.Visibility = BoolToVisibility(owner.IsVisible);
-			renderingQueue.Enqueue(path);
-
-			OwnershipDictionary.Add(path, owner);
+			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
-			{
-				p1 = p1.Translate(CurrentScore.DefaultPageSettings);
-				p2 = p2.Translate(CurrentScore.DefaultPageSettings);
-				p3 = p3.Translate(CurrentScore.DefaultPageSettings);
-				p4 = p4.Translate(CurrentScore.DefaultPageSettings);
-			}
-
-			PathGeometry pathGeom = new PathGeometry();
-			PathFigure pf = new PathFigure();
-			pf.StartPoint = new Point(p1.X, p1.Y);
-			BezierSegment bezierSegment = new BezierSegment();
-			bezierSegment.Point1 = ConvertPoint(p2);
-			bezierSegment.Point2 = ConvertPoint(p3);
-			bezierSegment.Point3 = ConvertPoint(p4);
-			pf.Segments.Add(bezierSegment);
-			pathGeom.Figures.Add(pf);
-
-			Path path = new Path();
-			path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-			path.StrokeThickness = pen.Thickness;
-			path.Data = pathGeom;
-			path.Visibility = BoolToVisibility(owner.IsVisible);
-			renderingQueue.Enqueue(path);
-
-			OwnershipDictionary.Add(path, owner);
+			renderingQueue.Enqueue(() => base.DrawBezier(p1, p2, p3, p4, pen, owner));
 
 			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
-			{
-				startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
-				endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
-			}
-
-			var line = new Line();
-			line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-			line.X1 = startPoint.X;
-			line.X2 = endPoint.X;
-			line.Y1 = startPoint.Y;
-			line.Y2 = endPoint.Y;
-			line.StrokeThickness = pen.Thickness;
-			line.Visibility = BoolToVisibility(owner.IsVisible);
-			renderingQueue.Enqueue(line);
-
-			OwnershipDictionary.Add(line, owner);
+			renderingQueue.Enqueue(() => base.DrawLine(startPoint, endPoint, pen, owner));
 
 			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
 		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
-
-			TextBlock textBlock = new TextBlock();
-			Typeface typeface = Fonts.Get(fontStyle);
-			textBlock.FontSize = Fonts.GetSize(fontStyle);
-			textBlock.FontFamily = typeface.FontFamily;
-			textBlock.FontStretch = typeface.Stretch;
-			textBlock.FontStyle = typeface.Style;
-			textBlock.FontWeight = typeface.Weight;
-			textBlock.Text = text;
-			textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
-			textBlock.Visibility = BoolToVisibility(owner.IsVisible);
-			System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
-			System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
-			renderingQueue.Enqueue(textBlock);
-
-			OwnershipDictionary.Add(textBlock, owner);
+			renderingQueue.Enqueue(() => base.DrawString(text, fontStyle, location, color, owner));
 
 			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
 		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
-
-			TextBlock textBlock = new TextBlock();
-			Typeface typeface = Fonts.Get(fontStyle);
-			textBlock.FontSize = 200;
-			textBlock.FontFamily = typeface.FontFamily;
-			textBlock.FontStretch = typeface.Stretch;
-			textBlock.FontStyle = typeface.Style;
-			textBlock.FontWeight = typeface.Weight;
-			textBlock.Text = text;
-			textBlock.Margin = new Thickness(0, -25, 0, 0);
-			textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
-			textBlock.Visibility = BoolToVisibility(owner.IsVisible);
-
-			var viewBox = new Viewbox();
-			viewBox.Child = textBlock;
-			viewBox.Width = size.Width;
-			viewBox.Height = size.Height;
-			viewBox.Stretch = Stretch.Fill;
-			viewBox.RenderTransform = new ScaleTransform(1, 1.9);
-			System.Windows.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
-			System.Windows.Controls.Canvas.SetTop(viewBox, location.Y);
-			renderingQueue.Enqueue(viewBox);
-
-			OwnershipDictionary.Add(textBlock, owner);
+			renderingQueue.Enqueue(() => base.DrawStringInBounds(text, fontStyle, location, size, color, owner));
 
 			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
-		private void FlushBuffer()
+		public void FlushBuffer()
 		{
-			dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+			control.Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(() =>
 			{
 				lock (renderingQueue)
 				{
 					while (renderingQueue.Any())
 					{
-						Canvas.Children.Add(renderingQueue.Dequeue());
+						renderingQueue.Dequeue()();
 					}
 				}
+				control.InvalidateMeasure();
 			}));
 		}
 	}

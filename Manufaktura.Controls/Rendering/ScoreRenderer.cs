@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -83,6 +84,11 @@ namespace Manufaktura.Controls.Rendering
 			}
 
 			foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnScore(score, this);
+		}
+
+		public async Task RenderAsync(Score score)
+		{
+			await Task.Factory.StartNew(() => Render(score));
 		}
 
 		protected bool EnsureProperPage(MusicalSymbol owner)
