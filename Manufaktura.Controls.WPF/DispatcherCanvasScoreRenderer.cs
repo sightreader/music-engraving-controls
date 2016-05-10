@@ -18,7 +18,7 @@ namespace Manufaktura.Controls.WPF
 			this.control = control;
 		}
 
-		public int BufferSize { get; } = 5;
+		public int BufferSize { get; } = 1600;
 
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
@@ -57,7 +57,7 @@ namespace Manufaktura.Controls.WPF
 
 		public void FlushBuffer()
 		{
-			control.Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(() =>
+			control.Dispatcher.Invoke(DispatcherPriority.Background, new Action(() =>
 			{
 				lock (renderingQueue)
 				{
