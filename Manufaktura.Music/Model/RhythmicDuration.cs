@@ -52,11 +52,10 @@ namespace Manufaktura.Music.Model
 			}
 		}
 
-		public static RhythmicDuration operator -(RhythmicDuration d1, RhythmicDuration d2)
+		public static Proportion operator -(RhythmicDuration d1, RhythmicDuration d2)
 		{
 			var sum = d1.ToProportion() - d2.ToProportion();
-			sum = sum.Normalize();
-			return new RhythmicDuration(sum.Denominator);
+			return sum.Normalize();
 		}
 
 		public static bool operator !=(RhythmicDuration d1, RhythmicDuration d2)
@@ -64,11 +63,10 @@ namespace Manufaktura.Music.Model
 			return d1.Denominator != d2.Denominator || d1.Dots != d2.Dots;
 		}
 
-		public static RhythmicDuration operator +(RhythmicDuration d1, RhythmicDuration d2)
+		public static Proportion operator +(RhythmicDuration d1, RhythmicDuration d2)
 		{
 			var sum = d1.ToProportion() + d2.ToProportion();
-			sum = sum.Normalize();
-			return new RhythmicDuration(sum.Denominator);
+			return sum.Normalize();
 		}
 
 		public static bool operator <(RhythmicDuration d1, RhythmicDuration d2)

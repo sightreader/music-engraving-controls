@@ -105,6 +105,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls.Desktop\Manufaktura.Controls.Desktop.csproj">
+      <Project>{ddb37937-0275-4733-a1f3-50f442d4bc0f}</Project>
+      <Name>Manufaktura.Controls.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls.WPF\Manufaktura.Controls.WPF.csproj">
       <Project>{878452F2-698F-48F8-8AC1-BEBFE55CFAF3}</Project>
       <Name>Manufaktura.Controls.WPF</Name>

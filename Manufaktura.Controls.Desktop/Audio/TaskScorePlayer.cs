@@ -7,9 +7,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Manufaktura.Controls.WPF.Audio
+namespace Manufaktura.Controls.Desktop.Audio
 {
-	public class TaskScorePlayer : ScorePlayer
+	public abstract class TaskScorePlayer : ScorePlayer
 	{
 		public TaskScorePlayer(Score score) : base(score)
 		{
@@ -17,11 +17,6 @@ namespace Manufaktura.Controls.WPF.Audio
 
 		public override void Pause()
 		{
-		}
-
-		public override void PlayElement(MusicalSymbol element, Staff staff)
-		{
-			Debug.WriteLine($"Element {element} played.");
 		}
 
 		public override async void Start()
@@ -60,23 +55,27 @@ namespace Manufaktura.Controls.WPF.Audio
 			var elapsedTime = TimeSpan.Zero;
 			for (var i = 0; i < Score.FirstStaff.Measures.Count; i++)
 			{
-				var elements = new List<Tuple<RhythmicDuration, IHasDuration>>();
+				var elements = new List<Tuple<decimal, IHasDuration>>();
 				foreach (var staff in Score.Staves)
 				{
 					var measure = staff.Measures[i];
-					var durationElements = measure.Elements.OfType<IHasDuration>().Select(o => new Tuple<RhythmicDuration, IHasDuration>(new RhythmicDuration(o.BaseDuration.Denominator, o.NumberOfDots), o)).ToList();
-					for (int j = 1; j < durationElements.Count; j++)
+
+					var elapsed = 0m;
+					foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
 					{
-						durationElements[j] = new Tuple<RhythmicDuration, IHasDuration>(durationElements[j].Item1 + durationElements[j - 1].Item1, durationElements[j].Item2);
+						elements.Add(new Tuple<decimal, IHasDuration>(elapsed, durationElement));
+						elapsed += new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDecimal();
 					}
-					elements.AddRange(durationElements);
+
 				}
-				var orderedElements = elements.OrderBy(e => e.Item1.ToDecimal()).ToList();
+				var orderedElements = elements.OrderBy(e => e.Item1).ToList();
 				foreach (var element in orderedElements)
 				{
-					yield return new TimelineElement<IHasDuration>(element.Item1.ToTimeSpan(Tempo) + elapsedTime, element.Item2);
+					yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds((double)element.Item1 * Tempo.BeatUnit.Denominator * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
 				}
-				elapsedTime += orderedElements.Last().Item1.ToTimeSpan(Tempo);
+				var lastItem = orderedElements.Last();
+				var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDecimal();
+				elapsedTime += TimeSpan.FromMilliseconds((double)endOfMeasure * Tempo.BeatUnit.Denominator * Tempo.BeatTimeSpan.TotalMilliseconds);
 			}
 		}
 
@@ -84,10 +83,13 @@ namespace Manufaktura.Controls.WPF.Audio
 		{
 			lock (simultaneousElements)
 			{
+				Debug.WriteLine($"Playing: {string.Join(", ", simultaneousElements.Select(se => se.What).OfType<Note>().Select(n => n.Pitch).ToList())}");
 				while (simultaneousElements.Any())
 				{
 					var element = simultaneousElements.Dequeue();
-					PlayElement(element.What as MusicalSymbol, null);
+					var note = element.What as Note;
+					if (note == null) continue;
+					PlayElement(note, null);
 				}
 			}
 		}

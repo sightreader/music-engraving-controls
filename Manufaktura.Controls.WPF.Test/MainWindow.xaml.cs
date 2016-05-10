@@ -1,20 +1,11 @@
-﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Extensions;
+﻿using Manufaktura.Controls.Desktop.Audio;
+using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Parser;
-using Manufaktura.Music.MelodicTrails;
-using Manufaktura.Music.Model;
-using Manufaktura.Music.Model.MajorAndMinor;
-using Manufaktura.Music.RhythmicTrails;
 using Microsoft.Win32;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
-using Manufaktura.Controls.Formatting;
-using Manufaktura.Controls.WPF.Audio;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -23,6 +14,8 @@ namespace Manufaktura.Controls.WPF.Test
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private int systemSpacing = 0;
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -74,17 +67,6 @@ namespace Manufaktura.Controls.WPF.Test
 			}
 		}
 
-		private async void LoadTestModel(HookDirectionAlgorithm hookDirectionAlgorithm)
-		{
-			//await Task.Factory.StartNew(() => Thread.Sleep(1000));
-			var vm = new TestViewModel();
-
-			DataContext = vm;
-			vm.LoadTestData(hookDirectionAlgorithm);
-		}
-
-		
-		int systemSpacing = 0;
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
 			noteViewer1.CurrentPage++;
@@ -114,8 +96,17 @@ namespace Manufaktura.Controls.WPF.Test
 
 		private void Button_Click_6(object sender, RoutedEventArgs e)
 		{
-			var player = new TaskScorePlayer(noteViewer1.InnerScore);
+			var player = new MidiTaskScorePlayer(noteViewer1.InnerScore);
 			player.Start();
+		}
+
+		private async void LoadTestModel(HookDirectionAlgorithm hookDirectionAlgorithm)
+		{
+			//await Task.Factory.StartNew(() => Thread.Sleep(1000));
+			var vm = new TestViewModel();
+
+			DataContext = vm;
+			vm.LoadTestData(hookDirectionAlgorithm);
 		}
 	}
 }
