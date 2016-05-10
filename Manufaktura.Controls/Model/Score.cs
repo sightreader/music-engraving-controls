@@ -113,7 +113,7 @@ namespace Manufaktura.Controls.Model
 
 		public StaffCollection Staves { get; private set; }
 
-		public IReadOnlyList<StaffSystem> Systems => new ReadOnlyCollection<StaffSystem>(Pages.SelectMany(p => p.Systems).ToList());
+		public IList<StaffSystem> Systems => new ReadOnlyCollection<StaffSystem>(Pages.SelectMany(p => p.Systems).ToList());
 
 		/// <summary>
 		/// Provides fast access to a staff. You can also get staff by selecting it from Staves list.

@@ -1,5 +1,4 @@
 ﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.Collections;
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,10 @@ namespace Manufaktura.Controls.Services
 {
 	public class ScoreService : IScoreService
 	{
+		private Staff currentStaff;
+
+		private StaffSystem currentSystem;
+
 		public ScoreService()
 		{
 			LinePositions = new LineDictionary();
@@ -58,7 +61,7 @@ namespace Manufaktura.Controls.Services
 		/// <summary>
 		/// Current staff.
 		/// </summary>
-		public Staff CurrentStaff { get; private set; }
+		public Staff CurrentStaff { get { return currentStaff; } set { currentStaff = value; CurrentStaffNo = CurrentScore.Staves.IndexOf(value) + 1; } }
 
 		/// <summary>
 		/// Current staff height. Computed by line positions.
@@ -76,7 +79,7 @@ namespace Manufaktura.Controls.Services
 		/// </summary>
 		public int CurrentStaffNo
 		{
-			get { return CurrentScore.Staves.IndexOf(CurrentStaff) + 1; }
+			get; private set;
 		}
 
 		public double CurrentStaffTop => LinePositions[CurrentSystemNo, CurrentStaffNo][0];
@@ -84,15 +87,12 @@ namespace Manufaktura.Controls.Services
 		/// <summary>
 		/// Current system.
 		/// </summary>
-		public StaffSystem CurrentSystem { get; private set; }
+		public StaffSystem CurrentSystem { get { return currentSystem; } set { currentSystem = value; CurrentSystemNo = Systems.IndexOf(value) + 1; } }
 
 		/// <summary>
 		/// Current system number.
 		/// </summary>
-		public int CurrentSystemNo
-		{
-			get { return Systems.ToList().IndexOf(CurrentSystem) + 1; }
-		}
+		public int CurrentSystemNo { get; private set; }
 
 		/// <summary>
 		/// Current voice.
@@ -116,7 +116,7 @@ namespace Manufaktura.Controls.Services
 		/// <summary>
 		/// All systems in the score.
 		/// </summary>
-		public IReadOnlyList<StaffSystem> Systems
+		public IList<StaffSystem> Systems
 		{
 			get { return CurrentScore.Systems; }
 		}

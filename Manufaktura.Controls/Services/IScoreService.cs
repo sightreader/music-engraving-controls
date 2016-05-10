@@ -1,5 +1,4 @@
 ﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.Collections;
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 
@@ -37,7 +36,7 @@ namespace Manufaktura.Controls.Services
 		double CursorPositionX { get; set; }
 
 		LineDictionary LinePositions { get; }
-		IReadOnlyList<StaffSystem> Systems { get; }
+		IList<StaffSystem> Systems { get; }
 
 		void BeginNewMeasure();
 
