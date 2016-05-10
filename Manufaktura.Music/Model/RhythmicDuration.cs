@@ -174,7 +174,7 @@ namespace Manufaktura.Music.Model
 
 		public TimeSpan ToTimeSpan(Tempo tempo)
 		{
-			var proportion = this.ToFractionOf(tempo.BeatUnit);
+			var proportion = ToFractionOf(tempo.BeatUnit);
 			return TimeSpan.FromMilliseconds(tempo.BeatTimeSpan.TotalMilliseconds * proportion.DoubleValue);
 		}
 	}

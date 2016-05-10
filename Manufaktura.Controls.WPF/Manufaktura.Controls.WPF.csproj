@@ -53,6 +53,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\TaskScorePlayer.cs" />
     <Compile Include="CanvasScoreRenderer.cs" />
     <Compile Include="DependencyPropertyEx.cs" />
     <Compile Include="DispatcherCanvasScoreRenderer.cs" />

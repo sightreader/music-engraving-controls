@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
 using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.WPF.Audio;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -109,6 +110,12 @@ namespace Manufaktura.Controls.WPF.Test
 		private void Button_Click_5(object sender, RoutedEventArgs e)
 		{
 			noteViewer1.RenderingMode = Rendering.ScoreRenderingModes.AllPages;
+		}
+
+		private void Button_Click_6(object sender, RoutedEventArgs e)
+		{
+			var player = new TaskScorePlayer(noteViewer1.InnerScore);
+			player.Start();
 		}
 	}
 }
