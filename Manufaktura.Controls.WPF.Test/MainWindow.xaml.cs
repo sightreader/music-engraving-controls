@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Desktop.Audio;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Desktop.Audio;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Parser;
 using Microsoft.Win32;
@@ -15,11 +16,13 @@ namespace Manufaktura.Controls.WPF.Test
 	public partial class MainWindow : Window
 	{
 		private int systemSpacing = 0;
+		ScorePlayer player;
 
 		public MainWindow()
 		{
 			InitializeComponent();
 			LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
+
 			/*
 			var scale = MajorScale.G;
 			IMelodicTrail melodicTrail = new ConjunctMovementTrail(MovementType.Anabasis, Pitch.G3, Pitch.C6, 8, 12);
@@ -62,6 +65,8 @@ namespace Manufaktura.Controls.WPF.Test
 			{
 				string xml = File.ReadAllText(dialog.FileName);
 				noteViewer1.XmlSource = xml;
+				player = new MidiTaskScorePlayer(noteViewer1.InnerScore);
+				var devices = MidiTaskScorePlayer.AvailableDevices;
 				MusicXmlParser parser = new MusicXmlParser();
 				noteViewer2.ScoreSource = parser.Parse(XDocument.Parse(xml));
 			}
@@ -96,8 +101,17 @@ namespace Manufaktura.Controls.WPF.Test
 
 		private void Button_Click_6(object sender, RoutedEventArgs e)
 		{
-			var player = new MidiTaskScorePlayer(noteViewer1.InnerScore);
-			player.Start();
+			player.Play();
+		}
+
+		private void Button_Click_7(object sender, RoutedEventArgs e)
+		{
+			player.Pause();
+		}
+
+		private void Button_Click_8(object sender, RoutedEventArgs e)
+		{
+			player.Stop();
 		}
 
 		private async void LoadTestModel(HookDirectionAlgorithm hookDirectionAlgorithm)

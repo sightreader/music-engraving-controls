@@ -97,16 +97,16 @@ namespace Manufaktura.Controls.Audio
 		public abstract void Pause();
 
 		/// <summary>
+		/// Start playback.
+		/// </summary>
+		public abstract void Play();
+
+		/// <summary>
 		/// Play specific element from the score.
 		/// </summary>
 		/// <param name="element">Element</param>
 		/// <param name="staff">Staff</param>
-		public abstract void PlayElement(MusicalSymbol element, Staff staff);
-
-		/// <summary>
-		/// Start playback.
-		/// </summary>
-		public abstract void Start();
+		public abstract void PlayElement(MusicalSymbol element);
 
 		/// <summary>
 		/// Stop playback

@@ -11,23 +11,71 @@ namespace Manufaktura.Controls.Desktop.Audio
 {
 	public abstract class TaskScorePlayer : ScorePlayer
 	{
+		private IEnumerator<TimelineElement<IHasDuration>> timelineInterator;
+
 		public TaskScorePlayer(Score score) : base(score)
 		{
+			timelineInterator = EnumerateTimeline().GetEnumerator();
 		}
 
 		public override void Pause()
 		{
+			State = PlaybackState.Paused;
 		}
 
-		public override async void Start()
+		public override async void Play()
+		{
+			State = PlaybackState.Playing;
+			PlayInternal();
+		}
+
+		public override void Stop()
+		{
+			State = PlaybackState.Idle;
+			timelineInterator = EnumerateTimeline().GetEnumerator();
+		}
+
+		private IEnumerable<TimelineElement<IHasDuration>> EnumerateTimeline()
+		{
+			var elapsedTime = TimeSpan.Zero;
+			for (var i = 0; i < Score.FirstStaff.Measures.Count; i++)
+			{
+				var elements = new List<Tuple<decimal, IHasDuration>>();
+				foreach (var staff in Score.Staves)
+				{
+					var measure = staff.Measures[i];
+
+					var elapsed = 0m;
+					foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
+					{
+						elements.Add(new Tuple<decimal, IHasDuration>(elapsed, durationElement));
+						if (!((durationElement as Note)?.IsUpperMemberOfChord ?? false))
+							elapsed += new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDecimal();
+					}
+				}
+				var orderedElements = elements.OrderBy(e => e.Item1).ToList();
+				foreach (var element in orderedElements)
+				{
+					yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds((double)element.Item1 * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
+				}
+				var lastItem = orderedElements.Last();
+				var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDecimal();
+				elapsedTime += TimeSpan.FromMilliseconds((double)endOfMeasure * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds);
+			}
+		}
+
+		private async void PlayInternal()
 		{
 			var simultaneousElements = new Queue<TimelineElement<IHasDuration>>();
 
 			TimelineElement<IHasDuration> previousElement = null;
 			TimeSpan lastAwaitedDuration = TimeSpan.Zero;
 
-			foreach (var timelineElement in EnumerateTimeline())
+			while (timelineInterator.MoveNext())
 			{
+				var timelineElement = timelineInterator.Current;
+				if (State != PlaybackState.Playing) break;
+
 				if (previousElement != null && timelineElement.When > previousElement.When)
 				{
 					await Task.Delay(lastAwaitedDuration == TimeSpan.Zero ? previousElement.When : previousElement.When - lastAwaitedDuration);
@@ -46,39 +94,6 @@ namespace Manufaktura.Controls.Desktop.Audio
 			}
 		}
 
-		public override void Stop()
-		{
-		}
-
-		private IEnumerable<TimelineElement<IHasDuration>> EnumerateTimeline()
-		{
-			var elapsedTime = TimeSpan.Zero;
-			for (var i = 0; i < Score.FirstStaff.Measures.Count; i++)
-			{
-				var elements = new List<Tuple<decimal, IHasDuration>>();
-				foreach (var staff in Score.Staves)
-				{
-					var measure = staff.Measures[i];
-
-					var elapsed = 0m;
-					foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
-					{
-						elements.Add(new Tuple<decimal, IHasDuration>(elapsed, durationElement));
-						elapsed += new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDecimal();
-					}
-
-				}
-				var orderedElements = elements.OrderBy(e => e.Item1).ToList();
-				foreach (var element in orderedElements)
-				{
-					yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds((double)element.Item1 * Tempo.BeatUnit.Denominator * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
-				}
-				var lastItem = orderedElements.Last();
-				var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDecimal();
-				elapsedTime += TimeSpan.FromMilliseconds((double)endOfMeasure * Tempo.BeatUnit.Denominator * Tempo.BeatTimeSpan.TotalMilliseconds);
-			}
-		}
-
 		private void PlayQueue(Queue<TimelineElement<IHasDuration>> simultaneousElements)
 		{
 			lock (simultaneousElements)
@@ -89,7 +104,7 @@ namespace Manufaktura.Controls.Desktop.Audio
 					var element = simultaneousElements.Dequeue();
 					var note = element.What as Note;
 					if (note == null) continue;
-					PlayElement(note, null);
+					PlayElement(note);
 				}
 			}
 		}
