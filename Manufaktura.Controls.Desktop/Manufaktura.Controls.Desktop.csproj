@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Sanford.Multimedia.Midi, Version=6.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sanford.Multimedia.Midi.6.1.1\lib\net20\Sanford.Multimedia.Midi.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\MidiTaskScorePlayer.cs" />
+    <Compile Include="Audio\Midi\ChannelMessage.cs" />
+    <Compile Include="Audio\Midi\ChannelMessageBuilder.cs" />
+    <Compile Include="Audio\Midi\MidiDevice.cs" />
+    <Compile Include="Audio\Midi\MidiOutCaps.cs" />
+    <Compile Include="Audio\Midi\OutputDeviceException.cs" />
+    <Compile Include="Audio\Midi\ShortMessage.cs" />
     <Compile Include="Audio\TaskScorePlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,9 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Audio\piano-gg.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">

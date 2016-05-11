@@ -1,30 +1,36 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Desktop.Audio.Midi;
+using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
-using Sanford.Multimedia.Midi;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Manufaktura.Controls.Desktop.Audio
 {
 	public class MidiTaskScorePlayer : TaskScorePlayer, IDisposable
 	{
-		private static Lazy<IEnumerable<Device>> availableDevices = new Lazy<IEnumerable<Device>>(() => new ReadOnlyCollection<Device>(Enumerable.Range(0, OutputDevice.DeviceCount).Select(i => new Device(i, OutputDevice.GetDeviceCapabilities(i).name)).ToList()));
-		private OutputDevice outDevice;
+		private static Lazy<IEnumerable<MidiDevice>> availableDevices = new Lazy<IEnumerable<MidiDevice>>(() =>
+		new ReadOnlyCollection<MidiDevice>(Enumerable.Range(0, MidiDevice.DeviceCount).Select(i => new MidiDevice(i,
+			Encoding.ASCII.GetString(MidiDevice.GetDeviceCapabilities(i).name))).ToList()));
+
+		private MidiDevice outDevice;
 
 		public MidiTaskScorePlayer(Score score) : base(score)
 		{
-			outDevice = new OutputDevice(0);
+			outDevice = new MidiDevice(0, "default");
+			outDevice.Open();
 		}
 
-		public MidiTaskScorePlayer(Score score, Device device) : base(score)
+		public MidiTaskScorePlayer(Score score, MidiDevice device) : base(score)
 		{
-			outDevice = new OutputDevice(device.Index);
+			outDevice = device;
+			outDevice.Open();
 		}
 
-		public static IEnumerable<Device> AvailableDevices => availableDevices.Value;
+		public static IEnumerable<MidiDevice> AvailableDevices => availableDevices.Value;
 
 		public void Dispose()
 		{
@@ -37,7 +43,6 @@ namespace Manufaktura.Controls.Desktop.Audio
 
 				outDevice.Send(builder.Result);
 			}
-			outDevice.Close();
 			outDevice.Dispose();
 		}
 
@@ -46,41 +51,14 @@ namespace Manufaktura.Controls.Desktop.Audio
 			var note = element as Note;
 			if (note == null) return;
 
-			ChannelMessageBuilder builder = new ChannelMessageBuilder();
+			if (note.TieType == NoteTieType.Stop || note.TieType == NoteTieType.StopAndStartAnother) return;
 
 			var channelNumber = Score.Staves.IndexOf(note.Staff);
-			builder.Command = ChannelCommand.NoteOn;
-			builder.MidiChannel = channelNumber;
-			builder.Data1 = note.MidiPitch;
-			builder.Data2 = 127;
-			builder.Build();
-
-			outDevice.Send(builder.Result);
+			outDevice.Send(note, true, channelNumber);
 
 			await Task.Delay(new RhythmicDuration(note.BaseDuration.Denominator, note.NumberOfDots).ToTimeSpan(Tempo));
 
-			builder.Command = ChannelCommand.NoteOff;
-			builder.Data2 = channelNumber;
-			builder.Build();
-
-			outDevice.Send(builder.Result);
-		}
-
-		public class Device
-		{
-			public Device(int index, string name)
-			{
-				Index = index;
-				Name = name;
-			}
-
-			public int Index { get; private set; }
-			public string Name { get; private set; }
-
-			public override string ToString()
-			{
-				return Name;
-			}
+			outDevice.Send(note, false, channelNumber);
 		}
 	}
 }

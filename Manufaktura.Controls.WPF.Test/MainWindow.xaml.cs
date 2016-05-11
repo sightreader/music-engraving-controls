@@ -3,6 +3,7 @@ using Manufaktura.Controls.Desktop.Audio;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Parser;
 using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -65,6 +66,7 @@ namespace Manufaktura.Controls.WPF.Test
 			{
 				string xml = File.ReadAllText(dialog.FileName);
 				noteViewer1.XmlSource = xml;
+				if (player != null) ((IDisposable)player).Dispose();
 				player = new MidiTaskScorePlayer(noteViewer1.InnerScore);
 				var devices = MidiTaskScorePlayer.AvailableDevices;
 				MusicXmlParser parser = new MusicXmlParser();
