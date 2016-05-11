@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,23 +19,22 @@ namespace Manufaktura.Controls.Desktop.Audio
 
 		private MidiDevice outDevice;
 
-		public MidiTaskScorePlayer(Score score) : base(score)
+		public MidiTaskScorePlayer(Score score) : this(score, new MidiDevice(0, "default"))
 		{
-			outDevice = new MidiDevice(0, "default");
-			outDevice.Open();
 		}
 
 		public MidiTaskScorePlayer(Score score, MidiDevice device) : base(score)
 		{
 			outDevice = device;
 			outDevice.Open();
+			pitchesPlaying = new ConcurrentDictionary<int, List<int>>(Enumerable.Range(0, score.Staves.Count * 2).Select(i => new KeyValuePair<int, List<int>>(i, new List<int>())));
 		}
 
 		public static IEnumerable<MidiDevice> AvailableDevices => availableDevices.Value;
 
 		public void Dispose()
 		{
-			for (int i = 0; i < Score.Staves.Count; i++)
+			for (int i = 0; i < Score.Staves.Count * 2; i++)
 			{
 				ChannelMessageBuilder builder = new ChannelMessageBuilder();
 				builder.Command = ChannelCommand.NoteOff;
@@ -46,19 +46,25 @@ namespace Manufaktura.Controls.Desktop.Audio
 			outDevice.Dispose();
 		}
 
+		private ConcurrentDictionary<int, List<int>> pitchesPlaying;
+
 		public override async void PlayElement(MusicalSymbol element)
 		{
 			var note = element as Note;
 			if (note == null) return;
 
 			if (note.TieType == NoteTieType.Stop || note.TieType == NoteTieType.StopAndStartAnother) return;
+			var firstNoteInMeasure = element.Measure.Elements.IndexOf(note) == 0;
 
-			var channelNumber = Score.Staves.IndexOf(note.Staff);
-			outDevice.Send(note, true, channelNumber);
+			var channelNumber = Score.Staves.IndexOf(note.Staff) * 2;
+			if (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) channelNumber += 1;
+			pitchesPlaying[channelNumber]?.Add(note.MidiPitch);
+			outDevice.Send(note, true, channelNumber, firstNoteInMeasure ? 127 : 100);
 
 			await Task.Delay(new RhythmicDuration(note.BaseDuration.Denominator, note.NumberOfDots).ToTimeSpan(Tempo));
 
 			outDevice.Send(note, false, channelNumber);
+			pitchesPlaying[channelNumber].Remove(note.MidiPitch);
 		}
 	}
 }

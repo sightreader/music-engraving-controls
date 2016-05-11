@@ -77,7 +77,7 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 			}
 		}
 
-		public void Send(Note note, bool on, int channel)
+		public void Send(Note note, bool on, int channel, int volume = 127)
 		{
 			ChannelMessageBuilder builder = new ChannelMessageBuilder();
 			builder.MidiChannel = channel;
@@ -86,7 +86,7 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 			if (on)
 			{
 				builder.Command = ChannelCommand.NoteOn;
-				builder.Data2 = 127;
+				builder.Data2 = volume;
 			}
 			else
 			{
