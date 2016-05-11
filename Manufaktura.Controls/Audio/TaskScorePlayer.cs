@@ -1,5 +1,4 @@
-﻿using Manufaktura.Controls.Audio;
-using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Manufaktura.Controls.Desktop.Audio
+namespace Manufaktura.Controls.Audio
 {
 	public abstract class TaskScorePlayer : ScorePlayer
 	{

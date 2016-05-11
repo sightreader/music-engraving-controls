@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\ScorePlayer.cs" />
+    <Compile Include="Audio\TaskScorePlayer.cs" />
     <Compile Include="Audio\TimelineElement.cs" />
     <Compile Include="Extensions\StaffBuilder.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />

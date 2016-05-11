@@ -87,7 +87,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight.Audio
 		/// <summary>
 		/// Start playback.
 		/// </summary>
-		public override void Start()
+		public override void Play()
 		{
 			if (State != PlaybackState.Paused) ShouldRestart = true;
 			State = PlaybackState.Playing;
@@ -151,7 +151,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight.Audio
 
 				if (noteOrRest != null && noteOrRest.Tuplet == TupletType.Stop) TupletState = null;
 
-				PlayElement(CurrentElement, staff);
+				PlayElement(CurrentElement);
 			}
 			catch (Exception ex)
 			{
@@ -193,7 +193,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight.Audio
 				Note nextNote = staff.Peek<Note>(note, PeekType.NextElement);   //If next note is chord element, play all notes in the chord simultaneously
 				if (nextNote != null && nextNote.IsUpperMemberOfChord)
 				{
-					PlayElement(CurrentElement, staff);
+					PlayElement(CurrentElement);
 					return true;
 				}
 			}

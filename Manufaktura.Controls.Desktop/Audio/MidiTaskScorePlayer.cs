@@ -1,10 +1,12 @@
-﻿using Manufaktura.Controls.Desktop.Audio.Midi;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Desktop.Audio.Midi;
 using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,8 @@ namespace Manufaktura.Controls.Desktop.Audio
 
 		private MidiDevice outDevice;
 
+		private ConcurrentDictionary<int, List<int>> pitchesPlaying;
+
 		public MidiTaskScorePlayer(Score score) : this(score, new MidiDevice(0, "default"))
 		{
 		}
@@ -27,10 +31,11 @@ namespace Manufaktura.Controls.Desktop.Audio
 		{
 			outDevice = device;
 			outDevice.Open();
-			pitchesPlaying = new ConcurrentDictionary<int, List<int>>(Enumerable.Range(0, score.Staves.Count * 2).Select(i => new KeyValuePair<int, List<int>>(i, new List<int>())));
+			pitchesPlaying = new ConcurrentDictionary<int, List<int>>(Enumerable.Range(0, ChannelsCount).Select(i => new KeyValuePair<int, List<int>>(i, new List<int>())));
 		}
 
 		public static IEnumerable<MidiDevice> AvailableDevices => availableDevices.Value;
+		private int ChannelsCount => Score.Staves.Count < 5 ? Score.Staves.Count * 2 : Score.Staves.Count * 2 + 2;
 
 		public void Dispose()
 		{
@@ -46,8 +51,6 @@ namespace Manufaktura.Controls.Desktop.Audio
 			outDevice.Dispose();
 		}
 
-		private ConcurrentDictionary<int, List<int>> pitchesPlaying;
-
 		public override async void PlayElement(MusicalSymbol element)
 		{
 			var note = element as Note;
@@ -56,15 +59,24 @@ namespace Manufaktura.Controls.Desktop.Audio
 			if (note.TieType == NoteTieType.Stop || note.TieType == NoteTieType.StopAndStartAnother) return;
 			var firstNoteInMeasure = element.Measure.Elements.IndexOf(note) == 0;
 
-			var channelNumber = Score.Staves.IndexOf(note.Staff) * 2;
-			if (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) channelNumber += 1;
-			pitchesPlaying[channelNumber]?.Add(note.MidiPitch);
-			outDevice.Send(note, true, channelNumber, firstNoteInMeasure ? 127 : 100);
+			var channelNumber = GetChannelNumber(Score.Staves.IndexOf(note.Staff));
+			var actualChannelNumber = (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) ? channelNumber + 1 : channelNumber;
+
+			if (!pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Add(note.MidiPitch);
+			outDevice.Send(note, true, actualChannelNumber, firstNoteInMeasure ? 127 : 100);
 
 			await Task.Delay(new RhythmicDuration(note.BaseDuration.Denominator, note.NumberOfDots).ToTimeSpan(Tempo));
 
-			outDevice.Send(note, false, channelNumber);
-			pitchesPlaying[channelNumber].Remove(note.MidiPitch);
+			outDevice.Send(note, false, actualChannelNumber);
+			if (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Remove(note.MidiPitch);
+		}
+
+		private int GetChannelNumber(int staffIndex)
+		{
+			var channelIndex = staffIndex * 2;
+			if (channelIndex > 7) channelIndex += 2;
+			Debug.WriteLine($"Channel {channelIndex}");
+			return channelIndex;
 		}
 	}
 }

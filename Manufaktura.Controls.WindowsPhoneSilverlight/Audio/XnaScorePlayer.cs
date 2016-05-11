@@ -70,7 +70,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 			base.Pause();
 		}
 
-		public override void PlayElement(MusicalSymbol element, Staff staff)
+		public override void PlayElement(MusicalSymbol element)
 		{
 			if (!(element is NoteOrRest)) return;
 			OnElementPlayed(element);
@@ -97,19 +97,19 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 				}
 			}
 
-			var firstNoteInMeasure = staff.Peek<Note>(element, PeekType.BeginningOfMeasure);
+			var firstNoteInMeasure = note.Staff.Peek<Note>(element, PeekType.BeginningOfMeasure);
 			FrameworkDispatcher.Update();
 			effect.Play(element == firstNoteInMeasure ? 0.4f : 0.3f, octaveModifier, 0);
 		}
 
-		public override void Start()
+		public override void Play()
 		{
 			if (Dispatcher != null && !Dispatcher.CheckAccess())
 			{
-				Dispatcher.BeginInvoke(Start);
+				Dispatcher.BeginInvoke(Play);
 				return;
 			}
-			base.Start();
+			base.Play();
 		}
 
 		public override void Stop()

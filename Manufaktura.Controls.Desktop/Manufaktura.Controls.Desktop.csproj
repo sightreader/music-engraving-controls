@@ -48,7 +48,6 @@
     <Compile Include="Audio\Midi\MidiOutCaps.cs" />
     <Compile Include="Audio\Midi\OutputDeviceException.cs" />
     <Compile Include="Audio\Midi\ShortMessage.cs" />
-    <Compile Include="Audio\TaskScorePlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
