@@ -41,26 +41,14 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 	/// </summary>
 	public class ChannelMessageBuilder
 	{
-		#region ChannelMessageBuilder Members
-
-		#region Class Fields
-
 		// Stores the ChannelMessages.
 		private static Hashtable messageCache = Hashtable.Synchronized(new Hashtable());
-
-		#endregion Class Fields
-
-		#region Fields
 
 		// The channel message as a packed integer.
 		private int message = 0;
 
 		// The built ChannelMessage
 		private ChannelMessage result = null;
-
-		#endregion Fields
-
-		#region Construction
 
 		/// <summary>
 		/// Initializes a new instance of the ChannelMessageBuilder class.
@@ -69,7 +57,7 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 		{
 			Command = ChannelCommand.Controller;
 			MidiChannel = 0;
-			Data1 = (int)ControllerType.AllSoundOff;
+			Data1 = (int)MidiControllerType.AllSoundOff;
 			Data2 = 0;
 		}
 
@@ -88,34 +76,6 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 		{
 			Initialize(message);
 		}
-
-		#endregion Construction
-
-		#region Methods
-
-		/// <summary>
-		/// Clears the ChannelMessageEventArgs cache.
-		/// </summary>
-		public static void Clear()
-		{
-			messageCache.Clear();
-		}
-
-		/// <summary>
-		/// Initializes the ChannelMessageBuilder with the specified
-		/// ChannelMessageEventArgs.
-		/// </summary>
-		/// <param name="message">
-		/// The ChannelMessageEventArgs to use for initializing the ChannelMessageBuilder.
-		/// </param>
-		public void Initialize(ChannelMessage message)
-		{
-			this.message = message.Message;
-		}
-
-		#endregion Methods
-
-		#region Properties
 
 		/// <summary>
 		/// Gets the number of messages in the ChannelMessageEventArgs cache.
@@ -227,11 +187,13 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 			}
 		}
 
-		#endregion Properties
-
-		#endregion ChannelMessageBuilder Members
-
-		#region IMessageBuilder Members
+		/// <summary>
+		/// Clears the ChannelMessageEventArgs cache.
+		/// </summary>
+		public static void Clear()
+		{
+			messageCache.Clear();
+		}
 
 		/// <summary>
 		/// Builds a ChannelMessageEventArgs.
@@ -240,16 +202,23 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 		{
 			result = (ChannelMessage)messageCache[message];
 
-			// If the message does not exist.
 			if (result == null)
 			{
 				result = new ChannelMessage(message);
-
-				// Add message to cache.
 				messageCache.Add(message, result);
 			}
 		}
 
-		#endregion IMessageBuilder Members
+		/// <summary>
+		/// Initializes the ChannelMessageBuilder with the specified
+		/// ChannelMessageEventArgs.
+		/// </summary>
+		/// <param name="message">
+		/// The ChannelMessageEventArgs to use for initializing the ChannelMessageBuilder.
+		/// </param>
+		public void Initialize(ChannelMessage message)
+		{
+			this.message = message.Message;
+		}
 	}
 }

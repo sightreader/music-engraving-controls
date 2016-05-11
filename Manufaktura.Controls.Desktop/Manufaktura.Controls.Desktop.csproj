@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\MidiTaskScorePlayer.cs" />
+    <Compile Include="Audio\Midi\ChannelCommand.cs" />
     <Compile Include="Audio\Midi\ChannelMessage.cs" />
     <Compile Include="Audio\Midi\ChannelMessageBuilder.cs" />
+    <Compile Include="Audio\Midi\MidiControllerType.cs" />
     <Compile Include="Audio\Midi\MidiDevice.cs" />
     <Compile Include="Audio\Midi\MidiOutCaps.cs" />
     <Compile Include="Audio\Midi\OutputDeviceException.cs" />

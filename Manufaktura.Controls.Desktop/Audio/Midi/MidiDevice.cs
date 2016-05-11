@@ -8,42 +8,26 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 	{
 		public string Name;
 
-		protected readonly object lockObject = new object();
-
-		// The device handle.
-		protected int hndle = 0;
+		protected readonly object syncRoot = new object();
 
 		private int deviceId;
+
+		private int handle = 0;
 
 		/// <summary>
 		/// Initializes a new instance of the OutputDevice class.
 		/// </summary>
-		public MidiDevice(int deviceID, string name)
+		public MidiDevice(int deviceId, string name)
 		{
 			Name = name;
-			this.deviceId = deviceID;
+			this.deviceId = deviceId;
 		}
-
-		protected delegate void GenericDelegate<T>(T args);
 
 		// Represents the method that handles messages from Windows.
 		protected delegate void MidiOutProc(int handle, int msg, int instance, int param1, int param2);
 
-		public static int DeviceCount
-		{
-			get
-			{
-				return midiOutGetNumDevs();
-			}
-		}
-
-		public int Handle
-		{
-			get
-			{
-				return hndle;
-			}
-		}
+		public static int DeviceCount => midiOutGetNumDevs();
+		public int Handle => handle;
 
 		public static MidiOutCaps GetDeviceCapabilities(int deviceID)
 		{
@@ -51,13 +35,7 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 
 			// Get the device's capabilities.
 			int result = midiOutGetDevCaps(deviceID, ref caps, Marshal.SizeOf(caps));
-
-			// If the capabilities could not be retrieved.
-			if (result != 0)
-			{
-				// Throw an exception.
-				throw new OutputDeviceException(result);
-			}
+			if (result != 0) throw new OutputDeviceException(result);
 
 			return caps;
 		}
@@ -69,17 +47,13 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 
 		public void Open()
 		{
-			int result = midiOutOpen(ref hndle, deviceId, (i1, i2, i3, i4, i5) => { }, 0, 0);
-
-			if (result != 0)
-			{
-				throw new OutputDeviceException(result);
-			}
+			int result = midiOutOpen(ref handle, deviceId, (i1, i2, i3, i4, i5) => { }, 0, 0);
+			if (result != 0) throw new OutputDeviceException(result);
 		}
 
 		public void Send(Note note, bool on, int channel, int volume = 127)
 		{
-			ChannelMessageBuilder builder = new ChannelMessageBuilder();
+			var builder = new ChannelMessageBuilder();
 			builder.MidiChannel = channel;
 			builder.Data1 = note.MidiPitch;
 
@@ -135,14 +109,10 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 
 		protected void Send(int message)
 		{
-			lock (lockObject)
+			lock (syncRoot)
 			{
 				int result = midiOutShortMsg(Handle, message);
-
-				if (result != 0)
-				{
-					throw new OutputDeviceException(result);
-				}
+				if (result != 0) throw new OutputDeviceException(result);
 			}
 		}
 

@@ -10,24 +10,8 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 	/// </summary>
 	public class OutputDeviceException : Exception
 	{
-		#region OutputDeviceException Members
-
-		#region Win32 Midi Output Error Function
-
-		[DllImport("winmm.dll")]
-		private static extern int midiOutGetErrorText(int errCode,
-			StringBuilder message, int sizeOfMessage);
-
-		#endregion Win32 Midi Output Error Function
-
-		#region Fields
-
 		// The error message.
 		private StringBuilder message = new StringBuilder(128);
-
-		#endregion Fields
-
-		#region Construction
 
 		/// <summary>
 		/// Initializes a new instance of the OutputDeviceException class with
@@ -42,10 +26,6 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 			midiOutGetErrorText(errCode, message, message.Capacity);
 		}
 
-		#endregion Construction
-
-		#region Properties
-
 		/// <summary>
 		/// Gets a message that describes the current exception.
 		/// </summary>
@@ -57,8 +37,8 @@ namespace Manufaktura.Controls.Desktop.Audio.Midi
 			}
 		}
 
-		#endregion Properties
-
-		#endregion OutputDeviceException Members
+		[DllImport("winmm.dll")]
+		private static extern int midiOutGetErrorText(int errCode,
+			StringBuilder message, int sizeOfMessage);
 	}
 }
