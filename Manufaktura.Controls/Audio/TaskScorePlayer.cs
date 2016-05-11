@@ -53,7 +53,7 @@ namespace Manufaktura.Controls.Audio
 		public override async void Play()
 		{
 			State = PlaybackState.Playing;
-			PlayInternal();
+			await Task.Factory.StartNew(PlayInternal);
 		}
 
 		public override void Stop()

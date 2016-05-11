@@ -3,6 +3,7 @@ using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.WPF
@@ -175,6 +177,12 @@ namespace Manufaktura.Controls.WPF
 		{
 			var noteViewer = obj as NoteViewer;
 			if (noteViewer.InnerScore == null) return;
+			if (noteViewer.Renderer == null) return;
+
+			var position = (PlaybackCursorPosition)args.NewValue;
+			if (!position.IsValid) return;
+			if (position.Timestamp + position.Duration < DateTime.Now + TimeSpan.FromMilliseconds(200)) return;
+			noteViewer.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => noteViewer.Renderer.DrawPlaybackCursor(position)));
 		}
 
 		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)

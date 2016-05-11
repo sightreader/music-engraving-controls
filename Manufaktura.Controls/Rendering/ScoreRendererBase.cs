@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.IoC;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.IoC;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
@@ -165,6 +166,14 @@ namespace Manufaktura.Controls.Rendering
 		/// <param name="owner">Owner element</param>
 		public abstract void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner);
 
+		public void DrawPlaybackCursor(PlaybackCursorPosition position)
+		{
+			var system = CurrentScore.Systems.ElementAt(position.SystemNumber - 1);
+			if (system == null) return;
+			DrawPlaybackCursor(position, new Point(position.PositionX + 6, system.Staves.First().LinePositions.First()),
+				new Point(position.PositionX + 6, system.Staves.Last().LinePositions.Last()));
+		}
+
 		/// <summary>
 		/// Draws text (i.e. note heads, lyrics, articulation symbols) in default color in proper location with proper fontStyle.
 		/// </summary>
@@ -247,7 +256,6 @@ namespace Manufaktura.Controls.Rendering
 				foreach (var position in initialPositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height + distance);
 			}
 
-
 			scoreService.BeginNewSystem();
 			scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
 			scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
@@ -303,6 +311,8 @@ namespace Manufaktura.Controls.Rendering
 			scoreService.CursorPositionX += 20;
 		}
 
+		protected abstract void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end);
+
 		protected MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
 		{
 			return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType()) ?? Strategies.FirstOrDefault(s => s.SymbolType.GetTypeInfo().IsAssignableFrom(element.GetType().GetTypeInfo()));
@@ -311,7 +321,7 @@ namespace Manufaktura.Controls.Rendering
 		protected void RenderStaff(Staff staff)
 		{
 			if (!staff.Score.DefaultPageSettings.DefaultStaffDistance.HasValue) staff.Score.DefaultPageSettings.DefaultStaffDistance = PixelsToTenths(Settings.LineSpacing * 6); //TODO: Zastanowić się gdzie ustawiać tę domyślną wartość
-			var staffDistance = scoreService.CurrentPage.DefaultStaffDistance ?? staff.Score.DefaultPageSettings.DefaultStaffDistance.Value;	//TODO: Bez sensu jest sprawdzanie tu Currentpage.DefaultStaffDistance, bo strony zmieniają się kawałek dalej. Tu jest pierwsza strona
+			var staffDistance = scoreService.CurrentPage.DefaultStaffDistance ?? staff.Score.DefaultPageSettings.DefaultStaffDistance.Value;    //TODO: Bez sensu jest sprawdzanie tu Currentpage.DefaultStaffDistance, bo strony zmieniają się kawałek dalej. Tu jest pierwsza strona
 
 			BreakToNextStaff(TenthsToPixels(staffDistance));
 			if (!Settings.IgnoreCustomElementPositions && Settings.RenderingMode == ScoreRenderingModes.Panorama)

@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Manufaktura.Controls.WPF
 	public class CanvasScoreRenderer : ScoreRenderer<Canvas>
 	{
 		private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
+		private Line playbackCursor;
 
 		public CanvasScoreRenderer(Canvas canvas)
 			: base(canvas)
@@ -214,6 +216,29 @@ namespace Manufaktura.Controls.WPF
 				_penCache.Add(pen, wpfPen);
 			}
 			return wpfPen;
+		}
+
+		protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
+		{
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+			{
+				start = start.Translate(CurrentScore.DefaultPageSettings);
+				end = end.Translate(CurrentScore.DefaultPageSettings);
+			}
+
+			if (playbackCursor == null)
+			{
+				playbackCursor = new Line();
+				Canvas.Children.Add(playbackCursor);
+			}
+
+			playbackCursor.Stroke = new SolidColorBrush(Colors.Magenta);
+			playbackCursor.X1 = start.X;
+			playbackCursor.X2 = end.X;
+			playbackCursor.Y1 = start.Y;
+			playbackCursor.Y2 = end.Y;
+			playbackCursor.Visibility = BoolToVisibility(position.IsValid);
+			playbackCursor.StrokeThickness = 1;
 		}
 
 		private void Move(FrameworkElement element, Point delta)

@@ -60,15 +60,16 @@ namespace Manufaktura.Controls.Audio
 			protected set { _currentElement = value; OnPropertyChanged(() => CurrentElement); }
 		}
 
+		private PlaybackCursorPosition lastPosition = default(PlaybackCursorPosition);
+
 		public PlaybackCursorPosition CurrentPosition
 		{
 			get
 			{
-				var textBlockElement = CurrentElement as IRenderedAsTextBlock;
-				if (textBlockElement == null) return default(PlaybackCursorPosition);
-				var musicalSymbol = CurrentElement as MusicalSymbol;
-				if (musicalSymbol == null) return default(PlaybackCursorPosition); ;
-				return new PlaybackCursorPosition(Score.Systems.IndexOf(musicalSymbol.Measure.System) + 1, textBlockElement.TextBlockLocation.X);
+				var noteOrRest = CurrentElement as NoteOrRest;
+				if (noteOrRest == null) return lastPosition;
+				lastPosition = new PlaybackCursorPosition(Score.Systems.IndexOf(noteOrRest.Measure.System) + 1, noteOrRest.TextBlockLocation.X, DateTime.Now, new RhythmicDuration(noteOrRest.BaseDuration.Denominator, noteOrRest.NumberOfDots).ToTimeSpan(Tempo));
+				return lastPosition;
 			}
 		}
 
