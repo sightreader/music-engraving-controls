@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.PeekStrategies;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -38,6 +39,11 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight.Audio
 				ThreadSafeCurrentElement = value;
 			}
 		}
+
+		/// <summary>
+		/// Enumerator for iterating musical symbols in the score.
+		/// </summary>
+		public IEnumerator<MusicalSymbol> Enumerator { get; protected set; }
 
 		/// <summary>
 		/// Score played by this instance of player

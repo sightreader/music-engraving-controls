@@ -16,6 +16,8 @@ namespace Manufaktura.Controls.Audio
 
 		private Tempo _tempo;
 
+		private TimeSpan elapsedTime;
+
 		/// <summary>
 		/// Initializes a new instance of ScorePlayer.
 		/// </summary>
@@ -58,10 +60,11 @@ namespace Manufaktura.Controls.Audio
 			protected set { _currentElement = value; OnPropertyChanged(() => CurrentElement); }
 		}
 
-		/// <summary>
-		/// Enumerator for iterating musical symbols in the score.
-		/// </summary>
-		public IEnumerator<MusicalSymbol> Enumerator { get; protected set; }
+		public TimeSpan ElapsedTime
+		{
+			get { return elapsedTime; }
+			set { elapsedTime = value; OnPropertyChanged(); }
+		}
 
 		/// <summary>
 		/// List of exceptions that occured during playback.

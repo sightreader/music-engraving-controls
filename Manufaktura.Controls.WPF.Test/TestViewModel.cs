@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Extensions;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Model.MVVM;
@@ -12,11 +13,15 @@ namespace Manufaktura.Controls.WPF.Test
 	{
 		private Score data;
 
+		private ScorePlayer player;
+
 		public Score Data
 		{
 			get { return data; }
 			set { data = value; OnPropertyChanged(() => Data); }
 		}
+
+		public ScorePlayer Player { get { return player; } set { player = value; OnPropertyChanged(); } }
 
 		public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
 		{

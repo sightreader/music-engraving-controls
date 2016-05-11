@@ -101,6 +101,7 @@ namespace Manufaktura.Controls.Audio
 				while (simultaneousElements.Any())
 				{
 					var element = simultaneousElements.Dequeue();
+					if (ElapsedTime != element.When) ElapsedTime = element.When;
 					var note = element.What as Note;
 					if (note == null) continue;
 					PlayElement(note);
