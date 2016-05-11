@@ -60,7 +60,19 @@ namespace Manufaktura.Controls.Audio
 			protected set { _currentElement = value; OnPropertyChanged(() => CurrentElement); }
 		}
 
-		public TimeSpan ElapsedTime
+		public PlaybackCursorPosition CurrentPosition
+		{
+			get
+			{
+				var textBlockElement = CurrentElement as IRenderedAsTextBlock;
+				if (textBlockElement == null) return default(PlaybackCursorPosition);
+				var musicalSymbol = CurrentElement as MusicalSymbol;
+				if (musicalSymbol == null) return default(PlaybackCursorPosition); ;
+				return new PlaybackCursorPosition(Score.Systems.IndexOf(musicalSymbol.Measure.System) + 1, textBlockElement.TextBlockLocation.X);
+			}
+		}
+
+		public virtual TimeSpan ElapsedTime
 		{
 			get { return elapsedTime; }
 			set { elapsedTime = value; OnPropertyChanged(); }

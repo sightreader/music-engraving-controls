@@ -17,6 +17,34 @@ namespace Manufaktura.Controls.Audio
 			timelineInterator = EnumerateTimeline().GetEnumerator();
 		}
 
+		public override MusicalSymbol CurrentElement
+		{
+			get
+			{
+				return EnumerateTimeline().FirstOrDefault(t => t.When == ElapsedTime)?.What as MusicalSymbol;
+			}
+
+			protected set
+			{
+				throw new Exception("CurrentElement method is readonly on this class.");
+			}
+		}
+
+		public override TimeSpan ElapsedTime
+		{
+			get
+			{
+				return base.ElapsedTime;
+			}
+
+			set
+			{
+				base.ElapsedTime = value;
+				OnPropertyChanged(() => CurrentElement);
+				OnPropertyChanged(() => CurrentPosition);
+			}
+		}
+
 		public override void Pause()
 		{
 			State = PlaybackState.Paused;

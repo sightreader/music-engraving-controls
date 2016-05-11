@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Interactivity;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
@@ -25,6 +26,7 @@ namespace Manufaktura.Controls.WPF
 		public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
 		public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
 		public static readonly DependencyProperty IsSelectableProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsSelectable, true);
+		public static readonly DependencyProperty PlaybackCursorPositionProperty = DependencyPropertyEx.Register<NoteViewer, PlaybackCursorPosition>(v => v.PlaybackCursorPosition, default(PlaybackCursorPosition), PlaybackCursorPositionChanged);
 		public static readonly DependencyProperty RenderingModeProperty = DependencyPropertyEx.Register<NoteViewer, ScoreRenderingModes>(v => v.RenderingMode, ScoreRenderingModes.Panorama, RenderingModeChanged);
 		public static readonly DependencyProperty ScoreSourceProperty = DependencyPropertyEx.Register<NoteViewer, Score>(v => v.ScoreSource, null, ScoreSourceChanged);
 		public static readonly DependencyProperty SelectedElementProperty = DependencyPropertyEx.Register<NoteViewer, MusicalSymbol>(v => v.SelectedElement, null);
@@ -82,6 +84,12 @@ namespace Manufaktura.Controls.WPF
 		{
 			get { return (bool)GetValue(IsSelectableProperty); }
 			set { SetValue(IsSelectableProperty, value); }
+		}
+
+		public PlaybackCursorPosition PlaybackCursorPosition
+		{
+			get { return (PlaybackCursorPosition)GetValue(PlaybackCursorPositionProperty); }
+			set { SetValue(PlaybackCursorPositionProperty, value); }
 		}
 
 		public ScoreRenderingModes RenderingMode
@@ -161,6 +169,12 @@ namespace Manufaktura.Controls.WPF
 			var noteViewer = obj as NoteViewer;
 			if (noteViewer.InnerScore == null) return;
 			noteViewer.RenderOnCanvas(noteViewer.InnerScore);
+		}
+
+		private static void PlaybackCursorPositionChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		{
+			var noteViewer = obj as NoteViewer;
+			if (noteViewer.InnerScore == null) return;
 		}
 
 		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
