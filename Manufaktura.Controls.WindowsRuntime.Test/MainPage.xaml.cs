@@ -2,7 +2,6 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser.Digest;
 using Manufaktura.Controls.Parser.MusicXml;
-using Manufaktura.Controls.UniversalApps;
 using Manufaktura.Controls.UniversalApps.Audio;
 using System;
 using System.IO;
@@ -10,7 +9,6 @@ using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
