@@ -12,7 +12,7 @@
     <Grid x:Name="LayoutRoot" Background="Gainsboro">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
-            <Manufaktura:NoteViewer x:Name="noteViewer1" HorizontalAlignment="Stretch" IsPanoramaMode="False"  IsOccupyingSpace="True" VerticalAlignment="Top"/>
+                <Manufaktura:NoteViewer PlaybackCursorPosition="{Binding Player.CurrentPosition}" x:Name="noteViewer1" HorizontalAlignment="Stretch" IsPanoramaMode="False"  IsOccupyingSpace="True" VerticalAlignment="Top"/>
             <Manufaktura:NoteViewer x:Name="noteViewer2" HorizontalAlignment="Stretch" IsPanoramaMode="True" IsOccupyingSpace="True" VerticalAlignment="Top" />
                 <Manufaktura:NoteViewer x:Name="noteViewer3" HorizontalAlignment="Stretch"  IsPanoramaMode="False" IsOccupyingSpace="True" VerticalAlignment="Top" ZoomFactor="1" />
             <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>

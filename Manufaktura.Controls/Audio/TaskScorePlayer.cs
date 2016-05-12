@@ -2,7 +2,6 @@
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -62,6 +61,21 @@ namespace Manufaktura.Controls.Audio
 			timelineInterator = EnumerateTimeline().GetEnumerator();
 		}
 
+		protected virtual void PlayQueue(Queue<TimelineElement<IHasDuration>> simultaneousElements)
+		{
+			lock (simultaneousElements)
+			{
+				while (simultaneousElements.Any())
+				{
+					var element = simultaneousElements.Dequeue();
+					if (ElapsedTime != element.When) ElapsedTime = element.When;
+					var note = element.What as Note;
+					if (note == null) continue;
+					PlayElement(note);
+				}
+			}
+		}
+
 		private IEnumerable<TimelineElement<IHasDuration>> EnumerateTimeline()
 		{
 			var elapsedTime = TimeSpan.Zero;
@@ -118,21 +132,6 @@ namespace Manufaktura.Controls.Audio
 			{
 				await Task.Delay(lastAwaitedDuration == TimeSpan.Zero ? previousElement.When : previousElement.When - lastAwaitedDuration);
 				PlayQueue(simultaneousElements);
-			}
-		}
-
-		private void PlayQueue(Queue<TimelineElement<IHasDuration>> simultaneousElements)
-		{
-			lock (simultaneousElements)
-			{
-				while (simultaneousElements.Any())
-				{
-					var element = simultaneousElements.Dequeue();
-					if (ElapsedTime != element.When) ElapsedTime = element.When;
-					var note = element.What as Note;
-					if (note == null) continue;
-					PlayElement(note);
-				}
 			}
 		}
 	}

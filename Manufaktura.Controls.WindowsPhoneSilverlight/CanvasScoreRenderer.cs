@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
@@ -123,6 +124,10 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 		}
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+		{
+		}
+
+		protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
 		{
 		}
 

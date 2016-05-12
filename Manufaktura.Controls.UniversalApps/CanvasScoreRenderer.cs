@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
@@ -13,8 +14,12 @@ namespace Manufaktura.Controls.UniversalApps
 {
 	public class CanvasScoreRenderer : ScoreRenderer<Canvas>
 	{
+		private Line playbackCursor;
+
+		private TranslateTransform playbackCursorTransform = new TranslateTransform();
+
 		public CanvasScoreRenderer(Canvas canvas)
-			: base(canvas)
+							: base(canvas)
 		{
 			OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
 		}
@@ -159,6 +164,33 @@ namespace Manufaktura.Controls.UniversalApps
 			Canvas.Children.Add(viewBox);
 
 			OwnershipDictionary.Add(textBlock, owner);
+		}
+
+		protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
+		{
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+			{
+				start = start.Translate(CurrentScore.DefaultPageSettings);
+				end = end.Translate(CurrentScore.DefaultPageSettings);
+			}
+
+			if (playbackCursor == null)
+			{
+				playbackCursor = new Line();
+				playbackCursor.RenderTransform = playbackCursorTransform;
+
+				playbackCursor.Stroke = new SolidColorBrush(Colors.Magenta);
+				playbackCursor.X1 = 0;
+				playbackCursor.X2 = 0;
+				playbackCursor.Y1 = 0;
+				playbackCursor.Y2 = end.Y - start.Y;
+				playbackCursor.Visibility = BoolToVisibility(position.IsValid);
+				playbackCursor.StrokeThickness = 1;
+				Canvas.Children.Add(playbackCursor);
+			}
+
+			playbackCursorTransform.X = start.X;
+			playbackCursorTransform.Y = start.Y;
 		}
 
 		private Visibility BoolToVisibility(bool isVisible)
