@@ -15,6 +15,7 @@ namespace Manufaktura.Controls.WPF
 	{
 		private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
 		private Line playbackCursor;
+		private TranslateTransform playbackCursorTransform = new TranslateTransform();
 
 		public CanvasScoreRenderer(Canvas canvas)
 			: base(canvas)
@@ -229,16 +230,20 @@ namespace Manufaktura.Controls.WPF
 			if (playbackCursor == null)
 			{
 				playbackCursor = new Line();
+				playbackCursor.RenderTransform = playbackCursorTransform;
+
+				playbackCursor.Stroke = new SolidColorBrush(Colors.Magenta);
+				playbackCursor.X1 = 0;
+				playbackCursor.X2 = 0;
+				playbackCursor.Y1 = 0;
+				playbackCursor.Y2 = end.Y - start.Y;
+				playbackCursor.Visibility = BoolToVisibility(position.IsValid);
+				playbackCursor.StrokeThickness = 1;
 				Canvas.Children.Add(playbackCursor);
 			}
 
-			playbackCursor.Stroke = new SolidColorBrush(Colors.Magenta);
-			playbackCursor.X1 = start.X;
-			playbackCursor.X2 = end.X;
-			playbackCursor.Y1 = start.Y;
-			playbackCursor.Y2 = end.Y;
-			playbackCursor.Visibility = BoolToVisibility(position.IsValid);
-			playbackCursor.StrokeThickness = 1;
+			playbackCursorTransform.X = start.X;
+			playbackCursorTransform.Y = start.Y;
 		}
 
 		private void Move(FrameworkElement element, Point delta)

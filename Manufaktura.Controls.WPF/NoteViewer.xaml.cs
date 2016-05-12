@@ -181,7 +181,7 @@ namespace Manufaktura.Controls.WPF
 
 			var position = (PlaybackCursorPosition)args.NewValue;
 			if (!position.IsValid) return;
-			if (position.Timestamp + position.Duration < DateTime.Now + TimeSpan.FromMilliseconds(200)) return;
+
 			noteViewer.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => noteViewer.Renderer.DrawPlaybackCursor(position)));
 		}
 

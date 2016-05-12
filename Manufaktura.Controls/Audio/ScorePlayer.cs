@@ -3,7 +3,6 @@ using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Manufaktura.Controls.Audio
 {
@@ -18,6 +17,8 @@ namespace Manufaktura.Controls.Audio
 		private Tempo _tempo;
 
 		private TimeSpan elapsedTime;
+
+		private PlaybackCursorPosition lastPosition = default(PlaybackCursorPosition);
 
 		/// <summary>
 		/// Initializes a new instance of ScorePlayer.
@@ -61,8 +62,6 @@ namespace Manufaktura.Controls.Audio
 			protected set { _currentElement = value; OnPropertyChanged(() => CurrentElement); }
 		}
 
-		private PlaybackCursorPosition lastPosition = default(PlaybackCursorPosition);
-
 		public PlaybackCursorPosition CurrentPosition
 		{
 			get
@@ -70,7 +69,6 @@ namespace Manufaktura.Controls.Audio
 				var noteOrRest = CurrentElement as NoteOrRest;
 				if (noteOrRest == null) return lastPosition;
 				lastPosition = new PlaybackCursorPosition(Score.Systems.IndexOf(noteOrRest.Measure.System) + 1, noteOrRest.TextBlockLocation.X, DateTime.Now, new RhythmicDuration(noteOrRest.BaseDuration.Denominator, noteOrRest.NumberOfDots).ToTimeSpan(Tempo));
-				Debug.WriteLine("System: " + lastPosition.SystemNumber + " Pozycja:" + lastPosition.PositionX + " Element: " + noteOrRest);
 				return lastPosition;
 			}
 		}
