@@ -112,7 +112,8 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.NumberOfDots = NumberOfDots;
                 nt.Tuplet = Tuplet;
                 nt.TupletPlacement = TupletPlacement;
-                nt.Lyrics = Lyrics;
+				nt.Lyrics.Clear();
+				nt.Lyrics.AddRange(Lyrics);
                 nt.Articulation = Articulation;
                 nt.ArticulationPlacement = ArticulationPlacement;
                 nt.HasNatural = HasNatural;

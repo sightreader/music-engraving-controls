@@ -12,15 +12,15 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             get { return "measure"; }
         }
 
-        public override void ParseElement(MusicXmlParserState state, Staff staff, System.Xml.Linq.XElement element)
+        public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
             var part = staff.Part;
-            var system = staff.Score.Systems.LastOrDefault();
-            if (system == null)
-            {
-                system = new StaffSystem(staff.Score);
-                staff.Score.Systems.Add(system);
-            }
+			if (!staff.Score.Systems.Any())
+			{
+				staff.Score.Pages.Last().Systems.Add(new StaffSystem(staff.Score));
+			}
+			var system = staff.Score.Systems[state.CurrentSystemNo - 1];
+
             var measure = new Measure(staff, system);
             measure.Number = element.ParseAttribute<int>("number");
             staff.Measures.Add(measure);

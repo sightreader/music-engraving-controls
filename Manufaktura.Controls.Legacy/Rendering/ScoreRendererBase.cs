@@ -1,5 +1,5 @@
-﻿using Manufaktura.Controls.IoC;
-using Manufaktura.Controls.Linq;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.IoC;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
@@ -8,6 +8,7 @@ using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -165,6 +166,16 @@ namespace Manufaktura.Controls.Rendering
 		/// <param name="owner">Owner element</param>
 		public abstract void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner);
 
+		public void DrawPlaybackCursor(PlaybackCursorPosition position)
+		{
+			if (position.Timestamp + position.Duration < DateTime.Now) return;
+
+			var system = CurrentScore.Systems.ElementAt(position.SystemNumber - 1);
+			if (system == null) return;
+			DrawPlaybackCursor(position, new Point(position.PositionX + 6, system.Staves.First().LinePositions.First()),
+				new Point(position.PositionX + 6, system.Staves.Last().LinePositions.Last()));
+		}
+
 		/// <summary>
 		/// Draws text (i.e. note heads, lyrics, articulation symbols) in default color in proper location with proper fontStyle.
 		/// </summary>
@@ -212,27 +223,44 @@ namespace Manufaktura.Controls.Rendering
 
 		public abstract void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner);
 
+		public double PixelsToTenths(double pixels)
+		{
+			return 10d * (pixels / Settings.LineSpacing);
+		}
+
 		public abstract void Render(Score score);
 
 		public abstract void Render(Measure measure);
 
-		internal void BreakSystem(double distance = 0)
+		public double TenthsToPixels(double tenths)
 		{
-			//var sumOfMeasures = scoreService.AllMeasures
-			//    .Where(m => m.Width.HasValue && m.System == scoreService.CurrentSystem && m.Staff == scoreService.CurrentStaff).Sum(m => m.Width.Value);
+			return Settings.LineSpacing * (tenths / 10d);
+		}
+
+		internal void BreakSystem(double distance = 0, bool breakPage = false)
+		{
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
 			ReturnCarriage();
 
-			if (scoreService.CurrentSystem.Height == 0)
-			{
-				scoreService.CurrentSystem.Height = distance == 0 ? (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count : distance;
-			}
+			var staffDistance = TenthsToPixels(scoreService.CurrentPage.DefaultStaffDistance ?? scoreService.CurrentScore.DefaultPageSettings.DefaultStaffDistance ?? 0);
+			var averageSystemHeight = (staffDistance * scoreService.CurrentScore.Staves.Count - 1) +
+				Settings.LineSpacing * 4 * scoreService.CurrentScore.Staves.Count;
+			if (scoreService.CurrentSystem.Height == 0) scoreService.CurrentSystem.Height = averageSystemHeight;
 
 			List<double> newLinePositions = new List<double>();
-			foreach (var position in scoreService.CurrentLinePositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height);
+			if (breakPage && Settings.RenderingMode == ScoreRenderingModes.SinglePage)
+			{
+				newLinePositions = scoreService.LinePositions[1, scoreService.CurrentStaffNo].ToList();
+			}
+			else
+			{
+				var initialPositions = scoreService.CurrentLinePositions;
+				foreach (var position in initialPositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height + distance);
+			}
+
 			scoreService.BeginNewSystem();
 			scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
-			scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
+			scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 			measurementService.LastMeasurePositionX = 0;
 		}
 
@@ -246,8 +274,8 @@ namespace Manufaktura.Controls.Rendering
 				for (int i = 0; i < 5; i++)
 				{
 					scoreService.CurrentLinePositions[i] = Settings.PaddingTop + i * Settings.LineSpacing + sharpLineModifier;
-					scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
 				}
+				scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 				return;
 			}
 			if (scoreService.CurrentScore.Staves.Count < 2)
@@ -256,7 +284,7 @@ namespace Manufaktura.Controls.Rendering
 			}
 
 			ReturnCarriage();
-			scoreService.CurrentStaff.Height = distance == 0 ? scoreService.CurrentStaffHeight + Settings.LineSpacing + 30 : distance;
+			scoreService.CurrentStaff.Height = scoreService.CurrentStaffHeight + distance;
 
 			List<double> newLinePositions = new List<double>();
 			scoreService.ReturnToFirstSystem();
@@ -264,7 +292,7 @@ namespace Manufaktura.Controls.Rendering
 			scoreService.BeginNewStaff();
 
 			scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
-			scoreService.CurrentSystem.LinePositions = scoreService.LinePositions[scoreService.CurrentSystemNo];
+			scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
 			measurementService.LastMeasurePositionX = 0;
 		}
 
@@ -275,7 +303,7 @@ namespace Manufaktura.Controls.Rendering
 
 		protected void DetermineClef(Staff staff)
 		{
-			var clef = staff.Elements.FirstOrDefault(MusicalSymbolType.Clef) as Clef;
+			var clef = staff.Elements.OfType<Clef>().FirstOrDefault();
 			if (clef == null) return;
 
 			scoreService.CurrentClef = clef;
@@ -285,15 +313,20 @@ namespace Manufaktura.Controls.Rendering
 			scoreService.CursorPositionX += 20;
 		}
 
+		protected abstract void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end);
+
 		protected MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
 		{
-			return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType());
+			return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType()) ?? Strategies.FirstOrDefault(s => s.SymbolType.IsAssignableFrom(element.GetType()));
 		}
 
 		protected void RenderStaff(Staff staff)
 		{
-			BreakToNextStaff();
-			if (!Settings.IgnoreCustomElementPositions && Settings.IsPanoramaMode)
+			if (!staff.Score.DefaultPageSettings.DefaultStaffDistance.HasValue) staff.Score.DefaultPageSettings.DefaultStaffDistance = PixelsToTenths(Settings.LineSpacing * 6); //TODO: Zastanowić się gdzie ustawiać tę domyślną wartość
+			var staffDistance = scoreService.CurrentPage.DefaultStaffDistance ?? staff.Score.DefaultPageSettings.DefaultStaffDistance.Value;    //TODO: Bez sensu jest sprawdzanie tu Currentpage.DefaultStaffDistance, bo strony zmieniają się kawałek dalej. Tu jest pierwsza strona
+
+			BreakToNextStaff(TenthsToPixels(staffDistance));
+			if (!Settings.IgnoreCustomElementPositions && Settings.RenderingMode == ScoreRenderingModes.Panorama)
 			{
 				double newPageWidth = staff.Measures.Where(m => m.Width.HasValue).Sum(m => m.Width.Value * Settings.CustomElementPositionRatio);
 				if (newPageWidth > Settings.PageWidth) Settings.PageWidth = newPageWidth;
@@ -316,6 +349,7 @@ namespace Manufaktura.Controls.Rendering
 			}
 
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
+
 			foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnStaff(staff, this);
 		}
 	}

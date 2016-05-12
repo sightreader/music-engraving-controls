@@ -1,8 +1,12 @@
-﻿using Manufaktura.Controls.Model.Events;
+﻿using Manufaktura.Controls.Model.Assertions;
+using Manufaktura.Controls.Model.Collections;
+using Manufaktura.Controls.Model.Events;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Manufaktura.Controls.Model
 {
@@ -20,15 +24,14 @@ namespace Manufaktura.Controls.Model
 			Staves.StaffInvalidated += HandleStaves_StaffInvalidated;
 			Staves.MeasureInvalidated += HandleStaves_MeasureInvalidated;
 			Parts = new List<Part>();
-			Systems = new List<StaffSystem>();
 			Pages = new List<ScorePage>();
-			Pages.Add(new ScorePage());
-			DefaultPageSettings = new ScorePage();
+			Pages.Add(new ScorePage(this));
+			DefaultPageSettings = new ScorePage(this);
 		}
 
 		public event EventHandler<InvalidateEventArgs<Measure>> MeasureInvalidated;
 
-		public event EventHandler<InvalidateEventArgs<ScorePage>> PageInvalidated;
+		public event EventHandler<InvalidateEventArgs<Score>> ScoreInvalidated;
 
 		public event EventHandler<InvalidateEventArgs<Staff>> StaffInvalidated;
 
@@ -78,7 +81,11 @@ namespace Manufaktura.Controls.Model
 
 		public List<ScorePage> Pages { get; private set; }
 
+		public List<PartGroup> PartGroups { get; private set; } = new List<PartGroup>();
+
 		public List<Part> Parts { get; private set; }
+
+		public SafetySettings Safety { get; } = new SafetySettings();
 
 		/// <summary>
 		/// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -106,7 +113,7 @@ namespace Manufaktura.Controls.Model
 
 		public StaffCollection Staves { get; private set; }
 
-		public List<StaffSystem> Systems { get; private set; }
+		public IList<StaffSystem> Systems => new ReadOnlyCollection<StaffSystem>(Pages.SelectMany(p => p.Systems).ToList());
 
 		/// <summary>
 		/// Provides fast access to a staff. You can also get staff by selecting it from Staves list.
@@ -161,6 +168,15 @@ namespace Manufaktura.Controls.Model
 			return score;
 		}
 
+		public static void SanityCheck(Score score, object control)
+		{
+			if (score == null) return;
+
+			if (score.Safety.BoundControl != null && !score.Safety.AllowBindingToMultipleControls && score.Safety.BoundControl != control)
+				throw new Exception($"Score \"{score.ToString()}\" is already bound to {score.Safety.BoundControl.ToString()}. Binding to multiple controls can affect performance and cause rendering issues. You can disable this exception by setting score.Safety.AllowBindingToMultipleControls to true.");
+			score.Safety.BoundControl = control;
+		}
+
 		/// <summary>
 		/// Adds a new staff to the score.
 		/// </summary>
@@ -178,31 +194,9 @@ namespace Manufaktura.Controls.Model
 			return this;
 		}
 
-		/// <summary>
-		/// Creates a new score with the same number of staves. Every element of every staff is the same object as in the source score.
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete("Test. Do not use.")]
-		public Score CreateEntangledScore()
+		public override string ToString()
 		{
-			var entangledScore = new Score();
-			foreach (var system in Systems)
-			{
-				var entangledSystem = new StaffSystem(entangledScore);
-				entangledScore.Systems.Add(entangledSystem);
-			}
-			foreach (var page in Pages)
-			{
-				var entangledPage = new ScorePage();
-				entangledScore.Pages.Add(entangledPage);
-			}
-			foreach (var staff in Staves)
-			{
-				var entangledStaff = new Staff();
-				foreach (var element in staff.Elements) entangledStaff.Elements.Add(element);
-				entangledScore.Staves.Add(entangledStaff);
-			}
-			return entangledScore;
+			return $"{Staves.Count}-staff score";
 		}
 
 		private Staff GetStaff(int staffNumber)
@@ -220,6 +214,11 @@ namespace Manufaktura.Controls.Model
 		private void HandleStaves_StaffInvalidated(object sender, InvalidateEventArgs<Staff> e)
 		{
 			StaffInvalidated?.Invoke(sender, e);
+		}
+
+		private void Systems_ScoreInvalidated(object sender, InvalidateEventArgs<Score> e)
+		{
+			ScoreInvalidated?.Invoke(sender, e);
 		}
 	}
 }

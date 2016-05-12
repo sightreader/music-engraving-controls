@@ -7,6 +7,10 @@ namespace Manufaktura.Controls.Services
 {
 	public class ScoreService : IScoreService
 	{
+		private Staff currentStaff;
+
+		private StaffSystem currentSystem;
+
 		public ScoreService()
 		{
 			LinePositions = new LineDictionary();
@@ -57,10 +61,10 @@ namespace Manufaktura.Controls.Services
 		/// <summary>
 		/// Current staff.
 		/// </summary>
-		public Staff CurrentStaff { get; private set; }
+		public Staff CurrentStaff { get { return currentStaff; } set { currentStaff = value; CurrentStaffNo = CurrentScore.Staves.IndexOf(value) + 1; } }
 
 		/// <summary>
-		/// Current staff height.
+		/// Current staff height. Computed by line positions.
 		/// </summary>
 		public double CurrentStaffHeight
 		{
@@ -75,21 +79,20 @@ namespace Manufaktura.Controls.Services
 		/// </summary>
 		public int CurrentStaffNo
 		{
-			get { return CurrentScore.Staves.IndexOf(CurrentStaff) + 1; }
+			get; private set;
 		}
+
+		public double CurrentStaffTop => LinePositions[CurrentSystemNo, CurrentStaffNo][0];
 
 		/// <summary>
 		/// Current system.
 		/// </summary>
-		public StaffSystem CurrentSystem { get; private set; }
+		public StaffSystem CurrentSystem { get { return currentSystem; } set { currentSystem = value; CurrentSystemNo = Systems.IndexOf(value) + 1; } }
 
 		/// <summary>
 		/// Current system number.
 		/// </summary>
-		public int CurrentSystemNo
-		{
-			get { return Systems.IndexOf(CurrentSystem) + 1; }
-		}
+		public int CurrentSystemNo { get; private set; }
 
 		/// <summary>
 		/// Current voice.
@@ -113,7 +116,7 @@ namespace Manufaktura.Controls.Services
 		/// <summary>
 		/// All systems in the score.
 		/// </summary>
-		public List<StaffSystem> Systems
+		public IList<StaffSystem> Systems
 		{
 			get { return CurrentScore.Systems; }
 		}
@@ -178,11 +181,11 @@ namespace Manufaktura.Controls.Services
 		/// </summary>
 		public void BeginNewSystem()
 		{
-			var currentSystemIndex = Systems.IndexOf(CurrentSystem);
+			var currentSystemIndex = Systems.ToList().IndexOf(CurrentSystem);
 			if (currentSystemIndex == Systems.Count - 1)
 			{
 				var newSystem = new StaffSystem(CurrentScore);
-				Systems.Add(newSystem);
+				CurrentScore.Pages.Last().Systems.Add(newSystem);
 				CurrentSystem = newSystem;
 				return;
 			}
@@ -207,7 +210,8 @@ namespace Manufaktura.Controls.Services
 		{
 			var measureIndex = measure.Staff.Measures.IndexOf(measure);
 			var previousMeasure = measureIndex < 1 ? null : measure.Staff.Measures[measureIndex - 1];
-			CursorPositionX = previousMeasure?.BarlineLocationX ?? 0;
+			if (rendererSettings.RenderingMode != ScoreRenderingModes.Panorama && previousMeasure != null && previousMeasure.System != measure.System) CursorPositionX = 0; //Issue #40 - jeśli takt był w innym systemie, to wyzeruj karetkę
+			else CursorPositionX = previousMeasure?.BarlineLocationX ?? 0;
 
 			CurrentStaff = measure.Staff;
 			CurrentSystem = measure.System;
@@ -218,7 +222,6 @@ namespace Manufaktura.Controls.Services
 				CurrentClef.TextBlockLocation = new Primitives.Point(CursorPositionX, CurrentLinePositions[4] - 24.4f - (CurrentClef.Line - 1) * rendererSettings.LineSpacing);
 				CurrentKey = measure.Staff.Peek<Key>(firstNoteOrRest, Model.PeekStrategies.PeekType.PreviousElement);
 			}
-			
 		}
 
 		/// <summary>

@@ -3,64 +3,69 @@ using Manufaktura.Controls.Primitives;
 
 namespace Manufaktura.Controls.Rendering
 {
-    /// <summary>
-    /// Initial settings of score renderer.
-    /// </summary>
-    public class ScoreRendererSettings
-    {
-        /// <summary>
-        /// Key mapping for current font
-        /// </summary>
-        public IMusicFont CurrentFont { get; set; }
+	/// <summary>
+	/// Initial settings of score renderer.
+	/// </summary>
+	public class ScoreRendererSettings
+	{
+		/// <summary>
+		/// Initializes a new instance of ScoreRendererSettings
+		/// </summary>
+		public ScoreRendererSettings()
+		{
+			RenderingMode = ScoreRenderingModes.Panorama;
+			IgnoreCustomElementPositions = false;
+			CustomElementPositionRatio = 0.7d;
+			PageWidth = 200;
+			PaddingTop = 20;
+			LineSpacing = 6;
+			DefaultColor = Color.Black;
+			CurrentFont = new PolihymniaFont();
+			TextBlockHeight = 25;
+		}
 
-        public double CustomElementPositionRatio { get; set; }
+		/// <summary>
+		/// Key mapping for current font
+		/// </summary>
+		public IMusicFont CurrentFont { get; set; }
 
-        /// <summary>
-        /// Default color
-        /// </summary>
-        public Color DefaultColor { get; set; }
+		/// <summary>
+		/// Page to display if renderer is in SinglePage mode.
+		/// </summary>
+		public int CurrentPage { get; set; }
 
-        /// <summary>
-        /// True, to ignore element positions which are implicitly set in MusicXml file
-        /// </summary>
-        public bool IgnoreCustomElementPositions { get; set; }
+		public double CustomElementPositionRatio { get; set; }
 
-        /// <summary>
-        /// If true, all system breaks are ignored (the score is displayed in single staff system).
-        /// </summary>
-        public bool IsPanoramaMode { get; set; }
+		/// <summary>
+		/// Default color
+		/// </summary>
+		public Color DefaultColor { get; set; }
 
-        /// <summary>
-        /// Default line spacing
-        /// </summary>
-        public int LineSpacing { get; private set; }
+		/// <summary>
+		/// True, to ignore element positions which are implicitly set in MusicXml file
+		/// </summary>
+		public bool IgnoreCustomElementPositions { get; set; }
 
-        /// <summary>
-        /// Default padding top
-        /// </summary>
-        public int PaddingTop { get; private set; }
+		/// <summary>
+		/// Default line spacing
+		/// </summary>
+		public int LineSpacing { get; private set; }
 
-        /// <summary>
-        /// Default page width
-        /// </summary>
-        public double PageWidth { get; set; }
+		/// <summary>
+		/// Default padding top
+		/// </summary>
+		public int PaddingTop { get; private set; }
 
-        internal double TextBlockHeight { get; set; }
+		/// <summary>
+		/// Default page width
+		/// </summary>
+		public double PageWidth { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of ScoreRendererSettings
-        /// </summary>
-        public ScoreRendererSettings()
-        {
-            IsPanoramaMode = true;
-            IgnoreCustomElementPositions = false;
-            CustomElementPositionRatio = 0.7d;
-            PageWidth = 200;
-            PaddingTop = 20;
-            LineSpacing = 6;
-            DefaultColor = Color.Black;
-            CurrentFont = new PolihymniaFont();
-            TextBlockHeight = 25;
-        }
-    }
+		/// <summary>
+		/// Rendering moed
+		/// </summary>
+		public ScoreRenderingModes RenderingMode { get; set; }
+
+		internal double TextBlockHeight { get; set; }
+	}
 }

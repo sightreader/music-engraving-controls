@@ -33,6 +33,9 @@ namespace Manufaktura.Controls.Rendering
 
 		public override void Render(Barline element, ScoreRendererBase renderer)
 		{
+			var partGroup = element.Staff?.Part?.Group;
+			var doNotDraw = partGroup != null && partGroup.GroupBarline == GroupBarlineType.Mensurstrich;
+
 			var lightPen = new Pen(element.CoalesceColor(renderer), 1);
 			var thickPen = new Pen(element.CoalesceColor(renderer), 3);
 
@@ -57,17 +60,20 @@ namespace Manufaktura.Controls.Rendering
 			{
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 16;
 				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				if (element.Style == BarlineStyle.LightHeavy)
+				if (!doNotDraw)
 				{
-					renderer.DrawLine(new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[4]),
-									  new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[0]), lightPen, element);
-					renderer.DrawLine(new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[4]),
-									  new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[0]), thickPen, element);
-				}
-				else
-				{
-					renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
-									  new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), lightPen, element);
+					if (element.Style == BarlineStyle.LightHeavy)
+					{
+						renderer.DrawLine(new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[4]),
+										  new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[0]), lightPen, element);
+						renderer.DrawLine(new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[4]),
+										  new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[0]), thickPen, element);
+					}
+					else
+					{
+						renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
+										  new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), lightPen, element);
+					}
 				}
 				scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
 				scoreService.CurrentMeasure.Barline = element;

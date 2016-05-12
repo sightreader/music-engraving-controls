@@ -26,7 +26,7 @@ namespace Manufaktura.Controls.Formatting
                 StaffSystem lastSystem = null;
                 foreach (var measure in staff.Measures)
                 {
-                    var marginLeft = lastSystem == null || score.Systems.IndexOf(measure.System) != score.Systems.IndexOf(lastSystem) ? 85 : 14;    //First symbol in system should have bigger margin
+                    var marginLeft = lastSystem == null || score.Systems.ToList().IndexOf(measure.System) != score.Systems.ToList().IndexOf(lastSystem) ? 85 : 14;    //First symbol in system should have bigger margin
                     foreach (var group in measure.Elements.GroupBy(e => e is NoteOrRest ? ((NoteOrRest)e).Voice : 1))
                     {
                         double x = marginLeft;

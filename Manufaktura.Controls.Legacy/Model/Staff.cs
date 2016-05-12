@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model.Events;
+﻿using Manufaktura.Controls.Model.Collections;
+using Manufaktura.Controls.Model.Events;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Model.Rules;
 using Manufaktura.Music.Model;
@@ -44,6 +45,8 @@ namespace Manufaktura.Controls.Model
 			AddMeasuresManually
 		}
 
+		public ICollection<BeamGroup> BeamGroups { get; private set; } = new List<BeamGroup>();
+
 		/// <summary>
 		/// Elements in Staff
 		/// </summary>
@@ -75,14 +78,6 @@ namespace Manufaktura.Controls.Model
 		/// Parent Score
 		/// </summary>
 		public Score Score { get; internal set; }
-
-		public override MusicalSymbolType Type
-		{
-			get
-			{
-				return MusicalSymbolType.Staff;
-			}
-		}
 
 		/// <summary>
 		/// Retrieves a symbol that meats specific requirements and is relative to specific symbol.

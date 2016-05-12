@@ -1,50 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Manufaktura.Controls.Parser.MusicXml
+﻿namespace Manufaktura.Controls.Parser.MusicXml
 {
-    public class MusicXmlParserState
-    {
-        int skipMeasures = 0;
+	public class MusicXmlParserState
+	{
+		private int currentDynamics = 80;
+		private int currentTempo = 120;
+		private bool firstLoop = true;
+		private string partID = "";
+		private int skipMeasures = 0;
 
-        public int SkipMeasures
-        {
-            get { return skipMeasures; }
-            set { skipMeasures = value; }
-        }
-        string partID = "";
+		public bool BarlineAlreadyAdded { get; set; }
 
-        public string PartID
-        {
-            get { return partID; }
-            set { partID = value; }
-        }
-        bool firstLoop = true;
+		public int CurrentDynamics
+		{
+			get { return currentDynamics; }
+			set { currentDynamics = value; }
+		}
 
-        public bool FirstLoop
-        {
-            get { return firstLoop; }
-            set { firstLoop = value; }
-        }
-        int currentTempo = 120;
+		public int CurrentSystemNo { get; set; }
 
-        public int CurrentTempo
-        {
-            get { return currentTempo; }
-            set { currentTempo = value; }
-        }
-        int currentDynamics = 80;
+		public int CurrentTempo
+		{
+			get { return currentTempo; }
+			set { currentTempo = value; }
+		}
 
-        public int CurrentDynamics
-        {
-            get { return currentDynamics; }
-            set { currentDynamics = value; }
-        }
+		public bool FirstLoop
+		{
+			get { return firstLoop; }
+			set { firstLoop = value; }
+		}
 
-        public bool BarlineAlreadyAdded { get; set; }
+		public string PartID
+		{
+			get { return partID; }
+			set { partID = value; }
+		}
 
-        public double LastSystemDistance { get; set; }
-    }
+		public int SkipMeasures
+		{
+			get { return skipMeasures; }
+			set { skipMeasures = value; }
+		}
+	}
 }

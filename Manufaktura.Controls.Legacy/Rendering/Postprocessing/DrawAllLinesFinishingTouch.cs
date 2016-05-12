@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using System;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
 
@@ -16,7 +17,11 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
             this.scoreService = scoreService;
         }
 
-        public void PerformOnScore(Score score, ScoreRendererBase renderer)
+		public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
+		{
+		}
+
+		public void PerformOnScore(Score score, ScoreRendererBase renderer)
         {
         }
 
@@ -25,18 +30,19 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
             foreach (var system in scoreService.Systems)
             {
                 if (system.LinePositions == null) continue;
-                Draw(staff, renderer, system.LinePositions[scoreService.CurrentStaffNo], system.Width);
+				var staffFragment = system.Staves[scoreService.CurrentStaffNo - 1];
+				Draw(staff, renderer, staffFragment, system);
             }
         }
 
-        private void Draw(Staff staff, ScoreRendererBase renderer, double[] linePositions, double width)
+        private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system)
         {
-            renderer.DrawLine(0, linePositions[0], 0, linePositions[4], staff);
-            foreach (double position in linePositions)
+            renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], staffFragment);
+            foreach (double position in staffFragment.LinePositions)
             {
                 Point startPoint = new Point(0, position);
-                Point endPoint = new Point(width, position);
-                renderer.DrawLine(startPoint, endPoint, new Pen(renderer.Settings.DefaultColor, 1, -1), staff);
+                Point endPoint = new Point(system.Width, position);
+                renderer.DrawLine(startPoint, endPoint, new Pen(renderer.Settings.DefaultColor, 1, -1), staffFragment);
             }
         }
     }

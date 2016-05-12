@@ -2,63 +2,55 @@
 
 namespace Manufaktura.Controls.Model
 {
-    public class ChordSign : MusicalSymbol, IHasCustomYPosition, IRenderedAsTextBlock
-    {
-        public Chord Chord { get; private set; }
+	public class ChordSign : MusicalSymbol, IHasCustomYPosition, IRenderedAsTextBlock
+	{
+		public ChordSign(Chord chord)
+		{
+			Chord = chord;
+		}
 
-        public double? DefaultYPosition
-        {
-            get;
-            set;
-        }
+		public Chord Chord { get; private set; }
 
-        public string MusicalCharacter
-        {
-            get { return Text; }
-        }
+		public double? DefaultYPosition
+		{
+			get;
+			set;
+		}
 
-        public Fonts.IMusicFont MusicFont
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+		public string MusicalCharacter
+		{
+			get { return Text; }
+		}
 
-        public string Text { get; set; }
+		public Fonts.IMusicFont MusicFont
+		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+				throw new System.NotImplementedException();
+			}
+		}
 
-        public Primitives.Point TextBlockLocation
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+		public string Text { get; set; }
 
-        public override MusicalSymbolType Type
-        {
-            get
-            {
-                return MusicalSymbolType.ChordSign;
-            }
-        }
+		public Primitives.Point TextBlockLocation
+		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+				throw new System.NotImplementedException();
+			}
+		}
 
-        public ChordSign(Chord chord)
-        {
-            Chord = chord;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("{0} {1}", base.ToString(), Chord.ToString());
-        }
-    }
+		public override string ToString()
+		{
+			return string.Format("{0} {1}", base.ToString(), Chord.ToString());
+		}
+	}
 }

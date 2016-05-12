@@ -3,6 +3,7 @@ using Manufaktura.Controls.Rendering;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.Model
 {
@@ -12,11 +13,11 @@ namespace Manufaktura.Controls.Model
 
 	public enum ClefType { GClef, CClef, FClef };
 
+	public enum DesiredHookDirections { Any, ForwardHook, BackwardHook };
+
 	public enum DirectionPlacementType { Above, Below, Custom };
 
 	public enum HorizontalPlacement { Left, Right };
-
-	public enum MusicalSymbolType { Unknown, Clef, Note, Rest, Barline, Key, TimeSignature, Direction, Staff, PrintSuggestion, ChordSign };    //Comparing enum instead of casting supposedly improves performance: http://stackoverflow.com/questions/686412/c-sharp-is-operator-performance
 
 	public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
 
@@ -43,6 +44,7 @@ namespace Manufaktura.Controls.Model
 	/// </summary>
 	public abstract class MusicalSymbol : ViewModel
 	{
+		private Color? customColor;
 		private bool isVisible;
 
 		protected MusicalSymbol()
@@ -62,20 +64,21 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
-		public Color? CustomColor { get; set; }
-
+		public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(() => CustomColor); } }
 		public Guid Id { get; private set; }
 
 		/// <summary>
 		/// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
 		/// </summary>
-		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(nameof(IsVisible)); } }
+		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(() => IsVisible); } }
 
-		public Measure Measure { get; internal set; }
+		public virtual Measure Measure { get; internal set; }
+		public ScorePage Page => Measure?.System?.Page;
 
-		public Staff Staff { get; internal set; }
+		public int? PageNumber => Page == null ? null : Staff?.Score?.Pages?.IndexOf(Page) + 1;
+		public virtual Staff Staff { get; internal set; }
 
-		public virtual MusicalSymbolType Type { get { return MusicalSymbolType.Unknown; } }
+		internal bool SuppressEvents { get; set; }
 
 		/// <summary>
 		/// Converts a VerticalDirection to VerticalPlacement.
@@ -104,13 +107,14 @@ namespace Manufaktura.Controls.Model
 			return CustomColor.HasValue ? CustomColor.Value : renderer.Settings.DefaultColor;
 		}
 
-		public override string ToString()
+		internal void InvalidateMeasure()
 		{
-			return Type.ToString();
+			Staff?.FireMeasureInvalidated(this, Measure);
 		}
 
 		protected override void OnPropertyChanged(string propertyName)
 		{
+			if (SuppressEvents) return;
 			base.OnPropertyChanged(propertyName);
 			Staff?.FireMeasureInvalidated(this, Measure);
 		}

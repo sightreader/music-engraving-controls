@@ -15,6 +15,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Profile344</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,6 +25,49 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsAssertsToContractsCheckBox>False</CodeContractsAssertsToContractsCheckBox>
+    <CodeContractsRedundantTests>False</CodeContractsRedundantTests>
+    <CodeContractsMissingPublicRequiresAsWarnings>False</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsMissingPublicEnsuresAsWarnings>False</CodeContractsMissingPublicEnsuresAsWarnings>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferEnsuresAutoProperties>False</CodeContractsInferEnsuresAutoProperties>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestAssumptionsForCallees>False</CodeContractsSuggestAssumptionsForCallees>
+    <CodeContractsSuggestRequires>False</CodeContractsSuggestRequires>
+    <CodeContractsNecessaryEnsures>False</CodeContractsNecessaryEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsSuggestReadonly>False</CodeContractsSuggestReadonly>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile>..\..\baseline.xml</CodeContractsBaseLineFile>
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsSkipAnalysisIfCannotConnectToCache>False</CodeContractsSkipAnalysisIfCannotConnectToCache>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>3</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,24 +89,44 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Audio\PlaybackCursorPosition.cs" />
     <Compile Include="Audio\ScorePlayer.cs" />
     <Compile Include="Audio\ThreadScorePlayer.cs" />
-    <Compile Include="Extensions\ScoreMath.cs" />
+    <Compile Include="Audio\TimelineElement.cs" />
+    <Compile Include="Extensions\StaffBuilder.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Formatting\BeatRebeamStrategy.cs" />
     <Compile Include="Formatting\DefaultScoreFormatter.cs" />
+    <Compile Include="Formatting\HookDirectionAlgorithm.cs" />
+    <Compile Include="Formatting\IRebeamStrategy.cs" />
     <Compile Include="Formatting\IScoreFormatter.cs" />
+    <Compile Include="Formatting\LyricsRebeamStrategy.cs" />
+    <Compile Include="Formatting\RebeamMode.cs" />
+    <Compile Include="Formatting\SimpleRebeamStrategy.cs" />
+    <Compile Include="Interactivity\BeamGroupDraggingStrategy.cs" />
+    <Compile Include="Interactivity\DirectionDraggingStrategy.cs" />
+    <Compile Include="Interactivity\DraggingStrategy.cs" />
+    <Compile Include="Interactivity\IDraggingStrategy.cs" />
+    <Compile Include="Interactivity\LyricsDraggingStrategy.cs" />
+    <Compile Include="Interactivity\NoteDraggingStrategy.cs" />
+    <Compile Include="Interactivity\RestDraggingStrategy.cs" />
     <Compile Include="IoC\ExpressionActivator.cs" />
     <Compile Include="IoC\ManufakturaResolver.cs" />
     <Compile Include="Linq\ScoreExtensions.cs" />
+    <Compile Include="Model\Assertions\SafetySettings.cs" />
     <Compile Include="Model\Barline.cs" />
+    <Compile Include="Model\BeamGroup.cs" />
     <Compile Include="Model\Builders\NoteOrRestBuilder.cs" />
     <Compile Include="Model\Clef.cs" />
+    <Compile Include="Model\Collections\ItemManagingCollection.cs" />
+    <Compile Include="Model\Collections\LyricsCollection.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Events\InvalidateEventArgs.cs" />
     <Compile Include="Model\Fonts\MusicFontStyles.cs" />
     <Compile Include="Model\Fonts\IMusicFont.cs" />
     <Compile Include="Model\Fonts\PolihymniaFont.cs" />
     <Compile Include="Model\ChordSign.cs" />
+    <Compile Include="Model\GroupBarlineType.cs" />
     <Compile Include="Model\ICanBeElementOfChord.cs" />
     <Compile Include="Model\ICanBeElementOfTuplet.cs" />
     <Compile Include="Model\IHasCustomXPosition.cs" />
@@ -72,13 +136,15 @@
     <Compile Include="Model\Key.cs" />
     <Compile Include="Model\Lyrics.cs" />
     <Compile Include="Model\Measure.cs" />
+    <Compile Include="Model\MetronomeDirection.cs" />
     <Compile Include="Model\Mordent.cs" />
     <Compile Include="Model\MusicalSymbol.cs" />
-    <Compile Include="Model\MusicalSymbolCollection.cs" />
+    <Compile Include="Model\Collections\MusicalSymbolCollection.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\NoteOrRest.cs" />
     <Compile Include="Model\NullMusicalSymbol.cs" />
     <Compile Include="Model\Ornament.cs" />
+    <Compile Include="Model\PartGroup.cs" />
     <Compile Include="Model\ScorePage.cs" />
     <Compile Include="Model\Part.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs" />
@@ -97,8 +163,10 @@
     <Compile Include="Model\ScoreEncoding.cs" />
     <Compile Include="Model\ScoreInfo.cs" />
     <Compile Include="Model\Slur.cs" />
-    <Compile Include="Model\StaffCollection.cs" />
+    <Compile Include="Model\Collections\StaffCollection.cs" />
+    <Compile Include="Model\StaffFragment.cs" />
     <Compile Include="Model\StaffSystem.cs" />
+    <Compile Include="Model\Collections\SystemCollection.cs" />
     <Compile Include="Model\Tuplet.cs" />
     <Compile Include="Parser\Digest\LyricsDigestParser.cs" />
     <Compile Include="Parser\Digest\MelodicContourDigestParser.cs" />
@@ -112,7 +180,6 @@
     <Compile Include="Parser\MusicXml\Strategies\ClefParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\ClefWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\DirectionParsingStrategy.cs" />
-    <Compile Include="Parser\MusicXml\Strategies\DirectionTypeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\EncodingParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\HarmonyParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\KeyParsingStrategy.cs" />
@@ -127,22 +194,26 @@
     <Compile Include="Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PageLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\StaffLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\StavesAttributeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\SystemLayoutParsingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />
     <Compile Include="Primitives\Size.cs" />
+    <Compile Include="Interactivity\DraggingState.cs" />
     <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\HtmlScoreRendererSettings.cs" />
     <Compile Include="Rendering\Implementations\HtmlSvgScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\IScore2HtmlBuilder.cs" />
+    <Compile Include="Rendering\InvalidatingModes.cs" />
     <Compile Include="Rendering\PerformanceMeasuringScoreRenderer.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlCanvasBuilder.cs" />
     <Compile Include="Rendering\Implementations\Score2HtmlSvgBuilder.cs" />
     <Compile Include="Rendering\Postprocessing\AddBracketsFinishingTouch.cs" />
+    <Compile Include="Rendering\Postprocessing\DrawBeamsFinishingTouch.cs" />
     <Compile Include="Rendering\ScoreRendererSettings.cs" />
     <Compile Include="Parser\MusicXml\Strategies\SoundParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\TimeParsingStrategy.cs" />
@@ -156,6 +227,8 @@
     <Compile Include="Model\TimeSignature.cs" />
     <Compile Include="Primitives\Rectangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\ScoreRenderingModes.cs" />
+    <Compile Include="Rendering\Snippets\Beams.cs" />
     <Compile Include="Rendering\Strategies\BarlineRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\ClefRenderStrategy.cs" />
     <Compile Include="Rendering\Postprocessing\DemoVersionFinishingTouch.cs" />
@@ -181,6 +254,9 @@
     <Compile Include="Services\IScoreService.cs" />
     <Compile Include="Services\MeasurementService.cs" />
     <Compile Include="Services\ScoreService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Manufaktura.Model.Legacy\Manufaktura.Model.Legacy.csproj">

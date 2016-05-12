@@ -162,14 +162,6 @@ namespace Manufaktura.Controls.Model
 			set;
 		}
 
-		public override MusicalSymbolType Type
-		{
-			get
-			{
-				return MusicalSymbolType.Clef;
-			}
-		}
-
 		/// <summary>
 		/// Type of clef (C-clef, G-clef or F-clef)
 		/// </summary>

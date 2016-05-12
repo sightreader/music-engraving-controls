@@ -26,9 +26,10 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 elementList.Insert(0, stavesElement);
             }
 
-            foreach (XElement attribute in elementList)
+			var attributePriorities = new[] { "clef", "key", "time" }.ToList();
+            foreach (XElement attribute in elementList.OrderBy(k => attributePriorities.IndexOf(k.Name.LocalName)))
             {
-                MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(attribute);
+                MusicXmlParsingStrategy parsingStrategy = GetProperStrategy(attribute);
                 if (parsingStrategy != null) parsingStrategy.ParseElement(state, staff, attribute);
             }
         }

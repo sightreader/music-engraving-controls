@@ -4,86 +4,129 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model
 {
-    /// <summary>
-    /// Represents a single word
-    /// </summary>
-    public class Lyrics : IHasCustomYPosition
-    {
-        public double? DefaultYPosition { get; set; }
+	/// <summary>
+	/// Represents a single word
+	/// </summary>
+	public class Lyrics : MusicalSymbol, IHasCustomYPosition
+	{
+		private double? defaultYPosition;
 
-        public int Number { get; set; }
+		/// <summary>
+		/// Initializes a new insance of Lyrics.
+		/// </summary>
+		public Lyrics()
+		{
+		}
 
-        /// <summary>
-        /// Syllables that form a single word
-        /// </summary>
-        public List<Syllable> Syllables { get; set; }
+		public Lyrics(SyllableType type, string text, double? defaultY)
+		{
+			Syllables.Add(new Syllable(type, text));
+			defaultYPosition = defaultY;
+		}
 
-        /// <summary>
-        /// String value of word
-        /// </summary>
-        public string Text
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (Syllable syllable in Syllables)
-                {
-                    sb.Append(syllable.ElisionMark);
-                    sb.Append(syllable.Text);
-                }
-                return sb.ToString();
-            }
-        }
+		public Lyrics(SyllableType type, string text)
+			: this(type, text, null)
+		{
+		}
 
-        /// <summary>
-        /// Type of last (or only) syllable in word.
-        /// </summary>
-        public SyllableType Type
-        {
-            get
-            {
-                Syllable lastSyllable = Syllables.LastOrDefault();
-                if (lastSyllable == null) return SyllableType.Single;
-                return lastSyllable.Type;
-            }
-        }
+		public double? DefaultYPosition
+		{
+			get
+			{
+				return defaultYPosition;
+			}
+			set
+			{
+				defaultYPosition = value;
+				OnPropertyChanged(() => DefaultYPosition);
+			}
+		}
 
-        /// <summary>
-        /// Initializes a new insance of Lyrics.
-        /// </summary>
-        public Lyrics()
-        {
-            Syllables = new List<Syllable>();
-        }
+		public override Measure Measure
+		{
+			get
+			{
+				return Note?.Measure;
+			}
 
-        public Lyrics(SyllableType type, string text, double? defaultY)
-        {
-            Syllables.Add(new Syllable(type, text));
-            DefaultYPosition = defaultY;
-        }
+			internal set
+			{
+			}
+		}
 
-        public Lyrics(SyllableType type, string text)
-            : this(type, text, null)
-        {
-        }
+		public Note Note { get; internal set; }
 
-        public class Syllable
-        {
-            public string ElisionMark { get; set; }
+		public int Number { get; set; }
 
-            public string Text { get; set; }
+		public override Staff Staff
+		{
+			get
+			{
+				return Note?.Staff;
+			}
 
-            public SyllableType Type { get; set; }
+			internal set
+			{
+			}
+		}
 
-            public Syllable()
-            {
-            }
+		/// <summary>
+		/// Syllables that form a single word
+		/// </summary>
+		public List<Syllable> Syllables { get; set; } = new List<Syllable>();
 
-            public Syllable(SyllableType type, string text)
-            {
-                Type = type;
-                Text = text;
-            }
-        }
-    }
+		/// <summary>
+		/// String value of word
+		/// </summary>
+		public string Text
+		{
+			get
+			{
+				StringBuilder sb = new StringBuilder();
+				foreach (Syllable syllable in Syllables)
+				{
+					sb.Append(syllable.ElisionMark);
+					sb.Append(syllable.Text);
+				}
+				return sb.ToString();
+			}
+		}
+
+		/// <summary>
+		/// Type of last (or only) syllable in word.
+		/// </summary>
+		public SyllableType Type
+		{
+			get
+			{
+				Syllable lastSyllable = Syllables.LastOrDefault();
+				if (lastSyllable == null) return SyllableType.Single;
+				return lastSyllable.Type;
+			}
+		}
+
+		public override string ToString()
+		{
+			return $"Lyrics \"{Text}\"";
+		}
+
+		public class Syllable
+		{
+			public Syllable()
+			{
+			}
+
+			public Syllable(SyllableType type, string text)
+			{
+				Type = type;
+				Text = text;
+			}
+
+			public string ElisionMark { get; set; }
+
+			public string Text { get; set; }
+
+			public SyllableType Type { get; set; }
+		}
+	}
 }

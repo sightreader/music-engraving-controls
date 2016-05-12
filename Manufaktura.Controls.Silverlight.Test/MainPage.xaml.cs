@@ -84,7 +84,7 @@ namespace Manufaktura.Controls.Silverlight.Test
             var binding = new Binding("ThreadSafeCurrentElement");
             binding.Source = player;
             noteViewer1.SetBinding(NoteViewer.SelectedElementProperty, binding);
-            player.Start();
+            player.Play();
             
         }
 
