@@ -3,6 +3,7 @@ using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Manufaktura.Controls.Audio
 {
@@ -128,5 +129,34 @@ namespace Manufaktura.Controls.Audio
 		/// Stop playback
 		/// </summary>
 		public abstract void Stop();
+
+		protected IEnumerable<TimelineElement<IHasDuration>> EnumerateTimeline()
+		{
+			var elapsedTime = TimeSpan.Zero;
+			for (var i = 0; i < Score.FirstStaff.Measures.Count; i++)
+			{
+				var elements = new List<Tuple<decimal, IHasDuration>>();
+				foreach (var staff in Score.Staves)
+				{
+					var measure = staff.Measures[i];
+
+					var elapsed = 0m;
+					foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
+					{
+						elements.Add(new Tuple<decimal, IHasDuration>(elapsed, durationElement));
+						if (!((durationElement as Note)?.IsUpperMemberOfChord ?? false))
+							elapsed += new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDecimal();
+					}
+				}
+				var orderedElements = elements.OrderBy(e => e.Item1).ToList();
+				foreach (var element in orderedElements)
+				{
+					yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds((double)element.Item1 * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
+				}
+				var lastItem = orderedElements.Last();
+				var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDecimal();
+				elapsedTime += TimeSpan.FromMilliseconds((double)endOfMeasure * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds);
+			}
+		}
 	}
 }
