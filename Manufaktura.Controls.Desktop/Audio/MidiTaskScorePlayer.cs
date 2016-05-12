@@ -75,7 +75,6 @@ namespace Manufaktura.Controls.Desktop.Audio
 		{
 			var channelIndex = staffIndex * 2;
 			if (channelIndex > 7) channelIndex += 2;
-			Debug.WriteLine($"Channel {channelIndex}");
 			return channelIndex;
 		}
 	}

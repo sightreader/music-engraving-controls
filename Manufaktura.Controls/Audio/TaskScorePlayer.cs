@@ -125,7 +125,6 @@ namespace Manufaktura.Controls.Audio
 		{
 			lock (simultaneousElements)
 			{
-				Debug.WriteLine($"Playing: {string.Join(", ", simultaneousElements.Select(se => se.What).OfType<Note>().Select(n => n.Pitch).ToList())}");
 				while (simultaneousElements.Any())
 				{
 					var element = simultaneousElements.Dequeue();

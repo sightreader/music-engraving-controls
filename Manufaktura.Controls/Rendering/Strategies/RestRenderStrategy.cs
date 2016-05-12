@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
@@ -42,6 +43,7 @@ namespace Manufaktura.Controls.Rendering
 
 			renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
 			measurementService.LastNotePositionX = scoreService.CursorPositionX;
+			element.TextBlockLocation = new Point(scoreService.CursorPositionX, restPositionY);
 
 			//Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
 			if (element.MultiMeasure > 1)

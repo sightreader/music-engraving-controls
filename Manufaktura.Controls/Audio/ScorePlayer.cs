@@ -3,6 +3,7 @@ using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Manufaktura.Controls.Audio
 {
@@ -69,6 +70,7 @@ namespace Manufaktura.Controls.Audio
 				var noteOrRest = CurrentElement as NoteOrRest;
 				if (noteOrRest == null) return lastPosition;
 				lastPosition = new PlaybackCursorPosition(Score.Systems.IndexOf(noteOrRest.Measure.System) + 1, noteOrRest.TextBlockLocation.X, DateTime.Now, new RhythmicDuration(noteOrRest.BaseDuration.Denominator, noteOrRest.NumberOfDots).ToTimeSpan(Tempo));
+				Debug.WriteLine("System: " + lastPosition.SystemNumber + " Pozycja:" + lastPosition.PositionX + " Element: " + noteOrRest);
 				return lastPosition;
 			}
 		}
