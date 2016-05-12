@@ -1,4 +1,4 @@
-﻿This library uses fragments of code from Leslie Sanford's midi library:
+﻿Manufaktura.Controls.Desktop library uses fragments of code from Leslie Sanford's midi library:
 
 
 /* Copyright (c) 2005 Leslie Sanford
