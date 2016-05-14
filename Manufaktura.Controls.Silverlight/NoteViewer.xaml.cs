@@ -1,5 +1,9 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Interactivity;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.Silverlight.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,60 +22,41 @@ namespace Manufaktura.Controls.Silverlight
 	/// </summary>
 	public partial class NoteViewer : UserControl
 	{
-		// Using a DependencyProperty as the backing store for IsDebugMode.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsDebugModeProperty =
-			DependencyProperty.Register("IsDebugMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
-
-		// Using a DependencyProperty as the backing store for IsInsertMode.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsInsertModeProperty =
-			DependencyProperty.Register("IsInsertMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(false));
-
-		// Using a DependencyProperty as the backing store for IsOccupyingSpace.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsOccupyingSpaceProperty =
-			DependencyProperty.Register("IsOccupyingSpace", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
-
-		// Using a DependencyProperty as the backing store for IsPanoramaMode.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsPanoramaModeProperty =
-			DependencyProperty.Register("IsPanoramaMode", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
-
-		// Using a DependencyProperty as the backing store for IsSelectable.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty IsSelectableProperty =
-			DependencyProperty.Register("IsSelectable", typeof(bool), typeof(NoteViewer), new PropertyMetadata(true));
-
-		// Using a DependencyProperty as the backing store for ScoreSource.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty ScoreSourceProperty =
-			DependencyProperty.Register("ScoreSource", typeof(Score), typeof(NoteViewer), new PropertyMetadata(null, ScoreSourceChanged));
-
-		// Using a DependencyProperty as the backing store for SelectedElement.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty SelectedElementProperty =
-			DependencyProperty.Register("SelectedElement", typeof(MusicalSymbol), typeof(NoteViewer), new PropertyMetadata(null));
-
-		// Using a DependencyProperty as the backing store for XmlSourceProperty.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty XmlSourceProperty =
-			DependencyProperty.Register("XmlSource", typeof(string), typeof(NoteViewer), new PropertyMetadata(null, XmlSourceChanged));
-
-		// Using a DependencyProperty as the backing store for XmlTransformations.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty XmlTransformationsProperty =
-			DependencyProperty.Register("XmlTransformations", typeof(IEnumerable<XTransformerParser>), typeof(NoteViewer), new PropertyMetadata(null));
-
-		// Using a DependencyProperty as the backing store for ZoomFactor.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty ZoomFactorProperty =
-			DependencyProperty.Register("ZoomFactor", typeof(double), typeof(NoteViewer), new PropertyMetadata(1d, ZoomFactorChanged));
-
+		public static readonly DependencyProperty CurrentPageProperty = DependencyPropertyEx.Register<NoteViewer, int>(v => v.CurrentPage, 1, CurrentPageChanged);
+		public static readonly DependencyProperty InvalidatingModeProperty = DependencyPropertyEx.Register<NoteViewer, InvalidatingModes>(v => v.InvalidatingMode, InvalidatingModes.RedrawInvalidatedRegion);
+		public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
+		public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
+		public static readonly DependencyProperty IsSelectableProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsSelectable, true);
+		public static readonly DependencyProperty PlaybackCursorPositionProperty = DependencyPropertyEx.Register<NoteViewer, PlaybackCursorPosition>(v => v.PlaybackCursorPosition, default(PlaybackCursorPosition), PlaybackCursorPositionChanged);
+		public static readonly DependencyProperty RenderingModeProperty = DependencyPropertyEx.Register<NoteViewer, ScoreRenderingModes>(v => v.RenderingMode, ScoreRenderingModes.Panorama, RenderingModeChanged);
+		public static readonly DependencyProperty ScoreSourceProperty = DependencyPropertyEx.Register<NoteViewer, Score>(v => v.ScoreSource, null, ScoreSourceChanged);
+		public static readonly DependencyProperty SelectedElementProperty = DependencyPropertyEx.Register<NoteViewer, MusicalSymbol>(v => v.SelectedElement, null);
+		public static readonly DependencyProperty XmlSourceProperty = DependencyPropertyEx.Register<NoteViewer, string>(v => v.XmlSource, null, XmlSourceChanged);
+		public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
+		public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
 		private DraggingState _draggingState = new DraggingState();
+
 		private Score _innerScore;
+
+		private Color previousColor;
 
 		public NoteViewer()
 		{
 			InitializeComponent();
 		}
 
+		public int CurrentPage
+		{
+			get { return (int)GetValue(CurrentPageProperty); }
+			set { SetValue(CurrentPageProperty, value); }
+		}
+
 		public Score InnerScore { get { return _innerScore; } }
 
-		public bool IsDebugMode
+		public InvalidatingModes InvalidatingMode
 		{
-			get { return (bool)GetValue(IsDebugModeProperty); }
-			set { SetValue(IsDebugModeProperty, value); }
+			get { return (InvalidatingModes)GetValue(InvalidatingModeProperty); }
+			set { SetValue(InvalidatingModeProperty, value); }
 		}
 
 		public bool IsInsertMode
@@ -90,16 +75,22 @@ namespace Manufaktura.Controls.Silverlight
 			set { SetValue(IsOccupyingSpaceProperty, value); }
 		}
 
-		public bool IsPanoramaMode
-		{
-			get { return (bool)GetValue(IsPanoramaModeProperty); }
-			set { SetValue(IsPanoramaModeProperty, value); }
-		}
-
 		public bool IsSelectable
 		{
 			get { return (bool)GetValue(IsSelectableProperty); }
 			set { SetValue(IsSelectableProperty, value); }
+		}
+
+		public PlaybackCursorPosition PlaybackCursorPosition
+		{
+			get { return (PlaybackCursorPosition)GetValue(PlaybackCursorPositionProperty); }
+			set { SetValue(PlaybackCursorPositionProperty, value); }
+		}
+
+		public ScoreRenderingModes RenderingMode
+		{
+			get { return (ScoreRenderingModes)GetValue(RenderingModeProperty); }
+			set { SetValue(RenderingModeProperty, value); }
 		}
 
 		public Score ScoreSource
@@ -136,7 +127,7 @@ namespace Manufaktura.Controls.Silverlight
 
 		public void Select(MusicalSymbol element)
 		{
-			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Black);   //Reset color on previously selected element
+			if (SelectedElement != null) ColorElement(SelectedElement, previousColor);   //Reset color on previously selected element
 			SelectedElement = element;
 
 			var note = SelectedElement as Note;
@@ -144,56 +135,58 @@ namespace Manufaktura.Controls.Silverlight
 
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);      //Apply color on selected element
 
-			var positionElement = element as IHasCustomXPosition;
-			if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}",
-				positionElement.DefaultXPosition.HasValue ? positionElement.DefaultXPosition.Value.ToString() : "(not set)");
+			Debug.WriteLine($"{element?.ToString()} Measure: {element?.Measure?.ToString()} System: {element?.Measure?.System?.ToString()}");
 		}
 
 		protected override Size MeasureOverride(Size availableSize)
 		{
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
+			var children = MainCanvas.Children.OfType<UIElement>();
+			foreach (var child in children) child.Measure(availableSize);
 
-			double width = availableSize.Width;
-			var pageWidth = (Renderer.CurrentScore.DefaultPageSettings.MarginLeft ?? 0) +
-				(Renderer.CurrentScore.DefaultPageSettings.Width ?? 0) +
-				(Renderer.CurrentScore.DefaultPageSettings.MarginRight ?? 0);
-			var maxSystemWidth = Renderer.ScoreInformation.Systems.Max(s => s.Width);
-			double maxWidth = pageWidth > maxSystemWidth ? pageWidth : maxSystemWidth;
-			if (maxWidth > 0) width = maxWidth;
-
-			var maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height + Renderer.Settings.LineSpacing * 5);
-			if (maxHeight < 72) maxHeight = 72 * Renderer.CurrentScore.Staves.Count;
-			if (!IsPanoramaMode)
+			if (children.Any())
 			{
-				maxHeight *= Renderer.CurrentScore.Systems.Count;
-				maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) * 2;
-				maxHeight += (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0) * 2;
+				var xx = children.Max(c => Canvas.GetLeft(c) + c.DesiredSize.Width);
+				var yy = children.Max(c => Canvas.GetTop(c) + c.DesiredSize.Height);
+				return new Size(xx, yy);
 			}
+			return base.MeasureOverride(availableSize);
+		}
 
-			/*double maxHeight;
-            if (!IsPanoramaMode)
-            {
-                var pageHeight = (Renderer.CurrentScore.DefaultPageSettings.MarginTop ?? 0) +
-                    (Renderer.CurrentScore.DefaultPageSettings.Height ?? 0) * (Renderer.CurrentScore.Pages.Count / 2) +
-                    (Renderer.CurrentScore.DefaultPageSettings.MarginBottom ?? 0);
-                var maxSystemHeight = Renderer.ScoreInformation.Systems.Sum(s => s.Height);
-                if (maxSystemHeight == 0) maxSystemHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height);
-                if (maxSystemHeight == 0) maxSystemHeight = 100 * Renderer.CurrentScore.Staves.Count;
-                maxHeight = pageHeight > maxSystemHeight ? pageHeight : maxSystemHeight;
-            }
-            else
-            {
-                maxHeight = Renderer.CurrentScore.Staves.Sum(s => s.Height + Renderer.Settings.LineSpacing * 5);
-                if (maxHeight < 72) maxHeight = 72 * Renderer.CurrentScore.Staves.Count;
-            }*/
+		private static void CurrentPageChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		{
+			var noteViewer = obj as NoteViewer;
+			if (noteViewer.InnerScore == null) return;
+			noteViewer.RenderOnCanvas(noteViewer.InnerScore);
+		}
 
-			return new Size(width * ZoomFactor, maxHeight * ZoomFactor);
+		private static void PlaybackCursorPositionChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		{
+			var noteViewer = obj as NoteViewer;
+			if (noteViewer.InnerScore == null) return;
+			if (noteViewer.Renderer == null) return;
+
+			var position = (PlaybackCursorPosition)args.NewValue;
+			if (!position.IsValid) return;
+
+			noteViewer.Dispatcher.BeginInvoke(new Action(() => noteViewer.Renderer.DrawPlaybackCursor(position)));
+		}
+
+		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		{
+			var noteViewer = obj as NoteViewer;
+			if (noteViewer.InnerScore == null) return;
+			noteViewer.RenderOnCanvas(noteViewer.InnerScore);
 		}
 
 		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 		{
 			NoteViewer viewer = obj as NoteViewer;
+			var oldScore = args.OldValue as Score;
 			var score = args.NewValue as Score;
+			if (oldScore != null) oldScore.Safety.BoundControl = null;
+			Score.SanityCheck(score, viewer);
+
 			viewer.RenderOnCanvas(score);
 		}
 
@@ -210,7 +203,8 @@ namespace Manufaktura.Controls.Silverlight
 			}
 
 			MusicXmlParser parser = new MusicXmlParser();
-			viewer.RenderOnCanvas(parser.Parse(xmlDocument));
+			var score = parser.Parse(xmlDocument);
+			viewer.RenderOnCanvas(score);
 		}
 
 		private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -224,7 +218,7 @@ namespace Manufaktura.Controls.Silverlight
 			MainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
 
 			//Start dragging:
-			_draggingState.StartDragging(e.GetPosition(MainCanvas));
+			_draggingState.StartDragging(CanvasScoreRenderer.ConvertPoint(e.GetPosition(MainCanvas)));
 
 			//Check if element under cursor is staff element:
 			FrameworkElement element = e.OriginalSource as FrameworkElement;
@@ -237,20 +231,26 @@ namespace Manufaktura.Controls.Silverlight
 
 		private void ColorElement(MusicalSymbol element, Color color)
 		{
+			if (Renderer == null) return;   //If SelectedElement value has been changed by binding and renderer has not yet been created, just ignore this method.
 			var ownerships = Renderer.OwnershipDictionary.Where(o => o.Value == SelectedElement);
 			foreach (var ownership in ownerships)
 			{
 				TextBlock textBlock = ownership.Key as TextBlock;
-				if (textBlock != null) textBlock.Foreground = new SolidColorBrush(color);
+				if (textBlock != null)
+				{
+					var brush = textBlock.Foreground as SolidColorBrush;
+					if (brush != null) previousColor = brush.Color;
+					textBlock.Foreground = new SolidColorBrush(color);
+				}
 
 				Shape shape = ownership.Key as Shape;
-				if (shape != null) shape.Stroke = new SolidColorBrush(color);
+				if (shape != null)
+				{
+					var brush = shape.Stroke as SolidColorBrush;
+					if (brush != null) previousColor = brush.Color;
+					shape.Stroke = new SolidColorBrush(color);
+				}
 			}
-		}
-
-		private CanvasScoreRenderer CreateRenderer(Canvas canvas)
-		{
-			return new CanvasScoreRenderer(MainCanvas);
 		}
 
 		private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -266,23 +266,46 @@ namespace Manufaktura.Controls.Silverlight
 			if (!_draggingState.IsDragging || _innerScore == null) return;
 
 			Point currentPosition = e.GetPosition(MainCanvas);
-			double horizontalDifference = Math.Abs(_draggingState.MousePositionOnStartDragging.X - currentPosition.X);
-			if (horizontalDifference > 30)
+			var strategy = DraggingStrategy.For(SelectedElement);
+			if (strategy != null)
 			{
-				_draggingState.StopDragging();
-				return;
+				strategy.Drag(Renderer, SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
 			}
-			double difference = _draggingState.MousePositionOnStartDragging.Y - currentPosition.Y;
 
-			Note note = SelectedElement as Note;
-			if (note != null)
+			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
+		}
+
+		private void RenderOnCanvas(Measure measure)
+		{
+			if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
+			var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
+			foreach (var beamGroup in beamGroupsForThisMeasure)
 			{
-				int midiPitch = _draggingState.MidiPitchOnStartDragging + (int)(difference / 2);
-				Debug.WriteLine(string.Format("Difference: {0}   MidiPitch: {1}", difference, midiPitch));
-				note.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == beamGroup).Select(d => d.Key).ToList();
+				frameworkElements.RemoveAllFrom(Renderer.Canvas);
 			}
-			RenderOnCanvas(_innerScore);        //TODO: Przerysowywać tylko wszystkie na prawo od zmienianej nutki. Albo w ogóle tylko tą nutkę, a na MouseLeftButtonUp przerysowywać całość
-												//Może najłatwiej to zrobić tak, że Draw... jak zobaczy że ma już taką samą figurę, to ma nie rysować
+
+			foreach (var element in measure.Elements.Where(e => !(e is Barline)))
+			{
+				var note = element as Note;
+				if (note != null)
+				{
+					foreach (var lyric in note.Lyrics)
+					{
+						var lyricsFrameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == lyric).Select(d => d.Key).ToList();
+						lyricsFrameworkElements.RemoveAllFrom(Renderer.Canvas);
+					}
+				}
+				var frameworkElements = Renderer.OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
+				frameworkElements.RemoveAllFrom(Renderer.Canvas);
+			}
+
+			var brush = Foreground as SolidColorBrush;
+			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
+
+			Renderer.Render(measure);
+			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
+			InvalidateMeasure();
 		}
 
 		private void RenderOnCanvas(Score score)
@@ -290,37 +313,39 @@ namespace Manufaktura.Controls.Silverlight
 			_innerScore = score;
 			if (score == null) return;
 
+			score.MeasureInvalidated -= Score_MeasureInvalidated;
+			score.ScoreInvalidated -= Score_ScoreInvalidated;
+
 			MainCanvas.Children.Clear();
-			Renderer = CreateRenderer(MainCanvas);
-			Renderer.Settings.RenderingMode = IsPanoramaMode ? Rendering.ScoreRenderingModes.Panorama : Rendering.ScoreRenderingModes.AllPages;
+			Renderer = new CanvasScoreRenderer(MainCanvas);
+			Renderer.Settings.RenderingMode = RenderingMode;
+			Renderer.Settings.CurrentPage = CurrentPage;
 			var brush = Foreground as SolidColorBrush;
 			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
+
 			Renderer.Render(score);
+
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
+
+			score.MeasureInvalidated += Score_MeasureInvalidated;
+			score.ScoreInvalidated += Score_ScoreInvalidated;
 		}
 
-		private struct DraggingState
+		private void Score_MeasureInvalidated(object sender, Model.Events.InvalidateEventArgs<Measure> e)
 		{
-			public bool IsDragging { get; private set; }
+			if (InvalidatingMode != InvalidatingModes.RedrawInvalidatedRegion) return;
+			var score = (sender as MusicalSymbol)?.Staff?.Score;
+			if (score == null) return;
+			score.MeasureInvalidated -= Score_MeasureInvalidated;
+			RenderOnCanvas(e.InvalidatedObject);
+			score.MeasureInvalidated += Score_MeasureInvalidated;
+		}
 
-			public int MidiPitchOnStartDragging { get; set; }
-
-			public Point MousePositionOnStartDragging { get; private set; }
-
-			public void StartDragging(Point startingPosition)
-			{
-				IsDragging = true;
-				MousePositionOnStartDragging = startingPosition;
-			}
-
-			public void StopDragging()
-			{
-				IsDragging = false;
-				MousePositionOnStartDragging = default(Point);
-				MidiPitchOnStartDragging = 0;
-			}
+		private void Score_ScoreInvalidated(object sender, Model.Events.InvalidateEventArgs<Score> e)
+		{
+			RenderOnCanvas(e.InvalidatedObject);
 		}
 	}
 }

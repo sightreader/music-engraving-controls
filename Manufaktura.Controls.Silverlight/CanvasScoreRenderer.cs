@@ -20,6 +20,16 @@ namespace Manufaktura.Controls.Silverlight
 
 		public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
 
+		public static Point ConvertPoint(Primitives.Point point)
+		{
+			return new Point(point.X, point.Y);
+		}
+
+		public static Primitives.Point ConvertPoint(Point point)
+		{
+			return new Primitives.Point(point.X, point.Y);
+		}
+
 		public Color ConvertColor(Primitives.Color color)
 		{
 			return Color.FromArgb(color.A, color.R, color.G, color.B);
@@ -161,11 +171,6 @@ namespace Manufaktura.Controls.Silverlight
 		private Visibility BoolToVisibility(bool isVisible)
 		{
 			return isVisible ? Visibility.Visible : Visibility.Collapsed;
-		}
-
-		private Point ConvertPoint(Primitives.Point point)
-		{
-			return new Point(point.X, point.Y);
 		}
 	}
 }

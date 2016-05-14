@@ -81,6 +81,7 @@
     <Compile Include="DummyControl.xaml.cs">
       <DependentUpon>DummyControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\DependencyPropertyEx.cs" />
     <Compile Include="Fonts.cs" />
     <Compile Include="Keyboard\PianoKey.cs" />
     <Compile Include="Keyboard\PianoKeyboard.xaml.cs">

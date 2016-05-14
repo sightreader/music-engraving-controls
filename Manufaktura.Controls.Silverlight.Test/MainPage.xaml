@@ -11,7 +11,7 @@
     <Grid x:Name="LayoutRoot" Background="White">
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
-                <Manufaktura:NoteViewer x:Name="noteViewer3" HorizontalAlignment="Stretch"  IsPanoramaMode="False" IsOccupyingSpace="True"  />
+                <Manufaktura:NoteViewer x:Name="noteViewer3" HorizontalAlignment="Stretch" RenderingMode="AllPages" IsOccupyingSpace="True"  />
                 <Manufaktura:NoteViewer x:Name="noteViewer1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
             <!--<Manufaktura:NoteViewer x:Name="noteViewer2" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />-->
 
