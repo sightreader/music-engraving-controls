@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Manufaktura.Model\Manufaktura.Model.csproj">
-      <Project>{4233df90-ee27-4f88-953b-3652e6d2b080}</Project>
-      <Name>Manufaktura.Model</Name>
+    <ProjectReference Include="..\Manufaktura.Model.Legacy\Manufaktura.Model.Legacy.csproj">
+      <Project>{1065dc79-19d4-47df-b170-b34aef3284eb}</Project>
+      <Name>Manufaktura.Model.Legacy</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Orm\Manufaktura.Orm.csproj">
       <Project>{b6302ee4-b0fd-41d2-b2d2-1d46df69d925}</Project>
