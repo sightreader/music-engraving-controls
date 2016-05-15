@@ -166,63 +166,52 @@ namespace Manufaktura.Controls.WPF
 			return base.MeasureOverride(availableSize);
 		}
 
-		private static void CurrentPageChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void CurrentPageChanged(NoteViewer control, int oldValue, int newValue)
 		{
-			var noteViewer = obj as NoteViewer;
-			if (noteViewer.InnerScore == null) return;
-			noteViewer.RenderOnCanvas(noteViewer.InnerScore);
+			control.RenderOnCanvas(control.InnerScore);
 		}
 
-		private static void PlaybackCursorPositionChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void PlaybackCursorPositionChanged(NoteViewer control, PlaybackCursorPosition oldValue, PlaybackCursorPosition newValue)
 		{
-			var noteViewer = obj as NoteViewer;
-			if (noteViewer.InnerScore == null) return;
-			if (noteViewer.Renderer == null) return;
+			if (control.InnerScore == null) return;
+			if (control.Renderer == null) return;
 
-			var position = (PlaybackCursorPosition)args.NewValue;
-			if (!position.IsValid) return;
+			if (!newValue.IsValid) return;
 
-			noteViewer.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => noteViewer.Renderer.DrawPlaybackCursor(position)));
+			control.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => control.Renderer.DrawPlaybackCursor(newValue)));
 		}
 
-		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void RenderingModeChanged(NoteViewer control, ScoreRenderingModes oldValue, ScoreRenderingModes newValue)
 		{
-			var noteViewer = obj as NoteViewer;
-			if (noteViewer.InnerScore == null) return;
-			noteViewer.RenderOnCanvas(noteViewer.InnerScore);
+			if (control.InnerScore == null) return;
+			control.RenderOnCanvas(control.InnerScore);
 		}
 
-		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void ScoreSourceChanged(NoteViewer control, Score oldValue, Score newValue)
 		{
-			NoteViewer viewer = obj as NoteViewer;
-			var oldScore = args.OldValue as Score;
-			var score = args.NewValue as Score;
-			if (oldScore != null) oldScore.Safety.BoundControl = null;
-			Score.SanityCheck(score, viewer);
+			if (oldValue != null) oldValue.Safety.BoundControl = null;
+			Score.SanityCheck(newValue, control);
 
-			viewer.RenderOnCanvas(score);
+			control.RenderOnCanvas(newValue);
 		}
 
-		private static void XmlSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void XmlSourceChanged(NoteViewer contol, string oldValue, string newValue)
 		{
-			NoteViewer viewer = obj as NoteViewer;
-			string xmlSource = args.NewValue as string;
-
-			XDocument xmlDocument = XDocument.Parse(xmlSource);
+			XDocument xmlDocument = XDocument.Parse(newValue);
 			//Apply transformations:
-			if (viewer.XmlTransformations != null)
+			if (contol.XmlTransformations != null)
 			{
-				foreach (var transformation in viewer.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
+				foreach (var transformation in contol.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
 			}
 
 			MusicXmlParser parser = new MusicXmlParser();
 			var score = parser.Parse(xmlDocument);
-			viewer.RenderOnCanvas(score);
+			contol.RenderOnCanvas(score);
 		}
 
-		private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void ZoomFactorChanged(NoteViewer control, double oldValue, double newValue)
 		{
-			((NoteViewer)obj).InvalidateMeasure();
+			control.InvalidateMeasure();
 		}
 
 		private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
