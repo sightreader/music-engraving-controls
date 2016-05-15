@@ -22,7 +22,9 @@ namespace Manufaktura.Controls.UniversalApps
 {
 	public sealed partial class NoteViewer : UserControl
 	{
+		public static readonly DependencyProperty CurrentPageProperty = DependencyPropertyEx.Register<NoteViewer, int>(v => v.CurrentPage, 1, CurrentPageChanged);
 		public static readonly DependencyProperty InvalidatingModeProperty = DependencyPropertyEx.Register<NoteViewer, InvalidatingModes>(v => v.InvalidatingMode, InvalidatingModes.RedrawInvalidatedRegion);
+		public static readonly DependencyProperty IsAsyncProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsAsync, false);
 		public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
 		public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
 		public static readonly DependencyProperty IsPanoramaModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsPanoramaMode, true);
@@ -46,12 +48,24 @@ namespace Manufaktura.Controls.UniversalApps
 			InitializeComponent();
 		}
 
+		public int CurrentPage
+		{
+			get { return (int)GetValue(CurrentPageProperty); }
+			set { SetValue(CurrentPageProperty, value); }
+		}
+
 		public Score InnerScore { get { return _innerScore; } }
 
 		public InvalidatingModes InvalidatingMode
 		{
 			get { return (InvalidatingModes)GetValue(InvalidatingModeProperty); }
 			set { SetValue(InvalidatingModeProperty, value); }
+		}
+
+		public bool IsAsync
+		{
+			get { return (bool)GetValue(IsAsyncProperty); }
+			set { SetValue(IsAsyncProperty, value); }
 		}
 
 		public bool IsInsertMode
@@ -160,57 +174,52 @@ namespace Manufaktura.Controls.UniversalApps
 		{
 		}
 
-		private static void PlaybackCursorPositionChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void CurrentPageChanged(NoteViewer control, int oldValue, int newValue)
 		{
-			var noteViewer = obj as NoteViewer;
-			if (noteViewer.InnerScore == null) return;
-			if (noteViewer.Renderer == null) return;
-
-			var position = (PlaybackCursorPosition)args.NewValue;
-			if (!position.IsValid) return;
-
-			noteViewer.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () => noteViewer.Renderer.DrawPlaybackCursor(position));
+			control.RenderOnCanvas(control.InnerScore);
 		}
 
-		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void PlaybackCursorPositionChanged(NoteViewer control, PlaybackCursorPosition oldValue, PlaybackCursorPosition newValue)
 		{
+			if (control.InnerScore == null) return;
+			if (control.Renderer == null) return;
+
+			if (!newValue.IsValid) return;
+
+			control.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () => control.Renderer.DrawPlaybackCursor(newValue));
 		}
 
-		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void RenderingModeChanged(NoteViewer control, ScoreRenderingModes oldValue, ScoreRenderingModes newValue)
 		{
-			NoteViewer viewer = obj as NoteViewer;
-			var oldScore = args.OldValue as Score;
-			var score = args.NewValue as Score;
-			if (oldScore != null) oldScore.Safety.BoundControl = null;
-			Score.SanityCheck(score, viewer);
-
-			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
-			viewer.RenderOnCanvas(score);
-			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
+			if (control.InnerScore == null) return;
+			control.RenderOnCanvas(control.InnerScore);
 		}
 
-		private static void XmlSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void ScoreSourceChanged(NoteViewer control, Score oldValue, Score newValue)
 		{
-			NoteViewer viewer = obj as NoteViewer;
-			string xmlSource = args.NewValue as string;
+			if (oldValue != null) oldValue.Safety.BoundControl = null;
+			Score.SanityCheck(newValue, control);
 
-			XDocument xmlDocument = XDocument.Parse(xmlSource);
+			control.RenderOnCanvas(newValue);
+		}
+
+		private static void XmlSourceChanged(NoteViewer contol, string oldValue, string newValue)
+		{
+			XDocument xmlDocument = XDocument.Parse(newValue);
 			//Apply transformations:
-			if (viewer.XmlTransformations != null)
+			if (contol.XmlTransformations != null)
 			{
-				foreach (var transformation in viewer.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
+				foreach (var transformation in contol.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
 			}
 
 			MusicXmlParser parser = new MusicXmlParser();
 			var score = parser.Parse(xmlDocument);
-			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
-			viewer.RenderOnCanvas(score);
-			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
+			contol.RenderOnCanvas(score);
 		}
 
-		private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void ZoomFactorChanged(NoteViewer control, double oldValue, double newValue)
 		{
-			((NoteViewer)obj).InvalidateMeasure();
+			control.InvalidateMeasure();
 		}
 
 		private void ColorElement(MusicalSymbol element, Color color)
@@ -276,20 +285,29 @@ namespace Manufaktura.Controls.UniversalApps
 			_draggingState.StopDragging();
 		}
 
-		private void RenderOnCanvas(Score score)
+		private async void RenderOnCanvas(Score score)
 		{
 			_innerScore = score;
 			if (score == null) return;
 
+			score.MeasureInvalidated -= Score_MeasureInvalidated;
+
 			MainCanvas.Children.Clear();
-			Renderer = new CanvasScoreRenderer(MainCanvas);
+			Renderer = IsAsync ? new DispatcherCanvasScoreRenderer(MainCanvas, this) : new CanvasScoreRenderer(MainCanvas);
 			Renderer.Settings.RenderingMode = RenderingMode;
+			Renderer.Settings.CurrentPage = CurrentPage;
 			var brush = Foreground as SolidColorBrush;
 			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
-			Renderer.Render(score);
+
+			if (IsAsync) await Renderer.RenderAsync(score);
+			else Renderer.Render(score);
+
+			if (IsAsync) ((DispatcherCanvasScoreRenderer)Renderer).FlushBuffer();
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
+
+			score.MeasureInvalidated += Score_MeasureInvalidated;
 		}
 
 		private void RenderOnCanvas(Measure measure)

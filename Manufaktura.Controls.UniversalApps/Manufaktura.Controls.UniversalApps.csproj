@@ -69,6 +69,7 @@
     <Compile Include="Common\ListContentControl.cs" />
     <Compile Include="Common\ModelViewMapper.cs" />
     <Compile Include="DependencyPropertyEx.cs" />
+    <Compile Include="DispatcherCanvasScoreRenderer.cs" />
     <Compile Include="DummyControl.xaml.cs">
       <DependentUpon>DummyControl.xaml</DependentUpon>
     </Compile>

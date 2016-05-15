@@ -16,6 +16,7 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 {
 	public partial class NoteViewer : UserControl
 	{
+		public static readonly DependencyProperty CurrentPageProperty = DependencyPropertyEx.Register<NoteViewer, int>(v => v.CurrentPage, 1, CurrentPageChanged);
 		public static readonly DependencyProperty InvalidatingModeProperty = DependencyPropertyEx.Register<NoteViewer, InvalidatingModes>(v => v.InvalidatingMode, InvalidatingModes.RedrawInvalidatedRegion);
 		public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
 		public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
@@ -34,6 +35,12 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 		public NoteViewer()
 		{
 			InitializeComponent();
+		}
+
+		public int CurrentPage
+		{
+			get { return (int)GetValue(CurrentPageProperty); }
+			set { SetValue(CurrentPageProperty, value); }
 		}
 
 		public Score InnerScore { get { return _innerScore; } }
@@ -138,25 +145,27 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 			return new Size(width * ZoomFactor, (Renderer.ScoreInformation.Systems.Sum(s => s.Height) + 100) * ZoomFactor);
 		}
 
+		private static void CurrentPageChanged(NoteViewer control, int oldValue, int newValue)
+		{
+			control.RenderOnCanvas(control.InnerScore);
+		}
+
 		private static void CurrentPageChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
 		{
 		}
 
-		private static void RenderingModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void RenderingModeChanged(NoteViewer control, ScoreRenderingModes oldValue, ScoreRenderingModes newValue)
 		{
+			if (control.InnerScore == null) return;
+			control.RenderOnCanvas(control.InnerScore);
 		}
 
-		private static void ScoreSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void ScoreSourceChanged(NoteViewer control, Score oldValue, Score newValue)
 		{
-			NoteViewer viewer = obj as NoteViewer;
-			var oldScore = args.OldValue as Score;
-			var score = args.NewValue as Score;
-			if (oldScore != null) oldScore.Safety.BoundControl = null;
-			Score.SanityCheck(score, viewer);
+			if (oldValue != null) oldValue.Safety.BoundControl = null;
+			Score.SanityCheck(newValue, control);
 
-			score.MeasureInvalidated -= viewer.Score_MeasureInvalidated;
-			viewer.RenderOnCanvas(score);
-			score.MeasureInvalidated += viewer.Score_MeasureInvalidated;
+			control.RenderOnCanvas(newValue);
 		}
 
 		private static void SelectedElementChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -165,25 +174,23 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 			viewer.Select(args.NewValue as MusicalSymbol);
 		}
 
-		private static void XmlSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void XmlSourceChanged(NoteViewer contol, string oldValue, string newValue)
 		{
-			NoteViewer viewer = obj as NoteViewer;
-			string xmlSource = args.NewValue as string;
-
-			XDocument xmlDocument = XDocument.Parse(xmlSource);
+			XDocument xmlDocument = XDocument.Parse(newValue);
 			//Apply transformations:
-			if (viewer.XmlTransformations != null)
+			if (contol.XmlTransformations != null)
 			{
-				foreach (var transformation in viewer.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
+				foreach (var transformation in contol.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
 			}
 
 			MusicXmlParser parser = new MusicXmlParser();
-			viewer.RenderOnCanvas(parser.Parse(xmlDocument));
+			var score = parser.Parse(xmlDocument);
+			contol.RenderOnCanvas(score);
 		}
 
-		private static void ZoomFactorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+		private static void ZoomFactorChanged(NoteViewer control, double oldValue, double newValue)
 		{
-			((NoteViewer)obj).InvalidateMeasure();
+			control.InvalidateMeasure();
 		}
 
 		private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -244,15 +251,22 @@ namespace Manufaktura.Controls.WindowsPhoneSilverlight
 			_innerScore = score;
 			if (score == null) return;
 
+			score.MeasureInvalidated -= Score_MeasureInvalidated;
+
 			MainCanvas.Children.Clear();
 			Renderer = new CanvasScoreRenderer(MainCanvas);
 			Renderer.Settings.RenderingMode = RenderingMode;
+			Renderer.Settings.CurrentPage = CurrentPage;
 			var brush = Foreground as SolidColorBrush;
 			if (brush != null) Renderer.Settings.DefaultColor = Renderer.ConvertColor(brush.Color);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
+
 			Renderer.Render(score);
-			if (SelectedElementInner != null) ColorElement(SelectedElementInner, Colors.Magenta);
+
+			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
+
+			score.MeasureInvalidated += Score_MeasureInvalidated;
 		}
 
 		private void RenderOnCanvas(Measure measure)

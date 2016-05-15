@@ -8,14 +8,17 @@ namespace Manufaktura.Controls.UniversalApps
 {
 	public static class DependencyPropertyEx
 	{
-		public static DependencyProperty Register<TControl, TProperty>(Expression<Func<TControl, TProperty>> property, TProperty defaultValue)
-		{
-			return DependencyProperty.Register(GetPropertyName(property), typeof(TProperty), typeof(TControl), new PropertyMetadata(defaultValue));
-		}
+		public delegate void PropertyChangedCallback<TControl, TProperty>(TControl control, TProperty oldValue, TProperty newValue) where TControl : DependencyObject;
 
-		public static DependencyProperty Register<TControl, TProperty>(Expression<Func<TControl, TProperty>> property, TProperty defaultValue, PropertyChangedCallback propertyChangedCallback)
+		public static DependencyProperty Register<TControl, TProperty>(Expression<Func<TControl, TProperty>> property, TProperty defaultValue, PropertyChangedCallback<TControl, TProperty> propertyChangedCallback = null) where TControl : DependencyObject
 		{
-			return DependencyProperty.Register(GetPropertyName(property), typeof(TProperty), typeof(TControl), new PropertyMetadata(defaultValue, propertyChangedCallback));
+			if (propertyChangedCallback == null)
+				return DependencyProperty.Register(GetPropertyName(property), typeof(TProperty), typeof(TControl), new PropertyMetadata(defaultValue));
+
+			return DependencyProperty.Register(GetPropertyName(property), typeof(TProperty), typeof(TControl), new PropertyMetadata(defaultValue, (obj, args) =>
+			{
+				propertyChangedCallback(obj as TControl, (TProperty)args.OldValue, (TProperty)args.NewValue);
+			}));
 		}
 
 		public static IEnumerable<FrameworkElement> RemoveAllFrom(this IEnumerable<FrameworkElement> frameworkElements, Canvas canvas)
