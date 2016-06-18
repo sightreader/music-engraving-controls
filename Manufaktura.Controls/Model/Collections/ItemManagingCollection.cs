@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 
 namespace Manufaktura.Controls.Model.Collections
@@ -8,9 +9,11 @@ namespace Manufaktura.Controls.Model.Collections
 	/// Collection that performs special actions on items on adding and removing.
 	/// </summary>
 	/// <typeparam name="TItem">Item type</typeparam>
-	public abstract class ItemManagingCollection<TItem> : IList<TItem>, ICollection<TItem>, IEnumerable<TItem>
+	public abstract class ItemManagingCollection<TItem> : IList<TItem>, ICollection<TItem>, IEnumerable<TItem>, INotifyCollectionChanged
 	{
 		private List<TItem> innerList = new List<TItem>();
+
+		public event NotifyCollectionChangedEventHandler CollectionChanged;
 
 		/// <summary>
 		/// Returns the number of elements in list.
@@ -48,6 +51,7 @@ namespace Manufaktura.Controls.Model.Collections
 			ManageItemOnAdd(item);
 			UnbindEvents(item);
 			BindEvents(item);
+			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
 		}
 
 		public void AddRange(IEnumerable<TItem> items)
@@ -59,12 +63,14 @@ namespace Manufaktura.Controls.Model.Collections
 				UnbindEvents(item);
 				BindEvents(item);
 			}
+			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, items.ToList()));
 		}
 
 		public void Clear()
 		{
 			foreach (var i in innerList) UnbindEvents(i);
 			innerList.Clear();
+			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset, null));
 		}
 
 		public bool Contains(TItem item)
@@ -113,12 +119,15 @@ namespace Manufaktura.Controls.Model.Collections
 			ManageItemOnAdd(item);
 			UnbindEvents(item);
 			BindEvents(item);
+			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
 		}
 
 		public bool Remove(TItem item)
 		{
 			ManageItemOnRemove(item);
-			return innerList.Remove(item);
+			var ret = innerList.Remove(item);
+			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
+			return ret;
 		}
 
 		public void RemoveAt(int index)
@@ -127,6 +136,7 @@ namespace Manufaktura.Controls.Model.Collections
 			ManageItemOnRemove(item);
 			UnbindEvents(item);
 			innerList.Remove(item);
+			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
 		}
 
 		protected abstract void BindEvents(TItem item);

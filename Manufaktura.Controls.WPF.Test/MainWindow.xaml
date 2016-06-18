@@ -11,7 +11,8 @@
             <WPF:NoteViewer PlaybackCursorPosition="{Binding Player.CurrentPosition}" RenderingMode="AllPages" CurrentPage="1" IsOccupyingSpace="True" x:Name="noteViewer1" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <WPF:NoteViewer RenderingMode="Panorama" x:Name="noteViewer2" HorizontalAlignment="Stretch" IsOccupyingSpace="True" VerticalAlignment="Top" />
             <WPF:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
-        <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Button Content="Dodaj nutę" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_9"/>
+            <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             <Button Content="Odtwórz" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
             <Button Content="Pauza" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_7"/>
             <Button Content="Stop" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_8"/>

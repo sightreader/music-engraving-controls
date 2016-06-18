@@ -1,7 +1,9 @@
 ﻿using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Desktop.Audio;
 using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Music.Model;
 using Microsoft.Win32;
 using System;
 using System.IO;
@@ -91,6 +93,15 @@ namespace Manufaktura.Controls.WPF.Test
 
 			DataContext = vm;
 			vm.LoadTestData(hookDirectionAlgorithm);
+		}
+
+		private void Button_Click_9(object sender, RoutedEventArgs e)
+		{
+			var vm = (TestViewModel)DataContext;
+			vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Whole));
+			var score = vm.Data;
+			vm.Data = null;
+			vm.Data = score;
 		}
 	}
 }
