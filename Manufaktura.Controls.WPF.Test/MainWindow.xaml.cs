@@ -98,11 +98,12 @@ namespace Manufaktura.Controls.WPF.Test
 		private void Button_Click_9(object sender, RoutedEventArgs e)
 		{
 			var vm = (TestViewModel)DataContext;
-			vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			vm.Data.FirstStaff.Elements.Add(new Barline());
+			vm.Data.FirstStaff.Elements.OfType<NoteOrRest>().Last().Duration = RhythmicDuration.D32nd;
+			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
+			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
+			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
+			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
+			//vm.Data.FirstStaff.Elements.Add(new Barline());
 		}
 	}
 }

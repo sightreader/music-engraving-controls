@@ -116,6 +116,21 @@ namespace Manufaktura.Controls.Model
 			set { desiredHookDirection = value; OnPropertyChanged(); }
 		}
 
+		public override RhythmicDuration Duration
+		{
+			get
+			{
+				return base.Duration;
+			}
+
+			set
+			{
+				duration = value;
+				DetermineMusicalCharacter();
+				OnPropertyChanged();
+			}
+		}
+
 		public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
 		/// <summary>
@@ -248,7 +263,6 @@ namespace Manufaktura.Controls.Model
 		{
 			return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
 		}
-
 		private void DetermineMusicalCharacter()
 		{
 			if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeNote;

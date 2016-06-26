@@ -13,7 +13,7 @@ namespace Manufaktura.Controls.Model
 		protected Point location = new Point();
 		protected string musicalCharacter;
 		protected TupletType tuplet = TupletType.None;
-		private RhythmicDuration duration;
+		protected RhythmicDuration duration;
 		private IMusicFont musicFont = new PolihymniaFont();
 
 		protected NoteOrRest()
@@ -34,7 +34,7 @@ namespace Manufaktura.Controls.Model
 
 		public double? DefaultXPosition { get; set; }
 
-		public RhythmicDuration Duration { get { return duration; } set { duration = value; OnPropertyChanged(() => Duration); } }
+		public virtual RhythmicDuration Duration { get { return duration; } set { duration = value; OnPropertyChanged(() => Duration); } }
 
 		/// <summary>
 		/// Indicates if note has fermata sign
