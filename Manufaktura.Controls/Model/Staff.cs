@@ -5,6 +5,7 @@ using Manufaktura.Controls.Model.Rules;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 
 namespace Manufaktura.Controls.Model
@@ -20,6 +21,7 @@ namespace Manufaktura.Controls.Model
 		public Staff()
 		{
 			Elements = new MusicalSymbolCollection(this);
+			Elements.CollectionChanged += Elements_CollectionChanged;
 			Rules = new List<StaffRule> { new NoteStemRule(), new ManualAddMeasuresRule(), new AutomaticAddMeasuresRule() };
 			Measures = new List<Measure>();
 			MeasureAddingRule = MeasureAddingRuleEnum.AddMeasureOnInsertingBarline;
@@ -153,6 +155,18 @@ namespace Manufaktura.Controls.Model
 		{
 			base.OnPropertyChanged(propertyName);
 			StaffInvalidated?.Invoke(this, new InvalidateEventArgs<Staff>(this));
+		}
+
+		private void Elements_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			var measuresToUpdate = new List<Measure>();
+			if (e.NewItems != null) measuresToUpdate.AddRange(e.NewItems.Cast<MusicalSymbol>().Select(m => m.Measure));
+			if (e.OldItems != null) measuresToUpdate.AddRange(e.OldItems.Cast<MusicalSymbol>().Select(m => m.Measure));
+			measuresToUpdate = measuresToUpdate.Distinct().ToList();
+			foreach (var measure in measuresToUpdate)
+			{
+				MeasureInvalidated?.Invoke(sender, new InvalidateEventArgs<Measure>(measure));
+			}
 		}
 	}
 }
