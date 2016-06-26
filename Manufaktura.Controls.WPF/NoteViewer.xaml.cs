@@ -316,6 +316,7 @@ namespace Manufaktura.Controls.WPF
 			if (score == null) return;
 
 			score.MeasureInvalidated -= Score_MeasureInvalidated;
+			score.StaffInvalidated -= Score_StaffInvalidated;
 			score.ScoreInvalidated -= Score_ScoreInvalidated;
 
 			MainCanvas.Children.Clear();
@@ -334,13 +335,14 @@ namespace Manufaktura.Controls.WPF
 			InvalidateMeasure();
 
 			score.MeasureInvalidated += Score_MeasureInvalidated;
+			score.StaffInvalidated += Score_StaffInvalidated;
 			score.ScoreInvalidated += Score_ScoreInvalidated;
 		}
 
 		private void Score_MeasureInvalidated(object sender, Model.Events.InvalidateEventArgs<Measure> e)
 		{
 			if (InvalidatingMode != InvalidatingModes.RedrawInvalidatedRegion) return;
-			var score = (sender as MusicalSymbol)?.Staff?.Score;
+			var score = (sender as MusicalSymbol)?.Staff?.Score ?? e.InvalidatedObject?.Staff?.Score;
 			if (score == null) return;
 			score.MeasureInvalidated -= Score_MeasureInvalidated;
 			RenderOnCanvas(e.InvalidatedObject);
@@ -350,6 +352,11 @@ namespace Manufaktura.Controls.WPF
 		private void Score_ScoreInvalidated(object sender, Model.Events.InvalidateEventArgs<Score> e)
 		{
 			RenderOnCanvas(e.InvalidatedObject);
+		}
+
+		private void Score_StaffInvalidated(object sender, Model.Events.InvalidateEventArgs<Staff> e)
+		{
+			RenderOnCanvas(e.InvalidatedObject.Score);
 		}
 	}
 }

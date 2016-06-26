@@ -103,9 +103,6 @@ namespace Manufaktura.Controls.WPF.Test
 			vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
 			vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
 			vm.Data.FirstStaff.Elements.Add(new Barline());
-			var score = vm.Data;
-			vm.Data = null;
-			vm.Data = score;
 		}
 	}
 }

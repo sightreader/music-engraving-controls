@@ -159,14 +159,7 @@ namespace Manufaktura.Controls.Model
 
 		private void Elements_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
-			var measuresToUpdate = new List<Measure>();
-			if (e.NewItems != null) measuresToUpdate.AddRange(e.NewItems.Cast<MusicalSymbol>().Select(m => m.Measure));
-			if (e.OldItems != null) measuresToUpdate.AddRange(e.OldItems.Cast<MusicalSymbol>().Select(m => m.Measure));
-			measuresToUpdate = measuresToUpdate.Distinct().ToList();
-			foreach (var measure in measuresToUpdate)
-			{
-				MeasureInvalidated?.Invoke(sender, new InvalidateEventArgs<Measure>(measure));
-			}
+			StaffInvalidated?.Invoke(sender, new InvalidateEventArgs<Staff>(this));
 		}
 	}
 }
