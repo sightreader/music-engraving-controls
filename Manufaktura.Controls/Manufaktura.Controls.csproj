@@ -156,6 +156,7 @@
     <Compile Include="Model\NullMusicalSymbol.cs" />
     <Compile Include="Model\Ornament.cs" />
     <Compile Include="Model\PartGroup.cs" />
+    <Compile Include="Model\RadialChartSample.cs" />
     <Compile Include="Model\ScorePage.cs" />
     <Compile Include="Model\Part.cs" />
     <Compile Include="Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />
+    <Compile Include="Primitives\PolarPoint.cs" />
     <Compile Include="Primitives\Size.cs" />
     <Compile Include="Interactivity\DraggingState.cs" />
     <Compile Include="Rendering\Implementations\HtmlCanvasScoreRenderer.cs" />

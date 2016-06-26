@@ -15,12 +15,19 @@ namespace Manufaktura.Controls.WPF.Test
 
 		private ScorePlayer player;
 
+		public RadialChartSample[] ChartSamples { get; } = new[] {
+			new RadialChartSample("A", "A", 5),
+		new RadialChartSample("B", "B", 5.2),
+		new RadialChartSample("C", "C", 1.8),
+		new RadialChartSample("D", "D", 3),
+		new RadialChartSample("E", "E", 3.7)
+		};
+
 		public Score Data
 		{
 			get { return data; }
 			set { data = value; OnPropertyChanged(() => Data); }
 		}
-
 		public ScorePlayer Player { get { return player; } set { player = value; OnPropertyChanged(); } }
 
 		public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
@@ -156,6 +163,9 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(new Barline());
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
 			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
+
+			var nn = secondStaff.Elements.OfType<Note>().Last();
+			var timeSignature = secondStaff.Peek<TimeSignature>(nn, Model.PeekStrategies.PeekType.PreviousElement);
 
 			Data = score;
 		}

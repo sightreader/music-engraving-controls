@@ -72,7 +72,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 						if (beamType == NoteBeamType.ForwardHook || beamType == NoteBeamType.BackwardHook)
 						{
 							var hookLength = beamType == NoteBeamType.ForwardHook ? 6 : -6;
-							var hookEnd = stemEnd.TranslateByAngle(beamGroup.Angle, hookLength);
+							var hookEnd = stemEnd.TranslateByAngleOld(beamGroup.Angle, hookLength);
 							renderer.DrawLine(stemEnd.Translate(0, beamOffset), hookEnd.Translate(0, beamOffset), new Pen { Thickness = 2, Color = currentNote.CoalesceColor(renderer) }, beamGroup);
 						}
 						else if (previousNote != null && beamType != NoteBeamType.Single && previousNote.BeamList.Count >= beamNumber)
