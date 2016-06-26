@@ -155,7 +155,12 @@ namespace Manufaktura.Music.Model
 
 		public Proportion ToProportion()
 		{
-			return new Proportion(1, Denominator) + (Dots > 0 ? new Proportion(1, Denominator * (int)Math.Pow(2, Dots)) : new Proportion(0, 1));
+			var prop = new Proportion(1, Denominator);
+			for (int i=0; i< Dots; i++)
+			{
+				prop += new Proportion(1, Denominator * (int)Math.Pow(2, i + 1));
+			}
+			return prop;
 		}
 
 		public RhythmicUnit ToRhythmicUnit(bool isRest)
