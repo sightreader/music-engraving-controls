@@ -115,6 +115,7 @@ namespace Manufaktura.Controls.Extensions
 				.ToArray();
 			var matchingStrategy = strategies.FirstOrDefault(s => s.Mode == mode);
 			if (matchingStrategy == null) throw new Exception($"Rebeam strategy not found for rebeam mode {mode}.");
+            foreach (var n in notes.OfType<Note>()) n.ModeUsedForRebeaming = mode; 
 			return matchingStrategy.Rebeam(notes, hookDirectionAlgorithm);
 		}
 

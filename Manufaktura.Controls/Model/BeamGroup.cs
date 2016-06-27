@@ -4,34 +4,35 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Model
 {
-	public class BeamGroup : MusicalSymbol
-	{
-		public BeamGroup(Staff staff)
-		{
-			Staff = staff;
-		}
+    public class BeamGroup : MusicalSymbol
+    {
+        public BeamGroup(Staff staff)
+        {
+            Staff = staff;
+        }
 
-		public double Angle => Point.BeamAngle(Start, End);
-		public Point End { get; internal set; }
+        public double Angle => Point.BeamAngle(Start, End);
+        public Point End { get; internal set; }
 
-		public override Measure Measure
-		{
-			get
-			{
-				return Members.FirstOrDefault(m => m.Measure != null)?.Measure;
-			}
+        public override Measure Measure
+        {
+            get
+            {
+                return Members.FirstOrDefault(m => m.Measure != null)?.Measure;
+            }
 
-			internal set
-			{
-			}
-		}
+            internal set
+            {
+            }
+        }
 
-		public ICollection<NoteOrRest> Members { get; private set; } = new List<NoteOrRest>();
-		public Point Start { get; internal set; }
+        public ICollection<NoteOrRest> Members { get; private set; } = new List<NoteOrRest>();
 
-		public override string ToString()
-		{
-			return $"Beam group of {Members.Count} members with angle {Angle}.";
-		}
-	}
+        public Point Start { get; internal set; }
+
+        public override string ToString()
+        {
+            return $"Beam group of {Members.Count} members with angle {Angle}.";
+        }
+    }
 }
