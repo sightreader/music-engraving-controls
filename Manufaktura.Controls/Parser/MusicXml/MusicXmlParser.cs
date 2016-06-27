@@ -3,6 +3,7 @@ using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
+using Manufaktura.Music.Model;
 using Manufaktura.Music.Xml;
 using System;
 using System.Collections.Generic;
@@ -97,6 +98,7 @@ namespace Manufaktura.Controls.Parser
         public override XDocument ParseBack(Score score)
         {
             if (!score.Parts.Any()) throw new ScoreWriterException(score, $"Score does not contain any parts therefore it does not conform to score-partwise schema. You have to add parts to {nameof(Score.Parts)} collection before exporting to MusicXml.");
+            var quarterNoteDuration = CalculateQuarterNoteDuration(score);
 
             var document = new XDocument();
             document.Declaration = new XDeclaration("1.0", "UTF-8", "no");
@@ -131,12 +133,12 @@ namespace Manufaktura.Controls.Parser
                 var partNode = new XElement("part");
                 partNode.Add(new XAttribute("id", part.PartId));
                 root.Add(partNode);
-                ExportStaves(root, part.Staves);
+                ExportStaves(partNode, part.Staves, quarterNoteDuration);
             }
             return document;
         }
 
-        private void ExportStaves(XElement parent, IEnumerable<Staff> staves)
+        private void ExportStaves(XElement parent, IEnumerable<Staff> staves, int quarterNoteDuration)
         {
             foreach (var staff in staves)
             {
@@ -148,10 +150,16 @@ namespace Manufaktura.Controls.Parser
                     parent.Add(measureNode);
                     foreach (var element in measure.Elements)
                     {
-                        MusicXmlWritingStrategyBase.GetProperStrategy(element.GetType())?.WriteElement(element, measureNode);
+                        MusicXmlWritingStrategyBase.GetProperStrategy(element.GetType())?.WriteElement(element, measureNode, quarterNoteDuration);
                     }
                 }
             }
+        }
+
+        private static int CalculateQuarterNoteDuration(Score score)
+        {
+            var smallestRhythmicValue = score.Staves.SelectMany(s => s.Elements).OfType<IHasDuration>().Min(e => e.BaseDuration.ToDouble());
+            return (int)(RhythmicDuration.Quarter.ToDouble() / smallestRhythmicValue);
         }
     }
 }

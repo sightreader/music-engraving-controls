@@ -3,6 +3,7 @@ using Manufaktura.Controls.Desktop.Audio;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Music.Model;
 using Microsoft.Win32;
 using System;
@@ -73,7 +74,7 @@ namespace Manufaktura.Controls.WPF.Test
 
 		private void Button_Click_6(object sender, RoutedEventArgs e)
 		{
-			((TestViewModel)DataContext).Player.Play();
+			((TestViewModel)DataContext).Player?.Play();
 		}
 
 		private void Button_Click_7(object sender, RoutedEventArgs e)
@@ -95,15 +96,21 @@ namespace Manufaktura.Controls.WPF.Test
 			vm.LoadTestData(hookDirectionAlgorithm);
 		}
 
-		private void Button_Click_9(object sender, RoutedEventArgs e)
-		{
-			var vm = (TestViewModel)DataContext;
-			vm.Data.FirstStaff.Elements.OfType<NoteOrRest>().Last().Duration = RhythmicDuration.D32nd;
-			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			//vm.Data.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Eighth));
-			//vm.Data.FirstStaff.Elements.Add(new Barline());
-		}
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            var vm = (TestViewModel)DataContext;
+
+            var supported = MusicXmlWritingStrategyBase.SupportedElements;
+            var unsupported = MusicXmlWritingStrategyBase.UnsupportedElements;
+            var createdDocument = new MusicXmlParser().ParseBack(vm.Data);
+
+
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "MusicXml (*.xml)|*.xml";
+            if (dialog.ShowDialog().Value)
+            {
+                createdDocument.Save(dialog.FileName, SaveOptions.None);
+            }
+        }
 	}
 }

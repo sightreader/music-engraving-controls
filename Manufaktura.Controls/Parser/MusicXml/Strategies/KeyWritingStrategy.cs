@@ -9,7 +9,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         public override bool IsAttributeElement => true;
 
-        protected override void WriteElementInner(Key symbol, XElement element)
+        protected override void WriteElementInner(Key symbol, XElement element, int quarterNoteDuration)
         {
             element.Add(new XElement("fifths", symbol.Fifths));
         }

@@ -131,6 +131,7 @@
     <Compile Include="Model\Clef.cs" />
     <Compile Include="Model\Collections\ItemManagingCollection.cs" />
     <Compile Include="Model\Collections\LyricsCollection.cs" />
+    <Compile Include="Model\Collections\PartStavesCollection.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Events\InvalidateEventArgs.cs" />
     <Compile Include="Model\Fonts\MusicFontStyles.cs" />
@@ -189,9 +190,11 @@
     <Compile Include="Parser\MusicXml\MusicXmlNormalizer.cs" />
     <Compile Include="Parser\MusicXml\Strategies\AttributeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\BarlineParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\BarlineWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\ClefParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\ClefWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\DirectionParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\DirectionWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\EncodingParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\HarmonyParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\KeyParsingStrategy.cs" />

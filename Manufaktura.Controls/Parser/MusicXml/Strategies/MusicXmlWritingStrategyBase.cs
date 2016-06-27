@@ -53,7 +53,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             return _strategies.FirstOrDefault(s => s.SymbolType == symbolType);
         }
 
-        public void WriteElement(MusicalSymbol symbol, XElement parentElement)
+        public void WriteElement(MusicalSymbol symbol, XElement parentElement, int quarterNoteDuration)
         {
             if (IsAttributeElement)
             {
@@ -68,10 +68,10 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
             var newElement = new XElement(XName.Get(ElementName));
             parentElement.Add(newElement);
-            WriteElementInner(symbol, newElement);
+            WriteElementInner(symbol, newElement, quarterNoteDuration);
         }
 
-        protected abstract void WriteElementInner(MusicalSymbol symbol, XElement element);
+        protected abstract void WriteElementInner(MusicalSymbol symbol, XElement element, int quarterNoteDuration);
 
         private static IEnumerable<MusicXmlWritingStrategyBase> _strategies;
     }

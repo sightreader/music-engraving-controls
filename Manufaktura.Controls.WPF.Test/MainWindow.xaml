@@ -12,7 +12,7 @@
             <WPF:NoteViewer RenderingMode="Panorama" x:Name="noteViewer2" HorizontalAlignment="Stretch" IsOccupyingSpace="True" VerticalAlignment="Top" />
             <WPF:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
             <WPF:RadialChart  Samples="{Binding ChartSamples}" Width="300" Height="300" LabelToAxisDistance="30" />
-            <Button Content="Dodaj nutę" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_9"/>
+            <Button Content="Zapisz MusicXML" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_9"/>
             <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             <Button Content="Odtwórz" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
             <Button Content="Pauza" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_7"/>

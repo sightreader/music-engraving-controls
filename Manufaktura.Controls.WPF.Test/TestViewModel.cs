@@ -176,12 +176,10 @@ namespace Manufaktura.Controls.WPF.Test
 
 			Data = score;
 
-            var supported = MusicXmlWritingStrategyBase.SupportedElements;
-            var unsupported = MusicXmlWritingStrategyBase.UnsupportedElements;
-
-            score.Parts.Add(new Part(firstStaff) { PartId = "1" });
-            score.Parts.Add(new Part(secondStaff) { PartId = "2" } );
-            var createdDocument = new MusicXmlParser().ParseBack(score);
-		}
+            var part = new Part(firstStaff) { PartId = "1" };
+            score.Parts.Add(part);
+            part = new Part(secondStaff) { PartId = "2" };
+            score.Parts.Add(part);
+        }
 	}
 }
