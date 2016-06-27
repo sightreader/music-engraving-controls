@@ -54,7 +54,17 @@ namespace Manufaktura.Controls.Rendering
 					Exceptions.Add(ex);
 				}
 			}
-			foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnMeasure(measure, this);
+			foreach (var finishingTouch in FinishingTouches)
+			{
+				try
+				{
+					finishingTouch.PerformOnMeasure(measure, this);
+				}
+				catch (Exception ex)
+				{
+					Exceptions.Add(ex);
+				}
+			}
 		}
 
 		/// <summary>
@@ -83,7 +93,17 @@ namespace Manufaktura.Controls.Rendering
 				scoreService.CurrentSystem.Height = (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count;
 			}
 
-			foreach (var finishingTouch in FinishingTouches) finishingTouch.PerformOnScore(score, this);
+			foreach (var finishingTouch in FinishingTouches)
+			{
+				try
+				{
+					finishingTouch.PerformOnScore(score, this);
+				}
+				catch (Exception ex)
+				{
+					Exceptions.Add(ex);
+				}
+			}
 		}
 
 		public async Task RenderAsync(Score score)

@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model.Events;
+using Manufaktura.Controls.Model.Exceptions;
 using System;
 using System.Collections.Generic;
 
@@ -20,6 +21,11 @@ namespace Manufaktura.Controls.Model.Collections
 
 		protected override void BindEvents(StaffSystem item)
 		{
+		}
+
+		protected override ScoreException CreateOutOfBoundsException(int index)
+		{
+			return new ScoreException(page, $"Index {index} is out of bounds of staff systems collection.");
 		}
 
 		protected override void ManageItemOnAdd(StaffSystem item)

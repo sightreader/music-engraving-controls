@@ -9,34 +9,34 @@ namespace Manufaktura.Music.Xml
     {
         public XHelperExistsResult Exists()
         {
-            return new XHelperExistsResult(ElementExists(), GetObject());
+            return new XHelperExistsResult(ElementExists(), GetObject(), GetValue());
         }
 
         public XHelperHasValueResult<string> HasAnyValue()
         {
-            if (!ElementExists()) return new XHelperHasValueResult<string>();
+            if (!ElementExists()) return new XHelperHasValueResult<string>(null, null, false);
             var value = GetValue();
-            return !string.IsNullOrWhiteSpace(value) ? new XHelperHasValueResult<string>(value) : new XHelperHasValueResult<string>();
+            return !string.IsNullOrWhiteSpace(value) ? new XHelperHasValueResult<string>(value, value, true) : new XHelperHasValueResult<string>(null, null, false);
         }
 
         public XHelperHasValueResult<T> HasValue<T>(Dictionary<string, T> values)
         {
-            if (ElementExists() && values.ContainsKey(GetValue())) return new XHelperHasValueResult<T>(values[GetValue()]);
-            return new XHelperHasValueResult<T>();
+            if (ElementExists() && values.ContainsKey(GetValue())) return new XHelperHasValueResult<T>(values[GetValue()], GetValue(), true);
+            return new XHelperHasValueResult<T>(default(T), GetValue(), false);
         }
 
         public XHelperHasValueResult<T> HasValue<T>() where T : struct
         {
-            if (!ElementExists()) return new XHelperHasValueResult<T>();
+            if (!ElementExists()) return new XHelperHasValueResult<T>(default(T), null, false);
             var value = ParseValue<T>(GetValue());
-            return value.HasValue ? new XHelperHasValueResult<T>(value.Value) : new XHelperHasValueResult<T>();
+            return value.HasValue ? new XHelperHasValueResult<T>(value.Value, GetValue(), true) : new XHelperHasValueResult<T>(default(T), GetValue(), false);
         }
 
         public XHelperHasValueResult<string> HasValue(string s)
         {
-            if (!ElementExists()) return new XHelperHasValueResult<string>();
+            if (!ElementExists()) return new XHelperHasValueResult<string>(null, null, false);
             var value = GetValue();
-            return !string.IsNullOrWhiteSpace(value) && s == value ? new XHelperHasValueResult<string>(value) : new XHelperHasValueResult<string>();
+            return !string.IsNullOrWhiteSpace(value) && s == value ? new XHelperHasValueResult<string>(value, GetValue(), true) : new XHelperHasValueResult<string>(null, GetValue(), false);
         }
 
         protected abstract bool ElementExists();

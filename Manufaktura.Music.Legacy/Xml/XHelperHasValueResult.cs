@@ -51,7 +51,12 @@ namespace Manufaktura.Music.Xml
             return this;
         }
 
-        public T ThenReturnResult()
+		public void OtherwiseThrowException()
+		{
+			if (!HasValue) throw new Exception("Value not found.");
+		}
+
+		public T ThenReturnResult()
         {
             return AndReturnResult();
         }

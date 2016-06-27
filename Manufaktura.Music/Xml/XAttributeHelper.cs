@@ -18,7 +18,7 @@ namespace Manufaktura.Music.Xml
 
         protected override string GetValue()
         {
-            return element.Value;
+            return element?.Value;
         }
 
         protected override object GetObject()

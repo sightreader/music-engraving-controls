@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Exceptions;
 using Manufaktura.Controls.Primitives;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,11 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
 		public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
 		{
-			DiscoverBeamGroups(staff);
+			DiscoverBeamGroups(staff, renderer);
 			PerformOnBeamGroups(staff.BeamGroups, renderer);
 		}
 
-		private void DiscoverBeamGroups(Staff staff)
+		private void DiscoverBeamGroups(Staff staff, ScoreRendererBase renderer)
 		{
 			staff.BeamGroups.Clear();
 			BeamGroup beamGroup = null;
@@ -46,8 +47,12 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 					if (beamGroup != null) beamGroup.Members.Add(nr);
 					if (note.BeamList.First() == NoteBeamType.End)
 					{
-						beamGroup.End = note.StemEndLocation;
-						beamGroup = null;
+						if (beamGroup == null) renderer.Exceptions.Add(new ScoreException(note, $"Encountered beam group end without corresponding beam group start."));
+						else
+						{
+							beamGroup.End = note.StemEndLocation;
+							beamGroup = null;
+						}
 					}
 				}
 			}

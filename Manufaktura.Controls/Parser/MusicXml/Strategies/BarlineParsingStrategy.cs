@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
             element.IfAttribute("location").HasValue("left")
                 .Then(() => b.Location = HorizontalPlacement.Left)
-                .Otherwise(() => b.Location = HorizontalPlacement.Right);
+                .Otherwise(r => b.Location = HorizontalPlacement.Right);
 
 			element.IfElement("bar-style").HasValue("light-heavy").Then(() => b.Style = BarlineStyle.LightHeavy);
 

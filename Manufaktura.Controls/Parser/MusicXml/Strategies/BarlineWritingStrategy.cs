@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Exceptions;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
@@ -27,7 +28,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                     return "light-heavy";
 
                 default:
-                    throw new ScoreWriterException(barline, $"Unsupported barline style {barline.Style}.");
+                    throw new ScoreException(barline, $"Unsupported barline style {barline.Style}.");
             }
         }
     }

@@ -1,30 +1,37 @@
-﻿namespace Manufaktura.Controls.Model.Collections
+﻿using Manufaktura.Controls.Model.Exceptions;
+
+namespace Manufaktura.Controls.Model.Collections
 {
-    public class PartStavesCollection : ItemManagingCollection<Staff>
-    {
-        public PartStavesCollection(Part part)
-        {
-            this.part = part;
-        }
+	public class PartStavesCollection : ItemManagingCollection<Staff>
+	{
+		private readonly Part part;
 
-        protected override void BindEvents(Staff item)
-        {
-        }
+		public PartStavesCollection(Part part)
+		{
+			this.part = part;
+		}
 
-        protected override void ManageItemOnAdd(Staff item)
-        {
-            item.Part = part;
-        }
+		protected override void BindEvents(Staff item)
+		{
+		}
 
-        protected override void ManageItemOnRemove(Staff item)
-        {
-            item.Part = null;
-        }
+		protected override ScoreException CreateOutOfBoundsException(int index)
+		{
+			return new ScoreException(part, $"Index {index} is out of bounds of part's staves collection.");
+		}
 
-        protected override void UnbindEvents(Staff item)
-        {
-        }
+		protected override void ManageItemOnAdd(Staff item)
+		{
+			item.Part = part;
+		}
 
-        private readonly Part part;
-    }
+		protected override void ManageItemOnRemove(Staff item)
+		{
+			item.Part = null;
+		}
+
+		protected override void UnbindEvents(Staff item)
+		{
+		}
+	}
 }

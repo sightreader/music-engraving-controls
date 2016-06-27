@@ -177,9 +177,10 @@ namespace Manufaktura.Controls.WPF.Test
 			Data = score;
 
             var part = new Part(firstStaff) { PartId = "1" };
+			part.Staves.Add(secondStaff);
             score.Parts.Add(part);
-            part = new Part(secondStaff) { PartId = "2" };
-            score.Parts.Add(part);
+            //part = new Part(secondStaff) { PartId = "2" };
+            //score.Parts.Add(part);
         }
 	}
 }

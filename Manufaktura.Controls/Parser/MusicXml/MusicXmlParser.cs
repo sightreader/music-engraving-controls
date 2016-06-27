@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Exceptions;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Music.Model;
@@ -97,7 +98,7 @@ namespace Manufaktura.Controls.Parser
 
         public override XDocument ParseBack(Score score)
         {
-            if (!score.Parts.Any()) throw new ScoreWriterException(score, $"Score does not contain any parts therefore it does not conform to score-partwise schema. You have to add parts to {nameof(Score.Parts)} collection before exporting to MusicXml.");
+            if (!score.Parts.Any()) throw new ScoreException(score, $"Score does not contain any parts therefore it does not conform to score-partwise schema. You have to add parts to {nameof(Score.Parts)} collection before exporting to MusicXml.");
             var quarterNoteDuration = CalculateQuarterNoteDuration(score);
 
             var document = new XDocument();
@@ -120,7 +121,7 @@ namespace Manufaktura.Controls.Parser
             var partListNode = new XElement("part-list");
             foreach (var part in score.Parts)
             {
-                if (string.IsNullOrWhiteSpace(part.PartId)) throw new ScoreWriterException(part, "Part has to contain id.");
+                if (string.IsNullOrWhiteSpace(part.PartId)) throw new ScoreException(part, "Part has to contain id.");
                 var scorePartNode = new XElement("score-part");
                 scorePartNode.Add(new XAttribute("id", part.PartId));
                 scorePartNode.Add(new XElement("part-name", part.Name));

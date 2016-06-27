@@ -43,7 +43,7 @@ namespace Manufaktura.Music.Xml
         public static XHelperExistsResult IfHasElement(this XElement element, string name)
         {
             var child = element == null ? null : element.Elements().FirstOrDefault(x => x.Name == name);
-            return new XHelperExistsResult(child != null, child);
+            return new XHelperExistsResult(child != null, child, child?.Value);
         }
     }
 }

@@ -2,58 +2,56 @@
 
 namespace Manufaktura.Music.Xml
 {
-    public class XHelperHasValueResult<T> : IXHelperResult<T>
-    {
-        private T value;
+	public class XHelperHasValueResult<T> : IXHelperResult<T>
+	{
+		private string rawValue;
+		private T value;
 
-        public bool HasValue { get; private set; }
+		internal XHelperHasValueResult(T value, string rawValue, bool hasValue)
+		{
+			this.value = value;
+			this.rawValue = rawValue;
+			HasValue = hasValue;
+		}
 
-        public T Value
-        {
-            get
-            {
-                if (!HasValue) throw new Exception("Value does not exist.");
-                return value;
-            }
-        }
 
-        internal XHelperHasValueResult(T value)
-        {
-            this.value = value;
-            HasValue = true;
-        }
+		public bool HasValue { get; private set; }
 
-        internal XHelperHasValueResult()
-        {
-            HasValue = false;
-        }
+		public T Value
+		{
+			get
+			{
+				if (!HasValue) throw new Exception("Value does not exist.");
+				return value;
+			}
+		}
 
-        public T AndReturnResult()
-        {
-            return HasValue ? value : default(T);
-        }
+		public T AndReturnResult()
+		{
+			return HasValue ? value : default(T);
+		}
 
-        public IXHelperResult Otherwise(Action action)
-        {
-            if (!HasValue && action != null) action();
-            return this;
-        }
+		public IXHelperResult Otherwise(Action<string> action)
+		{
+			if (!HasValue && action != null) action(rawValue);
+			return this;
+		}
 
-        public IXHelperResult<T> Then(Action<T> action)
-        {
-            if (HasValue && action != null) action(Value);
-            return this;
-        }
+		public IXHelperResult<T> Then(Action<T> action)
+		{
+			if (HasValue && action != null) action(Value);
+			return this;
+		}
 
-        public IXHelperResult Then(Action action)
-        {
-            if (HasValue && action != null) action();
-            return this;
-        }
+		public IXHelperResult Then(Action action)
+		{
+			if (HasValue && action != null) action();
+			return this;
+		}
 
-        public T ThenReturnResult()
-        {
-            return AndReturnResult();
-        }
-    }
+		public T ThenReturnResult()
+		{
+			return AndReturnResult();
+		}
+	}
 }

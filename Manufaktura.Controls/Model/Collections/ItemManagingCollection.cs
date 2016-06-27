@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Manufaktura.Controls.Model.Exceptions;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -37,10 +38,12 @@ namespace Manufaktura.Controls.Model.Collections
 		{
 			get
 			{
+				if (index > Count - 1) throw CreateOutOfBoundsException(index);
 				return innerList[index];
 			}
 			set
 			{
+				if (index > Count - 1) throw CreateOutOfBoundsException(index);
 				innerList[index] = value;
 			}
 		}
@@ -140,6 +143,8 @@ namespace Manufaktura.Controls.Model.Collections
 		}
 
 		protected abstract void BindEvents(TItem item);
+
+		protected abstract ScoreException CreateOutOfBoundsException(int index);
 
 		protected abstract void ManageItemOnAdd(TItem item);
 

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Manufaktura.Controls.Model.Exceptions;
 
 namespace Manufaktura.Controls.Model.Collections
 {
@@ -18,6 +18,11 @@ namespace Manufaktura.Controls.Model.Collections
 		{
 		}
 
+		protected override ScoreException CreateOutOfBoundsException(int index)
+		{
+			return new ScoreException(staff, $"Index {index} is out of bounds of staff elements collection.");
+		}
+
 		protected override void ManageItemOnAdd(MusicalSymbol item)
 		{
 			staff.ApplyRules(item);
@@ -32,7 +37,5 @@ namespace Manufaktura.Controls.Model.Collections
 		protected override void UnbindEvents(MusicalSymbol item)
 		{
 		}
-
-
 	}
 }

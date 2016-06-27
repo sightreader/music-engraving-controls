@@ -13,7 +13,7 @@ namespace Manufaktura.Music.Xml
 
     public interface IXHelperResult
     {
-        IXHelperResult Otherwise(Action action);
+        IXHelperResult Otherwise(Action<string> action);
 
         IXHelperResult Then(Action action);
     }

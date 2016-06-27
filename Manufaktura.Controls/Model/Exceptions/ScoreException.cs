@@ -1,11 +1,11 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
 
-namespace Manufaktura.Controls.Parser
+namespace Manufaktura.Controls.Model.Exceptions
 {
-    public class ScoreWriterException : Exception
+    public class ScoreException : Exception
     {
-        public ScoreWriterException(object element, string message) : base(message)
+        public ScoreException(object element, string message) : base(message)
         {
             FaultyElement = element;
         }

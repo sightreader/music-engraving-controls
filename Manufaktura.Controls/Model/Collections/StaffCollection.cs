@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model.Events;
+using Manufaktura.Controls.Model.Exceptions;
 using System;
 
 namespace Manufaktura.Controls.Model.Collections
@@ -20,6 +21,11 @@ namespace Manufaktura.Controls.Model.Collections
 		{
 			item.StaffInvalidated += HandleItem_StaffInvalidated;
 			item.MeasureInvalidated += HandleItem_MeasureInvalidated;
+		}
+
+		protected override ScoreException CreateOutOfBoundsException(int index)
+		{
+			return new ScoreException(score, $"Index {index} is out of bounds of score's staves collection.");
 		}
 
 		protected override void ManageItemOnAdd(Staff item)

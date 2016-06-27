@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Exceptions;
 using Manufaktura.Music.Model;
 using System.Xml.Linq;
 
@@ -45,7 +46,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                     return "512th";
 
                 default:
-                    throw new ScoreWriterException(symbol, $"Invalid rhythmic duration denominator {symbol.BaseDuration.Denominator}.");
+                    throw new ScoreException(symbol, $"Invalid rhythmic duration denominator {symbol.BaseDuration.Denominator}.");
             }
         }
 
@@ -111,10 +112,10 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                     return "single";
 
                 case NoteBeamType.Start:
-                    return "start";
+                    return "begin";
 
                 default:
-                    throw new ScoreWriterException(symbol, $"Unsupported beam type {beamType}.");
+                    throw new ScoreException(symbol, $"Unsupported beam type {beamType}.");
             }
         }
     }

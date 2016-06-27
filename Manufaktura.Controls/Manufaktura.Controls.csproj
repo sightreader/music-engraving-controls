@@ -218,7 +218,7 @@
     <Compile Include="Parser\MusicXml\Strategies\SystemLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\TimeSignatureWritingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
-    <Compile Include="Parser\ScoreWriterException.cs" />
+    <Compile Include="Model\Exceptions\ScoreException.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />
     <Compile Include="Primitives\PolarPoint.cs" />

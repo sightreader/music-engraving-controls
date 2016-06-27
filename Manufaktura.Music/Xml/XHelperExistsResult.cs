@@ -7,12 +7,14 @@ namespace Manufaktura.Music.Xml
     {
         private XElement existingElement;
         private bool exists;
+		private string rawValue;
         //We don't need another version of this class for XAttribute because attribute can't have child elements
 
-        internal XHelperExistsResult(bool exists, object existingElement)
+        internal XHelperExistsResult(bool exists, object existingElement, string rawValue)
         {
             this.exists = exists;
             this.existingElement = existingElement as XElement;
+			this.rawValue = rawValue;
         }
 
         public XElement AndReturnResult()
@@ -25,9 +27,9 @@ namespace Manufaktura.Music.Xml
             return AndReturnResult();
         }
 
-        public IXHelperResult Otherwise(Action action)
+        public IXHelperResult Otherwise(Action<string> action)
         {
-            if (!exists && action != null) action();
+            if (!exists && action != null) action(rawValue);
             return this;
         }
 

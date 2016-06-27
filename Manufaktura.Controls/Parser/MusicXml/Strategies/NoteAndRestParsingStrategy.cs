@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Builders;
+using Manufaktura.Controls.Model.Exceptions;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Xml;
 using System.Collections.Generic;
@@ -54,12 +55,12 @@ namespace Manufaktura.Controls.Parser.MusicXml
 				{
 					if (builder.TieType == NoteTieType.Stop) builder.TieType = NoteTieType.StopAndStartAnother;
 					else builder.TieType = NoteTieType.Start;
-				}).Otherwise(() => builder.TieType = NoteTieType.Stop);
+				}).Otherwise(r => builder.TieType = NoteTieType.Stop);
 			}
 
 			element.IfElement("stem").HasValue("down")
 				.Then(() => builder.StemDirection = VerticalDirection.Down)
-				.Otherwise(() => builder.StemDirection = VerticalDirection.Up);
+				.Otherwise(r => builder.StemDirection = VerticalDirection.Up);
 			element.GetElement("stem").IfAttribute("default-y").HasValue<float>().Then(v =>
 				{
 					builder.StemDefaultY = v;
@@ -72,7 +73,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
 				{"continue", NoteBeamType.Continue},
 				{"forward hook", NoteBeamType.ForwardHook},
 				{"backward hook", NoteBeamType.BackwardHook}
-			}).Then(v => builder.BeamList.Add(v)));
+			}).Then(v => builder.BeamList.Add(v))
+			  .Otherwise(r => { if (r.ToLowerInvariant() != "single") throw new ScoreException(builder, $"Unsupported beam type \"{r}\"."); }));
 
 			var notationsNode = element.GetElement("notations");
 			var tupletNode = notationsNode.GetElement("tuplet");
