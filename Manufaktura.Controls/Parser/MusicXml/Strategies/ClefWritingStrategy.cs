@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using System.Xml.Linq;
+using System;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 {
@@ -10,10 +11,12 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             get { return "clef"; }
         }
 
+        public override bool IsAttributeElement => true;
+
         protected override void WriteElementInner(Clef symbol, XElement element)
         {
-            element.Add("sign", symbol.Pitch.StepName);
-            element.Add("line", symbol.Line);
+            element.Add(new XElement("sign", symbol.Pitch.StepName));
+            element.Add(new XElement("line", symbol.Line));
         }
     }
 }

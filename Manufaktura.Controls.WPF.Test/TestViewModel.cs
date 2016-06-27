@@ -2,6 +2,8 @@
 using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
@@ -173,6 +175,13 @@ namespace Manufaktura.Controls.WPF.Test
 			var timeSignature = secondStaff.Peek<TimeSignature>(nn, Model.PeekStrategies.PeekType.PreviousElement);
 
 			Data = score;
+
+            var supported = MusicXmlWritingStrategyBase.SupportedElements;
+            var unsupported = MusicXmlWritingStrategyBase.UnsupportedElements;
+
+            score.Parts.Add(new Part(firstStaff) { PartId = "1" });
+            score.Parts.Add(new Part(secondStaff) { PartId = "2" } );
+            var createdDocument = new MusicXmlParser().ParseBack(score);
 		}
 	}
 }

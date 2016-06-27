@@ -3,18 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 {
     public abstract class MusicXmlWritingStrategyBase
     {
-        private static IEnumerable<MusicXmlWritingStrategyBase> _strategies;
-
-        public abstract Type SymbolType { get; }
-        public abstract string ElementName { get; }
-
         static MusicXmlWritingStrategyBase()
         {
             var strategyTypes = typeof(MusicXmlWritingStrategyBase).GetTypeInfo().Assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(MusicXmlWritingStrategyBase)) && !t.IsAbstract);
@@ -26,8 +20,52 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             _strategies = strategies.ToArray();
         }
 
+        public static IEnumerable<Type> SupportedElements
+        {
+            get
+            {
+                return typeof(MusicalSymbol).GetTypeInfo().Assembly.DefinedTypes
+                    .Where(d => !d.IsAbstract && d.IsSubclassOf(typeof(MusicalSymbol)))
+                    .Select(d => d.AsType())
+                    .Where(t => _strategies.Any(s => s.SymbolType == t))
+                    .ToArray();
+            }
+        }
+
+        public static IEnumerable<Type> UnsupportedElements
+        {
+            get
+            {
+                return typeof(MusicalSymbol).GetTypeInfo().Assembly.DefinedTypes
+                    .Where(d => !d.IsAbstract && d.IsSubclassOf(typeof(MusicalSymbol)))
+                    .Select(d => d.AsType())
+                    .Where(t => !_strategies.Any(s => s.SymbolType == t))
+                    .ToArray();
+            }
+        }
+
+        public abstract string ElementName { get; }
+        public abstract bool IsAttributeElement { get; }
+        public abstract Type SymbolType { get; }
+
+        public static MusicXmlWritingStrategyBase GetProperStrategy(Type symbolType)
+        {
+            return _strategies.FirstOrDefault(s => s.SymbolType == symbolType);
+        }
+
         public void WriteElement(MusicalSymbol symbol, XElement parentElement)
         {
+            if (IsAttributeElement)
+            {
+                var attributesElement = parentElement.Elements().FirstOrDefault(e => e.Name == "attributes");
+                if (attributesElement == null)
+                {
+                    attributesElement = new XElement("attributes");
+                    parentElement.Add(attributesElement);
+                }
+                parentElement = attributesElement;
+            }
+
             var newElement = new XElement(XName.Get(ElementName));
             parentElement.Add(newElement);
             WriteElementInner(symbol, newElement);
@@ -35,9 +73,6 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         protected abstract void WriteElementInner(MusicalSymbol symbol, XElement element);
 
-        public static MusicXmlWritingStrategyBase GetProperStrategy(Type symbolType)
-        {
-            return _strategies.FirstOrDefault(s => s.SymbolType == symbolType);
-        }
+        private static IEnumerable<MusicXmlWritingStrategyBase> _strategies;
     }
 }

@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
 {
     public abstract class MusicXmlParsingStrategy
     {
-        private static IEnumerable<MusicXmlParsingStrategy> _strategies;
+        private static readonly IEnumerable<MusicXmlParsingStrategy> _strategies;
 
         public abstract string ElementName { get; }
 

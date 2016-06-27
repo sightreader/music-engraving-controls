@@ -195,6 +195,7 @@
     <Compile Include="Parser\MusicXml\Strategies\EncodingParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\HarmonyParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\KeyParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\KeyWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MeasureParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MeasureStyleParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\MusicXmlParser.cs" />
@@ -204,12 +205,17 @@
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs" />
     <Compile Include="Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\NoteWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PageLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionWritingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\RestWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\StaffLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\StavesAttributeParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\SystemLayoutParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\TimeSignatureWritingStrategy.cs" />
     <Compile Include="Parser\Parser.cs" />
+    <Compile Include="Parser\ScoreWriterException.cs" />
     <Compile Include="Parser\XTransformerParser.cs" />
     <Compile Include="Primitives\KolbergColors.cs" />
     <Compile Include="Primitives\PolarPoint.cs" />
