@@ -1,4 +1,6 @@
-﻿using Manufaktura.Controls.Model;
+﻿#define DemoVersion
+
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
@@ -285,7 +287,6 @@ namespace Manufaktura.Controls.WPF
 		{
 			foreach (var sample in sampleDictionary)
 			{
-
 			}
 		}
 
@@ -343,6 +344,20 @@ namespace Manufaktura.Controls.WPF
 				DrawWebLines(firstTicks, previousTicks);
 				DrawLinesBetweenSamples();
 			}
+
+#if DemoVersion
+			foreach (var location in new[] {
+				new System.Windows.Point(0, 0),
+				new System.Windows.Point(mainCanvas.ActualWidth - 60, 0)})
+			{
+				var demoText = new TextBlock();
+				demoText.Foreground = Brushes.Red;
+				demoText.Text = "DEMO";
+				mainCanvas.Children.Add(demoText);
+				Canvas.SetLeft(mainCanvas, location.X);
+				Canvas.SetTop(mainCanvas, location.Y);
+			}
+#endif
 		}
 	}
 }

@@ -84,7 +84,8 @@ namespace Manufaktura.Controls.WPF.Test
 
 		private void Button_Click_8(object sender, RoutedEventArgs e)
 		{
-			((TestViewModel)DataContext).Player.Stop();
+			((TestViewModel)DataContext).Player.PlayElement(Note.FromPitch(Pitch.C5));
+			//((TestViewModel)DataContext).Player.Stop();
 		}
 
 		private async void LoadTestModel(HookDirectionAlgorithm hookDirectionAlgorithm)
