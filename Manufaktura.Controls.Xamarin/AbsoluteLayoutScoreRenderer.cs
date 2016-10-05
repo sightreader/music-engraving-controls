@@ -4,6 +4,10 @@ using Manufaktura.Controls.Rendering;
 using Manufaktura.Controls.Xamarin.Shapes;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using X = Xamarin.Forms;
+using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Primitives;
+using System;
 
 namespace Manufaktura.Controls.Xamarin
 {
@@ -16,12 +20,12 @@ namespace Manufaktura.Controls.Xamarin
 
 		public Dictionary<VisualElement, MusicalSymbol> OwnershipDictionary { get; private set; }
 
-		public Color ConvertColor(Primitives.Color color)
+		public X.Color ConvertColor(Primitives.Color color)
 		{
-			return Color.FromRgba(color.R, color.G, color.B, color.A);
+			return X.Color.FromRgba(color.R, color.G, color.B, color.A);
 		}
 
-		public Primitives.Color ConvertColor(Color color)
+		public Primitives.Color ConvertColor(X.Color color)
 		{
 			return new Primitives.Color((byte)(color.R * 255), (byte)(color.G * 255), (byte)(color.B * 255), (byte)(color.A * 255));
 		}
@@ -60,7 +64,7 @@ namespace Manufaktura.Controls.Xamarin
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			if (!Settings.IsPanoramaMode)
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
 			{
 				startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
 				endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
@@ -73,6 +77,11 @@ namespace Manufaktura.Controls.Xamarin
 			line.EndY = endPoint.Y;
 			line.Color = pen.Color;
 			line.Thickness = pen.Thickness;
+			//var width = Math.Abs(line.EndX - line.TranslationX);
+			//var height = Math.Abs(line.EndY - line.TranslationY);
+			//if (width == 0) width = line.Thickness;
+			//if (height == 0) height = line.Thickness;
+			//AbsoluteLayout.SetLayoutBounds(line, new X.Rectangle(line.TranslationX, line.TranslationY, width, height));
 
 			Canvas.Children.Add(line);
 			OwnershipDictionary.Add(line, owner);
@@ -80,7 +89,7 @@ namespace Manufaktura.Controls.Xamarin
 
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
 		{
-			if (!Settings.IsPanoramaMode) location = location.Translate(CurrentScore.DefaultPageSettings);
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
 			var label = new Text();
 			label.TranslationX = location.X;
@@ -89,7 +98,7 @@ namespace Manufaktura.Controls.Xamarin
 			label.FontFamily = Fonts.Get(fontStyle).FontFamily;
 			label.FontAttributes = Fonts.Get(fontStyle).Attributes;
 			label.FontSize = Fonts.Get(fontStyle).FontSize;
-			label.TextColor = Color.Black;
+			label.TextColor = X.Color.Black;
 
 			Canvas.Children.Add(label);
 			OwnershipDictionary.Add(label, owner);
@@ -97,6 +106,11 @@ namespace Manufaktura.Controls.Xamarin
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
 		{
+		}
+
+		protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

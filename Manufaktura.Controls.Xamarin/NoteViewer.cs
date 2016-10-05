@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -31,8 +32,8 @@ namespace Manufaktura.Controls.Xamarin
 			BindableProperty.Create("IsOccupyingSpace", typeof(bool), typeof(NoteViewer), true);
 
 		// Using a BindableProperty as the backing store for IsPanoramaMode.  This enables animation, styling, binding, etc...
-		public static readonly BindableProperty IsPanoramaModeProperty =
-			BindableProperty.Create("IsPanoramaMode", typeof(bool), typeof(NoteViewer), true);
+		public static readonly BindableProperty RenderingModeProperty =
+			BindableProperty.Create(nameof(RenderingMode), typeof(ScoreRenderingModes), typeof(NoteViewer), ScoreRenderingModes.Panorama);
 
 		// Using a BindableProperty as the backing store for IsSelectable.  This enables animation, styling, binding, etc...
 		public static readonly BindableProperty IsSelectableProperty =
@@ -108,10 +109,10 @@ namespace Manufaktura.Controls.Xamarin
 			set { SetValue(IsOccupyingSpaceProperty, value); }
 		}
 
-		public bool IsPanoramaMode
+		public ScoreRenderingModes RenderingMode
 		{
-			get { return (bool)GetValue(IsPanoramaModeProperty); }
-			set { SetValue(IsPanoramaModeProperty, value); }
+			get { return (ScoreRenderingModes)GetValue(RenderingModeProperty); }
+			set { SetValue(RenderingModeProperty, value); }
 		}
 
 		public bool IsSelectable
@@ -239,7 +240,7 @@ namespace Manufaktura.Controls.Xamarin
 
 			Children.Clear();
 			Renderer = CreateRenderer(this);
-			Renderer.Settings.IsPanoramaMode = IsPanoramaMode;
+			Renderer.Settings.RenderingMode = RenderingMode;
 			Renderer.Settings.DefaultColor = Renderer.ConvertColor(Color.Black);
 			if (score.Staves.Count > 0) Renderer.Settings.PageWidth = score.Staves[0].Elements.Count * 26;
 			Renderer.Render(score);
