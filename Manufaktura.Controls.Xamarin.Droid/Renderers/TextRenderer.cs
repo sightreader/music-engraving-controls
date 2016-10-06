@@ -8,19 +8,28 @@ using Xamarin.Forms.Platform.Android;
 
 namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 {
-	public class TextRenderer : LabelRenderer
+	public class TextRenderer : VisualElementRenderer<Text>
 	{
-		protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
+		public TextRenderer()
 		{
-			base.OnElementChanged(e);
-			Typeface font = Typeface.CreateFromAsset(Forms.Context.Assets, "Polihymnia.ttf");
-			Control.Typeface = font;
+			SetWillNotDraw(false);
 		}
 
-		public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
+		protected override void OnDraw(Canvas canvas)
 		{
-			return new SizeRequest(new Size(100, 100), new Size(100, 100));
-			return base.GetDesiredSize(widthConstraint, heightConstraint);
+			base.OnDraw(canvas);
+
+			Typeface font = (Element.FontFamily == "Polihymnia") ? Typeface.CreateFromAsset(Forms.Context.Assets, "Polihymnia.ttf") : Typeface.SansSerif;
+
+			var paint = new Paint();
+			paint.Color = Android.Graphics.Color.Black;
+			paint.SetStyle(Paint.Style.FillAndStroke);
+			paint.SetTypeface(font);
+			paint.TextSize = (float)Element.FontSize;
+			
+			canvas.DrawText(Element.Text, (float)Element.TranslationX, (float)Element.TranslationY, paint);
 		}
+
+
 	}
 }

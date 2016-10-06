@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.Xamarin.Shapes;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 
 namespace Manufaktura.Controls.Xamarin
 {
-	public class NoteViewer : AbsoluteLayout
+	public class NoteViewer : DrawableCanvas
 	{
 		// Using a BindableProperty as the backing store for InvalidatingMode.  This enables animation, styling, binding, etc...
 		public static readonly BindableProperty InvalidatingModeProperty =
@@ -211,7 +212,7 @@ namespace Manufaktura.Controls.Xamarin
 			//TODO: Zaimplementować
 		}
 
-		private AbsoluteLayoutScoreRenderer CreateRenderer(AbsoluteLayout canvas)
+		private AbsoluteLayoutScoreRenderer CreateRenderer(DrawableCanvas canvas)
 		{
 			return new AbsoluteLayoutScoreRenderer(this);
 		}

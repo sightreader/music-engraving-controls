@@ -21,5 +21,7 @@ namespace Manufaktura.Controls.Xamarin.Shapes
 			get { return (double)GetValue(ThicknessProperty); }
 			set { SetValue(ThicknessProperty, value); }
 		}
+
+		public float NonNativeScreenSize { get; set; }
 	}
 }

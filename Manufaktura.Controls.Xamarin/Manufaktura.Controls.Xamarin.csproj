@@ -42,6 +42,7 @@
     <Compile Include="AbsoluteLayoutScoreRenderer.cs" />
     <Compile Include="Shapes\Arc.cs" />
     <Compile Include="Shapes\BezierCurve.cs" />
+    <Compile Include="Shapes\DrawableCanvas.cs" />
     <Compile Include="Shapes\Line.cs" />
     <Compile Include="Shapes\ManufakturaShape.cs" />
     <Compile Include="Shapes\Text.cs" />

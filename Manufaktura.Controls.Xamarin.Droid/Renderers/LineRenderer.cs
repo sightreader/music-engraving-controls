@@ -1,6 +1,7 @@
 using Android.Graphics;
 using Manufaktura.Controls.Xamarin.Droid.Renderers;
 using Manufaktura.Controls.Xamarin.Shapes;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using static Android.Text.BoringLayout;
@@ -24,15 +25,15 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 			var paint = new Paint();
 			paint.Color = Element.Color.ToAndroidColor();
 			paint.StrokeWidth = (float)Element.Thickness;
-			paint.SetStyle(Paint.Style.FillAndStroke);
+			paint.SetStyle(Paint.Style.Stroke);
 
-			canvas.DrawLine(ConvertPixelsToDp((float)Element.TranslationX), ConvertPixelsToDp((float)Element.TranslationY), ConvertPixelsToDp((float)Element.EndX), ConvertPixelsToDp((float)Element.EndY), paint);
+			canvas.DrawLine((float)Element.TranslationX, (float)Element.TranslationY, (float)Element.EndX, (float)Element.EndY, paint);
 		}
+
 
 		private float ConvertPixelsToDp(float pixelValue)
 		{
-			var dp = ((pixelValue) / Resources.DisplayMetrics.Density);
-			return dp;
+			return pixelValue * 0.2f;
 		}
 	}
 }

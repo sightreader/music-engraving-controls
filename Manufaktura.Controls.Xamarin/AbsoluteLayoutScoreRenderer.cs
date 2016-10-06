@@ -11,9 +11,9 @@ using System;
 
 namespace Manufaktura.Controls.Xamarin
 {
-	public class AbsoluteLayoutScoreRenderer : ScoreRenderer<AbsoluteLayout>
+	public class AbsoluteLayoutScoreRenderer : ScoreRenderer<DrawableCanvas>
 	{
-		public AbsoluteLayoutScoreRenderer(AbsoluteLayout canvas) : base(canvas)
+		public AbsoluteLayoutScoreRenderer(DrawableCanvas canvas) : base(canvas)
 		{
 			OwnershipDictionary = new Dictionary<VisualElement, MusicalSymbol>();
 		}
