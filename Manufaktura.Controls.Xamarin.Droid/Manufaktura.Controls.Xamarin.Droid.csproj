@@ -89,11 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Renderers\ArcRenderer.cs" />
-    <Compile Include="Renderers\BezierCurveRenderer.cs" />
     <Compile Include="Renderers\DrawableCanvasRenderer.cs" />
-    <Compile Include="Renderers\LineRenderer.cs" />
-    <Compile Include="Renderers\TextRenderer.cs" />
     <Compile Include="Renderers\TypeTranslator.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 {
 	public class DrawableCanvasRenderer : VisualElementRenderer<DrawableCanvas>
 	{
-		public DrawableCanvasRenderer ()
+		public DrawableCanvasRenderer()
 		{
 			SetWillNotDraw(false);
 		}
@@ -44,7 +44,7 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 					else font = Typeface.SansSerif;
 
 					var paint = new Paint();
-					paint.Color = Android.Graphics.Color.Black;
+					paint.Color = text.TextColor.ToAndroid();
 					paint.SetStyle(Paint.Style.FillAndStroke);
 					paint.SetTypeface(font);
 					paint.AntiAlias = true;
@@ -54,6 +54,19 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 						canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 24, paint);
 					else
 						canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 13, paint);
+
+					continue;
+				}
+
+				var arc = child as Arc;
+				if (arc != null)
+				{
+					var paint = new Paint();
+					paint.Color = arc.Color.ToAndroidColor();
+					paint.SetStyle(Paint.Style.Stroke);
+					paint.AntiAlias = true;
+					paint.StrokeWidth = (float)arc.Thickness;
+					canvas.DrawArc(new RectF((float)arc.X, (float)arc.Y, (float)arc.RX, (float)arc.RY), (float)arc.SweepAngle, (float)arc.SweepAngle, false, paint);
 				}
 			}
 		}
