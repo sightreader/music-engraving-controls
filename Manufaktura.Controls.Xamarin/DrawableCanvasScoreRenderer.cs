@@ -11,9 +11,9 @@ using System;
 
 namespace Manufaktura.Controls.Xamarin
 {
-	public class AbsoluteLayoutScoreRenderer : ScoreRenderer<DrawableCanvas>
+	public class DrawableCanvasScoreRenderer : ScoreRenderer<DrawableCanvas>
 	{
-		public AbsoluteLayoutScoreRenderer(DrawableCanvas canvas) : base(canvas)
+		public DrawableCanvasScoreRenderer(DrawableCanvas canvas) : base(canvas)
 		{
 			OwnershipDictionary = new Dictionary<VisualElement, MusicalSymbol>();
 		}
@@ -38,6 +38,8 @@ namespace Manufaktura.Controls.Xamarin
 			arc.RX = rect.Width;
 			arc.RY = rect.Height;
 			arc.Thickness = pen.Thickness;
+			arc.StartAngle = startAngle;
+			arc.SweepAngle = sweepAngle;
 			arc.Color = pen.Color;
 
 			Canvas.Children.Add(arc);
@@ -77,11 +79,6 @@ namespace Manufaktura.Controls.Xamarin
 			line.EndY = endPoint.Y;
 			line.Color = pen.Color;
 			line.Thickness = pen.Thickness;
-			//var width = Math.Abs(line.EndX - line.TranslationX);
-			//var height = Math.Abs(line.EndY - line.TranslationY);
-			//if (width == 0) width = line.Thickness;
-			//if (height == 0) height = line.Thickness;
-			//AbsoluteLayout.SetLayoutBounds(line, new X.Rectangle(line.TranslationX, line.TranslationY, width, height));
 
 			Canvas.Children.Add(line);
 			OwnershipDictionary.Add(line, owner);
@@ -99,6 +96,7 @@ namespace Manufaktura.Controls.Xamarin
 			label.FontAttributes = Fonts.Get(fontStyle).Attributes;
 			label.FontSize = Fonts.Get(fontStyle).FontSize;
 			label.TextColor = X.Color.Black;
+			label.FontStyle = fontStyle;
 
 			Canvas.Children.Add(label);
 			OwnershipDictionary.Add(label, owner);

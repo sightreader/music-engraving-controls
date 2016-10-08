@@ -2,13 +2,9 @@
 using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Parser;
-using Manufaktura.Controls.Parser.MusicXml.Strategies;
-using Manufaktura.Controls.Primitives;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Manufaktura.Controls.WPF.Test
@@ -32,6 +28,7 @@ namespace Manufaktura.Controls.WPF.Test
 			get { return data; }
 			set { data = value; OnPropertyChanged(() => Data); }
 		}
+
 		public ScorePlayer Player { get { return player; } set { player = value; OnPropertyChanged(); } }
 
 		public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
@@ -178,15 +175,14 @@ namespace Manufaktura.Controls.WPF.Test
 
 			Data = score;
 
-            var part = new Part(firstStaff) { PartId = "1" };
+			var part = new Part(firstStaff) { PartId = "1" };
 			part.Staves.Add(secondStaff);
-            score.Parts.Add(part);
+			score.Parts.Add(part);
 			//part = new Part(secondStaff) { PartId = "2" };
 			//score.Parts.Add(part);
 
-
-
 			//Z Xamarina:
+			/*
 			score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
 			firstStaff = score.FirstStaff;
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
@@ -220,7 +216,7 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
 			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
 
-			Data = score;
+			Data = score;*/
 		}
 	}
 }

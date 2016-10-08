@@ -13,6 +13,9 @@ namespace Manufaktura.Controls.Xamarin.Shapes
 		// Using a DependencyProperty as the backing store for SweepAngle.  This enables animation, styling, binding, etc...
 		public static readonly BindableProperty SweepAngleProperty = BindableProperty.Create<Arc, double>(a => a.SweepAngle, 180);
 
+		// Using a DependencyProperty as the backing store for SweepAngle.  This enables animation, styling, binding, etc...
+		public static readonly BindableProperty StartAngleProperty = BindableProperty.Create<Arc, double>(a => a.StartAngle, 0);
+
 		public double RX
 		{
 			get { return (double)GetValue(RXProperty); }
@@ -29,6 +32,12 @@ namespace Manufaktura.Controls.Xamarin.Shapes
 		{
 			get { return (double)GetValue(SweepAngleProperty); }
 			set { SetValue(SweepAngleProperty, value); }
+		}
+
+		public double StartAngle
+		{
+			get { return (double)GetValue(StartAngleProperty); }
+			set { SetValue(StartAngleProperty, value); }
 		}
 	}
 }

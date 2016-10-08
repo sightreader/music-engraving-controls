@@ -9,13 +9,14 @@ namespace Manufaktura.Controls.Xamarin.Test
 {
 	public class App : Application
 	{
-		NoteViewer noteViewer = new NoteViewer();
+		NoteViewer noteViewer1 = new NoteViewer();
+		NoteViewer noteViewer2 = new NoteViewer();
 		Button button = new Button();
 		TestViewModel vm = new TestViewModel();
 		public App()
 		{
-			button.Clicked += Button_Clicked;
-			noteViewer.HeightRequest = 300;
+			//noteViewer1.HeightRequest = 300;
+			//noteViewer2.HeightRequest = 300;
 			// The root page of your application
 			MainPage = new ContentPage
 			{
@@ -26,25 +27,23 @@ namespace Manufaktura.Controls.Xamarin.Test
 					Children = {
 						new Label {
 							HorizontalTextAlignment = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
+							Text = "Manufaktura.Controls.Xamarin"
 						},
-						noteViewer
+						noteViewer1,
+						noteViewer2
 					}
 				}
 			};
 			
 		}
 
-		private void Button_Clicked(object sender, EventArgs e)
-		{
-			
-		}
 
 		protected override void OnStart()
 		{
 			MainPage.BindingContext = vm;
 			vm.LoadTestData();
-			noteViewer.SetBinding<TestViewModel>(NoteViewer.ScoreSourceProperty, s => s.Data);
+			noteViewer1.SetBinding<TestViewModel>(NoteViewer.ScoreSourceProperty, s => s.Data);
+			noteViewer2.SetBinding<TestViewModel>(NoteViewer.ScoreSourceProperty, s => s.Data2);
 		}
 
 		protected override void OnSleep()

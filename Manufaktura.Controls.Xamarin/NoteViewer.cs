@@ -152,7 +152,7 @@ namespace Manufaktura.Controls.Xamarin
 			set { SetValue(ZoomFactorProperty, value); }
 		}
 
-		protected AbsoluteLayoutScoreRenderer Renderer { get; set; }
+		protected DrawableCanvasScoreRenderer Renderer { get; set; }
 
 		public void Select(MusicalSymbol element)
 		{
@@ -212,9 +212,9 @@ namespace Manufaktura.Controls.Xamarin
 			//TODO: Zaimplementować
 		}
 
-		private AbsoluteLayoutScoreRenderer CreateRenderer(DrawableCanvas canvas)
+		private DrawableCanvasScoreRenderer CreateRenderer(DrawableCanvas canvas)
 		{
-			return new AbsoluteLayoutScoreRenderer(this);
+			return new DrawableCanvasScoreRenderer(this);
 		}
 
 		private void RenderOnCanvas(Measure measure)
