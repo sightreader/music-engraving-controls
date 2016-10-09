@@ -2,6 +2,7 @@ using Android.Graphics;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Xamarin.Droid.Renderers;
 using Manufaktura.Controls.Xamarin.Shapes;
+using System.ComponentModel;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -15,6 +16,16 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 		public DrawableCanvasRenderer()
 		{
 			SetWillNotDraw(false);
+		}
+
+		public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
+		{
+			if (!Element.Children.OfType<ManufakturaShape>().Any()) return new SizeRequest(new Size(0, 0));
+
+			var bottomMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationY).First();
+			var rightMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationX).First();
+
+			return new SizeRequest(new Size(rightMostShape.TranslationX + 10, bottomMostShape.TranslationY + 10));
 		}
 
 		protected override void OnDraw(Canvas canvas)
@@ -78,16 +89,12 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 			}
 		}
 
-		public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
+		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
-			if (!Element.Children.OfType<ManufakturaShape>().Any()) return new SizeRequest(new Size(0,0));
+			base.OnElementPropertyChanged(sender, e);
 
-			var bottomMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationY).First();
-			var rightMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationX).First();
-
-			return new SizeRequest(new Size(rightMostShape.TranslationX + 10, bottomMostShape.TranslationY + 10));
+			if (e.PropertyName == nameof(NoteViewer.ScoreSource) || e.PropertyName == nameof(NoteViewer.XmlSource)) Invalidate();
 		}
-
 		private static Paint GetPaint(ManufakturaShape shape)
 		{
 			var paint = new Paint();
