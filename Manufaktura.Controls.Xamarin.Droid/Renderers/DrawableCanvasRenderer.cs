@@ -80,6 +80,8 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 
 		public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
+			if (!Element.Children.OfType<ManufakturaShape>().Any()) return new SizeRequest(new Size(0,0));
+
 			var bottomMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationY).First();
 			var rightMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationX).First();
 

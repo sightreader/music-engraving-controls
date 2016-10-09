@@ -188,6 +188,12 @@ namespace Manufaktura.Controls.Xamarin
 		{
 			NoteViewer viewer = obj as NoteViewer;
 
+			if (string.IsNullOrWhiteSpace(newValue))
+			{
+				if (!string.IsNullOrWhiteSpace(oldValue)) viewer.Children.Clear();
+				return;
+			}
+
 			XDocument xmlDocument = XDocument.Parse(newValue);
 			//Apply transformations:
 			if (viewer.XmlTransformations != null)
