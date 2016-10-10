@@ -93,8 +93,11 @@ namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 		{
 			base.OnElementPropertyChanged(sender, e);
 
-			if (e.PropertyName == nameof(NoteViewer.ScoreSource) || e.PropertyName == nameof(NoteViewer.XmlSource)) Invalidate();
+			System.Diagnostics.Debug.WriteLine($"OnElementPropertyChanged: {e.PropertyName}");
+			if (e.PropertyName == NoteViewer.ScoreSourceProperty.PropertyName || e.PropertyName == NoteViewer.XmlSourceProperty.PropertyName)
+				Invalidate();
 		}
+
 		private static Paint GetPaint(ManufakturaShape shape)
 		{
 			var paint = new Paint();

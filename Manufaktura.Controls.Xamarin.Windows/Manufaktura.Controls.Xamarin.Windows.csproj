@@ -104,6 +104,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Manufaktura.Controls.UniversalApps.xr.xml" />
+    <Content Include="Polihymnia.ttf" />
+    <None Include="DummyControl.xbf" />
+    <None Include="Keyboard\PianoKeyboard.xbf" />
+    <None Include="NoteViewer.xbf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
