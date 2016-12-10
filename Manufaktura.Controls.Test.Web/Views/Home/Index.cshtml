@@ -38,14 +38,20 @@ window.onload = function () {
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
-		onsuccess: function() {
-			var delay = 0; // play one note every quarter second
-			var note = 50; // the MIDI note
-			var velocity = 127; // how hard the note hits
-			// play the note
-			MIDI.setVolume(0, 127);
-			MIDI.noteOn(0, note, velocity, delay);
-			MIDI.noteOff(0, note, delay + 0.75);
+		onsuccess: function () {
+		    $("svg").children().each(function (i, e) {
+		        var delayTime = $(e).attr("data-playback-start");
+		        if (delayTime == null) return;
+
+		        MIDI.setVolume(0, 127);
+		        var note = $(e).attr("data-midi-pitch");
+		        var duration = $(e).attr("data-playback-duration");
+		        MIDI.noteOn(0, note, 127, delayTime / 1000);
+		        MIDI.noteOff(0, note, (delayTime / 1000) + (duration / 1000));
+
+		        $(e).delay(delayTime).addClass("in-playback");
+		        $(e).delay(delayTime + duration).removeClass("in-playback");
+		    });
 		}
 	});
 };
