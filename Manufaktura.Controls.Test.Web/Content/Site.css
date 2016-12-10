@@ -17,5 +17,6 @@ textarea {
 }
 
 .in-playback {
-    color:mediumpurple;
+    fill:red;
+    stroke:red;
 }

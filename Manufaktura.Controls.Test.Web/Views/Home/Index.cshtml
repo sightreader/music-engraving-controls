@@ -49,8 +49,12 @@ window.onload = function () {
 		        MIDI.noteOn(0, note, 127, delayTime / 1000);
 		        MIDI.noteOff(0, note, (delayTime / 1000) + (duration / 1000));
 
-		        $(e).delay(delayTime).addClass("in-playback");
-		        $(e).delay(delayTime + duration).removeClass("in-playback");
+		        $(e).delay(delayTime).queue(function () {
+		           this.style.fill = "#f00";
+		        });
+		        $(e).delay(delayTime + duration).queue(function () {
+		            this.style.fill = "#000";
+		        });
 		    });
 		}
 	});
