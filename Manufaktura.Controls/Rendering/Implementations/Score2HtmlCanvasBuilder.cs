@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Music.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -29,9 +30,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
             stringBuilder.AppendLine("</style>");
         }
 
-        public override void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName)
+        public override void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName, double calculatedScoreHeight)
         {
-            stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", scoreElementName, Settings.Height.ToString(CultureInfo.InvariantCulture)));
+            stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", scoreElementName, calculatedScoreHeight.ToStringInvariant()));
             stringBuilder.AppendLine("<script>");
 
             string scriptBody = @"(function() {

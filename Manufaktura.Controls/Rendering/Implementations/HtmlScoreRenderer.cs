@@ -11,13 +11,17 @@ namespace Manufaktura.Controls.Rendering.Implementations
 	public abstract class HtmlScoreRenderer<TCanvas> : ScoreRenderer<TCanvas>
 	{
 		protected TimelineElement<IHasDuration>[] currentPlaybackTimeline;
+
 		protected HtmlScoreRenderer(TCanvas canvas)
 			: base(canvas)
 		{
 		}
 
+		public double ActualHeight { get; protected set; } = 0;
+
 		public string ScoreElementName { get; set; }
 		public HtmlScoreRendererSettings TypedSettings { get { return Settings as HtmlScoreRendererSettings; } }
+
 		protected override void BeforeRenderScore(Score score)
 		{
 			base.BeforeRenderScore(score);

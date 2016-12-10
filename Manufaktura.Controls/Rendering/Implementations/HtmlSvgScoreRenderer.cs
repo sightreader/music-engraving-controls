@@ -43,6 +43,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
 			}
 
+			if (rect.Y > ActualHeight) ActualHeight = rect.Y;
+
 			Canvas.Add(element);
 		}
 
@@ -67,6 +69,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
 			}
 
+			if (p1.Y > ActualHeight) ActualHeight = p1.Y;
+
 			Canvas.Add(element);
 		}
 
@@ -85,6 +89,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			{
 				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
 			}
+
+			if (startPoint.Y > ActualHeight) ActualHeight = startPoint.Y;
+			if (endPoint.Y > ActualHeight) ActualHeight = endPoint.Y;
 
 			Canvas.Add(element);
 		}
@@ -110,6 +117,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			{
 				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
 			}
+
+			if (location.Y > ActualHeight) ActualHeight = location.Y;
 
 			Canvas.Add(element);
 		}

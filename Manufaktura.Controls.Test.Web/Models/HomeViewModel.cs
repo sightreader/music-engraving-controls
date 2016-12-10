@@ -12,8 +12,6 @@ namespace Manufaktura.Controls.Test.Web.Models
 			get
 			{
 				var settings = new HtmlScoreRendererSettings();
-				settings.PageWidth = 800;
-				settings.Height = 600;
 				settings.RenderSurface = HtmlScoreRendererSettings.HtmlRenderSurface.Svg;
 				var musicFontUris = new[] { "/fonts/Polihymnia.svg", "/fonts/Polihymnia.ttf", "/fonts/Polihymnia.woff" };
 				settings.RenderingMode = ScoreRenderingModes.AllPages;

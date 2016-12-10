@@ -30,17 +30,18 @@ namespace Manufaktura.Controls.Rendering.Implementations
             canvas.Add(element);
         }
 
-        public override void BuildScoreElementWrapper(XElement canvas, XElement scoreCanvas, Score score, string scoreElementName)
+        public override void BuildScoreElementWrapper(XElement canvas, XElement scoreCanvas, Score score, string scoreElementName, double calculatedScoreHeight)
         {
-            var wrapper = new XElement("svg",
-                new XAttribute("width", Settings.PageWidth.ToStringInvariant()),
-                new XAttribute("height", Settings.Height.ToStringInvariant()));
-            canvas.Add(wrapper);
+			var wrapper = new XElement("svg");//,
+			if (!string.IsNullOrWhiteSpace(Settings.ScoreClass)) wrapper.Add(new XAttribute("class", Settings.ScoreClass));
+			canvas.Add(wrapper);
             foreach (var element in scoreCanvas.Elements())
             {
                 wrapper.Add(element);
             }
-        }
+			
+			if (Settings.AddFullWidthStyle) wrapper.Add(new XAttribute("style", $"width:100%; height:{calculatedScoreHeight.ToStringInvariant()}px;"));
+		}
 
         public override string GetHtmlStringFromCanvas(XElement canvas)
         {
