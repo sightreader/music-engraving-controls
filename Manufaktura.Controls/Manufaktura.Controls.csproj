@@ -104,6 +104,7 @@
     <Compile Include="Audio\ScorePlayer.cs" />
     <Compile Include="Audio\TaskScorePlayer.cs" />
     <Compile Include="Audio\TimelineElement.cs" />
+    <Compile Include="Audio\VirtualScorePlayer.cs" />
     <Compile Include="Extensions\StaffBuilder.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Formatting\BeatRebeamStrategy.cs" />

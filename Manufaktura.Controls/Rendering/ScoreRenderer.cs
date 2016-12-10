@@ -67,6 +67,9 @@ namespace Manufaktura.Controls.Rendering
 			}
 		}
 
+		protected virtual void BeforeRenderScore(Score score) { }
+
+
 		/// <summary>
 		/// Renders score on canvas.
 		/// </summary>
@@ -74,6 +77,8 @@ namespace Manufaktura.Controls.Rendering
 		public override sealed void Render(Score score)
 		{
 			CurrentScore = score;
+			BeforeRenderScore(score);
+
 			scoreService.BeginNewScore(score);
 			foreach (Staff staff in score.Staves)
 			{

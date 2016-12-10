@@ -59,7 +59,7 @@ namespace Manufaktura.Controls.Rendering
 		/// <summary>
 		/// Default page width
 		/// </summary>
-		public double PageWidth { get; set; }
+		public double PageWidth { get; set; }	//TODO: Zamiast width i height można ustawić style. Ale byłem durny
 
 		/// <summary>
 		/// Rendering moed

@@ -1,38 +1,36 @@
-﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Rendering.Implementations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.Test.Web.Models;
 using System.Web.Mvc;
 
 namespace Manufaktura.Controls.Test.Web.Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            return View();
-        }
+	public class HomeController : Controller
+	{
+		public ActionResult Index()
+		{
+			var vm = new HomeViewModel();
+			var serverPath = Server.MapPath("~/Content/0014 Larum w obozie.xml");
+			vm.SampleScore = System.IO.File.ReadAllText(serverPath).ToScore();
+			return View(vm);
+		}
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "sfsef";
+		public ActionResult About()
+		{
+			ViewBag.Message = "sfsef";
 
-            return View();
-        }
+			return View();
+		}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+		public ActionResult Contact()
+		{
+			ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+			return View();
+		}
 
-        public static MvcHtmlString RenderIncipitTest()
-        {
-            return null;
-        }
-    }
+		public static MvcHtmlString RenderIncipitTest()
+		{
+			return null;
+		}
+	}
 }

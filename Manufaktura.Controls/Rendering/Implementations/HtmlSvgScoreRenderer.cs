@@ -34,7 +34,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 					1,
 					(rect.X + rect.Width).ToStringInvariant(),
 					rect.Y.ToStringInvariant())),
-				new XAttribute("style", pen.ToCss()));
+				new XAttribute("style", pen.ToCss()),
+				new XAttribute("id", BuildElementId(owner)));
+
+			var playbackAttributes = BuildPlaybackAttributes(owner);
+			foreach (var playbackAttr in playbackAttributes)
+			{
+				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
+			}
 
 			Canvas.Add(element);
 		}
@@ -51,7 +58,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 					p3.Y.ToStringInvariant(),
 					p4.X.ToStringInvariant(),
 					p4.Y.ToStringInvariant())),
-				new XAttribute("style", pen.ToCss()));
+				new XAttribute("style", pen.ToCss()),
+				new XAttribute("id", BuildElementId(owner)));
+
+			var playbackAttributes = BuildPlaybackAttributes(owner);
+			foreach (var playbackAttr in playbackAttributes)
+			{
+				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
+			}
 
 			Canvas.Add(element);
 		}
@@ -63,7 +77,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 				new XAttribute("y1", startPoint.Y.ToStringInvariant()),
 				new XAttribute("x2", endPoint.X.ToStringInvariant()),
 				new XAttribute("y2", endPoint.Y.ToStringInvariant()),
-				new XAttribute("style", pen.ToCss()));
+				new XAttribute("style", pen.ToCss()),
+				new XAttribute("id", BuildElementId(owner)));
+
+			var playbackAttributes = BuildPlaybackAttributes(owner);
+			foreach (var playbackAttr in playbackAttributes)
+			{
+				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
+			}
 
 			Canvas.Add(element);
 		}
@@ -80,8 +101,16 @@ namespace Manufaktura.Controls.Rendering.Implementations
 				new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
 					color.ToCss(),
 					TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
-					TypedSettings.Fonts[fontStyle].Name)));
+					TypedSettings.Fonts[fontStyle].Name)),
+				new XAttribute("id", BuildElementId(owner)));
 			element.Value = TypedSettings.Fonts[fontStyle].Name == "Polihymnia" ? string.Format("{0}{1}", text, EmptyCharacterWithWidth) : text;
+
+			var playbackAttributes = BuildPlaybackAttributes(owner);
+			foreach (var playbackAttr in playbackAttributes)
+			{
+				element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
+			}
+
 			Canvas.Add(element);
 		}
 

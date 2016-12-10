@@ -3,6 +3,7 @@ using Manufaktura.Controls.Rendering;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.Model
@@ -44,6 +45,8 @@ namespace Manufaktura.Controls.Model
 	/// </summary>
 	public abstract class MusicalSymbol : ViewModel
 	{
+		private static Dictionary<Guid, long> idDictionary = new Dictionary<Guid, long>();
+		private static object syncRoot = new object();
 		private Color? customColor;
 		private bool isVisible;
 
@@ -52,7 +55,6 @@ namespace Manufaktura.Controls.Model
 			isVisible = true;
 			Id = Guid.NewGuid();
 		}
-
 		/// <summary>
 		/// Returns a new instance of null musical symbol
 		/// </summary>
@@ -72,6 +74,19 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(); } }
 
+		public long LongId
+		{
+			get
+			{
+				if (idDictionary.ContainsKey(Id)) return idDictionary[Id];
+				lock (syncRoot)
+				{
+					if (idDictionary.ContainsKey(Id)) return idDictionary[Id];
+					idDictionary.Add(Id, idDictionary.Count);
+					return idDictionary[Id];
+				}
+			}
+		}
 		public virtual Measure Measure { get; internal set; }
 		public ScorePage Page => Measure?.System?.Page;
 

@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="3.0">
+  <identification>
+    <encoding>
+      <software>Finale 2014 for Windows</software>
+      <software>Dolet Light for Finale 2014</software>
+      <encoding-date>2016-09-15</encoding-date>
+      <supports attribute="new-system" element="print" type="yes" value="yes"/>
+      <supports attribute="new-page" element="print" type="yes" value="yes"/>
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="stem" type="yes"/>
+    </encoding>
+  </identification>
+  <defaults>
+    <scaling>
+      <millimeters>5.4725</millimeters>
+      <tenths>40</tenths>
+    </scaling>
+    <page-layout>
+      <page-height>1534</page-height>
+      <page-width>1082</page-width>
+      <page-margins type="both">
+        <left-margin>93</left-margin>
+        <right-margin>93</right-margin>
+        <top-margin>116</top-margin>
+        <bottom-margin>116</bottom-margin>
+      </page-margins>
+    </page-layout>
+    <system-layout>
+      <system-margins>
+        <left-margin>4</left-margin>
+        <right-margin>0</right-margin>
+      </system-margins>
+      <system-distance>95</system-distance>
+      <top-system-distance>68</top-system-distance>
+    </system-layout>
+    <appearance>
+      <line-width type="stem">1.4583</line-width>
+      <line-width type="beam">5</line-width>
+      <line-width type="staff">0.944</line-width>
+      <line-width type="light barline">0.944</line-width>
+      <line-width type="heavy barline">5</line-width>
+      <line-width type="leger">0.944</line-width>
+      <line-width type="ending">1.4583</line-width>
+      <line-width type="wedge">1.4583</line-width>
+      <line-width type="enclosure">1.4583</line-width>
+      <line-width type="tuplet bracket">1.4583</line-width>
+      <note-size type="grace">60</note-size>
+      <note-size type="cue">60</note-size>
+      <distance type="hyphen">60</distance>
+      <distance type="beam">8</distance>
+    </appearance>
+    <music-font font-family="Maestro,engraved" font-size="15.5"/>
+    <word-font font-family="Times New Roman" font-size="31"/>
+    <lyric-font font-family="PoltawskiKolbergHo2" font-size="7.8"/>
+  </defaults>
+  <part-list>
+    <score-part id="P1">
+      <part-name print-object="no">MusicXML Part</part-name>
+      <score-instrument id="P1-I1">
+        <instrument-name>SmartMusic SoftSynth</instrument-name>
+        <virtual-instrument/>
+      </score-instrument>
+      <midi-device>SmartMusic SoftSynth</midi-device>
+      <midi-instrument id="P1-I1">
+        <midi-channel>1</midi-channel>
+        <midi-bank>15489</midi-bank>
+        <midi-program>107</midi-program>
+        <volume>80</volume>
+        <pan>0</pan>
+      </midi-instrument>
+    </score-part>
+  </part-list>
+  <!--=========================================================-->
+  <part id="P1">
+    <measure number="1" width="424">
+      <print>
+        <page-layout>
+          <page-height>1534</page-height>
+          <page-width>1082</page-width>
+          <page-margins>
+            <left-margin>146</left-margin>
+            <right-margin>147</right-margin>
+            <top-margin>93</top-margin>
+            <bottom-margin>93</bottom-margin>
+          </page-margins>
+        </page-layout>
+        <system-layout>
+          <system-margins>
+            <left-margin>0</left-margin>
+            <right-margin>0</right-margin>
+          </system-margins>
+          <top-system-distance>167</top-system-distance>
+        </system-layout>
+        <measure-numbering>system</measure-numbering>
+      </print>
+      <attributes>
+        <divisions>4</divisions>
+        <key>
+          <fifths>1</fifths>
+          <mode>major</mode>
+        </key>
+        <time symbol="common">
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <sound tempo="90"/>
+      <note default-x="106">
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-9">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">La</text>
+        </lyric>
+      </note>
+      <note default-x="179">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>3</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <dot/>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">rum</text>
+        </lyric>
+      </note>
+      <note default-x="244">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>1</duration>
+        <voice>1</voice>
+        <type>16th</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">w</text>
+          <elision> </elision>
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">o</text>
+        </lyric>
+      </note>
+      <note default-x="282">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <dot/>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>middle</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">bo</text>
+        </lyric>
+      </note>
+      <note default-x="376">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-56">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">zie,</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="2" width="365">
+      <note default-x="10">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1" relative-x="9">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">wszys</text>
+        </lyric>
+      </note>
+      <note default-x="93">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">cy</text>
+        </lyric>
+      </note>
+      <note default-x="145">
+        <pitch>
+          <step>F</step>
+          <alter>1</alter>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="1">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">do</text>
+        </lyric>
+      </note>
+      <note default-x="197">
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-4">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">bro</text>
+        </lyric>
+      </note>
+      <note default-x="280">
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-9">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ni,</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="3" width="426">
+      <print new-system="yes">
+        <system-layout>
+          <system-distance>101</system-distance>
+        </system-layout>
+      </print>
+      <note default-x="76">
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-9">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">każ</text>
+        </lyric>
+      </note>
+      <note default-x="159">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">dy</text>
+        </lyric>
+      </note>
+      <note default-x="212">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">do</text>
+        </lyric>
+      </note>
+      <note default-x="263">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <dot/>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">bo</text>
+        </lyric>
+      </note>
+      <note default-x="374">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-55">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ju</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="4" width="359">
+      <note default-x="10">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1" relative-x="5">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">pierś</text>
+        </lyric>
+      </note>
+      <note default-x="92">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">swą</text>
+        </lyric>
+      </note>
+      <note default-x="143">
+        <pitch>
+          <step>F</step>
+          <alter>1</alter>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="1">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">od</text>
+        </lyric>
+      </note>
+      <note default-x="193">
+        <pitch>
+          <step>E</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-4.5">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>middle</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">sło</text>
+        </lyric>
+      </note>
+      <note default-x="276">
+        <pitch>
+          <step>D</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-9">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ni.</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="5" width="437">
+      <print new-system="yes">
+        <system-layout>
+          <system-distance>113</system-distance>
+        </system-layout>
+      </print>
+      <barline location="left">
+        <bar-style>heavy-light</bar-style>
+        <repeat direction="forward" winged="none"/>
+      </barline>
+      <note default-x="96">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">Ka</text>
+        </lyric>
+      </note>
+      <note default-x="177">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>middle</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ra</text>
+        </lyric>
+      </note>
+      <note default-x="228">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">bin</text>
+        </lyric>
+      </note>
+      <note default-x="278">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <dot/>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">w</text>
+          <elision> </elision>
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">rę</text>
+        </lyric>
+      </note>
+      <note default-x="386">
+        <pitch>
+          <step>F</step>
+          <alter>1</alter>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="1">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ce,</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="6" width="348">
+      <note default-x="10">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1" relative-x="10">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">marsz</text>
+        </lyric>
+      </note>
+      <note default-x="89">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ser</text>
+        </lyric>
+      </note>
+      <note default-x="138">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-55">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ce</text>
+        </lyric>
+      </note>
+      <note default-x="188">
+        <pitch>
+          <step>C</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-51">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">żwa</text>
+        </lyric>
+      </note>
+      <note default-x="267">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">we,</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="7" width="415">
+      <print new-system="yes">
+        <system-layout>
+          <system-distance>92</system-distance>
+        </system-layout>
+      </print>
+      <note default-x="77">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-56">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">każ</text>
+        </lyric>
+      </note>
+      <note default-x="157">
+        <pitch>
+          <step>C</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-50.5">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">dy</text>
+        </lyric>
+      </note>
+      <note default-x="207">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">z</text>
+          <elision> </elision>
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">nas</text>
+        </lyric>
+      </note>
+      <note default-x="257">
+        <pitch>
+          <step>C</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <dot/>
+        <stem default-y="-50.5">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ko</text>
+        </lyric>
+      </note>
+      <note default-x="364">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">cha</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="8" width="370">
+      <note default-x="11">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-56">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">ho</text>
+        </lyric>
+      </note>
+      <note default-x="91">
+        <pitch>
+          <step>C</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-50.5">down</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">nor</text>
+        </lyric>
+      </note>
+      <note default-x="140">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>2</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="11">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>single</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">i</text>
+        </lyric>
+      </note>
+      <note default-x="190">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>begin</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">sła</text>
+        </lyric>
+      </note>
+      <note default-x="271">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="6">up</stem>
+        <lyric default-y="-85" number="1">
+          <syllabic>end</syllabic>
+          <text font-family="PoltawskiKolbergHo4" font-size="7.8">wę.</text>
+        </lyric>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+        <repeat direction="backward" winged="none"/>
+      </barline>
+    </measure>
+  </part>
+  <!--=========================================================-->
+</score-partwise>
