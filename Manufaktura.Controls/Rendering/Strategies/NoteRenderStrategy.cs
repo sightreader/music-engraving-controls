@@ -218,7 +218,7 @@ namespace Manufaktura.Controls.Rendering
 						measurementService.TupletState = null;
 					}
 				}
-				else if ((beam == NoteBeamType.Single) && (!element.IsUpperMemberOfChord))
+				else if (beam == NoteBeamType.Single && !element.IsUpperMemberOfChord)
 				{
 					Beams.Flag(beamingService, measurementService, scoreService, renderer, element, beamSpaceDirection, beamLoop, beamOffset);
 				}

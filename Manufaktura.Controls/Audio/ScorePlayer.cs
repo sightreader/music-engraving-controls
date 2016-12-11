@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using System;
@@ -141,11 +142,32 @@ namespace Manufaktura.Controls.Audio
 					var measure = staff.Measures[i];
 
 					var elapsed = 0m;
+					Tuplet tupletState = null;
 					foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
 					{
+						var note = durationElement as Note;
+						if (note != null && (note.IsGraceNote || note.IsCueNote)) continue;		//TODO: Playback of grace notes
+
 						elements.Add(new Tuple<decimal, IHasDuration>(elapsed, durationElement));
-						if (!((durationElement as Note)?.IsUpperMemberOfChord ?? false))
-							elapsed += new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDecimal();
+						if ((durationElement as Note)?.IsUpperMemberOfChord ?? false) continue;    //Upper member of chords are played but they don't increase elapsed time
+
+						if (durationElement.Tuplet == TupletType.Start)
+						{
+							NoteOrRest tupletStart = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.BeginningOfTuplet);
+							NoteOrRest tupletEnd = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.EndOfTuplet);
+							if (tupletStart != null && tupletEnd != null)
+							{
+								tupletState = new Tuplet();
+								tupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
+									staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsUpperMemberOfChord)).Count() + 1;
+							}
+						}
+
+						var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDecimal();
+						if (tupletState != null) dueTime = dueTime / tupletState.NumberOfNotesUnderTuplet * (durationElement.BaseDuration.Denominator / Tempo.BeatUnit.Denominator);
+
+						elapsed += dueTime;
+						if (durationElement.Tuplet == TupletType.Stop) tupletState = null;
 					}
 				}
 				var orderedElements = elements.OrderBy(e => e.Item1).ToList();

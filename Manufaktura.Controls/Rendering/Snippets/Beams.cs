@@ -26,7 +26,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			else
 			{
 				if (element.IsGraceNote || element.IsCueNote)
-					renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.GraceNoteFont, new Point(xPos + 0.5, beamingService.CurrentStemEndPositionY + 6), element);
+					renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.GraceNoteFont, new Point(xPos + 0.5, beamingService.CurrentStemEndPositionY + 10), element);
 				else
 					renderer.DrawString(element.NoteFlagCharacter, MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY - 1), element);
 			}

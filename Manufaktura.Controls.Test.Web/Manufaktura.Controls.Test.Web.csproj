@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\0014 Larum w obozie.xml" />
+    <Content Include="Content\030 Oj, zabujały 67 I nr 214.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />

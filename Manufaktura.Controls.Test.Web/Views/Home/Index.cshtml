@@ -27,42 +27,49 @@
 </div>
 
 <div class="row">
-        @Html.NoteViewer(Model.SampleScore, Model.Settings)
+    @Html.NoteViewer(Model.SampleScore, Model.Settings)
+</div>
+<div class="row">
+    <a id="btnPlay" class="btn btn-primary">Odtwórz</a>
 </div>
 
 <script type="text/javascript">
-window.onload = function () {
-	MIDI.loadPlugin({
-		soundfontUrl: "./soundfont/",
-		instrument: "acoustic_grand_piano",
-		onprogress: function(state, progress) {
-			console.log(state, progress);
-		},
-		onsuccess: function () {
-		    MIDI.setVolume(0, 127);
-            
-		    $("svg").children().each(function (i, e) {
-		        var delayTime = $(e).attr("data-playback-start");
-		        if (delayTime == null) return;
+    window.onload = function () {
+        MIDI.loadPlugin({
+            soundfontUrl: "./soundfont/",
+            instrument: "acoustic_grand_piano",
+            onprogress: function (state, progress) {
+                console.log(state, progress);
+            },
+            onsuccess: function () {
+                MIDI.setVolume(0, 127);
+            }
+        });
+    };
+</script>
+<script type="text/javascript">
+    $("#btnPlay").click(function (evh) {
+        $("svg").children().each(function (i, e) {
+            var delayTime = $(e).attr("data-playback-start");
+            if (delayTime == null) return;
+            delayTime = parseInt(delayTime);
 
-		        var note = $(e).attr("data-midi-pitch");
-		        var duration = $(e).attr("data-playback-duration");
+            var note = parseInt($(e).attr("data-midi-pitch"));
+            var duration = parseInt($(e).attr("data-playback-duration"));
 
-		        MIDI.noteOn(0, note, 127, delayTime / 1000);
-		        MIDI.noteOff(0, note, (delayTime / 1000) + (duration / 1000));
-		       
-		        setTimeout(function () {
-		            if (e.tagName == "line") e.style.stroke = "#f00";
-		            else e.style.fill = "#f00";
-		        }, delayTime);
+            setTimeout(function () {
+                console.info("Note " + note + " on");
+                MIDI.noteOn(0, note, 127, 0);
+                if (e.tagName == "line" || e.tagName == "path") e.style.stroke = "#c34853";
+                else e.style.fill = "#c34853";
+            }, delayTime);
 
-		        setTimeout(function () {
-		            if (e.tagName == "line") e.style.stroke = "#000";
-		            else e.style.fill = "#000";
-		        }, parseInt(delayTime) + parseInt(duration));
-
-		    });
-		}
-	});
-};
+            setTimeout(function () {
+                console.info("Note " + note + " off");
+                MIDI.noteOff(0, note, 0);
+                if (e.tagName == "line" || e.tagName == "path") e.style.stroke = "#000";
+                else e.style.fill = "#000";
+            }, delayTime + duration);
+        });
+    });
 </script>
