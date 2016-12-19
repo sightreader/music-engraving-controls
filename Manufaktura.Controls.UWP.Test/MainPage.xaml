@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="Manufaktura.Controls.UWP.Test.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Manufaktura.Controls.UWP.Test"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mf="using:Manufaktura.Controls.UniversalApps"
+    mc:Ignorable="d">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+
+            <mf:NoteViewer ScoreSource="{Binding Data}" RenderingMode="AllPages" IsOccupyingSpace="True" x:Name="noteViewerTest" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <!--PlaybackCursorPosition="{Binding Player.CurrentPosition}"-->
+            <mf:NoteViewer PlaybackCursorPosition="{Binding Player.CurrentPosition}" RenderingMode="AllPages" CurrentPage="1" IsOccupyingSpace="True" x:Name="noteViewer1" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <mf:NoteViewer RenderingMode="Panorama" x:Name="noteViewer2" HorizontalAlignment="Stretch" IsOccupyingSpace="True" VerticalAlignment="Top" />
+            <mf:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
+            <Button Content="Zapisz MusicXML" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_9"/>
+            <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Button Content="Odtwórz" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
+            <Button Content="Pauza" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_7"/>
+            <Button Content="Stop" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_8"/>
+            <Button Content="Następna strona" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <Button Content="Koloruj drugi system" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+
+            <Button Content="Panorama" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+            <Button Content="Jedna strona" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
+            <Button Content="Wszystkie strony" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_5"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
