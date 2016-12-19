@@ -50,12 +50,14 @@ namespace Manufaktura.Controls.UniversalApps.Media.Midi
             currentMidiOutputDevice.SendMessage(midiMessageToSend);
         }
 
-        protected override async void PlayQueue(Queue<TimelineElement<IHasDuration>> simultaneousElements)
+        protected override void PlayQueue(Queue<TimelineElement<IHasDuration>> simultaneousElements)
         {
             while (simultaneousElements.Any())
             {
                 var element = simultaneousElements.Dequeue();
-                if (ElapsedTime != element.When) await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ElapsedTime = element.When);
+#pragma warning disable CS4014 // We can't await here - we want it to run completely async because otherwise it would interrupt the playback
+                if (ElapsedTime != element.When) dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ElapsedTime = element.When);
+#pragma warning restore CS4014 // We can't await here - we want it to run completely async because otherwise it would interrupt the playback
                 var note = element.What as Note;
                 if (note == null) continue;
                 PlayElement(note);
