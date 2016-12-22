@@ -38,7 +38,7 @@ namespace Manufaktura.UnitTests
         [TestMethod]
         public void DurationTest()
         {
-            Assert.IsTrue(RhythmicDuration.Half + RhythmicDuration.Half == RhythmicDuration.Whole);
+            Assert.IsTrue(RhythmicDuration.Half + RhythmicDuration.Half == RhythmicDuration.Whole.ToProportion());
             Assert.IsTrue(RhythmicDuration.Quarter + RhythmicDuration.Eighth == RhythmicDuration.Eighth + RhythmicDuration.Quarter);
             Assert.IsTrue(RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) + RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro) == RhythmicDuration.Whole.ToTimeSpan(Tempo.Allegro));
             Assert.IsTrue(RhythmicDuration.Half.ToFractionOf(RhythmicDuration.Whole) == 0.5);

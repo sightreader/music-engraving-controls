@@ -59,7 +59,7 @@ namespace Manufaktura.UnitTests.Rendering
                     entry.Size = new Point(double.Parse(x.Value, CultureInfo.InvariantCulture), double.Parse(y.Value, CultureInfo.InvariantCulture));
                 }
                 x = resultNode.Elements().FirstOrDefault(d => d.Name == "Type");
-                if (x != null) entry.Type = (MusicalSymbolType)Enum.Parse(typeof(MusicalSymbolType), x.Value);
+                if (x != null) entry.Type = x.Value;
                 x = resultNode.Elements().FirstOrDefault(d => d.Name == "StaffNo");
                 if (x != null) entry.StaffNo = int.Parse(x.Value);
                 x = resultNode.Elements().FirstOrDefault(d => d.Name == "StaffIndex");
@@ -97,7 +97,7 @@ namespace Manufaktura.UnitTests.Rendering
                     writer.WriteValue(element.Size.Y);
                     writer.WriteEndElement();
                     foreach (var property in element.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                        .Where(p => p.PropertyType != typeof(Point) && p.PropertyType != typeof(MusicalSymbolType)))
+                        .Where(p => p.PropertyType != typeof(Point)))
                     {
                         var value = property.GetValue(element);
                         if (value == null) continue;

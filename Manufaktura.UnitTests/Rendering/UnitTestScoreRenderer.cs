@@ -3,6 +3,8 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering;
 using System.Linq;
+using Manufaktura.Controls.Audio;
+using System;
 
 namespace Manufaktura.UnitTests.Rendering
 {
@@ -56,7 +58,11 @@ namespace Manufaktura.UnitTests.Rendering
 		{
 		}
 
-		private Point GetSize(params Point[] points)
+        protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
+        {
+        }
+
+        private Point GetSize(params Point[] points)
 		{
 			return new Point(points.Max(p => p.X) - points.Min(p => p.X), points.Max(p => p.Y) - points.Min(p => p.Y));
 		}
