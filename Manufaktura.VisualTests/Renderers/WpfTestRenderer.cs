@@ -53,11 +53,24 @@ namespace Manufaktura.VisualTests.Renderers
                     tintedImage.BeginInit();
                     tintedImage.UriSource = new Uri(tindedPath);
                     tintedImage.EndInit();
-                    drawingContext.DrawImage(tintedImage, new Rect(0, 0, newWidthX, newHeightY));
+
+                    DrawingVisual tintedVisual = new DrawingVisual();
+                    using (DrawingContext tintedDrawingContext = tintedVisual.RenderOpen())
+                    {
+                        tintedDrawingContext.DrawImage(tintedImage, new Rect(0, 0, newWidthX, newHeightY));
+                    }
+                    RenderTargetBitmap resizedImage = new RenderTargetBitmap(
+                        (int)newWidthX, (int)newHeightY,                         // Resized dimensions
+                        outputDpi, outputDpi,                             // Default DPI values
+                        PixelFormats.Default);              // Default pixel format
+                    resizedImage.Render(tintedVisual);
+                    bmp.Render(tintedVisual);
                 }
+                else bmp.Render(drawingVisual);
+                
+                bmp.Render(noteViewer);
             }
-            bmp.Render(drawingVisual);
-            bmp.Render(noteViewer);
+
 
             //Konwertujemy na obrazek i zapisujemy do pola ImageData:
             BitmapEncoder encoder = new PngBitmapEncoder();
