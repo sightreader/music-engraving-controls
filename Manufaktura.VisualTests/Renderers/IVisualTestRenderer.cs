@@ -5,7 +5,7 @@ namespace Manufaktura.VisualTests.Renderers
 {
     internal interface IVisualTestRenderer
     {
-        void GenerateImages();
+        void GenerateImages(string pathToCompare);
 
         List<Exception> RenderExceptions { get; }
     }

@@ -16,7 +16,7 @@ namespace Manufaktura.VisualTests.Renderers
 
         public List<Exception> RenderExceptions { get; private set; } = new List<Exception>();
 
-        public void GenerateImages()
+        public void GenerateImages(string pathToCompare)
         {
             var renderDate = DateTime.Now;
             var scorePath = Path.Combine(testPath, "Scores");
@@ -27,8 +27,8 @@ namespace Manufaktura.VisualTests.Renderers
             {
                 try
                 {
-                    RenderImage(File.ReadAllText(file), Path.GetFileName(file), outputPath, ScoreRenderingModes.Panorama);
-                    RenderImage(File.ReadAllText(file), Path.GetFileName(file), outputPath, ScoreRenderingModes.AllPages);
+                    RenderImage(File.ReadAllText(file), Path.GetFileName(file), outputPath, ScoreRenderingModes.Panorama, pathToCompare);
+                    RenderImage(File.ReadAllText(file), Path.GetFileName(file), outputPath, ScoreRenderingModes.AllPages, pathToCompare);
                 }
                 catch (Exception ex)
                 {
@@ -37,6 +37,6 @@ namespace Manufaktura.VisualTests.Renderers
             }
         }
 
-        protected abstract void RenderImage(string musicXml, string fileName, string outputPath, ScoreRenderingModes mode);
+        protected abstract void RenderImage(string musicXml, string fileName, string outputPath, ScoreRenderingModes mode, string pathToCompare);
     }
 }

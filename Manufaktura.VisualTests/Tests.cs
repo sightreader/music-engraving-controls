@@ -24,11 +24,7 @@ namespace Manufaktura.VisualTests
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
 
-            new WpfTestRenderer(testPath).GenerateImages();
-            if (!string.IsNullOrWhiteSpace(lastNotAcceptedTest))
-            {
-                //TODO: Porównanie
-            }
+            new WpfTestRenderer(testPath).GenerateImages(lastNotAcceptedTest);
         }
 
         private Dictionary<DateTime, string> CreatePathDictionary ()
