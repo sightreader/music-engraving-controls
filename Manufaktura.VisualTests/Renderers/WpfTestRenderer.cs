@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -36,8 +35,6 @@ namespace Manufaktura.VisualTests.Renderers
             RenderTargetBitmap bmp = new RenderTargetBitmap((int)newWidthX, (int)newHeightY, outputDpi, outputDpi, PixelFormats.Default);
             noteViewer.InvalidateVisual();
 
-
-
             DrawingVisual drawingVisual = new DrawingVisual();
             using (DrawingContext drawingContext = drawingVisual.RenderOpen())
             {
@@ -49,33 +46,26 @@ namespace Manufaktura.VisualTests.Renderers
                     var tindedPath = Path.Combine(outputPath, Path.GetFileName(oldVersion).Replace(".png", "_TINT.png"));
                     tintedVersion.Save(tindedPath);
 
-                    BitmapImage tintedImage = new BitmapImage();
-                    tintedImage.BeginInit();
-                    tintedImage.UriSource = new Uri(tindedPath);
-                    tintedImage.EndInit();
+                    BitmapImage resizedTintedImage = new BitmapImage();
+                    resizedTintedImage.BeginInit();
 
-                    DrawingVisual tintedVisual = new DrawingVisual();
-                    using (DrawingContext tintedDrawingContext = tintedVisual.RenderOpen())
-                    {
-                        tintedDrawingContext.DrawImage(tintedImage, new Rect(0, 0, newWidthX, newHeightY));
-                    }
-                    RenderTargetBitmap resizedImage = new RenderTargetBitmap(
-                        (int)newWidthX, (int)newHeightY,                         // Resized dimensions
-                        outputDpi, outputDpi,                             // Default DPI values
-                        PixelFormats.Default);              // Default pixel format
-                    resizedImage.Render(tintedVisual);
-                    bmp.Render(tintedVisual);
+                    resizedTintedImage.UriSource = new Uri(oldVersion);
+                    resizedTintedImage.CreateOptions = BitmapCreateOptions.IgnoreColorProfile;
+                    resizedTintedImage.DecodePixelHeight = (int)newHeightY;
+                    resizedTintedImage.DecodePixelWidth = (int)newWidthX;
+
+                    resizedTintedImage.EndInit();
+                    drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, newWidthX, newHeightY));
                 }
-                else bmp.Render(drawingVisual);
-                
+
+                bmp.Render(drawingVisual);
                 bmp.Render(noteViewer);
             }
-
 
             //Konwertujemy na obrazek i zapisujemy do pola ImageData:
             BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bmp));
-            
+
             var filePath = Path.Combine(outputPath, newFileName);
             using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {
@@ -90,7 +80,7 @@ namespace Manufaktura.VisualTests.Renderers
             }
         }
 
-        private Bitmap TintImage (string imagePath)
+        private Bitmap TintImage(string imagePath)
         {
             var cm = new ColorMatrix(new float[][]
             {
