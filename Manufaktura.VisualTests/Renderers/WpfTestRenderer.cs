@@ -51,16 +51,15 @@ namespace Manufaktura.VisualTests.Renderers
 
                     resizedTintedImage.UriSource = new Uri(oldVersion);
                     resizedTintedImage.CreateOptions = BitmapCreateOptions.IgnoreColorProfile;
-                    resizedTintedImage.DecodePixelHeight = (int)newHeightY;
+                    resizedTintedImage.DecodePixelHeight = (int)newHeightY; //TODO: To chyba trzeba jakoś przeliczyć
                     resizedTintedImage.DecodePixelWidth = (int)newWidthX;
 
                     resizedTintedImage.EndInit();
                     drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, newWidthX, newHeightY));
                 }
-
-                bmp.Render(drawingVisual);
-                bmp.Render(noteViewer);
             }
+            bmp.Render(drawingVisual);
+            bmp.Render(noteViewer);
 
             //Konwertujemy na obrazek i zapisujemy do pola ImageData:
             BitmapEncoder encoder = new PngBitmapEncoder();

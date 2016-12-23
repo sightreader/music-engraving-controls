@@ -28,7 +28,6 @@ namespace Manufaktura.Controls.Rendering
 
 		public override void Render(Note element, ScoreRendererBase renderer)
 		{
-            return;
 			//Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
 			if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
 			{
