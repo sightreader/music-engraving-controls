@@ -20,7 +20,7 @@ namespace Manufaktura.VisualTests.Renderers
         {
             var renderDate = DateTime.Now;
             var scorePath = Path.Combine(testPath, "Scores");
-            var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddhhmmss")}");
+            var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
             if (!Directory.Exists(outputPath)) Directory.CreateDirectory(outputPath);
 
             foreach (var file in Directory.EnumerateFiles(scorePath))

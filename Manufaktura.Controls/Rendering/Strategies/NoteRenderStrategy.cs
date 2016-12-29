@@ -322,10 +322,10 @@ namespace Manufaktura.Controls.Rendering
 			{
 				if (slurStartPlacement == VerticalPlacement.Above)
 				{
-					renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 18,
-						measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 9,
-						scoreService.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) : notePositionY + 9),
-						scoreService.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemDefaultY + scoreService.Systems.Take(scoreService.CurrentSystemNo - 1).Sum(s => s.Height) + 9 : notePositionY + 18), element);
+                    renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 18,
+						measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 4.5,
+						scoreService.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 10 - 4.5 : notePositionY + 9),
+						scoreService.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 10 + 9 : notePositionY + 18), element);
 				}
 				else if (slurStartPlacement == VerticalPlacement.Below)
 				{

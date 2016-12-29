@@ -34,7 +34,7 @@ namespace Manufaktura.VisualTests
             {
                 var unparsedDate = Path.GetFileName(directory).Replace("Test_", "");
                 DateTime dt;
-                if (DateTime.TryParseExact(unparsedDate, "yyyyMMddhhmmss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out dt))
+                if (DateTime.TryParseExact(unparsedDate, "yyyyMMddHHmmss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out dt))
                     dict.Add(dt, directory);
             }
             return dict.OrderBy(d => d.Key).ToDictionary(d => d.Key, d => d.Value);
