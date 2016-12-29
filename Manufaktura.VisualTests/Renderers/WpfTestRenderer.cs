@@ -51,7 +51,7 @@ namespace Manufaktura.VisualTests.Renderers
                     resizedTintedImage.BeginInit();
                     resizedTintedImage.UriSource = new Uri(tintedPath);
                     resizedTintedImage.EndInit();
-                    drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, noteViewer.DesiredSize.Width, noteViewer.DesiredSize.Height));
+                    drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, resizedTintedImage.Width / (outputDpi / resizedTintedImage.DpiX), resizedTintedImage.Height / (outputDpi / resizedTintedImage.DpiY)));
                 }
             }
             bmp.Render(drawingVisual);
