@@ -35,6 +35,15 @@ namespace Manufaktura.VisualTests.Renderers
                     RenderExceptions.Add(ex);
                 }
             }
+
+            foreach (var file in Directory.EnumerateFiles(outputPath, "*TINT*"))
+            {
+                try
+                {
+                    File.Delete(file);
+                }
+                catch { }
+            }
         }
 
         protected abstract void RenderImage(string musicXml, string fileName, string outputPath, ScoreRenderingModes mode, string pathToCompare);

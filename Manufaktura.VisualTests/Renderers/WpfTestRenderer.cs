@@ -43,19 +43,15 @@ namespace Manufaktura.VisualTests.Renderers
                 {
                     var oldVersion = Path.Combine(pathToCompare, newFileName);
                     var tintedVersion = TintImage(oldVersion);
-                    var tindedPath = Path.Combine(outputPath, Path.GetFileName(oldVersion).Replace(".png", "_TINT.png"));
-                    tintedVersion.Save(tindedPath);
+                    var tintedPath = Path.Combine(outputPath, Path.GetFileName(oldVersion).Replace(".png", "_TINT.png"));
+                    tintedVersion.Save(tintedPath);
+                    tintedVersion.Dispose();
 
                     BitmapImage resizedTintedImage = new BitmapImage();
                     resizedTintedImage.BeginInit();
-
-                    resizedTintedImage.UriSource = new Uri(oldVersion);
-                    resizedTintedImage.CreateOptions = BitmapCreateOptions.IgnoreColorProfile;
-                    resizedTintedImage.DecodePixelHeight = (int)newHeightY; //TODO: To chyba trzeba jakoś przeliczyć
-                    resizedTintedImage.DecodePixelWidth = (int)newWidthX;
-
+                    resizedTintedImage.UriSource = new Uri(tintedPath);
                     resizedTintedImage.EndInit();
-                    drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, newWidthX, newHeightY));
+                    drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, noteViewer.DesiredSize.Width, noteViewer.DesiredSize.Height));
                 }
             }
             bmp.Render(drawingVisual);
@@ -73,10 +69,7 @@ namespace Manufaktura.VisualTests.Renderers
                 fs.Close();
             }
 
-            foreach (var file in Directory.EnumerateFiles(outputPath, "*TINT*"))
-            {
-                File.Delete(file);
-            }
+
         }
 
         private Bitmap TintImage(string imagePath)
