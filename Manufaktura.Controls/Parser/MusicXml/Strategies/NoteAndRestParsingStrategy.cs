@@ -158,6 +158,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
 			foreach (var lNode in element.Elements().Where(n => n.Name == "lyric"))
 			{
+                //TODO: This is wrong. Lyric can contain many syllabic, text and elision tags. I shuld parse each subnode
+
 				Lyrics lyricsInstance = new Lyrics();
 				Lyrics.Syllable syllable = new Lyrics.Syllable();
 				bool isSylabicSet = false;
