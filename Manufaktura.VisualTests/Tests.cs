@@ -20,6 +20,7 @@ namespace Manufaktura.VisualTests
         public void PerformVisualTests()
         {
             AcceptTo(DateTime.MinValue);
+            AcceptTo(new DateTime(2016, 12, 29, 22, 45, 00));   //Bug związany z rysowaniem łuków
 
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
