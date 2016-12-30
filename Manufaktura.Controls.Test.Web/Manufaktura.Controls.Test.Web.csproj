@@ -179,6 +179,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\0014 Larum w obozie.xml" />
+    <Content Include="Content\009 DWOK tom 24, s. 142, nr 45 %28wersja dużych nut%29.xml" />
+    <Content Include="Content\010 DWOK tom 25, s. 120, nr 273.xml" />
     <Content Include="Content\030 Oj, zabujały 67 I nr 214.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

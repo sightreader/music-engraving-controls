@@ -9,8 +9,8 @@ namespace Manufaktura.Controls.Test.Web.Controllers
 		public ActionResult Index()
 		{
 			var vm = new HomeViewModel();
-
-			var serverPath = Server.MapPath("~/Content/JohannChristophBachFull3.0.xml");
+            var serverPath = Server.MapPath("~/Content/010 DWOK tom 25, s. 120, nr 273.xml");
+            //var serverPath = Server.MapPath("~/Content/JohannChristophBachFull3.0.xml");
 			//var serverPath = Server.MapPath("~/Content/030 Oj, zabujały 67 I nr 214.xml");
 			//var serverPath = Server.MapPath("~/Content/0014 Larum w obozie.xml");
 			vm.SampleScore = System.IO.File.ReadAllText(serverPath).ToScore();
