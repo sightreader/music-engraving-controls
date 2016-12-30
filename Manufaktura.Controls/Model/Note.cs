@@ -14,6 +14,44 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class Note : NoteOrRest, IHasPitch, ICanBeUpperMemberOfChord
     {
+        private ArticulationType articulation = ArticulationType.None;
+
+        private VerticalPlacement articulationPlacement = VerticalPlacement.Below;
+
+        private List<NoteBeamType> beamList = new List<NoteBeamType>();
+
+        private bool customStemEndPosition = false;
+
+        private DesiredHookDirections desiredHookDirection = DesiredHookDirections.Any;
+
+        private GraceNoteType graceNoteType;
+
+        private bool hasNatural = false;
+
+        private bool isChordElement = false;
+
+        private LyricsCollection lyrics;
+
+        private string noteFlagCharacter = " ";
+
+        private string noteFlagCharacterRev = " ";
+
+        private Pitch pitch;
+
+        private Slur slur;
+
+        private double stemDefaultY;
+
+        private VerticalDirection stemDirection = VerticalDirection.Up;
+
+        private Point stemEndLocation = new Point();
+
+        private NoteTieType tieType = NoteTieType.None;
+
+        private int tremoloLevel = 0;
+
+        private NoteTrillMark trillMark = NoteTrillMark.None;
+
         /// <summary>
         /// Creates a new instance of a Note.
         /// </summary>
@@ -74,6 +112,12 @@ namespace Manufaktura.Controls.Model
         {
         }
 
+        internal Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
+            VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList) :
+            this(new Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)
+        {
+        }
+
         public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
         public int Alter { get { return pitch.Alter; } }
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; OnPropertyChanged(() => Articulation); } }
@@ -109,6 +153,21 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        public GraceNoteType GraceNoteType
+        {
+            get
+            {
+                return graceNoteType;
+            }
+
+            set
+            {
+                graceNoteType = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsGraceNote));
+            }
+        }
+
         public bool HasCustomStemEndPosition { get { return customStemEndPosition; } set { customStemEndPosition = value; } }
 
         /// <summary>
@@ -124,8 +183,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Indicates that the note is grace note.
         /// </summary>
-        public bool IsGraceNote { get { return isGraceNote; } set { isGraceNote = value; OnPropertyChanged(() => IsGraceNote); } }
-
+        public bool IsGraceNote { get { return graceNoteType != GraceNoteType.None; } }
         /// <summary>
         /// Indicates that the note belongs to a chord.
         /// </summary>
@@ -174,7 +232,6 @@ namespace Manufaktura.Controls.Model
         public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
         public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
         public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
-
         /// <summary>
         /// Creates a new instance of Note from given midi pitch and duration.
         /// </summary>
@@ -241,33 +298,6 @@ namespace Manufaktura.Controls.Model
         {
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
         }
-
-        internal Note(string noteStep, int noteAlter, int noteOctave, RhythmicDuration noteDuration,
-            VerticalDirection noteStemDirection, NoteTieType noteTieType, List<NoteBeamType> noteBeamList) :
-            this(new Pitch(noteStep, noteAlter, noteOctave), noteDuration, noteStemDirection, noteTieType, noteBeamList)
-        {
-        }
-
-        private ArticulationType articulation = ArticulationType.None;
-        private VerticalPlacement articulationPlacement = VerticalPlacement.Below;
-        private List<NoteBeamType> beamList = new List<NoteBeamType>();
-        private bool customStemEndPosition = false;
-        private DesiredHookDirections desiredHookDirection = DesiredHookDirections.Any;
-        private bool hasNatural = false;
-        private bool isChordElement = false;
-        private bool isGraceNote = false;
-        private LyricsCollection lyrics;
-        private string noteFlagCharacter = " ";
-        private string noteFlagCharacterRev = " ";
-        private Pitch pitch;
-        private Slur slur;
-        private double stemDefaultY;
-        private VerticalDirection stemDirection = VerticalDirection.Up;
-        private Point stemEndLocation = new Point();
-        private NoteTieType tieType = NoteTieType.None;
-        private int tremoloLevel = 0;
-        private NoteTrillMark trillMark = NoteTrillMark.None;
-
         private void DetermineMusicalCharacter()
         {
             if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeNote;

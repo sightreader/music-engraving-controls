@@ -33,7 +33,7 @@ namespace Manufaktura.Controls.Model.Builders
 
         public bool IsCueNote { get; set; }
 
-        public bool IsGraceNote { get; set; }
+        public GraceNoteType GraceNoteType { get; set; }
 
         public bool IsRest { get; set; }
 
@@ -90,7 +90,7 @@ namespace Manufaktura.Controls.Model.Builders
             ArticulationPlacement = VerticalPlacement.Below;
             Articulation = ArticulationType.None;
             HasNatural = false;
-            IsGraceNote = false;
+            GraceNoteType = GraceNoteType.None;
             IsCueNote = false;
             IsChordElement = false;
             HasFermataSign = false;
@@ -117,7 +117,7 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.Articulation = Articulation;
                 nt.ArticulationPlacement = ArticulationPlacement;
                 nt.HasNatural = HasNatural;
-                nt.IsGraceNote = IsGraceNote;
+                nt.GraceNoteType = GraceNoteType;
                 nt.IsCueNote = IsCueNote;
                 nt.IsUpperMemberOfChord = IsChordElement;
                 nt.StemDefaultY = StemDefaultY;

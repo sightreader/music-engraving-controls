@@ -384,6 +384,12 @@ namespace Manufaktura.Controls.Rendering
 					renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - uglyModifier + 30),
 						new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
 			element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
+
+            if (element.GraceNoteType == GraceNoteType.Slashed)
+            {
+                renderer.DrawLine(beamingService.CurrentStemPositionX - 5, notePositionY - uglyModifier + 20,
+                    beamingService.CurrentStemPositionX + 5, notePositionY - uglyModifier + 20 - 6, element);
+            }
 		}
 
 		private void DrawTies(ScoreRendererBase renderer, Note element, double notePositionY)

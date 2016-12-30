@@ -8,130 +8,134 @@ using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.Model
 {
-	public enum ArticulationType { None, Staccato, Accent };
+    public enum ArticulationType { None, Staccato, Accent };
 
-	public enum BarlineStyle { Regular, LightHeavy }
+    public enum BarlineStyle { Regular, LightHeavy }
 
-	public enum ClefType { GClef, CClef, FClef };
+    public enum ClefType { GClef, CClef, FClef };
 
-	public enum DesiredHookDirections { Any, ForwardHook, BackwardHook };
+    public enum DesiredHookDirections { Any, ForwardHook, BackwardHook };
 
-	public enum DirectionPlacementType { Above, Below, Custom };
+    public enum DirectionPlacementType { Above, Below, Custom };
 
-	public enum HorizontalPlacement { Left, Right };
+    public enum HorizontalPlacement { Left, Right };
 
-	public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
+    public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
 
-	public enum NoteSlurType { None, Start, Stop };
+    public enum NoteSlurType { None, Start, Stop };
 
-	public enum NoteTieType { None, Start, Stop, StopAndStartAnother };
+    public enum NoteTieType { None, Start, Stop, StopAndStartAnother };
 
-	public enum NoteTrillMark { None, Above, Below };
+    public enum NoteTrillMark { None, Above, Below };
 
-	public enum RepeatSignType { None, Forward, Backward };
+    public enum RepeatSignType { None, Forward, Backward };
 
-	public enum SyllableType { None, Begin, Middle, End, Single };
+    public enum SyllableType { None, Begin, Middle, End, Single };
 
-	public enum TimeSignatureType { Common, Cut, Numbers };
+    public enum TimeSignatureType { Common, Cut, Numbers };
 
-	public enum TupletType { None, Start, Stop };
+    public enum TupletType { None, Start, Stop };
 
-	public enum VerticalDirection { Up, Down };
+    public enum VerticalDirection { Up, Down };
 
-	public enum VerticalPlacement { Above, Below };
+    public enum VerticalPlacement { Above, Below };
 
-	/// <summary>
-	/// Base class for all musical symbols
-	/// </summary>
-	public abstract class MusicalSymbol : ViewModel
-	{
-		private static Dictionary<Guid, long> idDictionary = new Dictionary<Guid, long>();
-		private static object syncRoot = new object();
-		private Color? customColor;
-		private bool isVisible;
+    public enum GraceNoteType { None, Simple, Slashed };
 
-		protected MusicalSymbol()
-		{
-			isVisible = true;
-			Id = Guid.NewGuid();
-		}
-		/// <summary>
-		/// Returns a new instance of null musical symbol
-		/// </summary>
-		public static NullMusicalSymbol Null
-		{
-			get
-			{
-				return new NullMusicalSymbol();
-			}
-		}
+    /// <summary>
+    /// Base class for all musical symbols
+    /// </summary>
+    public abstract class MusicalSymbol : ViewModel
+    {
+        private static Dictionary<Guid, long> idDictionary = new Dictionary<Guid, long>();
+        private static object syncRoot = new object();
+        private Color? customColor;
+        private bool isVisible;
 
-		public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(); } }
-		public Guid Id { get; private set; }
+        protected MusicalSymbol()
+        {
+            isVisible = true;
+            Id = Guid.NewGuid();
+        }
 
-		/// <summary>
-		/// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
-		/// </summary>
-		public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(); } }
+        /// <summary>
+        /// Returns a new instance of null musical symbol
+        /// </summary>
+        public static NullMusicalSymbol Null
+        {
+            get
+            {
+                return new NullMusicalSymbol();
+            }
+        }
 
-		public long LongId
-		{
-			get
-			{
-				if (idDictionary.ContainsKey(Id)) return idDictionary[Id];
-				lock (syncRoot)
-				{
-					if (idDictionary.ContainsKey(Id)) return idDictionary[Id];
-					idDictionary.Add(Id, idDictionary.Count);
-					return idDictionary[Id];
-				}
-			}
-		}
-		public virtual Measure Measure { get; internal set; }
-		public ScorePage Page => Measure?.System?.Page;
+        public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(); } }
+        public Guid Id { get; private set; }
 
-		public int? PageNumber => Page == null ? null : Staff?.Score?.Pages?.IndexOf(Page) + 1;
-		public virtual Staff Staff { get; internal set; }
+        /// <summary>
+        /// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
+        /// </summary>
+        public bool IsVisible { get { return isVisible; } set { isVisible = value; OnPropertyChanged(); } }
 
-		internal bool SuppressEvents { get; set; }
+        public long LongId
+        {
+            get
+            {
+                if (idDictionary.ContainsKey(Id)) return idDictionary[Id];
+                lock (syncRoot)
+                {
+                    if (idDictionary.ContainsKey(Id)) return idDictionary[Id];
+                    idDictionary.Add(Id, idDictionary.Count);
+                    return idDictionary[Id];
+                }
+            }
+        }
 
-		/// <summary>
-		/// Converts a VerticalDirection to VerticalPlacement.
-		/// </summary>
-		/// <param name="direction">VerticalDirection to convert to VerticalPlacement.</param>
-		/// <returns>VerticalPlacement converted from VerticalDirection.</returns>
-		public static VerticalPlacement DirectionToPlacement(VerticalDirection direction)
-		{
-			return direction == VerticalDirection.Up ? VerticalPlacement.Above : VerticalPlacement.Below;
-		}
+        public virtual Measure Measure { get; internal set; }
+        public ScorePage Page => Measure?.System?.Page;
 
-		[Obsolete("Use Duration.ToTimeSpan() instead")]
-		public static TimeSpan DurationToTime(IHasDuration durationElement, Tempo tempo)
-		{
-			double singleNoteDuration = 60d / tempo.BeatsPerMinute;
-			double ratio = (double)tempo.BeatUnit.Denominator / (double)durationElement.BaseDuration.Denominator;
-			if (durationElement.NumberOfDots > 0)
-			{
-				ratio += ratio * Math.Pow(0.5, durationElement.NumberOfDots);
-			}
-			return TimeSpan.FromSeconds(singleNoteDuration * ratio);
-		}
+        public int? PageNumber => Page == null ? null : Staff?.Score?.Pages?.IndexOf(Page) + 1;
+        public virtual Staff Staff { get; internal set; }
 
-		public Color CoalesceColor(ScoreRendererBase renderer)
-		{
-			return CustomColor.HasValue ? CustomColor.Value : renderer.Settings.DefaultColor;
-		}
+        internal bool SuppressEvents { get; set; }
 
-		internal void InvalidateMeasure()
-		{
-			Staff?.FireMeasureInvalidated(this, Measure);
-		}
+        /// <summary>
+        /// Converts a VerticalDirection to VerticalPlacement.
+        /// </summary>
+        /// <param name="direction">VerticalDirection to convert to VerticalPlacement.</param>
+        /// <returns>VerticalPlacement converted from VerticalDirection.</returns>
+        public static VerticalPlacement DirectionToPlacement(VerticalDirection direction)
+        {
+            return direction == VerticalDirection.Up ? VerticalPlacement.Above : VerticalPlacement.Below;
+        }
 
-		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			if (SuppressEvents) return;
-			base.OnPropertyChanged(propertyName);
-			Staff?.FireMeasureInvalidated(this, Measure);
-		}
-	}
+        [Obsolete("Use Duration.ToTimeSpan() instead")]
+        public static TimeSpan DurationToTime(IHasDuration durationElement, Tempo tempo)
+        {
+            double singleNoteDuration = 60d / tempo.BeatsPerMinute;
+            double ratio = (double)tempo.BeatUnit.Denominator / (double)durationElement.BaseDuration.Denominator;
+            if (durationElement.NumberOfDots > 0)
+            {
+                ratio += ratio * Math.Pow(0.5, durationElement.NumberOfDots);
+            }
+            return TimeSpan.FromSeconds(singleNoteDuration * ratio);
+        }
+
+        public Color CoalesceColor(ScoreRendererBase renderer)
+        {
+            return CustomColor.HasValue ? CustomColor.Value : renderer.Settings.DefaultColor;
+        }
+
+        internal void InvalidateMeasure()
+        {
+            Staff?.FireMeasureInvalidated(this, Measure);
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (SuppressEvents) return;
+            base.OnPropertyChanged(propertyName);
+            Staff?.FireMeasureInvalidated(this, Measure);
+        }
+    }
 }

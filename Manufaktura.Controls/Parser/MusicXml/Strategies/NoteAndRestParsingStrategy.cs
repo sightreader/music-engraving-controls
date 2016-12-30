@@ -37,7 +37,13 @@ namespace Manufaktura.Controls.Parser.MusicXml
                  { "128th",  RhythmicDuration.D128th }}).Then(m => builder.BaseDuration = m);
 
             element.IfElement("voice").HasValue<int>().Then(m => builder.Voice = m);
-            element.IfElement("grace").Exists().Then(() => builder.IsGraceNote = true);
+            var graceElement = element.GetElement("grace");
+            if (graceElement != null)
+            {
+                graceElement.IfAttribute("slash").HasValue("yes")
+                    .Then(v => builder.GraceNoteType = GraceNoteType.Slashed)
+                    .Otherwise(v => builder.GraceNoteType = GraceNoteType.Simple);
+            }
             element.IfElement("chord").Exists().Then(() => builder.IsChordElement = true);
             element.IfElement("accidental").HasValue("natural").Then(() => builder.HasNatural = true);
             element.IfElement("rest").Exists().Then(() => builder.IsRest = true);
