@@ -1,16 +1,11 @@
 ﻿using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Parser.MusicXml.Strategies;
-using Manufaktura.Music.Model;
 using Manufaktura.Music.Xml;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
 {
-    class BarlineParsingStrategy : MusicXmlParsingStrategy
+    internal class BarlineParsingStrategy : MusicXmlParsingStrategy
     {
         public override string ElementName
         {
@@ -25,41 +20,34 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 .Then(() => b.Location = HorizontalPlacement.Left)
                 .Otherwise(r => b.Location = HorizontalPlacement.Right);
 
-			element.IfElement("bar-style").HasValue("light-heavy").Then(() => b.Style = BarlineStyle.LightHeavy);
-
-            foreach (XElement barlineAttribute in element.Elements())
+            element.IfElement("bar-style").HasValue("light-heavy").Then(() => b.Style = BarlineStyle.LightHeavy);
+            var repeatAttribute = element.Elements().FirstOrDefault(e => e.Name == "repeat");
+            var attribute = repeatAttribute?.Attribute("direction");
+            if (attribute != null)
             {
-                if (barlineAttribute.Name == "repeat")
+                if (attribute.Value == "forward") b.RepeatSign = RepeatSignType.Forward;
+                else if (attribute.Value == "backward")
                 {
-                    var attribute = barlineAttribute.Attribute("direction");
-                    if (attribute != null)
-                    {
-                        if (attribute.Value == "forward") b.RepeatSign = RepeatSignType.Forward;
-                        else if (attribute.Value == "backward")
-                        {
-                            b.RepeatSign = RepeatSignType.Backward;
-                            state.BarlineAlreadyAdded = true;
-                        }
-
-                        //Usuń pojedynczą kreskę taktową, jeśli już taka została dodana:
-                        //Barline existingBarline = staff.Elements.LastOrDefault() as Barline;
-                        //if (existingBarline != null) staff.Elements.Remove(existingBarline);
-
-                        if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
-                        {
-                            foreach (var s in staff.Part.Staves)
-                            {
-                                s.Elements.Add(b);
-                            }
-                        }
-                        else
-                        {
-                            staff.Elements.Add(b);
-                        }
-                        
-                    }
-
+                    b.RepeatSign = RepeatSignType.Backward;
+                    state.BarlineAlreadyAdded = true;
                 }
+
+                if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+                {
+                    foreach (var s in staff.Part.Staves)
+                    {
+                        s.Elements.Add(b);
+                    }
+                }
+                else
+                {
+                    staff.Elements.Add(b);
+                }
+            }
+            else if (b.Style != BarlineStyle.Regular)
+            {
+                staff.Elements.Add(b);
+                state.BarlineAlreadyAdded = true;
             }
         }
     }
