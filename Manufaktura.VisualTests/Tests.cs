@@ -44,11 +44,6 @@ namespace Manufaktura.VisualTests
             return dict.OrderBy(d => d.Key).ToDictionary(d => d.Key, d => d.Value);
         }
 
-        private string GetLastUnacceptedTestPath()
-        {
-            return "";
-        }
-
         private void AcceptTo(DateTime testTime)
         {
             lastAcceptedTestDateTime = testTime;
