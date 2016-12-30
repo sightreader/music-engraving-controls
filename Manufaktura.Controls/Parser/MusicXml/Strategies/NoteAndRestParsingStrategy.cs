@@ -87,7 +87,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         {"below", VerticalPlacement.Below},
                     }).Then(v => builder.TupletPlacement = v);
 
-            notationsNode.IfElement("fermata").HasAnyValue().Then(() => builder.HasFermataSign = true);
+            notationsNode.IfElement("fermata").Exists().Then(() => builder.HasFermataSign = true);
             notationsNode.IfElement("sound").Exists().Then(e => e.IfAttribute("dynamics").HasValue<int>().Then(v => state.CurrentDynamics = v));
 
             notationsNode.IfHasElement("dynamics").Then(d =>

@@ -173,7 +173,7 @@ namespace Manufaktura.Controls.Rendering
 		{
 			if (element.HasFermataSign)
 			{
-				double ferPos = notePositionY - renderer.Settings.TextBlockHeight;
+				double ferPos = notePositionY - renderer.Settings.TextBlockHeight - 8;
 				string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
 
 				renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
