@@ -147,11 +147,12 @@ namespace Manufaktura.Controls.Audio
 					{
 						var note = durationElement as Note;
 						if (note != null && (note.IsGraceNote || note.IsCueNote)) continue;		//TODO: Playback of grace notes
+                        if (((durationElement as Note)?.Voice ?? 1) > 1) continue;              //TODO: Playback of other voices
 
-						elements.Add(new Tuple<decimal, IHasDuration>(elapsed, durationElement));
+                        elements.Add(new Tuple<decimal, IHasDuration>(elapsed, durationElement));
 						if ((durationElement as Note)?.IsUpperMemberOfChord ?? false) continue;    //Upper member of chords are played but they don't increase elapsed time
-
-						if (durationElement.Tuplet == TupletType.Start)
+                        
+                        if (durationElement.Tuplet == TupletType.Start)
 						{
 							NoteOrRest tupletStart = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.BeginningOfTuplet);
 							NoteOrRest tupletEnd = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.EndOfTuplet);

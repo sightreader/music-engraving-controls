@@ -67,10 +67,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			switch (fontStyle)
 			{
 				case MusicFontStyles.MusicFont:
-					locationY = location.Y + 25d + TypedSettings.MusicalFontShiftY;
+                    locationY = location.Y + 25d + TypedSettings.MusicalFontShiftY;
 					break;
 
-				case MusicFontStyles.GraceNoteFont:
+                case MusicFontStyles.StaffFont:
+                    locationY = location.Y + 27d + TypedSettings.MusicalFontShiftY;
+                    break;
+
+                case MusicFontStyles.GraceNoteFont:
 					locationY = location.Y + 17.5d + TypedSettings.MusicalFontShiftY;
 					locationX += 0.7d;
 					break;
