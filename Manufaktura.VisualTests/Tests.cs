@@ -24,6 +24,8 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2016, 12, 30, 19, 35, 00));   //Regresja - niewłaściwe parsowanie wielu sylab na jednej nucie
             AcceptTo(new DateTime(2016, 12, 30, 20, 31, 00));   //Fermaty, podwójne kreski taktowe. Test uratował przed regresją - nieotwieranie kolejnego taktu po podwójnej kresce.
             AcceptTo(new DateTime(2016, 12, 30, 21, 01, 00));   //Przekreślone przednutki
+            AcceptTo(new DateTime(2017, 1, 2, 9, 35, 00));      //Nowe nuty w bibliotece. Chcę poprawić błąd z rysowaniem łuków gdy nuty mają przeciwne ogonki
+            AcceptTo(new DateTime(2017, 1, 2, 10, 31, 00));     //Poprawka łuków
 
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;

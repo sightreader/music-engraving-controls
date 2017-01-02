@@ -17,6 +17,8 @@ namespace Manufaktura.Controls.Services
 
         Point SlurStartPoint { get; set; }
 
+        VerticalDirection SlurStartPointStemDirection { get; set; }
+
         Point TieStartPoint { get; set; }
 
         //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie

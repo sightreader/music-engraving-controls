@@ -313,8 +313,9 @@ namespace Manufaktura.Controls.Rendering
 			if (element.Slur.Type == NoteSlurType.Start)
 			{
 				slurStartPlacement = slurPlacement;
+                measurementService.SlurStartPointStemDirection = element.StemDirection;
 				if (slurPlacement == VerticalPlacement.Above)
-					measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, element.StemDirection == VerticalDirection.Down ? notePositionY : notePositionY + element.StemDefaultY);
+					measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, element.StemDirection == VerticalDirection.Down ? notePositionY + 2 : element.StemEndLocation.Y + 7);
 				else
 					measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, notePositionY);
 			}
@@ -322,10 +323,12 @@ namespace Manufaktura.Controls.Rendering
 			{
 				if (slurStartPlacement == VerticalPlacement.Above)
 				{
-                    renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 18,
-						measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 4.5,
-						scoreService.CursorPositionX + 8, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 10 - 4.5 : notePositionY + 9),
-						scoreService.CursorPositionX + 10, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 10 + 9 : notePositionY + 18), element);
+                    var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 12 : 8;
+                    var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 12 : 8;
+                    renderer.DrawBezier(measurementService.SlurStartPoint.X + xShiftConcerningStemDirectionStart, measurementService.SlurStartPoint.Y + 16,
+						measurementService.SlurStartPoint.X + xShiftConcerningStemDirectionStart + 4, measurementService.SlurStartPoint.Y + 2.5,
+						scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd - 4, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 8 : notePositionY + 9),
+						scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 8 + 13.5 : notePositionY + 18), element);
 				}
 				else if (slurStartPlacement == VerticalPlacement.Below)
 				{
