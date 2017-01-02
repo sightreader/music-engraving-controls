@@ -45,7 +45,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 var score = Scores.ElementAt(i);
                 renderer.Render(score);
 
-                BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName, renderer.ActualHeight + 10);
+                BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName, renderer.ActualHeight + 20);
             }
             return GetHtmlStringFromCanvas(canvas);
         }
