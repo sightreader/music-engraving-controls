@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Manufaktura.Controls.Desktop.Audio
 {
-	public class MidiTaskScorePlayer : TaskScorePlayer, IDisposable
+	public class MidiTaskScorePlayer : ChannelSelectingTaskScorePlayer, IDisposable
 	{
 		private static Lazy<IEnumerable<MidiDevice>> availableDevices = new Lazy<IEnumerable<MidiDevice>>(() =>
 		new ReadOnlyCollection<MidiDevice>(Enumerable.Range(0, MidiDevice.DeviceCount).Select(i => new MidiDevice(i,
@@ -20,7 +20,7 @@ namespace Manufaktura.Controls.Desktop.Audio
 
 		private MidiDevice outDevice;
 
-		private ConcurrentDictionary<int, List<int>> pitchesPlaying;
+
 
 		public MidiTaskScorePlayer(Score score) : this(score, new MidiDevice(0, "default"))
 		{
@@ -30,11 +30,11 @@ namespace Manufaktura.Controls.Desktop.Audio
 		{
 			outDevice = device;
 			outDevice.Open();
-			pitchesPlaying = new ConcurrentDictionary<int, List<int>>(Enumerable.Range(0, ChannelsCount).Select(i => new KeyValuePair<int, List<int>>(i, new List<int>())));
+
 		}
 
 		public static IEnumerable<MidiDevice> AvailableDevices => availableDevices.Value;
-		private int ChannelsCount => Score.Staves.Count < 5 ? Score.Staves.Count * 2 : Score.Staves.Count * 2 + 2;
+
 
 		public void Dispose()
 		{
@@ -70,11 +70,6 @@ namespace Manufaktura.Controls.Desktop.Audio
 			if (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Remove(note.MidiPitch);
 		}
 
-		private int GetChannelNumber(int staffIndex)
-		{
-			var channelIndex = staffIndex * 2;
-			if (channelIndex > 7) channelIndex += 2;
-			return channelIndex;
-		}
+
 	}
 }

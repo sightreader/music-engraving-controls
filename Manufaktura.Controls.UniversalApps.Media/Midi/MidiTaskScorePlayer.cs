@@ -11,7 +11,7 @@ using Windows.UI.Core;
 
 namespace Manufaktura.Controls.UniversalApps.Media.Midi
 {
-    public class MidiTaskScorePlayer : TaskScorePlayer
+    public class MidiTaskScorePlayer : ChannelSelectingTaskScorePlayer
     {
         private readonly CoreDispatcher dispatcher;
         private IMidiOutPort currentMidiOutputDevice;
@@ -35,19 +35,32 @@ namespace Manufaktura.Controls.UniversalApps.Media.Midi
                 throw new Exception($"Device {deviceName} not found.");
 
             currentMidiOutputDevice = await MidiOutPort.FromIdAsync(devInfo.Id).AsTask();
+            if (currentMidiOutputDevice == null)
+                throw new Exception($"Midi output port could not be found for device {deviceName}.");
         }
 
-        public override void PlayElement(MusicalSymbol element)
+        public override async void PlayElement(MusicalSymbol element)
         {
-            var pitchedElement = element as IHasPitch;
-            if (pitchedElement == null) return;
+            var note = element as Note;
+            if (note == null || currentMidiOutputDevice == null) return;
 
-            if (currentMidiOutputDevice == null)
-                throw new Exception($"{nameof(MidiTaskScorePlayer)} is not initialized. Run {nameof(InitializeAsync)}. " +
-                    $"To see the list of available devices use {nameof(GetDeviceNamesAsync)}.");
+            var firstNoteInMeasure = element.Measure.Elements.IndexOf(note) == 0;
 
-            var midiMessageToSend = new MidiNoteOnMessage(0, (byte)pitchedElement.Pitch.MidiPitch, 127);
+            var channelNumber = GetChannelNumber(Score.Staves.IndexOf(note.Staff));
+            var actualChannelNumber = (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) ? channelNumber + 1 : channelNumber;
+
+            if (!pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Add(note.MidiPitch);
+            var midiMessageToSend = new MidiNoteOnMessage((byte)actualChannelNumber, (byte)note.Pitch.MidiPitch, firstNoteInMeasure ? (byte)127 : (byte)100);
             currentMidiOutputDevice.SendMessage(midiMessageToSend);
+
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            Task.Delay(note.BaseDuration.ToTimeSpan(Tempo)).ContinueWith((t,o) =>
+            {
+                var midiOffMessage = new MidiNoteOffMessage(0, (byte)note.Pitch.MidiPitch, 127);
+                currentMidiOutputDevice.SendMessage(midiOffMessage);
+                if (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Remove(note.MidiPitch);
+            }, null);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         }
 
         protected override void PlayQueue(Queue<TimelineElement<IHasDuration>> simultaneousElements)
