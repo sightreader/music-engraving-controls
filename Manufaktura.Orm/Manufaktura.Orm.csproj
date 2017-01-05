@@ -51,6 +51,9 @@
   <ItemGroup>
     <Compile Include="Builder\DialectProvider.cs" />
     <Compile Include="Builder\QueryBuilder.cs" />
+    <Compile Include="Linq\DbRepositoryQuery.cs" />
+    <Compile Include="Linq\Linq2PredicateParser.cs" />
+    <Compile Include="Linq\RepositoryExtensions.cs" />
     <Compile Include="Predicates\AndPredicate.cs" />
     <Compile Include="Predicates\ConditionPredicate.cs" />
     <Compile Include="Predicates\EqualsPredicate.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Predicates\LesserThanPredicate.cs" />
     <Compile Include="Predicates\LikePredicate.cs" />
     <Compile Include="Predicates\LogicPredicate.cs" />
+    <Compile Include="Predicates\NotEqualsPredicate.cs" />
     <Compile Include="Predicates\OrPredicate.cs" />
     <Compile Include="Predicates\QB.cs" />
     <Compile Include="Predicates\SqlPredicate.cs" />

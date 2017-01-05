@@ -18,6 +18,11 @@ namespace Manufaktura.Orm.Predicates
             return new EqualsPredicate(parameterName, parameterValue);
         }
 
+        public static NotEqualsPredicate NEq(string parameterName, object parameterValue)
+        {
+            return new NotEqualsPredicate(parameterName, parameterValue);
+        }
+
         public static GreaterThanPredicate Gr(string parameterName, object parameterValue)
         {
             return new GreaterThanPredicate(parameterName, parameterValue);

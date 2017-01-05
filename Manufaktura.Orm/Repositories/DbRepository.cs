@@ -1,15 +1,13 @@
-﻿using Manufaktura.Orm.SortModes;
+﻿using Manufaktura.Model;
+using Manufaktura.Orm.Builder;
+using Manufaktura.Orm.Predicates;
 using Manufaktura.Orm.SpecialColumns;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
-using System.Web;
-using Manufaktura.Orm.Builder;
 using System.Reflection;
-using Manufaktura.Orm.Predicates;
-using Manufaktura.Model;
 
 namespace Manufaktura.Orm
 {
@@ -33,7 +31,7 @@ namespace Manufaktura.Orm
             if (Provider == null) throw new Exception(string.Format("Failed to create dialect provider {0}.", providerClassName));
         }
 
-        public static MappingAttribute FindIdentity<TEntity>() where TEntity : Entity, new()
+        public static MappingAttribute FindIdentity<TEntity>() where TEntity : new()
         {
             var properties = typeof(TEntity).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             if (properties == null) return null;
@@ -41,12 +39,12 @@ namespace Manufaktura.Orm
             return mappings.FirstOrDefault(m => m.IsPrimaryKey);
         }
 
-        public List<TEntity> LoadAll<TEntity>() where TEntity : Entity, new()
+        public List<TEntity> LoadAll<TEntity>() where TEntity : new()
         {
             return Load<TEntity>(QueryBuilder.Create());
         }
 
-        public TEntity Load<TEntity>(object id) where TEntity : Entity, new()
+        public TEntity Load<TEntity>(object id) where TEntity : new()
         {
             if (id is SqlPredicate)
                 throw new ArgumentException("Entity id was expected but SqlPredicate found. You probably wanted to use Load<TEntity>(QueryBuilder.Create().SetWhereStatement(sqlPredicate)).");
@@ -58,7 +56,7 @@ namespace Manufaktura.Orm
             return results.FirstOrDefault();
         }
 
-        public List<TEntity> Load<TEntity>(QueryBuilder builder) where TEntity : Entity, new()
+        public List<TEntity> Load<TEntity>(QueryBuilder builder) where TEntity : new()
         {
             EnsureConnectionOpen();
             DbDataAdapter adapter = Provider.CreateDataAdapter();
@@ -73,14 +71,14 @@ namespace Manufaktura.Orm
             return results;
         }
 
-        public TScalar ExecuteScalar<TEntity, TScalar>(QueryBuilder builder) where TEntity : Entity, new()
+        public TScalar ExecuteScalar<TEntity, TScalar>(QueryBuilder builder) where TEntity : new()
         {
             EnsureConnectionOpen();
             DbCommand command = Provider.GetSelectCommand<TEntity>(builder);
             return (TScalar)command.ExecuteScalar();
         }
 
-        public long Count<TEntity>(string columnName, SqlPredicate whereStatement) where TEntity : Entity, new()
+        public long Count<TEntity>(string columnName, SqlPredicate whereStatement) where TEntity : new()
         {
             EnsureConnectionOpen();
             QueryBuilder builder = QueryBuilder.Create().SpecifyColumns(null).AddSpecialColumn(new CountSpecialColumn(columnName, columnName + "Count"));
@@ -123,10 +121,11 @@ namespace Manufaktura.Orm
             _isConnectionOpen = true;
         }
 
-        public static T FromRow<T>(DataRow row) where T : Entity, new()
+        public static T FromRow<T>(DataRow row) where T : new()
         {
             T entity = new T();
-            entity.IsNew = false;
+            var entityFromLegacyLibrary = entity as Entity;
+            if (entityFromLegacyLibrary != null) entityFromLegacyLibrary.IsNew = false;
             foreach (DataColumn column in row.Table.Columns)
             {
                 SetPropertyFromCell(entity, column.ColumnName, row[column.ColumnName]);
@@ -134,7 +133,7 @@ namespace Manufaktura.Orm
             return entity;
         }
 
-        private static void SetPropertyFromCell(Entity entity, string columnName, object cellValue)
+        private static void SetPropertyFromCell(object entity, string columnName, object cellValue)
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
@@ -154,5 +153,4 @@ namespace Manufaktura.Orm
             }
         }
     }
-
 }
