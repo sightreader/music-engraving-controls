@@ -38,6 +38,8 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 				var note = nr as Note;
 				if (note != null && note.BeamList.Any())
 				{
+                    if (note.BeamList.Count == 1 && note.BeamList[0] == NoteBeamType.Single) continue; //Problem with beams in chords
+
 					if (note.BeamList.First() == NoteBeamType.Start)
 					{
 						beamGroup = new BeamGroup(staff);
