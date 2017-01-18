@@ -108,7 +108,7 @@ namespace Manufaktura.Controls.Rendering
 			if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) > 0)
 			{
 				alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
-				double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals - 9 * numberOfDoubleAccidentals;
+				double accPlacement = scoreService.CursorPositionX - 16 * numberOfSingleAccidentals - 9 * numberOfDoubleAccidentals;
 				for (int i = 0; i < numberOfSingleAccidentals; i++)
 				{
 					renderer.DrawString(renderer.Settings.CurrentFont.Sharp, MusicFontStyles.MusicFont, accPlacement, notePositionY, element);
@@ -123,7 +123,7 @@ namespace Manufaktura.Controls.Rendering
 			else if (element.Alter - scoreService.CurrentKey.StepToAlter(element.Step) - alterationService.Get(element.Step) < 0)
 			{
 				alterationService.Set(element.Step, element.Alter - scoreService.CurrentKey.StepToAlter(element.Step));
-				double accPlacement = scoreService.CursorPositionX - 9 * numberOfSingleAccidentals -
+				double accPlacement = scoreService.CursorPositionX - 16 * numberOfSingleAccidentals -
 					9 * numberOfDoubleAccidentals;
 				for (int i = 0; i < numberOfSingleAccidentals; i++)
 				{
@@ -138,7 +138,7 @@ namespace Manufaktura.Controls.Rendering
 			}
 			if (element.HasNatural == true)
 			{
-				renderer.DrawString(renderer.Settings.CurrentFont.Natural, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 9, notePositionY, element);
+				renderer.DrawString(renderer.Settings.CurrentFont.Natural, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 16, notePositionY, element);
 			}
 		}
 
@@ -153,9 +153,9 @@ namespace Manufaktura.Controls.Rendering
 					articulationPosition = notePositionY + 10;
 
 				if (element.Articulation == ArticulationType.Staccato)
-					renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, articulationPosition, element);
+					renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX -1, articulationPosition, element);
 				else if (element.Articulation == ArticulationType.Accent)
-					renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, scoreService.CursorPositionX + 6, articulationPosition + 16, element);
+					renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, scoreService.CursorPositionX - 1, articulationPosition + 16, element);
 			}
 		}
 
@@ -164,7 +164,7 @@ namespace Manufaktura.Controls.Rendering
 			if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
 			for (int i = 0; i < element.NumberOfDots; i++)
 			{
-				renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
+				renderer.DrawString(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, notePositionY, element);
 				scoreService.CursorPositionX += 6;
 			}
 		}
@@ -176,7 +176,7 @@ namespace Manufaktura.Controls.Rendering
 				double ferPos = notePositionY - renderer.Settings.TextBlockHeight - 8;
 				string fermataVersion = renderer.Settings.CurrentFont.FermataUp;
 
-				renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX, ferPos, element);
+				renderer.DrawString(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, ferPos, element);
 			}
 		}
 
@@ -230,12 +230,12 @@ namespace Manufaktura.Controls.Rendering
 
 		private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
 		{
-			double tmpXPos = scoreService.CursorPositionX + 16;
+			double tmpXPos = scoreService.CursorPositionX + 9;
 			if (notePositionY + 25.0f > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
 			{
 				for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
 				{
-					renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i + renderer.Settings.LineSpacing),
+					renderer.DrawLine(new Point(scoreService.CursorPositionX - 3, i + renderer.Settings.LineSpacing),
 						new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
 				}
 			}
@@ -243,7 +243,7 @@ namespace Manufaktura.Controls.Rendering
 			{
 				for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
 				{
-					renderer.DrawLine(new Point(scoreService.CursorPositionX + 4, i - renderer.Settings.LineSpacing),
+					renderer.DrawLine(new Point(scoreService.CursorPositionX - 3, i - renderer.Settings.LineSpacing),
 						new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
 				}
 			}
@@ -272,7 +272,7 @@ namespace Manufaktura.Controls.Rendering
 				//else
 				if (lyrics.Type == SyllableType.Begin || lyrics.Type == SyllableType.Middle) sBuilder.Append("-");
 
-				renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, scoreService.CursorPositionX, textPosition, lyrics);
+				renderer.DrawString(sBuilder.ToString(), MusicFontStyles.LyricsFont, scoreService.CursorPositionX - 7, textPosition, lyrics);
 
 				if (!lyrics.DefaultYPosition.HasValue) versePositionY += 12; //Move down if default-y is not set
 			}
@@ -281,9 +281,9 @@ namespace Manufaktura.Controls.Rendering
 		private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
 		{
 			if (element.IsGraceNote || element.IsCueNote)
-				renderer.DrawString(element.MusicalCharacter, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1, notePositionY + 7, element);
+				renderer.DrawString(element.MusicalCharacter, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1 - 7, notePositionY + 7, element);
 			else
-				renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
+				renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, notePositionY, element);
 
 			measurementService.LastNotePositionX = scoreService.CursorPositionX;
 			element.TextBlockLocation = new Point(scoreService.CursorPositionX, notePositionY);
@@ -297,8 +297,8 @@ namespace Manufaktura.Controls.Rendering
 				Mordent mordent = ornament as Mordent;
 				if (mordent != null)
 				{
-					renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 2, notePositionY + yPositionShift, element);
-					renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 3.5, notePositionY + yPositionShift, element);
+					renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 9, notePositionY + yPositionShift, element);
+					renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 3.5, notePositionY + yPositionShift, element);
 				}
 			}
 		}
@@ -323,8 +323,8 @@ namespace Manufaktura.Controls.Rendering
 			{
 				if (slurStartPlacement == VerticalPlacement.Above)
 				{
-                    var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 12 : 8;
-                    var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 12 : 8;
+                    var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 5 : 1;
+                    var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
                     renderer.DrawBezier(measurementService.SlurStartPoint.X + xShiftConcerningStemDirectionStart, measurementService.SlurStartPoint.Y + 16,
 						measurementService.SlurStartPoint.X + xShiftConcerningStemDirectionStart + 4, measurementService.SlurStartPoint.Y + 2.5,
 						scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd - 4, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 8 : notePositionY + 9),
@@ -332,8 +332,8 @@ namespace Manufaktura.Controls.Rendering
 				}
 				else if (slurStartPlacement == VerticalPlacement.Below)
 				{
-					renderer.DrawBezier(measurementService.SlurStartPoint.X + 10, measurementService.SlurStartPoint.Y + 30,
-						measurementService.SlurStartPoint.X + 12, measurementService.SlurStartPoint.Y + 44,
+					renderer.DrawBezier(measurementService.SlurStartPoint.X + 3, measurementService.SlurStartPoint.Y + 30,
+						measurementService.SlurStartPoint.X + 5, measurementService.SlurStartPoint.Y + 44,
 						scoreService.CursorPositionX + 8, notePositionY + 44,
 						scoreService.CursorPositionX + 10, notePositionY + 30, element);
 				}
@@ -359,7 +359,7 @@ namespace Manufaktura.Controls.Rendering
 					beamingService.CurrentStemEndPositionY = notePositionY + 18;
 				else
 					beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
-				beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 7 + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
+				beamingService.CurrentStemPositionX = scoreService.CursorPositionX + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
 			}
 			else
 			{
@@ -378,7 +378,7 @@ namespace Manufaktura.Controls.Rendering
 				}
 				else
 					beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
-				beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 13 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+				beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 6 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
 			}
 
 			var uglyModifier = element.StemDirection == VerticalDirection.Down ? 3 : 7;
@@ -403,16 +403,16 @@ namespace Manufaktura.Controls.Rendering
 			}
 			else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
 			{
-				double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X - 12;
+				double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X - 19;
 				double arcHeight = arcWidth * 0.7d;
 				if (element.StemDirection == VerticalDirection.Down)
 				{
-					renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 16, measurementService.TieStartPoint.Y + 22,
+					renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y + 22,
 						arcWidth, arcHeight), 180, 180, new Pen(renderer.CoalesceColor(element), 1.5), element);
 				}
 				else if (element.StemDirection == VerticalDirection.Up)
 				{
-					renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 16, measurementService.TieStartPoint.Y + 22,
+					renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y + 22,
 						arcWidth, arcHeight), 0, 180, new Pen(renderer.CoalesceColor(element), 1.5), element);
 				}
 				if (element.TieType == NoteTieType.StopAndStartAnother)
@@ -430,14 +430,14 @@ namespace Manufaktura.Controls.Rendering
 				if (element.StemDirection == VerticalDirection.Up)
 				{
 					currentTremoloPos -= 4;
-					renderer.DrawLine(scoreService.CursorPositionX + 9, currentTremoloPos + 1, scoreService.CursorPositionX + 16, currentTremoloPos - 1, element);
-					renderer.DrawLine(scoreService.CursorPositionX + 9, currentTremoloPos + 2, scoreService.CursorPositionX + 16, currentTremoloPos, element);
+					renderer.DrawLine(scoreService.CursorPositionX + 2, currentTremoloPos + 1, scoreService.CursorPositionX + 9, currentTremoloPos - 1, element);
+					renderer.DrawLine(scoreService.CursorPositionX + 2, currentTremoloPos + 2, scoreService.CursorPositionX + 9, currentTremoloPos, element);
 				}
 				else
 				{
 					currentTremoloPos += 4;
-					renderer.DrawLine(scoreService.CursorPositionX + 3, currentTremoloPos + 11 + 1, scoreService.CursorPositionX + 11, currentTremoloPos + 11 - 1, element);
-					renderer.DrawLine(scoreService.CursorPositionX + 3, currentTremoloPos + 11 + 2, scoreService.CursorPositionX + 11, currentTremoloPos + 11, element);
+					renderer.DrawLine(scoreService.CursorPositionX - 4, currentTremoloPos + 11 + 1, scoreService.CursorPositionX + 4, currentTremoloPos + 11 - 1, element);
+					renderer.DrawLine(scoreService.CursorPositionX - 4, currentTremoloPos + 11 + 2, scoreService.CursorPositionX + 4, currentTremoloPos + 11, element);
 				}
 			}
 		}
@@ -459,7 +459,7 @@ namespace Manufaktura.Controls.Rendering
 				{
 					trillPos = notePositionY + 10;
 				}
-				renderer.DrawString(renderer.Settings.CurrentFont.Trill, MusicFontStyles.MusicFont, scoreService.CursorPositionX + 6, trillPos, element);
+				renderer.DrawString(renderer.Settings.CurrentFont.Trill, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 1, trillPos, element);
 			}
 		}
 

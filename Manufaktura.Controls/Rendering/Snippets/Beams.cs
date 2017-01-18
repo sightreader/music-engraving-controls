@@ -77,7 +77,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			allElementsUnderTuplet.Add(element);
 			var tupletNumber = CalculateTupletNumber(allElementsUnderTuplet);
 			renderer.DrawString(Convert.ToString(tupletNumber), MusicFontStyles.LyricsFont,
-					new Point(tupletBracketStartXPosition + (tupletBracketEndXPosition - tupletBracketStartXPosition) / 2 - 6,
+					new Point(tupletBracketStartXPosition + (tupletBracketEndXPosition - tupletBracketStartXPosition) / 2 - 6 - 7,
 							  tupletBracketStartYPosition + (tupletBracketEndYPosition - tupletBracketStartYPosition) / 2 + numberOfNotesYTranslation), element);
 		}
 
