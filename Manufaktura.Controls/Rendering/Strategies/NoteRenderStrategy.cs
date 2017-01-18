@@ -334,8 +334,8 @@ namespace Manufaktura.Controls.Rendering
 				{
 					renderer.DrawBezier(measurementService.SlurStartPoint.X + 3, measurementService.SlurStartPoint.Y + 30,
 						measurementService.SlurStartPoint.X + 5, measurementService.SlurStartPoint.Y + 44,
-						scoreService.CursorPositionX + 8, notePositionY + 44,
-						scoreService.CursorPositionX + 10, notePositionY + 30, element);
+						scoreService.CursorPositionX + 1, notePositionY + 44,
+						scoreService.CursorPositionX + 3, notePositionY + 30, element);
 				}
 			}
 		}
