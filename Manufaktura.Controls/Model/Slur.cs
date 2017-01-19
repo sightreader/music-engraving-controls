@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Manufaktura.Controls.Primitives;
 
 namespace Manufaktura.Controls.Model
 {
     /// <summary>
     /// Represents a slur.
     /// </summary>
-    public class Slur
+    public class Slur : IHasCustomXPosition, IHasCustomYPosition
     {
-        public int Number { get; set; }
-        public NoteSlurType Type { get; set; }
-        public VerticalPlacement? Placement { get; set; }
-
         public Slur()
         {
             Type = NoteSlurType.None;
@@ -23,5 +16,17 @@ namespace Manufaktura.Controls.Model
         {
             Type = type;
         }
+
+        public double? BezierX { get; set; }
+        public double? BezierY { get; set; }
+
+        public Point BezierControlPoint => BezierX.HasValue && BezierY.HasValue ? new Point(BezierX.Value, BezierY.Value) : default(Point);
+        public double? DefaultXPosition { get; set; }
+        public double? DefaultYPosition { get; set; }
+        public bool IsDefinedAsBezierCurve => DefaultXPosition.HasValue && DefaultYPosition.HasValue && BezierX.HasValue && BezierY.HasValue;
+        public int Number { get; set; }
+        public VerticalPlacement? Placement { get; set; }
+        public Point BezierStartOrEndPoint => DefaultXPosition.HasValue && DefaultYPosition.HasValue ? new Point(DefaultXPosition.Value, DefaultYPosition.Value) : default(Point);
+        public NoteSlurType Type { get; set; }
     }
 }

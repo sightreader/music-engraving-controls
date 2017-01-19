@@ -17,6 +17,8 @@ namespace Manufaktura.Controls.Services
 
         Point SlurStartPoint { get; set; }
 
+        Point SlurBezierStartControlPoint { get; set; }
+
         VerticalDirection SlurStartPointStemDirection { get; set; }
 
         Point TieStartPoint { get; set; }

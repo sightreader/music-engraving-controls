@@ -160,6 +160,10 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     {"above", VerticalPlacement.Above},
                     {"below", VerticalPlacement.Below}
                 }).Then(v => builder.Slur.Placement = v);
+                slurNode.IfAttribute("default-x").HasValue<double>().Then(v => builder.Slur.DefaultXPosition = v);
+                slurNode.IfAttribute("default-y").HasValue<double>().Then(v => builder.Slur.DefaultYPosition = v);
+                slurNode.IfAttribute("bezier-x").HasValue<double>().Then(v => builder.Slur.BezierX = v);
+                slurNode.IfAttribute("bezier-y").HasValue<double>().Then(v => builder.Slur.BezierY = v);
             }
 
             foreach (var lNode in element.Elements().Where(n => n.Name == "lyric"))

@@ -26,8 +26,8 @@ namespace Manufaktura.Controls.Services
 
         public double LastNotePositionX { get; set; } //for chords / dla akordów
 
+        public Point SlurBezierStartControlPoint { get; set; }
         public Point SlurStartPoint { get; set; }
-
         public VerticalDirection SlurStartPointStemDirection { get; set; }
         public Point TieStartPoint { get; set; }
 
