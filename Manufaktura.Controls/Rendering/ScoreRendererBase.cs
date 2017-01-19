@@ -237,7 +237,12 @@ namespace Manufaktura.Controls.Rendering
 			return Settings.LineSpacing * (tenths / 10d);
 		}
 
-		internal void BreakSystem(double distance = 0, bool breakPage = false)
+        public Point TenthsToPixels(Point point)
+        {
+            return new Point(TenthsToPixels(point.X), TenthsToPixels(point.Y));
+        }
+
+        internal void BreakSystem(double distance = 0, bool breakPage = false)
 		{
 			scoreService.CurrentSystem.Width = scoreService.CursorPositionX;
 			ReturnCarriage();

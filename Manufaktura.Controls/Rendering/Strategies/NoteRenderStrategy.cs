@@ -305,7 +305,7 @@ namespace Manufaktura.Controls.Rendering
 
         private Point RelativeToAbsolute (ScoreRendererBase renderer, Point relative, double notePositionY)
         {
-            return new Point(relative.X * renderer.Settings.CustomElementPositionRatio, relative.Y) + new Point(measurementService.LastNotePositionX, scoreService.CurrentLinePositions[0]);
+            return new Point(relative.X * renderer.Settings.CustomElementPositionRatio + 7, relative.Y) + new Point(measurementService.LastNotePositionX, scoreService.CurrentLinePositions[0]);
         }
 
 		private void DrawSlurs(ScoreRendererBase renderer, Note element, double notePositionY)
@@ -321,8 +321,8 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (element.Slur.IsDefinedAsBezierCurve)
                 {
-                    measurementService.SlurStartPoint = RelativeToAbsolute(renderer, element.Slur.BezierControlPoint, notePositionY);
-                    measurementService.SlurBezierStartControlPoint = RelativeToAbsolute(renderer, element.Slur.BezierStartOrEndPoint, notePositionY);
+                    measurementService.SlurStartPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierControlPoint), notePositionY);
+                    measurementService.SlurBezierStartControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierStartOrEndPoint), notePositionY);
                 }
                 else
                 {
@@ -338,8 +338,8 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (element.Slur.IsDefinedAsBezierCurve)
                 {
-                    var absoluteControlPoint = RelativeToAbsolute(renderer, element.Slur.BezierStartOrEndPoint, notePositionY);
-                    var absoluteEndPoint = RelativeToAbsolute(renderer, element.Slur.BezierControlPoint, notePositionY);
+                    var absoluteControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierStartOrEndPoint), notePositionY);
+                    var absoluteEndPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierControlPoint), notePositionY);
                     renderer.DrawBezier(measurementService.SlurStartPoint.X, measurementService.SlurStartPoint.Y,
                             measurementService.SlurBezierStartControlPoint.X, measurementService.SlurBezierStartControlPoint.Y,
                             absoluteControlPoint.X, absoluteControlPoint.Y,
