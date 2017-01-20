@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Model
         public Point BezierControlPoint => BezierX.HasValue && BezierY.HasValue ? new Point(BezierX.Value, BezierY.Value) : default(Point);
         public double? DefaultXPosition { get; set; }
         public double? DefaultYPosition { get; set; }
-        public bool IsDefinedAsBezierCurve => DefaultXPosition.HasValue && DefaultYPosition.HasValue && BezierX.HasValue && BezierY.HasValue;
+        public bool IsDefinedAsBezierCurve => false;// DefaultXPosition.HasValue && DefaultYPosition.HasValue && BezierX.HasValue && BezierY.HasValue;
         public int Number { get; set; }
         public VerticalPlacement? Placement { get; set; }
         public Point BezierStartOrEndPoint => DefaultXPosition.HasValue && DefaultYPosition.HasValue ? new Point(DefaultXPosition.Value, DefaultYPosition.Value) : default(Point);
