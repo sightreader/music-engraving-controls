@@ -349,9 +349,9 @@ namespace Manufaktura.Controls.Rendering
                 {
                     if (slurStartPlacement == VerticalPlacement.Above)
                     {
-                        var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 5 : 1;
+                        var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 10 : 1;
                         var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
-                        var startPoint = new Point(measurementService.SlurStartPoint.X + xShiftConcerningStemDirectionStart, measurementService.SlurStartPoint.Y + 16);
+                        var startPoint = new Point(measurementService.SlurStartPoint.X + xShiftConcerningStemDirectionStart, measurementService.SlurStartPoint.Y + (measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 26 : 16));
                         var endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 8 + 13.5 : notePositionY + 18));
                         var controlPoints = GetBezierControlPoints(startPoint, endPoint, slurStartPlacement);
                         renderer.DrawBezier(startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
