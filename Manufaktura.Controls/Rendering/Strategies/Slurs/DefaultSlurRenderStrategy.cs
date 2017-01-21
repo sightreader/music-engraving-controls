@@ -19,27 +19,24 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
 
         protected override void ProcessSlurEnd(ScoreRendererBase renderer, Note element, double notePositionY, VerticalPlacement slurPlacement)
         {
-            Point startPoint;
             Point endPoint;
             if (measurementService.SlurStartPlacement == VerticalPlacement.Above)
             {
                 var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
-                startPoint = new Point(measurementService.SlurStartPoint.X, measurementService.SlurStartPoint.Y + (measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 26 : 16));
                 endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 25 : notePositionY + 18));
             }
             else if (measurementService.SlurStartPlacement == VerticalPlacement.Below)
             {
-                startPoint = new Point(measurementService.SlurStartPoint.X + 3, measurementService.SlurStartPoint.Y + 30);
                 endPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
             }
             else throw new Exception("Unsupported placement type.");
 
-            var controlPoints = GetBezierControlPoints(startPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight());
-            renderer.DrawBezier(startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
-            controlPoints = GetBezierControlPoints(startPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight() + 1);
-            renderer.DrawBezier(startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
-            controlPoints = GetBezierControlPoints(startPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight() + 2);
-            renderer.DrawBezier(startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
+            var controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight());
+            renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
+            controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight() + 1);
+            renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
+            controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight() + 2);
+            renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
 
             //DrawSlurFrame(renderer, startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
         }
@@ -51,10 +48,10 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             if (slurPlacement == VerticalPlacement.Above)
             {
                 var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 10 : 1;
-                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY + 2 : element.StemEndLocation.Y + 7);
+                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY + 18 : element.StemEndLocation.Y + 33);
             }
             else
-                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, notePositionY);
+                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
         }
 
         private static double DetermineSlurHeight()
