@@ -29,6 +29,8 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2017, 1, 17, 19, 52, 00));    //Problem z beamami w akordach
             AcceptTo(new DateTime(2017, 1, 18, 23, 08, 00));    //default-x liczony do stema, a nie noteheada
             AcceptTo(new DateTime(2017, 1, 18, 23, 13, 00));    //poprawa slurów po ostatnim teście
+            AcceptTo(new DateTime(2017, 1, 21, 16, 50, 00));    //Duża poprawka rysowania slurów
+            AcceptTo(new DateTime(2017, 1, 21, 17, 07, 00));    //Kreski taktowe przerywane i ukryte
 
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;

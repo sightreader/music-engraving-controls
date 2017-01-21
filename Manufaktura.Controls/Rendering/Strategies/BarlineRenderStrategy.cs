@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
+using System;
 using System.Linq;
 
 namespace Manufaktura.Controls.Rendering
@@ -62,18 +63,34 @@ namespace Manufaktura.Controls.Rendering
 				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
 				if (!doNotDraw)
 				{
-					if (element.Style == BarlineStyle.LightHeavy)
-					{
-						renderer.DrawLine(new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[4]),
-										  new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[0]), lightPen, element);
-						renderer.DrawLine(new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[4]),
-										  new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[0]), thickPen, element);
-					}
-					else
-					{
-						renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
-										  new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), lightPen, element);
-					}
+                    if (element.Style == BarlineStyle.LightHeavy)
+                    {
+                        renderer.DrawLine(new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[4]),
+                                          new Point(scoreService.CursorPositionX - 6, scoreService.CurrentLinePositions[0]), lightPen, element);
+                        renderer.DrawLine(new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[4]),
+                                          new Point(scoreService.CursorPositionX - 1.5, scoreService.CurrentLinePositions[0]), thickPen, element);
+                    }
+                    else if (element.Style == BarlineStyle.Dashed)
+                    {
+                        var barlineHeight = Math.Abs(scoreService.CurrentLinePositions[4] - scoreService.CurrentLinePositions[0]);
+                        var currentPositionY = scoreService.CurrentLinePositions[0];
+                        var numberOfSegments = 6;
+                        var dy = barlineHeight / numberOfSegments;
+                        for (int i=0; i< numberOfSegments; i++)
+                        {
+                            if (i % 2 == 0)
+                            {
+                                renderer.DrawLine(new Point(scoreService.CursorPositionX, currentPositionY),
+                                              new Point(scoreService.CursorPositionX, currentPositionY + dy), lightPen, element);
+                            }
+                            currentPositionY += dy;
+                        }
+                    }
+                    else if (element.Style != BarlineStyle.None)
+                    {
+                        renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
+                                          new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), lightPen, element);
+                    }
 				}
 				scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
 				scoreService.CurrentMeasure.Barline = element;

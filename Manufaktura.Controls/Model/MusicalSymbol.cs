@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Model
 {
     public enum ArticulationType { None, Staccato, Accent };
 
-    public enum BarlineStyle { Regular, LightHeavy }
+    public enum BarlineStyle { Regular, LightHeavy, None, Dashed }
 
     public enum ClefType { GClef, CClef, FClef };
 

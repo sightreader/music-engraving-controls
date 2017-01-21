@@ -49,7 +49,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 							renderer.DrawLine(measure.BarlineLocationX - 6, system.LinePositions[i + 1][4], measure.BarlineLocationX - 6, system.LinePositions[i + 2][0], lightPen, measure.Barline);
 							renderer.DrawLine(measure.BarlineLocationX - 1.5, system.LinePositions[i + 1][4], measure.BarlineLocationX - 1.5, system.LinePositions[i + 2][0], thickPen, measure.Barline);
 						}
-						else
+						else if (measure.Barline?.Style != BarlineStyle.None)
 						{
 							renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
 						}

@@ -23,8 +23,10 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             Point endPoint;
             if (measurementService.SlurStartPlacement == VerticalPlacement.Above)
             {
+                bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;
                 var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
-                endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 25 : notePositionY + 18));
+                endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, 
+                    (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + (hasFlagOrBeam ? 23 : 25) : notePositionY + 18));
             }
             else if (measurementService.SlurStartPlacement == VerticalPlacement.Below)
             {

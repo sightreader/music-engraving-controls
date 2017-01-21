@@ -21,6 +21,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 .Otherwise(r => b.Location = HorizontalPlacement.Right);
 
             element.IfElement("bar-style").HasValue("light-heavy").Then(() => b.Style = BarlineStyle.LightHeavy);
+            element.IfElement("bar-style").HasValue("none").Then(() => b.Style = BarlineStyle.None);
+            element.IfElement("bar-style").HasValue("dashed").Then(() => b.Style = BarlineStyle.Dashed);
             var repeatAttribute = element.Elements().FirstOrDefault(e => e.Name == "repeat");
             var attribute = repeatAttribute?.Attribute("direction");
             if (attribute != null)
