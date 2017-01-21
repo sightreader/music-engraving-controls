@@ -25,6 +25,7 @@ namespace Manufaktura.Controls.Model.PeekStrategies
         NextElement,
         PreviousElement,
         EndOfTuplet,
-        HighestNoteInChord
+        HighestNoteInChord,
+        BeginningOfSlur
     }
 }

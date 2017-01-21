@@ -3,6 +3,7 @@ using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
+using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Strategies.Slurs
 {
@@ -31,12 +32,12 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             }
             else throw new Exception("Unsupported placement type.");
 
-            var controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight());
-            renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
-            controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight() + 1);
-            renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
-            controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, DetermineSlurHeight() + 2);
-            renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
+            var slurHeight = DetermineSlurHeight(element, endPoint);
+            for (int i = 0; i < 3; i++) //Draw a few curves one by one to simulate a curve with variable thickness. It will be replaced by a path in future releases.
+            {
+                var controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, slurHeight + i);
+                renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
+            }
 
             //DrawSlurFrame(renderer, startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
         }
@@ -47,16 +48,12 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             measurementService.SlurStartPointStemDirection = element.StemDirection;
             if (slurPlacement == VerticalPlacement.Above)
             {
-                var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 10 : 1;
-                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY + 18 : element.StemEndLocation.Y + 33);
+                bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;  //If note has a flag or beam start the slur above the note. If not, start a bit to the right and down.
+                var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? (hasFlagOrBeam ? 5 : 10) : 1;
+                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY + 18 : element.StemEndLocation.Y + (hasFlagOrBeam ? 22 : 33));
             }
             else
                 measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
-        }
-
-        private static double DetermineSlurHeight()
-        {
-            return 10;
         }
 
         private static Tuple<Point, Point> GetBezierControlPoints(Point start, Point end, VerticalPlacement placement, double height)
@@ -69,6 +66,30 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             var control1 = startPointForControlPoints.TranslateByAngleOld(angle, distance * 0.25);
             var control2 = startPointForControlPoints.TranslateByAngleOld(angle, distance * 0.75);
             return new Tuple<Point, Point>(control1, control2);
+        }
+
+        /// <summary>
+        /// Calculates slur height trying to avoid collisions with stems
+        /// </summary>
+        /// <param name="note"></param>
+        /// <param name="endPoint"></param>
+        /// <returns></returns>
+        private double DetermineSlurHeight(Note note, Point endPoint)
+        {
+            var notesUnderSlur = note.Staff.EnumerateUntilConditionMet<Note>(note, n => n.Slur?.Type == NoteSlurType.Start, true).ToArray();
+            if (notesUnderSlur.Length < 3) return 10;
+
+            var mostExtremePoint = ((measurementService.SlurStartPlacement == VerticalPlacement.Above) ?
+                notesUnderSlur.First(n => n.StemEndLocation.Y == notesUnderSlur.Take(notesUnderSlur.Length - 1).Skip(1).Min(nus => nus.StemEndLocation.Y)) :
+                notesUnderSlur.First(n => n.StemEndLocation.Y == notesUnderSlur.Take(notesUnderSlur.Length - 1).Skip(1).Max(nus => nus.StemEndLocation.Y))).StemEndLocation;
+
+            var angle = UsefulMath.BeamAngle(measurementService.SlurStartPoint.X, measurementService.SlurStartPoint.Y, endPoint.X, endPoint.Y);
+            var slurYPositionInMostExtremePoint = measurementService.SlurStartPoint.TranslateHorizontallyAndMaintainAngle(angle, mostExtremePoint.X - measurementService.SlurStartPoint.X).Y;
+            var mostExtremeYPosition = mostExtremePoint.Y + 25;
+            if (measurementService.SlurStartPlacement == VerticalPlacement.Above && mostExtremeYPosition < slurYPositionInMostExtremePoint) return Math.Abs(mostExtremeYPosition - slurYPositionInMostExtremePoint) + 10;
+            if (measurementService.SlurStartPlacement == VerticalPlacement.Below && mostExtremeYPosition > slurYPositionInMostExtremePoint) return Math.Abs(slurYPositionInMostExtremePoint - mostExtremeYPosition) + 10;
+
+            return 10;
         }
         /// <summary>
         /// For debug purposes. It will be used in slur edit mode in the future.

@@ -49,6 +49,9 @@ namespace Manufaktura.Controls.Primitives
             return new Point(X + dx, Y + dy);
         }
 
+        /// <summary>
+        /// Translates point by dx in given direction
+        /// </summary>
         public Point TranslateByAngleOld(double angle, double length)
         {
             var dy = Math.Sin(angle) * length;
@@ -56,6 +59,9 @@ namespace Manufaktura.Controls.Primitives
             return new Point(X + dx, Y + dy);
         }
 
+        /// <summary>
+        /// Translates point by dx in given direction
+        /// </summary>
         public Point TranslateByAngle(double angle, double length)
         {
             var dy = Math.Cos(angle) * length;
@@ -63,6 +69,9 @@ namespace Manufaktura.Controls.Primitives
             return new Point(X + dx, Y + dy);
         }
 
+        /// <summary>
+        /// Translates horizontally by dx but also translates vertically to maintain angle. In this method point always translates by dx regardless of angle.
+        /// </summary>
         public Point TranslateHorizontallyAndMaintainAngle(double angle, double dx)
         {
             var dy = Math.Tan(angle) * dx;
