@@ -19,7 +19,6 @@ namespace Manufaktura.Controls.Rendering
         protected IMeasurementService measurementService = new MeasurementService();
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
-
         protected ScoreRendererBase()
         {
             Settings = new ScoreRendererSettings();
@@ -30,11 +29,9 @@ namespace Manufaktura.Controls.Rendering
         }
 
         public virtual Score CurrentScore { get; internal set; }
-
         public virtual List<Exception> Exceptions { get; protected set; }
-
         public virtual IFinishingTouch[] FinishingTouches { get; private set; }
-
+        public ManufakturaResolver Resolver => resolver;
         public virtual ScoreInfo ScoreInformation { get { return new ScoreInfo(scoreService); } }
 
         public virtual ScoreRendererSettings Settings { get; internal set; }

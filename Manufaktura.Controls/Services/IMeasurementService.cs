@@ -15,12 +15,10 @@ namespace Manufaktura.Controls.Services
 
         double LastNotePositionX { get; set; } //for chords / dla akordów
 
-        Point SlurStartPoint { get; set; }
-
         Point SlurBezierStartControlPoint { get; set; }
-
+        VerticalPlacement SlurStartPlacement { get; set; }
+        Point SlurStartPoint { get; set; }
         VerticalDirection SlurStartPointStemDirection { get; set; }
-
         Point TieStartPoint { get; set; }
 
         //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie

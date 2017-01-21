@@ -269,6 +269,9 @@
     <Compile Include="Rendering\Strategies\RestRenderStrategy.cs" />
     <Compile Include="Rendering\ScoreRenderer.cs" />
     <Compile Include="Rendering\ScoreRendererBase.cs" />
+    <Compile Include="Rendering\Strategies\Slurs\BezierSlurRenderStrategy.cs" />
+    <Compile Include="Rendering\Strategies\Slurs\DefaultSlurRenderStrategy.cs" />
+    <Compile Include="Rendering\Strategies\Slurs\SlurRenderStrategy.cs" />
     <Compile Include="Rendering\Strategies\TimeSignatureRenderStrategy.cs" />
     <Compile Include="Services\AlterationService.cs" />
     <Compile Include="Services\BeamingService.cs" />

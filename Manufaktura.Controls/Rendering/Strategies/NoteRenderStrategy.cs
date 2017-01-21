@@ -1,7 +1,9 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.IoC;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Snippets;
+using Manufaktura.Controls.Rendering.Strategies.Slurs;
 using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
@@ -16,7 +18,7 @@ namespace Manufaktura.Controls.Rendering
 		private readonly IBeamingService beamingService;
 		private readonly IMeasurementService measurementService;
 		private readonly IScoreService scoreService;
-		private VerticalPlacement slurStartPlacement = VerticalPlacement.Above;
+        private SlurRenderStrategy[] slurRenderStrategies;
 
 		public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService, IBeamingService beamingService)
 		{
@@ -28,8 +30,10 @@ namespace Manufaktura.Controls.Rendering
 
 		public override void Render(Note element, ScoreRendererBase renderer)
 		{
-			//Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
-			if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
+            if (slurRenderStrategies == null) slurRenderStrategies = renderer.Resolver.ResolveAll<SlurRenderStrategy>().ToArray();
+
+            //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
+            if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
 			{
 				scoreService.CursorPositionX = measurementService.LastMeasurePositionX + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
 			}
@@ -303,79 +307,14 @@ namespace Manufaktura.Controls.Rendering
 			}
 		}
 
-        private Point RelativeToAbsolute (ScoreRendererBase renderer, Point relative, double notePositionY)
-        {
-            return new Point(relative.X * renderer.Settings.CustomElementPositionRatio + 7, relative.Y) + new Point(measurementService.LastNotePositionX, scoreService.CurrentLinePositions[0]);
-        }
-
 		private void DrawSlurs(ScoreRendererBase renderer, Note element, double notePositionY)
 		{
 			if (element.Slur == null) return;
 
-
-			VerticalPlacement slurPlacement;
-			if (element.Slur.Placement.HasValue) slurPlacement = element.Slur.Placement.Value;
-            else slurPlacement = element.StemDirection == VerticalDirection.Up ? VerticalPlacement.Below : VerticalPlacement.Above;
-
-            if (element.Slur.Type == NoteSlurType.Start)
-            {
-                if (element.Slur.IsDefinedAsBezierCurve)
-                {
-                    measurementService.SlurStartPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierControlPoint), notePositionY);
-                    measurementService.SlurBezierStartControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierStartOrEndPoint), notePositionY);
-                }
-                else
-                {
-                    slurStartPlacement = slurPlacement;
-                    measurementService.SlurStartPointStemDirection = element.StemDirection;
-                    if (slurPlacement == VerticalPlacement.Above)
-                        measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, element.StemDirection == VerticalDirection.Down ? notePositionY + 2 : element.StemEndLocation.Y + 7);
-                    else
-                        measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX, notePositionY);
-                }
-            }
-            else if (element.Slur.Type == NoteSlurType.Stop)
-            {
-                if (element.Slur.IsDefinedAsBezierCurve)
-                {
-                    var absoluteControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierStartOrEndPoint), notePositionY);
-                    var absoluteEndPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierControlPoint), notePositionY);
-                    renderer.DrawBezier(measurementService.SlurStartPoint.X, measurementService.SlurStartPoint.Y,
-                            measurementService.SlurBezierStartControlPoint.X, measurementService.SlurBezierStartControlPoint.Y,
-                            absoluteControlPoint.X, absoluteControlPoint.Y,
-                            absoluteEndPoint.X, absoluteEndPoint.Y, element);
-                }
-                else
-                {
-                    if (slurStartPlacement == VerticalPlacement.Above)
-                    {
-                        var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 10 : 1;
-                        var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
-                        var startPoint = new Point(measurementService.SlurStartPoint.X + xShiftConcerningStemDirectionStart, measurementService.SlurStartPoint.Y + (measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? 26 : 16));
-                        var endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + 8 + 13.5 : notePositionY + 18));
-                        var controlPoints = GetBezierControlPoints(startPoint, endPoint, slurStartPlacement);
-                        renderer.DrawBezier(startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
-                    }
-                    else if (slurStartPlacement == VerticalPlacement.Below)
-                    {
-                        var startPoint = new Point(measurementService.SlurStartPoint.X + 3, measurementService.SlurStartPoint.Y + 30);
-                        var endPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
-                        var controlPoints = GetBezierControlPoints(startPoint, endPoint, slurStartPlacement);
-                        renderer.DrawBezier(startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
-                    }
-                }
-            }
+            slurRenderStrategies.First(s => s.IsRelevant(element)).Draw(renderer, element, notePositionY);
         }
 
-        private static Tuple<Point, Point> GetBezierControlPoints (Point start, Point end, VerticalPlacement placement)
-        {
-            var factor = placement == VerticalPlacement.Above ? -1 : 1;
-            var angle = UsefulMath.BeamAngle(start.X, start.Y, end.X, end.Y);
-            var distance = Point.Distance(start, end);
-            var control1 = new Point(start.X, start.Y + 15 * factor).TranslateHorizontallyAndMaintainAngle(angle, distance * 0.25);
-            var control2 = new Point(start.X, start.Y + 15 * factor).TranslateHorizontallyAndMaintainAngle(angle, distance * 0.75);
-            return new Tuple<Point, Point>(control1, control2);
-        }
+
 
         private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
 		{
