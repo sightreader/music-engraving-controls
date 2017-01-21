@@ -9,7 +9,7 @@ namespace Manufaktura.Controls.Test.Web.Controllers
 		public ActionResult Index()
 		{
 			var vm = new HomeViewModel();
-            var serverPath = Server.MapPath("~/Content/083 Marsz 1791, teka 36, 1317. k 20.xml");
+            var serverPath = Server.MapPath("~/Content/036 Bogurodzica[1].xml");
             //var serverPath = Server.MapPath("~/Content/010 DWOK tom 25, s. 120, nr 273.xml");
             //var serverPath = Server.MapPath("~/Content/JohannChristophBachFull3.0.xml");
             //var serverPath = Server.MapPath("~/Content/030 Oj, zabujały 67 I nr 214.xml");
