@@ -38,8 +38,6 @@ namespace Manufaktura.Controls.Model
 
         private Pitch pitch;
 
-        private Slur slur;
-
         private double stemDefaultY;
 
         private VerticalDirection stemDirection = VerticalDirection.Up;
@@ -184,6 +182,7 @@ namespace Manufaktura.Controls.Model
         /// Indicates that the note is grace note.
         /// </summary>
         public bool IsGraceNote { get { return graceNoteType != GraceNoteType.None; } }
+
         /// <summary>
         /// Indicates that the note belongs to a chord.
         /// </summary>
@@ -217,7 +216,7 @@ namespace Manufaktura.Controls.Model
             }
         }
 
-        public Slur Slur { get { return slur; } set { slur = value; OnPropertyChanged(() => Slur); } }
+        public List<Slur> Slurs { get; } = new List<Slur>();
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
         public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(() => StemDirection); } }
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
@@ -232,6 +231,7 @@ namespace Manufaktura.Controls.Model
         public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
         public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
         public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
+
         /// <summary>
         /// Creates a new instance of Note from given midi pitch and duration.
         /// </summary>
@@ -298,6 +298,7 @@ namespace Manufaktura.Controls.Model
         {
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
         }
+
         private void DetermineMusicalCharacter()
         {
             if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeNote;

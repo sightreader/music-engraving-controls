@@ -47,7 +47,7 @@ namespace Manufaktura.Controls.Model.Builders
 
         public int Octave { get; set; }
 
-        public Slur Slur { get; set; }
+        public List<Slur> Slurs { get; } = new List<Slur>();
 
         public Staff Staff { get; set; }
 
@@ -97,7 +97,6 @@ namespace Manufaktura.Controls.Model.Builders
             StemDefaultY = 28;
             CustomStemEndPosition = false;
             TremoloLevel = 0;
-            Slur = null;
             TrillMark = NoteTrillMark.None;
             Mordent = null;
             Voice = 1;
@@ -112,8 +111,8 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.NumberOfDots = NumberOfDots;
                 nt.Tuplet = Tuplet;
                 nt.TupletPlacement = TupletPlacement;
-				nt.Lyrics.Clear();
-				nt.Lyrics.AddRange(Lyrics);
+                nt.Lyrics.Clear();
+                nt.Lyrics.AddRange(Lyrics);
                 nt.Articulation = Articulation;
                 nt.ArticulationPlacement = ArticulationPlacement;
                 nt.HasNatural = HasNatural;
@@ -124,13 +123,14 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.DefaultXPosition = DefaultX;
                 nt.HasCustomStemEndPosition = CustomStemEndPosition;
                 nt.TrillMark = TrillMark;
-                nt.Slur = Slur;
                 nt.HasFermataSign = HasFermataSign;
                 nt.TremoloLevel = TremoloLevel;
                 nt.Voice = Voice;
                 nt.IsVisible = IsVisible;
                 nt.Staff = Staff;
                 if (Mordent != null) nt.Ornaments.Add(Mordent);
+                nt.Slurs.Clear();
+                nt.Slurs.AddRange(Slurs);
                 return nt;
             }
             else

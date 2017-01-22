@@ -13,49 +13,49 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
         {
         }
 
-        public override bool IsRelevant(Note element)
+        public override bool IsRelevant(Note element, Slur slur)
         {
-            return !element.Slur.IsDefinedAsBezierCurve;
+            return !slur.IsDefinedAsBezierCurve;
         }
 
-        protected override void ProcessSlurEnd(ScoreRendererBase renderer, Note element, double notePositionY, VerticalPlacement slurPlacement)
+        protected override void ProcessSlurEnd(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
             Point endPoint;
-            if (measurementService.SlurStartPlacement == VerticalPlacement.Above)
+            if (slurStartInfo.StartPlacement == VerticalPlacement.Above)
             {
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;
                 var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
-                endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, 
+                endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd,
                     (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + (hasFlagOrBeam ? 23 : 25) : notePositionY + 18));
             }
-            else if (measurementService.SlurStartPlacement == VerticalPlacement.Below)
+            else if (slurStartInfo.StartPlacement == VerticalPlacement.Below)
             {
                 endPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
             }
             else throw new Exception("Unsupported placement type.");
 
-            var slurHeight = DetermineSlurHeight(element, endPoint);
+            var slurHeight = DetermineSlurHeight(element, slur, slurStartInfo, endPoint);
             for (int i = 0; i < 3; i++) //Draw a few curves one by one to simulate a curve with variable thickness. It will be replaced by a path in future releases.
             {
-                var controlPoints = GetBezierControlPoints(measurementService.SlurStartPoint, endPoint, measurementService.SlurStartPlacement, slurHeight + i);
-                renderer.DrawBezier(measurementService.SlurStartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
+                var controlPoints = GetBezierControlPoints(slurStartInfo.StartPoint, endPoint, slurStartInfo.StartPlacement, slurHeight + i);
+                renderer.DrawBezier(slurStartInfo.StartPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
             }
 
             //DrawSlurFrame(renderer, startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
         }
 
-        protected override void ProcessSlurStart(ScoreRendererBase renderer, Note element, double notePositionY, VerticalPlacement slurPlacement)
+        protected override void ProcessSlurStart(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
-            measurementService.SlurStartPlacement = slurPlacement;
-            measurementService.SlurStartPointStemDirection = element.StemDirection;
+            slurStartInfo.StartPlacement = slurPlacement;
+            slurStartInfo.StartPointStemDirection = element.StemDirection;
             if (slurPlacement == VerticalPlacement.Above)
             {
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;  //If note has a flag or beam start the slur above the note. If not, start a bit to the right and down.
-                var xShiftConcerningStemDirectionStart = measurementService.SlurStartPointStemDirection == VerticalDirection.Up ? (hasFlagOrBeam ? 5 : 10) : 1;
-                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY + 18 : element.StemEndLocation.Y + (hasFlagOrBeam ? 22 : 33));
+                var xShiftConcerningStemDirectionStart = slurStartInfo.StartPointStemDirection == VerticalDirection.Up ? (hasFlagOrBeam ? 5 : 10) : 1;
+                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY + 18 : element.StemEndLocation.Y + (hasFlagOrBeam ? 22 : 33));
             }
             else
-                measurementService.SlurStartPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
+                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
         }
 
         private static Tuple<Point, Point> GetBezierControlPoints(Point start, Point end, VerticalPlacement placement, double height)
@@ -76,23 +76,24 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
         /// <param name="note"></param>
         /// <param name="endPoint"></param>
         /// <returns></returns>
-        private double DetermineSlurHeight(Note note, Point endPoint)
+        private double DetermineSlurHeight(Note note, Slur slur, SlurInfo slurStartInfo, Point endPoint)
         {
-            var notesUnderSlur = note.Staff.EnumerateUntilConditionMet<Note>(note, n => n.Slur?.Type == NoteSlurType.Start, true).ToArray();
+            var notesUnderSlur = note.Staff.EnumerateUntilConditionMet<Note>(note, n => n.Slurs.FirstOrDefault(s => s.Number == slur.Number)?.Type == NoteSlurType.Start, true).ToArray();
             if (notesUnderSlur.Length < 3) return 10;
 
-            var mostExtremePoint = ((measurementService.SlurStartPlacement == VerticalPlacement.Above) ?
+            var mostExtremePoint = ((slurStartInfo.StartPlacement == VerticalPlacement.Above) ?
                 notesUnderSlur.First(n => n.StemEndLocation.Y == notesUnderSlur.Take(notesUnderSlur.Length - 1).Skip(1).Min(nus => nus.StemEndLocation.Y)) :
                 notesUnderSlur.First(n => n.StemEndLocation.Y == notesUnderSlur.Take(notesUnderSlur.Length - 1).Skip(1).Max(nus => nus.StemEndLocation.Y))).StemEndLocation;
 
-            var angle = UsefulMath.BeamAngle(measurementService.SlurStartPoint.X, measurementService.SlurStartPoint.Y, endPoint.X, endPoint.Y);
-            var slurYPositionInMostExtremePoint = measurementService.SlurStartPoint.TranslateHorizontallyAndMaintainAngle(angle, mostExtremePoint.X - measurementService.SlurStartPoint.X).Y;
+            var angle = UsefulMath.BeamAngle(slurStartInfo.StartPoint.X, slurStartInfo.StartPoint.Y, endPoint.X, endPoint.Y);
+            var slurYPositionInMostExtremePoint = slurStartInfo.StartPoint.TranslateHorizontallyAndMaintainAngle(angle, mostExtremePoint.X - slurStartInfo.StartPoint.X).Y;
             var mostExtremeYPosition = mostExtremePoint.Y + 25;
-            if (measurementService.SlurStartPlacement == VerticalPlacement.Above && mostExtremeYPosition < slurYPositionInMostExtremePoint) return Math.Abs(mostExtremeYPosition - slurYPositionInMostExtremePoint) + 10;
-            if (measurementService.SlurStartPlacement == VerticalPlacement.Below && mostExtremeYPosition > slurYPositionInMostExtremePoint) return Math.Abs(slurYPositionInMostExtremePoint - mostExtremeYPosition) + 10;
+            if (slurStartInfo.StartPlacement == VerticalPlacement.Above && mostExtremeYPosition < slurYPositionInMostExtremePoint) return Math.Abs(mostExtremeYPosition - slurYPositionInMostExtremePoint) + 10;
+            if (slurStartInfo.StartPlacement == VerticalPlacement.Below && mostExtremeYPosition > slurYPositionInMostExtremePoint) return Math.Abs(slurYPositionInMostExtremePoint - mostExtremeYPosition) + 10;
 
             return 10;
         }
+
         /// <summary>
         /// For debug purposes. It will be used in slur edit mode in the future.
         /// </summary>

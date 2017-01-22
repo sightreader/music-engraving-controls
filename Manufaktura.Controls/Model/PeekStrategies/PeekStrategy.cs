@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Manufaktura.Controls.Model.PeekStrategies
+﻿namespace Manufaktura.Controls.Model.PeekStrategies
 {
     public abstract class PeekStrategy<TSymbol> where TSymbol : MusicalSymbol
     {
@@ -15,7 +10,6 @@ namespace Manufaktura.Controls.Model.PeekStrategies
         }
 
         public abstract TSymbol Peek(MusicalSymbol relativeTo);
-
     }
 
     public enum PeekType
@@ -25,7 +19,6 @@ namespace Manufaktura.Controls.Model.PeekStrategies
         NextElement,
         PreviousElement,
         EndOfTuplet,
-        HighestNoteInChord,
-        BeginningOfSlur
+        HighestNoteInChord
     }
 }

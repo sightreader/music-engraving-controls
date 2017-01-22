@@ -159,7 +159,6 @@
     <Compile Include="Model\NullMusicalSymbol.cs" />
     <Compile Include="Model\Ornament.cs" />
     <Compile Include="Model\PartGroup.cs" />
-    <Compile Include="Model\PeekStrategies\BeginningOfSlurPeekStrategy.cs" />
     <Compile Include="Model\RadialChartSample.cs" />
     <Compile Include="Model\ScorePage.cs" />
     <Compile Include="Model\Part.cs" />

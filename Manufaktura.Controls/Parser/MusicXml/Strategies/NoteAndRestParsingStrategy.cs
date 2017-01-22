@@ -148,24 +148,25 @@ namespace Manufaktura.Controls.Parser.MusicXml
             invMordentNode.IfAttribute("default-x").HasValue<double>().Then(v => builder.Mordent.DefaultXPosition = v);
             invMordentNode.IfAttribute("default-y").HasValue<double>().Then(v => builder.Mordent.DefaultYPosition = v);
 
-            var slurNode = notationsNode.IfElement("slur").Exists().Then(s => builder.Slur = new Slur()).AndReturnResult();
-            var number = slurNode.IfAttribute("number").HasValue<int>().Then(v => { }).AndReturnResult();
-            if (number < 2)
+            foreach (var slurNode in notationsNode?.Elements(XName.Get("slur")) ?? new XElement[] { })
             {
+                var slur = new Slur();
+                builder.Slurs.Add(slur);
+                slurNode.IfAttribute("number").HasValue<int>().Then(v => slur.Number = v);
                 slurNode.IfAttribute("type").HasValue(new Dictionary<string, NoteSlurType> {
                     {"start", NoteSlurType.Start},
                     {"stop", NoteSlurType.Stop}
-                }).Then(v => builder.Slur.Type = v);
+                }).Then(v => slur.Type = v);
                 slurNode.IfAttribute("placement").HasValue(new Dictionary<string, VerticalPlacement> {
                     {"above", VerticalPlacement.Above},
                     {"below", VerticalPlacement.Below}
-                }).Then(v => builder.Slur.Placement = v);
-                slurNode.IfAttribute("default-x").HasValue<double>().Then(v => builder.Slur.DefaultXPosition = v);
-                slurNode.IfAttribute("default-y").HasValue<double>().Then(v => builder.Slur.DefaultYPosition = v);
-                slurNode.IfAttribute("bezier-x").HasValue<double>().Then(v => builder.Slur.BezierX = v);
-                slurNode.IfAttribute("bezier-y").HasValue<double>().Then(v => builder.Slur.BezierY = v);
+                }).Then(v => slur.Placement = v);
+                slurNode.IfAttribute("default-x").HasValue<double>().Then(v => slur.DefaultXPosition = v);
+                slurNode.IfAttribute("default-y").HasValue<double>().Then(v => slur.DefaultYPosition = v);
+                slurNode.IfAttribute("bezier-x").HasValue<double>().Then(v => slur.BezierX = v);
+                slurNode.IfAttribute("bezier-y").HasValue<double>().Then(v => slur.BezierY = v);
             }
-
+        
             foreach (var lNode in element.Elements().Where(n => n.Name == "lyric"))
             {
                 //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set.

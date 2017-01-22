@@ -9,25 +9,25 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
         {
         }
 
-        public override bool IsRelevant(Note element)
+        public override bool IsRelevant(Note element, Slur slur)
         {
-            return element.Slur.IsDefinedAsBezierCurve;
+            return slur.IsDefinedAsBezierCurve;
         }
 
-        protected override void ProcessSlurEnd(ScoreRendererBase renderer, Note element, double notePositionY, VerticalPlacement slurPlacement)
+        protected override void ProcessSlurEnd(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
-            var absoluteControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierStartOrEndPoint), notePositionY);
-            var absoluteEndPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierControlPoint), notePositionY);
-            renderer.DrawBezier(measurementService.SlurStartPoint.X, measurementService.SlurStartPoint.Y,
-                    measurementService.SlurBezierStartControlPoint.X, measurementService.SlurBezierStartControlPoint.Y,
+            var absoluteControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(slur.BezierStartOrEndPoint), notePositionY);
+            var absoluteEndPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(slur.BezierControlPoint), notePositionY);
+            renderer.DrawBezier(slurStartInfo.StartPoint.X, slurStartInfo.StartPoint.Y,
+                    slurStartInfo.BezierStartControlPoint.X, slurStartInfo.BezierStartControlPoint.Y,
                     absoluteControlPoint.X, absoluteControlPoint.Y,
                     absoluteEndPoint.X, absoluteEndPoint.Y, element);
         }
 
-        protected override void ProcessSlurStart(ScoreRendererBase renderer, Note element, double notePositionY, VerticalPlacement slurPlacement)
+        protected override void ProcessSlurStart(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
-            measurementService.SlurStartPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierControlPoint), notePositionY);
-            measurementService.SlurBezierStartControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(element.Slur.BezierStartOrEndPoint), notePositionY);
+            slurStartInfo.StartPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(slur.BezierControlPoint), notePositionY);
+            slurStartInfo.BezierStartControlPoint = RelativeToAbsolute(renderer, renderer.TenthsToPixels(slur.BezierStartOrEndPoint), notePositionY);
         }
     }
 }

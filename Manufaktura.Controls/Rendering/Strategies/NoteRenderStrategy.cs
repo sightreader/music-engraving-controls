@@ -307,14 +307,15 @@ namespace Manufaktura.Controls.Rendering
 			}
 		}
 
-		private void DrawSlurs(ScoreRendererBase renderer, Note element, double notePositionY)
-		{
-			if (element.Slur == null) return;
+        private void DrawSlurs(ScoreRendererBase renderer, Note element, double notePositionY)
+        {
+            if (!element.Slurs.Any()) return;
 
-            slurRenderStrategies.First(s => s.IsRelevant(element)).Draw(renderer, element, notePositionY);
+            foreach (var slur in element.Slurs)
+            {
+                slurRenderStrategies.First(s => s.IsRelevant(element, slur)).Draw(renderer, slur, element, notePositionY);
+            }
         }
-
-
 
         private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
 		{

@@ -112,10 +112,6 @@ namespace Manufaktura.Controls.Model
                     strategy = new BeginningOfTupletPeekStrategy<TSymbol>(this);
                     break;
 
-                case PeekType.BeginningOfSlur:
-                    strategy = new BeginningOfSlurPeekStrategy<TSymbol>(this);
-                    break;
-
                 case PeekType.EndOfTuplet:
                     strategy = new EndOfTupletPeekStrategy<TSymbol>(this);
                     break;

@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
+using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Services
 {
@@ -11,8 +12,6 @@ namespace Manufaktura.Controls.Services
             LastNoteEndXPosition = 0; //for many voices / dla wielu głosów
 
             TieStartPoint = new Point();
-            SlurStartPoint = new Point();
-
             LastNoteInMeasureEndXPosition = 0; //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
         }
 
@@ -26,12 +25,8 @@ namespace Manufaktura.Controls.Services
 
         public double LastNotePositionX { get; set; } //for chords / dla akordów
 
-        public Point SlurBezierStartControlPoint { get; set; }
+        public Dictionary<int, SlurInfo> Slurs { get; } = new Dictionary<int, SlurInfo>();
 
-        public VerticalPlacement SlurStartPlacement { get; set; }
-
-        public Point SlurStartPoint { get; set; }
-        public VerticalDirection SlurStartPointStemDirection { get; set; }
         public Point TieStartPoint { get; set; }
 
         //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
