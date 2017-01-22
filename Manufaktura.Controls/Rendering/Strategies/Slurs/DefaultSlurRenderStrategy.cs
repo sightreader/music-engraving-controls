@@ -3,6 +3,7 @@ using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Strategies.Slurs
@@ -81,9 +82,8 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             var notesUnderSlur = note.Staff.EnumerateUntilConditionMet<Note>(note, n => n.Slurs.FirstOrDefault(s => s.Number == slur.Number)?.Type == NoteSlurType.Start, true).ToArray();
             if (notesUnderSlur.Length < 3) return 10;
 
-            var mostExtremePoint = ((slurStartInfo.StartPlacement == VerticalPlacement.Above) ?
-                notesUnderSlur.First(n => n.StemEndLocation.Y == notesUnderSlur.Take(notesUnderSlur.Length - 1).Skip(1).Min(nus => nus.StemEndLocation.Y)) :
-                notesUnderSlur.First(n => n.StemEndLocation.Y == notesUnderSlur.Take(notesUnderSlur.Length - 1).Skip(1).Max(nus => nus.StemEndLocation.Y))).StemEndLocation;
+            var notesUnderSlurExclusive = notesUnderSlur.Take(notesUnderSlur.Length - 1).Skip(1);
+            var mostExtremePoint = GetMostExtremePoint(notesUnderSlurExclusive, slurStartInfo.StartPlacement);
 
             var angle = UsefulMath.BeamAngle(slurStartInfo.StartPoint.X, slurStartInfo.StartPoint.Y, endPoint.X, endPoint.Y);
             var slurYPositionInMostExtremePoint = slurStartInfo.StartPoint.TranslateHorizontallyAndMaintainAngle(angle, mostExtremePoint.X - slurStartInfo.StartPoint.X).Y;
@@ -103,6 +103,24 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             renderer.DrawLine(p2, p3, owner);
             renderer.DrawLine(p3, p4, owner);
             renderer.DrawLine(p4, p1, owner);
+        }
+
+        private Point GetMostExtremePoint(IEnumerable<Note> notes, VerticalPlacement slurStartPlacement)
+        {
+            if (slurStartPlacement == VerticalPlacement.Above)
+            {
+                var mostExtremeStemEnd = notes.First(n => n.StemEndLocation.Y == notes.Min(nus => nus.StemEndLocation.Y)).StemEndLocation;
+                var mostExtremeNotehead = notes.First(n => n.TextBlockLocation.Y == notes.Min(nus => nus.TextBlockLocation.Y)).TextBlockLocation;
+                mostExtremeNotehead += new Point(0, -8);
+                return mostExtremeStemEnd.Y < mostExtremeNotehead.Y ? mostExtremeStemEnd : mostExtremeNotehead;
+            }
+            else
+            {
+                var mostExtremeStemEnd = notes.First(n => n.StemEndLocation.Y == notes.Max(nus => nus.StemEndLocation.Y)).StemEndLocation;
+                var mostExtremeNotehead = notes.First(n => n.TextBlockLocation.Y == notes.Max(nus => nus.TextBlockLocation.Y)).TextBlockLocation;
+                mostExtremeNotehead += new Point(0, 8);
+                return mostExtremeStemEnd.Y > mostExtremeNotehead.Y ? mostExtremeStemEnd : mostExtremeNotehead;
+            }
         }
     }
 }

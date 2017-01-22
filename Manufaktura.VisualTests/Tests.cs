@@ -32,6 +32,8 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2017, 1, 21, 16, 50, 00));    //Duża poprawka rysowania slurów
             AcceptTo(new DateTime(2017, 1, 21, 17, 07, 00));    //Kreski taktowe przerywane i ukryte
             AcceptTo(new DateTime(2017, 1, 22, 11, 50, 00));    //Obsługa wielu slurów, poprawki fakapów ze slurami w niektórych plikach
+            AcceptTo(new DateTime(2017, 1, 22, 14, 27, 00));    //Poprawka algorytmu omijania nut przez slury (uwzględnia teraz także główki)
+            AcceptTo(new DateTime(2017, 1, 22, 15, 14, 00));    //Położenie mordentów
 
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;

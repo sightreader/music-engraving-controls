@@ -220,6 +220,10 @@ namespace Manufaktura.Controls.Model
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
         public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(() => StemDirection); } }
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
+        
+        /// <summary>
+        /// Location of stem start point. This property is set in the last pass of rendering (DrawBeamsFinishingTouch).
+        /// </summary>
         public Point StemStartLocation { get; internal set; }
 
         /// <summary>

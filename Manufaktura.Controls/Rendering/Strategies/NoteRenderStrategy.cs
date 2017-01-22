@@ -297,12 +297,21 @@ namespace Manufaktura.Controls.Rendering
 		{
 			foreach (Ornament ornament in element.Ornaments)
 			{
-				double yPositionShift = ornament.DefaultYPosition.HasValue ? renderer.TenthsToPixels(ornament.DefaultYPosition.Value) * -1 : (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
-				Mordent mordent = ornament as Mordent;
+                var ornamentTextBlockHeightCorrection = 16;
+                double yPosition;
+                if (ornament.DefaultYPosition.HasValue)
+                {
+                    var yShift = renderer.TenthsToPixels(ornament.DefaultYPosition.Value) * -1;
+                    yPosition = scoreService.CurrentLinePositions[0] + yShift + ornamentTextBlockHeightCorrection * (yShift > 0 ? 0.8 : -1);
+                }
+                else
+                    yPosition = notePositionY + (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
+
+                Mordent mordent = ornament as Mordent;
 				if (mordent != null)
 				{
-					renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 9, notePositionY + yPositionShift, element);
-					renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 3.5, notePositionY + yPositionShift, element);
+					renderer.DrawString(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 9, yPosition, element);
+					renderer.DrawString(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 3.5, yPosition, element);
 				}
 			}
 		}
