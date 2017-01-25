@@ -44,9 +44,14 @@ namespace Manufaktura.Controls.Parser
                 state.FirstLoop = true;
                 Staff staff = new Staff() { MeasureAddingRule = Staff.MeasureAddingRuleEnum.AddMeasuresManually };
                 score.Staves.Add(staff);
-                var part = score.Parts.FirstOrDefault(p => p.PartId == partId) ?? new Part(staff) { PartId = partId };
+                var part = score.Parts.FirstOrDefault(p => p.PartId == partId);
+                if (part == null)
+                {
+                    part = new Part(staff) { PartId = partId };
+                    score.Parts.Add(part);
+                }
                 staff.Part = part;
-                score.Parts.Add(part);
+                
                 foreach (XElement node in partNode.Elements())
                 {
                     MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(node);
