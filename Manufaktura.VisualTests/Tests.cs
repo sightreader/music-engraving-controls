@@ -35,6 +35,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2017, 1, 22, 14, 27, 00));    //Poprawka algorytmu omijania nut przez slury (uwzględnia teraz także główki)
             AcceptTo(new DateTime(2017, 1, 22, 15, 14, 00));    //Położenie mordentów
             AcceptTo(new DateTime(2017, 1, 25, 23, 11, 00));    //Położenie pauz (regresja po "default-x liczony do stema, a nie noteheada")
+            AcceptTo(new DateTime(2017, 1, 31, 21, 45, 00));    //Nuty rysowane w niewłaściwym miejscu (w rezultacie "krzaki") w partii liczącej więcej niż jeden staff
 
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;

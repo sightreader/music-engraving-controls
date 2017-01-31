@@ -25,7 +25,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             element.IfAttribute("print-object").HasValue(new Dictionary<string, bool> {
                 {"yes", true}, {"no", false}}).Then(m => builder.IsVisible = m);
             element.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);
-            element.IfElement("staff").HasValue<int>().Then(m => builder.Staff = staff.Score.Staves.ElementAt(m - 1)); //TODO: Sprawdzić czy staff to numer liczony od góry strony czy numer w obrębie parta
+            element.IfElement("staff").HasValue<int>().Then(m => builder.Staff = staff.Part.Staves.ElementAt(m - 1));
             element.IfElement("type").HasValue(new Dictionary<string, RhythmicDuration> {
                  { "whole", RhythmicDuration.Whole },
                  { "half", RhythmicDuration.Half },

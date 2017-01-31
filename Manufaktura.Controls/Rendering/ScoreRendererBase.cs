@@ -279,6 +279,7 @@ namespace Manufaktura.Controls.Rendering
             }
 
             scoreService.BeginNewSystem();
+            //TODO: Prawdopodobnie dla partii z wieloma staffami należy wygenerować tu wiele linePositions, bo tag print jest w obrębie taktu, a takt może mieć kilka staffów
             scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
             scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
             measurementService.LastMeasurePositionX = 0;
