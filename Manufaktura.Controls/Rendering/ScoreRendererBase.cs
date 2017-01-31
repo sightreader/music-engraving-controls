@@ -267,6 +267,7 @@ namespace Manufaktura.Controls.Rendering
                 Settings.LineSpacing * 4 * scoreService.CurrentScore.Staves.Count;
             if (scoreService.CurrentSystem.Height == 0) scoreService.CurrentSystem.Height = averageSystemHeight;
 
+            //Algorytm jest dobry. Wszystkiemu winny jest system-distance - prawdopodobnie źle to obsługuję, dlatego w Consort 3.0.xml druga pięciolinia klawesynu jest za wysoko
             var newLinePositions = CalculateLinePositions(breakPage, distance, scoreService.CurrentStaffNo, scoreService.CurrentLinePositions);
             scoreService.LinePositions[scoreService.CurrentSystemNo + 1, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
 
