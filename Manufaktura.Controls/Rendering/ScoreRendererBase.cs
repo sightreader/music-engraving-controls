@@ -267,22 +267,26 @@ namespace Manufaktura.Controls.Rendering
                 Settings.LineSpacing * 4 * scoreService.CurrentScore.Staves.Count;
             if (scoreService.CurrentSystem.Height == 0) scoreService.CurrentSystem.Height = averageSystemHeight;
 
+            var newLinePositions = CalculateLinePositions(breakPage, distance, scoreService.CurrentStaffNo, scoreService.CurrentLinePositions);
+            scoreService.LinePositions[scoreService.CurrentSystemNo + 1, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
+
+            scoreService.BeginNewSystem();
+            scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
+            measurementService.LastMeasurePositionX = 0;
+        }
+
+        private double[] CalculateLinePositions (bool breakPage, double distance, int staffNo, double[] initialPositions)
+        {
             List<double> newLinePositions = new List<double>();
             if (breakPage && Settings.RenderingMode == ScoreRenderingModes.SinglePage)
             {
-                newLinePositions = scoreService.LinePositions[1, scoreService.CurrentStaffNo].ToList();
+                newLinePositions = scoreService.LinePositions[1, staffNo].ToList(); //Reset line positions because we started a new page
             }
             else
             {
-                var initialPositions = scoreService.CurrentLinePositions;
                 foreach (var position in initialPositions) newLinePositions.Add(position + scoreService.CurrentSystem.Height + distance);
             }
-
-            scoreService.BeginNewSystem();
-            //TODO: Prawdopodobnie dla partii z wieloma staffami należy wygenerować tu wiele linePositions, bo tag print jest w obrębie taktu, a takt może mieć kilka staffów
-            scoreService.LinePositions[scoreService.CurrentSystemNo, scoreService.CurrentStaffNo] = newLinePositions.ToArray();
-            scoreService.CurrentSystem.BuildStaffFragments(scoreService.LinePositions[scoreService.CurrentSystemNo].ToDictionary(lp => scoreService.CurrentScore.Staves[lp.Key - 1], lp => lp.Value));
-            measurementService.LastMeasurePositionX = 0;
+            return newLinePositions.ToArray();
         }
 
         internal void BreakToNextStaff(double distance = 0)
