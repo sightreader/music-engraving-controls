@@ -13,21 +13,19 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 			get { return "print"; }
 		}
 
+
+
 		public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
 		{
-			PrintSuggestion suggestion = null;
-			if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+			PrintSuggestion suggestion = CreateSuggestion(element, state, staff);
+            staff.Elements.Add(suggestion);
+
+            if (staff.Part?.Staves.Any() ?? false)  //If part contains many staves, add to all staves
 			{
-				foreach (var s in staff.Part.Staves)
+				foreach (var s in staff.Part.Staves.Skip(1))
 				{
-					suggestion = CreateSuggestion(element, state, staff);
-					s.Elements.Add(suggestion);
+					s.Elements.Add(suggestion.Clone());
 				}
-			}
-			else
-			{
-				suggestion = CreateSuggestion(element, state, staff);
-				staff.Elements.Add(suggestion);
 			}
 
 			if (suggestion.IsPageBreak)
