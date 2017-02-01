@@ -53,10 +53,10 @@ namespace Manufaktura.Controls.Desktop.Audio
 		public override async void PlayElement(MusicalSymbol element)
 		{
 			var note = element as Note;
-			if (note == null) return;
+			if (note == null || note.Staff == null) return;
 
 			if (note.TieType == NoteTieType.Stop || note.TieType == NoteTieType.StopAndStartAnother) return;
-			var firstNoteInMeasure = element.Measure.Elements.IndexOf(note) == 0;
+			var firstNoteInMeasure = element.Measure?.Elements.IndexOf(note) == 0;
 
 			var channelNumber = GetChannelNumber(Score.Staves.IndexOf(note.Staff));
 			var actualChannelNumber = (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) ? channelNumber + 1 : channelNumber;

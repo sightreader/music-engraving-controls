@@ -25,6 +25,8 @@ namespace Manufaktura.Controls.Parser.MusicXml
             element.IfElement("bar-style").HasValue("dashed").Then(() => b.Style = BarlineStyle.Dashed);
             var repeatAttribute = element.Elements().FirstOrDefault(e => e.Name == "repeat");
             var attribute = repeatAttribute?.Attribute("direction");
+
+            bool add = false;
             if (attribute != null)
             {
                 if (attribute.Value == "forward") b.RepeatSign = RepeatSignType.Forward;
@@ -33,8 +35,17 @@ namespace Manufaktura.Controls.Parser.MusicXml
                     b.RepeatSign = RepeatSignType.Backward;
                     state.BarlineAlreadyAdded = true;
                 }
+                add = true;
+            }
+            else if (b.Style != BarlineStyle.Regular)
+            {
+                state.BarlineAlreadyAdded = true;
+                add = true;
+            }
 
-                if (staff.Part != null && staff.Part.Staves.Any())  //If part contains many staves, add to all staves
+            if (add)
+            {
+                if (staff.Part?.Staves.Any() ?? false)  //If part contains many staves, add to all staves
                 {
                     foreach (var s in staff.Part.Staves)
                     {
@@ -45,11 +56,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 {
                     staff.Elements.Add(b);
                 }
-            }
-            else if (b.Style != BarlineStyle.Regular)
-            {
-                staff.Elements.Add(b);
-                state.BarlineAlreadyAdded = true;
             }
         }
     }
