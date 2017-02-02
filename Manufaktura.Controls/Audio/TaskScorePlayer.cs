@@ -8,11 +8,11 @@ namespace Manufaktura.Controls.Audio
 {
 	public abstract class TaskScorePlayer : ScorePlayer
 	{
-		private IEnumerator<TimelineElement<IHasDuration>> timelineInterator;
+		private IEnumerator<TimelineElement<IHasDuration>> timelineIterator;
 
 		public TaskScorePlayer(Score score) : base(score)
 		{
-			timelineInterator = EnumerateTimeline().GetEnumerator();
+			timelineIterator = EnumerateTimeline().GetEnumerator();
 		}
 
 		public override MusicalSymbol CurrentElement
@@ -57,7 +57,7 @@ namespace Manufaktura.Controls.Audio
 		public override void Stop()
 		{
 			State = PlaybackState.Idle;
-			timelineInterator = EnumerateTimeline().GetEnumerator();
+			timelineIterator = EnumerateTimeline().GetEnumerator();
 		}
 
 		protected virtual void PlayQueue(Queue<TimelineElement<IHasDuration>> simultaneousElements)
@@ -82,9 +82,9 @@ namespace Manufaktura.Controls.Audio
 			TimelineElement<IHasDuration> previousElement = null;
 			TimeSpan lastAwaitedDuration = TimeSpan.Zero;
 
-			while (timelineInterator.MoveNext())
+			while (timelineIterator.MoveNext())
 			{
-				var timelineElement = timelineInterator.Current;
+				var timelineElement = timelineIterator.Current;
 				if (State != PlaybackState.Playing) break;
 
 				if (previousElement != null && timelineElement.When > previousElement.When)
