@@ -56,7 +56,7 @@ namespace Manufaktura.Controls.UniversalApps.Media.Midi
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             Task.Delay(note.BaseDuration.ToTimeSpan(Tempo)).ContinueWith((t,o) =>
             {
-                var midiOffMessage = new MidiNoteOffMessage(0, (byte)note.Pitch.MidiPitch, 127);
+                var midiOffMessage = new MidiNoteOffMessage((byte)actualChannelNumber, (byte)note.Pitch.MidiPitch, 127);
                 currentMidiOutputDevice.SendMessage(midiOffMessage);
                 if (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Remove(note.MidiPitch);
             }, null);
