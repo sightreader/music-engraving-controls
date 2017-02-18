@@ -1,12 +1,15 @@
 ﻿using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace Manufaktura.Controls.Xamarin.Test
 {
@@ -30,7 +33,15 @@ namespace Manufaktura.Controls.Xamarin.Test
 
 		public void LoadTestData()
 		{
-			var rd = new RhythmicDuration(4, 0).ToProportion();
+            string xml;
+            var names = GetType().GetTypeInfo().Assembly.GetManifestResourceNames();
+            using (var reader = new StreamReader(GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Manufaktura.Controls.Xamarin.Test.Assets.005 Bogurodzica [1].xml")))
+            {
+                xml = reader.ReadToEnd();
+            }
+
+
+            var rd = new RhythmicDuration(4, 0).ToProportion();
 			rd = new RhythmicDuration(4, 1).ToProportion();
 			rd = new RhythmicDuration(4, 2).ToProportion();
 			rd = new RhythmicDuration(4, 3).ToProportion();
@@ -140,7 +151,7 @@ namespace Manufaktura.Controls.Xamarin.Test
 
 			Data = score;
 
-			Data2 = CreateSecondScore();
+            Data2 = xml.ToScore();
 
 
 		}

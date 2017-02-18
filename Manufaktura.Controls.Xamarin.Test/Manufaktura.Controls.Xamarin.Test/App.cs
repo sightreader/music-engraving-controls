@@ -10,7 +10,7 @@ namespace Manufaktura.Controls.Xamarin.Test
 	public class App : Application
 	{
 		NoteViewer noteViewer1 = new NoteViewer();
-		NoteViewer noteViewer2 = new NoteViewer();
+		NoteViewer noteViewer2 = new NoteViewer() { RenderingMode = Rendering.ScoreRenderingModes.AllPages };
 		Button button = new Button();
 		TestViewModel vm = new TestViewModel();
 		public App()
@@ -20,19 +20,21 @@ namespace Manufaktura.Controls.Xamarin.Test
 			// The root page of your application
 			MainPage = new ContentPage
 			{
-				Content = new StackLayout
-				{
-					BackgroundColor = Color.White,
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							HorizontalTextAlignment = TextAlignment.Center,
-							Text = "Manufaktura.Controls.Xamarin"
-						},
-						noteViewer1,
-						noteViewer2
-					}
-				}
+				Content = new ScrollView
+                {
+                    Content = new StackLayout
+                    {
+                        BackgroundColor = Color.White,
+                        Children = {
+                        new Label {
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            Text = "Manufaktura.Controls.Xamarin"
+                        },
+                        noteViewer1,
+                        noteViewer2
+                    }
+                    }
+                }
 			};
 			
 		}

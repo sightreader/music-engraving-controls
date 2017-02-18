@@ -32,7 +32,10 @@ namespace Manufaktura.Controls.Xamarin
 
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			var arc = new Arc();
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+
+            var arc = new Arc();
 			arc.TranslationX = rect.X;
 			arc.TranslationY = rect.Y;
 			arc.RX = rect.Width;
@@ -48,7 +51,16 @@ namespace Manufaktura.Controls.Xamarin
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			var bezierCurve = new BezierCurve();
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            {
+                p1 = p1.Translate(CurrentScore.DefaultPageSettings);
+                p2 = p2.Translate(CurrentScore.DefaultPageSettings);
+                p3 = p3.Translate(CurrentScore.DefaultPageSettings);
+                p4 = p4.Translate(CurrentScore.DefaultPageSettings);
+            }
+
+            var bezierCurve = new BezierCurve();
 			bezierCurve.Thickness = pen.Thickness;
 			bezierCurve.Color = pen.Color;
 			bezierCurve.TranslationX = p1.X;
