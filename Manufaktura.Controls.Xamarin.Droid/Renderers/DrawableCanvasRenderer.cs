@@ -11,101 +11,103 @@ using Xamarin.Forms.Platform.Android;
 
 namespace Manufaktura.Controls.Xamarin.Droid.Renderers
 {
-	public class DrawableCanvasRenderer : VisualElementRenderer<DrawableCanvas>
-	{
-		public DrawableCanvasRenderer()
-		{
-			SetWillNotDraw(false);
-		}
+    public class DrawableCanvasRenderer : VisualElementRenderer<DrawableCanvas>
+    {
+        public DrawableCanvasRenderer()
+        {
+            SetWillNotDraw(false);
+        }
 
-		public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
-		{
-			if (!Element.Children.OfType<ManufakturaShape>().Any()) return new SizeRequest(new Size(0, 0));
+        public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
+        {
+            if (!Element.Children.OfType<ManufakturaShape>().Any()) return new SizeRequest(new Size(0, 0));
 
-			var bottomMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationY).First();
-			var rightMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationX).First();
+            var bottomMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationY).First();
+            var rightMostShape = Element.Children.OfType<ManufakturaShape>().OrderByDescending(s => s.TranslationX).First();
 
-			return new SizeRequest(new Size(rightMostShape.TranslationX + 10, bottomMostShape.TranslationY + 10));
-		}
+            Element.CalculatedSize = new Size(rightMostShape.TranslationX + 10, bottomMostShape.TranslationY + 10);
 
-		protected override void OnDraw(Canvas canvas)
-		{
-			base.OnDraw(canvas);
+            return new SizeRequest(Element.CalculatedSize);
+        }
 
-			foreach (var child in Element.Children)
-			{
-				var line = child as Line;
-				if (line != null)
-				{
-					canvas.DrawLine((float)line.TranslationX, (float)line.TranslationY, (float)line.EndX, (float)line.EndY, GetPaint(line));
-					continue;
-				}
+        protected override void OnDraw(Canvas canvas)
+        {
+            base.OnDraw(canvas);
 
-				var text = child as Text;
-				if (text != null)
-				{
-					Typeface font;
+            foreach (var child in Element.Children)
+            {
+                var line = child as Line;
+                if (line != null)
+                {
+                    canvas.DrawLine((float)line.TranslationX, (float)line.TranslationY, (float)line.EndX, (float)line.EndY, GetPaint(line));
+                    continue;
+                }
 
-					if (text.FontStyle == MusicFontStyles.MusicFont || text.FontStyle == MusicFontStyles.GraceNoteFont || text.FontStyle == MusicFontStyles.StaffFont) font = Typeface.CreateFromAsset(Forms.Context.Assets, "Polihymnia.ttf");
-					else if (text.FontAttributes.HasFlag(FontAttributes.Bold)) font = Typeface.DefaultBold;
-					else font = Typeface.SansSerif;
+                var text = child as Text;
+                if (text != null)
+                {
+                    Typeface font;
 
-					var paint = new Paint();
-					paint.Color = text.TextColor.ToAndroid();
-					paint.SetStyle(Paint.Style.FillAndStroke);
-					paint.SetTypeface(font);
-					paint.AntiAlias = true;
-					paint.TextSize = (float)text.FontSize;
+                    if (text.FontStyle == MusicFontStyles.MusicFont || text.FontStyle == MusicFontStyles.GraceNoteFont || text.FontStyle == MusicFontStyles.StaffFont) font = Typeface.CreateFromAsset(Forms.Context.Assets, "Polihymnia.ttf");
+                    else if (text.FontAttributes.HasFlag(FontAttributes.Bold)) font = Typeface.DefaultBold;
+                    else font = Typeface.SansSerif;
 
-					if (text.FontStyle == MusicFontStyles.MusicFont || text.FontStyle == MusicFontStyles.StaffFont)
-						canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 24, paint);
-					else if (text.FontStyle == MusicFontStyles.GraceNoteFont)
-						canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 18, paint);
-					else
-						canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 13, paint);
+                    var paint = new Paint();
+                    paint.Color = text.TextColor.ToAndroid();
+                    paint.SetStyle(Paint.Style.FillAndStroke);
+                    paint.SetTypeface(font);
+                    paint.AntiAlias = true;
+                    paint.TextSize = (float)text.FontSize;
 
-					continue;
-				}
+                    if (text.FontStyle == MusicFontStyles.MusicFont || text.FontStyle == MusicFontStyles.StaffFont)
+                        canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 24, paint);
+                    else if (text.FontStyle == MusicFontStyles.GraceNoteFont)
+                        canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 18, paint);
+                    else
+                        canvas.DrawText(text.Text, (float)text.TranslationX + 3, (float)text.TranslationY + 13, paint);
 
-				var arc = child as Arc;
-				if (arc != null)
-				{
-					canvas.DrawArc(new RectF((float)arc.TranslationX, (float)arc.TranslationY - 10, (float)arc.RX + (float)arc.TranslationX, (float)arc.RY + (float)arc.TranslationY - 10),
-						(float)arc.StartAngle, (float)arc.SweepAngle * -1, false, GetPaint(arc));
+                    continue;
+                }
 
-					continue;
-				}
+                var arc = child as Arc;
+                if (arc != null)
+                {
+                    canvas.DrawArc(new RectF((float)arc.TranslationX, (float)arc.TranslationY - 10, (float)arc.RX + (float)arc.TranslationX, (float)arc.RY + (float)arc.TranslationY - 10),
+                        (float)arc.StartAngle, (float)arc.SweepAngle * -1, false, GetPaint(arc));
 
-				var bezier = child as BezierCurve;
-				if (bezier != null)
-				{
-					var path = new Path();
-					path.MoveTo((float)bezier.TranslationX, (float)bezier.TranslationY);
+                    continue;
+                }
 
-					path.CubicTo((float)bezier.X2, (float)bezier.Y2, (float)bezier.X3, (float)bezier.Y3, (float)bezier.X4, (float)bezier.Y4);
-					canvas.DrawPath(path, GetPaint(bezier));
-					continue;
-				}
-			}
-		}
+                var bezier = child as BezierCurve;
+                if (bezier != null)
+                {
+                    var path = new Path();
+                    path.MoveTo((float)bezier.TranslationX, (float)bezier.TranslationY);
 
-		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			base.OnElementPropertyChanged(sender, e);
+                    path.CubicTo((float)bezier.X2, (float)bezier.Y2, (float)bezier.X3, (float)bezier.Y3, (float)bezier.X4, (float)bezier.Y4);
+                    canvas.DrawPath(path, GetPaint(bezier));
+                    continue;
+                }
+            }
+        }
 
-			System.Diagnostics.Debug.WriteLine($"OnElementPropertyChanged: {e.PropertyName}");
-			if (e.PropertyName == NoteViewer.ScoreSourceProperty.PropertyName || e.PropertyName == NoteViewer.XmlSourceProperty.PropertyName)
-				Invalidate();
-		}
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
 
-		private static Paint GetPaint(ManufakturaShape shape)
-		{
-			var paint = new Paint();
-			paint.Color = shape.Color.ToAndroidColor();
-			paint.SetStyle(Paint.Style.Stroke);
-			paint.AntiAlias = true;
-			paint.StrokeWidth = (float)shape.Thickness;
-			return paint;
-		}
-	}
+            System.Diagnostics.Debug.WriteLine($"OnElementPropertyChanged: {e.PropertyName}");
+            if (e.PropertyName == NoteViewer.ScoreSourceProperty.PropertyName || e.PropertyName == NoteViewer.XmlSourceProperty.PropertyName)
+                Invalidate();
+        }
+
+        private static Paint GetPaint(ManufakturaShape shape)
+        {
+            var paint = new Paint();
+            paint.Color = shape.Color.ToAndroidColor();
+            paint.SetStyle(Paint.Style.Stroke);
+            paint.AntiAlias = true;
+            paint.StrokeWidth = (float)shape.Thickness;
+            return paint;
+        }
+    }
 }
