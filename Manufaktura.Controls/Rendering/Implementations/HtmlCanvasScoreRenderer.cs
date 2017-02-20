@@ -52,8 +52,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
 				UsefulMath.GradToRadians(sweepAngle).ToStringInvariant()));
 			Canvas.AppendLine("context.stroke();");
 
-			if (rect.Y > ActualHeight) ActualHeight = rect.Y;
-		}
+            if (rect.X + rect.Width > ActualWidth) ActualWidth = rect.X + rect.Width;
+            if (rect.Y + rect.Height > ActualHeight) ActualHeight = rect.Y + rect.Height;
+        }
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, Model.MusicalSymbol owner)
 		{
@@ -68,7 +69,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 				p4.Y.ToStringInvariant()));
 			Canvas.AppendLine("context.stroke();");
 
-			if (p1.Y > ActualHeight) ActualHeight = p1.Y;
+            if (p4.X > ActualWidth) ActualWidth = p4.X;
+            if (p1.Y > ActualHeight) ActualHeight = p1.Y;
 		}
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, Model.MusicalSymbol owner)
@@ -78,7 +80,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			Canvas.AppendLine(string.Format("context.lineTo({0}, {1});", endPoint.X.ToStringInvariant(), endPoint.Y.ToStringInvariant()));
 			Canvas.AppendLine("context.stroke();");
 
-			if (startPoint.Y > ActualHeight) ActualHeight = startPoint.Y;
+            if (startPoint.X > ActualWidth) ActualWidth = startPoint.X;
+            if (endPoint.X > ActualWidth) ActualWidth = endPoint.X;
+            if (startPoint.Y > ActualHeight) ActualHeight = startPoint.Y;
 			if (endPoint.Y > ActualHeight) ActualHeight = endPoint.Y;
 		}
 
@@ -91,7 +95,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			Canvas.AppendLine(string.Format("context.font = '{0}pt {1}';", TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(), TypedSettings.Fonts[fontStyle].Name));
 			Canvas.AppendLine(string.Format("context.fillText('{0}', {1}, {2});", text, location.X.ToStringInvariant(), location.Y.ToStringInvariant()));
 
-			if (location.Y > ActualHeight) ActualHeight = location.Y;
+            if (location.X > ActualWidth) ActualWidth = location.X;
+            if (location.Y > ActualHeight) ActualHeight = location.Y;
 		}
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)

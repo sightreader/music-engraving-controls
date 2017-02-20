@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Extensions;
 using System;
 using System.Collections.Generic;
@@ -23,14 +24,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
         }
 
-        public override void BuildFontInformation(XElement canvas)
+        protected override void BuildFontInformation(XElement canvas)
         {
             var element = new XElement("style", new XAttribute("type", "text/css"));
             element.Value = GetFontFaceDeclaration();
             canvas.Add(element);
         }
 
-        public override void BuildScoreElementWrapper(XElement canvas, XElement scoreCanvas, Score score, string scoreElementName, double calculatedScoreHeight)
+        protected override void BuildScoreElementWrapper(XElement canvas, XElement scoreCanvas, Score score, string scoreElementName, Size calculatedScoreSize)
         {
 			var wrapper = new XElement("svg");//,
 			if (!string.IsNullOrWhiteSpace(Settings.ScoreClass)) wrapper.Add(new XAttribute("class", Settings.ScoreClass));
@@ -40,10 +41,16 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 wrapper.Add(element);
             }
 			
-			if (Settings.AddFullWidthStyle) wrapper.Add(new XAttribute("style", $"width:100%; height:{calculatedScoreHeight.ToStringInvariant()}px;"));
-		}
+			if (Settings.SizeHint == HtmlSizeHint.Stretch)
+                wrapper.Add(new XAttribute("style", $"width:100%; height:{calculatedScoreSize.Height.ToStringInvariant()}px;"));
+            else if (Settings.SizeHint ==  HtmlSizeHint.FixedWidth)
+            { 
+                wrapper.Add(new XAttribute("style", $"width:{calculatedScoreSize.Width.ToStringInvariant()}px; height:{calculatedScoreSize.Height.ToStringInvariant()}px;"));
+                wrapper.Add(new XAttribute("viewBox", $"0 0 {calculatedScoreSize.Width.ToStringInvariant()} {calculatedScoreSize.Height.ToStringInvariant()}"));
+            }
+        }
 
-        public override string GetHtmlStringFromCanvas(XElement canvas)
+        protected override string GetHtmlStringFromCanvas(XElement canvas)
         {
             var sb = new StringBuilder();
             foreach (var element in canvas.Elements())

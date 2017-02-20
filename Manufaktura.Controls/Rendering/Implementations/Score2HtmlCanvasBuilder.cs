@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Extensions;
 using System;
 using System.Collections.Generic;
@@ -23,16 +24,16 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
         }
 
-        public override void BuildFontInformation(StringBuilder stringBuilder)
+        protected override void BuildFontInformation(StringBuilder stringBuilder)
         {
             stringBuilder.AppendLine("<style type=\"text/css\">");
             stringBuilder.AppendLine(GetFontFaceDeclaration());
             stringBuilder.AppendLine("</style>");
         }
 
-        public override void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName, double calculatedScoreHeight)
+        protected override void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName, Size calculatedScoreSize)
         {
-            stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", scoreElementName, calculatedScoreHeight.ToStringInvariant()));
+            stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", scoreElementName, calculatedScoreSize.Height.ToStringInvariant()));
             stringBuilder.AppendLine("<script>");
 
             string scriptBody = @"(function() {
@@ -58,7 +59,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             stringBuilder.AppendLine("</script></div>");
         }
 
-        public override string GetHtmlStringFromCanvas(StringBuilder canvas)
+        protected override string GetHtmlStringFromCanvas(StringBuilder canvas)
         {
             return canvas.ToString();
         }

@@ -18,8 +18,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
 		}
 
 		public double ActualHeight { get; protected set; } = 0;
+        public double ActualWidth { get; protected set; } = 0;
 
-		public string ScoreElementName { get; set; }
+        public string ScoreElementName { get; set; }
 		public HtmlScoreRendererSettings TypedSettings { get { return Settings as HtmlScoreRendererSettings; } }
 
 		protected override void BeforeRenderScore(Score score)

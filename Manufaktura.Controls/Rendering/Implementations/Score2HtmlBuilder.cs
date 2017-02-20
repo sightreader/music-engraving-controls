@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
             new FontFormat("svg", "svg", true)
         };
 
-        public abstract void BuildFontInformation(TCanvas canvas);
-        public abstract void BuildScoreElementWrapper(TCanvas canvas, TCanvas scoreCanvas, Score score, string scoreElementName, double calculatedScoreHeight);
-        public abstract string GetHtmlStringFromCanvas(TCanvas canvas);
+        protected abstract void BuildFontInformation(TCanvas canvas);
+        protected abstract void BuildScoreElementWrapper(TCanvas canvas, TCanvas scoreCanvas, Score score, string scoreElementName, Size calculatedScoreSize);
+        protected abstract string GetHtmlStringFromCanvas(TCanvas canvas);
         public abstract TCanvas CreateCanvas();
 
         public string Build()
@@ -45,7 +46,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 var score = Scores.ElementAt(i);
                 renderer.Render(score);
 
-                BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName, renderer.ActualHeight + 20);
+                BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName, new Size(renderer.ActualWidth + 20, renderer.ActualHeight + 20));
             }
             return GetHtmlStringFromCanvas(canvas);
         }
