@@ -50,5 +50,6 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public HtmlRenderSurface RenderSurface { get; set; }
         public string ScoreClass { get; set; }
         public HtmlSizeHint SizeHint { get; set; } = HtmlSizeHint.FixedWidth;
+        public double Scale { get; set; } = 1d;
     }
 }

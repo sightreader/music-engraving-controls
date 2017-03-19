@@ -45,7 +45,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 wrapper.Add(new XAttribute("style", $"width:100%; height:{calculatedScoreSize.Height.ToStringInvariant()}px;"));
             else if (Settings.SizeHint ==  HtmlSizeHint.FixedWidth)
             { 
-                wrapper.Add(new XAttribute("style", $"width:{calculatedScoreSize.Width.ToStringInvariant()}px; height:{calculatedScoreSize.Height.ToStringInvariant()}px;"));
+                wrapper.Add(new XAttribute("style", $"width:{(calculatedScoreSize.Width * Settings.Scale).ToStringInvariant()}px; height:{(calculatedScoreSize.Height * Settings.Scale).ToStringInvariant()}px;"));
                 wrapper.Add(new XAttribute("viewBox", $"0 0 {calculatedScoreSize.Width.ToStringInvariant()} {calculatedScoreSize.Height.ToStringInvariant()}"));
             }
         }
