@@ -1,12 +1,58 @@
 {
-  "locked": false,
-  "version": 1,
+  "version": 2,
   "targets": {
-    ".NETPortable,Version=v4.5,Profile=Profile259": {}
+    ".NETPortable,Version=v4.5,Profile=Profile259": {
+      "Manufaktura.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
+      },
+      "Manufaktura.Music/1.0.0": {
+        "type": "project",
+        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Manufaktura.Model/1.0.0": {
+      "type": "project",
+      "path": "../Manufaktura.Model/project.json",
+      "msbuildProject": "../Manufaktura.Model/Manufaktura.Model.csproj"
+    },
+    "Manufaktura.Music/1.0.0": {
+      "type": "project",
+      "path": "../Manufaktura.Music/project.json",
+      "msbuildProject": "../Manufaktura.Music/Manufaktura.Music.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
     "": [],
     ".NETPortable,Version=v4.5,Profile=Profile259": []
+  },
+  "packageFolders": {
+    "C:\\Users\\Jacek\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj",
+      "projectName": "Manufaktura.Controls",
+      "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj",
+      "projectJsonPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls\\project.json",
+      "projectStyle": "ProjectJson",
+      "frameworks": {
+        "portable45-net45+win8+wp8+wpa81": {
+          "projectReferences": {
+            "C:\\Development\\manufakturalibraries\\Manufaktura.Model\\Manufaktura.Model.csproj": {
+              "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Model\\Manufaktura.Model.csproj"
+            },
+            "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj": {
+              "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "portable45-net45+win8+wp8+wpa81": {}
+    }
   }
 }

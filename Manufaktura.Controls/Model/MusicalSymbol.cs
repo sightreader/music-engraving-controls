@@ -12,7 +12,7 @@ namespace Manufaktura.Controls.Model
 
     public enum BarlineStyle { Regular, LightHeavy, None, Dashed }
 
-    public enum ClefType { GClef, CClef, FClef };
+    public enum ClefType { GClef, CClef, FClef, Percussion };
 
     public enum DesiredHookDirections { Any, ForwardHook, BackwardHook };
 

@@ -8,67 +8,37 @@
         string BlackNoteHead { get; }
 
         string CClef { get; }
-
         string CommonTime { get; }
-
         string CutTime { get; }
-
         string D32ndRest { get; }
-
         string Dot { get; }
-
         string DoubleFlat { get; }
-
         string DoubleSharp { get; }
-
         string EighthNote { get; }
-
         string EighthRest { get; }
-
         string FClef { get; }
-
         string FermataDown { get; }
-
         string FermataUp { get; }
-
         string Flat { get; }
-
         string GClef { get; }
-
         string HalfNote { get; }
-
         string HalfRest { get; }
-
         string LeftBracket { get; }
-
         string LeftSquareBracket { get; }
-
         string Mordent { get; }
-
         string MordentShort { get; }
-
         string Natural { get; }
-
         string NoteFlag128th { get; }
-
         string NoteFlag128thRev { get; }
-
         string NoteFlag32nd { get; }
-
         string NoteFlag32ndRev { get; }
-
         string NoteFlag64th { get; }
-
         string NoteFlag64thRev { get; }
-
         string NoteFlagEighth { get; }
-
         string NoteFlagEighthRev { get; }
-
         string NoteFlagSixteenth { get; }
-
         string NoteFlagSixteenthRev { get; }
-
+        string PercussionClef { get; }
         string QuarterNote { get; }
 
         string QuarterRest { get; }

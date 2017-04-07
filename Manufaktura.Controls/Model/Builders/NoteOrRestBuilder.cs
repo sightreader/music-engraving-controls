@@ -59,6 +59,8 @@ namespace Manufaktura.Controls.Model.Builders
 
         public string Step { get; set; }
 
+        public bool IsUnpitched { get; set; }
+
         public NoteTieType TieType { get; set; }
 
         public int TremoloLevel { get; set; }
@@ -118,6 +120,7 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.HasNatural = HasNatural;
                 nt.GraceNoteType = GraceNoteType;
                 nt.IsCueNote = IsCueNote;
+                nt.IsUnpitched = IsUnpitched;
                 nt.IsUpperMemberOfChord = IsChordElement;
                 nt.StemDefaultY = StemDefaultY;
                 nt.DefaultXPosition = DefaultX;

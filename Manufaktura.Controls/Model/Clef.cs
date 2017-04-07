@@ -39,7 +39,12 @@ namespace Manufaktura.Controls.Model
 				musicalCharacter = MusicFont.CClef;
 				Pitch = Pitch.FromStep(Step.C, 4 + octaveShift);
 			}
-		}
+            else if (typeOfClef == ClefType.Percussion)
+            {
+                musicalCharacter = MusicFont.PercussionClef;
+                Pitch = Pitch.FromStep(Step.G, 4 + octaveShift);
+            }
+        }
 
 		/// <summary>
 		/// Returns a new instance of alto clef.

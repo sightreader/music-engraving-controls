@@ -61,6 +61,7 @@ namespace Manufaktura.Controls.Model.Fonts
             LeftBracket = "{";
             RightBracket = "}";
             LeftSquareBracket = "[";
+            PercussionClef = "";
         }
 
         public string BlackNoteHead
@@ -292,6 +293,12 @@ namespace Manufaktura.Controls.Model.Fonts
         }
 
         public string RightBracket
+        {
+            get;
+            private set;
+        }
+
+        public string PercussionClef
         {
             get;
             private set;

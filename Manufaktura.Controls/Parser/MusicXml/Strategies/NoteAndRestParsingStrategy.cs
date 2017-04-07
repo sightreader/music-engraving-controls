@@ -54,6 +54,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
             pitchElement.IfElement("octave").HasValue<int>().Then(v => builder.Octave = v);
             pitchElement.IfElement("alter").HasValue<int>().Then(v => builder.Alter = v);
 
+            var unpitchedElement = element.IfElement("unpitched").Exists().Then(x => builder.IsUnpitched = true).AndReturnResult();
+            unpitchedElement.IfElement("display-step").HasAnyValue().Then(v => builder.Step = v);
+            unpitchedElement.IfElement("display-octave").HasValue<int>().Then(v => builder.Octave = v);
+            unpitchedElement.IfElement("display-alter").HasValue<int>().Then(v => builder.Alter = v);
+
             var tieElements = element.Elements().Where(e => e.Name == "tie");
             foreach (var tieElement in tieElements)
             {

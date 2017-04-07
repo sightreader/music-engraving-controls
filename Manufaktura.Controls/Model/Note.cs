@@ -183,6 +183,8 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public bool IsGraceNote { get { return graceNoteType != GraceNoteType.None; } }
 
+        public bool IsUnpitched { get; set; }
+
         /// <summary>
         /// Indicates that the note belongs to a chord.
         /// </summary>

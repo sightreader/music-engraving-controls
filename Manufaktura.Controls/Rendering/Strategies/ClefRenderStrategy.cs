@@ -32,7 +32,7 @@ namespace Manufaktura.Controls.Rendering
 			}
 
 			//Don't draw clef if it's current clef:
-			if (!WasSystemChanged && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
+			if (!WasSystemChanged && element.TypeOfClef == scoreService.CurrentClef.TypeOfClef && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
 
             element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX,  scoreService.CurrentLinePositions[4] - 24.4f - (element.Line - 1) * renderer.Settings.LineSpacing);
             scoreService.CurrentClef = element;
