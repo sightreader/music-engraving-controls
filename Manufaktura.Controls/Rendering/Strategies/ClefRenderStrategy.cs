@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,20 @@ namespace Manufaktura.Controls.Rendering
 
             element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX,  scoreService.CurrentLinePositions[4] - 24.4f - (element.Line - 1) * renderer.Settings.LineSpacing);
             scoreService.CurrentClef = element;
-            renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
+            if (element.TypeOfClef == ClefType.Percussion)
+                DrawPercussionClef(element, renderer);
+            else
+                renderer.DrawString(element.MusicalCharacter, MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
 
 			scoreService.CursorPositionX += 20;
+        }
+
+        public void DrawPercussionClef(Clef element, ScoreRendererBase renderer)
+        {
+            renderer.DrawLine(new Point(element.TextBlockLocation.X + 10, scoreService.CurrentLinePositions[1]),
+                new Point(element.TextBlockLocation.X + 10, scoreService.CurrentLinePositions[3]), new Pen(element.CoalesceColor(renderer), 3), element);
+            renderer.DrawLine(new Point(element.TextBlockLocation.X + 15, scoreService.CurrentLinePositions[1]),
+                new Point(element.TextBlockLocation.X + 15, scoreService.CurrentLinePositions[3]), new Pen(element.CoalesceColor(renderer), 3), element);
         }
     }
 }

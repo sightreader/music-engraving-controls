@@ -335,7 +335,11 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CurrentClef = clef;
             var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
             clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - Settings.TextBlockHeight);
-            DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
+
+            if (clef.TypeOfClef == ClefType.Percussion)
+                new ClefRenderStrategy(scoreService).DrawPercussionClef(clef, this);
+            else
+                DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             scoreService.CursorPositionX += 20;
         }
 
