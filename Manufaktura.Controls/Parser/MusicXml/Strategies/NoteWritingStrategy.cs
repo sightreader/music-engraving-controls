@@ -1,11 +1,13 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Exceptions;
 using Manufaktura.Music.Model;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 {
-    public class NoteWritingStrategy : MusicXmlWritingStrategy<Note>
+    public class NoteWritingStrategy : NoteOrRestWritingStrategy<Note>
     {
         public override string ElementName => "note";
 
@@ -50,6 +52,8 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             }
         }
 
+
+
         protected override void WriteElementInner(Note symbol, XElement element, int quarterNoteDuration)
         {
             var pitchNode = new XElement("pitch");
@@ -76,6 +80,12 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 beamElement.Add(new XAttribute("number", i));
                 element.Add(beamElement);
                 i++;
+            }
+
+            var notations = CreateNotations(symbol).ToArray();
+            if (notations.Any())
+            {
+                element.Add(new XElement("notations", notations));
             }
 
             foreach (var lyric in symbol.Lyrics)
