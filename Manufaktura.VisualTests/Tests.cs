@@ -38,6 +38,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2017, 1, 31, 21, 45, 00));    //Nuty rysowane w niewłaściwym miejscu (w rezultacie "krzaki") w partii liczącej więcej niż jeden staff
             AcceptTo(new DateTime(2017, 2, 1, 19, 12, 00));     //Złe położenie drugiej pięciolini w dwupięcioliniowych partach w trybie AllPages
             AcceptTo(new DateTime(2017, 2, 1, 20, 07, 00));     //Issue #71: Niedodawanie barline'a do drugiej pięciolinii w parcie
+            AcceptTo(new DateTime(2017, 5, 14, 15, 02, 00));    //Klucze perkusyjne i obsługa nut bez picza
 
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
