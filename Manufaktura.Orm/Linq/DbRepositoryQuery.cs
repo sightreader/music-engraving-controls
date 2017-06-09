@@ -3,6 +3,7 @@ using Manufaktura.Orm.Portable.Linq;
 using Manufaktura.Orm.Portable.Predicates;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Manufaktura.Orm.Linq
@@ -19,11 +20,31 @@ namespace Manufaktura.Orm.Linq
 
         internal QueryBuilder QueryBuilder { get; private set; }
 
+        public long Count()
+        {
+            return repository.Count<T>("*", QueryBuilder.WhereStatement);
+        }
+
+        public long Count(Expression<Func<T, bool>> whereExpression)
+        {
+            Where(whereExpression);
+            return repository.Count<T>("*", QueryBuilder.WhereStatement);
+        }
+
+        public T FirstOrDefault()
+        {
+            return ToList().FirstOrDefault();
+        }
+
+        public T FirstOrDefault(Expression<Func<T, bool>> whereExpression)
+        {
+            return Where(whereExpression).ToList().FirstOrDefault();
+        }
+
         public List<T> ToList()
         {
             return repository.Load<T>(QueryBuilder);
         }
-
         public DbRepositoryQuery<T> Where(Expression<Func<T, bool>> whereExpression)
         {
             var newWhereStatement = Linq2PredicateParser.Parse(whereExpression);
