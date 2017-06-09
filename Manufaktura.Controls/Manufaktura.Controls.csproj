@@ -210,6 +210,7 @@
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs" />
     <Compile Include="Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs" />
+    <Compile Include="Parser\MusicXml\Strategies\NoteOrRestWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\NoteWritingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PageLayoutParsingStrategy.cs" />
     <Compile Include="Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs" />

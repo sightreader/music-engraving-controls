@@ -103,7 +103,7 @@ namespace Manufaktura.Controls.WPF.Test
 
             var supported = MusicXmlWritingStrategyBase.SupportedElements;
             var unsupported = MusicXmlWritingStrategyBase.UnsupportedElements;
-            var createdDocument = new MusicXmlParser().ParseBack(vm.Data);
+            var createdDocument = new MusicXmlParser().ParseBack(noteViewer1.InnerScore);
 
 
             SaveFileDialog dialog = new SaveFileDialog();

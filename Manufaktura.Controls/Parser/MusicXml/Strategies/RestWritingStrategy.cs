@@ -1,10 +1,11 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 {
-    public class RestWritingStrategy : MusicXmlWritingStrategy<Rest>
+    public class RestWritingStrategy : NoteOrRestWritingStrategy<Rest>
     {
         public override string ElementName => "note";
 
@@ -20,6 +21,12 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
             element.Add(new XElement("type", NoteWritingStrategy.GetDurationName(symbol)));
 
             for (var dot = 0; dot < symbol.NumberOfDots; dot++) element.Add(new XElement("dot"));
+
+            var notations = CreateNotations(symbol).ToArray();
+            if (notations.Any())
+            {
+                element.Add(new XElement("notations", notations));
+            }
         }
     }
 }
