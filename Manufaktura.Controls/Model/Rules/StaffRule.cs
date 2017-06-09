@@ -1,5 +1,4 @@
-﻿using Manufaktura.Model.MVVM;
-using System;
+﻿using System;
 
 namespace Manufaktura.Controls.Model.Rules
 {

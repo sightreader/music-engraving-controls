@@ -1,13 +1,13 @@
-﻿using Manufaktura.Model;
-using Manufaktura.Orm.Builder;
-using Manufaktura.Orm.Predicates;
+﻿using Manufaktura.Orm.Portable.Builder;
+using Manufaktura.Orm.Portable.Linq;
+using Manufaktura.Orm.Portable.Predicates;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace Manufaktura.Orm.Linq
 {
-    public class DbRepositoryQuery<T> where T : Entity, new()
+    public class DbRepositoryQuery<T> where T : new()
     {
         private DbRepository repository;
 

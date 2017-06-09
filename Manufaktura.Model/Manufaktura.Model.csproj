@@ -93,10 +93,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="MappingAttribute.cs" />
-    <Compile Include="MVVM\ListViewModel.cs" />
     <Compile Include="MVVM\ListViewModelStates.cs" />
     <Compile Include="MVVM\ViewAttribute.cs" />
     <Compile Include="MVVM\ViewModel.cs" />

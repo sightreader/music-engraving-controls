@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manufaktura.Orm.SpecialColumns
+namespace Manufaktura.Orm.Portable.SpecialColumns
 {
     public class CountSpecialColumn : SpecialColumn
     {

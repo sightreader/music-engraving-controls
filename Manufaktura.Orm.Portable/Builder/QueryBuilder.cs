@@ -1,12 +1,12 @@
-﻿using Manufaktura.Orm.SortModes;
-using Manufaktura.Orm.SpecialColumns;
+﻿using Manufaktura.Orm.Portable.SortModes;
+using Manufaktura.Orm.Portable.SpecialColumns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manufaktura.Orm.Builder
+namespace Manufaktura.Orm.Portable.Builder
 {
     public class QueryBuilder
     {

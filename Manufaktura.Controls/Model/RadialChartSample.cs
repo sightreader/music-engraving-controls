@@ -1,6 +1,4 @@
-﻿using Manufaktura.Model.MVVM;
-
-namespace Manufaktura.Controls.Model
+﻿namespace Manufaktura.Controls.Model
 {
 	public class RadialChartSample : ViewModel
 	{

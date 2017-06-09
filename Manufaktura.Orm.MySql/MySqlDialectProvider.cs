@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Data.Common;
-using Manufaktura.Orm.SpecialColumns;
 using System.Text;
 using System.Reflection;
-using Manufaktura.Orm.SortModes;
 using MySql.Data.MySqlClient;
-using Manufaktura.Model;
 using System.Data;
+using Manufaktura.Orm.Portable.Builder;
+using Manufaktura.Orm.Portable;
+using Manufaktura.Orm.Portable.SpecialColumns;
 
 namespace Manufaktura.Orm.Builder
 {
@@ -103,7 +102,7 @@ namespace Manufaktura.Orm.Builder
             return command;
         }
 
-        public override DbCommand GetInsertCommand(Entity entity)
+        public override DbCommand GetInsertCommand(object entity)
         {
             MappingAttribute typeAttribute = entity.GetType().GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
             if (typeAttribute == null) throw new Exception(string.Format("Nazwa tabeli nie została określona dla typu {0}.", entity.GetType().Name));
@@ -148,7 +147,7 @@ namespace Manufaktura.Orm.Builder
             return command;
         }
 
-        public override DbCommand GetUpdateCommand(Entity entity)
+        public override DbCommand GetUpdateCommand(object entity)
         {
             MappingAttribute typeAttribute = entity.GetType().GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
             if (typeAttribute == null) throw new Exception(string.Format("Nazwa tabeli nie została określona dla typu {0}.", entity.GetType().Name));
@@ -195,7 +194,7 @@ namespace Manufaktura.Orm.Builder
         }
 
 
-        public override DbCommand GetUpdateSchemaCommand(Entity entity)
+        public override DbCommand GetUpdateSchemaCommand(object entity)
         {
             MappingAttribute typeAttribute = entity.GetType().GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
             if (typeAttribute == null) throw new Exception(string.Format("Nazwa tabeli nie została określona dla typu {0}.", entity.GetType().Name));

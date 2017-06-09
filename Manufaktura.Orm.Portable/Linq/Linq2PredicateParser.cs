@@ -1,9 +1,9 @@
-﻿using Manufaktura.Orm.Predicates;
+﻿using Manufaktura.Orm.Portable.Predicates;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Manufaktura.Orm.Linq
+namespace Manufaktura.Orm.Portable.Linq
 {
     public static class Linq2PredicateParser
     {

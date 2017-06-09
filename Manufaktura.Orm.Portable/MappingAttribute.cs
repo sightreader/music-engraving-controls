@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Manufaktura.Model
+namespace Manufaktura.Orm.Portable
 {
     public class MappingAttribute : Attribute
     {
@@ -10,9 +8,11 @@ namespace Manufaktura.Model
         {
             Name = name;
         }
+
         public string Name { get; set; }
 
         private bool isPrimaryKey;
+
         public bool IsPrimaryKey
         {
             get

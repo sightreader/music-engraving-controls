@@ -1,7 +1,8 @@
-﻿using Manufaktura.Model;
-using Manufaktura.Orm.Builder;
-using Manufaktura.Orm.Predicates;
-using Manufaktura.Orm.SpecialColumns;
+﻿using Manufaktura.Orm.Builder;
+using Manufaktura.Orm.Portable;
+using Manufaktura.Orm.Portable.Builder;
+using Manufaktura.Orm.Portable.Predicates;
+using Manufaktura.Orm.Portable.SpecialColumns;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,7 +34,7 @@ namespace Manufaktura.Orm
 
         public static MappingAttribute FindIdentity<TEntity>() where TEntity : new()
         {
-            var properties = typeof(TEntity).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var properties = typeof(TEntity).GetRuntimeProperties();
             if (properties == null) return null;
             var mappings = properties.SelectMany(p => p.GetCustomAttributes<MappingAttribute>());
             return mappings.FirstOrDefault(m => m.IsPrimaryKey);
@@ -86,22 +87,28 @@ namespace Manufaktura.Orm
             return ExecuteScalar<TEntity, long>(builder);
         }
 
-        public long CountAll<TEntity>(string columnName) where TEntity : Entity, new()
+        public long CountAll<TEntity>(string columnName) where TEntity : new()
         {
             return Count<TEntity>(columnName, null);
         }
 
-        public Entity Save(Entity entity)
+        public object Insert(object entity)
         {
             EnsureConnectionOpen();
             DbCommand command = Provider.Connection.CreateCommand();
-            command = entity.IsNew ? Provider.GetInsertCommand(entity) : Provider.GetUpdateCommand(entity);
-            command.ExecuteNonQuery();
-            entity.IsNew = false;
+            Provider.GetInsertCommand(entity).ExecuteNonQuery();
             return entity;
         }
 
-        public void UpdateSchema(Entity entity)
+        public object Update(object entity)
+        {
+            EnsureConnectionOpen();
+            DbCommand command = Provider.Connection.CreateCommand();
+            Provider.GetUpdateCommand(entity).ExecuteNonQuery();
+            return entity;
+        }
+
+        public void UpdateSchema(object entity)
         {
             EnsureConnectionOpen();
             var command = Provider.GetUpdateSchemaCommand(entity);
@@ -124,8 +131,6 @@ namespace Manufaktura.Orm
         public static T FromRow<T>(DataRow row) where T : new()
         {
             T entity = new T();
-            var entityFromLegacyLibrary = entity as Entity;
-            if (entityFromLegacyLibrary != null) entityFromLegacyLibrary.IsNew = false;
             foreach (DataColumn column in row.Table.Columns)
             {
                 SetPropertyFromCell(entity, column.ColumnName, row[column.ColumnName]);
@@ -137,15 +142,15 @@ namespace Manufaktura.Orm
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
-            var properties = entity.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            var properties = entity.GetType().GetRuntimeProperties();
             foreach (var property in properties)
             {
                 MappingAttribute attribute = property.GetCustomAttributes(typeof(MappingAttribute), true).Cast<MappingAttribute>().FirstOrDefault();
                 if (attribute == null) continue;
                 if (attribute.Name == columnName)
                 {
-                    if (property.PropertyType == typeof(bool) && cellValue is Int16)
-                        cellValue = (Int16)cellValue != 0;
+                    if (property.PropertyType == typeof(bool) && cellValue is short)
+                        cellValue = (short)cellValue != 0;
                     if (cellValue == DBNull.Value) cellValue = null;
 
                     property.SetValue(entity, cellValue, null);

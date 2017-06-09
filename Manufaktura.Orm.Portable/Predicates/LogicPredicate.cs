@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web;
 
-namespace Manufaktura.Orm.Predicates
+namespace Manufaktura.Orm.Portable.Predicates
 {
     public abstract class LogicPredicate : SqlPredicate
     {

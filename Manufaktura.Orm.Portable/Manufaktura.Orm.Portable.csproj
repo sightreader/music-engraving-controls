@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D5323019-7B44-41C3-96DC-0F5B82D1D860}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Manufaktura.Orm.Portable</RootNamespace>
+    <AssemblyName>Manufaktura.Orm.Portable</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Builder\QueryBuilder.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Linq\Linq2PredicateParser.cs" />
+    <Compile Include="MappingAttribute.cs" />
+    <Compile Include="Predicates\AndPredicate.cs" />
+    <Compile Include="Predicates\ConditionPredicate.cs" />
+    <Compile Include="Predicates\EqualsPredicate.cs" />
+    <Compile Include="Predicates\GreaterThanOrEqualPredicate.cs" />
+    <Compile Include="Predicates\GreaterThanPredicate.cs" />
+    <Compile Include="Predicates\LesserThanOrEqualPredicate.cs" />
+    <Compile Include="Predicates\LesserThanPredicate.cs" />
+    <Compile Include="Predicates\LikePredicate.cs" />
+    <Compile Include="Predicates\LogicPredicate.cs" />
+    <Compile Include="Predicates\NotEqualsPredicate.cs" />
+    <Compile Include="Predicates\OrPredicate.cs" />
+    <Compile Include="Predicates\QB.cs" />
+    <Compile Include="Predicates\SqlPredicate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortModes\OrderByColumnSortMode.cs" />
+    <Compile Include="SortModes\SortMode.cs" />
+    <Compile Include="SpecialColumns\CountSpecialColumn.cs" />
+    <Compile Include="SpecialColumns\DistanceSpecialColumn.cs" />
+    <Compile Include="SpecialColumns\SpecialColumn.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Data">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

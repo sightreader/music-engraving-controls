@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace Manufaktura.Orm.Predicates
+namespace Manufaktura.Orm.Portable.Predicates
 {
     public class LikePredicate : ConditionPredicate
     {

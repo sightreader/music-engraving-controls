@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web;
 
-namespace Manufaktura.Orm.SpecialColumns
+namespace Manufaktura.Orm.Portable.SpecialColumns
 {
     public class DistanceSpecialColumn : SpecialColumn
     {

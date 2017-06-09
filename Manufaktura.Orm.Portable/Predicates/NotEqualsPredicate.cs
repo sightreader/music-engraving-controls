@@ -1,4 +1,4 @@
-﻿namespace Manufaktura.Orm.Predicates
+﻿namespace Manufaktura.Orm.Portable.Predicates
 {
     public class NotEqualsPredicate : ConditionPredicate
     {

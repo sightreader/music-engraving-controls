@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace Manufaktura.Orm.SortModes
+namespace Manufaktura.Orm.Portable.SortModes
 {
     public abstract class SortMode
     {

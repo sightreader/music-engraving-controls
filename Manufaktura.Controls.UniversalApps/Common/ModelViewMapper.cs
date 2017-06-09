@@ -1,4 +1,5 @@
-﻿using Manufaktura.Model.MVVM;
+﻿using Manufaktura.Controls.Model;
+using Manufaktura.Model.MVVM;
 using System;
 using System.Linq;
 using System.Net;
