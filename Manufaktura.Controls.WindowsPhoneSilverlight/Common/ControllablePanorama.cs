@@ -1,4 +1,4 @@
-﻿using Manufaktura.Model.MVVM;
+﻿using Manufaktura.Controls.Model;
 using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
