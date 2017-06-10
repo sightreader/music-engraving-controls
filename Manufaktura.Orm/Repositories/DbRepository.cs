@@ -82,7 +82,7 @@ namespace Manufaktura.Orm
         public long Count<TEntity>(string columnName, SqlPredicate whereStatement) where TEntity : new()
         {
             EnsureConnectionOpen();
-            QueryBuilder builder = QueryBuilder.Create().SpecifyColumns(null).AddSpecialColumn(new CountSpecialColumn(columnName, columnName + "Count"));
+            QueryBuilder builder = QueryBuilder.Create().SpecifyColumns(null).AddSpecialColumn(new CountSpecialColumn(columnName, $"{(columnName == "*" ? "AllColumns" : columnName)}Count"));
             if (whereStatement != null) builder.SetWhereStatement(whereStatement);
             return ExecuteScalar<TEntity, long>(builder);
         }

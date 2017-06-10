@@ -47,7 +47,7 @@ namespace Manufaktura.Orm.Linq
         }
         public DbRepositoryQuery<T> Where(Expression<Func<T, bool>> whereExpression)
         {
-            var newWhereStatement = Linq2PredicateParser.Parse(whereExpression);
+            var newWhereStatement = Linq2PredicateParser.Parse(whereExpression.Body);
             QueryBuilder.SetWhereStatement(QueryBuilder.WhereStatement == null ? newWhereStatement : QB.And(QueryBuilder.WhereStatement, newWhereStatement));
             return this;
         }
