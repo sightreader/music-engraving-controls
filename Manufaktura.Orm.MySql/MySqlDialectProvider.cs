@@ -194,10 +194,10 @@ namespace Manufaktura.Orm.Builder
         }
 
 
-        public override DbCommand GetUpdateSchemaCommand(object entity)
+        public override DbCommand GetUpdateSchemaCommand<TEntity>()
         {
-            MappingAttribute typeAttribute = entity.GetType().GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
-            if (typeAttribute == null) throw new Exception(string.Format("Nazwa tabeli nie została określona dla typu {0}.", entity.GetType().Name));
+            MappingAttribute typeAttribute = typeof(TEntity).GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
+            if (typeAttribute == null) typeAttribute = new MappingAttribute(typeof(TEntity).Name);
 
             MySqlCommand command = Connection.CreateCommand() as MySqlCommand;
             command.CommandText = string.Format("SELECT * FROM information_schema.tables WHERE table_schema = '{0}' AND table_name = '{1}' LIMIT 1;", Connection.Database, typeAttribute.Name);
@@ -206,7 +206,7 @@ namespace Manufaktura.Orm.Builder
             adapter.Fill(table);
             bool tableExists = table.Rows.Count > 0;
 
-            var properties = entity.GetType().GetOrderedProperties().ToList();
+            var properties = typeof(TEntity).GetOrderedProperties().ToList();
             var sb = new StringBuilder();
             if (tableExists)
             {
@@ -277,7 +277,10 @@ namespace Manufaktura.Orm.Builder
             int length = attribute.Length == 0 ? 255 : attribute.Length;
             if (type == typeof(string)) return string.Format("VARCHAR({0})", length);
             if (type == typeof(int)) return "INT";
+            if (type == typeof(bool)) return "SMALLINT(6)";
+            if (type == typeof(long)) return "BIGINT(20)";
             if (type == typeof(Guid)) return "CHAR(36)";
+            if (type == typeof(DateTime)) return "DATETIME";
             return string.Format("VARCHAR({0})", length);
         }
     }

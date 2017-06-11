@@ -24,7 +24,7 @@ namespace Manufaktura.Orm.Builder
         public abstract DbCommand GetInsertCommand(object entity);
         public abstract DbCommand GetUpdateCommand(object entity);
         public abstract DbCommand GetDeleteCommand(object id);
-        public abstract DbCommand GetUpdateSchemaCommand(object entity);
+        public abstract DbCommand GetUpdateSchemaCommand<TEntity>();
 
 
         public void Dispose()

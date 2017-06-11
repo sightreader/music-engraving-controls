@@ -108,10 +108,10 @@ namespace Manufaktura.Orm
             return entity;
         }
 
-        public void UpdateSchema(object entity)
+        public void UpdateSchema<TEntity>()
         {
             EnsureConnectionOpen();
-            var command = Provider.GetUpdateSchemaCommand(entity);
+            var command = Provider.GetUpdateSchemaCommand<TEntity>();
             if (command != null) command.ExecuteNonQuery();
         }
 
@@ -151,6 +151,10 @@ namespace Manufaktura.Orm
                 {
                     if (property.PropertyType == typeof(bool) && cellValue is short)
                         cellValue = (short)cellValue != 0;
+                    if (property.PropertyType == typeof(bool) && cellValue is int)
+                        cellValue = (int)cellValue != 0;
+                    if (property.PropertyType == typeof(bool) && cellValue is long)
+                        cellValue = (long)cellValue != 0;
                     if (cellValue == DBNull.Value) cellValue = null;
 
                     property.SetValue(entity, cellValue, null);
