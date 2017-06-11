@@ -110,8 +110,13 @@ namespace Manufaktura.Orm
 
         public void UpdateSchema<TEntity>()
         {
+            UpdateSchema(typeof(TEntity));
+        }
+
+        public void UpdateSchema(Type type)
+        {
             EnsureConnectionOpen();
-            var command = Provider.GetUpdateSchemaCommand<TEntity>();
+            var command = Provider.GetUpdateSchemaCommand(type);
             if (command != null) command.ExecuteNonQuery();
         }
 

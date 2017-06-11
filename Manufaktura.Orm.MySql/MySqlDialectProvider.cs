@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Data.Common;
-using System.Text;
-using System.Reflection;
-using MySql.Data.MySqlClient;
-using System.Data;
+﻿using Manufaktura.Orm.Portable;
 using Manufaktura.Orm.Portable.Builder;
-using Manufaktura.Orm.Portable;
 using Manufaktura.Orm.Portable.SpecialColumns;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 
 namespace Manufaktura.Orm.Builder
 {
@@ -17,13 +17,11 @@ namespace Manufaktura.Orm.Builder
         public MySqlDialectProvider(MySqlConnection connection)
             : base(connection)
         {
-
         }
 
         public MySqlDialectProvider(string connectionString)
             : base(new MySqlConnection(connectionString))
         {
-
         }
 
         public override DbDataAdapter CreateDataAdapter()
@@ -142,7 +140,6 @@ namespace Manufaktura.Orm.Builder
             }
             sb.Append(")");
 
-
             command.CommandText = sb.ToString();
             return command;
         }
@@ -183,7 +180,7 @@ namespace Manufaktura.Orm.Builder
             sb.Append(string.Format(" WHERE {0}=@P{1};", idAttribute.Name, parameter));
             command.Parameters.Add(string.Format("@P{0}", parameter), idProperty.GetValue(entity));
             parameter++;
-            
+
             command.CommandText = sb.ToString();
             return command;
         }
@@ -193,11 +190,10 @@ namespace Manufaktura.Orm.Builder
             throw new NotImplementedException();
         }
 
-
-        public override DbCommand GetUpdateSchemaCommand<TEntity>()
+        public override DbCommand GetUpdateSchemaCommand(Type entityType)
         {
-            MappingAttribute typeAttribute = typeof(TEntity).GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
-            if (typeAttribute == null) typeAttribute = new MappingAttribute(typeof(TEntity).Name);
+            MappingAttribute typeAttribute = entityType.GetCustomAttributes(typeof(MappingAttribute), true).FirstOrDefault() as MappingAttribute;
+            if (typeAttribute == null) typeAttribute = new MappingAttribute(entityType.Name);
 
             MySqlCommand command = Connection.CreateCommand() as MySqlCommand;
             command.CommandText = string.Format("SELECT * FROM information_schema.tables WHERE table_schema = '{0}' AND table_name = '{1}' LIMIT 1;", Connection.Database, typeAttribute.Name);
@@ -206,7 +202,7 @@ namespace Manufaktura.Orm.Builder
             adapter.Fill(table);
             bool tableExists = table.Rows.Count > 0;
 
-            var properties = typeof(TEntity).GetOrderedProperties().ToList();
+            var properties = entityType.GetOrderedProperties().ToList();
             var sb = new StringBuilder();
             if (tableExists)
             {
@@ -261,7 +257,7 @@ namespace Manufaktura.Orm.Builder
                 foreach (var attribute in foreignKeyAttributes)
                 {
                     if (!first) sb.Append(",");
-                    sb.AppendFormat(" KEY FK_{0}_idx ({0}), CONSTRAINT FK_{0} FOREIGN KEY ({0}) REFERENCES {1} ({2}) ON DELETE NO ACTION ON UPDATE NO ACTION", 
+                    sb.AppendFormat(" KEY FK_{0}_idx ({0}), CONSTRAINT FK_{0} FOREIGN KEY ({0}) REFERENCES {1} ({2}) ON DELETE NO ACTION ON UPDATE NO ACTION",
                         attribute.Name, attribute.ForeignTable, attribute.ForeignColumn);
                 }
                 sb.Append(") ENGINE=InnoDB DEFAULT CHARSET=utf8;");
