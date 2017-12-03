@@ -35,6 +35,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
                  { "32nd",  RhythmicDuration.D32nd },
                  { "64th",  RhythmicDuration.D64th },
                  { "128th",  RhythmicDuration.D128th }}).Then(m => builder.BaseDuration = m);
+            var typeElement = element.GetElement("type");
+            if (typeElement != null)
+            {
+                typeElement.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);   //"size" attribute apparently can be added to element "type" too
+            }
 
             element.IfElement("voice").HasValue<int>().Then(m => builder.Voice = m);
             var graceElement = element.GetElement("grace");

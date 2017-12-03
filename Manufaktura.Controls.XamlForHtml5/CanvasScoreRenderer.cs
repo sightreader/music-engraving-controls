@@ -8,6 +8,9 @@ using Windows.UI;
 using Windows.Foundation;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
+using Manufaktura.Controls.Audio;
+using Manufaktura.Controls.Primitives;
+using System;
 
 namespace Manufaktura.Controls.XamlForHtml5
 {
@@ -33,7 +36,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			if (!Settings.IsPanoramaMode) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
 
 			if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
 			PathGeometry pathGeom = new PathGeometry();
@@ -61,7 +64,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			if (!Settings.IsPanoramaMode)
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
 			{
 				p1 = p1.Translate(CurrentScore.DefaultPageSettings);
 				p2 = p2.Translate(CurrentScore.DefaultPageSettings);
@@ -91,7 +94,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
 		{
-			if (!Settings.IsPanoramaMode)
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
 			{
 				startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
 				endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
@@ -115,7 +118,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
 		{
-			if (!Settings.IsPanoramaMode) location = location.Translate(CurrentScore.DefaultPageSettings);
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
 			TextBlock textBlock = new TextBlock();
 			textBlock.FontSize = Fonts.GetSize(fontStyle);
@@ -132,7 +135,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
 		{
-			if (!Settings.IsPanoramaMode) location = location.Translate(CurrentScore.DefaultPageSettings);
+			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
 			TextBlock textBlock = new TextBlock();
 			textBlock.FontFamily = Fonts.Get(fontStyle);
@@ -164,5 +167,10 @@ namespace Manufaktura.Controls.XamlForHtml5
 		{
 			return new Point(point.X, point.Y);
 		}
-	}
+
+        protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

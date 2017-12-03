@@ -13,10 +13,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
+      "projectUniqueName": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
       "projectName": "Manufaktura.Music",
-      "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
-      "projectJsonPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\project.json",
+      "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
+      "projectJsonPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\project.json",
       "projectStyle": "ProjectJson"
     },
     "frameworks": {
