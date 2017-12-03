@@ -1,8 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{060E2A1F-85A7-4037-915B-455F242BDD87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{2B6D2ECA-1D18-4DEC-B1DA-7541C0B87491}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls", "Manufaktura.Controls\Manufaktura.Controls.csproj", "{52331173-DFD5-47EA-BA7A-72BBBE85D2FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WinForms", "Manufaktura.Controls.WinForms\Manufaktura.Controls.WinForms.csproj", "{17FBBC7D-BD94-4510-87C6-656090D0FCEB}"
@@ -61,8 +65,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Xamari
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Xamarin.Test", "Manufaktura.Controls.Xamarin.Test\Manufaktura.Controls.Xamarin.Test\Manufaktura.Controls.Xamarin.Test.csproj", "{32FF0A2A-444B-4139-8714-465F38D0BBDF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{060E2A1F-85A7-4037-915B-455F242BDD87}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Xamarin.Droid", "Manufaktura.Controls.Xamarin.Droid\Manufaktura.Controls.Xamarin.Droid.csproj", "{234E9EEC-8C1D-4A51-9683-DFCBA24A70BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.Xamarin.IoS", "Manufaktura.Controls.Xamarin.IoS\Manufaktura.Controls.Xamarin.IoS.csproj", "{7ADBBA11-89D1-4485-8B45-4E034EE8DF03}"
@@ -74,8 +76,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.UniversalApps.Media", "Manufaktura.Controls.UniversalApps.Media\Manufaktura.Controls.UniversalApps.Media.csproj", "{3C7F6E1A-48EA-4D31-A0A2-2BB159296890}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.UWP.Test", "Manufaktura.Controls.UWP.Test\Manufaktura.Controls.UWP.Test.csproj", "{23760F14-BF97-4717-AF54-67D28F925D43}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{2B6D2ECA-1D18-4DEC-B1DA-7541C0B87491}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.VisualTests", "Manufaktura.VisualTests\Manufaktura.VisualTests.csproj", "{E9CF190F-9C4A-44FD-AB18-54910A32EC87}"
 EndProject
