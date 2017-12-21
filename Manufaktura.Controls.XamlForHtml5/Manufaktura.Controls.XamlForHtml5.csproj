@@ -57,7 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanvasScoreRenderer.cs" />
+    <Compile Include="DependencyPropertyEx.cs" />
     <Compile Include="Fonts.cs" />
+    <Compile Include="NoteViewer.xaml.cs">
+      <DependentUpon>NoteViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +73,12 @@
       <Project>{995e7584-262d-462c-a83a-208924c2548b}</Project>
       <Name>Manufaktura.Music</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="NoteViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\InternalStuff\Targets\CSharpXamlForHtml5.Build.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
