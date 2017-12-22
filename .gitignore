@@ -159,3 +159,5 @@ $RECYCLE.BIN/
 /Help
 /packages
 /.vs/ManufakturaLibraries/v15/Browse.VC.opendb
+/.vs/ManufakturaLibraries/v15/Server/sqlite3/db.lock
+/.vs/ManufakturaLibraries/v15/sqlite3/db.lock
