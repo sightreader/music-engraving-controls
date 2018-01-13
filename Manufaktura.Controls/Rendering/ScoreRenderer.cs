@@ -67,6 +67,10 @@ namespace Manufaktura.Controls.Rendering
 			}
 		}
 
+        /// <summary>
+        /// Additional actions before the Score is rendered
+        /// </summary>
+        /// <param name="score">Score to render</param>
 		protected virtual void BeforeRenderScore(Score score) { }
 
 

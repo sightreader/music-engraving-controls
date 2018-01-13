@@ -98,7 +98,11 @@ namespace Manufaktura.Controls.Model
 			return CircleOfFifths.GetAlterOfStepFromNumberOfFifths(step, Fifths);
 		}
 
-		public override string ToString()
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
+        public override string ToString()
 		{
 			return string.Format("{0} with {1} generator intervals.", base.ToString(), Fifths);
 		}

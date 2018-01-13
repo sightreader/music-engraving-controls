@@ -233,9 +233,24 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public string Step { get { return pitch.StepName; } }
 
+        /// <summary>
+        /// If True, NoteStemRule is applied when this Note is inserted into a Staff.
+        /// </summary>
         public bool SubjectToNoteStemRule { get; set; }
+
+        /// <summary>
+        /// Note tie type
+        /// </summary>
         public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
+
+        /// <summary>
+        /// Note tremolo level
+        /// </summary>
         public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
+
+        /// <summary>
+        /// Note trill mark
+        /// </summary>
         public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
 
         /// <summary>
@@ -294,12 +309,21 @@ namespace Manufaktura.Controls.Model
             Pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
         }
 
+        /// <summary>
+        /// Gets line number for this Note for specific Clef. Fractional numbers represent staff spaces, i.e. 1.5 == first space, etc.
+        /// </summary>
+        /// <param name="clef"></param>
+        /// <returns></returns>
         public double GetLineInSpecificClef(Clef clef)
         {
             var stepDistance = (double)Pitch.StepDistance(this, clef);
             return clef.Line + (stepDistance / 2);
         }
 
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
         public override string ToString()
         {
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());

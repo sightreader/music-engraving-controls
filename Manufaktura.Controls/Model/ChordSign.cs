@@ -40,6 +40,9 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
+        /// <summary>
+        /// Chord symbol text
+        /// </summary>
 		public string Text { get; set; }
 
 		public Primitives.Point TextBlockLocation

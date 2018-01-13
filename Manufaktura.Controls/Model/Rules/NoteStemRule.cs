@@ -4,8 +4,8 @@ using System.Linq;
 namespace Manufaktura.Controls.Model.Rules
 {
     /// <summary>
-    /// Rule that applies proper stem direction for notes on the staff.
-    /// Every note on third line and above has downward stem direction.
+    /// Rule that applies proper stem direction for notes on the staff. Every note on the third line and above has downward stem direction.
+    /// This rule is applied when rhythmic duration of inserted note is not RhythmicDuration.Whole and SubjectToNoteStemRule on Note is set to true.
     /// </summary>
     public class NoteStemRule : StaffRule<Note>
     {

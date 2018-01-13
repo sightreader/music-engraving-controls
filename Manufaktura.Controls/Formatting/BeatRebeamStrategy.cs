@@ -6,11 +6,20 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Formatting
 {
+    /// <summary>
+    /// Beaming strategy that performs rebeaming according to time signature
+    /// </summary>
 	public class BeatRebeamStrategy : IRebeamStrategy
 	{
 		public RebeamMode Mode => RebeamMode.ToBeats;
 
-		public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
+        /// <summary>
+        /// Performs rebeaming with respect to time signature
+        /// </summary>
+        /// <param name="notes">Notes to rebeam</param>
+        /// <param name="hookDirectionAlgorithm">Algorithm for determining hook direction in beams</param>
+        /// <returns>Rebeamed notes</returns>
+        public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
 		{
 			var staff = notes.FirstOrDefault(n => n.Staff != null)?.Staff;
 			if (staff == null) throw new Exception($"Staff property is null. Notes must be added to staff before using {nameof(BeatRebeamStrategy)}.");

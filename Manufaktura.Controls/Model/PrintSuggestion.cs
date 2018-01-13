@@ -39,6 +39,10 @@ namespace Manufaktura.Controls.Model
             };
         }
 
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
         public override string ToString()
         {
             var suggestions = new List<string>();

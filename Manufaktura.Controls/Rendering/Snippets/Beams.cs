@@ -9,8 +9,22 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Snippets
 {
+    /// <summary>
+    /// Helper class for drawing beams
+    /// </summary>
 	public static class Beams
 	{
+        /// <summary>
+        /// Draws note flag
+        /// </summary>
+        /// <param name="beamingService"></param>
+        /// <param name="measurementService"></param>
+        /// <param name="scoreService"></param>
+        /// <param name="renderer"></param>
+        /// <param name="element"></param>
+        /// <param name="beamSpaceDirection"></param>
+        /// <param name="beamNumber"></param>
+        /// <param name="beamOffset"></param>
 		public static void Flag(IBeamingService beamingService, IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, Note element, int beamSpaceDirection, int beamNumber, int beamOffset)
 		{
 			//Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
@@ -41,6 +55,14 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			}
 		}
 
+        /// <summary>
+        /// Draws tuplet mark
+        /// </summary>
+        /// <param name="measurementService"></param>
+        /// <param name="scoreService"></param>
+        /// <param name="renderer"></param>
+        /// <param name="element"></param>
+        /// <param name="beamLoop"></param>
 		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, NoteOrRest element, int beamLoop)
 		{
 			if (measurementService.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");

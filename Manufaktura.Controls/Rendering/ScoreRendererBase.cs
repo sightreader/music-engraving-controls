@@ -181,6 +181,10 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner">Owner element</param>
         public abstract void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner);
 
+        /// <summary>
+        /// Draws playback cursor
+        /// </summary>
+        /// <param name="position"></param>
         public void DrawPlaybackCursor(PlaybackCursorPosition position)
         {
             if (position.Timestamp + position.Duration < DateTime.Now) return;

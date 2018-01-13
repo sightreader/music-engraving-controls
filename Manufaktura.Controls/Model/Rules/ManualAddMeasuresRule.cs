@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace Manufaktura.Controls.Model.Rules
 {
+    /// <summary>
+    /// This rule only adds measure to the staff if it doesn't contain any measures. Programmer has to add measures manually.
+    /// This rule is applied if MeasureAddingRule property on Staff is set to Staff.MeasureAddingRuleEnum.AddMeasuresManually.
+    /// </summary>
     public class ManualAddMeasuresRule : StaffRule<MusicalSymbol>
     {
         public override void Apply(Staff staff, MusicalSymbol newElement)
@@ -13,7 +14,7 @@ namespace Manufaktura.Controls.Model.Rules
             if (currentMeasure != null)
             {
                 currentMeasure.Elements.Add(newElement);
-				newElement.Measure = currentMeasure;
+                newElement.Measure = currentMeasure;
             }
         }
 

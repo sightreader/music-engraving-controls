@@ -212,7 +212,11 @@ namespace Manufaktura.Controls.Model
 			else return new Clef(ClefType.GClef, 2);
 		}
 
-		public override string ToString()
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
+        public override string ToString()
 		{
 			return string.Format("{0} {1} on line {2}", base.ToString(), TypeOfClef.ToString(), Line);
 		}

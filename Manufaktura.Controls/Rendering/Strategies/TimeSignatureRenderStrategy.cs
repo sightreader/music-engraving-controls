@@ -14,10 +14,21 @@ namespace Manufaktura.Controls.Rendering
     public class TimeSignatureRenderStrategy : MusicalSymbolRenderStrategy<TimeSignature>
     {
         private readonly IScoreService scoreService;
+
+        /// <summary>
+        /// Initializes a new instance of TimeSignatureRenderStrategy
+        /// </summary>
+        /// <param name="scoreService"></param>
         public TimeSignatureRenderStrategy(IScoreService scoreService)
         {
             this.scoreService = scoreService;
         }
+
+        /// <summary>
+        /// Renders time signature symbol with specific score renderer
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="renderer"></param>
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
             double timeSignaturePositionY = (scoreService.CurrentLinePositions[0] - 11);

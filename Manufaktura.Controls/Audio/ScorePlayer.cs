@@ -136,7 +136,6 @@ namespace Manufaktura.Controls.Audio
         /// Play specific element from the score.
         /// </summary>
         /// <param name="element">Element</param>
-        /// <param name="staff">Staff</param>
         public abstract void PlayElement(MusicalSymbol element);
 
         /// <summary>
@@ -144,6 +143,10 @@ namespace Manufaktura.Controls.Audio
         /// </summary>
         public abstract void Stop();
 
+        /// <summary>
+        /// Enumerates playback timeline
+        /// </summary>
+        /// <returns></returns>
         protected IEnumerable<TimelineElement<IHasDuration>> EnumerateTimeline()
         {
             var elapsedTime = TimeSpan.Zero;

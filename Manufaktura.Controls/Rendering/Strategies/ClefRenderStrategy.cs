@@ -15,6 +15,11 @@ namespace Manufaktura.Controls.Rendering
     public class ClefRenderStrategy : MusicalSymbolRenderStrategy<Clef>
     {
         private readonly IScoreService scoreService;
+
+        /// <summary>
+        /// /// Initializes a new instance of ClefRenderStrategy
+        /// </summary>
+        /// <param name="scoreService"></param>
         public ClefRenderStrategy(IScoreService scoreService)
         {
             this.scoreService = scoreService;

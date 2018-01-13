@@ -16,15 +16,27 @@
 			repeatSign = RepeatSignType.None;
 		}
 
-		public Barline(BarlineStyle style) : this()
+        /// <summary>
+        /// Initializes a new instance of Barline with specific BarlineStyle
+        /// </summary>
+        public Barline(BarlineStyle style) : this()
 		{
 			Style = style;
 		}
 
+        /// <summary>
+        /// Barline horizontal location
+        /// </summary>
 		public HorizontalPlacement Location { get; set; }
 
+        /// <summary>
+        /// Barline repeat sign
+        /// </summary>
 		public RepeatSignType RepeatSign { get { return repeatSign; } set { repeatSign = value; } }
 
+        /// <summary>
+        /// Barline style
+        /// </summary>
 		public BarlineStyle Style { get; set; } = BarlineStyle.Regular;
 	}
 }

@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Audio
 {
+    /// <summary>
+    /// TaskScorePlayer that automatically selects MIDI channels
+    /// </summary>
     public abstract class ChannelSelectingTaskScorePlayer : TaskScorePlayer
     {
         protected Dictionary<int, List<int>> pitchesPlaying;

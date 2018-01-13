@@ -12,6 +12,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering
 {
+    /// <summary>
+    /// Strategy for rendering Notes
+    /// </summary>
 	public class NoteRenderStrategy : MusicalSymbolRenderStrategy<Note>
 	{
 		private readonly IAlterationService alterationService;
@@ -20,6 +23,13 @@ namespace Manufaktura.Controls.Rendering
 		private readonly IScoreService scoreService;
         private SlurRenderStrategy[] slurRenderStrategies;
 
+        /// <summary>
+        /// Initializes a new instance of NoteRenderStrategy
+        /// </summary>
+        /// <param name="measurementService"></param>
+        /// <param name="alterationService"></param>
+        /// <param name="scoreService"></param>
+        /// <param name="beamingService"></param>
 		public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService, IBeamingService beamingService)
 		{
 			this.measurementService = measurementService;
@@ -28,6 +38,11 @@ namespace Manufaktura.Controls.Rendering
 			this.beamingService = beamingService;
 		}
 
+        /// <summary>
+        /// Renders a note with a specific score renderer
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="renderer"></param>
 		public override void Render(Note element, ScoreRendererBase renderer)
 		{
             if (slurRenderStrategies == null) slurRenderStrategies = renderer.Resolver.ResolveAll<SlurRenderStrategy>().ToArray();

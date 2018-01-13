@@ -15,6 +15,11 @@ namespace Manufaktura.Controls.Rendering
     public class DirectionRenderStrategy : MusicalSymbolRenderStrategy<Direction>
     {
         private readonly IScoreService scoreService;
+
+        /// <summary>
+        /// /// Initializes a new instance of DirectionRenderStrategy
+        /// </summary>
+        /// <param name="scoreService"></param>
         public DirectionRenderStrategy(IScoreService scoreService)
         {
             this.scoreService = scoreService;

@@ -24,6 +24,11 @@ namespace Manufaktura.Controls.Primitives
             this.Height = height;
         }
 
+        /// <summary>
+        /// Translates Rectangle according to page margins
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         public Rectangle Translate(ScorePage page)
         {
             return new Primitives.Rectangle(this.X + (page.MarginLeft ?? 0),

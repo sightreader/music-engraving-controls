@@ -19,6 +19,11 @@ namespace Manufaktura.Controls.Parser
     /// </summary>
     public class MusicXmlParser : ScoreParser<XDocument>
     {
+        /// <summary>
+        /// Parses MusicXMl XDocument into Score
+        /// </summary>
+        /// <param name="xmlDocument"></param>
+        /// <returns></returns>
         public override Score Parse(XDocument xmlDocument)  //TODO: Exception handling!
         {
             Score score = new Score();
