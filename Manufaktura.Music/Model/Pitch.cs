@@ -343,6 +343,12 @@ namespace Manufaktura.Music.Model
             return pitch;
         }
 
+        /// <summary>
+        /// Creates Pitch from Step
+        /// </summary>
+        /// <param name="step"></param>
+        /// <param name="octaveNumber"></param>
+        /// <returns></returns>
         public static Pitch FromStep(Step step, int octaveNumber = 4)
         {
             return new Pitch { StepName = step.StepName, Alter = step.Alter, MidiPitch = pitches[step.StepName] + step.Alter + (octaveNumber - 4) * 12, Octave = octaveNumber };
@@ -546,6 +552,10 @@ namespace Manufaktura.Music.Model
             return new Pitch(StepName, Alter + 1, Octave);
         }
 
+        /// <summary>
+        /// Converts this Pitch to Step (forgets information about octave number).
+        /// </summary>
+        /// <returns></returns>
         public Step ToStep()
         {
             return Step.FromPitch(this);
@@ -567,6 +577,12 @@ namespace Manufaktura.Music.Model
             return Pitch.FromMidiPitch(MidiPitch + interval.Halftones, mode);
         }
 
+        /// <summary>
+        /// Tunes this Pitch to TunedPitch using a specific standard pitch and a specific tuning system.
+        /// </summary>
+        /// <param name="standardPitch">Standard pitch (i.e. A4 = 440 Hz, etc.)</param>
+        /// <param name="tuningSystem"></param>
+        /// <returns>Pitch with assigned frequency</returns>
         public TunedPitch Tune(TunedPitch standardPitch, TuningSystem tuningSystem)
         {
             var logarythmicProportion = tuningSystem.AllIntervalRatios[new BoundInterval(standardPitch, this)];

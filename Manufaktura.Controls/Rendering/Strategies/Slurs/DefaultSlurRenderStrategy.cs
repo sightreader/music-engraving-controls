@@ -9,19 +9,39 @@ using System.Linq;
 namespace Manufaktura.Controls.Rendering.Strategies.Slurs
 {
     /// <summary>
-    /// Default strategy for rendering slurs.
+    /// Default strategy for rendering slurs. Renders slurs as Bezier curves, whose parameters are automatically computed to avoid collisions with note stems.
     /// </summary>
     public class DefaultSlurRenderStrategy : SlurRenderStrategy
     {
+        /// <summary>
+        /// Initializes a new instance of SlurRenderStrategy with specific services.
+        /// </summary>
+        /// <param name="measurementService">Measurement service</param>
+        /// <param name="scoreService">Score service</param>
         public DefaultSlurRenderStrategy(IMeasurementService measurementService, IScoreService scoreService) : base(measurementService, scoreService)
         {
         }
 
+        /// <summary>
+        /// Returns true if this strategy type is relevant for drawing a specific slur
+        /// </summary>
+        /// <param name="element">Element with a slur</param>
+        /// <param name="slur">Slur</param>
+        /// <returns>True if this strategy is relevant for rendering a specific slur</returns>
         public override bool IsRelevant(Note element, Slur slur)
         {
             return !slur.IsDefinedAsBezierCurve;
         }
 
+        /// <summary>
+        /// Draws of performs additional logic at slur end
+        /// </summary>
+        /// <param name="renderer">Score renderer</param>
+        /// <param name="slur">Slur</param>
+        /// <param name="element">Element with a slur</param>
+        /// <param name="notePositionY">Y position of element with a slur</param>
+        /// <param name="slurStartInfo">Information about slur start point</param>
+        /// <param name="slurPlacement">Information about slur placement</param>
         protected override void ProcessSlurEnd(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
             Point endPoint;
@@ -48,6 +68,15 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             //DrawSlurFrame(renderer, startPoint, controlPoints.Item1, controlPoints.Item2, endPoint, element);
         }
 
+        /// <summary>
+        /// Draws or performs additional logic at slur start
+        /// </summary>
+        /// <param name="renderer">Score renderer</param>
+        /// <param name="slur">Slur</param>
+        /// <param name="element">Element with a slur</param>
+        /// <param name="notePositionY"></param>
+        /// <param name="slurStartInfo">Information about slur start point</param>
+        /// <param name="slurPlacement">Information about slur placement</param>
         protected override void ProcessSlurStart(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
             slurStartInfo.StartPlacement = slurPlacement;

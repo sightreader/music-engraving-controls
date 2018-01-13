@@ -1,11 +1,12 @@
-﻿using Manufaktura.Music.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Represents a Scale with a specific Mode which is built from starting pitch and contains a list of Steps.
+    /// </summary>
     public abstract class Scale
     {
         public Mode Mode { get; protected set; }
@@ -33,12 +34,24 @@ namespace Manufaktura.Music.Model
             return FullScale.IndexOf(step) + 1;
         }
 
+        /// <summary>
+        /// Returns a step of this Scale with specific step number
+        /// </summary>
+        /// <param name="step"></param>
+        /// <returns></returns>
         public Step GetStepByNumber(int step)
         {
             while (step > FullScale.Count) step -= FullScale.Count;
             return FullScale[step - 1];
         }
 
+        /// <summary>
+        /// Returns true if specific step of this scale translated by a specific interval is still a member of this scale.
+        /// Example: Second step of C Major scale (D) translated by a major third (F#) is not a member of C Major scale.
+        /// </summary>
+        /// <param name="pitch"></param>
+        /// <param name="interval"></param>
+        /// <returns></returns>
         public bool IsIntervalDiatonic(Pitch pitch, Interval interval)
         {
             if (!FullScale.Contains(pitch.ToStep()))
@@ -47,18 +60,30 @@ namespace Manufaktura.Music.Model
             return FullScale.Contains(newStep);
         }
 
+        /// <summary>
+        /// Translates pitch by a specific interval
+        /// </summary>
+        /// <param name="pitch"></param>
+        /// <param name="interval"></param>
+        /// <returns></returns>
         public Pitch TranslatePitch(Pitch pitch, Interval interval)
         {
             return Pitch.FromMidiPitch(pitch.MidiPitch + interval.Halftones, MidiPitchTranslationMode);
         }
 
+        /// <summary>
+        /// Translates pitch by a specific diatonic interval.
+        /// </summary>
+        /// <param name="pitch"></param>
+        /// <param name="interval"></param>
+        /// <returns></returns>
         public Pitch TranslatePitch(Pitch pitch, DiatonicInterval interval)
         {
             var stepNumber = StepToStepNumber(pitch.ToStep());
             var halfTones = 0;
             if (interval.Steps == 0) throw new ArithmeticException("There is no interval with 0 steps.");
-            if (interval.Steps > 0) 
-            { 
+            if (interval.Steps > 0)
+            {
                 for (var i = 0; i < interval.Steps - 1; i++)
                 {
                     halfTones += Mode.GetIntervalAfterStep(stepNumber + i);

@@ -1,11 +1,11 @@
 ﻿using Manufaktura.Music.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Music.MelodicTrails
 {
+    /// <summary>
+    /// Generates random melodies in head motive style (like head motive in fugues, etc.)
+    /// </summary>
     public class HeadMotiveTrail : RandomIntervalsMelodicTrail
     {
         private Dictionary<DiatonicInterval, double> allowedIntervals = new Dictionary<DiatonicInterval, double>

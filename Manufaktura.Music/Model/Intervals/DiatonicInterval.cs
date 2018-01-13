@@ -7,20 +7,44 @@ namespace Manufaktura.Music.Model
     /// </summary>
     public class DiatonicInterval
     {
+        /// <summary>
+        /// Returns a fifth
+        /// </summary>
         public static DiatonicInterval Fifth { get { return new DiatonicInterval(5); } }
 
+        /// <summary>
+        /// Returns a fourth
+        /// </summary>
         public static DiatonicInterval Fourth { get { return new DiatonicInterval(4); } }
 
+        /// <summary>
+        /// Returns an octave
+        /// </summary>
         public static DiatonicInterval Octave { get { return new DiatonicInterval(8); } }
 
+        /// <summary>
+        /// Returns a second
+        /// </summary>
         public static DiatonicInterval Second { get { return new DiatonicInterval(2); } }
 
+        /// <summary>
+        /// Returns a seventh
+        /// </summary>
         public static DiatonicInterval Seventh { get { return new DiatonicInterval(7); } }
 
+        /// <summary>
+        /// Returns a sixth
+        /// </summary>
         public static DiatonicInterval Sixth { get { return new DiatonicInterval(6); } }
 
+        /// <summary>
+        /// Returns a third
+        /// </summary>
         public static DiatonicInterval Third { get { return new DiatonicInterval(3); } }
 
+        /// <summary>
+        /// Returns a unison
+        /// </summary>
         public static DiatonicInterval Unison { get { return new DiatonicInterval(1); } }
 
         /// <summary>
@@ -28,6 +52,10 @@ namespace Manufaktura.Music.Model
         /// </summary>
         public int Steps { get; protected set; }
 
+        /// <summary>
+        /// Initializes a new DiatonicInterval instance with specific number of steps
+        /// </summary>
+        /// <param name="steps"></param>
         public DiatonicInterval(int steps)
         {
             Steps = steps;

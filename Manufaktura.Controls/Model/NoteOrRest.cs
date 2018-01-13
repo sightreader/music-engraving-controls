@@ -24,19 +24,16 @@ namespace Manufaktura.Controls.Model
 		/// <summary>
 		/// Duration without dots.
 		/// </summary>
-		public RhythmicDuration BaseDuration
-		{
-			get
-			{
-				return Duration.WithoutDots;
-			}
-		}
+		public RhythmicDuration BaseDuration => Duration.WithoutDots;
 
         /// <summary>
         /// Default X position of note or rest
         /// </summary>
 		public double? DefaultXPosition { get; set; }
 
+        /// <summary>
+        /// RhythmicDuraton of this NoteOrRest
+        /// </summary>
 		public virtual RhythmicDuration Duration { get { return duration; } set { duration = value; OnPropertyChanged(() => Duration); } }
 
 		/// <summary>
@@ -54,6 +51,9 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
 
+        /// <summary>
+        /// Returns number of dots associated with this NoreOrRest.
+        /// </summary>
 		public int NumberOfDots
 		{
 			get
@@ -66,11 +66,27 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
+        /// <summary>
+        /// Position of text block part of this NoteOrRest. Rests are rendered wholly as text blocks. 
+        /// Notes are rendered as text blocks (noteheads and flags) and lines (stems and beams).
+        /// </summary>
 		public Point TextBlockLocation { get { return location; } set { location = value; } }
 
+        /// <summary>
+        /// Tuplet information
+        /// </summary>
 		public TupletType Tuplet { get { return tuplet; } set { tuplet = value; } }
 
+        /// <summary>
+        /// Only applicable if this NoteOrRest is part of a tuplet. If null, the number above tuplet is calculated as sum of (R_min / R_n)
+        /// where R_min in the smallest rhythmic duration denominator and R_n is rhythmic duration denominator of n-th element. 
+        /// If not null, TupletWeightOverride will be used instead of (R_min / R_n).
+        /// </summary>
 		public double? TupletWeightOverride { get; set; }
+
+        /// <summary>
+        /// Tuplet sign placement (above or below).
+        /// </summary>
 		public VerticalPlacement? TupletPlacement { get; set; }
 
 		/// <summary>
@@ -79,7 +95,7 @@ namespace Manufaktura.Controls.Model
 		public int Voice { get; set; }
 
 		/// <summary>
-		/// Creates a Note or a Rest from RhythmicUnit.
+		/// Creates a Note or Rest from RhythmicUnit.
 		/// </summary>
 		/// <param name="unit"></param>
 		/// <returns></returns>

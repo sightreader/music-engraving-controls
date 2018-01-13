@@ -56,6 +56,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         /// Font mappings
         /// </summary>
         public Dictionary<MusicFontStyles, HtmlFontInfo> Fonts { get; private set; }
+
         [Obsolete("Use ScoreClass property instead to set class of the score container and set height in css class definition. You can also use AddFullWidthStyle property to automatically generate css style.")]
         public double Height { get; set; }
 

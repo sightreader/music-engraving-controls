@@ -80,6 +80,9 @@ namespace Manufaktura.Controls.Model.Collections
 			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, items.ToList()));
 		}
 
+        /// <summary>
+        /// Clears collection and raises CollectionChanged event.
+        /// </summary>
 		public void Clear()
 		{
 			foreach (var i in innerList) UnbindEvents(i);

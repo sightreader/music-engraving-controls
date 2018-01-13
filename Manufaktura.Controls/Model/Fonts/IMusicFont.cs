@@ -50,6 +50,10 @@
         /// Eighth note character
         /// </summary>
         string EighthNote { get; }
+
+        /// <summary>
+        /// Eighth rest character
+        /// </summary>
         string EighthRest { get; }
         string FClef { get; }
         string FermataDown { get; }

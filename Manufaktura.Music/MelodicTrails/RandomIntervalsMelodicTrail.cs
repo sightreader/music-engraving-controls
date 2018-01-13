@@ -58,6 +58,12 @@ namespace Manufaktura.Music.MelodicTrails
             MaxNotes = maxNotes;
         }
 
+        /// <summary>
+        /// Builds random melody on specific scale
+        /// </summary>
+        /// <param name="scale">Scale</param>
+        /// <param name="startingPitch">Starting pitch</param>
+        /// <returns>Random melody</returns>
         public IEnumerable<Pitch> BuildMelody(Scale scale, Pitch startingPitch)
         {
             if (MinNotes < 1) throw new ArgumentException("MinNotes must be greater than 0.", "MinNotes");
