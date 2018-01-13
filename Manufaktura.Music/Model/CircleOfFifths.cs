@@ -11,6 +11,12 @@ namespace Manufaktura.Music.Model
     /// </summary>
     public static class CircleOfFifths
     {
+        /// <summary>
+        /// Calculates number of fiths for specific key described by midiPitch and flags.
+        /// </summary>
+        /// <param name="midiPitch">Midi pitch</param>
+        /// <param name="flags">Key flags</param>
+        /// <returns></returns>
         public static int CalculateFifths(int midiPitch, MajorAndMinorScaleFlags flags)
         {
             var fifths = 0;
@@ -46,11 +52,23 @@ namespace Manufaktura.Music.Model
             return fifths % 12;
         }
 
+        /// <summary>
+        /// Calculates number of fifths for specific key described by step and flags
+        /// </summary>
+        /// <param name="step"></param>
+        /// <param name="flags"></param>
+        /// <returns></returns>
         public static int CalculateFifths(Step step, MajorAndMinorScaleFlags flags)
         {
             return CalculateFifths(step.ToPitch(4).MidiPitch, flags);
         }
 
+        /// <summary>
+        /// Gets alteration of specific step in key described by positive or negative nuber of fifths
+        /// </summary>
+        /// <param name="step"></param>
+        /// <param name="fifths"></param>
+        /// <returns></returns>
         public static int GetAlterOfStepFromNumberOfFifths(Step step, int fifths)
         {
             int[] alterTable = new int[7];
