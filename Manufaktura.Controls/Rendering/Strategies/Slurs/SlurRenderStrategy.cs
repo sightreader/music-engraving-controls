@@ -4,6 +4,9 @@ using Manufaktura.Controls.Services;
 
 namespace Manufaktura.Controls.Rendering.Strategies.Slurs
 {
+    /// <summary>
+    /// Strategy of rendering slurs.
+    /// </summary>
     public abstract class SlurRenderStrategy
     {
         protected IMeasurementService measurementService;
@@ -15,6 +18,13 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             this.scoreService = scoreService;
         }
 
+        /// <summary>
+        /// Draws a slur
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <param name="slur"></param>
+        /// <param name="element"></param>
+        /// <param name="notePositionY"></param>
         public void Draw(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY)
         {
             VerticalPlacement slurPlacement;
@@ -31,10 +41,34 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             }
         }
 
+        /// <summary>
+        /// Returns true if this strategy type is relevant for drawing a specific slur
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="slur"></param>
+        /// <returns></returns>
         public abstract bool IsRelevant(Note element, Slur slur);
 
+        /// <summary>
+        /// Draws of performs additional logic at slur end
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <param name="slur"></param>
+        /// <param name="element"></param>
+        /// <param name="notePositionY"></param>
+        /// <param name="slurStartInfo"></param>
+        /// <param name="slurPlacement"></param>
         protected abstract void ProcessSlurEnd(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement);
 
+        /// <summary>
+        /// Draws or performs additional logic at slur start
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <param name="slur"></param>
+        /// <param name="element"></param>
+        /// <param name="notePositionY"></param>
+        /// <param name="slurStartInfo"></param>
+        /// <param name="slurPlacement"></param>
         protected abstract void ProcessSlurStart(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement);
 
         protected Point RelativeToAbsolute(ScoreRendererBase renderer, Point relative, double notePositionY)

@@ -8,6 +8,10 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
+    /// <summary>
+    /// Score renderer that renders scores to HTML
+    /// </summary>
+    /// <typeparam name="TCanvas"></typeparam>
 	public abstract class HtmlScoreRenderer<TCanvas> : ScoreRenderer<TCanvas>
 	{
 		protected TimelineElement<IHasDuration>[] currentPlaybackTimeline;
@@ -21,6 +25,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public double ActualWidth { get; protected set; } = 0;
 
         public string ScoreElementName { get; set; }
+
+        /// <summary>
+        /// Settings cast to HtmlScoreRendererSettings
+        /// </summary>
 		public HtmlScoreRendererSettings TypedSettings { get { return Settings as HtmlScoreRendererSettings; } }
 
 		protected override void BeforeRenderScore(Score score)
@@ -29,6 +37,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			currentPlaybackTimeline = new VirtualScorePlayer(score, new Tempo(RhythmicDuration.Quarter, TypedSettings.PlaybackTempo)).CreateTimeline();
 		}
 
+        /// <summary>
+        /// Creates DOM id for a specific MusicalSymbol
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
 		protected string BuildElementId(MusicalSymbol element)
 		{
 			var sb = new StringBuilder();
@@ -36,6 +49,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			return sb.ToString();
 		}
 
+        /// <summary>
+        /// Builds playback information for JS based MIDI players for a specific MusicalSymbol 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
 		protected Dictionary<string, string> BuildPlaybackAttributes(MusicalSymbol element)
 		{
 			var dict = new Dictionary<string, string>();

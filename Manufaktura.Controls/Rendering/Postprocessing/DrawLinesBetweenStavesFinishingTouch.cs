@@ -17,10 +17,20 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 			this.scoreService = scoreService;
 		}
 
-		public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="measure">Measure</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
 		{
 		}
 
+        /// <summary>
+        /// Applies DrawLinesBetweenStavesFinishingTouch to the score.
+        /// </summary>
+        /// <param name="score">Score</param>
+        /// <param name="renderer">Score renderer</param>
 		public void PerformOnScore(Score score, ScoreRendererBase renderer)
 		{
 			var lightPen = new Pen(renderer.Settings.DefaultColor, 1);
@@ -58,7 +68,12 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 			}
 		}
 
-		public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="staff">Staff</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
 		{
 		}
 	}

@@ -4,8 +4,14 @@ using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
+    /// <summary>
+    /// Width adjusting mode for HTML based score renderers
+    /// </summary>
     public enum HtmlSizeHint
     {
+        /// <summary>
+        /// Not set
+        /// </summary>
         None,
         /// <summary>
         /// Score will be rendered in fixed width. In SVG mode it will also have viewBox attribute.
@@ -17,6 +23,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
         Stretch
     }
 
+    /// <summary>
+    /// Score renderer settings for HTML based score renderers
+    /// </summary>
     public class HtmlScoreRendererSettings : ScoreRendererSettings
     {
         public HtmlScoreRendererSettings()
@@ -27,6 +36,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
             RenderingMode = ScoreRenderingModes.Panorama;
         }
 
+        /// <summary>
+        /// Render surface for HTML based score renderers
+        /// </summary>
         public enum HtmlRenderSurface
         {
             /// <summary>
@@ -40,15 +52,41 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Svg
         }
 
+        /// <summary>
+        /// Font mappings
+        /// </summary>
         public Dictionary<MusicFontStyles, HtmlFontInfo> Fonts { get; private set; }
         [Obsolete("Use ScoreClass property instead to set class of the score container and set height in css class definition. You can also use AddFullWidthStyle property to automatically generate css style.")]
         public double Height { get; set; }
 
+        /// <summary>
+        /// Moves all musical symbols a specific number of pixels to right. Used for improving readability of some music fonts.
+        /// </summary>
         public double MusicalFontShiftX { get; set; }
+
+        /// <summary>
+        /// Moves all musical symbols a specigic number of pixels down. Used for improving readability of some music fonts.
+        /// </summary>
         public double MusicalFontShiftY { get; set; }
+
+        /// <summary>
+        /// Default playback tempo for JS based MIDI players
+        /// </summary>
         public int PlaybackTempo { get; set; } = 120;
+
+        /// <summary>
+        /// Render surface (Canvas or SVG)
+        /// </summary>
         public HtmlRenderSurface RenderSurface { get; set; }
+
+        /// <summary>
+        /// Score CSS class
+        /// </summary>
         public string ScoreClass { get; set; }
+
+        /// <summary>
+        /// Width adjusting mode
+        /// </summary>
         public HtmlSizeHint SizeHint { get; set; } = HtmlSizeHint.FixedWidth;
         public double Scale { get; set; } = 1d;
     }

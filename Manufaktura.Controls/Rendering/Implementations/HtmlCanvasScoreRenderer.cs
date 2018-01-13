@@ -9,6 +9,9 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
+    /// <summary>
+    /// Font information
+    /// </summary>
 	public struct HtmlFontInfo
 	{
 		public HtmlFontInfo(string name, double size, params string[] uris)
@@ -20,13 +23,25 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			Size = size;
 		}
 
+        /// <summary>
+        /// Font name
+        /// </summary>
 		public string Name { get; private set; }
 
+        /// <summary>
+        /// Font size
+        /// </summary>
 		public double Size { get; private set; }
 
+        /// <summary>
+        /// Font uris
+        /// </summary>
 		public List<string> Uris { get; private set; }
 	}
 
+    /// <summary>
+    /// Implementation of HtmlScoreRenderer which utilises HTML canvas for rendering
+    /// </summary>
 	public class HtmlCanvasScoreRenderer : HtmlScoreRenderer<StringBuilder>
 	{
 		public HtmlCanvasScoreRenderer()
@@ -43,6 +58,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			stringBuilder.AppendLine("var context = canvas.getContext('2d');");
 		}
 
+        /// <summary>
+        /// Ads arc to HTML canvas
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="sweepAngle"></param>
+        /// <param name="pen"></param>
+        /// <param name="owner"></param>
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, Model.MusicalSymbol owner)
 		{
 			Canvas.AppendLine("context.beginPath();");
@@ -56,6 +79,15 @@ namespace Manufaktura.Controls.Rendering.Implementations
             if (rect.Y + rect.Height > ActualHeight) ActualHeight = rect.Y + rect.Height;
         }
 
+        /// <summary>
+        /// Adds a bezier curve to HTML canvas
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <param name="p3"></param>
+        /// <param name="p4"></param>
+        /// <param name="pen"></param>
+        /// <param name="owner"></param>
 		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, Model.MusicalSymbol owner)
 		{
 			Canvas.AppendLine("context.beginPath();");
@@ -73,6 +105,13 @@ namespace Manufaktura.Controls.Rendering.Implementations
             if (p1.Y > ActualHeight) ActualHeight = p1.Y;
 		}
 
+        /// <summary>
+        /// Adds a line to HTML canvas
+        /// </summary>
+        /// <param name="startPoint"></param>
+        /// <param name="endPoint"></param>
+        /// <param name="pen"></param>
+        /// <param name="owner"></param>
 		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, Model.MusicalSymbol owner)
 		{
 			Canvas.AppendLine("context.beginPath();");
@@ -86,6 +125,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			if (endPoint.Y > ActualHeight) ActualHeight = endPoint.Y;
 		}
 
+        /// <summary>
+        /// Adds a string to HTML canvas
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontStyle"></param>
+        /// <param name="location"></param>
+        /// <param name="color"></param>
+        /// <param name="owner"></param>
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, Model.MusicalSymbol owner)
 		{
 			if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.

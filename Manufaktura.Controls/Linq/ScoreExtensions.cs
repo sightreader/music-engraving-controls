@@ -8,6 +8,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Linq
 {
+    /// <summary>
+    /// Extensions methods for operations on Scores
+    /// </summary>
 	public static class ScoreExtensions
 	{
 		/// <summary>
@@ -30,12 +33,22 @@ namespace Manufaktura.Controls.Linq
 			return ToScore(reader.ReadToEnd());
 		}
 
+        /// <summary>
+        /// Returns interval array obtained from MelodicContourDigestParser
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
 		public static int[] ToIntervals(this Score score)
 		{
 			MelodicContourDigestParser parser = new MelodicContourDigestParser();
 			return parser.ParseBack(score);
 		}
 
+        /// <summary>
+        /// Returns lyrics digest obtained by LyricsDigestParser
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
 		public static string ToLyricsDigest(this Score score)
 		{
 			LyricsDigestParser parser = new LyricsDigestParser();
@@ -53,6 +66,13 @@ namespace Manufaktura.Controls.Linq
 			return parser.ParseBack(score);
 		}
 
+        /// <summary>
+        /// Returns rhythm digest obtained with RhythmDigestParser
+        /// </summary>
+        /// <param name="score"></param>
+        /// <param name="markRests"></param>
+        /// <param name="includeBarlines"></param>
+        /// <returns></returns>
 		public static string ToRhythmDigest(this Score score, bool markRests, bool includeBarlines)
 		{
 			RhythmDigestParser parser = new RhythmDigestParser { MarkRests = markRests, IncludeBarlines = includeBarlines };
@@ -69,11 +89,22 @@ namespace Manufaktura.Controls.Linq
 			return ToScore(XDocument.Parse(document));
 		}
 
+        /// <summary>
+        /// Converts MusicXML string to Score
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="transformer"></param>
+        /// <returns></returns>
 		public static Score ToScore(this string document, XTransformerParser transformer)
 		{
 			return ToScore(XDocument.Parse(document), transformer);
 		}
 
+        /// <summary>
+        /// Converts MusicXml XDocument to Score
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
 		public static Score ToScore(this XDocument document)
 		{
 			return ToScore(document, null);

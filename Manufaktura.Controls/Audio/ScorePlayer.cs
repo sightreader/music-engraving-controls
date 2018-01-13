@@ -71,6 +71,9 @@ namespace Manufaktura.Controls.Audio
             protected set { _currentElement = value; OnPropertyChanged(() => CurrentElement); }
         }
 
+        /// <summary>
+        /// Position of playback cursor
+        /// </summary>
         public PlaybackCursorPosition CurrentPosition
         {
             get
@@ -82,6 +85,9 @@ namespace Manufaktura.Controls.Audio
             }
         }
 
+        /// <summary>
+        /// Elapsed playback time
+        /// </summary>
         public virtual TimeSpan ElapsedTime
         {
             get { return elapsedTime; }

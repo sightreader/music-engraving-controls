@@ -9,10 +9,20 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 	/// </summary>
 	public class AddBracketsFinishingTouch : IFinishingTouch
 	{
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="measure">Measure</param>
+        /// <param name="renderer">Score renderer</param>
 		public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
 		{
 		}
 
+        /// <summary>
+        /// Applies AddBracketsFinishingTouch to the score.
+        /// </summary>
+        /// <param name="score">Score</param>
+        /// <param name="renderer">Score renderer</param>
 		public void PerformOnScore(Score score, ScoreRendererBase renderer)
 		{
 			foreach (var part in score.Parts)
@@ -25,7 +35,12 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 			}
 		}
 
-		public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="staff">Staff</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
 		{
 		}
 

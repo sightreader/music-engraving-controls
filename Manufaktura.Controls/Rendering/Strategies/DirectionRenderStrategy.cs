@@ -20,6 +20,11 @@ namespace Manufaktura.Controls.Rendering
             this.scoreService = scoreService;
         }
 
+        /// <summary>
+        /// Renders a Direction using specific score renderer.
+        /// </summary>
+        /// <param name="element">Direction</param>
+        /// <param name="renderer">Score renderer</param>
         public override void Render(Direction element, ScoreRendererBase renderer)
         {
 			//Performance directions / Wskazówki wykonawcze:

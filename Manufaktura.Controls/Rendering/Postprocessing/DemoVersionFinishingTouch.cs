@@ -12,10 +12,20 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 	/// </summary>
 	public class DemoVersionFinishingTouch : IFinishingTouch
 	{
-		public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="measure">Measure</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
 		{
 		}
 
+        /// <summary>
+        /// Applies DemoVersionFinishingTouch to the score.
+        /// </summary>
+        /// <param name="score">Score</param>
+        /// <param name="renderer">Score renderer</param>
 		public void PerformOnScore(Score score, ScoreRendererBase renderer)
 		{
 #if DemoVersion
@@ -28,7 +38,12 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 #endif
 		}
 
-		public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="staff">staff</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
 		{
 		}
 	}

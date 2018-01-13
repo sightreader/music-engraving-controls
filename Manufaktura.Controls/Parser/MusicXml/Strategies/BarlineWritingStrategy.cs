@@ -4,6 +4,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 {
+    /// <summary>
+    /// Strategy for writing barlines.
+    /// </summary>
     public class BarlineWritingStrategy : MusicXmlWritingStrategy<Barline>
     {
         public override string ElementName => "barline";

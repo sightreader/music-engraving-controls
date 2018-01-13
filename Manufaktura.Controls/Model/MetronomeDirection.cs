@@ -2,6 +2,9 @@
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Tempo mark
+    /// </summary>
 	public class MetronomeDirection : Direction
 	{
 		public MetronomeDirection(Tempo tempo, DirectionPlacementType placement)

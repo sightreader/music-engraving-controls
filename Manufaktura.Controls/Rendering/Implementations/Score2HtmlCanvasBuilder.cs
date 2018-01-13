@@ -24,6 +24,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
         }
 
+        /// <summary>
+        /// Creates font styles declaration
+        /// </summary>
+        /// <param name="stringBuilder"></param>
         protected override void BuildFontInformation(StringBuilder stringBuilder)
         {
             stringBuilder.AppendLine("<style type=\"text/css\">");
@@ -59,11 +63,20 @@ namespace Manufaktura.Controls.Rendering.Implementations
             stringBuilder.AppendLine("</script></div>");
         }
 
+        /// <summary>
+        /// Converts cancas to HTML string
+        /// </summary>
+        /// <param name="canvas"></param>
+        /// <returns></returns>
         protected override string GetHtmlStringFromCanvas(StringBuilder canvas)
         {
             return canvas.ToString();
         }
 
+        /// <summary>
+        /// Returns a new instance of StringBuilder which will be used to build HTML canvas
+        /// </summary>
+        /// <returns></returns>
         public override StringBuilder CreateCanvas()
         {
             return new StringBuilder();

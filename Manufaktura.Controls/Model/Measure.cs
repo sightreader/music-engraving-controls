@@ -31,6 +31,9 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public double BarlineLocationX { get; set; }
 
+        /// <summary>
+        /// Elements in measure
+        /// </summary>
 		public List<MusicalSymbol> Elements { get; private set; }
 
 		/// <summary>
@@ -38,6 +41,9 @@ namespace Manufaktura.Controls.Model
 		/// </summary>
 		public double FirstNoteInMeasureXPosition { get; set; }
 
+        /// <summary>
+        /// Measure number
+        /// </summary>
 		public int? Number { get; set; }
 
 		/// <summary>

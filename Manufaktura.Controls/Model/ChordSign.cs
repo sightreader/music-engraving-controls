@@ -2,6 +2,9 @@
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Chord sign
+    /// </summary>
 	public class ChordSign : MusicalSymbol, IHasCustomYPosition, IRenderedAsTextBlock
 	{
 		public ChordSign(Chord chord)
@@ -9,6 +12,9 @@ namespace Manufaktura.Controls.Model
 			Chord = chord;
 		}
 
+        /// <summary>
+        /// Chord
+        /// </summary>
 		public Chord Chord { get; private set; }
 
 		public double? DefaultYPosition

@@ -7,16 +7,31 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 {
 	internal class DrawMissingStemsFinishingTouch : IFinishingTouch
 	{
+        /// <summary>
+        /// Applies DrawMissingStemsFinishingTouch to a measure. 
+        /// </summary>
+        /// <param name="measure">Measure</param>
+        /// <param name="renderer">Score renderer</param>
 		public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
 		{
 			Perform(measure.Staff, measure, renderer);
 		}
 
-		public void PerformOnScore(Score score, ScoreRendererBase renderer)
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="score">Score</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnScore(Score score, ScoreRendererBase renderer)
 		{
 		}
 
-		public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
+        /// <summary>
+        /// Applies DrawMissingStemsFinishingTouch to a staff. 
+        /// </summary>
+        /// <param name="staff">Staff</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
 		{
 			Perform(staff, null, renderer);
 		}

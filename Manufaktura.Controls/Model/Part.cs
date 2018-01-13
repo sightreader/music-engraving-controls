@@ -28,6 +28,9 @@ namespace Manufaktura.Controls.Model
             Staves.Add(staff);
         }
 
+        /// <summary>
+        /// Part group containing this Part
+        /// </summary>
         public PartGroup Group { get; set; }
 
         /// <summary>

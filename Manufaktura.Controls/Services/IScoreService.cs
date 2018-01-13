@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Services
 {
+    /// <summary>
+    /// Service that stores temporary information during score rendering
+    /// </summary>
 	public interface IScoreService
 	{
 		Clef CurrentClef { get; set; }

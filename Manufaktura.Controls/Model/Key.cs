@@ -29,8 +29,14 @@ namespace Manufaktura.Controls.Model
 				musicalCharacter = " ";
 		}
 
+        /// <summary>
+        /// Number on the Circle of Fifths
+        /// </summary>
 		public int Fifths { get { return fifths; } }
 
+        /// <summary>
+        /// Character for displaying alteration signs (flats or sharps). Determined by number on the Circle of Fifths.
+        /// </summary>
 		public string MusicalCharacter
 		{
 			get { return musicalCharacter; }

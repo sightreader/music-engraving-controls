@@ -7,12 +7,24 @@ using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Articulation types
+    /// </summary>
     public enum ArticulationType { None, Staccato, Accent };
 
+    /// <summary>
+    /// Barline styles
+    /// </summary>
     public enum BarlineStyle { Regular, LightHeavy, None, Dashed }
 
+    /// <summary>
+    /// Clef types
+    /// </summary>
     public enum ClefType { GClef, CClef, FClef, Percussion };
 
+    /// <summary>
+    /// Desired hook directions
+    /// </summary>
     public enum DesiredHookDirections { Any, ForwardHook, BackwardHook };
 
     public enum DirectionPlacementType { Above, Below, Custom };

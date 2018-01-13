@@ -5,15 +5,50 @@
     /// </summary>
     public interface IMusicFont
     {
+        /// <summary>
+        /// Black notehead character
+        /// </summary>
         string BlackNoteHead { get; }
 
+
+        /// <summary>
+        /// C clef character
+        /// </summary>
         string CClef { get; }
+
+        /// <summary>
+        /// Common time character
+        /// </summary>
         string CommonTime { get; }
+
+        /// <summary>
+        /// Cut time character
+        /// </summary>
         string CutTime { get; }
+
+        /// <summary>
+        /// 32-nd rest character
+        /// </summary>
         string D32ndRest { get; }
+
+        /// <summary>
+        /// Dot character
+        /// </summary>
         string Dot { get; }
+
+        /// <summary>
+        /// Double flat character
+        /// </summary>
         string DoubleFlat { get; }
+
+        /// <summary>
+        /// Double sharp character
+        /// </summary>
         string DoubleSharp { get; }
+
+        /// <summary>
+        /// Eighth note character
+        /// </summary>
         string EighthNote { get; }
         string EighthRest { get; }
         string FClef { get; }

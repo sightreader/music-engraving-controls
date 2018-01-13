@@ -23,6 +23,10 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public double? SystemDistance { get; set; }
 
+        /// <summary>
+        /// Clones a PrintSuggestion object
+        /// </summary>
+        /// <returns></returns>
         public PrintSuggestion Clone()
         {
             return new PrintSuggestion

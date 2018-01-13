@@ -32,6 +32,9 @@ namespace Manufaktura.Controls.Model
 			}
 		}
 
+        /// <summary>
+        /// Default X position of note or rest
+        /// </summary>
 		public double? DefaultXPosition { get; set; }
 
 		public virtual RhythmicDuration Duration { get { return duration; } set { duration = value; OnPropertyChanged(() => Duration); } }

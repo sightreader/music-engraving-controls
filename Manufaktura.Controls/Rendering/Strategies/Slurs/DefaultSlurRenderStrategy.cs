@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Strategies.Slurs
 {
+    /// <summary>
+    /// Default strategy for rendering slurs.
+    /// </summary>
     public class DefaultSlurRenderStrategy : SlurRenderStrategy
     {
         public DefaultSlurRenderStrategy(IMeasurementService measurementService, IScoreService scoreService) : base(measurementService, scoreService)

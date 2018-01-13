@@ -24,6 +24,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
         }
 
+        /// <summary>
+        /// Creates font styles declaration
+        /// </summary>
+        /// <param name="canvas"></param>
         protected override void BuildFontInformation(XElement canvas)
         {
             var element = new XElement("style", new XAttribute("type", "text/css"));
@@ -60,6 +64,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Creates a new XElement instance which will be used to render SVG
+        /// </summary>
+        /// <returns></returns>
         public override XElement CreateCanvas()
         {
             return new XElement("root");

@@ -8,6 +8,9 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public class ScoreEncoding
     {
+        /// <summary>
+        /// List of software MusicXml elements
+        /// </summary>
         public List<string> Software { get; private set; }
 
         /// <summary>

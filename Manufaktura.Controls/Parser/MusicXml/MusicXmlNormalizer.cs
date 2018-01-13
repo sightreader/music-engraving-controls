@@ -1,11 +1,8 @@
-﻿using Manufaktura.Controls.Primitives;
-using Manufaktura.Music.Model;
+﻿using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
@@ -85,7 +82,6 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         currentValue = UsefulMath.TryParse(widthAttribute.Value);
                         if (!currentValue.HasValue) continue;
                         if (widthAttribute != null) widthAttribute.Value = (currentValue.Value - difference).ToString(CultureInfo.InvariantCulture);
-
                     }
                 }
             }

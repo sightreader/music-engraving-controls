@@ -4,6 +4,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 {
+    /// <summary>
+    /// Strategy of parsing "encoding" MusicXml element
+    /// </summary>
     public class EncodingParsingStrategy : MusicXmlParsingStrategy
     {
         public override string ElementName
