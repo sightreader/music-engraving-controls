@@ -41,7 +41,9 @@ namespace Manufaktura.Controls.Extensions
 		public static IEnumerable<NoteOrRest> AddLyrics(this IEnumerable<NoteOrRest> notes, string text)
         {
             var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var noteQueue = new Queue<NoteOrRest>(notes);
+            var noteQueue = new Queue<NoteOrRest>();
+            foreach (var n in notes) noteQueue.Enqueue(n);
+
             var syllableQueue = new Queue<Lyrics.Syllable>();
             foreach (var word in words)
             {
@@ -92,7 +94,8 @@ namespace Manufaktura.Controls.Extensions
 		public static IEnumerable<Note> AddRhythm(this IEnumerable<Pitch> pitches, params int[] durations)
         {
             if (pitches.Count() != durations.Length) throw new Exception("Durations must have the same count as pitches.");
-            var units = new Queue<RhythmicUnit>(RhythmicUnit.Parse(durations));
+            var units = new Queue<RhythmicUnit>();
+            foreach (var u in RhythmicUnit.Parse(durations)) units.Enqueue(u);
             return pitches.Select(p => new Note(p, units.Dequeue().Duration)).ToArray();
         }
 
@@ -104,7 +107,8 @@ namespace Manufaktura.Controls.Extensions
         /// <returns>Notes</returns>
         public static IEnumerable<Note> AddRhythm(this IEnumerable<Pitch> pitches, string durations)
         {
-            var units = new Queue<RhythmicUnit>(RhythmicUnit.Parse(durations, " "));
+            var units = new Queue<RhythmicUnit>();
+            foreach (var u in RhythmicUnit.Parse(durations, " ")) units.Enqueue(u);
             if (pitches.Count() != units.Count) throw new Exception("Durations must have the same count as pitches.");
             return pitches.Select(p => new Note(p, units.Dequeue().Duration)).ToArray();
         }
@@ -194,7 +198,8 @@ namespace Manufaktura.Controls.Extensions
 		public static IEnumerable<NoteOrRest>[] SplitByBeats(this IEnumerable<NoteOrRest> notes, TimeSignature timeSignature)
         {
             var groups = new List<List<NoteOrRest>>();
-            var queue = new Queue<NoteOrRest>(notes);
+            var queue = new Queue<NoteOrRest>();
+            foreach (var n in notes) queue.Enqueue(n);
 
             while (queue.Count > 0)
             {
@@ -220,7 +225,8 @@ namespace Manufaktura.Controls.Extensions
 		public static IEnumerable<NoteOrRest>[] SplitByLyrics(this IEnumerable<NoteOrRest> notes)
         {
             var groups = new List<List<NoteOrRest>>();
-            var queue = new Queue<NoteOrRest>(notes);
+            var queue = new Queue<NoteOrRest>();
+            foreach (var n in notes) queue.Enqueue(n);
 
             var currentGroup = new List<NoteOrRest>();
             while (queue.Count > 0)

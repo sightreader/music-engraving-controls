@@ -155,26 +155,26 @@ namespace Manufaktura.Controls.Audio
                 var orderedElements = BuildMeasureTimeLine(i).OrderBy(e => e.Item1).ToList();
                 foreach (var element in orderedElements)
                 {
-                    yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds((double)element.Item1 * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
+                    yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds(element.Item1 * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
                 }
                 var lastItem = orderedElements.Any() ? orderedElements.Last() : null;
                 if (lastItem != null)
                 {
-                    var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDecimal();
-                    elapsedTime += TimeSpan.FromMilliseconds((double)endOfMeasure * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds);
+                    var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDouble();
+                    elapsedTime += TimeSpan.FromMilliseconds(endOfMeasure * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds);
                 }
             }
         }
 
-        private List<Tuple<decimal, IHasDuration>> BuildMeasureTimeLine(int measureIndex)
+        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(int measureIndex)
         {
-            var elements = new List<Tuple<decimal, IHasDuration>>();
+            var elements = new List<Tuple<double, IHasDuration>>();
             foreach (var staff in Score.Staves)
             {
                 var measure = staff.Measures[measureIndex];
 
-                var elapsed = 0m;
-                var lastElementDuration = 0m;
+                var elapsed = 0d;
+                var lastElementDuration = 0d;
                 Tuplet tupletState = null;
                 foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
                 {
@@ -188,7 +188,7 @@ namespace Manufaktura.Controls.Audio
                             realElapsedTime -= lastElementDuration;   //Rewind to chord root position
                         }
 
-                        elements.Add(new Tuple<decimal, IHasDuration>(realElapsedTime, durationElement));
+                        elements.Add(new Tuple<double, IHasDuration>(realElapsedTime, durationElement));
                     }
                     if (strategy.HasFlag(PlayElementStrategies.IncreaseElapsedTime))
                     {
@@ -204,7 +204,7 @@ namespace Manufaktura.Controls.Audio
                             }
                         }
 
-                        var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDecimal();
+                        var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDouble();
                         if (tupletState != null) dueTime = dueTime / tupletState.NumberOfNotesUnderTuplet * (durationElement.BaseDuration.Denominator / Tempo.BeatUnit.Denominator);
 
                         elapsed += dueTime;
