@@ -13,6 +13,10 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
         public override XDocument Parse(XDocument source)   //TODO: Przetestować dokładnie i zrefaktorować
         {
+#if CSHTML5
+            throw new NotImplementedException("This method is not yet implemented for CSHTML5.");
+#else
+
             if (!NormalizeSpaceBeforeFirstNotesOfMeasures) return source;
             if (source.Descendants(XName.Get("repeat")).Any()) return source; //Workaround - pomiń na razie te ze znakiem repetycji, bo się źle rysują
             if (source.Descendants(XName.Get("time")).Count() > 1) return source; //Workaround - pomiń na razie te ze zmianami metrum, bo się źle rysują
@@ -86,6 +90,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 }
             }
             return source;
+#endif
         }
 
         public override XDocument ParseBack(XDocument score)

@@ -41,7 +41,7 @@ namespace Manufaktura.Controls.Parser
                 }
             }
 
-            foreach (XElement partNode in xmlDocument.Descendants(XName.Get("part")))
+            foreach (XElement partNode in xmlDocument.Descendants().Where(d => d.Name == "part"))
             {
                 state.CurrentSystemNo = 1;
 
@@ -64,7 +64,7 @@ namespace Manufaktura.Controls.Parser
                 }
             }
 
-            var partListNode = xmlDocument.Descendants(XName.Get("part-list"));
+            var partListNode = xmlDocument.Descendants().Where(d => d.Name == "part-list");
             PartGroup currentPartGroup = null;
             foreach (var partListElementNode in partListNode.Elements())
             {
@@ -108,6 +108,9 @@ namespace Manufaktura.Controls.Parser
 
         public override XDocument ParseBack(Score score)
         {
+#if CSHTML5
+            throw new NotImplementedException("This method is not yet implemented for CSHTML5.");
+#else
             if (!score.Parts.Any()) throw new ScoreException(score, $"Score does not contain any parts therefore it does not conform to score-partwise schema. You have to add parts to {nameof(Score.Parts)} collection before exporting to MusicXml.");
             var quarterNoteDuration = CalculateQuarterNoteDuration(score);
 
@@ -147,6 +150,7 @@ namespace Manufaktura.Controls.Parser
                 ExportStaves(partNode, part.Staves, quarterNoteDuration);
             }
             return document;
+#endif
         }
 
         private void ExportStaves(XElement parent, IEnumerable<Staff> staves, int quarterNoteDuration)

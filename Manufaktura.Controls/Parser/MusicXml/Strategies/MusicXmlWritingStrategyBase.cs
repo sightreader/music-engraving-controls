@@ -66,7 +66,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 parentElement = attributesElement;
             }
 
-            var newElement = new XElement(XName.Get(ElementName));
+            var newElement = new XElement(ElementName);
             parentElement.Add(newElement);
             WriteElementInner(symbol, newElement, quarterNoteDuration);
         }

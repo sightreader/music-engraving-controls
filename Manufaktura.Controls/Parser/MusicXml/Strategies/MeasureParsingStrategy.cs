@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Model;
+using System;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -14,6 +15,10 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
+#if CSHTML5
+            throw new NotImplementedException("This method is not yet implemented for CSHTML5.");
+#else
+
             var part = staff.Part;
 			if (!staff.Score.Systems.Any())
 			{
@@ -79,6 +84,8 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 }
             }
             state.FirstLoop = false;
+
+#endif
         }
     }
 }
