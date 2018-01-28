@@ -221,14 +221,18 @@ namespace Manufaktura.Music.Model
 			return new RhythmicDuration(Denominator, dots);
 		}
 
+#if !CSHTML5
+
         /// <summary>
         /// Returns a fraction representing this RhythmicDuration as decimal value
         /// </summary>
         /// <returns></returns>
-		public decimal ToDecimal()
+        public decimal ToDecimal()
 		{
 			return ToProportion().DecimalValue;
 		}
+
+#endif
 
         /// <summary>
         /// Returns a fraction representing this RhythmicDuration as double value

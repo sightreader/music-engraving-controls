@@ -73,6 +73,8 @@ namespace Manufaktura.Music.Model
             }
         }
 
+
+#if !CSHTML5
         /// <summary>
         /// Decimal value of the fraction
         /// </summary>
@@ -83,6 +85,8 @@ namespace Manufaktura.Music.Model
                 return (decimal)Numerator / (decimal)Denominator;
             }
         }
+
+#endif
 
         /// <summary>
         /// Denominator
@@ -164,6 +168,8 @@ namespace Manufaktura.Music.Model
             return new Proportion(numeratorSum, commonDenominator).Normalize();
         }
 
+
+#if !CSHTML5
         public static bool operator !=(Proportion p1, Proportion p2)
         {
             return p1.DecimalValue != p2.DecimalValue;
@@ -173,6 +179,13 @@ namespace Manufaktura.Music.Model
         {
             return p1.DecimalValue != d;
         }
+#else
+        public static bool operator !=(Proportion p1, Proportion p2)
+        {
+            return p1.DoubleValue != p2.DoubleValue;
+        }
+
+#endif
 
         public static bool operator !=(Proportion p1, double d)
         {
@@ -189,10 +202,14 @@ namespace Manufaktura.Music.Model
             return new Proportion(p1.Numerator * p2.Numerator, p1.Denominator * p2.Denominator).Normalize();
         }
 
+#if !CSHTML5
+
         public static decimal operator *(Proportion p1, decimal d2)
         {
             return p1.DecimalValue * d2;
         }
+
+#endif
 
         public static double operator *(Proportion p1, double d2)
         {
@@ -229,15 +246,24 @@ namespace Manufaktura.Music.Model
             return p1.Numerator * p2.Denominator <= p2.Numerator * p1.Denominator;
         }
 
+#if !CSHTML5
         public static bool operator ==(Proportion p1, Proportion p2)
         {
             return p1.DecimalValue == p2.DecimalValue;
         }
+#else
+        public static bool operator ==(Proportion p1, Proportion p2)
+        {
+            return p1.DoubleValue == p2.DoubleValue;
+        }
+#endif
 
+#if !CSHTML5
         public static bool operator ==(Proportion p1, decimal d)
         {
             return p1.DecimalValue == d;
         }
+#endif
 
         public static bool operator ==(Proportion p1, double d)
         {

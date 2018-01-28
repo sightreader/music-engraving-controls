@@ -81,7 +81,7 @@ namespace Manufaktura.Music.Model
         {
             var stepNumber = StepToStepNumber(pitch.ToStep());
             var halfTones = 0;
-            if (interval.Steps == 0) throw new ArithmeticException("There is no interval with 0 steps.");
+            if (interval.Steps == 0) throw new ArgumentException("There is no interval with 0 steps.", nameof(interval));
             if (interval.Steps > 0)
             {
                 for (var i = 0; i < interval.Steps - 1; i++)
