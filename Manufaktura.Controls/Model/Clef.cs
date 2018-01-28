@@ -136,7 +136,7 @@ namespace Manufaktura.Controls.Model
 			get { return musicalCharacter; }
 		}
 
-		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
 
 		public int OctaveChange
 		{
@@ -149,7 +149,7 @@ namespace Manufaktura.Controls.Model
 			{
 				if (value > 0) for (var i = 0; i < value; i++) Pitch = Pitch.OctaveUp();
 				if (value < 0) for (var i = 0; i > value; i--) Pitch = Pitch.OctaveDown();
-				octaveChange = value; OnPropertyChanged(() => OctaveChange);
+				octaveChange = value; OnPropertyChanged();
 			}
 		}
 

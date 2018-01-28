@@ -34,12 +34,12 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// RhythmicDuraton of this NoteOrRest
         /// </summary>
-		public virtual RhythmicDuration Duration { get { return duration; } set { duration = value; OnPropertyChanged(() => Duration); } }
+		public virtual RhythmicDuration Duration { get { return duration; } set { duration = value; OnPropertyChanged(); } }
 
 		/// <summary>
 		/// Indicates if note has fermata sign
 		/// </summary>
-		public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; OnPropertyChanged(() => HasFermataSign); } }
+		public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; OnPropertyChanged(); } }
 
 		public string MusicalCharacter
 		{
@@ -49,7 +49,7 @@ namespace Manufaktura.Controls.Model
 		/// <summary>
 		/// Music font used to draw the note
 		/// </summary>
-		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Returns number of dots associated with this NoreOrRest.

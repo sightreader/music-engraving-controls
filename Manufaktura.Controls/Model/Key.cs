@@ -42,7 +42,7 @@ namespace Manufaktura.Controls.Model
 			get { return musicalCharacter; }
 		}
 
-		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
 
 		public Primitives.Point TextBlockLocation
 		{

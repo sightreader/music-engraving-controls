@@ -68,7 +68,7 @@ namespace Manufaktura.Controls.Audio
         public virtual MusicalSymbol CurrentElement
         {
             get { return _currentElement; }
-            protected set { _currentElement = value; OnPropertyChanged(() => CurrentElement); }
+            protected set { _currentElement = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Manufaktura.Controls.Audio
         public PlaybackState State
         {
             get { return _state; }
-            set { _state = value; OnPropertyChanged(() => State); }
+            set { _state = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Manufaktura.Controls.Audio
         public Tempo Tempo
         {
             get { return _tempo; }
-            set { _tempo = value; OnPropertyChanged(() => Tempo); }
+            set { _tempo = value; OnPropertyChanged(); }
         }
 
         /// <summary>

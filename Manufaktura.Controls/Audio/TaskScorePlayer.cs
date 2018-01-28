@@ -51,8 +51,8 @@ namespace Manufaktura.Controls.Audio
             set
             {
                 base.ElapsedTime = value;
-                OnPropertyChanged(() => CurrentElement);
-                OnPropertyChanged(() => CurrentPosition);
+                OnPropertyChanged(nameof(CurrentElement));
+                OnPropertyChanged(nameof(CurrentPosition));
             }
         }
 

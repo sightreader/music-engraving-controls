@@ -66,7 +66,11 @@ namespace Manufaktura.Controls.Parser
 
             var partListNode = xmlDocument.Descendants().Where(d => d.Name == "part-list");
             PartGroup currentPartGroup = null;
+#if CSHTML5
+            foreach (var partListElementNode in partListNode)   //Nie wiem czy to działa tak samo. Sprawdzić.
+#else
             foreach (var partListElementNode in partListNode.Elements())
+#endif
             {
                 if (partListElementNode.Name == "part-group")
                 {

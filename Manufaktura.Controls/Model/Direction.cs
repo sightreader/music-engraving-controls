@@ -24,11 +24,11 @@
 		/// <summary>
 		/// Direction placement.
 		/// </summary>
-		public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(() => Placement); } }
+		public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(); } }
 
 		/// <summary>
 		/// Direction text.
 		/// </summary>
-		public string Text { get { return text; } set { text = value; OnPropertyChanged(() => Text); } }
+		public string Text { get { return text; } set { text = value; OnPropertyChanged(); } }
 	}
 }
