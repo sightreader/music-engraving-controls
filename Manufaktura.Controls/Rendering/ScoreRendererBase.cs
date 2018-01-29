@@ -19,6 +19,7 @@ namespace Manufaktura.Controls.Rendering
         protected IMeasurementService measurementService = new MeasurementService();
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
+
         protected ScoreRendererBase()
         {
             Settings = new ScoreRendererSettings();
@@ -280,7 +281,7 @@ namespace Manufaktura.Controls.Rendering
             measurementService.LastMeasurePositionX = 0;
         }
 
-        private double[] CalculateLinePositions (bool breakPage, double distance, int staffNo, double[] initialPositions)
+        private double[] CalculateLinePositions(bool breakPage, double distance, int staffNo, double[] initialPositions)
         {
             List<double> newLinePositions = new List<double>();
             if (breakPage && Settings.RenderingMode == ScoreRenderingModes.SinglePage)
@@ -351,7 +352,11 @@ namespace Manufaktura.Controls.Rendering
 
         protected MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
         {
+#if CSHTML5
+            return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType()) ?? Strategies.FirstOrDefault(s => s.SymbolType.IsAssignableFrom(element.GetType()));
+#else
             return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType()) ?? Strategies.FirstOrDefault(s => s.SymbolType.GetTypeInfo().IsAssignableFrom(element.GetType().GetTypeInfo()));
+#endif
         }
 
         protected void RenderStaff(Staff staff)

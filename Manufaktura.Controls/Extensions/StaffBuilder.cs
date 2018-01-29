@@ -178,11 +178,19 @@ namespace Manufaktura.Controls.Extensions
         /// <returns></returns>
 		public static IEnumerable<NoteOrRest> Rebeam(this IEnumerable<NoteOrRest> notes, RebeamMode mode = RebeamMode.Simple, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
         {
+#if CSHTML5
+            var strategies = typeof(IRebeamStrategy).Assembly.GetTypes()
+                .Where(t => !t.IsAbstract && typeof(IRebeamStrategy).IsAssignableFrom(t))
+                .Select(t => Expression.Lambda(Expression.New(t)).Compile().DynamicInvoke())
+                .Cast<IRebeamStrategy>()
+                .ToArray();
+#else
             var strategies = typeof(IRebeamStrategy).GetTypeInfo().Assembly.DefinedTypes
                 .Where(t => !t.IsAbstract && typeof(IRebeamStrategy).GetTypeInfo().IsAssignableFrom(t))
                 .Select(t => Expression.Lambda(Expression.New(t.AsType())).Compile().DynamicInvoke())
                 .Cast<IRebeamStrategy>()
                 .ToArray();
+#endif
             var matchingStrategy = strategies.FirstOrDefault(s => s.Mode == mode);
             if (matchingStrategy == null) throw new Exception($"Rebeam strategy not found for rebeam mode {mode}.");
             foreach (var n in notes.OfType<Note>()) n.ModeUsedForRebeaming = mode;

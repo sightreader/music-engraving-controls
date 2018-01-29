@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Manufaktura.Controls.IoC
 {
@@ -36,22 +35,44 @@ namespace Manufaktura.Controls.IoC
         /// </summary>
         /// <typeparam name="T">Type of objects to create</typeparam>
         /// <returns>Created object</returns>
-        public IEnumerable<T> ResolveAll<T>() where T:class
+        public IEnumerable<T> ResolveAll<T>() where T : class
         {
-            var assemblies = new List<Assembly> {GetType().GetTypeInfo().Assembly};
+#if CSHTML5
+            var assemblies = new List<Assembly> { GetType().Assembly };
+            if (!assemblies.Contains(typeof(T).Assembly)) assemblies.Add(typeof(T).Assembly);
+            var types = assemblies.SelectMany(a => a.GetTypes()).Where(t => !t.IsAbstract && (t.IsSubclassOf(typeof(T)) || typeof(T).IsAssignableFrom(t)));
+            foreach (var type in types)
+            {
+                var constructors = type.GetConstructors();
+                if (!constructors.Any()) yield return ExpressionActivator.CreateInstance<T>(type);
+
+                foreach (var constructor in constructors)
+                {
+                    object[] matchedParameters;
+
+                    if (TryBindParameters(constructor, out matchedParameters))
+                        yield return Activator.CreateInstance(type, matchedParameters) as T;
+                }
+            }
+#else
+            var assemblies = new List<Assembly> { GetType().GetTypeInfo().Assembly };
             if (!assemblies.Contains(typeof(T).GetTypeInfo().Assembly)) assemblies.Add(typeof(T).GetTypeInfo().Assembly);
             var types = assemblies.SelectMany(a => a.DefinedTypes).Where(t => !t.IsAbstract && (t.IsSubclassOf(typeof(T)) || typeof(T).GetTypeInfo().IsAssignableFrom(t)));
             foreach (var type in types)
             {
                 var constructors = type.DeclaredConstructors;
+
                 if (!constructors.Any()) yield return ExpressionActivator.CreateInstance<T>(type.AsType());
+
                 foreach (var constructor in constructors)
                 {
                     object[] matchedParameters;
+
                     if (TryBindParameters(constructor, out matchedParameters))
                         yield return Activator.CreateInstance(type.AsType(), matchedParameters) as T;
                 }
             }
+#endif
         }
 
         private bool TryBindParameters(ConstructorInfo constructor, out object[] matchedParameters)
