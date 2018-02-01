@@ -18,8 +18,12 @@ namespace Manufaktura.Controls.IoC
         /// <returns></returns>
         public static T CreateInstance<T>(Type type) where T : class
         {
+#if CSHTML5
+            return Activator.CreateInstance(type) as T;
+#else
             var expr = Expression.Lambda(Expression.New(type));
             return expr.Compile().DynamicInvoke() as T;
+#endif
         }
 
         /// <summary>
@@ -31,9 +35,13 @@ namespace Manufaktura.Controls.IoC
         /// <returns></returns>
         public static T CreateInstance<T>(ConstructorInfo constructor, params object[] parameters) where T : class
         {
-            var expr = Expression.Lambda(Expression.New(constructor, parameters.Select(p => Expression.Parameter(p.GetType(), 
+#if CSHTML5
+            throw new NotImplementedException();
+#else
+            var expr = Expression.Lambda(Expression.New(constructor, parameters.Select(p => Expression.Parameter(p.GetType(),
                 string.Format("p{0}", parameters.ToList().IndexOf(p))))));
             return expr.Compile().DynamicInvoke(parameters) as T;
+#endif
         }
     }
 }

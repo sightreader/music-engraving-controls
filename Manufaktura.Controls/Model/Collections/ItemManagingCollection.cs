@@ -112,8 +112,12 @@ namespace Manufaktura.Controls.Model.Collections
 
 		public List<TItem> GetRange(int index, int count)
 		{
-			return innerList.GetRange(index, count);
-		}
+#if CSHTML5
+            return innerList.Skip(index).Take(count).ToList();
+#else
+            return innerList.GetRange(index, count);
+#endif
+        }
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{

@@ -188,12 +188,16 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="position"></param>
         public void DrawPlaybackCursor(PlaybackCursorPosition position)
         {
+#if CSHTML5
+            if (position.Timestamp.AddTicks(position.Duration.Ticks) < DateTime.Now) return;
+#else
             if (position.Timestamp + position.Duration < DateTime.Now) return;
-
+#endif
             var system = CurrentScore.Systems.ElementAt(position.SystemNumber - 1);
             if (system == null) return;
             DrawPlaybackCursor(position, new Point(position.PositionX + 6, system.Staves.First().LinePositions.First()),
                 new Point(position.PositionX + 6, system.Staves.Last().LinePositions.Last()));
+
         }
 
         /// <summary>

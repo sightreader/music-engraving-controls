@@ -25,8 +25,10 @@ namespace Manufaktura.Controls.Rendering
 
 		public sealed override void Render(Measure measure)
 		{
-			Contract.Assert(measure != null);
-			scoreService.ReturnToFirstSystem();
+#if !CSHTML5
+            Contract.Assert(measure != null);
+#endif
+            scoreService.ReturnToFirstSystem();
 			scoreService.MoveTo(measure, Settings);
 			if (Settings.RenderingMode == ScoreRenderingModes.Panorama && scoreService.CurrentSystemNo != 1)
 			{
