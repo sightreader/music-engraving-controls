@@ -10,9 +10,9 @@
     d:DesignWidth="400">
 
     <Canvas x:Name="MainCanvas" PointerPressed="MainCanvas_PointerPressed"  PointerReleased="MainCanvas_PointerReleased" PointerMoved="MainCanvas_PointerMoved" UseLayoutRounding="True">
-        <Canvas.RenderTransform>
+        <!--<Canvas.RenderTransform>
             <ScaleTransform ScaleX="{Binding ZoomFactor, ElementName=noteViewer}" 
                             ScaleY="{Binding ZoomFactor, ElementName=noteViewer}"/>
-        </Canvas.RenderTransform>
+        </Canvas.RenderTransform>-->
     </Canvas>
 </UserControl>

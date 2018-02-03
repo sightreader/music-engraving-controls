@@ -24,7 +24,7 @@ namespace Manufaktura.Controls.Interactivity
             .Assembly };
 
 #if CSHTML5
-        private static Lazy<IEnumerable<IDraggingStrategy>> strategies = new Lazy<IEnumerable<IDraggingStrategy>>(() =>
+        private static Lazy2<IEnumerable<IDraggingStrategy>> strategies = new Lazy2<IEnumerable<IDraggingStrategy>>(() =>
             AssembliesToSearchForStrategies
             .SelectMany(a => a.GetTypes())
             .Where(t => !t.IsAbstract && typeof(IDraggingStrategy).IsAssignableFrom(t))
