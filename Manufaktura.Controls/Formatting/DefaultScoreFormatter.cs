@@ -5,8 +5,17 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Formatting
 {
+    /// <summary>
+    /// This class performs some basic formatting on the score. Currently it's only used after parsing MusicXml files created with Sibelius
+    /// to make them look more similar to those created in Finale. It might become obsolete when MusicXml import function improves.
+    /// </summary>
     public class DefaultScoreFormatter : IScoreFormatter
     {
+        /// <summary>
+        /// Formats a score using some basic rules
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
         public Score Format(Score score)
         {
             SetMeasureWidths(score);

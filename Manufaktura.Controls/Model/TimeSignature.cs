@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Model
 
 		public int NumberOfBeats { get { return numberValue.Numerator; } }
 
-		public Proportion NumberValue { get { return numberValue; } set { numberValue = value; OnPropertyChanged(() => NumberValue); } }
+		public Proportion NumberValue { get { return numberValue; } set { numberValue = value; OnPropertyChanged(); } }
 
 		public TimeSignatureType SignatureType { get { return signatureType; } set { signatureType = value; } }
 

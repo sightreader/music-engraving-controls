@@ -19,6 +19,11 @@ namespace Manufaktura.Controls.Parser
     /// </summary>
     public class MusicXmlParser : ScoreParser<XDocument>
     {
+        /// <summary>
+        /// Parses MusicXMl XDocument into Score
+        /// </summary>
+        /// <param name="xmlDocument"></param>
+        /// <returns></returns>
         public override Score Parse(XDocument xmlDocument)  //TODO: Exception handling!
         {
             Score score = new Score();
@@ -36,7 +41,7 @@ namespace Manufaktura.Controls.Parser
                 }
             }
 
-            foreach (XElement partNode in xmlDocument.Descendants(XName.Get("part")))
+            foreach (XElement partNode in xmlDocument.Descendants().Where(d => d.Name == "part"))
             {
                 state.CurrentSystemNo = 1;
 
@@ -59,9 +64,13 @@ namespace Manufaktura.Controls.Parser
                 }
             }
 
-            var partListNode = xmlDocument.Descendants(XName.Get("part-list"));
+            var partListNode = xmlDocument.Descendants().Where(d => d.Name == "part-list");
             PartGroup currentPartGroup = null;
+#if CSHTML5
+            foreach (var partListElementNode in partListNode)   //Nie wiem czy to działa tak samo. Sprawdzić.
+#else
             foreach (var partListElementNode in partListNode.Elements())
+#endif
             {
                 if (partListElementNode.Name == "part-group")
                 {
@@ -103,6 +112,9 @@ namespace Manufaktura.Controls.Parser
 
         public override XDocument ParseBack(Score score)
         {
+#if CSHTML5
+            throw new NotImplementedException("This method is not yet implemented for CSHTML5.");
+#else
             if (!score.Parts.Any()) throw new ScoreException(score, $"Score does not contain any parts therefore it does not conform to score-partwise schema. You have to add parts to {nameof(Score.Parts)} collection before exporting to MusicXml.");
             var quarterNoteDuration = CalculateQuarterNoteDuration(score);
 
@@ -142,6 +154,7 @@ namespace Manufaktura.Controls.Parser
                 ExportStaves(partNode, part.Staves, quarterNoteDuration);
             }
             return document;
+#endif
         }
 
         private void ExportStaves(XElement parent, IEnumerable<Staff> staves, int quarterNoteDuration)

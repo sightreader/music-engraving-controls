@@ -15,12 +15,22 @@ namespace Manufaktura.Controls.Rendering
 		private readonly IMeasurementService measurementService;
 		private readonly IScoreService scoreService;
 
-		public RestRenderStrategy(IMeasurementService measurementService, IScoreService scoreService)
+        /// <summary>
+        /// Initializes a new instance of RestRenderStrategy
+        /// </summary>
+        /// <param name="measurementService"></param>
+        /// <param name="scoreService"></param>
+        public RestRenderStrategy(IMeasurementService measurementService, IScoreService scoreService)
 		{
 			this.measurementService = measurementService;
 			this.scoreService = scoreService;
 		}
 
+        /// <summary>
+        /// Renders a rest with specific score renderer
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="renderer"></param>
 		public override void Render(Rest element, ScoreRendererBase renderer)
 		{
             var textBlockWidthCorrection = -7;

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{75521EE4-7F08-4EEB-9CDA-3CFCA3A1AE86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Manufaktura.Controls.XamlForHtml5.MusicShadow</RootNamespace>
+    <AssemblyName>Manufaktura.Controls.XamlForHtml5.MusicShadow</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsCSharpXamlForHtml5>true</IsCSharpXamlForHtml5>
+    <CSharpXamlForHtml5OutputType>Library</CSharpXamlForHtml5OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;CSHARP_XAML_FOR_HTML5;CSHTML5</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CSHARP_XAML_FOR_HTML5;CSHTML5</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSharpXamlForHtml5">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.Runtime.Serialization.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.Runtime.Serialization.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.ServiceModel.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.ServiceModel.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.Xaml.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.Xaml.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.Xml.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.Xml.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="JSIL.Meta">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\JSIL.Meta.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Manufaktura.Music\Extensions\UsefulExtensions.cs">
+      <Link>Extensions\UsefulExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Generators\MelodyGenerator.cs">
+      <Link>Generators\MelodyGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Generators\RhythmGenerator.cs">
+      <Link>Generators\RhythmGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\MelodicTrails\ConjunctMovementTrail.cs">
+      <Link>MelodicTrails\ConjunctMovementTrail.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\MelodicTrails\HeadMotiveTrail.cs">
+      <Link>MelodicTrails\HeadMotiveTrail.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\MelodicTrails\IMelodicTrail.cs">
+      <Link>MelodicTrails\IMelodicTrail.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\MelodicTrails\MovementType.cs">
+      <Link>MelodicTrails\MovementType.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\MelodicTrails\RandomIntervalsMelodicTrail.cs">
+      <Link>MelodicTrails\RandomIntervalsMelodicTrail.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Chord.cs">
+      <Link>Model\Chord.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\CircleOfFifths.cs">
+      <Link>Model\CircleOfFifths.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Harmony\IHarmony.cs">
+      <Link>Model\Harmony\IHarmony.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Harmony\MajorAndMinorHarmony.cs">
+      <Link>Model\Harmony\MajorAndMinorHarmony.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Harmony\TertianHarmony.cs">
+      <Link>Model\Harmony\TertianHarmony.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\HistoricIntervalNames.cs">
+      <Link>Model\HistoricIntervalNames.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\IHasPitch.cs">
+      <Link>Model\IHasPitch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Intervals\BoundInterval.cs">
+      <Link>Model\Intervals\BoundInterval.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Intervals\DiatonicInterval.cs">
+      <Link>Model\Intervals\DiatonicInterval.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Intervals\Interval.cs">
+      <Link>Model\Intervals\Interval.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Intervals\TuningDictionary.cs">
+      <Link>Model\Intervals\TuningDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\MajorAndMinor\MajorAndMinorScaleFlags.cs">
+      <Link>Model\MajorAndMinor\MajorAndMinorScaleFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\MajorAndMinor\MajorMode.cs">
+      <Link>Model\MajorAndMinor\MajorMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\MajorAndMinor\MajorOrMinorScale.cs">
+      <Link>Model\MajorAndMinor\MajorOrMinorScale.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\MajorAndMinor\MajorScale.cs">
+      <Link>Model\MajorAndMinor\MajorScale.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\MajorAndMinor\MinorMode.cs">
+      <Link>Model\MajorAndMinor\MinorMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\MajorAndMinor\MinorScale.cs">
+      <Link>Model\MajorAndMinor\MinorScale.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\MalformedScaleException.cs">
+      <Link>Model\MalformedScaleException.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Mode.cs">
+      <Link>Model\Mode.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Pentatonic\PentatonicMode.cs">
+      <Link>Model\Pentatonic\PentatonicMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Pitch.cs">
+      <Link>Model\Pitch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Proportion.cs">
+      <Link>Model\Proportion.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\RhythmicDuration.cs">
+      <Link>Model\RhythmicDuration.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\RhythmicUnit.cs">
+      <Link>Model\RhythmicUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Scale.cs">
+      <Link>Model\Scale.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Step.cs">
+      <Link>Model\Step.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\Tempo.cs">
+      <Link>Model\Tempo.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\TunedPitch.cs">
+      <Link>Model\TunedPitch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Model\UsefulMath.cs">
+      <Link>Model\UsefulMath.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\RhythmicTrails\IRhythmicTrail.cs">
+      <Link>RhythmicTrails\IRhythmicTrail.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\RhythmicTrails\LimitedPatternsRhythmicTrail.cs">
+      <Link>RhythmicTrails\LimitedPatternsRhythmicTrail.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\RhythmicTrails\PolonaiseRhythmicTrail.cs">
+      <Link>RhythmicTrails\PolonaiseRhythmicTrail.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Tuning\PythagoreanTuning.cs">
+      <Link>Tuning\PythagoreanTuning.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Tuning\RegularTuningSystem.cs">
+      <Link>Tuning\RegularTuningSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Tuning\TemperedTuningSystem.cs">
+      <Link>Tuning\TemperedTuningSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Tuning\TertianTuning.cs">
+      <Link>Tuning\TertianTuning.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Tuning\TunedInterval.cs">
+      <Link>Tuning\TunedInterval.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Tuning\TuningSystem.cs">
+      <Link>Tuning\TuningSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\UnitTests\MusicalAssertions.cs">
+      <Link>UnitTests\MusicalAssertions.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\IXHelper.cs">
+      <Link>Xml\IXHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\IXHelperResult.cs">
+      <Link>Xml\IXHelperResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\XAttributeHelper.cs">
+      <Link>Xml\XAttributeHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\XElementHelper.cs">
+      <Link>Xml\XElementHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\XExtensions.cs">
+      <Link>Xml\XExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\XHelperBase.cs">
+      <Link>Xml\XHelperBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\XHelperExistsResult.cs">
+      <Link>Xml\XHelperExistsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Music\Xml\XHelperHasValueResult.cs">
+      <Link>Xml\XHelperHasValueResult.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\InternalStuff\Targets\CSharpXamlForHtml5.Build.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

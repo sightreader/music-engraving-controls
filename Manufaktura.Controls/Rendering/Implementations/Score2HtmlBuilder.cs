@@ -7,8 +7,16 @@ using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
+    /// <summary>
+    /// Renders Scores in HTML format
+    /// </summary>
+    /// <typeparam name="TRenderer">Score renderer type</typeparam>
+    /// <typeparam name="TCanvas">Canvas type</typeparam>
     public abstract class Score2HtmlBuilder<TRenderer, TCanvas> : IScore2HtmlBuilder where TRenderer : HtmlScoreRenderer<TCanvas>, new()
     {
+        /// <summary>
+        /// Scores to render
+        /// </summary>
         public IEnumerable<Score> Scores { get; protected set; }
         public string CanvasPrefix { get; protected set; }
         public HtmlScoreRendererSettings Settings { get; protected set; }
@@ -56,6 +64,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
             return fontFormats.FirstOrDefault(ff => uri.EndsWith(ff.Extension, StringComparison.OrdinalIgnoreCase));
         }
 
+        /// <summary>
+        /// Builds CSS @font-face declaration
+        /// </summary>
+        /// <returns></returns>
         protected string GetFontFaceDeclaration()
         {
             var stringBuilder = new StringBuilder();
@@ -85,6 +97,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Font format information used for building CSS font-face declarations
+        /// </summary>
         public class FontFormat
         {
             public string Extension { get; set; }

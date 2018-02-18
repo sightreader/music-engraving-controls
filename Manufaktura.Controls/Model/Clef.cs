@@ -136,7 +136,7 @@ namespace Manufaktura.Controls.Model
 			get { return musicalCharacter; }
 		}
 
-		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
 
 		public int OctaveChange
 		{
@@ -149,7 +149,7 @@ namespace Manufaktura.Controls.Model
 			{
 				if (value > 0) for (var i = 0; i < value; i++) Pitch = Pitch.OctaveUp();
 				if (value < 0) for (var i = 0; i > value; i--) Pitch = Pitch.OctaveDown();
-				octaveChange = value; OnPropertyChanged(() => OctaveChange);
+				octaveChange = value; OnPropertyChanged();
 			}
 		}
 
@@ -212,7 +212,11 @@ namespace Manufaktura.Controls.Model
 			else return new Clef(ClefType.GClef, 2);
 		}
 
-		public override string ToString()
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
+        public override string ToString()
 		{
 			return string.Format("{0} {1} on line {2}", base.ToString(), TypeOfClef.ToString(), Line);
 		}

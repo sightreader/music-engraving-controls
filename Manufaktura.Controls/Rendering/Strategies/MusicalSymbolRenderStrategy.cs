@@ -9,6 +9,9 @@ namespace Manufaktura.Controls.Rendering
 	/// <typeparam name="TElement">Musical symbol type</typeparam>
 	public abstract class MusicalSymbolRenderStrategy<TElement> : MusicalSymbolRenderStrategyBase where TElement : MusicalSymbol
 	{
+        /// <summary>
+        /// Musica symbol whose rendering is supported by this strategy
+        /// </summary>
 		public override Type SymbolType { get { return typeof(TElement); } }
 
 		/// <summary>

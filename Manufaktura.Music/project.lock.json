@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETPortable,Version=v4.5,Profile=Profile259": {}
   },
@@ -9,15 +9,30 @@
     ".NETPortable,Version=v4.5,Profile=Profile259": []
   },
   "packageFolders": {
-    "C:\\Users\\Jacek\\.nuget\\packages\\": {}
+    "C:\\Users\\Jacek\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
+      "projectUniqueName": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
       "projectName": "Manufaktura.Music",
-      "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
-      "projectJsonPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\project.json",
-      "projectStyle": "ProjectJson"
+      "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj",
+      "projectJsonPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\project.json",
+      "packagesPath": "C:\\Users\\Jacek\\.nuget\\packages\\",
+      "outputPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\obj\\",
+      "projectStyle": "ProjectJson",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Jacek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      }
     },
     "frameworks": {
       "portable45-net45+win8+wp8+wpa81": {}

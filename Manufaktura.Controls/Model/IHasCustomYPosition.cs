@@ -5,6 +5,9 @@
     /// </summary>
     public interface IHasCustomYPosition
     {
+        /// <summary>
+        /// Default Y position for element
+        /// </summary>
         double? DefaultYPosition { get; set; }
     }
 }

@@ -25,6 +25,10 @@ namespace Manufaktura.Music.Model
             Frequency = freq;
         }
 
+        /// <summary>
+        /// Returns a string value of this object (mainly for debug purposes)
+        /// </summary>
+        /// <returns>String value of this object (mainly for debug purposes)</returns>
         public override string ToString()
         {
             return string.Format("{0} ({1} Hz)", base.ToString(), Frequency);

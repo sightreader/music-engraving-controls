@@ -158,7 +158,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
             invMordentNode.IfAttribute("default-x").HasValue<double>().Then(v => builder.Mordent.DefaultXPosition = v);
             invMordentNode.IfAttribute("default-y").HasValue<double>().Then(v => builder.Mordent.DefaultYPosition = v);
 
-            foreach (var slurNode in notationsNode?.Elements(XName.Get("slur")) ?? new XElement[] { })
+            foreach (var slurNode in notationsNode?.Elements().Where(e => e.Name == "slur") ?? new XElement[] { })
             {
                 var slur = new Slur();
                 builder.Slurs.Add(slur);

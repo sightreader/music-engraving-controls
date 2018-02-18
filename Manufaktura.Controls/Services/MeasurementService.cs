@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Services
 {
+    /// <summary>
+    /// Default implementation of IMeasurementService
+    /// </summary>
     public class MeasurementService : IMeasurementService
     {
         public MeasurementService()

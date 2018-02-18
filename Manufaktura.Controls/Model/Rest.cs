@@ -30,15 +30,19 @@ namespace Manufaktura.Controls.Model
 		public bool FullMeasure
 		{
 			get { return fullMeasure; }
-			set { fullMeasure = value; OnPropertyChanged(() => FullMeasure); }
+			set { fullMeasure = value; OnPropertyChanged(); }
 		}
 
 		/// <summary>
 		/// Indicates if this Rest is multimeasure.
 		/// </summary>
-		public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; OnPropertyChanged(() => MultiMeasure); } }
+		public int MultiMeasure { get { return multiMeasure; } set { multiMeasure = value; OnPropertyChanged(); } }
 
-		public override string ToString()
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
+        public override string ToString()
 		{
 			return string.Format("{0} {1}", base.ToString(), Duration.ToString());
 		}

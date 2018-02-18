@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAF95D00-90B9-4401-B450-48EB7B9BAE57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Manufaktura.Controls.XamlForHtml5.ControlsShadow</RootNamespace>
+    <AssemblyName>Manufaktura.Controls.XamlForHtml5.ControlsShadow</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsCSharpXamlForHtml5>true</IsCSharpXamlForHtml5>
+    <CSharpXamlForHtml5OutputType>Library</CSharpXamlForHtml5OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;CSHARP_XAML_FOR_HTML5;CSHTML5</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CSHARP_XAML_FOR_HTML5;CSHTML5</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSharpXamlForHtml5">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.Runtime.Serialization.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.Runtime.Serialization.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.ServiceModel.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.ServiceModel.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.Xaml.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.Xaml.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpXamlForHtml5.System.Xml.dll">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\CSharpXamlForHtml5.System.Xml.dll.dll</HintPath>
+    </Reference>
+    <Reference Include="JSIL.Meta">
+      <HintPath>$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\AssembliesToReference\JSIL.Meta.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Manufaktura.Controls\Audio\ChannelSelectingTaskScorePlayer.cs">
+      <Link>Audio\ChannelSelectingTaskScorePlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Audio\PlaybackCursorPosition.cs">
+      <Link>Audio\PlaybackCursorPosition.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Audio\ScorePlayer.cs">
+      <Link>Audio\ScorePlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Audio\TaskScorePlayer.cs">
+      <Link>Audio\TaskScorePlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Audio\TimelineElement.cs">
+      <Link>Audio\TimelineElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Audio\VirtualScorePlayer.cs">
+      <Link>Audio\VirtualScorePlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Extensions\StaffBuilder.cs">
+      <Link>Extensions\StaffBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Extensions\XmlExtensions.cs">
+      <Link>Extensions\XmlExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\BeatRebeamStrategy.cs">
+      <Link>Formatting\BeatRebeamStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\DefaultScoreFormatter.cs">
+      <Link>Formatting\DefaultScoreFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\HookDirectionAlgorithm.cs">
+      <Link>Formatting\HookDirectionAlgorithm.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\IRebeamStrategy.cs">
+      <Link>Formatting\IRebeamStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\IScoreFormatter.cs">
+      <Link>Formatting\IScoreFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\LyricsRebeamStrategy.cs">
+      <Link>Formatting\LyricsRebeamStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\RebeamMode.cs">
+      <Link>Formatting\RebeamMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Formatting\SimpleRebeamStrategy.cs">
+      <Link>Formatting\SimpleRebeamStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\BeamGroupDraggingStrategy.cs">
+      <Link>Interactivity\BeamGroupDraggingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\DirectionDraggingStrategy.cs">
+      <Link>Interactivity\DirectionDraggingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\DraggingState.cs">
+      <Link>Interactivity\DraggingState.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\DraggingStrategy.cs">
+      <Link>Interactivity\DraggingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\IDraggingStrategy.cs">
+      <Link>Interactivity\IDraggingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\LyricsDraggingStrategy.cs">
+      <Link>Interactivity\LyricsDraggingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\NoteDraggingStrategy.cs">
+      <Link>Interactivity\NoteDraggingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Interactivity\RestDraggingStrategy.cs">
+      <Link>Interactivity\RestDraggingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\IoC\ExpressionActivator.cs">
+      <Link>IoC\ExpressionActivator.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\IoC\ManufakturaResolver.cs">
+      <Link>IoC\ManufakturaResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Linq\ScoreExtensions.cs">
+      <Link>Linq\ScoreExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Assertions\SafetySettings.cs">
+      <Link>Model\Assertions\SafetySettings.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Barline.cs">
+      <Link>Model\Barline.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\BeamGroup.cs">
+      <Link>Model\BeamGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Builders\NoteOrRestBuilder.cs">
+      <Link>Model\Builders\NoteOrRestBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\ChordSign.cs">
+      <Link>Model\ChordSign.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Clef.cs">
+      <Link>Model\Clef.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Collections\ItemManagingCollection.cs">
+      <Link>Model\Collections\ItemManagingCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Collections\LyricsCollection.cs">
+      <Link>Model\Collections\LyricsCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Collections\MusicalSymbolCollection.cs">
+      <Link>Model\Collections\MusicalSymbolCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Collections\PartStavesCollection.cs">
+      <Link>Model\Collections\PartStavesCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Collections\StaffCollection.cs">
+      <Link>Model\Collections\StaffCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Collections\SystemCollection.cs">
+      <Link>Model\Collections\SystemCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Direction.cs">
+      <Link>Model\Direction.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Events\InvalidateEventArgs.cs">
+      <Link>Model\Events\InvalidateEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Exceptions\ScoreException.cs">
+      <Link>Model\Exceptions\ScoreException.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Fonts\IMusicFont.cs">
+      <Link>Model\Fonts\IMusicFont.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Fonts\MusicFontStyles.cs">
+      <Link>Model\Fonts\MusicFontStyles.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Fonts\PolihymniaFont.cs">
+      <Link>Model\Fonts\PolihymniaFont.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\GroupBarlineType.cs">
+      <Link>Model\GroupBarlineType.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\ICanBeElementOfChord.cs">
+      <Link>Model\ICanBeElementOfChord.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\ICanBeElementOfTuplet.cs">
+      <Link>Model\ICanBeElementOfTuplet.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\IHasCustomXPosition.cs">
+      <Link>Model\IHasCustomXPosition.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\IHasCustomYPosition.cs">
+      <Link>Model\IHasCustomYPosition.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\IHasDuration.cs">
+      <Link>Model\IHasDuration.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\IRenderedAsTextBlock.cs">
+      <Link>Model\IRenderedAsTextBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Key.cs">
+      <Link>Model\Key.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\LineDictionary.cs">
+      <Link>Model\LineDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Lyrics.cs">
+      <Link>Model\Lyrics.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Measure.cs">
+      <Link>Model\Measure.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\MetronomeDirection.cs">
+      <Link>Model\MetronomeDirection.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Mordent.cs">
+      <Link>Model\Mordent.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\MusicalSymbol.cs">
+      <Link>Model\MusicalSymbol.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Note.cs">
+      <Link>Model\Note.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\NoteOrRest.cs">
+      <Link>Model\NoteOrRest.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\NullMusicalSymbol.cs">
+      <Link>Model\NullMusicalSymbol.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Ornament.cs">
+      <Link>Model\Ornament.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Part.cs">
+      <Link>Model\Part.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PartGroup.cs">
+      <Link>Model\PartGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs">
+      <Link>Model\PeekStrategies\BeginningOfMeasurePeekStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PeekStrategies\BeginningOfTupletPeekStrategy.cs">
+      <Link>Model\PeekStrategies\BeginningOfTupletPeekStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PeekStrategies\EndOfTupletPeekStrategy.cs">
+      <Link>Model\PeekStrategies\EndOfTupletPeekStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PeekStrategies\HighestNoteInChordPeekStrategy.cs">
+      <Link>Model\PeekStrategies\HighestNoteInChordPeekStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PeekStrategies\NextElementPeekStrategy.cs">
+      <Link>Model\PeekStrategies\NextElementPeekStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PeekStrategies\PeekStrategy.cs">
+      <Link>Model\PeekStrategies\PeekStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PeekStrategies\PreviousElementPeekStrategy.cs">
+      <Link>Model\PeekStrategies\PreviousElementPeekStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\PrintSuggestion.cs">
+      <Link>Model\PrintSuggestion.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\RadialChartSample.cs">
+      <Link>Model\RadialChartSample.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Rest.cs">
+      <Link>Model\Rest.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Rules\AutomaticAddMeasuresRule.cs">
+      <Link>Model\Rules\AutomaticAddMeasuresRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Rules\ManualAddMeasuresRule.cs">
+      <Link>Model\Rules\ManualAddMeasuresRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Rules\NoteStemRule.cs">
+      <Link>Model\Rules\NoteStemRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Rules\StaffRule.cs">
+      <Link>Model\Rules\StaffRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Score.cs">
+      <Link>Model\Score.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\ScoreEncoding.cs">
+      <Link>Model\ScoreEncoding.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\ScoreInfo.cs">
+      <Link>Model\ScoreInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\ScorePage.cs">
+      <Link>Model\ScorePage.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Slur.cs">
+      <Link>Model\Slur.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Staff.cs">
+      <Link>Model\Staff.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\StaffFragment.cs">
+      <Link>Model\StaffFragment.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\StaffSystem.cs">
+      <Link>Model\StaffSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\TimeSignature.cs">
+      <Link>Model\TimeSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\Tuplet.cs">
+      <Link>Model\Tuplet.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Model\ViewModel.cs">
+      <Link>Model\ViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\Digest\LyricsDigestParser.cs">
+      <Link>Parser\Digest\LyricsDigestParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\Digest\MelodicContourDigestParser.cs">
+      <Link>Parser\Digest\MelodicContourDigestParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\Digest\RhythmDigestParser.cs">
+      <Link>Parser\Digest\RhythmDigestParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\Digest\RhythmNotesPerMeasureDigestParser.cs">
+      <Link>Parser\Digest\RhythmNotesPerMeasureDigestParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\Digest\RhythmRelativeDigestParser.cs">
+      <Link>Parser\Digest\RhythmRelativeDigestParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\Digest\SimpleDigestParser.cs">
+      <Link>Parser\Digest\SimpleDigestParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\MusicXmlNormalizer.cs">
+      <Link>Parser\MusicXml\MusicXmlNormalizer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\MusicXmlParser.cs">
+      <Link>Parser\MusicXml\MusicXmlParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\MusicXmlParserState.cs">
+      <Link>Parser\MusicXml\MusicXmlParserState.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\AttributeParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\AttributeParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\BarlineParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\BarlineParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\BarlineWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\BarlineWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\ClefParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\ClefParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\ClefWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\ClefWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\DirectionParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\DirectionParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\DirectionWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\DirectionWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\EncodingParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\EncodingParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\GenericMusicXmlParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\GenericMusicXmlParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\HarmonyParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\HarmonyParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\KeyParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\KeyParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\KeyWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\KeyWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\MeasureParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\MeasureParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\MeasureStyleParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\MeasureStyleParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\MusicXmlParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\MusicXmlParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\MusicXmlWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\MusicXmlWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs">
+      <Link>Parser\MusicXml\Strategies\MusicXmlWritingStrategyBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\NoteAndRestParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\NoteOrRestWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\NoteOrRestWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\NoteWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\NoteWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\PageLayoutParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\PageLayoutParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\PrintSuggestionParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\PrintSuggestionWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\PrintSuggestionWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\RestWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\RestWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\SoundParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\SoundParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\StaffLayoutParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\StaffLayoutParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\StavesAttributeParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\StavesAttributeParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\SystemLayoutParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\SystemLayoutParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\TimeParsingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\TimeParsingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\MusicXml\Strategies\TimeSignatureWritingStrategy.cs">
+      <Link>Parser\MusicXml\Strategies\TimeSignatureWritingStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\Parser.cs">
+      <Link>Parser\Parser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\ScoreParser.cs">
+      <Link>Parser\ScoreParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Parser\XTransformerParser.cs">
+      <Link>Parser\XTransformerParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Primitives\Color.cs">
+      <Link>Primitives\Color.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Primitives\KolbergColors.cs">
+      <Link>Primitives\KolbergColors.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Primitives\Pen.cs">
+      <Link>Primitives\Pen.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Primitives\Point.cs">
+      <Link>Primitives\Point.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Primitives\PolarPoint.cs">
+      <Link>Primitives\PolarPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Primitives\Rectangle.cs">
+      <Link>Primitives\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Primitives\Size.cs">
+      <Link>Primitives\Size.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\HtmlCanvasScoreRenderer.cs">
+      <Link>Rendering\Implementations\HtmlCanvasScoreRenderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\HtmlScoreRenderer.cs">
+      <Link>Rendering\Implementations\HtmlScoreRenderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\HtmlScoreRendererSettings.cs">
+      <Link>Rendering\Implementations\HtmlScoreRendererSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\HtmlSvgScoreRenderer.cs">
+      <Link>Rendering\Implementations\HtmlSvgScoreRenderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\IScore2HtmlBuilder.cs">
+      <Link>Rendering\Implementations\IScore2HtmlBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\Score2HtmlBuilder.cs">
+      <Link>Rendering\Implementations\Score2HtmlBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\Score2HtmlCanvasBuilder.cs">
+      <Link>Rendering\Implementations\Score2HtmlCanvasBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Implementations\Score2HtmlSvgBuilder.cs">
+      <Link>Rendering\Implementations\Score2HtmlSvgBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\InvalidatingModes.cs">
+      <Link>Rendering\InvalidatingModes.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\PerformanceMeasuringScoreRenderer.cs">
+      <Link>Rendering\PerformanceMeasuringScoreRenderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Postprocessing\AddBracketsFinishingTouch.cs">
+      <Link>Rendering\Postprocessing\AddBracketsFinishingTouch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Postprocessing\DemoVersionFinishingTouch.cs">
+      <Link>Rendering\Postprocessing\DemoVersionFinishingTouch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Postprocessing\DrawAllLinesFinishingTouch.cs">
+      <Link>Rendering\Postprocessing\DrawAllLinesFinishingTouch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Postprocessing\DrawBeamsFinishingTouch.cs">
+      <Link>Rendering\Postprocessing\DrawBeamsFinishingTouch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Postprocessing\DrawLinesBetweenStavesFinishingTouch.cs">
+      <Link>Rendering\Postprocessing\DrawLinesBetweenStavesFinishingTouch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Postprocessing\DrawMissingStemsFinishingTouch.cs">
+      <Link>Rendering\Postprocessing\DrawMissingStemsFinishingTouch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Postprocessing\IFinishingTouch.cs">
+      <Link>Rendering\Postprocessing\IFinishingTouch.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\ScoreRenderer.cs">
+      <Link>Rendering\ScoreRenderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\ScoreRendererBase.cs">
+      <Link>Rendering\ScoreRendererBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\ScoreRendererSettings.cs">
+      <Link>Rendering\ScoreRendererSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\ScoreRenderingModes.cs">
+      <Link>Rendering\ScoreRenderingModes.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Snippets\Beams.cs">
+      <Link>Rendering\Snippets\Beams.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\BarlineRenderStrategy.cs">
+      <Link>Rendering\Strategies\BarlineRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\ClefRenderStrategy.cs">
+      <Link>Rendering\Strategies\ClefRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\DirectionRenderStrategy.cs">
+      <Link>Rendering\Strategies\DirectionRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\KeyRenderStrategy.cs">
+      <Link>Rendering\Strategies\KeyRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\MusicalSymbolRenderStrategy.cs">
+      <Link>Rendering\Strategies\MusicalSymbolRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\MusicalSymbolRenderStrategyBase.cs">
+      <Link>Rendering\Strategies\MusicalSymbolRenderStrategyBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\NoteRenderStrategy.cs">
+      <Link>Rendering\Strategies\NoteRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\PrintSuggestionRenderStrategy.cs">
+      <Link>Rendering\Strategies\PrintSuggestionRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\RestRenderStrategy.cs">
+      <Link>Rendering\Strategies\RestRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\Slurs\BezierSlurRenderStrategy.cs">
+      <Link>Rendering\Strategies\Slurs\BezierSlurRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\Slurs\DefaultSlurRenderStrategy.cs">
+      <Link>Rendering\Strategies\Slurs\DefaultSlurRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\Slurs\SlurRenderStrategy.cs">
+      <Link>Rendering\Strategies\Slurs\SlurRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Rendering\Strategies\TimeSignatureRenderStrategy.cs">
+      <Link>Rendering\Strategies\TimeSignatureRenderStrategy.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\AlterationService.cs">
+      <Link>Services\AlterationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\BeamingService.cs">
+      <Link>Services\BeamingService.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\IAlterationService.cs">
+      <Link>Services\IAlterationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\IBeamingService.cs">
+      <Link>Services\IBeamingService.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\IMeasurementService.cs">
+      <Link>Services\IMeasurementService.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\IScoreService.cs">
+      <Link>Services\IScoreService.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\MeasurementService.cs">
+      <Link>Services\MeasurementService.cs</Link>
+    </Compile>
+    <Compile Include="..\Manufaktura.Controls\Services\ScoreService.cs">
+      <Link>Services\ScoreService.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls.XamlForHtml5.MusicShadow\Manufaktura.Controls.XamlForHtml5.MusicShadow.csproj">
+      <Project>{75521ee4-7f08-4eeb-9cda-3cfca3a1ae86}</Project>
+      <Name>Manufaktura.Controls.XamlForHtml5.MusicShadow</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildProgramFiles32)\MSBuild\CSharpXamlForHtml5\InternalStuff\Targets\CSharpXamlForHtml5.Build.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

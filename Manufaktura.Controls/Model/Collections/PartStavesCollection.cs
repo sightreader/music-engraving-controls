@@ -2,6 +2,9 @@
 
 namespace Manufaktura.Controls.Model.Collections
 {
+    /// <summary>
+    /// Collection of staves in a Part
+    /// </summary>
 	public class PartStavesCollection : ItemManagingCollection<Staff>
 	{
 		private readonly Part part;

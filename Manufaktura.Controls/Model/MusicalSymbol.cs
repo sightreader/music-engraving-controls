@@ -7,12 +7,24 @@ using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.Model
 {
+    /// <summary>
+    /// Articulation types
+    /// </summary>
     public enum ArticulationType { None, Staccato, Accent };
 
+    /// <summary>
+    /// Barline styles
+    /// </summary>
     public enum BarlineStyle { Regular, LightHeavy, None, Dashed }
 
+    /// <summary>
+    /// Clef types
+    /// </summary>
     public enum ClefType { GClef, CClef, FClef, Percussion };
 
+    /// <summary>
+    /// Desired hook directions
+    /// </summary>
     public enum DesiredHookDirections { Any, ForwardHook, BackwardHook };
 
     public enum DirectionPlacementType { Above, Below, Custom };
@@ -68,7 +80,14 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        /// <summary>
+        /// Defines a custom color for drawing this MusicalSymbol. If null, the default color will be used.
+        /// </summary>
         public Color? CustomColor { get { return customColor; } set { customColor = value; OnPropertyChanged(); } }
+
+        /// <summary>
+        /// Random id of MusicalSymbol
+        /// </summary>
         public Guid Id { get; private set; }
 
         /// <summary>
@@ -90,12 +109,29 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        /// <summary>
+        /// Measure that contains this MusicalSymbol. Null if MusicalSymbol doesn't belong to any measure.
+        /// </summary>
         public virtual Measure Measure { get; internal set; }
+
+        /// <summary>
+        /// Score page that contains this MusicalSymbol. Null if MusicalSymbol doesn't belong to any measure.
+        /// </summary>
         public ScorePage Page => Measure?.System?.Page;
 
+        /// <summary>
+        /// Number of score page that contains this MusicalSymbol. Null if MusicalSymbol doesn't belong to any measure.
+        /// </summary>
         public int? PageNumber => Page == null ? null : Staff?.Score?.Pages?.IndexOf(Page) + 1;
+
+        /// <summary>
+        /// Staff that contains this MusicalSymbol. Null if MusicalSymbol doesn't belong to any staff.
+        /// </summary>
         public virtual Staff Staff { get; internal set; }
 
+        /// <summary>
+        /// If true, MusicalSymbol will not fire any PropertyChanged events and MusicalSymbol's staff will not raise MeasureInvalidated events when MusicalSymbol's property is changed.
+        /// </summary>
         internal bool SuppressEvents { get; set; }
 
         /// <summary>
@@ -120,16 +156,28 @@ namespace Manufaktura.Controls.Model
             return TimeSpan.FromSeconds(singleNoteDuration * ratio);
         }
 
+        /// <summary>
+        /// Returns a color that will be used to draw this MusicalSymbol. If CustomColor is defined, CustomColor will be used. Otherwise, renderer's DefaultColor will be used.
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <returns></returns>
         public Color CoalesceColor(ScoreRendererBase renderer)
         {
             return CustomColor.HasValue ? CustomColor.Value : renderer.Settings.DefaultColor;
         }
 
+        /// <summary>
+        /// Forces a Staff containing this MusicalSymbol to fire it's MeasureInvalidated events.
+        /// </summary>
         internal void InvalidateMeasure()
         {
             Staff?.FireMeasureInvalidated(this, Measure);
         }
 
+        /// <summary>
+        /// Raises a PropertyChanged event and forces a Staff containing this MusicalSymbol to fire it's MeasureInvalidated events.
+        /// </summary>
+        /// <param name="propertyName"></param>
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (SuppressEvents) return;

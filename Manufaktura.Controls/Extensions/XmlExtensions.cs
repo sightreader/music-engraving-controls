@@ -6,6 +6,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Extensions
 {
+    /// <summary>
+    /// Extension methods for parsing Xml files
+    /// </summary>
 	public static class XmlExtensions
 	{
 		public static T? ParseAttribute<T>(this XElement element, string name) where T : struct
@@ -15,6 +18,12 @@ namespace Manufaktura.Controls.Extensions
 			return ParseValue<T>(childElement.Value);
 		}
 
+        /// <summary>
+        /// Returns attribute value
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
 		public static string ParseAttribute(this XElement element, string name)
 		{
 			var childElement = element.Attributes().FirstOrDefault(d => d.Name == name);

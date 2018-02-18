@@ -4,17 +4,32 @@ using Manufaktura.Controls.Services;
 
 namespace Manufaktura.Controls.Rendering.Strategies.Slurs
 {
+    /// <summary>
+    /// Strategy of rendering slurs.
+    /// </summary>
     public abstract class SlurRenderStrategy
     {
         protected IMeasurementService measurementService;
         protected IScoreService scoreService;
 
+        /// <summary>
+        /// Initializes a new instance of SlurRenderStrategy with specific services.
+        /// </summary>
+        /// <param name="measurementService">Measurement service</param>
+        /// <param name="scoreService">Score service</param>
         protected SlurRenderStrategy(IMeasurementService measurementService, IScoreService scoreService)
         {
             this.measurementService = measurementService;
             this.scoreService = scoreService;
         }
 
+        /// <summary>
+        /// Draws a slur
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <param name="slur"></param>
+        /// <param name="element"></param>
+        /// <param name="notePositionY"></param>
         public void Draw(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY)
         {
             VerticalPlacement slurPlacement;
@@ -31,10 +46,34 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             }
         }
 
+        /// <summary>
+        /// Returns true if this strategy type is relevant for drawing a specific slur
+        /// </summary>
+        /// <param name="element">Element with a slur</param>
+        /// <param name="slur">Slur</param>
+        /// <returns>True if this strategy is relevant for rendering a specific slur</returns>
         public abstract bool IsRelevant(Note element, Slur slur);
 
+        /// <summary>
+        /// Draws of performs additional logic at slur end
+        /// </summary>
+        /// <param name="renderer">Score renderer</param>
+        /// <param name="slur">Slur</param>
+        /// <param name="element">Element with a slur</param>
+        /// <param name="notePositionY">Y position of element with a slur</param>
+        /// <param name="slurStartInfo">Information about slur start point</param>
+        /// <param name="slurPlacement">Information about slur placement</param>
         protected abstract void ProcessSlurEnd(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement);
 
+        /// <summary>
+        /// Draws or performs additional logic at slur start
+        /// </summary>
+        /// <param name="renderer">Score renderer</param>
+        /// <param name="slur">Slur</param>
+        /// <param name="element">Element with a slur</param>
+        /// <param name="notePositionY"></param>
+        /// <param name="slurStartInfo">Information about slur start point</param>
+        /// <param name="slurPlacement">Information about slur placement</param>
         protected abstract void ProcessSlurStart(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement);
 
         protected Point RelativeToAbsolute(ScoreRendererBase renderer, Point relative, double notePositionY)

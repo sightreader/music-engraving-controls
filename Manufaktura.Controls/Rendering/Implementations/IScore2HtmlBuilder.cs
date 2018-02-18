@@ -1,15 +1,23 @@
 ﻿using Manufaktura.Controls.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
+    /// <summary>
+    /// Interface for implementing Score to HTML converters
+    /// </summary>
     public interface IScore2HtmlBuilder
     {
+        /// <summary>
+        /// Scores to render
+        /// </summary>
         IEnumerable<Score> Scores { get; }
+
         string CanvasPrefix { get; }
+
+        /// <summary>
+        /// Rendering settings
+        /// </summary>
         HtmlScoreRendererSettings Settings { get; }
 
         /// <summary>

@@ -29,14 +29,20 @@ namespace Manufaktura.Controls.Model
 				musicalCharacter = " ";
 		}
 
+        /// <summary>
+        /// Number on the Circle of Fifths
+        /// </summary>
 		public int Fifths { get { return fifths; } }
 
+        /// <summary>
+        /// Character for displaying alteration signs (flats or sharps). Determined by number on the Circle of Fifths.
+        /// </summary>
 		public string MusicalCharacter
 		{
 			get { return musicalCharacter; }
 		}
 
-		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(() => MusicFont); } }
+		public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
 
 		public Primitives.Point TextBlockLocation
 		{
@@ -92,7 +98,11 @@ namespace Manufaktura.Controls.Model
 			return CircleOfFifths.GetAlterOfStepFromNumberOfFifths(step, Fifths);
 		}
 
-		public override string ToString()
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
+        public override string ToString()
 		{
 			return string.Format("{0} with {1} generator intervals.", base.ToString(), Fifths);
 		}

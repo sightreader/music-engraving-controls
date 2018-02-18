@@ -6,9 +6,17 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Postprocessing
 {
+    /// <summary>
+    /// Draws proper note beams.
+    /// </summary>
 	public class DrawBeamsFinishingTouch : IFinishingTouch
 	{
-		public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
+        /// <summary>
+        /// Applies DrawBeamsFinishingTouch to a measure.
+        /// </summary>
+        /// <param name="measure">Measure</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnMeasure(Measure measure, ScoreRendererBase renderer)
 		{
 			var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
 			foreach (var beamGroup in beamGroupsForThisMeasure)
@@ -19,11 +27,21 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 			PerformOnBeamGroups(beamGroupsForThisMeasure, renderer);
 		}
 
-		public void PerformOnScore(Score score, ScoreRendererBase renderer)
+        /// <summary>
+        /// This method does nothing in this implementation of IFinishingTouch.
+        /// </summary>
+        /// <param name="score">Score</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnScore(Score score, ScoreRendererBase renderer)
 		{
 		}
 
-		public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
+        /// <summary>
+        /// Applies DrawBeamsFinishingTouch to a staff.
+        /// </summary>
+        /// <param name="staff">Staff</param>
+        /// <param name="renderer">Score renderer</param>
+        public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
 		{
 			DiscoverBeamGroups(staff, renderer);
 			PerformOnBeamGroups(staff.BeamGroups, renderer);

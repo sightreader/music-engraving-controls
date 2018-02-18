@@ -11,8 +11,19 @@ namespace Manufaktura.Music.Model
     /// </summary>
     public abstract class Mode
     {
+        /// <summary>
+        /// Intervals in this mode (by number of semitones)
+        /// </summary>
         public abstract IEnumerable<int> Intervals { get; }
 
+        /// <summary>
+        /// Enumerates pitches in a scale created from this Mode.
+        /// </summary>
+        /// <param name="startingMidiPitch"></param>
+        /// <param name="translationMode"></param>
+        /// <param name="startingStep"></param>
+        /// <param name="numberOfSteps"></param>
+        /// <returns></returns>
         public IEnumerable<Pitch> BuildScale(int startingMidiPitch, Pitch.MidiPitchTranslationMode translationMode, int startingStep, int numberOfSteps)
         {
             if (startingStep < 1) throw new ArgumentException("Starting step must be greater than 0.", "startingStep");

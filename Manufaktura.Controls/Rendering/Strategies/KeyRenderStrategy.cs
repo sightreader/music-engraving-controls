@@ -15,6 +15,11 @@ namespace Manufaktura.Controls.Rendering
     public class KeyRenderStrategy : MusicalSymbolRenderStrategy<Key>
     {
         private readonly IScoreService scoreService;
+
+        /// <summary>
+        /// /// Initializes a new instance of KeyRenderStrategy
+        /// </summary>
+        /// <param name="scoreService"></param>
         public KeyRenderStrategy(IScoreService scoreService)
         {
             this.scoreService = scoreService;

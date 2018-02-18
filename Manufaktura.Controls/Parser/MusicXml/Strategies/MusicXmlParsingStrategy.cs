@@ -16,6 +16,16 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
         static MusicXmlParsingStrategy()
         {
+#if CSHTML5
+
+            var strategyTypes = typeof(MusicXmlParsingStrategy).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(MusicXmlParsingStrategy)) && !t.IsAbstract);
+            List<MusicXmlParsingStrategy> strategies = new List<MusicXmlParsingStrategy>();
+            foreach (var type in strategyTypes)
+            {
+                strategies.Add(Activator.CreateInstance(type) as MusicXmlParsingStrategy);
+            }
+            _strategies = strategies.ToArray();
+#else
             var strategyTypes = typeof(MusicXmlParsingStrategy).GetTypeInfo().Assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(MusicXmlParsingStrategy)) && !t.IsAbstract);
             List<MusicXmlParsingStrategy> strategies = new List<MusicXmlParsingStrategy>();
             foreach (var type in strategyTypes)
@@ -23,6 +33,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 strategies.Add(Activator.CreateInstance(type.AsType()) as MusicXmlParsingStrategy);
             }
             _strategies = strategies.ToArray();
+#endif
         }
 
         public abstract void ParseElement(MusicXmlParserState state, Staff staff, XElement element);

@@ -5,12 +5,30 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
+    /// <summary>
+    /// Contains historic interval names
+    /// </summary>
     public static class HistoricIntervalNames
     {
+        /// <summary>
+        /// Returns a perfect unison interval
+        /// </summary>
         public static Interval Unisonus { get { return Interval.PerfectUnison; } }
+        /// <summary>
+        /// Returns a augmented unison interval
+        /// </summary>
         public static Interval UnisonusSuperflua { get { return Interval.AugmentedUnison; } }
+        /// <summary>
+        /// Returns a minor second interval
+        /// </summary>
         public static Interval Semitonus { get { return Interval.MinorSecond; } }
+        /// <summary>
+        /// Returns a major second interval
+        /// </summary>
         public static Interval Tonus { get { return Interval.MajorSecond; } }
+        /// <summary>
+        /// Returns a minor third interval
+        /// </summary>
         public static Interval Semiditonus { get { return Interval.MinorThird; } }
         public static Interval Ditonus { get { return Interval.MajorThird; } }
         public static Interval Semidiatessaron { get { return Interval.DimnishedFourth; } }
@@ -29,6 +47,9 @@ namespace Manufaktura.Music.Model
         public static Interval HeptachordumMaius { get { return Interval.MajorSeventh; } }
         public static Interval HeptachordumSuperflua { get { return Interval.AugmentedSeventh; } }
         public static Interval Semidiapason { get { return Interval.DimnishedOctave; } }
+        /// <summary>
+        /// Returns a perfect ovtave interval
+        /// </summary>
         public static Interval Diapason { get { return Interval.PerfectOctave; } }
 
     }

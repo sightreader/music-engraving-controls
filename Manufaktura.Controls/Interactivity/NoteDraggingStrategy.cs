@@ -11,7 +11,9 @@ namespace Manufaktura.Controls.Interactivity
 	{
 		protected override void DragInternal(ScoreRendererBase renderer, Note draggedElement, DraggingState draggingState, double delta, double smallDelta)
 		{
-			Contract.Assert(draggedElement != null);
+#if !CSHTML5
+            Contract.Assert(draggedElement != null);
+#endif
 			int midiPitch = draggingState.MidiPitchOnStartDragging + (int)(delta / 2);
 			draggedElement.SuppressEvents = true;
 			draggedElement.ApplyMidiPitch(midiPitch);     //TODO: Wstawianie kasownika, jeśli jest znak przykluczowy, a obniżyliśmy o pół tonu

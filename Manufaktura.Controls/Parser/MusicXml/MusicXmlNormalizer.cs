@@ -1,11 +1,8 @@
-﻿using Manufaktura.Controls.Primitives;
-using Manufaktura.Music.Model;
+﻿using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
@@ -16,6 +13,10 @@ namespace Manufaktura.Controls.Parser.MusicXml
 
         public override XDocument Parse(XDocument source)   //TODO: Przetestować dokładnie i zrefaktorować
         {
+#if CSHTML5
+            throw new NotImplementedException("This method is not yet implemented for CSHTML5.");
+#else
+
             if (!NormalizeSpaceBeforeFirstNotesOfMeasures) return source;
             if (source.Descendants(XName.Get("repeat")).Any()) return source; //Workaround - pomiń na razie te ze znakiem repetycji, bo się źle rysują
             if (source.Descendants(XName.Get("time")).Count() > 1) return source; //Workaround - pomiń na razie te ze zmianami metrum, bo się źle rysują
@@ -85,11 +86,11 @@ namespace Manufaktura.Controls.Parser.MusicXml
                         currentValue = UsefulMath.TryParse(widthAttribute.Value);
                         if (!currentValue.HasValue) continue;
                         if (widthAttribute != null) widthAttribute.Value = (currentValue.Value - difference).ToString(CultureInfo.InvariantCulture);
-
                     }
                 }
             }
             return source;
+#endif
         }
 
         public override XDocument ParseBack(XDocument score)

@@ -6,11 +6,20 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Formatting
 {
+    /// <summary>
+    /// Rebeam strategy with simple rules
+    /// </summary>
 	public class SimpleRebeamStrategy : IRebeamStrategy
 	{
 		public RebeamMode Mode => RebeamMode.Simple;
 
-		public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
+        /// <summary>
+        /// Performs rebeaming with simple rules
+        /// </summary>
+        /// <param name="notes">Notes to rebeam</param>
+        /// <param name="hookDirectionAlgorithm">Algorithm for determining hook direction in beams</param>
+        /// <returns>Rebeamed notes</returns>
+        public IEnumerable<NoteOrRest> Rebeam(IEnumerable<NoteOrRest> notes, HookDirectionAlgorithm hookDirectionAlgorithm = HookDirectionAlgorithm.ProductionCandidate)
 		{
 			Note previousNote = null;
 			Note currentNote = null;

@@ -14,6 +14,9 @@ namespace Manufaktura.Controls.Model.Collections
 	{
 		private List<TItem> innerList = new List<TItem>();
 
+        /// <summary>
+        /// Event raised when collection is changed
+        /// </summary>
 		public event NotifyCollectionChangedEventHandler CollectionChanged;
 
 		/// <summary>
@@ -48,6 +51,10 @@ namespace Manufaktura.Controls.Model.Collections
 			}
 		}
 
+        /// <summary>
+        /// Adds element to collection and performs additional special actions
+        /// </summary>
+        /// <param name="item"></param>
 		public void Add(TItem item)
 		{
 			innerList.Add(item);
@@ -57,7 +64,11 @@ namespace Manufaktura.Controls.Model.Collections
 			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
 		}
 
-		public void AddRange(IEnumerable<TItem> items)
+        /// <summary>
+        /// Adds element range to collection and performs additional special actions
+        /// </summary>
+        /// <param name="item"></param>
+        public void AddRange(IEnumerable<TItem> items)
 		{
 			innerList.AddRange(items);
 			foreach (var item in items)
@@ -69,6 +80,9 @@ namespace Manufaktura.Controls.Model.Collections
 			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, items.ToList()));
 		}
 
+        /// <summary>
+        /// Clears collection and raises CollectionChanged event.
+        /// </summary>
 		public void Clear()
 		{
 			foreach (var i in innerList) UnbindEvents(i);
@@ -98,8 +112,12 @@ namespace Manufaktura.Controls.Model.Collections
 
 		public List<TItem> GetRange(int index, int count)
 		{
-			return innerList.GetRange(index, count);
-		}
+#if CSHTML5
+            return innerList.Skip(index).Take(count).ToList();
+#else
+            return innerList.GetRange(index, count);
+#endif
+        }
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{

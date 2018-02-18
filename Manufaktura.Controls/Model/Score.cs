@@ -79,12 +79,24 @@ namespace Manufaktura.Controls.Model
 			get { return GetStaff(9); }
 		}
 
+        /// <summary>
+        /// List of Pages in the Score
+        /// </summary>
 		public List<ScorePage> Pages { get; private set; }
 
+        /// <summary>
+        /// List of Part Groups in the Score
+        /// </summary>
 		public List<PartGroup> PartGroups { get; private set; } = new List<PartGroup>();
 
+        /// <summary>
+        /// List od Parts in the Score
+        /// </summary>
 		public List<Part> Parts { get; private set; }
 
+        /// <summary>
+        /// Safety settings used in data binding. Might become deprecated some day.
+        /// </summary>
 		public SafetySettings Safety { get; } = new SafetySettings();
 
 		/// <summary>
@@ -111,8 +123,14 @@ namespace Manufaktura.Controls.Model
 			get { return GetStaff(6); }
 		}
 
+        /// <summary>
+        /// Staves in the Score
+        /// </summary>
 		public StaffCollection Staves { get; private set; }
 
+        /// <summary>
+        /// Staff systems in the Score
+        /// </summary>
 		public IList<StaffSystem> Systems => new ReadOnlyCollection<StaffSystem>(Pages.SelectMany(p => p.Systems).ToList());
 
 		/// <summary>
@@ -168,6 +186,11 @@ namespace Manufaktura.Controls.Model
 			return score;
 		}
 
+        /// <summary>
+        /// Checks safety settings during data binding
+        /// </summary>
+        /// <param name="score"></param>
+        /// <param name="control"></param>
 		public static void SanityCheck(Score score, object control)
 		{
 			if (score == null) return;

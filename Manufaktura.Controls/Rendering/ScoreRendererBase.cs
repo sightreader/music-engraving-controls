@@ -19,6 +19,7 @@ namespace Manufaktura.Controls.Rendering
         protected IMeasurementService measurementService = new MeasurementService();
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
+
         protected ScoreRendererBase()
         {
             Settings = new ScoreRendererSettings();
@@ -181,14 +182,22 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner">Owner element</param>
         public abstract void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner);
 
+        /// <summary>
+        /// Draws playback cursor
+        /// </summary>
+        /// <param name="position"></param>
         public void DrawPlaybackCursor(PlaybackCursorPosition position)
         {
+#if CSHTML5
+            if (position.Timestamp.AddTicks(position.Duration.Ticks) < DateTime.Now) return;
+#else
             if (position.Timestamp + position.Duration < DateTime.Now) return;
-
+#endif
             var system = CurrentScore.Systems.ElementAt(position.SystemNumber - 1);
             if (system == null) return;
             DrawPlaybackCursor(position, new Point(position.PositionX + 6, system.Staves.First().LinePositions.First()),
                 new Point(position.PositionX + 6, system.Staves.Last().LinePositions.Last()));
+
         }
 
         /// <summary>
@@ -276,7 +285,7 @@ namespace Manufaktura.Controls.Rendering
             measurementService.LastMeasurePositionX = 0;
         }
 
-        private double[] CalculateLinePositions (bool breakPage, double distance, int staffNo, double[] initialPositions)
+        private double[] CalculateLinePositions(bool breakPage, double distance, int staffNo, double[] initialPositions)
         {
             List<double> newLinePositions = new List<double>();
             if (breakPage && Settings.RenderingMode == ScoreRenderingModes.SinglePage)
@@ -347,7 +356,11 @@ namespace Manufaktura.Controls.Rendering
 
         protected MusicalSymbolRenderStrategyBase GetProperRenderStrategy(MusicalSymbol element)
         {
+#if CSHTML5
+            return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType()) ?? Strategies.FirstOrDefault(s => s.SymbolType.IsAssignableFrom(element.GetType()));
+#else
             return Strategies.FirstOrDefault(s => s.SymbolType == element.GetType()) ?? Strategies.FirstOrDefault(s => s.SymbolType.GetTypeInfo().IsAssignableFrom(element.GetType().GetTypeInfo()));
+#endif
         }
 
         protected void RenderStaff(Staff staff)

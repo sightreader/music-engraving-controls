@@ -118,7 +118,7 @@ namespace Manufaktura.Controls.Model
 
         public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
         public int Alter { get { return pitch.Alter; } }
-        public ArticulationType Articulation { get { return articulation; } set { articulation = value; OnPropertyChanged(() => Articulation); } }
+        public ArticulationType Articulation { get { return articulation; } set { articulation = value; OnPropertyChanged(); } }
 
         public VerticalPlacement ArticulationPlacement
         {
@@ -126,7 +126,7 @@ namespace Manufaktura.Controls.Model
             set { articulationPlacement = value; }
         }
 
-        public List<NoteBeamType> BeamList { get { return beamList; } set { beamList = value; OnPropertyChanged(() => BeamList); } }
+        public List<NoteBeamType> BeamList { get { return beamList; } set { beamList = value; OnPropertyChanged(); } }
 
         public DesiredHookDirections DesiredHookDirection
         {
@@ -171,7 +171,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Indicates that the note has a natural sign.
         /// </summary>
-        public bool HasNatural { get { return hasNatural; } set { hasNatural = value; OnPropertyChanged(() => HasNatural); } }
+        public bool HasNatural { get { return hasNatural; } set { hasNatural = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Indicates that the note is cue note.
@@ -188,7 +188,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Indicates that the note belongs to a chord.
         /// </summary>
-        public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(() => IsUpperMemberOfChord); } }
+        public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(); } }
 
         public LyricsCollection Lyrics { get { return lyrics; } private set { lyrics = value; } }
         public int MidiPitch { get { return pitch.MidiPitch; } }
@@ -214,14 +214,14 @@ namespace Manufaktura.Controls.Model
             get { return pitch; }
             set
             {
-                pitch = value; OnPropertyChanged(() => Pitch);
+                pitch = value; OnPropertyChanged();
             }
         }
 
         public List<Slur> Slurs { get; } = new List<Slur>();
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
-        public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(() => StemDirection); } }
-        public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(() => StemEndLocation); } }
+        public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(); } }
+        public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(); } }
         
         /// <summary>
         /// Location of stem start point. This property is set in the last pass of rendering (DrawBeamsFinishingTouch).
@@ -233,10 +233,25 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public string Step { get { return pitch.StepName; } }
 
+        /// <summary>
+        /// If True, NoteStemRule is applied when this Note is inserted into a Staff.
+        /// </summary>
         public bool SubjectToNoteStemRule { get; set; }
-        public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(() => TieType); } }
-        public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(() => TremoloLevel); } }
-        public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(() => TrillMark); } }
+
+        /// <summary>
+        /// Note tie type
+        /// </summary>
+        public NoteTieType TieType { get { return tieType; } set { tieType = value; OnPropertyChanged(); } }
+
+        /// <summary>
+        /// Note tremolo level
+        /// </summary>
+        public int TremoloLevel { get { return tremoloLevel; } set { tremoloLevel = value; OnPropertyChanged(); } }
+
+        /// <summary>
+        /// Note trill mark
+        /// </summary>
+        public NoteTrillMark TrillMark { get { return trillMark; } set { trillMark = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Creates a new instance of Note from given midi pitch and duration.
@@ -294,12 +309,21 @@ namespace Manufaktura.Controls.Model
             Pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
         }
 
+        /// <summary>
+        /// Gets line number for this Note for specific Clef. Fractional numbers represent staff spaces, i.e. 1.5 == first space, etc.
+        /// </summary>
+        /// <param name="clef"></param>
+        /// <returns></returns>
         public double GetLineInSpecificClef(Clef clef)
         {
             var stepDistance = (double)Pitch.StepDistance(this, clef);
             return clef.Line + (stepDistance / 2);
         }
 
+        /// <summary>
+        /// Returns a string representation of this symbol for debugging purposes
+        /// </summary>
+        /// <returns>String representation of this symbol for debugging purposes</returns>
         public override string ToString()
         {
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());

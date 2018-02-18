@@ -1,5 +1,9 @@
 ﻿namespace Manufaktura.Controls.Model.PeekStrategies
 {
+    /// <summary>
+    /// Strategy of peeking elements on a staff
+    /// </summary>
+    /// <typeparam name="TSymbol"></typeparam>
     public abstract class PeekStrategy<TSymbol> where TSymbol : MusicalSymbol
     {
         public Staff Staff { get; protected set; }

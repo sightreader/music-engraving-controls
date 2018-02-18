@@ -11,11 +11,22 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
     {
         static MusicXmlWritingStrategyBase()
         {
-            var strategyTypes = typeof(MusicXmlWritingStrategyBase).GetTypeInfo().Assembly.DefinedTypes.Where(t => t.IsSubclassOf(typeof(MusicXmlWritingStrategyBase)) && !t.IsAbstract);
+            var strategyTypes = typeof(MusicXmlWritingStrategyBase)
+#if !CSHTML5
+                .GetTypeInfo()
+                .Assembly.DefinedTypes
+#else
+                .Assembly.GetTypes()
+#endif
+                .Where(t => t.IsSubclassOf(typeof(MusicXmlWritingStrategyBase)) && !t.IsAbstract);
             List<MusicXmlWritingStrategyBase> strategies = new List<MusicXmlWritingStrategyBase>();
             foreach (var type in strategyTypes)
             {
+#if CSHTML5
+                strategies.Add(Activator.CreateInstance(type) as MusicXmlWritingStrategyBase);
+#else
                 strategies.Add(Activator.CreateInstance(type.AsType()) as MusicXmlWritingStrategyBase);
+#endif
             }
             _strategies = strategies.ToArray();
         }
@@ -24,9 +35,17 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
         {
             get
             {
-                return typeof(MusicalSymbol).GetTypeInfo().Assembly.DefinedTypes
+                return typeof(MusicalSymbol)
+#if !CSHTML5
+                    .GetTypeInfo()
+                    .Assembly.DefinedTypes
+#else
+                    .Assembly.GetTypes()
+#endif
                     .Where(d => !d.IsAbstract && d.IsSubclassOf(typeof(MusicalSymbol)))
+#if !CSHTML5
                     .Select(d => d.AsType())
+#endif
                     .Where(t => _strategies.Any(s => s.SymbolType == t))
                     .ToArray();
             }
@@ -36,9 +55,18 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
         {
             get
             {
-                return typeof(MusicalSymbol).GetTypeInfo().Assembly.DefinedTypes
+                return typeof(MusicalSymbol)
+#if !CSHTML5
+                    .GetTypeInfo()
+                    .Assembly.DefinedTypes
+#else
+                    .Assembly.GetTypes()
+#endif
+
                     .Where(d => !d.IsAbstract && d.IsSubclassOf(typeof(MusicalSymbol)))
+#if !CSHTML5
                     .Select(d => d.AsType())
+#endif
                     .Where(t => !_strategies.Any(s => s.SymbolType == t))
                     .ToArray();
             }
@@ -66,7 +94,7 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
                 parentElement = attributesElement;
             }
 
-            var newElement = new XElement(XName.Get(ElementName));
+            var newElement = new XElement(ElementName);
             parentElement.Add(newElement);
             WriteElementInner(symbol, newElement, quarterNoteDuration);
         }

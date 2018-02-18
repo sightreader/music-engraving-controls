@@ -5,9 +5,9 @@
 	/// </summary>
 	public class Direction : MusicalSymbol, IHasCustomYPosition
 	{
-		protected double? defaultY = 0;
-		protected DirectionPlacementType placement = DirectionPlacementType.Above;
-		protected string text = "";
+		private double? defaultY = 0;
+		private DirectionPlacementType placement = DirectionPlacementType.Above;
+		private string text = "";
 
 		/// <summary>
 		/// Initializes a new instance of Direction.
@@ -16,16 +16,19 @@
 		{
 		}
 
+        /// <summary>
+        /// Default Y position
+        /// </summary>
 		public double? DefaultYPosition { get { return defaultY; } set { defaultY = value; OnPropertyChanged(); } }
 
 		/// <summary>
 		/// Direction placement.
 		/// </summary>
-		public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(() => Placement); } }
+		public DirectionPlacementType Placement { get { return placement; } set { placement = value; OnPropertyChanged(); } }
 
 		/// <summary>
 		/// Direction text.
 		/// </summary>
-		public string Text { get { return text; } set { text = value; OnPropertyChanged(() => Text); } }
+		public string Text { get { return text; } set { text = value; OnPropertyChanged(); } }
 	}
 }

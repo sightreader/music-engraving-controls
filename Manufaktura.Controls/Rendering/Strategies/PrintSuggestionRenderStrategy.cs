@@ -12,11 +12,20 @@ namespace Manufaktura.Controls.Rendering.Strategies
 	{
 		private readonly IScoreService scoreService;
 
-		public PrintSuggestionRenderStrategy(IScoreService scoreService)
+        /// <summary>
+        /// Initializes a new instance of PrintSuggestionRenderStrategy
+        /// </summary>
+        /// <param name="scoreService"></param>
+        public PrintSuggestionRenderStrategy(IScoreService scoreService)
 		{
 			this.scoreService = scoreService;
 		}
 
+        /// <summary>
+        /// Renders print suggestion with specific score renderer
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="renderer"></param>
 		public override void Render(PrintSuggestion element, ScoreRendererBase renderer)
 		{
 			if (element.IsSystemBreak && renderer.Settings.RenderingMode != ScoreRenderingModes.Panorama)
