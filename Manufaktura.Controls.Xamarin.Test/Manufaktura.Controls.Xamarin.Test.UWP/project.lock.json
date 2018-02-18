@@ -15920,12 +15920,12 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\Manufaktura.Controls.Xamarin.Test.UWP.csproj",
+      "projectUniqueName": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\Manufaktura.Controls.Xamarin.Test.UWP.csproj",
       "projectName": "Manufaktura.Controls.Xamarin.Test.UWP",
-      "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\Manufaktura.Controls.Xamarin.Test.UWP.csproj",
-      "projectJsonPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\project.json",
+      "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\Manufaktura.Controls.Xamarin.Test.UWP.csproj",
+      "projectJsonPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\project.json",
       "packagesPath": "C:\\Users\\Jacek\\.nuget\\packages\\",
-      "outputPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\obj\\",
+      "outputPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.UWP\\obj\\",
       "projectStyle": "ProjectJson",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
@@ -15942,8 +15942,8 @@
       "frameworks": {
         "uap10.0.10586": {
           "projectReferences": {
-            "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.csproj": {
-              "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.csproj"
+            "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.csproj": {
+              "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test\\Manufaktura.Controls.Xamarin.Test.csproj"
             }
           }
         }

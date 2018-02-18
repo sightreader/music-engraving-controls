@@ -15702,12 +15702,12 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.UniversalApps.Media\\Manufaktura.Controls.UniversalApps.Media.csproj",
+      "projectUniqueName": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps.Media\\Manufaktura.Controls.UniversalApps.Media.csproj",
       "projectName": "Manufaktura.Controls.UniversalApps.Media",
-      "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.UniversalApps.Media\\Manufaktura.Controls.UniversalApps.Media.csproj",
-      "projectJsonPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.UniversalApps.Media\\project.json",
+      "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps.Media\\Manufaktura.Controls.UniversalApps.Media.csproj",
+      "projectJsonPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps.Media\\project.json",
       "packagesPath": "C:\\Users\\Jacek\\.nuget\\packages\\",
-      "outputPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls.UniversalApps.Media\\obj\\",
+      "outputPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps.Media\\obj\\",
       "projectStyle": "ProjectJson",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
@@ -15724,11 +15724,11 @@
       "frameworks": {
         "uap10.0.10586": {
           "projectReferences": {
-            "C:\\Development\\manufakturalibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj": {
-              "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj"
+            "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj": {
+              "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj"
             },
-            "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj": {
-              "projectPath": "C:\\Development\\manufakturalibraries\\Manufaktura.Music\\Manufaktura.Music.csproj"
+            "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj": {
+              "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj"
             }
           }
         }
