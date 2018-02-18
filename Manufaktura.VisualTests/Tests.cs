@@ -40,6 +40,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2017, 2, 1, 20, 07, 00));     //Issue #71: Niedodawanie barline'a do drugiej pięciolinii w parcie
             AcceptTo(new DateTime(2017, 5, 14, 15, 02, 00));    //Klucze perkusyjne i obsługa nut bez picza
             AcceptTo(new DateTime(2017, 12, 03, 11, 24, 00));   //Obsługa atrybutu size na elemencie type (cue notes)
+            AcceptTo(new DateTime(2018, 2, 18, 19, 25, 00));    //Zmiany w celu uzyskania kompatybilności z CSHTML5
 
             var tests = CreatePathDictionary();
             var lastNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
