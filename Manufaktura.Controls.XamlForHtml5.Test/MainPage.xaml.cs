@@ -19,6 +19,7 @@ namespace Manufaktura.Controls.XamlForHtml5.Test
 			{
 
 			}
+            viewer.ScoreSource = score;
 		}
 	}
 }
