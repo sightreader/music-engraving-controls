@@ -3,6 +3,7 @@ using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.Rendering.Implementations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -31,6 +32,7 @@ namespace Manufaktura.Controls.XamlForHtml5
         public static readonly DependencyProperty XmlSourceProperty = DependencyProperty.Register(nameof(XmlSource), typeof(string), typeof(NoteViewer), new PropertyMetadata(null, XmlSourceChanged));
         public static readonly DependencyProperty XmlTransformationsProperty = DependencyProperty.Register(nameof(XmlTransformations), typeof(IEnumerable<XTransformerParser>), typeof(NoteViewer), new PropertyMetadata(null));
         public static readonly DependencyProperty ZoomFactorProperty = DependencyProperty.Register(nameof(ZoomFactor), typeof(double), typeof(NoteViewer), new PropertyMetadata(1d, ZoomFactorChanged));
+        public static readonly DependencyProperty HtmlRendererSettingsProperty = DependencyProperty.Register(nameof(HtmlRendererSettings), typeof(double), typeof(NoteViewer), new PropertyMetadata(new HtmlScoreRendererSettings()));
 
         private DraggingState _draggingState = new DraggingState();
 
@@ -125,6 +127,12 @@ namespace Manufaktura.Controls.XamlForHtml5
         {
             get { return (double)GetValue(ZoomFactorProperty); }
             set { SetValue(ZoomFactorProperty, value); }
+        }
+
+        public HtmlScoreRendererSettings HtmlRendererSettings
+        {
+            get { return (HtmlScoreRendererSettings)GetValue(HtmlRendererSettingsProperty); }
+            set { SetValue(HtmlRendererSettingsProperty, value); }
         }
 
         private CanvasScoreRenderer Renderer { get; set; }
@@ -294,7 +302,7 @@ namespace Manufaktura.Controls.XamlForHtml5
             score.MeasureInvalidated -= Score_MeasureInvalidated;
 
             MainCanvas.Children.Clear();
-            Renderer = new CanvasScoreRenderer(MainCanvas);
+            Renderer = new CanvasScoreRenderer(MainCanvas, HtmlRendererSettings);
             Renderer.Settings.RenderingMode = RenderingMode;
             Renderer.Settings.CurrentPage = CurrentPage;
             var brush = Foreground as SolidColorBrush;
@@ -311,7 +319,7 @@ namespace Manufaktura.Controls.XamlForHtml5
 
         private void RenderOnCanvas(Measure measure)
         {
-            if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
+            if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas, HtmlRendererSettings);
             var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
             foreach (var beamGroup in beamGroupsForThisMeasure)
             {

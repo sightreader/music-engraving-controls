@@ -8,7 +8,6 @@
     xmlns:controls="Manufaktura.Controls.XamlForHtml5"
     mc:Ignorable="d">
     <Canvas>
-        <TextBlock Text="Hello World!" x:Name="TextBlock1" Canvas.Left="20" Canvas.Top="30"/>
-        <controls:NoteViewer x:Name="viewer" />
+        <controls:NoteViewer x:Name="viewer" RenderingMode="AllPages" IsOccupyingSpace="True" Margin="10,10,10,10" />
     </Canvas>
 </Page>
