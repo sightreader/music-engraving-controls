@@ -81,6 +81,35 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public Score Score { get; internal set; }
 
+        public Staff Add(MusicalSymbol element)
+        {
+            Elements.Add(element);
+            return this;
+        }
+
+        public Staff AddBarline(BarlineStyle style = BarlineStyle.None)
+        {
+            Elements.Add(new Barline(style));
+            return this;
+        }
+
+        public Staff AddNote(Pitch pitch, RhythmicDuration duration)
+        {
+            Elements.Add(new Note(pitch, duration));
+            return this;
+        }
+
+        public Staff AddRange(IEnumerable<MusicalSymbol> elements)
+        {
+            Elements.AddRange(elements);
+            return this;
+        }
+
+        public Staff AddTimeSignature(TimeSignatureType type, int beats, int beatType)
+        {
+            Elements.Add(new TimeSignature(type, beats, beatType));
+            return this;
+        }
         public IEnumerable<TElement> EnumerateUntilConditionMet<TElement>(MusicalSymbol startElement, Func<TElement, bool> condition, bool backward) where TElement : class
         {
             for (int i = Elements.IndexOf(startElement); i >= 0 && i < Elements.Count; i += backward ? -1 : 1)
@@ -133,6 +162,7 @@ namespace Manufaktura.Controls.Model
             }
             return strategy.Peek(relativeTo);
         }
+
         /// <summary>
         /// Wraps the staff with a score (creates a new score with this staff).
         /// </summary>

@@ -4,48 +4,47 @@ using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
-using System.Linq;
 
 namespace Manufaktura.Controls.WPF.Test
 {
-	public class TestViewModel : ViewModel
-	{
-		private Score data;
+    public class TestViewModel : ViewModel
+    {
+        private Score data;
 
-		private ScorePlayer player;
+        private ScorePlayer player;
 
-		public RadialChartSample[] ChartSamples { get; } = new[] {
-			new RadialChartSample("A", "A", 5),
-		new RadialChartSample("B", "B", 5.2),
-		new RadialChartSample("C", "C", 1.8),
-		new RadialChartSample("D", "D", 3),
-		new RadialChartSample("E", "E", 3.7)
-		};
+        public RadialChartSample[] ChartSamples { get; } = new[] {
+            new RadialChartSample("A", "A", 5),
+        new RadialChartSample("B", "B", 5.2),
+        new RadialChartSample("C", "C", 1.8),
+        new RadialChartSample("D", "D", 3),
+        new RadialChartSample("E", "E", 3.7)
+        };
 
-		public Score Data
-		{
-			get { return data; }
-			set { data = value; OnPropertyChanged(() => Data); }
-		}
+        public Score Data
+        {
+            get { return data; }
+            set { data = value; OnPropertyChanged(() => Data); }
+        }
 
-		public ScorePlayer Player { get { return player; } set { player = value; OnPropertyChanged(); } }
+        public ScorePlayer Player { get { return player; } set { player = value; OnPropertyChanged(); } }
 
-		public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
-		{
-			var rd = new RhythmicDuration(4, 0).ToProportion();
-			rd = new RhythmicDuration(4, 1).ToProportion();
-			rd = new RhythmicDuration(4, 2).ToProportion();
-			rd = new RhythmicDuration(4, 3).ToProportion();
+        public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
+        {
+            var rd = new RhythmicDuration(4, 0).ToProportion();
+            rd = new RhythmicDuration(4, 1).ToProportion();
+            rd = new RhythmicDuration(4, 2).ToProportion();
+            rd = new RhythmicDuration(4, 3).ToProportion();
 
-			var score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
-			var firstStaff = score.FirstStaff;
+            var score = Score.CreateOneStaffScore(Clef.Treble, MajorScale.C);
+            var firstStaff = score.FirstStaff;
 
-			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 4, 4));
-            firstStaff.Elements.AddRange(new Pitch[] { Pitch.C4, Pitch.E4, Pitch.G4 }.AddUniformRhythm(4).MakeChord());
-            firstStaff.Elements.AddRange(new Pitch[] { Pitch.D4, Pitch.FSharp4, Pitch.A4 }.AddUniformRhythm(4).MakeChord());
-            firstStaff.Elements.AddRange(new Pitch[] { Pitch.E4, Pitch.GSharp4, Pitch.B4 }.AddUniformRhythm(4).ApplyStemDirection(VerticalDirection.Up).MakeChord());
+            firstStaff.AddTimeSignature(TimeSignatureType.Numbers, 4, 4);
+            firstStaff.AddRange(new Pitch[] { Pitch.C4, Pitch.E4, Pitch.G4 }.AddUniformRhythm(4).MakeChord());
+            firstStaff.AddRange(new Pitch[] { Pitch.D4, Pitch.FSharp4, Pitch.A4 }.AddUniformRhythm(4).MakeChord());
+            firstStaff.AddRange(new Pitch[] { Pitch.E4, Pitch.GSharp4, Pitch.B4 }.AddUniformRhythm(4).ApplyStemDirection(VerticalDirection.Up).MakeChord());
 
-            firstStaff.Elements.Add(new Barline());
+            firstStaff.AddBarline();
 
             /*firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.C4, Pitch.C4, Pitch.C4)
@@ -156,7 +155,6 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(new Barline());
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
 			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
-			
 
             var secondStaff = new Staff();
 			score.Staves.Add(secondStaff);
@@ -179,14 +177,14 @@ namespace Manufaktura.Controls.WPF.Test
             */
             Data = score;
 
-			var part = new Part(firstStaff) { PartId = "1" };
-			//part.Staves.Add(secondStaff);
-			//score.Parts.Add(part);
-			//part = new Part(secondStaff) { PartId = "2" };
-			//score.Parts.Add(part);
+            var part = new Part(firstStaff) { PartId = "1" };
+            //part.Staves.Add(secondStaff);
+            //score.Parts.Add(part);
+            //part = new Part(secondStaff) { PartId = "2" };
+            //score.Parts.Add(part);
 
-			//Z Xamarina:
-			/*
+            //Z Xamarina:
+            /*
 			score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
 			firstStaff = score.FirstStaff;
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
@@ -221,6 +219,6 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
 
 			Data = score;*/
-		}
-	}
+        }
+    }
 }
