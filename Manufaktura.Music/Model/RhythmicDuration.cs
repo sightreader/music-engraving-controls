@@ -199,7 +199,7 @@ namespace Manufaktura.Music.Model
 			return durations.Select(i => new RhythmicDuration(i)).ToArray();
 		}
 
-		public static bool TryParse(string s, out RhythmicDuration duration)
+        public static bool TryParse(string s, out RhythmicDuration duration)
 		{
 			int val;
 			if (!int.TryParse(s, out val))

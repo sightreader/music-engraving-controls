@@ -41,17 +41,9 @@ namespace Manufaktura.Controls.WPF.Test
 			var firstStaff = score.FirstStaff;
 
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 4, 4));
-            firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Quarter) {  });
-            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
-            firstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true});
-
-            firstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Quarter) { });
-            firstStaff.Elements.Add(new Note(Pitch.FSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
-            firstStaff.Elements.Add(new Note(Pitch.A4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
-
-            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { });
-            firstStaff.Elements.Add(new Note(Pitch.GSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
-            firstStaff.Elements.Add(new Note(Pitch.B4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true});
+            firstStaff.Elements.AddRange(new Pitch[] { Pitch.C4, Pitch.E4, Pitch.G4 }.AddUniformRhythm(4).MakeChord());
+            firstStaff.Elements.AddRange(new Pitch[] { Pitch.D4, Pitch.FSharp4, Pitch.A4 }.AddUniformRhythm(4).MakeChord());
+            firstStaff.Elements.AddRange(new Pitch[] { Pitch.E4, Pitch.GSharp4, Pitch.B4 }.AddUniformRhythm(4).ApplyStemDirection(VerticalDirection.Up).MakeChord());
 
             firstStaff.Elements.Add(new Barline());
 

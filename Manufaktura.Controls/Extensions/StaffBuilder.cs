@@ -33,6 +33,20 @@ namespace Manufaktura.Controls.Extensions
         }
 
         /// <summary>
+        /// Creates chord from notes
+        /// </summary>
+        /// <param name="notes">Notes</param>
+        /// <returns>Chord</returns>
+        public static IEnumerable<Note> MakeChord(this IEnumerable<Note> notes)
+        {
+            foreach (var note in notes.Skip(1))
+            {
+                note.IsUpperMemberOfChord = true;
+            }
+            return notes;
+        }
+
+        /// <summary>
         /// Applies lyrics to notes. Text is split into syllables with '-' sign and subsequent syllables are assigned to subsequent notes.
         /// </summary>
         /// <param name="notes"></param>
@@ -97,6 +111,16 @@ namespace Manufaktura.Controls.Extensions
             var units = new Queue<RhythmicUnit>();
             foreach (var u in RhythmicUnit.Parse(durations)) units.Enqueue(u);
             return pitches.Select(p => new Note(p, units.Dequeue().Duration)).ToArray();
+        }
+
+        public static IEnumerable<Note> AddUniformRhythm(this IEnumerable<Pitch> pitches, int duration)
+        {
+            return AddUniformRhythm(pitches, new RhythmicDuration(duration));
+        }
+
+        public static IEnumerable<Note> AddUniformRhythm(this IEnumerable<Pitch> pitches, RhythmicDuration duration)
+        {
+            return pitches.Select(p => new Note(p, duration)).ToArray();
         }
 
         /// <summary>
