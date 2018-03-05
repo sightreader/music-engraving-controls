@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Manufaktura.Music.Xml
 {
@@ -27,18 +28,8 @@ namespace Manufaktura.Music.Xml
         public XHelperHasValueResult<T> HasValue<T>() where T : struct
         {
             if (!ElementExists()) return new XHelperHasValueResult<T>(default(T), null, false);
-            var unparsedValue = GetValue();
-            var value = ParseValue<T>(unparsedValue);
-#if CSHTML5
-            if (value == null) return new XHelperHasValueResult<T>(default(T), GetValue(), false);
-            if (typeof(T) == typeof(int)) return new XHelperHasValueResult<T>((T)(object)((int?)value).Value, GetValue(), true);
-            if (typeof(T) == typeof(double)) return new XHelperHasValueResult<T>((T)(object)((double?)value).Value, GetValue(), true);
-            if (typeof(T) == typeof(float)) return new XHelperHasValueResult<T>((T)(object)((float?)value).Value, GetValue(), true);
-            if (typeof(T) == typeof(DateTime)) return new XHelperHasValueResult<T>((T)(object)((DateTime?)value).Value, GetValue(), true);
-            throw new NotImplementedException("Type not supported");
-#else
+            var value = ParseValue<T>(GetValue());
             return value.HasValue ? new XHelperHasValueResult<T>(value.Value, GetValue(), true) : new XHelperHasValueResult<T>(default(T), GetValue(), false);
-#endif
         }
 
         public XHelperHasValueResult<string> HasValue(string s)
@@ -54,7 +45,6 @@ namespace Manufaktura.Music.Xml
 
         protected abstract object GetObject();
 
-#if !CSHTML5
         private static T? ParseValue<T>(string value) where T : struct
         {
             if (typeof(T) == typeof(int)) return UsefulMath.TryParseInt(value) as T?;
@@ -63,22 +53,14 @@ namespace Manufaktura.Music.Xml
             if (typeof(T) == typeof(DateTime)) return UsefulMath.TryParseDateTime(value) as T?;
             throw new NotImplementedException("Type not supported");
         }
-#else
-
-        private static object ParseValue<T>(string value) where T : struct
-        {
-            if (typeof(T) == typeof(int)) return UsefulMath.TryParseInt(value);
-            if (typeof(T) == typeof(double)) return UsefulMath.TryParse(value);
-            if (typeof(T) == typeof(float)) return UsefulMath.TryParse(value);
-            if (typeof(T) == typeof(DateTime)) return UsefulMath.TryParseDateTime(value);
-            throw new NotImplementedException("Type not supported");
-        }
-
-#endif
 
         public XHelperHasValueResult<T> HasValue<T>(Func<Dictionary<string, T>, Dictionary<string, T>> valueFactory)
         {
+#if !CSHTML5
             var dict = valueFactory(new Dictionary<string, T>());
+#else
+            var dict = valueFactory(new List<KeyValuePair<string, T>>().ToDictionary(x => x.Key, x => x.Value));
+#endif
             return HasValue(dict);
         }
     }

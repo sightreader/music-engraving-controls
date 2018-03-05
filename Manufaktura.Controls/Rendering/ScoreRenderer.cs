@@ -21,7 +21,12 @@ namespace Manufaktura.Controls.Rendering
 			Canvas = canvas;
 		}
 
-		public TCanvas Canvas { get; internal set; }
+        public ScoreRenderer(TCanvas canvas, ScoreRendererSettings settings) : base(settings)
+        {
+            Canvas = canvas;
+        }
+
+        public TCanvas Canvas { get; internal set; }
 
 		public sealed override void Render(Measure measure)
 		{

@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.Rendering.Implementations;
 using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
@@ -13,12 +14,22 @@ namespace Manufaktura.Controls.XamlForHtml5
 {
     public class CanvasScoreRenderer : ScoreRenderer<Canvas>
     {
-        public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
-
-        public CanvasScoreRenderer(Canvas canvas)
-            : base(canvas)
+        public CanvasScoreRenderer(Canvas canvas, HtmlScoreRendererSettings settings)
+            : base(canvas, settings)
         {
             OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
+        }
+
+        public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
+
+        /// <summary>
+        /// Settings cast to HtmlScoreRendererSettings
+        /// </summary>
+        public HtmlScoreRendererSettings TypedSettings { get { return Settings as HtmlScoreRendererSettings; } }
+
+        public static Primitives.Point ConvertPoint(Windows.Foundation.Point point)
+        {
+            return new Primitives.Point(point.X, point.Y);
         }
 
         public Windows.UI.Color ConvertColor(Primitives.Color color)
@@ -29,6 +40,11 @@ namespace Manufaktura.Controls.XamlForHtml5
         public Primitives.Color ConvertColor(Windows.UI.Color color)
         {
             return new Primitives.Color(color.R, color.G, color.B, color.A);
+        }
+
+        public Windows.Foundation.Point ConvertPoint(Primitives.Point point)
+        {
+            return new Windows.Foundation.Point(point.X, point.Y);
         }
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
@@ -117,6 +133,8 @@ namespace Manufaktura.Controls.XamlForHtml5
         {
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
+            location = TranslateTextLocation(location, fontStyle);
+
             TextBlock textBlock = new TextBlock();
             textBlock.FontSize = Fonts.GetSize(fontStyle);
             textBlock.FontFamily = Fonts.Get(fontStyle);
@@ -155,24 +173,40 @@ namespace Manufaktura.Controls.XamlForHtml5
 			OwnershipDictionary.Add(textBlock, owner);*/
         }
 
-        private Visibility BoolToVisibility(bool isVisible)
-        {
-            return isVisible ? Visibility.Visible : Visibility.Collapsed;
-        }
-
-        public Windows.Foundation.Point ConvertPoint(Primitives.Point point)
-        {
-            return new Windows.Foundation.Point(point.X, point.Y);
-        }
-
-        public static Primitives.Point ConvertPoint(Windows.Foundation.Point point)
-        {
-            return new Primitives.Point(point.X, point.Y);
-        }
-
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
         {
             throw new NotImplementedException();
+        }
+
+        protected Primitives.Point TranslateTextLocation(Primitives.Point location, MusicFontStyles fontStyle)
+        {
+            double locationX = location.X + TypedSettings.MusicalFontShiftX;
+            double locationY;
+            switch (fontStyle)
+            {
+                case MusicFontStyles.MusicFont:
+                    locationY = location.Y + 8d + TypedSettings.MusicalFontShiftY;
+                    break;
+
+                case MusicFontStyles.StaffFont:
+                    locationY = location.Y + 10d + TypedSettings.MusicalFontShiftY;
+                    break;
+
+                case MusicFontStyles.GraceNoteFont:
+                    locationY = location.Y + 10.5d + TypedSettings.MusicalFontShiftY;
+                    locationX += 0.7d;
+                    break;
+
+                default:
+                    locationY = location.Y + TypedSettings.MusicalFontShiftY;
+                    break;
+            }
+            return new Primitives.Point(locationX, locationY);
+        }
+
+        private Visibility BoolToVisibility(bool isVisible)
+        {
+            return isVisible ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

@@ -20,9 +20,13 @@ namespace Manufaktura.Controls.Rendering
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
 
-        protected ScoreRendererBase()
+        protected ScoreRendererBase() : this(new ScoreRendererSettings())
         {
-            Settings = new ScoreRendererSettings();
+        }
+
+        protected ScoreRendererBase(ScoreRendererSettings settings)
+        {
+            Settings = settings;
             resolver.AddServices(measurementService, alterationService, scoreService, beamingService);
             Strategies = resolver.ResolveAll<MusicalSymbolRenderStrategyBase>().ToArray();
             FinishingTouches = resolver.ResolveAll<IFinishingTouch>().ToArray();
@@ -35,7 +39,7 @@ namespace Manufaktura.Controls.Rendering
         public ManufakturaResolver Resolver => resolver;
         public virtual ScoreInfo ScoreInformation { get { return new ScoreInfo(scoreService); } }
 
-        public virtual ScoreRendererSettings Settings { get; internal set; }
+        public virtual ScoreRendererSettings Settings { get; set; }
 
         internal virtual MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 
@@ -197,7 +201,6 @@ namespace Manufaktura.Controls.Rendering
             if (system == null) return;
             DrawPlaybackCursor(position, new Point(position.PositionX + 6, system.Staves.First().LinePositions.First()),
                 new Point(position.PositionX + 6, system.Staves.Last().LinePositions.Last()));
-
         }
 
         /// <summary>
