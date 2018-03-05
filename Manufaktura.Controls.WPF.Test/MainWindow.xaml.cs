@@ -96,6 +96,10 @@ namespace Manufaktura.Controls.WPF.Test
 
             DataContext = vm;
             vm.LoadTestData(hookDirectionAlgorithm);
+
+            if (vm.Player != null) ((IDisposable)vm.Player).Dispose();
+
+            vm.Player = new MidiTaskScorePlayer(vm.Data);
         }
 
         private void Button_Click_9(object sender, RoutedEventArgs e)

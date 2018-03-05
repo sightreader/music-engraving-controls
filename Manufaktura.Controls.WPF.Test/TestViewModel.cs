@@ -37,12 +37,25 @@ namespace Manufaktura.Controls.WPF.Test
 			rd = new RhythmicDuration(4, 2).ToProportion();
 			rd = new RhythmicDuration(4, 3).ToProportion();
 
-			var score = Score.CreateOneStaffScore(Clef.Alto, new MajorScale(Step.C, false));
+			var score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
 			var firstStaff = score.FirstStaff;
 
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 4, 4));
+            firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Quarter) { DefaultXPosition = 83 });
+            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 83 });
+            firstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 83 });
 
-			firstStaff.Elements.AddRange(StaffBuilder
+            firstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Quarter) { DefaultXPosition = 121 });
+            firstStaff.Elements.Add(new Note(Pitch.FSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 121 });
+            firstStaff.Elements.Add(new Note(Pitch.A4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 121 });
+
+            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { DefaultXPosition = 158 });
+            firstStaff.Elements.Add(new Note(Pitch.GSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 158 });
+            firstStaff.Elements.Add(new Note(Pitch.B4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 158 });
+
+            firstStaff.Elements.Add(new Barline());
+
+            /*firstStaff.Elements.AddRange(StaffBuilder
 				.FromPitches(Pitch.C4, Pitch.C4, Pitch.C4, Pitch.C4)
 				.AddRhythm("16. 32 16 16")
 				.ApplyStemDirection(VerticalDirection.Up)
@@ -120,8 +133,8 @@ namespace Manufaktura.Controls.WPF.Test
 
 			firstStaff.Elements.OfType<Note>().FirstOrDefault(n => n.Pitch == Pitch.E4 && n.BaseDuration == RhythmicDuration.D32nd).DesiredHookDirection = DesiredHookDirections.ForwardHook;
 			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(RebeamMode.ToBeats, hookDirectionAlgorithm);
-
-			/*
+            */
+            /*
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
 			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { TieType = NoteTieType.Start });
 			firstStaff.Elements.Add(new Barline() { CustomColor = KolbergColors.OsterodeWheat });
@@ -151,9 +164,9 @@ namespace Manufaktura.Controls.WPF.Test
 			secondStaff.Elements.Add(new Barline());
 			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
 			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
-			*/
+			
 
-			var secondStaff = new Staff();
+            var secondStaff = new Staff();
 			score.Staves.Add(secondStaff);
 			secondStaff.Elements.Add(Clef.Bass);
 			secondStaff.Elements.Add(new Key(0));
@@ -171,12 +184,12 @@ namespace Manufaktura.Controls.WPF.Test
 
 			var nn = secondStaff.Elements.OfType<Note>().Last();
 			var timeSignature = secondStaff.Peek<TimeSignature>(nn, Model.PeekStrategies.PeekType.PreviousElement);
-
-			Data = score;
+            */
+            Data = score;
 
 			var part = new Part(firstStaff) { PartId = "1" };
-			part.Staves.Add(secondStaff);
-			score.Parts.Add(part);
+			//part.Staves.Add(secondStaff);
+			//score.Parts.Add(part);
 			//part = new Part(secondStaff) { PartId = "2" };
 			//score.Parts.Add(part);
 
