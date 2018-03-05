@@ -41,17 +41,17 @@ namespace Manufaktura.Controls.WPF.Test
 			var firstStaff = score.FirstStaff;
 
 			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 4, 4));
-            firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Quarter) { DefaultXPosition = 83 });
-            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 83 });
-            firstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 83 });
+            firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Quarter) {  });
+            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
+            firstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true});
 
-            firstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Quarter) { DefaultXPosition = 121 });
-            firstStaff.Elements.Add(new Note(Pitch.FSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 121 });
-            firstStaff.Elements.Add(new Note(Pitch.A4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 121 });
+            firstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Quarter) { });
+            firstStaff.Elements.Add(new Note(Pitch.FSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
+            firstStaff.Elements.Add(new Note(Pitch.A4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
 
-            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { DefaultXPosition = 158 });
-            firstStaff.Elements.Add(new Note(Pitch.GSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 158 });
-            firstStaff.Elements.Add(new Note(Pitch.B4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true, DefaultXPosition = 158 });
+            firstStaff.Elements.Add(new Note(Pitch.E4, RhythmicDuration.Quarter) { });
+            firstStaff.Elements.Add(new Note(Pitch.GSharp4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true });
+            firstStaff.Elements.Add(new Note(Pitch.B4, RhythmicDuration.Quarter) { IsUpperMemberOfChord = true});
 
             firstStaff.Elements.Add(new Barline());
 
