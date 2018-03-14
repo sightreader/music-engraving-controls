@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,9 +29,6 @@ namespace Manufaktura.Controls.Rendering
 
 		public sealed override void Render(Measure measure)
 		{
-#if !CSHTML5
-            Contract.Assert(measure != null);
-#endif
             scoreService.ReturnToFirstSystem();
 			scoreService.MoveTo(measure, Settings);
 			if (Settings.RenderingMode == ScoreRenderingModes.Panorama && scoreService.CurrentSystemNo != 1)

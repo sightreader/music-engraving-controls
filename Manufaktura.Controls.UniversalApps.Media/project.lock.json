@@ -1876,17 +1876,6 @@
             "rid": "win8-aot"
           }
         }
-      },
-      "Manufaktura.Controls/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259",
-        "dependencies": {
-          "Manufaktura.Music": "1.0.0"
-        }
-      },
-      "Manufaktura.Music/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
       }
     },
     "UAP,Version=v10.0.10586/win10-arm": {
@@ -3630,17 +3619,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Manufaktura.Controls/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259",
-        "dependencies": {
-          "Manufaktura.Music": "1.0.0"
-        }
-      },
-      "Manufaktura.Music/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
       }
     },
     "UAP,Version=v10.0.10586/win10-arm-aot": {
@@ -5341,17 +5319,6 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Manufaktura.Controls/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259",
-        "dependencies": {
-          "Manufaktura.Music": "1.0.0"
-        }
-      },
-      "Manufaktura.Music/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
       }
     },
     "UAP,Version=v10.0.10586/win10-x64": {
@@ -7104,17 +7071,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Manufaktura.Controls/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259",
-        "dependencies": {
-          "Manufaktura.Music": "1.0.0"
-        }
-      },
-      "Manufaktura.Music/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
       }
     },
     "UAP,Version=v10.0.10586/win10-x64-aot": {
@@ -8815,17 +8771,6 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Manufaktura.Controls/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259",
-        "dependencies": {
-          "Manufaktura.Music": "1.0.0"
-        }
-      },
-      "Manufaktura.Music/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
       }
     },
     "UAP,Version=v10.0.10586/win10-x86": {
@@ -10578,17 +10523,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Manufaktura.Controls/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259",
-        "dependencies": {
-          "Manufaktura.Music": "1.0.0"
-        }
-      },
-      "Manufaktura.Music/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
       }
     },
     "UAP,Version=v10.0.10586/win10-x86-aot": {
@@ -12289,17 +12223,6 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Manufaktura.Controls/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259",
-        "dependencies": {
-          "Manufaktura.Music": "1.0.0"
-        }
-      },
-      "Manufaktura.Music/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile259"
       }
     }
   },
@@ -15678,16 +15601,6 @@
         "system.xml.xmlserializer.4.0.10.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "Manufaktura.Controls/1.0.0": {
-      "type": "project",
-      "path": "../Manufaktura.Controls/project.json",
-      "msbuildProject": "../Manufaktura.Controls/Manufaktura.Controls.csproj"
-    },
-    "Manufaktura.Music/1.0.0": {
-      "type": "project",
-      "path": "../Manufaktura.Music/project.json",
-      "msbuildProject": "../Manufaktura.Music/Manufaktura.Music.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -15720,18 +15633,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
-      },
-      "frameworks": {
-        "uap10.0.10586": {
-          "projectReferences": {
-            "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj": {
-              "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj"
-            },
-            "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj": {
-              "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj"
-            }
-          }
-        }
       }
     },
     "dependencies": {

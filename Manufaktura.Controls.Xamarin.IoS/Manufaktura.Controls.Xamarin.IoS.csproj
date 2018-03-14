@@ -50,10 +50,6 @@
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
       <Name>Manufaktura.Controls.Xamarin</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
-      <Project>{52331173-dfd5-47ea-ba7a-72bbbe85d2fa}</Project>
-      <Name>Manufaktura.Controls</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
