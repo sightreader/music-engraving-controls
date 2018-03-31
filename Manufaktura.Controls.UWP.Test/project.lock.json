@@ -2186,6 +2186,8 @@
         "type": "project",
         "framework": "UAP,Version=v10.0.10586",
         "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
@@ -4582,6 +4584,8 @@
         "type": "project",
         "framework": "UAP,Version=v10.0.10586",
         "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
@@ -6997,6 +7001,8 @@
         "type": "project",
         "framework": "UAP,Version=v10.0.10586",
         "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
@@ -9402,6 +9408,8 @@
         "type": "project",
         "framework": "UAP,Version=v10.0.10586",
         "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
@@ -11817,6 +11825,8 @@
         "type": "project",
         "framework": "UAP,Version=v10.0.10586",
         "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
@@ -14222,6 +14232,8 @@
         "type": "project",
         "framework": "UAP,Version=v10.0.10586",
         "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
@@ -16637,6 +16649,8 @@
         "type": "project",
         "framework": "UAP,Version=v10.0.10586",
         "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },

@@ -39,7 +39,7 @@ namespace Manufaktura.Controls.WPF.Test
                 if (testViewModel.Player != null) ((IDisposable)testViewModel.Player).Dispose();
 
                 testViewModel.Player = new MidiTaskScorePlayer(noteViewer1.InnerScore);
-                ((MidiTaskScorePlayer)testViewModel.Player).SetInstrument(GeneralMidiInstrument.Dulcimer);
+                ((MidiTaskScorePlayer)testViewModel.Player).SetInstrument(GeneralMidiInstrument.AcousticGrandPiano);
                 var devices = MidiTaskScorePlayer.AvailableDevices;
                 MusicXmlParser parser = new MusicXmlParser();
                 noteViewer2.ScoreSource = parser.Parse(XDocument.Parse(xml));

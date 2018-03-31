@@ -117,6 +117,16 @@
       <Name>Microsoft General MIDI DLS for Universal Windows Apps</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
+      <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
+      <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
+      <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
+      <Name>Manufaktura.Music</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

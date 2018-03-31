@@ -173,21 +173,18 @@ namespace Manufaktura.Controls.Audio
             {
                 var measure = staff.Measures[measureIndex];
 
-                var elapsed = 0d;
-                var lastElementDuration = 0d;
+                var elapsed = new Dictionary<int, double>();
+                var chordBaseStartTime = 0d;
                 Tuplet tupletState = null;
                 foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
                 {
+                    var voice = (durationElement as NoteOrRest)?.Voice ?? 1;
+                    if (!elapsed.ContainsKey(voice)) elapsed.Add(voice, 0d);
                     var strategy = GetProperStrategy(durationElement);
 
                     if (strategy.HasFlag(PlayElementStrategies.Play))
                     {
-                        var realElapsedTime = elapsed;
-                        if ((durationElement as Note)?.IsUpperMemberOfChord ?? false)
-                        {
-                            realElapsedTime -= lastElementDuration;   //Rewind to chord root position
-                        }
-
+                        var realElapsedTime = ((durationElement as Note)?.IsUpperMemberOfChord ?? false) ? chordBaseStartTime : elapsed[voice];
                         elements.Add(new Tuple<double, IHasDuration>(realElapsedTime, durationElement));
                     }
                     if (strategy.HasFlag(PlayElementStrategies.IncreaseElapsedTime))
@@ -207,8 +204,8 @@ namespace Manufaktura.Controls.Audio
                         var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDouble();
                         if (tupletState != null) dueTime = dueTime / tupletState.NumberOfNotesUnderTuplet * (durationElement.BaseDuration.Denominator / Tempo.BeatUnit.Denominator);
 
-                        elapsed += dueTime;
-                        lastElementDuration = dueTime;
+                        chordBaseStartTime = elapsed[voice];
+                        elapsed[voice] += dueTime;
                         if (durationElement.Tuplet == TupletType.Stop) tupletState = null;
                     }
                 }
@@ -222,7 +219,7 @@ namespace Manufaktura.Controls.Audio
             if (note != null)
             {
                 if (note.IsGraceNote || note.IsCueNote) return PlayElementStrategies.DoNothing;
-                if (note.Voice > 1) return PlayElementStrategies.DoNothing;
+                if (note.Voice > 1) return PlayElementStrategies.Play;
                 if (note.IsUpperMemberOfChord) return PlayElementStrategies.Play;
                 if (note.TieType == NoteTieType.Stop || note.TieType == NoteTieType.StopAndStartAnother) return PlayElementStrategies.IncreaseElapsedTime;
             }
