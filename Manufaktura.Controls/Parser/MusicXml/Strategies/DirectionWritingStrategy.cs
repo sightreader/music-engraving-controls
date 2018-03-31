@@ -1,9 +1,4 @@
 ﻿using Manufaktura.Controls.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml.Strategies
@@ -19,7 +14,6 @@ namespace Manufaktura.Controls.Parser.MusicXml.Strategies
 
         protected override void WriteElementInner(Direction symbol, XElement element, int quarterNoteDuration)
         {
-            
         }
     }
 }

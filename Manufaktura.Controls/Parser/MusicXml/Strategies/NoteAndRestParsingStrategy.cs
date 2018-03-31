@@ -11,10 +11,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
 {
     internal class NoteAndRestParsingStrategy : MusicXmlParsingStrategy
     {
-        public override string ElementName
-        {
-            get { return "note"; }
-        }
+        public override string ElementName => "note";
 
         public override void ParseElement(MusicXmlParserState state, Staff staff, XElement element)
         {
@@ -176,7 +173,7 @@ namespace Manufaktura.Controls.Parser.MusicXml
                 slurNode.IfAttribute("bezier-x").HasValue<double>().Then(v => slur.BezierX = v);
                 slurNode.IfAttribute("bezier-y").HasValue<double>().Then(v => slur.BezierY = v);
             }
-        
+
             foreach (var lNode in element.Elements().Where(n => n.Name == "lyric"))
             {
                 //There can be more than one lyrics in one <lyrics> tag. Add lyrics to list once syllable type and text is set.
