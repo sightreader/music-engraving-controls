@@ -14,12 +14,10 @@ namespace Manufaktura.Controls.Audio
     {
         private MusicalSymbol _currentElement;
         private PlaybackState _state;
-
         private Tempo _tempo;
-
         private TimeSpan elapsedTime;
-
         private PlaybackCursorPosition lastPosition = default(PlaybackCursorPosition);
+        private bool playCueNotes = false;
 
         /// <summary>
         /// Initializes a new instance of ScorePlayer.
@@ -98,6 +96,8 @@ namespace Manufaktura.Controls.Audio
         /// List of exceptions that occured during playback.
         /// </summary>
         public List<Exception> PlaybackExceptions { get; private set; }
+
+        public bool PlayCueNotes { get => playCueNotes; set { playCueNotes = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Score to play.
@@ -224,7 +224,8 @@ namespace Manufaktura.Controls.Audio
             var note = durationElement as Note;
             if (note != null)
             {
-                if (note.IsGraceNote || note.IsCueNote) return PlayElementStrategies.DoNothing;
+                if (note.IsGraceNote) return PlayElementStrategies.DoNothing;
+                if (note.IsCueNote) return PlayCueNotes ? PlayElementStrategies.Play | PlayElementStrategies.IncreaseElapsedTime : PlayElementStrategies.DoNothing;
                 if (note.IsUpperMemberOfChord) return PlayElementStrategies.Play;
                 if (note.TieType == NoteTieType.Stop || note.TieType == NoteTieType.StopAndStartAnother) return PlayElementStrategies.IncreaseElapsedTime;
             }
