@@ -177,7 +177,9 @@ namespace Manufaktura.Controls.Parser
 
         public static int CalculateQuarterNoteDuration(Score score)
         {
-            var smallestRhythmicValue = score.Staves.SelectMany(s => s.Elements).OfType<IHasDuration>().Min(e => e.BaseDuration.ToDouble());
+            var durationElementSelector = score.Staves.SelectMany(s => s.Elements).OfType<IHasDuration>();
+            if (!durationElementSelector.Any()) return 1;
+            var smallestRhythmicValue = durationElementSelector.Min(e => e.BaseDuration.ToDouble());
             return (int)(RhythmicDuration.Quarter.ToDouble() / smallestRhythmicValue);
         }
     }
