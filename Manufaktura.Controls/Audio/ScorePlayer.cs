@@ -166,49 +166,55 @@ namespace Manufaktura.Controls.Audio
             }
         }
 
+        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(Measure measure, Staff staff)
+        {
+            var elements = new List<Tuple<double, IHasDuration>>();
+            var elapsed = new Dictionary<int, double>();
+            var chordBaseStartTime = 0d;
+            Tuplet tupletState = null;
+            foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
+            {
+                var voice = (durationElement as NoteOrRest)?.Voice ?? 1;
+                if (!elapsed.ContainsKey(voice)) elapsed.Add(voice, 0d);
+                var strategy = GetProperStrategy(durationElement);
+
+                if (strategy.HasFlag(PlayElementStrategies.Play))
+                {
+                    var realElapsedTime = ((durationElement as Note)?.IsUpperMemberOfChord ?? false) ? chordBaseStartTime : elapsed[voice];
+                    elements.Add(new Tuple<double, IHasDuration>(realElapsedTime, durationElement));
+                }
+                if (strategy.HasFlag(PlayElementStrategies.IncreaseElapsedTime))
+                {
+                    if (durationElement.Tuplet == TupletType.Start)
+                    {
+                        NoteOrRest tupletStart = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.BeginningOfTuplet);
+                        NoteOrRest tupletEnd = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.EndOfTuplet);
+                        if (tupletStart != null && tupletEnd != null)
+                        {
+                            tupletState = new Tuplet();
+                            tupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
+                                staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsUpperMemberOfChord)).Count() + 1;
+                        }
+                    }
+
+                    var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDouble();
+                    if (tupletState != null) dueTime = dueTime / tupletState.NumberOfNotesUnderTuplet * (durationElement.BaseDuration.Denominator / Tempo.BeatUnit.Denominator);
+
+                    chordBaseStartTime = elapsed[voice];
+                    elapsed[voice] += dueTime;
+                    if (durationElement.Tuplet == TupletType.Stop) tupletState = null;
+                }
+            }
+            return elements;
+        }
+
         private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(int measureIndex)
         {
             var elements = new List<Tuple<double, IHasDuration>>();
             foreach (var staff in Score.Staves)
             {
                 var measure = staff.Measures[measureIndex];
-
-                var elapsed = new Dictionary<int, double>();
-                var chordBaseStartTime = 0d;
-                Tuplet tupletState = null;
-                foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
-                {
-                    var voice = (durationElement as NoteOrRest)?.Voice ?? 1;
-                    if (!elapsed.ContainsKey(voice)) elapsed.Add(voice, 0d);
-                    var strategy = GetProperStrategy(durationElement);
-
-                    if (strategy.HasFlag(PlayElementStrategies.Play))
-                    {
-                        var realElapsedTime = ((durationElement as Note)?.IsUpperMemberOfChord ?? false) ? chordBaseStartTime : elapsed[voice];
-                        elements.Add(new Tuple<double, IHasDuration>(realElapsedTime, durationElement));
-                    }
-                    if (strategy.HasFlag(PlayElementStrategies.IncreaseElapsedTime))
-                    {
-                        if (durationElement.Tuplet == TupletType.Start)
-                        {
-                            NoteOrRest tupletStart = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.BeginningOfTuplet);
-                            NoteOrRest tupletEnd = staff.Peek<NoteOrRest>((MusicalSymbol)durationElement, PeekType.EndOfTuplet);
-                            if (tupletStart != null && tupletEnd != null)
-                            {
-                                tupletState = new Tuplet();
-                                tupletState.NumberOfNotesUnderTuplet = staff.Elements.GetRange(staff.Elements.IndexOf(tupletStart), staff.Elements.IndexOf(tupletEnd) -
-                                    staff.Elements.IndexOf(tupletStart)).OfType<NoteOrRest>().Where(nr => !(nr is Note) || (nr is Note && !((Note)nr).IsUpperMemberOfChord)).Count() + 1;
-                            }
-                        }
-
-                        var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDouble();
-                        if (tupletState != null) dueTime = dueTime / tupletState.NumberOfNotesUnderTuplet * (durationElement.BaseDuration.Denominator / Tempo.BeatUnit.Denominator);
-
-                        chordBaseStartTime = elapsed[voice];
-                        elapsed[voice] += dueTime;
-                        if (durationElement.Tuplet == TupletType.Stop) tupletState = null;
-                    }
-                }
+                elements.AddRange(BuildMeasureTimeLine(measure, staff));
             }
             return elements;
         }
@@ -219,7 +225,6 @@ namespace Manufaktura.Controls.Audio
             if (note != null)
             {
                 if (note.IsGraceNote || note.IsCueNote) return PlayElementStrategies.DoNothing;
-                if (note.Voice > 1) return PlayElementStrategies.Play;
                 if (note.IsUpperMemberOfChord) return PlayElementStrategies.Play;
                 if (note.TieType == NoteTieType.Stop || note.TieType == NoteTieType.StopAndStartAnother) return PlayElementStrategies.IncreaseElapsedTime;
             }
