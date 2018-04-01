@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Manufaktura.Controls.SMuFL
+namespace Manufaktura.Controls.Model.SMuFL
 {
     public partial class OptionalGlyphs
     {

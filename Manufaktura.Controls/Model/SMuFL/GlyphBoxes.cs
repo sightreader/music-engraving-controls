@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Manufaktura.Controls.SMuFL
+namespace Manufaktura.Controls.Model.SMuFL
 {
     public partial class GlyphBBoxes
     {

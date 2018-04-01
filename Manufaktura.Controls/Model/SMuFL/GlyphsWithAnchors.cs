@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Manufaktura.Controls.SMuFL
+namespace Manufaktura.Controls.Model.SMuFL
 {
     public partial class GlyphsWithAnchors
     {

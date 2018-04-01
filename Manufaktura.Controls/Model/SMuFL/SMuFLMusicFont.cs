@@ -1,9 +1,9 @@
-﻿namespace Manufaktura.Controls.SMuFL
+﻿namespace Manufaktura.Controls.Model.SMuFL
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class MusicFontMetadata
+    public partial class SMuFLMusicFont
     {
         [JsonProperty("fontName")]
         public string FontName { get; set; }

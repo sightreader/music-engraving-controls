@@ -90,7 +90,7 @@ namespace Manufaktura.Controls.Rendering
             DrawOrnaments(renderer, element, noteTextBlockPositionY);           //Draw ornaments / Rysuj ornamenty
             DrawTremolos(renderer, element, noteTextBlockPositionY);            //Draw tremolos / Rysuj tremola
             DrawFermataSign(renderer, element, noteTextBlockPositionY);         //Draw fermata sign / Rysuj symbol fermaty
-            DrawAccidentals(renderer, element, noteTextBlockPositionY);          //Draw accidentals / Rysuj znaki przygodne:
+            DrawAccidentals(renderer, element, noteTextBlockPositionY);         //Draw accidentals / Rysuj znaki przygodne:
             DrawDots(renderer, element, noteTextBlockPositionY);                //Draw dots / Rysuj kropki
 
             if (renderer.Settings.IgnoreCustomElementPositions || !element.DefaultXPosition.HasValue) //Pozycjonowanie automatyczne tylko, gdy nie określono default-x
