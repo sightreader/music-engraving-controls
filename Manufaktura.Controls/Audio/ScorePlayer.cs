@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.PeekStrategies;
+using Manufaktura.Controls.Parser;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -150,9 +151,10 @@ namespace Manufaktura.Controls.Audio
         protected IEnumerable<TimelineElement<IHasDuration>> EnumerateTimeline()
         {
             var elapsedTime = TimeSpan.Zero;
+            var quarterNoteDuration = MusicXmlParser.CalculateQuarterNoteDuration(Score);
             for (var i = 0; i < Score.FirstStaff.Measures.Count; i++)
             {
-                var orderedElements = BuildMeasureTimeLine(i).OrderBy(e => e.Item1).ToList();
+                var orderedElements = BuildMeasureTimeLine(i, quarterNoteDuration).OrderBy(e => e.Item1).ToList();
                 foreach (var element in orderedElements)
                 {
                     yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds(element.Item1 * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
@@ -166,7 +168,7 @@ namespace Manufaktura.Controls.Audio
             }
         }
 
-        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(Measure measure, Staff staff)
+        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(Measure measure, Staff staff, int quarterNoteDuration)
         {
             var elements = new List<Tuple<double, IHasDuration>>();
             var elapsed = new Dictionary<int, double>();
@@ -174,8 +176,20 @@ namespace Manufaktura.Controls.Audio
             Tuplet tupletState = null;
             foreach (var durationElement in measure.Elements.OfType<IHasDuration>())
             {
-                var voice = (durationElement as NoteOrRest)?.Voice ?? 1;
+                var voice = (durationElement as DurationElement)?.Voice ?? 1;
                 if (!elapsed.ContainsKey(voice)) elapsed.Add(voice, 0d);
+
+                if (durationElement is PlaybackSuggestion playbackSuggestion)
+                {
+                    playbackSuggestion.CalculateDurationFromMusicXmlDuration(quarterNoteDuration);
+                    var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDouble() * 
+                        playbackSuggestion.DurationMultiplicator *
+                        (playbackSuggestion.IsBackward ? -1 : 1);
+                    elapsed[voice] += dueTime;
+                    if (elapsed[voice] < 0) elapsed[voice] = 0;
+                    continue;
+                }
+
                 var strategy = GetProperStrategy(durationElement);
 
                 if (strategy.HasFlag(PlayElementStrategies.Play))
@@ -208,13 +222,13 @@ namespace Manufaktura.Controls.Audio
             return elements;
         }
 
-        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(int measureIndex)
+        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(int measureIndex, int quarterNoteDuration)
         {
             var elements = new List<Tuple<double, IHasDuration>>();
             foreach (var staff in Score.Staves)
             {
                 var measure = staff.Measures[measureIndex];
-                elements.AddRange(BuildMeasureTimeLine(measure, staff));
+                elements.AddRange(BuildMeasureTimeLine(measure, staff, quarterNoteDuration));
             }
             return elements;
         }

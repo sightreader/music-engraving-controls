@@ -56,7 +56,7 @@ namespace Manufaktura.Controls.Parser
                     score.Parts.Add(part);
                 }
                 staff.Part = part;
-                
+
                 foreach (XElement node in partNode.Elements())
                 {
                     MusicXmlParsingStrategy parsingStrategy = MusicXmlParsingStrategy.GetProperStrategy(node);
@@ -175,9 +175,11 @@ namespace Manufaktura.Controls.Parser
             }
         }
 
-        private static int CalculateQuarterNoteDuration(Score score)
+        public static int CalculateQuarterNoteDuration(Score score)
         {
-            var smallestRhythmicValue = score.Staves.SelectMany(s => s.Elements).OfType<IHasDuration>().Min(e => e.BaseDuration.ToDouble());
+            var durationElementSelector = score.Staves.SelectMany(s => s.Elements).OfType<IHasDuration>();
+            if (!durationElementSelector.Any()) return 1;
+            var smallestRhythmicValue = durationElementSelector.Min(e => e.BaseDuration.ToDouble());
             return (int)(RhythmicDuration.Quarter.ToDouble() / smallestRhythmicValue);
         }
     }
