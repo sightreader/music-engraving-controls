@@ -3,7 +3,6 @@ using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
-using Manufaktura.Model.MVVM;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
 using System.Collections.Generic;

@@ -54,6 +54,9 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -118,6 +121,14 @@
     <ProjectReference Include="..\..\Manufaktura.Controls.Xamarin.Droid\Manufaktura.Controls.Xamarin.Droid.csproj">
       <Project>{234e9eec-8c1d-4a51-9683-dfcba24a70bb}</Project>
       <Name>Manufaktura.Controls.Xamarin.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Manufaktura.Controls\Manufaktura.Controls.csproj">
+      <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
+      <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Manufaktura.Music\Manufaktura.Music.csproj">
+      <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
+      <Name>Manufaktura.Music</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls.Xamarin.Test\Manufaktura.Controls.Xamarin.Test.csproj">
       <Name>Manufaktura.Controls.Xamarin.Test</Name>
