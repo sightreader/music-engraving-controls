@@ -8,15 +8,7 @@ namespace Manufaktura.Controls.Model
     /// </summary>
     public interface IRenderedAsTextBlock
     {
-        /// <summary>
-        /// Text representing the musical symbol
-        /// </summary>
-        char MusicalCharacter { get; }
-
-        /// <summary>
-        /// Music font used to render this element
-        /// </summary>
-        IMusicFont MusicFont { get; set; }
+        char GetCharacter(IMusicFont font);
 
         /// <summary>
         /// Location of text block with text representing the musical symbol

@@ -52,7 +52,7 @@ namespace Manufaktura.Controls.Rendering
 
 			double restPositionY = scoreService.CurrentLinePositions[0] + (element.DefaultYPosition.HasValue ? renderer.TenthsToPixels(element.DefaultYPosition.Value) : -9);
 
-			renderer.DrawCharacter(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
+			renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
 			measurementService.LastNotePositionX = scoreService.CursorPositionX;
 			element.TextBlockLocation = new Point(scoreService.CursorPositionX, restPositionY);
 
@@ -66,7 +66,7 @@ namespace Manufaktura.Controls.Rendering
 			if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
 			for (int i = 0; i < element.NumberOfDots; i++)
 			{
-				renderer.DrawCharacter(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
+				renderer.DrawCharacter(renderer.Settings.CurrentFont.AugmentationDot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
 				scoreService.CursorPositionX += 6;
 			}
 

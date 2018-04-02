@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.WPF.Test
@@ -20,11 +21,17 @@ namespace Manufaktura.Controls.WPF.Test
     public partial class MainWindow : Window
     {
         private int systemSpacing = 0;
+        private static FontFamily BravuraFamily = new FontFamily(new Uri("pack://application:,,,/Manufaktura.Controls.WPF.Test;component/"), "./#Bravura");
 
         public MainWindow()
         {
             InitializeComponent();
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
+
+            /*Fonts.Set(Model.Fonts.MusicFontStyles.MusicFont, BravuraFamily);
+            Fonts.Set(Model.Fonts.MusicFontStyles.StaffFont, BravuraFamily);
+            Fonts.Set(Model.Fonts.MusicFontStyles.TimeSignatureFont, BravuraFamily);
+            Fonts.Set(Model.Fonts.MusicFontStyles.TrillFont, BravuraFamily);*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

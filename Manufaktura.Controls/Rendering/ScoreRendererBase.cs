@@ -366,7 +366,7 @@ namespace Manufaktura.Controls.Rendering
             if (clef.TypeOfClef == ClefType.Percussion)
                 new ClefRenderStrategy(scoreService).DrawPercussionClef(clef, this);
             else
-                DrawCharacter(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
+                DrawCharacter(clef.GetCharacter(Settings.CurrentFont), MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             scoreService.CursorPositionX += 20;
         }
 

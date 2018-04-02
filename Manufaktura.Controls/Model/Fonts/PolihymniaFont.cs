@@ -5,7 +5,7 @@
     /// </summary>
     public class PolihymniaFont : IMusicFont
     {
-        public char BlackNoteHead => '0';
+        public char NoteheadBlack => '0';
 
         public char CClef => 'K';
 
@@ -13,17 +13,17 @@
 
         public char CutTime => 'C';
 
-        public char D32ndRest => 'T';
+        public char Rest32nd => 'T';
 
-        public char Dot => '.';
+        public char AugmentationDot => '.';
 
         public char DoubleFlat => 'B';
 
         public char DoubleSharp => 'x';
 
-        public char EighthNote => 'e';
+        public char NoteEighth => 'e';
 
-        public char EighthRest => 'E';
+        public char RestEighth => 'E';
 
         public char FClef => '?';
 
@@ -35,9 +35,9 @@
 
         public char GClef => 'G';
 
-        public char HalfNote => 'h';
+        public char NoteHalf => 'h';
 
-        public char HalfRest => 'H';
+        public char RestHalf => 'H';
 
         public char Mordent => 'm';
 
@@ -64,9 +64,9 @@
         public char NoteFlagSixteenth => '2';
         public char NoteFlagSixteenthRev => '@';
 
-        public char QuarterNote => 'q';
+        public char NoteQuarter => 'q';
 
-        public char QuarterRest => 'Q';
+        public char RestQuarter => 'Q';
 
         public char RepeatBackward => 'l';
 
@@ -74,9 +74,9 @@
 
         public char Sharp => 'X';
 
-        public char SixteenthNote => 's';
+        public char NoteSixteenth => 's';
 
-        public char SixteenthRest => 'S';
+        public char RestSixteenth => 'S';
 
         public char Staff4Lines => '_';
 
@@ -84,16 +84,16 @@
 
         public char Trill => 'r';
 
-        public char WhiteNoteHead => '9';
+        public char NoteheadHalf => '9';
 
-        public char WholeNote => 'w';
+        public char NoteWhole => 'w';
 
-        public char WholeRest => 'W';
-        public char LeftBracket => '{';
+        public char RestWhole => 'W';
+        public char BraceLeft => '{';
 
-        public char LeftSquareBracket => '[';
+        public char SquareBracketLeft => '[';
 
-        public char RightBracket => '}';
+        public char BraceRight => '}';
 
         public char PercussionClef => '\0';
     }

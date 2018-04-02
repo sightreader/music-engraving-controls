@@ -10,8 +10,6 @@ namespace Manufaktura.Controls.Model
     public class Clef : MusicalSymbol, IHasPitch, IRenderedAsTextBlock
     {
         private int line;
-        private char musicalCharacter;
-        private IMusicFont musicFont = new PolihymniaFont();
         private int octaveChange;
         private ClefType typeOfClef;
 
@@ -26,22 +24,18 @@ namespace Manufaktura.Controls.Model
             line = whichLine;
             if (typeOfClef == ClefType.GClef)
             {
-                musicalCharacter = MusicFont.GClef;
                 Pitch = Pitch.FromStep(Step.G, 4 + octaveShift);
             }
             else if (typeOfClef == ClefType.FClef)
             {
-                musicalCharacter = MusicFont.FClef;
                 Pitch = Pitch.FromStep(Step.F, 3 + octaveShift);
             }
             else if (typeOfClef == ClefType.CClef)
             {
-                musicalCharacter = MusicFont.CClef;
                 Pitch = Pitch.FromStep(Step.C, 4 + octaveShift);
             }
             else if (typeOfClef == ClefType.Percussion)
             {
-                musicalCharacter = MusicFont.PercussionClef;
                 Pitch = Pitch.FromStep(Step.G, 4 + octaveShift);
             }
         }
@@ -131,10 +125,6 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public int Line { get { return line; } }
 
-        public char MusicalCharacter => musicalCharacter;
-
-        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
-
         public int OctaveChange
         {
             get
@@ -209,6 +199,14 @@ namespace Manufaktura.Controls.Model
             else return new Clef(ClefType.GClef, 2);
         }
 
+        public char GetCharacter(IMusicFont font)
+        {
+            if (typeOfClef == ClefType.GClef) return font.GClef;
+            else if (typeOfClef == ClefType.FClef) return font.FClef;
+            else if (typeOfClef == ClefType.CClef) return font.CClef;
+            else if (typeOfClef == ClefType.Percussion) return font.PercussionClef;
+            else return '\0';
+        }
         /// <summary>
         /// Returns a string representation of this symbol for debugging purposes
         /// </summary>

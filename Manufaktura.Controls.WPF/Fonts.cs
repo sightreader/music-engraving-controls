@@ -1,9 +1,6 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -42,6 +39,11 @@ namespace Manufaktura.Controls.WPF
         public static Typeface Get(MusicFontStyles style)
         {
             return _fonts[style];
+        }
+
+        public static void Set(MusicFontStyles style, FontFamily family)
+        {
+            _fonts[style] = new Typeface(family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
         }
 
         public static double GetSize(MusicFontStyles style)

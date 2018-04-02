@@ -45,7 +45,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.TypeOfClef == ClefType.Percussion)
                 DrawPercussionClef(element, renderer);
             else
-                renderer.DrawCharacter(element.MusicalCharacter, MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
+                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
 
 			scoreService.CursorPositionX += 20;
         }

@@ -11,8 +11,6 @@ namespace Manufaktura.Controls.Model
     public class Key : MusicalSymbol, IRenderedAsTextBlock
     {
         private int fifths;
-        private char musicalCharacter;
-        private IMusicFont musicFont = new PolihymniaFont();
 
         /// <summary>
         /// Initializes a new instance of key
@@ -21,25 +19,15 @@ namespace Manufaktura.Controls.Model
         public Key(int numberOfFifths)
         {
             fifths = numberOfFifths;
-            if (fifths > 0)
-                musicalCharacter = MusicFont.Sharp;
-            else if (fifths < 0)
-                musicalCharacter = MusicFont.Flat;
-            else
-                musicalCharacter = '\0';
         }
+
+        
 
         /// <summary>
         /// Number on the Circle of Fifths
         /// </summary>
 		public int Fifths { get { return fifths; } }
 
-        /// <summary>
-        /// Character for displaying alteration signs (flats or sharps). Determined by number on the Circle of Fifths.
-        /// </summary>
-		public char MusicalCharacter => musicalCharacter;
-
-        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
 
         public Primitives.Point TextBlockLocation
         {
@@ -83,6 +71,16 @@ namespace Manufaktura.Controls.Model
         public static Key FromTonic(Step step, MajorAndMinorScaleFlags flags)
         {
             return new Key(CircleOfFifths.CalculateFifths(step, flags));
+        }
+
+        public char GetCharacter(IMusicFont font)
+        {
+            if (fifths > 0)
+                return font.Sharp;
+            else if (fifths < 0)
+                return font.Flat;
+            else
+                return '\0';
         }
 
         /// <summary>

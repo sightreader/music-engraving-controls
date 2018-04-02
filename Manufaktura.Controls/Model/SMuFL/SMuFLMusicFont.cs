@@ -1,326 +1,67 @@
-﻿namespace Manufaktura.Controls.Model.SMuFL
+﻿using Manufaktura.Controls.Model.Fonts;
+using System;
+
+namespace Manufaktura.Controls.Model.SMuFL
 {
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-
-    public partial class SMuFLMusicFont
+    public class SMuFLMusicFont : IMusicFont
     {
-        [JsonProperty("fontName")]
-        public string FontName { get; set; }
-
-        [JsonProperty("fontVersion")]
-        public double FontVersion { get; set; }
-
-        [JsonProperty("engravingDefaults")]
-        public Dictionary<string, double> EngravingDefaults { get; set; }
-
-        [JsonProperty("glyphBBoxes")]
-        public GlyphBBoxes GlyphBBoxes { get; set; }
-
-        [JsonProperty("glyphsWithAlternates")]
-        public Dictionary<string, GlyphsWithAlternate> GlyphsWithAlternates { get; set; }
-
-        [JsonProperty("glyphsWithAnchors")]
-        public GlyphsWithAnchors GlyphsWithAnchors { get; set; }
-
-        [JsonProperty("ligatures")]
-        public Dictionary<string, Ligature> Ligatures { get; set; }
-
-        [JsonProperty("optionalGlyphs")]
-        public OptionalGlyphs OptionalGlyphs { get; set; }
-
-        [JsonProperty("sets")]
-        public Dictionary<string, Set> Sets { get; set; }
-    }
-
-    public partial class AccdnCombDot
-    {
-        [JsonProperty("bBoxNE")]
-        public double[] BBoxNe { get; set; }
-
-        [JsonProperty("bBoxSW")]
-        public long[] BBoxSw { get; set; }
-    }
-
-    public partial class GlyphsWithAlternate
-    {
-        [JsonProperty("alternates")]
-        public Alternate[] Alternates { get; set; }
-    }
-
-    public partial class Alternate
-    {
-        [JsonProperty("codepoint")]
-        public string Codepoint { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidental1CommaFlat
-    {
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidental1CommaSharp
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalArrowDown
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalArrowUp
-    {
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalDoubleFlat
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalDoubleFlatReversed
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class AccidentalFiveQuarterTonesSharpArrowUp
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalLowerOneSeptimalComma
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalNatural
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalNaturalEqualTempered
-    {
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class AccidentalNaturalReversed
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-    }
-
-    public partial class BeamAccelRit1
-    {
-        [JsonProperty("repeatOffset")]
-        public double[] RepeatOffset { get; set; }
-    }
-
-    public partial class Dynamic
-    {
-        [JsonProperty("opticalCenter")]
-        public double[] OpticalCenter { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsFlag1024ThDown
-    {
-        [JsonProperty("stemDownSW")]
-        public double[] StemDownSw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsFlag1024ThUp
-    {
-        [JsonProperty("stemUpNW")]
-        public double[] StemUpNw { get; set; }
-    }
-
-    public partial class Flag8ThDown
-    {
-        [JsonProperty("graceNoteSlashNW")]
-        public double[] GraceNoteSlashNw { get; set; }
-
-        [JsonProperty("graceNoteSlashSE")]
-        public double[] GraceNoteSlashSe { get; set; }
-
-        [JsonProperty("stemDownSW")]
-        public double[] StemDownSw { get; set; }
-    }
-
-    public partial class Flag8ThDownSmall
-    {
-        [JsonProperty("stemDownSW")]
-        public long[] StemDownSw { get; set; }
-    }
-
-    public partial class Flag8ThUp
-    {
-        [JsonProperty("graceNoteSlashNE")]
-        public double[] GraceNoteSlashNe { get; set; }
-
-        [JsonProperty("graceNoteSlashSW")]
-        public double[] GraceNoteSlashSw { get; set; }
-
-        [JsonProperty("stemUpNW")]
-        public double[] StemUpNw { get; set; }
-    }
-
-    public partial class Flag8ThUpSmall
-    {
-        [JsonProperty("stemUpNW")]
-        public long[] StemUpNw { get; set; }
-    }
-
-    public partial class GClefLigatedNumber
-    {
-        [JsonProperty("numeralBottom")]
-        public double[] NumeralBottom { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsNoteABlack
-    {
-        [JsonProperty("stemDownNW")]
-        public double[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public double[] StemUpSe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsNoteShapeDiamondBlack
-    {
-        [JsonProperty("stemDownNW")]
-        public long[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public double[] StemUpSe { get; set; }
-    }
-
-    public partial class NoteheadCircleSlash
-    {
-        [JsonProperty("stemDownNW")]
-        public double[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public long[] StemUpSe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsNoteheadCircleXDoubleWhole
-    {
-        [JsonProperty("noteheadOrigin")]
-        public double[] NoteheadOrigin { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsNoteheadCircleXHalf
-    {
-        [JsonProperty("stemDownNW")]
-        public long[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public long[] StemUpSe { get; set; }
-    }
-
-    public partial class NoteheadBottom
-    {
-        [JsonProperty("stemDownNW")]
-        public double[] StemDownNw { get; set; }
-    }
-
-    public partial class NoteheadTop
-    {
-        [JsonProperty("stemUpSE")]
-        public double[] StemUpSe { get; set; }
-    }
-
-    public partial class Wiggle
-    {
-        [JsonProperty("repeatOffset")]
-        public long[] RepeatOffset { get; set; }
-    }
-
-    public partial class Ligature
-    {
-        [JsonProperty("codepoint")]
-        public string Codepoint { get; set; }
-
-        [JsonProperty("componentGlyphs")]
-        public string[] ComponentGlyphs { get; set; }
-    }
-
-    public partial class The4StringTabClefSerif
-    {
-        [JsonProperty("classes")]
-        public string[] Classes { get; set; }
-
-        [JsonProperty("codepoint")]
-        public string Codepoint { get; set; }
-    }
-
-    public partial class AccidentalDoubleFlatParens
-    {
-        [JsonProperty("codepoint")]
-        public string Codepoint { get; set; }
-    }
-
-    public partial class Set
-    {
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("glyphs")]
-        public Glyph[] Glyphs { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public partial class Glyph
-    {
-        [JsonProperty("alternateFor")]
-        public string AlternateFor { get; set; }
-
-        [JsonProperty("codepoint")]
-        public string Codepoint { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        public char AugmentationDot => '\uE1E7';
+        public char BraceLeft => '\uE000';
+        public char BraceRight => '\uE001';
+        public char Bracket => '\uE002';
+        public char CClef => '\uE05C';
+        public char CommonTime => '\uE08A';
+        public char CutTime => '\uE08B';
+        public char DoubleFlat => '\uE264';
+        public char DoubleSharp => '\uE263';
+        public char FClef => '\uE062';
+        public char FermataDown => throw new NotImplementedException();
+        public char FermataUp => throw new NotImplementedException();
+        public char Flat => '\uE260';
+        public char GClef => '\uE052';
+        public char Mordent => throw new NotImplementedException();
+        public char MordentShort => throw new NotImplementedException();
+        public char Natural => '\uE261';
+        public char NoteEighth => throw new NotImplementedException();
+        public char NoteFlag128th => '\uE248';
+        public char NoteFlag128thRev => '\uE249';
+        public char NoteFlag32nd => '\uE244';
+        public char NoteFlag32ndRev => '\uE245';
+        public char NoteFlag64th => '\uE246';
+        public char NoteFlag64thRev => '\uE247';
+        public char NoteFlagEighth => '\uE240';
+        public char NoteFlagEighthRev => '\uE241';
+        public char NoteFlagSixteenth => '\uE242';
+        public char NoteFlagSixteenthRev => '\uE243';
+        public char NoteHalf => '\uE0A3';
+        public char NoteheadBlack => '\uE0A4';
+        public char NoteheadHalf => '\uE0A3';
+        public char NoteQuarter => '\uE0A4';
+        public char NoteSixteenth => throw new NotImplementedException();
+        public char NoteWhole => '\uE0A2';
+        public char PercussionClef => throw new NotImplementedException();
+        public char RepeatBackward => '\uE041';
+        public char RepeatForward => '\uE040';
+        public char Rest32nd => '\uE4E8';
+        public char RestEighth => '\uE4E6';
+        public char RestHalf => '\uE4E4';
+        public char RestQuarter => '\uE4E5';
+        public char RestSixteenth => '\uE4E7';
+        public char RestWhole => '\uE4E3';
+        public char Sharp => '\uE262';
+        public char SquareBracketLeft => throw new NotImplementedException();
+        public char Staff4Lines => throw new NotImplementedException();
+        public char Staff5Lines => throw new NotImplementedException();
+        public char Time0 => '\uE080';
+        public char Time1 => '\uE081';
+        public char Time2 => '\uE082';
+        public char Time3 => '\uE083';
+        public char Time4 => '\uE084';
+        public char Time5 => '\uE085';
+        public char Time6 => '\uE086';
+        public char Time7 => '\uE087';
+        public char Time8 => '\uE088';
+        public char Time9 => '\uE089';
+        public char Trill => throw new NotImplementedException();
     }
 }

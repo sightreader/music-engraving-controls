@@ -200,7 +200,7 @@ namespace Manufaktura.Controls.Rendering
                     articulationPosition = notePositionY + 10;
 
                 if (element.Articulation == ArticulationType.Staccato)
-                    renderer.DrawCharacter(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 1, articulationPosition, element);
+                    renderer.DrawCharacter(renderer.Settings.CurrentFont.AugmentationDot, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 1, articulationPosition, element);
                 else if (element.Articulation == ArticulationType.Accent)
                     renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, scoreService.CursorPositionX - 1, articulationPosition + 16, element);
             }
@@ -211,7 +211,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
-                renderer.DrawCharacter(renderer.Settings.CurrentFont.Dot, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, notePositionY, element);
+                renderer.DrawCharacter(renderer.Settings.CurrentFont.AugmentationDot, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, notePositionY, element);
                 scoreService.CursorPositionX += 6;
             }
         }
@@ -328,9 +328,9 @@ namespace Manufaktura.Controls.Rendering
         private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             if (element.IsGraceNote || element.IsCueNote)
-                renderer.DrawCharacter(element.MusicalCharacter, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1 - 7, notePositionY + 7, element);
+                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1 - 7, notePositionY + 7, element);
             else
-                renderer.DrawCharacter(element.MusicalCharacter, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, notePositionY, element);
+                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, notePositionY, element);
 
             measurementService.LastNotePositionX = scoreService.CursorPositionX;
             element.TextBlockLocation = new Point(scoreService.CursorPositionX, notePositionY);

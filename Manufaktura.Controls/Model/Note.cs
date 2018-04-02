@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model.Collections;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
 using System;
@@ -31,10 +32,6 @@ namespace Manufaktura.Controls.Model
         private bool isChordElement = false;
 
         private LyricsCollection lyrics;
-
-        private char noteFlagCharacter = '\0';
-
-        private char noteFlagCharacterRev = '\0';
 
         private Pitch pitch;
 
@@ -193,8 +190,6 @@ namespace Manufaktura.Controls.Model
         public LyricsCollection Lyrics { get { return lyrics; } private set { lyrics = value; } }
         public int MidiPitch { get { return pitch.MidiPitch; } }
         public RebeamMode? ModeUsedForRebeaming { get; internal set; }
-        public char NoteFlagCharacter => noteFlagCharacter;
-        public char NoteFlagCharacterRev => noteFlagCharacterRev;
 
         /// <summary>
         /// Gets octave number of the note's pitch.
@@ -309,6 +304,19 @@ namespace Manufaktura.Controls.Model
             Pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
         }
 
+        public override char GetCharacter(IMusicFont font)
+        {
+            if (BaseDuration == RhythmicDuration.Whole) return font.NoteWhole;
+            else if (BaseDuration == RhythmicDuration.Half) return font.NoteheadHalf;
+            else if (BaseDuration == RhythmicDuration.Quarter) return font.NoteheadBlack;
+            else if (BaseDuration == RhythmicDuration.Eighth) return font.NoteheadBlack;
+            else if (BaseDuration == RhythmicDuration.Sixteenth) return font.NoteheadBlack;
+            else if (BaseDuration == RhythmicDuration.D32nd) return font.NoteheadBlack;
+            else if (BaseDuration == RhythmicDuration.D64th) return font.NoteheadBlack;
+            else if (BaseDuration == RhythmicDuration.D128th) return font.NoteheadBlack;
+            else return font.NoteheadBlack;
+        }
+
         /// <summary>
         /// Gets line number for this Note for specific Clef. Fractional numbers represent staff spaces, i.e. 1.5 == first space, etc.
         /// </summary>
@@ -318,6 +326,16 @@ namespace Manufaktura.Controls.Model
         {
             var stepDistance = (double)Pitch.StepDistance(this, clef);
             return clef.Line + (stepDistance / 2);
+        }
+
+        public char GetNoteFlagCharacter(IMusicFont font, bool isReverse)
+        {
+            if (BaseDuration == RhythmicDuration.Eighth) return isReverse ? font.NoteFlagEighthRev : font.NoteFlagEighth;
+            else if (BaseDuration == RhythmicDuration.Sixteenth) return isReverse ? font.NoteFlagSixteenthRev : font.NoteFlagSixteenth;
+            else if (BaseDuration == RhythmicDuration.D32nd) return isReverse ? font.NoteFlag32ndRev : font.NoteFlag32nd;
+            else if (BaseDuration == RhythmicDuration.D64th) return isReverse ? font.NoteFlag64thRev : font.NoteFlag64th;
+            else if (BaseDuration == RhythmicDuration.D128th) return isReverse ? font.NoteFlag128thRev : font.NoteFlag128th;
+            else return '\0';
         }
 
         /// <summary>
@@ -331,41 +349,6 @@ namespace Manufaktura.Controls.Model
 
         private void DetermineMusicalCharacter()
         {
-            if (BaseDuration == RhythmicDuration.Whole) musicalCharacter = MusicFont.WholeNote;
-            else if (BaseDuration == RhythmicDuration.Half) musicalCharacter = MusicFont.WhiteNoteHead;
-            else if (BaseDuration == RhythmicDuration.Quarter) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.Eighth) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.Sixteenth) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D32nd) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D64th) musicalCharacter = MusicFont.BlackNoteHead;
-            else if (BaseDuration == RhythmicDuration.D128th) musicalCharacter = MusicFont.BlackNoteHead;
-            else musicalCharacter = MusicFont.BlackNoteHead;
-
-            if (BaseDuration == RhythmicDuration.Eighth)
-            {
-                noteFlagCharacter = MusicFont.NoteFlagEighth;
-                noteFlagCharacterRev = MusicFont.NoteFlagEighthRev;
-            }
-            else if (BaseDuration == RhythmicDuration.Sixteenth)
-            {
-                noteFlagCharacter = MusicFont.NoteFlagSixteenth;
-                noteFlagCharacterRev = MusicFont.NoteFlagSixteenthRev;
-            }
-            else if (BaseDuration == RhythmicDuration.D32nd)
-            {
-                noteFlagCharacter = MusicFont.NoteFlag32nd;
-                noteFlagCharacterRev = MusicFont.NoteFlag32ndRev;
-            }
-            else if (BaseDuration == RhythmicDuration.D64th)
-            {
-                noteFlagCharacter = MusicFont.NoteFlag64th;
-                noteFlagCharacterRev = MusicFont.NoteFlag64thRev;
-            }
-            else if (BaseDuration == RhythmicDuration.D128th)
-            {
-                noteFlagCharacter = MusicFont.NoteFlag128th;
-                noteFlagCharacterRev = MusicFont.NoteFlag128thRev;
-            }
         }
 
         private void RestoreBeams()

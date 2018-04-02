@@ -11,8 +11,6 @@ namespace Manufaktura.Controls.Model
     {
         protected bool hasFermataSign = false;
         protected Point location = new Point();
-        protected char musicalCharacter;
-        private IMusicFont musicFont = new PolihymniaFont();
 
         /// <summary>
         /// Default X position of note or rest
@@ -23,13 +21,6 @@ namespace Manufaktura.Controls.Model
         /// Indicates if note has fermata sign
         /// </summary>
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; OnPropertyChanged(); } }
-
-        public char MusicalCharacter => musicalCharacter;
-
-        /// <summary>
-        /// Music font used to draw the note
-        /// </summary>
-        public IMusicFont MusicFont { get { return musicFont; } set { musicFont = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Position of text block part of this NoteOrRest. Rests are rendered wholly as text blocks.
@@ -58,5 +49,7 @@ namespace Manufaktura.Controls.Model
         {
             return unit.IsRest ? (NoteOrRest)new Rest(unit.Duration) : new Note(unit.Duration);
         }
+
+        public abstract char GetCharacter(IMusicFont font);
     }
 }

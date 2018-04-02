@@ -45,13 +45,13 @@ namespace Manufaktura.Controls.Rendering
 			if (metronomeDirection != null)
 			{
 				var note = new Note(metronomeDirection.Tempo.BeatUnit);
-				renderer.DrawCharacter(note.MusicalCharacter, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX, dirPositionY - 8, element);
+				renderer.DrawCharacter(note.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX, dirPositionY - 8, element);
 				if (metronomeDirection.Tempo.BeatUnit.Denominator > 1)
 				{
 					renderer.DrawLine(scoreService.CursorPositionX + 10, dirPositionY + 9, scoreService.CursorPositionX + 10, dirPositionY - 2, metronomeDirection);
 					if (metronomeDirection.Tempo.BeatUnit.Denominator > 4)
 					{
-						renderer.DrawCharacter(note.NoteFlagCharacter, MusicFontStyles.GraceNoteFont, new Point(scoreService.CursorPositionX + 6, dirPositionY - 24), element);
+						renderer.DrawCharacter(note.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(scoreService.CursorPositionX + 6, dirPositionY - 24), element);
 					}
 				}
 				renderer.DrawString($" = {metronomeDirection.Tempo.BeatsPerMinute}", MusicFontStyles.DirectionFont, scoreService.CursorPositionX + 12, dirPositionY, element);
