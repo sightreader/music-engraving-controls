@@ -8,658 +8,658 @@ namespace Manufaktura.Controls.Model.SMuFL
     public partial class GlyphBBoxes
     {
         [JsonProperty("4stringTabClef")]
-        public Dictionary<string, double[]> The4StringTabClef { get; set; }
+        public BoundingBox The4StringTabClef { get; set; }
 
         [JsonProperty("4stringTabClefSerif")]
-        public Dictionary<string, double[]> The4StringTabClefSerif { get; set; }
+        public BoundingBox The4StringTabClefSerif { get; set; }
 
         [JsonProperty("4stringTabClefTall")]
-        public Dictionary<string, double[]> The4StringTabClefTall { get; set; }
+        public BoundingBox The4StringTabClefTall { get; set; }
 
         [JsonProperty("6stringTabClef")]
-        public Dictionary<string, double[]> The6StringTabClef { get; set; }
+        public BoundingBox The6StringTabClef { get; set; }
 
         [JsonProperty("6stringTabClefSerif")]
-        public Dictionary<string, double[]> The6StringTabClefSerif { get; set; }
+        public BoundingBox The6StringTabClefSerif { get; set; }
 
         [JsonProperty("6stringTabClefTall")]
-        public Dictionary<string, double[]> The6StringTabClefTall { get; set; }
+        public BoundingBox The6StringTabClefTall { get; set; }
 
         [JsonProperty("accSagittal11LargeDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal11LargeDiesisDown { get; set; }
+        public BoundingBox AccSagittal11LargeDiesisDown { get; set; }
 
         [JsonProperty("accSagittal11LargeDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal11LargeDiesisUp { get; set; }
+        public BoundingBox AccSagittal11LargeDiesisUp { get; set; }
 
         [JsonProperty("accSagittal11MediumDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal11MediumDiesisDown { get; set; }
+        public BoundingBox AccSagittal11MediumDiesisDown { get; set; }
 
         [JsonProperty("accSagittal11MediumDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal11MediumDiesisUp { get; set; }
+        public BoundingBox AccSagittal11MediumDiesisUp { get; set; }
 
         [JsonProperty("accSagittal11v19LargeDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal11V19LargeDiesisDown { get; set; }
+        public BoundingBox AccSagittal11V19LargeDiesisDown { get; set; }
 
         [JsonProperty("accSagittal11v19LargeDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal11V19LargeDiesisUp { get; set; }
+        public BoundingBox AccSagittal11V19LargeDiesisUp { get; set; }
 
         [JsonProperty("accSagittal11v19MediumDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal11V19MediumDiesisDown { get; set; }
+        public BoundingBox AccSagittal11V19MediumDiesisDown { get; set; }
 
         [JsonProperty("accSagittal11v19MediumDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal11V19MediumDiesisUp { get; set; }
+        public BoundingBox AccSagittal11V19MediumDiesisUp { get; set; }
 
         [JsonProperty("accSagittal11v49CommaDown")]
-        public Dictionary<string, double[]> AccSagittal11V49CommaDown { get; set; }
+        public BoundingBox AccSagittal11V49CommaDown { get; set; }
 
         [JsonProperty("accSagittal11v49CommaUp")]
-        public Dictionary<string, double[]> AccSagittal11V49CommaUp { get; set; }
+        public BoundingBox AccSagittal11V49CommaUp { get; set; }
 
         [JsonProperty("accSagittal143CommaDown")]
-        public Dictionary<string, double[]> AccSagittal143CommaDown { get; set; }
+        public BoundingBox AccSagittal143CommaDown { get; set; }
 
         [JsonProperty("accSagittal143CommaUp")]
-        public Dictionary<string, double[]> AccSagittal143CommaUp { get; set; }
+        public BoundingBox AccSagittal143CommaUp { get; set; }
 
         [JsonProperty("accSagittal17CommaDown")]
-        public Dictionary<string, double[]> AccSagittal17CommaDown { get; set; }
+        public BoundingBox AccSagittal17CommaDown { get; set; }
 
         [JsonProperty("accSagittal17CommaUp")]
-        public Dictionary<string, double[]> AccSagittal17CommaUp { get; set; }
+        public BoundingBox AccSagittal17CommaUp { get; set; }
 
         [JsonProperty("accSagittal17KleismaDown")]
-        public Dictionary<string, double[]> AccSagittal17KleismaDown { get; set; }
+        public BoundingBox AccSagittal17KleismaDown { get; set; }
 
         [JsonProperty("accSagittal17KleismaUp")]
-        public Dictionary<string, double[]> AccSagittal17KleismaUp { get; set; }
+        public BoundingBox AccSagittal17KleismaUp { get; set; }
 
         [JsonProperty("accSagittal19CommaDown")]
-        public Dictionary<string, double[]> AccSagittal19CommaDown { get; set; }
+        public BoundingBox AccSagittal19CommaDown { get; set; }
 
         [JsonProperty("accSagittal19CommaUp")]
-        public Dictionary<string, double[]> AccSagittal19CommaUp { get; set; }
+        public BoundingBox AccSagittal19CommaUp { get; set; }
 
         [JsonProperty("accSagittal19SchismaDown")]
-        public Dictionary<string, double[]> AccSagittal19SchismaDown { get; set; }
+        public BoundingBox AccSagittal19SchismaDown { get; set; }
 
         [JsonProperty("accSagittal19SchismaUp")]
-        public Dictionary<string, double[]> AccSagittal19SchismaUp { get; set; }
+        public BoundingBox AccSagittal19SchismaUp { get; set; }
 
         [JsonProperty("accSagittal23CommaDown")]
-        public Dictionary<string, double[]> AccSagittal23CommaDown { get; set; }
+        public BoundingBox AccSagittal23CommaDown { get; set; }
 
         [JsonProperty("accSagittal23CommaUp")]
-        public Dictionary<string, double[]> AccSagittal23CommaUp { get; set; }
+        public BoundingBox AccSagittal23CommaUp { get; set; }
 
         [JsonProperty("accSagittal23SmallDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal23SmallDiesisDown { get; set; }
+        public BoundingBox AccSagittal23SmallDiesisDown { get; set; }
 
         [JsonProperty("accSagittal23SmallDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal23SmallDiesisUp { get; set; }
+        public BoundingBox AccSagittal23SmallDiesisUp { get; set; }
 
         [JsonProperty("accSagittal25SmallDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal25SmallDiesisDown { get; set; }
+        public BoundingBox AccSagittal25SmallDiesisDown { get; set; }
 
         [JsonProperty("accSagittal25SmallDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal25SmallDiesisUp { get; set; }
+        public BoundingBox AccSagittal25SmallDiesisUp { get; set; }
 
         [JsonProperty("accSagittal35LargeDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal35LargeDiesisDown { get; set; }
+        public BoundingBox AccSagittal35LargeDiesisDown { get; set; }
 
         [JsonProperty("accSagittal35LargeDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal35LargeDiesisUp { get; set; }
+        public BoundingBox AccSagittal35LargeDiesisUp { get; set; }
 
         [JsonProperty("accSagittal35MediumDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal35MediumDiesisDown { get; set; }
+        public BoundingBox AccSagittal35MediumDiesisDown { get; set; }
 
         [JsonProperty("accSagittal35MediumDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal35MediumDiesisUp { get; set; }
+        public BoundingBox AccSagittal35MediumDiesisUp { get; set; }
 
         [JsonProperty("accSagittal49LargeDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal49LargeDiesisDown { get; set; }
+        public BoundingBox AccSagittal49LargeDiesisDown { get; set; }
 
         [JsonProperty("accSagittal49LargeDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal49LargeDiesisUp { get; set; }
+        public BoundingBox AccSagittal49LargeDiesisUp { get; set; }
 
         [JsonProperty("accSagittal49MediumDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal49MediumDiesisDown { get; set; }
+        public BoundingBox AccSagittal49MediumDiesisDown { get; set; }
 
         [JsonProperty("accSagittal49MediumDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal49MediumDiesisUp { get; set; }
+        public BoundingBox AccSagittal49MediumDiesisUp { get; set; }
 
         [JsonProperty("accSagittal49SmallDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal49SmallDiesisDown { get; set; }
+        public BoundingBox AccSagittal49SmallDiesisDown { get; set; }
 
         [JsonProperty("accSagittal49SmallDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal49SmallDiesisUp { get; set; }
+        public BoundingBox AccSagittal49SmallDiesisUp { get; set; }
 
         [JsonProperty("accSagittal55CommaDown")]
-        public Dictionary<string, double[]> AccSagittal55CommaDown { get; set; }
+        public BoundingBox AccSagittal55CommaDown { get; set; }
 
         [JsonProperty("accSagittal55CommaUp")]
-        public Dictionary<string, double[]> AccSagittal55CommaUp { get; set; }
+        public BoundingBox AccSagittal55CommaUp { get; set; }
 
         [JsonProperty("accSagittal5CommaDown")]
-        public Dictionary<string, double[]> AccSagittal5CommaDown { get; set; }
+        public BoundingBox AccSagittal5CommaDown { get; set; }
 
         [JsonProperty("accSagittal5CommaUp")]
-        public Dictionary<string, double[]> AccSagittal5CommaUp { get; set; }
+        public BoundingBox AccSagittal5CommaUp { get; set; }
 
         [JsonProperty("accSagittal5v11SmallDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal5V11SmallDiesisDown { get; set; }
+        public BoundingBox AccSagittal5V11SmallDiesisDown { get; set; }
 
         [JsonProperty("accSagittal5v11SmallDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal5V11SmallDiesisUp { get; set; }
+        public BoundingBox AccSagittal5V11SmallDiesisUp { get; set; }
 
         [JsonProperty("accSagittal5v13LargeDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal5V13LargeDiesisDown { get; set; }
+        public BoundingBox AccSagittal5V13LargeDiesisDown { get; set; }
 
         [JsonProperty("accSagittal5v13LargeDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal5V13LargeDiesisUp { get; set; }
+        public BoundingBox AccSagittal5V13LargeDiesisUp { get; set; }
 
         [JsonProperty("accSagittal5v13MediumDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal5V13MediumDiesisDown { get; set; }
+        public BoundingBox AccSagittal5V13MediumDiesisDown { get; set; }
 
         [JsonProperty("accSagittal5v13MediumDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal5V13MediumDiesisUp { get; set; }
+        public BoundingBox AccSagittal5V13MediumDiesisUp { get; set; }
 
         [JsonProperty("accSagittal5v19CommaDown")]
-        public Dictionary<string, double[]> AccSagittal5V19CommaDown { get; set; }
+        public BoundingBox AccSagittal5V19CommaDown { get; set; }
 
         [JsonProperty("accSagittal5v19CommaUp")]
-        public Dictionary<string, double[]> AccSagittal5V19CommaUp { get; set; }
+        public BoundingBox AccSagittal5V19CommaUp { get; set; }
 
         [JsonProperty("accSagittal5v23SmallDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal5V23SmallDiesisDown { get; set; }
+        public BoundingBox AccSagittal5V23SmallDiesisDown { get; set; }
 
         [JsonProperty("accSagittal5v23SmallDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal5V23SmallDiesisUp { get; set; }
+        public BoundingBox AccSagittal5V23SmallDiesisUp { get; set; }
 
         [JsonProperty("accSagittal5v49MediumDiesisDown")]
-        public Dictionary<string, double[]> AccSagittal5V49MediumDiesisDown { get; set; }
+        public BoundingBox AccSagittal5V49MediumDiesisDown { get; set; }
 
         [JsonProperty("accSagittal5v49MediumDiesisUp")]
-        public Dictionary<string, double[]> AccSagittal5V49MediumDiesisUp { get; set; }
+        public BoundingBox AccSagittal5V49MediumDiesisUp { get; set; }
 
         [JsonProperty("accSagittal5v7KleismaDown")]
-        public Dictionary<string, double[]> AccSagittal5V7KleismaDown { get; set; }
+        public BoundingBox AccSagittal5V7KleismaDown { get; set; }
 
         [JsonProperty("accSagittal5v7KleismaUp")]
-        public Dictionary<string, double[]> AccSagittal5V7KleismaUp { get; set; }
+        public BoundingBox AccSagittal5V7KleismaUp { get; set; }
 
         [JsonProperty("accSagittal7CommaDown")]
-        public Dictionary<string, double[]> AccSagittal7CommaDown { get; set; }
+        public BoundingBox AccSagittal7CommaDown { get; set; }
 
         [JsonProperty("accSagittal7CommaUp")]
-        public Dictionary<string, double[]> AccSagittal7CommaUp { get; set; }
+        public BoundingBox AccSagittal7CommaUp { get; set; }
 
         [JsonProperty("accSagittal7v11CommaDown")]
-        public Dictionary<string, double[]> AccSagittal7V11CommaDown { get; set; }
+        public BoundingBox AccSagittal7V11CommaDown { get; set; }
 
         [JsonProperty("accSagittal7v11CommaUp")]
-        public Dictionary<string, double[]> AccSagittal7V11CommaUp { get; set; }
+        public BoundingBox AccSagittal7V11CommaUp { get; set; }
 
         [JsonProperty("accSagittal7v11KleismaDown")]
-        public Dictionary<string, double[]> AccSagittal7V11KleismaDown { get; set; }
+        public BoundingBox AccSagittal7V11KleismaDown { get; set; }
 
         [JsonProperty("accSagittal7v11KleismaUp")]
-        public Dictionary<string, double[]> AccSagittal7V11KleismaUp { get; set; }
+        public BoundingBox AccSagittal7V11KleismaUp { get; set; }
 
         [JsonProperty("accSagittal7v19CommaDown")]
-        public Dictionary<string, double[]> AccSagittal7V19CommaDown { get; set; }
+        public BoundingBox AccSagittal7V19CommaDown { get; set; }
 
         [JsonProperty("accSagittal7v19CommaUp")]
-        public Dictionary<string, double[]> AccSagittal7V19CommaUp { get; set; }
+        public BoundingBox AccSagittal7V19CommaUp { get; set; }
 
         [JsonProperty("accSagittalAcute")]
-        public Dictionary<string, double[]> AccSagittalAcute { get; set; }
+        public BoundingBox AccSagittalAcute { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat { get; set; }
+        public BoundingBox AccSagittalDoubleFlat { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat11v49CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat11V49CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat11V49CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat143CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat143CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat143CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat17CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat17CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat17CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat17kUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat17KUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat17KUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat19CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat19CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat19CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat19sUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat19SUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat19SUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat23CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat23CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat23CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat23SUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat23SUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat23SUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat25SUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat25SUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat25SUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat49SUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat49SUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat49SUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat55CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat55CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat55CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat5CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat5CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat5CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat5v11SUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat5V11SUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat5V11SUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat5v19CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat5V19CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat5V19CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat5v23SUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat5V23SUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat5V23SUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat5v7kUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat5V7KUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat5V7KUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat7CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat7CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat7CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat7v11CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat7V11CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat7V11CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat7v11kUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat7V11KUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat7V11KUp { get; set; }
 
         [JsonProperty("accSagittalDoubleFlat7v19CUp")]
-        public Dictionary<string, double[]> AccSagittalDoubleFlat7V19CUp { get; set; }
+        public BoundingBox AccSagittalDoubleFlat7V19CUp { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp { get; set; }
+        public BoundingBox AccSagittalDoubleSharp { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp11v49CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp11V49CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp11V49CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp143CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp143CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp143CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp17CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp17CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp17CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp17kDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp17KDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp17KDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp19CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp19CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp19CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp19sDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp19SDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp19SDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp23CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp23CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp23CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp23SDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp23SDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp23SDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp25SDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp25SDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp25SDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp49SDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp49SDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp49SDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp55CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp55CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp55CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp5CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp5CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp5CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp5v11SDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp5V11SDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp5V11SDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp5v19CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp5V19CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp5V19CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp5v23SDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp5V23SDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp5V23SDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp5v7kDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp5V7KDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp5V7KDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp7CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp7CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp7CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp7v11CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp7V11CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp7V11CDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp7v11kDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp7V11KDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp7V11KDown { get; set; }
 
         [JsonProperty("accSagittalDoubleSharp7v19CDown")]
-        public Dictionary<string, double[]> AccSagittalDoubleSharp7V19CDown { get; set; }
+        public BoundingBox AccSagittalDoubleSharp7V19CDown { get; set; }
 
         [JsonProperty("accSagittalFlat")]
-        public Dictionary<string, double[]> AccSagittalFlat { get; set; }
+        public BoundingBox AccSagittalFlat { get; set; }
 
         [JsonProperty("accSagittalFlat11LDown")]
-        public Dictionary<string, double[]> AccSagittalFlat11LDown { get; set; }
+        public BoundingBox AccSagittalFlat11LDown { get; set; }
 
         [JsonProperty("accSagittalFlat11MDown")]
-        public Dictionary<string, double[]> AccSagittalFlat11MDown { get; set; }
+        public BoundingBox AccSagittalFlat11MDown { get; set; }
 
         [JsonProperty("accSagittalFlat11v19LDown")]
-        public Dictionary<string, double[]> AccSagittalFlat11V19LDown { get; set; }
+        public BoundingBox AccSagittalFlat11V19LDown { get; set; }
 
         [JsonProperty("accSagittalFlat11v19MDown")]
-        public Dictionary<string, double[]> AccSagittalFlat11V19MDown { get; set; }
+        public BoundingBox AccSagittalFlat11V19MDown { get; set; }
 
         [JsonProperty("accSagittalFlat11v49CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat11V49CDown { get; set; }
+        public BoundingBox AccSagittalFlat11V49CDown { get; set; }
 
         [JsonProperty("accSagittalFlat11v49CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat11V49CUp { get; set; }
+        public BoundingBox AccSagittalFlat11V49CUp { get; set; }
 
         [JsonProperty("accSagittalFlat143CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat143CDown { get; set; }
+        public BoundingBox AccSagittalFlat143CDown { get; set; }
 
         [JsonProperty("accSagittalFlat143CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat143CUp { get; set; }
+        public BoundingBox AccSagittalFlat143CUp { get; set; }
 
         [JsonProperty("accSagittalFlat17CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat17CDown { get; set; }
+        public BoundingBox AccSagittalFlat17CDown { get; set; }
 
         [JsonProperty("accSagittalFlat17CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat17CUp { get; set; }
+        public BoundingBox AccSagittalFlat17CUp { get; set; }
 
         [JsonProperty("accSagittalFlat17kDown")]
-        public Dictionary<string, double[]> AccSagittalFlat17KDown { get; set; }
+        public BoundingBox AccSagittalFlat17KDown { get; set; }
 
         [JsonProperty("accSagittalFlat17kUp")]
-        public Dictionary<string, double[]> AccSagittalFlat17KUp { get; set; }
+        public BoundingBox AccSagittalFlat17KUp { get; set; }
 
         [JsonProperty("accSagittalFlat19CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat19CDown { get; set; }
+        public BoundingBox AccSagittalFlat19CDown { get; set; }
 
         [JsonProperty("accSagittalFlat19CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat19CUp { get; set; }
+        public BoundingBox AccSagittalFlat19CUp { get; set; }
 
         [JsonProperty("accSagittalFlat19sDown")]
-        public Dictionary<string, double[]> AccSagittalFlat19SDown { get; set; }
+        public BoundingBox AccSagittalFlat19SDown { get; set; }
 
         [JsonProperty("accSagittalFlat19sUp")]
-        public Dictionary<string, double[]> AccSagittalFlat19SUp { get; set; }
+        public BoundingBox AccSagittalFlat19SUp { get; set; }
 
         [JsonProperty("accSagittalFlat23CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat23CDown { get; set; }
+        public BoundingBox AccSagittalFlat23CDown { get; set; }
 
         [JsonProperty("accSagittalFlat23CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat23CUp { get; set; }
+        public BoundingBox AccSagittalFlat23CUp { get; set; }
 
         [JsonProperty("accSagittalFlat23SDown")]
-        public Dictionary<string, double[]> AccSagittalFlat23SDown { get; set; }
+        public BoundingBox AccSagittalFlat23SDown { get; set; }
 
         [JsonProperty("accSagittalFlat23SUp")]
-        public Dictionary<string, double[]> AccSagittalFlat23SUp { get; set; }
+        public BoundingBox AccSagittalFlat23SUp { get; set; }
 
         [JsonProperty("accSagittalFlat25SDown")]
-        public Dictionary<string, double[]> AccSagittalFlat25SDown { get; set; }
+        public BoundingBox AccSagittalFlat25SDown { get; set; }
 
         [JsonProperty("accSagittalFlat25SUp")]
-        public Dictionary<string, double[]> AccSagittalFlat25SUp { get; set; }
+        public BoundingBox AccSagittalFlat25SUp { get; set; }
 
         [JsonProperty("accSagittalFlat35LDown")]
-        public Dictionary<string, double[]> AccSagittalFlat35LDown { get; set; }
+        public BoundingBox AccSagittalFlat35LDown { get; set; }
 
         [JsonProperty("accSagittalFlat35MDown")]
-        public Dictionary<string, double[]> AccSagittalFlat35MDown { get; set; }
+        public BoundingBox AccSagittalFlat35MDown { get; set; }
 
         [JsonProperty("accSagittalFlat49LDown")]
-        public Dictionary<string, double[]> AccSagittalFlat49LDown { get; set; }
+        public BoundingBox AccSagittalFlat49LDown { get; set; }
 
         [JsonProperty("accSagittalFlat49MDown")]
-        public Dictionary<string, double[]> AccSagittalFlat49MDown { get; set; }
+        public BoundingBox AccSagittalFlat49MDown { get; set; }
 
         [JsonProperty("accSagittalFlat49SDown")]
-        public Dictionary<string, double[]> AccSagittalFlat49SDown { get; set; }
+        public BoundingBox AccSagittalFlat49SDown { get; set; }
 
         [JsonProperty("accSagittalFlat49SUp")]
-        public Dictionary<string, double[]> AccSagittalFlat49SUp { get; set; }
+        public BoundingBox AccSagittalFlat49SUp { get; set; }
 
         [JsonProperty("accSagittalFlat55CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat55CDown { get; set; }
+        public BoundingBox AccSagittalFlat55CDown { get; set; }
 
         [JsonProperty("accSagittalFlat55CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat55CUp { get; set; }
+        public BoundingBox AccSagittalFlat55CUp { get; set; }
 
         [JsonProperty("accSagittalFlat5CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5CDown { get; set; }
+        public BoundingBox AccSagittalFlat5CDown { get; set; }
 
         [JsonProperty("accSagittalFlat5CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat5CUp { get; set; }
+        public BoundingBox AccSagittalFlat5CUp { get; set; }
 
         [JsonProperty("accSagittalFlat5v11SDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5V11SDown { get; set; }
+        public BoundingBox AccSagittalFlat5V11SDown { get; set; }
 
         [JsonProperty("accSagittalFlat5v11SUp")]
-        public Dictionary<string, double[]> AccSagittalFlat5V11SUp { get; set; }
+        public BoundingBox AccSagittalFlat5V11SUp { get; set; }
 
         [JsonProperty("accSagittalFlat5v13LDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5V13LDown { get; set; }
+        public BoundingBox AccSagittalFlat5V13LDown { get; set; }
 
         [JsonProperty("accSagittalFlat5v13MDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5V13MDown { get; set; }
+        public BoundingBox AccSagittalFlat5V13MDown { get; set; }
 
         [JsonProperty("accSagittalFlat5v19CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5V19CDown { get; set; }
+        public BoundingBox AccSagittalFlat5V19CDown { get; set; }
 
         [JsonProperty("accSagittalFlat5v19CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat5V19CUp { get; set; }
+        public BoundingBox AccSagittalFlat5V19CUp { get; set; }
 
         [JsonProperty("accSagittalFlat5v23SDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5V23SDown { get; set; }
+        public BoundingBox AccSagittalFlat5V23SDown { get; set; }
 
         [JsonProperty("accSagittalFlat5v23SUp")]
-        public Dictionary<string, double[]> AccSagittalFlat5V23SUp { get; set; }
+        public BoundingBox AccSagittalFlat5V23SUp { get; set; }
 
         [JsonProperty("accSagittalFlat5v49MDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5V49MDown { get; set; }
+        public BoundingBox AccSagittalFlat5V49MDown { get; set; }
 
         [JsonProperty("accSagittalFlat5v7kDown")]
-        public Dictionary<string, double[]> AccSagittalFlat5V7KDown { get; set; }
+        public BoundingBox AccSagittalFlat5V7KDown { get; set; }
 
         [JsonProperty("accSagittalFlat5v7kUp")]
-        public Dictionary<string, double[]> AccSagittalFlat5V7KUp { get; set; }
+        public BoundingBox AccSagittalFlat5V7KUp { get; set; }
 
         [JsonProperty("accSagittalFlat7CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat7CDown { get; set; }
+        public BoundingBox AccSagittalFlat7CDown { get; set; }
 
         [JsonProperty("accSagittalFlat7CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat7CUp { get; set; }
+        public BoundingBox AccSagittalFlat7CUp { get; set; }
 
         [JsonProperty("accSagittalFlat7v11CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat7V11CDown { get; set; }
+        public BoundingBox AccSagittalFlat7V11CDown { get; set; }
 
         [JsonProperty("accSagittalFlat7v11CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat7V11CUp { get; set; }
+        public BoundingBox AccSagittalFlat7V11CUp { get; set; }
 
         [JsonProperty("accSagittalFlat7v11kDown")]
-        public Dictionary<string, double[]> AccSagittalFlat7V11KDown { get; set; }
+        public BoundingBox AccSagittalFlat7V11KDown { get; set; }
 
         [JsonProperty("accSagittalFlat7v11kUp")]
-        public Dictionary<string, double[]> AccSagittalFlat7V11KUp { get; set; }
+        public BoundingBox AccSagittalFlat7V11KUp { get; set; }
 
         [JsonProperty("accSagittalFlat7v19CDown")]
-        public Dictionary<string, double[]> AccSagittalFlat7V19CDown { get; set; }
+        public BoundingBox AccSagittalFlat7V19CDown { get; set; }
 
         [JsonProperty("accSagittalFlat7v19CUp")]
-        public Dictionary<string, double[]> AccSagittalFlat7V19CUp { get; set; }
+        public BoundingBox AccSagittalFlat7V19CUp { get; set; }
 
         [JsonProperty("accSagittalGrave")]
-        public Dictionary<string, double[]> AccSagittalGrave { get; set; }
+        public BoundingBox AccSagittalGrave { get; set; }
 
         [JsonProperty("accSagittalShaftDown")]
-        public Dictionary<string, double[]> AccSagittalShaftDown { get; set; }
+        public BoundingBox AccSagittalShaftDown { get; set; }
 
         [JsonProperty("accSagittalShaftUp")]
-        public Dictionary<string, double[]> AccSagittalShaftUp { get; set; }
+        public BoundingBox AccSagittalShaftUp { get; set; }
 
         [JsonProperty("accSagittalSharp")]
-        public Dictionary<string, double[]> AccSagittalSharp { get; set; }
+        public BoundingBox AccSagittalSharp { get; set; }
 
         [JsonProperty("accSagittalSharp11LUp")]
-        public Dictionary<string, double[]> AccSagittalSharp11LUp { get; set; }
+        public BoundingBox AccSagittalSharp11LUp { get; set; }
 
         [JsonProperty("accSagittalSharp11MUp")]
-        public Dictionary<string, double[]> AccSagittalSharp11MUp { get; set; }
+        public BoundingBox AccSagittalSharp11MUp { get; set; }
 
         [JsonProperty("accSagittalSharp11v19LUp")]
-        public Dictionary<string, double[]> AccSagittalSharp11V19LUp { get; set; }
+        public BoundingBox AccSagittalSharp11V19LUp { get; set; }
 
         [JsonProperty("accSagittalSharp11v19MUp")]
-        public Dictionary<string, double[]> AccSagittalSharp11V19MUp { get; set; }
+        public BoundingBox AccSagittalSharp11V19MUp { get; set; }
 
         [JsonProperty("accSagittalSharp11v49CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp11V49CDown { get; set; }
+        public BoundingBox AccSagittalSharp11V49CDown { get; set; }
 
         [JsonProperty("accSagittalSharp11v49CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp11V49CUp { get; set; }
+        public BoundingBox AccSagittalSharp11V49CUp { get; set; }
 
         [JsonProperty("accSagittalSharp143CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp143CDown { get; set; }
+        public BoundingBox AccSagittalSharp143CDown { get; set; }
 
         [JsonProperty("accSagittalSharp143CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp143CUp { get; set; }
+        public BoundingBox AccSagittalSharp143CUp { get; set; }
 
         [JsonProperty("accSagittalSharp17CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp17CDown { get; set; }
+        public BoundingBox AccSagittalSharp17CDown { get; set; }
 
         [JsonProperty("accSagittalSharp17CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp17CUp { get; set; }
+        public BoundingBox AccSagittalSharp17CUp { get; set; }
 
         [JsonProperty("accSagittalSharp17kDown")]
-        public Dictionary<string, double[]> AccSagittalSharp17KDown { get; set; }
+        public BoundingBox AccSagittalSharp17KDown { get; set; }
 
         [JsonProperty("accSagittalSharp17kUp")]
-        public Dictionary<string, double[]> AccSagittalSharp17KUp { get; set; }
+        public BoundingBox AccSagittalSharp17KUp { get; set; }
 
         [JsonProperty("accSagittalSharp19CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp19CDown { get; set; }
+        public BoundingBox AccSagittalSharp19CDown { get; set; }
 
         [JsonProperty("accSagittalSharp19CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp19CUp { get; set; }
+        public BoundingBox AccSagittalSharp19CUp { get; set; }
 
         [JsonProperty("accSagittalSharp19sDown")]
-        public Dictionary<string, double[]> AccSagittalSharp19SDown { get; set; }
+        public BoundingBox AccSagittalSharp19SDown { get; set; }
 
         [JsonProperty("accSagittalSharp19sUp")]
-        public Dictionary<string, double[]> AccSagittalSharp19SUp { get; set; }
+        public BoundingBox AccSagittalSharp19SUp { get; set; }
 
         [JsonProperty("accSagittalSharp23CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp23CDown { get; set; }
+        public BoundingBox AccSagittalSharp23CDown { get; set; }
 
         [JsonProperty("accSagittalSharp23CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp23CUp { get; set; }
+        public BoundingBox AccSagittalSharp23CUp { get; set; }
 
         [JsonProperty("accSagittalSharp23SDown")]
-        public Dictionary<string, double[]> AccSagittalSharp23SDown { get; set; }
+        public BoundingBox AccSagittalSharp23SDown { get; set; }
 
         [JsonProperty("accSagittalSharp23SUp")]
-        public Dictionary<string, double[]> AccSagittalSharp23SUp { get; set; }
+        public BoundingBox AccSagittalSharp23SUp { get; set; }
 
         [JsonProperty("accSagittalSharp25SDown")]
-        public Dictionary<string, double[]> AccSagittalSharp25SDown { get; set; }
+        public BoundingBox AccSagittalSharp25SDown { get; set; }
 
         [JsonProperty("accSagittalSharp25SUp")]
-        public Dictionary<string, double[]> AccSagittalSharp25SUp { get; set; }
+        public BoundingBox AccSagittalSharp25SUp { get; set; }
 
         [JsonProperty("accSagittalSharp35LUp")]
-        public Dictionary<string, double[]> AccSagittalSharp35LUp { get; set; }
+        public BoundingBox AccSagittalSharp35LUp { get; set; }
 
         [JsonProperty("accSagittalSharp35MUp")]
-        public Dictionary<string, double[]> AccSagittalSharp35MUp { get; set; }
+        public BoundingBox AccSagittalSharp35MUp { get; set; }
 
         [JsonProperty("accSagittalSharp49LUp")]
-        public Dictionary<string, double[]> AccSagittalSharp49LUp { get; set; }
+        public BoundingBox AccSagittalSharp49LUp { get; set; }
 
         [JsonProperty("accSagittalSharp49MUp")]
-        public Dictionary<string, double[]> AccSagittalSharp49MUp { get; set; }
+        public BoundingBox AccSagittalSharp49MUp { get; set; }
 
         [JsonProperty("accSagittalSharp49SDown")]
-        public Dictionary<string, double[]> AccSagittalSharp49SDown { get; set; }
+        public BoundingBox AccSagittalSharp49SDown { get; set; }
 
         [JsonProperty("accSagittalSharp49SUp")]
-        public Dictionary<string, double[]> AccSagittalSharp49SUp { get; set; }
+        public BoundingBox AccSagittalSharp49SUp { get; set; }
 
         [JsonProperty("accSagittalSharp55CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp55CDown { get; set; }
+        public BoundingBox AccSagittalSharp55CDown { get; set; }
 
         [JsonProperty("accSagittalSharp55CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp55CUp { get; set; }
+        public BoundingBox AccSagittalSharp55CUp { get; set; }
 
         [JsonProperty("accSagittalSharp5CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp5CDown { get; set; }
+        public BoundingBox AccSagittalSharp5CDown { get; set; }
 
         [JsonProperty("accSagittalSharp5CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5CUp { get; set; }
+        public BoundingBox AccSagittalSharp5CUp { get; set; }
 
         [JsonProperty("accSagittalSharp5v11SDown")]
-        public Dictionary<string, double[]> AccSagittalSharp5V11SDown { get; set; }
+        public BoundingBox AccSagittalSharp5V11SDown { get; set; }
 
         [JsonProperty("accSagittalSharp5v11SUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5V11SUp { get; set; }
+        public BoundingBox AccSagittalSharp5V11SUp { get; set; }
 
         [JsonProperty("accSagittalSharp5v13LUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5V13LUp { get; set; }
+        public BoundingBox AccSagittalSharp5V13LUp { get; set; }
 
         [JsonProperty("accSagittalSharp5v13MUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5V13MUp { get; set; }
+        public BoundingBox AccSagittalSharp5V13MUp { get; set; }
 
         [JsonProperty("accSagittalSharp5v19CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp5V19CDown { get; set; }
+        public BoundingBox AccSagittalSharp5V19CDown { get; set; }
 
         [JsonProperty("accSagittalSharp5v19CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5V19CUp { get; set; }
+        public BoundingBox AccSagittalSharp5V19CUp { get; set; }
 
         [JsonProperty("accSagittalSharp5v23SDown")]
-        public Dictionary<string, double[]> AccSagittalSharp5V23SDown { get; set; }
+        public BoundingBox AccSagittalSharp5V23SDown { get; set; }
 
         [JsonProperty("accSagittalSharp5v23SUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5V23SUp { get; set; }
+        public BoundingBox AccSagittalSharp5V23SUp { get; set; }
 
         [JsonProperty("accSagittalSharp5v49MUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5V49MUp { get; set; }
+        public BoundingBox AccSagittalSharp5V49MUp { get; set; }
 
         [JsonProperty("accSagittalSharp5v7kDown")]
-        public Dictionary<string, double[]> AccSagittalSharp5V7KDown { get; set; }
+        public BoundingBox AccSagittalSharp5V7KDown { get; set; }
 
         [JsonProperty("accSagittalSharp5v7kUp")]
-        public Dictionary<string, double[]> AccSagittalSharp5V7KUp { get; set; }
+        public BoundingBox AccSagittalSharp5V7KUp { get; set; }
 
         [JsonProperty("accSagittalSharp7CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp7CDown { get; set; }
+        public BoundingBox AccSagittalSharp7CDown { get; set; }
 
         [JsonProperty("accSagittalSharp7CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp7CUp { get; set; }
+        public BoundingBox AccSagittalSharp7CUp { get; set; }
 
         [JsonProperty("accSagittalSharp7v11CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp7V11CDown { get; set; }
+        public BoundingBox AccSagittalSharp7V11CDown { get; set; }
 
         [JsonProperty("accSagittalSharp7v11CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp7V11CUp { get; set; }
+        public BoundingBox AccSagittalSharp7V11CUp { get; set; }
 
         [JsonProperty("accSagittalSharp7v11kDown")]
-        public Dictionary<string, double[]> AccSagittalSharp7V11KDown { get; set; }
+        public BoundingBox AccSagittalSharp7V11KDown { get; set; }
 
         [JsonProperty("accSagittalSharp7v11kUp")]
-        public Dictionary<string, double[]> AccSagittalSharp7V11KUp { get; set; }
+        public BoundingBox AccSagittalSharp7V11KUp { get; set; }
 
         [JsonProperty("accSagittalSharp7v19CDown")]
-        public Dictionary<string, double[]> AccSagittalSharp7V19CDown { get; set; }
+        public BoundingBox AccSagittalSharp7V19CDown { get; set; }
 
         [JsonProperty("accSagittalSharp7v19CUp")]
-        public Dictionary<string, double[]> AccSagittalSharp7V19CUp { get; set; }
+        public BoundingBox AccSagittalSharp7V19CUp { get; set; }
 
         [JsonProperty("accdnCombDot")]
         public BoundingBox AccdnCombDot { get; set; }
@@ -677,7 +677,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox AccdnCombRh4RanksEmpty { get; set; }
 
         [JsonProperty("accdnDiatonicClef")]
-        public Dictionary<string, double[]> AccdnDiatonicClef { get; set; }
+        public BoundingBox AccdnDiatonicClef { get; set; }
 
         [JsonProperty("accdnLH2Ranks16Round")]
         public BoundingBox AccdnLh2Ranks16Round { get; set; }
@@ -818,55 +818,55 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox AccdnRicochet6 { get; set; }
 
         [JsonProperty("accdnRicochetStem2")]
-        public Dictionary<string, double[]> AccdnRicochetStem2 { get; set; }
+        public BoundingBox AccdnRicochetStem2 { get; set; }
 
         [JsonProperty("accdnRicochetStem3")]
-        public Dictionary<string, double[]> AccdnRicochetStem3 { get; set; }
+        public BoundingBox AccdnRicochetStem3 { get; set; }
 
         [JsonProperty("accdnRicochetStem4")]
-        public Dictionary<string, double[]> AccdnRicochetStem4 { get; set; }
+        public BoundingBox AccdnRicochetStem4 { get; set; }
 
         [JsonProperty("accdnRicochetStem5")]
-        public Dictionary<string, double[]> AccdnRicochetStem5 { get; set; }
+        public BoundingBox AccdnRicochetStem5 { get; set; }
 
         [JsonProperty("accdnRicochetStem6")]
-        public Dictionary<string, double[]> AccdnRicochetStem6 { get; set; }
+        public BoundingBox AccdnRicochetStem6 { get; set; }
 
         [JsonProperty("accidental1CommaFlat")]
-        public Dictionary<string, double[]> Accidental1CommaFlat { get; set; }
+        public BoundingBox Accidental1CommaFlat { get; set; }
 
         [JsonProperty("accidental1CommaSharp")]
-        public Dictionary<string, double[]> Accidental1CommaSharp { get; set; }
+        public BoundingBox Accidental1CommaSharp { get; set; }
 
         [JsonProperty("accidental2CommaFlat")]
-        public Dictionary<string, double[]> Accidental2CommaFlat { get; set; }
+        public BoundingBox Accidental2CommaFlat { get; set; }
 
         [JsonProperty("accidental2CommaSharp")]
-        public Dictionary<string, double[]> Accidental2CommaSharp { get; set; }
+        public BoundingBox Accidental2CommaSharp { get; set; }
 
         [JsonProperty("accidental3CommaFlat")]
-        public Dictionary<string, double[]> Accidental3CommaFlat { get; set; }
+        public BoundingBox Accidental3CommaFlat { get; set; }
 
         [JsonProperty("accidental3CommaSharp")]
-        public Dictionary<string, double[]> Accidental3CommaSharp { get; set; }
+        public BoundingBox Accidental3CommaSharp { get; set; }
 
         [JsonProperty("accidental4CommaFlat")]
-        public Dictionary<string, double[]> Accidental4CommaFlat { get; set; }
+        public BoundingBox Accidental4CommaFlat { get; set; }
 
         [JsonProperty("accidental5CommaSharp")]
-        public Dictionary<string, double[]> Accidental5CommaSharp { get; set; }
+        public BoundingBox Accidental5CommaSharp { get; set; }
 
         [JsonProperty("accidentalArrowDown")]
-        public Dictionary<string, double[]> AccidentalArrowDown { get; set; }
+        public BoundingBox AccidentalArrowDown { get; set; }
 
         [JsonProperty("accidentalArrowUp")]
-        public Dictionary<string, double[]> AccidentalArrowUp { get; set; }
+        public BoundingBox AccidentalArrowUp { get; set; }
 
         [JsonProperty("accidentalBakiyeFlat")]
-        public Dictionary<string, double[]> AccidentalBakiyeFlat { get; set; }
+        public BoundingBox AccidentalBakiyeFlat { get; set; }
 
         [JsonProperty("accidentalBakiyeSharp")]
-        public Dictionary<string, double[]> AccidentalBakiyeSharp { get; set; }
+        public BoundingBox AccidentalBakiyeSharp { get; set; }
 
         [JsonProperty("accidentalBracketLeft")]
         public BoundingBox AccidentalBracketLeft { get; set; }
@@ -875,697 +875,697 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox AccidentalBracketRight { get; set; }
 
         [JsonProperty("accidentalBuyukMucennebFlat")]
-        public Dictionary<string, double[]> AccidentalBuyukMucennebFlat { get; set; }
+        public BoundingBox AccidentalBuyukMucennebFlat { get; set; }
 
         [JsonProperty("accidentalBuyukMucennebSharp")]
-        public Dictionary<string, double[]> AccidentalBuyukMucennebSharp { get; set; }
+        public BoundingBox AccidentalBuyukMucennebSharp { get; set; }
 
         [JsonProperty("accidentalCombiningCloseCurlyBrace")]
-        public Dictionary<string, double[]> AccidentalCombiningCloseCurlyBrace { get; set; }
+        public BoundingBox AccidentalCombiningCloseCurlyBrace { get; set; }
 
         [JsonProperty("accidentalCombiningLower17Schisma")]
-        public Dictionary<string, double[]> AccidentalCombiningLower17Schisma { get; set; }
+        public BoundingBox AccidentalCombiningLower17Schisma { get; set; }
 
         [JsonProperty("accidentalCombiningLower19Schisma")]
-        public Dictionary<string, double[]> AccidentalCombiningLower19Schisma { get; set; }
+        public BoundingBox AccidentalCombiningLower19Schisma { get; set; }
 
         [JsonProperty("accidentalCombiningLower23Limit29LimitComma")]
-        public Dictionary<string, double[]> AccidentalCombiningLower23Limit29LimitComma { get; set; }
+        public BoundingBox AccidentalCombiningLower23Limit29LimitComma { get; set; }
 
         [JsonProperty("accidentalCombiningLower31Schisma")]
-        public Dictionary<string, double[]> AccidentalCombiningLower31Schisma { get; set; }
+        public BoundingBox AccidentalCombiningLower31Schisma { get; set; }
 
         [JsonProperty("accidentalCombiningLower53LimitComma")]
-        public Dictionary<string, double[]> AccidentalCombiningLower53LimitComma { get; set; }
+        public BoundingBox AccidentalCombiningLower53LimitComma { get; set; }
 
         [JsonProperty("accidentalCombiningOpenCurlyBrace")]
-        public Dictionary<string, double[]> AccidentalCombiningOpenCurlyBrace { get; set; }
+        public BoundingBox AccidentalCombiningOpenCurlyBrace { get; set; }
 
         [JsonProperty("accidentalCombiningRaise17Schisma")]
-        public Dictionary<string, double[]> AccidentalCombiningRaise17Schisma { get; set; }
+        public BoundingBox AccidentalCombiningRaise17Schisma { get; set; }
 
         [JsonProperty("accidentalCombiningRaise19Schisma")]
-        public Dictionary<string, double[]> AccidentalCombiningRaise19Schisma { get; set; }
+        public BoundingBox AccidentalCombiningRaise19Schisma { get; set; }
 
         [JsonProperty("accidentalCombiningRaise23Limit29LimitComma")]
-        public Dictionary<string, double[]> AccidentalCombiningRaise23Limit29LimitComma { get; set; }
+        public BoundingBox AccidentalCombiningRaise23Limit29LimitComma { get; set; }
 
         [JsonProperty("accidentalCombiningRaise31Schisma")]
-        public Dictionary<string, double[]> AccidentalCombiningRaise31Schisma { get; set; }
+        public BoundingBox AccidentalCombiningRaise31Schisma { get; set; }
 
         [JsonProperty("accidentalCombiningRaise53LimitComma")]
-        public Dictionary<string, double[]> AccidentalCombiningRaise53LimitComma { get; set; }
+        public BoundingBox AccidentalCombiningRaise53LimitComma { get; set; }
 
         [JsonProperty("accidentalCommaSlashDown")]
-        public Dictionary<string, double[]> AccidentalCommaSlashDown { get; set; }
+        public BoundingBox AccidentalCommaSlashDown { get; set; }
 
         [JsonProperty("accidentalCommaSlashUp")]
-        public Dictionary<string, double[]> AccidentalCommaSlashUp { get; set; }
+        public BoundingBox AccidentalCommaSlashUp { get; set; }
 
         [JsonProperty("accidentalDoubleFlat")]
-        public Dictionary<string, double[]> AccidentalDoubleFlat { get; set; }
+        public BoundingBox AccidentalDoubleFlat { get; set; }
 
         [JsonProperty("accidentalDoubleFlatArabic")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatArabic { get; set; }
+        public BoundingBox AccidentalDoubleFlatArabic { get; set; }
 
         [JsonProperty("accidentalDoubleFlatEqualTempered")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatEqualTempered { get; set; }
+        public BoundingBox AccidentalDoubleFlatEqualTempered { get; set; }
 
         [JsonProperty("accidentalDoubleFlatJoinedStems")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatJoinedStems { get; set; }
+        public BoundingBox AccidentalDoubleFlatJoinedStems { get; set; }
 
         [JsonProperty("accidentalDoubleFlatOneArrowDown")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatOneArrowDown { get; set; }
+        public BoundingBox AccidentalDoubleFlatOneArrowDown { get; set; }
 
         [JsonProperty("accidentalDoubleFlatOneArrowUp")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatOneArrowUp { get; set; }
+        public BoundingBox AccidentalDoubleFlatOneArrowUp { get; set; }
 
         [JsonProperty("accidentalDoubleFlatParens")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatParens { get; set; }
+        public BoundingBox AccidentalDoubleFlatParens { get; set; }
 
         [JsonProperty("accidentalDoubleFlatReversed")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatReversed { get; set; }
+        public BoundingBox AccidentalDoubleFlatReversed { get; set; }
 
         [JsonProperty("accidentalDoubleFlatThreeArrowsDown")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatThreeArrowsDown { get; set; }
+        public BoundingBox AccidentalDoubleFlatThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalDoubleFlatThreeArrowsUp")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatThreeArrowsUp { get; set; }
+        public BoundingBox AccidentalDoubleFlatThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalDoubleFlatTurned")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatTurned { get; set; }
+        public BoundingBox AccidentalDoubleFlatTurned { get; set; }
 
         [JsonProperty("accidentalDoubleFlatTwoArrowsDown")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatTwoArrowsDown { get; set; }
+        public BoundingBox AccidentalDoubleFlatTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalDoubleFlatTwoArrowsUp")]
-        public Dictionary<string, double[]> AccidentalDoubleFlatTwoArrowsUp { get; set; }
+        public BoundingBox AccidentalDoubleFlatTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalDoubleSharp")]
-        public Dictionary<string, double[]> AccidentalDoubleSharp { get; set; }
+        public BoundingBox AccidentalDoubleSharp { get; set; }
 
         [JsonProperty("accidentalDoubleSharpArabic")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpArabic { get; set; }
+        public BoundingBox AccidentalDoubleSharpArabic { get; set; }
 
         [JsonProperty("accidentalDoubleSharpEqualTempered")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpEqualTempered { get; set; }
+        public BoundingBox AccidentalDoubleSharpEqualTempered { get; set; }
 
         [JsonProperty("accidentalDoubleSharpOneArrowDown")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpOneArrowDown { get; set; }
+        public BoundingBox AccidentalDoubleSharpOneArrowDown { get; set; }
 
         [JsonProperty("accidentalDoubleSharpOneArrowUp")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpOneArrowUp { get; set; }
+        public BoundingBox AccidentalDoubleSharpOneArrowUp { get; set; }
 
         [JsonProperty("accidentalDoubleSharpParens")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpParens { get; set; }
+        public BoundingBox AccidentalDoubleSharpParens { get; set; }
 
         [JsonProperty("accidentalDoubleSharpThreeArrowsDown")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpThreeArrowsDown { get; set; }
+        public BoundingBox AccidentalDoubleSharpThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalDoubleSharpThreeArrowsUp")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpThreeArrowsUp { get; set; }
+        public BoundingBox AccidentalDoubleSharpThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalDoubleSharpTwoArrowsDown")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpTwoArrowsDown { get; set; }
+        public BoundingBox AccidentalDoubleSharpTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalDoubleSharpTwoArrowsUp")]
-        public Dictionary<string, double[]> AccidentalDoubleSharpTwoArrowsUp { get; set; }
+        public BoundingBox AccidentalDoubleSharpTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalEnharmonicAlmostEqualTo")]
-        public Dictionary<string, double[]> AccidentalEnharmonicAlmostEqualTo { get; set; }
+        public BoundingBox AccidentalEnharmonicAlmostEqualTo { get; set; }
 
         [JsonProperty("accidentalEnharmonicEquals")]
-        public Dictionary<string, double[]> AccidentalEnharmonicEquals { get; set; }
+        public BoundingBox AccidentalEnharmonicEquals { get; set; }
 
         [JsonProperty("accidentalEnharmonicTilde")]
-        public Dictionary<string, double[]> AccidentalEnharmonicTilde { get; set; }
+        public BoundingBox AccidentalEnharmonicTilde { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatAndFlat")]
-        public Dictionary<string, double[]> AccidentalFilledReversedFlatAndFlat { get; set; }
+        public BoundingBox AccidentalFilledReversedFlatAndFlat { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatAndFlatArrowDown")]
-        public Dictionary<string, double[]> AccidentalFilledReversedFlatAndFlatArrowDown { get; set; }
+        public BoundingBox AccidentalFilledReversedFlatAndFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatAndFlatArrowUp")]
-        public Dictionary<string, double[]> AccidentalFilledReversedFlatAndFlatArrowUp { get; set; }
+        public BoundingBox AccidentalFilledReversedFlatAndFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatArrowDown")]
-        public Dictionary<string, double[]> AccidentalFilledReversedFlatArrowDown { get; set; }
+        public BoundingBox AccidentalFilledReversedFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatArrowUp")]
-        public Dictionary<string, double[]> AccidentalFilledReversedFlatArrowUp { get; set; }
+        public BoundingBox AccidentalFilledReversedFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalFiveQuarterTonesFlatArrowDown")]
-        public Dictionary<string, double[]> AccidentalFiveQuarterTonesFlatArrowDown { get; set; }
+        public BoundingBox AccidentalFiveQuarterTonesFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalFiveQuarterTonesSharpArrowUp")]
-        public Dictionary<string, double[]> AccidentalFiveQuarterTonesSharpArrowUp { get; set; }
+        public BoundingBox AccidentalFiveQuarterTonesSharpArrowUp { get; set; }
 
         [JsonProperty("accidentalFlat")]
-        public Dictionary<string, double[]> AccidentalFlat { get; set; }
+        public BoundingBox AccidentalFlat { get; set; }
 
         [JsonProperty("accidentalFlatArabic")]
-        public Dictionary<string, double[]> AccidentalFlatArabic { get; set; }
+        public BoundingBox AccidentalFlatArabic { get; set; }
 
         [JsonProperty("accidentalFlatEqualTempered")]
-        public Dictionary<string, double[]> AccidentalFlatEqualTempered { get; set; }
+        public BoundingBox AccidentalFlatEqualTempered { get; set; }
 
         [JsonProperty("accidentalFlatJohnstonDown")]
-        public Dictionary<string, double[]> AccidentalFlatJohnstonDown { get; set; }
+        public BoundingBox AccidentalFlatJohnstonDown { get; set; }
 
         [JsonProperty("accidentalFlatJohnstonEl")]
-        public Dictionary<string, double[]> AccidentalFlatJohnstonEl { get; set; }
+        public BoundingBox AccidentalFlatJohnstonEl { get; set; }
 
         [JsonProperty("accidentalFlatJohnstonElDown")]
-        public Dictionary<string, double[]> AccidentalFlatJohnstonElDown { get; set; }
+        public BoundingBox AccidentalFlatJohnstonElDown { get; set; }
 
         [JsonProperty("accidentalFlatJohnstonUp")]
-        public Dictionary<string, double[]> AccidentalFlatJohnstonUp { get; set; }
+        public BoundingBox AccidentalFlatJohnstonUp { get; set; }
 
         [JsonProperty("accidentalFlatJohnstonUpEl")]
-        public Dictionary<string, double[]> AccidentalFlatJohnstonUpEl { get; set; }
+        public BoundingBox AccidentalFlatJohnstonUpEl { get; set; }
 
         [JsonProperty("accidentalFlatLoweredStockhausen")]
-        public Dictionary<string, double[]> AccidentalFlatLoweredStockhausen { get; set; }
+        public BoundingBox AccidentalFlatLoweredStockhausen { get; set; }
 
         [JsonProperty("accidentalFlatOneArrowDown")]
-        public Dictionary<string, double[]> AccidentalFlatOneArrowDown { get; set; }
+        public BoundingBox AccidentalFlatOneArrowDown { get; set; }
 
         [JsonProperty("accidentalFlatOneArrowUp")]
-        public Dictionary<string, double[]> AccidentalFlatOneArrowUp { get; set; }
+        public BoundingBox AccidentalFlatOneArrowUp { get; set; }
 
         [JsonProperty("accidentalFlatParens")]
-        public Dictionary<string, double[]> AccidentalFlatParens { get; set; }
+        public BoundingBox AccidentalFlatParens { get; set; }
 
         [JsonProperty("accidentalFlatRaisedStockhausen")]
-        public Dictionary<string, double[]> AccidentalFlatRaisedStockhausen { get; set; }
+        public BoundingBox AccidentalFlatRaisedStockhausen { get; set; }
 
         [JsonProperty("accidentalFlatRepeatedLineStockhausen")]
-        public Dictionary<string, double[]> AccidentalFlatRepeatedLineStockhausen { get; set; }
+        public BoundingBox AccidentalFlatRepeatedLineStockhausen { get; set; }
 
         [JsonProperty("accidentalFlatRepeatedSpaceStockhausen")]
-        public Dictionary<string, double[]> AccidentalFlatRepeatedSpaceStockhausen { get; set; }
+        public BoundingBox AccidentalFlatRepeatedSpaceStockhausen { get; set; }
 
         [JsonProperty("accidentalFlatSmall")]
-        public Dictionary<string, double[]> AccidentalFlatSmall { get; set; }
+        public BoundingBox AccidentalFlatSmall { get; set; }
 
         [JsonProperty("accidentalFlatThreeArrowsDown")]
-        public Dictionary<string, double[]> AccidentalFlatThreeArrowsDown { get; set; }
+        public BoundingBox AccidentalFlatThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalFlatThreeArrowsUp")]
-        public Dictionary<string, double[]> AccidentalFlatThreeArrowsUp { get; set; }
+        public BoundingBox AccidentalFlatThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalFlatTurned")]
-        public Dictionary<string, double[]> AccidentalFlatTurned { get; set; }
+        public BoundingBox AccidentalFlatTurned { get; set; }
 
         [JsonProperty("accidentalFlatTwoArrowsDown")]
-        public Dictionary<string, double[]> AccidentalFlatTwoArrowsDown { get; set; }
+        public BoundingBox AccidentalFlatTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalFlatTwoArrowsUp")]
-        public Dictionary<string, double[]> AccidentalFlatTwoArrowsUp { get; set; }
+        public BoundingBox AccidentalFlatTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalHalfSharpArrowDown")]
-        public Dictionary<string, double[]> AccidentalHalfSharpArrowDown { get; set; }
+        public BoundingBox AccidentalHalfSharpArrowDown { get; set; }
 
         [JsonProperty("accidentalHalfSharpArrowUp")]
-        public Dictionary<string, double[]> AccidentalHalfSharpArrowUp { get; set; }
+        public BoundingBox AccidentalHalfSharpArrowUp { get; set; }
 
         [JsonProperty("accidentalJohnston13")]
-        public Dictionary<string, double[]> AccidentalJohnston13 { get; set; }
+        public BoundingBox AccidentalJohnston13 { get; set; }
 
         [JsonProperty("accidentalJohnston31")]
-        public Dictionary<string, double[]> AccidentalJohnston31 { get; set; }
+        public BoundingBox AccidentalJohnston31 { get; set; }
 
         [JsonProperty("accidentalJohnstonDown")]
-        public Dictionary<string, double[]> AccidentalJohnstonDown { get; set; }
+        public BoundingBox AccidentalJohnstonDown { get; set; }
 
         [JsonProperty("accidentalJohnstonDownEl")]
-        public Dictionary<string, double[]> AccidentalJohnstonDownEl { get; set; }
+        public BoundingBox AccidentalJohnstonDownEl { get; set; }
 
         [JsonProperty("accidentalJohnstonEl")]
-        public Dictionary<string, double[]> AccidentalJohnstonEl { get; set; }
+        public BoundingBox AccidentalJohnstonEl { get; set; }
 
         [JsonProperty("accidentalJohnstonMinus")]
-        public Dictionary<string, double[]> AccidentalJohnstonMinus { get; set; }
+        public BoundingBox AccidentalJohnstonMinus { get; set; }
 
         [JsonProperty("accidentalJohnstonPlus")]
-        public Dictionary<string, double[]> AccidentalJohnstonPlus { get; set; }
+        public BoundingBox AccidentalJohnstonPlus { get; set; }
 
         [JsonProperty("accidentalJohnstonSeven")]
-        public Dictionary<string, double[]> AccidentalJohnstonSeven { get; set; }
+        public BoundingBox AccidentalJohnstonSeven { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenDown")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenDown { get; set; }
+        public BoundingBox AccidentalJohnstonSevenDown { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenFlat")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenFlat { get; set; }
+        public BoundingBox AccidentalJohnstonSevenFlat { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenFlatDown")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenFlatDown { get; set; }
+        public BoundingBox AccidentalJohnstonSevenFlatDown { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenFlatUp")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenFlatUp { get; set; }
+        public BoundingBox AccidentalJohnstonSevenFlatUp { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenSharp")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenSharp { get; set; }
+        public BoundingBox AccidentalJohnstonSevenSharp { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenSharpDown")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenSharpDown { get; set; }
+        public BoundingBox AccidentalJohnstonSevenSharpDown { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenSharpUp")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenSharpUp { get; set; }
+        public BoundingBox AccidentalJohnstonSevenSharpUp { get; set; }
 
         [JsonProperty("accidentalJohnstonSevenUp")]
-        public Dictionary<string, double[]> AccidentalJohnstonSevenUp { get; set; }
+        public BoundingBox AccidentalJohnstonSevenUp { get; set; }
 
         [JsonProperty("accidentalJohnstonUp")]
-        public Dictionary<string, double[]> AccidentalJohnstonUp { get; set; }
+        public BoundingBox AccidentalJohnstonUp { get; set; }
 
         [JsonProperty("accidentalJohnstonUpEl")]
-        public Dictionary<string, double[]> AccidentalJohnstonUpEl { get; set; }
+        public BoundingBox AccidentalJohnstonUpEl { get; set; }
 
         [JsonProperty("accidentalKomaFlat")]
-        public Dictionary<string, double[]> AccidentalKomaFlat { get; set; }
+        public BoundingBox AccidentalKomaFlat { get; set; }
 
         [JsonProperty("accidentalKomaSharp")]
-        public Dictionary<string, double[]> AccidentalKomaSharp { get; set; }
+        public BoundingBox AccidentalKomaSharp { get; set; }
 
         [JsonProperty("accidentalKoron")]
-        public Dictionary<string, double[]> AccidentalKoron { get; set; }
+        public BoundingBox AccidentalKoron { get; set; }
 
         [JsonProperty("accidentalKucukMucennebFlat")]
-        public Dictionary<string, double[]> AccidentalKucukMucennebFlat { get; set; }
+        public BoundingBox AccidentalKucukMucennebFlat { get; set; }
 
         [JsonProperty("accidentalKucukMucennebSharp")]
-        public Dictionary<string, double[]> AccidentalKucukMucennebSharp { get; set; }
+        public BoundingBox AccidentalKucukMucennebSharp { get; set; }
 
         [JsonProperty("accidentalLargeDoubleSharp")]
-        public Dictionary<string, double[]> AccidentalLargeDoubleSharp { get; set; }
+        public BoundingBox AccidentalLargeDoubleSharp { get; set; }
 
         [JsonProperty("accidentalLowerOneSeptimalComma")]
-        public Dictionary<string, double[]> AccidentalLowerOneSeptimalComma { get; set; }
+        public BoundingBox AccidentalLowerOneSeptimalComma { get; set; }
 
         [JsonProperty("accidentalLowerOneTridecimalQuartertone")]
-        public Dictionary<string, double[]> AccidentalLowerOneTridecimalQuartertone { get; set; }
+        public BoundingBox AccidentalLowerOneTridecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalLowerOneUndecimalQuartertone")]
-        public Dictionary<string, double[]> AccidentalLowerOneUndecimalQuartertone { get; set; }
+        public BoundingBox AccidentalLowerOneUndecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalLowerTwoSeptimalCommas")]
-        public Dictionary<string, double[]> AccidentalLowerTwoSeptimalCommas { get; set; }
+        public BoundingBox AccidentalLowerTwoSeptimalCommas { get; set; }
 
         [JsonProperty("accidentalLoweredStockhausen")]
-        public Dictionary<string, double[]> AccidentalLoweredStockhausen { get; set; }
+        public BoundingBox AccidentalLoweredStockhausen { get; set; }
 
         [JsonProperty("accidentalNarrowReversedFlat")]
-        public Dictionary<string, double[]> AccidentalNarrowReversedFlat { get; set; }
+        public BoundingBox AccidentalNarrowReversedFlat { get; set; }
 
         [JsonProperty("accidentalNarrowReversedFlatAndFlat")]
-        public Dictionary<string, double[]> AccidentalNarrowReversedFlatAndFlat { get; set; }
+        public BoundingBox AccidentalNarrowReversedFlatAndFlat { get; set; }
 
         [JsonProperty("accidentalNatural")]
-        public Dictionary<string, double[]> AccidentalNatural { get; set; }
+        public BoundingBox AccidentalNatural { get; set; }
 
         [JsonProperty("accidentalNaturalArabic")]
-        public Dictionary<string, double[]> AccidentalNaturalArabic { get; set; }
+        public BoundingBox AccidentalNaturalArabic { get; set; }
 
         [JsonProperty("accidentalNaturalEqualTempered")]
-        public Dictionary<string, double[]> AccidentalNaturalEqualTempered { get; set; }
+        public BoundingBox AccidentalNaturalEqualTempered { get; set; }
 
         [JsonProperty("accidentalNaturalFlat")]
-        public Dictionary<string, double[]> AccidentalNaturalFlat { get; set; }
+        public BoundingBox AccidentalNaturalFlat { get; set; }
 
         [JsonProperty("accidentalNaturalLoweredStockhausen")]
-        public Dictionary<string, double[]> AccidentalNaturalLoweredStockhausen { get; set; }
+        public BoundingBox AccidentalNaturalLoweredStockhausen { get; set; }
 
         [JsonProperty("accidentalNaturalOneArrowDown")]
-        public Dictionary<string, double[]> AccidentalNaturalOneArrowDown { get; set; }
+        public BoundingBox AccidentalNaturalOneArrowDown { get; set; }
 
         [JsonProperty("accidentalNaturalOneArrowUp")]
-        public Dictionary<string, double[]> AccidentalNaturalOneArrowUp { get; set; }
+        public BoundingBox AccidentalNaturalOneArrowUp { get; set; }
 
         [JsonProperty("accidentalNaturalParens")]
-        public Dictionary<string, double[]> AccidentalNaturalParens { get; set; }
+        public BoundingBox AccidentalNaturalParens { get; set; }
 
         [JsonProperty("accidentalNaturalRaisedStockhausen")]
-        public Dictionary<string, double[]> AccidentalNaturalRaisedStockhausen { get; set; }
+        public BoundingBox AccidentalNaturalRaisedStockhausen { get; set; }
 
         [JsonProperty("accidentalNaturalReversed")]
-        public Dictionary<string, double[]> AccidentalNaturalReversed { get; set; }
+        public BoundingBox AccidentalNaturalReversed { get; set; }
 
         [JsonProperty("accidentalNaturalSharp")]
-        public Dictionary<string, double[]> AccidentalNaturalSharp { get; set; }
+        public BoundingBox AccidentalNaturalSharp { get; set; }
 
         [JsonProperty("accidentalNaturalSmall")]
-        public Dictionary<string, double[]> AccidentalNaturalSmall { get; set; }
+        public BoundingBox AccidentalNaturalSmall { get; set; }
 
         [JsonProperty("accidentalNaturalThreeArrowsDown")]
-        public Dictionary<string, double[]> AccidentalNaturalThreeArrowsDown { get; set; }
+        public BoundingBox AccidentalNaturalThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalNaturalThreeArrowsUp")]
-        public Dictionary<string, double[]> AccidentalNaturalThreeArrowsUp { get; set; }
+        public BoundingBox AccidentalNaturalThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalNaturalTwoArrowsDown")]
-        public Dictionary<string, double[]> AccidentalNaturalTwoArrowsDown { get; set; }
+        public BoundingBox AccidentalNaturalTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalNaturalTwoArrowsUp")]
-        public Dictionary<string, double[]> AccidentalNaturalTwoArrowsUp { get; set; }
+        public BoundingBox AccidentalNaturalTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalOneAndAHalfSharpsArrowDown")]
-        public Dictionary<string, double[]> AccidentalOneAndAHalfSharpsArrowDown { get; set; }
+        public BoundingBox AccidentalOneAndAHalfSharpsArrowDown { get; set; }
 
         [JsonProperty("accidentalOneAndAHalfSharpsArrowUp")]
-        public Dictionary<string, double[]> AccidentalOneAndAHalfSharpsArrowUp { get; set; }
+        public BoundingBox AccidentalOneAndAHalfSharpsArrowUp { get; set; }
 
         [JsonProperty("accidentalOneQuarterToneFlatFerneyhough")]
-        public Dictionary<string, double[]> AccidentalOneQuarterToneFlatFerneyhough { get; set; }
+        public BoundingBox AccidentalOneQuarterToneFlatFerneyhough { get; set; }
 
         [JsonProperty("accidentalOneQuarterToneFlatStockhausen")]
-        public Dictionary<string, double[]> AccidentalOneQuarterToneFlatStockhausen { get; set; }
+        public BoundingBox AccidentalOneQuarterToneFlatStockhausen { get; set; }
 
         [JsonProperty("accidentalOneQuarterToneSharpFerneyhough")]
-        public Dictionary<string, double[]> AccidentalOneQuarterToneSharpFerneyhough { get; set; }
+        public BoundingBox AccidentalOneQuarterToneSharpFerneyhough { get; set; }
 
         [JsonProperty("accidentalOneQuarterToneSharpStockhausen")]
-        public Dictionary<string, double[]> AccidentalOneQuarterToneSharpStockhausen { get; set; }
+        public BoundingBox AccidentalOneQuarterToneSharpStockhausen { get; set; }
 
         [JsonProperty("accidentalOneThirdToneFlatFerneyhough")]
-        public Dictionary<string, double[]> AccidentalOneThirdToneFlatFerneyhough { get; set; }
+        public BoundingBox AccidentalOneThirdToneFlatFerneyhough { get; set; }
 
         [JsonProperty("accidentalOneThirdToneSharpFerneyhough")]
-        public Dictionary<string, double[]> AccidentalOneThirdToneSharpFerneyhough { get; set; }
+        public BoundingBox AccidentalOneThirdToneSharpFerneyhough { get; set; }
 
         [JsonProperty("accidentalParensLeft")]
-        public Dictionary<string, double[]> AccidentalParensLeft { get; set; }
+        public BoundingBox AccidentalParensLeft { get; set; }
 
         [JsonProperty("accidentalParensRight")]
-        public Dictionary<string, double[]> AccidentalParensRight { get; set; }
+        public BoundingBox AccidentalParensRight { get; set; }
 
         [JsonProperty("accidentalQuarterFlatEqualTempered")]
-        public Dictionary<string, double[]> AccidentalQuarterFlatEqualTempered { get; set; }
+        public BoundingBox AccidentalQuarterFlatEqualTempered { get; set; }
 
         [JsonProperty("accidentalQuarterSharpEqualTempered")]
-        public Dictionary<string, double[]> AccidentalQuarterSharpEqualTempered { get; set; }
+        public BoundingBox AccidentalQuarterSharpEqualTempered { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlat4")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlat4 { get; set; }
+        public BoundingBox AccidentalQuarterToneFlat4 { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatArabic")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlatArabic { get; set; }
+        public BoundingBox AccidentalQuarterToneFlatArabic { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatArrowUp")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlatArrowUp { get; set; }
+        public BoundingBox AccidentalQuarterToneFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatFilledReversed")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlatFilledReversed { get; set; }
+        public BoundingBox AccidentalQuarterToneFlatFilledReversed { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatNaturalArrowDown")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlatNaturalArrowDown { get; set; }
+        public BoundingBox AccidentalQuarterToneFlatNaturalArrowDown { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatPenderecki")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlatPenderecki { get; set; }
+        public BoundingBox AccidentalQuarterToneFlatPenderecki { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatStein")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlatStein { get; set; }
+        public BoundingBox AccidentalQuarterToneFlatStein { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatVanBlankenburg")]
-        public Dictionary<string, double[]> AccidentalQuarterToneFlatVanBlankenburg { get; set; }
+        public BoundingBox AccidentalQuarterToneFlatVanBlankenburg { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharp4")]
-        public Dictionary<string, double[]> AccidentalQuarterToneSharp4 { get; set; }
+        public BoundingBox AccidentalQuarterToneSharp4 { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpArabic")]
-        public Dictionary<string, double[]> AccidentalQuarterToneSharpArabic { get; set; }
+        public BoundingBox AccidentalQuarterToneSharpArabic { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpArrowDown")]
-        public Dictionary<string, double[]> AccidentalQuarterToneSharpArrowDown { get; set; }
+        public BoundingBox AccidentalQuarterToneSharpArrowDown { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpBusotti")]
-        public Dictionary<string, double[]> AccidentalQuarterToneSharpBusotti { get; set; }
+        public BoundingBox AccidentalQuarterToneSharpBusotti { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpNaturalArrowUp")]
-        public Dictionary<string, double[]> AccidentalQuarterToneSharpNaturalArrowUp { get; set; }
+        public BoundingBox AccidentalQuarterToneSharpNaturalArrowUp { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpStein")]
-        public Dictionary<string, double[]> AccidentalQuarterToneSharpStein { get; set; }
+        public BoundingBox AccidentalQuarterToneSharpStein { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpWiggle")]
-        public Dictionary<string, double[]> AccidentalQuarterToneSharpWiggle { get; set; }
+        public BoundingBox AccidentalQuarterToneSharpWiggle { get; set; }
 
         [JsonProperty("accidentalRaiseOneSeptimalComma")]
-        public Dictionary<string, double[]> AccidentalRaiseOneSeptimalComma { get; set; }
+        public BoundingBox AccidentalRaiseOneSeptimalComma { get; set; }
 
         [JsonProperty("accidentalRaiseOneTridecimalQuartertone")]
-        public Dictionary<string, double[]> AccidentalRaiseOneTridecimalQuartertone { get; set; }
+        public BoundingBox AccidentalRaiseOneTridecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalRaiseOneUndecimalQuartertone")]
-        public Dictionary<string, double[]> AccidentalRaiseOneUndecimalQuartertone { get; set; }
+        public BoundingBox AccidentalRaiseOneUndecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalRaiseTwoSeptimalCommas")]
-        public Dictionary<string, double[]> AccidentalRaiseTwoSeptimalCommas { get; set; }
+        public BoundingBox AccidentalRaiseTwoSeptimalCommas { get; set; }
 
         [JsonProperty("accidentalRaisedStockhausen")]
-        public Dictionary<string, double[]> AccidentalRaisedStockhausen { get; set; }
+        public BoundingBox AccidentalRaisedStockhausen { get; set; }
 
         [JsonProperty("accidentalReversedFlatAndFlatArrowDown")]
-        public Dictionary<string, double[]> AccidentalReversedFlatAndFlatArrowDown { get; set; }
+        public BoundingBox AccidentalReversedFlatAndFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalReversedFlatAndFlatArrowUp")]
-        public Dictionary<string, double[]> AccidentalReversedFlatAndFlatArrowUp { get; set; }
+        public BoundingBox AccidentalReversedFlatAndFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalReversedFlatArrowDown")]
-        public Dictionary<string, double[]> AccidentalReversedFlatArrowDown { get; set; }
+        public BoundingBox AccidentalReversedFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalReversedFlatArrowUp")]
-        public Dictionary<string, double[]> AccidentalReversedFlatArrowUp { get; set; }
+        public BoundingBox AccidentalReversedFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalSharp")]
-        public Dictionary<string, double[]> AccidentalSharp { get; set; }
+        public BoundingBox AccidentalSharp { get; set; }
 
         [JsonProperty("accidentalSharpArabic")]
-        public Dictionary<string, double[]> AccidentalSharpArabic { get; set; }
+        public BoundingBox AccidentalSharpArabic { get; set; }
 
         [JsonProperty("accidentalSharpEqualTempered")]
-        public Dictionary<string, double[]> AccidentalSharpEqualTempered { get; set; }
+        public BoundingBox AccidentalSharpEqualTempered { get; set; }
 
         [JsonProperty("accidentalSharpJohnstonDown")]
-        public Dictionary<string, double[]> AccidentalSharpJohnstonDown { get; set; }
+        public BoundingBox AccidentalSharpJohnstonDown { get; set; }
 
         [JsonProperty("accidentalSharpJohnstonDownEl")]
-        public Dictionary<string, double[]> AccidentalSharpJohnstonDownEl { get; set; }
+        public BoundingBox AccidentalSharpJohnstonDownEl { get; set; }
 
         [JsonProperty("accidentalSharpJohnstonEl")]
-        public Dictionary<string, double[]> AccidentalSharpJohnstonEl { get; set; }
+        public BoundingBox AccidentalSharpJohnstonEl { get; set; }
 
         [JsonProperty("accidentalSharpJohnstonUp")]
-        public Dictionary<string, double[]> AccidentalSharpJohnstonUp { get; set; }
+        public BoundingBox AccidentalSharpJohnstonUp { get; set; }
 
         [JsonProperty("accidentalSharpJohnstonUpEl")]
-        public Dictionary<string, double[]> AccidentalSharpJohnstonUpEl { get; set; }
+        public BoundingBox AccidentalSharpJohnstonUpEl { get; set; }
 
         [JsonProperty("accidentalSharpLoweredStockhausen")]
-        public Dictionary<string, double[]> AccidentalSharpLoweredStockhausen { get; set; }
+        public BoundingBox AccidentalSharpLoweredStockhausen { get; set; }
 
         [JsonProperty("accidentalSharpOneArrowDown")]
-        public Dictionary<string, double[]> AccidentalSharpOneArrowDown { get; set; }
+        public BoundingBox AccidentalSharpOneArrowDown { get; set; }
 
         [JsonProperty("accidentalSharpOneArrowUp")]
-        public Dictionary<string, double[]> AccidentalSharpOneArrowUp { get; set; }
+        public BoundingBox AccidentalSharpOneArrowUp { get; set; }
 
         [JsonProperty("accidentalSharpOneHorizontalStroke")]
-        public Dictionary<string, double[]> AccidentalSharpOneHorizontalStroke { get; set; }
+        public BoundingBox AccidentalSharpOneHorizontalStroke { get; set; }
 
         [JsonProperty("accidentalSharpParens")]
-        public Dictionary<string, double[]> AccidentalSharpParens { get; set; }
+        public BoundingBox AccidentalSharpParens { get; set; }
 
         [JsonProperty("accidentalSharpRaisedStockhausen")]
-        public Dictionary<string, double[]> AccidentalSharpRaisedStockhausen { get; set; }
+        public BoundingBox AccidentalSharpRaisedStockhausen { get; set; }
 
         [JsonProperty("accidentalSharpRepeatedLineStockhausen")]
-        public Dictionary<string, double[]> AccidentalSharpRepeatedLineStockhausen { get; set; }
+        public BoundingBox AccidentalSharpRepeatedLineStockhausen { get; set; }
 
         [JsonProperty("accidentalSharpRepeatedSpaceStockhausen")]
-        public Dictionary<string, double[]> AccidentalSharpRepeatedSpaceStockhausen { get; set; }
+        public BoundingBox AccidentalSharpRepeatedSpaceStockhausen { get; set; }
 
         [JsonProperty("accidentalSharpReversed")]
-        public Dictionary<string, double[]> AccidentalSharpReversed { get; set; }
+        public BoundingBox AccidentalSharpReversed { get; set; }
 
         [JsonProperty("accidentalSharpSharp")]
-        public Dictionary<string, double[]> AccidentalSharpSharp { get; set; }
+        public BoundingBox AccidentalSharpSharp { get; set; }
 
         [JsonProperty("accidentalSharpSmall")]
-        public Dictionary<string, double[]> AccidentalSharpSmall { get; set; }
+        public BoundingBox AccidentalSharpSmall { get; set; }
 
         [JsonProperty("accidentalSharpThreeArrowsDown")]
-        public Dictionary<string, double[]> AccidentalSharpThreeArrowsDown { get; set; }
+        public BoundingBox AccidentalSharpThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalSharpThreeArrowsUp")]
-        public Dictionary<string, double[]> AccidentalSharpThreeArrowsUp { get; set; }
+        public BoundingBox AccidentalSharpThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalSharpTwoArrowsDown")]
-        public Dictionary<string, double[]> AccidentalSharpTwoArrowsDown { get; set; }
+        public BoundingBox AccidentalSharpTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalSharpTwoArrowsUp")]
-        public Dictionary<string, double[]> AccidentalSharpTwoArrowsUp { get; set; }
+        public BoundingBox AccidentalSharpTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalSims12Down")]
-        public Dictionary<string, double[]> AccidentalSims12Down { get; set; }
+        public BoundingBox AccidentalSims12Down { get; set; }
 
         [JsonProperty("accidentalSims12Up")]
-        public Dictionary<string, double[]> AccidentalSims12Up { get; set; }
+        public BoundingBox AccidentalSims12Up { get; set; }
 
         [JsonProperty("accidentalSims4Down")]
-        public Dictionary<string, double[]> AccidentalSims4Down { get; set; }
+        public BoundingBox AccidentalSims4Down { get; set; }
 
         [JsonProperty("accidentalSims4Up")]
-        public Dictionary<string, double[]> AccidentalSims4Up { get; set; }
+        public BoundingBox AccidentalSims4Up { get; set; }
 
         [JsonProperty("accidentalSims6Down")]
-        public Dictionary<string, double[]> AccidentalSims6Down { get; set; }
+        public BoundingBox AccidentalSims6Down { get; set; }
 
         [JsonProperty("accidentalSims6Up")]
-        public Dictionary<string, double[]> AccidentalSims6Up { get; set; }
+        public BoundingBox AccidentalSims6Up { get; set; }
 
         [JsonProperty("accidentalSori")]
-        public Dictionary<string, double[]> AccidentalSori { get; set; }
+        public BoundingBox AccidentalSori { get; set; }
 
         [JsonProperty("accidentalTavenerFlat")]
-        public Dictionary<string, double[]> AccidentalTavenerFlat { get; set; }
+        public BoundingBox AccidentalTavenerFlat { get; set; }
 
         [JsonProperty("accidentalTavenerSharp")]
-        public Dictionary<string, double[]> AccidentalTavenerSharp { get; set; }
+        public BoundingBox AccidentalTavenerSharp { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatArabic")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesFlatArabic { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesFlatArabic { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatArrowDown")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesFlatArrowDown { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatArrowUp")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesFlatArrowUp { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatCouper")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesFlatCouper { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesFlatCouper { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatGrisey")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesFlatGrisey { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesFlatGrisey { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatTartini")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesFlatTartini { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesFlatTartini { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatZimmermann")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesFlatZimmermann { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesFlatZimmermann { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpArabic")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesSharpArabic { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesSharpArabic { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpArrowDown")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesSharpArrowDown { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesSharpArrowDown { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpArrowUp")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesSharpArrowUp { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesSharpArrowUp { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpBusotti")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesSharpBusotti { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesSharpBusotti { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpStein")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesSharpStein { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesSharpStein { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpStockhausen")]
-        public Dictionary<string, double[]> AccidentalThreeQuarterTonesSharpStockhausen { get; set; }
+        public BoundingBox AccidentalThreeQuarterTonesSharpStockhausen { get; set; }
 
         [JsonProperty("accidentalTripleFlat")]
-        public Dictionary<string, double[]> AccidentalTripleFlat { get; set; }
+        public BoundingBox AccidentalTripleFlat { get; set; }
 
         [JsonProperty("accidentalTripleFlatJoinedStems")]
-        public Dictionary<string, double[]> AccidentalTripleFlatJoinedStems { get; set; }
+        public BoundingBox AccidentalTripleFlatJoinedStems { get; set; }
 
         [JsonProperty("accidentalTripleSharp")]
-        public Dictionary<string, double[]> AccidentalTripleSharp { get; set; }
+        public BoundingBox AccidentalTripleSharp { get; set; }
 
         [JsonProperty("accidentalTwoThirdTonesFlatFerneyhough")]
-        public Dictionary<string, double[]> AccidentalTwoThirdTonesFlatFerneyhough { get; set; }
+        public BoundingBox AccidentalTwoThirdTonesFlatFerneyhough { get; set; }
 
         [JsonProperty("accidentalTwoThirdTonesSharpFerneyhough")]
-        public Dictionary<string, double[]> AccidentalTwoThirdTonesSharpFerneyhough { get; set; }
+        public BoundingBox AccidentalTwoThirdTonesSharpFerneyhough { get; set; }
 
         [JsonProperty("accidentalWilsonMinus")]
-        public Dictionary<string, double[]> AccidentalWilsonMinus { get; set; }
+        public BoundingBox AccidentalWilsonMinus { get; set; }
 
         [JsonProperty("accidentalWilsonPlus")]
-        public Dictionary<string, double[]> AccidentalWilsonPlus { get; set; }
+        public BoundingBox AccidentalWilsonPlus { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky10TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky10TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky10TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky10TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky10TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky10TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky11TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky11TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky11TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky11TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky11TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky11TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky1TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky1TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky1TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky1TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky1TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky1TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky2TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky2TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky2TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky2TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky2TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky2TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky3TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky3TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky3TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky3TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky3TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky3TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky4TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky4TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky4TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky4TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky4TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky4TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky5TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky5TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky5TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky5TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky5TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky5TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky6TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky6TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky6TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky6TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky6TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky6TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky7TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky7TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky7TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky7TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky7TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky7TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky8TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky8TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky8TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky8TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky8TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky8TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky9TwelfthsFlat")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky9TwelfthsFlat { get; set; }
+        public BoundingBox AccidentalWyschnegradsky9TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky9TwelfthsSharp")]
-        public Dictionary<string, double[]> AccidentalWyschnegradsky9TwelfthsSharp { get; set; }
+        public BoundingBox AccidentalWyschnegradsky9TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalXenakisOneThirdToneSharp")]
-        public Dictionary<string, double[]> AccidentalXenakisOneThirdToneSharp { get; set; }
+        public BoundingBox AccidentalXenakisOneThirdToneSharp { get; set; }
 
         [JsonProperty("accidentalXenakisTwoThirdTonesSharp")]
-        public Dictionary<string, double[]> AccidentalXenakisTwoThirdTonesSharp { get; set; }
+        public BoundingBox AccidentalXenakisTwoThirdTonesSharp { get; set; }
 
         [JsonProperty("analyticsChoralmelodie")]
         public BoundingBox AnalyticsChoralmelodie { get; set; }
@@ -1586,7 +1586,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox AnalyticsInversion1 { get; set; }
 
         [JsonProperty("analyticsNebenstimme")]
-        public Dictionary<string, double[]> AnalyticsNebenstimme { get; set; }
+        public BoundingBox AnalyticsNebenstimme { get; set; }
 
         [JsonProperty("analyticsStartStimme")]
         public BoundingBox AnalyticsStartStimme { get; set; }
@@ -1607,91 +1607,91 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox AnalyticsThemeRetrogradeInversion { get; set; }
 
         [JsonProperty("arpeggiatoDown")]
-        public Dictionary<string, double[]> ArpeggiatoDown { get; set; }
+        public BoundingBox ArpeggiatoDown { get; set; }
 
         [JsonProperty("arpeggiatoUp")]
-        public Dictionary<string, double[]> ArpeggiatoUp { get; set; }
+        public BoundingBox ArpeggiatoUp { get; set; }
 
         [JsonProperty("arrowBlackDown")]
         public BoundingBox ArrowBlackDown { get; set; }
 
         [JsonProperty("arrowBlackDownLeft")]
-        public Dictionary<string, double[]> ArrowBlackDownLeft { get; set; }
+        public BoundingBox ArrowBlackDownLeft { get; set; }
 
         [JsonProperty("arrowBlackDownRight")]
-        public Dictionary<string, double[]> ArrowBlackDownRight { get; set; }
+        public BoundingBox ArrowBlackDownRight { get; set; }
 
         [JsonProperty("arrowBlackLeft")]
-        public Dictionary<string, double[]> ArrowBlackLeft { get; set; }
+        public BoundingBox ArrowBlackLeft { get; set; }
 
         [JsonProperty("arrowBlackRight")]
-        public Dictionary<string, double[]> ArrowBlackRight { get; set; }
+        public BoundingBox ArrowBlackRight { get; set; }
 
         [JsonProperty("arrowBlackUp")]
         public BoundingBox ArrowBlackUp { get; set; }
 
         [JsonProperty("arrowBlackUpLeft")]
-        public Dictionary<string, double[]> ArrowBlackUpLeft { get; set; }
+        public BoundingBox ArrowBlackUpLeft { get; set; }
 
         [JsonProperty("arrowBlackUpRight")]
-        public Dictionary<string, double[]> ArrowBlackUpRight { get; set; }
+        public BoundingBox ArrowBlackUpRight { get; set; }
 
         [JsonProperty("arrowOpenDown")]
         public BoundingBox ArrowOpenDown { get; set; }
 
         [JsonProperty("arrowOpenDownLeft")]
-        public Dictionary<string, double[]> ArrowOpenDownLeft { get; set; }
+        public BoundingBox ArrowOpenDownLeft { get; set; }
 
         [JsonProperty("arrowOpenDownRight")]
-        public Dictionary<string, double[]> ArrowOpenDownRight { get; set; }
+        public BoundingBox ArrowOpenDownRight { get; set; }
 
         [JsonProperty("arrowOpenLeft")]
-        public Dictionary<string, double[]> ArrowOpenLeft { get; set; }
+        public BoundingBox ArrowOpenLeft { get; set; }
 
         [JsonProperty("arrowOpenRight")]
-        public Dictionary<string, double[]> ArrowOpenRight { get; set; }
+        public BoundingBox ArrowOpenRight { get; set; }
 
         [JsonProperty("arrowOpenUp")]
         public BoundingBox ArrowOpenUp { get; set; }
 
         [JsonProperty("arrowOpenUpLeft")]
-        public Dictionary<string, double[]> ArrowOpenUpLeft { get; set; }
+        public BoundingBox ArrowOpenUpLeft { get; set; }
 
         [JsonProperty("arrowOpenUpRight")]
-        public Dictionary<string, double[]> ArrowOpenUpRight { get; set; }
+        public BoundingBox ArrowOpenUpRight { get; set; }
 
         [JsonProperty("arrowWhiteDown")]
         public BoundingBox ArrowWhiteDown { get; set; }
 
         [JsonProperty("arrowWhiteDownLeft")]
-        public Dictionary<string, double[]> ArrowWhiteDownLeft { get; set; }
+        public BoundingBox ArrowWhiteDownLeft { get; set; }
 
         [JsonProperty("arrowWhiteDownRight")]
-        public Dictionary<string, double[]> ArrowWhiteDownRight { get; set; }
+        public BoundingBox ArrowWhiteDownRight { get; set; }
 
         [JsonProperty("arrowWhiteLeft")]
-        public Dictionary<string, double[]> ArrowWhiteLeft { get; set; }
+        public BoundingBox ArrowWhiteLeft { get; set; }
 
         [JsonProperty("arrowWhiteRight")]
-        public Dictionary<string, double[]> ArrowWhiteRight { get; set; }
+        public BoundingBox ArrowWhiteRight { get; set; }
 
         [JsonProperty("arrowWhiteUp")]
         public BoundingBox ArrowWhiteUp { get; set; }
 
         [JsonProperty("arrowWhiteUpLeft")]
-        public Dictionary<string, double[]> ArrowWhiteUpLeft { get; set; }
+        public BoundingBox ArrowWhiteUpLeft { get; set; }
 
         [JsonProperty("arrowWhiteUpRight")]
-        public Dictionary<string, double[]> ArrowWhiteUpRight { get; set; }
+        public BoundingBox ArrowWhiteUpRight { get; set; }
 
         [JsonProperty("arrowheadBlackDown")]
         public BoundingBox ArrowheadBlackDown { get; set; }
 
         [JsonProperty("arrowheadBlackDownLeft")]
-        public Dictionary<string, double[]> ArrowheadBlackDownLeft { get; set; }
+        public BoundingBox ArrowheadBlackDownLeft { get; set; }
 
         [JsonProperty("arrowheadBlackDownRight")]
-        public Dictionary<string, double[]> ArrowheadBlackDownRight { get; set; }
+        public BoundingBox ArrowheadBlackDownRight { get; set; }
 
         [JsonProperty("arrowheadBlackLeft")]
         public BoundingBox ArrowheadBlackLeft { get; set; }
@@ -1703,10 +1703,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ArrowheadBlackUp { get; set; }
 
         [JsonProperty("arrowheadBlackUpLeft")]
-        public Dictionary<string, double[]> ArrowheadBlackUpLeft { get; set; }
+        public BoundingBox ArrowheadBlackUpLeft { get; set; }
 
         [JsonProperty("arrowheadBlackUpRight")]
-        public Dictionary<string, double[]> ArrowheadBlackUpRight { get; set; }
+        public BoundingBox ArrowheadBlackUpRight { get; set; }
 
         [JsonProperty("arrowheadOpenDown")]
         public BoundingBox ArrowheadOpenDown { get; set; }
@@ -1736,10 +1736,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ArrowheadWhiteDown { get; set; }
 
         [JsonProperty("arrowheadWhiteDownLeft")]
-        public Dictionary<string, double[]> ArrowheadWhiteDownLeft { get; set; }
+        public BoundingBox ArrowheadWhiteDownLeft { get; set; }
 
         [JsonProperty("arrowheadWhiteDownRight")]
-        public Dictionary<string, double[]> ArrowheadWhiteDownRight { get; set; }
+        public BoundingBox ArrowheadWhiteDownRight { get; set; }
 
         [JsonProperty("arrowheadWhiteLeft")]
         public BoundingBox ArrowheadWhiteLeft { get; set; }
@@ -1751,28 +1751,28 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ArrowheadWhiteUp { get; set; }
 
         [JsonProperty("arrowheadWhiteUpLeft")]
-        public Dictionary<string, double[]> ArrowheadWhiteUpLeft { get; set; }
+        public BoundingBox ArrowheadWhiteUpLeft { get; set; }
 
         [JsonProperty("arrowheadWhiteUpRight")]
-        public Dictionary<string, double[]> ArrowheadWhiteUpRight { get; set; }
+        public BoundingBox ArrowheadWhiteUpRight { get; set; }
 
         [JsonProperty("articAccentAbove")]
-        public Dictionary<string, double[]> ArticAccentAbove { get; set; }
+        public BoundingBox ArticAccentAbove { get; set; }
 
         [JsonProperty("articAccentAboveLarge")]
-        public Dictionary<string, double[]> ArticAccentAboveLarge { get; set; }
+        public BoundingBox ArticAccentAboveLarge { get; set; }
 
         [JsonProperty("articAccentAboveSmall")]
         public BoundingBox ArticAccentAboveSmall { get; set; }
 
         [JsonProperty("articAccentBelow")]
-        public Dictionary<string, double[]> ArticAccentBelow { get; set; }
+        public BoundingBox ArticAccentBelow { get; set; }
 
         [JsonProperty("articAccentBelowLarge")]
-        public Dictionary<string, double[]> ArticAccentBelowLarge { get; set; }
+        public BoundingBox ArticAccentBelowLarge { get; set; }
 
         [JsonProperty("articAccentBelowSmall")]
-        public Dictionary<string, double[]> ArticAccentBelowSmall { get; set; }
+        public BoundingBox ArticAccentBelowSmall { get; set; }
 
         [JsonProperty("articAccentStaccatoAbove")]
         public BoundingBox ArticAccentStaccatoAbove { get; set; }
@@ -1781,82 +1781,82 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ArticAccentStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articAccentStaccatoBelow")]
-        public Dictionary<string, double[]> ArticAccentStaccatoBelow { get; set; }
+        public BoundingBox ArticAccentStaccatoBelow { get; set; }
 
         [JsonProperty("articAccentStaccatoBelowSmall")]
-        public Dictionary<string, double[]> ArticAccentStaccatoBelowSmall { get; set; }
+        public BoundingBox ArticAccentStaccatoBelowSmall { get; set; }
 
         [JsonProperty("articLaissezVibrerAbove")]
-        public Dictionary<string, double[]> ArticLaissezVibrerAbove { get; set; }
+        public BoundingBox ArticLaissezVibrerAbove { get; set; }
 
         [JsonProperty("articLaissezVibrerBelow")]
-        public Dictionary<string, double[]> ArticLaissezVibrerBelow { get; set; }
+        public BoundingBox ArticLaissezVibrerBelow { get; set; }
 
         [JsonProperty("articMarcatoAbove")]
-        public Dictionary<string, double[]> ArticMarcatoAbove { get; set; }
+        public BoundingBox ArticMarcatoAbove { get; set; }
 
         [JsonProperty("articMarcatoAboveSmall")]
-        public Dictionary<string, double[]> ArticMarcatoAboveSmall { get; set; }
+        public BoundingBox ArticMarcatoAboveSmall { get; set; }
 
         [JsonProperty("articMarcatoBelow")]
-        public Dictionary<string, double[]> ArticMarcatoBelow { get; set; }
+        public BoundingBox ArticMarcatoBelow { get; set; }
 
         [JsonProperty("articMarcatoBelowSmall")]
-        public Dictionary<string, double[]> ArticMarcatoBelowSmall { get; set; }
+        public BoundingBox ArticMarcatoBelowSmall { get; set; }
 
         [JsonProperty("articMarcatoStaccatoAbove")]
-        public Dictionary<string, double[]> ArticMarcatoStaccatoAbove { get; set; }
+        public BoundingBox ArticMarcatoStaccatoAbove { get; set; }
 
         [JsonProperty("articMarcatoStaccatoAboveSmall")]
         public BoundingBox ArticMarcatoStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articMarcatoStaccatoBelow")]
-        public Dictionary<string, double[]> ArticMarcatoStaccatoBelow { get; set; }
+        public BoundingBox ArticMarcatoStaccatoBelow { get; set; }
 
         [JsonProperty("articMarcatoStaccatoBelowSmall")]
-        public Dictionary<string, double[]> ArticMarcatoStaccatoBelowSmall { get; set; }
+        public BoundingBox ArticMarcatoStaccatoBelowSmall { get; set; }
 
         [JsonProperty("articMarcatoTenutoAbove")]
-        public Dictionary<string, double[]> ArticMarcatoTenutoAbove { get; set; }
+        public BoundingBox ArticMarcatoTenutoAbove { get; set; }
 
         [JsonProperty("articMarcatoTenutoBelow")]
-        public Dictionary<string, double[]> ArticMarcatoTenutoBelow { get; set; }
+        public BoundingBox ArticMarcatoTenutoBelow { get; set; }
 
         [JsonProperty("articSoftAccentAbove")]
-        public Dictionary<string, double[]> ArticSoftAccentAbove { get; set; }
+        public BoundingBox ArticSoftAccentAbove { get; set; }
 
         [JsonProperty("articSoftAccentBelow")]
-        public Dictionary<string, double[]> ArticSoftAccentBelow { get; set; }
+        public BoundingBox ArticSoftAccentBelow { get; set; }
 
         [JsonProperty("articSoftAccentStaccatoAbove")]
-        public Dictionary<string, double[]> ArticSoftAccentStaccatoAbove { get; set; }
+        public BoundingBox ArticSoftAccentStaccatoAbove { get; set; }
 
         [JsonProperty("articSoftAccentStaccatoBelow")]
-        public Dictionary<string, double[]> ArticSoftAccentStaccatoBelow { get; set; }
+        public BoundingBox ArticSoftAccentStaccatoBelow { get; set; }
 
         [JsonProperty("articSoftAccentTenutoAbove")]
-        public Dictionary<string, double[]> ArticSoftAccentTenutoAbove { get; set; }
+        public BoundingBox ArticSoftAccentTenutoAbove { get; set; }
 
         [JsonProperty("articSoftAccentTenutoBelow")]
-        public Dictionary<string, double[]> ArticSoftAccentTenutoBelow { get; set; }
+        public BoundingBox ArticSoftAccentTenutoBelow { get; set; }
 
         [JsonProperty("articSoftAccentTenutoStaccatoAbove")]
-        public Dictionary<string, double[]> ArticSoftAccentTenutoStaccatoAbove { get; set; }
+        public BoundingBox ArticSoftAccentTenutoStaccatoAbove { get; set; }
 
         [JsonProperty("articSoftAccentTenutoStaccatoBelow")]
-        public Dictionary<string, double[]> ArticSoftAccentTenutoStaccatoBelow { get; set; }
+        public BoundingBox ArticSoftAccentTenutoStaccatoBelow { get; set; }
 
         [JsonProperty("articStaccatissimoAbove")]
-        public Dictionary<string, double[]> ArticStaccatissimoAbove { get; set; }
+        public BoundingBox ArticStaccatissimoAbove { get; set; }
 
         [JsonProperty("articStaccatissimoAboveSmall")]
         public BoundingBox ArticStaccatissimoAboveSmall { get; set; }
 
         [JsonProperty("articStaccatissimoBelow")]
-        public Dictionary<string, double[]> ArticStaccatissimoBelow { get; set; }
+        public BoundingBox ArticStaccatissimoBelow { get; set; }
 
         [JsonProperty("articStaccatissimoBelowSmall")]
-        public Dictionary<string, double[]> ArticStaccatissimoBelowSmall { get; set; }
+        public BoundingBox ArticStaccatissimoBelowSmall { get; set; }
 
         [JsonProperty("articStaccatissimoStrokeAbove")]
         public BoundingBox ArticStaccatissimoStrokeAbove { get; set; }
@@ -1865,22 +1865,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ArticStaccatissimoStrokeAboveSmall { get; set; }
 
         [JsonProperty("articStaccatissimoStrokeBelow")]
-        public Dictionary<string, double[]> ArticStaccatissimoStrokeBelow { get; set; }
+        public BoundingBox ArticStaccatissimoStrokeBelow { get; set; }
 
         [JsonProperty("articStaccatissimoStrokeBelowSmall")]
-        public Dictionary<string, double[]> ArticStaccatissimoStrokeBelowSmall { get; set; }
+        public BoundingBox ArticStaccatissimoStrokeBelowSmall { get; set; }
 
         [JsonProperty("articStaccatissimoWedgeAbove")]
-        public Dictionary<string, double[]> ArticStaccatissimoWedgeAbove { get; set; }
+        public BoundingBox ArticStaccatissimoWedgeAbove { get; set; }
 
         [JsonProperty("articStaccatissimoWedgeAboveSmall")]
         public BoundingBox ArticStaccatissimoWedgeAboveSmall { get; set; }
 
         [JsonProperty("articStaccatissimoWedgeBelow")]
-        public Dictionary<string, double[]> ArticStaccatissimoWedgeBelow { get; set; }
+        public BoundingBox ArticStaccatissimoWedgeBelow { get; set; }
 
         [JsonProperty("articStaccatissimoWedgeBelowSmall")]
-        public Dictionary<string, double[]> ArticStaccatissimoWedgeBelowSmall { get; set; }
+        public BoundingBox ArticStaccatissimoWedgeBelowSmall { get; set; }
 
         [JsonProperty("articStaccatoAbove")]
         public BoundingBox ArticStaccatoAbove { get; set; }
@@ -1889,61 +1889,61 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ArticStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articStaccatoBelow")]
-        public Dictionary<string, double[]> ArticStaccatoBelow { get; set; }
+        public BoundingBox ArticStaccatoBelow { get; set; }
 
         [JsonProperty("articStaccatoBelowSmall")]
-        public Dictionary<string, double[]> ArticStaccatoBelowSmall { get; set; }
+        public BoundingBox ArticStaccatoBelowSmall { get; set; }
 
         [JsonProperty("articStressAbove")]
-        public Dictionary<string, double[]> ArticStressAbove { get; set; }
+        public BoundingBox ArticStressAbove { get; set; }
 
         [JsonProperty("articStressBelow")]
-        public Dictionary<string, double[]> ArticStressBelow { get; set; }
+        public BoundingBox ArticStressBelow { get; set; }
 
         [JsonProperty("articTenutoAbove")]
-        public Dictionary<string, double[]> ArticTenutoAbove { get; set; }
+        public BoundingBox ArticTenutoAbove { get; set; }
 
         [JsonProperty("articTenutoAboveSmall")]
         public BoundingBox ArticTenutoAboveSmall { get; set; }
 
         [JsonProperty("articTenutoAccentAbove")]
-        public Dictionary<string, double[]> ArticTenutoAccentAbove { get; set; }
+        public BoundingBox ArticTenutoAccentAbove { get; set; }
 
         [JsonProperty("articTenutoAccentAboveSmall")]
         public BoundingBox ArticTenutoAccentAboveSmall { get; set; }
 
         [JsonProperty("articTenutoAccentBelow")]
-        public Dictionary<string, double[]> ArticTenutoAccentBelow { get; set; }
+        public BoundingBox ArticTenutoAccentBelow { get; set; }
 
         [JsonProperty("articTenutoAccentBelowSmall")]
-        public Dictionary<string, double[]> ArticTenutoAccentBelowSmall { get; set; }
+        public BoundingBox ArticTenutoAccentBelowSmall { get; set; }
 
         [JsonProperty("articTenutoBelow")]
-        public Dictionary<string, double[]> ArticTenutoBelow { get; set; }
+        public BoundingBox ArticTenutoBelow { get; set; }
 
         [JsonProperty("articTenutoBelowSmall")]
-        public Dictionary<string, double[]> ArticTenutoBelowSmall { get; set; }
+        public BoundingBox ArticTenutoBelowSmall { get; set; }
 
         [JsonProperty("articTenutoStaccatoAbove")]
-        public Dictionary<string, double[]> ArticTenutoStaccatoAbove { get; set; }
+        public BoundingBox ArticTenutoStaccatoAbove { get; set; }
 
         [JsonProperty("articTenutoStaccatoAboveSmall")]
         public BoundingBox ArticTenutoStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articTenutoStaccatoBelow")]
-        public Dictionary<string, double[]> ArticTenutoStaccatoBelow { get; set; }
+        public BoundingBox ArticTenutoStaccatoBelow { get; set; }
 
         [JsonProperty("articTenutoStaccatoBelowSmall")]
-        public Dictionary<string, double[]> ArticTenutoStaccatoBelowSmall { get; set; }
+        public BoundingBox ArticTenutoStaccatoBelowSmall { get; set; }
 
         [JsonProperty("articUnstressAbove")]
         public BoundingBox ArticUnstressAbove { get; set; }
 
         [JsonProperty("articUnstressBelow")]
-        public Dictionary<string, double[]> ArticUnstressBelow { get; set; }
+        public BoundingBox ArticUnstressBelow { get; set; }
 
         [JsonProperty("augmentationDot")]
-        public Dictionary<string, double[]> AugmentationDot { get; set; }
+        public BoundingBox AugmentationDot { get; set; }
 
         [JsonProperty("barlineDashed")]
         public BoundingBox BarlineDashed { get; set; }
@@ -1967,13 +1967,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox BarlineReverseFinal { get; set; }
 
         [JsonProperty("barlineShort")]
-        public Dictionary<string, double[]> BarlineShort { get; set; }
+        public BoundingBox BarlineShort { get; set; }
 
         [JsonProperty("barlineSingle")]
         public BoundingBox BarlineSingle { get; set; }
 
         [JsonProperty("barlineTick")]
-        public Dictionary<string, double[]> BarlineTick { get; set; }
+        public BoundingBox BarlineTick { get; set; }
 
         [JsonProperty("beamAccelRit1")]
         public BoundingBox BeamAccelRit1 { get; set; }
@@ -2021,16 +2021,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox BeamAccelRit9 { get; set; }
 
         [JsonProperty("beamAccelRitFinal")]
-        public Dictionary<string, double[]> BeamAccelRitFinal { get; set; }
+        public BoundingBox BeamAccelRitFinal { get; set; }
 
         [JsonProperty("brace")]
-        public Dictionary<string, double[]> Brace { get; set; }
+        public BoundingBox Brace { get; set; }
 
         [JsonProperty("braceFlat")]
-        public Dictionary<string, double[]> BraceFlat { get; set; }
+        public BoundingBox BraceFlat { get; set; }
 
         [JsonProperty("braceLarge")]
-        public Dictionary<string, double[]> BraceLarge { get; set; }
+        public BoundingBox BraceLarge { get; set; }
 
         [JsonProperty("braceLarger")]
         public BoundingBox BraceLarger { get; set; }
@@ -2039,10 +2039,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox BraceSmall { get; set; }
 
         [JsonProperty("bracket")]
-        public Dictionary<string, double[]> Bracket { get; set; }
+        public BoundingBox Bracket { get; set; }
 
         [JsonProperty("bracketBottom")]
-        public Dictionary<string, double[]> BracketBottom { get; set; }
+        public BoundingBox BracketBottom { get; set; }
 
         [JsonProperty("bracketTop")]
         public BoundingBox BracketTop { get; set; }
@@ -2057,7 +2057,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox BrassDoitMedium { get; set; }
 
         [JsonProperty("brassDoitShort")]
-        public Dictionary<string, double[]> BrassDoitShort { get; set; }
+        public BoundingBox BrassDoitShort { get; set; }
 
         [JsonProperty("brassFallLipLong")]
         public BoundingBox BrassFallLipLong { get; set; }
@@ -2066,7 +2066,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox BrassFallLipMedium { get; set; }
 
         [JsonProperty("brassFallLipShort")]
-        public Dictionary<string, double[]> BrassFallLipShort { get; set; }
+        public BoundingBox BrassFallLipShort { get; set; }
 
         [JsonProperty("brassFallRoughLong")]
         public BoundingBox BrassFallRoughLong { get; set; }
@@ -2078,28 +2078,28 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox BrassFallRoughShort { get; set; }
 
         [JsonProperty("brassFallSmoothLong")]
-        public Dictionary<string, double[]> BrassFallSmoothLong { get; set; }
+        public BoundingBox BrassFallSmoothLong { get; set; }
 
         [JsonProperty("brassFallSmoothMedium")]
         public BoundingBox BrassFallSmoothMedium { get; set; }
 
         [JsonProperty("brassFallSmoothShort")]
-        public Dictionary<string, double[]> BrassFallSmoothShort { get; set; }
+        public BoundingBox BrassFallSmoothShort { get; set; }
 
         [JsonProperty("brassFlip")]
         public BoundingBox BrassFlip { get; set; }
 
         [JsonProperty("brassHarmonMuteClosed")]
-        public Dictionary<string, double[]> BrassHarmonMuteClosed { get; set; }
+        public BoundingBox BrassHarmonMuteClosed { get; set; }
 
         [JsonProperty("brassHarmonMuteStemHalfLeft")]
-        public Dictionary<string, double[]> BrassHarmonMuteStemHalfLeft { get; set; }
+        public BoundingBox BrassHarmonMuteStemHalfLeft { get; set; }
 
         [JsonProperty("brassHarmonMuteStemHalfRight")]
-        public Dictionary<string, double[]> BrassHarmonMuteStemHalfRight { get; set; }
+        public BoundingBox BrassHarmonMuteStemHalfRight { get; set; }
 
         [JsonProperty("brassHarmonMuteStemOpen")]
-        public Dictionary<string, double[]> BrassHarmonMuteStemOpen { get; set; }
+        public BoundingBox BrassHarmonMuteStemOpen { get; set; }
 
         [JsonProperty("brassJazzTurn")]
         public BoundingBox BrassJazzTurn { get; set; }
@@ -2114,91 +2114,91 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox BrassLiftShort { get; set; }
 
         [JsonProperty("brassLiftSmoothLong")]
-        public Dictionary<string, double[]> BrassLiftSmoothLong { get; set; }
+        public BoundingBox BrassLiftSmoothLong { get; set; }
 
         [JsonProperty("brassLiftSmoothMedium")]
         public BoundingBox BrassLiftSmoothMedium { get; set; }
 
         [JsonProperty("brassLiftSmoothShort")]
-        public Dictionary<string, double[]> BrassLiftSmoothShort { get; set; }
+        public BoundingBox BrassLiftSmoothShort { get; set; }
 
         [JsonProperty("brassMuteClosed")]
         public BoundingBox BrassMuteClosed { get; set; }
 
         [JsonProperty("brassMuteHalfClosed")]
-        public Dictionary<string, double[]> BrassMuteHalfClosed { get; set; }
+        public BoundingBox BrassMuteHalfClosed { get; set; }
 
         [JsonProperty("brassMuteOpen")]
         public BoundingBox BrassMuteOpen { get; set; }
 
         [JsonProperty("brassPlop")]
-        public Dictionary<string, double[]> BrassPlop { get; set; }
+        public BoundingBox BrassPlop { get; set; }
 
         [JsonProperty("brassScoop")]
-        public Dictionary<string, double[]> BrassScoop { get; set; }
+        public BoundingBox BrassScoop { get; set; }
 
         [JsonProperty("brassSmear")]
-        public Dictionary<string, double[]> BrassSmear { get; set; }
+        public BoundingBox BrassSmear { get; set; }
 
         [JsonProperty("brassValveTrill")]
         public BoundingBox BrassValveTrill { get; set; }
 
         [JsonProperty("breathMarkComma")]
-        public Dictionary<string, double[]> BreathMarkComma { get; set; }
+        public BoundingBox BreathMarkComma { get; set; }
 
         [JsonProperty("breathMarkSalzedo")]
-        public Dictionary<string, double[]> BreathMarkSalzedo { get; set; }
+        public BoundingBox BreathMarkSalzedo { get; set; }
 
         [JsonProperty("breathMarkTick")]
         public BoundingBox BreathMarkTick { get; set; }
 
         [JsonProperty("breathMarkUpbow")]
-        public Dictionary<string, double[]> BreathMarkUpbow { get; set; }
+        public BoundingBox BreathMarkUpbow { get; set; }
 
         [JsonProperty("bridgeClef")]
-        public Dictionary<string, double[]> BridgeClef { get; set; }
+        public BoundingBox BridgeClef { get; set; }
 
         [JsonProperty("buzzRoll")]
-        public Dictionary<string, double[]> BuzzRoll { get; set; }
+        public BoundingBox BuzzRoll { get; set; }
 
         [JsonProperty("cClef")]
-        public Dictionary<string, double[]> CClef { get; set; }
+        public BoundingBox CClef { get; set; }
 
         [JsonProperty("cClef8vb")]
-        public Dictionary<string, double[]> CClef8Vb { get; set; }
+        public BoundingBox CClef8Vb { get; set; }
 
         [JsonProperty("cClefArrowDown")]
-        public Dictionary<string, double[]> CClefArrowDown { get; set; }
+        public BoundingBox CClefArrowDown { get; set; }
 
         [JsonProperty("cClefArrowUp")]
-        public Dictionary<string, double[]> CClefArrowUp { get; set; }
+        public BoundingBox CClefArrowUp { get; set; }
 
         [JsonProperty("cClefChange")]
-        public Dictionary<string, double[]> CClefChange { get; set; }
+        public BoundingBox CClefChange { get; set; }
 
         [JsonProperty("cClefCombining")]
-        public Dictionary<string, double[]> CClefCombining { get; set; }
+        public BoundingBox CClefCombining { get; set; }
 
         [JsonProperty("cClefFrench")]
-        public Dictionary<string, double[]> CClefFrench { get; set; }
+        public BoundingBox CClefFrench { get; set; }
 
         [JsonProperty("cClefFrench20C")]
-        public Dictionary<string, double[]> CClefFrench20C { get; set; }
+        public BoundingBox CClefFrench20C { get; set; }
 
         [JsonProperty("cClefFrench20CChange")]
-        public Dictionary<string, double[]> CClefFrench20CChange { get; set; }
+        public BoundingBox CClefFrench20CChange { get; set; }
 
         [JsonProperty("cClefReversed")]
-        public Dictionary<string, double[]> CClefReversed { get; set; }
+        public BoundingBox CClefReversed { get; set; }
 
         [JsonProperty("cClefSmall")]
-        public Dictionary<string, double[]> CClefSmall { get; set; }
+        public BoundingBox CClefSmall { get; set; }
 
         [JsonProperty("cClefSquare")]
-        public Dictionary<string, double[]> CClefSquare { get; set; }
+        public BoundingBox CClefSquare { get; set; }
 
         [JsonProperty("caesura")]
-        public Dictionary<string, double[]> Caesura { get; set; }
+        public BoundingBox Caesura { get; set; }
 
         [JsonProperty("caesuraCurved")]
         public BoundingBox CaesuraCurved { get; set; }
@@ -2207,238 +2207,238 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox CaesuraShort { get; set; }
 
         [JsonProperty("caesuraSingleStroke")]
-        public Dictionary<string, double[]> CaesuraSingleStroke { get; set; }
+        public BoundingBox CaesuraSingleStroke { get; set; }
 
         [JsonProperty("caesuraThick")]
         public BoundingBox CaesuraThick { get; set; }
 
         [JsonProperty("chantAccentusAbove")]
-        public Dictionary<string, double[]> ChantAccentusAbove { get; set; }
+        public BoundingBox ChantAccentusAbove { get; set; }
 
         [JsonProperty("chantAccentusBelow")]
-        public Dictionary<string, double[]> ChantAccentusBelow { get; set; }
+        public BoundingBox ChantAccentusBelow { get; set; }
 
         [JsonProperty("chantAuctumAsc")]
-        public Dictionary<string, double[]> ChantAuctumAsc { get; set; }
+        public BoundingBox ChantAuctumAsc { get; set; }
 
         [JsonProperty("chantAuctumDesc")]
-        public Dictionary<string, double[]> ChantAuctumDesc { get; set; }
+        public BoundingBox ChantAuctumDesc { get; set; }
 
         [JsonProperty("chantAugmentum")]
-        public Dictionary<string, double[]> ChantAugmentum { get; set; }
+        public BoundingBox ChantAugmentum { get; set; }
 
         [JsonProperty("chantCaesura")]
-        public Dictionary<string, double[]> ChantCaesura { get; set; }
+        public BoundingBox ChantCaesura { get; set; }
 
         [JsonProperty("chantCclef")]
-        public Dictionary<string, double[]> ChantCclef { get; set; }
+        public BoundingBox ChantCclef { get; set; }
 
         [JsonProperty("chantCclefHufnagel")]
-        public Dictionary<string, double[]> ChantCclefHufnagel { get; set; }
+        public BoundingBox ChantCclefHufnagel { get; set; }
 
         [JsonProperty("chantCirculusAbove")]
-        public Dictionary<string, double[]> ChantCirculusAbove { get; set; }
+        public BoundingBox ChantCirculusAbove { get; set; }
 
         [JsonProperty("chantCirculusBelow")]
-        public Dictionary<string, double[]> ChantCirculusBelow { get; set; }
+        public BoundingBox ChantCirculusBelow { get; set; }
 
         [JsonProperty("chantConnectingLineAsc2nd")]
-        public Dictionary<string, double[]> ChantConnectingLineAsc2Nd { get; set; }
+        public BoundingBox ChantConnectingLineAsc2Nd { get; set; }
 
         [JsonProperty("chantConnectingLineAsc3rd")]
-        public Dictionary<string, double[]> ChantConnectingLineAsc3Rd { get; set; }
+        public BoundingBox ChantConnectingLineAsc3Rd { get; set; }
 
         [JsonProperty("chantConnectingLineAsc4th")]
-        public Dictionary<string, double[]> ChantConnectingLineAsc4Th { get; set; }
+        public BoundingBox ChantConnectingLineAsc4Th { get; set; }
 
         [JsonProperty("chantConnectingLineAsc5th")]
-        public Dictionary<string, double[]> ChantConnectingLineAsc5Th { get; set; }
+        public BoundingBox ChantConnectingLineAsc5Th { get; set; }
 
         [JsonProperty("chantConnectingLineAsc6th")]
-        public Dictionary<string, double[]> ChantConnectingLineAsc6Th { get; set; }
+        public BoundingBox ChantConnectingLineAsc6Th { get; set; }
 
         [JsonProperty("chantCustosStemDownPosHigh")]
-        public Dictionary<string, double[]> ChantCustosStemDownPosHigh { get; set; }
+        public BoundingBox ChantCustosStemDownPosHigh { get; set; }
 
         [JsonProperty("chantCustosStemDownPosHighest")]
-        public Dictionary<string, double[]> ChantCustosStemDownPosHighest { get; set; }
+        public BoundingBox ChantCustosStemDownPosHighest { get; set; }
 
         [JsonProperty("chantCustosStemDownPosMiddle")]
-        public Dictionary<string, double[]> ChantCustosStemDownPosMiddle { get; set; }
+        public BoundingBox ChantCustosStemDownPosMiddle { get; set; }
 
         [JsonProperty("chantCustosStemUpPosLow")]
-        public Dictionary<string, double[]> ChantCustosStemUpPosLow { get; set; }
+        public BoundingBox ChantCustosStemUpPosLow { get; set; }
 
         [JsonProperty("chantCustosStemUpPosLowest")]
-        public Dictionary<string, double[]> ChantCustosStemUpPosLowest { get; set; }
+        public BoundingBox ChantCustosStemUpPosLowest { get; set; }
 
         [JsonProperty("chantCustosStemUpPosMiddle")]
-        public Dictionary<string, double[]> ChantCustosStemUpPosMiddle { get; set; }
+        public BoundingBox ChantCustosStemUpPosMiddle { get; set; }
 
         [JsonProperty("chantDeminutumLower")]
-        public Dictionary<string, double[]> ChantDeminutumLower { get; set; }
+        public BoundingBox ChantDeminutumLower { get; set; }
 
         [JsonProperty("chantDeminutumUpper")]
-        public Dictionary<string, double[]> ChantDeminutumUpper { get; set; }
+        public BoundingBox ChantDeminutumUpper { get; set; }
 
         [JsonProperty("chantDivisioFinalis")]
-        public Dictionary<string, double[]> ChantDivisioFinalis { get; set; }
+        public BoundingBox ChantDivisioFinalis { get; set; }
 
         [JsonProperty("chantDivisioMaior")]
         public BoundingBox ChantDivisioMaior { get; set; }
 
         [JsonProperty("chantDivisioMaxima")]
-        public Dictionary<string, double[]> ChantDivisioMaxima { get; set; }
+        public BoundingBox ChantDivisioMaxima { get; set; }
 
         [JsonProperty("chantDivisioMinima")]
         public BoundingBox ChantDivisioMinima { get; set; }
 
         [JsonProperty("chantEntryLineAsc2nd")]
-        public Dictionary<string, double[]> ChantEntryLineAsc2Nd { get; set; }
+        public BoundingBox ChantEntryLineAsc2Nd { get; set; }
 
         [JsonProperty("chantEntryLineAsc3rd")]
-        public Dictionary<string, double[]> ChantEntryLineAsc3Rd { get; set; }
+        public BoundingBox ChantEntryLineAsc3Rd { get; set; }
 
         [JsonProperty("chantEntryLineAsc4th")]
-        public Dictionary<string, double[]> ChantEntryLineAsc4Th { get; set; }
+        public BoundingBox ChantEntryLineAsc4Th { get; set; }
 
         [JsonProperty("chantEntryLineAsc5th")]
-        public Dictionary<string, double[]> ChantEntryLineAsc5Th { get; set; }
+        public BoundingBox ChantEntryLineAsc5Th { get; set; }
 
         [JsonProperty("chantEntryLineAsc6th")]
-        public Dictionary<string, double[]> ChantEntryLineAsc6Th { get; set; }
+        public BoundingBox ChantEntryLineAsc6Th { get; set; }
 
         [JsonProperty("chantEpisema")]
-        public Dictionary<string, double[]> ChantEpisema { get; set; }
+        public BoundingBox ChantEpisema { get; set; }
 
         [JsonProperty("chantFclef")]
-        public Dictionary<string, double[]> ChantFclef { get; set; }
+        public BoundingBox ChantFclef { get; set; }
 
         [JsonProperty("chantFclefHufnagel")]
-        public Dictionary<string, double[]> ChantFclefHufnagel { get; set; }
+        public BoundingBox ChantFclefHufnagel { get; set; }
 
         [JsonProperty("chantIctusAbove")]
-        public Dictionary<string, double[]> ChantIctusAbove { get; set; }
+        public BoundingBox ChantIctusAbove { get; set; }
 
         [JsonProperty("chantIctusBelow")]
-        public Dictionary<string, double[]> ChantIctusBelow { get; set; }
+        public BoundingBox ChantIctusBelow { get; set; }
 
         [JsonProperty("chantLigaturaDesc2nd")]
-        public Dictionary<string, double[]> ChantLigaturaDesc2Nd { get; set; }
+        public BoundingBox ChantLigaturaDesc2Nd { get; set; }
 
         [JsonProperty("chantLigaturaDesc3rd")]
-        public Dictionary<string, double[]> ChantLigaturaDesc3Rd { get; set; }
+        public BoundingBox ChantLigaturaDesc3Rd { get; set; }
 
         [JsonProperty("chantLigaturaDesc4th")]
-        public Dictionary<string, double[]> ChantLigaturaDesc4Th { get; set; }
+        public BoundingBox ChantLigaturaDesc4Th { get; set; }
 
         [JsonProperty("chantLigaturaDesc5th")]
-        public Dictionary<string, double[]> ChantLigaturaDesc5Th { get; set; }
+        public BoundingBox ChantLigaturaDesc5Th { get; set; }
 
         [JsonProperty("chantOriscusAscending")]
-        public Dictionary<string, double[]> ChantOriscusAscending { get; set; }
+        public BoundingBox ChantOriscusAscending { get; set; }
 
         [JsonProperty("chantOriscusDescending")]
-        public Dictionary<string, double[]> ChantOriscusDescending { get; set; }
+        public BoundingBox ChantOriscusDescending { get; set; }
 
         [JsonProperty("chantOriscusLiquescens")]
-        public Dictionary<string, double[]> ChantOriscusLiquescens { get; set; }
+        public BoundingBox ChantOriscusLiquescens { get; set; }
 
         [JsonProperty("chantPodatusLower")]
         public BoundingBox ChantPodatusLower { get; set; }
 
         [JsonProperty("chantPodatusUpper")]
-        public Dictionary<string, double[]> ChantPodatusUpper { get; set; }
+        public BoundingBox ChantPodatusUpper { get; set; }
 
         [JsonProperty("chantPunctum")]
-        public Dictionary<string, double[]> ChantPunctum { get; set; }
+        public BoundingBox ChantPunctum { get; set; }
 
         [JsonProperty("chantPunctumCavum")]
-        public Dictionary<string, double[]> ChantPunctumCavum { get; set; }
+        public BoundingBox ChantPunctumCavum { get; set; }
 
         [JsonProperty("chantPunctumDeminutum")]
-        public Dictionary<string, double[]> ChantPunctumDeminutum { get; set; }
+        public BoundingBox ChantPunctumDeminutum { get; set; }
 
         [JsonProperty("chantPunctumInclinatum")]
-        public Dictionary<string, double[]> ChantPunctumInclinatum { get; set; }
+        public BoundingBox ChantPunctumInclinatum { get; set; }
 
         [JsonProperty("chantPunctumInclinatumAuctum")]
-        public Dictionary<string, double[]> ChantPunctumInclinatumAuctum { get; set; }
+        public BoundingBox ChantPunctumInclinatumAuctum { get; set; }
 
         [JsonProperty("chantPunctumInclinatumDeminutum")]
-        public Dictionary<string, double[]> ChantPunctumInclinatumDeminutum { get; set; }
+        public BoundingBox ChantPunctumInclinatumDeminutum { get; set; }
 
         [JsonProperty("chantPunctumLinea")]
-        public Dictionary<string, double[]> ChantPunctumLinea { get; set; }
+        public BoundingBox ChantPunctumLinea { get; set; }
 
         [JsonProperty("chantPunctumLineaCavum")]
-        public Dictionary<string, double[]> ChantPunctumLineaCavum { get; set; }
+        public BoundingBox ChantPunctumLineaCavum { get; set; }
 
         [JsonProperty("chantPunctumVirga")]
-        public Dictionary<string, double[]> ChantPunctumVirga { get; set; }
+        public BoundingBox ChantPunctumVirga { get; set; }
 
         [JsonProperty("chantPunctumVirgaReversed")]
-        public Dictionary<string, double[]> ChantPunctumVirgaReversed { get; set; }
+        public BoundingBox ChantPunctumVirgaReversed { get; set; }
 
         [JsonProperty("chantQuilisma")]
-        public Dictionary<string, double[]> ChantQuilisma { get; set; }
+        public BoundingBox ChantQuilisma { get; set; }
 
         [JsonProperty("chantSemicirculusAbove")]
-        public Dictionary<string, double[]> ChantSemicirculusAbove { get; set; }
+        public BoundingBox ChantSemicirculusAbove { get; set; }
 
         [JsonProperty("chantSemicirculusBelow")]
-        public Dictionary<string, double[]> ChantSemicirculusBelow { get; set; }
+        public BoundingBox ChantSemicirculusBelow { get; set; }
 
         [JsonProperty("chantStaff")]
-        public Dictionary<string, double[]> ChantStaff { get; set; }
+        public BoundingBox ChantStaff { get; set; }
 
         [JsonProperty("chantStaffNarrow")]
-        public Dictionary<string, double[]> ChantStaffNarrow { get; set; }
+        public BoundingBox ChantStaffNarrow { get; set; }
 
         [JsonProperty("chantStaffWide")]
-        public Dictionary<string, double[]> ChantStaffWide { get; set; }
+        public BoundingBox ChantStaffWide { get; set; }
 
         [JsonProperty("chantStrophicus")]
-        public Dictionary<string, double[]> ChantStrophicus { get; set; }
+        public BoundingBox ChantStrophicus { get; set; }
 
         [JsonProperty("chantStrophicusAuctus")]
-        public Dictionary<string, double[]> ChantStrophicusAuctus { get; set; }
+        public BoundingBox ChantStrophicusAuctus { get; set; }
 
         [JsonProperty("chantStrophicusLiquescens2nd")]
-        public Dictionary<string, double[]> ChantStrophicusLiquescens2Nd { get; set; }
+        public BoundingBox ChantStrophicusLiquescens2Nd { get; set; }
 
         [JsonProperty("chantStrophicusLiquescens3rd")]
-        public Dictionary<string, double[]> ChantStrophicusLiquescens3Rd { get; set; }
+        public BoundingBox ChantStrophicusLiquescens3Rd { get; set; }
 
         [JsonProperty("chantStrophicusLiquescens4th")]
-        public Dictionary<string, double[]> ChantStrophicusLiquescens4Th { get; set; }
+        public BoundingBox ChantStrophicusLiquescens4Th { get; set; }
 
         [JsonProperty("chantStrophicusLiquescens5th")]
-        public Dictionary<string, double[]> ChantStrophicusLiquescens5Th { get; set; }
+        public BoundingBox ChantStrophicusLiquescens5Th { get; set; }
 
         [JsonProperty("chantVirgula")]
-        public Dictionary<string, double[]> ChantVirgula { get; set; }
+        public BoundingBox ChantVirgula { get; set; }
 
         [JsonProperty("clef15")]
-        public Dictionary<string, double[]> Clef15 { get; set; }
+        public BoundingBox Clef15 { get; set; }
 
         [JsonProperty("clef8")]
         public BoundingBox Clef8 { get; set; }
 
         [JsonProperty("coda")]
-        public Dictionary<string, double[]> Coda { get; set; }
+        public BoundingBox Coda { get; set; }
 
         [JsonProperty("codaJapanese")]
-        public Dictionary<string, double[]> CodaJapanese { get; set; }
+        public BoundingBox CodaJapanese { get; set; }
 
         [JsonProperty("codaSquare")]
-        public Dictionary<string, double[]> CodaSquare { get; set; }
+        public BoundingBox CodaSquare { get; set; }
 
         [JsonProperty("conductorBeat2Compound")]
         public BoundingBox ConductorBeat2Compound { get; set; }
 
         [JsonProperty("conductorBeat2Simple")]
-        public Dictionary<string, double[]> ConductorBeat2Simple { get; set; }
+        public BoundingBox ConductorBeat2Simple { get; set; }
 
         [JsonProperty("conductorBeat3Compound")]
         public BoundingBox ConductorBeat3Compound { get; set; }
@@ -2480,28 +2480,28 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox CsymDiminished { get; set; }
 
         [JsonProperty("csymHalfDiminished")]
-        public Dictionary<string, double[]> CsymHalfDiminished { get; set; }
+        public BoundingBox CsymHalfDiminished { get; set; }
 
         [JsonProperty("csymMajorSeventh")]
-        public Dictionary<string, double[]> CsymMajorSeventh { get; set; }
+        public BoundingBox CsymMajorSeventh { get; set; }
 
         [JsonProperty("csymMinor")]
-        public Dictionary<string, double[]> CsymMinor { get; set; }
+        public BoundingBox CsymMinor { get; set; }
 
         [JsonProperty("csymParensLeftTall")]
-        public Dictionary<string, double[]> CsymParensLeftTall { get; set; }
+        public BoundingBox CsymParensLeftTall { get; set; }
 
         [JsonProperty("csymParensRightTall")]
-        public Dictionary<string, double[]> CsymParensRightTall { get; set; }
+        public BoundingBox CsymParensRightTall { get; set; }
 
         [JsonProperty("curlewSign")]
         public BoundingBox CurlewSign { get; set; }
 
         [JsonProperty("daCapo")]
-        public Dictionary<string, double[]> DaCapo { get; set; }
+        public BoundingBox DaCapo { get; set; }
 
         [JsonProperty("dalSegno")]
-        public Dictionary<string, double[]> DalSegno { get; set; }
+        public BoundingBox DalSegno { get; set; }
 
         [JsonProperty("daseianExcellentes1")]
         public BoundingBox DaseianExcellentes1 { get; set; }
@@ -2513,7 +2513,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox DaseianExcellentes3 { get; set; }
 
         [JsonProperty("daseianExcellentes4")]
-        public Dictionary<string, double[]> DaseianExcellentes4 { get; set; }
+        public BoundingBox DaseianExcellentes4 { get; set; }
 
         [JsonProperty("daseianFinales1")]
         public BoundingBox DaseianFinales1 { get; set; }
@@ -2525,7 +2525,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox DaseianFinales3 { get; set; }
 
         [JsonProperty("daseianFinales4")]
-        public Dictionary<string, double[]> DaseianFinales4 { get; set; }
+        public BoundingBox DaseianFinales4 { get; set; }
 
         [JsonProperty("daseianGraves1")]
         public BoundingBox DaseianGraves1 { get; set; }
@@ -2537,7 +2537,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox DaseianGraves3 { get; set; }
 
         [JsonProperty("daseianGraves4")]
-        public Dictionary<string, double[]> DaseianGraves4 { get; set; }
+        public BoundingBox DaseianGraves4 { get; set; }
 
         [JsonProperty("daseianResidua1")]
         public BoundingBox DaseianResidua1 { get; set; }
@@ -2555,58 +2555,58 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox DaseianSuperiores3 { get; set; }
 
         [JsonProperty("daseianSuperiores4")]
-        public Dictionary<string, double[]> DaseianSuperiores4 { get; set; }
+        public BoundingBox DaseianSuperiores4 { get; set; }
 
         [JsonProperty("doubleTongueAbove")]
-        public Dictionary<string, double[]> DoubleTongueAbove { get; set; }
+        public BoundingBox DoubleTongueAbove { get; set; }
 
         [JsonProperty("doubleTongueAboveNoSlur")]
         public BoundingBox DoubleTongueAboveNoSlur { get; set; }
 
         [JsonProperty("doubleTongueBelow")]
-        public Dictionary<string, double[]> DoubleTongueBelow { get; set; }
+        public BoundingBox DoubleTongueBelow { get; set; }
 
         [JsonProperty("doubleTongueBelowNoSlur")]
         public BoundingBox DoubleTongueBelowNoSlur { get; set; }
 
         [JsonProperty("dynamicCombinedSeparatorColon")]
-        public Dictionary<string, double[]> DynamicCombinedSeparatorColon { get; set; }
+        public BoundingBox DynamicCombinedSeparatorColon { get; set; }
 
         [JsonProperty("dynamicCombinedSeparatorHyphen")]
-        public Dictionary<string, double[]> DynamicCombinedSeparatorHyphen { get; set; }
+        public BoundingBox DynamicCombinedSeparatorHyphen { get; set; }
 
         [JsonProperty("dynamicCrescendoHairpin")]
-        public Dictionary<string, double[]> DynamicCrescendoHairpin { get; set; }
+        public BoundingBox DynamicCrescendoHairpin { get; set; }
 
         [JsonProperty("dynamicDiminuendoHairpin")]
-        public Dictionary<string, double[]> DynamicDiminuendoHairpin { get; set; }
+        public BoundingBox DynamicDiminuendoHairpin { get; set; }
 
         [JsonProperty("dynamicFF")]
-        public Dictionary<string, double[]> DynamicFf { get; set; }
+        public BoundingBox DynamicFf { get; set; }
 
         [JsonProperty("dynamicFFF")]
-        public Dictionary<string, double[]> DynamicFff { get; set; }
+        public BoundingBox DynamicFff { get; set; }
 
         [JsonProperty("dynamicFFFF")]
-        public Dictionary<string, double[]> DynamicFfff { get; set; }
+        public BoundingBox DynamicFfff { get; set; }
 
         [JsonProperty("dynamicFFFFF")]
-        public Dictionary<string, double[]> DynamicFffff { get; set; }
+        public BoundingBox DynamicFffff { get; set; }
 
         [JsonProperty("dynamicFFFFFF")]
-        public Dictionary<string, double[]> DynamicFfffff { get; set; }
+        public BoundingBox DynamicFfffff { get; set; }
 
         [JsonProperty("dynamicForte")]
-        public Dictionary<string, double[]> DynamicForte { get; set; }
+        public BoundingBox DynamicForte { get; set; }
 
         [JsonProperty("dynamicFortePiano")]
-        public Dictionary<string, double[]> DynamicFortePiano { get; set; }
+        public BoundingBox DynamicFortePiano { get; set; }
 
         [JsonProperty("dynamicForteSmall")]
-        public Dictionary<string, double[]> DynamicForteSmall { get; set; }
+        public BoundingBox DynamicForteSmall { get; set; }
 
         [JsonProperty("dynamicForzando")]
-        public Dictionary<string, double[]> DynamicForzando { get; set; }
+        public BoundingBox DynamicForzando { get; set; }
 
         [JsonProperty("dynamicHairpinBracketLeft")]
         public BoundingBox DynamicHairpinBracketLeft { get; set; }
@@ -2615,100 +2615,100 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox DynamicHairpinBracketRight { get; set; }
 
         [JsonProperty("dynamicHairpinParenthesisLeft")]
-        public Dictionary<string, double[]> DynamicHairpinParenthesisLeft { get; set; }
+        public BoundingBox DynamicHairpinParenthesisLeft { get; set; }
 
         [JsonProperty("dynamicHairpinParenthesisRight")]
-        public Dictionary<string, double[]> DynamicHairpinParenthesisRight { get; set; }
+        public BoundingBox DynamicHairpinParenthesisRight { get; set; }
 
         [JsonProperty("dynamicMF")]
-        public Dictionary<string, double[]> DynamicMf { get; set; }
+        public BoundingBox DynamicMf { get; set; }
 
         [JsonProperty("dynamicMP")]
-        public Dictionary<string, double[]> DynamicMp { get; set; }
+        public BoundingBox DynamicMp { get; set; }
 
         [JsonProperty("dynamicMessaDiVoce")]
-        public Dictionary<string, double[]> DynamicMessaDiVoce { get; set; }
+        public BoundingBox DynamicMessaDiVoce { get; set; }
 
         [JsonProperty("dynamicMezzo")]
-        public Dictionary<string, double[]> DynamicMezzo { get; set; }
+        public BoundingBox DynamicMezzo { get; set; }
 
         [JsonProperty("dynamicMezzoSmall")]
-        public Dictionary<string, double[]> DynamicMezzoSmall { get; set; }
+        public BoundingBox DynamicMezzoSmall { get; set; }
 
         [JsonProperty("dynamicNiente")]
-        public Dictionary<string, double[]> DynamicNiente { get; set; }
+        public BoundingBox DynamicNiente { get; set; }
 
         [JsonProperty("dynamicNienteForHairpin")]
-        public Dictionary<string, double[]> DynamicNienteForHairpin { get; set; }
+        public BoundingBox DynamicNienteForHairpin { get; set; }
 
         [JsonProperty("dynamicNienteSmall")]
-        public Dictionary<string, double[]> DynamicNienteSmall { get; set; }
+        public BoundingBox DynamicNienteSmall { get; set; }
 
         [JsonProperty("dynamicPF")]
-        public Dictionary<string, double[]> DynamicPf { get; set; }
+        public BoundingBox DynamicPf { get; set; }
 
         [JsonProperty("dynamicPP")]
-        public Dictionary<string, double[]> DynamicPp { get; set; }
+        public BoundingBox DynamicPp { get; set; }
 
         [JsonProperty("dynamicPPP")]
-        public Dictionary<string, double[]> DynamicPpp { get; set; }
+        public BoundingBox DynamicPpp { get; set; }
 
         [JsonProperty("dynamicPPPP")]
-        public Dictionary<string, double[]> DynamicPppp { get; set; }
+        public BoundingBox DynamicPppp { get; set; }
 
         [JsonProperty("dynamicPPPPP")]
-        public Dictionary<string, double[]> DynamicPpppp { get; set; }
+        public BoundingBox DynamicPpppp { get; set; }
 
         [JsonProperty("dynamicPPPPPP")]
-        public Dictionary<string, double[]> DynamicPppppp { get; set; }
+        public BoundingBox DynamicPppppp { get; set; }
 
         [JsonProperty("dynamicPiano")]
-        public Dictionary<string, double[]> DynamicPiano { get; set; }
+        public BoundingBox DynamicPiano { get; set; }
 
         [JsonProperty("dynamicPianoSmall")]
-        public Dictionary<string, double[]> DynamicPianoSmall { get; set; }
+        public BoundingBox DynamicPianoSmall { get; set; }
 
         [JsonProperty("dynamicRinforzando")]
-        public Dictionary<string, double[]> DynamicRinforzando { get; set; }
+        public BoundingBox DynamicRinforzando { get; set; }
 
         [JsonProperty("dynamicRinforzando1")]
-        public Dictionary<string, double[]> DynamicRinforzando1 { get; set; }
+        public BoundingBox DynamicRinforzando1 { get; set; }
 
         [JsonProperty("dynamicRinforzando2")]
-        public Dictionary<string, double[]> DynamicRinforzando2 { get; set; }
+        public BoundingBox DynamicRinforzando2 { get; set; }
 
         [JsonProperty("dynamicRinforzandoSmall")]
         public BoundingBox DynamicRinforzandoSmall { get; set; }
 
         [JsonProperty("dynamicSforzando")]
-        public Dictionary<string, double[]> DynamicSforzando { get; set; }
+        public BoundingBox DynamicSforzando { get; set; }
 
         [JsonProperty("dynamicSforzando1")]
-        public Dictionary<string, double[]> DynamicSforzando1 { get; set; }
+        public BoundingBox DynamicSforzando1 { get; set; }
 
         [JsonProperty("dynamicSforzandoPianissimo")]
-        public Dictionary<string, double[]> DynamicSforzandoPianissimo { get; set; }
+        public BoundingBox DynamicSforzandoPianissimo { get; set; }
 
         [JsonProperty("dynamicSforzandoPiano")]
-        public Dictionary<string, double[]> DynamicSforzandoPiano { get; set; }
+        public BoundingBox DynamicSforzandoPiano { get; set; }
 
         [JsonProperty("dynamicSforzandoSmall")]
-        public Dictionary<string, double[]> DynamicSforzandoSmall { get; set; }
+        public BoundingBox DynamicSforzandoSmall { get; set; }
 
         [JsonProperty("dynamicSforzato")]
-        public Dictionary<string, double[]> DynamicSforzato { get; set; }
+        public BoundingBox DynamicSforzato { get; set; }
 
         [JsonProperty("dynamicSforzatoFF")]
-        public Dictionary<string, double[]> DynamicSforzatoFf { get; set; }
+        public BoundingBox DynamicSforzatoFf { get; set; }
 
         [JsonProperty("dynamicSforzatoPiano")]
-        public Dictionary<string, double[]> DynamicSforzatoPiano { get; set; }
+        public BoundingBox DynamicSforzatoPiano { get; set; }
 
         [JsonProperty("dynamicZ")]
-        public Dictionary<string, double[]> DynamicZ { get; set; }
+        public BoundingBox DynamicZ { get; set; }
 
         [JsonProperty("dynamicZSmall")]
-        public Dictionary<string, double[]> DynamicZSmall { get; set; }
+        public BoundingBox DynamicZSmall { get; set; }
 
         [JsonProperty("elecAudioChannelsEight")]
         public BoundingBox ElecAudioChannelsEight { get; set; }
@@ -2720,22 +2720,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ElecAudioChannelsFour { get; set; }
 
         [JsonProperty("elecAudioChannelsOne")]
-        public Dictionary<string, double[]> ElecAudioChannelsOne { get; set; }
+        public BoundingBox ElecAudioChannelsOne { get; set; }
 
         [JsonProperty("elecAudioChannelsSeven")]
-        public Dictionary<string, double[]> ElecAudioChannelsSeven { get; set; }
+        public BoundingBox ElecAudioChannelsSeven { get; set; }
 
         [JsonProperty("elecAudioChannelsSix")]
-        public Dictionary<string, double[]> ElecAudioChannelsSix { get; set; }
+        public BoundingBox ElecAudioChannelsSix { get; set; }
 
         [JsonProperty("elecAudioChannelsThreeFrontal")]
-        public Dictionary<string, double[]> ElecAudioChannelsThreeFrontal { get; set; }
+        public BoundingBox ElecAudioChannelsThreeFrontal { get; set; }
 
         [JsonProperty("elecAudioChannelsThreeSurround")]
         public BoundingBox ElecAudioChannelsThreeSurround { get; set; }
 
         [JsonProperty("elecAudioChannelsTwo")]
-        public Dictionary<string, double[]> ElecAudioChannelsTwo { get; set; }
+        public BoundingBox ElecAudioChannelsTwo { get; set; }
 
         [JsonProperty("elecAudioIn")]
         public BoundingBox ElecAudioIn { get; set; }
@@ -2765,7 +2765,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ElecDownload { get; set; }
 
         [JsonProperty("elecEject")]
-        public Dictionary<string, double[]> ElecEject { get; set; }
+        public BoundingBox ElecEject { get; set; }
 
         [JsonProperty("elecFastForward")]
         public BoundingBox ElecFastForward { get; set; }
@@ -2777,10 +2777,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ElecHeadset { get; set; }
 
         [JsonProperty("elecLineIn")]
-        public Dictionary<string, double[]> ElecLineIn { get; set; }
+        public BoundingBox ElecLineIn { get; set; }
 
         [JsonProperty("elecLineOut")]
-        public Dictionary<string, double[]> ElecLineOut { get; set; }
+        public BoundingBox ElecLineOut { get; set; }
 
         [JsonProperty("elecLoop")]
         public BoundingBox ElecLoop { get; set; }
@@ -2849,7 +2849,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ElecRewind { get; set; }
 
         [JsonProperty("elecShuffle")]
-        public Dictionary<string, double[]> ElecShuffle { get; set; }
+        public BoundingBox ElecShuffle { get; set; }
 
         [JsonProperty("elecSkipBackwards")]
         public BoundingBox ElecSkipBackwards { get; set; }
@@ -2873,7 +2873,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ElecUpload { get; set; }
 
         [JsonProperty("elecVideoCamera")]
-        public Dictionary<string, double[]> ElecVideoCamera { get; set; }
+        public BoundingBox ElecVideoCamera { get; set; }
 
         [JsonProperty("elecVideoIn")]
         public BoundingBox ElecVideoIn { get; set; }
@@ -2885,10 +2885,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ElecVolumeFader { get; set; }
 
         [JsonProperty("elecVolumeFaderThumb")]
-        public Dictionary<string, double[]> ElecVolumeFaderThumb { get; set; }
+        public BoundingBox ElecVolumeFaderThumb { get; set; }
 
         [JsonProperty("elecVolumeLevel0")]
-        public Dictionary<string, double[]> ElecVolumeLevel0 { get; set; }
+        public BoundingBox ElecVolumeLevel0 { get; set; }
 
         [JsonProperty("elecVolumeLevel100")]
         public BoundingBox ElecVolumeLevel100 { get; set; }
@@ -2906,421 +2906,421 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox ElecVolumeLevel80 { get; set; }
 
         [JsonProperty("fClef")]
-        public Dictionary<string, double[]> FClef { get; set; }
+        public BoundingBox FClef { get; set; }
 
         [JsonProperty("fClef15ma")]
-        public Dictionary<string, double[]> FClef15Ma { get; set; }
+        public BoundingBox FClef15Ma { get; set; }
 
         [JsonProperty("fClef15mb")]
-        public Dictionary<string, double[]> FClef15Mb { get; set; }
+        public BoundingBox FClef15Mb { get; set; }
 
         [JsonProperty("fClef19thCentury")]
-        public Dictionary<string, double[]> FClef19ThCentury { get; set; }
+        public BoundingBox FClef19ThCentury { get; set; }
 
         [JsonProperty("fClef5Below")]
-        public Dictionary<string, double[]> FClef5Below { get; set; }
+        public BoundingBox FClef5Below { get; set; }
 
         [JsonProperty("fClef8va")]
-        public Dictionary<string, double[]> FClef8Va { get; set; }
+        public BoundingBox FClef8Va { get; set; }
 
         [JsonProperty("fClef8vb")]
-        public Dictionary<string, double[]> FClef8Vb { get; set; }
+        public BoundingBox FClef8Vb { get; set; }
 
         [JsonProperty("fClefArrowDown")]
-        public Dictionary<string, double[]> FClefArrowDown { get; set; }
+        public BoundingBox FClefArrowDown { get; set; }
 
         [JsonProperty("fClefArrowUp")]
-        public Dictionary<string, double[]> FClefArrowUp { get; set; }
+        public BoundingBox FClefArrowUp { get; set; }
 
         [JsonProperty("fClefChange")]
-        public Dictionary<string, double[]> FClefChange { get; set; }
+        public BoundingBox FClefChange { get; set; }
 
         [JsonProperty("fClefFrench")]
-        public Dictionary<string, double[]> FClefFrench { get; set; }
+        public BoundingBox FClefFrench { get; set; }
 
         [JsonProperty("fClefReversed")]
-        public Dictionary<string, double[]> FClefReversed { get; set; }
+        public BoundingBox FClefReversed { get; set; }
 
         [JsonProperty("fClefSmall")]
-        public Dictionary<string, double[]> FClefSmall { get; set; }
+        public BoundingBox FClefSmall { get; set; }
 
         [JsonProperty("fClefTurned")]
-        public Dictionary<string, double[]> FClefTurned { get; set; }
+        public BoundingBox FClefTurned { get; set; }
 
         [JsonProperty("fermataAbove")]
-        public Dictionary<string, double[]> FermataAbove { get; set; }
+        public BoundingBox FermataAbove { get; set; }
 
         [JsonProperty("fermataBelow")]
-        public Dictionary<string, double[]> FermataBelow { get; set; }
+        public BoundingBox FermataBelow { get; set; }
 
         [JsonProperty("fermataLongAbove")]
-        public Dictionary<string, double[]> FermataLongAbove { get; set; }
+        public BoundingBox FermataLongAbove { get; set; }
 
         [JsonProperty("fermataLongBelow")]
-        public Dictionary<string, double[]> FermataLongBelow { get; set; }
+        public BoundingBox FermataLongBelow { get; set; }
 
         [JsonProperty("fermataLongHenzeAbove")]
-        public Dictionary<string, double[]> FermataLongHenzeAbove { get; set; }
+        public BoundingBox FermataLongHenzeAbove { get; set; }
 
         [JsonProperty("fermataLongHenzeBelow")]
-        public Dictionary<string, double[]> FermataLongHenzeBelow { get; set; }
+        public BoundingBox FermataLongHenzeBelow { get; set; }
 
         [JsonProperty("fermataShortAbove")]
         public BoundingBox FermataShortAbove { get; set; }
 
         [JsonProperty("fermataShortBelow")]
-        public Dictionary<string, double[]> FermataShortBelow { get; set; }
+        public BoundingBox FermataShortBelow { get; set; }
 
         [JsonProperty("fermataShortHenzeAbove")]
         public BoundingBox FermataShortHenzeAbove { get; set; }
 
         [JsonProperty("fermataShortHenzeBelow")]
-        public Dictionary<string, double[]> FermataShortHenzeBelow { get; set; }
+        public BoundingBox FermataShortHenzeBelow { get; set; }
 
         [JsonProperty("fermataVeryLongAbove")]
         public BoundingBox FermataVeryLongAbove { get; set; }
 
         [JsonProperty("fermataVeryLongBelow")]
-        public Dictionary<string, double[]> FermataVeryLongBelow { get; set; }
+        public BoundingBox FermataVeryLongBelow { get; set; }
 
         [JsonProperty("fermataVeryShortAbove")]
         public BoundingBox FermataVeryShortAbove { get; set; }
 
         [JsonProperty("fermataVeryShortBelow")]
-        public Dictionary<string, double[]> FermataVeryShortBelow { get; set; }
+        public BoundingBox FermataVeryShortBelow { get; set; }
 
         [JsonProperty("figbass0")]
-        public Dictionary<string, double[]> Figbass0 { get; set; }
+        public BoundingBox Figbass0 { get; set; }
 
         [JsonProperty("figbass1")]
-        public Dictionary<string, double[]> Figbass1 { get; set; }
+        public BoundingBox Figbass1 { get; set; }
 
         [JsonProperty("figbass2")]
-        public Dictionary<string, double[]> Figbass2 { get; set; }
+        public BoundingBox Figbass2 { get; set; }
 
         [JsonProperty("figbass2Raised")]
-        public Dictionary<string, double[]> Figbass2Raised { get; set; }
+        public BoundingBox Figbass2Raised { get; set; }
 
         [JsonProperty("figbass3")]
-        public Dictionary<string, double[]> Figbass3 { get; set; }
+        public BoundingBox Figbass3 { get; set; }
 
         [JsonProperty("figbass4")]
-        public Dictionary<string, double[]> Figbass4 { get; set; }
+        public BoundingBox Figbass4 { get; set; }
 
         [JsonProperty("figbass4Raised")]
-        public Dictionary<string, double[]> Figbass4Raised { get; set; }
+        public BoundingBox Figbass4Raised { get; set; }
 
         [JsonProperty("figbass5")]
-        public Dictionary<string, double[]> Figbass5 { get; set; }
+        public BoundingBox Figbass5 { get; set; }
 
         [JsonProperty("figbass5Raised1")]
-        public Dictionary<string, double[]> Figbass5Raised1 { get; set; }
+        public BoundingBox Figbass5Raised1 { get; set; }
 
         [JsonProperty("figbass5Raised2")]
-        public Dictionary<string, double[]> Figbass5Raised2 { get; set; }
+        public BoundingBox Figbass5Raised2 { get; set; }
 
         [JsonProperty("figbass5Raised3")]
-        public Dictionary<string, double[]> Figbass5Raised3 { get; set; }
+        public BoundingBox Figbass5Raised3 { get; set; }
 
         [JsonProperty("figbass6")]
-        public Dictionary<string, double[]> Figbass6 { get; set; }
+        public BoundingBox Figbass6 { get; set; }
 
         [JsonProperty("figbass6Raised")]
-        public Dictionary<string, double[]> Figbass6Raised { get; set; }
+        public BoundingBox Figbass6Raised { get; set; }
 
         [JsonProperty("figbass6Raised2")]
-        public Dictionary<string, double[]> Figbass6Raised2 { get; set; }
+        public BoundingBox Figbass6Raised2 { get; set; }
 
         [JsonProperty("figbass7")]
-        public Dictionary<string, double[]> Figbass7 { get; set; }
+        public BoundingBox Figbass7 { get; set; }
 
         [JsonProperty("figbass7Diminished")]
-        public Dictionary<string, double[]> Figbass7Diminished { get; set; }
+        public BoundingBox Figbass7Diminished { get; set; }
 
         [JsonProperty("figbass7Raised1")]
-        public Dictionary<string, double[]> Figbass7Raised1 { get; set; }
+        public BoundingBox Figbass7Raised1 { get; set; }
 
         [JsonProperty("figbass7Raised2")]
-        public Dictionary<string, double[]> Figbass7Raised2 { get; set; }
+        public BoundingBox Figbass7Raised2 { get; set; }
 
         [JsonProperty("figbass8")]
-        public Dictionary<string, double[]> Figbass8 { get; set; }
+        public BoundingBox Figbass8 { get; set; }
 
         [JsonProperty("figbass9")]
-        public Dictionary<string, double[]> Figbass9 { get; set; }
+        public BoundingBox Figbass9 { get; set; }
 
         [JsonProperty("figbass9Raised")]
-        public Dictionary<string, double[]> Figbass9Raised { get; set; }
+        public BoundingBox Figbass9Raised { get; set; }
 
         [JsonProperty("figbassBracketLeft")]
-        public Dictionary<string, double[]> FigbassBracketLeft { get; set; }
+        public BoundingBox FigbassBracketLeft { get; set; }
 
         [JsonProperty("figbassBracketRight")]
-        public Dictionary<string, double[]> FigbassBracketRight { get; set; }
+        public BoundingBox FigbassBracketRight { get; set; }
 
         [JsonProperty("figbassCombiningLowering")]
-        public Dictionary<string, double[]> FigbassCombiningLowering { get; set; }
+        public BoundingBox FigbassCombiningLowering { get; set; }
 
         [JsonProperty("figbassCombiningRaising")]
-        public Dictionary<string, double[]> FigbassCombiningRaising { get; set; }
+        public BoundingBox FigbassCombiningRaising { get; set; }
 
         [JsonProperty("figbassDoubleFlat")]
-        public Dictionary<string, double[]> FigbassDoubleFlat { get; set; }
+        public BoundingBox FigbassDoubleFlat { get; set; }
 
         [JsonProperty("figbassDoubleSharp")]
-        public Dictionary<string, double[]> FigbassDoubleSharp { get; set; }
+        public BoundingBox FigbassDoubleSharp { get; set; }
 
         [JsonProperty("figbassFlat")]
-        public Dictionary<string, double[]> FigbassFlat { get; set; }
+        public BoundingBox FigbassFlat { get; set; }
 
         [JsonProperty("figbassNatural")]
-        public Dictionary<string, double[]> FigbassNatural { get; set; }
+        public BoundingBox FigbassNatural { get; set; }
 
         [JsonProperty("figbassParensLeft")]
-        public Dictionary<string, double[]> FigbassParensLeft { get; set; }
+        public BoundingBox FigbassParensLeft { get; set; }
 
         [JsonProperty("figbassParensRight")]
-        public Dictionary<string, double[]> FigbassParensRight { get; set; }
+        public BoundingBox FigbassParensRight { get; set; }
 
         [JsonProperty("figbassPlus")]
-        public Dictionary<string, double[]> FigbassPlus { get; set; }
+        public BoundingBox FigbassPlus { get; set; }
 
         [JsonProperty("figbassSharp")]
-        public Dictionary<string, double[]> FigbassSharp { get; set; }
+        public BoundingBox FigbassSharp { get; set; }
 
         [JsonProperty("fingering0")]
-        public Dictionary<string, double[]> Fingering0 { get; set; }
+        public BoundingBox Fingering0 { get; set; }
 
         [JsonProperty("fingering1")]
-        public Dictionary<string, double[]> Fingering1 { get; set; }
+        public BoundingBox Fingering1 { get; set; }
 
         [JsonProperty("fingering2")]
-        public Dictionary<string, double[]> Fingering2 { get; set; }
+        public BoundingBox Fingering2 { get; set; }
 
         [JsonProperty("fingering3")]
-        public Dictionary<string, double[]> Fingering3 { get; set; }
+        public BoundingBox Fingering3 { get; set; }
 
         [JsonProperty("fingering4")]
-        public Dictionary<string, double[]> Fingering4 { get; set; }
+        public BoundingBox Fingering4 { get; set; }
 
         [JsonProperty("fingering5")]
-        public Dictionary<string, double[]> Fingering5 { get; set; }
+        public BoundingBox Fingering5 { get; set; }
 
         [JsonProperty("fingeringALower")]
-        public Dictionary<string, double[]> FingeringALower { get; set; }
+        public BoundingBox FingeringALower { get; set; }
 
         [JsonProperty("fingeringCLower")]
-        public Dictionary<string, double[]> FingeringCLower { get; set; }
+        public BoundingBox FingeringCLower { get; set; }
 
         [JsonProperty("fingeringELower")]
-        public Dictionary<string, double[]> FingeringELower { get; set; }
+        public BoundingBox FingeringELower { get; set; }
 
         [JsonProperty("fingeringILower")]
-        public Dictionary<string, double[]> FingeringILower { get; set; }
+        public BoundingBox FingeringILower { get; set; }
 
         [JsonProperty("fingeringMLower")]
-        public Dictionary<string, double[]> FingeringMLower { get; set; }
+        public BoundingBox FingeringMLower { get; set; }
 
         [JsonProperty("fingeringMultipleNotes")]
         public BoundingBox FingeringMultipleNotes { get; set; }
 
         [JsonProperty("fingeringOLower")]
-        public Dictionary<string, double[]> FingeringOLower { get; set; }
+        public BoundingBox FingeringOLower { get; set; }
 
         [JsonProperty("fingeringPLower")]
-        public Dictionary<string, double[]> FingeringPLower { get; set; }
+        public BoundingBox FingeringPLower { get; set; }
 
         [JsonProperty("fingeringSubstitutionAbove")]
-        public Dictionary<string, double[]> FingeringSubstitutionAbove { get; set; }
+        public BoundingBox FingeringSubstitutionAbove { get; set; }
 
         [JsonProperty("fingeringSubstitutionBelow")]
-        public Dictionary<string, double[]> FingeringSubstitutionBelow { get; set; }
+        public BoundingBox FingeringSubstitutionBelow { get; set; }
 
         [JsonProperty("fingeringSubstitutionDash")]
-        public Dictionary<string, double[]> FingeringSubstitutionDash { get; set; }
+        public BoundingBox FingeringSubstitutionDash { get; set; }
 
         [JsonProperty("fingeringTLower")]
-        public Dictionary<string, double[]> FingeringTLower { get; set; }
+        public BoundingBox FingeringTLower { get; set; }
 
         [JsonProperty("fingeringTUpper")]
-        public Dictionary<string, double[]> FingeringTUpper { get; set; }
+        public BoundingBox FingeringTUpper { get; set; }
 
         [JsonProperty("fingeringXLower")]
-        public Dictionary<string, double[]> FingeringXLower { get; set; }
+        public BoundingBox FingeringXLower { get; set; }
 
         [JsonProperty("flag1024thDown")]
-        public Dictionary<string, double[]> Flag1024ThDown { get; set; }
+        public BoundingBox Flag1024ThDown { get; set; }
 
         [JsonProperty("flag1024thDownSmall")]
-        public Dictionary<string, double[]> Flag1024ThDownSmall { get; set; }
+        public BoundingBox Flag1024ThDownSmall { get; set; }
 
         [JsonProperty("flag1024thDownStraight")]
-        public Dictionary<string, double[]> Flag1024ThDownStraight { get; set; }
+        public BoundingBox Flag1024ThDownStraight { get; set; }
 
         [JsonProperty("flag1024thUp")]
-        public Dictionary<string, double[]> Flag1024ThUp { get; set; }
+        public BoundingBox Flag1024ThUp { get; set; }
 
         [JsonProperty("flag1024thUpShort")]
-        public Dictionary<string, double[]> Flag1024ThUpShort { get; set; }
+        public BoundingBox Flag1024ThUpShort { get; set; }
 
         [JsonProperty("flag1024thUpSmall")]
-        public Dictionary<string, double[]> Flag1024ThUpSmall { get; set; }
+        public BoundingBox Flag1024ThUpSmall { get; set; }
 
         [JsonProperty("flag1024thUpStraight")]
-        public Dictionary<string, double[]> Flag1024ThUpStraight { get; set; }
+        public BoundingBox Flag1024ThUpStraight { get; set; }
 
         [JsonProperty("flag128thDown")]
-        public Dictionary<string, double[]> Flag128ThDown { get; set; }
+        public BoundingBox Flag128ThDown { get; set; }
 
         [JsonProperty("flag128thDownSmall")]
-        public Dictionary<string, double[]> Flag128ThDownSmall { get; set; }
+        public BoundingBox Flag128ThDownSmall { get; set; }
 
         [JsonProperty("flag128thDownStraight")]
-        public Dictionary<string, double[]> Flag128ThDownStraight { get; set; }
+        public BoundingBox Flag128ThDownStraight { get; set; }
 
         [JsonProperty("flag128thUp")]
-        public Dictionary<string, double[]> Flag128ThUp { get; set; }
+        public BoundingBox Flag128ThUp { get; set; }
 
         [JsonProperty("flag128thUpShort")]
-        public Dictionary<string, double[]> Flag128ThUpShort { get; set; }
+        public BoundingBox Flag128ThUpShort { get; set; }
 
         [JsonProperty("flag128thUpSmall")]
-        public Dictionary<string, double[]> Flag128ThUpSmall { get; set; }
+        public BoundingBox Flag128ThUpSmall { get; set; }
 
         [JsonProperty("flag128thUpStraight")]
-        public Dictionary<string, double[]> Flag128ThUpStraight { get; set; }
+        public BoundingBox Flag128ThUpStraight { get; set; }
 
         [JsonProperty("flag16thDown")]
-        public Dictionary<string, double[]> Flag16ThDown { get; set; }
+        public BoundingBox Flag16ThDown { get; set; }
 
         [JsonProperty("flag16thDownSmall")]
-        public Dictionary<string, double[]> Flag16ThDownSmall { get; set; }
+        public BoundingBox Flag16ThDownSmall { get; set; }
 
         [JsonProperty("flag16thDownStraight")]
         public BoundingBox Flag16ThDownStraight { get; set; }
 
         [JsonProperty("flag16thUp")]
-        public Dictionary<string, double[]> Flag16ThUp { get; set; }
+        public BoundingBox Flag16ThUp { get; set; }
 
         [JsonProperty("flag16thUpShort")]
-        public Dictionary<string, double[]> Flag16ThUpShort { get; set; }
+        public BoundingBox Flag16ThUpShort { get; set; }
 
         [JsonProperty("flag16thUpSmall")]
-        public Dictionary<string, double[]> Flag16ThUpSmall { get; set; }
+        public BoundingBox Flag16ThUpSmall { get; set; }
 
         [JsonProperty("flag16thUpStraight")]
-        public Dictionary<string, double[]> Flag16ThUpStraight { get; set; }
+        public BoundingBox Flag16ThUpStraight { get; set; }
 
         [JsonProperty("flag256thDown")]
-        public Dictionary<string, double[]> Flag256ThDown { get; set; }
+        public BoundingBox Flag256ThDown { get; set; }
 
         [JsonProperty("flag256thDownSmall")]
-        public Dictionary<string, double[]> Flag256ThDownSmall { get; set; }
+        public BoundingBox Flag256ThDownSmall { get; set; }
 
         [JsonProperty("flag256thDownStraight")]
-        public Dictionary<string, double[]> Flag256ThDownStraight { get; set; }
+        public BoundingBox Flag256ThDownStraight { get; set; }
 
         [JsonProperty("flag256thUp")]
-        public Dictionary<string, double[]> Flag256ThUp { get; set; }
+        public BoundingBox Flag256ThUp { get; set; }
 
         [JsonProperty("flag256thUpShort")]
-        public Dictionary<string, double[]> Flag256ThUpShort { get; set; }
+        public BoundingBox Flag256ThUpShort { get; set; }
 
         [JsonProperty("flag256thUpSmall")]
-        public Dictionary<string, double[]> Flag256ThUpSmall { get; set; }
+        public BoundingBox Flag256ThUpSmall { get; set; }
 
         [JsonProperty("flag256thUpStraight")]
-        public Dictionary<string, double[]> Flag256ThUpStraight { get; set; }
+        public BoundingBox Flag256ThUpStraight { get; set; }
 
         [JsonProperty("flag32ndDown")]
-        public Dictionary<string, double[]> Flag32NdDown { get; set; }
+        public BoundingBox Flag32NdDown { get; set; }
 
         [JsonProperty("flag32ndDownSmall")]
-        public Dictionary<string, double[]> Flag32NdDownSmall { get; set; }
+        public BoundingBox Flag32NdDownSmall { get; set; }
 
         [JsonProperty("flag32ndDownStraight")]
-        public Dictionary<string, double[]> Flag32NdDownStraight { get; set; }
+        public BoundingBox Flag32NdDownStraight { get; set; }
 
         [JsonProperty("flag32ndUp")]
-        public Dictionary<string, double[]> Flag32NdUp { get; set; }
+        public BoundingBox Flag32NdUp { get; set; }
 
         [JsonProperty("flag32ndUpShort")]
-        public Dictionary<string, double[]> Flag32NdUpShort { get; set; }
+        public BoundingBox Flag32NdUpShort { get; set; }
 
         [JsonProperty("flag32ndUpSmall")]
-        public Dictionary<string, double[]> Flag32NdUpSmall { get; set; }
+        public BoundingBox Flag32NdUpSmall { get; set; }
 
         [JsonProperty("flag32ndUpStraight")]
-        public Dictionary<string, double[]> Flag32NdUpStraight { get; set; }
+        public BoundingBox Flag32NdUpStraight { get; set; }
 
         [JsonProperty("flag512thDown")]
-        public Dictionary<string, double[]> Flag512ThDown { get; set; }
+        public BoundingBox Flag512ThDown { get; set; }
 
         [JsonProperty("flag512thDownSmall")]
-        public Dictionary<string, double[]> Flag512ThDownSmall { get; set; }
+        public BoundingBox Flag512ThDownSmall { get; set; }
 
         [JsonProperty("flag512thDownStraight")]
         public BoundingBox Flag512ThDownStraight { get; set; }
 
         [JsonProperty("flag512thUp")]
-        public Dictionary<string, double[]> Flag512ThUp { get; set; }
+        public BoundingBox Flag512ThUp { get; set; }
 
         [JsonProperty("flag512thUpShort")]
-        public Dictionary<string, double[]> Flag512ThUpShort { get; set; }
+        public BoundingBox Flag512ThUpShort { get; set; }
 
         [JsonProperty("flag512thUpSmall")]
-        public Dictionary<string, double[]> Flag512ThUpSmall { get; set; }
+        public BoundingBox Flag512ThUpSmall { get; set; }
 
         [JsonProperty("flag512thUpStraight")]
-        public Dictionary<string, double[]> Flag512ThUpStraight { get; set; }
+        public BoundingBox Flag512ThUpStraight { get; set; }
 
         [JsonProperty("flag64thDown")]
-        public Dictionary<string, double[]> Flag64ThDown { get; set; }
+        public BoundingBox Flag64ThDown { get; set; }
 
         [JsonProperty("flag64thDownSmall")]
-        public Dictionary<string, double[]> Flag64ThDownSmall { get; set; }
+        public BoundingBox Flag64ThDownSmall { get; set; }
 
         [JsonProperty("flag64thDownStraight")]
-        public Dictionary<string, double[]> Flag64ThDownStraight { get; set; }
+        public BoundingBox Flag64ThDownStraight { get; set; }
 
         [JsonProperty("flag64thUp")]
-        public Dictionary<string, double[]> Flag64ThUp { get; set; }
+        public BoundingBox Flag64ThUp { get; set; }
 
         [JsonProperty("flag64thUpShort")]
-        public Dictionary<string, double[]> Flag64ThUpShort { get; set; }
+        public BoundingBox Flag64ThUpShort { get; set; }
 
         [JsonProperty("flag64thUpSmall")]
-        public Dictionary<string, double[]> Flag64ThUpSmall { get; set; }
+        public BoundingBox Flag64ThUpSmall { get; set; }
 
         [JsonProperty("flag64thUpStraight")]
-        public Dictionary<string, double[]> Flag64ThUpStraight { get; set; }
+        public BoundingBox Flag64ThUpStraight { get; set; }
 
         [JsonProperty("flag8thDown")]
-        public Dictionary<string, double[]> Flag8ThDown { get; set; }
+        public BoundingBox Flag8ThDown { get; set; }
 
         [JsonProperty("flag8thDownSmall")]
-        public Dictionary<string, double[]> Flag8ThDownSmall { get; set; }
+        public BoundingBox Flag8ThDownSmall { get; set; }
 
         [JsonProperty("flag8thDownStraight")]
         public BoundingBox Flag8ThDownStraight { get; set; }
 
         [JsonProperty("flag8thUp")]
-        public Dictionary<string, double[]> Flag8ThUp { get; set; }
+        public BoundingBox Flag8ThUp { get; set; }
 
         [JsonProperty("flag8thUpShort")]
-        public Dictionary<string, double[]> Flag8ThUpShort { get; set; }
+        public BoundingBox Flag8ThUpShort { get; set; }
 
         [JsonProperty("flag8thUpSmall")]
-        public Dictionary<string, double[]> Flag8ThUpSmall { get; set; }
+        public BoundingBox Flag8ThUpSmall { get; set; }
 
         [JsonProperty("flag8thUpStraight")]
-        public Dictionary<string, double[]> Flag8ThUpStraight { get; set; }
+        public BoundingBox Flag8ThUpStraight { get; set; }
 
         [JsonProperty("flagInternalDown")]
-        public Dictionary<string, double[]> FlagInternalDown { get; set; }
+        public BoundingBox FlagInternalDown { get; set; }
 
         [JsonProperty("flagInternalUp")]
-        public Dictionary<string, double[]> FlagInternalUp { get; set; }
+        public BoundingBox FlagInternalUp { get; set; }
 
         [JsonProperty("fretboard3String")]
         public BoundingBox Fretboard3String { get; set; }
@@ -3338,7 +3338,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox Fretboard5String { get; set; }
 
         [JsonProperty("fretboard5StringNut")]
-        public Dictionary<string, double[]> Fretboard5StringNut { get; set; }
+        public BoundingBox Fretboard5StringNut { get; set; }
 
         [JsonProperty("fretboard6String")]
         public BoundingBox Fretboard6String { get; set; }
@@ -3356,427 +3356,427 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox FretboardX { get; set; }
 
         [JsonProperty("functionAngleLeft")]
-        public Dictionary<string, double[]> FunctionAngleLeft { get; set; }
+        public BoundingBox FunctionAngleLeft { get; set; }
 
         [JsonProperty("functionAngleRight")]
-        public Dictionary<string, double[]> FunctionAngleRight { get; set; }
+        public BoundingBox FunctionAngleRight { get; set; }
 
         [JsonProperty("functionBracketLeft")]
-        public Dictionary<string, double[]> FunctionBracketLeft { get; set; }
+        public BoundingBox FunctionBracketLeft { get; set; }
 
         [JsonProperty("functionBracketRight")]
-        public Dictionary<string, double[]> FunctionBracketRight { get; set; }
+        public BoundingBox FunctionBracketRight { get; set; }
 
         [JsonProperty("functionDD")]
-        public Dictionary<string, double[]> FunctionDd { get; set; }
+        public BoundingBox FunctionDd { get; set; }
 
         [JsonProperty("functionDLower")]
-        public Dictionary<string, double[]> FunctionDLower { get; set; }
+        public BoundingBox FunctionDLower { get; set; }
 
         [JsonProperty("functionDUpper")]
-        public Dictionary<string, double[]> FunctionDUpper { get; set; }
+        public BoundingBox FunctionDUpper { get; set; }
 
         [JsonProperty("functionEight")]
-        public Dictionary<string, double[]> FunctionEight { get; set; }
+        public BoundingBox FunctionEight { get; set; }
 
         [JsonProperty("functionFUpper")]
-        public Dictionary<string, double[]> FunctionFUpper { get; set; }
+        public BoundingBox FunctionFUpper { get; set; }
 
         [JsonProperty("functionFive")]
-        public Dictionary<string, double[]> FunctionFive { get; set; }
+        public BoundingBox FunctionFive { get; set; }
 
         [JsonProperty("functionFour")]
-        public Dictionary<string, double[]> FunctionFour { get; set; }
+        public BoundingBox FunctionFour { get; set; }
 
         [JsonProperty("functionGLower")]
-        public Dictionary<string, double[]> FunctionGLower { get; set; }
+        public BoundingBox FunctionGLower { get; set; }
 
         [JsonProperty("functionGUpper")]
-        public Dictionary<string, double[]> FunctionGUpper { get; set; }
+        public BoundingBox FunctionGUpper { get; set; }
 
         [JsonProperty("functionGreaterThan")]
-        public Dictionary<string, double[]> FunctionGreaterThan { get; set; }
+        public BoundingBox FunctionGreaterThan { get; set; }
 
         [JsonProperty("functionILower")]
-        public Dictionary<string, double[]> FunctionILower { get; set; }
+        public BoundingBox FunctionILower { get; set; }
 
         [JsonProperty("functionIUpper")]
-        public Dictionary<string, double[]> FunctionIUpper { get; set; }
+        public BoundingBox FunctionIUpper { get; set; }
 
         [JsonProperty("functionKLower")]
-        public Dictionary<string, double[]> FunctionKLower { get; set; }
+        public BoundingBox FunctionKLower { get; set; }
 
         [JsonProperty("functionKUpper")]
-        public Dictionary<string, double[]> FunctionKUpper { get; set; }
+        public BoundingBox FunctionKUpper { get; set; }
 
         [JsonProperty("functionLLower")]
-        public Dictionary<string, double[]> FunctionLLower { get; set; }
+        public BoundingBox FunctionLLower { get; set; }
 
         [JsonProperty("functionLUpper")]
-        public Dictionary<string, double[]> FunctionLUpper { get; set; }
+        public BoundingBox FunctionLUpper { get; set; }
 
         [JsonProperty("functionLessThan")]
-        public Dictionary<string, double[]> FunctionLessThan { get; set; }
+        public BoundingBox FunctionLessThan { get; set; }
 
         [JsonProperty("functionMLower")]
-        public Dictionary<string, double[]> FunctionMLower { get; set; }
+        public BoundingBox FunctionMLower { get; set; }
 
         [JsonProperty("functionMUpper")]
-        public Dictionary<string, double[]> FunctionMUpper { get; set; }
+        public BoundingBox FunctionMUpper { get; set; }
 
         [JsonProperty("functionMinus")]
-        public Dictionary<string, double[]> FunctionMinus { get; set; }
+        public BoundingBox FunctionMinus { get; set; }
 
         [JsonProperty("functionNLower")]
-        public Dictionary<string, double[]> FunctionNLower { get; set; }
+        public BoundingBox FunctionNLower { get; set; }
 
         [JsonProperty("functionNUpper")]
-        public Dictionary<string, double[]> FunctionNUpper { get; set; }
+        public BoundingBox FunctionNUpper { get; set; }
 
         [JsonProperty("functionNUpperSuperscript")]
-        public Dictionary<string, double[]> FunctionNUpperSuperscript { get; set; }
+        public BoundingBox FunctionNUpperSuperscript { get; set; }
 
         [JsonProperty("functionNine")]
-        public Dictionary<string, double[]> FunctionNine { get; set; }
+        public BoundingBox FunctionNine { get; set; }
 
         [JsonProperty("functionOne")]
-        public Dictionary<string, double[]> FunctionOne { get; set; }
+        public BoundingBox FunctionOne { get; set; }
 
         [JsonProperty("functionPLower")]
-        public Dictionary<string, double[]> FunctionPLower { get; set; }
+        public BoundingBox FunctionPLower { get; set; }
 
         [JsonProperty("functionPUpper")]
-        public Dictionary<string, double[]> FunctionPUpper { get; set; }
+        public BoundingBox FunctionPUpper { get; set; }
 
         [JsonProperty("functionParensLeft")]
-        public Dictionary<string, double[]> FunctionParensLeft { get; set; }
+        public BoundingBox FunctionParensLeft { get; set; }
 
         [JsonProperty("functionParensRight")]
-        public Dictionary<string, double[]> FunctionParensRight { get; set; }
+        public BoundingBox FunctionParensRight { get; set; }
 
         [JsonProperty("functionPlus")]
-        public Dictionary<string, double[]> FunctionPlus { get; set; }
+        public BoundingBox FunctionPlus { get; set; }
 
         [JsonProperty("functionRLower")]
-        public Dictionary<string, double[]> FunctionRLower { get; set; }
+        public BoundingBox FunctionRLower { get; set; }
 
         [JsonProperty("functionRepetition1")]
-        public Dictionary<string, double[]> FunctionRepetition1 { get; set; }
+        public BoundingBox FunctionRepetition1 { get; set; }
 
         [JsonProperty("functionRepetition2")]
-        public Dictionary<string, double[]> FunctionRepetition2 { get; set; }
+        public BoundingBox FunctionRepetition2 { get; set; }
 
         [JsonProperty("functionRing")]
-        public Dictionary<string, double[]> FunctionRing { get; set; }
+        public BoundingBox FunctionRing { get; set; }
 
         [JsonProperty("functionSLower")]
-        public Dictionary<string, double[]> FunctionSLower { get; set; }
+        public BoundingBox FunctionSLower { get; set; }
 
         [JsonProperty("functionSSLower")]
-        public Dictionary<string, double[]> FunctionSsLower { get; set; }
+        public BoundingBox FunctionSsLower { get; set; }
 
         [JsonProperty("functionSSUpper")]
-        public Dictionary<string, double[]> FunctionSsUpper { get; set; }
+        public BoundingBox FunctionSsUpper { get; set; }
 
         [JsonProperty("functionSUpper")]
-        public Dictionary<string, double[]> FunctionSUpper { get; set; }
+        public BoundingBox FunctionSUpper { get; set; }
 
         [JsonProperty("functionSeven")]
-        public Dictionary<string, double[]> FunctionSeven { get; set; }
+        public BoundingBox FunctionSeven { get; set; }
 
         [JsonProperty("functionSix")]
-        public Dictionary<string, double[]> FunctionSix { get; set; }
+        public BoundingBox FunctionSix { get; set; }
 
         [JsonProperty("functionSlashedDD")]
-        public Dictionary<string, double[]> FunctionSlashedDd { get; set; }
+        public BoundingBox FunctionSlashedDd { get; set; }
 
         [JsonProperty("functionTLower")]
-        public Dictionary<string, double[]> FunctionTLower { get; set; }
+        public BoundingBox FunctionTLower { get; set; }
 
         [JsonProperty("functionTUpper")]
-        public Dictionary<string, double[]> FunctionTUpper { get; set; }
+        public BoundingBox FunctionTUpper { get; set; }
 
         [JsonProperty("functionThree")]
-        public Dictionary<string, double[]> FunctionThree { get; set; }
+        public BoundingBox FunctionThree { get; set; }
 
         [JsonProperty("functionTwo")]
-        public Dictionary<string, double[]> FunctionTwo { get; set; }
+        public BoundingBox FunctionTwo { get; set; }
 
         [JsonProperty("functionVLower")]
-        public Dictionary<string, double[]> FunctionVLower { get; set; }
+        public BoundingBox FunctionVLower { get; set; }
 
         [JsonProperty("functionVUpper")]
-        public Dictionary<string, double[]> FunctionVUpper { get; set; }
+        public BoundingBox FunctionVUpper { get; set; }
 
         [JsonProperty("functionZero")]
-        public Dictionary<string, double[]> FunctionZero { get; set; }
+        public BoundingBox FunctionZero { get; set; }
 
         [JsonProperty("gClef")]
-        public Dictionary<string, double[]> GClef { get; set; }
+        public BoundingBox GClef { get; set; }
 
         [JsonProperty("gClef0Below")]
-        public Dictionary<string, double[]> GClef0Below { get; set; }
+        public BoundingBox GClef0Below { get; set; }
 
         [JsonProperty("gClef10Below")]
-        public Dictionary<string, double[]> GClef10Below { get; set; }
+        public BoundingBox GClef10Below { get; set; }
 
         [JsonProperty("gClef11Below")]
-        public Dictionary<string, double[]> GClef11Below { get; set; }
+        public BoundingBox GClef11Below { get; set; }
 
         [JsonProperty("gClef12Below")]
-        public Dictionary<string, double[]> GClef12Below { get; set; }
+        public BoundingBox GClef12Below { get; set; }
 
         [JsonProperty("gClef13Below")]
-        public Dictionary<string, double[]> GClef13Below { get; set; }
+        public BoundingBox GClef13Below { get; set; }
 
         [JsonProperty("gClef14Below")]
-        public Dictionary<string, double[]> GClef14Below { get; set; }
+        public BoundingBox GClef14Below { get; set; }
 
         [JsonProperty("gClef15Below")]
-        public Dictionary<string, double[]> GClef15Below { get; set; }
+        public BoundingBox GClef15Below { get; set; }
 
         [JsonProperty("gClef15ma")]
-        public Dictionary<string, double[]> GClef15Ma { get; set; }
+        public BoundingBox GClef15Ma { get; set; }
 
         [JsonProperty("gClef15mb")]
-        public Dictionary<string, double[]> GClef15Mb { get; set; }
+        public BoundingBox GClef15Mb { get; set; }
 
         [JsonProperty("gClef16Below")]
-        public Dictionary<string, double[]> GClef16Below { get; set; }
+        public BoundingBox GClef16Below { get; set; }
 
         [JsonProperty("gClef17Below")]
-        public Dictionary<string, double[]> GClef17Below { get; set; }
+        public BoundingBox GClef17Below { get; set; }
 
         [JsonProperty("gClef2Above")]
-        public Dictionary<string, double[]> GClef2Above { get; set; }
+        public BoundingBox GClef2Above { get; set; }
 
         [JsonProperty("gClef2Below")]
-        public Dictionary<string, double[]> GClef2Below { get; set; }
+        public BoundingBox GClef2Below { get; set; }
 
         [JsonProperty("gClef3Above")]
-        public Dictionary<string, double[]> GClef3Above { get; set; }
+        public BoundingBox GClef3Above { get; set; }
 
         [JsonProperty("gClef3Below")]
-        public Dictionary<string, double[]> GClef3Below { get; set; }
+        public BoundingBox GClef3Below { get; set; }
 
         [JsonProperty("gClef4Above")]
-        public Dictionary<string, double[]> GClef4Above { get; set; }
+        public BoundingBox GClef4Above { get; set; }
 
         [JsonProperty("gClef4Below")]
-        public Dictionary<string, double[]> GClef4Below { get; set; }
+        public BoundingBox GClef4Below { get; set; }
 
         [JsonProperty("gClef5Above")]
-        public Dictionary<string, double[]> GClef5Above { get; set; }
+        public BoundingBox GClef5Above { get; set; }
 
         [JsonProperty("gClef5Below")]
-        public Dictionary<string, double[]> GClef5Below { get; set; }
+        public BoundingBox GClef5Below { get; set; }
 
         [JsonProperty("gClef6Above")]
-        public Dictionary<string, double[]> GClef6Above { get; set; }
+        public BoundingBox GClef6Above { get; set; }
 
         [JsonProperty("gClef6Below")]
-        public Dictionary<string, double[]> GClef6Below { get; set; }
+        public BoundingBox GClef6Below { get; set; }
 
         [JsonProperty("gClef7Above")]
-        public Dictionary<string, double[]> GClef7Above { get; set; }
+        public BoundingBox GClef7Above { get; set; }
 
         [JsonProperty("gClef7Below")]
-        public Dictionary<string, double[]> GClef7Below { get; set; }
+        public BoundingBox GClef7Below { get; set; }
 
         [JsonProperty("gClef8Above")]
-        public Dictionary<string, double[]> GClef8Above { get; set; }
+        public BoundingBox GClef8Above { get; set; }
 
         [JsonProperty("gClef8Below")]
-        public Dictionary<string, double[]> GClef8Below { get; set; }
+        public BoundingBox GClef8Below { get; set; }
 
         [JsonProperty("gClef8va")]
-        public Dictionary<string, double[]> GClef8Va { get; set; }
+        public BoundingBox GClef8Va { get; set; }
 
         [JsonProperty("gClef8vb")]
-        public Dictionary<string, double[]> GClef8Vb { get; set; }
+        public BoundingBox GClef8Vb { get; set; }
 
         [JsonProperty("gClef8vbCClef")]
-        public Dictionary<string, double[]> GClef8VbCClef { get; set; }
+        public BoundingBox GClef8VbCClef { get; set; }
 
         [JsonProperty("gClef8vbOld")]
-        public Dictionary<string, double[]> GClef8VbOld { get; set; }
+        public BoundingBox GClef8VbOld { get; set; }
 
         [JsonProperty("gClef8vbParens")]
-        public Dictionary<string, double[]> GClef8VbParens { get; set; }
+        public BoundingBox GClef8VbParens { get; set; }
 
         [JsonProperty("gClef9Above")]
-        public Dictionary<string, double[]> GClef9Above { get; set; }
+        public BoundingBox GClef9Above { get; set; }
 
         [JsonProperty("gClef9Below")]
-        public Dictionary<string, double[]> GClef9Below { get; set; }
+        public BoundingBox GClef9Below { get; set; }
 
         [JsonProperty("gClefArrowDown")]
-        public Dictionary<string, double[]> GClefArrowDown { get; set; }
+        public BoundingBox GClefArrowDown { get; set; }
 
         [JsonProperty("gClefArrowUp")]
-        public Dictionary<string, double[]> GClefArrowUp { get; set; }
+        public BoundingBox GClefArrowUp { get; set; }
 
         [JsonProperty("gClefChange")]
-        public Dictionary<string, double[]> GClefChange { get; set; }
+        public BoundingBox GClefChange { get; set; }
 
         [JsonProperty("gClefFlat10Below")]
-        public Dictionary<string, double[]> GClefFlat10Below { get; set; }
+        public BoundingBox GClefFlat10Below { get; set; }
 
         [JsonProperty("gClefFlat11Below")]
-        public Dictionary<string, double[]> GClefFlat11Below { get; set; }
+        public BoundingBox GClefFlat11Below { get; set; }
 
         [JsonProperty("gClefFlat13Below")]
-        public Dictionary<string, double[]> GClefFlat13Below { get; set; }
+        public BoundingBox GClefFlat13Below { get; set; }
 
         [JsonProperty("gClefFlat14Below")]
-        public Dictionary<string, double[]> GClefFlat14Below { get; set; }
+        public BoundingBox GClefFlat14Below { get; set; }
 
         [JsonProperty("gClefFlat15Below")]
-        public Dictionary<string, double[]> GClefFlat15Below { get; set; }
+        public BoundingBox GClefFlat15Below { get; set; }
 
         [JsonProperty("gClefFlat16Below")]
-        public Dictionary<string, double[]> GClefFlat16Below { get; set; }
+        public BoundingBox GClefFlat16Below { get; set; }
 
         [JsonProperty("gClefFlat1Below")]
-        public Dictionary<string, double[]> GClefFlat1Below { get; set; }
+        public BoundingBox GClefFlat1Below { get; set; }
 
         [JsonProperty("gClefFlat2Above")]
-        public Dictionary<string, double[]> GClefFlat2Above { get; set; }
+        public BoundingBox GClefFlat2Above { get; set; }
 
         [JsonProperty("gClefFlat2Below")]
-        public Dictionary<string, double[]> GClefFlat2Below { get; set; }
+        public BoundingBox GClefFlat2Below { get; set; }
 
         [JsonProperty("gClefFlat3Above")]
-        public Dictionary<string, double[]> GClefFlat3Above { get; set; }
+        public BoundingBox GClefFlat3Above { get; set; }
 
         [JsonProperty("gClefFlat3Below")]
-        public Dictionary<string, double[]> GClefFlat3Below { get; set; }
+        public BoundingBox GClefFlat3Below { get; set; }
 
         [JsonProperty("gClefFlat4Below")]
-        public Dictionary<string, double[]> GClefFlat4Below { get; set; }
+        public BoundingBox GClefFlat4Below { get; set; }
 
         [JsonProperty("gClefFlat5Above")]
-        public Dictionary<string, double[]> GClefFlat5Above { get; set; }
+        public BoundingBox GClefFlat5Above { get; set; }
 
         [JsonProperty("gClefFlat6Above")]
-        public Dictionary<string, double[]> GClefFlat6Above { get; set; }
+        public BoundingBox GClefFlat6Above { get; set; }
 
         [JsonProperty("gClefFlat6Below")]
-        public Dictionary<string, double[]> GClefFlat6Below { get; set; }
+        public BoundingBox GClefFlat6Below { get; set; }
 
         [JsonProperty("gClefFlat7Above")]
-        public Dictionary<string, double[]> GClefFlat7Above { get; set; }
+        public BoundingBox GClefFlat7Above { get; set; }
 
         [JsonProperty("gClefFlat7Below")]
-        public Dictionary<string, double[]> GClefFlat7Below { get; set; }
+        public BoundingBox GClefFlat7Below { get; set; }
 
         [JsonProperty("gClefFlat8Above")]
-        public Dictionary<string, double[]> GClefFlat8Above { get; set; }
+        public BoundingBox GClefFlat8Above { get; set; }
 
         [JsonProperty("gClefFlat9Above")]
-        public Dictionary<string, double[]> GClefFlat9Above { get; set; }
+        public BoundingBox GClefFlat9Above { get; set; }
 
         [JsonProperty("gClefFlat9Below")]
-        public Dictionary<string, double[]> GClefFlat9Below { get; set; }
+        public BoundingBox GClefFlat9Below { get; set; }
 
         [JsonProperty("gClefLigatedNumberAbove")]
-        public Dictionary<string, double[]> GClefLigatedNumberAbove { get; set; }
+        public BoundingBox GClefLigatedNumberAbove { get; set; }
 
         [JsonProperty("gClefLigatedNumberBelow")]
-        public Dictionary<string, double[]> GClefLigatedNumberBelow { get; set; }
+        public BoundingBox GClefLigatedNumberBelow { get; set; }
 
         [JsonProperty("gClefNat2Below")]
-        public Dictionary<string, double[]> GClefNat2Below { get; set; }
+        public BoundingBox GClefNat2Below { get; set; }
 
         [JsonProperty("gClefNatural10Below")]
-        public Dictionary<string, double[]> GClefNatural10Below { get; set; }
+        public BoundingBox GClefNatural10Below { get; set; }
 
         [JsonProperty("gClefNatural13Below")]
-        public Dictionary<string, double[]> GClefNatural13Below { get; set; }
+        public BoundingBox GClefNatural13Below { get; set; }
 
         [JsonProperty("gClefNatural17Below")]
-        public Dictionary<string, double[]> GClefNatural17Below { get; set; }
+        public BoundingBox GClefNatural17Below { get; set; }
 
         [JsonProperty("gClefNatural2Above")]
-        public Dictionary<string, double[]> GClefNatural2Above { get; set; }
+        public BoundingBox GClefNatural2Above { get; set; }
 
         [JsonProperty("gClefNatural3Above")]
-        public Dictionary<string, double[]> GClefNatural3Above { get; set; }
+        public BoundingBox GClefNatural3Above { get; set; }
 
         [JsonProperty("gClefNatural3Below")]
-        public Dictionary<string, double[]> GClefNatural3Below { get; set; }
+        public BoundingBox GClefNatural3Below { get; set; }
 
         [JsonProperty("gClefNatural6Above")]
-        public Dictionary<string, double[]> GClefNatural6Above { get; set; }
+        public BoundingBox GClefNatural6Above { get; set; }
 
         [JsonProperty("gClefNatural6Below")]
-        public Dictionary<string, double[]> GClefNatural6Below { get; set; }
+        public BoundingBox GClefNatural6Below { get; set; }
 
         [JsonProperty("gClefNatural7Above")]
-        public Dictionary<string, double[]> GClefNatural7Above { get; set; }
+        public BoundingBox GClefNatural7Above { get; set; }
 
         [JsonProperty("gClefNatural9Above")]
-        public Dictionary<string, double[]> GClefNatural9Above { get; set; }
+        public BoundingBox GClefNatural9Above { get; set; }
 
         [JsonProperty("gClefNatural9Below")]
-        public Dictionary<string, double[]> GClefNatural9Below { get; set; }
+        public BoundingBox GClefNatural9Below { get; set; }
 
         [JsonProperty("gClefReversed")]
-        public Dictionary<string, double[]> GClefReversed { get; set; }
+        public BoundingBox GClefReversed { get; set; }
 
         [JsonProperty("gClefSharp12Below")]
-        public Dictionary<string, double[]> GClefSharp12Below { get; set; }
+        public BoundingBox GClefSharp12Below { get; set; }
 
         [JsonProperty("gClefSharp1Above")]
-        public Dictionary<string, double[]> GClefSharp1Above { get; set; }
+        public BoundingBox GClefSharp1Above { get; set; }
 
         [JsonProperty("gClefSharp4Above")]
-        public Dictionary<string, double[]> GClefSharp4Above { get; set; }
+        public BoundingBox GClefSharp4Above { get; set; }
 
         [JsonProperty("gClefSharp5Below")]
-        public Dictionary<string, double[]> GClefSharp5Below { get; set; }
+        public BoundingBox GClefSharp5Below { get; set; }
 
         [JsonProperty("gClefSmall")]
-        public Dictionary<string, double[]> GClefSmall { get; set; }
+        public BoundingBox GClefSmall { get; set; }
 
         [JsonProperty("gClefTurned")]
-        public Dictionary<string, double[]> GClefTurned { get; set; }
+        public BoundingBox GClefTurned { get; set; }
 
         [JsonProperty("glissandoDown")]
-        public Dictionary<string, double[]> GlissandoDown { get; set; }
+        public BoundingBox GlissandoDown { get; set; }
 
         [JsonProperty("glissandoUp")]
-        public Dictionary<string, double[]> GlissandoUp { get; set; }
+        public BoundingBox GlissandoUp { get; set; }
 
         [JsonProperty("graceNoteAcciaccaturaStemDown")]
-        public Dictionary<string, double[]> GraceNoteAcciaccaturaStemDown { get; set; }
+        public BoundingBox GraceNoteAcciaccaturaStemDown { get; set; }
 
         [JsonProperty("graceNoteAcciaccaturaStemUp")]
-        public Dictionary<string, double[]> GraceNoteAcciaccaturaStemUp { get; set; }
+        public BoundingBox GraceNoteAcciaccaturaStemUp { get; set; }
 
         [JsonProperty("graceNoteAppoggiaturaStemDown")]
-        public Dictionary<string, double[]> GraceNoteAppoggiaturaStemDown { get; set; }
+        public BoundingBox GraceNoteAppoggiaturaStemDown { get; set; }
 
         [JsonProperty("graceNoteAppoggiaturaStemUp")]
-        public Dictionary<string, double[]> GraceNoteAppoggiaturaStemUp { get; set; }
+        public BoundingBox GraceNoteAppoggiaturaStemUp { get; set; }
 
         [JsonProperty("graceNoteSlashStemDown")]
-        public Dictionary<string, double[]> GraceNoteSlashStemDown { get; set; }
+        public BoundingBox GraceNoteSlashStemDown { get; set; }
 
         [JsonProperty("graceNoteSlashStemUp")]
         public BoundingBox GraceNoteSlashStemUp { get; set; }
 
         [JsonProperty("guitarBarreFull")]
-        public Dictionary<string, double[]> GuitarBarreFull { get; set; }
+        public BoundingBox GuitarBarreFull { get; set; }
 
         [JsonProperty("guitarBarreHalf")]
-        public Dictionary<string, double[]> GuitarBarreHalf { get; set; }
+        public BoundingBox GuitarBarreHalf { get; set; }
 
         [JsonProperty("guitarBarreHalfHorizontalFractionSlash")]
-        public Dictionary<string, double[]> GuitarBarreHalfHorizontalFractionSlash { get; set; }
+        public BoundingBox GuitarBarreHalfHorizontalFractionSlash { get; set; }
 
         [JsonProperty("guitarClosePedal")]
-        public Dictionary<string, double[]> GuitarClosePedal { get; set; }
+        public BoundingBox GuitarClosePedal { get; set; }
 
         [JsonProperty("guitarFadeIn")]
         public BoundingBox GuitarFadeIn { get; set; }
@@ -3785,7 +3785,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox GuitarFadeOut { get; set; }
 
         [JsonProperty("guitarGolpe")]
-        public Dictionary<string, double[]> GuitarGolpe { get; set; }
+        public BoundingBox GuitarGolpe { get; set; }
 
         [JsonProperty("guitarGolpeFlamenco")]
         public BoundingBox GuitarGolpeFlamenco { get; set; }
@@ -3794,7 +3794,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox GuitarHalfOpenPedal { get; set; }
 
         [JsonProperty("guitarLeftHandTapping")]
-        public Dictionary<string, double[]> GuitarLeftHandTapping { get; set; }
+        public BoundingBox GuitarLeftHandTapping { get; set; }
 
         [JsonProperty("guitarOpenPedal")]
         public BoundingBox GuitarOpenPedal { get; set; }
@@ -3803,10 +3803,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox GuitarRightHandTapping { get; set; }
 
         [JsonProperty("guitarShake")]
-        public Dictionary<string, double[]> GuitarShake { get; set; }
+        public BoundingBox GuitarShake { get; set; }
 
         [JsonProperty("guitarString0")]
-        public Dictionary<string, double[]> GuitarString0 { get; set; }
+        public BoundingBox GuitarString0 { get; set; }
 
         [JsonProperty("guitarString1")]
         public BoundingBox GuitarString1 { get; set; }
@@ -3818,7 +3818,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox GuitarString3 { get; set; }
 
         [JsonProperty("guitarString4")]
-        public Dictionary<string, double[]> GuitarString4 { get; set; }
+        public BoundingBox GuitarString4 { get; set; }
 
         [JsonProperty("guitarString5")]
         public BoundingBox GuitarString5 { get; set; }
@@ -3845,19 +3845,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox GuitarVibratoBarDip { get; set; }
 
         [JsonProperty("guitarVibratoBarScoop")]
-        public Dictionary<string, double[]> GuitarVibratoBarScoop { get; set; }
+        public BoundingBox GuitarVibratoBarScoop { get; set; }
 
         [JsonProperty("guitarVibratoStroke")]
-        public Dictionary<string, double[]> GuitarVibratoStroke { get; set; }
+        public BoundingBox GuitarVibratoStroke { get; set; }
 
         [JsonProperty("guitarVolumeSwell")]
         public BoundingBox GuitarVolumeSwell { get; set; }
 
         [JsonProperty("guitarWideVibratoStroke")]
-        public Dictionary<string, double[]> GuitarWideVibratoStroke { get; set; }
+        public BoundingBox GuitarWideVibratoStroke { get; set; }
 
         [JsonProperty("handbellsBelltree")]
-        public Dictionary<string, double[]> HandbellsBelltree { get; set; }
+        public BoundingBox HandbellsBelltree { get; set; }
 
         [JsonProperty("handbellsDamp3")]
         public BoundingBox HandbellsDamp3 { get; set; }
@@ -3866,43 +3866,43 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox HandbellsEcho1 { get; set; }
 
         [JsonProperty("handbellsEcho2")]
-        public Dictionary<string, double[]> HandbellsEcho2 { get; set; }
+        public BoundingBox HandbellsEcho2 { get; set; }
 
         [JsonProperty("handbellsGyro")]
-        public Dictionary<string, double[]> HandbellsGyro { get; set; }
+        public BoundingBox HandbellsGyro { get; set; }
 
         [JsonProperty("handbellsHandMartellato")]
-        public Dictionary<string, double[]> HandbellsHandMartellato { get; set; }
+        public BoundingBox HandbellsHandMartellato { get; set; }
 
         [JsonProperty("handbellsMalletBellOnTable")]
         public BoundingBox HandbellsMalletBellOnTable { get; set; }
 
         [JsonProperty("handbellsMalletBellSuspended")]
-        public Dictionary<string, double[]> HandbellsMalletBellSuspended { get; set; }
+        public BoundingBox HandbellsMalletBellSuspended { get; set; }
 
         [JsonProperty("handbellsMalletLft")]
         public BoundingBox HandbellsMalletLft { get; set; }
 
         [JsonProperty("handbellsMartellato")]
-        public Dictionary<string, double[]> HandbellsMartellato { get; set; }
+        public BoundingBox HandbellsMartellato { get; set; }
 
         [JsonProperty("handbellsMartellatoLift")]
         public BoundingBox HandbellsMartellatoLift { get; set; }
 
         [JsonProperty("handbellsMutedMartellato")]
-        public Dictionary<string, double[]> HandbellsMutedMartellato { get; set; }
+        public BoundingBox HandbellsMutedMartellato { get; set; }
 
         [JsonProperty("handbellsPluckLift")]
-        public Dictionary<string, double[]> HandbellsPluckLift { get; set; }
+        public BoundingBox HandbellsPluckLift { get; set; }
 
         [JsonProperty("handbellsSwing")]
-        public Dictionary<string, double[]> HandbellsSwing { get; set; }
+        public BoundingBox HandbellsSwing { get; set; }
 
         [JsonProperty("handbellsSwingDown")]
-        public Dictionary<string, double[]> HandbellsSwingDown { get; set; }
+        public BoundingBox HandbellsSwingDown { get; set; }
 
         [JsonProperty("handbellsSwingUp")]
-        public Dictionary<string, double[]> HandbellsSwingUp { get; set; }
+        public BoundingBox HandbellsSwingUp { get; set; }
 
         [JsonProperty("handbellsTablePairBells")]
         public BoundingBox HandbellsTablePairBells { get; set; }
@@ -3914,64 +3914,64 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox HarpMetalRod { get; set; }
 
         [JsonProperty("harpMetalRodAlt")]
-        public Dictionary<string, double[]> HarpMetalRodAlt { get; set; }
+        public BoundingBox HarpMetalRodAlt { get; set; }
 
         [JsonProperty("harpPedalCentered")]
-        public Dictionary<string, double[]> HarpPedalCentered { get; set; }
+        public BoundingBox HarpPedalCentered { get; set; }
 
         [JsonProperty("harpPedalDivider")]
         public Dictionary<string, long[]> HarpPedalDivider { get; set; }
 
         [JsonProperty("harpPedalLowered")]
-        public Dictionary<string, double[]> HarpPedalLowered { get; set; }
+        public BoundingBox HarpPedalLowered { get; set; }
 
         [JsonProperty("harpPedalRaised")]
-        public Dictionary<string, double[]> HarpPedalRaised { get; set; }
+        public BoundingBox HarpPedalRaised { get; set; }
 
         [JsonProperty("harpSalzedoAeolianAscending")]
         public BoundingBox HarpSalzedoAeolianAscending { get; set; }
 
         [JsonProperty("harpSalzedoAeolianDescending")]
-        public Dictionary<string, double[]> HarpSalzedoAeolianDescending { get; set; }
+        public BoundingBox HarpSalzedoAeolianDescending { get; set; }
 
         [JsonProperty("harpSalzedoDampAbove")]
-        public Dictionary<string, double[]> HarpSalzedoDampAbove { get; set; }
+        public BoundingBox HarpSalzedoDampAbove { get; set; }
 
         [JsonProperty("harpSalzedoDampBelow")]
-        public Dictionary<string, double[]> HarpSalzedoDampBelow { get; set; }
+        public BoundingBox HarpSalzedoDampBelow { get; set; }
 
         [JsonProperty("harpSalzedoDampBothHands")]
-        public Dictionary<string, double[]> HarpSalzedoDampBothHands { get; set; }
+        public BoundingBox HarpSalzedoDampBothHands { get; set; }
 
         [JsonProperty("harpSalzedoDampLowStrings")]
-        public Dictionary<string, double[]> HarpSalzedoDampLowStrings { get; set; }
+        public BoundingBox HarpSalzedoDampLowStrings { get; set; }
 
         [JsonProperty("harpSalzedoFluidicSoundsLeft")]
         public BoundingBox HarpSalzedoFluidicSoundsLeft { get; set; }
 
         [JsonProperty("harpSalzedoFluidicSoundsRight")]
-        public Dictionary<string, double[]> HarpSalzedoFluidicSoundsRight { get; set; }
+        public BoundingBox HarpSalzedoFluidicSoundsRight { get; set; }
 
         [JsonProperty("harpSalzedoIsolatedSounds")]
         public BoundingBox HarpSalzedoIsolatedSounds { get; set; }
 
         [JsonProperty("harpSalzedoMetallicSounds")]
-        public Dictionary<string, double[]> HarpSalzedoMetallicSounds { get; set; }
+        public BoundingBox HarpSalzedoMetallicSounds { get; set; }
 
         [JsonProperty("harpSalzedoMetallicSoundsOneString")]
-        public Dictionary<string, double[]> HarpSalzedoMetallicSoundsOneString { get; set; }
+        public BoundingBox HarpSalzedoMetallicSoundsOneString { get; set; }
 
         [JsonProperty("harpSalzedoMuffleTotally")]
         public BoundingBox HarpSalzedoMuffleTotally { get; set; }
 
         [JsonProperty("harpSalzedoOboicFlux")]
-        public Dictionary<string, double[]> HarpSalzedoOboicFlux { get; set; }
+        public BoundingBox HarpSalzedoOboicFlux { get; set; }
 
         [JsonProperty("harpSalzedoPlayUpperEnd")]
-        public Dictionary<string, double[]> HarpSalzedoPlayUpperEnd { get; set; }
+        public BoundingBox HarpSalzedoPlayUpperEnd { get; set; }
 
         [JsonProperty("harpSalzedoSlideWithSuppleness")]
-        public Dictionary<string, double[]> HarpSalzedoSlideWithSuppleness { get; set; }
+        public BoundingBox HarpSalzedoSlideWithSuppleness { get; set; }
 
         [JsonProperty("harpSalzedoSnareDrum")]
         public Dictionary<string, long[]> HarpSalzedoSnareDrum { get; set; }
@@ -3980,19 +3980,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox HarpSalzedoTamTamSounds { get; set; }
 
         [JsonProperty("harpSalzedoThunderEffect")]
-        public Dictionary<string, double[]> HarpSalzedoThunderEffect { get; set; }
+        public BoundingBox HarpSalzedoThunderEffect { get; set; }
 
         [JsonProperty("harpSalzedoTimpanicSounds")]
         public BoundingBox HarpSalzedoTimpanicSounds { get; set; }
 
         [JsonProperty("harpSalzedoWhistlingSounds")]
-        public Dictionary<string, double[]> HarpSalzedoWhistlingSounds { get; set; }
+        public BoundingBox HarpSalzedoWhistlingSounds { get; set; }
 
         [JsonProperty("harpStringNoiseStem")]
-        public Dictionary<string, double[]> HarpStringNoiseStem { get; set; }
+        public BoundingBox HarpStringNoiseStem { get; set; }
 
         [JsonProperty("harpTuningKey")]
-        public Dictionary<string, double[]> HarpTuningKey { get; set; }
+        public BoundingBox HarpTuningKey { get; set; }
 
         [JsonProperty("harpTuningKeyAlt")]
         public BoundingBox HarpTuningKeyAlt { get; set; }
@@ -4001,22 +4001,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox HarpTuningKeyGlissando { get; set; }
 
         [JsonProperty("harpTuningKeyHandle")]
-        public Dictionary<string, double[]> HarpTuningKeyHandle { get; set; }
+        public BoundingBox HarpTuningKeyHandle { get; set; }
 
         [JsonProperty("harpTuningKeyShank")]
         public BoundingBox HarpTuningKeyShank { get; set; }
 
         [JsonProperty("keyboardBebung2DotsAbove")]
-        public Dictionary<string, double[]> KeyboardBebung2DotsAbove { get; set; }
+        public BoundingBox KeyboardBebung2DotsAbove { get; set; }
 
         [JsonProperty("keyboardBebung2DotsBelow")]
-        public Dictionary<string, double[]> KeyboardBebung2DotsBelow { get; set; }
+        public BoundingBox KeyboardBebung2DotsBelow { get; set; }
 
         [JsonProperty("keyboardBebung3DotsAbove")]
-        public Dictionary<string, double[]> KeyboardBebung3DotsAbove { get; set; }
+        public BoundingBox KeyboardBebung3DotsAbove { get; set; }
 
         [JsonProperty("keyboardBebung3DotsBelow")]
-        public Dictionary<string, double[]> KeyboardBebung3DotsBelow { get; set; }
+        public BoundingBox KeyboardBebung3DotsBelow { get; set; }
 
         [JsonProperty("keyboardBebung4DotsAbove")]
         public BoundingBox KeyboardBebung4DotsAbove { get; set; }
@@ -4025,19 +4025,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox KeyboardBebung4DotsBelow { get; set; }
 
         [JsonProperty("keyboardLeftPedalPictogram")]
-        public Dictionary<string, double[]> KeyboardLeftPedalPictogram { get; set; }
+        public BoundingBox KeyboardLeftPedalPictogram { get; set; }
 
         [JsonProperty("keyboardMiddlePedalPictogram")]
-        public Dictionary<string, double[]> KeyboardMiddlePedalPictogram { get; set; }
+        public BoundingBox KeyboardMiddlePedalPictogram { get; set; }
 
         [JsonProperty("keyboardPedalD")]
-        public Dictionary<string, double[]> KeyboardPedalD { get; set; }
+        public BoundingBox KeyboardPedalD { get; set; }
 
         [JsonProperty("keyboardPedalDot")]
         public BoundingBox KeyboardPedalDot { get; set; }
 
         [JsonProperty("keyboardPedalE")]
-        public Dictionary<string, double[]> KeyboardPedalE { get; set; }
+        public BoundingBox KeyboardPedalE { get; set; }
 
         [JsonProperty("keyboardPedalHalf")]
         public BoundingBox KeyboardPedalHalf { get; set; }
@@ -4046,7 +4046,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox KeyboardPedalHalf2 { get; set; }
 
         [JsonProperty("keyboardPedalHalf3")]
-        public Dictionary<string, double[]> KeyboardPedalHalf3 { get; set; }
+        public BoundingBox KeyboardPedalHalf3 { get; set; }
 
         [JsonProperty("keyboardPedalHeel1")]
         public BoundingBox KeyboardPedalHeel1 { get; set; }
@@ -4070,25 +4070,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox KeyboardPedalHookStart { get; set; }
 
         [JsonProperty("keyboardPedalHyphen")]
-        public Dictionary<string, double[]> KeyboardPedalHyphen { get; set; }
+        public BoundingBox KeyboardPedalHyphen { get; set; }
 
         [JsonProperty("keyboardPedalP")]
-        public Dictionary<string, double[]> KeyboardPedalP { get; set; }
+        public BoundingBox KeyboardPedalP { get; set; }
 
         [JsonProperty("keyboardPedalPed")]
-        public Dictionary<string, double[]> KeyboardPedalPed { get; set; }
+        public BoundingBox KeyboardPedalPed { get; set; }
 
         [JsonProperty("keyboardPedalPedNoDot")]
-        public Dictionary<string, double[]> KeyboardPedalPedNoDot { get; set; }
+        public BoundingBox KeyboardPedalPedNoDot { get; set; }
 
         [JsonProperty("keyboardPedalS")]
-        public Dictionary<string, double[]> KeyboardPedalS { get; set; }
+        public BoundingBox KeyboardPedalS { get; set; }
 
         [JsonProperty("keyboardPedalSost")]
-        public Dictionary<string, double[]> KeyboardPedalSost { get; set; }
+        public BoundingBox KeyboardPedalSost { get; set; }
 
         [JsonProperty("keyboardPedalSostNoDot")]
-        public Dictionary<string, double[]> KeyboardPedalSostNoDot { get; set; }
+        public BoundingBox KeyboardPedalSostNoDot { get; set; }
 
         [JsonProperty("keyboardPedalToe1")]
         public BoundingBox KeyboardPedalToe1 { get; set; }
@@ -4106,7 +4106,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox KeyboardPedalUpNotch { get; set; }
 
         [JsonProperty("keyboardPedalUpSpecial")]
-        public Dictionary<string, double[]> KeyboardPedalUpSpecial { get; set; }
+        public BoundingBox KeyboardPedalUpSpecial { get; set; }
 
         [JsonProperty("keyboardPlayWithLH")]
         public BoundingBox KeyboardPlayWithLh { get; set; }
@@ -4121,61 +4121,61 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox KeyboardPlayWithRhEnd { get; set; }
 
         [JsonProperty("keyboardPluckInside")]
-        public Dictionary<string, double[]> KeyboardPluckInside { get; set; }
+        public BoundingBox KeyboardPluckInside { get; set; }
 
         [JsonProperty("keyboardRightPedalPictogram")]
-        public Dictionary<string, double[]> KeyboardRightPedalPictogram { get; set; }
+        public BoundingBox KeyboardRightPedalPictogram { get; set; }
 
         [JsonProperty("kievanAccidentalFlat")]
-        public Dictionary<string, double[]> KievanAccidentalFlat { get; set; }
+        public BoundingBox KievanAccidentalFlat { get; set; }
 
         [JsonProperty("kievanAccidentalSharp")]
-        public Dictionary<string, double[]> KievanAccidentalSharp { get; set; }
+        public BoundingBox KievanAccidentalSharp { get; set; }
 
         [JsonProperty("kievanAugmentationDot")]
-        public Dictionary<string, double[]> KievanAugmentationDot { get; set; }
+        public BoundingBox KievanAugmentationDot { get; set; }
 
         [JsonProperty("kievanCClef")]
-        public Dictionary<string, double[]> KievanCClef { get; set; }
+        public BoundingBox KievanCClef { get; set; }
 
         [JsonProperty("kievanEndingSymbol")]
-        public Dictionary<string, double[]> KievanEndingSymbol { get; set; }
+        public BoundingBox KievanEndingSymbol { get; set; }
 
         [JsonProperty("kievanNote8thStemDown")]
-        public Dictionary<string, double[]> KievanNote8ThStemDown { get; set; }
+        public BoundingBox KievanNote8ThStemDown { get; set; }
 
         [JsonProperty("kievanNote8thStemUp")]
-        public Dictionary<string, double[]> KievanNote8ThStemUp { get; set; }
+        public BoundingBox KievanNote8ThStemUp { get; set; }
 
         [JsonProperty("kievanNoteBeam")]
-        public Dictionary<string, double[]> KievanNoteBeam { get; set; }
+        public BoundingBox KievanNoteBeam { get; set; }
 
         [JsonProperty("kievanNoteHalfStaffLine")]
-        public Dictionary<string, double[]> KievanNoteHalfStaffLine { get; set; }
+        public BoundingBox KievanNoteHalfStaffLine { get; set; }
 
         [JsonProperty("kievanNoteHalfStaffSpace")]
-        public Dictionary<string, double[]> KievanNoteHalfStaffSpace { get; set; }
+        public BoundingBox KievanNoteHalfStaffSpace { get; set; }
 
         [JsonProperty("kievanNoteQuarterStemDown")]
-        public Dictionary<string, double[]> KievanNoteQuarterStemDown { get; set; }
+        public BoundingBox KievanNoteQuarterStemDown { get; set; }
 
         [JsonProperty("kievanNoteQuarterStemUp")]
-        public Dictionary<string, double[]> KievanNoteQuarterStemUp { get; set; }
+        public BoundingBox KievanNoteQuarterStemUp { get; set; }
 
         [JsonProperty("kievanNoteReciting")]
-        public Dictionary<string, double[]> KievanNoteReciting { get; set; }
+        public BoundingBox KievanNoteReciting { get; set; }
 
         [JsonProperty("kievanNoteWhole")]
-        public Dictionary<string, double[]> KievanNoteWhole { get; set; }
+        public BoundingBox KievanNoteWhole { get; set; }
 
         [JsonProperty("kievanNoteWholeFinal")]
-        public Dictionary<string, double[]> KievanNoteWholeFinal { get; set; }
+        public BoundingBox KievanNoteWholeFinal { get; set; }
 
         [JsonProperty("kodalyHandDo")]
         public BoundingBox KodalyHandDo { get; set; }
 
         [JsonProperty("kodalyHandFa")]
-        public Dictionary<string, double[]> KodalyHandFa { get; set; }
+        public BoundingBox KodalyHandFa { get; set; }
 
         [JsonProperty("kodalyHandLa")]
         public BoundingBox KodalyHandLa { get; set; }
@@ -4184,25 +4184,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox KodalyHandMi { get; set; }
 
         [JsonProperty("kodalyHandRe")]
-        public Dictionary<string, double[]> KodalyHandRe { get; set; }
+        public BoundingBox KodalyHandRe { get; set; }
 
         [JsonProperty("kodalyHandSo")]
-        public Dictionary<string, double[]> KodalyHandSo { get; set; }
+        public BoundingBox KodalyHandSo { get; set; }
 
         [JsonProperty("kodalyHandTi")]
-        public Dictionary<string, double[]> KodalyHandTi { get; set; }
+        public BoundingBox KodalyHandTi { get; set; }
 
         [JsonProperty("leftRepeatSmall")]
-        public Dictionary<string, double[]> LeftRepeatSmall { get; set; }
+        public BoundingBox LeftRepeatSmall { get; set; }
 
         [JsonProperty("legerLine")]
-        public Dictionary<string, double[]> LegerLine { get; set; }
+        public BoundingBox LegerLine { get; set; }
 
         [JsonProperty("legerLineNarrow")]
-        public Dictionary<string, double[]> LegerLineNarrow { get; set; }
+        public BoundingBox LegerLineNarrow { get; set; }
 
         [JsonProperty("legerLineWide")]
-        public Dictionary<string, double[]> LegerLineWide { get; set; }
+        public BoundingBox LegerLineWide { get; set; }
 
         [JsonProperty("luteBarlineEndRepeat")]
         public BoundingBox LuteBarlineEndRepeat { get; set; }
@@ -4217,7 +4217,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteDuration16Th { get; set; }
 
         [JsonProperty("luteDuration32nd")]
-        public Dictionary<string, double[]> LuteDuration32Nd { get; set; }
+        public BoundingBox LuteDuration32Nd { get; set; }
 
         [JsonProperty("luteDuration8th")]
         public BoundingBox LuteDuration8Th { get; set; }
@@ -4235,31 +4235,31 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteDurationWhole { get; set; }
 
         [JsonProperty("luteFingeringRHFirst")]
-        public Dictionary<string, double[]> LuteFingeringRhFirst { get; set; }
+        public BoundingBox LuteFingeringRhFirst { get; set; }
 
         [JsonProperty("luteFingeringRHSecond")]
-        public Dictionary<string, double[]> LuteFingeringRhSecond { get; set; }
+        public BoundingBox LuteFingeringRhSecond { get; set; }
 
         [JsonProperty("luteFingeringRHThird")]
-        public Dictionary<string, double[]> LuteFingeringRhThird { get; set; }
+        public BoundingBox LuteFingeringRhThird { get; set; }
 
         [JsonProperty("luteFingeringRHThirdAlt")]
-        public Dictionary<string, double[]> LuteFingeringRhThirdAlt { get; set; }
+        public BoundingBox LuteFingeringRhThirdAlt { get; set; }
 
         [JsonProperty("luteFingeringRHThumb")]
         public BoundingBox LuteFingeringRhThumb { get; set; }
 
         [JsonProperty("luteFrench10thCourse")]
-        public Dictionary<string, double[]> LuteFrench10ThCourse { get; set; }
+        public BoundingBox LuteFrench10ThCourse { get; set; }
 
         [JsonProperty("luteFrench10thCourseRight")]
-        public Dictionary<string, double[]> LuteFrench10ThCourseRight { get; set; }
+        public BoundingBox LuteFrench10ThCourseRight { get; set; }
 
         [JsonProperty("luteFrench10thCourseStrikethru")]
-        public Dictionary<string, double[]> LuteFrench10ThCourseStrikethru { get; set; }
+        public BoundingBox LuteFrench10ThCourseStrikethru { get; set; }
 
         [JsonProperty("luteFrench10thCourseUnderline")]
-        public Dictionary<string, double[]> LuteFrench10ThCourseUnderline { get; set; }
+        public BoundingBox LuteFrench10ThCourseUnderline { get; set; }
 
         [JsonProperty("luteFrench7thCourse")]
         public BoundingBox LuteFrench7ThCourse { get; set; }
@@ -4271,31 +4271,31 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteFrench7ThCourseStrikethru { get; set; }
 
         [JsonProperty("luteFrench7thCourseUnderline")]
-        public Dictionary<string, double[]> LuteFrench7ThCourseUnderline { get; set; }
+        public BoundingBox LuteFrench7ThCourseUnderline { get; set; }
 
         [JsonProperty("luteFrench8thCourse")]
-        public Dictionary<string, double[]> LuteFrench8ThCourse { get; set; }
+        public BoundingBox LuteFrench8ThCourse { get; set; }
 
         [JsonProperty("luteFrench8thCourseRight")]
-        public Dictionary<string, double[]> LuteFrench8ThCourseRight { get; set; }
+        public BoundingBox LuteFrench8ThCourseRight { get; set; }
 
         [JsonProperty("luteFrench8thCourseStrikethru")]
-        public Dictionary<string, double[]> LuteFrench8ThCourseStrikethru { get; set; }
+        public BoundingBox LuteFrench8ThCourseStrikethru { get; set; }
 
         [JsonProperty("luteFrench8thCourseUnderline")]
-        public Dictionary<string, double[]> LuteFrench8ThCourseUnderline { get; set; }
+        public BoundingBox LuteFrench8ThCourseUnderline { get; set; }
 
         [JsonProperty("luteFrench9thCourse")]
-        public Dictionary<string, double[]> LuteFrench9ThCourse { get; set; }
+        public BoundingBox LuteFrench9ThCourse { get; set; }
 
         [JsonProperty("luteFrench9thCourseRight")]
-        public Dictionary<string, double[]> LuteFrench9ThCourseRight { get; set; }
+        public BoundingBox LuteFrench9ThCourseRight { get; set; }
 
         [JsonProperty("luteFrench9thCourseStrikethru")]
-        public Dictionary<string, double[]> LuteFrench9ThCourseStrikethru { get; set; }
+        public BoundingBox LuteFrench9ThCourseStrikethru { get; set; }
 
         [JsonProperty("luteFrench9thCourseUnderline")]
-        public Dictionary<string, double[]> LuteFrench9ThCourseUnderline { get; set; }
+        public BoundingBox LuteFrench9ThCourseUnderline { get; set; }
 
         [JsonProperty("luteFrenchAppoggiaturaAbove")]
         public BoundingBox LuteFrenchAppoggiaturaAbove { get; set; }
@@ -4310,7 +4310,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteFrenchFretB { get; set; }
 
         [JsonProperty("luteFrenchFretC")]
-        public Dictionary<string, double[]> LuteFrenchFretC { get; set; }
+        public BoundingBox LuteFrenchFretC { get; set; }
 
         [JsonProperty("luteFrenchFretCAlt")]
         public BoundingBox LuteFrenchFretCAlt { get; set; }
@@ -4331,10 +4331,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteFrenchFretH { get; set; }
 
         [JsonProperty("luteFrenchFretI")]
-        public Dictionary<string, double[]> LuteFrenchFretI { get; set; }
+        public BoundingBox LuteFrenchFretI { get; set; }
 
         [JsonProperty("luteFrenchFretK")]
-        public Dictionary<string, double[]> LuteFrenchFretK { get; set; }
+        public BoundingBox LuteFrenchFretK { get; set; }
 
         [JsonProperty("luteFrenchFretL")]
         public BoundingBox LuteFrenchFretL { get; set; }
@@ -4355,148 +4355,148 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteFrenchMordentUpper { get; set; }
 
         [JsonProperty("luteGermanALower")]
-        public Dictionary<string, double[]> LuteGermanALower { get; set; }
+        public BoundingBox LuteGermanALower { get; set; }
 
         [JsonProperty("luteGermanAUpper")]
-        public Dictionary<string, double[]> LuteGermanAUpper { get; set; }
+        public BoundingBox LuteGermanAUpper { get; set; }
 
         [JsonProperty("luteGermanBLower")]
-        public Dictionary<string, double[]> LuteGermanBLower { get; set; }
+        public BoundingBox LuteGermanBLower { get; set; }
 
         [JsonProperty("luteGermanBUpper")]
-        public Dictionary<string, double[]> LuteGermanBUpper { get; set; }
+        public BoundingBox LuteGermanBUpper { get; set; }
 
         [JsonProperty("luteGermanCLower")]
-        public Dictionary<string, double[]> LuteGermanCLower { get; set; }
+        public BoundingBox LuteGermanCLower { get; set; }
 
         [JsonProperty("luteGermanCUpper")]
-        public Dictionary<string, double[]> LuteGermanCUpper { get; set; }
+        public BoundingBox LuteGermanCUpper { get; set; }
 
         [JsonProperty("luteGermanDLower")]
-        public Dictionary<string, double[]> LuteGermanDLower { get; set; }
+        public BoundingBox LuteGermanDLower { get; set; }
 
         [JsonProperty("luteGermanDUpper")]
-        public Dictionary<string, double[]> LuteGermanDUpper { get; set; }
+        public BoundingBox LuteGermanDUpper { get; set; }
 
         [JsonProperty("luteGermanELower")]
-        public Dictionary<string, double[]> LuteGermanELower { get; set; }
+        public BoundingBox LuteGermanELower { get; set; }
 
         [JsonProperty("luteGermanEUpper")]
-        public Dictionary<string, double[]> LuteGermanEUpper { get; set; }
+        public BoundingBox LuteGermanEUpper { get; set; }
 
         [JsonProperty("luteGermanFLower")]
-        public Dictionary<string, double[]> LuteGermanFLower { get; set; }
+        public BoundingBox LuteGermanFLower { get; set; }
 
         [JsonProperty("luteGermanFUpper")]
-        public Dictionary<string, double[]> LuteGermanFUpper { get; set; }
+        public BoundingBox LuteGermanFUpper { get; set; }
 
         [JsonProperty("luteGermanGLower")]
-        public Dictionary<string, double[]> LuteGermanGLower { get; set; }
+        public BoundingBox LuteGermanGLower { get; set; }
 
         [JsonProperty("luteGermanGUpper")]
-        public Dictionary<string, double[]> LuteGermanGUpper { get; set; }
+        public BoundingBox LuteGermanGUpper { get; set; }
 
         [JsonProperty("luteGermanHLower")]
-        public Dictionary<string, double[]> LuteGermanHLower { get; set; }
+        public BoundingBox LuteGermanHLower { get; set; }
 
         [JsonProperty("luteGermanHUpper")]
-        public Dictionary<string, double[]> LuteGermanHUpper { get; set; }
+        public BoundingBox LuteGermanHUpper { get; set; }
 
         [JsonProperty("luteGermanILower")]
-        public Dictionary<string, double[]> LuteGermanILower { get; set; }
+        public BoundingBox LuteGermanILower { get; set; }
 
         [JsonProperty("luteGermanIUpper")]
-        public Dictionary<string, double[]> LuteGermanIUpper { get; set; }
+        public BoundingBox LuteGermanIUpper { get; set; }
 
         [JsonProperty("luteGermanKLower")]
-        public Dictionary<string, double[]> LuteGermanKLower { get; set; }
+        public BoundingBox LuteGermanKLower { get; set; }
 
         [JsonProperty("luteGermanKUpper")]
-        public Dictionary<string, double[]> LuteGermanKUpper { get; set; }
+        public BoundingBox LuteGermanKUpper { get; set; }
 
         [JsonProperty("luteGermanLLower")]
-        public Dictionary<string, double[]> LuteGermanLLower { get; set; }
+        public BoundingBox LuteGermanLLower { get; set; }
 
         [JsonProperty("luteGermanLUpper")]
-        public Dictionary<string, double[]> LuteGermanLUpper { get; set; }
+        public BoundingBox LuteGermanLUpper { get; set; }
 
         [JsonProperty("luteGermanMLower")]
-        public Dictionary<string, double[]> LuteGermanMLower { get; set; }
+        public BoundingBox LuteGermanMLower { get; set; }
 
         [JsonProperty("luteGermanMUpper")]
-        public Dictionary<string, double[]> LuteGermanMUpper { get; set; }
+        public BoundingBox LuteGermanMUpper { get; set; }
 
         [JsonProperty("luteGermanNLower")]
-        public Dictionary<string, double[]> LuteGermanNLower { get; set; }
+        public BoundingBox LuteGermanNLower { get; set; }
 
         [JsonProperty("luteGermanNUpper")]
-        public Dictionary<string, double[]> LuteGermanNUpper { get; set; }
+        public BoundingBox LuteGermanNUpper { get; set; }
 
         [JsonProperty("luteGermanOLower")]
-        public Dictionary<string, double[]> LuteGermanOLower { get; set; }
+        public BoundingBox LuteGermanOLower { get; set; }
 
         [JsonProperty("luteGermanPLower")]
-        public Dictionary<string, double[]> LuteGermanPLower { get; set; }
+        public BoundingBox LuteGermanPLower { get; set; }
 
         [JsonProperty("luteGermanQLower")]
-        public Dictionary<string, double[]> LuteGermanQLower { get; set; }
+        public BoundingBox LuteGermanQLower { get; set; }
 
         [JsonProperty("luteGermanRLower")]
-        public Dictionary<string, double[]> LuteGermanRLower { get; set; }
+        public BoundingBox LuteGermanRLower { get; set; }
 
         [JsonProperty("luteGermanSLower")]
-        public Dictionary<string, double[]> LuteGermanSLower { get; set; }
+        public BoundingBox LuteGermanSLower { get; set; }
 
         [JsonProperty("luteGermanTLower")]
-        public Dictionary<string, double[]> LuteGermanTLower { get; set; }
+        public BoundingBox LuteGermanTLower { get; set; }
 
         [JsonProperty("luteGermanVLower")]
-        public Dictionary<string, double[]> LuteGermanVLower { get; set; }
+        public BoundingBox LuteGermanVLower { get; set; }
 
         [JsonProperty("luteGermanXLower")]
-        public Dictionary<string, double[]> LuteGermanXLower { get; set; }
+        public BoundingBox LuteGermanXLower { get; set; }
 
         [JsonProperty("luteGermanYLower")]
-        public Dictionary<string, double[]> LuteGermanYLower { get; set; }
+        public BoundingBox LuteGermanYLower { get; set; }
 
         [JsonProperty("luteGermanZLower")]
-        public Dictionary<string, double[]> LuteGermanZLower { get; set; }
+        public BoundingBox LuteGermanZLower { get; set; }
 
         [JsonProperty("luteItalianClefCSolFaUt")]
-        public Dictionary<string, double[]> LuteItalianClefCSolFaUt { get; set; }
+        public BoundingBox LuteItalianClefCSolFaUt { get; set; }
 
         [JsonProperty("luteItalianClefFFaUt")]
-        public Dictionary<string, double[]> LuteItalianClefFFaUt { get; set; }
+        public BoundingBox LuteItalianClefFFaUt { get; set; }
 
         [JsonProperty("luteItalianFret0")]
-        public Dictionary<string, double[]> LuteItalianFret0 { get; set; }
+        public BoundingBox LuteItalianFret0 { get; set; }
 
         [JsonProperty("luteItalianFret1")]
-        public Dictionary<string, double[]> LuteItalianFret1 { get; set; }
+        public BoundingBox LuteItalianFret1 { get; set; }
 
         [JsonProperty("luteItalianFret2")]
-        public Dictionary<string, double[]> LuteItalianFret2 { get; set; }
+        public BoundingBox LuteItalianFret2 { get; set; }
 
         [JsonProperty("luteItalianFret3")]
-        public Dictionary<string, double[]> LuteItalianFret3 { get; set; }
+        public BoundingBox LuteItalianFret3 { get; set; }
 
         [JsonProperty("luteItalianFret4")]
-        public Dictionary<string, double[]> LuteItalianFret4 { get; set; }
+        public BoundingBox LuteItalianFret4 { get; set; }
 
         [JsonProperty("luteItalianFret5")]
-        public Dictionary<string, double[]> LuteItalianFret5 { get; set; }
+        public BoundingBox LuteItalianFret5 { get; set; }
 
         [JsonProperty("luteItalianFret6")]
-        public Dictionary<string, double[]> LuteItalianFret6 { get; set; }
+        public BoundingBox LuteItalianFret6 { get; set; }
 
         [JsonProperty("luteItalianFret7")]
-        public Dictionary<string, double[]> LuteItalianFret7 { get; set; }
+        public BoundingBox LuteItalianFret7 { get; set; }
 
         [JsonProperty("luteItalianFret8")]
-        public Dictionary<string, double[]> LuteItalianFret8 { get; set; }
+        public BoundingBox LuteItalianFret8 { get; set; }
 
         [JsonProperty("luteItalianFret9")]
-        public Dictionary<string, double[]> LuteItalianFret9 { get; set; }
+        public BoundingBox LuteItalianFret9 { get; set; }
 
         [JsonProperty("luteItalianHoldFinger")]
         public BoundingBox LuteItalianHoldFinger { get; set; }
@@ -4511,10 +4511,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteItalianTempoFast { get; set; }
 
         [JsonProperty("luteItalianTempoNeitherFastNorSlow")]
-        public Dictionary<string, double[]> LuteItalianTempoNeitherFastNorSlow { get; set; }
+        public BoundingBox LuteItalianTempoNeitherFastNorSlow { get; set; }
 
         [JsonProperty("luteItalianTempoSlow")]
-        public Dictionary<string, double[]> LuteItalianTempoSlow { get; set; }
+        public BoundingBox LuteItalianTempoSlow { get; set; }
 
         [JsonProperty("luteItalianTempoSomewhatFast")]
         public BoundingBox LuteItalianTempoSomewhatFast { get; set; }
@@ -4523,7 +4523,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteItalianTempoVerySlow { get; set; }
 
         [JsonProperty("luteItalianTimeTriple")]
-        public Dictionary<string, double[]> LuteItalianTimeTriple { get; set; }
+        public BoundingBox LuteItalianTimeTriple { get; set; }
 
         [JsonProperty("luteItalianTremolo")]
         public BoundingBox LuteItalianTremolo { get; set; }
@@ -4532,142 +4532,142 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox LuteItalianVibrato { get; set; }
 
         [JsonProperty("luteStaff6Lines")]
-        public Dictionary<string, double[]> LuteStaff6Lines { get; set; }
+        public BoundingBox LuteStaff6Lines { get; set; }
 
         [JsonProperty("luteStaff6LinesNarrow")]
-        public Dictionary<string, double[]> LuteStaff6LinesNarrow { get; set; }
+        public BoundingBox LuteStaff6LinesNarrow { get; set; }
 
         [JsonProperty("luteStaff6LinesWide")]
-        public Dictionary<string, double[]> LuteStaff6LinesWide { get; set; }
+        public BoundingBox LuteStaff6LinesWide { get; set; }
 
         [JsonProperty("lyricsElision")]
-        public Dictionary<string, double[]> LyricsElision { get; set; }
+        public BoundingBox LyricsElision { get; set; }
 
         [JsonProperty("lyricsElisionNarrow")]
-        public Dictionary<string, double[]> LyricsElisionNarrow { get; set; }
+        public BoundingBox LyricsElisionNarrow { get; set; }
 
         [JsonProperty("lyricsElisionWide")]
-        public Dictionary<string, double[]> LyricsElisionWide { get; set; }
+        public BoundingBox LyricsElisionWide { get; set; }
 
         [JsonProperty("lyricsHyphenBaseline")]
-        public Dictionary<string, double[]> LyricsHyphenBaseline { get; set; }
+        public BoundingBox LyricsHyphenBaseline { get; set; }
 
         [JsonProperty("lyricsHyphenBaselineNonBreaking")]
-        public Dictionary<string, double[]> LyricsHyphenBaselineNonBreaking { get; set; }
+        public BoundingBox LyricsHyphenBaselineNonBreaking { get; set; }
 
         [JsonProperty("medRenFlatHardB")]
-        public Dictionary<string, double[]> MedRenFlatHardB { get; set; }
+        public BoundingBox MedRenFlatHardB { get; set; }
 
         [JsonProperty("medRenFlatSoftB")]
-        public Dictionary<string, double[]> MedRenFlatSoftB { get; set; }
+        public BoundingBox MedRenFlatSoftB { get; set; }
 
         [JsonProperty("medRenFlatSoftBHufnagel")]
-        public Dictionary<string, double[]> MedRenFlatSoftBHufnagel { get; set; }
+        public BoundingBox MedRenFlatSoftBHufnagel { get; set; }
 
         [JsonProperty("medRenFlatSoftBOld")]
-        public Dictionary<string, double[]> MedRenFlatSoftBOld { get; set; }
+        public BoundingBox MedRenFlatSoftBOld { get; set; }
 
         [JsonProperty("medRenFlatWithDot")]
-        public Dictionary<string, double[]> MedRenFlatWithDot { get; set; }
+        public BoundingBox MedRenFlatWithDot { get; set; }
 
         [JsonProperty("medRenGClefCMN")]
         public BoundingBox MedRenGClefCmn { get; set; }
 
         [JsonProperty("medRenLiquescenceCMN")]
-        public Dictionary<string, double[]> MedRenLiquescenceCmn { get; set; }
+        public BoundingBox MedRenLiquescenceCmn { get; set; }
 
         [JsonProperty("medRenLiquescentAscCMN")]
-        public Dictionary<string, double[]> MedRenLiquescentAscCmn { get; set; }
+        public BoundingBox MedRenLiquescentAscCmn { get; set; }
 
         [JsonProperty("medRenLiquescentDescCMN")]
-        public Dictionary<string, double[]> MedRenLiquescentDescCmn { get; set; }
+        public BoundingBox MedRenLiquescentDescCmn { get; set; }
 
         [JsonProperty("medRenNatural")]
-        public Dictionary<string, double[]> MedRenNatural { get; set; }
+        public BoundingBox MedRenNatural { get; set; }
 
         [JsonProperty("medRenNaturalWithCross")]
-        public Dictionary<string, double[]> MedRenNaturalWithCross { get; set; }
+        public BoundingBox MedRenNaturalWithCross { get; set; }
 
         [JsonProperty("medRenOriscusCMN")]
-        public Dictionary<string, double[]> MedRenOriscusCmn { get; set; }
+        public BoundingBox MedRenOriscusCmn { get; set; }
 
         [JsonProperty("medRenPlicaCMN")]
-        public Dictionary<string, double[]> MedRenPlicaCmn { get; set; }
+        public BoundingBox MedRenPlicaCmn { get; set; }
 
         [JsonProperty("medRenPunctumCMN")]
-        public Dictionary<string, double[]> MedRenPunctumCmn { get; set; }
+        public BoundingBox MedRenPunctumCmn { get; set; }
 
         [JsonProperty("medRenQuilismaCMN")]
-        public Dictionary<string, double[]> MedRenQuilismaCmn { get; set; }
+        public BoundingBox MedRenQuilismaCmn { get; set; }
 
         [JsonProperty("medRenSharpCroix")]
-        public Dictionary<string, double[]> MedRenSharpCroix { get; set; }
+        public BoundingBox MedRenSharpCroix { get; set; }
 
         [JsonProperty("medRenStrophicusCMN")]
-        public Dictionary<string, double[]> MedRenStrophicusCmn { get; set; }
+        public BoundingBox MedRenStrophicusCmn { get; set; }
 
         [JsonProperty("mensuralAlterationSign")]
-        public Dictionary<string, double[]> MensuralAlterationSign { get; set; }
+        public BoundingBox MensuralAlterationSign { get; set; }
 
         [JsonProperty("mensuralBlackBrevis")]
-        public Dictionary<string, double[]> MensuralBlackBrevis { get; set; }
+        public BoundingBox MensuralBlackBrevis { get; set; }
 
         [JsonProperty("mensuralBlackBrevisVoid")]
-        public Dictionary<string, double[]> MensuralBlackBrevisVoid { get; set; }
+        public BoundingBox MensuralBlackBrevisVoid { get; set; }
 
         [JsonProperty("mensuralBlackDragma")]
-        public Dictionary<string, double[]> MensuralBlackDragma { get; set; }
+        public BoundingBox MensuralBlackDragma { get; set; }
 
         [JsonProperty("mensuralBlackLonga")]
-        public Dictionary<string, double[]> MensuralBlackLonga { get; set; }
+        public BoundingBox MensuralBlackLonga { get; set; }
 
         [JsonProperty("mensuralBlackMaxima")]
-        public Dictionary<string, double[]> MensuralBlackMaxima { get; set; }
+        public BoundingBox MensuralBlackMaxima { get; set; }
 
         [JsonProperty("mensuralBlackMinima")]
-        public Dictionary<string, double[]> MensuralBlackMinima { get; set; }
+        public BoundingBox MensuralBlackMinima { get; set; }
 
         [JsonProperty("mensuralBlackMinimaVoid")]
-        public Dictionary<string, double[]> MensuralBlackMinimaVoid { get; set; }
+        public BoundingBox MensuralBlackMinimaVoid { get; set; }
 
         [JsonProperty("mensuralBlackSemibrevis")]
-        public Dictionary<string, double[]> MensuralBlackSemibrevis { get; set; }
+        public BoundingBox MensuralBlackSemibrevis { get; set; }
 
         [JsonProperty("mensuralBlackSemibrevisCaudata")]
-        public Dictionary<string, double[]> MensuralBlackSemibrevisCaudata { get; set; }
+        public BoundingBox MensuralBlackSemibrevisCaudata { get; set; }
 
         [JsonProperty("mensuralBlackSemibrevisOblique")]
-        public Dictionary<string, double[]> MensuralBlackSemibrevisOblique { get; set; }
+        public BoundingBox MensuralBlackSemibrevisOblique { get; set; }
 
         [JsonProperty("mensuralBlackSemibrevisVoid")]
-        public Dictionary<string, double[]> MensuralBlackSemibrevisVoid { get; set; }
+        public BoundingBox MensuralBlackSemibrevisVoid { get; set; }
 
         [JsonProperty("mensuralBlackSemiminima")]
-        public Dictionary<string, double[]> MensuralBlackSemiminima { get; set; }
+        public BoundingBox MensuralBlackSemiminima { get; set; }
 
         [JsonProperty("mensuralCclef")]
         public BoundingBox MensuralCclef { get; set; }
 
         [JsonProperty("mensuralCclefBlack")]
-        public Dictionary<string, double[]> MensuralCclefBlack { get; set; }
+        public BoundingBox MensuralCclefBlack { get; set; }
 
         [JsonProperty("mensuralCclefPetrucciPosHigh")]
-        public Dictionary<string, double[]> MensuralCclefPetrucciPosHigh { get; set; }
+        public BoundingBox MensuralCclefPetrucciPosHigh { get; set; }
 
         [JsonProperty("mensuralCclefPetrucciPosHighest")]
-        public Dictionary<string, double[]> MensuralCclefPetrucciPosHighest { get; set; }
+        public BoundingBox MensuralCclefPetrucciPosHighest { get; set; }
 
         [JsonProperty("mensuralCclefPetrucciPosLow")]
-        public Dictionary<string, double[]> MensuralCclefPetrucciPosLow { get; set; }
+        public BoundingBox MensuralCclefPetrucciPosLow { get; set; }
 
         [JsonProperty("mensuralCclefPetrucciPosLowest")]
-        public Dictionary<string, double[]> MensuralCclefPetrucciPosLowest { get; set; }
+        public BoundingBox MensuralCclefPetrucciPosLowest { get; set; }
 
         [JsonProperty("mensuralCclefPetrucciPosMiddle")]
-        public Dictionary<string, double[]> MensuralCclefPetrucciPosMiddle { get; set; }
+        public BoundingBox MensuralCclefPetrucciPosMiddle { get; set; }
 
         [JsonProperty("mensuralCclefVoid")]
-        public Dictionary<string, double[]> MensuralCclefVoid { get; set; }
+        public BoundingBox MensuralCclefVoid { get; set; }
 
         [JsonProperty("mensuralColorationEndRound")]
         public BoundingBox MensuralColorationEndRound { get; set; }
@@ -4682,34 +4682,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox MensuralColorationStartSquare { get; set; }
 
         [JsonProperty("mensuralCombStemDiagonal")]
-        public Dictionary<string, double[]> MensuralCombStemDiagonal { get; set; }
+        public BoundingBox MensuralCombStemDiagonal { get; set; }
 
         [JsonProperty("mensuralCombStemDown")]
-        public Dictionary<string, double[]> MensuralCombStemDown { get; set; }
+        public BoundingBox MensuralCombStemDown { get; set; }
 
         [JsonProperty("mensuralCombStemDownFlagExtended")]
-        public Dictionary<string, double[]> MensuralCombStemDownFlagExtended { get; set; }
+        public BoundingBox MensuralCombStemDownFlagExtended { get; set; }
 
         [JsonProperty("mensuralCombStemDownFlagFlared")]
-        public Dictionary<string, double[]> MensuralCombStemDownFlagFlared { get; set; }
+        public BoundingBox MensuralCombStemDownFlagFlared { get; set; }
 
         [JsonProperty("mensuralCombStemDownFlagFusa")]
-        public Dictionary<string, double[]> MensuralCombStemDownFlagFusa { get; set; }
+        public BoundingBox MensuralCombStemDownFlagFusa { get; set; }
 
         [JsonProperty("mensuralCombStemDownFlagLeft")]
-        public Dictionary<string, double[]> MensuralCombStemDownFlagLeft { get; set; }
+        public BoundingBox MensuralCombStemDownFlagLeft { get; set; }
 
         [JsonProperty("mensuralCombStemDownFlagRight")]
-        public Dictionary<string, double[]> MensuralCombStemDownFlagRight { get; set; }
+        public BoundingBox MensuralCombStemDownFlagRight { get; set; }
 
         [JsonProperty("mensuralCombStemDownFlagSemiminima")]
-        public Dictionary<string, double[]> MensuralCombStemDownFlagSemiminima { get; set; }
+        public BoundingBox MensuralCombStemDownFlagSemiminima { get; set; }
 
         [JsonProperty("mensuralCombStemUp")]
         public BoundingBox MensuralCombStemUp { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagExtended")]
-        public Dictionary<string, double[]> MensuralCombStemUpFlagExtended { get; set; }
+        public BoundingBox MensuralCombStemUpFlagExtended { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagFlared")]
         public BoundingBox MensuralCombStemUpFlagFlared { get; set; }
@@ -4718,7 +4718,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox MensuralCombStemUpFlagFusa { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagLeft")]
-        public Dictionary<string, double[]> MensuralCombStemUpFlagLeft { get; set; }
+        public BoundingBox MensuralCombStemUpFlagLeft { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagRight")]
         public BoundingBox MensuralCombStemUpFlagRight { get; set; }
@@ -4730,400 +4730,400 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox MensuralCustosCheckmark { get; set; }
 
         [JsonProperty("mensuralCustosDown")]
-        public Dictionary<string, double[]> MensuralCustosDown { get; set; }
+        public BoundingBox MensuralCustosDown { get; set; }
 
         [JsonProperty("mensuralCustosTurn")]
         public BoundingBox MensuralCustosTurn { get; set; }
 
         [JsonProperty("mensuralCustosUp")]
-        public Dictionary<string, double[]> MensuralCustosUp { get; set; }
+        public BoundingBox MensuralCustosUp { get; set; }
 
         [JsonProperty("mensuralFclef")]
-        public Dictionary<string, double[]> MensuralFclef { get; set; }
+        public BoundingBox MensuralFclef { get; set; }
 
         [JsonProperty("mensuralFclefPetrucci")]
-        public Dictionary<string, double[]> MensuralFclefPetrucci { get; set; }
+        public BoundingBox MensuralFclefPetrucci { get; set; }
 
         [JsonProperty("mensuralFusaBlackStemDown")]
-        public Dictionary<string, double[]> MensuralFusaBlackStemDown { get; set; }
+        public BoundingBox MensuralFusaBlackStemDown { get; set; }
 
         [JsonProperty("mensuralFusaBlackStemUp")]
-        public Dictionary<string, double[]> MensuralFusaBlackStemUp { get; set; }
+        public BoundingBox MensuralFusaBlackStemUp { get; set; }
 
         [JsonProperty("mensuralFusaBlackVoidStemDown")]
-        public Dictionary<string, double[]> MensuralFusaBlackVoidStemDown { get; set; }
+        public BoundingBox MensuralFusaBlackVoidStemDown { get; set; }
 
         [JsonProperty("mensuralFusaBlackVoidStemUp")]
-        public Dictionary<string, double[]> MensuralFusaBlackVoidStemUp { get; set; }
+        public BoundingBox MensuralFusaBlackVoidStemUp { get; set; }
 
         [JsonProperty("mensuralFusaVoidStemDown")]
-        public Dictionary<string, double[]> MensuralFusaVoidStemDown { get; set; }
+        public BoundingBox MensuralFusaVoidStemDown { get; set; }
 
         [JsonProperty("mensuralFusaVoidStemUp")]
-        public Dictionary<string, double[]> MensuralFusaVoidStemUp { get; set; }
+        public BoundingBox MensuralFusaVoidStemUp { get; set; }
 
         [JsonProperty("mensuralGclef")]
-        public Dictionary<string, double[]> MensuralGclef { get; set; }
+        public BoundingBox MensuralGclef { get; set; }
 
         [JsonProperty("mensuralGclefPetrucci")]
-        public Dictionary<string, double[]> MensuralGclefPetrucci { get; set; }
+        public BoundingBox MensuralGclefPetrucci { get; set; }
 
         [JsonProperty("mensuralLongaBlackStemDownLeft")]
-        public Dictionary<string, double[]> MensuralLongaBlackStemDownLeft { get; set; }
+        public BoundingBox MensuralLongaBlackStemDownLeft { get; set; }
 
         [JsonProperty("mensuralLongaBlackStemDownRight")]
-        public Dictionary<string, double[]> MensuralLongaBlackStemDownRight { get; set; }
+        public BoundingBox MensuralLongaBlackStemDownRight { get; set; }
 
         [JsonProperty("mensuralLongaBlackStemUpLeft")]
-        public Dictionary<string, double[]> MensuralLongaBlackStemUpLeft { get; set; }
+        public BoundingBox MensuralLongaBlackStemUpLeft { get; set; }
 
         [JsonProperty("mensuralLongaBlackStemUpRight")]
-        public Dictionary<string, double[]> MensuralLongaBlackStemUpRight { get; set; }
+        public BoundingBox MensuralLongaBlackStemUpRight { get; set; }
 
         [JsonProperty("mensuralLongaBlackVoidStemDownLeft")]
-        public Dictionary<string, double[]> MensuralLongaBlackVoidStemDownLeft { get; set; }
+        public BoundingBox MensuralLongaBlackVoidStemDownLeft { get; set; }
 
         [JsonProperty("mensuralLongaBlackVoidStemDownRight")]
-        public Dictionary<string, double[]> MensuralLongaBlackVoidStemDownRight { get; set; }
+        public BoundingBox MensuralLongaBlackVoidStemDownRight { get; set; }
 
         [JsonProperty("mensuralLongaBlackVoidStemUpLeft")]
-        public Dictionary<string, double[]> MensuralLongaBlackVoidStemUpLeft { get; set; }
+        public BoundingBox MensuralLongaBlackVoidStemUpLeft { get; set; }
 
         [JsonProperty("mensuralLongaBlackVoidStemUpRight")]
-        public Dictionary<string, double[]> MensuralLongaBlackVoidStemUpRight { get; set; }
+        public BoundingBox MensuralLongaBlackVoidStemUpRight { get; set; }
 
         [JsonProperty("mensuralLongaVoidStemDownLeft")]
-        public Dictionary<string, double[]> MensuralLongaVoidStemDownLeft { get; set; }
+        public BoundingBox MensuralLongaVoidStemDownLeft { get; set; }
 
         [JsonProperty("mensuralLongaVoidStemDownRight")]
-        public Dictionary<string, double[]> MensuralLongaVoidStemDownRight { get; set; }
+        public BoundingBox MensuralLongaVoidStemDownRight { get; set; }
 
         [JsonProperty("mensuralLongaVoidStemUpLeft")]
-        public Dictionary<string, double[]> MensuralLongaVoidStemUpLeft { get; set; }
+        public BoundingBox MensuralLongaVoidStemUpLeft { get; set; }
 
         [JsonProperty("mensuralLongaVoidStemUpRight")]
-        public Dictionary<string, double[]> MensuralLongaVoidStemUpRight { get; set; }
+        public BoundingBox MensuralLongaVoidStemUpRight { get; set; }
 
         [JsonProperty("mensuralMaximaBlackStemDownLeft")]
-        public Dictionary<string, double[]> MensuralMaximaBlackStemDownLeft { get; set; }
+        public BoundingBox MensuralMaximaBlackStemDownLeft { get; set; }
 
         [JsonProperty("mensuralMaximaBlackStemDownRight")]
-        public Dictionary<string, double[]> MensuralMaximaBlackStemDownRight { get; set; }
+        public BoundingBox MensuralMaximaBlackStemDownRight { get; set; }
 
         [JsonProperty("mensuralMaximaBlackStemUpLeft")]
-        public Dictionary<string, double[]> MensuralMaximaBlackStemUpLeft { get; set; }
+        public BoundingBox MensuralMaximaBlackStemUpLeft { get; set; }
 
         [JsonProperty("mensuralMaximaBlackStemUpRight")]
-        public Dictionary<string, double[]> MensuralMaximaBlackStemUpRight { get; set; }
+        public BoundingBox MensuralMaximaBlackStemUpRight { get; set; }
 
         [JsonProperty("mensuralMaximaBlackVoidStemDownLeft")]
-        public Dictionary<string, double[]> MensuralMaximaBlackVoidStemDownLeft { get; set; }
+        public BoundingBox MensuralMaximaBlackVoidStemDownLeft { get; set; }
 
         [JsonProperty("mensuralMaximaBlackVoidStemDownRight")]
-        public Dictionary<string, double[]> MensuralMaximaBlackVoidStemDownRight { get; set; }
+        public BoundingBox MensuralMaximaBlackVoidStemDownRight { get; set; }
 
         [JsonProperty("mensuralMaximaBlackVoidStemUpLeft")]
-        public Dictionary<string, double[]> MensuralMaximaBlackVoidStemUpLeft { get; set; }
+        public BoundingBox MensuralMaximaBlackVoidStemUpLeft { get; set; }
 
         [JsonProperty("mensuralMaximaBlackVoidStemUpRight")]
-        public Dictionary<string, double[]> MensuralMaximaBlackVoidStemUpRight { get; set; }
+        public BoundingBox MensuralMaximaBlackVoidStemUpRight { get; set; }
 
         [JsonProperty("mensuralMaximaVoidStemDownLeft")]
-        public Dictionary<string, double[]> MensuralMaximaVoidStemDownLeft { get; set; }
+        public BoundingBox MensuralMaximaVoidStemDownLeft { get; set; }
 
         [JsonProperty("mensuralMaximaVoidStemDownRight")]
-        public Dictionary<string, double[]> MensuralMaximaVoidStemDownRight { get; set; }
+        public BoundingBox MensuralMaximaVoidStemDownRight { get; set; }
 
         [JsonProperty("mensuralMaximaVoidStemUpLeft")]
-        public Dictionary<string, double[]> MensuralMaximaVoidStemUpLeft { get; set; }
+        public BoundingBox MensuralMaximaVoidStemUpLeft { get; set; }
 
         [JsonProperty("mensuralMaximaVoidStemUpRight")]
-        public Dictionary<string, double[]> MensuralMaximaVoidStemUpRight { get; set; }
+        public BoundingBox MensuralMaximaVoidStemUpRight { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemDown")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemDown { get; set; }
+        public BoundingBox MensuralMinimaBlackStemDown { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemDownExtendedFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemDownExtendedFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackStemDownExtendedFlag { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemDownFlagLeft")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemDownFlagLeft { get; set; }
+        public BoundingBox MensuralMinimaBlackStemDownFlagLeft { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemDownFlagRight")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemDownFlagRight { get; set; }
+        public BoundingBox MensuralMinimaBlackStemDownFlagRight { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemDownFlaredFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemDownFlaredFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackStemDownFlaredFlag { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemUp")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemUp { get; set; }
+        public BoundingBox MensuralMinimaBlackStemUp { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemUpExtendedFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemUpExtendedFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackStemUpExtendedFlag { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemUpFlagLeft")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemUpFlagLeft { get; set; }
+        public BoundingBox MensuralMinimaBlackStemUpFlagLeft { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemUpFlagRight")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemUpFlagRight { get; set; }
+        public BoundingBox MensuralMinimaBlackStemUpFlagRight { get; set; }
 
         [JsonProperty("mensuralMinimaBlackStemUpFlaredFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackStemUpFlaredFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackStemUpFlaredFlag { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemDown")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemDown { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemDown { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemDownExtendedFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemDownExtendedFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemDownExtendedFlag { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemDownFlagLeft")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemDownFlagLeft { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemDownFlagLeft { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemDownFlagRight")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemDownFlagRight { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemDownFlagRight { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemDownFlaredFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemDownFlaredFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemDownFlaredFlag { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemUp")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemUp { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemUp { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemUpExtendedFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemUpExtendedFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemUpExtendedFlag { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemUpFlagLeft")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemUpFlagLeft { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemUpFlagLeft { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemUpFlagRight")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemUpFlagRight { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemUpFlagRight { get; set; }
 
         [JsonProperty("mensuralMinimaBlackVoidStemUpFlaredFlag")]
-        public Dictionary<string, double[]> MensuralMinimaBlackVoidStemUpFlaredFlag { get; set; }
+        public BoundingBox MensuralMinimaBlackVoidStemUpFlaredFlag { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemDown")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemDown { get; set; }
+        public BoundingBox MensuralMinimaVoidStemDown { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemDownExtendedFlag")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemDownExtendedFlag { get; set; }
+        public BoundingBox MensuralMinimaVoidStemDownExtendedFlag { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemDownFlagLeft")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemDownFlagLeft { get; set; }
+        public BoundingBox MensuralMinimaVoidStemDownFlagLeft { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemDownFlagRight")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemDownFlagRight { get; set; }
+        public BoundingBox MensuralMinimaVoidStemDownFlagRight { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemDownFlaredFlag")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemDownFlaredFlag { get; set; }
+        public BoundingBox MensuralMinimaVoidStemDownFlaredFlag { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemUp")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemUp { get; set; }
+        public BoundingBox MensuralMinimaVoidStemUp { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemUpExtendedFlag")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemUpExtendedFlag { get; set; }
+        public BoundingBox MensuralMinimaVoidStemUpExtendedFlag { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemUpFlagLeft")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemUpFlagLeft { get; set; }
+        public BoundingBox MensuralMinimaVoidStemUpFlagLeft { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemUpFlagRight")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemUpFlagRight { get; set; }
+        public BoundingBox MensuralMinimaVoidStemUpFlagRight { get; set; }
 
         [JsonProperty("mensuralMinimaVoidStemUpFlaredFlag")]
-        public Dictionary<string, double[]> MensuralMinimaVoidStemUpFlaredFlag { get; set; }
+        public BoundingBox MensuralMinimaVoidStemUpFlaredFlag { get; set; }
 
         [JsonProperty("mensuralModusImperfectumVert")]
-        public Dictionary<string, double[]> MensuralModusImperfectumVert { get; set; }
+        public BoundingBox MensuralModusImperfectumVert { get; set; }
 
         [JsonProperty("mensuralModusPerfectumVert")]
-        public Dictionary<string, double[]> MensuralModusPerfectumVert { get; set; }
+        public BoundingBox MensuralModusPerfectumVert { get; set; }
 
         [JsonProperty("mensuralNoteheadLongaBlack")]
-        public Dictionary<string, double[]> MensuralNoteheadLongaBlack { get; set; }
+        public BoundingBox MensuralNoteheadLongaBlack { get; set; }
 
         [JsonProperty("mensuralNoteheadLongaBlackVoid")]
-        public Dictionary<string, double[]> MensuralNoteheadLongaBlackVoid { get; set; }
+        public BoundingBox MensuralNoteheadLongaBlackVoid { get; set; }
 
         [JsonProperty("mensuralNoteheadLongaVoid")]
-        public Dictionary<string, double[]> MensuralNoteheadLongaVoid { get; set; }
+        public BoundingBox MensuralNoteheadLongaVoid { get; set; }
 
         [JsonProperty("mensuralNoteheadLongaWhite")]
-        public Dictionary<string, double[]> MensuralNoteheadLongaWhite { get; set; }
+        public BoundingBox MensuralNoteheadLongaWhite { get; set; }
 
         [JsonProperty("mensuralNoteheadMaximaBlack")]
-        public Dictionary<string, double[]> MensuralNoteheadMaximaBlack { get; set; }
+        public BoundingBox MensuralNoteheadMaximaBlack { get; set; }
 
         [JsonProperty("mensuralNoteheadMaximaBlackVoid")]
-        public Dictionary<string, double[]> MensuralNoteheadMaximaBlackVoid { get; set; }
+        public BoundingBox MensuralNoteheadMaximaBlackVoid { get; set; }
 
         [JsonProperty("mensuralNoteheadMaximaVoid")]
-        public Dictionary<string, double[]> MensuralNoteheadMaximaVoid { get; set; }
+        public BoundingBox MensuralNoteheadMaximaVoid { get; set; }
 
         [JsonProperty("mensuralNoteheadMaximaWhite")]
-        public Dictionary<string, double[]> MensuralNoteheadMaximaWhite { get; set; }
+        public BoundingBox MensuralNoteheadMaximaWhite { get; set; }
 
         [JsonProperty("mensuralNoteheadMinimaWhite")]
-        public Dictionary<string, double[]> MensuralNoteheadMinimaWhite { get; set; }
+        public BoundingBox MensuralNoteheadMinimaWhite { get; set; }
 
         [JsonProperty("mensuralNoteheadSemibrevisBlack")]
-        public Dictionary<string, double[]> MensuralNoteheadSemibrevisBlack { get; set; }
+        public BoundingBox MensuralNoteheadSemibrevisBlack { get; set; }
 
         [JsonProperty("mensuralNoteheadSemibrevisBlackVoid")]
-        public Dictionary<string, double[]> MensuralNoteheadSemibrevisBlackVoid { get; set; }
+        public BoundingBox MensuralNoteheadSemibrevisBlackVoid { get; set; }
 
         [JsonProperty("mensuralNoteheadSemibrevisBlackVoidTurned")]
-        public Dictionary<string, double[]> MensuralNoteheadSemibrevisBlackVoidTurned { get; set; }
+        public BoundingBox MensuralNoteheadSemibrevisBlackVoidTurned { get; set; }
 
         [JsonProperty("mensuralNoteheadSemibrevisVoid")]
-        public Dictionary<string, double[]> MensuralNoteheadSemibrevisVoid { get; set; }
+        public BoundingBox MensuralNoteheadSemibrevisVoid { get; set; }
 
         [JsonProperty("mensuralNoteheadSemiminimaWhite")]
-        public Dictionary<string, double[]> MensuralNoteheadSemiminimaWhite { get; set; }
+        public BoundingBox MensuralNoteheadSemiminimaWhite { get; set; }
 
         [JsonProperty("mensuralObliqueAsc2ndBlack")]
-        public Dictionary<string, double[]> MensuralObliqueAsc2NdBlack { get; set; }
+        public BoundingBox MensuralObliqueAsc2NdBlack { get; set; }
 
         [JsonProperty("mensuralObliqueAsc2ndBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc2NdBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc2NdBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc2ndVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc2NdVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc2NdVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc2ndWhite")]
-        public Dictionary<string, double[]> MensuralObliqueAsc2NdWhite { get; set; }
+        public BoundingBox MensuralObliqueAsc2NdWhite { get; set; }
 
         [JsonProperty("mensuralObliqueAsc3rdBlack")]
-        public Dictionary<string, double[]> MensuralObliqueAsc3RdBlack { get; set; }
+        public BoundingBox MensuralObliqueAsc3RdBlack { get; set; }
 
         [JsonProperty("mensuralObliqueAsc3rdBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc3RdBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc3RdBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc3rdVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc3RdVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc3RdVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc3rdWhite")]
-        public Dictionary<string, double[]> MensuralObliqueAsc3RdWhite { get; set; }
+        public BoundingBox MensuralObliqueAsc3RdWhite { get; set; }
 
         [JsonProperty("mensuralObliqueAsc4thBlack")]
-        public Dictionary<string, double[]> MensuralObliqueAsc4ThBlack { get; set; }
+        public BoundingBox MensuralObliqueAsc4ThBlack { get; set; }
 
         [JsonProperty("mensuralObliqueAsc4thBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc4ThBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc4ThBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc4thVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc4ThVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc4ThVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc4thWhite")]
-        public Dictionary<string, double[]> MensuralObliqueAsc4ThWhite { get; set; }
+        public BoundingBox MensuralObliqueAsc4ThWhite { get; set; }
 
         [JsonProperty("mensuralObliqueAsc5thBlack")]
-        public Dictionary<string, double[]> MensuralObliqueAsc5ThBlack { get; set; }
+        public BoundingBox MensuralObliqueAsc5ThBlack { get; set; }
 
         [JsonProperty("mensuralObliqueAsc5thBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc5ThBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc5ThBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc5thVoid")]
-        public Dictionary<string, double[]> MensuralObliqueAsc5ThVoid { get; set; }
+        public BoundingBox MensuralObliqueAsc5ThVoid { get; set; }
 
         [JsonProperty("mensuralObliqueAsc5thWhite")]
-        public Dictionary<string, double[]> MensuralObliqueAsc5ThWhite { get; set; }
+        public BoundingBox MensuralObliqueAsc5ThWhite { get; set; }
 
         [JsonProperty("mensuralObliqueDesc2ndBlack")]
-        public Dictionary<string, double[]> MensuralObliqueDesc2NdBlack { get; set; }
+        public BoundingBox MensuralObliqueDesc2NdBlack { get; set; }
 
         [JsonProperty("mensuralObliqueDesc2ndBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc2NdBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc2NdBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc2ndVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc2NdVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc2NdVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc2ndWhite")]
-        public Dictionary<string, double[]> MensuralObliqueDesc2NdWhite { get; set; }
+        public BoundingBox MensuralObliqueDesc2NdWhite { get; set; }
 
         [JsonProperty("mensuralObliqueDesc3rdBlack")]
-        public Dictionary<string, double[]> MensuralObliqueDesc3RdBlack { get; set; }
+        public BoundingBox MensuralObliqueDesc3RdBlack { get; set; }
 
         [JsonProperty("mensuralObliqueDesc3rdBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc3RdBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc3RdBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc3rdVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc3RdVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc3RdVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc3rdWhite")]
-        public Dictionary<string, double[]> MensuralObliqueDesc3RdWhite { get; set; }
+        public BoundingBox MensuralObliqueDesc3RdWhite { get; set; }
 
         [JsonProperty("mensuralObliqueDesc4thBlack")]
-        public Dictionary<string, double[]> MensuralObliqueDesc4ThBlack { get; set; }
+        public BoundingBox MensuralObliqueDesc4ThBlack { get; set; }
 
         [JsonProperty("mensuralObliqueDesc4thBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc4ThBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc4ThBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc4thVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc4ThVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc4ThVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc4thWhite")]
-        public Dictionary<string, double[]> MensuralObliqueDesc4ThWhite { get; set; }
+        public BoundingBox MensuralObliqueDesc4ThWhite { get; set; }
 
         [JsonProperty("mensuralObliqueDesc5thBlack")]
-        public Dictionary<string, double[]> MensuralObliqueDesc5ThBlack { get; set; }
+        public BoundingBox MensuralObliqueDesc5ThBlack { get; set; }
 
         [JsonProperty("mensuralObliqueDesc5thBlackVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc5ThBlackVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc5ThBlackVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc5thVoid")]
-        public Dictionary<string, double[]> MensuralObliqueDesc5ThVoid { get; set; }
+        public BoundingBox MensuralObliqueDesc5ThVoid { get; set; }
 
         [JsonProperty("mensuralObliqueDesc5thWhite")]
-        public Dictionary<string, double[]> MensuralObliqueDesc5ThWhite { get; set; }
+        public BoundingBox MensuralObliqueDesc5ThWhite { get; set; }
 
         [JsonProperty("mensuralProlation1")]
-        public Dictionary<string, double[]> MensuralProlation1 { get; set; }
+        public BoundingBox MensuralProlation1 { get; set; }
 
         [JsonProperty("mensuralProlation10")]
-        public Dictionary<string, double[]> MensuralProlation10 { get; set; }
+        public BoundingBox MensuralProlation10 { get; set; }
 
         [JsonProperty("mensuralProlation11")]
-        public Dictionary<string, double[]> MensuralProlation11 { get; set; }
+        public BoundingBox MensuralProlation11 { get; set; }
 
         [JsonProperty("mensuralProlation2")]
-        public Dictionary<string, double[]> MensuralProlation2 { get; set; }
+        public BoundingBox MensuralProlation2 { get; set; }
 
         [JsonProperty("mensuralProlation3")]
-        public Dictionary<string, double[]> MensuralProlation3 { get; set; }
+        public BoundingBox MensuralProlation3 { get; set; }
 
         [JsonProperty("mensuralProlation4")]
-        public Dictionary<string, double[]> MensuralProlation4 { get; set; }
+        public BoundingBox MensuralProlation4 { get; set; }
 
         [JsonProperty("mensuralProlation5")]
-        public Dictionary<string, double[]> MensuralProlation5 { get; set; }
+        public BoundingBox MensuralProlation5 { get; set; }
 
         [JsonProperty("mensuralProlation6")]
-        public Dictionary<string, double[]> MensuralProlation6 { get; set; }
+        public BoundingBox MensuralProlation6 { get; set; }
 
         [JsonProperty("mensuralProlation7")]
-        public Dictionary<string, double[]> MensuralProlation7 { get; set; }
+        public BoundingBox MensuralProlation7 { get; set; }
 
         [JsonProperty("mensuralProlation8")]
-        public Dictionary<string, double[]> MensuralProlation8 { get; set; }
+        public BoundingBox MensuralProlation8 { get; set; }
 
         [JsonProperty("mensuralProlation9")]
-        public Dictionary<string, double[]> MensuralProlation9 { get; set; }
+        public BoundingBox MensuralProlation9 { get; set; }
 
         [JsonProperty("mensuralProlationCombiningDot")]
-        public Dictionary<string, double[]> MensuralProlationCombiningDot { get; set; }
+        public BoundingBox MensuralProlationCombiningDot { get; set; }
 
         [JsonProperty("mensuralProlationCombiningDotVoid")]
-        public Dictionary<string, double[]> MensuralProlationCombiningDotVoid { get; set; }
+        public BoundingBox MensuralProlationCombiningDotVoid { get; set; }
 
         [JsonProperty("mensuralProlationCombiningStroke")]
-        public Dictionary<string, double[]> MensuralProlationCombiningStroke { get; set; }
+        public BoundingBox MensuralProlationCombiningStroke { get; set; }
 
         [JsonProperty("mensuralProlationCombiningThreeDots")]
-        public Dictionary<string, double[]> MensuralProlationCombiningThreeDots { get; set; }
+        public BoundingBox MensuralProlationCombiningThreeDots { get; set; }
 
         [JsonProperty("mensuralProlationCombiningThreeDotsTri")]
-        public Dictionary<string, double[]> MensuralProlationCombiningThreeDotsTri { get; set; }
+        public BoundingBox MensuralProlationCombiningThreeDotsTri { get; set; }
 
         [JsonProperty("mensuralProlationCombiningTwoDots")]
-        public Dictionary<string, double[]> MensuralProlationCombiningTwoDots { get; set; }
+        public BoundingBox MensuralProlationCombiningTwoDots { get; set; }
 
         [JsonProperty("mensuralProportion1")]
         public BoundingBox MensuralProportion1 { get; set; }
@@ -5138,28 +5138,28 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox MensuralProportion4 { get; set; }
 
         [JsonProperty("mensuralProportion4Old")]
-        public Dictionary<string, double[]> MensuralProportion4Old { get; set; }
+        public BoundingBox MensuralProportion4Old { get; set; }
 
         [JsonProperty("mensuralProportionMajor")]
-        public Dictionary<string, double[]> MensuralProportionMajor { get; set; }
+        public BoundingBox MensuralProportionMajor { get; set; }
 
         [JsonProperty("mensuralProportionMinor")]
-        public Dictionary<string, double[]> MensuralProportionMinor { get; set; }
+        public BoundingBox MensuralProportionMinor { get; set; }
 
         [JsonProperty("mensuralProportionProportioDupla1")]
-        public Dictionary<string, double[]> MensuralProportionProportioDupla1 { get; set; }
+        public BoundingBox MensuralProportionProportioDupla1 { get; set; }
 
         [JsonProperty("mensuralProportionProportioDupla2")]
-        public Dictionary<string, double[]> MensuralProportionProportioDupla2 { get; set; }
+        public BoundingBox MensuralProportionProportioDupla2 { get; set; }
 
         [JsonProperty("mensuralProportionProportioQuadrupla")]
-        public Dictionary<string, double[]> MensuralProportionProportioQuadrupla { get; set; }
+        public BoundingBox MensuralProportionProportioQuadrupla { get; set; }
 
         [JsonProperty("mensuralProportionProportioTripla")]
-        public Dictionary<string, double[]> MensuralProportionProportioTripla { get; set; }
+        public BoundingBox MensuralProportionProportioTripla { get; set; }
 
         [JsonProperty("mensuralProportionTempusPerfectum")]
-        public Dictionary<string, double[]> MensuralProportionTempusPerfectum { get; set; }
+        public BoundingBox MensuralProportionTempusPerfectum { get; set; }
 
         [JsonProperty("mensuralRestBrevis")]
         public BoundingBox MensuralRestBrevis { get; set; }
@@ -5180,7 +5180,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox MensuralRestMinima { get; set; }
 
         [JsonProperty("mensuralRestSemibrevis")]
-        public Dictionary<string, double[]> MensuralRestSemibrevis { get; set; }
+        public BoundingBox MensuralRestSemibrevis { get; set; }
 
         [JsonProperty("mensuralRestSemifusa")]
         public BoundingBox MensuralRestSemifusa { get; set; }
@@ -5189,22 +5189,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox MensuralRestSemiminima { get; set; }
 
         [JsonProperty("mensuralSemiminimaBlackStemDown")]
-        public Dictionary<string, double[]> MensuralSemiminimaBlackStemDown { get; set; }
+        public BoundingBox MensuralSemiminimaBlackStemDown { get; set; }
 
         [JsonProperty("mensuralSemiminimaBlackStemUp")]
-        public Dictionary<string, double[]> MensuralSemiminimaBlackStemUp { get; set; }
+        public BoundingBox MensuralSemiminimaBlackStemUp { get; set; }
 
         [JsonProperty("mensuralSemiminimaBlackVoidStemDown")]
-        public Dictionary<string, double[]> MensuralSemiminimaBlackVoidStemDown { get; set; }
+        public BoundingBox MensuralSemiminimaBlackVoidStemDown { get; set; }
 
         [JsonProperty("mensuralSemiminimaBlackVoidStemUp")]
-        public Dictionary<string, double[]> MensuralSemiminimaBlackVoidStemUp { get; set; }
+        public BoundingBox MensuralSemiminimaBlackVoidStemUp { get; set; }
 
         [JsonProperty("mensuralSemiminimaVoidStemDown")]
-        public Dictionary<string, double[]> MensuralSemiminimaVoidStemDown { get; set; }
+        public BoundingBox MensuralSemiminimaVoidStemDown { get; set; }
 
         [JsonProperty("mensuralSemiminimaVoidStemUp")]
-        public Dictionary<string, double[]> MensuralSemiminimaVoidStemUp { get; set; }
+        public BoundingBox MensuralSemiminimaVoidStemUp { get; set; }
 
         [JsonProperty("mensuralSignumDown")]
         public BoundingBox MensuralSignumDown { get; set; }
@@ -5213,949 +5213,949 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox MensuralSignumUp { get; set; }
 
         [JsonProperty("mensuralTempusImperfectumHoriz")]
-        public Dictionary<string, double[]> MensuralTempusImperfectumHoriz { get; set; }
+        public BoundingBox MensuralTempusImperfectumHoriz { get; set; }
 
         [JsonProperty("mensuralTempusPerfectumHoriz")]
-        public Dictionary<string, double[]> MensuralTempusPerfectumHoriz { get; set; }
+        public BoundingBox MensuralTempusPerfectumHoriz { get; set; }
 
         [JsonProperty("mensuralWhiteBrevis")]
-        public Dictionary<string, double[]> MensuralWhiteBrevis { get; set; }
+        public BoundingBox MensuralWhiteBrevis { get; set; }
 
         [JsonProperty("mensuralWhiteFusa")]
-        public Dictionary<string, double[]> MensuralWhiteFusa { get; set; }
+        public BoundingBox MensuralWhiteFusa { get; set; }
 
         [JsonProperty("mensuralWhiteLonga")]
-        public Dictionary<string, double[]> MensuralWhiteLonga { get; set; }
+        public BoundingBox MensuralWhiteLonga { get; set; }
 
         [JsonProperty("mensuralWhiteMaxima")]
-        public Dictionary<string, double[]> MensuralWhiteMaxima { get; set; }
+        public BoundingBox MensuralWhiteMaxima { get; set; }
 
         [JsonProperty("mensuralWhiteMinima")]
-        public Dictionary<string, double[]> MensuralWhiteMinima { get; set; }
+        public BoundingBox MensuralWhiteMinima { get; set; }
 
         [JsonProperty("mensuralWhiteSemiminima")]
-        public Dictionary<string, double[]> MensuralWhiteSemiminima { get; set; }
+        public BoundingBox MensuralWhiteSemiminima { get; set; }
 
         [JsonProperty("metAugmentationDot")]
-        public Dictionary<string, double[]> MetAugmentationDot { get; set; }
+        public BoundingBox MetAugmentationDot { get; set; }
 
         [JsonProperty("metNote1024thDown")]
-        public Dictionary<string, double[]> MetNote1024ThDown { get; set; }
+        public BoundingBox MetNote1024ThDown { get; set; }
 
         [JsonProperty("metNote1024thUp")]
-        public Dictionary<string, double[]> MetNote1024ThUp { get; set; }
+        public BoundingBox MetNote1024ThUp { get; set; }
 
         [JsonProperty("metNote128thDown")]
-        public Dictionary<string, double[]> MetNote128ThDown { get; set; }
+        public BoundingBox MetNote128ThDown { get; set; }
 
         [JsonProperty("metNote128thUp")]
-        public Dictionary<string, double[]> MetNote128ThUp { get; set; }
+        public BoundingBox MetNote128ThUp { get; set; }
 
         [JsonProperty("metNote16thDown")]
-        public Dictionary<string, double[]> MetNote16ThDown { get; set; }
+        public BoundingBox MetNote16ThDown { get; set; }
 
         [JsonProperty("metNote16thUp")]
-        public Dictionary<string, double[]> MetNote16ThUp { get; set; }
+        public BoundingBox MetNote16ThUp { get; set; }
 
         [JsonProperty("metNote256thDown")]
-        public Dictionary<string, double[]> MetNote256ThDown { get; set; }
+        public BoundingBox MetNote256ThDown { get; set; }
 
         [JsonProperty("metNote256thUp")]
-        public Dictionary<string, double[]> MetNote256ThUp { get; set; }
+        public BoundingBox MetNote256ThUp { get; set; }
 
         [JsonProperty("metNote32ndDown")]
-        public Dictionary<string, double[]> MetNote32NdDown { get; set; }
+        public BoundingBox MetNote32NdDown { get; set; }
 
         [JsonProperty("metNote32ndUp")]
-        public Dictionary<string, double[]> MetNote32NdUp { get; set; }
+        public BoundingBox MetNote32NdUp { get; set; }
 
         [JsonProperty("metNote512thDown")]
-        public Dictionary<string, double[]> MetNote512ThDown { get; set; }
+        public BoundingBox MetNote512ThDown { get; set; }
 
         [JsonProperty("metNote512thUp")]
-        public Dictionary<string, double[]> MetNote512ThUp { get; set; }
+        public BoundingBox MetNote512ThUp { get; set; }
 
         [JsonProperty("metNote64thDown")]
-        public Dictionary<string, double[]> MetNote64ThDown { get; set; }
+        public BoundingBox MetNote64ThDown { get; set; }
 
         [JsonProperty("metNote64thUp")]
-        public Dictionary<string, double[]> MetNote64ThUp { get; set; }
+        public BoundingBox MetNote64ThUp { get; set; }
 
         [JsonProperty("metNote8thDown")]
-        public Dictionary<string, double[]> MetNote8ThDown { get; set; }
+        public BoundingBox MetNote8ThDown { get; set; }
 
         [JsonProperty("metNote8thUp")]
-        public Dictionary<string, double[]> MetNote8ThUp { get; set; }
+        public BoundingBox MetNote8ThUp { get; set; }
 
         [JsonProperty("metNoteDoubleWhole")]
-        public Dictionary<string, double[]> MetNoteDoubleWhole { get; set; }
+        public BoundingBox MetNoteDoubleWhole { get; set; }
 
         [JsonProperty("metNoteDoubleWholeSquare")]
-        public Dictionary<string, double[]> MetNoteDoubleWholeSquare { get; set; }
+        public BoundingBox MetNoteDoubleWholeSquare { get; set; }
 
         [JsonProperty("metNoteHalfDown")]
-        public Dictionary<string, double[]> MetNoteHalfDown { get; set; }
+        public BoundingBox MetNoteHalfDown { get; set; }
 
         [JsonProperty("metNoteHalfUp")]
-        public Dictionary<string, double[]> MetNoteHalfUp { get; set; }
+        public BoundingBox MetNoteHalfUp { get; set; }
 
         [JsonProperty("metNoteQuarterDown")]
-        public Dictionary<string, double[]> MetNoteQuarterDown { get; set; }
+        public BoundingBox MetNoteQuarterDown { get; set; }
 
         [JsonProperty("metNoteQuarterUp")]
-        public Dictionary<string, double[]> MetNoteQuarterUp { get; set; }
+        public BoundingBox MetNoteQuarterUp { get; set; }
 
         [JsonProperty("metNoteWhole")]
-        public Dictionary<string, double[]> MetNoteWhole { get; set; }
+        public BoundingBox MetNoteWhole { get; set; }
 
         [JsonProperty("metricModulationArrowLeft")]
-        public Dictionary<string, double[]> MetricModulationArrowLeft { get; set; }
+        public BoundingBox MetricModulationArrowLeft { get; set; }
 
         [JsonProperty("metricModulationArrowRight")]
-        public Dictionary<string, double[]> MetricModulationArrowRight { get; set; }
+        public BoundingBox MetricModulationArrowRight { get; set; }
 
         [JsonProperty("miscDoNotCopy")]
-        public Dictionary<string, double[]> MiscDoNotCopy { get; set; }
+        public BoundingBox MiscDoNotCopy { get; set; }
 
         [JsonProperty("miscDoNotPhotocopy")]
-        public Dictionary<string, double[]> MiscDoNotPhotocopy { get; set; }
+        public BoundingBox MiscDoNotPhotocopy { get; set; }
 
         [JsonProperty("miscEyeglasses")]
         public BoundingBox MiscEyeglasses { get; set; }
 
         [JsonProperty("note1024thDown")]
-        public Dictionary<string, double[]> Note1024ThDown { get; set; }
+        public BoundingBox Note1024ThDown { get; set; }
 
         [JsonProperty("note1024thUp")]
-        public Dictionary<string, double[]> Note1024ThUp { get; set; }
+        public BoundingBox Note1024ThUp { get; set; }
 
         [JsonProperty("note128thDown")]
-        public Dictionary<string, double[]> Note128ThDown { get; set; }
+        public BoundingBox Note128ThDown { get; set; }
 
         [JsonProperty("note128thUp")]
-        public Dictionary<string, double[]> Note128ThUp { get; set; }
+        public BoundingBox Note128ThUp { get; set; }
 
         [JsonProperty("note16thDown")]
-        public Dictionary<string, double[]> Note16ThDown { get; set; }
+        public BoundingBox Note16ThDown { get; set; }
 
         [JsonProperty("note16thUp")]
-        public Dictionary<string, double[]> Note16ThUp { get; set; }
+        public BoundingBox Note16ThUp { get; set; }
 
         [JsonProperty("note256thDown")]
-        public Dictionary<string, double[]> Note256ThDown { get; set; }
+        public BoundingBox Note256ThDown { get; set; }
 
         [JsonProperty("note256thUp")]
-        public Dictionary<string, double[]> Note256ThUp { get; set; }
+        public BoundingBox Note256ThUp { get; set; }
 
         [JsonProperty("note32ndDown")]
-        public Dictionary<string, double[]> Note32NdDown { get; set; }
+        public BoundingBox Note32NdDown { get; set; }
 
         [JsonProperty("note32ndUp")]
-        public Dictionary<string, double[]> Note32NdUp { get; set; }
+        public BoundingBox Note32NdUp { get; set; }
 
         [JsonProperty("note512thDown")]
-        public Dictionary<string, double[]> Note512ThDown { get; set; }
+        public BoundingBox Note512ThDown { get; set; }
 
         [JsonProperty("note512thUp")]
-        public Dictionary<string, double[]> Note512ThUp { get; set; }
+        public BoundingBox Note512ThUp { get; set; }
 
         [JsonProperty("note64thDown")]
-        public Dictionary<string, double[]> Note64ThDown { get; set; }
+        public BoundingBox Note64ThDown { get; set; }
 
         [JsonProperty("note64thUp")]
-        public Dictionary<string, double[]> Note64ThUp { get; set; }
+        public BoundingBox Note64ThUp { get; set; }
 
         [JsonProperty("note8thDown")]
-        public Dictionary<string, double[]> Note8ThDown { get; set; }
+        public BoundingBox Note8ThDown { get; set; }
 
         [JsonProperty("note8thUp")]
-        public Dictionary<string, double[]> Note8ThUp { get; set; }
+        public BoundingBox Note8ThUp { get; set; }
 
         [JsonProperty("noteABlack")]
-        public Dictionary<string, double[]> NoteABlack { get; set; }
+        public BoundingBox NoteABlack { get; set; }
 
         [JsonProperty("noteAFlatBlack")]
-        public Dictionary<string, double[]> NoteAFlatBlack { get; set; }
+        public BoundingBox NoteAFlatBlack { get; set; }
 
         [JsonProperty("noteAFlatHalf")]
-        public Dictionary<string, double[]> NoteAFlatHalf { get; set; }
+        public BoundingBox NoteAFlatHalf { get; set; }
 
         [JsonProperty("noteAFlatWhole")]
-        public Dictionary<string, double[]> NoteAFlatWhole { get; set; }
+        public BoundingBox NoteAFlatWhole { get; set; }
 
         [JsonProperty("noteAHalf")]
-        public Dictionary<string, double[]> NoteAHalf { get; set; }
+        public BoundingBox NoteAHalf { get; set; }
 
         [JsonProperty("noteASharpBlack")]
-        public Dictionary<string, double[]> NoteASharpBlack { get; set; }
+        public BoundingBox NoteASharpBlack { get; set; }
 
         [JsonProperty("noteASharpHalf")]
-        public Dictionary<string, double[]> NoteASharpHalf { get; set; }
+        public BoundingBox NoteASharpHalf { get; set; }
 
         [JsonProperty("noteASharpWhole")]
-        public Dictionary<string, double[]> NoteASharpWhole { get; set; }
+        public BoundingBox NoteASharpWhole { get; set; }
 
         [JsonProperty("noteAWhole")]
-        public Dictionary<string, double[]> NoteAWhole { get; set; }
+        public BoundingBox NoteAWhole { get; set; }
 
         [JsonProperty("noteBBlack")]
-        public Dictionary<string, double[]> NoteBBlack { get; set; }
+        public BoundingBox NoteBBlack { get; set; }
 
         [JsonProperty("noteBFlatBlack")]
-        public Dictionary<string, double[]> NoteBFlatBlack { get; set; }
+        public BoundingBox NoteBFlatBlack { get; set; }
 
         [JsonProperty("noteBFlatHalf")]
-        public Dictionary<string, double[]> NoteBFlatHalf { get; set; }
+        public BoundingBox NoteBFlatHalf { get; set; }
 
         [JsonProperty("noteBFlatWhole")]
-        public Dictionary<string, double[]> NoteBFlatWhole { get; set; }
+        public BoundingBox NoteBFlatWhole { get; set; }
 
         [JsonProperty("noteBHalf")]
-        public Dictionary<string, double[]> NoteBHalf { get; set; }
+        public BoundingBox NoteBHalf { get; set; }
 
         [JsonProperty("noteBSharpBlack")]
-        public Dictionary<string, double[]> NoteBSharpBlack { get; set; }
+        public BoundingBox NoteBSharpBlack { get; set; }
 
         [JsonProperty("noteBSharpHalf")]
-        public Dictionary<string, double[]> NoteBSharpHalf { get; set; }
+        public BoundingBox NoteBSharpHalf { get; set; }
 
         [JsonProperty("noteBSharpWhole")]
-        public Dictionary<string, double[]> NoteBSharpWhole { get; set; }
+        public BoundingBox NoteBSharpWhole { get; set; }
 
         [JsonProperty("noteBWhole")]
-        public Dictionary<string, double[]> NoteBWhole { get; set; }
+        public BoundingBox NoteBWhole { get; set; }
 
         [JsonProperty("noteCBlack")]
-        public Dictionary<string, double[]> NoteCBlack { get; set; }
+        public BoundingBox NoteCBlack { get; set; }
 
         [JsonProperty("noteCFlatBlack")]
-        public Dictionary<string, double[]> NoteCFlatBlack { get; set; }
+        public BoundingBox NoteCFlatBlack { get; set; }
 
         [JsonProperty("noteCFlatHalf")]
-        public Dictionary<string, double[]> NoteCFlatHalf { get; set; }
+        public BoundingBox NoteCFlatHalf { get; set; }
 
         [JsonProperty("noteCFlatWhole")]
-        public Dictionary<string, double[]> NoteCFlatWhole { get; set; }
+        public BoundingBox NoteCFlatWhole { get; set; }
 
         [JsonProperty("noteCHalf")]
-        public Dictionary<string, double[]> NoteCHalf { get; set; }
+        public BoundingBox NoteCHalf { get; set; }
 
         [JsonProperty("noteCSharpBlack")]
-        public Dictionary<string, double[]> NoteCSharpBlack { get; set; }
+        public BoundingBox NoteCSharpBlack { get; set; }
 
         [JsonProperty("noteCSharpHalf")]
-        public Dictionary<string, double[]> NoteCSharpHalf { get; set; }
+        public BoundingBox NoteCSharpHalf { get; set; }
 
         [JsonProperty("noteCSharpWhole")]
-        public Dictionary<string, double[]> NoteCSharpWhole { get; set; }
+        public BoundingBox NoteCSharpWhole { get; set; }
 
         [JsonProperty("noteCWhole")]
-        public Dictionary<string, double[]> NoteCWhole { get; set; }
+        public BoundingBox NoteCWhole { get; set; }
 
         [JsonProperty("noteDBlack")]
-        public Dictionary<string, double[]> NoteDBlack { get; set; }
+        public BoundingBox NoteDBlack { get; set; }
 
         [JsonProperty("noteDFlatBlack")]
-        public Dictionary<string, double[]> NoteDFlatBlack { get; set; }
+        public BoundingBox NoteDFlatBlack { get; set; }
 
         [JsonProperty("noteDFlatHalf")]
-        public Dictionary<string, double[]> NoteDFlatHalf { get; set; }
+        public BoundingBox NoteDFlatHalf { get; set; }
 
         [JsonProperty("noteDFlatWhole")]
-        public Dictionary<string, double[]> NoteDFlatWhole { get; set; }
+        public BoundingBox NoteDFlatWhole { get; set; }
 
         [JsonProperty("noteDHalf")]
-        public Dictionary<string, double[]> NoteDHalf { get; set; }
+        public BoundingBox NoteDHalf { get; set; }
 
         [JsonProperty("noteDSharpBlack")]
-        public Dictionary<string, double[]> NoteDSharpBlack { get; set; }
+        public BoundingBox NoteDSharpBlack { get; set; }
 
         [JsonProperty("noteDSharpHalf")]
-        public Dictionary<string, double[]> NoteDSharpHalf { get; set; }
+        public BoundingBox NoteDSharpHalf { get; set; }
 
         [JsonProperty("noteDSharpWhole")]
-        public Dictionary<string, double[]> NoteDSharpWhole { get; set; }
+        public BoundingBox NoteDSharpWhole { get; set; }
 
         [JsonProperty("noteDWhole")]
-        public Dictionary<string, double[]> NoteDWhole { get; set; }
+        public BoundingBox NoteDWhole { get; set; }
 
         [JsonProperty("noteDoBlack")]
-        public Dictionary<string, double[]> NoteDoBlack { get; set; }
+        public BoundingBox NoteDoBlack { get; set; }
 
         [JsonProperty("noteDoHalf")]
-        public Dictionary<string, double[]> NoteDoHalf { get; set; }
+        public BoundingBox NoteDoHalf { get; set; }
 
         [JsonProperty("noteDoWhole")]
-        public Dictionary<string, double[]> NoteDoWhole { get; set; }
+        public BoundingBox NoteDoWhole { get; set; }
 
         [JsonProperty("noteDoubleWhole")]
-        public Dictionary<string, double[]> NoteDoubleWhole { get; set; }
+        public BoundingBox NoteDoubleWhole { get; set; }
 
         [JsonProperty("noteDoubleWholeAlt")]
-        public Dictionary<string, double[]> NoteDoubleWholeAlt { get; set; }
+        public BoundingBox NoteDoubleWholeAlt { get; set; }
 
         [JsonProperty("noteDoubleWholeSquare")]
-        public Dictionary<string, double[]> NoteDoubleWholeSquare { get; set; }
+        public BoundingBox NoteDoubleWholeSquare { get; set; }
 
         [JsonProperty("noteEBlack")]
-        public Dictionary<string, double[]> NoteEBlack { get; set; }
+        public BoundingBox NoteEBlack { get; set; }
 
         [JsonProperty("noteEFlatBlack")]
-        public Dictionary<string, double[]> NoteEFlatBlack { get; set; }
+        public BoundingBox NoteEFlatBlack { get; set; }
 
         [JsonProperty("noteEFlatHalf")]
-        public Dictionary<string, double[]> NoteEFlatHalf { get; set; }
+        public BoundingBox NoteEFlatHalf { get; set; }
 
         [JsonProperty("noteEFlatWhole")]
-        public Dictionary<string, double[]> NoteEFlatWhole { get; set; }
+        public BoundingBox NoteEFlatWhole { get; set; }
 
         [JsonProperty("noteEHalf")]
-        public Dictionary<string, double[]> NoteEHalf { get; set; }
+        public BoundingBox NoteEHalf { get; set; }
 
         [JsonProperty("noteESharpBlack")]
-        public Dictionary<string, double[]> NoteESharpBlack { get; set; }
+        public BoundingBox NoteESharpBlack { get; set; }
 
         [JsonProperty("noteESharpHalf")]
-        public Dictionary<string, double[]> NoteESharpHalf { get; set; }
+        public BoundingBox NoteESharpHalf { get; set; }
 
         [JsonProperty("noteESharpWhole")]
-        public Dictionary<string, double[]> NoteESharpWhole { get; set; }
+        public BoundingBox NoteESharpWhole { get; set; }
 
         [JsonProperty("noteEWhole")]
-        public Dictionary<string, double[]> NoteEWhole { get; set; }
+        public BoundingBox NoteEWhole { get; set; }
 
         [JsonProperty("noteEmptyBlack")]
-        public Dictionary<string, double[]> NoteEmptyBlack { get; set; }
+        public BoundingBox NoteEmptyBlack { get; set; }
 
         [JsonProperty("noteEmptyHalf")]
-        public Dictionary<string, double[]> NoteEmptyHalf { get; set; }
+        public BoundingBox NoteEmptyHalf { get; set; }
 
         [JsonProperty("noteEmptyWhole")]
-        public Dictionary<string, double[]> NoteEmptyWhole { get; set; }
+        public BoundingBox NoteEmptyWhole { get; set; }
 
         [JsonProperty("noteFBlack")]
-        public Dictionary<string, double[]> NoteFBlack { get; set; }
+        public BoundingBox NoteFBlack { get; set; }
 
         [JsonProperty("noteFFlatBlack")]
-        public Dictionary<string, double[]> NoteFFlatBlack { get; set; }
+        public BoundingBox NoteFFlatBlack { get; set; }
 
         [JsonProperty("noteFFlatHalf")]
-        public Dictionary<string, double[]> NoteFFlatHalf { get; set; }
+        public BoundingBox NoteFFlatHalf { get; set; }
 
         [JsonProperty("noteFFlatWhole")]
-        public Dictionary<string, double[]> NoteFFlatWhole { get; set; }
+        public BoundingBox NoteFFlatWhole { get; set; }
 
         [JsonProperty("noteFHalf")]
-        public Dictionary<string, double[]> NoteFHalf { get; set; }
+        public BoundingBox NoteFHalf { get; set; }
 
         [JsonProperty("noteFSharpBlack")]
-        public Dictionary<string, double[]> NoteFSharpBlack { get; set; }
+        public BoundingBox NoteFSharpBlack { get; set; }
 
         [JsonProperty("noteFSharpHalf")]
-        public Dictionary<string, double[]> NoteFSharpHalf { get; set; }
+        public BoundingBox NoteFSharpHalf { get; set; }
 
         [JsonProperty("noteFSharpWhole")]
-        public Dictionary<string, double[]> NoteFSharpWhole { get; set; }
+        public BoundingBox NoteFSharpWhole { get; set; }
 
         [JsonProperty("noteFWhole")]
-        public Dictionary<string, double[]> NoteFWhole { get; set; }
+        public BoundingBox NoteFWhole { get; set; }
 
         [JsonProperty("noteFaBlack")]
-        public Dictionary<string, double[]> NoteFaBlack { get; set; }
+        public BoundingBox NoteFaBlack { get; set; }
 
         [JsonProperty("noteFaHalf")]
-        public Dictionary<string, double[]> NoteFaHalf { get; set; }
+        public BoundingBox NoteFaHalf { get; set; }
 
         [JsonProperty("noteFaWhole")]
-        public Dictionary<string, double[]> NoteFaWhole { get; set; }
+        public BoundingBox NoteFaWhole { get; set; }
 
         [JsonProperty("noteGBlack")]
-        public Dictionary<string, double[]> NoteGBlack { get; set; }
+        public BoundingBox NoteGBlack { get; set; }
 
         [JsonProperty("noteGFlatBlack")]
-        public Dictionary<string, double[]> NoteGFlatBlack { get; set; }
+        public BoundingBox NoteGFlatBlack { get; set; }
 
         [JsonProperty("noteGFlatHalf")]
-        public Dictionary<string, double[]> NoteGFlatHalf { get; set; }
+        public BoundingBox NoteGFlatHalf { get; set; }
 
         [JsonProperty("noteGFlatWhole")]
-        public Dictionary<string, double[]> NoteGFlatWhole { get; set; }
+        public BoundingBox NoteGFlatWhole { get; set; }
 
         [JsonProperty("noteGHalf")]
-        public Dictionary<string, double[]> NoteGHalf { get; set; }
+        public BoundingBox NoteGHalf { get; set; }
 
         [JsonProperty("noteGSharpBlack")]
-        public Dictionary<string, double[]> NoteGSharpBlack { get; set; }
+        public BoundingBox NoteGSharpBlack { get; set; }
 
         [JsonProperty("noteGSharpHalf")]
-        public Dictionary<string, double[]> NoteGSharpHalf { get; set; }
+        public BoundingBox NoteGSharpHalf { get; set; }
 
         [JsonProperty("noteGSharpWhole")]
-        public Dictionary<string, double[]> NoteGSharpWhole { get; set; }
+        public BoundingBox NoteGSharpWhole { get; set; }
 
         [JsonProperty("noteGWhole")]
-        public Dictionary<string, double[]> NoteGWhole { get; set; }
+        public BoundingBox NoteGWhole { get; set; }
 
         [JsonProperty("noteHBlack")]
-        public Dictionary<string, double[]> NoteHBlack { get; set; }
+        public BoundingBox NoteHBlack { get; set; }
 
         [JsonProperty("noteHHalf")]
-        public Dictionary<string, double[]> NoteHHalf { get; set; }
+        public BoundingBox NoteHHalf { get; set; }
 
         [JsonProperty("noteHSharpBlack")]
-        public Dictionary<string, double[]> NoteHSharpBlack { get; set; }
+        public BoundingBox NoteHSharpBlack { get; set; }
 
         [JsonProperty("noteHSharpHalf")]
-        public Dictionary<string, double[]> NoteHSharpHalf { get; set; }
+        public BoundingBox NoteHSharpHalf { get; set; }
 
         [JsonProperty("noteHSharpWhole")]
-        public Dictionary<string, double[]> NoteHSharpWhole { get; set; }
+        public BoundingBox NoteHSharpWhole { get; set; }
 
         [JsonProperty("noteHWhole")]
-        public Dictionary<string, double[]> NoteHWhole { get; set; }
+        public BoundingBox NoteHWhole { get; set; }
 
         [JsonProperty("noteHalfDown")]
-        public Dictionary<string, double[]> NoteHalfDown { get; set; }
+        public BoundingBox NoteHalfDown { get; set; }
 
         [JsonProperty("noteHalfUp")]
-        public Dictionary<string, double[]> NoteHalfUp { get; set; }
+        public BoundingBox NoteHalfUp { get; set; }
 
         [JsonProperty("noteLaBlack")]
-        public Dictionary<string, double[]> NoteLaBlack { get; set; }
+        public BoundingBox NoteLaBlack { get; set; }
 
         [JsonProperty("noteLaHalf")]
-        public Dictionary<string, double[]> NoteLaHalf { get; set; }
+        public BoundingBox NoteLaHalf { get; set; }
 
         [JsonProperty("noteLaWhole")]
-        public Dictionary<string, double[]> NoteLaWhole { get; set; }
+        public BoundingBox NoteLaWhole { get; set; }
 
         [JsonProperty("noteMiBlack")]
-        public Dictionary<string, double[]> NoteMiBlack { get; set; }
+        public BoundingBox NoteMiBlack { get; set; }
 
         [JsonProperty("noteMiHalf")]
-        public Dictionary<string, double[]> NoteMiHalf { get; set; }
+        public BoundingBox NoteMiHalf { get; set; }
 
         [JsonProperty("noteMiWhole")]
-        public Dictionary<string, double[]> NoteMiWhole { get; set; }
+        public BoundingBox NoteMiWhole { get; set; }
 
         [JsonProperty("noteQuarterDown")]
-        public Dictionary<string, double[]> NoteQuarterDown { get; set; }
+        public BoundingBox NoteQuarterDown { get; set; }
 
         [JsonProperty("noteQuarterUp")]
-        public Dictionary<string, double[]> NoteQuarterUp { get; set; }
+        public BoundingBox NoteQuarterUp { get; set; }
 
         [JsonProperty("noteReBlack")]
-        public Dictionary<string, double[]> NoteReBlack { get; set; }
+        public BoundingBox NoteReBlack { get; set; }
 
         [JsonProperty("noteReHalf")]
-        public Dictionary<string, double[]> NoteReHalf { get; set; }
+        public BoundingBox NoteReHalf { get; set; }
 
         [JsonProperty("noteReWhole")]
-        public Dictionary<string, double[]> NoteReWhole { get; set; }
+        public BoundingBox NoteReWhole { get; set; }
 
         [JsonProperty("noteShapeArrowheadLeftBlack")]
-        public Dictionary<string, double[]> NoteShapeArrowheadLeftBlack { get; set; }
+        public BoundingBox NoteShapeArrowheadLeftBlack { get; set; }
 
         [JsonProperty("noteShapeArrowheadLeftDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeArrowheadLeftDoubleWhole { get; set; }
+        public BoundingBox NoteShapeArrowheadLeftDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeArrowheadLeftWhite")]
-        public Dictionary<string, double[]> NoteShapeArrowheadLeftWhite { get; set; }
+        public BoundingBox NoteShapeArrowheadLeftWhite { get; set; }
 
         [JsonProperty("noteShapeDiamondBlack")]
-        public Dictionary<string, double[]> NoteShapeDiamondBlack { get; set; }
+        public BoundingBox NoteShapeDiamondBlack { get; set; }
 
         [JsonProperty("noteShapeDiamondDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeDiamondDoubleWhole { get; set; }
+        public BoundingBox NoteShapeDiamondDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeDiamondWhite")]
-        public Dictionary<string, double[]> NoteShapeDiamondWhite { get; set; }
+        public BoundingBox NoteShapeDiamondWhite { get; set; }
 
         [JsonProperty("noteShapeIsoscelesTriangleBlack")]
-        public Dictionary<string, double[]> NoteShapeIsoscelesTriangleBlack { get; set; }
+        public BoundingBox NoteShapeIsoscelesTriangleBlack { get; set; }
 
         [JsonProperty("noteShapeIsoscelesTriangleDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeIsoscelesTriangleDoubleWhole { get; set; }
+        public BoundingBox NoteShapeIsoscelesTriangleDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeIsoscelesTriangleWhite")]
-        public Dictionary<string, double[]> NoteShapeIsoscelesTriangleWhite { get; set; }
+        public BoundingBox NoteShapeIsoscelesTriangleWhite { get; set; }
 
         [JsonProperty("noteShapeKeystoneBlack")]
-        public Dictionary<string, double[]> NoteShapeKeystoneBlack { get; set; }
+        public BoundingBox NoteShapeKeystoneBlack { get; set; }
 
         [JsonProperty("noteShapeKeystoneDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeKeystoneDoubleWhole { get; set; }
+        public BoundingBox NoteShapeKeystoneDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeKeystoneWhite")]
-        public Dictionary<string, double[]> NoteShapeKeystoneWhite { get; set; }
+        public BoundingBox NoteShapeKeystoneWhite { get; set; }
 
         [JsonProperty("noteShapeMoonBlack")]
-        public Dictionary<string, double[]> NoteShapeMoonBlack { get; set; }
+        public BoundingBox NoteShapeMoonBlack { get; set; }
 
         [JsonProperty("noteShapeMoonDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeMoonDoubleWhole { get; set; }
+        public BoundingBox NoteShapeMoonDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeMoonLeftBlack")]
-        public Dictionary<string, double[]> NoteShapeMoonLeftBlack { get; set; }
+        public BoundingBox NoteShapeMoonLeftBlack { get; set; }
 
         [JsonProperty("noteShapeMoonLeftDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeMoonLeftDoubleWhole { get; set; }
+        public BoundingBox NoteShapeMoonLeftDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeMoonLeftWhite")]
-        public Dictionary<string, double[]> NoteShapeMoonLeftWhite { get; set; }
+        public BoundingBox NoteShapeMoonLeftWhite { get; set; }
 
         [JsonProperty("noteShapeMoonWhite")]
-        public Dictionary<string, double[]> NoteShapeMoonWhite { get; set; }
+        public BoundingBox NoteShapeMoonWhite { get; set; }
 
         [JsonProperty("noteShapeQuarterMoonBlack")]
-        public Dictionary<string, double[]> NoteShapeQuarterMoonBlack { get; set; }
+        public BoundingBox NoteShapeQuarterMoonBlack { get; set; }
 
         [JsonProperty("noteShapeQuarterMoonDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeQuarterMoonDoubleWhole { get; set; }
+        public BoundingBox NoteShapeQuarterMoonDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeQuarterMoonWhite")]
-        public Dictionary<string, double[]> NoteShapeQuarterMoonWhite { get; set; }
+        public BoundingBox NoteShapeQuarterMoonWhite { get; set; }
 
         [JsonProperty("noteShapeRoundBlack")]
-        public Dictionary<string, double[]> NoteShapeRoundBlack { get; set; }
+        public BoundingBox NoteShapeRoundBlack { get; set; }
 
         [JsonProperty("noteShapeRoundDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeRoundDoubleWhole { get; set; }
+        public BoundingBox NoteShapeRoundDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeRoundWhite")]
-        public Dictionary<string, double[]> NoteShapeRoundWhite { get; set; }
+        public BoundingBox NoteShapeRoundWhite { get; set; }
 
         [JsonProperty("noteShapeSquareBlack")]
-        public Dictionary<string, double[]> NoteShapeSquareBlack { get; set; }
+        public BoundingBox NoteShapeSquareBlack { get; set; }
 
         [JsonProperty("noteShapeSquareDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeSquareDoubleWhole { get; set; }
+        public BoundingBox NoteShapeSquareDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeSquareWhite")]
-        public Dictionary<string, double[]> NoteShapeSquareWhite { get; set; }
+        public BoundingBox NoteShapeSquareWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleLeftBlack")]
-        public Dictionary<string, double[]> NoteShapeTriangleLeftBlack { get; set; }
+        public BoundingBox NoteShapeTriangleLeftBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleLeftDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeTriangleLeftDoubleWhole { get; set; }
+        public BoundingBox NoteShapeTriangleLeftDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeTriangleLeftWhite")]
-        public Dictionary<string, double[]> NoteShapeTriangleLeftWhite { get; set; }
+        public BoundingBox NoteShapeTriangleLeftWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleRightBlack")]
-        public Dictionary<string, double[]> NoteShapeTriangleRightBlack { get; set; }
+        public BoundingBox NoteShapeTriangleRightBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleRightDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeTriangleRightDoubleWhole { get; set; }
+        public BoundingBox NoteShapeTriangleRightDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeTriangleRightWhite")]
-        public Dictionary<string, double[]> NoteShapeTriangleRightWhite { get; set; }
+        public BoundingBox NoteShapeTriangleRightWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundBlack")]
-        public Dictionary<string, double[]> NoteShapeTriangleRoundBlack { get; set; }
+        public BoundingBox NoteShapeTriangleRoundBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeTriangleRoundDoubleWhole { get; set; }
+        public BoundingBox NoteShapeTriangleRoundDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundLeftBlack")]
-        public Dictionary<string, double[]> NoteShapeTriangleRoundLeftBlack { get; set; }
+        public BoundingBox NoteShapeTriangleRoundLeftBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundLeftDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeTriangleRoundLeftDoubleWhole { get; set; }
+        public BoundingBox NoteShapeTriangleRoundLeftDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundLeftWhite")]
-        public Dictionary<string, double[]> NoteShapeTriangleRoundLeftWhite { get; set; }
+        public BoundingBox NoteShapeTriangleRoundLeftWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundWhite")]
-        public Dictionary<string, double[]> NoteShapeTriangleRoundWhite { get; set; }
+        public BoundingBox NoteShapeTriangleRoundWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleUpBlack")]
-        public Dictionary<string, double[]> NoteShapeTriangleUpBlack { get; set; }
+        public BoundingBox NoteShapeTriangleUpBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleUpDoubleWhole")]
-        public Dictionary<string, double[]> NoteShapeTriangleUpDoubleWhole { get; set; }
+        public BoundingBox NoteShapeTriangleUpDoubleWhole { get; set; }
 
         [JsonProperty("noteShapeTriangleUpWhite")]
-        public Dictionary<string, double[]> NoteShapeTriangleUpWhite { get; set; }
+        public BoundingBox NoteShapeTriangleUpWhite { get; set; }
 
         [JsonProperty("noteSiBlack")]
-        public Dictionary<string, double[]> NoteSiBlack { get; set; }
+        public BoundingBox NoteSiBlack { get; set; }
 
         [JsonProperty("noteSiHalf")]
-        public Dictionary<string, double[]> NoteSiHalf { get; set; }
+        public BoundingBox NoteSiHalf { get; set; }
 
         [JsonProperty("noteSiWhole")]
-        public Dictionary<string, double[]> NoteSiWhole { get; set; }
+        public BoundingBox NoteSiWhole { get; set; }
 
         [JsonProperty("noteSoBlack")]
-        public Dictionary<string, double[]> NoteSoBlack { get; set; }
+        public BoundingBox NoteSoBlack { get; set; }
 
         [JsonProperty("noteSoHalf")]
-        public Dictionary<string, double[]> NoteSoHalf { get; set; }
+        public BoundingBox NoteSoHalf { get; set; }
 
         [JsonProperty("noteSoWhole")]
-        public Dictionary<string, double[]> NoteSoWhole { get; set; }
+        public BoundingBox NoteSoWhole { get; set; }
 
         [JsonProperty("noteTiBlack")]
-        public Dictionary<string, double[]> NoteTiBlack { get; set; }
+        public BoundingBox NoteTiBlack { get; set; }
 
         [JsonProperty("noteTiHalf")]
-        public Dictionary<string, double[]> NoteTiHalf { get; set; }
+        public BoundingBox NoteTiHalf { get; set; }
 
         [JsonProperty("noteTiWhole")]
-        public Dictionary<string, double[]> NoteTiWhole { get; set; }
+        public BoundingBox NoteTiWhole { get; set; }
 
         [JsonProperty("noteWhole")]
-        public Dictionary<string, double[]> NoteWhole { get; set; }
+        public BoundingBox NoteWhole { get; set; }
 
         [JsonProperty("noteheadBlack")]
-        public Dictionary<string, double[]> NoteheadBlack { get; set; }
+        public BoundingBox NoteheadBlack { get; set; }
 
         [JsonProperty("noteheadBlackOversized")]
-        public Dictionary<string, double[]> NoteheadBlackOversized { get; set; }
+        public BoundingBox NoteheadBlackOversized { get; set; }
 
         [JsonProperty("noteheadBlackParens")]
-        public Dictionary<string, double[]> NoteheadBlackParens { get; set; }
+        public BoundingBox NoteheadBlackParens { get; set; }
 
         [JsonProperty("noteheadBlackSmall")]
-        public Dictionary<string, double[]> NoteheadBlackSmall { get; set; }
+        public BoundingBox NoteheadBlackSmall { get; set; }
 
         [JsonProperty("noteheadCircleSlash")]
-        public Dictionary<string, double[]> NoteheadCircleSlash { get; set; }
+        public BoundingBox NoteheadCircleSlash { get; set; }
 
         [JsonProperty("noteheadCircleX")]
-        public Dictionary<string, double[]> NoteheadCircleX { get; set; }
+        public BoundingBox NoteheadCircleX { get; set; }
 
         [JsonProperty("noteheadCircleXDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadCircleXDoubleWhole { get; set; }
+        public BoundingBox NoteheadCircleXDoubleWhole { get; set; }
 
         [JsonProperty("noteheadCircleXHalf")]
-        public Dictionary<string, double[]> NoteheadCircleXHalf { get; set; }
+        public BoundingBox NoteheadCircleXHalf { get; set; }
 
         [JsonProperty("noteheadCircleXWhole")]
-        public Dictionary<string, double[]> NoteheadCircleXWhole { get; set; }
+        public BoundingBox NoteheadCircleXWhole { get; set; }
 
         [JsonProperty("noteheadCircledBlack")]
-        public Dictionary<string, double[]> NoteheadCircledBlack { get; set; }
+        public BoundingBox NoteheadCircledBlack { get; set; }
 
         [JsonProperty("noteheadCircledBlackLarge")]
-        public Dictionary<string, double[]> NoteheadCircledBlackLarge { get; set; }
+        public BoundingBox NoteheadCircledBlackLarge { get; set; }
 
         [JsonProperty("noteheadCircledDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadCircledDoubleWhole { get; set; }
+        public BoundingBox NoteheadCircledDoubleWhole { get; set; }
 
         [JsonProperty("noteheadCircledDoubleWholeLarge")]
-        public Dictionary<string, double[]> NoteheadCircledDoubleWholeLarge { get; set; }
+        public BoundingBox NoteheadCircledDoubleWholeLarge { get; set; }
 
         [JsonProperty("noteheadCircledHalf")]
-        public Dictionary<string, double[]> NoteheadCircledHalf { get; set; }
+        public BoundingBox NoteheadCircledHalf { get; set; }
 
         [JsonProperty("noteheadCircledHalfLarge")]
-        public Dictionary<string, double[]> NoteheadCircledHalfLarge { get; set; }
+        public BoundingBox NoteheadCircledHalfLarge { get; set; }
 
         [JsonProperty("noteheadCircledWhole")]
-        public Dictionary<string, double[]> NoteheadCircledWhole { get; set; }
+        public BoundingBox NoteheadCircledWhole { get; set; }
 
         [JsonProperty("noteheadCircledWholeLarge")]
-        public Dictionary<string, double[]> NoteheadCircledWholeLarge { get; set; }
+        public BoundingBox NoteheadCircledWholeLarge { get; set; }
 
         [JsonProperty("noteheadCircledXLarge")]
-        public Dictionary<string, double[]> NoteheadCircledXLarge { get; set; }
+        public BoundingBox NoteheadCircledXLarge { get; set; }
 
         [JsonProperty("noteheadClusterDoubleWhole2nd")]
-        public Dictionary<string, double[]> NoteheadClusterDoubleWhole2Nd { get; set; }
+        public BoundingBox NoteheadClusterDoubleWhole2Nd { get; set; }
 
         [JsonProperty("noteheadClusterDoubleWhole3rd")]
-        public Dictionary<string, double[]> NoteheadClusterDoubleWhole3Rd { get; set; }
+        public BoundingBox NoteheadClusterDoubleWhole3Rd { get; set; }
 
         [JsonProperty("noteheadClusterDoubleWholeBottom")]
-        public Dictionary<string, double[]> NoteheadClusterDoubleWholeBottom { get; set; }
+        public BoundingBox NoteheadClusterDoubleWholeBottom { get; set; }
 
         [JsonProperty("noteheadClusterDoubleWholeMiddle")]
-        public Dictionary<string, double[]> NoteheadClusterDoubleWholeMiddle { get; set; }
+        public BoundingBox NoteheadClusterDoubleWholeMiddle { get; set; }
 
         [JsonProperty("noteheadClusterDoubleWholeTop")]
-        public Dictionary<string, double[]> NoteheadClusterDoubleWholeTop { get; set; }
+        public BoundingBox NoteheadClusterDoubleWholeTop { get; set; }
 
         [JsonProperty("noteheadClusterHalf2nd")]
-        public Dictionary<string, double[]> NoteheadClusterHalf2Nd { get; set; }
+        public BoundingBox NoteheadClusterHalf2Nd { get; set; }
 
         [JsonProperty("noteheadClusterHalf3rd")]
-        public Dictionary<string, double[]> NoteheadClusterHalf3Rd { get; set; }
+        public BoundingBox NoteheadClusterHalf3Rd { get; set; }
 
         [JsonProperty("noteheadClusterHalfBottom")]
-        public Dictionary<string, double[]> NoteheadClusterHalfBottom { get; set; }
+        public BoundingBox NoteheadClusterHalfBottom { get; set; }
 
         [JsonProperty("noteheadClusterHalfMiddle")]
-        public Dictionary<string, double[]> NoteheadClusterHalfMiddle { get; set; }
+        public BoundingBox NoteheadClusterHalfMiddle { get; set; }
 
         [JsonProperty("noteheadClusterHalfTop")]
-        public Dictionary<string, double[]> NoteheadClusterHalfTop { get; set; }
+        public BoundingBox NoteheadClusterHalfTop { get; set; }
 
         [JsonProperty("noteheadClusterQuarter2nd")]
-        public Dictionary<string, double[]> NoteheadClusterQuarter2Nd { get; set; }
+        public BoundingBox NoteheadClusterQuarter2Nd { get; set; }
 
         [JsonProperty("noteheadClusterQuarter3rd")]
-        public Dictionary<string, double[]> NoteheadClusterQuarter3Rd { get; set; }
+        public BoundingBox NoteheadClusterQuarter3Rd { get; set; }
 
         [JsonProperty("noteheadClusterQuarterBottom")]
-        public Dictionary<string, double[]> NoteheadClusterQuarterBottom { get; set; }
+        public BoundingBox NoteheadClusterQuarterBottom { get; set; }
 
         [JsonProperty("noteheadClusterQuarterMiddle")]
-        public Dictionary<string, double[]> NoteheadClusterQuarterMiddle { get; set; }
+        public BoundingBox NoteheadClusterQuarterMiddle { get; set; }
 
         [JsonProperty("noteheadClusterQuarterTop")]
-        public Dictionary<string, double[]> NoteheadClusterQuarterTop { get; set; }
+        public BoundingBox NoteheadClusterQuarterTop { get; set; }
 
         [JsonProperty("noteheadClusterRoundBlack")]
-        public Dictionary<string, double[]> NoteheadClusterRoundBlack { get; set; }
+        public BoundingBox NoteheadClusterRoundBlack { get; set; }
 
         [JsonProperty("noteheadClusterRoundWhite")]
-        public Dictionary<string, double[]> NoteheadClusterRoundWhite { get; set; }
+        public BoundingBox NoteheadClusterRoundWhite { get; set; }
 
         [JsonProperty("noteheadClusterSquareBlack")]
-        public Dictionary<string, double[]> NoteheadClusterSquareBlack { get; set; }
+        public BoundingBox NoteheadClusterSquareBlack { get; set; }
 
         [JsonProperty("noteheadClusterSquareWhite")]
-        public Dictionary<string, double[]> NoteheadClusterSquareWhite { get; set; }
+        public BoundingBox NoteheadClusterSquareWhite { get; set; }
 
         [JsonProperty("noteheadClusterWhole2nd")]
-        public Dictionary<string, double[]> NoteheadClusterWhole2Nd { get; set; }
+        public BoundingBox NoteheadClusterWhole2Nd { get; set; }
 
         [JsonProperty("noteheadClusterWhole3rd")]
-        public Dictionary<string, double[]> NoteheadClusterWhole3Rd { get; set; }
+        public BoundingBox NoteheadClusterWhole3Rd { get; set; }
 
         [JsonProperty("noteheadClusterWholeBottom")]
-        public Dictionary<string, double[]> NoteheadClusterWholeBottom { get; set; }
+        public BoundingBox NoteheadClusterWholeBottom { get; set; }
 
         [JsonProperty("noteheadClusterWholeMiddle")]
-        public Dictionary<string, double[]> NoteheadClusterWholeMiddle { get; set; }
+        public BoundingBox NoteheadClusterWholeMiddle { get; set; }
 
         [JsonProperty("noteheadClusterWholeTop")]
-        public Dictionary<string, double[]> NoteheadClusterWholeTop { get; set; }
+        public BoundingBox NoteheadClusterWholeTop { get; set; }
 
         [JsonProperty("noteheadDiamondBlack")]
-        public Dictionary<string, double[]> NoteheadDiamondBlack { get; set; }
+        public BoundingBox NoteheadDiamondBlack { get; set; }
 
         [JsonProperty("noteheadDiamondBlackOld")]
-        public Dictionary<string, double[]> NoteheadDiamondBlackOld { get; set; }
+        public BoundingBox NoteheadDiamondBlackOld { get; set; }
 
         [JsonProperty("noteheadDiamondBlackWide")]
-        public Dictionary<string, double[]> NoteheadDiamondBlackWide { get; set; }
+        public BoundingBox NoteheadDiamondBlackWide { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlack2nd")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterBlack2Nd { get; set; }
+        public BoundingBox NoteheadDiamondClusterBlack2Nd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlack3rd")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterBlack3Rd { get; set; }
+        public BoundingBox NoteheadDiamondClusterBlack3Rd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlackBottom")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterBlackBottom { get; set; }
+        public BoundingBox NoteheadDiamondClusterBlackBottom { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlackMiddle")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterBlackMiddle { get; set; }
+        public BoundingBox NoteheadDiamondClusterBlackMiddle { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlackTop")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterBlackTop { get; set; }
+        public BoundingBox NoteheadDiamondClusterBlackTop { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhite2nd")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterWhite2Nd { get; set; }
+        public BoundingBox NoteheadDiamondClusterWhite2Nd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhite3rd")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterWhite3Rd { get; set; }
+        public BoundingBox NoteheadDiamondClusterWhite3Rd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhiteBottom")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterWhiteBottom { get; set; }
+        public BoundingBox NoteheadDiamondClusterWhiteBottom { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhiteMiddle")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterWhiteMiddle { get; set; }
+        public BoundingBox NoteheadDiamondClusterWhiteMiddle { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhiteTop")]
-        public Dictionary<string, double[]> NoteheadDiamondClusterWhiteTop { get; set; }
+        public BoundingBox NoteheadDiamondClusterWhiteTop { get; set; }
 
         [JsonProperty("noteheadDiamondDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadDiamondDoubleWhole { get; set; }
+        public BoundingBox NoteheadDiamondDoubleWhole { get; set; }
 
         [JsonProperty("noteheadDiamondDoubleWholeOld")]
-        public Dictionary<string, double[]> NoteheadDiamondDoubleWholeOld { get; set; }
+        public BoundingBox NoteheadDiamondDoubleWholeOld { get; set; }
 
         [JsonProperty("noteheadDiamondHalf")]
-        public Dictionary<string, double[]> NoteheadDiamondHalf { get; set; }
+        public BoundingBox NoteheadDiamondHalf { get; set; }
 
         [JsonProperty("noteheadDiamondHalfFilled")]
-        public Dictionary<string, double[]> NoteheadDiamondHalfFilled { get; set; }
+        public BoundingBox NoteheadDiamondHalfFilled { get; set; }
 
         [JsonProperty("noteheadDiamondHalfOld")]
-        public Dictionary<string, double[]> NoteheadDiamondHalfOld { get; set; }
+        public BoundingBox NoteheadDiamondHalfOld { get; set; }
 
         [JsonProperty("noteheadDiamondHalfWide")]
-        public Dictionary<string, double[]> NoteheadDiamondHalfWide { get; set; }
+        public BoundingBox NoteheadDiamondHalfWide { get; set; }
 
         [JsonProperty("noteheadDiamondOpen")]
-        public Dictionary<string, double[]> NoteheadDiamondOpen { get; set; }
+        public BoundingBox NoteheadDiamondOpen { get; set; }
 
         [JsonProperty("noteheadDiamondWhite")]
-        public Dictionary<string, double[]> NoteheadDiamondWhite { get; set; }
+        public BoundingBox NoteheadDiamondWhite { get; set; }
 
         [JsonProperty("noteheadDiamondWhiteWide")]
-        public Dictionary<string, double[]> NoteheadDiamondWhiteWide { get; set; }
+        public BoundingBox NoteheadDiamondWhiteWide { get; set; }
 
         [JsonProperty("noteheadDiamondWhole")]
-        public Dictionary<string, double[]> NoteheadDiamondWhole { get; set; }
+        public BoundingBox NoteheadDiamondWhole { get; set; }
 
         [JsonProperty("noteheadDiamondWholeOld")]
-        public Dictionary<string, double[]> NoteheadDiamondWholeOld { get; set; }
+        public BoundingBox NoteheadDiamondWholeOld { get; set; }
 
         [JsonProperty("noteheadDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadDoubleWhole { get; set; }
+        public BoundingBox NoteheadDoubleWhole { get; set; }
 
         [JsonProperty("noteheadDoubleWholeAlt")]
-        public Dictionary<string, double[]> NoteheadDoubleWholeAlt { get; set; }
+        public BoundingBox NoteheadDoubleWholeAlt { get; set; }
 
         [JsonProperty("noteheadDoubleWholeOversized")]
-        public Dictionary<string, double[]> NoteheadDoubleWholeOversized { get; set; }
+        public BoundingBox NoteheadDoubleWholeOversized { get; set; }
 
         [JsonProperty("noteheadDoubleWholeParens")]
-        public Dictionary<string, double[]> NoteheadDoubleWholeParens { get; set; }
+        public BoundingBox NoteheadDoubleWholeParens { get; set; }
 
         [JsonProperty("noteheadDoubleWholeSmall")]
-        public Dictionary<string, double[]> NoteheadDoubleWholeSmall { get; set; }
+        public BoundingBox NoteheadDoubleWholeSmall { get; set; }
 
         [JsonProperty("noteheadDoubleWholeSquare")]
-        public Dictionary<string, double[]> NoteheadDoubleWholeSquare { get; set; }
+        public BoundingBox NoteheadDoubleWholeSquare { get; set; }
 
         [JsonProperty("noteheadDoubleWholeSquareOversized")]
         public BoundingBox NoteheadDoubleWholeSquareOversized { get; set; }
 
         [JsonProperty("noteheadDoubleWholeWithX")]
-        public Dictionary<string, double[]> NoteheadDoubleWholeWithX { get; set; }
+        public BoundingBox NoteheadDoubleWholeWithX { get; set; }
 
         [JsonProperty("noteheadHalf")]
-        public Dictionary<string, double[]> NoteheadHalf { get; set; }
+        public BoundingBox NoteheadHalf { get; set; }
 
         [JsonProperty("noteheadHalfFilled")]
-        public Dictionary<string, double[]> NoteheadHalfFilled { get; set; }
+        public BoundingBox NoteheadHalfFilled { get; set; }
 
         [JsonProperty("noteheadHalfOversized")]
-        public Dictionary<string, double[]> NoteheadHalfOversized { get; set; }
+        public BoundingBox NoteheadHalfOversized { get; set; }
 
         [JsonProperty("noteheadHalfParens")]
-        public Dictionary<string, double[]> NoteheadHalfParens { get; set; }
+        public BoundingBox NoteheadHalfParens { get; set; }
 
         [JsonProperty("noteheadHalfSmall")]
-        public Dictionary<string, double[]> NoteheadHalfSmall { get; set; }
+        public BoundingBox NoteheadHalfSmall { get; set; }
 
         [JsonProperty("noteheadHalfWithX")]
-        public Dictionary<string, double[]> NoteheadHalfWithX { get; set; }
+        public BoundingBox NoteheadHalfWithX { get; set; }
 
         [JsonProperty("noteheadHeavyX")]
-        public Dictionary<string, double[]> NoteheadHeavyX { get; set; }
+        public BoundingBox NoteheadHeavyX { get; set; }
 
         [JsonProperty("noteheadHeavyXHat")]
-        public Dictionary<string, double[]> NoteheadHeavyXHat { get; set; }
+        public BoundingBox NoteheadHeavyXHat { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownBlack")]
-        public Dictionary<string, double[]> NoteheadLargeArrowDownBlack { get; set; }
+        public BoundingBox NoteheadLargeArrowDownBlack { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadLargeArrowDownDoubleWhole { get; set; }
+        public BoundingBox NoteheadLargeArrowDownDoubleWhole { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownHalf")]
-        public Dictionary<string, double[]> NoteheadLargeArrowDownHalf { get; set; }
+        public BoundingBox NoteheadLargeArrowDownHalf { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownWhole")]
-        public Dictionary<string, double[]> NoteheadLargeArrowDownWhole { get; set; }
+        public BoundingBox NoteheadLargeArrowDownWhole { get; set; }
 
         [JsonProperty("noteheadLargeArrowUpBlack")]
-        public Dictionary<string, double[]> NoteheadLargeArrowUpBlack { get; set; }
+        public BoundingBox NoteheadLargeArrowUpBlack { get; set; }
 
         [JsonProperty("noteheadLargeArrowUpDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadLargeArrowUpDoubleWhole { get; set; }
+        public BoundingBox NoteheadLargeArrowUpDoubleWhole { get; set; }
 
         [JsonProperty("noteheadLargeArrowUpHalf")]
-        public Dictionary<string, double[]> NoteheadLargeArrowUpHalf { get; set; }
+        public BoundingBox NoteheadLargeArrowUpHalf { get; set; }
 
         [JsonProperty("noteheadLargeArrowUpWhole")]
-        public Dictionary<string, double[]> NoteheadLargeArrowUpWhole { get; set; }
+        public BoundingBox NoteheadLargeArrowUpWhole { get; set; }
 
         [JsonProperty("noteheadMoonBlack")]
-        public Dictionary<string, double[]> NoteheadMoonBlack { get; set; }
+        public BoundingBox NoteheadMoonBlack { get; set; }
 
         [JsonProperty("noteheadMoonWhite")]
-        public Dictionary<string, double[]> NoteheadMoonWhite { get; set; }
+        public BoundingBox NoteheadMoonWhite { get; set; }
 
         [JsonProperty("noteheadParenthesis")]
-        public Dictionary<string, double[]> NoteheadParenthesis { get; set; }
+        public BoundingBox NoteheadParenthesis { get; set; }
 
         [JsonProperty("noteheadParenthesisLeft")]
-        public Dictionary<string, double[]> NoteheadParenthesisLeft { get; set; }
+        public BoundingBox NoteheadParenthesisLeft { get; set; }
 
         [JsonProperty("noteheadParenthesisRight")]
-        public Dictionary<string, double[]> NoteheadParenthesisRight { get; set; }
+        public BoundingBox NoteheadParenthesisRight { get; set; }
 
         [JsonProperty("noteheadPlusBlack")]
-        public Dictionary<string, double[]> NoteheadPlusBlack { get; set; }
+        public BoundingBox NoteheadPlusBlack { get; set; }
 
         [JsonProperty("noteheadPlusDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadPlusDoubleWhole { get; set; }
+        public BoundingBox NoteheadPlusDoubleWhole { get; set; }
 
         [JsonProperty("noteheadPlusHalf")]
-        public Dictionary<string, double[]> NoteheadPlusHalf { get; set; }
+        public BoundingBox NoteheadPlusHalf { get; set; }
 
         [JsonProperty("noteheadPlusWhole")]
-        public Dictionary<string, double[]> NoteheadPlusWhole { get; set; }
+        public BoundingBox NoteheadPlusWhole { get; set; }
 
         [JsonProperty("noteheadRectangularClusterBlackBottom")]
-        public Dictionary<string, double[]> NoteheadRectangularClusterBlackBottom { get; set; }
+        public BoundingBox NoteheadRectangularClusterBlackBottom { get; set; }
 
         [JsonProperty("noteheadRectangularClusterBlackMiddle")]
-        public Dictionary<string, double[]> NoteheadRectangularClusterBlackMiddle { get; set; }
+        public BoundingBox NoteheadRectangularClusterBlackMiddle { get; set; }
 
         [JsonProperty("noteheadRectangularClusterBlackTop")]
-        public Dictionary<string, double[]> NoteheadRectangularClusterBlackTop { get; set; }
+        public BoundingBox NoteheadRectangularClusterBlackTop { get; set; }
 
         [JsonProperty("noteheadRectangularClusterWhiteBottom")]
-        public Dictionary<string, double[]> NoteheadRectangularClusterWhiteBottom { get; set; }
+        public BoundingBox NoteheadRectangularClusterWhiteBottom { get; set; }
 
         [JsonProperty("noteheadRectangularClusterWhiteMiddle")]
-        public Dictionary<string, double[]> NoteheadRectangularClusterWhiteMiddle { get; set; }
+        public BoundingBox NoteheadRectangularClusterWhiteMiddle { get; set; }
 
         [JsonProperty("noteheadRectangularClusterWhiteTop")]
-        public Dictionary<string, double[]> NoteheadRectangularClusterWhiteTop { get; set; }
+        public BoundingBox NoteheadRectangularClusterWhiteTop { get; set; }
 
         [JsonProperty("noteheadRoundBlack")]
-        public Dictionary<string, double[]> NoteheadRoundBlack { get; set; }
+        public BoundingBox NoteheadRoundBlack { get; set; }
 
         [JsonProperty("noteheadRoundBlackDoubleSlashed")]
-        public Dictionary<string, double[]> NoteheadRoundBlackDoubleSlashed { get; set; }
+        public BoundingBox NoteheadRoundBlackDoubleSlashed { get; set; }
 
         [JsonProperty("noteheadRoundBlackLarge")]
         public Dictionary<string, long[]> NoteheadRoundBlackLarge { get; set; }
 
         [JsonProperty("noteheadRoundBlackSlashed")]
-        public Dictionary<string, double[]> NoteheadRoundBlackSlashed { get; set; }
+        public BoundingBox NoteheadRoundBlackSlashed { get; set; }
 
         [JsonProperty("noteheadRoundBlackSlashedLarge")]
-        public Dictionary<string, double[]> NoteheadRoundBlackSlashedLarge { get; set; }
+        public BoundingBox NoteheadRoundBlackSlashedLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhite")]
-        public Dictionary<string, double[]> NoteheadRoundWhite { get; set; }
+        public BoundingBox NoteheadRoundWhite { get; set; }
 
         [JsonProperty("noteheadRoundWhiteDoubleSlashed")]
-        public Dictionary<string, double[]> NoteheadRoundWhiteDoubleSlashed { get; set; }
+        public BoundingBox NoteheadRoundWhiteDoubleSlashed { get; set; }
 
         [JsonProperty("noteheadRoundWhiteLarge")]
         public Dictionary<string, long[]> NoteheadRoundWhiteLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhiteSlashed")]
-        public Dictionary<string, double[]> NoteheadRoundWhiteSlashed { get; set; }
+        public BoundingBox NoteheadRoundWhiteSlashed { get; set; }
 
         [JsonProperty("noteheadRoundWhiteSlashedLarge")]
-        public Dictionary<string, double[]> NoteheadRoundWhiteSlashedLarge { get; set; }
+        public BoundingBox NoteheadRoundWhiteSlashedLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhiteWithDot")]
-        public Dictionary<string, double[]> NoteheadRoundWhiteWithDot { get; set; }
+        public BoundingBox NoteheadRoundWhiteWithDot { get; set; }
 
         [JsonProperty("noteheadRoundWhiteWithDotLarge")]
         public BoundingBox NoteheadRoundWhiteWithDotLarge { get; set; }
@@ -6167,16 +6167,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox NoteheadSlashHorizontalEnds { get; set; }
 
         [JsonProperty("noteheadSlashHorizontalEndsMuted")]
-        public Dictionary<string, double[]> NoteheadSlashHorizontalEndsMuted { get; set; }
+        public BoundingBox NoteheadSlashHorizontalEndsMuted { get; set; }
 
         [JsonProperty("noteheadSlashVerticalEnds")]
-        public Dictionary<string, double[]> NoteheadSlashVerticalEnds { get; set; }
+        public BoundingBox NoteheadSlashVerticalEnds { get; set; }
 
         [JsonProperty("noteheadSlashVerticalEndsMuted")]
-        public Dictionary<string, double[]> NoteheadSlashVerticalEndsMuted { get; set; }
+        public BoundingBox NoteheadSlashVerticalEndsMuted { get; set; }
 
         [JsonProperty("noteheadSlashVerticalEndsSmall")]
-        public Dictionary<string, double[]> NoteheadSlashVerticalEndsSmall { get; set; }
+        public BoundingBox NoteheadSlashVerticalEndsSmall { get; set; }
 
         [JsonProperty("noteheadSlashWhiteDoubleWhole")]
         public BoundingBox NoteheadSlashWhiteDoubleWhole { get; set; }
@@ -6185,7 +6185,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox NoteheadSlashWhiteHalf { get; set; }
 
         [JsonProperty("noteheadSlashWhiteMuted")]
-        public Dictionary<string, double[]> NoteheadSlashWhiteMuted { get; set; }
+        public BoundingBox NoteheadSlashWhiteMuted { get; set; }
 
         [JsonProperty("noteheadSlashWhiteWhole")]
         public BoundingBox NoteheadSlashWhiteWhole { get; set; }
@@ -6194,31 +6194,31 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox NoteheadSlashX { get; set; }
 
         [JsonProperty("noteheadSlashedBlack1")]
-        public Dictionary<string, double[]> NoteheadSlashedBlack1 { get; set; }
+        public BoundingBox NoteheadSlashedBlack1 { get; set; }
 
         [JsonProperty("noteheadSlashedBlack2")]
-        public Dictionary<string, double[]> NoteheadSlashedBlack2 { get; set; }
+        public BoundingBox NoteheadSlashedBlack2 { get; set; }
 
         [JsonProperty("noteheadSlashedDoubleWhole1")]
-        public Dictionary<string, double[]> NoteheadSlashedDoubleWhole1 { get; set; }
+        public BoundingBox NoteheadSlashedDoubleWhole1 { get; set; }
 
         [JsonProperty("noteheadSlashedDoubleWhole2")]
-        public Dictionary<string, double[]> NoteheadSlashedDoubleWhole2 { get; set; }
+        public BoundingBox NoteheadSlashedDoubleWhole2 { get; set; }
 
         [JsonProperty("noteheadSlashedHalf1")]
-        public Dictionary<string, double[]> NoteheadSlashedHalf1 { get; set; }
+        public BoundingBox NoteheadSlashedHalf1 { get; set; }
 
         [JsonProperty("noteheadSlashedHalf2")]
-        public Dictionary<string, double[]> NoteheadSlashedHalf2 { get; set; }
+        public BoundingBox NoteheadSlashedHalf2 { get; set; }
 
         [JsonProperty("noteheadSlashedWhole1")]
-        public Dictionary<string, double[]> NoteheadSlashedWhole1 { get; set; }
+        public BoundingBox NoteheadSlashedWhole1 { get; set; }
 
         [JsonProperty("noteheadSlashedWhole2")]
-        public Dictionary<string, double[]> NoteheadSlashedWhole2 { get; set; }
+        public BoundingBox NoteheadSlashedWhole2 { get; set; }
 
         [JsonProperty("noteheadSquareBlack")]
-        public Dictionary<string, double[]> NoteheadSquareBlack { get; set; }
+        public BoundingBox NoteheadSquareBlack { get; set; }
 
         [JsonProperty("noteheadSquareBlackLarge")]
         public Dictionary<string, long[]> NoteheadSquareBlackLarge { get; set; }
@@ -6227,238 +6227,238 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, long[]> NoteheadSquareBlackWhite { get; set; }
 
         [JsonProperty("noteheadSquareWhite")]
-        public Dictionary<string, double[]> NoteheadSquareWhite { get; set; }
+        public BoundingBox NoteheadSquareWhite { get; set; }
 
         [JsonProperty("noteheadTriangleDownBlack")]
-        public Dictionary<string, double[]> NoteheadTriangleDownBlack { get; set; }
+        public BoundingBox NoteheadTriangleDownBlack { get; set; }
 
         [JsonProperty("noteheadTriangleDownDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadTriangleDownDoubleWhole { get; set; }
+        public BoundingBox NoteheadTriangleDownDoubleWhole { get; set; }
 
         [JsonProperty("noteheadTriangleDownHalf")]
-        public Dictionary<string, double[]> NoteheadTriangleDownHalf { get; set; }
+        public BoundingBox NoteheadTriangleDownHalf { get; set; }
 
         [JsonProperty("noteheadTriangleDownWhite")]
-        public Dictionary<string, double[]> NoteheadTriangleDownWhite { get; set; }
+        public BoundingBox NoteheadTriangleDownWhite { get; set; }
 
         [JsonProperty("noteheadTriangleDownWhole")]
-        public Dictionary<string, double[]> NoteheadTriangleDownWhole { get; set; }
+        public BoundingBox NoteheadTriangleDownWhole { get; set; }
 
         [JsonProperty("noteheadTriangleLeftBlack")]
-        public Dictionary<string, double[]> NoteheadTriangleLeftBlack { get; set; }
+        public BoundingBox NoteheadTriangleLeftBlack { get; set; }
 
         [JsonProperty("noteheadTriangleLeftWhite")]
-        public Dictionary<string, double[]> NoteheadTriangleLeftWhite { get; set; }
+        public BoundingBox NoteheadTriangleLeftWhite { get; set; }
 
         [JsonProperty("noteheadTriangleRightBlack")]
-        public Dictionary<string, double[]> NoteheadTriangleRightBlack { get; set; }
+        public BoundingBox NoteheadTriangleRightBlack { get; set; }
 
         [JsonProperty("noteheadTriangleRightWhite")]
-        public Dictionary<string, double[]> NoteheadTriangleRightWhite { get; set; }
+        public BoundingBox NoteheadTriangleRightWhite { get; set; }
 
         [JsonProperty("noteheadTriangleRoundDownBlack")]
-        public Dictionary<string, double[]> NoteheadTriangleRoundDownBlack { get; set; }
+        public BoundingBox NoteheadTriangleRoundDownBlack { get; set; }
 
         [JsonProperty("noteheadTriangleRoundDownWhite")]
-        public Dictionary<string, double[]> NoteheadTriangleRoundDownWhite { get; set; }
+        public BoundingBox NoteheadTriangleRoundDownWhite { get; set; }
 
         [JsonProperty("noteheadTriangleUpBlack")]
-        public Dictionary<string, double[]> NoteheadTriangleUpBlack { get; set; }
+        public BoundingBox NoteheadTriangleUpBlack { get; set; }
 
         [JsonProperty("noteheadTriangleUpDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadTriangleUpDoubleWhole { get; set; }
+        public BoundingBox NoteheadTriangleUpDoubleWhole { get; set; }
 
         [JsonProperty("noteheadTriangleUpHalf")]
-        public Dictionary<string, double[]> NoteheadTriangleUpHalf { get; set; }
+        public BoundingBox NoteheadTriangleUpHalf { get; set; }
 
         [JsonProperty("noteheadTriangleUpRightBlack")]
-        public Dictionary<string, double[]> NoteheadTriangleUpRightBlack { get; set; }
+        public BoundingBox NoteheadTriangleUpRightBlack { get; set; }
 
         [JsonProperty("noteheadTriangleUpRightWhite")]
-        public Dictionary<string, double[]> NoteheadTriangleUpRightWhite { get; set; }
+        public BoundingBox NoteheadTriangleUpRightWhite { get; set; }
 
         [JsonProperty("noteheadTriangleUpWhite")]
-        public Dictionary<string, double[]> NoteheadTriangleUpWhite { get; set; }
+        public BoundingBox NoteheadTriangleUpWhite { get; set; }
 
         [JsonProperty("noteheadTriangleUpWhole")]
-        public Dictionary<string, double[]> NoteheadTriangleUpWhole { get; set; }
+        public BoundingBox NoteheadTriangleUpWhole { get; set; }
 
         [JsonProperty("noteheadVoidWithX")]
-        public Dictionary<string, double[]> NoteheadVoidWithX { get; set; }
+        public BoundingBox NoteheadVoidWithX { get; set; }
 
         [JsonProperty("noteheadWhole")]
-        public Dictionary<string, double[]> NoteheadWhole { get; set; }
+        public BoundingBox NoteheadWhole { get; set; }
 
         [JsonProperty("noteheadWholeFilled")]
-        public Dictionary<string, double[]> NoteheadWholeFilled { get; set; }
+        public BoundingBox NoteheadWholeFilled { get; set; }
 
         [JsonProperty("noteheadWholeOversized")]
-        public Dictionary<string, double[]> NoteheadWholeOversized { get; set; }
+        public BoundingBox NoteheadWholeOversized { get; set; }
 
         [JsonProperty("noteheadWholeParens")]
-        public Dictionary<string, double[]> NoteheadWholeParens { get; set; }
+        public BoundingBox NoteheadWholeParens { get; set; }
 
         [JsonProperty("noteheadWholeSmall")]
-        public Dictionary<string, double[]> NoteheadWholeSmall { get; set; }
+        public BoundingBox NoteheadWholeSmall { get; set; }
 
         [JsonProperty("noteheadWholeWithX")]
-        public Dictionary<string, double[]> NoteheadWholeWithX { get; set; }
+        public BoundingBox NoteheadWholeWithX { get; set; }
 
         [JsonProperty("noteheadXBlack")]
-        public Dictionary<string, double[]> NoteheadXBlack { get; set; }
+        public BoundingBox NoteheadXBlack { get; set; }
 
         [JsonProperty("noteheadXDoubleWhole")]
-        public Dictionary<string, double[]> NoteheadXDoubleWhole { get; set; }
+        public BoundingBox NoteheadXDoubleWhole { get; set; }
 
         [JsonProperty("noteheadXHalf")]
-        public Dictionary<string, double[]> NoteheadXHalf { get; set; }
+        public BoundingBox NoteheadXHalf { get; set; }
 
         [JsonProperty("noteheadXOrnate")]
-        public Dictionary<string, double[]> NoteheadXOrnate { get; set; }
+        public BoundingBox NoteheadXOrnate { get; set; }
 
         [JsonProperty("noteheadXOrnateEllipse")]
-        public Dictionary<string, double[]> NoteheadXOrnateEllipse { get; set; }
+        public BoundingBox NoteheadXOrnateEllipse { get; set; }
 
         [JsonProperty("noteheadXWhole")]
-        public Dictionary<string, double[]> NoteheadXWhole { get; set; }
+        public BoundingBox NoteheadXWhole { get; set; }
 
         [JsonProperty("octaveBaselineA")]
-        public Dictionary<string, double[]> OctaveBaselineA { get; set; }
+        public BoundingBox OctaveBaselineA { get; set; }
 
         [JsonProperty("octaveBaselineB")]
-        public Dictionary<string, double[]> OctaveBaselineB { get; set; }
+        public BoundingBox OctaveBaselineB { get; set; }
 
         [JsonProperty("octaveBaselineM")]
-        public Dictionary<string, double[]> OctaveBaselineM { get; set; }
+        public BoundingBox OctaveBaselineM { get; set; }
 
         [JsonProperty("octaveBaselineV")]
-        public Dictionary<string, double[]> OctaveBaselineV { get; set; }
+        public BoundingBox OctaveBaselineV { get; set; }
 
         [JsonProperty("octaveBassa")]
-        public Dictionary<string, double[]> OctaveBassa { get; set; }
+        public BoundingBox OctaveBassa { get; set; }
 
         [JsonProperty("octaveLoco")]
-        public Dictionary<string, double[]> OctaveLoco { get; set; }
+        public BoundingBox OctaveLoco { get; set; }
 
         [JsonProperty("octaveParensLeft")]
-        public Dictionary<string, double[]> OctaveParensLeft { get; set; }
+        public BoundingBox OctaveParensLeft { get; set; }
 
         [JsonProperty("octaveParensRight")]
-        public Dictionary<string, double[]> OctaveParensRight { get; set; }
+        public BoundingBox OctaveParensRight { get; set; }
 
         [JsonProperty("octaveSuperscriptA")]
-        public Dictionary<string, double[]> OctaveSuperscriptA { get; set; }
+        public BoundingBox OctaveSuperscriptA { get; set; }
 
         [JsonProperty("octaveSuperscriptB")]
-        public Dictionary<string, double[]> OctaveSuperscriptB { get; set; }
+        public BoundingBox OctaveSuperscriptB { get; set; }
 
         [JsonProperty("octaveSuperscriptM")]
-        public Dictionary<string, double[]> OctaveSuperscriptM { get; set; }
+        public BoundingBox OctaveSuperscriptM { get; set; }
 
         [JsonProperty("octaveSuperscriptV")]
-        public Dictionary<string, double[]> OctaveSuperscriptV { get; set; }
+        public BoundingBox OctaveSuperscriptV { get; set; }
 
         [JsonProperty("ornamentBottomLeftConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentBottomLeftConcaveStroke { get; set; }
+        public BoundingBox OrnamentBottomLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentBottomLeftConcaveStrokeLarge")]
-        public Dictionary<string, double[]> OrnamentBottomLeftConcaveStrokeLarge { get; set; }
+        public BoundingBox OrnamentBottomLeftConcaveStrokeLarge { get; set; }
 
         [JsonProperty("ornamentBottomLeftConvexStroke")]
-        public Dictionary<string, double[]> OrnamentBottomLeftConvexStroke { get; set; }
+        public BoundingBox OrnamentBottomLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentBottomRightConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentBottomRightConcaveStroke { get; set; }
+        public BoundingBox OrnamentBottomRightConcaveStroke { get; set; }
 
         [JsonProperty("ornamentBottomRightConvexStroke")]
-        public Dictionary<string, double[]> OrnamentBottomRightConvexStroke { get; set; }
+        public BoundingBox OrnamentBottomRightConvexStroke { get; set; }
 
         [JsonProperty("ornamentComma")]
-        public Dictionary<string, double[]> OrnamentComma { get; set; }
+        public BoundingBox OrnamentComma { get; set; }
 
         [JsonProperty("ornamentDoubleObliqueLinesAfterNote")]
-        public Dictionary<string, double[]> OrnamentDoubleObliqueLinesAfterNote { get; set; }
+        public BoundingBox OrnamentDoubleObliqueLinesAfterNote { get; set; }
 
         [JsonProperty("ornamentDoubleObliqueLinesBeforeNote")]
-        public Dictionary<string, double[]> OrnamentDoubleObliqueLinesBeforeNote { get; set; }
+        public BoundingBox OrnamentDoubleObliqueLinesBeforeNote { get; set; }
 
         [JsonProperty("ornamentDownCurve")]
         public BoundingBox OrnamentDownCurve { get; set; }
 
         [JsonProperty("ornamentHaydn")]
-        public Dictionary<string, double[]> OrnamentHaydn { get; set; }
+        public BoundingBox OrnamentHaydn { get; set; }
 
         [JsonProperty("ornamentHighLeftConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentHighLeftConcaveStroke { get; set; }
+        public BoundingBox OrnamentHighLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentHighLeftConvexStroke")]
-        public Dictionary<string, double[]> OrnamentHighLeftConvexStroke { get; set; }
+        public BoundingBox OrnamentHighLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentHighRightConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentHighRightConcaveStroke { get; set; }
+        public BoundingBox OrnamentHighRightConcaveStroke { get; set; }
 
         [JsonProperty("ornamentHighRightConvexStroke")]
-        public Dictionary<string, double[]> OrnamentHighRightConvexStroke { get; set; }
+        public BoundingBox OrnamentHighRightConvexStroke { get; set; }
 
         [JsonProperty("ornamentHookAfterNote")]
-        public Dictionary<string, double[]> OrnamentHookAfterNote { get; set; }
+        public BoundingBox OrnamentHookAfterNote { get; set; }
 
         [JsonProperty("ornamentHookBeforeNote")]
         public BoundingBox OrnamentHookBeforeNote { get; set; }
 
         [JsonProperty("ornamentLeftFacingHalfCircle")]
-        public Dictionary<string, double[]> OrnamentLeftFacingHalfCircle { get; set; }
+        public BoundingBox OrnamentLeftFacingHalfCircle { get; set; }
 
         [JsonProperty("ornamentLeftFacingHook")]
-        public Dictionary<string, double[]> OrnamentLeftFacingHook { get; set; }
+        public BoundingBox OrnamentLeftFacingHook { get; set; }
 
         [JsonProperty("ornamentLeftPlus")]
-        public Dictionary<string, double[]> OrnamentLeftPlus { get; set; }
+        public BoundingBox OrnamentLeftPlus { get; set; }
 
         [JsonProperty("ornamentLeftShakeT")]
-        public Dictionary<string, double[]> OrnamentLeftShakeT { get; set; }
+        public BoundingBox OrnamentLeftShakeT { get; set; }
 
         [JsonProperty("ornamentLeftVerticalStroke")]
-        public Dictionary<string, double[]> OrnamentLeftVerticalStroke { get; set; }
+        public BoundingBox OrnamentLeftVerticalStroke { get; set; }
 
         [JsonProperty("ornamentLeftVerticalStrokeWithCross")]
-        public Dictionary<string, double[]> OrnamentLeftVerticalStrokeWithCross { get; set; }
+        public BoundingBox OrnamentLeftVerticalStrokeWithCross { get; set; }
 
         [JsonProperty("ornamentLowLeftConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentLowLeftConcaveStroke { get; set; }
+        public BoundingBox OrnamentLowLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentLowLeftConvexStroke")]
-        public Dictionary<string, double[]> OrnamentLowLeftConvexStroke { get; set; }
+        public BoundingBox OrnamentLowLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentLowRightConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentLowRightConcaveStroke { get; set; }
+        public BoundingBox OrnamentLowRightConcaveStroke { get; set; }
 
         [JsonProperty("ornamentLowRightConvexStroke")]
-        public Dictionary<string, double[]> OrnamentLowRightConvexStroke { get; set; }
+        public BoundingBox OrnamentLowRightConvexStroke { get; set; }
 
         [JsonProperty("ornamentMiddleVerticalStroke")]
-        public Dictionary<string, double[]> OrnamentMiddleVerticalStroke { get; set; }
+        public BoundingBox OrnamentMiddleVerticalStroke { get; set; }
 
         [JsonProperty("ornamentMordent")]
         public BoundingBox OrnamentMordent { get; set; }
 
         [JsonProperty("ornamentMordentInverted")]
-        public Dictionary<string, double[]> OrnamentMordentInverted { get; set; }
+        public BoundingBox OrnamentMordentInverted { get; set; }
 
         [JsonProperty("ornamentObliqueLineAfterNote")]
-        public Dictionary<string, double[]> OrnamentObliqueLineAfterNote { get; set; }
+        public BoundingBox OrnamentObliqueLineAfterNote { get; set; }
 
         [JsonProperty("ornamentObliqueLineBeforeNote")]
-        public Dictionary<string, double[]> OrnamentObliqueLineBeforeNote { get; set; }
+        public BoundingBox OrnamentObliqueLineBeforeNote { get; set; }
 
         [JsonProperty("ornamentObliqueLineHorizAfterNote")]
-        public Dictionary<string, double[]> OrnamentObliqueLineHorizAfterNote { get; set; }
+        public BoundingBox OrnamentObliqueLineHorizAfterNote { get; set; }
 
         [JsonProperty("ornamentObliqueLineHorizBeforeNote")]
-        public Dictionary<string, double[]> OrnamentObliqueLineHorizBeforeNote { get; set; }
+        public BoundingBox OrnamentObliqueLineHorizBeforeNote { get; set; }
 
         [JsonProperty("ornamentOriscus")]
-        public Dictionary<string, double[]> OrnamentOriscus { get; set; }
+        public BoundingBox OrnamentOriscus { get; set; }
 
         [JsonProperty("ornamentPinceCouperin")]
         public BoundingBox OrnamentPinceCouperin { get; set; }
@@ -6479,13 +6479,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox OrnamentPrecompCadenceUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompCadenceUpperPrefixTurn")]
-        public Dictionary<string, double[]> OrnamentPrecompCadenceUpperPrefixTurn { get; set; }
+        public BoundingBox OrnamentPrecompCadenceUpperPrefixTurn { get; set; }
 
         [JsonProperty("ornamentPrecompCadenceWithTurn")]
-        public Dictionary<string, double[]> OrnamentPrecompCadenceWithTurn { get; set; }
+        public BoundingBox OrnamentPrecompCadenceWithTurn { get; set; }
 
         [JsonProperty("ornamentPrecompDescendingSlide")]
-        public Dictionary<string, double[]> OrnamentPrecompDescendingSlide { get; set; }
+        public BoundingBox OrnamentPrecompDescendingSlide { get; set; }
 
         [JsonProperty("ornamentPrecompDoubleCadenceLowerPrefix")]
         public BoundingBox OrnamentPrecompDoubleCadenceLowerPrefix { get; set; }
@@ -6494,10 +6494,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox OrnamentPrecompDoubleCadenceUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompDoubleCadenceUpperPrefixTurn")]
-        public Dictionary<string, double[]> OrnamentPrecompDoubleCadenceUpperPrefixTurn { get; set; }
+        public BoundingBox OrnamentPrecompDoubleCadenceUpperPrefixTurn { get; set; }
 
         [JsonProperty("ornamentPrecompInvertedMordentUpperPrefix")]
-        public Dictionary<string, double[]> OrnamentPrecompInvertedMordentUpperPrefix { get; set; }
+        public BoundingBox OrnamentPrecompInvertedMordentUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompMordentRelease")]
         public BoundingBox OrnamentPrecompMordentRelease { get; set; }
@@ -6506,97 +6506,97 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox OrnamentPrecompMordentUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompPortDeVoixMordent")]
-        public Dictionary<string, double[]> OrnamentPrecompPortDeVoixMordent { get; set; }
+        public BoundingBox OrnamentPrecompPortDeVoixMordent { get; set; }
 
         [JsonProperty("ornamentPrecompSlide")]
         public BoundingBox OrnamentPrecompSlide { get; set; }
 
         [JsonProperty("ornamentPrecompSlideTrillBach")]
-        public Dictionary<string, double[]> OrnamentPrecompSlideTrillBach { get; set; }
+        public BoundingBox OrnamentPrecompSlideTrillBach { get; set; }
 
         [JsonProperty("ornamentPrecompSlideTrillDAnglebert")]
-        public Dictionary<string, double[]> OrnamentPrecompSlideTrillDAnglebert { get; set; }
+        public BoundingBox OrnamentPrecompSlideTrillDAnglebert { get; set; }
 
         [JsonProperty("ornamentPrecompSlideTrillMarpurg")]
-        public Dictionary<string, double[]> OrnamentPrecompSlideTrillMarpurg { get; set; }
+        public BoundingBox OrnamentPrecompSlideTrillMarpurg { get; set; }
 
         [JsonProperty("ornamentPrecompSlideTrillMuffat")]
-        public Dictionary<string, double[]> OrnamentPrecompSlideTrillMuffat { get; set; }
+        public BoundingBox OrnamentPrecompSlideTrillMuffat { get; set; }
 
         [JsonProperty("ornamentPrecompSlideTrillSuffixMuffat")]
-        public Dictionary<string, double[]> OrnamentPrecompSlideTrillSuffixMuffat { get; set; }
+        public BoundingBox OrnamentPrecompSlideTrillSuffixMuffat { get; set; }
 
         [JsonProperty("ornamentPrecompTrillLowerSuffix")]
-        public Dictionary<string, double[]> OrnamentPrecompTrillLowerSuffix { get; set; }
+        public BoundingBox OrnamentPrecompTrillLowerSuffix { get; set; }
 
         [JsonProperty("ornamentPrecompTrillSuffixDandrieu")]
         public BoundingBox OrnamentPrecompTrillSuffixDandrieu { get; set; }
 
         [JsonProperty("ornamentPrecompTrillWithMordent")]
-        public Dictionary<string, double[]> OrnamentPrecompTrillWithMordent { get; set; }
+        public BoundingBox OrnamentPrecompTrillWithMordent { get; set; }
 
         [JsonProperty("ornamentPrecompTurnTrillBach")]
-        public Dictionary<string, double[]> OrnamentPrecompTurnTrillBach { get; set; }
+        public BoundingBox OrnamentPrecompTurnTrillBach { get; set; }
 
         [JsonProperty("ornamentPrecompTurnTrillDAnglebert")]
         public BoundingBox OrnamentPrecompTurnTrillDAnglebert { get; set; }
 
         [JsonProperty("ornamentQuilisma")]
-        public Dictionary<string, double[]> OrnamentQuilisma { get; set; }
+        public BoundingBox OrnamentQuilisma { get; set; }
 
         [JsonProperty("ornamentRightFacingHalfCircle")]
-        public Dictionary<string, double[]> OrnamentRightFacingHalfCircle { get; set; }
+        public BoundingBox OrnamentRightFacingHalfCircle { get; set; }
 
         [JsonProperty("ornamentRightFacingHook")]
-        public Dictionary<string, double[]> OrnamentRightFacingHook { get; set; }
+        public BoundingBox OrnamentRightFacingHook { get; set; }
 
         [JsonProperty("ornamentRightVerticalStroke")]
-        public Dictionary<string, double[]> OrnamentRightVerticalStroke { get; set; }
+        public BoundingBox OrnamentRightVerticalStroke { get; set; }
 
         [JsonProperty("ornamentSchleifer")]
         public BoundingBox OrnamentSchleifer { get; set; }
 
         [JsonProperty("ornamentShake3")]
-        public Dictionary<string, double[]> OrnamentShake3 { get; set; }
+        public BoundingBox OrnamentShake3 { get; set; }
 
         [JsonProperty("ornamentShakeMuffat1")]
-        public Dictionary<string, double[]> OrnamentShakeMuffat1 { get; set; }
+        public BoundingBox OrnamentShakeMuffat1 { get; set; }
 
         [JsonProperty("ornamentShortObliqueLineAfterNote")]
-        public Dictionary<string, double[]> OrnamentShortObliqueLineAfterNote { get; set; }
+        public BoundingBox OrnamentShortObliqueLineAfterNote { get; set; }
 
         [JsonProperty("ornamentShortObliqueLineBeforeNote")]
-        public Dictionary<string, double[]> OrnamentShortObliqueLineBeforeNote { get; set; }
+        public BoundingBox OrnamentShortObliqueLineBeforeNote { get; set; }
 
         [JsonProperty("ornamentTopLeftConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentTopLeftConcaveStroke { get; set; }
+        public BoundingBox OrnamentTopLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentTopLeftConvexStroke")]
-        public Dictionary<string, double[]> OrnamentTopLeftConvexStroke { get; set; }
+        public BoundingBox OrnamentTopLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentTopRightConcaveStroke")]
-        public Dictionary<string, double[]> OrnamentTopRightConcaveStroke { get; set; }
+        public BoundingBox OrnamentTopRightConcaveStroke { get; set; }
 
         [JsonProperty("ornamentTopRightConvexStroke")]
-        public Dictionary<string, double[]> OrnamentTopRightConvexStroke { get; set; }
+        public BoundingBox OrnamentTopRightConvexStroke { get; set; }
 
         [JsonProperty("ornamentTremblement")]
-        public Dictionary<string, double[]> OrnamentTremblement { get; set; }
+        public BoundingBox OrnamentTremblement { get; set; }
 
         [JsonProperty("ornamentTremblementCouperin")]
         public BoundingBox OrnamentTremblementCouperin { get; set; }
 
         [JsonProperty("ornamentTrill")]
-        public Dictionary<string, double[]> OrnamentTrill { get; set; }
+        public BoundingBox OrnamentTrill { get; set; }
 
         [JsonProperty("ornamentTrillFlatAbove")]
-        public Dictionary<string, double[]> OrnamentTrillFlatAbove { get; set; }
+        public BoundingBox OrnamentTrillFlatAbove { get; set; }
 
         [JsonProperty("ornamentTrillNaturalAbove")]
-        public Dictionary<string, double[]> OrnamentTrillNaturalAbove { get; set; }
+        public BoundingBox OrnamentTrillNaturalAbove { get; set; }
 
         [JsonProperty("ornamentTrillSharpAbove")]
-        public Dictionary<string, double[]> OrnamentTrillSharpAbove { get; set; }
+        public BoundingBox OrnamentTrillSharpAbove { get; set; }
 
         [JsonProperty("ornamentTurn")]
         public BoundingBox OrnamentTurn { get; set; }
@@ -6605,73 +6605,73 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox OrnamentTurnFlatAbove { get; set; }
 
         [JsonProperty("ornamentTurnFlatAboveSharpBelow")]
-        public Dictionary<string, double[]> OrnamentTurnFlatAboveSharpBelow { get; set; }
+        public BoundingBox OrnamentTurnFlatAboveSharpBelow { get; set; }
 
         [JsonProperty("ornamentTurnFlatBelow")]
-        public Dictionary<string, double[]> OrnamentTurnFlatBelow { get; set; }
+        public BoundingBox OrnamentTurnFlatBelow { get; set; }
 
         [JsonProperty("ornamentTurnInverted")]
-        public Dictionary<string, double[]> OrnamentTurnInverted { get; set; }
+        public BoundingBox OrnamentTurnInverted { get; set; }
 
         [JsonProperty("ornamentTurnNaturalAbove")]
         public BoundingBox OrnamentTurnNaturalAbove { get; set; }
 
         [JsonProperty("ornamentTurnNaturalBelow")]
-        public Dictionary<string, double[]> OrnamentTurnNaturalBelow { get; set; }
+        public BoundingBox OrnamentTurnNaturalBelow { get; set; }
 
         [JsonProperty("ornamentTurnSharpAbove")]
         public BoundingBox OrnamentTurnSharpAbove { get; set; }
 
         [JsonProperty("ornamentTurnSharpAboveFlatBelow")]
-        public Dictionary<string, double[]> OrnamentTurnSharpAboveFlatBelow { get; set; }
+        public BoundingBox OrnamentTurnSharpAboveFlatBelow { get; set; }
 
         [JsonProperty("ornamentTurnSharpBelow")]
-        public Dictionary<string, double[]> OrnamentTurnSharpBelow { get; set; }
+        public BoundingBox OrnamentTurnSharpBelow { get; set; }
 
         [JsonProperty("ornamentTurnSlash")]
-        public Dictionary<string, double[]> OrnamentTurnSlash { get; set; }
+        public BoundingBox OrnamentTurnSlash { get; set; }
 
         [JsonProperty("ornamentTurnUp")]
         public BoundingBox OrnamentTurnUp { get; set; }
 
         [JsonProperty("ornamentTurnUpS")]
-        public Dictionary<string, double[]> OrnamentTurnUpS { get; set; }
+        public BoundingBox OrnamentTurnUpS { get; set; }
 
         [JsonProperty("ornamentUpCurve")]
         public BoundingBox OrnamentUpCurve { get; set; }
 
         [JsonProperty("ornamentVerticalLine")]
-        public Dictionary<string, double[]> OrnamentVerticalLine { get; set; }
+        public BoundingBox OrnamentVerticalLine { get; set; }
 
         [JsonProperty("ornamentZigZagLineNoRightEnd")]
-        public Dictionary<string, double[]> OrnamentZigZagLineNoRightEnd { get; set; }
+        public BoundingBox OrnamentZigZagLineNoRightEnd { get; set; }
 
         [JsonProperty("ornamentZigZagLineWithRightEnd")]
-        public Dictionary<string, double[]> OrnamentZigZagLineWithRightEnd { get; set; }
+        public BoundingBox OrnamentZigZagLineWithRightEnd { get; set; }
 
         [JsonProperty("ottava")]
-        public Dictionary<string, double[]> Ottava { get; set; }
+        public BoundingBox Ottava { get; set; }
 
         [JsonProperty("ottavaAlta")]
-        public Dictionary<string, double[]> OttavaAlta { get; set; }
+        public BoundingBox OttavaAlta { get; set; }
 
         [JsonProperty("ottavaBassa")]
-        public Dictionary<string, double[]> OttavaBassa { get; set; }
+        public BoundingBox OttavaBassa { get; set; }
 
         [JsonProperty("ottavaBassaBa")]
-        public Dictionary<string, double[]> OttavaBassaBa { get; set; }
+        public BoundingBox OttavaBassaBa { get; set; }
 
         [JsonProperty("ottavaBassaVb")]
-        public Dictionary<string, double[]> OttavaBassaVb { get; set; }
+        public BoundingBox OttavaBassaVb { get; set; }
 
         [JsonProperty("pendereckiTremolo")]
-        public Dictionary<string, double[]> PendereckiTremolo { get; set; }
+        public BoundingBox PendereckiTremolo { get; set; }
 
         [JsonProperty("pictAgogo")]
         public BoundingBox PictAgogo { get; set; }
 
         [JsonProperty("pictAlmglocken")]
-        public Dictionary<string, double[]> PictAlmglocken { get; set; }
+        public BoundingBox PictAlmglocken { get; set; }
 
         [JsonProperty("pictAnvil")]
         public BoundingBox PictAnvil { get; set; }
@@ -6683,7 +6683,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBambooScraper { get; set; }
 
         [JsonProperty("pictBassDrum")]
-        public Dictionary<string, double[]> PictBassDrum { get; set; }
+        public BoundingBox PictBassDrum { get; set; }
 
         [JsonProperty("pictBassDrumOnSide")]
         public BoundingBox PictBassDrumOnSide { get; set; }
@@ -6695,19 +6695,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterBow { get; set; }
 
         [JsonProperty("pictBeaterBox")]
-        public Dictionary<string, double[]> PictBeaterBox { get; set; }
+        public BoundingBox PictBeaterBox { get; set; }
 
         [JsonProperty("pictBeaterBrassMalletsDown")]
-        public Dictionary<string, double[]> PictBeaterBrassMalletsDown { get; set; }
+        public BoundingBox PictBeaterBrassMalletsDown { get; set; }
 
         [JsonProperty("pictBeaterBrassMalletsUp")]
-        public Dictionary<string, double[]> PictBeaterBrassMalletsUp { get; set; }
+        public BoundingBox PictBeaterBrassMalletsUp { get; set; }
 
         [JsonProperty("pictBeaterCombiningDashedCircle")]
-        public Dictionary<string, double[]> PictBeaterCombiningDashedCircle { get; set; }
+        public BoundingBox PictBeaterCombiningDashedCircle { get; set; }
 
         [JsonProperty("pictBeaterCombiningParentheses")]
-        public Dictionary<string, double[]> PictBeaterCombiningParentheses { get; set; }
+        public BoundingBox PictBeaterCombiningParentheses { get; set; }
 
         [JsonProperty("pictBeaterDoubleBassDrumDown")]
         public BoundingBox PictBeaterDoubleBassDrumDown { get; set; }
@@ -6725,7 +6725,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterFist { get; set; }
 
         [JsonProperty("pictBeaterGuiroScraper")]
-        public Dictionary<string, double[]> PictBeaterGuiroScraper { get; set; }
+        public BoundingBox PictBeaterGuiroScraper { get; set; }
 
         [JsonProperty("pictBeaterHammer")]
         public BoundingBox PictBeaterHammer { get; set; }
@@ -6752,58 +6752,58 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterHand { get; set; }
 
         [JsonProperty("pictBeaterHardBassDrumDown")]
-        public Dictionary<string, double[]> PictBeaterHardBassDrumDown { get; set; }
+        public BoundingBox PictBeaterHardBassDrumDown { get; set; }
 
         [JsonProperty("pictBeaterHardBassDrumUp")]
-        public Dictionary<string, double[]> PictBeaterHardBassDrumUp { get; set; }
+        public BoundingBox PictBeaterHardBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterHardGlockenspielDown")]
         public BoundingBox PictBeaterHardGlockenspielDown { get; set; }
 
         [JsonProperty("pictBeaterHardGlockenspielLeft")]
-        public Dictionary<string, double[]> PictBeaterHardGlockenspielLeft { get; set; }
+        public BoundingBox PictBeaterHardGlockenspielLeft { get; set; }
 
         [JsonProperty("pictBeaterHardGlockenspielRight")]
-        public Dictionary<string, double[]> PictBeaterHardGlockenspielRight { get; set; }
+        public BoundingBox PictBeaterHardGlockenspielRight { get; set; }
 
         [JsonProperty("pictBeaterHardGlockenspielUp")]
         public BoundingBox PictBeaterHardGlockenspielUp { get; set; }
 
         [JsonProperty("pictBeaterHardTimpaniDown")]
-        public Dictionary<string, double[]> PictBeaterHardTimpaniDown { get; set; }
+        public BoundingBox PictBeaterHardTimpaniDown { get; set; }
 
         [JsonProperty("pictBeaterHardTimpaniLeft")]
-        public Dictionary<string, double[]> PictBeaterHardTimpaniLeft { get; set; }
+        public BoundingBox PictBeaterHardTimpaniLeft { get; set; }
 
         [JsonProperty("pictBeaterHardTimpaniRight")]
-        public Dictionary<string, double[]> PictBeaterHardTimpaniRight { get; set; }
+        public BoundingBox PictBeaterHardTimpaniRight { get; set; }
 
         [JsonProperty("pictBeaterHardTimpaniUp")]
-        public Dictionary<string, double[]> PictBeaterHardTimpaniUp { get; set; }
+        public BoundingBox PictBeaterHardTimpaniUp { get; set; }
 
         [JsonProperty("pictBeaterHardXylophoneDown")]
-        public Dictionary<string, double[]> PictBeaterHardXylophoneDown { get; set; }
+        public BoundingBox PictBeaterHardXylophoneDown { get; set; }
 
         [JsonProperty("pictBeaterHardXylophoneLeft")]
-        public Dictionary<string, double[]> PictBeaterHardXylophoneLeft { get; set; }
+        public BoundingBox PictBeaterHardXylophoneLeft { get; set; }
 
         [JsonProperty("pictBeaterHardXylophoneRight")]
         public BoundingBox PictBeaterHardXylophoneRight { get; set; }
 
         [JsonProperty("pictBeaterHardXylophoneUp")]
-        public Dictionary<string, double[]> PictBeaterHardXylophoneUp { get; set; }
+        public BoundingBox PictBeaterHardXylophoneUp { get; set; }
 
         [JsonProperty("pictBeaterHardYarnDown")]
-        public Dictionary<string, double[]> PictBeaterHardYarnDown { get; set; }
+        public BoundingBox PictBeaterHardYarnDown { get; set; }
 
         [JsonProperty("pictBeaterHardYarnLeft")]
-        public Dictionary<string, double[]> PictBeaterHardYarnLeft { get; set; }
+        public BoundingBox PictBeaterHardYarnLeft { get; set; }
 
         [JsonProperty("pictBeaterHardYarnRight")]
-        public Dictionary<string, double[]> PictBeaterHardYarnRight { get; set; }
+        public BoundingBox PictBeaterHardYarnRight { get; set; }
 
         [JsonProperty("pictBeaterHardYarnUp")]
-        public Dictionary<string, double[]> PictBeaterHardYarnUp { get; set; }
+        public BoundingBox PictBeaterHardYarnUp { get; set; }
 
         [JsonProperty("pictBeaterJazzSticksDown")]
         public BoundingBox PictBeaterJazzSticksDown { get; set; }
@@ -6818,13 +6818,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterMallet { get; set; }
 
         [JsonProperty("pictBeaterMediumBassDrumDown")]
-        public Dictionary<string, double[]> PictBeaterMediumBassDrumDown { get; set; }
+        public BoundingBox PictBeaterMediumBassDrumDown { get; set; }
 
         [JsonProperty("pictBeaterMediumBassDrumUp")]
-        public Dictionary<string, double[]> PictBeaterMediumBassDrumUp { get; set; }
+        public BoundingBox PictBeaterMediumBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterMediumTimpaniDown")]
-        public Dictionary<string, double[]> PictBeaterMediumTimpaniDown { get; set; }
+        public BoundingBox PictBeaterMediumTimpaniDown { get; set; }
 
         [JsonProperty("pictBeaterMediumTimpaniLeft")]
         public BoundingBox PictBeaterMediumTimpaniLeft { get; set; }
@@ -6833,19 +6833,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterMediumTimpaniRight { get; set; }
 
         [JsonProperty("pictBeaterMediumTimpaniUp")]
-        public Dictionary<string, double[]> PictBeaterMediumTimpaniUp { get; set; }
+        public BoundingBox PictBeaterMediumTimpaniUp { get; set; }
 
         [JsonProperty("pictBeaterMediumXylophoneDown")]
-        public Dictionary<string, double[]> PictBeaterMediumXylophoneDown { get; set; }
+        public BoundingBox PictBeaterMediumXylophoneDown { get; set; }
 
         [JsonProperty("pictBeaterMediumXylophoneLeft")]
-        public Dictionary<string, double[]> PictBeaterMediumXylophoneLeft { get; set; }
+        public BoundingBox PictBeaterMediumXylophoneLeft { get; set; }
 
         [JsonProperty("pictBeaterMediumXylophoneRight")]
-        public Dictionary<string, double[]> PictBeaterMediumXylophoneRight { get; set; }
+        public BoundingBox PictBeaterMediumXylophoneRight { get; set; }
 
         [JsonProperty("pictBeaterMediumXylophoneUp")]
-        public Dictionary<string, double[]> PictBeaterMediumXylophoneUp { get; set; }
+        public BoundingBox PictBeaterMediumXylophoneUp { get; set; }
 
         [JsonProperty("pictBeaterMediumYarnDown")]
         public BoundingBox PictBeaterMediumYarnDown { get; set; }
@@ -6860,16 +6860,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterMediumYarnUp { get; set; }
 
         [JsonProperty("pictBeaterMetalBassDrumDown")]
-        public Dictionary<string, double[]> PictBeaterMetalBassDrumDown { get; set; }
+        public BoundingBox PictBeaterMetalBassDrumDown { get; set; }
 
         [JsonProperty("pictBeaterMetalBassDrumUp")]
-        public Dictionary<string, double[]> PictBeaterMetalBassDrumUp { get; set; }
+        public BoundingBox PictBeaterMetalBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterMetalDown")]
         public BoundingBox PictBeaterMetalDown { get; set; }
 
         [JsonProperty("pictBeaterMetalHammer")]
-        public Dictionary<string, double[]> PictBeaterMetalHammer { get; set; }
+        public BoundingBox PictBeaterMetalHammer { get; set; }
 
         [JsonProperty("pictBeaterMetalLeft")]
         public BoundingBox PictBeaterMetalLeft { get; set; }
@@ -6881,25 +6881,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterMetalUp { get; set; }
 
         [JsonProperty("pictBeaterSnareSticksDown")]
-        public Dictionary<string, double[]> PictBeaterSnareSticksDown { get; set; }
+        public BoundingBox PictBeaterSnareSticksDown { get; set; }
 
         [JsonProperty("pictBeaterSnareSticksUp")]
-        public Dictionary<string, double[]> PictBeaterSnareSticksUp { get; set; }
+        public BoundingBox PictBeaterSnareSticksUp { get; set; }
 
         [JsonProperty("pictBeaterSoftBassDrumDown")]
-        public Dictionary<string, double[]> PictBeaterSoftBassDrumDown { get; set; }
+        public BoundingBox PictBeaterSoftBassDrumDown { get; set; }
 
         [JsonProperty("pictBeaterSoftBassDrumUp")]
-        public Dictionary<string, double[]> PictBeaterSoftBassDrumUp { get; set; }
+        public BoundingBox PictBeaterSoftBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterSoftGlockenspielDown")]
         public BoundingBox PictBeaterSoftGlockenspielDown { get; set; }
 
         [JsonProperty("pictBeaterSoftGlockenspielLeft")]
-        public Dictionary<string, double[]> PictBeaterSoftGlockenspielLeft { get; set; }
+        public BoundingBox PictBeaterSoftGlockenspielLeft { get; set; }
 
         [JsonProperty("pictBeaterSoftGlockenspielRight")]
-        public Dictionary<string, double[]> PictBeaterSoftGlockenspielRight { get; set; }
+        public BoundingBox PictBeaterSoftGlockenspielRight { get; set; }
 
         [JsonProperty("pictBeaterSoftGlockenspielUp")]
         public BoundingBox PictBeaterSoftGlockenspielUp { get; set; }
@@ -6908,40 +6908,40 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterSoftTimpaniDown { get; set; }
 
         [JsonProperty("pictBeaterSoftTimpaniLeft")]
-        public Dictionary<string, double[]> PictBeaterSoftTimpaniLeft { get; set; }
+        public BoundingBox PictBeaterSoftTimpaniLeft { get; set; }
 
         [JsonProperty("pictBeaterSoftTimpaniRight")]
-        public Dictionary<string, double[]> PictBeaterSoftTimpaniRight { get; set; }
+        public BoundingBox PictBeaterSoftTimpaniRight { get; set; }
 
         [JsonProperty("pictBeaterSoftTimpaniUp")]
         public BoundingBox PictBeaterSoftTimpaniUp { get; set; }
 
         [JsonProperty("pictBeaterSoftXylophone")]
-        public Dictionary<string, double[]> PictBeaterSoftXylophone { get; set; }
+        public BoundingBox PictBeaterSoftXylophone { get; set; }
 
         [JsonProperty("pictBeaterSoftXylophoneDown")]
-        public Dictionary<string, double[]> PictBeaterSoftXylophoneDown { get; set; }
+        public BoundingBox PictBeaterSoftXylophoneDown { get; set; }
 
         [JsonProperty("pictBeaterSoftXylophoneLeft")]
-        public Dictionary<string, double[]> PictBeaterSoftXylophoneLeft { get; set; }
+        public BoundingBox PictBeaterSoftXylophoneLeft { get; set; }
 
         [JsonProperty("pictBeaterSoftXylophoneRight")]
-        public Dictionary<string, double[]> PictBeaterSoftXylophoneRight { get; set; }
+        public BoundingBox PictBeaterSoftXylophoneRight { get; set; }
 
         [JsonProperty("pictBeaterSoftXylophoneUp")]
-        public Dictionary<string, double[]> PictBeaterSoftXylophoneUp { get; set; }
+        public BoundingBox PictBeaterSoftXylophoneUp { get; set; }
 
         [JsonProperty("pictBeaterSoftYarnDown")]
-        public Dictionary<string, double[]> PictBeaterSoftYarnDown { get; set; }
+        public BoundingBox PictBeaterSoftYarnDown { get; set; }
 
         [JsonProperty("pictBeaterSoftYarnLeft")]
-        public Dictionary<string, double[]> PictBeaterSoftYarnLeft { get; set; }
+        public BoundingBox PictBeaterSoftYarnLeft { get; set; }
 
         [JsonProperty("pictBeaterSoftYarnRight")]
-        public Dictionary<string, double[]> PictBeaterSoftYarnRight { get; set; }
+        public BoundingBox PictBeaterSoftYarnRight { get; set; }
 
         [JsonProperty("pictBeaterSoftYarnUp")]
-        public Dictionary<string, double[]> PictBeaterSoftYarnUp { get; set; }
+        public BoundingBox PictBeaterSoftYarnUp { get; set; }
 
         [JsonProperty("pictBeaterSpoonWoodenMallet")]
         public BoundingBox PictBeaterSpoonWoodenMallet { get; set; }
@@ -6950,34 +6950,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterSuperballDown { get; set; }
 
         [JsonProperty("pictBeaterSuperballLeft")]
-        public Dictionary<string, double[]> PictBeaterSuperballLeft { get; set; }
+        public BoundingBox PictBeaterSuperballLeft { get; set; }
 
         [JsonProperty("pictBeaterSuperballRight")]
-        public Dictionary<string, double[]> PictBeaterSuperballRight { get; set; }
+        public BoundingBox PictBeaterSuperballRight { get; set; }
 
         [JsonProperty("pictBeaterSuperballUp")]
         public BoundingBox PictBeaterSuperballUp { get; set; }
 
         [JsonProperty("pictBeaterTriangleDown")]
-        public Dictionary<string, double[]> PictBeaterTriangleDown { get; set; }
+        public BoundingBox PictBeaterTriangleDown { get; set; }
 
         [JsonProperty("pictBeaterTriangleUp")]
-        public Dictionary<string, double[]> PictBeaterTriangleUp { get; set; }
+        public BoundingBox PictBeaterTriangleUp { get; set; }
 
         [JsonProperty("pictBeaterWireBrushesDown")]
-        public Dictionary<string, double[]> PictBeaterWireBrushesDown { get; set; }
+        public BoundingBox PictBeaterWireBrushesDown { get; set; }
 
         [JsonProperty("pictBeaterWireBrushesUp")]
-        public Dictionary<string, double[]> PictBeaterWireBrushesUp { get; set; }
+        public BoundingBox PictBeaterWireBrushesUp { get; set; }
 
         [JsonProperty("pictBeaterWoodTimpaniDown")]
         public BoundingBox PictBeaterWoodTimpaniDown { get; set; }
 
         [JsonProperty("pictBeaterWoodTimpaniLeft")]
-        public Dictionary<string, double[]> PictBeaterWoodTimpaniLeft { get; set; }
+        public BoundingBox PictBeaterWoodTimpaniLeft { get; set; }
 
         [JsonProperty("pictBeaterWoodTimpaniRight")]
-        public Dictionary<string, double[]> PictBeaterWoodTimpaniRight { get; set; }
+        public BoundingBox PictBeaterWoodTimpaniRight { get; set; }
 
         [JsonProperty("pictBeaterWoodTimpaniUp")]
         public BoundingBox PictBeaterWoodTimpaniUp { get; set; }
@@ -6986,16 +6986,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBeaterWoodXylophoneDown { get; set; }
 
         [JsonProperty("pictBeaterWoodXylophoneLeft")]
-        public Dictionary<string, double[]> PictBeaterWoodXylophoneLeft { get; set; }
+        public BoundingBox PictBeaterWoodXylophoneLeft { get; set; }
 
         [JsonProperty("pictBeaterWoodXylophoneRight")]
-        public Dictionary<string, double[]> PictBeaterWoodXylophoneRight { get; set; }
+        public BoundingBox PictBeaterWoodXylophoneRight { get; set; }
 
         [JsonProperty("pictBeaterWoodXylophoneUp")]
         public BoundingBox PictBeaterWoodXylophoneUp { get; set; }
 
         [JsonProperty("pictBell")]
-        public Dictionary<string, double[]> PictBell { get; set; }
+        public BoundingBox PictBell { get; set; }
 
         [JsonProperty("pictBellOfCymbal")]
         public BoundingBox PictBellOfCymbal { get; set; }
@@ -7010,25 +7010,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictBirdWhistle { get; set; }
 
         [JsonProperty("pictBoardClapper")]
-        public Dictionary<string, double[]> PictBoardClapper { get; set; }
+        public BoundingBox PictBoardClapper { get; set; }
 
         [JsonProperty("pictBongos")]
-        public Dictionary<string, double[]> PictBongos { get; set; }
+        public BoundingBox PictBongos { get; set; }
 
         [JsonProperty("pictBongosPeinkofer")]
         public BoundingBox PictBongosPeinkofer { get; set; }
 
         [JsonProperty("pictBrakeDrum")]
-        public Dictionary<string, double[]> PictBrakeDrum { get; set; }
+        public BoundingBox PictBrakeDrum { get; set; }
 
         [JsonProperty("pictCabasa")]
-        public Dictionary<string, double[]> PictCabasa { get; set; }
+        public BoundingBox PictCabasa { get; set; }
 
         [JsonProperty("pictCannon")]
         public BoundingBox PictCannon { get; set; }
 
         [JsonProperty("pictCarHorn")]
-        public Dictionary<string, double[]> PictCarHorn { get; set; }
+        public BoundingBox PictCarHorn { get; set; }
 
         [JsonProperty("pictCastanets")]
         public BoundingBox PictCastanets { get; set; }
@@ -7052,7 +7052,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictCenter2 { get; set; }
 
         [JsonProperty("pictCenter3")]
-        public Dictionary<string, double[]> PictCenter3 { get; set; }
+        public BoundingBox PictCenter3 { get; set; }
 
         [JsonProperty("pictChainRattle")]
         public BoundingBox PictChainRattle { get; set; }
@@ -7064,73 +7064,73 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictChineseCymbal { get; set; }
 
         [JsonProperty("pictChokeCymbal")]
-        public Dictionary<string, double[]> PictChokeCymbal { get; set; }
+        public BoundingBox PictChokeCymbal { get; set; }
 
         [JsonProperty("pictClaves")]
-        public Dictionary<string, double[]> PictClaves { get; set; }
+        public BoundingBox PictClaves { get; set; }
 
         [JsonProperty("pictCoins")]
         public BoundingBox PictCoins { get; set; }
 
         [JsonProperty("pictConga")]
-        public Dictionary<string, double[]> PictConga { get; set; }
+        public BoundingBox PictConga { get; set; }
 
         [JsonProperty("pictCongaPeinkofer")]
         public BoundingBox PictCongaPeinkofer { get; set; }
 
         [JsonProperty("pictCowBell")]
-        public Dictionary<string, double[]> PictCowBell { get; set; }
+        public BoundingBox PictCowBell { get; set; }
 
         [JsonProperty("pictCowBellBerio")]
-        public Dictionary<string, double[]> PictCowBellBerio { get; set; }
+        public BoundingBox PictCowBellBerio { get; set; }
 
         [JsonProperty("pictCrashCymbals")]
-        public Dictionary<string, double[]> PictCrashCymbals { get; set; }
+        public BoundingBox PictCrashCymbals { get; set; }
 
         [JsonProperty("pictCrotales")]
         public BoundingBox PictCrotales { get; set; }
 
         [JsonProperty("pictCrushStem")]
-        public Dictionary<string, double[]> PictCrushStem { get; set; }
+        public BoundingBox PictCrushStem { get; set; }
 
         [JsonProperty("pictCuica")]
         public BoundingBox PictCuica { get; set; }
 
         [JsonProperty("pictCymbalTongs")]
-        public Dictionary<string, double[]> PictCymbalTongs { get; set; }
+        public BoundingBox PictCymbalTongs { get; set; }
 
         [JsonProperty("pictDamp1")]
-        public Dictionary<string, double[]> PictDamp1 { get; set; }
+        public BoundingBox PictDamp1 { get; set; }
 
         [JsonProperty("pictDamp2")]
-        public Dictionary<string, double[]> PictDamp2 { get; set; }
+        public BoundingBox PictDamp2 { get; set; }
 
         [JsonProperty("pictDamp3")]
-        public Dictionary<string, double[]> PictDamp3 { get; set; }
+        public BoundingBox PictDamp3 { get; set; }
 
         [JsonProperty("pictDamp4")]
-        public Dictionary<string, double[]> PictDamp4 { get; set; }
+        public BoundingBox PictDamp4 { get; set; }
 
         [JsonProperty("pictDeadNoteStem")]
-        public Dictionary<string, double[]> PictDeadNoteStem { get; set; }
+        public BoundingBox PictDeadNoteStem { get; set; }
 
         [JsonProperty("pictDrumStick")]
-        public Dictionary<string, double[]> PictDrumStick { get; set; }
+        public BoundingBox PictDrumStick { get; set; }
 
         [JsonProperty("pictDuckCall")]
         public BoundingBox PictDuckCall { get; set; }
 
         [JsonProperty("pictEdgeOfCymbal")]
-        public Dictionary<string, double[]> PictEdgeOfCymbal { get; set; }
+        public BoundingBox PictEdgeOfCymbal { get; set; }
 
         [JsonProperty("pictEmptyTrap")]
         public BoundingBox PictEmptyTrap { get; set; }
 
         [JsonProperty("pictFingerCymbals")]
-        public Dictionary<string, double[]> PictFingerCymbals { get; set; }
+        public BoundingBox PictFingerCymbals { get; set; }
 
         [JsonProperty("pictFlexatone")]
-        public Dictionary<string, double[]> PictFlexatone { get; set; }
+        public BoundingBox PictFlexatone { get; set; }
 
         [JsonProperty("pictFlexatonePeinkofer")]
         public BoundingBox PictFlexatonePeinkofer { get; set; }
@@ -7160,7 +7160,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictGlspSmithBrindle { get; set; }
 
         [JsonProperty("pictGobletDrum")]
-        public Dictionary<string, double[]> PictGobletDrum { get; set; }
+        public BoundingBox PictGobletDrum { get; set; }
 
         [JsonProperty("pictGong")]
         public BoundingBox PictGong { get; set; }
@@ -7217,16 +7217,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictHalfOpen1 { get; set; }
 
         [JsonProperty("pictHalfOpen2")]
-        public Dictionary<string, double[]> PictHalfOpen2 { get; set; }
+        public BoundingBox PictHalfOpen2 { get; set; }
 
         [JsonProperty("pictHandbell")]
         public BoundingBox PictHandbell { get; set; }
 
         [JsonProperty("pictHiHat")]
-        public Dictionary<string, double[]> PictHiHat { get; set; }
+        public BoundingBox PictHiHat { get; set; }
 
         [JsonProperty("pictHiHatOnStand")]
-        public Dictionary<string, double[]> PictHiHatOnStand { get; set; }
+        public BoundingBox PictHiHatOnStand { get; set; }
 
         [JsonProperty("pictJawHarp")]
         public Dictionary<string, long[]> PictJawHarp { get; set; }
@@ -7238,10 +7238,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictKlaxonHorn { get; set; }
 
         [JsonProperty("pictLeftHandCircle")]
-        public Dictionary<string, double[]> PictLeftHandCircle { get; set; }
+        public BoundingBox PictLeftHandCircle { get; set; }
 
         [JsonProperty("pictLionsRoar")]
-        public Dictionary<string, double[]> PictLionsRoar { get; set; }
+        public BoundingBox PictLionsRoar { get; set; }
 
         [JsonProperty("pictLithophone")]
         public BoundingBox PictLithophone { get; set; }
@@ -7250,7 +7250,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictLithophonePeinkofer { get; set; }
 
         [JsonProperty("pictLogDrum")]
-        public Dictionary<string, double[]> PictLogDrum { get; set; }
+        public BoundingBox PictLogDrum { get; set; }
 
         [JsonProperty("pictLotusFlute")]
         public BoundingBox PictLotusFlute { get; set; }
@@ -7259,7 +7259,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictLotusFlutePeinkofer { get; set; }
 
         [JsonProperty("pictMar")]
-        public Dictionary<string, double[]> PictMar { get; set; }
+        public BoundingBox PictMar { get; set; }
 
         [JsonProperty("pictMarPeinkofer")]
         public BoundingBox PictMarPeinkofer { get; set; }
@@ -7268,7 +7268,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictMarSmithBrindle { get; set; }
 
         [JsonProperty("pictMaraca")]
-        public Dictionary<string, double[]> PictMaraca { get; set; }
+        public BoundingBox PictMaraca { get; set; }
 
         [JsonProperty("pictMaracaSmithBrindle")]
         public BoundingBox PictMaracaSmithBrindle { get; set; }
@@ -7286,13 +7286,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictMetalTubeChimes { get; set; }
 
         [JsonProperty("pictMusicalSaw")]
-        public Dictionary<string, double[]> PictMusicalSaw { get; set; }
+        public BoundingBox PictMusicalSaw { get; set; }
 
         [JsonProperty("pictMusicalSawPeinkofer")]
-        public Dictionary<string, double[]> PictMusicalSawPeinkofer { get; set; }
+        public BoundingBox PictMusicalSawPeinkofer { get; set; }
 
         [JsonProperty("pictNormalPosition")]
-        public Dictionary<string, double[]> PictNormalPosition { get; set; }
+        public BoundingBox PictNormalPosition { get; set; }
 
         [JsonProperty("pictOnRim")]
         public BoundingBox PictOnRim { get; set; }
@@ -7301,7 +7301,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictOpen { get; set; }
 
         [JsonProperty("pictOpenRimShot")]
-        public Dictionary<string, double[]> PictOpenRimShot { get; set; }
+        public BoundingBox PictOpenRimShot { get; set; }
 
         [JsonProperty("pictPistolShot")]
         public BoundingBox PictPistolShot { get; set; }
@@ -7310,13 +7310,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictPoliceWhistle { get; set; }
 
         [JsonProperty("pictQuijada")]
-        public Dictionary<string, double[]> PictQuijada { get; set; }
+        public BoundingBox PictQuijada { get; set; }
 
         [JsonProperty("pictRainstick")]
         public BoundingBox PictRainstick { get; set; }
 
         [JsonProperty("pictRatchet")]
-        public Dictionary<string, double[]> PictRatchet { get; set; }
+        public BoundingBox PictRatchet { get; set; }
 
         [JsonProperty("pictRecoReco")]
         public BoundingBox PictRecoReco { get; set; }
@@ -7334,16 +7334,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictRim3 { get; set; }
 
         [JsonProperty("pictRimShotOnStem")]
-        public Dictionary<string, double[]> PictRimShotOnStem { get; set; }
+        public BoundingBox PictRimShotOnStem { get; set; }
 
         [JsonProperty("pictSandpaperBlocks")]
-        public Dictionary<string, double[]> PictSandpaperBlocks { get; set; }
+        public BoundingBox PictSandpaperBlocks { get; set; }
 
         [JsonProperty("pictScrapeAroundRim")]
-        public Dictionary<string, double[]> PictScrapeAroundRim { get; set; }
+        public BoundingBox PictScrapeAroundRim { get; set; }
 
         [JsonProperty("pictScrapeAroundRimClockwise")]
-        public Dictionary<string, double[]> PictScrapeAroundRimClockwise { get; set; }
+        public BoundingBox PictScrapeAroundRimClockwise { get; set; }
 
         [JsonProperty("pictScrapeCenterToEdge")]
         public BoundingBox PictScrapeCenterToEdge { get; set; }
@@ -7358,25 +7358,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictShellChimes { get; set; }
 
         [JsonProperty("pictSiren")]
-        public Dictionary<string, double[]> PictSiren { get; set; }
+        public BoundingBox PictSiren { get; set; }
 
         [JsonProperty("pictSistrum")]
-        public Dictionary<string, double[]> PictSistrum { get; set; }
+        public BoundingBox PictSistrum { get; set; }
 
         [JsonProperty("pictSizzleCymbal")]
-        public Dictionary<string, double[]> PictSizzleCymbal { get; set; }
+        public BoundingBox PictSizzleCymbal { get; set; }
 
         [JsonProperty("pictSleighBell")]
         public BoundingBox PictSleighBell { get; set; }
 
         [JsonProperty("pictSleighBellSmithBrindle")]
-        public Dictionary<string, double[]> PictSleighBellSmithBrindle { get; set; }
+        public BoundingBox PictSleighBellSmithBrindle { get; set; }
 
         [JsonProperty("pictSlideBrushOnGong")]
-        public Dictionary<string, double[]> PictSlideBrushOnGong { get; set; }
+        public BoundingBox PictSlideBrushOnGong { get; set; }
 
         [JsonProperty("pictSlideWhistle")]
-        public Dictionary<string, double[]> PictSlideWhistle { get; set; }
+        public BoundingBox PictSlideWhistle { get; set; }
 
         [JsonProperty("pictSlitDrum")]
         public BoundingBox PictSlitDrum { get; set; }
@@ -7403,16 +7403,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictSuspendedCymbal { get; set; }
 
         [JsonProperty("pictSwishStem")]
-        public Dictionary<string, double[]> PictSwishStem { get; set; }
+        public BoundingBox PictSwishStem { get; set; }
 
         [JsonProperty("pictTabla")]
         public BoundingBox PictTabla { get; set; }
 
         [JsonProperty("pictTamTam")]
-        public Dictionary<string, double[]> PictTamTam { get; set; }
+        public BoundingBox PictTamTam { get; set; }
 
         [JsonProperty("pictTamTamWithBeater")]
-        public Dictionary<string, double[]> PictTamTamWithBeater { get; set; }
+        public BoundingBox PictTamTamWithBeater { get; set; }
 
         [JsonProperty("pictTambourine")]
         public BoundingBox PictTambourine { get; set; }
@@ -7421,22 +7421,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictTambourineStockhausen { get; set; }
 
         [JsonProperty("pictTempleBlocks")]
-        public Dictionary<string, double[]> PictTempleBlocks { get; set; }
+        public BoundingBox PictTempleBlocks { get; set; }
 
         [JsonProperty("pictTenorDrum")]
         public BoundingBox PictTenorDrum { get; set; }
 
         [JsonProperty("pictThundersheet")]
-        public Dictionary<string, double[]> PictThundersheet { get; set; }
+        public BoundingBox PictThundersheet { get; set; }
 
         [JsonProperty("pictTimbales")]
-        public Dictionary<string, double[]> PictTimbales { get; set; }
+        public BoundingBox PictTimbales { get; set; }
 
         [JsonProperty("pictTimbalesPeinkofer")]
         public BoundingBox PictTimbalesPeinkofer { get; set; }
 
         [JsonProperty("pictTimpani")]
-        public Dictionary<string, double[]> PictTimpani { get; set; }
+        public BoundingBox PictTimpani { get; set; }
 
         [JsonProperty("pictTimpaniPeinkofer")]
         public BoundingBox PictTimpaniPeinkofer { get; set; }
@@ -7448,7 +7448,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictTomTomChinese { get; set; }
 
         [JsonProperty("pictTomTomChinesePeinkofer")]
-        public Dictionary<string, double[]> PictTomTomChinesePeinkofer { get; set; }
+        public BoundingBox PictTomTomChinesePeinkofer { get; set; }
 
         [JsonProperty("pictTomTomIndoAmerican")]
         public BoundingBox PictTomTomIndoAmerican { get; set; }
@@ -7469,16 +7469,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictTubaphonePeinkofer { get; set; }
 
         [JsonProperty("pictTubularBells")]
-        public Dictionary<string, double[]> PictTubularBells { get; set; }
+        public BoundingBox PictTubularBells { get; set; }
 
         [JsonProperty("pictTurnLeftStem")]
-        public Dictionary<string, double[]> PictTurnLeftStem { get; set; }
+        public BoundingBox PictTurnLeftStem { get; set; }
 
         [JsonProperty("pictTurnRightLeftStem")]
-        public Dictionary<string, double[]> PictTurnRightLeftStem { get; set; }
+        public BoundingBox PictTurnRightLeftStem { get; set; }
 
         [JsonProperty("pictTurnRightStem")]
-        public Dictionary<string, double[]> PictTurnRightStem { get; set; }
+        public BoundingBox PictTurnRightStem { get; set; }
 
         [JsonProperty("pictVib")]
         public BoundingBox PictVib { get; set; }
@@ -7502,7 +7502,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictVietnameseHat { get; set; }
 
         [JsonProperty("pictWhip")]
-        public Dictionary<string, double[]> PictWhip { get; set; }
+        public BoundingBox PictWhip { get; set; }
 
         [JsonProperty("pictWindChimesGlass")]
         public BoundingBox PictWindChimesGlass { get; set; }
@@ -7514,16 +7514,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictWindWhistle { get; set; }
 
         [JsonProperty("pictWoodBlock")]
-        public Dictionary<string, double[]> PictWoodBlock { get; set; }
+        public BoundingBox PictWoodBlock { get; set; }
 
         [JsonProperty("pictWoundHardDown")]
         public BoundingBox PictWoundHardDown { get; set; }
 
         [JsonProperty("pictWoundHardLeft")]
-        public Dictionary<string, double[]> PictWoundHardLeft { get; set; }
+        public BoundingBox PictWoundHardLeft { get; set; }
 
         [JsonProperty("pictWoundHardRight")]
-        public Dictionary<string, double[]> PictWoundHardRight { get; set; }
+        public BoundingBox PictWoundHardRight { get; set; }
 
         [JsonProperty("pictWoundHardUp")]
         public BoundingBox PictWoundHardUp { get; set; }
@@ -7532,10 +7532,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PictWoundSoftDown { get; set; }
 
         [JsonProperty("pictWoundSoftLeft")]
-        public Dictionary<string, double[]> PictWoundSoftLeft { get; set; }
+        public BoundingBox PictWoundSoftLeft { get; set; }
 
         [JsonProperty("pictWoundSoftRight")]
-        public Dictionary<string, double[]> PictWoundSoftRight { get; set; }
+        public BoundingBox PictWoundSoftRight { get; set; }
 
         [JsonProperty("pictWoundSoftUp")]
         public BoundingBox PictWoundSoftUp { get; set; }
@@ -7577,10 +7577,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PluckedDampAll { get; set; }
 
         [JsonProperty("pluckedDampOnStem")]
-        public Dictionary<string, double[]> PluckedDampOnStem { get; set; }
+        public BoundingBox PluckedDampOnStem { get; set; }
 
         [JsonProperty("pluckedFingernailFlick")]
-        public Dictionary<string, double[]> PluckedFingernailFlick { get; set; }
+        public BoundingBox PluckedFingernailFlick { get; set; }
 
         [JsonProperty("pluckedLeftHandPizzicato")]
         public BoundingBox PluckedLeftHandPizzicato { get; set; }
@@ -7601,19 +7601,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox PluckedSnapPizzicatoBelowGerman { get; set; }
 
         [JsonProperty("pluckedWithFingernails")]
-        public Dictionary<string, double[]> PluckedWithFingernails { get; set; }
+        public BoundingBox PluckedWithFingernails { get; set; }
 
         [JsonProperty("quindicesima")]
-        public Dictionary<string, double[]> Quindicesima { get; set; }
+        public BoundingBox Quindicesima { get; set; }
 
         [JsonProperty("quindicesimaAlta")]
-        public Dictionary<string, double[]> QuindicesimaAlta { get; set; }
+        public BoundingBox QuindicesimaAlta { get; set; }
 
         [JsonProperty("quindicesimaBassa")]
-        public Dictionary<string, double[]> QuindicesimaBassa { get; set; }
+        public BoundingBox QuindicesimaBassa { get; set; }
 
         [JsonProperty("quindicesimaBassaMb")]
-        public Dictionary<string, double[]> QuindicesimaBassaMb { get; set; }
+        public BoundingBox QuindicesimaBassaMb { get; set; }
 
         [JsonProperty("repeat1Bar")]
         public BoundingBox Repeat1Bar { get; set; }
@@ -7625,25 +7625,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox Repeat4Bars { get; set; }
 
         [JsonProperty("repeatDot")]
-        public Dictionary<string, double[]> RepeatDot { get; set; }
+        public BoundingBox RepeatDot { get; set; }
 
         [JsonProperty("repeatDots")]
-        public Dictionary<string, double[]> RepeatDots { get; set; }
+        public BoundingBox RepeatDots { get; set; }
 
         [JsonProperty("repeatLeft")]
         public BoundingBox RepeatLeft { get; set; }
 
         [JsonProperty("repeatRight")]
-        public Dictionary<string, double[]> RepeatRight { get; set; }
+        public BoundingBox RepeatRight { get; set; }
 
         [JsonProperty("repeatRightLeft")]
-        public Dictionary<string, double[]> RepeatRightLeft { get; set; }
+        public BoundingBox RepeatRightLeft { get; set; }
 
         [JsonProperty("repeatRightLeftThick")]
-        public Dictionary<string, double[]> RepeatRightLeftThick { get; set; }
+        public BoundingBox RepeatRightLeftThick { get; set; }
 
         [JsonProperty("rest1024th")]
-        public Dictionary<string, double[]> Rest1024Th { get; set; }
+        public BoundingBox Rest1024Th { get; set; }
 
         [JsonProperty("rest128th")]
         public BoundingBox Rest128Th { get; set; }
@@ -7661,283 +7661,283 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox Rest512Th { get; set; }
 
         [JsonProperty("rest64th")]
-        public Dictionary<string, double[]> Rest64Th { get; set; }
+        public BoundingBox Rest64Th { get; set; }
 
         [JsonProperty("rest8th")]
-        public Dictionary<string, double[]> Rest8Th { get; set; }
+        public BoundingBox Rest8Th { get; set; }
 
         [JsonProperty("restDoubleWhole")]
         public BoundingBox RestDoubleWhole { get; set; }
 
         [JsonProperty("restDoubleWholeLegerLine")]
-        public Dictionary<string, double[]> RestDoubleWholeLegerLine { get; set; }
+        public BoundingBox RestDoubleWholeLegerLine { get; set; }
 
         [JsonProperty("restHBar")]
-        public Dictionary<string, double[]> RestHBar { get; set; }
+        public BoundingBox RestHBar { get; set; }
 
         [JsonProperty("restHBarLeft")]
-        public Dictionary<string, double[]> RestHBarLeft { get; set; }
+        public BoundingBox RestHBarLeft { get; set; }
 
         [JsonProperty("restHBarMiddle")]
-        public Dictionary<string, double[]> RestHBarMiddle { get; set; }
+        public BoundingBox RestHBarMiddle { get; set; }
 
         [JsonProperty("restHBarRight")]
-        public Dictionary<string, double[]> RestHBarRight { get; set; }
+        public BoundingBox RestHBarRight { get; set; }
 
         [JsonProperty("restHalf")]
-        public Dictionary<string, double[]> RestHalf { get; set; }
+        public BoundingBox RestHalf { get; set; }
 
         [JsonProperty("restHalfLegerLine")]
-        public Dictionary<string, double[]> RestHalfLegerLine { get; set; }
+        public BoundingBox RestHalfLegerLine { get; set; }
 
         [JsonProperty("restLonga")]
-        public Dictionary<string, double[]> RestLonga { get; set; }
+        public BoundingBox RestLonga { get; set; }
 
         [JsonProperty("restMaxima")]
-        public Dictionary<string, double[]> RestMaxima { get; set; }
+        public BoundingBox RestMaxima { get; set; }
 
         [JsonProperty("restQuarter")]
-        public Dictionary<string, double[]> RestQuarter { get; set; }
+        public BoundingBox RestQuarter { get; set; }
 
         [JsonProperty("restQuarterOld")]
-        public Dictionary<string, double[]> RestQuarterOld { get; set; }
+        public BoundingBox RestQuarterOld { get; set; }
 
         [JsonProperty("restQuarterZ")]
-        public Dictionary<string, double[]> RestQuarterZ { get; set; }
+        public BoundingBox RestQuarterZ { get; set; }
 
         [JsonProperty("restWhole")]
-        public Dictionary<string, double[]> RestWhole { get; set; }
+        public BoundingBox RestWhole { get; set; }
 
         [JsonProperty("restWholeLegerLine")]
-        public Dictionary<string, double[]> RestWholeLegerLine { get; set; }
+        public BoundingBox RestWholeLegerLine { get; set; }
 
         [JsonProperty("reversedBrace")]
-        public Dictionary<string, double[]> ReversedBrace { get; set; }
+        public BoundingBox ReversedBrace { get; set; }
 
         [JsonProperty("reversedBracketBottom")]
-        public Dictionary<string, double[]> ReversedBracketBottom { get; set; }
+        public BoundingBox ReversedBracketBottom { get; set; }
 
         [JsonProperty("reversedBracketTop")]
         public BoundingBox ReversedBracketTop { get; set; }
 
         [JsonProperty("rightRepeatSmall")]
-        public Dictionary<string, double[]> RightRepeatSmall { get; set; }
+        public BoundingBox RightRepeatSmall { get; set; }
 
         [JsonProperty("schaefferClef")]
-        public Dictionary<string, double[]> SchaefferClef { get; set; }
+        public BoundingBox SchaefferClef { get; set; }
 
         [JsonProperty("schaefferFClefToGClef")]
-        public Dictionary<string, double[]> SchaefferFClefToGClef { get; set; }
+        public BoundingBox SchaefferFClefToGClef { get; set; }
 
         [JsonProperty("schaefferGClefToFClef")]
-        public Dictionary<string, double[]> SchaefferGClefToFClef { get; set; }
+        public BoundingBox SchaefferGClefToFClef { get; set; }
 
         [JsonProperty("schaefferPreviousClef")]
-        public Dictionary<string, double[]> SchaefferPreviousClef { get; set; }
+        public BoundingBox SchaefferPreviousClef { get; set; }
 
         [JsonProperty("sedicesima")]
-        public Dictionary<string, double[]> Sedicesima { get; set; }
+        public BoundingBox Sedicesima { get; set; }
 
         [JsonProperty("sedicesimaAlta")]
-        public Dictionary<string, double[]> SedicesimaAlta { get; set; }
+        public BoundingBox SedicesimaAlta { get; set; }
 
         [JsonProperty("sedicesimaBassa")]
-        public Dictionary<string, double[]> SedicesimaBassa { get; set; }
+        public BoundingBox SedicesimaBassa { get; set; }
 
         [JsonProperty("sedicesimaBassaMb")]
-        public Dictionary<string, double[]> SedicesimaBassaMb { get; set; }
+        public BoundingBox SedicesimaBassaMb { get; set; }
 
         [JsonProperty("segno")]
-        public Dictionary<string, double[]> Segno { get; set; }
+        public BoundingBox Segno { get; set; }
 
         [JsonProperty("segnoJapanese")]
         public BoundingBox SegnoJapanese { get; set; }
 
         [JsonProperty("segnoSerpent1")]
-        public Dictionary<string, double[]> SegnoSerpent1 { get; set; }
+        public BoundingBox SegnoSerpent1 { get; set; }
 
         [JsonProperty("segnoSerpent2")]
-        public Dictionary<string, double[]> SegnoSerpent2 { get; set; }
+        public BoundingBox SegnoSerpent2 { get; set; }
 
         [JsonProperty("semipitchedPercussionClef1")]
-        public Dictionary<string, double[]> SemipitchedPercussionClef1 { get; set; }
+        public BoundingBox SemipitchedPercussionClef1 { get; set; }
 
         [JsonProperty("semipitchedPercussionClef2")]
-        public Dictionary<string, double[]> SemipitchedPercussionClef2 { get; set; }
+        public BoundingBox SemipitchedPercussionClef2 { get; set; }
 
         [JsonProperty("smnFlat")]
-        public Dictionary<string, double[]> SmnFlat { get; set; }
+        public BoundingBox SmnFlat { get; set; }
 
         [JsonProperty("smnFlatWhite")]
-        public Dictionary<string, double[]> SmnFlatWhite { get; set; }
+        public BoundingBox SmnFlatWhite { get; set; }
 
         [JsonProperty("smnHistoryDoubleFlat")]
-        public Dictionary<string, double[]> SmnHistoryDoubleFlat { get; set; }
+        public BoundingBox SmnHistoryDoubleFlat { get; set; }
 
         [JsonProperty("smnHistoryDoubleSharp")]
-        public Dictionary<string, double[]> SmnHistoryDoubleSharp { get; set; }
+        public BoundingBox SmnHistoryDoubleSharp { get; set; }
 
         [JsonProperty("smnHistoryFlat")]
-        public Dictionary<string, double[]> SmnHistoryFlat { get; set; }
+        public BoundingBox SmnHistoryFlat { get; set; }
 
         [JsonProperty("smnHistorySharp")]
-        public Dictionary<string, double[]> SmnHistorySharp { get; set; }
+        public BoundingBox SmnHistorySharp { get; set; }
 
         [JsonProperty("smnNatural")]
-        public Dictionary<string, double[]> SmnNatural { get; set; }
+        public BoundingBox SmnNatural { get; set; }
 
         [JsonProperty("smnSharp")]
-        public Dictionary<string, double[]> SmnSharp { get; set; }
+        public BoundingBox SmnSharp { get; set; }
 
         [JsonProperty("smnSharpDown")]
-        public Dictionary<string, double[]> SmnSharpDown { get; set; }
+        public BoundingBox SmnSharpDown { get; set; }
 
         [JsonProperty("smnSharpWhite")]
-        public Dictionary<string, double[]> SmnSharpWhite { get; set; }
+        public BoundingBox SmnSharpWhite { get; set; }
 
         [JsonProperty("smnSharpWhiteDown")]
-        public Dictionary<string, double[]> SmnSharpWhiteDown { get; set; }
+        public BoundingBox SmnSharpWhiteDown { get; set; }
 
         [JsonProperty("splitBarDivider")]
-        public Dictionary<string, double[]> SplitBarDivider { get; set; }
+        public BoundingBox SplitBarDivider { get; set; }
 
         [JsonProperty("staff1Line")]
-        public Dictionary<string, double[]> Staff1Line { get; set; }
+        public BoundingBox Staff1Line { get; set; }
 
         [JsonProperty("staff1LineNarrow")]
-        public Dictionary<string, double[]> Staff1LineNarrow { get; set; }
+        public BoundingBox Staff1LineNarrow { get; set; }
 
         [JsonProperty("staff1LineWide")]
-        public Dictionary<string, double[]> Staff1LineWide { get; set; }
+        public BoundingBox Staff1LineWide { get; set; }
 
         [JsonProperty("staff2Lines")]
-        public Dictionary<string, double[]> Staff2Lines { get; set; }
+        public BoundingBox Staff2Lines { get; set; }
 
         [JsonProperty("staff2LinesNarrow")]
-        public Dictionary<string, double[]> Staff2LinesNarrow { get; set; }
+        public BoundingBox Staff2LinesNarrow { get; set; }
 
         [JsonProperty("staff2LinesWide")]
-        public Dictionary<string, double[]> Staff2LinesWide { get; set; }
+        public BoundingBox Staff2LinesWide { get; set; }
 
         [JsonProperty("staff3Lines")]
-        public Dictionary<string, double[]> Staff3Lines { get; set; }
+        public BoundingBox Staff3Lines { get; set; }
 
         [JsonProperty("staff3LinesNarrow")]
-        public Dictionary<string, double[]> Staff3LinesNarrow { get; set; }
+        public BoundingBox Staff3LinesNarrow { get; set; }
 
         [JsonProperty("staff3LinesWide")]
-        public Dictionary<string, double[]> Staff3LinesWide { get; set; }
+        public BoundingBox Staff3LinesWide { get; set; }
 
         [JsonProperty("staff4Lines")]
-        public Dictionary<string, double[]> Staff4Lines { get; set; }
+        public BoundingBox Staff4Lines { get; set; }
 
         [JsonProperty("staff4LinesNarrow")]
-        public Dictionary<string, double[]> Staff4LinesNarrow { get; set; }
+        public BoundingBox Staff4LinesNarrow { get; set; }
 
         [JsonProperty("staff4LinesWide")]
-        public Dictionary<string, double[]> Staff4LinesWide { get; set; }
+        public BoundingBox Staff4LinesWide { get; set; }
 
         [JsonProperty("staff5Lines")]
-        public Dictionary<string, double[]> Staff5Lines { get; set; }
+        public BoundingBox Staff5Lines { get; set; }
 
         [JsonProperty("staff5LinesNarrow")]
-        public Dictionary<string, double[]> Staff5LinesNarrow { get; set; }
+        public BoundingBox Staff5LinesNarrow { get; set; }
 
         [JsonProperty("staff5LinesWide")]
-        public Dictionary<string, double[]> Staff5LinesWide { get; set; }
+        public BoundingBox Staff5LinesWide { get; set; }
 
         [JsonProperty("staff6Lines")]
-        public Dictionary<string, double[]> Staff6Lines { get; set; }
+        public BoundingBox Staff6Lines { get; set; }
 
         [JsonProperty("staff6LinesNarrow")]
-        public Dictionary<string, double[]> Staff6LinesNarrow { get; set; }
+        public BoundingBox Staff6LinesNarrow { get; set; }
 
         [JsonProperty("staff6LinesWide")]
-        public Dictionary<string, double[]> Staff6LinesWide { get; set; }
+        public BoundingBox Staff6LinesWide { get; set; }
 
         [JsonProperty("staffDivideArrowDown")]
         public BoundingBox StaffDivideArrowDown { get; set; }
 
         [JsonProperty("staffDivideArrowUp")]
-        public Dictionary<string, double[]> StaffDivideArrowUp { get; set; }
+        public BoundingBox StaffDivideArrowUp { get; set; }
 
         [JsonProperty("staffDivideArrowUpDown")]
         public BoundingBox StaffDivideArrowUpDown { get; set; }
 
         [JsonProperty("stem")]
-        public Dictionary<string, double[]> Stem { get; set; }
+        public BoundingBox Stem { get; set; }
 
         [JsonProperty("stemBowOnBridge")]
-        public Dictionary<string, double[]> StemBowOnBridge { get; set; }
+        public BoundingBox StemBowOnBridge { get; set; }
 
         [JsonProperty("stemBowOnTailpiece")]
-        public Dictionary<string, double[]> StemBowOnTailpiece { get; set; }
+        public BoundingBox StemBowOnTailpiece { get; set; }
 
         [JsonProperty("stemBuzzRoll")]
-        public Dictionary<string, double[]> StemBuzzRoll { get; set; }
+        public BoundingBox StemBuzzRoll { get; set; }
 
         [JsonProperty("stemDamp")]
-        public Dictionary<string, double[]> StemDamp { get; set; }
+        public BoundingBox StemDamp { get; set; }
 
         [JsonProperty("stemHarpStringNoise")]
-        public Dictionary<string, double[]> StemHarpStringNoise { get; set; }
+        public BoundingBox StemHarpStringNoise { get; set; }
 
         [JsonProperty("stemMultiphonicsBlack")]
-        public Dictionary<string, double[]> StemMultiphonicsBlack { get; set; }
+        public BoundingBox StemMultiphonicsBlack { get; set; }
 
         [JsonProperty("stemMultiphonicsBlackWhite")]
-        public Dictionary<string, double[]> StemMultiphonicsBlackWhite { get; set; }
+        public BoundingBox StemMultiphonicsBlackWhite { get; set; }
 
         [JsonProperty("stemMultiphonicsWhite")]
-        public Dictionary<string, double[]> StemMultiphonicsWhite { get; set; }
+        public BoundingBox StemMultiphonicsWhite { get; set; }
 
         [JsonProperty("stemPendereckiTremolo")]
-        public Dictionary<string, double[]> StemPendereckiTremolo { get; set; }
+        public BoundingBox StemPendereckiTremolo { get; set; }
 
         [JsonProperty("stemRimShot")]
-        public Dictionary<string, double[]> StemRimShot { get; set; }
+        public BoundingBox StemRimShot { get; set; }
 
         [JsonProperty("stemSprechgesang")]
-        public Dictionary<string, double[]> StemSprechgesang { get; set; }
+        public BoundingBox StemSprechgesang { get; set; }
 
         [JsonProperty("stemSulPonticello")]
-        public Dictionary<string, double[]> StemSulPonticello { get; set; }
+        public BoundingBox StemSulPonticello { get; set; }
 
         [JsonProperty("stemSussurando")]
-        public Dictionary<string, double[]> StemSussurando { get; set; }
+        public BoundingBox StemSussurando { get; set; }
 
         [JsonProperty("stemSwished")]
-        public Dictionary<string, double[]> StemSwished { get; set; }
+        public BoundingBox StemSwished { get; set; }
 
         [JsonProperty("stemVibratoPulse")]
-        public Dictionary<string, double[]> StemVibratoPulse { get; set; }
+        public BoundingBox StemVibratoPulse { get; set; }
 
         [JsonProperty("stockhausenTremolo")]
-        public Dictionary<string, double[]> StockhausenTremolo { get; set; }
+        public BoundingBox StockhausenTremolo { get; set; }
 
         [JsonProperty("stringsBowBehindBridge")]
-        public Dictionary<string, double[]> StringsBowBehindBridge { get; set; }
+        public BoundingBox StringsBowBehindBridge { get; set; }
 
         [JsonProperty("stringsBowBehindBridgeFourStrings")]
-        public Dictionary<string, double[]> StringsBowBehindBridgeFourStrings { get; set; }
+        public BoundingBox StringsBowBehindBridgeFourStrings { get; set; }
 
         [JsonProperty("stringsBowBehindBridgeOneString")]
-        public Dictionary<string, double[]> StringsBowBehindBridgeOneString { get; set; }
+        public BoundingBox StringsBowBehindBridgeOneString { get; set; }
 
         [JsonProperty("stringsBowBehindBridgeThreeStrings")]
-        public Dictionary<string, double[]> StringsBowBehindBridgeThreeStrings { get; set; }
+        public BoundingBox StringsBowBehindBridgeThreeStrings { get; set; }
 
         [JsonProperty("stringsBowBehindBridgeTwoStrings")]
-        public Dictionary<string, double[]> StringsBowBehindBridgeTwoStrings { get; set; }
+        public BoundingBox StringsBowBehindBridgeTwoStrings { get; set; }
 
         [JsonProperty("stringsBowOnBridge")]
-        public Dictionary<string, double[]> StringsBowOnBridge { get; set; }
+        public BoundingBox StringsBowOnBridge { get; set; }
 
         [JsonProperty("stringsBowOnTailpiece")]
-        public Dictionary<string, double[]> StringsBowOnTailpiece { get; set; }
+        public BoundingBox StringsBowOnTailpiece { get; set; }
 
         [JsonProperty("stringsChangeBowDirection")]
-        public Dictionary<string, double[]> StringsChangeBowDirection { get; set; }
+        public BoundingBox StringsChangeBowDirection { get; set; }
 
         [JsonProperty("stringsChangeBowDirectionImposed")]
         public BoundingBox StringsChangeBowDirectionImposed { get; set; }
@@ -7970,7 +7970,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox StringsMuteOff { get; set; }
 
         [JsonProperty("stringsMuteOn")]
-        public Dictionary<string, double[]> StringsMuteOn { get; set; }
+        public BoundingBox StringsMuteOn { get; set; }
 
         [JsonProperty("stringsOverpressureDownBow")]
         public BoundingBox StringsOverpressureDownBow { get; set; }
@@ -7982,10 +7982,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox StringsOverpressurePossibileDownBow { get; set; }
 
         [JsonProperty("stringsOverpressurePossibileUpBow")]
-        public Dictionary<string, double[]> StringsOverpressurePossibileUpBow { get; set; }
+        public BoundingBox StringsOverpressurePossibileUpBow { get; set; }
 
         [JsonProperty("stringsOverpressureUpBow")]
-        public Dictionary<string, double[]> StringsOverpressureUpBow { get; set; }
+        public BoundingBox StringsOverpressureUpBow { get; set; }
 
         [JsonProperty("stringsThumbPosition")]
         public BoundingBox StringsThumbPosition { get; set; }
@@ -7994,442 +7994,442 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox StringsThumbPositionTurned { get; set; }
 
         [JsonProperty("stringsUpBow")]
-        public Dictionary<string, double[]> StringsUpBow { get; set; }
+        public BoundingBox StringsUpBow { get; set; }
 
         [JsonProperty("stringsUpBowTurned")]
-        public Dictionary<string, double[]> StringsUpBowTurned { get; set; }
+        public BoundingBox StringsUpBowTurned { get; set; }
 
         [JsonProperty("stringsVibratoPulse")]
-        public Dictionary<string, double[]> StringsVibratoPulse { get; set; }
+        public BoundingBox StringsVibratoPulse { get; set; }
 
         [JsonProperty("systemDivider")]
-        public Dictionary<string, double[]> SystemDivider { get; set; }
+        public BoundingBox SystemDivider { get; set; }
 
         [JsonProperty("systemDividerExtraLong")]
-        public Dictionary<string, double[]> SystemDividerExtraLong { get; set; }
+        public BoundingBox SystemDividerExtraLong { get; set; }
 
         [JsonProperty("systemDividerLong")]
-        public Dictionary<string, double[]> SystemDividerLong { get; set; }
+        public BoundingBox SystemDividerLong { get; set; }
 
         [JsonProperty("textAugmentationDot")]
-        public Dictionary<string, double[]> TextAugmentationDot { get; set; }
+        public BoundingBox TextAugmentationDot { get; set; }
 
         [JsonProperty("textBlackNoteFrac16thLongStem")]
-        public Dictionary<string, double[]> TextBlackNoteFrac16ThLongStem { get; set; }
+        public BoundingBox TextBlackNoteFrac16ThLongStem { get; set; }
 
         [JsonProperty("textBlackNoteFrac16thShortStem")]
-        public Dictionary<string, double[]> TextBlackNoteFrac16ThShortStem { get; set; }
+        public BoundingBox TextBlackNoteFrac16ThShortStem { get; set; }
 
         [JsonProperty("textBlackNoteFrac32ndLongStem")]
-        public Dictionary<string, double[]> TextBlackNoteFrac32NdLongStem { get; set; }
+        public BoundingBox TextBlackNoteFrac32NdLongStem { get; set; }
 
         [JsonProperty("textBlackNoteFrac8thLongStem")]
-        public Dictionary<string, double[]> TextBlackNoteFrac8ThLongStem { get; set; }
+        public BoundingBox TextBlackNoteFrac8ThLongStem { get; set; }
 
         [JsonProperty("textBlackNoteFrac8thShortStem")]
-        public Dictionary<string, double[]> TextBlackNoteFrac8ThShortStem { get; set; }
+        public BoundingBox TextBlackNoteFrac8ThShortStem { get; set; }
 
         [JsonProperty("textBlackNoteLongStem")]
-        public Dictionary<string, double[]> TextBlackNoteLongStem { get; set; }
+        public BoundingBox TextBlackNoteLongStem { get; set; }
 
         [JsonProperty("textBlackNoteShortStem")]
-        public Dictionary<string, double[]> TextBlackNoteShortStem { get; set; }
+        public BoundingBox TextBlackNoteShortStem { get; set; }
 
         [JsonProperty("textCont16thBeamLongStem")]
-        public Dictionary<string, double[]> TextCont16ThBeamLongStem { get; set; }
+        public BoundingBox TextCont16ThBeamLongStem { get; set; }
 
         [JsonProperty("textCont16thBeamShortStem")]
-        public Dictionary<string, double[]> TextCont16ThBeamShortStem { get; set; }
+        public BoundingBox TextCont16ThBeamShortStem { get; set; }
 
         [JsonProperty("textCont32ndBeamLongStem")]
-        public Dictionary<string, double[]> TextCont32NdBeamLongStem { get; set; }
+        public BoundingBox TextCont32NdBeamLongStem { get; set; }
 
         [JsonProperty("textCont8thBeamLongStem")]
-        public Dictionary<string, double[]> TextCont8ThBeamLongStem { get; set; }
+        public BoundingBox TextCont8ThBeamLongStem { get; set; }
 
         [JsonProperty("textCont8thBeamShortStem")]
-        public Dictionary<string, double[]> TextCont8ThBeamShortStem { get; set; }
+        public BoundingBox TextCont8ThBeamShortStem { get; set; }
 
         [JsonProperty("textTie")]
-        public Dictionary<string, double[]> TextTie { get; set; }
+        public BoundingBox TextTie { get; set; }
 
         [JsonProperty("textTuplet3LongStem")]
-        public Dictionary<string, double[]> TextTuplet3LongStem { get; set; }
+        public BoundingBox TextTuplet3LongStem { get; set; }
 
         [JsonProperty("textTuplet3ShortStem")]
-        public Dictionary<string, double[]> TextTuplet3ShortStem { get; set; }
+        public BoundingBox TextTuplet3ShortStem { get; set; }
 
         [JsonProperty("textTupletBracketEndLongStem")]
-        public Dictionary<string, double[]> TextTupletBracketEndLongStem { get; set; }
+        public BoundingBox TextTupletBracketEndLongStem { get; set; }
 
         [JsonProperty("textTupletBracketEndShortStem")]
-        public Dictionary<string, double[]> TextTupletBracketEndShortStem { get; set; }
+        public BoundingBox TextTupletBracketEndShortStem { get; set; }
 
         [JsonProperty("textTupletBracketStartLongStem")]
-        public Dictionary<string, double[]> TextTupletBracketStartLongStem { get; set; }
+        public BoundingBox TextTupletBracketStartLongStem { get; set; }
 
         [JsonProperty("textTupletBracketStartShortStem")]
-        public Dictionary<string, double[]> TextTupletBracketStartShortStem { get; set; }
+        public BoundingBox TextTupletBracketStartShortStem { get; set; }
 
         [JsonProperty("timeSig0")]
-        public Dictionary<string, double[]> TimeSig0 { get; set; }
+        public BoundingBox TimeSig0 { get; set; }
 
         [JsonProperty("timeSig0Denominator")]
-        public Dictionary<string, double[]> TimeSig0Denominator { get; set; }
+        public BoundingBox TimeSig0Denominator { get; set; }
 
         [JsonProperty("timeSig0Large")]
-        public Dictionary<string, double[]> TimeSig0Large { get; set; }
+        public BoundingBox TimeSig0Large { get; set; }
 
         [JsonProperty("timeSig0Numerator")]
-        public Dictionary<string, double[]> TimeSig0Numerator { get; set; }
+        public BoundingBox TimeSig0Numerator { get; set; }
 
         [JsonProperty("timeSig0Reversed")]
-        public Dictionary<string, double[]> TimeSig0Reversed { get; set; }
+        public BoundingBox TimeSig0Reversed { get; set; }
 
         [JsonProperty("timeSig0Small")]
-        public Dictionary<string, double[]> TimeSig0Small { get; set; }
+        public BoundingBox TimeSig0Small { get; set; }
 
         [JsonProperty("timeSig0Turned")]
-        public Dictionary<string, double[]> TimeSig0Turned { get; set; }
+        public BoundingBox TimeSig0Turned { get; set; }
 
         [JsonProperty("timeSig1")]
-        public Dictionary<string, double[]> TimeSig1 { get; set; }
+        public BoundingBox TimeSig1 { get; set; }
 
         [JsonProperty("timeSig12over8")]
-        public Dictionary<string, double[]> TimeSig12Over8 { get; set; }
+        public BoundingBox TimeSig12Over8 { get; set; }
 
         [JsonProperty("timeSig1Denominator")]
-        public Dictionary<string, double[]> TimeSig1Denominator { get; set; }
+        public BoundingBox TimeSig1Denominator { get; set; }
 
         [JsonProperty("timeSig1Large")]
-        public Dictionary<string, double[]> TimeSig1Large { get; set; }
+        public BoundingBox TimeSig1Large { get; set; }
 
         [JsonProperty("timeSig1Numerator")]
-        public Dictionary<string, double[]> TimeSig1Numerator { get; set; }
+        public BoundingBox TimeSig1Numerator { get; set; }
 
         [JsonProperty("timeSig1Reversed")]
-        public Dictionary<string, double[]> TimeSig1Reversed { get; set; }
+        public BoundingBox TimeSig1Reversed { get; set; }
 
         [JsonProperty("timeSig1Small")]
-        public Dictionary<string, double[]> TimeSig1Small { get; set; }
+        public BoundingBox TimeSig1Small { get; set; }
 
         [JsonProperty("timeSig1Turned")]
-        public Dictionary<string, double[]> TimeSig1Turned { get; set; }
+        public BoundingBox TimeSig1Turned { get; set; }
 
         [JsonProperty("timeSig2")]
-        public Dictionary<string, double[]> TimeSig2 { get; set; }
+        public BoundingBox TimeSig2 { get; set; }
 
         [JsonProperty("timeSig2Denominator")]
-        public Dictionary<string, double[]> TimeSig2Denominator { get; set; }
+        public BoundingBox TimeSig2Denominator { get; set; }
 
         [JsonProperty("timeSig2Large")]
-        public Dictionary<string, double[]> TimeSig2Large { get; set; }
+        public BoundingBox TimeSig2Large { get; set; }
 
         [JsonProperty("timeSig2Numerator")]
-        public Dictionary<string, double[]> TimeSig2Numerator { get; set; }
+        public BoundingBox TimeSig2Numerator { get; set; }
 
         [JsonProperty("timeSig2Reversed")]
-        public Dictionary<string, double[]> TimeSig2Reversed { get; set; }
+        public BoundingBox TimeSig2Reversed { get; set; }
 
         [JsonProperty("timeSig2Small")]
-        public Dictionary<string, double[]> TimeSig2Small { get; set; }
+        public BoundingBox TimeSig2Small { get; set; }
 
         [JsonProperty("timeSig2Turned")]
-        public Dictionary<string, double[]> TimeSig2Turned { get; set; }
+        public BoundingBox TimeSig2Turned { get; set; }
 
         [JsonProperty("timeSig2over2")]
-        public Dictionary<string, double[]> TimeSig2Over2 { get; set; }
+        public BoundingBox TimeSig2Over2 { get; set; }
 
         [JsonProperty("timeSig2over4")]
-        public Dictionary<string, double[]> TimeSig2Over4 { get; set; }
+        public BoundingBox TimeSig2Over4 { get; set; }
 
         [JsonProperty("timeSig3")]
-        public Dictionary<string, double[]> TimeSig3 { get; set; }
+        public BoundingBox TimeSig3 { get; set; }
 
         [JsonProperty("timeSig3Denominator")]
-        public Dictionary<string, double[]> TimeSig3Denominator { get; set; }
+        public BoundingBox TimeSig3Denominator { get; set; }
 
         [JsonProperty("timeSig3Large")]
-        public Dictionary<string, double[]> TimeSig3Large { get; set; }
+        public BoundingBox TimeSig3Large { get; set; }
 
         [JsonProperty("timeSig3Numerator")]
-        public Dictionary<string, double[]> TimeSig3Numerator { get; set; }
+        public BoundingBox TimeSig3Numerator { get; set; }
 
         [JsonProperty("timeSig3Reversed")]
-        public Dictionary<string, double[]> TimeSig3Reversed { get; set; }
+        public BoundingBox TimeSig3Reversed { get; set; }
 
         [JsonProperty("timeSig3Small")]
-        public Dictionary<string, double[]> TimeSig3Small { get; set; }
+        public BoundingBox TimeSig3Small { get; set; }
 
         [JsonProperty("timeSig3Turned")]
-        public Dictionary<string, double[]> TimeSig3Turned { get; set; }
+        public BoundingBox TimeSig3Turned { get; set; }
 
         [JsonProperty("timeSig3over2")]
-        public Dictionary<string, double[]> TimeSig3Over2 { get; set; }
+        public BoundingBox TimeSig3Over2 { get; set; }
 
         [JsonProperty("timeSig3over4")]
-        public Dictionary<string, double[]> TimeSig3Over4 { get; set; }
+        public BoundingBox TimeSig3Over4 { get; set; }
 
         [JsonProperty("timeSig3over8")]
-        public Dictionary<string, double[]> TimeSig3Over8 { get; set; }
+        public BoundingBox TimeSig3Over8 { get; set; }
 
         [JsonProperty("timeSig4")]
-        public Dictionary<string, double[]> TimeSig4 { get; set; }
+        public BoundingBox TimeSig4 { get; set; }
 
         [JsonProperty("timeSig4Denominator")]
-        public Dictionary<string, double[]> TimeSig4Denominator { get; set; }
+        public BoundingBox TimeSig4Denominator { get; set; }
 
         [JsonProperty("timeSig4Large")]
-        public Dictionary<string, double[]> TimeSig4Large { get; set; }
+        public BoundingBox TimeSig4Large { get; set; }
 
         [JsonProperty("timeSig4Numerator")]
-        public Dictionary<string, double[]> TimeSig4Numerator { get; set; }
+        public BoundingBox TimeSig4Numerator { get; set; }
 
         [JsonProperty("timeSig4Reversed")]
-        public Dictionary<string, double[]> TimeSig4Reversed { get; set; }
+        public BoundingBox TimeSig4Reversed { get; set; }
 
         [JsonProperty("timeSig4Small")]
-        public Dictionary<string, double[]> TimeSig4Small { get; set; }
+        public BoundingBox TimeSig4Small { get; set; }
 
         [JsonProperty("timeSig4Turned")]
-        public Dictionary<string, double[]> TimeSig4Turned { get; set; }
+        public BoundingBox TimeSig4Turned { get; set; }
 
         [JsonProperty("timeSig4over4")]
-        public Dictionary<string, double[]> TimeSig4Over4 { get; set; }
+        public BoundingBox TimeSig4Over4 { get; set; }
 
         [JsonProperty("timeSig5")]
-        public Dictionary<string, double[]> TimeSig5 { get; set; }
+        public BoundingBox TimeSig5 { get; set; }
 
         [JsonProperty("timeSig5Denominator")]
-        public Dictionary<string, double[]> TimeSig5Denominator { get; set; }
+        public BoundingBox TimeSig5Denominator { get; set; }
 
         [JsonProperty("timeSig5Large")]
-        public Dictionary<string, double[]> TimeSig5Large { get; set; }
+        public BoundingBox TimeSig5Large { get; set; }
 
         [JsonProperty("timeSig5Numerator")]
-        public Dictionary<string, double[]> TimeSig5Numerator { get; set; }
+        public BoundingBox TimeSig5Numerator { get; set; }
 
         [JsonProperty("timeSig5Reversed")]
-        public Dictionary<string, double[]> TimeSig5Reversed { get; set; }
+        public BoundingBox TimeSig5Reversed { get; set; }
 
         [JsonProperty("timeSig5Small")]
-        public Dictionary<string, double[]> TimeSig5Small { get; set; }
+        public BoundingBox TimeSig5Small { get; set; }
 
         [JsonProperty("timeSig5Turned")]
-        public Dictionary<string, double[]> TimeSig5Turned { get; set; }
+        public BoundingBox TimeSig5Turned { get; set; }
 
         [JsonProperty("timeSig5over4")]
-        public Dictionary<string, double[]> TimeSig5Over4 { get; set; }
+        public BoundingBox TimeSig5Over4 { get; set; }
 
         [JsonProperty("timeSig5over8")]
-        public Dictionary<string, double[]> TimeSig5Over8 { get; set; }
+        public BoundingBox TimeSig5Over8 { get; set; }
 
         [JsonProperty("timeSig6")]
-        public Dictionary<string, double[]> TimeSig6 { get; set; }
+        public BoundingBox TimeSig6 { get; set; }
 
         [JsonProperty("timeSig6Denominator")]
-        public Dictionary<string, double[]> TimeSig6Denominator { get; set; }
+        public BoundingBox TimeSig6Denominator { get; set; }
 
         [JsonProperty("timeSig6Large")]
-        public Dictionary<string, double[]> TimeSig6Large { get; set; }
+        public BoundingBox TimeSig6Large { get; set; }
 
         [JsonProperty("timeSig6Numerator")]
-        public Dictionary<string, double[]> TimeSig6Numerator { get; set; }
+        public BoundingBox TimeSig6Numerator { get; set; }
 
         [JsonProperty("timeSig6Reversed")]
-        public Dictionary<string, double[]> TimeSig6Reversed { get; set; }
+        public BoundingBox TimeSig6Reversed { get; set; }
 
         [JsonProperty("timeSig6Small")]
-        public Dictionary<string, double[]> TimeSig6Small { get; set; }
+        public BoundingBox TimeSig6Small { get; set; }
 
         [JsonProperty("timeSig6Turned")]
-        public Dictionary<string, double[]> TimeSig6Turned { get; set; }
+        public BoundingBox TimeSig6Turned { get; set; }
 
         [JsonProperty("timeSig6over4")]
-        public Dictionary<string, double[]> TimeSig6Over4 { get; set; }
+        public BoundingBox TimeSig6Over4 { get; set; }
 
         [JsonProperty("timeSig6over8")]
-        public Dictionary<string, double[]> TimeSig6Over8 { get; set; }
+        public BoundingBox TimeSig6Over8 { get; set; }
 
         [JsonProperty("timeSig7")]
-        public Dictionary<string, double[]> TimeSig7 { get; set; }
+        public BoundingBox TimeSig7 { get; set; }
 
         [JsonProperty("timeSig7Denominator")]
-        public Dictionary<string, double[]> TimeSig7Denominator { get; set; }
+        public BoundingBox TimeSig7Denominator { get; set; }
 
         [JsonProperty("timeSig7Large")]
-        public Dictionary<string, double[]> TimeSig7Large { get; set; }
+        public BoundingBox TimeSig7Large { get; set; }
 
         [JsonProperty("timeSig7Numerator")]
-        public Dictionary<string, double[]> TimeSig7Numerator { get; set; }
+        public BoundingBox TimeSig7Numerator { get; set; }
 
         [JsonProperty("timeSig7Reversed")]
-        public Dictionary<string, double[]> TimeSig7Reversed { get; set; }
+        public BoundingBox TimeSig7Reversed { get; set; }
 
         [JsonProperty("timeSig7Small")]
-        public Dictionary<string, double[]> TimeSig7Small { get; set; }
+        public BoundingBox TimeSig7Small { get; set; }
 
         [JsonProperty("timeSig7Turned")]
-        public Dictionary<string, double[]> TimeSig7Turned { get; set; }
+        public BoundingBox TimeSig7Turned { get; set; }
 
         [JsonProperty("timeSig7over8")]
-        public Dictionary<string, double[]> TimeSig7Over8 { get; set; }
+        public BoundingBox TimeSig7Over8 { get; set; }
 
         [JsonProperty("timeSig8")]
-        public Dictionary<string, double[]> TimeSig8 { get; set; }
+        public BoundingBox TimeSig8 { get; set; }
 
         [JsonProperty("timeSig8Denominator")]
-        public Dictionary<string, double[]> TimeSig8Denominator { get; set; }
+        public BoundingBox TimeSig8Denominator { get; set; }
 
         [JsonProperty("timeSig8Large")]
-        public Dictionary<string, double[]> TimeSig8Large { get; set; }
+        public BoundingBox TimeSig8Large { get; set; }
 
         [JsonProperty("timeSig8Numerator")]
-        public Dictionary<string, double[]> TimeSig8Numerator { get; set; }
+        public BoundingBox TimeSig8Numerator { get; set; }
 
         [JsonProperty("timeSig8Reversed")]
-        public Dictionary<string, double[]> TimeSig8Reversed { get; set; }
+        public BoundingBox TimeSig8Reversed { get; set; }
 
         [JsonProperty("timeSig8Small")]
-        public Dictionary<string, double[]> TimeSig8Small { get; set; }
+        public BoundingBox TimeSig8Small { get; set; }
 
         [JsonProperty("timeSig8Turned")]
-        public Dictionary<string, double[]> TimeSig8Turned { get; set; }
+        public BoundingBox TimeSig8Turned { get; set; }
 
         [JsonProperty("timeSig9")]
-        public Dictionary<string, double[]> TimeSig9 { get; set; }
+        public BoundingBox TimeSig9 { get; set; }
 
         [JsonProperty("timeSig9Large")]
-        public Dictionary<string, double[]> TimeSig9Large { get; set; }
+        public BoundingBox TimeSig9Large { get; set; }
 
         [JsonProperty("timeSig9Reversed")]
-        public Dictionary<string, double[]> TimeSig9Reversed { get; set; }
+        public BoundingBox TimeSig9Reversed { get; set; }
 
         [JsonProperty("timeSig9Small")]
-        public Dictionary<string, double[]> TimeSig9Small { get; set; }
+        public BoundingBox TimeSig9Small { get; set; }
 
         [JsonProperty("timeSig9Turned")]
-        public Dictionary<string, double[]> TimeSig9Turned { get; set; }
+        public BoundingBox TimeSig9Turned { get; set; }
 
         [JsonProperty("timeSig9over8")]
-        public Dictionary<string, double[]> TimeSig9Over8 { get; set; }
+        public BoundingBox TimeSig9Over8 { get; set; }
 
         [JsonProperty("timeSigBracketLeft")]
-        public Dictionary<string, double[]> TimeSigBracketLeft { get; set; }
+        public BoundingBox TimeSigBracketLeft { get; set; }
 
         [JsonProperty("timeSigBracketLeftSmall")]
-        public Dictionary<string, double[]> TimeSigBracketLeftSmall { get; set; }
+        public BoundingBox TimeSigBracketLeftSmall { get; set; }
 
         [JsonProperty("timeSigBracketRight")]
-        public Dictionary<string, double[]> TimeSigBracketRight { get; set; }
+        public BoundingBox TimeSigBracketRight { get; set; }
 
         [JsonProperty("timeSigBracketRightSmall")]
-        public Dictionary<string, double[]> TimeSigBracketRightSmall { get; set; }
+        public BoundingBox TimeSigBracketRightSmall { get; set; }
 
         [JsonProperty("timeSigComma")]
-        public Dictionary<string, double[]> TimeSigComma { get; set; }
+        public BoundingBox TimeSigComma { get; set; }
 
         [JsonProperty("timeSigCommon")]
-        public Dictionary<string, double[]> TimeSigCommon { get; set; }
+        public BoundingBox TimeSigCommon { get; set; }
 
         [JsonProperty("timeSigCommonLarge")]
-        public Dictionary<string, double[]> TimeSigCommonLarge { get; set; }
+        public BoundingBox TimeSigCommonLarge { get; set; }
 
         [JsonProperty("timeSigCommonReversed")]
-        public Dictionary<string, double[]> TimeSigCommonReversed { get; set; }
+        public BoundingBox TimeSigCommonReversed { get; set; }
 
         [JsonProperty("timeSigCommonTurned")]
-        public Dictionary<string, double[]> TimeSigCommonTurned { get; set; }
+        public BoundingBox TimeSigCommonTurned { get; set; }
 
         [JsonProperty("timeSigCut2")]
-        public Dictionary<string, double[]> TimeSigCut2 { get; set; }
+        public BoundingBox TimeSigCut2 { get; set; }
 
         [JsonProperty("timeSigCut3")]
-        public Dictionary<string, double[]> TimeSigCut3 { get; set; }
+        public BoundingBox TimeSigCut3 { get; set; }
 
         [JsonProperty("timeSigCutCommon")]
-        public Dictionary<string, double[]> TimeSigCutCommon { get; set; }
+        public BoundingBox TimeSigCutCommon { get; set; }
 
         [JsonProperty("timeSigCutCommonLarge")]
-        public Dictionary<string, double[]> TimeSigCutCommonLarge { get; set; }
+        public BoundingBox TimeSigCutCommonLarge { get; set; }
 
         [JsonProperty("timeSigCutCommonReversed")]
-        public Dictionary<string, double[]> TimeSigCutCommonReversed { get; set; }
+        public BoundingBox TimeSigCutCommonReversed { get; set; }
 
         [JsonProperty("timeSigCutCommonTurned")]
-        public Dictionary<string, double[]> TimeSigCutCommonTurned { get; set; }
+        public BoundingBox TimeSigCutCommonTurned { get; set; }
 
         [JsonProperty("timeSigEquals")]
-        public Dictionary<string, double[]> TimeSigEquals { get; set; }
+        public BoundingBox TimeSigEquals { get; set; }
 
         [JsonProperty("timeSigFractionHalf")]
-        public Dictionary<string, double[]> TimeSigFractionHalf { get; set; }
+        public BoundingBox TimeSigFractionHalf { get; set; }
 
         [JsonProperty("timeSigFractionOneThird")]
-        public Dictionary<string, double[]> TimeSigFractionOneThird { get; set; }
+        public BoundingBox TimeSigFractionOneThird { get; set; }
 
         [JsonProperty("timeSigFractionQuarter")]
-        public Dictionary<string, double[]> TimeSigFractionQuarter { get; set; }
+        public BoundingBox TimeSigFractionQuarter { get; set; }
 
         [JsonProperty("timeSigFractionThreeQuarters")]
-        public Dictionary<string, double[]> TimeSigFractionThreeQuarters { get; set; }
+        public BoundingBox TimeSigFractionThreeQuarters { get; set; }
 
         [JsonProperty("timeSigFractionTwoThirds")]
-        public Dictionary<string, double[]> TimeSigFractionTwoThirds { get; set; }
+        public BoundingBox TimeSigFractionTwoThirds { get; set; }
 
         [JsonProperty("timeSigFractionalSlash")]
-        public Dictionary<string, double[]> TimeSigFractionalSlash { get; set; }
+        public BoundingBox TimeSigFractionalSlash { get; set; }
 
         [JsonProperty("timeSigMinus")]
-        public Dictionary<string, double[]> TimeSigMinus { get; set; }
+        public BoundingBox TimeSigMinus { get; set; }
 
         [JsonProperty("timeSigMultiply")]
-        public Dictionary<string, double[]> TimeSigMultiply { get; set; }
+        public BoundingBox TimeSigMultiply { get; set; }
 
         [JsonProperty("timeSigOpenPenderecki")]
-        public Dictionary<string, double[]> TimeSigOpenPenderecki { get; set; }
+        public BoundingBox TimeSigOpenPenderecki { get; set; }
 
         [JsonProperty("timeSigParensLeft")]
-        public Dictionary<string, double[]> TimeSigParensLeft { get; set; }
+        public BoundingBox TimeSigParensLeft { get; set; }
 
         [JsonProperty("timeSigParensLeftSmall")]
-        public Dictionary<string, double[]> TimeSigParensLeftSmall { get; set; }
+        public BoundingBox TimeSigParensLeftSmall { get; set; }
 
         [JsonProperty("timeSigParensRight")]
-        public Dictionary<string, double[]> TimeSigParensRight { get; set; }
+        public BoundingBox TimeSigParensRight { get; set; }
 
         [JsonProperty("timeSigParensRightSmall")]
-        public Dictionary<string, double[]> TimeSigParensRightSmall { get; set; }
+        public BoundingBox TimeSigParensRightSmall { get; set; }
 
         [JsonProperty("timeSigPlus")]
-        public Dictionary<string, double[]> TimeSigPlus { get; set; }
+        public BoundingBox TimeSigPlus { get; set; }
 
         [JsonProperty("timeSigPlusLarge")]
-        public Dictionary<string, double[]> TimeSigPlusLarge { get; set; }
+        public BoundingBox TimeSigPlusLarge { get; set; }
 
         [JsonProperty("timeSigPlusSmall")]
-        public Dictionary<string, double[]> TimeSigPlusSmall { get; set; }
+        public BoundingBox TimeSigPlusSmall { get; set; }
 
         [JsonProperty("timeSigSlash")]
-        public Dictionary<string, double[]> TimeSigSlash { get; set; }
+        public BoundingBox TimeSigSlash { get; set; }
 
         [JsonProperty("timeSigX")]
-        public Dictionary<string, double[]> TimeSigX { get; set; }
+        public BoundingBox TimeSigX { get; set; }
 
         [JsonProperty("tremolo1")]
-        public Dictionary<string, double[]> Tremolo1 { get; set; }
+        public BoundingBox Tremolo1 { get; set; }
 
         [JsonProperty("tremolo2")]
-        public Dictionary<string, double[]> Tremolo2 { get; set; }
+        public BoundingBox Tremolo2 { get; set; }
 
         [JsonProperty("tremolo3")]
-        public Dictionary<string, double[]> Tremolo3 { get; set; }
+        public BoundingBox Tremolo3 { get; set; }
 
         [JsonProperty("tremolo4")]
-        public Dictionary<string, double[]> Tremolo4 { get; set; }
+        public BoundingBox Tremolo4 { get; set; }
 
         [JsonProperty("tremolo5")]
-        public Dictionary<string, double[]> Tremolo5 { get; set; }
+        public BoundingBox Tremolo5 { get; set; }
 
         [JsonProperty("tremoloDivisiDots2")]
         public BoundingBox TremoloDivisiDots2 { get; set; }
@@ -8444,70 +8444,70 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox TremoloDivisiDots6 { get; set; }
 
         [JsonProperty("tremoloFingered1")]
-        public Dictionary<string, double[]> TremoloFingered1 { get; set; }
+        public BoundingBox TremoloFingered1 { get; set; }
 
         [JsonProperty("tremoloFingered2")]
-        public Dictionary<string, double[]> TremoloFingered2 { get; set; }
+        public BoundingBox TremoloFingered2 { get; set; }
 
         [JsonProperty("tremoloFingered3")]
-        public Dictionary<string, double[]> TremoloFingered3 { get; set; }
+        public BoundingBox TremoloFingered3 { get; set; }
 
         [JsonProperty("tremoloFingered4")]
-        public Dictionary<string, double[]> TremoloFingered4 { get; set; }
+        public BoundingBox TremoloFingered4 { get; set; }
 
         [JsonProperty("tremoloFingered5")]
-        public Dictionary<string, double[]> TremoloFingered5 { get; set; }
+        public BoundingBox TremoloFingered5 { get; set; }
 
         [JsonProperty("tripleTongueAbove")]
-        public Dictionary<string, double[]> TripleTongueAbove { get; set; }
+        public BoundingBox TripleTongueAbove { get; set; }
 
         [JsonProperty("tripleTongueAboveNoSlur")]
         public BoundingBox TripleTongueAboveNoSlur { get; set; }
 
         [JsonProperty("tripleTongueBelow")]
-        public Dictionary<string, double[]> TripleTongueBelow { get; set; }
+        public BoundingBox TripleTongueBelow { get; set; }
 
         [JsonProperty("tripleTongueBelowNoSlur")]
         public BoundingBox TripleTongueBelowNoSlur { get; set; }
 
         [JsonProperty("tuplet0")]
-        public Dictionary<string, double[]> Tuplet0 { get; set; }
+        public BoundingBox Tuplet0 { get; set; }
 
         [JsonProperty("tuplet1")]
-        public Dictionary<string, double[]> Tuplet1 { get; set; }
+        public BoundingBox Tuplet1 { get; set; }
 
         [JsonProperty("tuplet2")]
-        public Dictionary<string, double[]> Tuplet2 { get; set; }
+        public BoundingBox Tuplet2 { get; set; }
 
         [JsonProperty("tuplet3")]
-        public Dictionary<string, double[]> Tuplet3 { get; set; }
+        public BoundingBox Tuplet3 { get; set; }
 
         [JsonProperty("tuplet4")]
-        public Dictionary<string, double[]> Tuplet4 { get; set; }
+        public BoundingBox Tuplet4 { get; set; }
 
         [JsonProperty("tuplet5")]
-        public Dictionary<string, double[]> Tuplet5 { get; set; }
+        public BoundingBox Tuplet5 { get; set; }
 
         [JsonProperty("tuplet6")]
-        public Dictionary<string, double[]> Tuplet6 { get; set; }
+        public BoundingBox Tuplet6 { get; set; }
 
         [JsonProperty("tuplet7")]
-        public Dictionary<string, double[]> Tuplet7 { get; set; }
+        public BoundingBox Tuplet7 { get; set; }
 
         [JsonProperty("tuplet8")]
-        public Dictionary<string, double[]> Tuplet8 { get; set; }
+        public BoundingBox Tuplet8 { get; set; }
 
         [JsonProperty("tuplet9")]
-        public Dictionary<string, double[]> Tuplet9 { get; set; }
+        public BoundingBox Tuplet9 { get; set; }
 
         [JsonProperty("tupletColon")]
-        public Dictionary<string, double[]> TupletColon { get; set; }
+        public BoundingBox TupletColon { get; set; }
 
         [JsonProperty("unmeasuredTremolo")]
-        public Dictionary<string, double[]> UnmeasuredTremolo { get; set; }
+        public BoundingBox UnmeasuredTremolo { get; set; }
 
         [JsonProperty("unmeasuredTremoloSimple")]
-        public Dictionary<string, double[]> UnmeasuredTremoloSimple { get; set; }
+        public BoundingBox UnmeasuredTremoloSimple { get; set; }
 
         [JsonProperty("unpitchedPercussionClef1")]
         public BoundingBox UnpitchedPercussionClef1 { get; set; }
@@ -8516,31 +8516,31 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox UnpitchedPercussionClef1Alt { get; set; }
 
         [JsonProperty("unpitchedPercussionClef2")]
-        public Dictionary<string, double[]> UnpitchedPercussionClef2 { get; set; }
+        public BoundingBox UnpitchedPercussionClef2 { get; set; }
 
         [JsonProperty("ventiduesima")]
-        public Dictionary<string, double[]> Ventiduesima { get; set; }
+        public BoundingBox Ventiduesima { get; set; }
 
         [JsonProperty("ventiduesimaAlta")]
-        public Dictionary<string, double[]> VentiduesimaAlta { get; set; }
+        public BoundingBox VentiduesimaAlta { get; set; }
 
         [JsonProperty("ventiduesimaBassa")]
-        public Dictionary<string, double[]> VentiduesimaBassa { get; set; }
+        public BoundingBox VentiduesimaBassa { get; set; }
 
         [JsonProperty("ventiduesimaBassaMb")]
-        public Dictionary<string, double[]> VentiduesimaBassaMb { get; set; }
+        public BoundingBox VentiduesimaBassaMb { get; set; }
 
         [JsonProperty("ventiquattresima")]
-        public Dictionary<string, double[]> Ventiquattresima { get; set; }
+        public BoundingBox Ventiquattresima { get; set; }
 
         [JsonProperty("ventiquattresimaAlta")]
-        public Dictionary<string, double[]> VentiquattresimaAlta { get; set; }
+        public BoundingBox VentiquattresimaAlta { get; set; }
 
         [JsonProperty("ventiquattresimaBassa")]
-        public Dictionary<string, double[]> VentiquattresimaBassa { get; set; }
+        public BoundingBox VentiquattresimaBassa { get; set; }
 
         [JsonProperty("ventiquattresimaBassaMb")]
-        public Dictionary<string, double[]> VentiquattresimaBassaMb { get; set; }
+        public BoundingBox VentiquattresimaBassaMb { get; set; }
 
         [JsonProperty("vocalFingerClickStockhausen")]
         public BoundingBox VocalFingerClickStockhausen { get; set; }
@@ -8561,10 +8561,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox VocalMouthWideOpen { get; set; }
 
         [JsonProperty("vocalNasalVoice")]
-        public Dictionary<string, double[]> VocalNasalVoice { get; set; }
+        public BoundingBox VocalNasalVoice { get; set; }
 
         [JsonProperty("vocalSprechgesang")]
-        public Dictionary<string, double[]> VocalSprechgesang { get; set; }
+        public BoundingBox VocalSprechgesang { get; set; }
 
         [JsonProperty("vocalTongueClickStockhausen")]
         public BoundingBox VocalTongueClickStockhausen { get; set; }
@@ -8573,259 +8573,259 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox VocalTongueFingerClickStockhausen { get; set; }
 
         [JsonProperty("vocalsSussurando")]
-        public Dictionary<string, double[]> VocalsSussurando { get; set; }
+        public BoundingBox VocalsSussurando { get; set; }
 
         [JsonProperty("wiggleArpeggiatoDown")]
-        public Dictionary<string, double[]> WiggleArpeggiatoDown { get; set; }
+        public BoundingBox WiggleArpeggiatoDown { get; set; }
 
         [JsonProperty("wiggleArpeggiatoDownArrow")]
-        public Dictionary<string, double[]> WiggleArpeggiatoDownArrow { get; set; }
+        public BoundingBox WiggleArpeggiatoDownArrow { get; set; }
 
         [JsonProperty("wiggleArpeggiatoDownSwash")]
-        public Dictionary<string, double[]> WiggleArpeggiatoDownSwash { get; set; }
+        public BoundingBox WiggleArpeggiatoDownSwash { get; set; }
 
         [JsonProperty("wiggleArpeggiatoDownSwashCouperin")]
-        public Dictionary<string, double[]> WiggleArpeggiatoDownSwashCouperin { get; set; }
+        public BoundingBox WiggleArpeggiatoDownSwashCouperin { get; set; }
 
         [JsonProperty("wiggleArpeggiatoUp")]
-        public Dictionary<string, double[]> WiggleArpeggiatoUp { get; set; }
+        public BoundingBox WiggleArpeggiatoUp { get; set; }
 
         [JsonProperty("wiggleArpeggiatoUpArrow")]
-        public Dictionary<string, double[]> WiggleArpeggiatoUpArrow { get; set; }
+        public BoundingBox WiggleArpeggiatoUpArrow { get; set; }
 
         [JsonProperty("wiggleArpeggiatoUpSwash")]
-        public Dictionary<string, double[]> WiggleArpeggiatoUpSwash { get; set; }
+        public BoundingBox WiggleArpeggiatoUpSwash { get; set; }
 
         [JsonProperty("wiggleArpeggiatoUpSwashCouperin")]
-        public Dictionary<string, double[]> WiggleArpeggiatoUpSwashCouperin { get; set; }
+        public BoundingBox WiggleArpeggiatoUpSwashCouperin { get; set; }
 
         [JsonProperty("wiggleCircular")]
-        public Dictionary<string, double[]> WiggleCircular { get; set; }
+        public BoundingBox WiggleCircular { get; set; }
 
         [JsonProperty("wiggleCircularConstant")]
-        public Dictionary<string, double[]> WiggleCircularConstant { get; set; }
+        public BoundingBox WiggleCircularConstant { get; set; }
 
         [JsonProperty("wiggleCircularConstantFlipped")]
-        public Dictionary<string, double[]> WiggleCircularConstantFlipped { get; set; }
+        public BoundingBox WiggleCircularConstantFlipped { get; set; }
 
         [JsonProperty("wiggleCircularConstantFlippedLarge")]
-        public Dictionary<string, double[]> WiggleCircularConstantFlippedLarge { get; set; }
+        public BoundingBox WiggleCircularConstantFlippedLarge { get; set; }
 
         [JsonProperty("wiggleCircularConstantLarge")]
-        public Dictionary<string, double[]> WiggleCircularConstantLarge { get; set; }
+        public BoundingBox WiggleCircularConstantLarge { get; set; }
 
         [JsonProperty("wiggleCircularEnd")]
-        public Dictionary<string, double[]> WiggleCircularEnd { get; set; }
+        public BoundingBox WiggleCircularEnd { get; set; }
 
         [JsonProperty("wiggleCircularLarge")]
-        public Dictionary<string, double[]> WiggleCircularLarge { get; set; }
+        public BoundingBox WiggleCircularLarge { get; set; }
 
         [JsonProperty("wiggleCircularLarger")]
-        public Dictionary<string, double[]> WiggleCircularLarger { get; set; }
+        public BoundingBox WiggleCircularLarger { get; set; }
 
         [JsonProperty("wiggleCircularLargerStill")]
-        public Dictionary<string, double[]> WiggleCircularLargerStill { get; set; }
+        public BoundingBox WiggleCircularLargerStill { get; set; }
 
         [JsonProperty("wiggleCircularLargest")]
         public BoundingBox WiggleCircularLargest { get; set; }
 
         [JsonProperty("wiggleCircularSmall")]
-        public Dictionary<string, double[]> WiggleCircularSmall { get; set; }
+        public BoundingBox WiggleCircularSmall { get; set; }
 
         [JsonProperty("wiggleCircularStart")]
-        public Dictionary<string, double[]> WiggleCircularStart { get; set; }
+        public BoundingBox WiggleCircularStart { get; set; }
 
         [JsonProperty("wiggleGlissando")]
-        public Dictionary<string, double[]> WiggleGlissando { get; set; }
+        public BoundingBox WiggleGlissando { get; set; }
 
         [JsonProperty("wiggleGlissandoGroup1")]
-        public Dictionary<string, double[]> WiggleGlissandoGroup1 { get; set; }
+        public BoundingBox WiggleGlissandoGroup1 { get; set; }
 
         [JsonProperty("wiggleGlissandoGroup2")]
-        public Dictionary<string, double[]> WiggleGlissandoGroup2 { get; set; }
+        public BoundingBox WiggleGlissandoGroup2 { get; set; }
 
         [JsonProperty("wiggleGlissandoGroup3")]
-        public Dictionary<string, double[]> WiggleGlissandoGroup3 { get; set; }
+        public BoundingBox WiggleGlissandoGroup3 { get; set; }
 
         [JsonProperty("wiggleRandom1")]
-        public Dictionary<string, double[]> WiggleRandom1 { get; set; }
+        public BoundingBox WiggleRandom1 { get; set; }
 
         [JsonProperty("wiggleRandom2")]
-        public Dictionary<string, double[]> WiggleRandom2 { get; set; }
+        public BoundingBox WiggleRandom2 { get; set; }
 
         [JsonProperty("wiggleRandom3")]
-        public Dictionary<string, double[]> WiggleRandom3 { get; set; }
+        public BoundingBox WiggleRandom3 { get; set; }
 
         [JsonProperty("wiggleRandom4")]
-        public Dictionary<string, double[]> WiggleRandom4 { get; set; }
+        public BoundingBox WiggleRandom4 { get; set; }
 
         [JsonProperty("wiggleSawtooth")]
-        public Dictionary<string, double[]> WiggleSawtooth { get; set; }
+        public BoundingBox WiggleSawtooth { get; set; }
 
         [JsonProperty("wiggleSawtoothNarrow")]
-        public Dictionary<string, double[]> WiggleSawtoothNarrow { get; set; }
+        public BoundingBox WiggleSawtoothNarrow { get; set; }
 
         [JsonProperty("wiggleSawtoothWide")]
-        public Dictionary<string, double[]> WiggleSawtoothWide { get; set; }
+        public BoundingBox WiggleSawtoothWide { get; set; }
 
         [JsonProperty("wiggleSquareWave")]
-        public Dictionary<string, double[]> WiggleSquareWave { get; set; }
+        public BoundingBox WiggleSquareWave { get; set; }
 
         [JsonProperty("wiggleSquareWaveNarrow")]
-        public Dictionary<string, double[]> WiggleSquareWaveNarrow { get; set; }
+        public BoundingBox WiggleSquareWaveNarrow { get; set; }
 
         [JsonProperty("wiggleSquareWaveWide")]
-        public Dictionary<string, double[]> WiggleSquareWaveWide { get; set; }
+        public BoundingBox WiggleSquareWaveWide { get; set; }
 
         [JsonProperty("wiggleTrill")]
-        public Dictionary<string, double[]> WiggleTrill { get; set; }
+        public BoundingBox WiggleTrill { get; set; }
 
         [JsonProperty("wiggleTrillFast")]
-        public Dictionary<string, double[]> WiggleTrillFast { get; set; }
+        public BoundingBox WiggleTrillFast { get; set; }
 
         [JsonProperty("wiggleTrillFaster")]
-        public Dictionary<string, double[]> WiggleTrillFaster { get; set; }
+        public BoundingBox WiggleTrillFaster { get; set; }
 
         [JsonProperty("wiggleTrillFasterStill")]
-        public Dictionary<string, double[]> WiggleTrillFasterStill { get; set; }
+        public BoundingBox WiggleTrillFasterStill { get; set; }
 
         [JsonProperty("wiggleTrillFastest")]
-        public Dictionary<string, double[]> WiggleTrillFastest { get; set; }
+        public BoundingBox WiggleTrillFastest { get; set; }
 
         [JsonProperty("wiggleTrillSlow")]
-        public Dictionary<string, double[]> WiggleTrillSlow { get; set; }
+        public BoundingBox WiggleTrillSlow { get; set; }
 
         [JsonProperty("wiggleTrillSlower")]
-        public Dictionary<string, double[]> WiggleTrillSlower { get; set; }
+        public BoundingBox WiggleTrillSlower { get; set; }
 
         [JsonProperty("wiggleTrillSlowerStill")]
-        public Dictionary<string, double[]> WiggleTrillSlowerStill { get; set; }
+        public BoundingBox WiggleTrillSlowerStill { get; set; }
 
         [JsonProperty("wiggleTrillSlowest")]
-        public Dictionary<string, double[]> WiggleTrillSlowest { get; set; }
+        public BoundingBox WiggleTrillSlowest { get; set; }
 
         [JsonProperty("wiggleVIbratoLargestSlower")]
-        public Dictionary<string, double[]> WiggleVIbratoLargestSlower { get; set; }
+        public BoundingBox WiggleVIbratoLargestSlower { get; set; }
 
         [JsonProperty("wiggleVIbratoMediumSlower")]
-        public Dictionary<string, double[]> WiggleVIbratoMediumSlower { get; set; }
+        public BoundingBox WiggleVIbratoMediumSlower { get; set; }
 
         [JsonProperty("wiggleVibrato")]
-        public Dictionary<string, double[]> WiggleVibrato { get; set; }
+        public BoundingBox WiggleVibrato { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFast")]
-        public Dictionary<string, double[]> WiggleVibratoLargeFast { get; set; }
+        public BoundingBox WiggleVibratoLargeFast { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFaster")]
-        public Dictionary<string, double[]> WiggleVibratoLargeFaster { get; set; }
+        public BoundingBox WiggleVibratoLargeFaster { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFasterStill")]
-        public Dictionary<string, double[]> WiggleVibratoLargeFasterStill { get; set; }
+        public BoundingBox WiggleVibratoLargeFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFastest")]
-        public Dictionary<string, double[]> WiggleVibratoLargeFastest { get; set; }
+        public BoundingBox WiggleVibratoLargeFastest { get; set; }
 
         [JsonProperty("wiggleVibratoLargeSlow")]
-        public Dictionary<string, double[]> WiggleVibratoLargeSlow { get; set; }
+        public BoundingBox WiggleVibratoLargeSlow { get; set; }
 
         [JsonProperty("wiggleVibratoLargeSlower")]
-        public Dictionary<string, double[]> WiggleVibratoLargeSlower { get; set; }
+        public BoundingBox WiggleVibratoLargeSlower { get; set; }
 
         [JsonProperty("wiggleVibratoLargeSlowest")]
-        public Dictionary<string, double[]> WiggleVibratoLargeSlowest { get; set; }
+        public BoundingBox WiggleVibratoLargeSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFast")]
-        public Dictionary<string, double[]> WiggleVibratoLargestFast { get; set; }
+        public BoundingBox WiggleVibratoLargestFast { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFaster")]
-        public Dictionary<string, double[]> WiggleVibratoLargestFaster { get; set; }
+        public BoundingBox WiggleVibratoLargestFaster { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFasterStill")]
-        public Dictionary<string, double[]> WiggleVibratoLargestFasterStill { get; set; }
+        public BoundingBox WiggleVibratoLargestFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFastest")]
-        public Dictionary<string, double[]> WiggleVibratoLargestFastest { get; set; }
+        public BoundingBox WiggleVibratoLargestFastest { get; set; }
 
         [JsonProperty("wiggleVibratoLargestSlow")]
-        public Dictionary<string, double[]> WiggleVibratoLargestSlow { get; set; }
+        public BoundingBox WiggleVibratoLargestSlow { get; set; }
 
         [JsonProperty("wiggleVibratoLargestSlowest")]
-        public Dictionary<string, double[]> WiggleVibratoLargestSlowest { get; set; }
+        public BoundingBox WiggleVibratoLargestSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFast")]
-        public Dictionary<string, double[]> WiggleVibratoMediumFast { get; set; }
+        public BoundingBox WiggleVibratoMediumFast { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFaster")]
-        public Dictionary<string, double[]> WiggleVibratoMediumFaster { get; set; }
+        public BoundingBox WiggleVibratoMediumFaster { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFasterStill")]
-        public Dictionary<string, double[]> WiggleVibratoMediumFasterStill { get; set; }
+        public BoundingBox WiggleVibratoMediumFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFastest")]
-        public Dictionary<string, double[]> WiggleVibratoMediumFastest { get; set; }
+        public BoundingBox WiggleVibratoMediumFastest { get; set; }
 
         [JsonProperty("wiggleVibratoMediumSlow")]
-        public Dictionary<string, double[]> WiggleVibratoMediumSlow { get; set; }
+        public BoundingBox WiggleVibratoMediumSlow { get; set; }
 
         [JsonProperty("wiggleVibratoMediumSlowest")]
-        public Dictionary<string, double[]> WiggleVibratoMediumSlowest { get; set; }
+        public BoundingBox WiggleVibratoMediumSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFast")]
-        public Dictionary<string, double[]> WiggleVibratoSmallFast { get; set; }
+        public BoundingBox WiggleVibratoSmallFast { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFaster")]
-        public Dictionary<string, double[]> WiggleVibratoSmallFaster { get; set; }
+        public BoundingBox WiggleVibratoSmallFaster { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFasterStill")]
-        public Dictionary<string, double[]> WiggleVibratoSmallFasterStill { get; set; }
+        public BoundingBox WiggleVibratoSmallFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFastest")]
-        public Dictionary<string, double[]> WiggleVibratoSmallFastest { get; set; }
+        public BoundingBox WiggleVibratoSmallFastest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallSlow")]
-        public Dictionary<string, double[]> WiggleVibratoSmallSlow { get; set; }
+        public BoundingBox WiggleVibratoSmallSlow { get; set; }
 
         [JsonProperty("wiggleVibratoSmallSlower")]
-        public Dictionary<string, double[]> WiggleVibratoSmallSlower { get; set; }
+        public BoundingBox WiggleVibratoSmallSlower { get; set; }
 
         [JsonProperty("wiggleVibratoSmallSlowest")]
-        public Dictionary<string, double[]> WiggleVibratoSmallSlowest { get; set; }
+        public BoundingBox WiggleVibratoSmallSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFast")]
-        public Dictionary<string, double[]> WiggleVibratoSmallestFast { get; set; }
+        public BoundingBox WiggleVibratoSmallestFast { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFaster")]
-        public Dictionary<string, double[]> WiggleVibratoSmallestFaster { get; set; }
+        public BoundingBox WiggleVibratoSmallestFaster { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFasterStill")]
-        public Dictionary<string, double[]> WiggleVibratoSmallestFasterStill { get; set; }
+        public BoundingBox WiggleVibratoSmallestFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFastest")]
-        public Dictionary<string, double[]> WiggleVibratoSmallestFastest { get; set; }
+        public BoundingBox WiggleVibratoSmallestFastest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestSlow")]
-        public Dictionary<string, double[]> WiggleVibratoSmallestSlow { get; set; }
+        public BoundingBox WiggleVibratoSmallestSlow { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestSlower")]
-        public Dictionary<string, double[]> WiggleVibratoSmallestSlower { get; set; }
+        public BoundingBox WiggleVibratoSmallestSlower { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestSlowest")]
-        public Dictionary<string, double[]> WiggleVibratoSmallestSlowest { get; set; }
+        public BoundingBox WiggleVibratoSmallestSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoStart")]
-        public Dictionary<string, double[]> WiggleVibratoStart { get; set; }
+        public BoundingBox WiggleVibratoStart { get; set; }
 
         [JsonProperty("wiggleVibratoWide")]
-        public Dictionary<string, double[]> WiggleVibratoWide { get; set; }
+        public BoundingBox WiggleVibratoWide { get; set; }
 
         [JsonProperty("wiggleWavy")]
-        public Dictionary<string, double[]> WiggleWavy { get; set; }
+        public BoundingBox WiggleWavy { get; set; }
 
         [JsonProperty("wiggleWavyNarrow")]
-        public Dictionary<string, double[]> WiggleWavyNarrow { get; set; }
+        public BoundingBox WiggleWavyNarrow { get; set; }
 
         [JsonProperty("wiggleWavyWide")]
-        public Dictionary<string, double[]> WiggleWavyWide { get; set; }
+        public BoundingBox WiggleWavyWide { get; set; }
 
         [JsonProperty("windClosedHole")]
         public BoundingBox WindClosedHole { get; set; }
@@ -8837,7 +8837,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox WindHalfClosedHole1 { get; set; }
 
         [JsonProperty("windHalfClosedHole2")]
-        public Dictionary<string, double[]> WindHalfClosedHole2 { get; set; }
+        public BoundingBox WindHalfClosedHole2 { get; set; }
 
         [JsonProperty("windHalfClosedHole3")]
         public BoundingBox WindHalfClosedHole3 { get; set; }
@@ -8852,13 +8852,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox WindMouthpiecePop { get; set; }
 
         [JsonProperty("windMultiphonicsBlackStem")]
-        public Dictionary<string, double[]> WindMultiphonicsBlackStem { get; set; }
+        public BoundingBox WindMultiphonicsBlackStem { get; set; }
 
         [JsonProperty("windMultiphonicsBlackWhiteStem")]
-        public Dictionary<string, double[]> WindMultiphonicsBlackWhiteStem { get; set; }
+        public BoundingBox WindMultiphonicsBlackWhiteStem { get; set; }
 
         [JsonProperty("windMultiphonicsWhiteStem")]
-        public Dictionary<string, double[]> WindMultiphonicsWhiteStem { get; set; }
+        public BoundingBox WindMultiphonicsWhiteStem { get; set; }
 
         [JsonProperty("windOpenHole")]
         public BoundingBox WindOpenHole { get; set; }
@@ -8894,7 +8894,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public BoundingBox WindTrillKey { get; set; }
 
         [JsonProperty("windVeryTightEmbouchure")]
-        public Dictionary<string, double[]> WindVeryTightEmbouchure { get; set; }
+        public BoundingBox WindVeryTightEmbouchure { get; set; }
 
         [JsonProperty("windWeakAirPressure")]
         public BoundingBox WindWeakAirPressure { get; set; }

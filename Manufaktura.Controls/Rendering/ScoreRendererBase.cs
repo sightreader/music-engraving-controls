@@ -34,6 +34,16 @@ namespace Manufaktura.Controls.Rendering
             Exceptions = new List<Exception>();
         }
 
+        public Rectangle GetSMuFLBoundingBox(BoundingBox box)
+        {
+            var bottomLine = scoreService.CurrentLinePositions.Last();
+            var origin = new Point(scoreService.CursorPositionX - box.BBoxSw[0] * Settings.LineSpacing,
+                bottomLine + box.BBoxSw[1] * Settings.LineSpacing);
+            var end = new Point(scoreService.CursorPositionX + box.BBoxNe[0] * Settings.LineSpacing,
+                bottomLine - box.BBoxNe[1] * Settings.LineSpacing);
+            return new Rectangle(origin.X, origin.Y, end.X - origin.X, origin.Y - end.Y);
+        }
+
         public virtual Score CurrentScore { get; internal set; }
         public virtual List<Exception> Exceptions { get; protected set; }
         public virtual IFinishingTouch[] FinishingTouches { get; private set; }
@@ -266,6 +276,11 @@ namespace Manufaktura.Controls.Rendering
             DrawStringInBounds(character.ToString(), fontStyle, location, size, color, owner);
         }
 
+        public void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, MusicalSymbol owner)
+        {
+            DrawStringInBounds(character.ToString(), fontStyle, location, size, CoalesceColor(owner), owner);
+        }
+
         public double PixelsToTenths(double pixels)
         {
             return 10d * (pixels / Settings.LineSpacing);
@@ -323,7 +338,7 @@ namespace Manufaktura.Controls.Rendering
             if (scoreService.CurrentStaff == null)
             {
                 scoreService.BeginNewStaff();
-                double sharpLineModifier = 0.5;
+                double sharpLineModifier = 0.5; //TODO: To trzeba uwzględniać w lineSpacing albo coś, bo zepsuje położenie nut
 
                 for (int i = 0; i < 5; i++)
                 {
@@ -362,11 +377,16 @@ namespace Manufaktura.Controls.Rendering
 
             scoreService.CurrentClef = clef;
             var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
-            if (Settings.CurrentFont is SMuFLMusicFont) clefPositionY -= 31;
+            //if (Settings.CurrentFont is SMuFLMusicFont) clefPositionY -= 31;
             clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - Settings.TextBlockHeight);
 
             if (clef.TypeOfClef == ClefType.Percussion)
                 new ClefRenderStrategy(scoreService).DrawPercussionClef(clef, this);
+            else if (Settings.CurrentFont is SMuFLMusicFont)
+            {
+                var bounds = GetSMuFLBoundingBox(clef.GetSMuFLBoundingBox(Settings.CurrentSMuFLMetadata));
+                DrawCharacterInBounds(clef.GetCharacter(Settings.CurrentFont), MusicFontStyles.MusicFont, bounds.Location, bounds.Size, clef);
+            }
             else
                 DrawCharacter(clef.GetCharacter(Settings.CurrentFont), MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             scoreService.CursorPositionX += 20;

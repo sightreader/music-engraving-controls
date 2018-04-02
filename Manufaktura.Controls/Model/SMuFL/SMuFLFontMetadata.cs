@@ -39,7 +39,7 @@
         public double[] BBoxNe { get; set; }
 
         [JsonProperty("bBoxSW")]
-        public long[] BBoxSw { get; set; }
+        public double[] BBoxSw { get; set; }
     }
 
     public partial class GlyphsWithAlternate

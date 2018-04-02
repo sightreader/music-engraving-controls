@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Music.Model;
 
@@ -207,6 +208,16 @@ namespace Manufaktura.Controls.Model
             else if (typeOfClef == ClefType.Percussion) return font.PercussionClef;
             else return '\0';
         }
+
+        public BoundingBox GetSMuFLBoundingBox(SMuFLFontMetadata metadata)
+        {
+            if (typeOfClef == ClefType.GClef) return metadata.GlyphBBoxes.GClef;
+            else if (typeOfClef == ClefType.FClef) return metadata.GlyphBBoxes.FClef;
+            else if (typeOfClef == ClefType.CClef) return metadata.GlyphBBoxes.CClef;
+            else if (typeOfClef == ClefType.Percussion) return metadata.GlyphBBoxes.SemipitchedPercussionClef1;
+            else return metadata.GlyphBBoxes.GClef;
+        }
+
         /// <summary>
         /// Returns a string representation of this symbol for debugging purposes
         /// </summary>

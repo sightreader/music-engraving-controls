@@ -7,14 +7,6 @@ namespace Manufaktura.Controls.Primitives
     /// </summary>
     public struct Rectangle
     {
-        public double Height { get; set; }
-
-        public double Width { get; set; }
-
-        public double X { get; set; }
-
-        public double Y { get; set; }
-
         public Rectangle(double x, double y, double width, double height)
             : this()
         {
@@ -24,6 +16,15 @@ namespace Manufaktura.Controls.Primitives
             this.Height = height;
         }
 
+        public double Height { get; set; }
+
+        public Point Location => new Point(X, Y);
+        public Size Size => new Size(Width, Height);
+        public double Width { get; set; }
+
+        public double X { get; set; }
+
+        public double Y { get; set; }
         /// <summary>
         /// Translates Rectangle according to page margins
         /// </summary>
