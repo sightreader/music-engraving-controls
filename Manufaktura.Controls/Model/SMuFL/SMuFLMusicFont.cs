@@ -34,7 +34,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char NoteFlagSixteenth => '\uE242';
         public char NoteFlagSixteenthRev => '\uE243';
         public char NoteHalf => '\uE0A3';
-        public char NoteheadBlack => '\uE0A4';
+        public char NoteheadBlack => SMuFLGlyphs.Instance.NoteheadBlack.Character;
         public char NoteheadHalf => '\uE0A3';
         public char NoteQuarter => '\uE0A4';
         public char NoteSixteenth => throw new NotImplementedException();

@@ -2,6 +2,7 @@
 using Manufaktura.Controls.IoC;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Postprocessing;
 using Manufaktura.Controls.Services;
@@ -361,6 +362,7 @@ namespace Manufaktura.Controls.Rendering
 
             scoreService.CurrentClef = clef;
             var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
+            if (Settings.CurrentFont is SMuFLMusicFont) clefPositionY -= 31;
             clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - Settings.TextBlockHeight);
 
             if (clef.TypeOfClef == ClefType.Percussion)

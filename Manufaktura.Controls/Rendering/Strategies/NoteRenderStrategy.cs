@@ -143,6 +143,7 @@ namespace Manufaktura.Controls.Rendering
 
         private double CalculateNotePositionY(Note element, ScoreRendererBase renderer)
         {
+            //TODO: Uniezależnić to od pozycji clefa. Powinno być zależne od linepositions -> przygotowanie do SMuFL
             return scoreService.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(scoreService.CurrentClef.Pitch,
                 element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
         }

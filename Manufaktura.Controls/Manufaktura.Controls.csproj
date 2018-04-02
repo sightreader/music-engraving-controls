@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Model\SMuFL\glyphnames.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Model\SMuFL\glyphnames.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj" />
   </ItemGroup>
 
@@ -13,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 
 </Project>
