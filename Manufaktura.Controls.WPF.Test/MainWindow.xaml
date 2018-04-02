@@ -4,8 +4,8 @@
         xmlns:WPF="clr-namespace:Manufaktura.Controls.WPF;assembly=Manufaktura.Controls.WPF" x:Class="Manufaktura.Controls.WPF.Test.MainWindow"
         Title="MainWindow" Height="443" Width="525">
     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-    <StackPanel Orientation="Vertical">
-
+    <StackPanel Orientation="Vertical" >
+            <TextBlock FontFamily="/Manufaktura.Controls.WPF.Test;component/Assets/#Bravura" x:Name="dummyTextBlock" />
             <WPF:NoteViewer ScoreSource="{Binding Data}" RenderingMode="AllPages" IsOccupyingSpace="True" x:Name="noteViewerTest" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <!--PlaybackCursorPosition="{Binding Player.CurrentPosition}"-->
             <WPF:NoteViewer PlaybackCursorPosition="{Binding Player.CurrentPosition}" RenderingMode="AllPages" CurrentPage="1" IsOccupyingSpace="True" x:Name="noteViewer1" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>

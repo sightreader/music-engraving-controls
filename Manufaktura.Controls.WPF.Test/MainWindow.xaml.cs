@@ -21,17 +21,20 @@ namespace Manufaktura.Controls.WPF.Test
     public partial class MainWindow : Window
     {
         private int systemSpacing = 0;
-        private static FontFamily BravuraFamily = new FontFamily(new Uri("pack://application:,,,/Manufaktura.Controls.WPF.Test;component/"), "./#Bravura");
+        private static FontFamily BravuraFamily = new FontFamily(new Uri("pack://application:,,,/Manufaktura.Controls.WPF.Test;component/Assets;component/"), "./#Bravura");
 
         public MainWindow()
         {
             InitializeComponent();
+            var family = dummyTextBlock.FontFamily;
+
+            /*noteViewerTest.LoadSMuFLFont(family);
+            noteViewer1.LoadSMuFLFont(family);
+            noteViewer2.LoadSMuFLFont(family);
+            noteViewer3.LoadSMuFLFont(family);*/
+
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
 
-            /*Fonts.Set(Model.Fonts.MusicFontStyles.MusicFont, BravuraFamily);
-            Fonts.Set(Model.Fonts.MusicFontStyles.StaffFont, BravuraFamily);
-            Fonts.Set(Model.Fonts.MusicFontStyles.TimeSignatureFont, BravuraFamily);
-            Fonts.Set(Model.Fonts.MusicFontStyles.TrillFont, BravuraFamily);*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

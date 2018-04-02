@@ -18,7 +18,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char FermataDown => throw new NotImplementedException();
         public char FermataUp => throw new NotImplementedException();
         public char Flat => '\uE260';
-        public char GClef => '\uE052';
+        public char GClef => '\uE050';
         public char Mordent => throw new NotImplementedException();
         public char MordentShort => throw new NotImplementedException();
         public char Natural => '\uE261';

@@ -11,247 +11,252 @@ using System.Windows.Shapes;
 
 namespace Manufaktura.Controls.WPF
 {
-	public class CanvasScoreRenderer : ScoreRenderer<Canvas>
-	{
-		private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
-		private Line playbackCursor;
-		private TranslateTransform playbackCursorTransform = new TranslateTransform();
+    public class CanvasScoreRenderer : ScoreRenderer<Canvas>
+    {
+        private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
+        private Line playbackCursor;
+        private TranslateTransform playbackCursorTransform = new TranslateTransform();
 
-		public CanvasScoreRenderer(Canvas canvas)
-			: base(canvas)
-		{
-			OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
-		}
+        public CanvasScoreRenderer(Canvas canvas)
+            : base(canvas)
+        {
+            OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
+        }
 
-		public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
+        public CanvasScoreRenderer(Canvas canvas, ScoreRendererSettings rendererSettings) : base(canvas, rendererSettings)
+        {
+            OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
+        }
 
-		public static Point ConvertPoint(Primitives.Point point)
-		{
-			return new Point(point.X, point.Y);
-		}
+        public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
 
-		public static Primitives.Point ConvertPoint(Point point)
-		{
-			return new Primitives.Point(point.X, point.Y);
-		}
+        public static Point ConvertPoint(Primitives.Point point)
+        {
+            return new Point(point.X, point.Y);
+        }
 
-		public Color ConvertColor(Primitives.Color color)
-		{
-			return Color.FromArgb(color.A, color.R, color.G, color.B);
-		}
+        public static Primitives.Point ConvertPoint(Point point)
+        {
+            return new Primitives.Point(point.X, point.Y);
+        }
 
-		public Primitives.Color ConvertColor(Color color)
-		{
-			return new Primitives.Color(color.R, color.G, color.B, color.A);
-		}
+        public Color ConvertColor(Primitives.Color color)
+        {
+            return Color.FromArgb(color.A, color.R, color.G, color.B);
+        }
 
-		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
-		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+        public Primitives.Color ConvertColor(Color color)
+        {
+            return new Primitives.Color(color.R, color.G, color.B, color.A);
+        }
 
-			if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
-			PathGeometry pathGeom = new PathGeometry();
-			PathFigure pf = new PathFigure();
-			pf.StartPoint = new Point(rect.X, rect.Y);
-			ArcSegment arcSeg = new ArcSegment();
-			arcSeg.Point = new Point(rect.X + rect.Width, rect.Y);
-			arcSeg.RotationAngle = startAngle;
-			arcSeg.Size = new Size(rect.Width, rect.Height);
-			arcSeg.SweepDirection = sweepAngle < 180 ? SweepDirection.Counterclockwise : SweepDirection.Clockwise;
-			arcSeg.IsLargeArc = sweepAngle > 180;
-			pf.Segments.Add(arcSeg);
-			pathGeom.Figures.Add(pf);
+        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
+        {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
 
-			Path path = new Path();
-			path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-			path.StrokeThickness = pen.Thickness;
-			path.Data = pathGeom;
-			path.Visibility = BoolToVisibility(owner.IsVisible);
-			Canvas.Children.Add(path);
+            if (rect.Width < 0 || rect.Height < 0) return;  //TODO: Sprawdzić czemu tak się dzieje, poprawić
+            PathGeometry pathGeom = new PathGeometry();
+            PathFigure pf = new PathFigure();
+            pf.StartPoint = new Point(rect.X, rect.Y);
+            ArcSegment arcSeg = new ArcSegment();
+            arcSeg.Point = new Point(rect.X + rect.Width, rect.Y);
+            arcSeg.RotationAngle = startAngle;
+            arcSeg.Size = new Size(rect.Width, rect.Height);
+            arcSeg.SweepDirection = sweepAngle < 180 ? SweepDirection.Counterclockwise : SweepDirection.Clockwise;
+            arcSeg.IsLargeArc = sweepAngle > 180;
+            pf.Segments.Add(arcSeg);
+            pathGeom.Figures.Add(pf);
 
-			OwnershipDictionary.Add(path, owner);
-		}
+            Path path = new Path();
+            path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            path.StrokeThickness = pen.Thickness;
+            path.Data = pathGeom;
+            path.Visibility = BoolToVisibility(owner.IsVisible);
+            Canvas.Children.Add(path);
 
-		public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
-		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
-			{
-				p1 = p1.Translate(CurrentScore.DefaultPageSettings);
-				p2 = p2.Translate(CurrentScore.DefaultPageSettings);
-				p3 = p3.Translate(CurrentScore.DefaultPageSettings);
-				p4 = p4.Translate(CurrentScore.DefaultPageSettings);
-			}
+            OwnershipDictionary.Add(path, owner);
+        }
 
-			PathGeometry pathGeom = new PathGeometry();
-			PathFigure pf = new PathFigure();
-			pf.StartPoint = new Point(p1.X, p1.Y);
-			BezierSegment bezierSegment = new BezierSegment();
-			bezierSegment.Point1 = ConvertPoint(p2);
-			bezierSegment.Point2 = ConvertPoint(p3);
-			bezierSegment.Point3 = ConvertPoint(p4);
-			pf.Segments.Add(bezierSegment);
-			pathGeom.Figures.Add(pf);
+        public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
+        {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            {
+                p1 = p1.Translate(CurrentScore.DefaultPageSettings);
+                p2 = p2.Translate(CurrentScore.DefaultPageSettings);
+                p3 = p3.Translate(CurrentScore.DefaultPageSettings);
+                p4 = p4.Translate(CurrentScore.DefaultPageSettings);
+            }
 
-			Path path = new Path();
-			path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-			path.StrokeThickness = pen.Thickness;
-			path.Data = pathGeom;
-			path.Visibility = BoolToVisibility(owner.IsVisible);
-			Canvas.Children.Add(path);
+            PathGeometry pathGeom = new PathGeometry();
+            PathFigure pf = new PathFigure();
+            pf.StartPoint = new Point(p1.X, p1.Y);
+            BezierSegment bezierSegment = new BezierSegment();
+            bezierSegment.Point1 = ConvertPoint(p2);
+            bezierSegment.Point2 = ConvertPoint(p3);
+            bezierSegment.Point3 = ConvertPoint(p4);
+            pf.Segments.Add(bezierSegment);
+            pathGeom.Figures.Add(pf);
 
-			OwnershipDictionary.Add(path, owner);
-		}
+            Path path = new Path();
+            path.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            path.StrokeThickness = pen.Thickness;
+            path.Data = pathGeom;
+            path.Visibility = BoolToVisibility(owner.IsVisible);
+            Canvas.Children.Add(path);
 
-		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
-		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
-			{
-				startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
-				endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
-			}
+            OwnershipDictionary.Add(path, owner);
+        }
 
-			var line = new Line();
-			line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
-			line.X1 = startPoint.X;
-			line.X2 = endPoint.X;
-			line.Y1 = startPoint.Y;
-			line.Y2 = endPoint.Y;
-			line.StrokeThickness = pen.Thickness;
-			line.Visibility = BoolToVisibility(owner.IsVisible);
-			Canvas.Children.Add(line);
+        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
+        {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            {
+                startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
+                endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
+            }
 
-			OwnershipDictionary.Add(line, owner);
-		}
+            var line = new Line();
+            line.Stroke = new SolidColorBrush(ConvertColor(pen.Color));
+            line.X1 = startPoint.X;
+            line.X2 = endPoint.X;
+            line.Y1 = startPoint.Y;
+            line.Y2 = endPoint.Y;
+            line.StrokeThickness = pen.Thickness;
+            line.Visibility = BoolToVisibility(owner.IsVisible);
+            Canvas.Children.Add(line);
 
-		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
-		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
+            OwnershipDictionary.Add(line, owner);
+        }
 
-			TextBlock textBlock = new TextBlock();
-			Typeface typeface = Fonts.Get(fontStyle);
-			textBlock.FontSize = Fonts.GetSize(fontStyle);
-			textBlock.FontFamily = typeface.FontFamily;
-			textBlock.FontStretch = typeface.Stretch;
-			textBlock.FontStyle = typeface.Style;
-			textBlock.FontWeight = typeface.Weight;
-			textBlock.Text = text;
-			textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
-			textBlock.Visibility = BoolToVisibility(owner.IsVisible);
-			System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
-			System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
-			Canvas.Children.Add(textBlock);
+        public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
+        {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
-			OwnershipDictionary.Add(textBlock, owner);
-		}
+            TextBlock textBlock = new TextBlock();
+            Typeface typeface = Fonts.Get(fontStyle);
+            textBlock.FontSize = Fonts.GetSize(fontStyle);
+            textBlock.FontFamily = typeface.FontFamily;
+            textBlock.FontStretch = typeface.Stretch;
+            textBlock.FontStyle = typeface.Style;
+            textBlock.FontWeight = typeface.Weight;
+            textBlock.Text = text;
+            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+            System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
+            System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
+            Canvas.Children.Add(textBlock);
 
-		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
-		{
-			if (!EnsureProperPage(owner)) return;
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
+            OwnershipDictionary.Add(textBlock, owner);
+        }
 
-			TextBlock textBlock = new TextBlock();
-			Typeface typeface = Fonts.Get(fontStyle);
-			textBlock.FontSize = 200;
-			textBlock.FontFamily = typeface.FontFamily;
-			textBlock.FontStretch = typeface.Stretch;
-			textBlock.FontStyle = typeface.Style;
-			textBlock.FontWeight = typeface.Weight;
-			textBlock.Text = text;
-			textBlock.Margin = new Thickness(0, -25, 0, 0);
-			textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
-			textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+        public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+        {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
-			var viewBox = new Viewbox();
-			viewBox.Child = textBlock;
-			viewBox.Width = size.Width;
-			viewBox.Height = size.Height;
-			viewBox.Stretch = Stretch.Fill;
-			viewBox.RenderTransform = new ScaleTransform(1, 1.9);
-			System.Windows.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
-			System.Windows.Controls.Canvas.SetTop(viewBox, location.Y);
-			Canvas.Children.Add(viewBox);
+            TextBlock textBlock = new TextBlock();
+            Typeface typeface = Fonts.Get(fontStyle);
+            textBlock.FontSize = 200;
+            textBlock.FontFamily = typeface.FontFamily;
+            textBlock.FontStretch = typeface.Stretch;
+            textBlock.FontStyle = typeface.Style;
+            textBlock.FontWeight = typeface.Weight;
+            textBlock.Text = text;
+            textBlock.Margin = new Thickness(0, -25, 0, 0);
+            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
+            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
 
-			OwnershipDictionary.Add(textBlock, owner);
-		}
+            var viewBox = new Viewbox();
+            viewBox.Child = textBlock;
+            viewBox.Width = size.Width;
+            viewBox.Height = size.Height;
+            viewBox.Stretch = Stretch.Fill;
+            viewBox.RenderTransform = new ScaleTransform(1, 1.9);
+            System.Windows.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
+            System.Windows.Controls.Canvas.SetTop(viewBox, location.Y);
+            Canvas.Children.Add(viewBox);
 
-		public void MoveLayout(StaffSystem system, Point delta)
-		{
-			foreach (var staffFragment in system.Staves)
-			{
-				var systemElements = OwnershipDictionary.Where(d => d.Value == staffFragment).Select(d => d.Key).ToList();
-				foreach (var frameworkElement in systemElements)
-				{
-					Move(frameworkElement, delta);
-				}
-			}
+            OwnershipDictionary.Add(textBlock, owner);
+        }
 
-			var alreadyMovedElements = new List<FrameworkElement>();
-			foreach (var element in system.Score.Staves.SelectMany(s => s.Elements).Where(e => e.Measure != null && e.Measure.System == system).Distinct())
-			{
-				var frameworkElements = OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
-				foreach (var frameworkElement in frameworkElements)
-				{
-					if (alreadyMovedElements.Contains(frameworkElement)) continue;
-					Move(frameworkElement, delta);
-					alreadyMovedElements.Add(frameworkElement);
-				}
-			}
-		}
+        public void MoveLayout(StaffSystem system, Point delta)
+        {
+            foreach (var staffFragment in system.Staves)
+            {
+                var systemElements = OwnershipDictionary.Where(d => d.Value == staffFragment).Select(d => d.Key).ToList();
+                foreach (var frameworkElement in systemElements)
+                {
+                    Move(frameworkElement, delta);
+                }
+            }
 
-		protected Visibility BoolToVisibility(bool isVisible)
-		{
-			return isVisible ? Visibility.Visible : Visibility.Collapsed;
-		}
+            var alreadyMovedElements = new List<FrameworkElement>();
+            foreach (var element in system.Score.Staves.SelectMany(s => s.Elements).Where(e => e.Measure != null && e.Measure.System == system).Distinct())
+            {
+                var frameworkElements = OwnershipDictionary.Where(d => d.Value == element).Select(d => d.Key).ToList();
+                foreach (var frameworkElement in frameworkElements)
+                {
+                    if (alreadyMovedElements.Contains(frameworkElement)) continue;
+                    Move(frameworkElement, delta);
+                    alreadyMovedElements.Add(frameworkElement);
+                }
+            }
+        }
 
-		protected Pen ConvertPen(Primitives.Pen pen)
-		{
-			Pen wpfPen;
-			if (_penCache.ContainsKey(pen)) wpfPen = _penCache[pen];
-			else
-			{
-				wpfPen = new Pen(new SolidColorBrush(ConvertColor(pen.Color)), pen.Thickness);
-				_penCache.Add(pen, wpfPen);
-			}
-			return wpfPen;
-		}
+        protected Visibility BoolToVisibility(bool isVisible)
+        {
+            return isVisible ? Visibility.Visible : Visibility.Collapsed;
+        }
 
-		protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
-		{
-			if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
-			{
-				start = start.Translate(CurrentScore.DefaultPageSettings);
-				end = end.Translate(CurrentScore.DefaultPageSettings);
-			}
+        protected Pen ConvertPen(Primitives.Pen pen)
+        {
+            Pen wpfPen;
+            if (_penCache.ContainsKey(pen)) wpfPen = _penCache[pen];
+            else
+            {
+                wpfPen = new Pen(new SolidColorBrush(ConvertColor(pen.Color)), pen.Thickness);
+                _penCache.Add(pen, wpfPen);
+            }
+            return wpfPen;
+        }
 
-			if (playbackCursor == null)
-			{
-				playbackCursor = new Line();
-				playbackCursor.RenderTransform = playbackCursorTransform;
+        protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
+        {
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            {
+                start = start.Translate(CurrentScore.DefaultPageSettings);
+                end = end.Translate(CurrentScore.DefaultPageSettings);
+            }
 
-				playbackCursor.Stroke = new SolidColorBrush(Colors.Magenta);
-				playbackCursor.X1 = 0;
-				playbackCursor.X2 = 0;
-				playbackCursor.Y1 = 0;
-				playbackCursor.Y2 = end.Y - start.Y;
-				playbackCursor.Visibility = BoolToVisibility(position.IsValid);
-				playbackCursor.StrokeThickness = 1;
-				Canvas.Children.Add(playbackCursor);
-			}
+            if (playbackCursor == null)
+            {
+                playbackCursor = new Line();
+                playbackCursor.RenderTransform = playbackCursorTransform;
 
-			playbackCursorTransform.X = start.X;
-			playbackCursorTransform.Y = start.Y;
-		}
+                playbackCursor.Stroke = new SolidColorBrush(Colors.Magenta);
+                playbackCursor.X1 = 0;
+                playbackCursor.X2 = 0;
+                playbackCursor.Y1 = 0;
+                playbackCursor.Y2 = end.Y - start.Y;
+                playbackCursor.Visibility = BoolToVisibility(position.IsValid);
+                playbackCursor.StrokeThickness = 1;
+                Canvas.Children.Add(playbackCursor);
+            }
 
-		private void Move(FrameworkElement element, Point delta)
-		{
-			var translation = new TranslateTransform();
-			translation.X = delta.X;
-			translation.Y = delta.Y;
-			element.RenderTransform = translation;
-		}
-	}
+            playbackCursorTransform.X = start.X;
+            playbackCursorTransform.Y = start.Y;
+        }
+
+        private void Move(FrameworkElement element, Point delta)
+        {
+            var translation = new TranslateTransform();
+            translation.X = delta.X;
+            translation.Y = delta.Y;
+            element.RenderTransform = translation;
+        }
+    }
 }

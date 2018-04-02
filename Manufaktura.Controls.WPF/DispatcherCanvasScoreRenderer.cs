@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,12 @@ namespace Manufaktura.Controls.WPF
 			this.control = control;
 		}
 
-		public int BufferSize { get; } = 1600;
+        public DispatcherCanvasScoreRenderer(Canvas canvas, NoteViewer control, ScoreRendererSettings rendererSettings) : base(canvas, rendererSettings)
+        {
+            this.control = control;
+        }
+
+        public int BufferSize { get; } = 1600;
 
 		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
