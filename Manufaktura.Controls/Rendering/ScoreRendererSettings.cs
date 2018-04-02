@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
 
 namespace Manufaktura.Controls.Rendering
@@ -28,6 +29,8 @@ namespace Manufaktura.Controls.Rendering
 		/// Key mapping for current font
 		/// </summary>
 		public IMusicFont CurrentFont { get; set; }
+
+        public SMuFLFontMetadata CurrentSMuFLMetadata { get; set; }
 
 		/// <summary>
 		/// Page to display if renderer is in SinglePage mode.

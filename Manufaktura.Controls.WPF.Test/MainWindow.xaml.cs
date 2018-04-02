@@ -2,10 +2,12 @@
 using Manufaktura.Controls.Desktop.Audio.Midi;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Music.Model;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;
@@ -28,10 +30,21 @@ namespace Manufaktura.Controls.WPF.Test
             InitializeComponent();
             var family = dummyTextBlock.FontFamily;
 
-            /*noteViewerTest.LoadSMuFLFont(family);
-            noteViewer1.LoadSMuFLFont(family);
-            noteViewer2.LoadSMuFLFont(family);
-            noteViewer3.LoadSMuFLFont(family);*/
+            var assembly = typeof(MainWindow).Assembly;
+            var resourceName = $"{typeof(MainWindow).Namespace}.Assets.bravura_metadata.json";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            using (var reader = new StreamReader(stream))
+            {
+                string result = reader.ReadToEnd();
+                var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
+                noteViewerTest.LoadSMuFLFont(family, metadataJson);
+                noteViewer1.LoadSMuFLFont(family, metadataJson);
+                noteViewer2.LoadSMuFLFont(family, metadataJson);
+                noteViewer3.LoadSMuFLFont(family, metadataJson);
+            }
+
+
 
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
 

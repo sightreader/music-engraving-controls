@@ -102,7 +102,7 @@
     <Resource Include="Assets\Bravura.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <None Include="Assets\bravura_metadata.json" />
+    <EmbeddedResource Include="Assets\bravura_metadata.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
