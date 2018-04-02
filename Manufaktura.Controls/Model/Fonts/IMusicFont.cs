@@ -8,102 +8,102 @@
         /// <summary>
         /// Black notehead character
         /// </summary>
-        string BlackNoteHead { get; }
-
+        char BlackNoteHead { get; }
 
         /// <summary>
         /// C clef character
         /// </summary>
-        string CClef { get; }
+        char CClef { get; }
 
         /// <summary>
         /// Common time character
         /// </summary>
-        string CommonTime { get; }
+        char CommonTime { get; }
 
         /// <summary>
         /// Cut time character
         /// </summary>
-        string CutTime { get; }
+        char CutTime { get; }
 
         /// <summary>
         /// 32-nd rest character
         /// </summary>
-        string D32ndRest { get; }
+        char D32ndRest { get; }
 
         /// <summary>
         /// Dot character
         /// </summary>
-        string Dot { get; }
+        char Dot { get; }
 
         /// <summary>
         /// Double flat character
         /// </summary>
-        string DoubleFlat { get; }
+        char DoubleFlat { get; }
 
         /// <summary>
         /// Double sharp character
         /// </summary>
-        string DoubleSharp { get; }
+        char DoubleSharp { get; }
 
         /// <summary>
         /// Eighth note character
         /// </summary>
-        string EighthNote { get; }
+        char EighthNote { get; }
 
         /// <summary>
         /// Eighth rest character
         /// </summary>
-        string EighthRest { get; }
-        string FClef { get; }
-        string FermataDown { get; }
-        string FermataUp { get; }
-        string Flat { get; }
-        string GClef { get; }
-        string HalfNote { get; }
-        string HalfRest { get; }
-        string LeftBracket { get; }
-        string LeftSquareBracket { get; }
-        string Mordent { get; }
-        string MordentShort { get; }
-        string Natural { get; }
-        string NoteFlag128th { get; }
-        string NoteFlag128thRev { get; }
-        string NoteFlag32nd { get; }
-        string NoteFlag32ndRev { get; }
-        string NoteFlag64th { get; }
-        string NoteFlag64thRev { get; }
-        string NoteFlagEighth { get; }
-        string NoteFlagEighthRev { get; }
-        string NoteFlagSixteenth { get; }
-        string NoteFlagSixteenthRev { get; }
-        string PercussionClef { get; }
-        string QuarterNote { get; }
+        char EighthRest { get; }
 
-        string QuarterRest { get; }
+        char FClef { get; }
+        char FermataDown { get; }
+        char FermataUp { get; }
+        char Flat { get; }
+        char GClef { get; }
+        char HalfNote { get; }
+        char HalfRest { get; }
+        char LeftBracket { get; }
+        char LeftSquareBracket { get; }
+        char Mordent { get; }
+        char MordentShort { get; }
+        char Natural { get; }
+        char NoteFlag128th { get; }
+        char NoteFlag128thRev { get; }
+        char NoteFlag32nd { get; }
+        char NoteFlag32ndRev { get; }
+        char NoteFlag64th { get; }
+        char NoteFlag64thRev { get; }
+        char NoteFlagEighth { get; }
+        char NoteFlagEighthRev { get; }
+        char NoteFlagSixteenth { get; }
+        char NoteFlagSixteenthRev { get; }
+        char PercussionClef { get; }
+        char QuarterNote { get; }
 
-        string RepeatBackward { get; }
+        char QuarterRest { get; }
 
-        string RepeatForward { get; }
+        char RepeatBackward { get; }
 
-        string RightBracket { get; }
+        char RepeatForward { get; }
 
-        string Sharp { get; }
+        char RightBracket { get; }
 
-        string SixteenthNote { get; }
+        char Sharp { get; }
 
-        string SixteenthRest { get; }
+        char SixteenthNote { get; }
 
-        string Staff4Lines { get; }
+        char SixteenthRest { get; }
 
-        string Staff5Lines { get; }
+        char Staff4Lines { get; }
 
-        string Trill { get; }
+        char Staff5Lines { get; }
 
-        string WhiteNoteHead { get; }
+        char Trill { get; }
 
-        string WholeNote { get; }
+        char WhiteNoteHead { get; }
 
-        string WholeRest { get; }
+        char WholeNote { get; }
+
+        char WholeRest { get; }
     }
 }

@@ -1,307 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Manufaktura.Controls.Model.Fonts
+﻿namespace Manufaktura.Controls.Model.Fonts
 {
     /// <summary>
     /// Character mapping for font Polihymnia
     /// </summary>
     public class PolihymniaFont : IMusicFont
     {
-        /// <summary>
-        /// Creates a new instance of PolihymniaFont
-        /// </summary>
-        public PolihymniaFont() 
-        {
-            Staff5Lines = "=";
-            Staff4Lines = "_";
-            GClef = "G";
-            FClef = "?";
-            CClef = "K";
-            Sharp = "X";
-            Flat = "b";
-            Natural = "k";
-            DoubleSharp = "x";
-            DoubleFlat = "B";
-            WholeNote = "w";
-            HalfNote = "h";
-            QuarterNote = "q";
-            EighthNote = "e";
-            SixteenthNote = "s";
-            WholeRest = "W";
-            HalfRest = "H";
-            QuarterRest = "Q";
-            EighthRest = "E";
-            SixteenthRest = "S";
-            D32ndRest = "T";
-            WhiteNoteHead = "9";
-            BlackNoteHead = "0";
-            NoteFlagEighth = "1";
-            NoteFlagSixteenth = "2";
-            NoteFlag32nd = "3";
-            NoteFlag64th = "4";
-            NoteFlag128th = "5";
-            NoteFlagEighthRev = "!";
-            NoteFlagSixteenthRev = "@";
-            NoteFlag32ndRev = "#";
-            NoteFlag64thRev = "$";
-            NoteFlag128thRev = "%";
-            Dot = ".";
-            CommonTime = "c";
-            CutTime = "C";
-            RepeatForward = @"\";
-            RepeatBackward = @"l";
-            Trill = "r";
-            Mordent = "m";
-            MordentShort = "n";
-            FermataUp = "Y";
-            FermataDown = "Z";
-            LeftBracket = "{";
-            RightBracket = "}";
-            LeftSquareBracket = "[";
-            PercussionClef = "";
-        }
+        public char BlackNoteHead => '0';
 
-        public string BlackNoteHead
-        {
-            get; private set;
-        }
+        public char CClef => 'K';
 
-        public string CClef
-        {
-            get; private set;
-        }
+        public char CommonTime => 'c';
 
-        public string CommonTime
-        {
-            get; private set;
-        }
+        public char CutTime => 'C';
 
-        public string CutTime
-        {
-            get; private set;
-        }
+        public char D32ndRest => 'T';
 
-        public string D32ndRest
-        {
-            get; private set;
-        }
+        public char Dot => '.';
 
-        public string Dot
-        {
-            get; private set;
-        }
+        public char DoubleFlat => 'B';
 
-        public string DoubleFlat
-        {
-            get; private set;
-        }
+        public char DoubleSharp => 'x';
 
-        public string DoubleSharp
-        {
-            get; private set;
-        }
+        public char EighthNote => 'e';
 
-        public string EighthNote
-        {
-            get; private set;
-        }
+        public char EighthRest => 'E';
 
-        public string EighthRest
-        {
-            get; private set;
-        }
+        public char FClef => '?';
 
-        public string FClef
-        {
-            get; private set;
-        }
+        public char FermataDown => 'Z';
 
-        public string FermataDown
-        {
-            get; private set;
-        }
+        public char FermataUp => 'Y';
 
-        public string FermataUp
-        {
-            get; private set;
-        }
+        public char Flat => 'b';
 
-        public string Flat
-        {
-            get; private set;
-        }
+        public char GClef => 'G';
 
-        public string GClef
-        {
-            get; private set;
-        }
+        public char HalfNote => 'h';
 
-        public string HalfNote
-        {
-            get; private set;
-        }
+        public char HalfRest => 'H';
 
-        public string HalfRest
-        {
-            get; private set;
-        }
+        public char Mordent => 'm';
 
-        public string Mordent
-        {
-            get; private set;
-        }
+        public char MordentShort => 'n';
 
-        public string MordentShort
-        {
-            get; private set;
-        }
+        public char Natural => 'k';
 
-        public string Natural
-        {
-            get; private set;
-        }
+        public char NoteFlag128th => '5';
 
-        public string NoteFlag128th
-        {
-            get; private set;
-        }
+        public char NoteFlag128thRev => '%';
 
-        public string NoteFlag128thRev
-        {
-            get; private set;
-        }
+        public char NoteFlag32nd => '3';
 
-        public string NoteFlag32nd
-        {
-            get; private set;
-        }
+        public char NoteFlag32ndRev => '#';
 
-        public string NoteFlag32ndRev
-        {
-            get; private set;
-        }
+        public char NoteFlag64th => '4';
 
-        public string NoteFlag64th
-        {
-            get; private set;
-        }
+        public char NoteFlag64thRev => '$';
 
-        public string NoteFlag64thRev
-        {
-            get; private set;
-        }
+        public char NoteFlagEighth => '1';
 
-        public string NoteFlagEighth
-        {
-            get; private set;
-        }
+        public char NoteFlagEighthRev => '!';
 
-        public string NoteFlagEighthRev
-        {
-            get; private set;
-        }
+        public char NoteFlagSixteenth => '2';
+        public char NoteFlagSixteenthRev => '@';
 
-        public string NoteFlagSixteenth
-        {
-            get; private set;
-        }
+        public char QuarterNote => 'q';
 
-        public string NoteFlagSixteenthRev
-        {
-            get; private set;
-        }
+        public char QuarterRest => 'Q';
 
-        public string QuarterNote
-        {
-            get; private set;
-        }
+        public char RepeatBackward => 'l';
 
-        public string QuarterRest
-        {
-            get; private set;
-        }
+        public char RepeatForward => '\\';
 
-        public string RepeatBackward
-        {
-            get; private set;
-        }
+        public char Sharp => 'X';
 
-        public string RepeatForward
-        {
-            get; private set;
-        }
+        public char SixteenthNote => 's';
 
-        public string Sharp
-        {
-            get; private set;
-        }
+        public char SixteenthRest => 'S';
 
-        public string SixteenthNote
-        {
-            get; private set;
-        }
+        public char Staff4Lines => '_';
 
-        public string SixteenthRest
-        {
-            get; private set;
-        }
+        public char Staff5Lines => '=';
 
-        public string Staff4Lines
-        {
-            get; private set;
-        }
+        public char Trill => 'r';
 
-        public string Staff5Lines
-        {
-            get; private set;
-        }
+        public char WhiteNoteHead => '9';
 
-        public string Trill
-        {
-            get; private set;
-        }
+        public char WholeNote => 'w';
 
-        public string WhiteNoteHead
-        {
-            get; private set;
-        }
+        public char WholeRest => 'W';
+        public char LeftBracket => '{';
 
-        public string WholeNote
-        {
-            get; private set;
-        }
+        public char LeftSquareBracket => '[';
 
-        public string WholeRest
-        {
-            get; private set;
-        }
+        public char RightBracket => '}';
 
-
-        public string LeftBracket
-        {
-            get;
-            private set;
-        }
-
-        public string LeftSquareBracket
-        {
-            get;
-            private set;
-        }
-
-        public string RightBracket
-        {
-            get;
-            private set;
-        }
-
-        public string PercussionClef
-        {
-            get;
-            private set;
-        }
+        public char PercussionClef => '\0';
     }
 }

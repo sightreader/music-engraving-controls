@@ -11,7 +11,7 @@ namespace Manufaktura.Controls.Model
     {
         protected bool hasFermataSign = false;
         protected Point location = new Point();
-        protected string musicalCharacter;
+        protected char musicalCharacter;
         private IMusicFont musicFont = new PolihymniaFont();
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public bool HasFermataSign { get { return hasFermataSign; } set { hasFermataSign = value; OnPropertyChanged(); } }
 
-        public string MusicalCharacter => musicalCharacter;
+        public char MusicalCharacter => musicalCharacter;
 
         /// <summary>
         /// Music font used to draw the note

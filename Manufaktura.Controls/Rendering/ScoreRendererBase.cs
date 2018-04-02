@@ -218,6 +218,16 @@ namespace Manufaktura.Controls.Rendering
             DrawString(text, fontStyle, new Point(x, y), CoalesceColor(owner), owner);
         }
 
+        public void DrawCharacter(char character, MusicFontStyles fontStyle, double x, double y, MusicalSymbol owner)
+        {
+            DrawString(character == '\0' ? "" : character.ToString(), fontStyle, x, y, owner);
+        }
+
+        public void DrawCharacter(char character, MusicFontStyles fontStyle, Point location, MusicalSymbol owner)
+        {
+            DrawString(character == '\0' ? "" : character.ToString(), fontStyle, location, owner);
+        }
+
         /// <summary>
         /// Draws text (i.e. note heads, lyrics, articulation symbols) in default color in proper location with proper fontStyle.
         /// </summary>
@@ -249,6 +259,11 @@ namespace Manufaktura.Controls.Rendering
         public abstract void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
 
         public abstract void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner);
+
+        public void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)
+        {
+            DrawStringInBounds(character.ToString(), fontStyle, location, size, color, owner);
+        }
 
         public double PixelsToTenths(double pixels)
         {
@@ -351,7 +366,7 @@ namespace Manufaktura.Controls.Rendering
             if (clef.TypeOfClef == ClefType.Percussion)
                 new ClefRenderStrategy(scoreService).DrawPercussionClef(clef, this);
             else
-                DrawString(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
+                DrawCharacter(clef.MusicalCharacter, MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             scoreService.CursorPositionX += 20;
         }
 

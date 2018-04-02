@@ -32,9 +32,9 @@ namespace Manufaktura.Controls.Model
 
         private LyricsCollection lyrics;
 
-        private string noteFlagCharacter = " ";
+        private char noteFlagCharacter = '\0';
 
-        private string noteFlagCharacterRev = " ";
+        private char noteFlagCharacterRev = '\0';
 
         private Pitch pitch;
 
@@ -193,8 +193,8 @@ namespace Manufaktura.Controls.Model
         public LyricsCollection Lyrics { get { return lyrics; } private set { lyrics = value; } }
         public int MidiPitch { get { return pitch.MidiPitch; } }
         public RebeamMode? ModeUsedForRebeaming { get; internal set; }
-        public string NoteFlagCharacter { get { return noteFlagCharacter; } }
-        public string NoteFlagCharacterRev { get { return noteFlagCharacterRev; } }
+        public char NoteFlagCharacter => noteFlagCharacter;
+        public char NoteFlagCharacterRev => noteFlagCharacterRev;
 
         /// <summary>
         /// Gets octave number of the note's pitch.
@@ -222,7 +222,7 @@ namespace Manufaktura.Controls.Model
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
         public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(); } }
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(); } }
-        
+
         /// <summary>
         /// Location of stem start point. This property is set in the last pass of rendering (DrawBeamsFinishingTouch).
         /// </summary>

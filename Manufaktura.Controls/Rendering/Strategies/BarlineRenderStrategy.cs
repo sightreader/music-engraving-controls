@@ -110,7 +110,7 @@ namespace Manufaktura.Controls.Rendering
 				}
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 2;
 				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				renderer.DrawString(renderer.Settings.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, scoreService.CursorPositionX,
+				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, scoreService.CursorPositionX,
 				   scoreService.CurrentLinePositions[0] - 15.5f, element);
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 20;
 			}
@@ -118,7 +118,7 @@ namespace Manufaktura.Controls.Rendering
 			{
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX -= 2;
 				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				renderer.DrawString(renderer.Settings.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, scoreService.CursorPositionX - 17.5,
+				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, scoreService.CursorPositionX - 17.5,
 					scoreService.CurrentLinePositions[0] - 15, element);
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
 			}

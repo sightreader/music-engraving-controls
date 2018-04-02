@@ -11,7 +11,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Text representing the musical symbol
         /// </summary>
-        string MusicalCharacter { get; }
+        char MusicalCharacter { get; }
 
         /// <summary>
         /// Music font used to render this element
