@@ -57,100 +57,11 @@
         public string Name { get; set; }
     }
 
-    public partial class GlyphsWithAnchorsAccidental1CommaFlat
-    {
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-    }
 
-    public partial class GlyphsWithAnchorsAccidental1CommaSharp
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
 
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
 
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
 
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalArrowDown
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalArrowUp
-    {
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalDoubleFlat
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalDoubleFlatReversed
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class AccidentalFiveQuarterTonesSharpArrowUp
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalLowerOneSeptimalComma
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalNatural
-    {
-        [JsonProperty("cutOutNE")]
-        public double[] CutOutNe { get; set; }
-
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class GlyphsWithAnchorsAccidentalNaturalEqualTempered
-    {
-        [JsonProperty("cutOutSW")]
-        public double[] CutOutSw { get; set; }
-    }
-
-    public partial class AccidentalNaturalReversed
-    {
-        [JsonProperty("cutOutNW")]
-        public double[] CutOutNw { get; set; }
-
-        [JsonProperty("cutOutSE")]
-        public double[] CutOutSe { get; set; }
-    }
-
-    public partial class BeamAccelRit1
+    public partial class RepeatDefinition
     {
         [JsonProperty("repeatOffset")]
         public double[] RepeatOffset { get; set; }

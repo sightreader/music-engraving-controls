@@ -6,478 +6,478 @@ namespace Manufaktura.Controls.Model.SMuFL
     public partial class GlyphsWithAnchors
     {
         [JsonProperty("accidental1CommaFlat")]
-        public GlyphsWithAnchorsAccidental1CommaFlat Accidental1CommaFlat { get; set; }
+        public CutOut Accidental1CommaFlat { get; set; }
 
         [JsonProperty("accidental1CommaSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp Accidental1CommaSharp { get; set; }
+        public CutOut Accidental1CommaSharp { get; set; }
 
         [JsonProperty("accidental2CommaFlat")]
-        public GlyphsWithAnchorsAccidental1CommaFlat Accidental2CommaFlat { get; set; }
+        public CutOut Accidental2CommaFlat { get; set; }
 
         [JsonProperty("accidental2CommaSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp Accidental2CommaSharp { get; set; }
+        public CutOut Accidental2CommaSharp { get; set; }
 
         [JsonProperty("accidental3CommaFlat")]
-        public GlyphsWithAnchorsAccidental1CommaFlat Accidental3CommaFlat { get; set; }
+        public CutOut Accidental3CommaFlat { get; set; }
 
         [JsonProperty("accidental3CommaSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp Accidental3CommaSharp { get; set; }
+        public CutOut Accidental3CommaSharp { get; set; }
 
         [JsonProperty("accidental4CommaFlat")]
-        public GlyphsWithAnchorsAccidental1CommaFlat Accidental4CommaFlat { get; set; }
+        public CutOut Accidental4CommaFlat { get; set; }
 
         [JsonProperty("accidental5CommaSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp Accidental5CommaSharp { get; set; }
+        public CutOut Accidental5CommaSharp { get; set; }
 
         [JsonProperty("accidentalArrowDown")]
-        public GlyphsWithAnchorsAccidentalArrowDown AccidentalArrowDown { get; set; }
+        public CutOut AccidentalArrowDown { get; set; }
 
         [JsonProperty("accidentalArrowUp")]
-        public GlyphsWithAnchorsAccidentalArrowUp AccidentalArrowUp { get; set; }
+        public CutOut AccidentalArrowUp { get; set; }
 
         [JsonProperty("accidentalBakiyeFlat")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalBakiyeFlat { get; set; }
+        public CutOut AccidentalBakiyeFlat { get; set; }
 
         [JsonProperty("accidentalBakiyeSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalBakiyeSharp { get; set; }
+        public CutOut AccidentalBakiyeSharp { get; set; }
 
         [JsonProperty("accidentalBuyukMucennebFlat")]
-        public GlyphsWithAnchorsAccidentalArrowUp AccidentalBuyukMucennebFlat { get; set; }
+        public CutOut AccidentalBuyukMucennebFlat { get; set; }
 
         [JsonProperty("accidentalBuyukMucennebSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalBuyukMucennebSharp { get; set; }
+        public CutOut AccidentalBuyukMucennebSharp { get; set; }
 
         [JsonProperty("accidentalDoubleFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalDoubleFlat { get; set; }
+        public CutOut AccidentalDoubleFlat { get; set; }
 
         [JsonProperty("accidentalDoubleFlatEqualTempered")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalDoubleFlatEqualTempered { get; set; }
+        public CutOut AccidentalDoubleFlatEqualTempered { get; set; }
 
         [JsonProperty("accidentalDoubleFlatOneArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalDoubleFlatOneArrowDown { get; set; }
+        public CutOut AccidentalDoubleFlatOneArrowDown { get; set; }
 
         [JsonProperty("accidentalDoubleFlatOneArrowUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalDoubleFlatOneArrowUp { get; set; }
+        public CutOut AccidentalDoubleFlatOneArrowUp { get; set; }
 
         [JsonProperty("accidentalDoubleFlatReversed")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalDoubleFlatReversed { get; set; }
+        public CutOut AccidentalDoubleFlatReversed { get; set; }
 
         [JsonProperty("accidentalDoubleFlatThreeArrowsDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalDoubleFlatThreeArrowsDown { get; set; }
+        public CutOut AccidentalDoubleFlatThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalDoubleFlatThreeArrowsUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalDoubleFlatThreeArrowsUp { get; set; }
+        public CutOut AccidentalDoubleFlatThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalDoubleFlatTurned")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalDoubleFlatTurned { get; set; }
+        public CutOut AccidentalDoubleFlatTurned { get; set; }
 
         [JsonProperty("accidentalDoubleFlatTwoArrowsDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalDoubleFlatTwoArrowsDown { get; set; }
+        public CutOut AccidentalDoubleFlatTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalDoubleFlatTwoArrowsUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalDoubleFlatTwoArrowsUp { get; set; }
+        public CutOut AccidentalDoubleFlatTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatAndFlat")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalFilledReversedFlatAndFlat { get; set; }
+        public CutOut AccidentalFilledReversedFlatAndFlat { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatAndFlatArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalFilledReversedFlatAndFlatArrowDown { get; set; }
+        public CutOut AccidentalFilledReversedFlatAndFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatAndFlatArrowUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalFilledReversedFlatAndFlatArrowUp { get; set; }
+        public CutOut AccidentalFilledReversedFlatAndFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalFilledReversedFlatArrowDown { get; set; }
+        public CutOut AccidentalFilledReversedFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalFilledReversedFlatArrowUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalFilledReversedFlatArrowUp { get; set; }
+        public CutOut AccidentalFilledReversedFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalFiveQuarterTonesFlatArrowDown")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFiveQuarterTonesFlatArrowDown { get; set; }
+        public CutOut AccidentalFiveQuarterTonesFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalFiveQuarterTonesSharpArrowUp")]
-        public AccidentalFiveQuarterTonesSharpArrowUp AccidentalFiveQuarterTonesSharpArrowUp { get; set; }
+        [JsonProperty("CutOut")]
+        public CutOut CutOut { get; set; }
 
         [JsonProperty("accidentalFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFlat { get; set; }
+        public CutOut AccidentalFlat { get; set; }
 
         [JsonProperty("accidentalFlatEqualTempered")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFlatEqualTempered { get; set; }
+        public CutOut AccidentalFlatEqualTempered { get; set; }
 
         [JsonProperty("accidentalFlatOneArrowDown")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFlatOneArrowDown { get; set; }
+        public CutOut AccidentalFlatOneArrowDown { get; set; }
 
         [JsonProperty("accidentalFlatOneArrowUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFlatOneArrowUp { get; set; }
+        public CutOut AccidentalFlatOneArrowUp { get; set; }
 
         [JsonProperty("accidentalFlatThreeArrowsDown")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFlatThreeArrowsDown { get; set; }
+        public CutOut AccidentalFlatThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalFlatThreeArrowsUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFlatThreeArrowsUp { get; set; }
+        public CutOut AccidentalFlatThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalFlatTurned")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalFlatTurned { get; set; }
+        public CutOut AccidentalFlatTurned { get; set; }
 
         [JsonProperty("accidentalFlatTwoArrowsDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalFlatTwoArrowsDown { get; set; }
+        public CutOut AccidentalFlatTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalFlatTwoArrowsUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalFlatTwoArrowsUp { get; set; }
+        public CutOut AccidentalFlatTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalHalfSharpArrowDown")]
-        public GlyphsWithAnchorsAccidentalArrowDown AccidentalHalfSharpArrowDown { get; set; }
+        public CutOut AccidentalHalfSharpArrowDown { get; set; }
 
         [JsonProperty("accidentalHalfSharpArrowUp")]
-        public GlyphsWithAnchorsAccidentalArrowUp AccidentalHalfSharpArrowUp { get; set; }
+        public CutOut AccidentalHalfSharpArrowUp { get; set; }
 
         [JsonProperty("accidentalKomaFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalKomaFlat { get; set; }
+        public CutOut AccidentalKomaFlat { get; set; }
 
         [JsonProperty("accidentalKomaSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalKomaSharp { get; set; }
+        public CutOut AccidentalKomaSharp { get; set; }
 
         [JsonProperty("accidentalKoron")]
-        public GlyphsWithAnchorsAccidental1CommaFlat AccidentalKoron { get; set; }
+        public CutOut AccidentalKoron { get; set; }
 
         [JsonProperty("accidentalKucukMucennebFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalKucukMucennebFlat { get; set; }
+        public CutOut AccidentalKucukMucennebFlat { get; set; }
 
         [JsonProperty("accidentalKucukMucennebSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalKucukMucennebSharp { get; set; }
+        public CutOut AccidentalKucukMucennebSharp { get; set; }
 
         [JsonProperty("accidentalLowerOneSeptimalComma")]
-        public GlyphsWithAnchorsAccidentalLowerOneSeptimalComma AccidentalLowerOneSeptimalComma { get; set; }
+        public CutOut AccidentalLowerOneSeptimalComma { get; set; }
 
         [JsonProperty("accidentalLowerOneTridecimalQuartertone")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalLowerOneTridecimalQuartertone { get; set; }
+        public CutOut AccidentalLowerOneTridecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalLowerOneUndecimalQuartertone")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalLowerOneUndecimalQuartertone { get; set; }
+        public CutOut AccidentalLowerOneUndecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalLowerTwoSeptimalCommas")]
-        public GlyphsWithAnchorsAccidentalLowerOneSeptimalComma AccidentalLowerTwoSeptimalCommas { get; set; }
+        public CutOut AccidentalLowerTwoSeptimalCommas { get; set; }
 
         [JsonProperty("accidentalNarrowReversedFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalNarrowReversedFlat { get; set; }
+        public CutOut AccidentalNarrowReversedFlat { get; set; }
 
         [JsonProperty("accidentalNarrowReversedFlatAndFlat")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalNarrowReversedFlatAndFlat { get; set; }
+        public CutOut AccidentalNarrowReversedFlatAndFlat { get; set; }
 
         [JsonProperty("accidentalNatural")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalNatural { get; set; }
+        public CutOut AccidentalNatural { get; set; }
 
         [JsonProperty("accidentalNaturalEqualTempered")]
-        public GlyphsWithAnchorsAccidentalNaturalEqualTempered AccidentalNaturalEqualTempered { get; set; }
+        public CutOut AccidentalNaturalEqualTempered { get; set; }
 
         [JsonProperty("accidentalNaturalFlat")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalNaturalFlat { get; set; }
+        public CutOut AccidentalNaturalFlat { get; set; }
 
         [JsonProperty("accidentalNaturalOneArrowDown")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalNaturalOneArrowDown { get; set; }
+        public CutOut AccidentalNaturalOneArrowDown { get; set; }
 
         [JsonProperty("accidentalNaturalOneArrowUp")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalNaturalOneArrowUp { get; set; }
+        public CutOut AccidentalNaturalOneArrowUp { get; set; }
 
         [JsonProperty("accidentalNaturalReversed")]
-        public AccidentalNaturalReversed AccidentalNaturalReversed { get; set; }
+        public CutOut AccidentalNaturalReversed { get; set; }
 
         [JsonProperty("accidentalNaturalSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalNaturalSharp { get; set; }
+        public CutOut AccidentalNaturalSharp { get; set; }
 
         [JsonProperty("accidentalNaturalThreeArrowsDown")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalNaturalThreeArrowsDown { get; set; }
+        public CutOut AccidentalNaturalThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalNaturalThreeArrowsUp")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalNaturalThreeArrowsUp { get; set; }
+        public CutOut AccidentalNaturalThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalNaturalTwoArrowsDown")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalNaturalTwoArrowsDown { get; set; }
+        public CutOut AccidentalNaturalTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalNaturalTwoArrowsUp")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalNaturalTwoArrowsUp { get; set; }
+        public CutOut AccidentalNaturalTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalOneAndAHalfSharpsArrowDown")]
-        public AccidentalNaturalReversed AccidentalOneAndAHalfSharpsArrowDown { get; set; }
+        public CutOut AccidentalOneAndAHalfSharpsArrowDown { get; set; }
 
         [JsonProperty("accidentalOneAndAHalfSharpsArrowUp")]
-        public AccidentalNaturalReversed AccidentalOneAndAHalfSharpsArrowUp { get; set; }
+        public CutOut AccidentalOneAndAHalfSharpsArrowUp { get; set; }
 
         [JsonProperty("accidentalQuarterFlatEqualTempered")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalQuarterFlatEqualTempered { get; set; }
+        public CutOut AccidentalQuarterFlatEqualTempered { get; set; }
 
         [JsonProperty("accidentalQuarterSharpEqualTempered")]
-        public GlyphsWithAnchorsAccidentalArrowUp AccidentalQuarterSharpEqualTempered { get; set; }
+        public CutOut AccidentalQuarterSharpEqualTempered { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlat4")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalQuarterToneFlat4 { get; set; }
+        public CutOut AccidentalQuarterToneFlat4 { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatArrowUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalQuarterToneFlatArrowUp { get; set; }
+        public CutOut AccidentalQuarterToneFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatFilledReversed")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalQuarterToneFlatFilledReversed { get; set; }
+        public CutOut AccidentalQuarterToneFlatFilledReversed { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatNaturalArrowDown")]
-        public GlyphsWithAnchorsAccidentalLowerOneSeptimalComma AccidentalQuarterToneFlatNaturalArrowDown { get; set; }
+        public CutOut AccidentalQuarterToneFlatNaturalArrowDown { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatPenderecki")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalQuarterToneFlatPenderecki { get; set; }
+        public CutOut AccidentalQuarterToneFlatPenderecki { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatStein")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalQuarterToneFlatStein { get; set; }
+        public CutOut AccidentalQuarterToneFlatStein { get; set; }
 
         [JsonProperty("accidentalQuarterToneFlatVanBlankenburg")]
-        public GlyphsWithAnchorsAccidentalLowerOneSeptimalComma AccidentalQuarterToneFlatVanBlankenburg { get; set; }
+        public CutOut AccidentalQuarterToneFlatVanBlankenburg { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharp4")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalQuarterToneSharp4 { get; set; }
+        public CutOut AccidentalQuarterToneSharp4 { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalQuarterToneSharpArrowDown { get; set; }
+        public CutOut AccidentalQuarterToneSharpArrowDown { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpBusotti")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalQuarterToneSharpBusotti { get; set; }
+        public CutOut AccidentalQuarterToneSharpBusotti { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpNaturalArrowUp")]
-        public GlyphsWithAnchorsAccidentalNaturalEqualTempered AccidentalQuarterToneSharpNaturalArrowUp { get; set; }
+        public CutOut AccidentalQuarterToneSharpNaturalArrowUp { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpStein")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalQuarterToneSharpStein { get; set; }
+        public CutOut AccidentalQuarterToneSharpStein { get; set; }
 
         [JsonProperty("accidentalQuarterToneSharpWiggle")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalQuarterToneSharpWiggle { get; set; }
+        public CutOut AccidentalQuarterToneSharpWiggle { get; set; }
 
         [JsonProperty("accidentalRaiseOneSeptimalComma")]
-        public GlyphsWithAnchorsAccidental1CommaFlat AccidentalRaiseOneSeptimalComma { get; set; }
+        public CutOut AccidentalRaiseOneSeptimalComma { get; set; }
 
         [JsonProperty("accidentalRaiseOneTridecimalQuartertone")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalRaiseOneTridecimalQuartertone { get; set; }
+        public CutOut AccidentalRaiseOneTridecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalRaiseOneUndecimalQuartertone")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalRaiseOneUndecimalQuartertone { get; set; }
+        public CutOut AccidentalRaiseOneUndecimalQuartertone { get; set; }
 
         [JsonProperty("accidentalRaiseTwoSeptimalCommas")]
-        public GlyphsWithAnchorsAccidental1CommaFlat AccidentalRaiseTwoSeptimalCommas { get; set; }
+        public CutOut AccidentalRaiseTwoSeptimalCommas { get; set; }
 
         [JsonProperty("accidentalReversedFlatAndFlatArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalReversedFlatAndFlatArrowDown { get; set; }
+        public CutOut AccidentalReversedFlatAndFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalReversedFlatAndFlatArrowUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalReversedFlatAndFlatArrowUp { get; set; }
+        public CutOut AccidentalReversedFlatAndFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalReversedFlatArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalReversedFlatArrowDown { get; set; }
+        public CutOut AccidentalReversedFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalReversedFlatArrowUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalReversedFlatArrowUp { get; set; }
+        public CutOut AccidentalReversedFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharp { get; set; }
+        public CutOut AccidentalSharp { get; set; }
 
         [JsonProperty("accidentalSharpOneArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpOneArrowDown { get; set; }
+        public CutOut AccidentalSharpOneArrowDown { get; set; }
 
         [JsonProperty("accidentalSharpOneArrowUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpOneArrowUp { get; set; }
+        public CutOut AccidentalSharpOneArrowUp { get; set; }
 
         [JsonProperty("accidentalSharpOneHorizontalStroke")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpOneHorizontalStroke { get; set; }
+        public CutOut AccidentalSharpOneHorizontalStroke { get; set; }
 
         [JsonProperty("accidentalSharpReversed")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpReversed { get; set; }
+        public CutOut AccidentalSharpReversed { get; set; }
 
         [JsonProperty("accidentalSharpSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpSharp { get; set; }
+        public CutOut AccidentalSharpSharp { get; set; }
 
         [JsonProperty("accidentalSharpThreeArrowsDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpThreeArrowsDown { get; set; }
+        public CutOut AccidentalSharpThreeArrowsDown { get; set; }
 
         [JsonProperty("accidentalSharpThreeArrowsUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpThreeArrowsUp { get; set; }
+        public CutOut AccidentalSharpThreeArrowsUp { get; set; }
 
         [JsonProperty("accidentalSharpTwoArrowsDown")]
-        public GlyphsWithAnchorsAccidentalNatural AccidentalSharpTwoArrowsDown { get; set; }
+        public CutOut AccidentalSharpTwoArrowsDown { get; set; }
 
         [JsonProperty("accidentalSharpTwoArrowsUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSharpTwoArrowsUp { get; set; }
+        public CutOut AccidentalSharpTwoArrowsUp { get; set; }
 
         [JsonProperty("accidentalSims12Down")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalSims12Down { get; set; }
+        public CutOut AccidentalSims12Down { get; set; }
 
         [JsonProperty("accidentalSims12Up")]
-        public GlyphsWithAnchorsAccidentalArrowUp AccidentalSims12Up { get; set; }
+        public CutOut AccidentalSims12Up { get; set; }
 
         [JsonProperty("accidentalSims4Down")]
-        public AccidentalNaturalReversed AccidentalSims4Down { get; set; }
+        public CutOut AccidentalSims4Down { get; set; }
 
         [JsonProperty("accidentalSims6Down")]
-        public GlyphsWithAnchorsAccidentalDoubleFlatReversed AccidentalSims6Down { get; set; }
+        public CutOut AccidentalSims6Down { get; set; }
 
         [JsonProperty("accidentalSims6Up")]
-        public GlyphsWithAnchorsAccidentalNaturalEqualTempered AccidentalSims6Up { get; set; }
+        public CutOut AccidentalSims6Up { get; set; }
 
         [JsonProperty("accidentalSori")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalSori { get; set; }
+        public CutOut AccidentalSori { get; set; }
 
         [JsonProperty("accidentalTavenerFlat")]
-        public AccidentalNaturalReversed AccidentalTavenerFlat { get; set; }
+        public CutOut AccidentalTavenerFlat { get; set; }
 
         [JsonProperty("accidentalTavenerSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalTavenerSharp { get; set; }
+        public CutOut AccidentalTavenerSharp { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalThreeQuarterTonesFlatArrowDown { get; set; }
+        public CutOut AccidentalThreeQuarterTonesFlatArrowDown { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatArrowUp")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalThreeQuarterTonesFlatArrowUp { get; set; }
+        public CutOut AccidentalThreeQuarterTonesFlatArrowUp { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatCouper")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalThreeQuarterTonesFlatCouper { get; set; }
+        public CutOut AccidentalThreeQuarterTonesFlatCouper { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatGrisey")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalThreeQuarterTonesFlatGrisey { get; set; }
+        public CutOut AccidentalThreeQuarterTonesFlatGrisey { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatTartini")]
-        public GlyphsWithAnchorsAccidentalLowerOneSeptimalComma AccidentalThreeQuarterTonesFlatTartini { get; set; }
+        public CutOut AccidentalThreeQuarterTonesFlatTartini { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesFlatZimmermann")]
-        public GlyphsWithAnchorsAccidentalArrowDown AccidentalThreeQuarterTonesFlatZimmermann { get; set; }
+        public CutOut AccidentalThreeQuarterTonesFlatZimmermann { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpArrowDown")]
-        public GlyphsWithAnchorsAccidental1CommaFlat AccidentalThreeQuarterTonesSharpArrowDown { get; set; }
+        public CutOut AccidentalThreeQuarterTonesSharpArrowDown { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpArrowUp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalThreeQuarterTonesSharpArrowUp { get; set; }
+        public CutOut AccidentalThreeQuarterTonesSharpArrowUp { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpBusotti")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalThreeQuarterTonesSharpBusotti { get; set; }
+        public CutOut AccidentalThreeQuarterTonesSharpBusotti { get; set; }
 
         [JsonProperty("accidentalThreeQuarterTonesSharpStein")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalThreeQuarterTonesSharpStein { get; set; }
+        public CutOut AccidentalThreeQuarterTonesSharpStein { get; set; }
 
         [JsonProperty("accidentalTripleFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalTripleFlat { get; set; }
+        public CutOut AccidentalTripleFlat { get; set; }
 
         [JsonProperty("accidentalTripleSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalTripleSharp { get; set; }
+        public CutOut AccidentalTripleSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky10TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalLowerOneSeptimalComma AccidentalWyschnegradsky10TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky10TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky10TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky10TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky10TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky11TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalLowerOneSeptimalComma AccidentalWyschnegradsky11TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky11TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky11TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky11TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky11TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky1TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalWyschnegradsky1TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky1TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky1TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaFlat AccidentalWyschnegradsky1TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky1TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky2TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalWyschnegradsky2TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky2TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky2TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaFlat AccidentalWyschnegradsky2TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky2TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky3TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalWyschnegradsky3TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky3TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky3TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky3TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky3TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky4TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalWyschnegradsky4TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky4TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky4TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky4TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky4TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky5TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalWyschnegradsky5TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky5TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky5TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky5TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky5TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky6TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidentalDoubleFlat AccidentalWyschnegradsky6TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky6TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky6TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky6TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky6TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky7TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky7TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky7TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky7TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky7TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky7TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky8TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky8TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky8TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky8TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky8TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky8TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky9TwelfthsFlat")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky9TwelfthsFlat { get; set; }
+        public CutOut AccidentalWyschnegradsky9TwelfthsFlat { get; set; }
 
         [JsonProperty("accidentalWyschnegradsky9TwelfthsSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalWyschnegradsky9TwelfthsSharp { get; set; }
+        public CutOut AccidentalWyschnegradsky9TwelfthsSharp { get; set; }
 
         [JsonProperty("accidentalXenakisOneThirdToneSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalXenakisOneThirdToneSharp { get; set; }
+        public CutOut AccidentalXenakisOneThirdToneSharp { get; set; }
 
         [JsonProperty("accidentalXenakisTwoThirdTonesSharp")]
-        public GlyphsWithAnchorsAccidental1CommaSharp AccidentalXenakisTwoThirdTonesSharp { get; set; }
+        public CutOut AccidentalXenakisTwoThirdTonesSharp { get; set; }
 
         [JsonProperty("beamAccelRit1")]
-        public BeamAccelRit1 BeamAccelRit1 { get; set; }
+        public RepeatDefinition BeamAccelRit1 { get; set; }
 
         [JsonProperty("beamAccelRit10")]
-        public BeamAccelRit1 BeamAccelRit10 { get; set; }
+        public RepeatDefinition BeamAccelRit10 { get; set; }
 
         [JsonProperty("beamAccelRit11")]
-        public BeamAccelRit1 BeamAccelRit11 { get; set; }
+        public RepeatDefinition BeamAccelRit11 { get; set; }
 
         [JsonProperty("beamAccelRit12")]
-        public BeamAccelRit1 BeamAccelRit12 { get; set; }
+        public RepeatDefinition BeamAccelRit12 { get; set; }
 
         [JsonProperty("beamAccelRit13")]
-        public BeamAccelRit1 BeamAccelRit13 { get; set; }
+        public RepeatDefinition BeamAccelRit13 { get; set; }
 
         [JsonProperty("beamAccelRit14")]
-        public BeamAccelRit1 BeamAccelRit14 { get; set; }
+        public RepeatDefinition BeamAccelRit14 { get; set; }
 
         [JsonProperty("beamAccelRit15")]
-        public BeamAccelRit1 BeamAccelRit15 { get; set; }
+        public RepeatDefinition BeamAccelRit15 { get; set; }
 
         [JsonProperty("beamAccelRit2")]
-        public BeamAccelRit1 BeamAccelRit2 { get; set; }
+        public RepeatDefinition BeamAccelRit2 { get; set; }
 
         [JsonProperty("beamAccelRit3")]
-        public BeamAccelRit1 BeamAccelRit3 { get; set; }
+        public RepeatDefinition BeamAccelRit3 { get; set; }
 
         [JsonProperty("beamAccelRit4")]
-        public BeamAccelRit1 BeamAccelRit4 { get; set; }
+        public RepeatDefinition BeamAccelRit4 { get; set; }
 
         [JsonProperty("beamAccelRit5")]
-        public BeamAccelRit1 BeamAccelRit5 { get; set; }
+        public RepeatDefinition BeamAccelRit5 { get; set; }
 
         [JsonProperty("beamAccelRit6")]
-        public BeamAccelRit1 BeamAccelRit6 { get; set; }
+        public RepeatDefinition BeamAccelRit6 { get; set; }
 
         [JsonProperty("beamAccelRit7")]
-        public BeamAccelRit1 BeamAccelRit7 { get; set; }
+        public RepeatDefinition BeamAccelRit7 { get; set; }
 
         [JsonProperty("beamAccelRit8")]
-        public BeamAccelRit1 BeamAccelRit8 { get; set; }
+        public RepeatDefinition BeamAccelRit8 { get; set; }
 
         [JsonProperty("beamAccelRit9")]
-        public BeamAccelRit1 BeamAccelRit9 { get; set; }
+        public RepeatDefinition BeamAccelRit9 { get; set; }
 
         [JsonProperty("dynamicFF")]
         public Dynamic DynamicFf { get; set; }
@@ -744,10 +744,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GClefLigatedNumber GClefLigatedNumberBelow { get; set; }
 
         [JsonProperty("guitarVibratoStroke")]
-        public BeamAccelRit1 GuitarVibratoStroke { get; set; }
+        public RepeatDefinition GuitarVibratoStroke { get; set; }
 
         [JsonProperty("guitarWideVibratoStroke")]
-        public BeamAccelRit1 GuitarWideVibratoStroke { get; set; }
+        public RepeatDefinition GuitarWideVibratoStroke { get; set; }
 
         [JsonProperty("noteABlack")]
         public GlyphsWithAnchorsNoteABlack NoteABlack { get; set; }
@@ -1341,7 +1341,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteABlack NoteheadVoidWithX { get; set; }
 
         [JsonProperty("noteheadWhole")]
-        public AccidentalNaturalReversed NoteheadWhole { get; set; }
+        public CutOut NoteheadWhole { get; set; }
 
         [JsonProperty("noteheadXBlack")]
         public GlyphsWithAnchorsNoteABlack NoteheadXBlack { get; set; }
@@ -1359,136 +1359,136 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadXOrnateEllipse { get; set; }
 
         [JsonProperty("ornamentBottomLeftConcaveStroke")]
-        public BeamAccelRit1 OrnamentBottomLeftConcaveStroke { get; set; }
+        public RepeatDefinition OrnamentBottomLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentBottomLeftConcaveStrokeLarge")]
-        public BeamAccelRit1 OrnamentBottomLeftConcaveStrokeLarge { get; set; }
+        public RepeatDefinition OrnamentBottomLeftConcaveStrokeLarge { get; set; }
 
         [JsonProperty("ornamentBottomLeftConvexStroke")]
-        public BeamAccelRit1 OrnamentBottomLeftConvexStroke { get; set; }
+        public RepeatDefinition OrnamentBottomLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentHighLeftConcaveStroke")]
-        public BeamAccelRit1 OrnamentHighLeftConcaveStroke { get; set; }
+        public RepeatDefinition OrnamentHighLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentHighLeftConvexStroke")]
-        public BeamAccelRit1 OrnamentHighLeftConvexStroke { get; set; }
+        public RepeatDefinition OrnamentHighLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentLeftPlus")]
-        public BeamAccelRit1 OrnamentLeftPlus { get; set; }
+        public RepeatDefinition OrnamentLeftPlus { get; set; }
 
         [JsonProperty("ornamentLeftShakeT")]
-        public BeamAccelRit1 OrnamentLeftShakeT { get; set; }
+        public RepeatDefinition OrnamentLeftShakeT { get; set; }
 
         [JsonProperty("ornamentLeftVerticalStroke")]
-        public BeamAccelRit1 OrnamentLeftVerticalStroke { get; set; }
+        public RepeatDefinition OrnamentLeftVerticalStroke { get; set; }
 
         [JsonProperty("ornamentLeftVerticalStrokeWithCross")]
-        public BeamAccelRit1 OrnamentLeftVerticalStrokeWithCross { get; set; }
+        public RepeatDefinition OrnamentLeftVerticalStrokeWithCross { get; set; }
 
         [JsonProperty("ornamentLowLeftConcaveStroke")]
-        public BeamAccelRit1 OrnamentLowLeftConcaveStroke { get; set; }
+        public RepeatDefinition OrnamentLowLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentLowLeftConvexStroke")]
-        public BeamAccelRit1 OrnamentLowLeftConvexStroke { get; set; }
+        public RepeatDefinition OrnamentLowLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentMiddleVerticalStroke")]
-        public BeamAccelRit1 OrnamentMiddleVerticalStroke { get; set; }
+        public RepeatDefinition OrnamentMiddleVerticalStroke { get; set; }
 
         [JsonProperty("ornamentTopLeftConcaveStroke")]
-        public BeamAccelRit1 OrnamentTopLeftConcaveStroke { get; set; }
+        public RepeatDefinition OrnamentTopLeftConcaveStroke { get; set; }
 
         [JsonProperty("ornamentTopLeftConvexStroke")]
-        public BeamAccelRit1 OrnamentTopLeftConvexStroke { get; set; }
+        public RepeatDefinition OrnamentTopLeftConvexStroke { get; set; }
 
         [JsonProperty("ornamentZigZagLineNoRightEnd")]
-        public BeamAccelRit1 OrnamentZigZagLineNoRightEnd { get; set; }
+        public RepeatDefinition OrnamentZigZagLineNoRightEnd { get; set; }
 
         [JsonProperty("ornamentZigZagLineWithRightEnd")]
-        public BeamAccelRit1 OrnamentZigZagLineWithRightEnd { get; set; }
+        public RepeatDefinition OrnamentZigZagLineWithRightEnd { get; set; }
 
         [JsonProperty("wiggleArpeggiatoDown")]
-        public BeamAccelRit1 WiggleArpeggiatoDown { get; set; }
+        public RepeatDefinition WiggleArpeggiatoDown { get; set; }
 
         [JsonProperty("wiggleArpeggiatoDownArrow")]
-        public BeamAccelRit1 WiggleArpeggiatoDownArrow { get; set; }
+        public RepeatDefinition WiggleArpeggiatoDownArrow { get; set; }
 
         [JsonProperty("wiggleArpeggiatoDownSwash")]
-        public BeamAccelRit1 WiggleArpeggiatoDownSwash { get; set; }
+        public RepeatDefinition WiggleArpeggiatoDownSwash { get; set; }
 
         [JsonProperty("wiggleArpeggiatoUp")]
-        public BeamAccelRit1 WiggleArpeggiatoUp { get; set; }
+        public RepeatDefinition WiggleArpeggiatoUp { get; set; }
 
         [JsonProperty("wiggleArpeggiatoUpArrow")]
-        public BeamAccelRit1 WiggleArpeggiatoUpArrow { get; set; }
+        public RepeatDefinition WiggleArpeggiatoUpArrow { get; set; }
 
         [JsonProperty("wiggleArpeggiatoUpSwash")]
-        public BeamAccelRit1 WiggleArpeggiatoUpSwash { get; set; }
+        public RepeatDefinition WiggleArpeggiatoUpSwash { get; set; }
 
         [JsonProperty("wiggleCircular")]
-        public BeamAccelRit1 WiggleCircular { get; set; }
+        public RepeatDefinition WiggleCircular { get; set; }
 
         [JsonProperty("wiggleCircularConstant")]
-        public BeamAccelRit1 WiggleCircularConstant { get; set; }
+        public RepeatDefinition WiggleCircularConstant { get; set; }
 
         [JsonProperty("wiggleCircularConstantFlipped")]
-        public BeamAccelRit1 WiggleCircularConstantFlipped { get; set; }
+        public RepeatDefinition WiggleCircularConstantFlipped { get; set; }
 
         [JsonProperty("wiggleCircularConstantFlippedLarge")]
-        public BeamAccelRit1 WiggleCircularConstantFlippedLarge { get; set; }
+        public RepeatDefinition WiggleCircularConstantFlippedLarge { get; set; }
 
         [JsonProperty("wiggleCircularConstantLarge")]
-        public BeamAccelRit1 WiggleCircularConstantLarge { get; set; }
+        public RepeatDefinition WiggleCircularConstantLarge { get; set; }
 
         [JsonProperty("wiggleCircularEnd")]
-        public BeamAccelRit1 WiggleCircularEnd { get; set; }
+        public RepeatDefinition WiggleCircularEnd { get; set; }
 
         [JsonProperty("wiggleCircularLarge")]
-        public BeamAccelRit1 WiggleCircularLarge { get; set; }
+        public RepeatDefinition WiggleCircularLarge { get; set; }
 
         [JsonProperty("wiggleCircularLarger")]
-        public BeamAccelRit1 WiggleCircularLarger { get; set; }
+        public RepeatDefinition WiggleCircularLarger { get; set; }
 
         [JsonProperty("wiggleCircularLargerStill")]
-        public BeamAccelRit1 WiggleCircularLargerStill { get; set; }
+        public RepeatDefinition WiggleCircularLargerStill { get; set; }
 
         [JsonProperty("wiggleCircularLargest")]
-        public BeamAccelRit1 WiggleCircularLargest { get; set; }
+        public RepeatDefinition WiggleCircularLargest { get; set; }
 
         [JsonProperty("wiggleCircularSmall")]
-        public BeamAccelRit1 WiggleCircularSmall { get; set; }
+        public RepeatDefinition WiggleCircularSmall { get; set; }
 
         [JsonProperty("wiggleCircularStart")]
-        public BeamAccelRit1 WiggleCircularStart { get; set; }
+        public RepeatDefinition WiggleCircularStart { get; set; }
 
         [JsonProperty("wiggleGlissando")]
-        public BeamAccelRit1 WiggleGlissando { get; set; }
+        public RepeatDefinition WiggleGlissando { get; set; }
 
         [JsonProperty("wiggleGlissandoGroup1")]
-        public BeamAccelRit1 WiggleGlissandoGroup1 { get; set; }
+        public RepeatDefinition WiggleGlissandoGroup1 { get; set; }
 
         [JsonProperty("wiggleGlissandoGroup2")]
-        public BeamAccelRit1 WiggleGlissandoGroup2 { get; set; }
+        public RepeatDefinition WiggleGlissandoGroup2 { get; set; }
 
         [JsonProperty("wiggleGlissandoGroup3")]
-        public BeamAccelRit1 WiggleGlissandoGroup3 { get; set; }
+        public RepeatDefinition WiggleGlissandoGroup3 { get; set; }
 
         [JsonProperty("wiggleRandom1")]
-        public BeamAccelRit1 WiggleRandom1 { get; set; }
+        public RepeatDefinition WiggleRandom1 { get; set; }
 
         [JsonProperty("wiggleRandom2")]
-        public BeamAccelRit1 WiggleRandom2 { get; set; }
+        public RepeatDefinition WiggleRandom2 { get; set; }
 
         [JsonProperty("wiggleRandom3")]
-        public BeamAccelRit1 WiggleRandom3 { get; set; }
+        public RepeatDefinition WiggleRandom3 { get; set; }
 
         [JsonProperty("wiggleRandom4")]
-        public BeamAccelRit1 WiggleRandom4 { get; set; }
+        public RepeatDefinition WiggleRandom4 { get; set; }
 
         [JsonProperty("wiggleSawtooth")]
-        public BeamAccelRit1 WiggleSawtooth { get; set; }
+        public RepeatDefinition WiggleSawtooth { get; set; }
 
         [JsonProperty("wiggleSawtoothNarrow")]
-        public BeamAccelRit1 WiggleSawtoothNarrow { get; set; }
+        public RepeatDefinition WiggleSawtoothNarrow { get; set; }
 
         [JsonProperty("wiggleSawtoothWide")]
         public Wiggle WiggleSawtoothWide { get; set; }
@@ -1503,145 +1503,145 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Wiggle WiggleSquareWaveWide { get; set; }
 
         [JsonProperty("wiggleTrill")]
-        public BeamAccelRit1 WiggleTrill { get; set; }
+        public RepeatDefinition WiggleTrill { get; set; }
 
         [JsonProperty("wiggleTrillFast")]
-        public BeamAccelRit1 WiggleTrillFast { get; set; }
+        public RepeatDefinition WiggleTrillFast { get; set; }
 
         [JsonProperty("wiggleTrillFaster")]
-        public BeamAccelRit1 WiggleTrillFaster { get; set; }
+        public RepeatDefinition WiggleTrillFaster { get; set; }
 
         [JsonProperty("wiggleTrillFasterStill")]
-        public BeamAccelRit1 WiggleTrillFasterStill { get; set; }
+        public RepeatDefinition WiggleTrillFasterStill { get; set; }
 
         [JsonProperty("wiggleTrillFastest")]
-        public BeamAccelRit1 WiggleTrillFastest { get; set; }
+        public RepeatDefinition WiggleTrillFastest { get; set; }
 
         [JsonProperty("wiggleTrillSlow")]
-        public BeamAccelRit1 WiggleTrillSlow { get; set; }
+        public RepeatDefinition WiggleTrillSlow { get; set; }
 
         [JsonProperty("wiggleTrillSlower")]
-        public BeamAccelRit1 WiggleTrillSlower { get; set; }
+        public RepeatDefinition WiggleTrillSlower { get; set; }
 
         [JsonProperty("wiggleTrillSlowerStill")]
-        public BeamAccelRit1 WiggleTrillSlowerStill { get; set; }
+        public RepeatDefinition WiggleTrillSlowerStill { get; set; }
 
         [JsonProperty("wiggleTrillSlowest")]
-        public BeamAccelRit1 WiggleTrillSlowest { get; set; }
+        public RepeatDefinition WiggleTrillSlowest { get; set; }
 
         [JsonProperty("wiggleVIbratoLargestSlower")]
-        public BeamAccelRit1 WiggleVIbratoLargestSlower { get; set; }
+        public RepeatDefinition WiggleVIbratoLargestSlower { get; set; }
 
         [JsonProperty("wiggleVIbratoMediumSlower")]
-        public BeamAccelRit1 WiggleVIbratoMediumSlower { get; set; }
+        public RepeatDefinition WiggleVIbratoMediumSlower { get; set; }
 
         [JsonProperty("wiggleVibrato")]
-        public BeamAccelRit1 WiggleVibrato { get; set; }
+        public RepeatDefinition WiggleVibrato { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFast")]
-        public BeamAccelRit1 WiggleVibratoLargeFast { get; set; }
+        public RepeatDefinition WiggleVibratoLargeFast { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFaster")]
-        public BeamAccelRit1 WiggleVibratoLargeFaster { get; set; }
+        public RepeatDefinition WiggleVibratoLargeFaster { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFasterStill")]
-        public BeamAccelRit1 WiggleVibratoLargeFasterStill { get; set; }
+        public RepeatDefinition WiggleVibratoLargeFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoLargeFastest")]
-        public BeamAccelRit1 WiggleVibratoLargeFastest { get; set; }
+        public RepeatDefinition WiggleVibratoLargeFastest { get; set; }
 
         [JsonProperty("wiggleVibratoLargeSlow")]
-        public BeamAccelRit1 WiggleVibratoLargeSlow { get; set; }
+        public RepeatDefinition WiggleVibratoLargeSlow { get; set; }
 
         [JsonProperty("wiggleVibratoLargeSlower")]
-        public BeamAccelRit1 WiggleVibratoLargeSlower { get; set; }
+        public RepeatDefinition WiggleVibratoLargeSlower { get; set; }
 
         [JsonProperty("wiggleVibratoLargeSlowest")]
-        public BeamAccelRit1 WiggleVibratoLargeSlowest { get; set; }
+        public RepeatDefinition WiggleVibratoLargeSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFast")]
-        public BeamAccelRit1 WiggleVibratoLargestFast { get; set; }
+        public RepeatDefinition WiggleVibratoLargestFast { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFaster")]
-        public BeamAccelRit1 WiggleVibratoLargestFaster { get; set; }
+        public RepeatDefinition WiggleVibratoLargestFaster { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFasterStill")]
-        public BeamAccelRit1 WiggleVibratoLargestFasterStill { get; set; }
+        public RepeatDefinition WiggleVibratoLargestFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoLargestFastest")]
-        public BeamAccelRit1 WiggleVibratoLargestFastest { get; set; }
+        public RepeatDefinition WiggleVibratoLargestFastest { get; set; }
 
         [JsonProperty("wiggleVibratoLargestSlow")]
-        public BeamAccelRit1 WiggleVibratoLargestSlow { get; set; }
+        public RepeatDefinition WiggleVibratoLargestSlow { get; set; }
 
         [JsonProperty("wiggleVibratoLargestSlowest")]
-        public BeamAccelRit1 WiggleVibratoLargestSlowest { get; set; }
+        public RepeatDefinition WiggleVibratoLargestSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFast")]
-        public BeamAccelRit1 WiggleVibratoMediumFast { get; set; }
+        public RepeatDefinition WiggleVibratoMediumFast { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFaster")]
-        public BeamAccelRit1 WiggleVibratoMediumFaster { get; set; }
+        public RepeatDefinition WiggleVibratoMediumFaster { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFasterStill")]
-        public BeamAccelRit1 WiggleVibratoMediumFasterStill { get; set; }
+        public RepeatDefinition WiggleVibratoMediumFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoMediumFastest")]
-        public BeamAccelRit1 WiggleVibratoMediumFastest { get; set; }
+        public RepeatDefinition WiggleVibratoMediumFastest { get; set; }
 
         [JsonProperty("wiggleVibratoMediumSlow")]
-        public BeamAccelRit1 WiggleVibratoMediumSlow { get; set; }
+        public RepeatDefinition WiggleVibratoMediumSlow { get; set; }
 
         [JsonProperty("wiggleVibratoMediumSlowest")]
         public Wiggle WiggleVibratoMediumSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFast")]
-        public BeamAccelRit1 WiggleVibratoSmallFast { get; set; }
+        public RepeatDefinition WiggleVibratoSmallFast { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFaster")]
-        public BeamAccelRit1 WiggleVibratoSmallFaster { get; set; }
+        public RepeatDefinition WiggleVibratoSmallFaster { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFasterStill")]
-        public BeamAccelRit1 WiggleVibratoSmallFasterStill { get; set; }
+        public RepeatDefinition WiggleVibratoSmallFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoSmallFastest")]
-        public BeamAccelRit1 WiggleVibratoSmallFastest { get; set; }
+        public RepeatDefinition WiggleVibratoSmallFastest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallSlow")]
-        public BeamAccelRit1 WiggleVibratoSmallSlow { get; set; }
+        public RepeatDefinition WiggleVibratoSmallSlow { get; set; }
 
         [JsonProperty("wiggleVibratoSmallSlower")]
-        public BeamAccelRit1 WiggleVibratoSmallSlower { get; set; }
+        public RepeatDefinition WiggleVibratoSmallSlower { get; set; }
 
         [JsonProperty("wiggleVibratoSmallSlowest")]
-        public BeamAccelRit1 WiggleVibratoSmallSlowest { get; set; }
+        public RepeatDefinition WiggleVibratoSmallSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFast")]
-        public BeamAccelRit1 WiggleVibratoSmallestFast { get; set; }
+        public RepeatDefinition WiggleVibratoSmallestFast { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFaster")]
-        public BeamAccelRit1 WiggleVibratoSmallestFaster { get; set; }
+        public RepeatDefinition WiggleVibratoSmallestFaster { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFasterStill")]
-        public BeamAccelRit1 WiggleVibratoSmallestFasterStill { get; set; }
+        public RepeatDefinition WiggleVibratoSmallestFasterStill { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestFastest")]
-        public BeamAccelRit1 WiggleVibratoSmallestFastest { get; set; }
+        public RepeatDefinition WiggleVibratoSmallestFastest { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestSlow")]
-        public BeamAccelRit1 WiggleVibratoSmallestSlow { get; set; }
+        public RepeatDefinition WiggleVibratoSmallestSlow { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestSlower")]
-        public BeamAccelRit1 WiggleVibratoSmallestSlower { get; set; }
+        public RepeatDefinition WiggleVibratoSmallestSlower { get; set; }
 
         [JsonProperty("wiggleVibratoSmallestSlowest")]
-        public BeamAccelRit1 WiggleVibratoSmallestSlowest { get; set; }
+        public RepeatDefinition WiggleVibratoSmallestSlowest { get; set; }
 
         [JsonProperty("wiggleVibratoStart")]
-        public BeamAccelRit1 WiggleVibratoStart { get; set; }
+        public RepeatDefinition WiggleVibratoStart { get; set; }
 
         [JsonProperty("wiggleVibratoWide")]
-        public BeamAccelRit1 WiggleVibratoWide { get; set; }
+        public RepeatDefinition WiggleVibratoWide { get; set; }
 
         [JsonProperty("wiggleWavy")]
         public Wiggle WiggleWavy { get; set; }
