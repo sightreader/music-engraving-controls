@@ -570,172 +570,172 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dynamic DynamicZ { get; set; }
 
         [JsonProperty("flag1024thDown")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag1024ThDown { get; set; }
+        public StemBoundaries Flag1024ThDown { get; set; }
 
         [JsonProperty("flag1024thDownSmall")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag1024ThDownSmall { get; set; }
+        public StemBoundaries Flag1024ThDownSmall { get; set; }
 
         [JsonProperty("flag1024thDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag1024ThDownStraight { get; set; }
+        public StemBoundaries Flag1024ThDownStraight { get; set; }
 
         [JsonProperty("flag1024thUp")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag1024ThUp { get; set; }
+        public StemBoundaries Flag1024ThUp { get; set; }
 
         [JsonProperty("flag1024thUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag1024ThUpShort { get; set; }
+        public StemBoundaries Flag1024ThUpShort { get; set; }
 
         [JsonProperty("flag1024thUpSmall")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag1024ThUpSmall { get; set; }
+        public StemBoundaries Flag1024ThUpSmall { get; set; }
 
         [JsonProperty("flag1024thUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag1024ThUpStraight { get; set; }
+        public StemBoundaries Flag1024ThUpStraight { get; set; }
 
         [JsonProperty("flag128thDown")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag128ThDown { get; set; }
+        public StemBoundaries Flag128ThDown { get; set; }
 
         [JsonProperty("flag128thDownSmall")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag128ThDownSmall { get; set; }
+        public StemBoundaries Flag128ThDownSmall { get; set; }
 
         [JsonProperty("flag128thDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag128ThDownStraight { get; set; }
+        public StemBoundaries Flag128ThDownStraight { get; set; }
 
         [JsonProperty("flag128thUp")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag128ThUp { get; set; }
+        public StemBoundaries Flag128ThUp { get; set; }
 
         [JsonProperty("flag128thUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag128ThUpShort { get; set; }
+        public StemBoundaries Flag128ThUpShort { get; set; }
 
         [JsonProperty("flag128thUpSmall")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag128ThUpSmall { get; set; }
+        public StemBoundaries Flag128ThUpSmall { get; set; }
 
         [JsonProperty("flag128thUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag128ThUpStraight { get; set; }
+        public StemBoundaries Flag128ThUpStraight { get; set; }
 
         [JsonProperty("flag16thDown")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag16ThDown { get; set; }
+        public StemBoundaries Flag16ThDown { get; set; }
 
         [JsonProperty("flag16thDownSmall")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag16ThDownSmall { get; set; }
+        public StemBoundaries Flag16ThDownSmall { get; set; }
 
         [JsonProperty("flag16thDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag16ThDownStraight { get; set; }
+        public StemBoundaries Flag16ThDownStraight { get; set; }
 
         [JsonProperty("flag16thUp")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag16ThUp { get; set; }
+        public StemBoundaries Flag16ThUp { get; set; }
 
         [JsonProperty("flag16thUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag16ThUpShort { get; set; }
+        public StemBoundaries Flag16ThUpShort { get; set; }
 
         [JsonProperty("flag16thUpSmall")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag16ThUpSmall { get; set; }
+        public StemBoundaries Flag16ThUpSmall { get; set; }
 
         [JsonProperty("flag16thUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag16ThUpStraight { get; set; }
+        public StemBoundaries Flag16ThUpStraight { get; set; }
 
         [JsonProperty("flag256thDown")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag256ThDown { get; set; }
+        public StemBoundaries Flag256ThDown { get; set; }
 
         [JsonProperty("flag256thDownSmall")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag256ThDownSmall { get; set; }
+        public StemBoundaries Flag256ThDownSmall { get; set; }
 
         [JsonProperty("flag256thDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag256ThDownStraight { get; set; }
+        public StemBoundaries Flag256ThDownStraight { get; set; }
 
         [JsonProperty("flag256thUp")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag256ThUp { get; set; }
+        public StemBoundaries Flag256ThUp { get; set; }
 
         [JsonProperty("flag256thUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag256ThUpShort { get; set; }
+        public StemBoundaries Flag256ThUpShort { get; set; }
 
         [JsonProperty("flag256thUpSmall")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag256ThUpSmall { get; set; }
+        public StemBoundaries Flag256ThUpSmall { get; set; }
 
         [JsonProperty("flag256thUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag256ThUpStraight { get; set; }
+        public StemBoundaries Flag256ThUpStraight { get; set; }
 
         [JsonProperty("flag32ndDown")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag32NdDown { get; set; }
+        public StemBoundaries Flag32NdDown { get; set; }
 
         [JsonProperty("flag32ndDownSmall")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag32NdDownSmall { get; set; }
+        public StemBoundaries Flag32NdDownSmall { get; set; }
 
         [JsonProperty("flag32ndDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag32NdDownStraight { get; set; }
+        public StemBoundaries Flag32NdDownStraight { get; set; }
 
         [JsonProperty("flag32ndUp")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag32NdUp { get; set; }
+        public StemBoundaries Flag32NdUp { get; set; }
 
         [JsonProperty("flag32ndUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag32NdUpShort { get; set; }
+        public StemBoundaries Flag32NdUpShort { get; set; }
 
         [JsonProperty("flag32ndUpSmall")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag32NdUpSmall { get; set; }
+        public StemBoundaries Flag32NdUpSmall { get; set; }
 
         [JsonProperty("flag32ndUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag32NdUpStraight { get; set; }
+        public StemBoundaries Flag32NdUpStraight { get; set; }
 
         [JsonProperty("flag512thDown")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag512ThDown { get; set; }
+        public StemBoundaries Flag512ThDown { get; set; }
 
         [JsonProperty("flag512thDownSmall")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag512ThDownSmall { get; set; }
+        public StemBoundaries Flag512ThDownSmall { get; set; }
 
         [JsonProperty("flag512thDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag512ThDownStraight { get; set; }
+        public StemBoundaries Flag512ThDownStraight { get; set; }
 
         [JsonProperty("flag512thUp")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag512ThUp { get; set; }
+        public StemBoundaries Flag512ThUp { get; set; }
 
         [JsonProperty("flag512thUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag512ThUpShort { get; set; }
+        public StemBoundaries Flag512ThUpShort { get; set; }
 
         [JsonProperty("flag512thUpSmall")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag512ThUpSmall { get; set; }
+        public StemBoundaries Flag512ThUpSmall { get; set; }
 
         [JsonProperty("flag512thUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag512ThUpStraight { get; set; }
+        public StemBoundaries Flag512ThUpStraight { get; set; }
 
         [JsonProperty("flag64thDown")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag64ThDown { get; set; }
+        public StemBoundaries Flag64ThDown { get; set; }
 
         [JsonProperty("flag64thDownSmall")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag64ThDownSmall { get; set; }
+        public StemBoundaries Flag64ThDownSmall { get; set; }
 
         [JsonProperty("flag64thDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag64ThDownStraight { get; set; }
+        public StemBoundaries Flag64ThDownStraight { get; set; }
 
         [JsonProperty("flag64thUp")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag64ThUp { get; set; }
+        public StemBoundaries Flag64ThUp { get; set; }
 
         [JsonProperty("flag64thUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag64ThUpShort { get; set; }
+        public StemBoundaries Flag64ThUpShort { get; set; }
 
         [JsonProperty("flag64thUpSmall")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag64ThUpSmall { get; set; }
+        public StemBoundaries Flag64ThUpSmall { get; set; }
 
         [JsonProperty("flag64thUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag64ThUpStraight { get; set; }
+        public StemBoundaries Flag64ThUpStraight { get; set; }
 
         [JsonProperty("flag8thDown")]
         public Flag8ThDown Flag8ThDown { get; set; }
 
-        [JsonProperty("flag8thDownSmall")]
-        public Flag8ThDownSmall Flag8ThDownSmall { get; set; }
+        [JsonProperty("StemBoundaries")]
+        public StemBoundaries StemBoundaries { get; set; }
 
         [JsonProperty("flag8thDownStraight")]
-        public GlyphsWithAnchorsFlag1024ThDown Flag8ThDownStraight { get; set; }
+        public StemBoundaries Flag8ThDownStraight { get; set; }
 
         [JsonProperty("flag8thUp")]
         public Flag8ThUp Flag8ThUp { get; set; }
 
         [JsonProperty("flag8thUpShort")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag8ThUpShort { get; set; }
+        public StemBoundaries Flag8ThUpShort { get; set; }
 
         [JsonProperty("flag8thUpSmall")]
-        public Flag8ThUpSmall Flag8ThUpSmall { get; set; }
+        public StemBoundaries Flag8thUpSmall { get; set; }
 
         [JsonProperty("flag8thUpStraight")]
-        public GlyphsWithAnchorsFlag1024ThUp Flag8ThUpStraight { get; set; }
+        public StemBoundaries Flag8ThUpStraight { get; set; }
 
         [JsonProperty("gClefLigatedNumberAbove")]
         public GClefLigatedNumber GClefLigatedNumberAbove { get; set; }
@@ -750,178 +750,178 @@ namespace Manufaktura.Controls.Model.SMuFL
         public RepeatDefinition GuitarWideVibratoStroke { get; set; }
 
         [JsonProperty("noteABlack")]
-        public GlyphsWithAnchorsNoteABlack NoteABlack { get; set; }
+        public StemBoundaries NoteABlack { get; set; }
 
         [JsonProperty("noteAFlatBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteAFlatBlack { get; set; }
+        public StemBoundaries NoteAFlatBlack { get; set; }
 
         [JsonProperty("noteAFlatHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteAFlatHalf { get; set; }
+        public StemBoundaries NoteAFlatHalf { get; set; }
 
         [JsonProperty("noteAHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteAHalf { get; set; }
+        public StemBoundaries NoteAHalf { get; set; }
 
         [JsonProperty("noteASharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteASharpBlack { get; set; }
+        public StemBoundaries NoteASharpBlack { get; set; }
 
         [JsonProperty("noteASharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteASharpHalf { get; set; }
+        public StemBoundaries NoteASharpHalf { get; set; }
 
         [JsonProperty("noteBBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteBBlack { get; set; }
+        public StemBoundaries NoteBBlack { get; set; }
 
         [JsonProperty("noteBFlatBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteBFlatBlack { get; set; }
+        public StemBoundaries NoteBFlatBlack { get; set; }
 
         [JsonProperty("noteBFlatHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteBFlatHalf { get; set; }
+        public StemBoundaries NoteBFlatHalf { get; set; }
 
         [JsonProperty("noteBHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteBHalf { get; set; }
+        public StemBoundaries NoteBHalf { get; set; }
 
         [JsonProperty("noteBSharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteBSharpBlack { get; set; }
+        public StemBoundaries NoteBSharpBlack { get; set; }
 
         [JsonProperty("noteBSharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteBSharpHalf { get; set; }
+        public StemBoundaries NoteBSharpHalf { get; set; }
 
         [JsonProperty("noteCBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteCBlack { get; set; }
+        public StemBoundaries NoteCBlack { get; set; }
 
         [JsonProperty("noteCFlatBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteCFlatBlack { get; set; }
+        public StemBoundaries NoteCFlatBlack { get; set; }
 
         [JsonProperty("noteCFlatHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteCFlatHalf { get; set; }
+        public StemBoundaries NoteCFlatHalf { get; set; }
 
         [JsonProperty("noteCHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteCHalf { get; set; }
+        public StemBoundaries NoteCHalf { get; set; }
 
         [JsonProperty("noteCSharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteCSharpBlack { get; set; }
+        public StemBoundaries NoteCSharpBlack { get; set; }
 
         [JsonProperty("noteCSharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteCSharpHalf { get; set; }
+        public StemBoundaries NoteCSharpHalf { get; set; }
 
         [JsonProperty("noteDBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteDBlack { get; set; }
+        public StemBoundaries NoteDBlack { get; set; }
 
         [JsonProperty("noteDFlatBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteDFlatBlack { get; set; }
+        public StemBoundaries NoteDFlatBlack { get; set; }
 
         [JsonProperty("noteDFlatHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteDFlatHalf { get; set; }
+        public StemBoundaries NoteDFlatHalf { get; set; }
 
         [JsonProperty("noteDHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteDHalf { get; set; }
+        public StemBoundaries NoteDHalf { get; set; }
 
         [JsonProperty("noteDSharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteDSharpBlack { get; set; }
+        public StemBoundaries NoteDSharpBlack { get; set; }
 
         [JsonProperty("noteDSharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteDSharpHalf { get; set; }
+        public StemBoundaries NoteDSharpHalf { get; set; }
 
         [JsonProperty("noteDoBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteDoBlack { get; set; }
+        public StemBoundaries NoteDoBlack { get; set; }
 
         [JsonProperty("noteDoHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteDoHalf { get; set; }
+        public StemBoundaries NoteDoHalf { get; set; }
 
         [JsonProperty("noteEBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteEBlack { get; set; }
+        public StemBoundaries NoteEBlack { get; set; }
 
         [JsonProperty("noteEFlatBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteEFlatBlack { get; set; }
+        public StemBoundaries NoteEFlatBlack { get; set; }
 
         [JsonProperty("noteEFlatHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteEFlatHalf { get; set; }
+        public StemBoundaries NoteEFlatHalf { get; set; }
 
         [JsonProperty("noteEHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteEHalf { get; set; }
+        public StemBoundaries NoteEHalf { get; set; }
 
         [JsonProperty("noteESharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteESharpBlack { get; set; }
+        public StemBoundaries NoteESharpBlack { get; set; }
 
         [JsonProperty("noteESharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteESharpHalf { get; set; }
+        public StemBoundaries NoteESharpHalf { get; set; }
 
         [JsonProperty("noteEmptyBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteEmptyBlack { get; set; }
+        public StemBoundaries NoteEmptyBlack { get; set; }
 
         [JsonProperty("noteEmptyHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteEmptyHalf { get; set; }
+        public StemBoundaries NoteEmptyHalf { get; set; }
 
         [JsonProperty("noteFBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteFBlack { get; set; }
+        public StemBoundaries NoteFBlack { get; set; }
 
         [JsonProperty("noteFFlatBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteFFlatBlack { get; set; }
+        public StemBoundaries NoteFFlatBlack { get; set; }
 
         [JsonProperty("noteFFlatHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteFFlatHalf { get; set; }
+        public StemBoundaries NoteFFlatHalf { get; set; }
 
         [JsonProperty("noteFHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteFHalf { get; set; }
+        public StemBoundaries NoteFHalf { get; set; }
 
         [JsonProperty("noteFSharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteFSharpBlack { get; set; }
+        public StemBoundaries NoteFSharpBlack { get; set; }
 
         [JsonProperty("noteFSharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteFSharpHalf { get; set; }
+        public StemBoundaries NoteFSharpHalf { get; set; }
 
         [JsonProperty("noteFaBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteFaBlack { get; set; }
+        public StemBoundaries NoteFaBlack { get; set; }
 
         [JsonProperty("noteFaHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteFaHalf { get; set; }
+        public StemBoundaries NoteFaHalf { get; set; }
 
         [JsonProperty("noteGBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteGBlack { get; set; }
+        public StemBoundaries NoteGBlack { get; set; }
 
         [JsonProperty("noteGFlatBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteGFlatBlack { get; set; }
+        public StemBoundaries NoteGFlatBlack { get; set; }
 
         [JsonProperty("noteGFlatHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteGFlatHalf { get; set; }
+        public StemBoundaries NoteGFlatHalf { get; set; }
 
         [JsonProperty("noteGHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteGHalf { get; set; }
+        public StemBoundaries NoteGHalf { get; set; }
 
         [JsonProperty("noteGSharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteGSharpBlack { get; set; }
+        public StemBoundaries NoteGSharpBlack { get; set; }
 
         [JsonProperty("noteGSharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteGSharpHalf { get; set; }
+        public StemBoundaries NoteGSharpHalf { get; set; }
 
         [JsonProperty("noteHBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteHBlack { get; set; }
+        public StemBoundaries NoteHBlack { get; set; }
 
         [JsonProperty("noteHHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteHHalf { get; set; }
+        public StemBoundaries NoteHHalf { get; set; }
 
         [JsonProperty("noteHSharpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteHSharpBlack { get; set; }
+        public StemBoundaries NoteHSharpBlack { get; set; }
 
         [JsonProperty("noteHSharpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteHSharpHalf { get; set; }
+        public StemBoundaries NoteHSharpHalf { get; set; }
 
         [JsonProperty("noteLaBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteLaBlack { get; set; }
+        public StemBoundaries NoteLaBlack { get; set; }
 
         [JsonProperty("noteLaHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteLaHalf { get; set; }
+        public StemBoundaries NoteLaHalf { get; set; }
 
         [JsonProperty("noteMiBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteMiBlack { get; set; }
+        public StemBoundaries NoteMiBlack { get; set; }
 
         [JsonProperty("noteMiHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteMiHalf { get; set; }
+        public StemBoundaries NoteMiHalf { get; set; }
 
         [JsonProperty("noteReBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteReBlack { get; set; }
+        public StemBoundaries NoteReBlack { get; set; }
 
         [JsonProperty("noteReHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteReHalf { get; set; }
+        public StemBoundaries NoteReHalf { get; set; }
 
         [JsonProperty("noteShapeDiamondBlack")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteShapeDiamondBlack { get; set; }
@@ -930,64 +930,64 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteShapeDiamondWhite { get; set; }
 
         [JsonProperty("noteShapeMoonBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeMoonBlack { get; set; }
+        public StemBoundaries NoteShapeMoonBlack { get; set; }
 
         [JsonProperty("noteShapeMoonWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeMoonWhite { get; set; }
+        public StemBoundaries NoteShapeMoonWhite { get; set; }
 
         [JsonProperty("noteShapeRoundBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeRoundBlack { get; set; }
+        public StemBoundaries NoteShapeRoundBlack { get; set; }
 
         [JsonProperty("noteShapeRoundWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeRoundWhite { get; set; }
+        public StemBoundaries NoteShapeRoundWhite { get; set; }
 
         [JsonProperty("noteShapeSquareBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeSquareBlack { get; set; }
+        public StemBoundaries NoteShapeSquareBlack { get; set; }
 
         [JsonProperty("noteShapeSquareWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeSquareWhite { get; set; }
+        public StemBoundaries NoteShapeSquareWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleLeftBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleLeftBlack { get; set; }
+        public StemBoundaries NoteShapeTriangleLeftBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleLeftWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleLeftWhite { get; set; }
+        public StemBoundaries NoteShapeTriangleLeftWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleRightBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleRightBlack { get; set; }
+        public StemBoundaries NoteShapeTriangleRightBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleRightWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleRightWhite { get; set; }
+        public StemBoundaries NoteShapeTriangleRightWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleRoundBlack { get; set; }
+        public StemBoundaries NoteShapeTriangleRoundBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleRoundWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleRoundWhite { get; set; }
+        public StemBoundaries NoteShapeTriangleRoundWhite { get; set; }
 
         [JsonProperty("noteShapeTriangleUpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleUpBlack { get; set; }
+        public StemBoundaries NoteShapeTriangleUpBlack { get; set; }
 
         [JsonProperty("noteShapeTriangleUpWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteShapeTriangleUpWhite { get; set; }
+        public StemBoundaries NoteShapeTriangleUpWhite { get; set; }
 
         [JsonProperty("noteSiBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteSiBlack { get; set; }
+        public StemBoundaries NoteSiBlack { get; set; }
 
         [JsonProperty("noteSiHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteSiHalf { get; set; }
+        public StemBoundaries NoteSiHalf { get; set; }
 
         [JsonProperty("noteSoBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteSoBlack { get; set; }
+        public StemBoundaries NoteSoBlack { get; set; }
 
         [JsonProperty("noteSoHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteSoHalf { get; set; }
+        public StemBoundaries NoteSoHalf { get; set; }
 
         [JsonProperty("noteTiBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteTiBlack { get; set; }
+        public StemBoundaries NoteTiBlack { get; set; }
 
         [JsonProperty("noteTiHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteTiHalf { get; set; }
+        public StemBoundaries NoteTiHalf { get; set; }
 
         [JsonProperty("noteheadBlack")]
         public Dictionary<string, double[]> NoteheadBlack { get; set; }
@@ -996,10 +996,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> NoteheadBlackOversized { get; set; }
 
         [JsonProperty("noteheadBlackSmall")]
-        public GlyphsWithAnchorsNoteABlack NoteheadBlackSmall { get; set; }
+        public StemBoundaries NoteheadBlackSmall { get; set; }
 
         [JsonProperty("noteheadCircleSlash")]
-        public NoteheadCircleSlash NoteheadCircleSlash { get; set; }
+        public StemBoundaries NoteheadCircleSlash { get; set; }
 
         [JsonProperty("noteheadCircleX")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircleX { get; set; }
@@ -1008,13 +1008,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadCircleXDoubleWhole { get; set; }
 
         [JsonProperty("noteheadCircleXHalf")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadCircleXHalf { get; set; }
+        public StemBoundaries NoteheadCircleXHalf { get; set; }
 
         [JsonProperty("noteheadCircledBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadCircledBlack { get; set; }
+        public StemBoundaries NoteheadCircledBlack { get; set; }
 
         [JsonProperty("noteheadCircledBlackLarge")]
-        public GlyphsWithAnchorsNoteABlack NoteheadCircledBlackLarge { get; set; }
+        public StemBoundaries NoteheadCircledBlackLarge { get; set; }
 
         [JsonProperty("noteheadCircledDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadCircledDoubleWhole { get; set; }
@@ -1023,13 +1023,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircledDoubleWholeLarge { get; set; }
 
         [JsonProperty("noteheadCircledHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteheadCircledHalf { get; set; }
+        public StemBoundaries NoteheadCircledHalf { get; set; }
 
         [JsonProperty("noteheadCircledHalfLarge")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircledHalfLarge { get; set; }
 
         [JsonProperty("noteheadCircledWholeLarge")]
-        public GlyphsWithAnchorsNoteABlack NoteheadCircledWholeLarge { get; set; }
+        public StemBoundaries NoteheadCircledWholeLarge { get; set; }
 
         [JsonProperty("noteheadCircledXLarge")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircledXLarge { get; set; }
@@ -1041,34 +1041,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadClusterDoubleWhole3Rd { get; set; }
 
         [JsonProperty("noteheadClusterHalf2nd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadClusterHalf2Nd { get; set; }
+        public StemBoundaries NoteheadClusterHalf2Nd { get; set; }
 
         [JsonProperty("noteheadClusterHalf3rd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadClusterHalf3Rd { get; set; }
+        public StemBoundaries NoteheadClusterHalf3Rd { get; set; }
 
         [JsonProperty("noteheadClusterHalfBottom")]
-        public NoteheadBottom NoteheadClusterHalfBottom { get; set; }
+        public StemBoundaries NoteheadClusterHalfBottom { get; set; }
 
         [JsonProperty("noteheadClusterHalfTop")]
-        public NoteheadTop NoteheadClusterHalfTop { get; set; }
+        public StemBoundaries NoteheadClusterHalfTop { get; set; }
 
         [JsonProperty("noteheadClusterQuarter2nd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadClusterQuarter2Nd { get; set; }
+        public StemBoundaries NoteheadClusterQuarter2Nd { get; set; }
 
         [JsonProperty("noteheadClusterQuarter3rd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadClusterQuarter3Rd { get; set; }
+        public StemBoundaries NoteheadClusterQuarter3Rd { get; set; }
 
         [JsonProperty("noteheadClusterQuarterBottom")]
-        public NoteheadBottom NoteheadClusterQuarterBottom { get; set; }
+        public StemBoundaries NoteheadClusterQuarterBottom { get; set; }
 
         [JsonProperty("noteheadClusterQuarterTop")]
-        public NoteheadTop NoteheadClusterQuarterTop { get; set; }
+        public StemBoundaries NoteheadClusterQuarterTop { get; set; }
 
         [JsonProperty("noteheadClusterRoundBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadClusterRoundBlack { get; set; }
+        public StemBoundaries NoteheadClusterRoundBlack { get; set; }
 
         [JsonProperty("noteheadClusterRoundWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadClusterRoundWhite { get; set; }
+        public StemBoundaries NoteheadClusterRoundWhite { get; set; }
 
         [JsonProperty("noteheadClusterSquareBlack")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadClusterSquareBlack { get; set; }
@@ -1077,37 +1077,37 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadClusterSquareWhite { get; set; }
 
         [JsonProperty("noteheadDiamondBlack")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadDiamondBlack { get; set; }
+        public StemBoundaries NoteheadDiamondBlack { get; set; }
 
         [JsonProperty("noteheadDiamondBlackOld")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondBlackOld { get; set; }
+        public StemBoundaries NoteheadDiamondBlackOld { get; set; }
 
         [JsonProperty("noteheadDiamondBlackWide")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadDiamondBlackWide { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlack2nd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondClusterBlack2Nd { get; set; }
+        public StemBoundaries NoteheadDiamondClusterBlack2Nd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlack3rd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondClusterBlack3Rd { get; set; }
+        public StemBoundaries NoteheadDiamondClusterBlack3Rd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlackBottom")]
-        public NoteheadBottom NoteheadDiamondClusterBlackBottom { get; set; }
+        public StemBoundaries NoteheadDiamondClusterBlackBottom { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlackTop")]
-        public NoteheadTop NoteheadDiamondClusterBlackTop { get; set; }
+        public StemBoundaries NoteheadDiamondClusterBlackTop { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhite2nd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondClusterWhite2Nd { get; set; }
+        public StemBoundaries NoteheadDiamondClusterWhite2Nd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhite3rd")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondClusterWhite3Rd { get; set; }
+        public StemBoundaries NoteheadDiamondClusterWhite3Rd { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhiteBottom")]
-        public NoteheadBottom NoteheadDiamondClusterWhiteBottom { get; set; }
+        public StemBoundaries NoteheadDiamondClusterWhiteBottom { get; set; }
 
         [JsonProperty("noteheadDiamondClusterWhiteTop")]
-        public NoteheadTop NoteheadDiamondClusterWhiteTop { get; set; }
+        public StemBoundaries NoteheadDiamondClusterWhiteTop { get; set; }
 
         [JsonProperty("noteheadDiamondDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadDiamondDoubleWhole { get; set; }
@@ -1119,22 +1119,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadDiamondHalf { get; set; }
 
         [JsonProperty("noteheadDiamondHalfFilled")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondHalfFilled { get; set; }
+        public StemBoundaries NoteheadDiamondHalfFilled { get; set; }
 
         [JsonProperty("noteheadDiamondHalfOld")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondHalfOld { get; set; }
+        public StemBoundaries NoteheadDiamondHalfOld { get; set; }
 
         [JsonProperty("noteheadDiamondHalfWide")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadDiamondHalfWide { get; set; }
 
         [JsonProperty("noteheadDiamondOpen")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondOpen { get; set; }
+        public StemBoundaries NoteheadDiamondOpen { get; set; }
 
         [JsonProperty("noteheadDiamondWhite")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadDiamondWhite { get; set; }
+        public StemBoundaries NoteheadDiamondWhite { get; set; }
 
         [JsonProperty("noteheadDiamondWhiteWide")]
-        public GlyphsWithAnchorsNoteABlack NoteheadDiamondWhiteWide { get; set; }
+        public StemBoundaries NoteheadDiamondWhiteWide { get; set; }
 
         [JsonProperty("noteheadDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadDoubleWhole { get; set; }
@@ -1152,16 +1152,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> NoteheadHalfOversized { get; set; }
 
         [JsonProperty("noteheadHalfSmall")]
-        public GlyphsWithAnchorsNoteABlack NoteheadHalfSmall { get; set; }
+        public StemBoundaries NoteheadHalfSmall { get; set; }
 
         [JsonProperty("noteheadHalfWithX")]
-        public GlyphsWithAnchorsNoteABlack NoteheadHalfWithX { get; set; }
+        public StemBoundaries NoteheadHalfWithX { get; set; }
 
         [JsonProperty("noteheadHeavyX")]
-        public GlyphsWithAnchorsNoteABlack NoteheadHeavyX { get; set; }
+        public StemBoundaries NoteheadHeavyX { get; set; }
 
         [JsonProperty("noteheadHeavyXHat")]
-        public GlyphsWithAnchorsNoteABlack NoteheadHeavyXHat { get; set; }
+        public StemBoundaries NoteheadHeavyXHat { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownBlack")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadLargeArrowDownBlack { get; set; }
@@ -1170,16 +1170,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadLargeArrowDownDoubleWhole { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteheadLargeArrowDownHalf { get; set; }
+        public StemBoundaries NoteheadLargeArrowDownHalf { get; set; }
 
         [JsonProperty("noteheadLargeArrowUpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadLargeArrowUpBlack { get; set; }
+        public StemBoundaries NoteheadLargeArrowUpBlack { get; set; }
 
         [JsonProperty("noteheadLargeArrowUpDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadLargeArrowUpDoubleWhole { get; set; }
 
         [JsonProperty("noteheadLargeArrowUpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteheadLargeArrowUpHalf { get; set; }
+        public StemBoundaries NoteheadLargeArrowUpHalf { get; set; }
 
         [JsonProperty("noteheadMoonBlack")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadMoonBlack { get; set; }
@@ -1188,22 +1188,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadMoonWhite { get; set; }
 
         [JsonProperty("noteheadPlusBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadPlusBlack { get; set; }
+        public StemBoundaries NoteheadPlusBlack { get; set; }
 
         [JsonProperty("noteheadPlusDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadPlusDoubleWhole { get; set; }
 
         [JsonProperty("noteheadPlusHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteheadPlusHalf { get; set; }
+        public StemBoundaries NoteheadPlusHalf { get; set; }
 
         [JsonProperty("noteheadRoundBlack")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundBlack { get; set; }
 
         [JsonProperty("noteheadRoundBlackDoubleSlashed")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadRoundBlackDoubleSlashed { get; set; }
+        public StemBoundaries NoteheadRoundBlackDoubleSlashed { get; set; }
 
         [JsonProperty("noteheadRoundBlackLarge")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadRoundBlackLarge { get; set; }
+        public StemBoundaries NoteheadRoundBlackLarge { get; set; }
 
         [JsonProperty("noteheadRoundBlackSlashed")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundBlackSlashed { get; set; }
@@ -1212,13 +1212,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundBlackSlashedLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadRoundWhite { get; set; }
+        public StemBoundaries NoteheadRoundWhite { get; set; }
 
         [JsonProperty("noteheadRoundWhiteDoubleSlashed")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadRoundWhiteDoubleSlashed { get; set; }
+        public StemBoundaries NoteheadRoundWhiteDoubleSlashed { get; set; }
 
         [JsonProperty("noteheadRoundWhiteLarge")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadRoundWhiteLarge { get; set; }
+        public StemBoundaries NoteheadRoundWhiteLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhiteSlashed")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundWhiteSlashed { get; set; }
@@ -1233,7 +1233,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundWhiteWithDotLarge { get; set; }
 
         [JsonProperty("noteheadSlashDiamondWhite")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadSlashDiamondWhite { get; set; }
+        public StemBoundaries NoteheadSlashDiamondWhite { get; set; }
 
         [JsonProperty("noteheadSlashHorizontalEnds")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashHorizontalEnds { get; set; }
@@ -1242,13 +1242,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashHorizontalEndsMuted { get; set; }
 
         [JsonProperty("noteheadSlashVerticalEnds")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSlashVerticalEnds { get; set; }
+        public StemBoundaries NoteheadSlashVerticalEnds { get; set; }
 
         [JsonProperty("noteheadSlashVerticalEndsMuted")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSlashVerticalEndsMuted { get; set; }
+        public StemBoundaries NoteheadSlashVerticalEndsMuted { get; set; }
 
         [JsonProperty("noteheadSlashVerticalEndsSmall")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSlashVerticalEndsSmall { get; set; }
+        public StemBoundaries NoteheadSlashVerticalEndsSmall { get; set; }
 
         [JsonProperty("noteheadSlashWhiteHalf")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashWhiteHalf { get; set; }
@@ -1260,10 +1260,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashX { get; set; }
 
         [JsonProperty("noteheadSlashedBlack1")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSlashedBlack1 { get; set; }
+        public StemBoundaries NoteheadSlashedBlack1 { get; set; }
 
         [JsonProperty("noteheadSlashedBlack2")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSlashedBlack2 { get; set; }
+        public StemBoundaries NoteheadSlashedBlack2 { get; set; }
 
         [JsonProperty("noteheadSlashedDoubleWhole1")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadSlashedDoubleWhole1 { get; set; }
@@ -1272,88 +1272,88 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadSlashedDoubleWhole2 { get; set; }
 
         [JsonProperty("noteheadSlashedHalf1")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSlashedHalf1 { get; set; }
+        public StemBoundaries NoteheadSlashedHalf1 { get; set; }
 
         [JsonProperty("noteheadSlashedHalf2")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSlashedHalf2 { get; set; }
+        public StemBoundaries NoteheadSlashedHalf2 { get; set; }
 
         [JsonProperty("noteheadSquareBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSquareBlack { get; set; }
+        public StemBoundaries NoteheadSquareBlack { get; set; }
 
         [JsonProperty("noteheadSquareBlackLarge")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadSquareBlackLarge { get; set; }
+        public StemBoundaries NoteheadSquareBlackLarge { get; set; }
 
         [JsonProperty("noteheadSquareBlackWhite")]
-        public GlyphsWithAnchorsNoteheadCircleXHalf NoteheadSquareBlackWhite { get; set; }
+        public StemBoundaries NoteheadSquareBlackWhite { get; set; }
 
         [JsonProperty("noteheadSquareWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadSquareWhite { get; set; }
+        public StemBoundaries NoteheadSquareWhite { get; set; }
 
         [JsonProperty("noteheadTriangleDownBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleDownBlack { get; set; }
+        public StemBoundaries NoteheadTriangleDownBlack { get; set; }
 
         [JsonProperty("noteheadTriangleDownDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadTriangleDownDoubleWhole { get; set; }
 
         [JsonProperty("noteheadTriangleDownHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleDownHalf { get; set; }
+        public StemBoundaries NoteheadTriangleDownHalf { get; set; }
 
         [JsonProperty("noteheadTriangleDownWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleDownWhite { get; set; }
+        public StemBoundaries NoteheadTriangleDownWhite { get; set; }
 
         [JsonProperty("noteheadTriangleLeftBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleLeftBlack { get; set; }
+        public StemBoundaries NoteheadTriangleLeftBlack { get; set; }
 
         [JsonProperty("noteheadTriangleLeftWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleLeftWhite { get; set; }
+        public StemBoundaries NoteheadTriangleLeftWhite { get; set; }
 
         [JsonProperty("noteheadTriangleRightBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleRightBlack { get; set; }
+        public StemBoundaries NoteheadTriangleRightBlack { get; set; }
 
         [JsonProperty("noteheadTriangleRightWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleRightWhite { get; set; }
+        public StemBoundaries NoteheadTriangleRightWhite { get; set; }
 
         [JsonProperty("noteheadTriangleRoundDownBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleRoundDownBlack { get; set; }
+        public StemBoundaries NoteheadTriangleRoundDownBlack { get; set; }
 
         [JsonProperty("noteheadTriangleRoundDownWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleRoundDownWhite { get; set; }
+        public StemBoundaries NoteheadTriangleRoundDownWhite { get; set; }
 
         [JsonProperty("noteheadTriangleUpBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleUpBlack { get; set; }
+        public StemBoundaries NoteheadTriangleUpBlack { get; set; }
 
         [JsonProperty("noteheadTriangleUpDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadTriangleUpDoubleWhole { get; set; }
 
         [JsonProperty("noteheadTriangleUpHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleUpHalf { get; set; }
+        public StemBoundaries NoteheadTriangleUpHalf { get; set; }
 
         [JsonProperty("noteheadTriangleUpRightBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleUpRightBlack { get; set; }
+        public StemBoundaries NoteheadTriangleUpRightBlack { get; set; }
 
         [JsonProperty("noteheadTriangleUpRightWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleUpRightWhite { get; set; }
+        public StemBoundaries NoteheadTriangleUpRightWhite { get; set; }
 
         [JsonProperty("noteheadTriangleUpWhite")]
-        public GlyphsWithAnchorsNoteABlack NoteheadTriangleUpWhite { get; set; }
+        public StemBoundaries NoteheadTriangleUpWhite { get; set; }
 
         [JsonProperty("noteheadVoidWithX")]
-        public GlyphsWithAnchorsNoteABlack NoteheadVoidWithX { get; set; }
+        public StemBoundaries NoteheadVoidWithX { get; set; }
 
         [JsonProperty("noteheadWhole")]
         public CutOut NoteheadWhole { get; set; }
 
         [JsonProperty("noteheadXBlack")]
-        public GlyphsWithAnchorsNoteABlack NoteheadXBlack { get; set; }
+        public StemBoundaries NoteheadXBlack { get; set; }
 
         [JsonProperty("noteheadXDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadXDoubleWhole { get; set; }
 
         [JsonProperty("noteheadXHalf")]
-        public GlyphsWithAnchorsNoteABlack NoteheadXHalf { get; set; }
+        public StemBoundaries NoteheadXHalf { get; set; }
 
         [JsonProperty("noteheadXOrnate")]
-        public GlyphsWithAnchorsNoteABlack NoteheadXOrnate { get; set; }
+        public StemBoundaries NoteheadXOrnate { get; set; }
 
         [JsonProperty("noteheadXOrnateEllipse")]
         public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadXOrnateEllipse { get; set; }

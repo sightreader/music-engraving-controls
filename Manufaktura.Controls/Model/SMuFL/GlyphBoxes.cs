@@ -662,160 +662,160 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> AccSagittalSharp7V19CUp { get; set; }
 
         [JsonProperty("accdnCombDot")]
-        public AccdnCombDot AccdnCombDot { get; set; }
+        public BoundingBox AccdnCombDot { get; set; }
 
         [JsonProperty("accdnCombLH2RanksEmpty")]
-        public AccdnCombDot AccdnCombLh2RanksEmpty { get; set; }
+        public BoundingBox AccdnCombLh2RanksEmpty { get; set; }
 
         [JsonProperty("accdnCombLH3RanksEmptySquare")]
-        public AccdnCombDot AccdnCombLh3RanksEmptySquare { get; set; }
+        public BoundingBox AccdnCombLh3RanksEmptySquare { get; set; }
 
         [JsonProperty("accdnCombRH3RanksEmpty")]
-        public AccdnCombDot AccdnCombRh3RanksEmpty { get; set; }
+        public BoundingBox AccdnCombRh3RanksEmpty { get; set; }
 
         [JsonProperty("accdnCombRH4RanksEmpty")]
-        public AccdnCombDot AccdnCombRh4RanksEmpty { get; set; }
+        public BoundingBox AccdnCombRh4RanksEmpty { get; set; }
 
         [JsonProperty("accdnDiatonicClef")]
         public Dictionary<string, double[]> AccdnDiatonicClef { get; set; }
 
         [JsonProperty("accdnLH2Ranks16Round")]
-        public AccdnCombDot AccdnLh2Ranks16Round { get; set; }
+        public BoundingBox AccdnLh2Ranks16Round { get; set; }
 
         [JsonProperty("accdnLH2Ranks8Plus16Round")]
-        public AccdnCombDot AccdnLh2Ranks8Plus16Round { get; set; }
+        public BoundingBox AccdnLh2Ranks8Plus16Round { get; set; }
 
         [JsonProperty("accdnLH2Ranks8Round")]
-        public AccdnCombDot AccdnLh2Ranks8Round { get; set; }
+        public BoundingBox AccdnLh2Ranks8Round { get; set; }
 
         [JsonProperty("accdnLH2RanksFullMasterRound")]
-        public AccdnCombDot AccdnLh2RanksFullMasterRound { get; set; }
+        public BoundingBox AccdnLh2RanksFullMasterRound { get; set; }
 
         [JsonProperty("accdnLH2RanksMasterPlus16Round")]
-        public AccdnCombDot AccdnLh2RanksMasterPlus16Round { get; set; }
+        public BoundingBox AccdnLh2RanksMasterPlus16Round { get; set; }
 
         [JsonProperty("accdnLH2RanksMasterRound")]
-        public AccdnCombDot AccdnLh2RanksMasterRound { get; set; }
+        public BoundingBox AccdnLh2RanksMasterRound { get; set; }
 
         [JsonProperty("accdnLH3Ranks2Plus8Square")]
-        public AccdnCombDot AccdnLh3Ranks2Plus8Square { get; set; }
+        public BoundingBox AccdnLh3Ranks2Plus8Square { get; set; }
 
         [JsonProperty("accdnLH3Ranks2Square")]
-        public AccdnCombDot AccdnLh3Ranks2Square { get; set; }
+        public BoundingBox AccdnLh3Ranks2Square { get; set; }
 
         [JsonProperty("accdnLH3Ranks8Square")]
-        public AccdnCombDot AccdnLh3Ranks8Square { get; set; }
+        public BoundingBox AccdnLh3Ranks8Square { get; set; }
 
         [JsonProperty("accdnLH3RanksDouble8Square")]
-        public AccdnCombDot AccdnLh3RanksDouble8Square { get; set; }
+        public BoundingBox AccdnLh3RanksDouble8Square { get; set; }
 
         [JsonProperty("accdnLH3RanksTuttiSquare")]
-        public AccdnCombDot AccdnLh3RanksTuttiSquare { get; set; }
+        public BoundingBox AccdnLh3RanksTuttiSquare { get; set; }
 
         [JsonProperty("accdnPull")]
-        public AccdnCombDot AccdnPull { get; set; }
+        public BoundingBox AccdnPull { get; set; }
 
         [JsonProperty("accdnPush")]
-        public AccdnCombDot AccdnPush { get; set; }
+        public BoundingBox AccdnPush { get; set; }
 
         [JsonProperty("accdnPushAlt")]
-        public AccdnCombDot AccdnPushAlt { get; set; }
+        public BoundingBox AccdnPushAlt { get; set; }
 
         [JsonProperty("accdnRH3RanksAccordion")]
-        public AccdnCombDot AccdnRh3RanksAccordion { get; set; }
+        public BoundingBox AccdnRh3RanksAccordion { get; set; }
 
         [JsonProperty("accdnRH3RanksAuthenticMusette")]
-        public AccdnCombDot AccdnRh3RanksAuthenticMusette { get; set; }
+        public BoundingBox AccdnRh3RanksAuthenticMusette { get; set; }
 
         [JsonProperty("accdnRH3RanksBandoneon")]
-        public AccdnCombDot AccdnRh3RanksBandoneon { get; set; }
+        public BoundingBox AccdnRh3RanksBandoneon { get; set; }
 
         [JsonProperty("accdnRH3RanksBassoon")]
-        public AccdnCombDot AccdnRh3RanksBassoon { get; set; }
+        public BoundingBox AccdnRh3RanksBassoon { get; set; }
 
         [JsonProperty("accdnRH3RanksClarinet")]
-        public AccdnCombDot AccdnRh3RanksClarinet { get; set; }
+        public BoundingBox AccdnRh3RanksClarinet { get; set; }
 
         [JsonProperty("accdnRH3RanksDoubleTremoloLower8ve")]
-        public AccdnCombDot AccdnRh3RanksDoubleTremoloLower8Ve { get; set; }
+        public BoundingBox AccdnRh3RanksDoubleTremoloLower8Ve { get; set; }
 
         [JsonProperty("accdnRH3RanksDoubleTremoloUpper8ve")]
-        public AccdnCombDot AccdnRh3RanksDoubleTremoloUpper8Ve { get; set; }
+        public BoundingBox AccdnRh3RanksDoubleTremoloUpper8Ve { get; set; }
 
         [JsonProperty("accdnRH3RanksFullFactory")]
-        public AccdnCombDot AccdnRh3RanksFullFactory { get; set; }
+        public BoundingBox AccdnRh3RanksFullFactory { get; set; }
 
         [JsonProperty("accdnRH3RanksHarmonium")]
-        public AccdnCombDot AccdnRh3RanksHarmonium { get; set; }
+        public BoundingBox AccdnRh3RanksHarmonium { get; set; }
 
         [JsonProperty("accdnRH3RanksImitationMusette")]
-        public AccdnCombDot AccdnRh3RanksImitationMusette { get; set; }
+        public BoundingBox AccdnRh3RanksImitationMusette { get; set; }
 
         [JsonProperty("accdnRH3RanksLowerTremolo8")]
-        public AccdnCombDot AccdnRh3RanksLowerTremolo8 { get; set; }
+        public BoundingBox AccdnRh3RanksLowerTremolo8 { get; set; }
 
         [JsonProperty("accdnRH3RanksMaster")]
-        public AccdnCombDot AccdnRh3RanksMaster { get; set; }
+        public BoundingBox AccdnRh3RanksMaster { get; set; }
 
         [JsonProperty("accdnRH3RanksOboe")]
-        public AccdnCombDot AccdnRh3RanksOboe { get; set; }
+        public BoundingBox AccdnRh3RanksOboe { get; set; }
 
         [JsonProperty("accdnRH3RanksOrgan")]
-        public AccdnCombDot AccdnRh3RanksOrgan { get; set; }
+        public BoundingBox AccdnRh3RanksOrgan { get; set; }
 
         [JsonProperty("accdnRH3RanksPiccolo")]
-        public AccdnCombDot AccdnRh3RanksPiccolo { get; set; }
+        public BoundingBox AccdnRh3RanksPiccolo { get; set; }
 
         [JsonProperty("accdnRH3RanksTremoloLower8ve")]
-        public AccdnCombDot AccdnRh3RanksTremoloLower8Ve { get; set; }
+        public BoundingBox AccdnRh3RanksTremoloLower8Ve { get; set; }
 
         [JsonProperty("accdnRH3RanksTremoloUpper8ve")]
-        public AccdnCombDot AccdnRh3RanksTremoloUpper8Ve { get; set; }
+        public BoundingBox AccdnRh3RanksTremoloUpper8Ve { get; set; }
 
         [JsonProperty("accdnRH3RanksTwoChoirs")]
-        public AccdnCombDot AccdnRh3RanksTwoChoirs { get; set; }
+        public BoundingBox AccdnRh3RanksTwoChoirs { get; set; }
 
         [JsonProperty("accdnRH3RanksUpperTremolo8")]
-        public AccdnCombDot AccdnRh3RanksUpperTremolo8 { get; set; }
+        public BoundingBox AccdnRh3RanksUpperTremolo8 { get; set; }
 
         [JsonProperty("accdnRH3RanksViolin")]
-        public AccdnCombDot AccdnRh3RanksViolin { get; set; }
+        public BoundingBox AccdnRh3RanksViolin { get; set; }
 
         [JsonProperty("accdnRH4RanksAlto")]
-        public AccdnCombDot AccdnRh4RanksAlto { get; set; }
+        public BoundingBox AccdnRh4RanksAlto { get; set; }
 
         [JsonProperty("accdnRH4RanksBassAlto")]
-        public AccdnCombDot AccdnRh4RanksBassAlto { get; set; }
+        public BoundingBox AccdnRh4RanksBassAlto { get; set; }
 
         [JsonProperty("accdnRH4RanksMaster")]
-        public AccdnCombDot AccdnRh4RanksMaster { get; set; }
+        public BoundingBox AccdnRh4RanksMaster { get; set; }
 
         [JsonProperty("accdnRH4RanksSoftBass")]
-        public AccdnCombDot AccdnRh4RanksSoftBass { get; set; }
+        public BoundingBox AccdnRh4RanksSoftBass { get; set; }
 
         [JsonProperty("accdnRH4RanksSoftTenor")]
-        public AccdnCombDot AccdnRh4RanksSoftTenor { get; set; }
+        public BoundingBox AccdnRh4RanksSoftTenor { get; set; }
 
         [JsonProperty("accdnRH4RanksSoprano")]
-        public AccdnCombDot AccdnRh4RanksSoprano { get; set; }
+        public BoundingBox AccdnRh4RanksSoprano { get; set; }
 
         [JsonProperty("accdnRH4RanksTenor")]
-        public AccdnCombDot AccdnRh4RanksTenor { get; set; }
+        public BoundingBox AccdnRh4RanksTenor { get; set; }
 
         [JsonProperty("accdnRicochet2")]
-        public AccdnCombDot AccdnRicochet2 { get; set; }
+        public BoundingBox AccdnRicochet2 { get; set; }
 
         [JsonProperty("accdnRicochet3")]
-        public AccdnCombDot AccdnRicochet3 { get; set; }
+        public BoundingBox AccdnRicochet3 { get; set; }
 
         [JsonProperty("accdnRicochet4")]
-        public AccdnCombDot AccdnRicochet4 { get; set; }
+        public BoundingBox AccdnRicochet4 { get; set; }
 
         [JsonProperty("accdnRicochet5")]
-        public AccdnCombDot AccdnRicochet5 { get; set; }
+        public BoundingBox AccdnRicochet5 { get; set; }
 
         [JsonProperty("accdnRicochet6")]
-        public AccdnCombDot AccdnRicochet6 { get; set; }
+        public BoundingBox AccdnRicochet6 { get; set; }
 
         [JsonProperty("accdnRicochetStem2")]
         public Dictionary<string, double[]> AccdnRicochetStem2 { get; set; }
@@ -869,10 +869,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> AccidentalBakiyeSharp { get; set; }
 
         [JsonProperty("accidentalBracketLeft")]
-        public AccdnCombDot AccidentalBracketLeft { get; set; }
+        public BoundingBox AccidentalBracketLeft { get; set; }
 
         [JsonProperty("accidentalBracketRight")]
-        public AccdnCombDot AccidentalBracketRight { get; set; }
+        public BoundingBox AccidentalBracketRight { get; set; }
 
         [JsonProperty("accidentalBuyukMucennebFlat")]
         public Dictionary<string, double[]> AccidentalBuyukMucennebFlat { get; set; }
@@ -1568,43 +1568,43 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> AccidentalXenakisTwoThirdTonesSharp { get; set; }
 
         [JsonProperty("analyticsChoralmelodie")]
-        public AccdnCombDot AnalyticsChoralmelodie { get; set; }
+        public BoundingBox AnalyticsChoralmelodie { get; set; }
 
         [JsonProperty("analyticsEndStimme")]
-        public AccdnCombDot AnalyticsEndStimme { get; set; }
+        public BoundingBox AnalyticsEndStimme { get; set; }
 
         [JsonProperty("analyticsHauptrhythmus")]
-        public AccdnCombDot AnalyticsHauptrhythmus { get; set; }
+        public BoundingBox AnalyticsHauptrhythmus { get; set; }
 
         [JsonProperty("analyticsHauptrhythmusR")]
-        public AccdnCombDot AnalyticsHauptrhythmusR { get; set; }
+        public BoundingBox AnalyticsHauptrhythmusR { get; set; }
 
         [JsonProperty("analyticsHauptstimme")]
-        public AccdnCombDot AnalyticsHauptstimme { get; set; }
+        public BoundingBox AnalyticsHauptstimme { get; set; }
 
         [JsonProperty("analyticsInversion1")]
-        public AccdnCombDot AnalyticsInversion1 { get; set; }
+        public BoundingBox AnalyticsInversion1 { get; set; }
 
         [JsonProperty("analyticsNebenstimme")]
         public Dictionary<string, double[]> AnalyticsNebenstimme { get; set; }
 
         [JsonProperty("analyticsStartStimme")]
-        public AccdnCombDot AnalyticsStartStimme { get; set; }
+        public BoundingBox AnalyticsStartStimme { get; set; }
 
         [JsonProperty("analyticsTheme")]
-        public AccdnCombDot AnalyticsTheme { get; set; }
+        public BoundingBox AnalyticsTheme { get; set; }
 
         [JsonProperty("analyticsTheme1")]
-        public AccdnCombDot AnalyticsTheme1 { get; set; }
+        public BoundingBox AnalyticsTheme1 { get; set; }
 
         [JsonProperty("analyticsThemeInversion")]
-        public AccdnCombDot AnalyticsThemeInversion { get; set; }
+        public BoundingBox AnalyticsThemeInversion { get; set; }
 
         [JsonProperty("analyticsThemeRetrograde")]
-        public AccdnCombDot AnalyticsThemeRetrograde { get; set; }
+        public BoundingBox AnalyticsThemeRetrograde { get; set; }
 
         [JsonProperty("analyticsThemeRetrogradeInversion")]
-        public AccdnCombDot AnalyticsThemeRetrogradeInversion { get; set; }
+        public BoundingBox AnalyticsThemeRetrogradeInversion { get; set; }
 
         [JsonProperty("arpeggiatoDown")]
         public Dictionary<string, double[]> ArpeggiatoDown { get; set; }
@@ -1613,7 +1613,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArpeggiatoUp { get; set; }
 
         [JsonProperty("arrowBlackDown")]
-        public AccdnCombDot ArrowBlackDown { get; set; }
+        public BoundingBox ArrowBlackDown { get; set; }
 
         [JsonProperty("arrowBlackDownLeft")]
         public Dictionary<string, double[]> ArrowBlackDownLeft { get; set; }
@@ -1628,7 +1628,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowBlackRight { get; set; }
 
         [JsonProperty("arrowBlackUp")]
-        public AccdnCombDot ArrowBlackUp { get; set; }
+        public BoundingBox ArrowBlackUp { get; set; }
 
         [JsonProperty("arrowBlackUpLeft")]
         public Dictionary<string, double[]> ArrowBlackUpLeft { get; set; }
@@ -1637,7 +1637,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowBlackUpRight { get; set; }
 
         [JsonProperty("arrowOpenDown")]
-        public AccdnCombDot ArrowOpenDown { get; set; }
+        public BoundingBox ArrowOpenDown { get; set; }
 
         [JsonProperty("arrowOpenDownLeft")]
         public Dictionary<string, double[]> ArrowOpenDownLeft { get; set; }
@@ -1652,7 +1652,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowOpenRight { get; set; }
 
         [JsonProperty("arrowOpenUp")]
-        public AccdnCombDot ArrowOpenUp { get; set; }
+        public BoundingBox ArrowOpenUp { get; set; }
 
         [JsonProperty("arrowOpenUpLeft")]
         public Dictionary<string, double[]> ArrowOpenUpLeft { get; set; }
@@ -1661,7 +1661,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowOpenUpRight { get; set; }
 
         [JsonProperty("arrowWhiteDown")]
-        public AccdnCombDot ArrowWhiteDown { get; set; }
+        public BoundingBox ArrowWhiteDown { get; set; }
 
         [JsonProperty("arrowWhiteDownLeft")]
         public Dictionary<string, double[]> ArrowWhiteDownLeft { get; set; }
@@ -1676,7 +1676,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowWhiteRight { get; set; }
 
         [JsonProperty("arrowWhiteUp")]
-        public AccdnCombDot ArrowWhiteUp { get; set; }
+        public BoundingBox ArrowWhiteUp { get; set; }
 
         [JsonProperty("arrowWhiteUpLeft")]
         public Dictionary<string, double[]> ArrowWhiteUpLeft { get; set; }
@@ -1685,7 +1685,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowWhiteUpRight { get; set; }
 
         [JsonProperty("arrowheadBlackDown")]
-        public AccdnCombDot ArrowheadBlackDown { get; set; }
+        public BoundingBox ArrowheadBlackDown { get; set; }
 
         [JsonProperty("arrowheadBlackDownLeft")]
         public Dictionary<string, double[]> ArrowheadBlackDownLeft { get; set; }
@@ -1694,13 +1694,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowheadBlackDownRight { get; set; }
 
         [JsonProperty("arrowheadBlackLeft")]
-        public AccdnCombDot ArrowheadBlackLeft { get; set; }
+        public BoundingBox ArrowheadBlackLeft { get; set; }
 
         [JsonProperty("arrowheadBlackRight")]
-        public AccdnCombDot ArrowheadBlackRight { get; set; }
+        public BoundingBox ArrowheadBlackRight { get; set; }
 
         [JsonProperty("arrowheadBlackUp")]
-        public AccdnCombDot ArrowheadBlackUp { get; set; }
+        public BoundingBox ArrowheadBlackUp { get; set; }
 
         [JsonProperty("arrowheadBlackUpLeft")]
         public Dictionary<string, double[]> ArrowheadBlackUpLeft { get; set; }
@@ -1709,31 +1709,31 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowheadBlackUpRight { get; set; }
 
         [JsonProperty("arrowheadOpenDown")]
-        public AccdnCombDot ArrowheadOpenDown { get; set; }
+        public BoundingBox ArrowheadOpenDown { get; set; }
 
         [JsonProperty("arrowheadOpenDownLeft")]
-        public AccdnCombDot ArrowheadOpenDownLeft { get; set; }
+        public BoundingBox ArrowheadOpenDownLeft { get; set; }
 
         [JsonProperty("arrowheadOpenDownRight")]
-        public AccdnCombDot ArrowheadOpenDownRight { get; set; }
+        public BoundingBox ArrowheadOpenDownRight { get; set; }
 
         [JsonProperty("arrowheadOpenLeft")]
-        public AccdnCombDot ArrowheadOpenLeft { get; set; }
+        public BoundingBox ArrowheadOpenLeft { get; set; }
 
         [JsonProperty("arrowheadOpenRight")]
-        public AccdnCombDot ArrowheadOpenRight { get; set; }
+        public BoundingBox ArrowheadOpenRight { get; set; }
 
         [JsonProperty("arrowheadOpenUp")]
-        public AccdnCombDot ArrowheadOpenUp { get; set; }
+        public BoundingBox ArrowheadOpenUp { get; set; }
 
         [JsonProperty("arrowheadOpenUpLeft")]
-        public AccdnCombDot ArrowheadOpenUpLeft { get; set; }
+        public BoundingBox ArrowheadOpenUpLeft { get; set; }
 
         [JsonProperty("arrowheadOpenUpRight")]
-        public AccdnCombDot ArrowheadOpenUpRight { get; set; }
+        public BoundingBox ArrowheadOpenUpRight { get; set; }
 
         [JsonProperty("arrowheadWhiteDown")]
-        public AccdnCombDot ArrowheadWhiteDown { get; set; }
+        public BoundingBox ArrowheadWhiteDown { get; set; }
 
         [JsonProperty("arrowheadWhiteDownLeft")]
         public Dictionary<string, double[]> ArrowheadWhiteDownLeft { get; set; }
@@ -1742,13 +1742,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArrowheadWhiteDownRight { get; set; }
 
         [JsonProperty("arrowheadWhiteLeft")]
-        public AccdnCombDot ArrowheadWhiteLeft { get; set; }
+        public BoundingBox ArrowheadWhiteLeft { get; set; }
 
         [JsonProperty("arrowheadWhiteRight")]
-        public AccdnCombDot ArrowheadWhiteRight { get; set; }
+        public BoundingBox ArrowheadWhiteRight { get; set; }
 
         [JsonProperty("arrowheadWhiteUp")]
-        public AccdnCombDot ArrowheadWhiteUp { get; set; }
+        public BoundingBox ArrowheadWhiteUp { get; set; }
 
         [JsonProperty("arrowheadWhiteUpLeft")]
         public Dictionary<string, double[]> ArrowheadWhiteUpLeft { get; set; }
@@ -1763,7 +1763,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticAccentAboveLarge { get; set; }
 
         [JsonProperty("articAccentAboveSmall")]
-        public AccdnCombDot ArticAccentAboveSmall { get; set; }
+        public BoundingBox ArticAccentAboveSmall { get; set; }
 
         [JsonProperty("articAccentBelow")]
         public Dictionary<string, double[]> ArticAccentBelow { get; set; }
@@ -1775,10 +1775,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticAccentBelowSmall { get; set; }
 
         [JsonProperty("articAccentStaccatoAbove")]
-        public AccdnCombDot ArticAccentStaccatoAbove { get; set; }
+        public BoundingBox ArticAccentStaccatoAbove { get; set; }
 
         [JsonProperty("articAccentStaccatoAboveSmall")]
-        public AccdnCombDot ArticAccentStaccatoAboveSmall { get; set; }
+        public BoundingBox ArticAccentStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articAccentStaccatoBelow")]
         public Dictionary<string, double[]> ArticAccentStaccatoBelow { get; set; }
@@ -1808,7 +1808,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticMarcatoStaccatoAbove { get; set; }
 
         [JsonProperty("articMarcatoStaccatoAboveSmall")]
-        public AccdnCombDot ArticMarcatoStaccatoAboveSmall { get; set; }
+        public BoundingBox ArticMarcatoStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articMarcatoStaccatoBelow")]
         public Dictionary<string, double[]> ArticMarcatoStaccatoBelow { get; set; }
@@ -1850,7 +1850,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticStaccatissimoAbove { get; set; }
 
         [JsonProperty("articStaccatissimoAboveSmall")]
-        public AccdnCombDot ArticStaccatissimoAboveSmall { get; set; }
+        public BoundingBox ArticStaccatissimoAboveSmall { get; set; }
 
         [JsonProperty("articStaccatissimoBelow")]
         public Dictionary<string, double[]> ArticStaccatissimoBelow { get; set; }
@@ -1859,10 +1859,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticStaccatissimoBelowSmall { get; set; }
 
         [JsonProperty("articStaccatissimoStrokeAbove")]
-        public AccdnCombDot ArticStaccatissimoStrokeAbove { get; set; }
+        public BoundingBox ArticStaccatissimoStrokeAbove { get; set; }
 
         [JsonProperty("articStaccatissimoStrokeAboveSmall")]
-        public AccdnCombDot ArticStaccatissimoStrokeAboveSmall { get; set; }
+        public BoundingBox ArticStaccatissimoStrokeAboveSmall { get; set; }
 
         [JsonProperty("articStaccatissimoStrokeBelow")]
         public Dictionary<string, double[]> ArticStaccatissimoStrokeBelow { get; set; }
@@ -1874,7 +1874,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticStaccatissimoWedgeAbove { get; set; }
 
         [JsonProperty("articStaccatissimoWedgeAboveSmall")]
-        public AccdnCombDot ArticStaccatissimoWedgeAboveSmall { get; set; }
+        public BoundingBox ArticStaccatissimoWedgeAboveSmall { get; set; }
 
         [JsonProperty("articStaccatissimoWedgeBelow")]
         public Dictionary<string, double[]> ArticStaccatissimoWedgeBelow { get; set; }
@@ -1883,10 +1883,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticStaccatissimoWedgeBelowSmall { get; set; }
 
         [JsonProperty("articStaccatoAbove")]
-        public AccdnCombDot ArticStaccatoAbove { get; set; }
+        public BoundingBox ArticStaccatoAbove { get; set; }
 
         [JsonProperty("articStaccatoAboveSmall")]
-        public AccdnCombDot ArticStaccatoAboveSmall { get; set; }
+        public BoundingBox ArticStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articStaccatoBelow")]
         public Dictionary<string, double[]> ArticStaccatoBelow { get; set; }
@@ -1904,13 +1904,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticTenutoAbove { get; set; }
 
         [JsonProperty("articTenutoAboveSmall")]
-        public AccdnCombDot ArticTenutoAboveSmall { get; set; }
+        public BoundingBox ArticTenutoAboveSmall { get; set; }
 
         [JsonProperty("articTenutoAccentAbove")]
         public Dictionary<string, double[]> ArticTenutoAccentAbove { get; set; }
 
         [JsonProperty("articTenutoAccentAboveSmall")]
-        public AccdnCombDot ArticTenutoAccentAboveSmall { get; set; }
+        public BoundingBox ArticTenutoAccentAboveSmall { get; set; }
 
         [JsonProperty("articTenutoAccentBelow")]
         public Dictionary<string, double[]> ArticTenutoAccentBelow { get; set; }
@@ -1928,7 +1928,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticTenutoStaccatoAbove { get; set; }
 
         [JsonProperty("articTenutoStaccatoAboveSmall")]
-        public AccdnCombDot ArticTenutoStaccatoAboveSmall { get; set; }
+        public BoundingBox ArticTenutoStaccatoAboveSmall { get; set; }
 
         [JsonProperty("articTenutoStaccatoBelow")]
         public Dictionary<string, double[]> ArticTenutoStaccatoBelow { get; set; }
@@ -1937,7 +1937,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ArticTenutoStaccatoBelowSmall { get; set; }
 
         [JsonProperty("articUnstressAbove")]
-        public AccdnCombDot ArticUnstressAbove { get; set; }
+        public BoundingBox ArticUnstressAbove { get; set; }
 
         [JsonProperty("articUnstressBelow")]
         public Dictionary<string, double[]> ArticUnstressBelow { get; set; }
@@ -1946,79 +1946,79 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> AugmentationDot { get; set; }
 
         [JsonProperty("barlineDashed")]
-        public AccdnCombDot BarlineDashed { get; set; }
+        public BoundingBox BarlineDashed { get; set; }
 
         [JsonProperty("barlineDotted")]
-        public AccdnCombDot BarlineDotted { get; set; }
+        public BoundingBox BarlineDotted { get; set; }
 
         [JsonProperty("barlineDouble")]
-        public AccdnCombDot BarlineDouble { get; set; }
+        public BoundingBox BarlineDouble { get; set; }
 
         [JsonProperty("barlineFinal")]
-        public AccdnCombDot BarlineFinal { get; set; }
+        public BoundingBox BarlineFinal { get; set; }
 
         [JsonProperty("barlineHeavy")]
-        public AccdnCombDot BarlineHeavy { get; set; }
+        public BoundingBox BarlineHeavy { get; set; }
 
         [JsonProperty("barlineHeavyHeavy")]
-        public AccdnCombDot BarlineHeavyHeavy { get; set; }
+        public BoundingBox BarlineHeavyHeavy { get; set; }
 
         [JsonProperty("barlineReverseFinal")]
-        public AccdnCombDot BarlineReverseFinal { get; set; }
+        public BoundingBox BarlineReverseFinal { get; set; }
 
         [JsonProperty("barlineShort")]
         public Dictionary<string, double[]> BarlineShort { get; set; }
 
         [JsonProperty("barlineSingle")]
-        public AccdnCombDot BarlineSingle { get; set; }
+        public BoundingBox BarlineSingle { get; set; }
 
         [JsonProperty("barlineTick")]
         public Dictionary<string, double[]> BarlineTick { get; set; }
 
         [JsonProperty("beamAccelRit1")]
-        public AccdnCombDot BeamAccelRit1 { get; set; }
+        public BoundingBox BeamAccelRit1 { get; set; }
 
         [JsonProperty("beamAccelRit10")]
-        public AccdnCombDot BeamAccelRit10 { get; set; }
+        public BoundingBox BeamAccelRit10 { get; set; }
 
         [JsonProperty("beamAccelRit11")]
-        public AccdnCombDot BeamAccelRit11 { get; set; }
+        public BoundingBox BeamAccelRit11 { get; set; }
 
         [JsonProperty("beamAccelRit12")]
-        public AccdnCombDot BeamAccelRit12 { get; set; }
+        public BoundingBox BeamAccelRit12 { get; set; }
 
         [JsonProperty("beamAccelRit13")]
-        public AccdnCombDot BeamAccelRit13 { get; set; }
+        public BoundingBox BeamAccelRit13 { get; set; }
 
         [JsonProperty("beamAccelRit14")]
-        public AccdnCombDot BeamAccelRit14 { get; set; }
+        public BoundingBox BeamAccelRit14 { get; set; }
 
         [JsonProperty("beamAccelRit15")]
-        public AccdnCombDot BeamAccelRit15 { get; set; }
+        public BoundingBox BeamAccelRit15 { get; set; }
 
         [JsonProperty("beamAccelRit2")]
-        public AccdnCombDot BeamAccelRit2 { get; set; }
+        public BoundingBox BeamAccelRit2 { get; set; }
 
         [JsonProperty("beamAccelRit3")]
-        public AccdnCombDot BeamAccelRit3 { get; set; }
+        public BoundingBox BeamAccelRit3 { get; set; }
 
         [JsonProperty("beamAccelRit4")]
-        public AccdnCombDot BeamAccelRit4 { get; set; }
+        public BoundingBox BeamAccelRit4 { get; set; }
 
         [JsonProperty("beamAccelRit5")]
-        public AccdnCombDot BeamAccelRit5 { get; set; }
+        public BoundingBox BeamAccelRit5 { get; set; }
 
         [JsonProperty("beamAccelRit6")]
-        public AccdnCombDot BeamAccelRit6 { get; set; }
+        public BoundingBox BeamAccelRit6 { get; set; }
 
         [JsonProperty("beamAccelRit7")]
-        public AccdnCombDot BeamAccelRit7 { get; set; }
+        public BoundingBox BeamAccelRit7 { get; set; }
 
         [JsonProperty("beamAccelRit8")]
-        public AccdnCombDot BeamAccelRit8 { get; set; }
+        public BoundingBox BeamAccelRit8 { get; set; }
 
         [JsonProperty("beamAccelRit9")]
-        public AccdnCombDot BeamAccelRit9 { get; set; }
+        public BoundingBox BeamAccelRit9 { get; set; }
 
         [JsonProperty("beamAccelRitFinal")]
         public Dictionary<string, double[]> BeamAccelRitFinal { get; set; }
@@ -2033,10 +2033,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> BraceLarge { get; set; }
 
         [JsonProperty("braceLarger")]
-        public AccdnCombDot BraceLarger { get; set; }
+        public BoundingBox BraceLarger { get; set; }
 
         [JsonProperty("braceSmall")]
-        public AccdnCombDot BraceSmall { get; set; }
+        public BoundingBox BraceSmall { get; set; }
 
         [JsonProperty("bracket")]
         public Dictionary<string, double[]> Bracket { get; set; }
@@ -2045,49 +2045,49 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> BracketBottom { get; set; }
 
         [JsonProperty("bracketTop")]
-        public AccdnCombDot BracketTop { get; set; }
+        public BoundingBox BracketTop { get; set; }
 
         [JsonProperty("brassBend")]
-        public AccdnCombDot BrassBend { get; set; }
+        public BoundingBox BrassBend { get; set; }
 
         [JsonProperty("brassDoitLong")]
-        public AccdnCombDot BrassDoitLong { get; set; }
+        public BoundingBox BrassDoitLong { get; set; }
 
         [JsonProperty("brassDoitMedium")]
-        public AccdnCombDot BrassDoitMedium { get; set; }
+        public BoundingBox BrassDoitMedium { get; set; }
 
         [JsonProperty("brassDoitShort")]
         public Dictionary<string, double[]> BrassDoitShort { get; set; }
 
         [JsonProperty("brassFallLipLong")]
-        public AccdnCombDot BrassFallLipLong { get; set; }
+        public BoundingBox BrassFallLipLong { get; set; }
 
         [JsonProperty("brassFallLipMedium")]
-        public AccdnCombDot BrassFallLipMedium { get; set; }
+        public BoundingBox BrassFallLipMedium { get; set; }
 
         [JsonProperty("brassFallLipShort")]
         public Dictionary<string, double[]> BrassFallLipShort { get; set; }
 
         [JsonProperty("brassFallRoughLong")]
-        public AccdnCombDot BrassFallRoughLong { get; set; }
+        public BoundingBox BrassFallRoughLong { get; set; }
 
         [JsonProperty("brassFallRoughMedium")]
-        public AccdnCombDot BrassFallRoughMedium { get; set; }
+        public BoundingBox BrassFallRoughMedium { get; set; }
 
         [JsonProperty("brassFallRoughShort")]
-        public AccdnCombDot BrassFallRoughShort { get; set; }
+        public BoundingBox BrassFallRoughShort { get; set; }
 
         [JsonProperty("brassFallSmoothLong")]
         public Dictionary<string, double[]> BrassFallSmoothLong { get; set; }
 
         [JsonProperty("brassFallSmoothMedium")]
-        public AccdnCombDot BrassFallSmoothMedium { get; set; }
+        public BoundingBox BrassFallSmoothMedium { get; set; }
 
         [JsonProperty("brassFallSmoothShort")]
         public Dictionary<string, double[]> BrassFallSmoothShort { get; set; }
 
         [JsonProperty("brassFlip")]
-        public AccdnCombDot BrassFlip { get; set; }
+        public BoundingBox BrassFlip { get; set; }
 
         [JsonProperty("brassHarmonMuteClosed")]
         public Dictionary<string, double[]> BrassHarmonMuteClosed { get; set; }
@@ -2102,34 +2102,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> BrassHarmonMuteStemOpen { get; set; }
 
         [JsonProperty("brassJazzTurn")]
-        public AccdnCombDot BrassJazzTurn { get; set; }
+        public BoundingBox BrassJazzTurn { get; set; }
 
         [JsonProperty("brassLiftLong")]
-        public AccdnCombDot BrassLiftLong { get; set; }
+        public BoundingBox BrassLiftLong { get; set; }
 
         [JsonProperty("brassLiftMedium")]
-        public AccdnCombDot BrassLiftMedium { get; set; }
+        public BoundingBox BrassLiftMedium { get; set; }
 
         [JsonProperty("brassLiftShort")]
-        public AccdnCombDot BrassLiftShort { get; set; }
+        public BoundingBox BrassLiftShort { get; set; }
 
         [JsonProperty("brassLiftSmoothLong")]
         public Dictionary<string, double[]> BrassLiftSmoothLong { get; set; }
 
         [JsonProperty("brassLiftSmoothMedium")]
-        public AccdnCombDot BrassLiftSmoothMedium { get; set; }
+        public BoundingBox BrassLiftSmoothMedium { get; set; }
 
         [JsonProperty("brassLiftSmoothShort")]
         public Dictionary<string, double[]> BrassLiftSmoothShort { get; set; }
 
         [JsonProperty("brassMuteClosed")]
-        public AccdnCombDot BrassMuteClosed { get; set; }
+        public BoundingBox BrassMuteClosed { get; set; }
 
         [JsonProperty("brassMuteHalfClosed")]
         public Dictionary<string, double[]> BrassMuteHalfClosed { get; set; }
 
         [JsonProperty("brassMuteOpen")]
-        public AccdnCombDot BrassMuteOpen { get; set; }
+        public BoundingBox BrassMuteOpen { get; set; }
 
         [JsonProperty("brassPlop")]
         public Dictionary<string, double[]> BrassPlop { get; set; }
@@ -2141,7 +2141,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> BrassSmear { get; set; }
 
         [JsonProperty("brassValveTrill")]
-        public AccdnCombDot BrassValveTrill { get; set; }
+        public BoundingBox BrassValveTrill { get; set; }
 
         [JsonProperty("breathMarkComma")]
         public Dictionary<string, double[]> BreathMarkComma { get; set; }
@@ -2150,7 +2150,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> BreathMarkSalzedo { get; set; }
 
         [JsonProperty("breathMarkTick")]
-        public AccdnCombDot BreathMarkTick { get; set; }
+        public BoundingBox BreathMarkTick { get; set; }
 
         [JsonProperty("breathMarkUpbow")]
         public Dictionary<string, double[]> BreathMarkUpbow { get; set; }
@@ -2201,16 +2201,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Caesura { get; set; }
 
         [JsonProperty("caesuraCurved")]
-        public AccdnCombDot CaesuraCurved { get; set; }
+        public BoundingBox CaesuraCurved { get; set; }
 
         [JsonProperty("caesuraShort")]
-        public AccdnCombDot CaesuraShort { get; set; }
+        public BoundingBox CaesuraShort { get; set; }
 
         [JsonProperty("caesuraSingleStroke")]
         public Dictionary<string, double[]> CaesuraSingleStroke { get; set; }
 
         [JsonProperty("caesuraThick")]
-        public AccdnCombDot CaesuraThick { get; set; }
+        public BoundingBox CaesuraThick { get; set; }
 
         [JsonProperty("chantAccentusAbove")]
         public Dictionary<string, double[]> ChantAccentusAbove { get; set; }
@@ -2285,13 +2285,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ChantDivisioFinalis { get; set; }
 
         [JsonProperty("chantDivisioMaior")]
-        public AccdnCombDot ChantDivisioMaior { get; set; }
+        public BoundingBox ChantDivisioMaior { get; set; }
 
         [JsonProperty("chantDivisioMaxima")]
         public Dictionary<string, double[]> ChantDivisioMaxima { get; set; }
 
         [JsonProperty("chantDivisioMinima")]
-        public AccdnCombDot ChantDivisioMinima { get; set; }
+        public BoundingBox ChantDivisioMinima { get; set; }
 
         [JsonProperty("chantEntryLineAsc2nd")]
         public Dictionary<string, double[]> ChantEntryLineAsc2Nd { get; set; }
@@ -2345,7 +2345,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ChantOriscusLiquescens { get; set; }
 
         [JsonProperty("chantPodatusLower")]
-        public AccdnCombDot ChantPodatusLower { get; set; }
+        public BoundingBox ChantPodatusLower { get; set; }
 
         [JsonProperty("chantPodatusUpper")]
         public Dictionary<string, double[]> ChantPodatusUpper { get; set; }
@@ -2423,7 +2423,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Clef15 { get; set; }
 
         [JsonProperty("clef8")]
-        public AccdnCombDot Clef8 { get; set; }
+        public BoundingBox Clef8 { get; set; }
 
         [JsonProperty("coda")]
         public Dictionary<string, double[]> Coda { get; set; }
@@ -2435,49 +2435,49 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> CodaSquare { get; set; }
 
         [JsonProperty("conductorBeat2Compound")]
-        public AccdnCombDot ConductorBeat2Compound { get; set; }
+        public BoundingBox ConductorBeat2Compound { get; set; }
 
         [JsonProperty("conductorBeat2Simple")]
         public Dictionary<string, double[]> ConductorBeat2Simple { get; set; }
 
         [JsonProperty("conductorBeat3Compound")]
-        public AccdnCombDot ConductorBeat3Compound { get; set; }
+        public BoundingBox ConductorBeat3Compound { get; set; }
 
         [JsonProperty("conductorBeat3Simple")]
-        public AccdnCombDot ConductorBeat3Simple { get; set; }
+        public BoundingBox ConductorBeat3Simple { get; set; }
 
         [JsonProperty("conductorBeat4Compound")]
-        public AccdnCombDot ConductorBeat4Compound { get; set; }
+        public BoundingBox ConductorBeat4Compound { get; set; }
 
         [JsonProperty("conductorBeat4Simple")]
-        public AccdnCombDot ConductorBeat4Simple { get; set; }
+        public BoundingBox ConductorBeat4Simple { get; set; }
 
         [JsonProperty("conductorLeftBeat")]
-        public AccdnCombDot ConductorLeftBeat { get; set; }
+        public BoundingBox ConductorLeftBeat { get; set; }
 
         [JsonProperty("conductorRightBeat")]
-        public AccdnCombDot ConductorRightBeat { get; set; }
+        public BoundingBox ConductorRightBeat { get; set; }
 
         [JsonProperty("conductorStrongBeat")]
-        public AccdnCombDot ConductorStrongBeat { get; set; }
+        public BoundingBox ConductorStrongBeat { get; set; }
 
         [JsonProperty("conductorUnconducted")]
-        public AccdnCombDot ConductorUnconducted { get; set; }
+        public BoundingBox ConductorUnconducted { get; set; }
 
         [JsonProperty("conductorWeakBeat")]
-        public AccdnCombDot ConductorWeakBeat { get; set; }
+        public BoundingBox ConductorWeakBeat { get; set; }
 
         [JsonProperty("csymAugmented")]
-        public AccdnCombDot CsymAugmented { get; set; }
+        public BoundingBox CsymAugmented { get; set; }
 
         [JsonProperty("csymBracketLeftTall")]
-        public AccdnCombDot CsymBracketLeftTall { get; set; }
+        public BoundingBox CsymBracketLeftTall { get; set; }
 
         [JsonProperty("csymBracketRightTall")]
-        public AccdnCombDot CsymBracketRightTall { get; set; }
+        public BoundingBox CsymBracketRightTall { get; set; }
 
         [JsonProperty("csymDiminished")]
-        public AccdnCombDot CsymDiminished { get; set; }
+        public BoundingBox CsymDiminished { get; set; }
 
         [JsonProperty("csymHalfDiminished")]
         public Dictionary<string, double[]> CsymHalfDiminished { get; set; }
@@ -2495,7 +2495,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> CsymParensRightTall { get; set; }
 
         [JsonProperty("curlewSign")]
-        public AccdnCombDot CurlewSign { get; set; }
+        public BoundingBox CurlewSign { get; set; }
 
         [JsonProperty("daCapo")]
         public Dictionary<string, double[]> DaCapo { get; set; }
@@ -2504,55 +2504,55 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> DalSegno { get; set; }
 
         [JsonProperty("daseianExcellentes1")]
-        public AccdnCombDot DaseianExcellentes1 { get; set; }
+        public BoundingBox DaseianExcellentes1 { get; set; }
 
         [JsonProperty("daseianExcellentes2")]
-        public AccdnCombDot DaseianExcellentes2 { get; set; }
+        public BoundingBox DaseianExcellentes2 { get; set; }
 
         [JsonProperty("daseianExcellentes3")]
-        public AccdnCombDot DaseianExcellentes3 { get; set; }
+        public BoundingBox DaseianExcellentes3 { get; set; }
 
         [JsonProperty("daseianExcellentes4")]
         public Dictionary<string, double[]> DaseianExcellentes4 { get; set; }
 
         [JsonProperty("daseianFinales1")]
-        public AccdnCombDot DaseianFinales1 { get; set; }
+        public BoundingBox DaseianFinales1 { get; set; }
 
         [JsonProperty("daseianFinales2")]
-        public AccdnCombDot DaseianFinales2 { get; set; }
+        public BoundingBox DaseianFinales2 { get; set; }
 
         [JsonProperty("daseianFinales3")]
-        public AccdnCombDot DaseianFinales3 { get; set; }
+        public BoundingBox DaseianFinales3 { get; set; }
 
         [JsonProperty("daseianFinales4")]
         public Dictionary<string, double[]> DaseianFinales4 { get; set; }
 
         [JsonProperty("daseianGraves1")]
-        public AccdnCombDot DaseianGraves1 { get; set; }
+        public BoundingBox DaseianGraves1 { get; set; }
 
         [JsonProperty("daseianGraves2")]
-        public AccdnCombDot DaseianGraves2 { get; set; }
+        public BoundingBox DaseianGraves2 { get; set; }
 
         [JsonProperty("daseianGraves3")]
-        public AccdnCombDot DaseianGraves3 { get; set; }
+        public BoundingBox DaseianGraves3 { get; set; }
 
         [JsonProperty("daseianGraves4")]
         public Dictionary<string, double[]> DaseianGraves4 { get; set; }
 
         [JsonProperty("daseianResidua1")]
-        public AccdnCombDot DaseianResidua1 { get; set; }
+        public BoundingBox DaseianResidua1 { get; set; }
 
         [JsonProperty("daseianResidua2")]
-        public AccdnCombDot DaseianResidua2 { get; set; }
+        public BoundingBox DaseianResidua2 { get; set; }
 
         [JsonProperty("daseianSuperiores1")]
-        public AccdnCombDot DaseianSuperiores1 { get; set; }
+        public BoundingBox DaseianSuperiores1 { get; set; }
 
         [JsonProperty("daseianSuperiores2")]
-        public AccdnCombDot DaseianSuperiores2 { get; set; }
+        public BoundingBox DaseianSuperiores2 { get; set; }
 
         [JsonProperty("daseianSuperiores3")]
-        public AccdnCombDot DaseianSuperiores3 { get; set; }
+        public BoundingBox DaseianSuperiores3 { get; set; }
 
         [JsonProperty("daseianSuperiores4")]
         public Dictionary<string, double[]> DaseianSuperiores4 { get; set; }
@@ -2561,13 +2561,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> DoubleTongueAbove { get; set; }
 
         [JsonProperty("doubleTongueAboveNoSlur")]
-        public AccdnCombDot DoubleTongueAboveNoSlur { get; set; }
+        public BoundingBox DoubleTongueAboveNoSlur { get; set; }
 
         [JsonProperty("doubleTongueBelow")]
         public Dictionary<string, double[]> DoubleTongueBelow { get; set; }
 
         [JsonProperty("doubleTongueBelowNoSlur")]
-        public AccdnCombDot DoubleTongueBelowNoSlur { get; set; }
+        public BoundingBox DoubleTongueBelowNoSlur { get; set; }
 
         [JsonProperty("dynamicCombinedSeparatorColon")]
         public Dictionary<string, double[]> DynamicCombinedSeparatorColon { get; set; }
@@ -2609,10 +2609,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> DynamicForzando { get; set; }
 
         [JsonProperty("dynamicHairpinBracketLeft")]
-        public AccdnCombDot DynamicHairpinBracketLeft { get; set; }
+        public BoundingBox DynamicHairpinBracketLeft { get; set; }
 
         [JsonProperty("dynamicHairpinBracketRight")]
-        public AccdnCombDot DynamicHairpinBracketRight { get; set; }
+        public BoundingBox DynamicHairpinBracketRight { get; set; }
 
         [JsonProperty("dynamicHairpinParenthesisLeft")]
         public Dictionary<string, double[]> DynamicHairpinParenthesisLeft { get; set; }
@@ -2678,7 +2678,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> DynamicRinforzando2 { get; set; }
 
         [JsonProperty("dynamicRinforzandoSmall")]
-        public AccdnCombDot DynamicRinforzandoSmall { get; set; }
+        public BoundingBox DynamicRinforzandoSmall { get; set; }
 
         [JsonProperty("dynamicSforzando")]
         public Dictionary<string, double[]> DynamicSforzando { get; set; }
@@ -2711,13 +2711,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> DynamicZSmall { get; set; }
 
         [JsonProperty("elecAudioChannelsEight")]
-        public AccdnCombDot ElecAudioChannelsEight { get; set; }
+        public BoundingBox ElecAudioChannelsEight { get; set; }
 
         [JsonProperty("elecAudioChannelsFive")]
-        public AccdnCombDot ElecAudioChannelsFive { get; set; }
+        public BoundingBox ElecAudioChannelsFive { get; set; }
 
         [JsonProperty("elecAudioChannelsFour")]
-        public AccdnCombDot ElecAudioChannelsFour { get; set; }
+        public BoundingBox ElecAudioChannelsFour { get; set; }
 
         [JsonProperty("elecAudioChannelsOne")]
         public Dictionary<string, double[]> ElecAudioChannelsOne { get; set; }
@@ -2732,49 +2732,49 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ElecAudioChannelsThreeFrontal { get; set; }
 
         [JsonProperty("elecAudioChannelsThreeSurround")]
-        public AccdnCombDot ElecAudioChannelsThreeSurround { get; set; }
+        public BoundingBox ElecAudioChannelsThreeSurround { get; set; }
 
         [JsonProperty("elecAudioChannelsTwo")]
         public Dictionary<string, double[]> ElecAudioChannelsTwo { get; set; }
 
         [JsonProperty("elecAudioIn")]
-        public AccdnCombDot ElecAudioIn { get; set; }
+        public BoundingBox ElecAudioIn { get; set; }
 
         [JsonProperty("elecAudioMono")]
-        public AccdnCombDot ElecAudioMono { get; set; }
+        public BoundingBox ElecAudioMono { get; set; }
 
         [JsonProperty("elecAudioOut")]
-        public AccdnCombDot ElecAudioOut { get; set; }
+        public BoundingBox ElecAudioOut { get; set; }
 
         [JsonProperty("elecAudioStereo")]
-        public AccdnCombDot ElecAudioStereo { get; set; }
+        public BoundingBox ElecAudioStereo { get; set; }
 
         [JsonProperty("elecCamera")]
-        public AccdnCombDot ElecCamera { get; set; }
+        public BoundingBox ElecCamera { get; set; }
 
         [JsonProperty("elecDataIn")]
-        public AccdnCombDot ElecDataIn { get; set; }
+        public BoundingBox ElecDataIn { get; set; }
 
         [JsonProperty("elecDataOut")]
-        public AccdnCombDot ElecDataOut { get; set; }
+        public BoundingBox ElecDataOut { get; set; }
 
         [JsonProperty("elecDisc")]
         public Dictionary<string, long[]> ElecDisc { get; set; }
 
         [JsonProperty("elecDownload")]
-        public AccdnCombDot ElecDownload { get; set; }
+        public BoundingBox ElecDownload { get; set; }
 
         [JsonProperty("elecEject")]
         public Dictionary<string, double[]> ElecEject { get; set; }
 
         [JsonProperty("elecFastForward")]
-        public AccdnCombDot ElecFastForward { get; set; }
+        public BoundingBox ElecFastForward { get; set; }
 
         [JsonProperty("elecHeadphones")]
-        public AccdnCombDot ElecHeadphones { get; set; }
+        public BoundingBox ElecHeadphones { get; set; }
 
         [JsonProperty("elecHeadset")]
-        public AccdnCombDot ElecHeadset { get; set; }
+        public BoundingBox ElecHeadset { get; set; }
 
         [JsonProperty("elecLineIn")]
         public Dictionary<string, double[]> ElecLineIn { get; set; }
@@ -2783,106 +2783,106 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ElecLineOut { get; set; }
 
         [JsonProperty("elecLoop")]
-        public AccdnCombDot ElecLoop { get; set; }
+        public BoundingBox ElecLoop { get; set; }
 
         [JsonProperty("elecLoudspeaker")]
-        public AccdnCombDot ElecLoudspeaker { get; set; }
+        public BoundingBox ElecLoudspeaker { get; set; }
 
         [JsonProperty("elecMIDIController0")]
-        public AccdnCombDot ElecMidiController0 { get; set; }
+        public BoundingBox ElecMidiController0 { get; set; }
 
         [JsonProperty("elecMIDIController100")]
-        public AccdnCombDot ElecMidiController100 { get; set; }
+        public BoundingBox ElecMidiController100 { get; set; }
 
         [JsonProperty("elecMIDIController20")]
-        public AccdnCombDot ElecMidiController20 { get; set; }
+        public BoundingBox ElecMidiController20 { get; set; }
 
         [JsonProperty("elecMIDIController40")]
-        public AccdnCombDot ElecMidiController40 { get; set; }
+        public BoundingBox ElecMidiController40 { get; set; }
 
         [JsonProperty("elecMIDIController60")]
-        public AccdnCombDot ElecMidiController60 { get; set; }
+        public BoundingBox ElecMidiController60 { get; set; }
 
         [JsonProperty("elecMIDIController80")]
-        public AccdnCombDot ElecMidiController80 { get; set; }
+        public BoundingBox ElecMidiController80 { get; set; }
 
         [JsonProperty("elecMIDIIn")]
-        public AccdnCombDot ElecMidiIn { get; set; }
+        public BoundingBox ElecMidiIn { get; set; }
 
         [JsonProperty("elecMIDIOut")]
-        public AccdnCombDot ElecMidiOut { get; set; }
+        public BoundingBox ElecMidiOut { get; set; }
 
         [JsonProperty("elecMicrophone")]
-        public AccdnCombDot ElecMicrophone { get; set; }
+        public BoundingBox ElecMicrophone { get; set; }
 
         [JsonProperty("elecMicrophoneMute")]
-        public AccdnCombDot ElecMicrophoneMute { get; set; }
+        public BoundingBox ElecMicrophoneMute { get; set; }
 
         [JsonProperty("elecMicrophoneUnmute")]
-        public AccdnCombDot ElecMicrophoneUnmute { get; set; }
+        public BoundingBox ElecMicrophoneUnmute { get; set; }
 
         [JsonProperty("elecMixingConsole")]
-        public AccdnCombDot ElecMixingConsole { get; set; }
+        public BoundingBox ElecMixingConsole { get; set; }
 
         [JsonProperty("elecMonitor")]
-        public AccdnCombDot ElecMonitor { get; set; }
+        public BoundingBox ElecMonitor { get; set; }
 
         [JsonProperty("elecMute")]
-        public AccdnCombDot ElecMute { get; set; }
+        public BoundingBox ElecMute { get; set; }
 
         [JsonProperty("elecPause")]
-        public AccdnCombDot ElecPause { get; set; }
+        public BoundingBox ElecPause { get; set; }
 
         [JsonProperty("elecPlay")]
-        public AccdnCombDot ElecPlay { get; set; }
+        public BoundingBox ElecPlay { get; set; }
 
         [JsonProperty("elecPowerOnOff")]
-        public AccdnCombDot ElecPowerOnOff { get; set; }
+        public BoundingBox ElecPowerOnOff { get; set; }
 
         [JsonProperty("elecProjector")]
-        public AccdnCombDot ElecProjector { get; set; }
+        public BoundingBox ElecProjector { get; set; }
 
         [JsonProperty("elecReplay")]
-        public AccdnCombDot ElecReplay { get; set; }
+        public BoundingBox ElecReplay { get; set; }
 
         [JsonProperty("elecRewind")]
-        public AccdnCombDot ElecRewind { get; set; }
+        public BoundingBox ElecRewind { get; set; }
 
         [JsonProperty("elecShuffle")]
         public Dictionary<string, double[]> ElecShuffle { get; set; }
 
         [JsonProperty("elecSkipBackwards")]
-        public AccdnCombDot ElecSkipBackwards { get; set; }
+        public BoundingBox ElecSkipBackwards { get; set; }
 
         [JsonProperty("elecSkipForwards")]
-        public AccdnCombDot ElecSkipForwards { get; set; }
+        public BoundingBox ElecSkipForwards { get; set; }
 
         [JsonProperty("elecStop")]
-        public AccdnCombDot ElecStop { get; set; }
+        public BoundingBox ElecStop { get; set; }
 
         [JsonProperty("elecTape")]
-        public AccdnCombDot ElecTape { get; set; }
+        public BoundingBox ElecTape { get; set; }
 
         [JsonProperty("elecUSB")]
-        public AccdnCombDot ElecUsb { get; set; }
+        public BoundingBox ElecUsb { get; set; }
 
         [JsonProperty("elecUnmute")]
-        public AccdnCombDot ElecUnmute { get; set; }
+        public BoundingBox ElecUnmute { get; set; }
 
         [JsonProperty("elecUpload")]
-        public AccdnCombDot ElecUpload { get; set; }
+        public BoundingBox ElecUpload { get; set; }
 
         [JsonProperty("elecVideoCamera")]
         public Dictionary<string, double[]> ElecVideoCamera { get; set; }
 
         [JsonProperty("elecVideoIn")]
-        public AccdnCombDot ElecVideoIn { get; set; }
+        public BoundingBox ElecVideoIn { get; set; }
 
         [JsonProperty("elecVideoOut")]
-        public AccdnCombDot ElecVideoOut { get; set; }
+        public BoundingBox ElecVideoOut { get; set; }
 
         [JsonProperty("elecVolumeFader")]
-        public AccdnCombDot ElecVolumeFader { get; set; }
+        public BoundingBox ElecVolumeFader { get; set; }
 
         [JsonProperty("elecVolumeFaderThumb")]
         public Dictionary<string, double[]> ElecVolumeFaderThumb { get; set; }
@@ -2891,19 +2891,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ElecVolumeLevel0 { get; set; }
 
         [JsonProperty("elecVolumeLevel100")]
-        public AccdnCombDot ElecVolumeLevel100 { get; set; }
+        public BoundingBox ElecVolumeLevel100 { get; set; }
 
         [JsonProperty("elecVolumeLevel20")]
-        public AccdnCombDot ElecVolumeLevel20 { get; set; }
+        public BoundingBox ElecVolumeLevel20 { get; set; }
 
         [JsonProperty("elecVolumeLevel40")]
-        public AccdnCombDot ElecVolumeLevel40 { get; set; }
+        public BoundingBox ElecVolumeLevel40 { get; set; }
 
         [JsonProperty("elecVolumeLevel60")]
-        public AccdnCombDot ElecVolumeLevel60 { get; set; }
+        public BoundingBox ElecVolumeLevel60 { get; set; }
 
         [JsonProperty("elecVolumeLevel80")]
-        public AccdnCombDot ElecVolumeLevel80 { get; set; }
+        public BoundingBox ElecVolumeLevel80 { get; set; }
 
         [JsonProperty("fClef")]
         public Dictionary<string, double[]> FClef { get; set; }
@@ -2966,25 +2966,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> FermataLongHenzeBelow { get; set; }
 
         [JsonProperty("fermataShortAbove")]
-        public AccdnCombDot FermataShortAbove { get; set; }
+        public BoundingBox FermataShortAbove { get; set; }
 
         [JsonProperty("fermataShortBelow")]
         public Dictionary<string, double[]> FermataShortBelow { get; set; }
 
         [JsonProperty("fermataShortHenzeAbove")]
-        public AccdnCombDot FermataShortHenzeAbove { get; set; }
+        public BoundingBox FermataShortHenzeAbove { get; set; }
 
         [JsonProperty("fermataShortHenzeBelow")]
         public Dictionary<string, double[]> FermataShortHenzeBelow { get; set; }
 
         [JsonProperty("fermataVeryLongAbove")]
-        public AccdnCombDot FermataVeryLongAbove { get; set; }
+        public BoundingBox FermataVeryLongAbove { get; set; }
 
         [JsonProperty("fermataVeryLongBelow")]
         public Dictionary<string, double[]> FermataVeryLongBelow { get; set; }
 
         [JsonProperty("fermataVeryShortAbove")]
-        public AccdnCombDot FermataVeryShortAbove { get; set; }
+        public BoundingBox FermataVeryShortAbove { get; set; }
 
         [JsonProperty("fermataVeryShortBelow")]
         public Dictionary<string, double[]> FermataVeryShortBelow { get; set; }
@@ -3122,7 +3122,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> FingeringMLower { get; set; }
 
         [JsonProperty("fingeringMultipleNotes")]
-        public AccdnCombDot FingeringMultipleNotes { get; set; }
+        public BoundingBox FingeringMultipleNotes { get; set; }
 
         [JsonProperty("fingeringOLower")]
         public Dictionary<string, double[]> FingeringOLower { get; set; }
@@ -3197,7 +3197,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Flag16ThDownSmall { get; set; }
 
         [JsonProperty("flag16thDownStraight")]
-        public AccdnCombDot Flag16ThDownStraight { get; set; }
+        public BoundingBox Flag16ThDownStraight { get; set; }
 
         [JsonProperty("flag16thUp")]
         public Dictionary<string, double[]> Flag16ThUp { get; set; }
@@ -3260,7 +3260,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Flag512ThDownSmall { get; set; }
 
         [JsonProperty("flag512thDownStraight")]
-        public AccdnCombDot Flag512ThDownStraight { get; set; }
+        public BoundingBox Flag512ThDownStraight { get; set; }
 
         [JsonProperty("flag512thUp")]
         public Dictionary<string, double[]> Flag512ThUp { get; set; }
@@ -3302,7 +3302,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Flag8ThDownSmall { get; set; }
 
         [JsonProperty("flag8thDownStraight")]
-        public AccdnCombDot Flag8ThDownStraight { get; set; }
+        public BoundingBox Flag8ThDownStraight { get; set; }
 
         [JsonProperty("flag8thUp")]
         public Dictionary<string, double[]> Flag8ThUp { get; set; }
@@ -3323,37 +3323,37 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> FlagInternalUp { get; set; }
 
         [JsonProperty("fretboard3String")]
-        public AccdnCombDot Fretboard3String { get; set; }
+        public BoundingBox Fretboard3String { get; set; }
 
         [JsonProperty("fretboard3StringNut")]
-        public AccdnCombDot Fretboard3StringNut { get; set; }
+        public BoundingBox Fretboard3StringNut { get; set; }
 
         [JsonProperty("fretboard4String")]
-        public AccdnCombDot Fretboard4String { get; set; }
+        public BoundingBox Fretboard4String { get; set; }
 
         [JsonProperty("fretboard4StringNut")]
-        public AccdnCombDot Fretboard4StringNut { get; set; }
+        public BoundingBox Fretboard4StringNut { get; set; }
 
         [JsonProperty("fretboard5String")]
-        public AccdnCombDot Fretboard5String { get; set; }
+        public BoundingBox Fretboard5String { get; set; }
 
         [JsonProperty("fretboard5StringNut")]
         public Dictionary<string, double[]> Fretboard5StringNut { get; set; }
 
         [JsonProperty("fretboard6String")]
-        public AccdnCombDot Fretboard6String { get; set; }
+        public BoundingBox Fretboard6String { get; set; }
 
         [JsonProperty("fretboard6StringNut")]
-        public AccdnCombDot Fretboard6StringNut { get; set; }
+        public BoundingBox Fretboard6StringNut { get; set; }
 
         [JsonProperty("fretboardFilledCircle")]
-        public AccdnCombDot FretboardFilledCircle { get; set; }
+        public BoundingBox FretboardFilledCircle { get; set; }
 
         [JsonProperty("fretboardO")]
-        public AccdnCombDot FretboardO { get; set; }
+        public BoundingBox FretboardO { get; set; }
 
         [JsonProperty("fretboardX")]
-        public AccdnCombDot FretboardX { get; set; }
+        public BoundingBox FretboardX { get; set; }
 
         [JsonProperty("functionAngleLeft")]
         public Dictionary<string, double[]> FunctionAngleLeft { get; set; }
@@ -3764,7 +3764,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> GraceNoteSlashStemDown { get; set; }
 
         [JsonProperty("graceNoteSlashStemUp")]
-        public AccdnCombDot GraceNoteSlashStemUp { get; set; }
+        public BoundingBox GraceNoteSlashStemUp { get; set; }
 
         [JsonProperty("guitarBarreFull")]
         public Dictionary<string, double[]> GuitarBarreFull { get; set; }
@@ -3779,28 +3779,28 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> GuitarClosePedal { get; set; }
 
         [JsonProperty("guitarFadeIn")]
-        public AccdnCombDot GuitarFadeIn { get; set; }
+        public BoundingBox GuitarFadeIn { get; set; }
 
         [JsonProperty("guitarFadeOut")]
-        public AccdnCombDot GuitarFadeOut { get; set; }
+        public BoundingBox GuitarFadeOut { get; set; }
 
         [JsonProperty("guitarGolpe")]
         public Dictionary<string, double[]> GuitarGolpe { get; set; }
 
         [JsonProperty("guitarGolpeFlamenco")]
-        public AccdnCombDot GuitarGolpeFlamenco { get; set; }
+        public BoundingBox GuitarGolpeFlamenco { get; set; }
 
         [JsonProperty("guitarHalfOpenPedal")]
-        public AccdnCombDot GuitarHalfOpenPedal { get; set; }
+        public BoundingBox GuitarHalfOpenPedal { get; set; }
 
         [JsonProperty("guitarLeftHandTapping")]
         public Dictionary<string, double[]> GuitarLeftHandTapping { get; set; }
 
         [JsonProperty("guitarOpenPedal")]
-        public AccdnCombDot GuitarOpenPedal { get; set; }
+        public BoundingBox GuitarOpenPedal { get; set; }
 
         [JsonProperty("guitarRightHandTapping")]
-        public AccdnCombDot GuitarRightHandTapping { get; set; }
+        public BoundingBox GuitarRightHandTapping { get; set; }
 
         [JsonProperty("guitarShake")]
         public Dictionary<string, double[]> GuitarShake { get; set; }
@@ -3809,40 +3809,40 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> GuitarString0 { get; set; }
 
         [JsonProperty("guitarString1")]
-        public AccdnCombDot GuitarString1 { get; set; }
+        public BoundingBox GuitarString1 { get; set; }
 
         [JsonProperty("guitarString2")]
-        public AccdnCombDot GuitarString2 { get; set; }
+        public BoundingBox GuitarString2 { get; set; }
 
         [JsonProperty("guitarString3")]
-        public AccdnCombDot GuitarString3 { get; set; }
+        public BoundingBox GuitarString3 { get; set; }
 
         [JsonProperty("guitarString4")]
         public Dictionary<string, double[]> GuitarString4 { get; set; }
 
         [JsonProperty("guitarString5")]
-        public AccdnCombDot GuitarString5 { get; set; }
+        public BoundingBox GuitarString5 { get; set; }
 
         [JsonProperty("guitarString6")]
-        public AccdnCombDot GuitarString6 { get; set; }
+        public BoundingBox GuitarString6 { get; set; }
 
         [JsonProperty("guitarString7")]
-        public AccdnCombDot GuitarString7 { get; set; }
+        public BoundingBox GuitarString7 { get; set; }
 
         [JsonProperty("guitarString8")]
-        public AccdnCombDot GuitarString8 { get; set; }
+        public BoundingBox GuitarString8 { get; set; }
 
         [JsonProperty("guitarString9")]
-        public AccdnCombDot GuitarString9 { get; set; }
+        public BoundingBox GuitarString9 { get; set; }
 
         [JsonProperty("guitarStrumDown")]
-        public AccdnCombDot GuitarStrumDown { get; set; }
+        public BoundingBox GuitarStrumDown { get; set; }
 
         [JsonProperty("guitarStrumUp")]
-        public AccdnCombDot GuitarStrumUp { get; set; }
+        public BoundingBox GuitarStrumUp { get; set; }
 
         [JsonProperty("guitarVibratoBarDip")]
-        public AccdnCombDot GuitarVibratoBarDip { get; set; }
+        public BoundingBox GuitarVibratoBarDip { get; set; }
 
         [JsonProperty("guitarVibratoBarScoop")]
         public Dictionary<string, double[]> GuitarVibratoBarScoop { get; set; }
@@ -3851,7 +3851,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> GuitarVibratoStroke { get; set; }
 
         [JsonProperty("guitarVolumeSwell")]
-        public AccdnCombDot GuitarVolumeSwell { get; set; }
+        public BoundingBox GuitarVolumeSwell { get; set; }
 
         [JsonProperty("guitarWideVibratoStroke")]
         public Dictionary<string, double[]> GuitarWideVibratoStroke { get; set; }
@@ -3860,10 +3860,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> HandbellsBelltree { get; set; }
 
         [JsonProperty("handbellsDamp3")]
-        public AccdnCombDot HandbellsDamp3 { get; set; }
+        public BoundingBox HandbellsDamp3 { get; set; }
 
         [JsonProperty("handbellsEcho1")]
-        public AccdnCombDot HandbellsEcho1 { get; set; }
+        public BoundingBox HandbellsEcho1 { get; set; }
 
         [JsonProperty("handbellsEcho2")]
         public Dictionary<string, double[]> HandbellsEcho2 { get; set; }
@@ -3875,19 +3875,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> HandbellsHandMartellato { get; set; }
 
         [JsonProperty("handbellsMalletBellOnTable")]
-        public AccdnCombDot HandbellsMalletBellOnTable { get; set; }
+        public BoundingBox HandbellsMalletBellOnTable { get; set; }
 
         [JsonProperty("handbellsMalletBellSuspended")]
         public Dictionary<string, double[]> HandbellsMalletBellSuspended { get; set; }
 
         [JsonProperty("handbellsMalletLft")]
-        public AccdnCombDot HandbellsMalletLft { get; set; }
+        public BoundingBox HandbellsMalletLft { get; set; }
 
         [JsonProperty("handbellsMartellato")]
         public Dictionary<string, double[]> HandbellsMartellato { get; set; }
 
         [JsonProperty("handbellsMartellatoLift")]
-        public AccdnCombDot HandbellsMartellatoLift { get; set; }
+        public BoundingBox HandbellsMartellatoLift { get; set; }
 
         [JsonProperty("handbellsMutedMartellato")]
         public Dictionary<string, double[]> HandbellsMutedMartellato { get; set; }
@@ -3905,13 +3905,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> HandbellsSwingUp { get; set; }
 
         [JsonProperty("handbellsTablePairBells")]
-        public AccdnCombDot HandbellsTablePairBells { get; set; }
+        public BoundingBox HandbellsTablePairBells { get; set; }
 
         [JsonProperty("handbellsTableSingleBell")]
-        public AccdnCombDot HandbellsTableSingleBell { get; set; }
+        public BoundingBox HandbellsTableSingleBell { get; set; }
 
         [JsonProperty("harpMetalRod")]
-        public AccdnCombDot HarpMetalRod { get; set; }
+        public BoundingBox HarpMetalRod { get; set; }
 
         [JsonProperty("harpMetalRodAlt")]
         public Dictionary<string, double[]> HarpMetalRodAlt { get; set; }
@@ -3929,7 +3929,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> HarpPedalRaised { get; set; }
 
         [JsonProperty("harpSalzedoAeolianAscending")]
-        public AccdnCombDot HarpSalzedoAeolianAscending { get; set; }
+        public BoundingBox HarpSalzedoAeolianAscending { get; set; }
 
         [JsonProperty("harpSalzedoAeolianDescending")]
         public Dictionary<string, double[]> HarpSalzedoAeolianDescending { get; set; }
@@ -3947,13 +3947,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> HarpSalzedoDampLowStrings { get; set; }
 
         [JsonProperty("harpSalzedoFluidicSoundsLeft")]
-        public AccdnCombDot HarpSalzedoFluidicSoundsLeft { get; set; }
+        public BoundingBox HarpSalzedoFluidicSoundsLeft { get; set; }
 
         [JsonProperty("harpSalzedoFluidicSoundsRight")]
         public Dictionary<string, double[]> HarpSalzedoFluidicSoundsRight { get; set; }
 
         [JsonProperty("harpSalzedoIsolatedSounds")]
-        public AccdnCombDot HarpSalzedoIsolatedSounds { get; set; }
+        public BoundingBox HarpSalzedoIsolatedSounds { get; set; }
 
         [JsonProperty("harpSalzedoMetallicSounds")]
         public Dictionary<string, double[]> HarpSalzedoMetallicSounds { get; set; }
@@ -3962,7 +3962,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> HarpSalzedoMetallicSoundsOneString { get; set; }
 
         [JsonProperty("harpSalzedoMuffleTotally")]
-        public AccdnCombDot HarpSalzedoMuffleTotally { get; set; }
+        public BoundingBox HarpSalzedoMuffleTotally { get; set; }
 
         [JsonProperty("harpSalzedoOboicFlux")]
         public Dictionary<string, double[]> HarpSalzedoOboicFlux { get; set; }
@@ -3977,13 +3977,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, long[]> HarpSalzedoSnareDrum { get; set; }
 
         [JsonProperty("harpSalzedoTamTamSounds")]
-        public AccdnCombDot HarpSalzedoTamTamSounds { get; set; }
+        public BoundingBox HarpSalzedoTamTamSounds { get; set; }
 
         [JsonProperty("harpSalzedoThunderEffect")]
         public Dictionary<string, double[]> HarpSalzedoThunderEffect { get; set; }
 
         [JsonProperty("harpSalzedoTimpanicSounds")]
-        public AccdnCombDot HarpSalzedoTimpanicSounds { get; set; }
+        public BoundingBox HarpSalzedoTimpanicSounds { get; set; }
 
         [JsonProperty("harpSalzedoWhistlingSounds")]
         public Dictionary<string, double[]> HarpSalzedoWhistlingSounds { get; set; }
@@ -3995,16 +3995,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> HarpTuningKey { get; set; }
 
         [JsonProperty("harpTuningKeyAlt")]
-        public AccdnCombDot HarpTuningKeyAlt { get; set; }
+        public BoundingBox HarpTuningKeyAlt { get; set; }
 
         [JsonProperty("harpTuningKeyGlissando")]
-        public AccdnCombDot HarpTuningKeyGlissando { get; set; }
+        public BoundingBox HarpTuningKeyGlissando { get; set; }
 
         [JsonProperty("harpTuningKeyHandle")]
         public Dictionary<string, double[]> HarpTuningKeyHandle { get; set; }
 
         [JsonProperty("harpTuningKeyShank")]
-        public AccdnCombDot HarpTuningKeyShank { get; set; }
+        public BoundingBox HarpTuningKeyShank { get; set; }
 
         [JsonProperty("keyboardBebung2DotsAbove")]
         public Dictionary<string, double[]> KeyboardBebung2DotsAbove { get; set; }
@@ -4019,10 +4019,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> KeyboardBebung3DotsBelow { get; set; }
 
         [JsonProperty("keyboardBebung4DotsAbove")]
-        public AccdnCombDot KeyboardBebung4DotsAbove { get; set; }
+        public BoundingBox KeyboardBebung4DotsAbove { get; set; }
 
         [JsonProperty("keyboardBebung4DotsBelow")]
-        public AccdnCombDot KeyboardBebung4DotsBelow { get; set; }
+        public BoundingBox KeyboardBebung4DotsBelow { get; set; }
 
         [JsonProperty("keyboardLeftPedalPictogram")]
         public Dictionary<string, double[]> KeyboardLeftPedalPictogram { get; set; }
@@ -4034,40 +4034,40 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> KeyboardPedalD { get; set; }
 
         [JsonProperty("keyboardPedalDot")]
-        public AccdnCombDot KeyboardPedalDot { get; set; }
+        public BoundingBox KeyboardPedalDot { get; set; }
 
         [JsonProperty("keyboardPedalE")]
         public Dictionary<string, double[]> KeyboardPedalE { get; set; }
 
         [JsonProperty("keyboardPedalHalf")]
-        public AccdnCombDot KeyboardPedalHalf { get; set; }
+        public BoundingBox KeyboardPedalHalf { get; set; }
 
         [JsonProperty("keyboardPedalHalf2")]
-        public AccdnCombDot KeyboardPedalHalf2 { get; set; }
+        public BoundingBox KeyboardPedalHalf2 { get; set; }
 
         [JsonProperty("keyboardPedalHalf3")]
         public Dictionary<string, double[]> KeyboardPedalHalf3 { get; set; }
 
         [JsonProperty("keyboardPedalHeel1")]
-        public AccdnCombDot KeyboardPedalHeel1 { get; set; }
+        public BoundingBox KeyboardPedalHeel1 { get; set; }
 
         [JsonProperty("keyboardPedalHeel2")]
-        public AccdnCombDot KeyboardPedalHeel2 { get; set; }
+        public BoundingBox KeyboardPedalHeel2 { get; set; }
 
         [JsonProperty("keyboardPedalHeel3")]
         public Dictionary<string, long[]> KeyboardPedalHeel3 { get; set; }
 
         [JsonProperty("keyboardPedalHeelToToe")]
-        public AccdnCombDot KeyboardPedalHeelToToe { get; set; }
+        public BoundingBox KeyboardPedalHeelToToe { get; set; }
 
         [JsonProperty("keyboardPedalHeelToe")]
-        public AccdnCombDot KeyboardPedalHeelToe { get; set; }
+        public BoundingBox KeyboardPedalHeelToe { get; set; }
 
         [JsonProperty("keyboardPedalHookEnd")]
-        public AccdnCombDot KeyboardPedalHookEnd { get; set; }
+        public BoundingBox KeyboardPedalHookEnd { get; set; }
 
         [JsonProperty("keyboardPedalHookStart")]
-        public AccdnCombDot KeyboardPedalHookStart { get; set; }
+        public BoundingBox KeyboardPedalHookStart { get; set; }
 
         [JsonProperty("keyboardPedalHyphen")]
         public Dictionary<string, double[]> KeyboardPedalHyphen { get; set; }
@@ -4091,34 +4091,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> KeyboardPedalSostNoDot { get; set; }
 
         [JsonProperty("keyboardPedalToe1")]
-        public AccdnCombDot KeyboardPedalToe1 { get; set; }
+        public BoundingBox KeyboardPedalToe1 { get; set; }
 
         [JsonProperty("keyboardPedalToe2")]
-        public AccdnCombDot KeyboardPedalToe2 { get; set; }
+        public BoundingBox KeyboardPedalToe2 { get; set; }
 
         [JsonProperty("keyboardPedalToeToHeel")]
-        public AccdnCombDot KeyboardPedalToeToHeel { get; set; }
+        public BoundingBox KeyboardPedalToeToHeel { get; set; }
 
         [JsonProperty("keyboardPedalUp")]
-        public AccdnCombDot KeyboardPedalUp { get; set; }
+        public BoundingBox KeyboardPedalUp { get; set; }
 
         [JsonProperty("keyboardPedalUpNotch")]
-        public AccdnCombDot KeyboardPedalUpNotch { get; set; }
+        public BoundingBox KeyboardPedalUpNotch { get; set; }
 
         [JsonProperty("keyboardPedalUpSpecial")]
         public Dictionary<string, double[]> KeyboardPedalUpSpecial { get; set; }
 
         [JsonProperty("keyboardPlayWithLH")]
-        public AccdnCombDot KeyboardPlayWithLh { get; set; }
+        public BoundingBox KeyboardPlayWithLh { get; set; }
 
         [JsonProperty("keyboardPlayWithLHEnd")]
-        public AccdnCombDot KeyboardPlayWithLhEnd { get; set; }
+        public BoundingBox KeyboardPlayWithLhEnd { get; set; }
 
         [JsonProperty("keyboardPlayWithRH")]
-        public AccdnCombDot KeyboardPlayWithRh { get; set; }
+        public BoundingBox KeyboardPlayWithRh { get; set; }
 
         [JsonProperty("keyboardPlayWithRHEnd")]
-        public AccdnCombDot KeyboardPlayWithRhEnd { get; set; }
+        public BoundingBox KeyboardPlayWithRhEnd { get; set; }
 
         [JsonProperty("keyboardPluckInside")]
         public Dictionary<string, double[]> KeyboardPluckInside { get; set; }
@@ -4172,16 +4172,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> KievanNoteWholeFinal { get; set; }
 
         [JsonProperty("kodalyHandDo")]
-        public AccdnCombDot KodalyHandDo { get; set; }
+        public BoundingBox KodalyHandDo { get; set; }
 
         [JsonProperty("kodalyHandFa")]
         public Dictionary<string, double[]> KodalyHandFa { get; set; }
 
         [JsonProperty("kodalyHandLa")]
-        public AccdnCombDot KodalyHandLa { get; set; }
+        public BoundingBox KodalyHandLa { get; set; }
 
         [JsonProperty("kodalyHandMi")]
-        public AccdnCombDot KodalyHandMi { get; set; }
+        public BoundingBox KodalyHandMi { get; set; }
 
         [JsonProperty("kodalyHandRe")]
         public Dictionary<string, double[]> KodalyHandRe { get; set; }
@@ -4205,34 +4205,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> LegerLineWide { get; set; }
 
         [JsonProperty("luteBarlineEndRepeat")]
-        public AccdnCombDot LuteBarlineEndRepeat { get; set; }
+        public BoundingBox LuteBarlineEndRepeat { get; set; }
 
         [JsonProperty("luteBarlineFinal")]
-        public AccdnCombDot LuteBarlineFinal { get; set; }
+        public BoundingBox LuteBarlineFinal { get; set; }
 
         [JsonProperty("luteBarlineStartRepeat")]
-        public AccdnCombDot LuteBarlineStartRepeat { get; set; }
+        public BoundingBox LuteBarlineStartRepeat { get; set; }
 
         [JsonProperty("luteDuration16th")]
-        public AccdnCombDot LuteDuration16Th { get; set; }
+        public BoundingBox LuteDuration16Th { get; set; }
 
         [JsonProperty("luteDuration32nd")]
         public Dictionary<string, double[]> LuteDuration32Nd { get; set; }
 
         [JsonProperty("luteDuration8th")]
-        public AccdnCombDot LuteDuration8Th { get; set; }
+        public BoundingBox LuteDuration8Th { get; set; }
 
         [JsonProperty("luteDurationDoubleWhole")]
-        public AccdnCombDot LuteDurationDoubleWhole { get; set; }
+        public BoundingBox LuteDurationDoubleWhole { get; set; }
 
         [JsonProperty("luteDurationHalf")]
-        public AccdnCombDot LuteDurationHalf { get; set; }
+        public BoundingBox LuteDurationHalf { get; set; }
 
         [JsonProperty("luteDurationQuarter")]
-        public AccdnCombDot LuteDurationQuarter { get; set; }
+        public BoundingBox LuteDurationQuarter { get; set; }
 
         [JsonProperty("luteDurationWhole")]
-        public AccdnCombDot LuteDurationWhole { get; set; }
+        public BoundingBox LuteDurationWhole { get; set; }
 
         [JsonProperty("luteFingeringRHFirst")]
         public Dictionary<string, double[]> LuteFingeringRhFirst { get; set; }
@@ -4247,7 +4247,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> LuteFingeringRhThirdAlt { get; set; }
 
         [JsonProperty("luteFingeringRHThumb")]
-        public AccdnCombDot LuteFingeringRhThumb { get; set; }
+        public BoundingBox LuteFingeringRhThumb { get; set; }
 
         [JsonProperty("luteFrench10thCourse")]
         public Dictionary<string, double[]> LuteFrench10ThCourse { get; set; }
@@ -4262,13 +4262,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> LuteFrench10ThCourseUnderline { get; set; }
 
         [JsonProperty("luteFrench7thCourse")]
-        public AccdnCombDot LuteFrench7ThCourse { get; set; }
+        public BoundingBox LuteFrench7ThCourse { get; set; }
 
         [JsonProperty("luteFrench7thCourseRight")]
-        public AccdnCombDot LuteFrench7ThCourseRight { get; set; }
+        public BoundingBox LuteFrench7ThCourseRight { get; set; }
 
         [JsonProperty("luteFrench7thCourseStrikethru")]
-        public AccdnCombDot LuteFrench7ThCourseStrikethru { get; set; }
+        public BoundingBox LuteFrench7ThCourseStrikethru { get; set; }
 
         [JsonProperty("luteFrench7thCourseUnderline")]
         public Dictionary<string, double[]> LuteFrench7ThCourseUnderline { get; set; }
@@ -4298,37 +4298,37 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> LuteFrench9ThCourseUnderline { get; set; }
 
         [JsonProperty("luteFrenchAppoggiaturaAbove")]
-        public AccdnCombDot LuteFrenchAppoggiaturaAbove { get; set; }
+        public BoundingBox LuteFrenchAppoggiaturaAbove { get; set; }
 
         [JsonProperty("luteFrenchAppoggiaturaBelow")]
-        public AccdnCombDot LuteFrenchAppoggiaturaBelow { get; set; }
+        public BoundingBox LuteFrenchAppoggiaturaBelow { get; set; }
 
         [JsonProperty("luteFrenchFretA")]
-        public AccdnCombDot LuteFrenchFretA { get; set; }
+        public BoundingBox LuteFrenchFretA { get; set; }
 
         [JsonProperty("luteFrenchFretB")]
-        public AccdnCombDot LuteFrenchFretB { get; set; }
+        public BoundingBox LuteFrenchFretB { get; set; }
 
         [JsonProperty("luteFrenchFretC")]
         public Dictionary<string, double[]> LuteFrenchFretC { get; set; }
 
         [JsonProperty("luteFrenchFretCAlt")]
-        public AccdnCombDot LuteFrenchFretCAlt { get; set; }
+        public BoundingBox LuteFrenchFretCAlt { get; set; }
 
         [JsonProperty("luteFrenchFretD")]
-        public AccdnCombDot LuteFrenchFretD { get; set; }
+        public BoundingBox LuteFrenchFretD { get; set; }
 
         [JsonProperty("luteFrenchFretE")]
-        public AccdnCombDot LuteFrenchFretE { get; set; }
+        public BoundingBox LuteFrenchFretE { get; set; }
 
         [JsonProperty("luteFrenchFretF")]
-        public AccdnCombDot LuteFrenchFretF { get; set; }
+        public BoundingBox LuteFrenchFretF { get; set; }
 
         [JsonProperty("luteFrenchFretG")]
-        public AccdnCombDot LuteFrenchFretG { get; set; }
+        public BoundingBox LuteFrenchFretG { get; set; }
 
         [JsonProperty("luteFrenchFretH")]
-        public AccdnCombDot LuteFrenchFretH { get; set; }
+        public BoundingBox LuteFrenchFretH { get; set; }
 
         [JsonProperty("luteFrenchFretI")]
         public Dictionary<string, double[]> LuteFrenchFretI { get; set; }
@@ -4337,22 +4337,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> LuteFrenchFretK { get; set; }
 
         [JsonProperty("luteFrenchFretL")]
-        public AccdnCombDot LuteFrenchFretL { get; set; }
+        public BoundingBox LuteFrenchFretL { get; set; }
 
         [JsonProperty("luteFrenchFretM")]
-        public AccdnCombDot LuteFrenchFretM { get; set; }
+        public BoundingBox LuteFrenchFretM { get; set; }
 
         [JsonProperty("luteFrenchFretN")]
-        public AccdnCombDot LuteFrenchFretN { get; set; }
+        public BoundingBox LuteFrenchFretN { get; set; }
 
         [JsonProperty("luteFrenchMordentInverted")]
-        public AccdnCombDot LuteFrenchMordentInverted { get; set; }
+        public BoundingBox LuteFrenchMordentInverted { get; set; }
 
         [JsonProperty("luteFrenchMordentLower")]
-        public AccdnCombDot LuteFrenchMordentLower { get; set; }
+        public BoundingBox LuteFrenchMordentLower { get; set; }
 
         [JsonProperty("luteFrenchMordentUpper")]
-        public AccdnCombDot LuteFrenchMordentUpper { get; set; }
+        public BoundingBox LuteFrenchMordentUpper { get; set; }
 
         [JsonProperty("luteGermanALower")]
         public Dictionary<string, double[]> LuteGermanALower { get; set; }
@@ -4499,16 +4499,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> LuteItalianFret9 { get; set; }
 
         [JsonProperty("luteItalianHoldFinger")]
-        public AccdnCombDot LuteItalianHoldFinger { get; set; }
+        public BoundingBox LuteItalianHoldFinger { get; set; }
 
         [JsonProperty("luteItalianHoldNote")]
-        public AccdnCombDot LuteItalianHoldNote { get; set; }
+        public BoundingBox LuteItalianHoldNote { get; set; }
 
         [JsonProperty("luteItalianReleaseFinger")]
-        public AccdnCombDot LuteItalianReleaseFinger { get; set; }
+        public BoundingBox LuteItalianReleaseFinger { get; set; }
 
         [JsonProperty("luteItalianTempoFast")]
-        public AccdnCombDot LuteItalianTempoFast { get; set; }
+        public BoundingBox LuteItalianTempoFast { get; set; }
 
         [JsonProperty("luteItalianTempoNeitherFastNorSlow")]
         public Dictionary<string, double[]> LuteItalianTempoNeitherFastNorSlow { get; set; }
@@ -4517,19 +4517,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> LuteItalianTempoSlow { get; set; }
 
         [JsonProperty("luteItalianTempoSomewhatFast")]
-        public AccdnCombDot LuteItalianTempoSomewhatFast { get; set; }
+        public BoundingBox LuteItalianTempoSomewhatFast { get; set; }
 
         [JsonProperty("luteItalianTempoVerySlow")]
-        public AccdnCombDot LuteItalianTempoVerySlow { get; set; }
+        public BoundingBox LuteItalianTempoVerySlow { get; set; }
 
         [JsonProperty("luteItalianTimeTriple")]
         public Dictionary<string, double[]> LuteItalianTimeTriple { get; set; }
 
         [JsonProperty("luteItalianTremolo")]
-        public AccdnCombDot LuteItalianTremolo { get; set; }
+        public BoundingBox LuteItalianTremolo { get; set; }
 
         [JsonProperty("luteItalianVibrato")]
-        public AccdnCombDot LuteItalianVibrato { get; set; }
+        public BoundingBox LuteItalianVibrato { get; set; }
 
         [JsonProperty("luteStaff6Lines")]
         public Dictionary<string, double[]> LuteStaff6Lines { get; set; }
@@ -4571,7 +4571,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MedRenFlatWithDot { get; set; }
 
         [JsonProperty("medRenGClefCMN")]
-        public AccdnCombDot MedRenGClefCmn { get; set; }
+        public BoundingBox MedRenGClefCmn { get; set; }
 
         [JsonProperty("medRenLiquescenceCMN")]
         public Dictionary<string, double[]> MedRenLiquescenceCmn { get; set; }
@@ -4646,7 +4646,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MensuralBlackSemiminima { get; set; }
 
         [JsonProperty("mensuralCclef")]
-        public AccdnCombDot MensuralCclef { get; set; }
+        public BoundingBox MensuralCclef { get; set; }
 
         [JsonProperty("mensuralCclefBlack")]
         public Dictionary<string, double[]> MensuralCclefBlack { get; set; }
@@ -4670,16 +4670,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MensuralCclefVoid { get; set; }
 
         [JsonProperty("mensuralColorationEndRound")]
-        public AccdnCombDot MensuralColorationEndRound { get; set; }
+        public BoundingBox MensuralColorationEndRound { get; set; }
 
         [JsonProperty("mensuralColorationEndSquare")]
-        public AccdnCombDot MensuralColorationEndSquare { get; set; }
+        public BoundingBox MensuralColorationEndSquare { get; set; }
 
         [JsonProperty("mensuralColorationStartRound")]
-        public AccdnCombDot MensuralColorationStartRound { get; set; }
+        public BoundingBox MensuralColorationStartRound { get; set; }
 
         [JsonProperty("mensuralColorationStartSquare")]
-        public AccdnCombDot MensuralColorationStartSquare { get; set; }
+        public BoundingBox MensuralColorationStartSquare { get; set; }
 
         [JsonProperty("mensuralCombStemDiagonal")]
         public Dictionary<string, double[]> MensuralCombStemDiagonal { get; set; }
@@ -4706,34 +4706,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MensuralCombStemDownFlagSemiminima { get; set; }
 
         [JsonProperty("mensuralCombStemUp")]
-        public AccdnCombDot MensuralCombStemUp { get; set; }
+        public BoundingBox MensuralCombStemUp { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagExtended")]
         public Dictionary<string, double[]> MensuralCombStemUpFlagExtended { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagFlared")]
-        public AccdnCombDot MensuralCombStemUpFlagFlared { get; set; }
+        public BoundingBox MensuralCombStemUpFlagFlared { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagFusa")]
-        public AccdnCombDot MensuralCombStemUpFlagFusa { get; set; }
+        public BoundingBox MensuralCombStemUpFlagFusa { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagLeft")]
         public Dictionary<string, double[]> MensuralCombStemUpFlagLeft { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagRight")]
-        public AccdnCombDot MensuralCombStemUpFlagRight { get; set; }
+        public BoundingBox MensuralCombStemUpFlagRight { get; set; }
 
         [JsonProperty("mensuralCombStemUpFlagSemiminima")]
-        public AccdnCombDot MensuralCombStemUpFlagSemiminima { get; set; }
+        public BoundingBox MensuralCombStemUpFlagSemiminima { get; set; }
 
         [JsonProperty("mensuralCustosCheckmark")]
-        public AccdnCombDot MensuralCustosCheckmark { get; set; }
+        public BoundingBox MensuralCustosCheckmark { get; set; }
 
         [JsonProperty("mensuralCustosDown")]
         public Dictionary<string, double[]> MensuralCustosDown { get; set; }
 
         [JsonProperty("mensuralCustosTurn")]
-        public AccdnCombDot MensuralCustosTurn { get; set; }
+        public BoundingBox MensuralCustosTurn { get; set; }
 
         [JsonProperty("mensuralCustosUp")]
         public Dictionary<string, double[]> MensuralCustosUp { get; set; }
@@ -5126,16 +5126,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MensuralProlationCombiningTwoDots { get; set; }
 
         [JsonProperty("mensuralProportion1")]
-        public AccdnCombDot MensuralProportion1 { get; set; }
+        public BoundingBox MensuralProportion1 { get; set; }
 
         [JsonProperty("mensuralProportion2")]
-        public AccdnCombDot MensuralProportion2 { get; set; }
+        public BoundingBox MensuralProportion2 { get; set; }
 
         [JsonProperty("mensuralProportion3")]
-        public AccdnCombDot MensuralProportion3 { get; set; }
+        public BoundingBox MensuralProportion3 { get; set; }
 
         [JsonProperty("mensuralProportion4")]
-        public AccdnCombDot MensuralProportion4 { get; set; }
+        public BoundingBox MensuralProportion4 { get; set; }
 
         [JsonProperty("mensuralProportion4Old")]
         public Dictionary<string, double[]> MensuralProportion4Old { get; set; }
@@ -5162,31 +5162,31 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MensuralProportionTempusPerfectum { get; set; }
 
         [JsonProperty("mensuralRestBrevis")]
-        public AccdnCombDot MensuralRestBrevis { get; set; }
+        public BoundingBox MensuralRestBrevis { get; set; }
 
         [JsonProperty("mensuralRestFusa")]
-        public AccdnCombDot MensuralRestFusa { get; set; }
+        public BoundingBox MensuralRestFusa { get; set; }
 
         [JsonProperty("mensuralRestLongaImperfecta")]
-        public AccdnCombDot MensuralRestLongaImperfecta { get; set; }
+        public BoundingBox MensuralRestLongaImperfecta { get; set; }
 
         [JsonProperty("mensuralRestLongaPerfecta")]
-        public AccdnCombDot MensuralRestLongaPerfecta { get; set; }
+        public BoundingBox MensuralRestLongaPerfecta { get; set; }
 
         [JsonProperty("mensuralRestMaxima")]
-        public AccdnCombDot MensuralRestMaxima { get; set; }
+        public BoundingBox MensuralRestMaxima { get; set; }
 
         [JsonProperty("mensuralRestMinima")]
-        public AccdnCombDot MensuralRestMinima { get; set; }
+        public BoundingBox MensuralRestMinima { get; set; }
 
         [JsonProperty("mensuralRestSemibrevis")]
         public Dictionary<string, double[]> MensuralRestSemibrevis { get; set; }
 
         [JsonProperty("mensuralRestSemifusa")]
-        public AccdnCombDot MensuralRestSemifusa { get; set; }
+        public BoundingBox MensuralRestSemifusa { get; set; }
 
         [JsonProperty("mensuralRestSemiminima")]
-        public AccdnCombDot MensuralRestSemiminima { get; set; }
+        public BoundingBox MensuralRestSemiminima { get; set; }
 
         [JsonProperty("mensuralSemiminimaBlackStemDown")]
         public Dictionary<string, double[]> MensuralSemiminimaBlackStemDown { get; set; }
@@ -5207,10 +5207,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MensuralSemiminimaVoidStemUp { get; set; }
 
         [JsonProperty("mensuralSignumDown")]
-        public AccdnCombDot MensuralSignumDown { get; set; }
+        public BoundingBox MensuralSignumDown { get; set; }
 
         [JsonProperty("mensuralSignumUp")]
-        public AccdnCombDot MensuralSignumUp { get; set; }
+        public BoundingBox MensuralSignumUp { get; set; }
 
         [JsonProperty("mensuralTempusImperfectumHoriz")]
         public Dictionary<string, double[]> MensuralTempusImperfectumHoriz { get; set; }
@@ -5321,7 +5321,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> MiscDoNotPhotocopy { get; set; }
 
         [JsonProperty("miscEyeglasses")]
-        public AccdnCombDot MiscEyeglasses { get; set; }
+        public BoundingBox MiscEyeglasses { get; set; }
 
         [JsonProperty("note1024thDown")]
         public Dictionary<string, double[]> Note1024ThDown { get; set; }
@@ -6026,7 +6026,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> NoteheadDoubleWholeSquare { get; set; }
 
         [JsonProperty("noteheadDoubleWholeSquareOversized")]
-        public AccdnCombDot NoteheadDoubleWholeSquareOversized { get; set; }
+        public BoundingBox NoteheadDoubleWholeSquareOversized { get; set; }
 
         [JsonProperty("noteheadDoubleWholeWithX")]
         public Dictionary<string, double[]> NoteheadDoubleWholeWithX { get; set; }
@@ -6158,13 +6158,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> NoteheadRoundWhiteWithDot { get; set; }
 
         [JsonProperty("noteheadRoundWhiteWithDotLarge")]
-        public AccdnCombDot NoteheadRoundWhiteWithDotLarge { get; set; }
+        public BoundingBox NoteheadRoundWhiteWithDotLarge { get; set; }
 
         [JsonProperty("noteheadSlashDiamondWhite")]
         public Dictionary<string, long[]> NoteheadSlashDiamondWhite { get; set; }
 
         [JsonProperty("noteheadSlashHorizontalEnds")]
-        public AccdnCombDot NoteheadSlashHorizontalEnds { get; set; }
+        public BoundingBox NoteheadSlashHorizontalEnds { get; set; }
 
         [JsonProperty("noteheadSlashHorizontalEndsMuted")]
         public Dictionary<string, double[]> NoteheadSlashHorizontalEndsMuted { get; set; }
@@ -6179,19 +6179,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> NoteheadSlashVerticalEndsSmall { get; set; }
 
         [JsonProperty("noteheadSlashWhiteDoubleWhole")]
-        public AccdnCombDot NoteheadSlashWhiteDoubleWhole { get; set; }
+        public BoundingBox NoteheadSlashWhiteDoubleWhole { get; set; }
 
         [JsonProperty("noteheadSlashWhiteHalf")]
-        public AccdnCombDot NoteheadSlashWhiteHalf { get; set; }
+        public BoundingBox NoteheadSlashWhiteHalf { get; set; }
 
         [JsonProperty("noteheadSlashWhiteMuted")]
         public Dictionary<string, double[]> NoteheadSlashWhiteMuted { get; set; }
 
         [JsonProperty("noteheadSlashWhiteWhole")]
-        public AccdnCombDot NoteheadSlashWhiteWhole { get; set; }
+        public BoundingBox NoteheadSlashWhiteWhole { get; set; }
 
         [JsonProperty("noteheadSlashX")]
-        public AccdnCombDot NoteheadSlashX { get; set; }
+        public BoundingBox NoteheadSlashX { get; set; }
 
         [JsonProperty("noteheadSlashedBlack1")]
         public Dictionary<string, double[]> NoteheadSlashedBlack1 { get; set; }
@@ -6383,7 +6383,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentDoubleObliqueLinesBeforeNote { get; set; }
 
         [JsonProperty("ornamentDownCurve")]
-        public AccdnCombDot OrnamentDownCurve { get; set; }
+        public BoundingBox OrnamentDownCurve { get; set; }
 
         [JsonProperty("ornamentHaydn")]
         public Dictionary<string, double[]> OrnamentHaydn { get; set; }
@@ -6404,7 +6404,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentHookAfterNote { get; set; }
 
         [JsonProperty("ornamentHookBeforeNote")]
-        public AccdnCombDot OrnamentHookBeforeNote { get; set; }
+        public BoundingBox OrnamentHookBeforeNote { get; set; }
 
         [JsonProperty("ornamentLeftFacingHalfCircle")]
         public Dictionary<string, double[]> OrnamentLeftFacingHalfCircle { get; set; }
@@ -6440,7 +6440,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentMiddleVerticalStroke { get; set; }
 
         [JsonProperty("ornamentMordent")]
-        public AccdnCombDot OrnamentMordent { get; set; }
+        public BoundingBox OrnamentMordent { get; set; }
 
         [JsonProperty("ornamentMordentInverted")]
         public Dictionary<string, double[]> OrnamentMordentInverted { get; set; }
@@ -6461,22 +6461,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentOriscus { get; set; }
 
         [JsonProperty("ornamentPinceCouperin")]
-        public AccdnCombDot OrnamentPinceCouperin { get; set; }
+        public BoundingBox OrnamentPinceCouperin { get; set; }
 
         [JsonProperty("ornamentPortDeVoixV")]
-        public AccdnCombDot OrnamentPortDeVoixV { get; set; }
+        public BoundingBox OrnamentPortDeVoixV { get; set; }
 
         [JsonProperty("ornamentPrecompAppoggTrill")]
-        public AccdnCombDot OrnamentPrecompAppoggTrill { get; set; }
+        public BoundingBox OrnamentPrecompAppoggTrill { get; set; }
 
         [JsonProperty("ornamentPrecompAppoggTrillSuffix")]
-        public AccdnCombDot OrnamentPrecompAppoggTrillSuffix { get; set; }
+        public BoundingBox OrnamentPrecompAppoggTrillSuffix { get; set; }
 
         [JsonProperty("ornamentPrecompCadence")]
-        public AccdnCombDot OrnamentPrecompCadence { get; set; }
+        public BoundingBox OrnamentPrecompCadence { get; set; }
 
         [JsonProperty("ornamentPrecompCadenceUpperPrefix")]
-        public AccdnCombDot OrnamentPrecompCadenceUpperPrefix { get; set; }
+        public BoundingBox OrnamentPrecompCadenceUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompCadenceUpperPrefixTurn")]
         public Dictionary<string, double[]> OrnamentPrecompCadenceUpperPrefixTurn { get; set; }
@@ -6488,10 +6488,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentPrecompDescendingSlide { get; set; }
 
         [JsonProperty("ornamentPrecompDoubleCadenceLowerPrefix")]
-        public AccdnCombDot OrnamentPrecompDoubleCadenceLowerPrefix { get; set; }
+        public BoundingBox OrnamentPrecompDoubleCadenceLowerPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompDoubleCadenceUpperPrefix")]
-        public AccdnCombDot OrnamentPrecompDoubleCadenceUpperPrefix { get; set; }
+        public BoundingBox OrnamentPrecompDoubleCadenceUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompDoubleCadenceUpperPrefixTurn")]
         public Dictionary<string, double[]> OrnamentPrecompDoubleCadenceUpperPrefixTurn { get; set; }
@@ -6500,16 +6500,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentPrecompInvertedMordentUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompMordentRelease")]
-        public AccdnCombDot OrnamentPrecompMordentRelease { get; set; }
+        public BoundingBox OrnamentPrecompMordentRelease { get; set; }
 
         [JsonProperty("ornamentPrecompMordentUpperPrefix")]
-        public AccdnCombDot OrnamentPrecompMordentUpperPrefix { get; set; }
+        public BoundingBox OrnamentPrecompMordentUpperPrefix { get; set; }
 
         [JsonProperty("ornamentPrecompPortDeVoixMordent")]
         public Dictionary<string, double[]> OrnamentPrecompPortDeVoixMordent { get; set; }
 
         [JsonProperty("ornamentPrecompSlide")]
-        public AccdnCombDot OrnamentPrecompSlide { get; set; }
+        public BoundingBox OrnamentPrecompSlide { get; set; }
 
         [JsonProperty("ornamentPrecompSlideTrillBach")]
         public Dictionary<string, double[]> OrnamentPrecompSlideTrillBach { get; set; }
@@ -6530,7 +6530,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentPrecompTrillLowerSuffix { get; set; }
 
         [JsonProperty("ornamentPrecompTrillSuffixDandrieu")]
-        public AccdnCombDot OrnamentPrecompTrillSuffixDandrieu { get; set; }
+        public BoundingBox OrnamentPrecompTrillSuffixDandrieu { get; set; }
 
         [JsonProperty("ornamentPrecompTrillWithMordent")]
         public Dictionary<string, double[]> OrnamentPrecompTrillWithMordent { get; set; }
@@ -6539,7 +6539,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentPrecompTurnTrillBach { get; set; }
 
         [JsonProperty("ornamentPrecompTurnTrillDAnglebert")]
-        public AccdnCombDot OrnamentPrecompTurnTrillDAnglebert { get; set; }
+        public BoundingBox OrnamentPrecompTurnTrillDAnglebert { get; set; }
 
         [JsonProperty("ornamentQuilisma")]
         public Dictionary<string, double[]> OrnamentQuilisma { get; set; }
@@ -6554,7 +6554,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentRightVerticalStroke { get; set; }
 
         [JsonProperty("ornamentSchleifer")]
-        public AccdnCombDot OrnamentSchleifer { get; set; }
+        public BoundingBox OrnamentSchleifer { get; set; }
 
         [JsonProperty("ornamentShake3")]
         public Dictionary<string, double[]> OrnamentShake3 { get; set; }
@@ -6584,7 +6584,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentTremblement { get; set; }
 
         [JsonProperty("ornamentTremblementCouperin")]
-        public AccdnCombDot OrnamentTremblementCouperin { get; set; }
+        public BoundingBox OrnamentTremblementCouperin { get; set; }
 
         [JsonProperty("ornamentTrill")]
         public Dictionary<string, double[]> OrnamentTrill { get; set; }
@@ -6599,10 +6599,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentTrillSharpAbove { get; set; }
 
         [JsonProperty("ornamentTurn")]
-        public AccdnCombDot OrnamentTurn { get; set; }
+        public BoundingBox OrnamentTurn { get; set; }
 
         [JsonProperty("ornamentTurnFlatAbove")]
-        public AccdnCombDot OrnamentTurnFlatAbove { get; set; }
+        public BoundingBox OrnamentTurnFlatAbove { get; set; }
 
         [JsonProperty("ornamentTurnFlatAboveSharpBelow")]
         public Dictionary<string, double[]> OrnamentTurnFlatAboveSharpBelow { get; set; }
@@ -6614,13 +6614,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentTurnInverted { get; set; }
 
         [JsonProperty("ornamentTurnNaturalAbove")]
-        public AccdnCombDot OrnamentTurnNaturalAbove { get; set; }
+        public BoundingBox OrnamentTurnNaturalAbove { get; set; }
 
         [JsonProperty("ornamentTurnNaturalBelow")]
         public Dictionary<string, double[]> OrnamentTurnNaturalBelow { get; set; }
 
         [JsonProperty("ornamentTurnSharpAbove")]
-        public AccdnCombDot OrnamentTurnSharpAbove { get; set; }
+        public BoundingBox OrnamentTurnSharpAbove { get; set; }
 
         [JsonProperty("ornamentTurnSharpAboveFlatBelow")]
         public Dictionary<string, double[]> OrnamentTurnSharpAboveFlatBelow { get; set; }
@@ -6632,13 +6632,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> OrnamentTurnSlash { get; set; }
 
         [JsonProperty("ornamentTurnUp")]
-        public AccdnCombDot OrnamentTurnUp { get; set; }
+        public BoundingBox OrnamentTurnUp { get; set; }
 
         [JsonProperty("ornamentTurnUpS")]
         public Dictionary<string, double[]> OrnamentTurnUpS { get; set; }
 
         [JsonProperty("ornamentUpCurve")]
-        public AccdnCombDot OrnamentUpCurve { get; set; }
+        public BoundingBox OrnamentUpCurve { get; set; }
 
         [JsonProperty("ornamentVerticalLine")]
         public Dictionary<string, double[]> OrnamentVerticalLine { get; set; }
@@ -6668,31 +6668,31 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PendereckiTremolo { get; set; }
 
         [JsonProperty("pictAgogo")]
-        public AccdnCombDot PictAgogo { get; set; }
+        public BoundingBox PictAgogo { get; set; }
 
         [JsonProperty("pictAlmglocken")]
         public Dictionary<string, double[]> PictAlmglocken { get; set; }
 
         [JsonProperty("pictAnvil")]
-        public AccdnCombDot PictAnvil { get; set; }
+        public BoundingBox PictAnvil { get; set; }
 
         [JsonProperty("pictBambooChimes")]
-        public AccdnCombDot PictBambooChimes { get; set; }
+        public BoundingBox PictBambooChimes { get; set; }
 
         [JsonProperty("pictBambooScraper")]
-        public AccdnCombDot PictBambooScraper { get; set; }
+        public BoundingBox PictBambooScraper { get; set; }
 
         [JsonProperty("pictBassDrum")]
         public Dictionary<string, double[]> PictBassDrum { get; set; }
 
         [JsonProperty("pictBassDrumOnSide")]
-        public AccdnCombDot PictBassDrumOnSide { get; set; }
+        public BoundingBox PictBassDrumOnSide { get; set; }
 
         [JsonProperty("pictBassDrumPeinkofer")]
-        public AccdnCombDot PictBassDrumPeinkofer { get; set; }
+        public BoundingBox PictBassDrumPeinkofer { get; set; }
 
         [JsonProperty("pictBeaterBow")]
-        public AccdnCombDot PictBeaterBow { get; set; }
+        public BoundingBox PictBeaterBow { get; set; }
 
         [JsonProperty("pictBeaterBox")]
         public Dictionary<string, double[]> PictBeaterBox { get; set; }
@@ -6710,46 +6710,46 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterCombiningParentheses { get; set; }
 
         [JsonProperty("pictBeaterDoubleBassDrumDown")]
-        public AccdnCombDot PictBeaterDoubleBassDrumDown { get; set; }
+        public BoundingBox PictBeaterDoubleBassDrumDown { get; set; }
 
         [JsonProperty("pictBeaterDoubleBassDrumUp")]
-        public AccdnCombDot PictBeaterDoubleBassDrumUp { get; set; }
+        public BoundingBox PictBeaterDoubleBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterFinger")]
-        public AccdnCombDot PictBeaterFinger { get; set; }
+        public BoundingBox PictBeaterFinger { get; set; }
 
         [JsonProperty("pictBeaterFingernails")]
-        public AccdnCombDot PictBeaterFingernails { get; set; }
+        public BoundingBox PictBeaterFingernails { get; set; }
 
         [JsonProperty("pictBeaterFist")]
-        public AccdnCombDot PictBeaterFist { get; set; }
+        public BoundingBox PictBeaterFist { get; set; }
 
         [JsonProperty("pictBeaterGuiroScraper")]
         public Dictionary<string, double[]> PictBeaterGuiroScraper { get; set; }
 
         [JsonProperty("pictBeaterHammer")]
-        public AccdnCombDot PictBeaterHammer { get; set; }
+        public BoundingBox PictBeaterHammer { get; set; }
 
         [JsonProperty("pictBeaterHammerMetalDown")]
-        public AccdnCombDot PictBeaterHammerMetalDown { get; set; }
+        public BoundingBox PictBeaterHammerMetalDown { get; set; }
 
         [JsonProperty("pictBeaterHammerMetalUp")]
-        public AccdnCombDot PictBeaterHammerMetalUp { get; set; }
+        public BoundingBox PictBeaterHammerMetalUp { get; set; }
 
         [JsonProperty("pictBeaterHammerPlasticDown")]
-        public AccdnCombDot PictBeaterHammerPlasticDown { get; set; }
+        public BoundingBox PictBeaterHammerPlasticDown { get; set; }
 
         [JsonProperty("pictBeaterHammerPlasticUp")]
-        public AccdnCombDot PictBeaterHammerPlasticUp { get; set; }
+        public BoundingBox PictBeaterHammerPlasticUp { get; set; }
 
         [JsonProperty("pictBeaterHammerWoodDown")]
-        public AccdnCombDot PictBeaterHammerWoodDown { get; set; }
+        public BoundingBox PictBeaterHammerWoodDown { get; set; }
 
         [JsonProperty("pictBeaterHammerWoodUp")]
-        public AccdnCombDot PictBeaterHammerWoodUp { get; set; }
+        public BoundingBox PictBeaterHammerWoodUp { get; set; }
 
         [JsonProperty("pictBeaterHand")]
-        public AccdnCombDot PictBeaterHand { get; set; }
+        public BoundingBox PictBeaterHand { get; set; }
 
         [JsonProperty("pictBeaterHardBassDrumDown")]
         public Dictionary<string, double[]> PictBeaterHardBassDrumDown { get; set; }
@@ -6758,7 +6758,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterHardBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterHardGlockenspielDown")]
-        public AccdnCombDot PictBeaterHardGlockenspielDown { get; set; }
+        public BoundingBox PictBeaterHardGlockenspielDown { get; set; }
 
         [JsonProperty("pictBeaterHardGlockenspielLeft")]
         public Dictionary<string, double[]> PictBeaterHardGlockenspielLeft { get; set; }
@@ -6767,7 +6767,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterHardGlockenspielRight { get; set; }
 
         [JsonProperty("pictBeaterHardGlockenspielUp")]
-        public AccdnCombDot PictBeaterHardGlockenspielUp { get; set; }
+        public BoundingBox PictBeaterHardGlockenspielUp { get; set; }
 
         [JsonProperty("pictBeaterHardTimpaniDown")]
         public Dictionary<string, double[]> PictBeaterHardTimpaniDown { get; set; }
@@ -6788,7 +6788,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterHardXylophoneLeft { get; set; }
 
         [JsonProperty("pictBeaterHardXylophoneRight")]
-        public AccdnCombDot PictBeaterHardXylophoneRight { get; set; }
+        public BoundingBox PictBeaterHardXylophoneRight { get; set; }
 
         [JsonProperty("pictBeaterHardXylophoneUp")]
         public Dictionary<string, double[]> PictBeaterHardXylophoneUp { get; set; }
@@ -6806,16 +6806,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterHardYarnUp { get; set; }
 
         [JsonProperty("pictBeaterJazzSticksDown")]
-        public AccdnCombDot PictBeaterJazzSticksDown { get; set; }
+        public BoundingBox PictBeaterJazzSticksDown { get; set; }
 
         [JsonProperty("pictBeaterJazzSticksUp")]
-        public AccdnCombDot PictBeaterJazzSticksUp { get; set; }
+        public BoundingBox PictBeaterJazzSticksUp { get; set; }
 
         [JsonProperty("pictBeaterKnittingNeedle")]
-        public AccdnCombDot PictBeaterKnittingNeedle { get; set; }
+        public BoundingBox PictBeaterKnittingNeedle { get; set; }
 
         [JsonProperty("pictBeaterMallet")]
-        public AccdnCombDot PictBeaterMallet { get; set; }
+        public BoundingBox PictBeaterMallet { get; set; }
 
         [JsonProperty("pictBeaterMediumBassDrumDown")]
         public Dictionary<string, double[]> PictBeaterMediumBassDrumDown { get; set; }
@@ -6827,10 +6827,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterMediumTimpaniDown { get; set; }
 
         [JsonProperty("pictBeaterMediumTimpaniLeft")]
-        public AccdnCombDot PictBeaterMediumTimpaniLeft { get; set; }
+        public BoundingBox PictBeaterMediumTimpaniLeft { get; set; }
 
         [JsonProperty("pictBeaterMediumTimpaniRight")]
-        public AccdnCombDot PictBeaterMediumTimpaniRight { get; set; }
+        public BoundingBox PictBeaterMediumTimpaniRight { get; set; }
 
         [JsonProperty("pictBeaterMediumTimpaniUp")]
         public Dictionary<string, double[]> PictBeaterMediumTimpaniUp { get; set; }
@@ -6848,16 +6848,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterMediumXylophoneUp { get; set; }
 
         [JsonProperty("pictBeaterMediumYarnDown")]
-        public AccdnCombDot PictBeaterMediumYarnDown { get; set; }
+        public BoundingBox PictBeaterMediumYarnDown { get; set; }
 
         [JsonProperty("pictBeaterMediumYarnLeft")]
-        public AccdnCombDot PictBeaterMediumYarnLeft { get; set; }
+        public BoundingBox PictBeaterMediumYarnLeft { get; set; }
 
         [JsonProperty("pictBeaterMediumYarnRight")]
-        public AccdnCombDot PictBeaterMediumYarnRight { get; set; }
+        public BoundingBox PictBeaterMediumYarnRight { get; set; }
 
         [JsonProperty("pictBeaterMediumYarnUp")]
-        public AccdnCombDot PictBeaterMediumYarnUp { get; set; }
+        public BoundingBox PictBeaterMediumYarnUp { get; set; }
 
         [JsonProperty("pictBeaterMetalBassDrumDown")]
         public Dictionary<string, double[]> PictBeaterMetalBassDrumDown { get; set; }
@@ -6866,19 +6866,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterMetalBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterMetalDown")]
-        public AccdnCombDot PictBeaterMetalDown { get; set; }
+        public BoundingBox PictBeaterMetalDown { get; set; }
 
         [JsonProperty("pictBeaterMetalHammer")]
         public Dictionary<string, double[]> PictBeaterMetalHammer { get; set; }
 
         [JsonProperty("pictBeaterMetalLeft")]
-        public AccdnCombDot PictBeaterMetalLeft { get; set; }
+        public BoundingBox PictBeaterMetalLeft { get; set; }
 
         [JsonProperty("pictBeaterMetalRight")]
-        public AccdnCombDot PictBeaterMetalRight { get; set; }
+        public BoundingBox PictBeaterMetalRight { get; set; }
 
         [JsonProperty("pictBeaterMetalUp")]
-        public AccdnCombDot PictBeaterMetalUp { get; set; }
+        public BoundingBox PictBeaterMetalUp { get; set; }
 
         [JsonProperty("pictBeaterSnareSticksDown")]
         public Dictionary<string, double[]> PictBeaterSnareSticksDown { get; set; }
@@ -6893,7 +6893,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterSoftBassDrumUp { get; set; }
 
         [JsonProperty("pictBeaterSoftGlockenspielDown")]
-        public AccdnCombDot PictBeaterSoftGlockenspielDown { get; set; }
+        public BoundingBox PictBeaterSoftGlockenspielDown { get; set; }
 
         [JsonProperty("pictBeaterSoftGlockenspielLeft")]
         public Dictionary<string, double[]> PictBeaterSoftGlockenspielLeft { get; set; }
@@ -6902,10 +6902,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterSoftGlockenspielRight { get; set; }
 
         [JsonProperty("pictBeaterSoftGlockenspielUp")]
-        public AccdnCombDot PictBeaterSoftGlockenspielUp { get; set; }
+        public BoundingBox PictBeaterSoftGlockenspielUp { get; set; }
 
         [JsonProperty("pictBeaterSoftTimpaniDown")]
-        public AccdnCombDot PictBeaterSoftTimpaniDown { get; set; }
+        public BoundingBox PictBeaterSoftTimpaniDown { get; set; }
 
         [JsonProperty("pictBeaterSoftTimpaniLeft")]
         public Dictionary<string, double[]> PictBeaterSoftTimpaniLeft { get; set; }
@@ -6914,7 +6914,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterSoftTimpaniRight { get; set; }
 
         [JsonProperty("pictBeaterSoftTimpaniUp")]
-        public AccdnCombDot PictBeaterSoftTimpaniUp { get; set; }
+        public BoundingBox PictBeaterSoftTimpaniUp { get; set; }
 
         [JsonProperty("pictBeaterSoftXylophone")]
         public Dictionary<string, double[]> PictBeaterSoftXylophone { get; set; }
@@ -6944,10 +6944,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterSoftYarnUp { get; set; }
 
         [JsonProperty("pictBeaterSpoonWoodenMallet")]
-        public AccdnCombDot PictBeaterSpoonWoodenMallet { get; set; }
+        public BoundingBox PictBeaterSpoonWoodenMallet { get; set; }
 
         [JsonProperty("pictBeaterSuperballDown")]
-        public AccdnCombDot PictBeaterSuperballDown { get; set; }
+        public BoundingBox PictBeaterSuperballDown { get; set; }
 
         [JsonProperty("pictBeaterSuperballLeft")]
         public Dictionary<string, double[]> PictBeaterSuperballLeft { get; set; }
@@ -6956,7 +6956,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterSuperballRight { get; set; }
 
         [JsonProperty("pictBeaterSuperballUp")]
-        public AccdnCombDot PictBeaterSuperballUp { get; set; }
+        public BoundingBox PictBeaterSuperballUp { get; set; }
 
         [JsonProperty("pictBeaterTriangleDown")]
         public Dictionary<string, double[]> PictBeaterTriangleDown { get; set; }
@@ -6971,7 +6971,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterWireBrushesUp { get; set; }
 
         [JsonProperty("pictBeaterWoodTimpaniDown")]
-        public AccdnCombDot PictBeaterWoodTimpaniDown { get; set; }
+        public BoundingBox PictBeaterWoodTimpaniDown { get; set; }
 
         [JsonProperty("pictBeaterWoodTimpaniLeft")]
         public Dictionary<string, double[]> PictBeaterWoodTimpaniLeft { get; set; }
@@ -6980,10 +6980,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterWoodTimpaniRight { get; set; }
 
         [JsonProperty("pictBeaterWoodTimpaniUp")]
-        public AccdnCombDot PictBeaterWoodTimpaniUp { get; set; }
+        public BoundingBox PictBeaterWoodTimpaniUp { get; set; }
 
         [JsonProperty("pictBeaterWoodXylophoneDown")]
-        public AccdnCombDot PictBeaterWoodXylophoneDown { get; set; }
+        public BoundingBox PictBeaterWoodXylophoneDown { get; set; }
 
         [JsonProperty("pictBeaterWoodXylophoneLeft")]
         public Dictionary<string, double[]> PictBeaterWoodXylophoneLeft { get; set; }
@@ -6992,22 +6992,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBeaterWoodXylophoneRight { get; set; }
 
         [JsonProperty("pictBeaterWoodXylophoneUp")]
-        public AccdnCombDot PictBeaterWoodXylophoneUp { get; set; }
+        public BoundingBox PictBeaterWoodXylophoneUp { get; set; }
 
         [JsonProperty("pictBell")]
         public Dictionary<string, double[]> PictBell { get; set; }
 
         [JsonProperty("pictBellOfCymbal")]
-        public AccdnCombDot PictBellOfCymbal { get; set; }
+        public BoundingBox PictBellOfCymbal { get; set; }
 
         [JsonProperty("pictBellPlate")]
-        public AccdnCombDot PictBellPlate { get; set; }
+        public BoundingBox PictBellPlate { get; set; }
 
         [JsonProperty("pictBellTree")]
-        public AccdnCombDot PictBellTree { get; set; }
+        public BoundingBox PictBellTree { get; set; }
 
         [JsonProperty("pictBirdWhistle")]
-        public AccdnCombDot PictBirdWhistle { get; set; }
+        public BoundingBox PictBirdWhistle { get; set; }
 
         [JsonProperty("pictBoardClapper")]
         public Dictionary<string, double[]> PictBoardClapper { get; set; }
@@ -7016,7 +7016,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictBongos { get; set; }
 
         [JsonProperty("pictBongosPeinkofer")]
-        public AccdnCombDot PictBongosPeinkofer { get; set; }
+        public BoundingBox PictBongosPeinkofer { get; set; }
 
         [JsonProperty("pictBrakeDrum")]
         public Dictionary<string, double[]> PictBrakeDrum { get; set; }
@@ -7025,43 +7025,43 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictCabasa { get; set; }
 
         [JsonProperty("pictCannon")]
-        public AccdnCombDot PictCannon { get; set; }
+        public BoundingBox PictCannon { get; set; }
 
         [JsonProperty("pictCarHorn")]
         public Dictionary<string, double[]> PictCarHorn { get; set; }
 
         [JsonProperty("pictCastanets")]
-        public AccdnCombDot PictCastanets { get; set; }
+        public BoundingBox PictCastanets { get; set; }
 
         [JsonProperty("pictCastanetsSmithBrindle")]
-        public AccdnCombDot PictCastanetsSmithBrindle { get; set; }
+        public BoundingBox PictCastanetsSmithBrindle { get; set; }
 
         [JsonProperty("pictCastanetsWithHandle")]
-        public AccdnCombDot PictCastanetsWithHandle { get; set; }
+        public BoundingBox PictCastanetsWithHandle { get; set; }
 
         [JsonProperty("pictCelesta")]
-        public AccdnCombDot PictCelesta { get; set; }
+        public BoundingBox PictCelesta { get; set; }
 
         [JsonProperty("pictCencerro")]
-        public AccdnCombDot PictCencerro { get; set; }
+        public BoundingBox PictCencerro { get; set; }
 
         [JsonProperty("pictCenter1")]
-        public AccdnCombDot PictCenter1 { get; set; }
+        public BoundingBox PictCenter1 { get; set; }
 
         [JsonProperty("pictCenter2")]
-        public AccdnCombDot PictCenter2 { get; set; }
+        public BoundingBox PictCenter2 { get; set; }
 
         [JsonProperty("pictCenter3")]
         public Dictionary<string, double[]> PictCenter3 { get; set; }
 
         [JsonProperty("pictChainRattle")]
-        public AccdnCombDot PictChainRattle { get; set; }
+        public BoundingBox PictChainRattle { get; set; }
 
         [JsonProperty("pictChimes")]
-        public AccdnCombDot PictChimes { get; set; }
+        public BoundingBox PictChimes { get; set; }
 
         [JsonProperty("pictChineseCymbal")]
-        public AccdnCombDot PictChineseCymbal { get; set; }
+        public BoundingBox PictChineseCymbal { get; set; }
 
         [JsonProperty("pictChokeCymbal")]
         public Dictionary<string, double[]> PictChokeCymbal { get; set; }
@@ -7070,13 +7070,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictClaves { get; set; }
 
         [JsonProperty("pictCoins")]
-        public AccdnCombDot PictCoins { get; set; }
+        public BoundingBox PictCoins { get; set; }
 
         [JsonProperty("pictConga")]
         public Dictionary<string, double[]> PictConga { get; set; }
 
         [JsonProperty("pictCongaPeinkofer")]
-        public AccdnCombDot PictCongaPeinkofer { get; set; }
+        public BoundingBox PictCongaPeinkofer { get; set; }
 
         [JsonProperty("pictCowBell")]
         public Dictionary<string, double[]> PictCowBell { get; set; }
@@ -7088,13 +7088,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictCrashCymbals { get; set; }
 
         [JsonProperty("pictCrotales")]
-        public AccdnCombDot PictCrotales { get; set; }
+        public BoundingBox PictCrotales { get; set; }
 
         [JsonProperty("pictCrushStem")]
         public Dictionary<string, double[]> PictCrushStem { get; set; }
 
         [JsonProperty("pictCuica")]
-        public AccdnCombDot PictCuica { get; set; }
+        public BoundingBox PictCuica { get; set; }
 
         [JsonProperty("pictCymbalTongs")]
         public Dictionary<string, double[]> PictCymbalTongs { get; set; }
@@ -7118,13 +7118,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictDrumStick { get; set; }
 
         [JsonProperty("pictDuckCall")]
-        public AccdnCombDot PictDuckCall { get; set; }
+        public BoundingBox PictDuckCall { get; set; }
 
         [JsonProperty("pictEdgeOfCymbal")]
         public Dictionary<string, double[]> PictEdgeOfCymbal { get; set; }
 
         [JsonProperty("pictEmptyTrap")]
-        public AccdnCombDot PictEmptyTrap { get; set; }
+        public BoundingBox PictEmptyTrap { get; set; }
 
         [JsonProperty("pictFingerCymbals")]
         public Dictionary<string, double[]> PictFingerCymbals { get; set; }
@@ -7133,94 +7133,94 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictFlexatone { get; set; }
 
         [JsonProperty("pictFlexatonePeinkofer")]
-        public AccdnCombDot PictFlexatonePeinkofer { get; set; }
+        public BoundingBox PictFlexatonePeinkofer { get; set; }
 
         [JsonProperty("pictFootballRatchet")]
-        public AccdnCombDot PictFootballRatchet { get; set; }
+        public BoundingBox PictFootballRatchet { get; set; }
 
         [JsonProperty("pictGlassHarmonica")]
-        public AccdnCombDot PictGlassHarmonica { get; set; }
+        public BoundingBox PictGlassHarmonica { get; set; }
 
         [JsonProperty("pictGlassHarp")]
-        public AccdnCombDot PictGlassHarp { get; set; }
+        public BoundingBox PictGlassHarp { get; set; }
 
         [JsonProperty("pictGlassPlateChimes")]
-        public AccdnCombDot PictGlassPlateChimes { get; set; }
+        public BoundingBox PictGlassPlateChimes { get; set; }
 
         [JsonProperty("pictGlassTubeChimes")]
-        public AccdnCombDot PictGlassTubeChimes { get; set; }
+        public BoundingBox PictGlassTubeChimes { get; set; }
 
         [JsonProperty("pictGlsp")]
-        public AccdnCombDot PictGlsp { get; set; }
+        public BoundingBox PictGlsp { get; set; }
 
         [JsonProperty("pictGlspPeinkofer")]
-        public AccdnCombDot PictGlspPeinkofer { get; set; }
+        public BoundingBox PictGlspPeinkofer { get; set; }
 
         [JsonProperty("pictGlspSmithBrindle")]
-        public AccdnCombDot PictGlspSmithBrindle { get; set; }
+        public BoundingBox PictGlspSmithBrindle { get; set; }
 
         [JsonProperty("pictGobletDrum")]
         public Dictionary<string, double[]> PictGobletDrum { get; set; }
 
         [JsonProperty("pictGong")]
-        public AccdnCombDot PictGong { get; set; }
+        public BoundingBox PictGong { get; set; }
 
         [JsonProperty("pictGongWithButton")]
-        public AccdnCombDot PictGongWithButton { get; set; }
+        public BoundingBox PictGongWithButton { get; set; }
 
         [JsonProperty("pictGuiro")]
-        public AccdnCombDot PictGuiro { get; set; }
+        public BoundingBox PictGuiro { get; set; }
 
         [JsonProperty("pictGuiroPeinkofer")]
-        public AccdnCombDot PictGuiroPeinkofer { get; set; }
+        public BoundingBox PictGuiroPeinkofer { get; set; }
 
         [JsonProperty("pictGuiroSevsay")]
-        public AccdnCombDot PictGuiroSevsay { get; set; }
+        public BoundingBox PictGuiroSevsay { get; set; }
 
         [JsonProperty("pictGumHardDown")]
-        public AccdnCombDot PictGumHardDown { get; set; }
+        public BoundingBox PictGumHardDown { get; set; }
 
         [JsonProperty("pictGumHardLeft")]
-        public AccdnCombDot PictGumHardLeft { get; set; }
+        public BoundingBox PictGumHardLeft { get; set; }
 
         [JsonProperty("pictGumHardRight")]
-        public AccdnCombDot PictGumHardRight { get; set; }
+        public BoundingBox PictGumHardRight { get; set; }
 
         [JsonProperty("pictGumHardUp")]
-        public AccdnCombDot PictGumHardUp { get; set; }
+        public BoundingBox PictGumHardUp { get; set; }
 
         [JsonProperty("pictGumMediumDown")]
-        public AccdnCombDot PictGumMediumDown { get; set; }
+        public BoundingBox PictGumMediumDown { get; set; }
 
         [JsonProperty("pictGumMediumLeft")]
-        public AccdnCombDot PictGumMediumLeft { get; set; }
+        public BoundingBox PictGumMediumLeft { get; set; }
 
         [JsonProperty("pictGumMediumRight")]
-        public AccdnCombDot PictGumMediumRight { get; set; }
+        public BoundingBox PictGumMediumRight { get; set; }
 
         [JsonProperty("pictGumMediumUp")]
-        public AccdnCombDot PictGumMediumUp { get; set; }
+        public BoundingBox PictGumMediumUp { get; set; }
 
         [JsonProperty("pictGumSoftDown")]
-        public AccdnCombDot PictGumSoftDown { get; set; }
+        public BoundingBox PictGumSoftDown { get; set; }
 
         [JsonProperty("pictGumSoftLeft")]
-        public AccdnCombDot PictGumSoftLeft { get; set; }
+        public BoundingBox PictGumSoftLeft { get; set; }
 
         [JsonProperty("pictGumSoftRight")]
-        public AccdnCombDot PictGumSoftRight { get; set; }
+        public BoundingBox PictGumSoftRight { get; set; }
 
         [JsonProperty("pictGumSoftUp")]
-        public AccdnCombDot PictGumSoftUp { get; set; }
+        public BoundingBox PictGumSoftUp { get; set; }
 
         [JsonProperty("pictHalfOpen1")]
-        public AccdnCombDot PictHalfOpen1 { get; set; }
+        public BoundingBox PictHalfOpen1 { get; set; }
 
         [JsonProperty("pictHalfOpen2")]
         public Dictionary<string, double[]> PictHalfOpen2 { get; set; }
 
         [JsonProperty("pictHandbell")]
-        public AccdnCombDot PictHandbell { get; set; }
+        public BoundingBox PictHandbell { get; set; }
 
         [JsonProperty("pictHiHat")]
         public Dictionary<string, double[]> PictHiHat { get; set; }
@@ -7232,10 +7232,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, long[]> PictJawHarp { get; set; }
 
         [JsonProperty("pictJingleBells")]
-        public AccdnCombDot PictJingleBells { get; set; }
+        public BoundingBox PictJingleBells { get; set; }
 
         [JsonProperty("pictKlaxonHorn")]
-        public AccdnCombDot PictKlaxonHorn { get; set; }
+        public BoundingBox PictKlaxonHorn { get; set; }
 
         [JsonProperty("pictLeftHandCircle")]
         public Dictionary<string, double[]> PictLeftHandCircle { get; set; }
@@ -7244,46 +7244,46 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictLionsRoar { get; set; }
 
         [JsonProperty("pictLithophone")]
-        public AccdnCombDot PictLithophone { get; set; }
+        public BoundingBox PictLithophone { get; set; }
 
         [JsonProperty("pictLithophonePeinkofer")]
-        public AccdnCombDot PictLithophonePeinkofer { get; set; }
+        public BoundingBox PictLithophonePeinkofer { get; set; }
 
         [JsonProperty("pictLogDrum")]
         public Dictionary<string, double[]> PictLogDrum { get; set; }
 
         [JsonProperty("pictLotusFlute")]
-        public AccdnCombDot PictLotusFlute { get; set; }
+        public BoundingBox PictLotusFlute { get; set; }
 
         [JsonProperty("pictLotusFlutePeinkofer")]
-        public AccdnCombDot PictLotusFlutePeinkofer { get; set; }
+        public BoundingBox PictLotusFlutePeinkofer { get; set; }
 
         [JsonProperty("pictMar")]
         public Dictionary<string, double[]> PictMar { get; set; }
 
         [JsonProperty("pictMarPeinkofer")]
-        public AccdnCombDot PictMarPeinkofer { get; set; }
+        public BoundingBox PictMarPeinkofer { get; set; }
 
         [JsonProperty("pictMarSmithBrindle")]
-        public AccdnCombDot PictMarSmithBrindle { get; set; }
+        public BoundingBox PictMarSmithBrindle { get; set; }
 
         [JsonProperty("pictMaraca")]
         public Dictionary<string, double[]> PictMaraca { get; set; }
 
         [JsonProperty("pictMaracaSmithBrindle")]
-        public AccdnCombDot PictMaracaSmithBrindle { get; set; }
+        public BoundingBox PictMaracaSmithBrindle { get; set; }
 
         [JsonProperty("pictMaracas")]
-        public AccdnCombDot PictMaracas { get; set; }
+        public BoundingBox PictMaracas { get; set; }
 
         [JsonProperty("pictMegaphone")]
-        public AccdnCombDot PictMegaphone { get; set; }
+        public BoundingBox PictMegaphone { get; set; }
 
         [JsonProperty("pictMetalPlateChimes")]
-        public AccdnCombDot PictMetalPlateChimes { get; set; }
+        public BoundingBox PictMetalPlateChimes { get; set; }
 
         [JsonProperty("pictMetalTubeChimes")]
-        public AccdnCombDot PictMetalTubeChimes { get; set; }
+        public BoundingBox PictMetalTubeChimes { get; set; }
 
         [JsonProperty("pictMusicalSaw")]
         public Dictionary<string, double[]> PictMusicalSaw { get; set; }
@@ -7295,43 +7295,43 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictNormalPosition { get; set; }
 
         [JsonProperty("pictOnRim")]
-        public AccdnCombDot PictOnRim { get; set; }
+        public BoundingBox PictOnRim { get; set; }
 
         [JsonProperty("pictOpen")]
-        public AccdnCombDot PictOpen { get; set; }
+        public BoundingBox PictOpen { get; set; }
 
         [JsonProperty("pictOpenRimShot")]
         public Dictionary<string, double[]> PictOpenRimShot { get; set; }
 
         [JsonProperty("pictPistolShot")]
-        public AccdnCombDot PictPistolShot { get; set; }
+        public BoundingBox PictPistolShot { get; set; }
 
         [JsonProperty("pictPoliceWhistle")]
-        public AccdnCombDot PictPoliceWhistle { get; set; }
+        public BoundingBox PictPoliceWhistle { get; set; }
 
         [JsonProperty("pictQuijada")]
         public Dictionary<string, double[]> PictQuijada { get; set; }
 
         [JsonProperty("pictRainstick")]
-        public AccdnCombDot PictRainstick { get; set; }
+        public BoundingBox PictRainstick { get; set; }
 
         [JsonProperty("pictRatchet")]
         public Dictionary<string, double[]> PictRatchet { get; set; }
 
         [JsonProperty("pictRecoReco")]
-        public AccdnCombDot PictRecoReco { get; set; }
+        public BoundingBox PictRecoReco { get; set; }
 
         [JsonProperty("pictRightHandSquare")]
-        public AccdnCombDot PictRightHandSquare { get; set; }
+        public BoundingBox PictRightHandSquare { get; set; }
 
         [JsonProperty("pictRim1")]
-        public AccdnCombDot PictRim1 { get; set; }
+        public BoundingBox PictRim1 { get; set; }
 
         [JsonProperty("pictRim2")]
-        public AccdnCombDot PictRim2 { get; set; }
+        public BoundingBox PictRim2 { get; set; }
 
         [JsonProperty("pictRim3")]
-        public AccdnCombDot PictRim3 { get; set; }
+        public BoundingBox PictRim3 { get; set; }
 
         [JsonProperty("pictRimShotOnStem")]
         public Dictionary<string, double[]> PictRimShotOnStem { get; set; }
@@ -7346,16 +7346,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictScrapeAroundRimClockwise { get; set; }
 
         [JsonProperty("pictScrapeCenterToEdge")]
-        public AccdnCombDot PictScrapeCenterToEdge { get; set; }
+        public BoundingBox PictScrapeCenterToEdge { get; set; }
 
         [JsonProperty("pictScrapeEdgeToCenter")]
-        public AccdnCombDot PictScrapeEdgeToCenter { get; set; }
+        public BoundingBox PictScrapeEdgeToCenter { get; set; }
 
         [JsonProperty("pictShellBells")]
         public Dictionary<string, long[]> PictShellBells { get; set; }
 
         [JsonProperty("pictShellChimes")]
-        public AccdnCombDot PictShellChimes { get; set; }
+        public BoundingBox PictShellChimes { get; set; }
 
         [JsonProperty("pictSiren")]
         public Dictionary<string, double[]> PictSiren { get; set; }
@@ -7367,7 +7367,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictSizzleCymbal { get; set; }
 
         [JsonProperty("pictSleighBell")]
-        public AccdnCombDot PictSleighBell { get; set; }
+        public BoundingBox PictSleighBell { get; set; }
 
         [JsonProperty("pictSleighBellSmithBrindle")]
         public Dictionary<string, double[]> PictSleighBellSmithBrindle { get; set; }
@@ -7379,34 +7379,34 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictSlideWhistle { get; set; }
 
         [JsonProperty("pictSlitDrum")]
-        public AccdnCombDot PictSlitDrum { get; set; }
+        public BoundingBox PictSlitDrum { get; set; }
 
         [JsonProperty("pictSnareDrum")]
-        public AccdnCombDot PictSnareDrum { get; set; }
+        public BoundingBox PictSnareDrum { get; set; }
 
         [JsonProperty("pictSnareDrumMilitary")]
-        public AccdnCombDot PictSnareDrumMilitary { get; set; }
+        public BoundingBox PictSnareDrumMilitary { get; set; }
 
         [JsonProperty("pictSnareDrumSnaresOff")]
-        public AccdnCombDot PictSnareDrumSnaresOff { get; set; }
+        public BoundingBox PictSnareDrumSnaresOff { get; set; }
 
         [JsonProperty("pictSteelDrums")]
-        public AccdnCombDot PictSteelDrums { get; set; }
+        public BoundingBox PictSteelDrums { get; set; }
 
         [JsonProperty("pictStickShot")]
-        public AccdnCombDot PictStickShot { get; set; }
+        public BoundingBox PictStickShot { get; set; }
 
         [JsonProperty("pictSuperball")]
-        public AccdnCombDot PictSuperball { get; set; }
+        public BoundingBox PictSuperball { get; set; }
 
         [JsonProperty("pictSuspendedCymbal")]
-        public AccdnCombDot PictSuspendedCymbal { get; set; }
+        public BoundingBox PictSuspendedCymbal { get; set; }
 
         [JsonProperty("pictSwishStem")]
         public Dictionary<string, double[]> PictSwishStem { get; set; }
 
         [JsonProperty("pictTabla")]
-        public AccdnCombDot PictTabla { get; set; }
+        public BoundingBox PictTabla { get; set; }
 
         [JsonProperty("pictTamTam")]
         public Dictionary<string, double[]> PictTamTam { get; set; }
@@ -7415,16 +7415,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictTamTamWithBeater { get; set; }
 
         [JsonProperty("pictTambourine")]
-        public AccdnCombDot PictTambourine { get; set; }
+        public BoundingBox PictTambourine { get; set; }
 
         [JsonProperty("pictTambourineStockhausen")]
-        public AccdnCombDot PictTambourineStockhausen { get; set; }
+        public BoundingBox PictTambourineStockhausen { get; set; }
 
         [JsonProperty("pictTempleBlocks")]
         public Dictionary<string, double[]> PictTempleBlocks { get; set; }
 
         [JsonProperty("pictTenorDrum")]
-        public AccdnCombDot PictTenorDrum { get; set; }
+        public BoundingBox PictTenorDrum { get; set; }
 
         [JsonProperty("pictThundersheet")]
         public Dictionary<string, double[]> PictThundersheet { get; set; }
@@ -7433,40 +7433,40 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictTimbales { get; set; }
 
         [JsonProperty("pictTimbalesPeinkofer")]
-        public AccdnCombDot PictTimbalesPeinkofer { get; set; }
+        public BoundingBox PictTimbalesPeinkofer { get; set; }
 
         [JsonProperty("pictTimpani")]
         public Dictionary<string, double[]> PictTimpani { get; set; }
 
         [JsonProperty("pictTimpaniPeinkofer")]
-        public AccdnCombDot PictTimpaniPeinkofer { get; set; }
+        public BoundingBox PictTimpaniPeinkofer { get; set; }
 
         [JsonProperty("pictTomTom")]
-        public AccdnCombDot PictTomTom { get; set; }
+        public BoundingBox PictTomTom { get; set; }
 
         [JsonProperty("pictTomTomChinese")]
-        public AccdnCombDot PictTomTomChinese { get; set; }
+        public BoundingBox PictTomTomChinese { get; set; }
 
         [JsonProperty("pictTomTomChinesePeinkofer")]
         public Dictionary<string, double[]> PictTomTomChinesePeinkofer { get; set; }
 
         [JsonProperty("pictTomTomIndoAmerican")]
-        public AccdnCombDot PictTomTomIndoAmerican { get; set; }
+        public BoundingBox PictTomTomIndoAmerican { get; set; }
 
         [JsonProperty("pictTomTomJapanese")]
-        public AccdnCombDot PictTomTomJapanese { get; set; }
+        public BoundingBox PictTomTomJapanese { get; set; }
 
         [JsonProperty("pictTomTomPeinkofer")]
-        public AccdnCombDot PictTomTomPeinkofer { get; set; }
+        public BoundingBox PictTomTomPeinkofer { get; set; }
 
         [JsonProperty("pictTriangle")]
-        public AccdnCombDot PictTriangle { get; set; }
+        public BoundingBox PictTriangle { get; set; }
 
         [JsonProperty("pictTubaphone")]
-        public AccdnCombDot PictTubaphone { get; set; }
+        public BoundingBox PictTubaphone { get; set; }
 
         [JsonProperty("pictTubaphonePeinkofer")]
-        public AccdnCombDot PictTubaphonePeinkofer { get; set; }
+        public BoundingBox PictTubaphonePeinkofer { get; set; }
 
         [JsonProperty("pictTubularBells")]
         public Dictionary<string, double[]> PictTubularBells { get; set; }
@@ -7481,43 +7481,43 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictTurnRightStem { get; set; }
 
         [JsonProperty("pictVib")]
-        public AccdnCombDot PictVib { get; set; }
+        public BoundingBox PictVib { get; set; }
 
         [JsonProperty("pictVibMotorOff")]
-        public AccdnCombDot PictVibMotorOff { get; set; }
+        public BoundingBox PictVibMotorOff { get; set; }
 
         [JsonProperty("pictVibMotorOffPeinkofer")]
-        public AccdnCombDot PictVibMotorOffPeinkofer { get; set; }
+        public BoundingBox PictVibMotorOffPeinkofer { get; set; }
 
         [JsonProperty("pictVibPeinkofer")]
-        public AccdnCombDot PictVibPeinkofer { get; set; }
+        public BoundingBox PictVibPeinkofer { get; set; }
 
         [JsonProperty("pictVibSmithBrindle")]
-        public AccdnCombDot PictVibSmithBrindle { get; set; }
+        public BoundingBox PictVibSmithBrindle { get; set; }
 
         [JsonProperty("pictVibraslap")]
-        public AccdnCombDot PictVibraslap { get; set; }
+        public BoundingBox PictVibraslap { get; set; }
 
         [JsonProperty("pictVietnameseHat")]
-        public AccdnCombDot PictVietnameseHat { get; set; }
+        public BoundingBox PictVietnameseHat { get; set; }
 
         [JsonProperty("pictWhip")]
         public Dictionary<string, double[]> PictWhip { get; set; }
 
         [JsonProperty("pictWindChimesGlass")]
-        public AccdnCombDot PictWindChimesGlass { get; set; }
+        public BoundingBox PictWindChimesGlass { get; set; }
 
         [JsonProperty("pictWindMachine")]
-        public AccdnCombDot PictWindMachine { get; set; }
+        public BoundingBox PictWindMachine { get; set; }
 
         [JsonProperty("pictWindWhistle")]
-        public AccdnCombDot PictWindWhistle { get; set; }
+        public BoundingBox PictWindWhistle { get; set; }
 
         [JsonProperty("pictWoodBlock")]
         public Dictionary<string, double[]> PictWoodBlock { get; set; }
 
         [JsonProperty("pictWoundHardDown")]
-        public AccdnCombDot PictWoundHardDown { get; set; }
+        public BoundingBox PictWoundHardDown { get; set; }
 
         [JsonProperty("pictWoundHardLeft")]
         public Dictionary<string, double[]> PictWoundHardLeft { get; set; }
@@ -7526,10 +7526,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictWoundHardRight { get; set; }
 
         [JsonProperty("pictWoundHardUp")]
-        public AccdnCombDot PictWoundHardUp { get; set; }
+        public BoundingBox PictWoundHardUp { get; set; }
 
         [JsonProperty("pictWoundSoftDown")]
-        public AccdnCombDot PictWoundSoftDown { get; set; }
+        public BoundingBox PictWoundSoftDown { get; set; }
 
         [JsonProperty("pictWoundSoftLeft")]
         public Dictionary<string, double[]> PictWoundSoftLeft { get; set; }
@@ -7538,43 +7538,43 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PictWoundSoftRight { get; set; }
 
         [JsonProperty("pictWoundSoftUp")]
-        public AccdnCombDot PictWoundSoftUp { get; set; }
+        public BoundingBox PictWoundSoftUp { get; set; }
 
         [JsonProperty("pictXyl")]
-        public AccdnCombDot PictXyl { get; set; }
+        public BoundingBox PictXyl { get; set; }
 
         [JsonProperty("pictXylBass")]
-        public AccdnCombDot PictXylBass { get; set; }
+        public BoundingBox PictXylBass { get; set; }
 
         [JsonProperty("pictXylBassPeinkofer")]
-        public AccdnCombDot PictXylBassPeinkofer { get; set; }
+        public BoundingBox PictXylBassPeinkofer { get; set; }
 
         [JsonProperty("pictXylPeinkofer")]
-        public AccdnCombDot PictXylPeinkofer { get; set; }
+        public BoundingBox PictXylPeinkofer { get; set; }
 
         [JsonProperty("pictXylSmithBrindle")]
-        public AccdnCombDot PictXylSmithBrindle { get; set; }
+        public BoundingBox PictXylSmithBrindle { get; set; }
 
         [JsonProperty("pictXylTenor")]
-        public AccdnCombDot PictXylTenor { get; set; }
+        public BoundingBox PictXylTenor { get; set; }
 
         [JsonProperty("pictXylTenorPeinkofer")]
-        public AccdnCombDot PictXylTenorPeinkofer { get; set; }
+        public BoundingBox PictXylTenorPeinkofer { get; set; }
 
         [JsonProperty("pictXylTenorTrough")]
-        public AccdnCombDot PictXylTenorTrough { get; set; }
+        public BoundingBox PictXylTenorTrough { get; set; }
 
         [JsonProperty("pictXylTrough")]
-        public AccdnCombDot PictXylTrough { get; set; }
+        public BoundingBox PictXylTrough { get; set; }
 
         [JsonProperty("pluckedBuzzPizzicato")]
-        public AccdnCombDot PluckedBuzzPizzicato { get; set; }
+        public BoundingBox PluckedBuzzPizzicato { get; set; }
 
         [JsonProperty("pluckedDamp")]
-        public AccdnCombDot PluckedDamp { get; set; }
+        public BoundingBox PluckedDamp { get; set; }
 
         [JsonProperty("pluckedDampAll")]
-        public AccdnCombDot PluckedDampAll { get; set; }
+        public BoundingBox PluckedDampAll { get; set; }
 
         [JsonProperty("pluckedDampOnStem")]
         public Dictionary<string, double[]> PluckedDampOnStem { get; set; }
@@ -7583,22 +7583,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> PluckedFingernailFlick { get; set; }
 
         [JsonProperty("pluckedLeftHandPizzicato")]
-        public AccdnCombDot PluckedLeftHandPizzicato { get; set; }
+        public BoundingBox PluckedLeftHandPizzicato { get; set; }
 
         [JsonProperty("pluckedPlectrum")]
-        public AccdnCombDot PluckedPlectrum { get; set; }
+        public BoundingBox PluckedPlectrum { get; set; }
 
         [JsonProperty("pluckedSnapPizzicatoAbove")]
-        public AccdnCombDot PluckedSnapPizzicatoAbove { get; set; }
+        public BoundingBox PluckedSnapPizzicatoAbove { get; set; }
 
         [JsonProperty("pluckedSnapPizzicatoAboveGerman")]
-        public AccdnCombDot PluckedSnapPizzicatoAboveGerman { get; set; }
+        public BoundingBox PluckedSnapPizzicatoAboveGerman { get; set; }
 
         [JsonProperty("pluckedSnapPizzicatoBelow")]
-        public AccdnCombDot PluckedSnapPizzicatoBelow { get; set; }
+        public BoundingBox PluckedSnapPizzicatoBelow { get; set; }
 
         [JsonProperty("pluckedSnapPizzicatoBelowGerman")]
-        public AccdnCombDot PluckedSnapPizzicatoBelowGerman { get; set; }
+        public BoundingBox PluckedSnapPizzicatoBelowGerman { get; set; }
 
         [JsonProperty("pluckedWithFingernails")]
         public Dictionary<string, double[]> PluckedWithFingernails { get; set; }
@@ -7616,13 +7616,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> QuindicesimaBassaMb { get; set; }
 
         [JsonProperty("repeat1Bar")]
-        public AccdnCombDot Repeat1Bar { get; set; }
+        public BoundingBox Repeat1Bar { get; set; }
 
         [JsonProperty("repeat2Bars")]
-        public AccdnCombDot Repeat2Bars { get; set; }
+        public BoundingBox Repeat2Bars { get; set; }
 
         [JsonProperty("repeat4Bars")]
-        public AccdnCombDot Repeat4Bars { get; set; }
+        public BoundingBox Repeat4Bars { get; set; }
 
         [JsonProperty("repeatDot")]
         public Dictionary<string, double[]> RepeatDot { get; set; }
@@ -7631,7 +7631,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> RepeatDots { get; set; }
 
         [JsonProperty("repeatLeft")]
-        public AccdnCombDot RepeatLeft { get; set; }
+        public BoundingBox RepeatLeft { get; set; }
 
         [JsonProperty("repeatRight")]
         public Dictionary<string, double[]> RepeatRight { get; set; }
@@ -7646,19 +7646,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Rest1024Th { get; set; }
 
         [JsonProperty("rest128th")]
-        public AccdnCombDot Rest128Th { get; set; }
+        public BoundingBox Rest128Th { get; set; }
 
         [JsonProperty("rest16th")]
-        public AccdnCombDot Rest16Th { get; set; }
+        public BoundingBox Rest16Th { get; set; }
 
         [JsonProperty("rest256th")]
-        public AccdnCombDot Rest256Th { get; set; }
+        public BoundingBox Rest256Th { get; set; }
 
         [JsonProperty("rest32nd")]
-        public AccdnCombDot Rest32Nd { get; set; }
+        public BoundingBox Rest32Nd { get; set; }
 
         [JsonProperty("rest512th")]
-        public AccdnCombDot Rest512Th { get; set; }
+        public BoundingBox Rest512Th { get; set; }
 
         [JsonProperty("rest64th")]
         public Dictionary<string, double[]> Rest64Th { get; set; }
@@ -7667,7 +7667,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Rest8Th { get; set; }
 
         [JsonProperty("restDoubleWhole")]
-        public AccdnCombDot RestDoubleWhole { get; set; }
+        public BoundingBox RestDoubleWhole { get; set; }
 
         [JsonProperty("restDoubleWholeLegerLine")]
         public Dictionary<string, double[]> RestDoubleWholeLegerLine { get; set; }
@@ -7718,7 +7718,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> ReversedBracketBottom { get; set; }
 
         [JsonProperty("reversedBracketTop")]
-        public AccdnCombDot ReversedBracketTop { get; set; }
+        public BoundingBox ReversedBracketTop { get; set; }
 
         [JsonProperty("rightRepeatSmall")]
         public Dictionary<string, double[]> RightRepeatSmall { get; set; }
@@ -7751,7 +7751,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Segno { get; set; }
 
         [JsonProperty("segnoJapanese")]
-        public AccdnCombDot SegnoJapanese { get; set; }
+        public BoundingBox SegnoJapanese { get; set; }
 
         [JsonProperty("segnoSerpent1")]
         public Dictionary<string, double[]> SegnoSerpent1 { get; set; }
@@ -7856,13 +7856,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Staff6LinesWide { get; set; }
 
         [JsonProperty("staffDivideArrowDown")]
-        public AccdnCombDot StaffDivideArrowDown { get; set; }
+        public BoundingBox StaffDivideArrowDown { get; set; }
 
         [JsonProperty("staffDivideArrowUp")]
         public Dictionary<string, double[]> StaffDivideArrowUp { get; set; }
 
         [JsonProperty("staffDivideArrowUpDown")]
-        public AccdnCombDot StaffDivideArrowUpDown { get; set; }
+        public BoundingBox StaffDivideArrowUpDown { get; set; }
 
         [JsonProperty("stem")]
         public Dictionary<string, double[]> Stem { get; set; }
@@ -7940,46 +7940,46 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> StringsChangeBowDirection { get; set; }
 
         [JsonProperty("stringsChangeBowDirectionImposed")]
-        public AccdnCombDot StringsChangeBowDirectionImposed { get; set; }
+        public BoundingBox StringsChangeBowDirectionImposed { get; set; }
 
         [JsonProperty("stringsChangeBowDirectionLiga")]
-        public AccdnCombDot StringsChangeBowDirectionLiga { get; set; }
+        public BoundingBox StringsChangeBowDirectionLiga { get; set; }
 
         [JsonProperty("stringsDownBow")]
-        public AccdnCombDot StringsDownBow { get; set; }
+        public BoundingBox StringsDownBow { get; set; }
 
         [JsonProperty("stringsDownBowTurned")]
-        public AccdnCombDot StringsDownBowTurned { get; set; }
+        public BoundingBox StringsDownBowTurned { get; set; }
 
         [JsonProperty("stringsFouette")]
-        public AccdnCombDot StringsFouette { get; set; }
+        public BoundingBox StringsFouette { get; set; }
 
         [JsonProperty("stringsHalfHarmonic")]
-        public AccdnCombDot StringsHalfHarmonic { get; set; }
+        public BoundingBox StringsHalfHarmonic { get; set; }
 
         [JsonProperty("stringsHarmonic")]
-        public AccdnCombDot StringsHarmonic { get; set; }
+        public BoundingBox StringsHarmonic { get; set; }
 
         [JsonProperty("stringsJeteAbove")]
-        public AccdnCombDot StringsJeteAbove { get; set; }
+        public BoundingBox StringsJeteAbove { get; set; }
 
         [JsonProperty("stringsJeteBelow")]
-        public AccdnCombDot StringsJeteBelow { get; set; }
+        public BoundingBox StringsJeteBelow { get; set; }
 
         [JsonProperty("stringsMuteOff")]
-        public AccdnCombDot StringsMuteOff { get; set; }
+        public BoundingBox StringsMuteOff { get; set; }
 
         [JsonProperty("stringsMuteOn")]
         public Dictionary<string, double[]> StringsMuteOn { get; set; }
 
         [JsonProperty("stringsOverpressureDownBow")]
-        public AccdnCombDot StringsOverpressureDownBow { get; set; }
+        public BoundingBox StringsOverpressureDownBow { get; set; }
 
         [JsonProperty("stringsOverpressureNoDirection")]
-        public AccdnCombDot StringsOverpressureNoDirection { get; set; }
+        public BoundingBox StringsOverpressureNoDirection { get; set; }
 
         [JsonProperty("stringsOverpressurePossibileDownBow")]
-        public AccdnCombDot StringsOverpressurePossibileDownBow { get; set; }
+        public BoundingBox StringsOverpressurePossibileDownBow { get; set; }
 
         [JsonProperty("stringsOverpressurePossibileUpBow")]
         public Dictionary<string, double[]> StringsOverpressurePossibileUpBow { get; set; }
@@ -7988,10 +7988,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> StringsOverpressureUpBow { get; set; }
 
         [JsonProperty("stringsThumbPosition")]
-        public AccdnCombDot StringsThumbPosition { get; set; }
+        public BoundingBox StringsThumbPosition { get; set; }
 
         [JsonProperty("stringsThumbPositionTurned")]
-        public AccdnCombDot StringsThumbPositionTurned { get; set; }
+        public BoundingBox StringsThumbPositionTurned { get; set; }
 
         [JsonProperty("stringsUpBow")]
         public Dictionary<string, double[]> StringsUpBow { get; set; }
@@ -8432,16 +8432,16 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> Tremolo5 { get; set; }
 
         [JsonProperty("tremoloDivisiDots2")]
-        public AccdnCombDot TremoloDivisiDots2 { get; set; }
+        public BoundingBox TremoloDivisiDots2 { get; set; }
 
         [JsonProperty("tremoloDivisiDots3")]
-        public AccdnCombDot TremoloDivisiDots3 { get; set; }
+        public BoundingBox TremoloDivisiDots3 { get; set; }
 
         [JsonProperty("tremoloDivisiDots4")]
-        public AccdnCombDot TremoloDivisiDots4 { get; set; }
+        public BoundingBox TremoloDivisiDots4 { get; set; }
 
         [JsonProperty("tremoloDivisiDots6")]
-        public AccdnCombDot TremoloDivisiDots6 { get; set; }
+        public BoundingBox TremoloDivisiDots6 { get; set; }
 
         [JsonProperty("tremoloFingered1")]
         public Dictionary<string, double[]> TremoloFingered1 { get; set; }
@@ -8462,13 +8462,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> TripleTongueAbove { get; set; }
 
         [JsonProperty("tripleTongueAboveNoSlur")]
-        public AccdnCombDot TripleTongueAboveNoSlur { get; set; }
+        public BoundingBox TripleTongueAboveNoSlur { get; set; }
 
         [JsonProperty("tripleTongueBelow")]
         public Dictionary<string, double[]> TripleTongueBelow { get; set; }
 
         [JsonProperty("tripleTongueBelowNoSlur")]
-        public AccdnCombDot TripleTongueBelowNoSlur { get; set; }
+        public BoundingBox TripleTongueBelowNoSlur { get; set; }
 
         [JsonProperty("tuplet0")]
         public Dictionary<string, double[]> Tuplet0 { get; set; }
@@ -8510,10 +8510,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> UnmeasuredTremoloSimple { get; set; }
 
         [JsonProperty("unpitchedPercussionClef1")]
-        public AccdnCombDot UnpitchedPercussionClef1 { get; set; }
+        public BoundingBox UnpitchedPercussionClef1 { get; set; }
 
         [JsonProperty("unpitchedPercussionClef1Alt")]
-        public AccdnCombDot UnpitchedPercussionClef1Alt { get; set; }
+        public BoundingBox UnpitchedPercussionClef1Alt { get; set; }
 
         [JsonProperty("unpitchedPercussionClef2")]
         public Dictionary<string, double[]> UnpitchedPercussionClef2 { get; set; }
@@ -8543,22 +8543,22 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> VentiquattresimaBassaMb { get; set; }
 
         [JsonProperty("vocalFingerClickStockhausen")]
-        public AccdnCombDot VocalFingerClickStockhausen { get; set; }
+        public BoundingBox VocalFingerClickStockhausen { get; set; }
 
         [JsonProperty("vocalMouthClosed")]
-        public AccdnCombDot VocalMouthClosed { get; set; }
+        public BoundingBox VocalMouthClosed { get; set; }
 
         [JsonProperty("vocalMouthOpen")]
-        public AccdnCombDot VocalMouthOpen { get; set; }
+        public BoundingBox VocalMouthOpen { get; set; }
 
         [JsonProperty("vocalMouthPursed")]
-        public AccdnCombDot VocalMouthPursed { get; set; }
+        public BoundingBox VocalMouthPursed { get; set; }
 
         [JsonProperty("vocalMouthSlightlyOpen")]
-        public AccdnCombDot VocalMouthSlightlyOpen { get; set; }
+        public BoundingBox VocalMouthSlightlyOpen { get; set; }
 
         [JsonProperty("vocalMouthWideOpen")]
-        public AccdnCombDot VocalMouthWideOpen { get; set; }
+        public BoundingBox VocalMouthWideOpen { get; set; }
 
         [JsonProperty("vocalNasalVoice")]
         public Dictionary<string, double[]> VocalNasalVoice { get; set; }
@@ -8567,10 +8567,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> VocalSprechgesang { get; set; }
 
         [JsonProperty("vocalTongueClickStockhausen")]
-        public AccdnCombDot VocalTongueClickStockhausen { get; set; }
+        public BoundingBox VocalTongueClickStockhausen { get; set; }
 
         [JsonProperty("vocalTongueFingerClickStockhausen")]
-        public AccdnCombDot VocalTongueFingerClickStockhausen { get; set; }
+        public BoundingBox VocalTongueFingerClickStockhausen { get; set; }
 
         [JsonProperty("vocalsSussurando")]
         public Dictionary<string, double[]> VocalsSussurando { get; set; }
@@ -8627,7 +8627,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> WiggleCircularLargerStill { get; set; }
 
         [JsonProperty("wiggleCircularLargest")]
-        public AccdnCombDot WiggleCircularLargest { get; set; }
+        public BoundingBox WiggleCircularLargest { get; set; }
 
         [JsonProperty("wiggleCircularSmall")]
         public Dictionary<string, double[]> WiggleCircularSmall { get; set; }
@@ -8828,28 +8828,28 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> WiggleWavyWide { get; set; }
 
         [JsonProperty("windClosedHole")]
-        public AccdnCombDot WindClosedHole { get; set; }
+        public BoundingBox WindClosedHole { get; set; }
 
         [JsonProperty("windFlatEmbouchure")]
-        public AccdnCombDot WindFlatEmbouchure { get; set; }
+        public BoundingBox WindFlatEmbouchure { get; set; }
 
         [JsonProperty("windHalfClosedHole1")]
-        public AccdnCombDot WindHalfClosedHole1 { get; set; }
+        public BoundingBox WindHalfClosedHole1 { get; set; }
 
         [JsonProperty("windHalfClosedHole2")]
         public Dictionary<string, double[]> WindHalfClosedHole2 { get; set; }
 
         [JsonProperty("windHalfClosedHole3")]
-        public AccdnCombDot WindHalfClosedHole3 { get; set; }
+        public BoundingBox WindHalfClosedHole3 { get; set; }
 
         [JsonProperty("windLessRelaxedEmbouchure")]
-        public AccdnCombDot WindLessRelaxedEmbouchure { get; set; }
+        public BoundingBox WindLessRelaxedEmbouchure { get; set; }
 
         [JsonProperty("windLessTightEmbouchure")]
-        public AccdnCombDot WindLessTightEmbouchure { get; set; }
+        public BoundingBox WindLessTightEmbouchure { get; set; }
 
         [JsonProperty("windMouthpiecePop")]
-        public AccdnCombDot WindMouthpiecePop { get; set; }
+        public BoundingBox WindMouthpiecePop { get; set; }
 
         [JsonProperty("windMultiphonicsBlackStem")]
         public Dictionary<string, double[]> WindMultiphonicsBlackStem { get; set; }
@@ -8861,42 +8861,42 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double[]> WindMultiphonicsWhiteStem { get; set; }
 
         [JsonProperty("windOpenHole")]
-        public AccdnCombDot WindOpenHole { get; set; }
+        public BoundingBox WindOpenHole { get; set; }
 
         [JsonProperty("windReedPositionIn")]
-        public AccdnCombDot WindReedPositionIn { get; set; }
+        public BoundingBox WindReedPositionIn { get; set; }
 
         [JsonProperty("windReedPositionNormal")]
-        public AccdnCombDot WindReedPositionNormal { get; set; }
+        public BoundingBox WindReedPositionNormal { get; set; }
 
         [JsonProperty("windReedPositionOut")]
-        public AccdnCombDot WindReedPositionOut { get; set; }
+        public BoundingBox WindReedPositionOut { get; set; }
 
         [JsonProperty("windRelaxedEmbouchure")]
-        public AccdnCombDot WindRelaxedEmbouchure { get; set; }
+        public BoundingBox WindRelaxedEmbouchure { get; set; }
 
         [JsonProperty("windRimOnly")]
-        public AccdnCombDot WindRimOnly { get; set; }
+        public BoundingBox WindRimOnly { get; set; }
 
         [JsonProperty("windSharpEmbouchure")]
-        public AccdnCombDot WindSharpEmbouchure { get; set; }
+        public BoundingBox WindSharpEmbouchure { get; set; }
 
         [JsonProperty("windStrongAirPressure")]
-        public AccdnCombDot WindStrongAirPressure { get; set; }
+        public BoundingBox WindStrongAirPressure { get; set; }
 
         [JsonProperty("windThreeQuartersClosedHole")]
-        public AccdnCombDot WindThreeQuartersClosedHole { get; set; }
+        public BoundingBox WindThreeQuartersClosedHole { get; set; }
 
         [JsonProperty("windTightEmbouchure")]
-        public AccdnCombDot WindTightEmbouchure { get; set; }
+        public BoundingBox WindTightEmbouchure { get; set; }
 
         [JsonProperty("windTrillKey")]
-        public AccdnCombDot WindTrillKey { get; set; }
+        public BoundingBox WindTrillKey { get; set; }
 
         [JsonProperty("windVeryTightEmbouchure")]
         public Dictionary<string, double[]> WindVeryTightEmbouchure { get; set; }
 
         [JsonProperty("windWeakAirPressure")]
-        public AccdnCombDot WindWeakAirPressure { get; set; }
+        public BoundingBox WindWeakAirPressure { get; set; }
     }
 }

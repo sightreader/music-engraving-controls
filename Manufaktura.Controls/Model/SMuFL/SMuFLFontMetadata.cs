@@ -33,7 +33,7 @@
         public Dictionary<string, Set> Sets { get; set; }
     }
 
-    public partial class AccdnCombDot
+    public partial class BoundingBox
     {
         [JsonProperty("bBoxNE")]
         public double[] BBoxNe { get; set; }
@@ -73,16 +73,19 @@
         public double[] OpticalCenter { get; set; }
     }
 
-    public partial class GlyphsWithAnchorsFlag1024ThDown
+    public partial class StemBoundaries
     {
         [JsonProperty("stemDownSW")]
         public double[] StemDownSw { get; set; }
-    }
 
-    public partial class GlyphsWithAnchorsFlag1024ThUp
-    {
         [JsonProperty("stemUpNW")]
         public double[] StemUpNw { get; set; }
+
+        [JsonProperty("stemDownNW")]
+        public double[] StemDownNw { get; set; }
+
+        [JsonProperty("stemUpSE")]
+        public double[] StemUpSe { get; set; }
     }
 
     public partial class Flag8ThDown
@@ -97,11 +100,6 @@
         public double[] StemDownSw { get; set; }
     }
 
-    public partial class Flag8ThDownSmall
-    {
-        [JsonProperty("stemDownSW")]
-        public long[] StemDownSw { get; set; }
-    }
 
     public partial class Flag8ThUp
     {
@@ -115,26 +113,13 @@
         public double[] StemUpNw { get; set; }
     }
 
-    public partial class Flag8ThUpSmall
-    {
-        [JsonProperty("stemUpNW")]
-        public long[] StemUpNw { get; set; }
-    }
-
     public partial class GClefLigatedNumber
     {
         [JsonProperty("numeralBottom")]
         public double[] NumeralBottom { get; set; }
     }
 
-    public partial class GlyphsWithAnchorsNoteABlack
-    {
-        [JsonProperty("stemDownNW")]
-        public double[] StemDownNw { get; set; }
 
-        [JsonProperty("stemUpSE")]
-        public double[] StemUpSe { get; set; }
-    }
 
     public partial class GlyphsWithAnchorsNoteShapeDiamondBlack
     {
@@ -145,14 +130,6 @@
         public double[] StemUpSe { get; set; }
     }
 
-    public partial class NoteheadCircleSlash
-    {
-        [JsonProperty("stemDownNW")]
-        public double[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public long[] StemUpSe { get; set; }
-    }
 
     public partial class GlyphsWithAnchorsNoteheadCircleXDoubleWhole
     {
@@ -160,26 +137,6 @@
         public double[] NoteheadOrigin { get; set; }
     }
 
-    public partial class GlyphsWithAnchorsNoteheadCircleXHalf
-    {
-        [JsonProperty("stemDownNW")]
-        public long[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public long[] StemUpSe { get; set; }
-    }
-
-    public partial class NoteheadBottom
-    {
-        [JsonProperty("stemDownNW")]
-        public double[] StemDownNw { get; set; }
-    }
-
-    public partial class NoteheadTop
-    {
-        [JsonProperty("stemUpSE")]
-        public double[] StemUpSe { get; set; }
-    }
 
     public partial class Wiggle
     {
