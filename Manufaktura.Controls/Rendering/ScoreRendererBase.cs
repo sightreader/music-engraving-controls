@@ -210,8 +210,8 @@ namespace Manufaktura.Controls.Rendering
 #endif
             var system = CurrentScore.Systems.ElementAt(position.SystemNumber - 1);
             if (system == null) return;
-            DrawPlaybackCursor(position, new Point(position.PositionX + 6, system.Staves.First().LinePositions.First()),
-                new Point(position.PositionX + 6, system.Staves.Last().LinePositions.Last()));
+            DrawPlaybackCursor(position, new Point(position.PositionX, system.Staves.First().LinePositions.First()),
+                new Point(position.PositionX, system.Staves.Last().LinePositions.Last()));
         }
 
         /// <summary>

@@ -50,11 +50,11 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;
                 var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
                 endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd,
-                    (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + (hasFlagOrBeam ? 23 : 25) : notePositionY + 18));
+                    (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + (hasFlagOrBeam ? -2 : 0) : notePositionY - 7));
             }
             else if (slurStartInfo.StartPlacement == VerticalPlacement.Below)
             {
-                endPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
+                endPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 5);
             }
             else throw new Exception("Unsupported placement type.");
 
@@ -85,10 +85,10 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             {
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;  //If note has a flag or beam start the slur above the note. If not, start a bit to the right and down.
                 var xShiftConcerningStemDirectionStart = slurStartInfo.StartPointStemDirection == VerticalDirection.Up ? (hasFlagOrBeam ? 5 : 10) : 1;
-                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY + 18 : element.StemEndLocation.Y + (hasFlagOrBeam ? 22 : 33));
+                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY - 7 : element.StemEndLocation.Y + (hasFlagOrBeam ? -3 : 8));
             }
             else
-                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 30);
+                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 5);
         }
 
         private static Tuple<Point, Point> GetBezierControlPoints(Point start, Point end, VerticalPlacement placement, double height)

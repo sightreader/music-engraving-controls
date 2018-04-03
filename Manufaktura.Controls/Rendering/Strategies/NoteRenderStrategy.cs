@@ -328,7 +328,7 @@ namespace Manufaktura.Controls.Rendering
         private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY)
         {
             if (element.IsGraceNote || element.IsCueNote)
-                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1 - 7, notePositionY + 7, element);
+                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1 - 7, notePositionY, element);
             else
                 renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, notePositionY, element);
 
@@ -373,7 +373,7 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.Duration == RhythmicDuration.Whole) return;
 
-            var defaultStemLength = renderer.LinespacesToPixels(2.5);
+            var defaultStemLength = renderer.LinespacesToPixels(3);
 
             double tmpStemPosY;
             tmpStemPosY = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.StemDefaultY);
@@ -437,12 +437,12 @@ namespace Manufaktura.Controls.Rendering
                 double arcHeight = arcWidth * 0.7d;
                 if (element.StemDirection == VerticalDirection.Down)
                 {
-                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y + 22,
+                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y - 3,
                         arcWidth, arcHeight), 180, 180, new Pen(renderer.CoalesceColor(element), 1.5), element);
                 }
                 else if (element.StemDirection == VerticalDirection.Up)
                 {
-                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y + 22,
+                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y - 3,
                         arcWidth, arcHeight), 0, 180, new Pen(renderer.CoalesceColor(element), 1.5), element);
                 }
                 if (element.TieType == NoteTieType.StopAndStartAnother)

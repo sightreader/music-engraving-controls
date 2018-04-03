@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="renderer"></param>
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
-            double timeSignaturePositionY = (scoreService.CurrentLinePositions[0] - 11);
+            double timeSignaturePositionY = (scoreService.CurrentLinePositions[0] + 3);
             if (element.SignatureType == TimeSignatureType.Common)
                 renderer.DrawCharacter(renderer.Settings.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 
                 scoreService.CursorPositionX, timeSignaturePositionY, element);

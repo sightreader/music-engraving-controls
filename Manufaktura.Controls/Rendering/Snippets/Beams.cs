@@ -29,20 +29,20 @@ namespace Manufaktura.Controls.Rendering.Snippets
 		{
 			//Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
 			//Draw a hook only of the lowest element in a chord
-			double xPos = beamingService.CurrentStemPositionX - 4;
+			double xPos = beamingService.CurrentStemPositionX;
 			if (element.StemDirection == VerticalDirection.Down)
 			{
 				if (element.IsGraceNote || element.IsCueNote)
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 11), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 				else
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 7), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 			}
 			else
 			{
 				if (element.IsGraceNote || element.IsCueNote)
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos + 0.5, beamingService.CurrentStemEndPositionY + 10), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 				else
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY - 1), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 			}
 			if (measurementService.TupletState != null)
 			{
@@ -75,19 +75,19 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			double averageStemLength = elementsUnderTupletForAverageStemLength.Count == 0 ? 0 : elementsUnderTupletForAverageStemLength.Average(n => n.ActualStemLength);
 			averageStemLength += 10;    //Add space
 			int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
-			double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X + 6;
-			double tupletBracketStartYPosition = firstElementInTuplet.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
+			double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X;
+			double tupletBracketStartYPosition = firstElementInTuplet.TextBlockLocation.Y + averageStemLength * placementMod;
 			double tupletBracketEndXPosition = element.TextBlockLocation.X + 12;
-			double tupletBracketEndYPosition = element.TextBlockLocation.Y + 25 + averageStemLength * placementMod;
+			double tupletBracketEndYPosition = element.TextBlockLocation.Y + averageStemLength * placementMod;
 
 			if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
 			{
 				renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
 								  new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), element);
 				renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-								  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
+								  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), element);
 				renderer.DrawLine(new Point(tupletBracketEndXPosition, tupletBracketEndYPosition),
-								  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + 25 + (averageStemLength - 4) * placementMod), element);
+								  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), element);
 			}
 
 			double numberOfNotesYTranslation = 0;
@@ -99,20 +99,43 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			allElementsUnderTuplet.Add(element);
 			var tupletNumber = CalculateTupletNumber(allElementsUnderTuplet);
 			renderer.DrawString(Convert.ToString(tupletNumber), MusicFontStyles.LyricsFont,
-					new Point(tupletBracketStartXPosition + (tupletBracketEndXPosition - tupletBracketStartXPosition) / 2 - 6 - 7,
+					new Point(tupletBracketStartXPosition + (tupletBracketEndXPosition - tupletBracketStartXPosition) / 2 - 7,
 							  tupletBracketStartYPosition + (tupletBracketEndYPosition - tupletBracketStartYPosition) / 2 + numberOfNotesYTranslation), element);
 		}
 
-		private static int CalculateTupletNumber<TElement>(IEnumerable<TElement> elements) where TElement : ICanBeElementOfTuplet, IHasDuration
+		private static int CalculateTupletNumber(IEnumerable<NoteOrRest> elements)
 		{
-			double weight = 0;
-			double smallestDenominator = elements.Min(p => p.BaseDuration.Denominator);
-			foreach (var element in elements)
+            var smallNotes = EnumerateSmallNotes(elements).ToArray();
+            var largeNotes = EnumerateLargeNotes(elements).ToArray();
+
+            var query = largeNotes.Length == 0 ? smallNotes : largeNotes;
+
+            double weight = 0;
+			double smallestDenominator = query.Min(p => p.BaseDuration.Denominator);
+			foreach (var element in query)
 			{
 				if (element.TupletWeightOverride.HasValue) weight += element.TupletWeightOverride.Value;
 				else weight += smallestDenominator / element.BaseDuration.Denominator;
 			}
 			return (int)weight;
 		}
-	}
+
+        private static IEnumerable<NoteOrRest> EnumerateSmallNotes(IEnumerable<NoteOrRest> elements)
+        {
+            foreach (var element in elements)
+            {
+                if (element is Rest) yield return element;
+                if (element is Note note && (note.IsCueNote || note.IsGraceNote)) yield return note;
+            }
+        }
+
+        private static IEnumerable<NoteOrRest> EnumerateLargeNotes(IEnumerable<NoteOrRest> elements)
+        {
+            foreach (var element in elements)
+            {
+                if (element is Rest) yield return element;
+                if (element is Note note && !note.IsCueNote && !note.IsGraceNote) yield return note;
+            }
+        }
+    }
 }
