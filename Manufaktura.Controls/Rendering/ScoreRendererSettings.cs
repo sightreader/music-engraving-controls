@@ -22,7 +22,6 @@ namespace Manufaktura.Controls.Rendering
 			LineSpacing = 6;
 			DefaultColor = Color.Black;
 			CurrentFont = new PolihymniaFont();
-			TextBlockHeight = 25;
 		}
 
 		/// <summary>
@@ -69,6 +68,5 @@ namespace Manufaktura.Controls.Rendering
 		/// </summary>
 		public ScoreRenderingModes RenderingMode { get; set; }
 
-		internal double TextBlockHeight { get; set; }
 	}
 }

@@ -146,8 +146,11 @@ namespace Manufaktura.Controls.WPF
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
             textBlock.Visibility = BoolToVisibility(owner.IsVisible);
-            System.Windows.Controls.Canvas.SetLeft(textBlock, location.X + 3d);
-            System.Windows.Controls.Canvas.SetTop(textBlock, location.Y);
+
+            var baseline = typeface.FontFamily.Baseline * textBlock.FontSize;
+
+            Canvas.SetLeft(textBlock, location.X);
+            Canvas.SetTop(textBlock, location.Y - baseline);
             Canvas.Children.Add(textBlock);
 
             OwnershipDictionary.Add(textBlock, owner);

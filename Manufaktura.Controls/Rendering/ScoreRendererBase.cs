@@ -370,6 +370,8 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CursorPositionX = 0;
         }
 
+        public double LinespacesToPixels(double linespaces) => linespaces * Settings.LineSpacing;
+
         protected void DetermineClef(Staff staff)
         {
             var clef = staff.Elements.OfType<Clef>().FirstOrDefault();
@@ -378,15 +380,10 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CurrentClef = clef;
             var clefPositionY = scoreService.CurrentLinePositions[4] - ((clef.Line - 1) * Settings.LineSpacing);
             //if (Settings.CurrentFont is SMuFLMusicFont) clefPositionY -= 31;
-            clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY - Settings.TextBlockHeight);
+            clef.TextBlockLocation = new Point(scoreService.CursorPositionX, clefPositionY);
 
             if (clef.TypeOfClef == ClefType.Percussion)
                 new ClefRenderStrategy(scoreService).DrawPercussionClef(clef, this);
-            else if (Settings.CurrentFont is SMuFLMusicFont)
-            {
-                var bounds = GetSMuFLBoundingBox(clef.GetSMuFLBoundingBox(Settings.CurrentSMuFLMetadata));
-                DrawCharacterInBounds(clef.GetCharacter(Settings.CurrentFont), MusicFontStyles.MusicFont, bounds.Location, bounds.Size, clef);
-            }
             else
                 DrawCharacter(clef.GetCharacter(Settings.CurrentFont), MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             scoreService.CursorPositionX += 20;

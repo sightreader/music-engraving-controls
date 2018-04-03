@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.Model.Assertions;
 using Manufaktura.Controls.Model.Collections;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
@@ -315,6 +316,12 @@ namespace Manufaktura.Controls.Model
             else if (BaseDuration == RhythmicDuration.D64th) return font.NoteheadBlack;
             else if (BaseDuration == RhythmicDuration.D128th) return font.NoteheadBlack;
             else return font.NoteheadBlack;
+        }
+
+        [Units(Units.Linespaces)]
+        public double GetNoteheadWidth(IMusicFont font)
+        {
+            return 1;   //TODO: Dla SMuFL brać ze metadanych
         }
 
         /// <summary>

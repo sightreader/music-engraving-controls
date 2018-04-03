@@ -5,6 +5,9 @@
         Title="MainWindow" Height="443" Width="525">
     <ScrollViewer HorizontalScrollBarVisibility="Auto">
     <StackPanel Orientation="Vertical" >
+            <Canvas Height="50" Background="Gainsboro">
+                <TextBlock Canvas.Top="10" Canvas.Left="10" Background="Red">XXXj</TextBlock>
+            </Canvas>
             <TextBlock FontFamily="/Manufaktura.Controls.WPF.Test;component/Assets/#Bravura" x:Name="dummyTextBlock" />
             <WPF:NoteViewer ScoreSource="{Binding Data}" RenderingMode="AllPages" IsOccupyingSpace="True" x:Name="noteViewerTest" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <!--PlaybackCursorPosition="{Binding Player.CurrentPosition}"-->

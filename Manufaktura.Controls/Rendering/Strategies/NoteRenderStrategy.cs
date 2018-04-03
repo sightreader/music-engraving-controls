@@ -143,7 +143,6 @@ namespace Manufaktura.Controls.Rendering
 
         private double CalculateNotePositionY(Note element, ScoreRendererBase renderer)
         {
-            //TODO: Uniezależnić to od pozycji clefa. Powinno być zależne od linepositions -> przygotowanie do SMuFL
             return scoreService.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(scoreService.CurrentClef.Pitch,
                 element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
         }
@@ -221,7 +220,7 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.HasFermataSign)
             {
-                double ferPos = notePositionY - renderer.Settings.TextBlockHeight - 8;
+                double ferPos = notePositionY - 8;
                 char fermataVersion = renderer.Settings.CurrentFont.FermataUp;
 
                 renderer.DrawCharacter(fermataVersion, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 7, ferPos, element);
@@ -278,20 +277,20 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            double tmpXPos = scoreService.CursorPositionX + 9;
-            if (notePositionY + 25.0f > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
+            double tmpXPos = scoreService.CursorPositionX + 6;
+            if (notePositionY > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
             {
-                for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY + 24f - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
+                for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
                 {
-                    renderer.DrawLine(new Point(scoreService.CursorPositionX - 3, i + renderer.Settings.LineSpacing),
+                    renderer.DrawLine(new Point(scoreService.CursorPositionX - 6, i + renderer.Settings.LineSpacing),
                         new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
                 }
             }
-            if (notePositionY + 25.0f < scoreService.CurrentLinePositions[0] - renderer.Settings.LineSpacing / 2)
+            if (notePositionY < scoreService.CurrentLinePositions[0] - renderer.Settings.LineSpacing / 2)
             {
-                for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + 26.0f + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
+                for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
                 {
-                    renderer.DrawLine(new Point(scoreService.CursorPositionX - 3, i - renderer.Settings.LineSpacing),
+                    renderer.DrawLine(new Point(scoreService.CursorPositionX - 6, i - renderer.Settings.LineSpacing),
                         new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
                 }
             }
@@ -374,6 +373,8 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.Duration == RhythmicDuration.Whole) return;
 
+            var defaultStemLength = renderer.LinespacesToPixels(2.5);
+
             double tmpStemPosY;
             tmpStemPosY = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.StemDefaultY);
 
@@ -389,7 +390,7 @@ namespace Manufaktura.Controls.Rendering
                     beamingService.CurrentStemEndPositionY = notePositionY + 18;
                 else
                     beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
-                beamingService.CurrentStemPositionX = scoreService.CursorPositionX + (element.IsGraceNote || element.IsCueNote ? -0.5 : 0);
+
             }
             else
             {
@@ -398,30 +399,29 @@ namespace Manufaktura.Controls.Rendering
                 //Stems of chord elements were displayed wrong when I used default-y
                 //so I left default stem drawing routine for chords.
                 if (element.IsUpperMemberOfChord)
-                    beamingService.CurrentStemEndPositionY = notePositionY - 25 < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - 25;
+                    beamingService.CurrentStemEndPositionY = notePositionY < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - defaultStemLength;
                 else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
-                {
-                    //var notesUnderBeam = beamingService.GetAllNotesUnderOneBeam(element);
-                    //var maxDistance = notesUnderBeam == null || !notesUnderBeam.Any() ? 0 : GetMaxVertDistanceBetweenNotes(renderer, notesUnderBeam.ToArray());
-                    //maxDistance *= 2;
-                    beamingService.CurrentStemEndPositionY = notePositionY - 25;
-                }
+                    beamingService.CurrentStemEndPositionY = notePositionY - defaultStemLength;
                 else
                     beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
-                beamingService.CurrentStemPositionX = scoreService.CursorPositionX + 6 + (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+
             }
 
-            var uglyModifier = element.StemDirection == VerticalDirection.Down ? 3 : 7;
+            beamingService.CurrentStemPositionX = scoreService.CursorPositionX +
+                (renderer.LinespacesToPixels(element.GetNoteheadWidth(renderer.Settings.CurrentFont)) / 2) * (element.StemDirection == VerticalDirection.Down ? -1 : 1) +
+                (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+
             if (element.BeamList.Count > 0)
                 if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
-                    renderer.DrawLine(new Point(beamingService.CurrentStemPositionX, notePositionY - uglyModifier + 30),
-                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY + 28), element);
+                    renderer.DrawLine(
+                        new Point(beamingService.CurrentStemPositionX, notePositionY),
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY), element);
             element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 
             if (element.GraceNoteType == GraceNoteType.Slashed)
             {
-                renderer.DrawLine(beamingService.CurrentStemPositionX - 5, notePositionY - uglyModifier + 20,
-                    beamingService.CurrentStemPositionX + 5, notePositionY - uglyModifier + 20 - 6, element);
+                renderer.DrawLine(beamingService.CurrentStemPositionX - 5, notePositionY  - 5,
+                    beamingService.CurrentStemPositionX + 5, notePositionY  -5 - 6, element);
             }
         }
 
@@ -480,9 +480,9 @@ namespace Manufaktura.Controls.Rendering
                 if (element.TrillMark == NoteTrillMark.Above)
                 {
                     trillPos = notePositionY - 1;
-                    if (trillPos > scoreService.CurrentLinePositions[0] - renderer.Settings.TextBlockHeight)
+                    if (trillPos > scoreService.CurrentLinePositions[0])
                     {
-                        trillPos = scoreService.CurrentLinePositions[0] - renderer.Settings.TextBlockHeight - 1.0f;
+                        trillPos = scoreService.CurrentLinePositions[0] - 1.0f;
                     }
                 }
                 else if (element.TrillMark == NoteTrillMark.Below)
