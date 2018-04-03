@@ -88,27 +88,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         protected Primitives.Point TranslateTextLocation(Primitives.Point location, MusicFontStyles fontStyle)
         {
-            double locationX = location.X + 3d + TypedSettings.MusicalFontShiftX;
-            double locationY;
-            switch (fontStyle)
-            {
-                case MusicFontStyles.MusicFont:
-                    locationY = location.Y + 25d + TypedSettings.MusicalFontShiftY;
-                    break;
-
-                case MusicFontStyles.StaffFont:
-                    locationY = location.Y + 27d + TypedSettings.MusicalFontShiftY;
-                    break;
-
-                case MusicFontStyles.GraceNoteFont:
-                    locationY = location.Y + 17.5d + TypedSettings.MusicalFontShiftY;
-                    locationX += 0.7d;
-                    break;
-
-                default:
-                    locationY = location.Y + 14d + TypedSettings.MusicalFontShiftY;
-                    break;
-            }
+            double locationX = location.X + TypedSettings.MusicalFontShiftX;
+            double locationY = location.Y + TypedSettings.MusicalFontShiftY;
             return new Primitives.Point(locationX, locationY);
         }
     }
