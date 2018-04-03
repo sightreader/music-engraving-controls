@@ -33,16 +33,16 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			if (element.StemDirection == VerticalDirection.Down)
 			{
 				if (element.IsGraceNote || element.IsCueNote)
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 2), element);
 				else
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 5), element);
 			}
 			else
 			{
 				if (element.IsGraceNote || element.IsCueNote)
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY - 2), element);
 				else
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY - 5), element);
 			}
 			if (measurementService.TupletState != null)
 			{

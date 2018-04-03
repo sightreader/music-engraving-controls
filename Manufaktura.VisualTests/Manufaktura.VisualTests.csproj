@@ -65,6 +65,14 @@
       <Project>{878452f2-698f-48f8-8ac1-bebfe55cfaf3}</Project>
       <Name>Manufaktura.Controls.WPF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
+      <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
+      <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
+      <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
+      <Name>Manufaktura.Music</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Choose>

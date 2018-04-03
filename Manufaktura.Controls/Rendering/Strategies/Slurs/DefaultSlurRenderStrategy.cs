@@ -119,7 +119,7 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
 
             var angle = UsefulMath.BeamAngle(slurStartInfo.StartPoint.X, slurStartInfo.StartPoint.Y, endPoint.X, endPoint.Y);
             var slurYPositionInMostExtremePoint = slurStartInfo.StartPoint.TranslateHorizontallyAndMaintainAngle(angle, mostExtremePoint.X - slurStartInfo.StartPoint.X).Y;
-            var mostExtremeYPosition = mostExtremePoint.Y + 25;
+            var mostExtremeYPosition = mostExtremePoint.Y;
             if (slurStartInfo.StartPlacement == VerticalPlacement.Above && mostExtremeYPosition < slurYPositionInMostExtremePoint) return Math.Abs(mostExtremeYPosition - slurYPositionInMostExtremePoint) + 10;
             if (slurStartInfo.StartPlacement == VerticalPlacement.Below && mostExtremeYPosition > slurYPositionInMostExtremePoint) return Math.Abs(slurYPositionInMostExtremePoint - mostExtremeYPosition) + 10;
 
