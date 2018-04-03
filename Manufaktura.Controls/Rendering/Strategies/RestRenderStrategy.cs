@@ -50,7 +50,7 @@ namespace Manufaktura.Controls.Rendering
 			}
 			scoreService.CurrentVoice = element.Voice;
 
-			double restPositionY = scoreService.CurrentLinePositions[0] + (element.DefaultYPosition.HasValue ? renderer.TenthsToPixels(element.DefaultYPosition.Value) : -9);
+			double restPositionY = scoreService.CurrentLinePositions[0] + (element.DefaultYPosition.HasValue ? renderer.TenthsToPixels(element.DefaultYPosition.Value) : 16);
 
 			renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
 			measurementService.LastNotePositionX = scoreService.CursorPositionX;

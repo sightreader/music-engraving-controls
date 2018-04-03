@@ -415,7 +415,9 @@ namespace Manufaktura.Controls.Rendering
                 if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
                     renderer.DrawLine(
                         new Point(beamingService.CurrentStemPositionX, notePositionY),
-                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY), element);
+                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY),
+                        new Pen(renderer.CoalesceColor(element), renderer.Settings.DefaultStemThickness),
+                        element);
             element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 
             if (element.GraceNoteType == GraceNoteType.Slashed)

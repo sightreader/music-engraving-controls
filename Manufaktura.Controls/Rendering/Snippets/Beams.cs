@@ -29,7 +29,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 		{
 			//Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
 			//Draw a hook only of the lowest element in a chord
-			double xPos = beamingService.CurrentStemPositionX;
+			double xPos = beamingService.CurrentStemPositionX - renderer.Settings.DefaultStemThickness / 2;
 			if (element.StemDirection == VerticalDirection.Down)
 			{
 				if (element.IsGraceNote || element.IsCueNote)

@@ -29,30 +29,30 @@ namespace Manufaktura.Controls.Rendering
 		/// </summary>
 		public IMusicFont CurrentFont { get; set; }
 
+        /// <summary>
+        /// Page to display if renderer is in SinglePage mode.
+        /// </summary>
+        public int CurrentPage { get; set; }
+
         public SMuFLFontMetadata CurrentSMuFLMetadata { get; set; }
-
-		/// <summary>
-		/// Page to display if renderer is in SinglePage mode.
-		/// </summary>
-		public int CurrentPage { get; set; }
-
-		public double CustomElementPositionRatio { get; set; }
+        public double CustomElementPositionRatio { get; set; }
 
 		/// <summary>
 		/// Default color
 		/// </summary>
 		public Color DefaultColor { get; set; }
 
-		/// <summary>
-		/// True, to ignore element positions which are implicitly set in MusicXml file
-		/// </summary>
-		public bool IgnoreCustomElementPositions { get; set; }
+        public double DefaultStemThickness { get; set; } = 1;
+
+        /// <summary>
+        /// True, to ignore element positions which are implicitly set in MusicXml file
+        /// </summary>
+        public bool IgnoreCustomElementPositions { get; set; }
 
 		/// <summary>
 		/// Default line spacing
 		/// </summary>
 		public int LineSpacing { get; private set; }
-
 		/// <summary>
 		/// Default padding top
 		/// </summary>

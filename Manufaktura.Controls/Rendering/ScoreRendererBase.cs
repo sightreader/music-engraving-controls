@@ -367,7 +367,7 @@ namespace Manufaktura.Controls.Rendering
 
         internal void ReturnCarriage()
         {
-            scoreService.CursorPositionX = 0;
+            scoreService.CursorPositionX = 3;
         }
 
         public double LinespacesToPixels(double linespaces) => linespaces * Settings.LineSpacing;
@@ -402,6 +402,8 @@ namespace Manufaktura.Controls.Rendering
 
         protected void RenderStaff(Staff staff)
         {
+            scoreService.CursorPositionX += 3;  //Zgodność z poprzednią implementacją
+
             if (!staff.Score.DefaultPageSettings.DefaultStaffDistance.HasValue) staff.Score.DefaultPageSettings.DefaultStaffDistance = PixelsToTenths(Settings.LineSpacing * 6); //TODO: Zastanowić się gdzie ustawiać tę domyślną wartość
             var staffDistance = scoreService.CurrentPage.DefaultStaffDistance ?? staff.Score.DefaultPageSettings.DefaultStaffDistance.Value;    //TODO: Bez sensu jest sprawdzanie tu Currentpage.DefaultStaffDistance, bo strony zmieniają się kawałek dalej. Tu jest pierwsza strona
 
