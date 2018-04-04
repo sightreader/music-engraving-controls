@@ -78,10 +78,10 @@ namespace Manufaktura.Controls.Rendering
             double noteTextBlockPositionY = CalculateNotePositionY(element, renderer);
             var chord = GetChord(element, scoreService.CurrentStaff);   //Chord or single note
 
-            MakeSpaceForAccidentals(renderer, element, chord);                         //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
+            MakeSpaceForAccidentals(renderer, element, chord);                  //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
             DrawNote(renderer, element, noteTextBlockPositionY);                //Draw an element / Rysuj nutę
             DrawLedgerLines(renderer, element, noteTextBlockPositionY);         //Ledger lines / Linie dodane
-            DrawStems(renderer, element, noteTextBlockPositionY, chord);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
+            DrawStems(renderer, element, noteTextBlockPositionY, chord);        //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
             DrawFlagsAndTupletMarks(renderer, element);                         //Draw beams / Rysuj belki
             DrawTies(renderer, element, noteTextBlockPositionY);                //Draw ties / Rysuj łuki
             DrawSlurs(renderer, element, noteTextBlockPositionY);               //Draw slurs / Rysuj łuki legatowe
@@ -140,6 +140,22 @@ namespace Manufaktura.Controls.Rendering
                 else break;
             }
             return chordElements.ToArray();
+        }
+
+        private static Note[] GetNotesUnderBeam(Note firstNote, Staff staff)
+        {
+            var notesUnderOneBeam = new List<Note>() { firstNote };
+            if (firstNote.BeamList.Any() && firstNote.BeamList[0] == NoteBeamType.Start)
+            {
+                for (int i = staff.Elements.IndexOf(firstNote) + 1; i < staff.Elements.Count; i++)
+                {
+                    Note currentNote = staff.Elements[i] as Note;
+                    if (currentNote == null) continue;
+                    notesUnderOneBeam.Add(currentNote);
+                    if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.End) break;
+                }
+            }
+            return notesUnderOneBeam.ToArray();
         }
 
         private double CalculateNotePositionY(Note element, ScoreRendererBase renderer)
@@ -372,9 +388,26 @@ namespace Manufaktura.Controls.Rendering
 
         private double GetNotePositionForCalculatingStemEnd (ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
         {
-            if (chord.Length == 1 && element == chord[0]) return notePositionY;
-            if (element.StemDirection == VerticalDirection.Up) return CalculateNotePositionY(chord.Last(), renderer);
-            else return notePositionY;
+            if (chord.Length > 1)
+            {
+                if (element.StemDirection == VerticalDirection.Up) return CalculateNotePositionY(chord.Last(), renderer);
+                else return notePositionY;
+            }
+            var notesUnderBeam = GetNotesUnderBeam(element, scoreService.CurrentStaff);
+            if (notesUnderBeam.Length > 2)
+            {
+                if (element.StemDirection == VerticalDirection.Down)
+                {
+                    var lowerNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch < element.MidiPitch);
+                    if (lowerNote != null) return CalculateNotePositionY(lowerNote, renderer);
+                }
+                if (element.StemDirection == VerticalDirection.Up)
+                {
+                    var higherNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch > element.MidiPitch);
+                    if (higherNote != null) return CalculateNotePositionY(higherNote, renderer);
+                }
+            }
+            return notePositionY;
         }
 
         private double GetNotePositionForCalculatingStemStart(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)

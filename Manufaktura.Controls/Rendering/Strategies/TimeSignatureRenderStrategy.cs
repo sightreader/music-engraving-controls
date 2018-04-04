@@ -34,10 +34,10 @@ namespace Manufaktura.Controls.Rendering
             double timeSignaturePositionY = (scoreService.CurrentLinePositions[0] + 3);
             if (element.SignatureType == TimeSignatureType.Common)
                 renderer.DrawCharacter(renderer.Settings.CurrentFont.CommonTime, MusicFontStyles.MusicFont, 
-                scoreService.CursorPositionX, timeSignaturePositionY, element);
+                scoreService.CursorPositionX, timeSignaturePositionY + 15, element);
             else if (element.SignatureType == TimeSignatureType.Cut)
                 renderer.DrawCharacter(renderer.Settings.CurrentFont.CutTime, MusicFontStyles.MusicFont, 
-                scoreService.CursorPositionX, timeSignaturePositionY, element);
+                scoreService.CursorPositionX, timeSignaturePositionY + 15, element);
             else
             {
                 renderer.DrawString(Convert.ToString(element.NumberOfBeats),
