@@ -373,7 +373,8 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.Duration == RhythmicDuration.Whole) return;
 
-            var defaultStemLength = renderer.LinespacesToPixels(3);
+            var defaultStemLengthLs = 3 + ((element.BeamList.Any(b => b == NoteBeamType.Single) ? Math.Log(element.BaseDuration.Denominator, 2) - 2 : 0)) * (element.IsCueNote || element.IsGraceNote ? 0.66 : 1);
+            var defaultStemLength = renderer.LinespacesToPixels(defaultStemLengthLs);
 
             double tmpStemPosY;
             tmpStemPosY = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.StemDefaultY);

@@ -29,20 +29,20 @@ namespace Manufaktura.Controls.Rendering.Snippets
 		{
 			//Rysuj chorągiewkę tylko najniższego dźwięku w akordzie
 			//Draw a hook only of the lowest element in a chord
-			double xPos = beamingService.CurrentStemPositionX - renderer.Settings.DefaultStemThickness / 2;
+			double xPos = beamingService.CurrentStemPositionX;
 			if (element.StemDirection == VerticalDirection.Down)
 			{
 				if (element.IsGraceNote || element.IsCueNote)
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 2), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 				else
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY + 5), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 			}
 			else
 			{
 				if (element.IsGraceNote || element.IsCueNote)
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY - 2), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 				else
-					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY - 5), element);
+					renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
 			}
 			if (measurementService.TupletState != null)
 			{
