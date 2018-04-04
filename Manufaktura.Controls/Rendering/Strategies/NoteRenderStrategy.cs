@@ -389,6 +389,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.Duration == RhythmicDuration.Whole || element.IsUpperMemberOfChord) return;
 
             var additionalPlaceForFlag = Math.Log(element.BaseDuration.Denominator, 2) - 2;
+            if (additionalPlaceForFlag < 0) additionalPlaceForFlag = 0;
             if (additionalPlaceForFlag > 1) additionalPlaceForFlag *= 0.8;
             var defaultStemLengthLs = 3 + ((element.BeamList.Any(b => b == NoteBeamType.Single) ? additionalPlaceForFlag : 0)) * (element.IsCueNote || element.IsGraceNote ? 0.66 : 1);
             var defaultStemLength = renderer.LinespacesToPixels(defaultStemLengthLs);
@@ -399,10 +400,6 @@ namespace Manufaktura.Controls.Rendering
 
             if (element.StemDirection == VerticalDirection.Down)
             {
-                //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
-                //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
-                //Stems of chord elements were displayed wrong when I used default-y
-                //so I left default stem drawing routine for chords.
                 if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
                     beamingService.CurrentStemEndPositionY = notePositionForCalculatingStemEnd + defaultStemLength;
                 else
@@ -411,10 +408,6 @@ namespace Manufaktura.Controls.Rendering
             }
             else
             {
-                //Ogonki elementów akordów nie były dobrze wyświetlane, jeśli stosowałem
-                //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
-                //Stems of chord elements were displayed wrong when I used default-y
-                //so I left default stem drawing routine for chords.
                 if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
                     beamingService.CurrentStemEndPositionY = notePositionForCalculatingStemEnd - defaultStemLength;
                 else
