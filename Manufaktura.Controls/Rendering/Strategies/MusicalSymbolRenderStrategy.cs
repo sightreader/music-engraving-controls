@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model;
 using System;
+using System.Diagnostics;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -28,6 +29,7 @@ namespace Manufaktura.Controls.Rendering
 		/// <param name="renderer">Renderer</param>
 		public override void Render(MusicalSymbol element, ScoreRendererBase renderer)
 		{
+            if (element.IsBreakpointSet) Debugger.Break();
 			Render((TElement)element, renderer);
 		}
 	}

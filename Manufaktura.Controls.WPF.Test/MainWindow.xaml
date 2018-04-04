@@ -9,6 +9,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="0">
+            <Button Content="Ustaw breakpoint" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Breakpoint_Click"/>
             <Button Content="Zapisz MusicXML" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_9"/>
             <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             <Button Content="Odtwórz" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>

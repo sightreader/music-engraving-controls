@@ -140,5 +140,11 @@ namespace Manufaktura.Controls.WPF.Test
                 createdDocument.Save(dialog.FileName, SaveOptions.None);
             }
         }
+
+        private void Breakpoint_Click(object sender, RoutedEventArgs e)
+        {
+            if (noteViewer1.SelectedElement == null) return;
+            noteViewer1.SelectedElement.IsBreakpointSet = true;
+        }
     }
 }

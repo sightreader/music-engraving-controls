@@ -90,9 +90,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 								  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), element);
 			}
 
-			double numberOfNotesYTranslation = 0;
-			if (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above) numberOfNotesYTranslation -= 18; //If text should appear above the tuplet, move a bit to up
-																															//If bracket is not drawn, move up or down to fill space
+            double numberOfNotesYTranslation = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -18 : 18;
 			if (!measurementService.TupletState.AreSingleBeamsPresentUnderTuplet) numberOfNotesYTranslation += 10 * (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? 1 : -1);
 
 			var allElementsUnderTuplet = elementsUnderTuplet.OfType<NoteOrRest>().ToList();

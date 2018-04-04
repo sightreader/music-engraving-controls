@@ -76,11 +76,12 @@ namespace Manufaktura.Controls.Rendering
             if (element.IsUpperMemberOfChord) scoreService.CursorPositionX = measurementService.LastNotePositionX;
 
             double noteTextBlockPositionY = CalculateNotePositionY(element, renderer);
+            var chord = GetChord(element, scoreService.CurrentStaff);   //Chord or single note
 
-            MakeSpaceForAccidentals(renderer, element);                         //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
+            MakeSpaceForAccidentals(renderer, element, chord);                         //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
             DrawNote(renderer, element, noteTextBlockPositionY);                //Draw an element / Rysuj nutę
             DrawLedgerLines(renderer, element, noteTextBlockPositionY);         //Ledger lines / Linie dodane
-            DrawStems(renderer, element, noteTextBlockPositionY);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
+            DrawStems(renderer, element, noteTextBlockPositionY, chord);               //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
             DrawFlagsAndTupletMarks(renderer, element);                         //Draw beams / Rysuj belki
             DrawTies(renderer, element, noteTextBlockPositionY);                //Draw ties / Rysuj łuki
             DrawSlurs(renderer, element, noteTextBlockPositionY);               //Draw slurs / Rysuj łuki legatowe
@@ -369,15 +370,32 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
-        private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY)
+        private double GetNotePositionForCalculatingStemEnd (ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
         {
-            if (element.Duration == RhythmicDuration.Whole) return;
+            if (chord.Length == 1 && element == chord[0]) return notePositionY;
+            if (element.StemDirection == VerticalDirection.Up) return CalculateNotePositionY(chord.Last(), renderer);
+            else return notePositionY;
+        }
 
-            var defaultStemLengthLs = 3 + ((element.BeamList.Any(b => b == NoteBeamType.Single) ? Math.Log(element.BaseDuration.Denominator, 2) - 2 : 0)) * (element.IsCueNote || element.IsGraceNote ? 0.66 : 1);
+        private double GetNotePositionForCalculatingStemStart(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
+        {
+            if (chord.Length == 1 && element == chord[0]) return notePositionY;
+            if (element.StemDirection == VerticalDirection.Down) return CalculateNotePositionY(chord.Last(), renderer);
+            else return notePositionY;
+        }
+
+        private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
+        {
+            if (element.Duration == RhythmicDuration.Whole || element.IsUpperMemberOfChord) return;
+
+            var additionalPlaceForFlag = Math.Log(element.BaseDuration.Denominator, 2) - 2;
+            if (additionalPlaceForFlag > 1) additionalPlaceForFlag *= 0.8;
+            var defaultStemLengthLs = 3 + ((element.BeamList.Any(b => b == NoteBeamType.Single) ? additionalPlaceForFlag : 0)) * (element.IsCueNote || element.IsGraceNote ? 0.66 : 1);
             var defaultStemLength = renderer.LinespacesToPixels(defaultStemLengthLs);
 
-            double tmpStemPosY;
-            tmpStemPosY = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.StemDefaultY);
+            double customStemEndPosition = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.StemDefaultY);
+            double notePositionForCalculatingStemEnd = GetNotePositionForCalculatingStemEnd(renderer, element, notePositionY, chord);
+            double notePositionForCalculatingStemStart = GetNotePositionForCalculatingStemStart(renderer, element, notePositionY, chord);
 
             if (element.StemDirection == VerticalDirection.Down)
             {
@@ -385,12 +403,10 @@ namespace Manufaktura.Controls.Rendering
                 //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                 //Stems of chord elements were displayed wrong when I used default-y
                 //so I left default stem drawing routine for chords.
-                if (element.IsUpperMemberOfChord)
-                    beamingService.CurrentStemEndPositionY = notePositionY + 18;
-                else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
-                    beamingService.CurrentStemEndPositionY = notePositionY + 18;
+                if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
+                    beamingService.CurrentStemEndPositionY = notePositionForCalculatingStemEnd + defaultStemLength;
                 else
-                    beamingService.CurrentStemEndPositionY = tmpStemPosY - 4;
+                    beamingService.CurrentStemEndPositionY = customStemEndPosition - 4;
 
             }
             else
@@ -399,12 +415,10 @@ namespace Manufaktura.Controls.Rendering
                 //default-y. Dlatego dla akordów zostawiam domyślne rysowanie ogonków.
                 //Stems of chord elements were displayed wrong when I used default-y
                 //so I left default stem drawing routine for chords.
-                if (element.IsUpperMemberOfChord)
-                    beamingService.CurrentStemEndPositionY = notePositionY < beamingService.CurrentStemEndPositionY ? beamingService.CurrentStemEndPositionY : notePositionY - defaultStemLength;
-                else if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
-                    beamingService.CurrentStemEndPositionY = notePositionY - defaultStemLength;
+                if (renderer.Settings.IgnoreCustomElementPositions || !element.HasCustomStemEndPosition)
+                    beamingService.CurrentStemEndPositionY = notePositionForCalculatingStemEnd - defaultStemLength;
                 else
-                    beamingService.CurrentStemEndPositionY = tmpStemPosY - 6;
+                    beamingService.CurrentStemEndPositionY = customStemEndPosition - 6;
 
             }
 
@@ -415,7 +429,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.BeamList.Count > 0)
                 if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
                     renderer.DrawLine(
-                        new Point(beamingService.CurrentStemPositionX, notePositionY),
+                        new Point(beamingService.CurrentStemPositionX, notePositionForCalculatingStemStart),
                         new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY),
                         new Pen(renderer.CoalesceColor(element), renderer.Settings.DefaultStemThickness),
                         element);
@@ -502,12 +516,11 @@ namespace Manufaktura.Controls.Rendering
             return distances.Max() - distances.Min();
         }
 
-        private void MakeSpaceForAccidentals(ScoreRendererBase renderer, Note element)
+        private void MakeSpaceForAccidentals(ScoreRendererBase renderer, Note element, Note[] chord)
         {
             if (element.DefaultXPosition.HasValue && !renderer.Settings.IgnoreCustomElementPositions) return;
             if (element.IsUpperMemberOfChord) return;
 
-            var chord = GetChord(element, scoreService.CurrentStaff);   //Chord or single note
             var maxSpaceNeeded = chord.Max(n => CalculateSpaceForAccidentals(n, scoreService.CurrentKey));
             scoreService.CursorPositionX += maxSpaceNeeded;
         }
