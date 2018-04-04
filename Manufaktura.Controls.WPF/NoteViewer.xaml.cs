@@ -172,8 +172,8 @@ namespace Manufaktura.Controls.WPF
 
             if (children.Any())
             {
-                var xx = children.Max(c => Canvas.GetLeft(c) + c.DesiredSize.Width);
-                var yy = children.Max(c => Canvas.GetTop(c) + c.DesiredSize.Height);
+                var xx = children.Max(c => Canvas.GetLeft(c) * ZoomFactor + c.DesiredSize.Width * ZoomFactor);
+                var yy = children.Max(c => Canvas.GetTop(c) * ZoomFactor + c.DesiredSize.Height * ZoomFactor);
                 return new Size(xx, yy);
             }
             return base.MeasureOverride(availableSize);
