@@ -43,6 +43,7 @@ namespace Manufaktura.Controls.Rendering
 		public Color DefaultColor { get; set; }
 
         public double DefaultStemThickness { get; set; } = 1;
+        public double DefaultBeamThickness { get; set; } = 2.6;
 
         /// <summary>
         /// True, to ignore element positions which are implicitly set in MusicXml file

@@ -82,9 +82,9 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
 						if (measure != null && note.Measure != measure) continue;	//Odśwież tylko stemy z wybranego taktu w trybie odświeżania jednego taktu
 						if (note.StemDirection == VerticalDirection.Down)
-							renderer.DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y), new Point(newStemEndPoint.X, newStemEndPoint.Y), note);
+							renderer.DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y), new Point(newStemEndPoint.X, newStemEndPoint.Y), new Pen(renderer.CoalesceColor(note), renderer.Settings.DefaultStemThickness), note);
 						else
-							renderer.DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y), new Point(newStemEndPoint.X, newStemEndPoint.Y), note);
+							renderer.DrawLine(new Point(note.StemEndLocation.X, note.TextBlockLocation.Y), new Point(newStemEndPoint.X, newStemEndPoint.Y), new Pen(renderer.CoalesceColor(note), renderer.Settings.DefaultStemThickness), note);
 					}
 				}
 				if (lastNoteInBeam == null) continue;

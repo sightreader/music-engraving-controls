@@ -142,18 +142,30 @@ namespace Manufaktura.Controls.Rendering
             return chordElements.ToArray();
         }
 
-        private static Note[] GetNotesUnderBeam(Note firstNote, Staff staff)
+        private static Note[] GetNotesUnderBeam(Note firstOrLastNote, Staff staff)
         {
-            var notesUnderOneBeam = new List<Note>() { firstNote };
-            if (firstNote.BeamList.Any() && firstNote.BeamList[0] == NoteBeamType.Start)
+            var notesUnderOneBeam = new List<Note>();
+            if (firstOrLastNote.BeamList.Any() && firstOrLastNote.BeamList[0] == NoteBeamType.Start)
             {
-                for (int i = staff.Elements.IndexOf(firstNote) + 1; i < staff.Elements.Count; i++)
+                notesUnderOneBeam.Add(firstOrLastNote);
+                for (int i = staff.Elements.IndexOf(firstOrLastNote) + 1; i < staff.Elements.Count; i++)
                 {
                     Note currentNote = staff.Elements[i] as Note;
                     if (currentNote == null) continue;
                     notesUnderOneBeam.Add(currentNote);
                     if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.End) break;
                 }
+            }
+            else if (firstOrLastNote.BeamList.Any() && firstOrLastNote.BeamList[0] == NoteBeamType.End)
+            {
+                for (int i = staff.Elements.IndexOf(firstOrLastNote) - 1; i > 0; i--)
+                {
+                    Note currentNote = staff.Elements[i] as Note;
+                    if (currentNote == null) continue;
+                    notesUnderOneBeam.Add(currentNote);
+                    if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.Start) break;
+                }
+                notesUnderOneBeam.Add(firstOrLastNote);
             }
             return notesUnderOneBeam.ToArray();
         }
@@ -396,15 +408,22 @@ namespace Manufaktura.Controls.Rendering
             var notesUnderBeam = GetNotesUnderBeam(element, scoreService.CurrentStaff);
             if (notesUnderBeam.Length > 2)
             {
+                var pitchDifferenceBetweenBounds = (notesUnderBeam.Last().MidiPitch - notesUnderBeam.First().MidiPitch);
+                if (pitchDifferenceBetweenBounds > 12) pitchDifferenceBetweenBounds = 12;
+                if (pitchDifferenceBetweenBounds < -12) pitchDifferenceBetweenBounds = -12;
+
+                var isFirstNote = element == notesUnderBeam.First();
                 if (element.StemDirection == VerticalDirection.Down)
                 {
-                    var lowerNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch < element.MidiPitch);
-                    if (lowerNote != null) return CalculateNotePositionY(lowerNote, renderer);
+                    var lowestPitch = notesUnderBeam.Min(n => n.MidiPitch);
+                    var lowerNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch < element.MidiPitch && n.MidiPitch == lowestPitch);
+                    if (lowerNote != null) return CalculateNotePositionY(lowerNote, renderer) + pitchDifferenceBetweenBounds * (isFirstNote ? 1 : -1);
                 }
                 if (element.StemDirection == VerticalDirection.Up)
                 {
-                    var higherNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch > element.MidiPitch);
-                    if (higherNote != null) return CalculateNotePositionY(higherNote, renderer);
+                    var highestPitch = notesUnderBeam.Max(n => n.MidiPitch);
+                    var higherNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch > element.MidiPitch && n.MidiPitch == highestPitch);
+                    if (higherNote != null) return CalculateNotePositionY(higherNote, renderer) + pitchDifferenceBetweenBounds * (isFirstNote ? 1 : -1);
                 }
             }
             return notePositionY;
