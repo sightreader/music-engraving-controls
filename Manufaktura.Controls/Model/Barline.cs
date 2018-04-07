@@ -20,15 +20,16 @@
         /// Initializes a new instance of Barline with specific BarlineStyle
         /// </summary>
         public Barline(BarlineStyle style) : this()
-		{
-			Style = style;
-		}
+        {
+            Style = style;
+        }
 
         /// <summary>
         /// Barline horizontal location
         /// </summary>
-		public HorizontalPlacement Location { get; set; }
+        public HorizontalPlacement Location { get; set; }
 
+        public double RenderedXPositionForFirstStaffInMultiStaffPart { get; internal set; }
         /// <summary>
         /// Barline repeat sign
         /// </summary>

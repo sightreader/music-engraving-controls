@@ -112,9 +112,16 @@ namespace Manufaktura.Controls.Rendering
                     scoreService.CursorPositionX -= 2;
 				if (element.Location == HorizontalPlacement.Right)
                     measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, scoreService.CursorPositionX,
+
+                if (scoreService.CurrentStaffNo > 1 && element.RenderedXPositionForFirstStaffInMultiStaffPart > 0)
+                    scoreService.CursorPositionX = element.RenderedXPositionForFirstStaffInMultiStaffPart;
+
+                renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, scoreService.CursorPositionX + 4,
 				   scoreService.CurrentLinePositions[2], element);
-				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 20;
+
+                if (scoreService.CurrentStaffNo == 1) element.RenderedXPositionForFirstStaffInMultiStaffPart = scoreService.CursorPositionX;
+
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 20;
 			}
 			else if (element.RepeatSign == RepeatSignType.Backward)
 			{
@@ -122,9 +129,16 @@ namespace Manufaktura.Controls.Rendering
                     scoreService.CursorPositionX += 2;
 				if (element.Location == HorizontalPlacement.Right)
                     measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, scoreService.CursorPositionX - 14.5,
+
+                if (scoreService.CurrentStaffNo > 1 && element.RenderedXPositionForFirstStaffInMultiStaffPart > 0)
+                    scoreService.CursorPositionX = element.RenderedXPositionForFirstStaffInMultiStaffPart;
+
+                renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, scoreService.CursorPositionX - 14.5,
 					scoreService.CurrentLinePositions[2], element);
-				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
+
+                if (scoreService.CurrentStaffNo == 1) element.RenderedXPositionForFirstStaffInMultiStaffPart = scoreService.CursorPositionX;
+
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
 			}
 
 			if (element.Location == HorizontalPlacement.Right)   //Start new measure only if it's right barline
