@@ -111,7 +111,7 @@ namespace Manufaktura.Controls.Rendering
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 2;
 				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
 				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, scoreService.CursorPositionX,
-				   scoreService.CurrentLinePositions[0] + 10.5f, element);
+				   scoreService.CurrentLinePositions[2], element);
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 20;
 			}
 			else if (element.RepeatSign == RepeatSignType.Backward)
@@ -119,7 +119,7 @@ namespace Manufaktura.Controls.Rendering
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX -= 2;
 				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
 				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, scoreService.CursorPositionX - 17.5,
-					scoreService.CurrentLinePositions[0] + 10.5, element);
+					scoreService.CurrentLinePositions[2], element);
 				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
 			}
 
