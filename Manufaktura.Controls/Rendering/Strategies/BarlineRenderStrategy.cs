@@ -45,8 +45,9 @@ namespace Manufaktura.Controls.Rendering
 
 			var lightPen = new Pen(element.CoalesceColor(renderer), 1);
 			var thickPen = new Pen(element.CoalesceColor(renderer), 3);
+            var barlinePen = new Pen(element.CoalesceColor(renderer), renderer.Settings.DefaultBarlineThickness);
 
-			if (measurementService.LastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
+            if (measurementService.LastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
 			{
 				scoreService.CursorPositionX = measurementService.LastNoteInMeasureEndXPosition;
 			}
@@ -87,7 +88,7 @@ namespace Manufaktura.Controls.Rendering
                             if (i % 2 == 0)
                             {
                                 renderer.DrawLine(new Point(scoreService.CursorPositionX, currentPositionY),
-                                              new Point(scoreService.CursorPositionX, currentPositionY + dy), lightPen, element);
+                                              new Point(scoreService.CursorPositionX, currentPositionY + dy), barlinePen, element);
                             }
                             currentPositionY += dy;
                         }
@@ -100,7 +101,8 @@ namespace Manufaktura.Controls.Rendering
 				}
 				scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
 				scoreService.CurrentMeasure.Barline = element;
-				if (!IsLastBarline(element) && (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue)) scoreService.CursorPositionX += 6;
+				if (!IsLastBarline(element) && (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue))
+                    scoreService.CursorPositionX += 6;
 			}
 			else if (element.RepeatSign == RepeatSignType.Forward)
 			{

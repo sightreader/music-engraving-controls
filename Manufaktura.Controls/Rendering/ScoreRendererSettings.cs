@@ -16,7 +16,7 @@ namespace Manufaktura.Controls.Rendering
 		{
 			RenderingMode = ScoreRenderingModes.Panorama;
 			IgnoreCustomElementPositions = false;
-			CustomElementPositionRatio = 0.7d;
+			CustomElementPositionRatio = 0.8d;
 			PageWidth = 200;
 			PaddingTop = 20;
 			LineSpacing = 6;
@@ -42,6 +42,8 @@ namespace Manufaktura.Controls.Rendering
 		/// </summary>
 		public Color DefaultColor { get; set; }
 
+        public double DefaultBarlineThickness { get; set; } = 0.7;
+        public double DefaultStaffLineThickness { get; set; } = 0.5;
         public double DefaultStemThickness { get; set; } = 1;
         public double DefaultBeamThickness { get; set; } = 2.6;
 
