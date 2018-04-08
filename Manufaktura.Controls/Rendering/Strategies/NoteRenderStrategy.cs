@@ -377,12 +377,11 @@ namespace Manufaktura.Controls.Rendering
         {
             foreach (Ornament ornament in element.Ornaments)
             {
-                var ornamentTextBlockHeightCorrection = 16;
                 double yPosition;
                 if (ornament.DefaultYPosition.HasValue)
                 {
                     var yShift = renderer.TenthsToPixels(ornament.DefaultYPosition.Value) * -1;
-                    yPosition = scoreService.CurrentLinePositions[0] + yShift + ornamentTextBlockHeightCorrection * (yShift > 0 ? 0.8 : -1);
+                    yPosition = scoreService.CurrentLinePositions[0] + yShift;
                 }
                 else
                     yPosition = notePositionY + (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
