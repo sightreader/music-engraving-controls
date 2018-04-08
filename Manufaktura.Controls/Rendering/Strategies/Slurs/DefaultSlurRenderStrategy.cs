@@ -81,7 +81,7 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
         {
             slurStartInfo.StartPlacement = slurPlacement;
             slurStartInfo.StartPointStemDirection = element.StemDirection;
-            var polihymniaFix = renderer.LinespacesToPixels(element.GetNoteheadWidth(renderer.Settings.CurrentFont) * 0.5);
+            var polihymniaFix = renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * 0.5);
             if (slurPlacement == VerticalPlacement.Above)
             {
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;  //If note has a flag or beam start the slur above the note. If not, start a bit to the right and down.

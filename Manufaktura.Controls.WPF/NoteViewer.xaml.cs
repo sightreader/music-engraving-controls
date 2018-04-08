@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
@@ -134,10 +135,21 @@ namespace Manufaktura.Controls.WPF
 
         protected CanvasScoreRenderer Renderer { get; set; }
 
-        public void LoadSMuFLFont(FontFamily family, SMuFLFontMetadata metadata)
+
+        public void LoadFont(FontFamily family, SMuFLFontMetadata metadata)
         {
             rendererSettings.CurrentFont = new SMuFLMusicFont();
             rendererSettings.CurrentSMuFLMetadata = metadata;
+            Fonts.Set(Model.Fonts.MusicFontStyles.MusicFont, family);
+            Fonts.Set(Model.Fonts.MusicFontStyles.GraceNoteFont, family);
+            Fonts.Set(Model.Fonts.MusicFontStyles.StaffFont, family);
+            Fonts.Set(Model.Fonts.MusicFontStyles.TimeSignatureFont, family);
+            Fonts.Set(Model.Fonts.MusicFontStyles.TrillFont, family);
+        }
+
+        public void LoadFont(FontFamily family, bool isSMuFL = true)
+        {
+            rendererSettings.CurrentFont = isSMuFL ? (IMusicFont)new SMuFLMusicFont() : new PolihymniaFont();
             Fonts.Set(Model.Fonts.MusicFontStyles.MusicFont, family);
             Fonts.Set(Model.Fonts.MusicFontStyles.GraceNoteFont, family);
             Fonts.Set(Model.Fonts.MusicFontStyles.StaffFont, family);

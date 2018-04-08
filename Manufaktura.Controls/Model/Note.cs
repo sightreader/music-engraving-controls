@@ -3,7 +3,9 @@ using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model.Assertions;
 using Manufaktura.Controls.Model.Collections;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering;
 using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
@@ -318,12 +320,6 @@ namespace Manufaktura.Controls.Model
             else return font.NoteheadBlack;
         }
 
-        [Units(Units.Linespaces)]
-        public double GetNoteheadWidth(IMusicFont font)
-        {
-            return 1;   //TODO: Dla SMuFL brać ze metadanych
-        }
-
         /// <summary>
         /// Gets line number for this Note for specific Clef. Fractional numbers represent staff spaces, i.e. 1.5 == first space, etc.
         /// </summary>
@@ -345,6 +341,23 @@ namespace Manufaktura.Controls.Model
             else return '\0';
         }
 
+        [Units(Units.Linespaces)]
+        public double GetNoteheadWidthLs(ScoreRendererBase renderer)
+        {
+            if (renderer.IsSMuFLFont)
+            {
+                if (renderer.Settings.CurrentSMuFLMetadata == null) return 1.18;
+                var bounds = GetSMuFLNoteheadBounds(BaseDuration, renderer.Settings.CurrentSMuFLMetadata);
+                return bounds.BBoxNe[0] - bounds.BBoxSw[0];
+            }
+            return 1;
+        }
+
+        [Units(Units.Pixels)]
+        public double GetNoteheadWidthPx(ScoreRendererBase renderer, double factor = 1)
+        {
+            return renderer.LinespacesToPixels(GetNoteheadWidthLs(renderer) * factor);
+        }
         /// <summary>
         /// Returns a string representation of this symbol for debugging purposes
         /// </summary>
@@ -354,6 +367,12 @@ namespace Manufaktura.Controls.Model
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
         }
 
+        private static BoundingBox GetSMuFLNoteheadBounds(RhythmicDuration duration, SMuFLFontMetadata metadata)
+        {
+            if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWhole;
+            else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalf;
+            else return metadata.GlyphBBoxes.NoteheadBlack;
+        }
         private void DetermineMusicalCharacter()
         {
         }

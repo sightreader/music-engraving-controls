@@ -143,7 +143,7 @@ namespace Manufaktura.Controls.Rendering
         }
 
         private static double GetNoteheadWidthPx(Note element, ScoreRendererBase renderer, double ratio = 1) =>
-            renderer.LinespacesToPixels(element.GetNoteheadWidth(renderer.Settings.CurrentFont) * ratio);
+            renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
 
         private static Note[] GetNotesUnderBeam(Note firstOrLastNote, Staff staff)
         {
@@ -314,21 +314,24 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            double tmpXPos = scoreService.CursorPositionX + renderer.LinespacesToPixels(element.GetNoteheadWidth(renderer.Settings.CurrentFont) * 2.2);
+            double startPositionX = scoreService.CursorPositionX - (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer, 0.5) : 0);
+            double endPositionX = scoreService.CursorPositionX + (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer, 1.5) : renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * 2.2));
             if (notePositionY > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
             {
                 for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
                 {
-                    renderer.DrawLine(new Point(scoreService.CursorPositionX, i + renderer.Settings.LineSpacing),
-                        new Point(tmpXPos, i + renderer.Settings.LineSpacing), element);
+                    renderer.DrawLine(
+                        new Point(startPositionX, i + renderer.Settings.LineSpacing),
+                        new Point(endPositionX, i + renderer.Settings.LineSpacing), element);
                 }
             }
             if (notePositionY < scoreService.CurrentLinePositions[0] - renderer.Settings.LineSpacing / 2)
             {
                 for (double i = scoreService.CurrentLinePositions[0]; i > notePositionY + renderer.Settings.LineSpacing / 2.0f; i -= renderer.Settings.LineSpacing)
                 {
-                    renderer.DrawLine(new Point(scoreService.CursorPositionX, i - renderer.Settings.LineSpacing),
-                        new Point(tmpXPos, i - renderer.Settings.LineSpacing), element);
+                    renderer.DrawLine(
+                        new Point(startPositionX, i - renderer.Settings.LineSpacing),
+                        new Point(endPositionX, i - renderer.Settings.LineSpacing), element);
                 }
             }
         }
@@ -436,10 +439,19 @@ namespace Manufaktura.Controls.Rendering
 
             }
 
-            beamingService.CurrentStemPositionX = scoreService.CursorPositionX +
-                renderer.LinespacesToPixels(element.GetNoteheadWidth(renderer.Settings.CurrentFont)) + 0.5 +  //Polihymnia font fix
-                (renderer.LinespacesToPixels(element.GetNoteheadWidth(renderer.Settings.CurrentFont) / 2)) * (element.StemDirection == VerticalDirection.Down ? -1 : 1) +
-                (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+            if (renderer.IsSMuFLFont)
+            {
+                beamingService.CurrentStemPositionX = scoreService.CursorPositionX +
+                    element.GetNoteheadWidthPx(renderer) * (element.StemDirection == VerticalDirection.Down ? 0 : 1) +
+                    (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+            }
+            else
+            {
+                beamingService.CurrentStemPositionX = scoreService.CursorPositionX +
+                    renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer)) + 0.5 +  //Polihymnia font fix
+                    (renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) / 2)) * (element.StemDirection == VerticalDirection.Down ? -1 : 1) +
+                    (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+            }
 
             if (element.BeamList.Count > 0)
                 if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
