@@ -52,7 +52,7 @@ namespace Manufaktura.Controls.Rendering
 
         public virtual ScoreRendererSettings Settings { get; set; }
 
-        public bool IsSMuFLFont => Settings.CurrentFont is SMuFLMusicFont;
+        public bool IsSMuFLFont => Settings.IsSMuFLFont;
 
         internal virtual MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 

@@ -4,30 +4,32 @@ using Manufaktura.Controls.Primitives;
 
 namespace Manufaktura.Controls.Rendering
 {
-	/// <summary>
-	/// Initial settings of score renderer.
-	/// </summary>
-	public class ScoreRendererSettings
-	{
-		/// <summary>
-		/// Initializes a new instance of ScoreRendererSettings
-		/// </summary>
-		public ScoreRendererSettings()
-		{
-			RenderingMode = ScoreRenderingModes.Panorama;
-			IgnoreCustomElementPositions = false;
-			CustomElementPositionRatio = 0.7d;
-			PageWidth = 200;
-			PaddingTop = 20;
-			LineSpacing = 6;
-			DefaultColor = Color.Black;
-			CurrentFont = new PolihymniaFont();
-		}
+    /// <summary>
+    /// Initial settings of score renderer.
+    /// </summary>
+    public class ScoreRendererSettings
+    {
+        private IMusicFont currentFont;
 
-		/// <summary>
-		/// Key mapping for current font
-		/// </summary>
-		public IMusicFont CurrentFont { get; set; }
+        /// <summary>
+        /// Initializes a new instance of ScoreRendererSettings
+        /// </summary>
+        public ScoreRendererSettings()
+        {
+            RenderingMode = ScoreRenderingModes.Panorama;
+            IgnoreCustomElementPositions = false;
+            CustomElementPositionRatio = 0.7d;
+            PageWidth = 200;
+            PaddingTop = 20;
+            LineSpacing = 6;
+            DefaultColor = Color.Black;
+            CurrentFont = new PolihymniaFont();
+        }
+
+        /// <summary>
+        /// Key mapping for current font
+        /// </summary>
+        public IMusicFont CurrentFont { get => currentFont; set { currentFont = value; IsSMuFLFont = value is SMuFLMusicFont;  } }
 
         /// <summary>
         /// Page to display if renderer is in SinglePage mode.
@@ -36,40 +38,39 @@ namespace Manufaktura.Controls.Rendering
 
         public SMuFLFontMetadata CurrentSMuFLMetadata { get; set; }
         public double CustomElementPositionRatio { get; set; }
-
-		/// <summary>
-		/// Default color
-		/// </summary>
-		public Color DefaultColor { get; set; }
-
         public double DefaultBarlineThickness { get; set; } = 0.7;
+        public double DefaultBeamThickness { get; set; } = 2.6;
+        /// <summary>
+        /// Default color
+        /// </summary>
+        public Color DefaultColor { get; set; }
+
         public double DefaultStaffLineThickness { get; set; } = 0.5;
         public double DefaultStemThickness { get; set; } = 1;
-        public double DefaultBeamThickness { get; set; } = 2.6;
-
         /// <summary>
         /// True, to ignore element positions which are implicitly set in MusicXml file
         /// </summary>
         public bool IgnoreCustomElementPositions { get; set; }
 
-		/// <summary>
-		/// Default line spacing
-		/// </summary>
-		public int LineSpacing { get; private set; }
-		/// <summary>
-		/// Default padding top
-		/// </summary>
-		public int PaddingTop { get; private set; }
+        public bool IsSMuFLFont { get; private set; }
+        /// <summary>
+        /// Default line spacing
+        /// </summary>
+        public int LineSpacing { get; private set; }
+        /// <summary>
+        /// Default padding top
+        /// </summary>
+        public int PaddingTop { get; private set; }
 
-		/// <summary>
-		/// Default page width
-		/// </summary>
-		public double PageWidth { get; set; }
+        /// <summary>
+        /// Default page width
+        /// </summary>
+        public double PageWidth { get; set; }
 
-		/// <summary>
-		/// Rendering moed
-		/// </summary>
-		public ScoreRenderingModes RenderingMode { get; set; }
+        /// <summary>
+        /// Rendering moed
+        /// </summary>
+        public ScoreRenderingModes RenderingMode { get; set; }
 
-	}
+    }
 }
