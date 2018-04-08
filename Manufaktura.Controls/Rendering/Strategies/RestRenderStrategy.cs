@@ -33,11 +33,12 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="renderer"></param>
 		public override void Render(Rest element, ScoreRendererBase renderer)
 		{
-            var textBlockWidthCorrection = -7;
 			//Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
 			if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue)
 			{
-				scoreService.CursorPositionX = measurementService.LastMeasurePositionX + textBlockWidthCorrection + element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
+				scoreService.CursorPositionX = measurementService.LastMeasurePositionX + 
+                    //(element.BaseDuration == RhythmicDuration.Whole ? 16 : 0) +  //Polihymnia fix
+                    element.DefaultXPosition.Value * renderer.Settings.CustomElementPositionRatio;
 			}
 
 			if (scoreService.CurrentMeasure.FirstNoteInMeasureXPosition == 0) scoreService.CurrentMeasure.FirstNoteInMeasureXPosition = scoreService.CursorPositionX;

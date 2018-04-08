@@ -16,7 +16,7 @@ namespace Manufaktura.Controls.Rendering
 		{
 			RenderingMode = ScoreRenderingModes.Panorama;
 			IgnoreCustomElementPositions = false;
-			CustomElementPositionRatio = 0.8d;
+			CustomElementPositionRatio = 0.7d;
 			PageWidth = 200;
 			PaddingTop = 20;
 			LineSpacing = 6;
