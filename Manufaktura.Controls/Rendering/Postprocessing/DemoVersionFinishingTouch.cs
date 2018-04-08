@@ -30,8 +30,8 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 		{
 #if DemoVersion
 			foreach (var location in new[] {
-				new Point(0, 0),
-				new Point(renderer.ScoreInformation.Systems.Max(s => s.Width) - 30, 0)})
+				new Point(0, 15),
+				new Point(renderer.ScoreInformation.Systems.Max(s => s.Width) - 30, 15)})
 			{
 				renderer.DrawString("DEMO", MusicFontStyles.LyricsFont, location, Color.Red, MusicalSymbol.Null);
 			}
