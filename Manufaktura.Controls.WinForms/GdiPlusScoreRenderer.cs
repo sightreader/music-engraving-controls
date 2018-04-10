@@ -46,7 +46,10 @@ namespace Manufaktura.Controls.WinForms
 
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
 		{
-			Canvas.DrawString(text, _fonts[fontStyle], new SolidBrush(ConvertColor(color)), new PointF((float)location.X - 1.5f, (float)location.Y));
+            var font = _fonts[fontStyle];
+            var baselineDesignUnits = font.FontFamily.GetCellAscent(font.Style);
+            var baselinePixels = (baselineDesignUnits * font.Size) / font.FontFamily.GetEmHeight(font.Style) + (float)LinespacesToPixels(1);
+            Canvas.DrawString(text, font, new SolidBrush(ConvertColor(color)), new PointF((float)location.X - 4, (float)location.Y - baselinePixels));
 		}
 
 		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)

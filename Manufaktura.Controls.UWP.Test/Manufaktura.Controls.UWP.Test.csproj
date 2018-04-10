@@ -133,7 +133,7 @@
       <Name>Manufaktura.Controls.UniversalApps.Media</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls.UniversalApps\Manufaktura.Controls.UniversalApps.csproj">
-      <Project>{bef86abd-760a-44e8-b1dc-a65c7c0260dc}</Project>
+      <Project>{9cd2436e-c562-4577-8630-a8531717ca29}</Project>
       <Name>Manufaktura.Controls.UniversalApps</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">

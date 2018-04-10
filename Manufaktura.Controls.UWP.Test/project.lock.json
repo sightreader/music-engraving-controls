@@ -2190,7 +2190,13 @@
         }
       },
       "Manufaktura.Controls.UniversalApps/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "framework": "UAP,Version=v10.0.10240",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
+        }
       },
       "Manufaktura.Controls.UniversalApps.Media/1.0.0": {
         "type": "project",
@@ -4598,7 +4604,13 @@
         }
       },
       "Manufaktura.Controls.UniversalApps/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "framework": "UAP,Version=v10.0.10240",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
+        }
       },
       "Manufaktura.Controls.UniversalApps.Media/1.0.0": {
         "type": "project",
@@ -7025,7 +7037,13 @@
         }
       },
       "Manufaktura.Controls.UniversalApps/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "framework": "UAP,Version=v10.0.10240",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
+        }
       },
       "Manufaktura.Controls.UniversalApps.Media/1.0.0": {
         "type": "project",
@@ -9442,7 +9460,13 @@
         }
       },
       "Manufaktura.Controls.UniversalApps/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "framework": "UAP,Version=v10.0.10240",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
+        }
       },
       "Manufaktura.Controls.UniversalApps.Media/1.0.0": {
         "type": "project",
@@ -11869,7 +11893,13 @@
         }
       },
       "Manufaktura.Controls.UniversalApps/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "framework": "UAP,Version=v10.0.10240",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
+        }
       },
       "Manufaktura.Controls.UniversalApps.Media/1.0.0": {
         "type": "project",
@@ -14286,7 +14316,13 @@
         }
       },
       "Manufaktura.Controls.UniversalApps/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "framework": "UAP,Version=v10.0.10240",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
+        }
       },
       "Manufaktura.Controls.UniversalApps.Media/1.0.0": {
         "type": "project",
@@ -16713,7 +16749,13 @@
         }
       },
       "Manufaktura.Controls.UniversalApps/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "framework": "UAP,Version=v10.0.10240",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
+        }
       },
       "Manufaktura.Controls.UniversalApps.Media/1.0.0": {
         "type": "project",
@@ -22729,14 +22771,14 @@
             "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps.Media\\Manufaktura.Controls.UniversalApps.Media.csproj": {
               "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps.Media\\Manufaktura.Controls.UniversalApps.Media.csproj"
             },
-            "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps\\Manufaktura.Controls.UniversalApps.csproj": {
-              "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps\\Manufaktura.Controls.UniversalApps.csproj"
-            },
             "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj": {
               "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls\\Manufaktura.Controls.csproj"
             },
             "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj": {
               "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Music\\Manufaktura.Music.csproj"
+            },
+            "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps\\Manufaktura.Controls.UniversalApps.csproj": {
+              "projectPath": "D:\\Dokumenty\\Projekty CSharp\\ManufakturaLibraries\\Manufaktura.Controls.UniversalApps\\Manufaktura.Controls.UniversalApps.csproj"
             }
           }
         }
@@ -22770,6 +22812,22 @@
     }
   },
   "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Microsoft.NETCore.UniversalWindowsPlatform from 6.0.6 to 5.1.0. Reference the package directly from the project to select a different version. \r\n Manufaktura.Controls.UWP.Test -> Manufaktura.Controls.UniversalApps -> Microsoft.NETCore.UniversalWindowsPlatform (>= 6.0.6) \r\n Manufaktura.Controls.UWP.Test -> Microsoft.NETCore.UniversalWindowsPlatform (>= 5.1.0)",
+      "libraryId": "Microsoft.NETCore.UniversalWindowsPlatform",
+      "targetGraphs": [
+        "UAP,Version=v10.0.10586",
+        "UAP,Version=v10.0.10586/win10-arm",
+        "UAP,Version=v10.0.10586/win10-arm-aot",
+        "UAP,Version=v10.0.10586/win10-x64",
+        "UAP,Version=v10.0.10586/win10-x64-aot",
+        "UAP,Version=v10.0.10586/win10-x86",
+        "UAP,Version=v10.0.10586/win10-x86-aot"
+      ]
+    },
     {
       "code": "NU1203",
       "level": "Error",
