@@ -1,6 +1,9 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
+using Newtonsoft.Json;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -71,6 +74,33 @@ namespace Manufaktura.Controls.Rendering
         /// Rendering moed
         /// </summary>
         public ScoreRenderingModes RenderingMode { get; set; }
+
+        public void LoadSMuFLMetadata (string metadataJson)
+        {
+            CurrentSMuFLMetadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(metadataJson);
+        }
+
+        public void LoadSMuFLMetadata(Stream stream)
+        {
+            using (var reader = new StreamReader(stream))
+            {
+                var text = reader.ReadToEnd();
+                LoadSMuFLMetadata(text);
+            }
+        }
+
+        public async Task LoadSMuFLMetadataAsync(string metadataJson)
+        {
+            CurrentSMuFLMetadata = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<SMuFLFontMetadata>(metadataJson));
+        }
+        public async Task LoadSMuFLMetadataAsync(Stream stream)
+        {
+            using (var reader = new StreamReader(stream))
+            {
+                var text = await reader.ReadToEndAsync();
+                await LoadSMuFLMetadataAsync(text);
+            }
+        }
 
     }
 }

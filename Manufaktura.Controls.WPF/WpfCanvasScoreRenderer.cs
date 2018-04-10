@@ -11,25 +11,24 @@ using System.Windows.Shapes;
 
 namespace Manufaktura.Controls.WPF
 {
-    public class CanvasScoreRenderer : ScoreRenderer<Canvas>
+    public class WpfCanvasScoreRenderer : ScoreRenderer<Canvas>
     {
         private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
         private Line playbackCursor;
         private TranslateTransform playbackCursorTransform = new TranslateTransform();
 
-        public CanvasScoreRenderer(Canvas canvas)
-            : base(canvas)
+        public WpfCanvasScoreRenderer(Canvas canvas) : base(canvas, new WpfScoreRendererSettings())
         {
             OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
         }
 
-        public CanvasScoreRenderer(Canvas canvas, ScoreRendererSettings rendererSettings) : base(canvas, rendererSettings)
+        public WpfCanvasScoreRenderer(Canvas canvas, WpfScoreRendererSettings rendererSettings) : base(canvas, rendererSettings)
         {
             OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
         }
 
         public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
-
+        public WpfScoreRendererSettings TypedSettings => Settings as WpfScoreRendererSettings;
         public static Point ConvertPoint(Primitives.Point point)
         {
             return new Point(point.X, point.Y);
@@ -137,8 +136,8 @@ namespace Manufaktura.Controls.WPF
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
             TextBlock textBlock = new TextBlock();
-            Typeface typeface = Fonts.Get(fontStyle);
-            textBlock.FontSize = Fonts.GetSize(fontStyle);
+            Typeface typeface = TypedSettings.GetFont(fontStyle);
+            textBlock.FontSize = TypedSettings.GetFontSize(fontStyle);
             textBlock.FontFamily = typeface.FontFamily;
             textBlock.FontStretch = typeface.Stretch;
             textBlock.FontStyle = typeface.Style;
@@ -162,7 +161,7 @@ namespace Manufaktura.Controls.WPF
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
             TextBlock textBlock = new TextBlock();
-            Typeface typeface = Fonts.Get(fontStyle);
+            Typeface typeface = TypedSettings.GetFont(fontStyle);
             textBlock.FontSize = 200;
             textBlock.FontFamily = typeface.FontFamily;
             textBlock.FontStretch = typeface.Stretch;

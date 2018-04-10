@@ -38,7 +38,7 @@ namespace Manufaktura.Controls.WPF
         public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
         public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
         private DraggingState _draggingState = new DraggingState();
-        private ScoreRendererSettings rendererSettings = new ScoreRendererSettings();
+        private WpfScoreRendererSettings rendererSettings = new WpfScoreRendererSettings();
 
         private Score _innerScore;
 
@@ -133,28 +133,24 @@ namespace Manufaktura.Controls.WPF
             set { SetValue(ZoomFactorProperty, value); }
         }
 
-        protected CanvasScoreRenderer Renderer { get; set; }
-
+        protected WpfCanvasScoreRenderer Renderer { get; set; }
 
         public void LoadFont(FontFamily family, SMuFLFontMetadata metadata)
         {
             rendererSettings.CurrentFont = new SMuFLMusicFont();
             rendererSettings.CurrentSMuFLMetadata = metadata;
-            Fonts.Set(Model.Fonts.MusicFontStyles.MusicFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.GraceNoteFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.StaffFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.TimeSignatureFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.TrillFont, family);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
+            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
+            rendererSettings.SetFont(MusicFontStyles.TrillFont, family);
         }
 
-        public void LoadFont(FontFamily family, bool isSMuFL = true)
+        public void LoadDefaultFont()
         {
-            rendererSettings.CurrentFont = isSMuFL ? (IMusicFont)new SMuFLMusicFont() : new PolihymniaFont();
-            Fonts.Set(Model.Fonts.MusicFontStyles.MusicFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.GraceNoteFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.StaffFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.TimeSignatureFont, family);
-            Fonts.Set(Model.Fonts.MusicFontStyles.TrillFont, family);
+            rendererSettings.CurrentFont = new PolihymniaFont();
+            rendererSettings.CurrentSMuFLMetadata = null;
+            rendererSettings.SetPolihymniaFont();
         }
 
         public void MoveLayout(StaffSystem system, Point delta)
@@ -245,7 +241,7 @@ namespace Manufaktura.Controls.WPF
             MainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
 
             //Start dragging:
-            _draggingState.StartDragging(CanvasScoreRenderer.ConvertPoint(e.GetPosition(MainCanvas)));
+            _draggingState.StartDragging(WpfCanvasScoreRenderer.ConvertPoint(e.GetPosition(MainCanvas)));
 
             //Check if element under cursor is staff element:
             FrameworkElement element = e.OriginalSource as FrameworkElement;
@@ -296,7 +292,7 @@ namespace Manufaktura.Controls.WPF
             var strategy = DraggingStrategy.For(SelectedElement);
             if (strategy != null)
             {
-                strategy.Drag(Renderer, SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
+                strategy.Drag(Renderer, SelectedElement, _draggingState, WpfCanvasScoreRenderer.ConvertPoint(currentPosition));
             }
 
             if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
@@ -304,7 +300,7 @@ namespace Manufaktura.Controls.WPF
 
         private void RenderOnCanvas(Measure measure)
         {
-            if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas, rendererSettings);
+            if (Renderer == null) Renderer = new WpfCanvasScoreRenderer(MainCanvas, rendererSettings);
             var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
             foreach (var beamGroup in beamGroupsForThisMeasure)
             {
@@ -345,7 +341,7 @@ namespace Manufaktura.Controls.WPF
             score.ScoreInvalidated -= Score_ScoreInvalidated;
 
             MainCanvas.Children.Clear();
-            Renderer = IsAsync ? new DispatcherCanvasScoreRenderer(MainCanvas, this, rendererSettings) : new CanvasScoreRenderer(MainCanvas, rendererSettings);
+            Renderer = IsAsync ? new DispatcherCanvasScoreRenderer(MainCanvas, this, rendererSettings) : new WpfCanvasScoreRenderer(MainCanvas, rendererSettings);
             Renderer.Settings.RenderingMode = RenderingMode;
             Renderer.Settings.CurrentPage = CurrentPage;
             var brush = Foreground as SolidColorBrush;
