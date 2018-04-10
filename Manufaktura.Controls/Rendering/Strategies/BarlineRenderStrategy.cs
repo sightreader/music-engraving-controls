@@ -45,8 +45,9 @@ namespace Manufaktura.Controls.Rendering
 
 			var lightPen = new Pen(element.CoalesceColor(renderer), 1);
 			var thickPen = new Pen(element.CoalesceColor(renderer), 3);
+            var barlinePen = new Pen(element.CoalesceColor(renderer), renderer.Settings.DefaultBarlineThickness);
 
-			if (measurementService.LastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
+            if (measurementService.LastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
 			{
 				scoreService.CursorPositionX = measurementService.LastNoteInMeasureEndXPosition;
 			}
@@ -87,7 +88,7 @@ namespace Manufaktura.Controls.Rendering
                             if (i % 2 == 0)
                             {
                                 renderer.DrawLine(new Point(scoreService.CursorPositionX, currentPositionY),
-                                              new Point(scoreService.CursorPositionX, currentPositionY + dy), lightPen, element);
+                                              new Point(scoreService.CursorPositionX, currentPositionY + dy), barlinePen, element);
                             }
                             currentPositionY += dy;
                         }
@@ -100,7 +101,8 @@ namespace Manufaktura.Controls.Rendering
 				}
 				scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
 				scoreService.CurrentMeasure.Barline = element;
-				if (!IsLastBarline(element) && (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue)) scoreService.CursorPositionX += 6;
+				if (!IsLastBarline(element) && (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue))
+                    scoreService.CursorPositionX += 6;
 			}
 			else if (element.RepeatSign == RepeatSignType.Forward)
 			{
@@ -108,19 +110,37 @@ namespace Manufaktura.Controls.Rendering
 				{
 					scoreService.CursorPositionX -= 8;   //TODO: Temporary workaround!!
 				}
-				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 2;
-				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, scoreService.CursorPositionX,
-				   scoreService.CurrentLinePositions[0] + 10.5f, element);
-				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 20;
+				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue)
+                    scoreService.CursorPositionX -= 2;
+				if (element.Location == HorizontalPlacement.Right)
+                    measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
+
+                if (scoreService.CurrentStaffNo > 1 && element.RenderedXPositionForFirstStaffInMultiStaffPart > 0)
+                    scoreService.CursorPositionX = element.RenderedXPositionForFirstStaffInMultiStaffPart;
+
+                renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatForward, MusicFontStyles.StaffFont, scoreService.CursorPositionX + 4,
+				   scoreService.CurrentLinePositions[2], element);
+
+                if (scoreService.CurrentStaffNo == 1) element.RenderedXPositionForFirstStaffInMultiStaffPart = scoreService.CursorPositionX;
+
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 20;
 			}
 			else if (element.RepeatSign == RepeatSignType.Backward)
 			{
-				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX -= 2;
-				if (element.Location == HorizontalPlacement.Right) measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
-				renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, scoreService.CursorPositionX - 17.5,
-					scoreService.CurrentLinePositions[0] + 10.5, element);
-				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
+				if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue)
+                    scoreService.CursorPositionX += 2;
+				if (element.Location == HorizontalPlacement.Right)
+                    measurementService.LastMeasurePositionX = scoreService.CursorPositionX;
+
+                if (scoreService.CurrentStaffNo > 1 && element.RenderedXPositionForFirstStaffInMultiStaffPart > 0)
+                    scoreService.CursorPositionX = element.RenderedXPositionForFirstStaffInMultiStaffPart;
+
+                renderer.DrawCharacter(renderer.Settings.CurrentFont.RepeatBackward, MusicFontStyles.StaffFont, scoreService.CursorPositionX - 14.5,
+					scoreService.CurrentLinePositions[2], element);
+
+                if (scoreService.CurrentStaffNo == 1) element.RenderedXPositionForFirstStaffInMultiStaffPart = scoreService.CursorPositionX;
+
+                if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
 			}
 
 			if (element.Location == HorizontalPlacement.Right)   //Start new measure only if it's right barline

@@ -81,14 +81,15 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
         {
             slurStartInfo.StartPlacement = slurPlacement;
             slurStartInfo.StartPointStemDirection = element.StemDirection;
+            var polihymniaFix = renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * 0.5);
             if (slurPlacement == VerticalPlacement.Above)
             {
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;  //If note has a flag or beam start the slur above the note. If not, start a bit to the right and down.
                 var xShiftConcerningStemDirectionStart = slurStartInfo.StartPointStemDirection == VerticalDirection.Up ? (hasFlagOrBeam ? 5 : 10) : 1;
-                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart, element.StemDirection == VerticalDirection.Down ? notePositionY - 7 : element.StemEndLocation.Y + (hasFlagOrBeam ? -3 : 8));
+                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionStart + polihymniaFix, element.StemDirection == VerticalDirection.Down ? notePositionY - 7 : element.StemEndLocation.Y + (hasFlagOrBeam ? -3 : 8));
             }
             else
-                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 5);
+                slurStartInfo.StartPoint = new Point(scoreService.CursorPositionX + 3 + polihymniaFix, notePositionY + 5);
         }
 
         private static Tuple<Point, Point> GetBezierControlPoints(Point start, Point end, VerticalPlacement placement, double height)

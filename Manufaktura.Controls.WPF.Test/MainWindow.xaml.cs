@@ -27,24 +27,27 @@ namespace Manufaktura.Controls.WPF.Test
 
         public MainWindow()
         {
-            InitializeComponent();/*
+            InitializeComponent();
             var family = dummyTextBlock.FontFamily;
 
             var assembly = typeof(MainWindow).Assembly;
             var resourceName = $"{typeof(MainWindow).Namespace}.Assets.bravura_metadata.json";
+            //noteViewerTest.LoadFont(family);
+            //noteViewer1.LoadFont(family);
+            //noteViewer2.LoadFont(family);
+            //noteViewer3.LoadFont(family);
 
+            
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             using (var reader = new StreamReader(stream))
             {
                 string result = reader.ReadToEnd();
                 var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
-                noteViewerTest.LoadSMuFLFont(family, metadataJson);
-                noteViewer1.LoadSMuFLFont(family, metadataJson);
-                noteViewer2.LoadSMuFLFont(family, metadataJson);
-                noteViewer3.LoadSMuFLFont(family, metadataJson);
+                noteViewerTest.LoadFont(family, metadataJson);
+                noteViewer1.LoadFont(family, metadataJson);
+                noteViewer2.LoadFont(family, metadataJson);
+                noteViewer3.LoadFont(family, metadataJson);
             }
-            */
-
 
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
 
@@ -139,6 +142,12 @@ namespace Manufaktura.Controls.WPF.Test
             {
                 createdDocument.Save(dialog.FileName, SaveOptions.None);
             }
+        }
+
+        private void Breakpoint_Click(object sender, RoutedEventArgs e)
+        {
+            if (noteViewer1.SelectedElement == null) return;
+            noteViewer1.SelectedElement.IsBreakpointSet = true;
         }
     }
 }

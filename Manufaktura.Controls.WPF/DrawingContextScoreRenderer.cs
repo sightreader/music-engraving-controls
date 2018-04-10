@@ -12,13 +12,16 @@ namespace Manufaktura.Controls.WPF
 	public class DrawingContextScoreRenderer : ScoreRenderer<DrawingContext>
 	{
 		private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
+        public DrawingContextScoreRenderer(DrawingContext context) : base(context, new WpfScoreRendererSettings())
+        {
+        }
 
-		public DrawingContextScoreRenderer(DrawingContext context)
-			: base(context)
-		{
-		}
+        public DrawingContextScoreRenderer(DrawingContext context, WpfScoreRendererSettings settings) : base(context, settings)
+        {
+        }
 
-		public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
+        public WpfScoreRendererSettings TypedSettings => Settings as WpfScoreRendererSettings;
+        public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
 			PathGeometry pathGeom = new PathGeometry();
 			PathFigure pf = new PathFigure();
@@ -41,7 +44,7 @@ namespace Manufaktura.Controls.WPF
 		public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
 		{
 			Canvas.DrawText(new FormattedText(text, Thread.CurrentThread.CurrentUICulture, FlowDirection.LeftToRight,
-							Fonts.Get(fontStyle), Fonts.GetSize(fontStyle), new SolidColorBrush(ConvertColor(color))),
+                            TypedSettings.GetFont(fontStyle), TypedSettings.GetFontSize(fontStyle), new SolidColorBrush(ConvertColor(color))),
 							new System.Windows.Point(location.X + 3d, location.Y));
 		}
 

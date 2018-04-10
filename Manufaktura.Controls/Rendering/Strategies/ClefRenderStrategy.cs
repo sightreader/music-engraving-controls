@@ -29,17 +29,21 @@ namespace Manufaktura.Controls.Rendering
 
         public override void Render(Clef element, ScoreRendererBase renderer)
         {
-			if (element.OctaveChange > 0)
-			{
-				renderer.DrawString((8 * element.OctaveChange).ToString(), MusicFontStyles.DirectionFont, element.TextBlockLocation.X + 6, element.TextBlockLocation.Y, element);
-			}
-			if (element.OctaveChange < 0)
-			{
-				renderer.DrawString((8 * element.OctaveChange * -1).ToString(), MusicFontStyles.DirectionFont, element.TextBlockLocation.X + 6, element.TextBlockLocation.Y + 42, element);
-			}
+            //TODO: W fontach SMuFL jest oddzielny znak dla kluczy z przeniesieniem oktawowym
+            if (!(renderer.Settings.CurrentFont is SMuFLMusicFont))
+            {
+                if (element.OctaveChange > 0)
+                {
+                    renderer.DrawString((8 * element.OctaveChange).ToString(), MusicFontStyles.DirectionFont, element.TextBlockLocation.X + 6, scoreService.CurrentLinePositions[0] - renderer.LinespacesToPixels(2), element);
+                }
+                if (element.OctaveChange < 0)
+                {
+                    renderer.DrawString((8 * element.OctaveChange * -1).ToString(), MusicFontStyles.DirectionFont, element.TextBlockLocation.X + 6, scoreService.CurrentLinePositions[4] + renderer.LinespacesToPixels(3.5), element);
+                }
+            }
 
-			//Don't draw clef if it's current clef:
-			if (!WasSystemChanged && element.TypeOfClef == scoreService.CurrentClef.TypeOfClef && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
+            //Don't draw clef if it's current clef:
+            if (!WasSystemChanged && element.TypeOfClef == scoreService.CurrentClef.TypeOfClef && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
 
             element.TextBlockLocation = new Point(scoreService.CursorPositionX,  scoreService.CurrentLinePositions[4] - (element.Line - 1) * renderer.Settings.LineSpacing);
             scoreService.CurrentClef = element;

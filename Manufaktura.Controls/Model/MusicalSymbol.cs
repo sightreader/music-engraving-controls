@@ -29,6 +29,8 @@ namespace Manufaktura.Controls.Model
 
     public enum DirectionPlacementType { Above, Below, Custom };
 
+    public enum GraceNoteType { None, Simple, Slashed };
+
     public enum HorizontalPlacement { Left, Right };
 
     public enum NoteBeamType { Single, Start, Continue, End, ForwardHook, BackwardHook };
@@ -50,9 +52,6 @@ namespace Manufaktura.Controls.Model
     public enum VerticalDirection { Up, Down };
 
     public enum VerticalPlacement { Above, Below };
-
-    public enum GraceNoteType { None, Simple, Slashed };
-
     /// <summary>
     /// Base class for all musical symbols
     /// </summary>
@@ -90,6 +89,7 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public Guid Id { get; private set; }
 
+        public bool IsBreakpointSet { get; set; }
         /// <summary>
         /// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
         /// </summary>

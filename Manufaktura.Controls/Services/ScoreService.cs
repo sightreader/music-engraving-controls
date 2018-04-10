@@ -219,7 +219,7 @@ namespace Manufaktura.Controls.Services
             if (firstNoteOrRest != null)
             {
                 CurrentClef = measure.Staff.Peek<Clef>(firstNoteOrRest, Model.PeekStrategies.PeekType.PreviousElement);
-                CurrentClef.TextBlockLocation = new Primitives.Point(CursorPositionX, CurrentLinePositions[4] - 24.4f - (CurrentClef.Line - 1) * rendererSettings.LineSpacing);
+                CurrentClef.TextBlockLocation = new Primitives.Point(CursorPositionX, CurrentLinePositions[4] - (CurrentClef.Line - 1) * rendererSettings.LineSpacing);
                 CurrentKey = measure.Staff.Peek<Key>(firstNoteOrRest, Model.PeekStrategies.PeekType.PreviousElement);
             }
         }

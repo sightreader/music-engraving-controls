@@ -30,7 +30,7 @@
         public OptionalGlyphs OptionalGlyphs { get; set; }
 
         [JsonProperty("sets")]
-        public Dictionary<string, Set> Sets { get; set; }
+        public Dictionary<string, GlyphSet> Sets { get; set; }
     }
 
     public partial class BoundingBox
@@ -57,10 +57,6 @@
         public string Name { get; set; }
     }
 
-
-
-
-
     public partial class RepeatDefinition
     {
         [JsonProperty("repeatOffset")]
@@ -73,70 +69,17 @@
         public double[] OpticalCenter { get; set; }
     }
 
-    public partial class StemBoundaries
-    {
-        [JsonProperty("stemDownSW")]
-        public double[] StemDownSw { get; set; }
-
-        [JsonProperty("stemUpNW")]
-        public double[] StemUpNw { get; set; }
-
-        [JsonProperty("stemDownNW")]
-        public double[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public double[] StemUpSe { get; set; }
-    }
-
-    public partial class Flag8ThDown
-    {
-        [JsonProperty("graceNoteSlashNW")]
-        public double[] GraceNoteSlashNw { get; set; }
-
-        [JsonProperty("graceNoteSlashSE")]
-        public double[] GraceNoteSlashSe { get; set; }
-
-        [JsonProperty("stemDownSW")]
-        public double[] StemDownSw { get; set; }
-    }
-
-
-    public partial class Flag8ThUp
-    {
-        [JsonProperty("graceNoteSlashNE")]
-        public double[] GraceNoteSlashNe { get; set; }
-
-        [JsonProperty("graceNoteSlashSW")]
-        public double[] GraceNoteSlashSw { get; set; }
-
-        [JsonProperty("stemUpNW")]
-        public double[] StemUpNw { get; set; }
-    }
-
     public partial class GClefLigatedNumber
     {
         [JsonProperty("numeralBottom")]
         public double[] NumeralBottom { get; set; }
     }
 
-
-
-    public partial class GlyphsWithAnchorsNoteShapeDiamondBlack
-    {
-        [JsonProperty("stemDownNW")]
-        public long[] StemDownNw { get; set; }
-
-        [JsonProperty("stemUpSE")]
-        public double[] StemUpSe { get; set; }
-    }
-
-
     public partial class GlyphsWithAnchorsNoteheadCircleXDoubleWhole
     {
         [JsonProperty("noteheadOrigin")]
         public double[] NoteheadOrigin { get; set; }
     }
-
 
     public partial class Wiggle
     {
@@ -168,27 +111,4 @@
         public string Codepoint { get; set; }
     }
 
-    public partial class Set
-    {
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("glyphs")]
-        public Glyph[] Glyphs { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public partial class Glyph
-    {
-        [JsonProperty("alternateFor")]
-        public string AlternateFor { get; set; }
-
-        [JsonProperty("codepoint")]
-        public string Codepoint { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
 }

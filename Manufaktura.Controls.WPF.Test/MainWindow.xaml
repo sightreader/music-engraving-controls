@@ -3,18 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:WPF="clr-namespace:Manufaktura.Controls.WPF;assembly=Manufaktura.Controls.WPF" x:Class="Manufaktura.Controls.WPF.Test.MainWindow"
         Title="MainWindow" Height="443" Width="525">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto">
-    <StackPanel Orientation="Vertical" >
-            <Canvas Height="50" Background="Gainsboro">
-                <TextBlock Canvas.Top="10" Canvas.Left="10" Background="Red">XXXj</TextBlock>
-            </Canvas>
-            <TextBlock FontFamily="/Manufaktura.Controls.WPF.Test;component/Assets/#Bravura" x:Name="dummyTextBlock" />
-            <WPF:NoteViewer ScoreSource="{Binding Data}" RenderingMode="AllPages" IsOccupyingSpace="True" x:Name="noteViewerTest" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <!--PlaybackCursorPosition="{Binding Player.CurrentPosition}"-->
-            <WPF:NoteViewer PlaybackCursorPosition="{Binding Player.CurrentPosition}" RenderingMode="AllPages" CurrentPage="1" IsOccupyingSpace="True" x:Name="noteViewer1" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <WPF:NoteViewer RenderingMode="Panorama" x:Name="noteViewer2" HorizontalAlignment="Stretch" IsOccupyingSpace="True" VerticalAlignment="Top" />
-            <WPF:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
-            <WPF:RadialChart  Samples="{Binding ChartSamples}" Width="300" Height="300" LabelToAxisDistance="30" />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <Button Content="Ustaw breakpoint" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Breakpoint_Click"/>
             <Button Content="Zapisz MusicXML" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_9"/>
             <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             <Button Content="Odtwórz" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
@@ -26,6 +21,26 @@
             <Button Content="Panorama" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
             <Button Content="Jedna strona" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
             <Button Content="Wszystkie strony" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_5"/>
+            <Slider Minimum="1" Maximum="4" x:Name="zoomSlider" />
+        </StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Column="1">
+
+    <StackPanel Orientation="Vertical" >
+            
+            <Canvas Height="50" Background="Gainsboro">
+                <TextBlock Canvas.Top="10" Canvas.Left="10" Background="Red">XXXj</TextBlock>
+            </Canvas>
+            <TextBlock FontFamily="/Manufaktura.Controls.WPF.Test;component/Assets/#Bravura" x:Name="dummyTextBlock" />
+            <WPF:NoteViewer ScoreSource="{Binding Data}" RenderingMode="AllPages" IsOccupyingSpace="True" x:Name="noteViewerTest" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top">
+            </WPF:NoteViewer>
+            <!--PlaybackCursorPosition="{Binding Player.CurrentPosition}"-->
+                <WPF:NoteViewer ZoomFactor="{Binding Value, ElementName=zoomSlider}" PlaybackCursorPosition="{Binding Player.CurrentPosition}" RenderingMode="AllPages" CurrentPage="1" IsOccupyingSpace="True" x:Name="noteViewer1" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top">
+            </WPF:NoteViewer>
+                <WPF:NoteViewer Visibility="Collapsed" RenderingMode="Panorama" x:Name="noteViewer2" HorizontalAlignment="Stretch" IsOccupyingSpace="True" VerticalAlignment="Top" />
+            <WPF:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
+                <WPF:RadialChart  Visibility="Collapsed" Samples="{Binding ChartSamples}" Width="300" Height="300" LabelToAxisDistance="30" />
+
         </StackPanel>
     </ScrollViewer>
+    </Grid>
 </Window>

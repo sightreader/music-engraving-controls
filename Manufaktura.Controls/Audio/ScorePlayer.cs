@@ -152,9 +152,11 @@ namespace Manufaktura.Controls.Audio
         {
             var elapsedTime = TimeSpan.Zero;
             var quarterNoteDuration = MusicXmlParser.CalculateQuarterNoteDuration(Score);
+            var repeats = new Stack<int>();
+            var triggeredRepeats = new List<Barline>();
             for (var i = 0; i < Score.FirstStaff.Measures.Count; i++)
             {
-                var orderedElements = BuildMeasureTimeLine(i, quarterNoteDuration).OrderBy(e => e.Item1).ToList();
+                var orderedElements = BuildMeasureTimeLine(i, quarterNoteDuration, repeats, triggeredRepeats, out bool repeat).OrderBy(e => e.Item1).ToList();
                 foreach (var element in orderedElements)
                 {
                     yield return new TimelineElement<IHasDuration>(TimeSpan.FromMilliseconds(element.Item1 * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds) + elapsedTime, element.Item2);
@@ -165,6 +167,7 @@ namespace Manufaktura.Controls.Audio
                     var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDouble();
                     elapsedTime += TimeSpan.FromMilliseconds(endOfMeasure * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds);
                 }
+                if (repeat && repeats.Any()) i = repeats.Pop() - 1; 
             }
         }
 
@@ -222,12 +225,25 @@ namespace Manufaktura.Controls.Audio
             return elements;
         }
 
-        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(int measureIndex, int quarterNoteDuration)
+        private List<Tuple<double, IHasDuration>> BuildMeasureTimeLine(int measureIndex, int quarterNoteDuration, Stack<int> repeats, List<Barline> triggeredRepeats, out bool repeat)
         {
+            repeat = false;
             var elements = new List<Tuple<double, IHasDuration>>();
             foreach (var staff in Score.Staves)
             {
                 var measure = staff.Measures[measureIndex];
+                var forwardRepeat = measure.Elements.OfType<Barline>().FirstOrDefault(b => b.RepeatSign == RepeatSignType.Forward);
+                if (forwardRepeat != null && !triggeredRepeats.Contains(forwardRepeat))
+                {
+                    repeats.Push(measureIndex);
+                    triggeredRepeats.Add(forwardRepeat);
+                }
+                var backwardRepeat = measure.Elements.OfType<Barline>().FirstOrDefault(b => b.RepeatSign == RepeatSignType.Backward);
+                if (backwardRepeat != null && !triggeredRepeats.Contains(backwardRepeat))
+                {
+                    repeat = true;
+                    triggeredRepeats.Add(backwardRepeat);
+                }
                 elements.AddRange(BuildMeasureTimeLine(measure, staff, quarterNoteDuration));
             }
             return elements;

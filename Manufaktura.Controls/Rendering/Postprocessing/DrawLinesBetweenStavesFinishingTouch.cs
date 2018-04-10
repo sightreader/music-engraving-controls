@@ -35,8 +35,10 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 		{
 			var lightPen = new Pen(renderer.Settings.DefaultColor, 1);
 			var thickPen = new Pen(renderer.Settings.DefaultColor, 3);
+            var defaultPen = new Pen(renderer.Settings.DefaultColor, renderer.Settings.DefaultStaffLineThickness);
+            var barlinePen = new Pen(renderer.Settings.DefaultColor, renderer.Settings.DefaultBarlineThickness);
 
-			for (var i = 0; i < scoreService.CurrentScore.Staves.Count - 1; i++)
+            for (var i = 0; i < scoreService.CurrentScore.Staves.Count - 1; i++)
 			{
 				var staff = scoreService.CurrentScore.Staves[i];
 				foreach (var system in scoreService.CurrentScore.Systems)
@@ -51,7 +53,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 					if (system.LinePositions == null) continue;
 					var staffFragment = system.Staves[i];
 					if (!system.LinePositions.ContainsKey(i + 1) || !system.LinePositions.ContainsKey(i + 2)) continue;
-					renderer.DrawLine(0, system.LinePositions[i + 1][4], 0, system.LinePositions[i + 2][0], staffFragment);
+					renderer.DrawLine(0, system.LinePositions[i + 1][4], 0, system.LinePositions[i + 2][0], barlinePen, staffFragment);
 					foreach (var measure in staff.Measures.Where(m => m.Barline != null && m.System == system))
 					{
 						if (measure.Barline?.Style == BarlineStyle.LightHeavy)
@@ -61,7 +63,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 						}
 						else if (measure.Barline?.Style != BarlineStyle.None)
 						{
-							renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], measure.Barline);
+							renderer.DrawLine(measure.BarlineLocationX, system.LinePositions[i + 1][4], measure.BarlineLocationX, system.LinePositions[i + 2][0], barlinePen, measure.Barline);
 						}
 					}
 				}

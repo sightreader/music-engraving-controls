@@ -717,7 +717,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries Flag64ThUpStraight { get; set; }
 
         [JsonProperty("flag8thDown")]
-        public Flag8ThDown Flag8ThDown { get; set; }
+        public GraceNoteStemBoundaries Flag8ThDown { get; set; }
 
         [JsonProperty("StemBoundaries")]
         public StemBoundaries StemBoundaries { get; set; }
@@ -726,7 +726,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries Flag8ThDownStraight { get; set; }
 
         [JsonProperty("flag8thUp")]
-        public Flag8ThUp Flag8ThUp { get; set; }
+        public GraceNoteStemBoundaries Flag8ThUp { get; set; }
 
         [JsonProperty("flag8thUpShort")]
         public StemBoundaries Flag8ThUpShort { get; set; }
@@ -924,10 +924,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteReHalf { get; set; }
 
         [JsonProperty("noteShapeDiamondBlack")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteShapeDiamondBlack { get; set; }
+        public StemBoundaries NoteShapeDiamondBlack { get; set; }
 
         [JsonProperty("noteShapeDiamondWhite")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteShapeDiamondWhite { get; set; }
+        public StemBoundaries NoteShapeDiamondWhite { get; set; }
 
         [JsonProperty("noteShapeMoonBlack")]
         public StemBoundaries NoteShapeMoonBlack { get; set; }
@@ -1002,7 +1002,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadCircleSlash { get; set; }
 
         [JsonProperty("noteheadCircleX")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircleX { get; set; }
+        public StemBoundaries NoteheadCircleX { get; set; }
 
         [JsonProperty("noteheadCircleXDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadCircleXDoubleWhole { get; set; }
@@ -1020,19 +1020,19 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadCircledDoubleWhole { get; set; }
 
         [JsonProperty("noteheadCircledDoubleWholeLarge")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircledDoubleWholeLarge { get; set; }
+        public StemBoundaries NoteheadCircledDoubleWholeLarge { get; set; }
 
         [JsonProperty("noteheadCircledHalf")]
         public StemBoundaries NoteheadCircledHalf { get; set; }
 
         [JsonProperty("noteheadCircledHalfLarge")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircledHalfLarge { get; set; }
+        public StemBoundaries NoteheadCircledHalfLarge { get; set; }
 
         [JsonProperty("noteheadCircledWholeLarge")]
         public StemBoundaries NoteheadCircledWholeLarge { get; set; }
 
         [JsonProperty("noteheadCircledXLarge")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadCircledXLarge { get; set; }
+        public StemBoundaries NoteheadCircledXLarge { get; set; }
 
         [JsonProperty("noteheadClusterDoubleWhole2nd")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadClusterDoubleWhole2Nd { get; set; }
@@ -1071,10 +1071,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadClusterRoundWhite { get; set; }
 
         [JsonProperty("noteheadClusterSquareBlack")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadClusterSquareBlack { get; set; }
+        public StemBoundaries NoteheadClusterSquareBlack { get; set; }
 
         [JsonProperty("noteheadClusterSquareWhite")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadClusterSquareWhite { get; set; }
+        public StemBoundaries NoteheadClusterSquareWhite { get; set; }
 
         [JsonProperty("noteheadDiamondBlack")]
         public StemBoundaries NoteheadDiamondBlack { get; set; }
@@ -1083,7 +1083,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadDiamondBlackOld { get; set; }
 
         [JsonProperty("noteheadDiamondBlackWide")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadDiamondBlackWide { get; set; }
+        public StemBoundaries NoteheadDiamondBlackWide { get; set; }
 
         [JsonProperty("noteheadDiamondClusterBlack2nd")]
         public StemBoundaries NoteheadDiamondClusterBlack2Nd { get; set; }
@@ -1116,7 +1116,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadDiamondDoubleWholeOld { get; set; }
 
         [JsonProperty("noteheadDiamondHalf")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadDiamondHalf { get; set; }
+        public StemBoundaries NoteheadDiamondHalf { get; set; }
 
         [JsonProperty("noteheadDiamondHalfFilled")]
         public StemBoundaries NoteheadDiamondHalfFilled { get; set; }
@@ -1125,7 +1125,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadDiamondHalfOld { get; set; }
 
         [JsonProperty("noteheadDiamondHalfWide")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadDiamondHalfWide { get; set; }
+        public StemBoundaries NoteheadDiamondHalfWide { get; set; }
 
         [JsonProperty("noteheadDiamondOpen")]
         public StemBoundaries NoteheadDiamondOpen { get; set; }
@@ -1164,7 +1164,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadHeavyXHat { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownBlack")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadLargeArrowDownBlack { get; set; }
+        public StemBoundaries NoteheadLargeArrowDownBlack { get; set; }
 
         [JsonProperty("noteheadLargeArrowDownDoubleWhole")]
         public GlyphsWithAnchorsNoteheadCircleXDoubleWhole NoteheadLargeArrowDownDoubleWhole { get; set; }
@@ -1182,10 +1182,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadLargeArrowUpHalf { get; set; }
 
         [JsonProperty("noteheadMoonBlack")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadMoonBlack { get; set; }
+        public StemBoundaries NoteheadMoonBlack { get; set; }
 
         [JsonProperty("noteheadMoonWhite")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadMoonWhite { get; set; }
+        public StemBoundaries NoteheadMoonWhite { get; set; }
 
         [JsonProperty("noteheadPlusBlack")]
         public StemBoundaries NoteheadPlusBlack { get; set; }
@@ -1197,7 +1197,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadPlusHalf { get; set; }
 
         [JsonProperty("noteheadRoundBlack")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundBlack { get; set; }
+        public StemBoundaries NoteheadRoundBlack { get; set; }
 
         [JsonProperty("noteheadRoundBlackDoubleSlashed")]
         public StemBoundaries NoteheadRoundBlackDoubleSlashed { get; set; }
@@ -1206,10 +1206,10 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadRoundBlackLarge { get; set; }
 
         [JsonProperty("noteheadRoundBlackSlashed")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundBlackSlashed { get; set; }
+        public StemBoundaries NoteheadRoundBlackSlashed { get; set; }
 
         [JsonProperty("noteheadRoundBlackSlashedLarge")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundBlackSlashedLarge { get; set; }
+        public StemBoundaries NoteheadRoundBlackSlashedLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhite")]
         public StemBoundaries NoteheadRoundWhite { get; set; }
@@ -1221,25 +1221,25 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadRoundWhiteLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhiteSlashed")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundWhiteSlashed { get; set; }
+        public StemBoundaries NoteheadRoundWhiteSlashed { get; set; }
 
         [JsonProperty("noteheadRoundWhiteSlashedLarge")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundWhiteSlashedLarge { get; set; }
+        public StemBoundaries NoteheadRoundWhiteSlashedLarge { get; set; }
 
         [JsonProperty("noteheadRoundWhiteWithDot")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundWhiteWithDot { get; set; }
+        public StemBoundaries NoteheadRoundWhiteWithDot { get; set; }
 
         [JsonProperty("noteheadRoundWhiteWithDotLarge")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadRoundWhiteWithDotLarge { get; set; }
+        public StemBoundaries NoteheadRoundWhiteWithDotLarge { get; set; }
 
         [JsonProperty("noteheadSlashDiamondWhite")]
         public StemBoundaries NoteheadSlashDiamondWhite { get; set; }
 
         [JsonProperty("noteheadSlashHorizontalEnds")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashHorizontalEnds { get; set; }
+        public StemBoundaries NoteheadSlashHorizontalEnds { get; set; }
 
         [JsonProperty("noteheadSlashHorizontalEndsMuted")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashHorizontalEndsMuted { get; set; }
+        public StemBoundaries NoteheadSlashHorizontalEndsMuted { get; set; }
 
         [JsonProperty("noteheadSlashVerticalEnds")]
         public StemBoundaries NoteheadSlashVerticalEnds { get; set; }
@@ -1251,13 +1251,13 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadSlashVerticalEndsSmall { get; set; }
 
         [JsonProperty("noteheadSlashWhiteHalf")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashWhiteHalf { get; set; }
+        public StemBoundaries NoteheadSlashWhiteHalf { get; set; }
 
         [JsonProperty("noteheadSlashWhiteMuted")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashWhiteMuted { get; set; }
+        public StemBoundaries NoteheadSlashWhiteMuted { get; set; }
 
         [JsonProperty("noteheadSlashX")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadSlashX { get; set; }
+        public StemBoundaries NoteheadSlashX { get; set; }
 
         [JsonProperty("noteheadSlashedBlack1")]
         public StemBoundaries NoteheadSlashedBlack1 { get; set; }
@@ -1356,7 +1356,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public StemBoundaries NoteheadXOrnate { get; set; }
 
         [JsonProperty("noteheadXOrnateEllipse")]
-        public GlyphsWithAnchorsNoteShapeDiamondBlack NoteheadXOrnateEllipse { get; set; }
+        public StemBoundaries NoteheadXOrnateEllipse { get; set; }
 
         [JsonProperty("ornamentBottomLeftConcaveStroke")]
         public RepeatDefinition OrnamentBottomLeftConcaveStroke { get; set; }

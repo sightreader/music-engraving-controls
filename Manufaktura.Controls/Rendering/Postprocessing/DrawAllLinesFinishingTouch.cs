@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Services;
@@ -42,12 +43,14 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
         private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system)
         {
-            renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], staffFragment);
+            renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], new Pen(renderer.CoalesceColor(staffFragment), renderer.Settings.DefaultStaffLineThickness), staffFragment);
             foreach (double position in staffFragment.LinePositions)
             {
+                var positionX = staff.Measures.LastOrDefault(m => m.System == system)?.BarlineLocationX ?? system.Width;
+                if (positionX == 0) positionX = system.Width;
                 Point startPoint = new Point(0, position);
-                Point endPoint = new Point(system.Width, position);
-                renderer.DrawLine(startPoint, endPoint, new Pen(renderer.Settings.DefaultColor, 1, -1), staffFragment);
+                Point endPoint = new Point(positionX, position);
+                renderer.DrawLine(startPoint, endPoint, new Pen(renderer.CoalesceColor(staffFragment), renderer.Settings.DefaultStaffLineThickness, -1), staffFragment);
             }
         }
     }

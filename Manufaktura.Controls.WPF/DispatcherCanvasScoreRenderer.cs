@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace Manufaktura.Controls.WPF
 {
-	public class DispatcherCanvasScoreRenderer : CanvasScoreRenderer
+	public class DispatcherCanvasScoreRenderer : WpfCanvasScoreRenderer
 	{
 		private NoteViewer control;
 		private Queue<Action> renderingQueue = new Queue<Action>();
@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.WPF
 			this.control = control;
 		}
 
-        public DispatcherCanvasScoreRenderer(Canvas canvas, NoteViewer control, ScoreRendererSettings rendererSettings) : base(canvas, rendererSettings)
+        public DispatcherCanvasScoreRenderer(Canvas canvas, NoteViewer control, WpfScoreRendererSettings rendererSettings) : base(canvas, rendererSettings)
         {
             this.control = control;
         }
