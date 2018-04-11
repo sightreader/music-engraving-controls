@@ -350,13 +350,13 @@ namespace Manufaktura.Controls.Model
                 var bounds = GetSMuFLNoteheadBounds(BaseDuration, renderer.Settings.CurrentSMuFLMetadata);
                 return bounds.BBoxNe[0] - bounds.BBoxSw[0];
             }
-            return 1;
+            return IsGraceNote || IsCueNote ? 0.6 : 1.1;
         }
 
         [Units(Units.Pixels)]
-        public double GetNoteheadWidthPx(ScoreRendererBase renderer, double factor = 1)
+        public double GetNoteheadWidthPx(ScoreRendererBase renderer)
         {
-            return renderer.LinespacesToPixels(GetNoteheadWidthLs(renderer) * factor);
+            return renderer.LinespacesToPixels(GetNoteheadWidthLs(renderer));
         }
         /// <summary>
         /// Returns a string representation of this symbol for debugging purposes

@@ -314,8 +314,8 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
         {
-            double startPositionX = scoreService.CursorPositionX - (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer, 0.5) : 0);
-            double endPositionX = scoreService.CursorPositionX + (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer, 1.5) : renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * 2.2));
+            double startPositionX = scoreService.CursorPositionX - (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer) * 0.5 : 0);
+            double endPositionX = scoreService.CursorPositionX + (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer) * 1.5 : renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * 2.2));
             if (notePositionY > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
             {
                 for (double i = scoreService.CurrentLinePositions[4]; i < notePositionY - renderer.Settings.LineSpacing / 2.0f; i += renderer.Settings.LineSpacing)
@@ -450,9 +450,10 @@ namespace Manufaktura.Controls.Rendering
             }
             else
             {
+                var polihymniaBadDesignFontFix = element.GetNoteheadWidthPx(renderer) * (element.IsCueNote || element.IsGraceNote ? 2 : 1) + 0.5;
                 beamingService.CurrentStemPositionX = scoreService.CursorPositionX +
-                    renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer)) + 0.5 +  //Polihymnia font fix
-                    (renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) / 2)) * (element.StemDirection == VerticalDirection.Down ? -1 : 1) +
+                    polihymniaBadDesignFontFix +
+                    (element.GetNoteheadWidthPx(renderer) / 2) * (element.StemDirection == VerticalDirection.Down ? -1 : 1) +
                     (element.IsGraceNote || element.IsCueNote ? -2 : 0);
             }
 

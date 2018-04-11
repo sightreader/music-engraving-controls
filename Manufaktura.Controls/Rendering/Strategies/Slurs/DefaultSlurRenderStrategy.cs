@@ -45,7 +45,7 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
         protected override void ProcessSlurEnd(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
             Point endPoint;
-            var noteheadWidth = element.GetNoteheadWidthPx(renderer, 1);
+            var noteheadWidth = element.GetNoteheadWidthPx(renderer);
             
             if (slurStartInfo.StartPlacement == VerticalPlacement.Above)
             {
