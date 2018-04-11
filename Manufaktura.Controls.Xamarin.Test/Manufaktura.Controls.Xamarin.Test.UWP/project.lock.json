@@ -319,6 +319,15 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -2201,11 +2210,16 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Music": "1.0.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
         }
       },
       "Manufaktura.Controls.Xamarin/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0"
+        }
       },
       "Manufaktura.Controls.Xamarin.Test/1.0.0": {
         "type": "project",
@@ -2533,6 +2547,15 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.any.System.Collections/4.3.0": {
@@ -4614,11 +4637,16 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Music": "1.0.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
         }
       },
       "Manufaktura.Controls.Xamarin/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0"
+        }
       },
       "Manufaktura.Controls.Xamarin.Test/1.0.0": {
         "type": "project",
@@ -4932,6 +4960,15 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.3.0": {
@@ -7052,11 +7089,16 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Music": "1.0.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
         }
       },
       "Manufaktura.Controls.Xamarin/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0"
+        }
       },
       "Manufaktura.Controls.Xamarin.Test/1.0.0": {
         "type": "project",
@@ -7391,6 +7433,15 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.any.System.Collections/4.3.0": {
@@ -9472,11 +9523,16 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Music": "1.0.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
         }
       },
       "Manufaktura.Controls.Xamarin/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0"
+        }
       },
       "Manufaktura.Controls.Xamarin.Test/1.0.0": {
         "type": "project",
@@ -9790,6 +9846,15 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.3.0": {
@@ -11910,11 +11975,16 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Music": "1.0.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
         }
       },
       "Manufaktura.Controls.Xamarin/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0"
+        }
       },
       "Manufaktura.Controls.Xamarin.Test/1.0.0": {
         "type": "project",
@@ -12249,6 +12319,15 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.any.System.Collections/4.3.0": {
@@ -14330,11 +14409,16 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Music": "1.0.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
         }
       },
       "Manufaktura.Controls.Xamarin/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0"
+        }
       },
       "Manufaktura.Controls.Xamarin.Test/1.0.0": {
         "type": "project",
@@ -14648,6 +14732,15 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.3.0": {
@@ -16768,11 +16861,16 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Music": "1.0.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
         }
       },
       "Manufaktura.Controls.Xamarin/1.0.0": {
-        "type": "project"
+        "type": "project",
+        "dependencies": {
+          "Manufaktura.Controls": "1.0.0",
+          "Manufaktura.Music": "1.0.0"
+        }
       },
       "Manufaktura.Controls.Xamarin.Test/1.0.0": {
         "type": "project",
@@ -17439,6 +17537,30 @@
         "dotnet_library_license.txt",
         "netstandard.library.1.6.1.nupkg.sha512",
         "netstandard.library.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/9.0.1": {
+      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+      "type": "package",
+      "path": "newtonsoft.json/9.0.1",
+      "files": [
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.9.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "tools/install.ps1"
       ]
     },
     "runtime.any.System.Collections/4.3.0": {

@@ -15,7 +15,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -109,6 +109,10 @@
     <ProjectReference Include="..\Manufaktura.Controls.Xamarin\Manufaktura.Controls.Xamarin.csproj">
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
       <Name>Manufaktura.Controls.Xamarin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
+      <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
+      <Name>Manufaktura.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
