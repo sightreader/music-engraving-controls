@@ -44,12 +44,12 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
         private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system)
         {
             renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], new Pen(renderer.CoalesceColor(staffFragment), renderer.Settings.DefaultStaffLineThickness), staffFragment);
-            foreach (double position in staffFragment.LinePositions)
+            foreach (double linePositionY in staffFragment.LinePositions)
             {
                 var positionX = staff.Measures.LastOrDefault(m => m.System == system)?.BarlineLocationX ?? system.Width;
                 if (positionX == 0) positionX = system.Width;
-                Point startPoint = new Point(0, position);
-                Point endPoint = new Point(positionX, position);
+                Point startPoint = new Point(0, linePositionY);
+                Point endPoint = new Point(positionX, linePositionY);
                 renderer.DrawLine(startPoint, endPoint, new Pen(renderer.CoalesceColor(staffFragment), renderer.Settings.DefaultStaffLineThickness, -1), staffFragment);
             }
         }

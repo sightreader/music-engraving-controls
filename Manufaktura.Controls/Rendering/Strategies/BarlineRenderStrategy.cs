@@ -140,6 +140,8 @@ namespace Manufaktura.Controls.Rendering
 
                 if (scoreService.CurrentStaffNo == 1) element.RenderedXPositionForFirstStaffInMultiStaffPart = scoreService.CursorPositionX;
 
+                scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
+                scoreService.CurrentMeasure.Barline = element;
                 if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue) scoreService.CursorPositionX += 6;
 			}
 
