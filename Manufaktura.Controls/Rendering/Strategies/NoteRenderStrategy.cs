@@ -383,7 +383,7 @@ namespace Manufaktura.Controls.Rendering
                 double yPosition;
                 if (ornament.DefaultYPosition.HasValue)
                 {
-                    var yShift = renderer.TenthsToPixels(ornament.DefaultYPosition.Value) * -1;
+                    var yShift = renderer.TenthsToPixels(ornament.DefaultYPosition.Value);
                     yPosition = scoreService.CurrentLinePositions[0] + yShift;
                 }
                 else
@@ -392,8 +392,8 @@ namespace Manufaktura.Controls.Rendering
                 Mordent mordent = ornament as Mordent;
                 if (mordent != null)
                 {
-                    renderer.DrawCharacter(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 9, yPosition, element);
-                    renderer.DrawCharacter(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX - 3.5, yPosition, element);
+                    renderer.DrawCharacter(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX, yPosition, element);
+                    renderer.DrawCharacter(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 5.5, yPosition, element);
                 }
             }
         }

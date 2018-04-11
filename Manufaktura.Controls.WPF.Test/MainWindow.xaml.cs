@@ -38,7 +38,7 @@ namespace Manufaktura.Controls.WPF.Test
             //noteViewer3.LoadFont(family);
 
             
-            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            /*using (var stream = assembly.GetManifestResourceStream(resourceName))
             using (var reader = new StreamReader(stream))
             {
                 string result = reader.ReadToEnd();
@@ -47,7 +47,7 @@ namespace Manufaktura.Controls.WPF.Test
                 noteViewer1.LoadFont(family, metadataJson);
                 noteViewer2.LoadFont(family, metadataJson);
                 noteViewer3.LoadFont(family, metadataJson);
-            }
+            }*/
 
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
 
