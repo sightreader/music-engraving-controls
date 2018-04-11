@@ -44,6 +44,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2017, 12, 03, 11, 24, 00));   //Obsługa atrybutu size na elemencie type (cue notes)
             AcceptTo(new DateTime(2018, 2, 18, 19, 25, 00));    //Zmiany w celu uzyskania kompatybilności z CSHTML5
             AcceptTo(new DateTime(2018, 3, 5, 21, 15, 00));     //Poprawki rozmieszczenia nut w akordach dla Ricardo Garcii
+            AcceptTo(new DateTime(2018, 4, 11, 21, 17, 00));    //Duża zmiana obsługi współrzędnych rysowanych znaków, obsługa fontów SMuFL
 
             var tests = CreatePathDictionary();
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
