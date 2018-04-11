@@ -45,16 +45,19 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
         protected override void ProcessSlurEnd(ScoreRendererBase renderer, Slur slur, Note element, double notePositionY, SlurInfo slurStartInfo, VerticalPlacement slurPlacement)
         {
             Point endPoint;
+            var noteheadWidth = element.GetNoteheadWidthPx(renderer, 1);
+            
             if (slurStartInfo.StartPlacement == VerticalPlacement.Above)
             {
+                var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? noteheadWidth : noteheadWidth * 1.25;
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;
-                var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? 5 : 1;
                 endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd,
                     (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + (hasFlagOrBeam ? -2 : 0) : notePositionY - 7));
             }
             else if (slurStartInfo.StartPlacement == VerticalPlacement.Below)
             {
-                endPoint = new Point(scoreService.CursorPositionX + 3, notePositionY + 5);
+                var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? noteheadWidth * 1.25 : noteheadWidth;
+                endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, notePositionY + 5);
             }
             else throw new Exception("Unsupported placement type.");
 

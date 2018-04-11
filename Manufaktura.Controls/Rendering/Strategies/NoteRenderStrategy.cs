@@ -389,6 +389,9 @@ namespace Manufaktura.Controls.Rendering
                 else
                     yPosition = notePositionY + (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
 
+                if (ornament.Placement == VerticalPlacement.Above && yPosition > notePositionY)
+                    yPosition = notePositionY - renderer.Settings.LineSpacing;  //Chwilowe rozwiązanie, zanim odkryję jak działa default-y w mordentach i czy w ogóle działa
+
                 Mordent mordent = ornament as Mordent;
                 if (mordent != null)
                 {
