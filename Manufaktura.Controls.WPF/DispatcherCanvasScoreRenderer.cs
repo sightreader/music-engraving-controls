@@ -54,9 +54,9 @@ namespace Manufaktura.Controls.WPF
 			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}
 
-		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+		public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
 		{
-			renderingQueue.Enqueue(() => base.DrawStringInBounds(text, fontStyle, location, size, color, owner));
+			renderingQueue.Enqueue(() => base.DrawCharacterInBounds(character, fontStyle, location, size, color, owner));
 
 			if (renderingQueue.Count > BufferSize) FlushBuffer();
 		}

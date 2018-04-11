@@ -29,6 +29,7 @@ namespace Manufaktura.Controls.WPF
 
         public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
         public WpfScoreRendererSettings TypedSettings => Settings as WpfScoreRendererSettings;
+
         public static Point ConvertPoint(Primitives.Point point)
         {
             return new Point(point.X, point.Y);
@@ -155,34 +156,37 @@ namespace Manufaktura.Controls.WPF
             OwnershipDictionary.Add(textBlock, owner);
         }
 
-        public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
         {
             if (!EnsureProperPage(owner)) return;
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
-            TextBlock textBlock = new TextBlock();
             Typeface typeface = TypedSettings.GetFont(fontStyle);
-            textBlock.FontSize = 200;
-            textBlock.FontFamily = typeface.FontFamily;
-            textBlock.FontStretch = typeface.Stretch;
-            textBlock.FontStyle = typeface.Style;
-            textBlock.FontWeight = typeface.Weight;
-            textBlock.Text = text;
-            textBlock.Margin = new Thickness(0, -25, 0, 0);
-            textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
-            textBlock.Visibility = BoolToVisibility(owner.IsVisible);
+
+            GlyphTypeface glyphTypeface;
+            if (!typeface.TryGetGlyphTypeface(out glyphTypeface)) return;
+
+            var glyphMap = glyphTypeface.CharacterToGlyphMap;
+            var outline = glyphTypeface.GetGlyphOutline(glyphMap[character], 1000, 100);
+            var path = new Path();
+            path.Data = outline;
+
+            path.Stroke = new SolidColorBrush(ConvertColor(color));
+            path.Fill = new SolidColorBrush(ConvertColor(color));
+            path.Visibility = BoolToVisibility(owner.IsVisible);
+            path.Stretch = Stretch.Fill;
 
             var viewBox = new Viewbox();
-            viewBox.Child = textBlock;
+            viewBox.Child = path;
             viewBox.Width = size.Width;
             viewBox.Height = size.Height;
             viewBox.Stretch = Stretch.Fill;
-            viewBox.RenderTransform = new ScaleTransform(1, 1.9);
-            System.Windows.Controls.Canvas.SetLeft(viewBox, location.X + 3d);
-            System.Windows.Controls.Canvas.SetTop(viewBox, location.Y);
+            Canvas.SetLeft(viewBox, location.X);
+            Canvas.SetTop(viewBox, location.Y);
             Canvas.Children.Add(viewBox);
 
-            OwnershipDictionary.Add(textBlock, owner);
+            OwnershipDictionary.Add(path, owner);
+
         }
 
         public void MoveLayout(StaffSystem system, Point delta)

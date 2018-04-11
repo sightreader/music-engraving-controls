@@ -146,11 +146,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
             if (location.Y > ActualHeight) ActualHeight = location.Y;
 		}
 
-		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)
-		{
-		}
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
+        {
+        }
 
-		protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
+        protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
 		{
 		}
 	}

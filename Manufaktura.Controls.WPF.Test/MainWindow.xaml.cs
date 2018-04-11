@@ -37,17 +37,20 @@ namespace Manufaktura.Controls.WPF.Test
             //noteViewer2.LoadFont(family);
             //noteViewer3.LoadFont(family);
 
+            var useSMuFL = false;
             
-            /*using (var stream = assembly.GetManifestResourceStream(resourceName))
-            using (var reader = new StreamReader(stream))
-            {
-                string result = reader.ReadToEnd();
-                var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
-                noteViewerTest.LoadFont(family, metadataJson);
-                noteViewer1.LoadFont(family, metadataJson);
-                noteViewer2.LoadFont(family, metadataJson);
-                noteViewer3.LoadFont(family, metadataJson);
-            }*/
+            if (useSMuFL) {
+                using (var stream = assembly.GetManifestResourceStream(resourceName))
+                using (var reader = new StreamReader(stream))
+                {
+                    string result = reader.ReadToEnd();
+                    var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
+                    noteViewerTest.LoadFont(family, metadataJson);
+                    noteViewer1.LoadFont(family, metadataJson);
+                    noteViewer2.LoadFont(family, metadataJson);
+                    noteViewer3.LoadFont(family, metadataJson);
+                }
+            }
 
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
 

@@ -128,7 +128,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Canvas.Add(element);
         }
 
-        public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
         {
         }
 

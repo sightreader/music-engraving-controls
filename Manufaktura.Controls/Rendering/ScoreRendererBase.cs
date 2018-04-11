@@ -271,16 +271,11 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="owner">Owning MusicalSymbol</param>
         public abstract void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner);
 
-        public abstract void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner);
-
-        public void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)
-        {
-            DrawStringInBounds(character.ToString(), fontStyle, location, size, color, owner);
-        }
+        public abstract void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner);
 
         public void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, MusicalSymbol owner)
         {
-            DrawStringInBounds(character.ToString(), fontStyle, location, size, CoalesceColor(owner), owner);
+            DrawCharacterInBounds(character, fontStyle, location, size, CoalesceColor(owner), owner);
         }
 
         public double PixelsToTenths(double pixels)
