@@ -18,6 +18,10 @@
         /// C clef character
         /// </summary>
         char CClef { get; }
+        char CClef8va { get; }
+        char CClef8vb { get; }
+        char CClef15ma { get; }
+        char CClef15mb { get; }
 
         /// <summary>
         /// Common time character
@@ -40,6 +44,10 @@
         char DoubleSharp { get; }
 
         char FClef { get; }
+        char FClef8va { get; }
+        char FClef8vb { get; }
+        char FClef15ma { get; }
+        char FClef15mb { get; }
 
         char FermataDown { get; }
 
@@ -48,6 +56,10 @@
         char Flat { get; }
 
         char GClef { get; }
+        char GClef8va { get; }
+        char GClef8vb { get; }
+        char GClef15ma { get; }
+        char GClef15mb { get; }
 
         char Mordent { get; }
 

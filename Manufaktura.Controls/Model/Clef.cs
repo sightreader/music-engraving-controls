@@ -202,8 +202,20 @@ namespace Manufaktura.Controls.Model
 
         public char GetCharacter(IMusicFont font)
         {
-            if (typeOfClef == ClefType.GClef) return font.GClef;
+            if (typeOfClef == ClefType.GClef && OctaveChange == 1) return font.GClef8va;
+            else if (typeOfClef == ClefType.GClef && OctaveChange == -1) return font.GClef8vb;
+            else if (typeOfClef == ClefType.GClef && OctaveChange == 2) return font.GClef15ma;
+            else if (typeOfClef == ClefType.GClef && OctaveChange == -2) return font.GClef15mb;
+            else if (typeOfClef == ClefType.GClef) return font.GClef;
+            else if (typeOfClef == ClefType.FClef && OctaveChange == 1) return font.FClef8va;
+            else if (typeOfClef == ClefType.FClef && OctaveChange == -1) return font.FClef8vb;
+            else if (typeOfClef == ClefType.FClef && OctaveChange == 2) return font.FClef15ma;
+            else if (typeOfClef == ClefType.FClef && OctaveChange == -2) return font.FClef15mb;
             else if (typeOfClef == ClefType.FClef) return font.FClef;
+            else if (typeOfClef == ClefType.CClef && OctaveChange == 1) return font.CClef8va;
+            else if (typeOfClef == ClefType.CClef && OctaveChange == -1) return font.CClef8vb;
+            else if (typeOfClef == ClefType.CClef && OctaveChange == 2) return font.CClef15ma;
+            else if (typeOfClef == ClefType.CClef && OctaveChange == -2) return font.CClef15mb;
             else if (typeOfClef == ClefType.CClef) return font.CClef;
             else if (typeOfClef == ClefType.Percussion) return font.PercussionClef;
             else return '\0';

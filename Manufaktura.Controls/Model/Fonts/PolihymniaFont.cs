@@ -96,5 +96,29 @@
         public char BraceRight => '}';
 
         public char PercussionClef => '\0';
+
+        public char CClef8va => CClef;
+
+        public char CClef8vb => CClef;
+
+        public char CClef15ma => CClef;
+
+        public char CClef15mb => CClef;
+
+        public char FClef8va => FClef;
+
+        public char FClef8vb => FClef;
+
+        public char FClef15ma => FClef;
+
+        public char FClef15mb => FClef;
+
+        public char GClef8va => GClef;
+
+        public char GClef8vb => GClef;
+
+        public char GClef15ma => GClef;
+
+        public char GClef15mb => GClef;
     }
 }

@@ -63,5 +63,29 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char Time8 => '\uE088';
         public char Time9 => '\uE089';
         public char Trill => throw new NotImplementedException();
+
+        public char CClef8va => CClef;
+
+        public char CClef8vb => '\uE05D';
+
+        public char CClef15ma => CClef;
+
+        public char CClef15mb => CClef;
+
+        public char FClef8va => '\uE065';
+
+        public char FClef8vb => '\uE064';
+
+        public char FClef15ma => '\uE066';
+
+        public char FClef15mb => '\uE063';
+
+        public char GClef8va => '\uE053';
+
+        public char GClef8vb => '\uE052';
+
+        public char GClef15ma => '\uE054';
+
+        public char GClef15mb => '\uE051';
     }
 }
