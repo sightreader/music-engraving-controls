@@ -62,6 +62,7 @@ namespace Manufaktura.Controls.WPF
                 {MusicFontStyles.TrillFont, 14},
                 {MusicFontStyles.TimeSignatureFont, 14.5}
         };
+
         public Typeface GetFont(MusicFontStyles style)
         {
             return fonts[style];
@@ -72,10 +73,13 @@ namespace Manufaktura.Controls.WPF
             return fontSizes[style];
         }
 
-        public void SetFont(MusicFontStyles style, FontFamily family)
+        public void SetFont(MusicFontStyles style, FontFamily family, double fontSize = 0)
         {
             fonts[style] = new Typeface(family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
+            if (fontSize != 0) fontSizes[style] = fontSize;
+            else fontSizes[style] = defaultFontSizes[MusicFontStyles.TrillFont];
         }
+
         public void SetPolihymniaFont()
         {
             fonts[MusicFontStyles.MusicFont] = defaultFonts[MusicFontStyles.MusicFont];

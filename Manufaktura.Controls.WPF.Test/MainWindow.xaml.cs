@@ -24,6 +24,8 @@ namespace Manufaktura.Controls.WPF.Test
     {
         private int systemSpacing = 0;
         private static FontFamily BravuraFamily = new FontFamily(new Uri("pack://application:,,,/Manufaktura.Controls.WPF.Test;component/Assets;component/"), "./#Bravura");
+        private static FontFamily GootvilleFamily = new FontFamily(new Uri("pack://application:,,,/Manufaktura.Controls.WPF.Test;component/Assets;component/"), "./#Gootville");
+        private static FontFamily JazzyFamily = new FontFamily(new Uri("pack://application:,,,/Manufaktura.Controls.WPF.Test;component/Assets;component/"), "./#Jazzy");
 
         public MainWindow()
         {
@@ -32,12 +34,14 @@ namespace Manufaktura.Controls.WPF.Test
 
             var assembly = typeof(MainWindow).Assembly;
             var resourceName = $"{typeof(MainWindow).Namespace}.Assets.bravura_metadata.json";
+            //var resourceName = $"{typeof(MainWindow).Namespace}.Assets.gootville_metadata.json";
+            //var resourceName = $"{typeof(MainWindow).Namespace}.Assets.jazzy_metadata.json";
             //noteViewerTest.LoadFont(family);
             //noteViewer1.LoadFont(family);
             //noteViewer2.LoadFont(family);
             //noteViewer3.LoadFont(family);
 
-            var useSMuFL = false;
+            var useSMuFL = true;
             
             if (useSMuFL) {
                 using (var stream = assembly.GetManifestResourceStream(resourceName))
@@ -45,10 +49,10 @@ namespace Manufaktura.Controls.WPF.Test
                 {
                     string result = reader.ReadToEnd();
                     var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
-                    noteViewerTest.LoadFont(family, metadataJson);
-                    noteViewer1.LoadFont(family, metadataJson);
-                    noteViewer2.LoadFont(family, metadataJson);
-                    noteViewer3.LoadFont(family, metadataJson);
+                    noteViewerTest.LoadFont(family, 25, metadataJson);
+                    noteViewer1.LoadFont(family, 25, metadataJson);
+                    noteViewer2.LoadFont(family, 25, metadataJson);
+                    noteViewer3.LoadFont(family, 25, metadataJson);
                 }
             }
 

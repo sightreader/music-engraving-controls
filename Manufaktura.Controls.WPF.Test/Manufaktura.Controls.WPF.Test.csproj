@@ -103,6 +103,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <EmbeddedResource Include="Assets\bravura_metadata.json" />
+    <EmbeddedResource Include="Assets\gootville_metadata.json" />
+    <Resource Include="Assets\Jazzy.otf" />
+    <EmbeddedResource Include="Assets\jazzy_metadata.json" />
+    <Resource Include="Assets\Gootville.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

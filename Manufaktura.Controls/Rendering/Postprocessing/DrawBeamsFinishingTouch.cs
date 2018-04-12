@@ -80,7 +80,9 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
 		private void PerformOnBeamGroups(IEnumerable<BeamGroup> beamGroups, ScoreRendererBase renderer)
 		{
-			foreach (var beamGroup in beamGroups)
+
+
+            foreach (var beamGroup in beamGroups)
 			{
 				Note previousNote = null;
 				foreach (var member in beamGroup.Members)
@@ -88,24 +90,29 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 					var currentNote = member as Note;
 					if (currentNote == null) continue;
 
-					var beamNumber = 1;
+                    var beamPen = renderer.CreatePenFromDefaults(currentNote, "beamThickness", s => s.DefaultBeamThickness);
+                    beamPen.Color = currentNote.CoalesceColor(renderer);
+                    var beamSpacing = renderer.GetEngravingDefault("beamSpacing") ?? beamPen.Thickness * 0.6;
+
+                    var beamNumber = 1;
 					foreach (var beamType in currentNote.BeamList)
 					{
-						var beamOffset = (renderer.Settings.DefaultBeamThickness * 1.6) * (beamNumber - 1) * (currentNote.StemDirection == VerticalDirection.Up ? 1 : -1);
-						var stemEnd = beamGroup.Start.TranslateHorizontallyAndMaintainAngle(beamGroup.Angle, currentNote.StemEndLocation.X - beamGroup.Start.X);
+                        var beamOffset = (beamPen.Thickness + beamSpacing) * (beamNumber - 1) * (currentNote.StemDirection == VerticalDirection.Up ? 1 : -1);
+
+                        var stemEnd = beamGroup.Start.TranslateHorizontallyAndMaintainAngle(beamGroup.Angle, currentNote.StemEndLocation.X - beamGroup.Start.X);
 						currentNote.StemStartLocation = stemEnd;
 						if (beamType == NoteBeamType.ForwardHook || beamType == NoteBeamType.BackwardHook)
 						{
 							var hookLength = beamType == NoteBeamType.ForwardHook ? 6 : -6;
 							var hookEnd = stemEnd.TranslateByAngleOld(beamGroup.Angle, hookLength);
-							renderer.DrawLine(stemEnd.Translate(0, beamOffset), hookEnd.Translate(0, beamOffset), 
-                                new Pen { Thickness = renderer.Settings.DefaultBeamThickness, Color = currentNote.CoalesceColor(renderer) }, beamGroup);
+							renderer.DrawLine(stemEnd.Translate(0, beamOffset), hookEnd.Translate(0, beamOffset),
+                                beamPen, beamGroup);
 						}
 						else if (previousNote != null && beamType != NoteBeamType.Single && previousNote.BeamList.Count >= beamNumber)
 						{
 							var stemEnd1 = beamGroup.Start.TranslateHorizontallyAndMaintainAngle(beamGroup.Angle, previousNote.StemEndLocation.X - beamGroup.Start.X);
-							renderer.DrawLine(stemEnd1.Translate(0, beamOffset), stemEnd.Translate(0, beamOffset), 
-                                new Pen { Thickness = renderer.Settings.DefaultBeamThickness, Color = currentNote.CoalesceColor(renderer) }, beamGroup);
+							renderer.DrawLine(stemEnd1.Translate(0, beamOffset), stemEnd.Translate(0, beamOffset),
+                                beamPen, beamGroup);
 						}
 						beamNumber++;
 					}

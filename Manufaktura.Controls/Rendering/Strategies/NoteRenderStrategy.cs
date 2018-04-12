@@ -314,6 +314,8 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawLedgerLines(ScoreRendererBase renderer, Note element, double notePositionY)
         {
+            var ledgerLinePen = renderer.CreatePenFromDefaults(element, "legerLineThickness", s => s.DefaultStaffLineThickness);
+
             double startPositionX = scoreService.CursorPositionX - (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer) * 0.5 : 0);
             double endPositionX = scoreService.CursorPositionX + (renderer.IsSMuFLFont ? element.GetNoteheadWidthPx(renderer) * 1.5 : renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * 2.2));
             if (notePositionY > scoreService.CurrentLinePositions[4] + renderer.Settings.LineSpacing / 2.0f)
@@ -322,7 +324,7 @@ namespace Manufaktura.Controls.Rendering
                 {
                     renderer.DrawLine(
                         new Point(startPositionX, i + renderer.Settings.LineSpacing),
-                        new Point(endPositionX, i + renderer.Settings.LineSpacing), element);
+                        new Point(endPositionX, i + renderer.Settings.LineSpacing), ledgerLinePen, element);
                 }
             }
             if (notePositionY < scoreService.CurrentLinePositions[0] - renderer.Settings.LineSpacing / 2)
@@ -331,7 +333,7 @@ namespace Manufaktura.Controls.Rendering
                 {
                     renderer.DrawLine(
                         new Point(startPositionX, i - renderer.Settings.LineSpacing),
-                        new Point(endPositionX, i - renderer.Settings.LineSpacing), element);
+                        new Point(endPositionX, i - renderer.Settings.LineSpacing), ledgerLinePen, element);
                 }
             }
         }
@@ -457,13 +459,15 @@ namespace Manufaktura.Controls.Rendering
                     (element.IsGraceNote || element.IsCueNote ? -2 : 0);
             }
 
-            if (element.BeamList.Count > 0)
-                if ((element.BeamList[0] != NoteBeamType.Continue) || element.HasCustomStemEndPosition)
+                if (element.BeamList.Count > 0 && (element.BeamList[0] != NoteBeamType.Continue || element.HasCustomStemEndPosition))
+                {
+                    var stemPen = renderer.CreatePenFromDefaults(element, "stemThickness", s => s.DefaultStemThickness);
                     renderer.DrawLine(
                         new Point(beamingService.CurrentStemPositionX, notePositionForCalculatingStemStart),
                         new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY),
-                        new Pen(renderer.CoalesceColor(element), renderer.Settings.DefaultStemThickness),
+                        stemPen,
                         element);
+                }
             element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 
             if (element.GraceNoteType == GraceNoteType.Slashed)

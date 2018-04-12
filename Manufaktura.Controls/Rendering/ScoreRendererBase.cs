@@ -297,6 +297,25 @@ namespace Manufaktura.Controls.Rendering
             return new Point(TenthsToPixels(point.X), TenthsToPixels(point.Y));
         }
 
+        public Pen CreatePen(MusicalSymbol element, Func<SMuFLFontMetadata, double> smuflProperty, double defaultProperty)
+        {
+            var thickness = IsSMuFLFont && Settings.CurrentSMuFLMetadata != null ? LinespacesToPixels(smuflProperty(Settings.CurrentSMuFLMetadata)) : defaultProperty;
+            return new Pen(CoalesceColor(element), thickness);
+        }
+
+        public Pen CreatePenFromDefaults(MusicalSymbol element, string engravingDefaultsKey, Func<ScoreRendererSettings, double> defaultPropertySelector)
+        {
+            var thickness = IsSMuFLFont && (Settings.CurrentSMuFLMetadata?.EngravingDefaults?.ContainsKey(engravingDefaultsKey) ?? false) ?
+                LinespacesToPixels(Settings.CurrentSMuFLMetadata.EngravingDefaults[engravingDefaultsKey]) : defaultPropertySelector(Settings);
+            return new Pen(CoalesceColor(element), thickness);
+        }
+
+        public double? GetEngravingDefault(string engravingDefaultsKey)
+        {
+            return IsSMuFLFont && (Settings.CurrentSMuFLMetadata?.EngravingDefaults?.ContainsKey(engravingDefaultsKey) ?? false) ?
+                LinespacesToPixels(Settings.CurrentSMuFLMetadata.EngravingDefaults[engravingDefaultsKey]) : (double?)null;
+        }
+
         internal void BreakSystem(double distance = 0, bool breakPage = false)
         {
             scoreService.CurrentSystem.Width = scoreService.CursorPositionX;

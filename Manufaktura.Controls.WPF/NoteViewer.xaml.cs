@@ -135,11 +135,11 @@ namespace Manufaktura.Controls.WPF
 
         protected WpfCanvasScoreRenderer Renderer { get; set; }
 
-        public void LoadFont(FontFamily family, SMuFLFontMetadata metadata)
+        public void LoadFont(FontFamily family, double fontSize, SMuFLFontMetadata metadata)
         {
             rendererSettings.CurrentFont = new SMuFLMusicFont();
             rendererSettings.CurrentSMuFLMetadata = metadata;
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
             rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);

@@ -33,24 +33,27 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
         public void PerformOnStaff(Staff staff, ScoreRendererBase renderer)
         {
+            var staffLinePen = renderer.CreatePenFromDefaults(staff, "staffLineThickness", s => s.DefaultStaffLineThickness);
+            staffLinePen.ZIndex = -1;
+
             foreach (var system in scoreService.Systems)
             {
                 if (system.LinePositions == null) continue;
 				var staffFragment = system.Staves[scoreService.CurrentStaffNo - 1];
-				Draw(staff, renderer, staffFragment, system);
+				Draw(staff, renderer, staffFragment, system, staffLinePen);
             }
         }
 
-        private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system)
+        private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system, Pen staffLinePen)
         {
-            renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], new Pen(renderer.CoalesceColor(staffFragment), renderer.Settings.DefaultStaffLineThickness), staffFragment);
+            renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], staffLinePen, staffFragment);
             foreach (double linePositionY in staffFragment.LinePositions)
             {
                 var positionX = staff.Measures.LastOrDefault(m => m.System == system)?.BarlineLocationX ?? system.Width;
                 if (positionX == 0) positionX = system.Width;
                 Point startPoint = new Point(0, linePositionY);
                 Point endPoint = new Point(positionX, linePositionY);
-                renderer.DrawLine(startPoint, endPoint, new Pen(renderer.CoalesceColor(staffFragment), renderer.Settings.DefaultStaffLineThickness, -1), staffFragment);
+                renderer.DrawLine(startPoint, endPoint, staffLinePen, staffFragment);
             }
         }
     }
