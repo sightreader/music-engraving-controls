@@ -138,7 +138,7 @@ namespace Manufaktura.Controls.UniversalApps
 			set { SetValue(ZoomFactorProperty, value); }
 		}
 
-		private CanvasScoreRenderer Renderer { get; set; }
+		private UWPCanvasScoreRenderer Renderer { get; set; }
 
 		public void Select(MusicalSymbol element)
 		{
@@ -255,7 +255,7 @@ namespace Manufaktura.Controls.UniversalApps
 			var strategy = DraggingStrategy.For(SelectedElement);
 			if (strategy != null)
 			{
-				strategy.Drag(Renderer, SelectedElement, _draggingState, CanvasScoreRenderer.ConvertPoint(currentPosition));
+				strategy.Drag(Renderer, SelectedElement, _draggingState, UWPCanvasScoreRenderer.ConvertPoint(currentPosition));
 			}
 
 			if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
@@ -267,7 +267,7 @@ namespace Manufaktura.Controls.UniversalApps
 			MainCanvas.CapturePointer(e.Pointer);  //Capture mouse to receive events even if the pointer is outside the control
 
 			//Start dragging:
-			_draggingState.StartDragging(CanvasScoreRenderer.ConvertPoint(e.GetCurrentPoint(MainCanvas).Position));
+			_draggingState.StartDragging(UWPCanvasScoreRenderer.ConvertPoint(e.GetCurrentPoint(MainCanvas).Position));
 
 			//Check if element under cursor is staff element:
 			FrameworkElement element = e.OriginalSource as FrameworkElement;
@@ -293,7 +293,7 @@ namespace Manufaktura.Controls.UniversalApps
 			score.MeasureInvalidated -= Score_MeasureInvalidated;
 
 			MainCanvas.Children.Clear();
-			Renderer = IsAsync ? new DispatcherCanvasScoreRenderer(MainCanvas, this) : new CanvasScoreRenderer(MainCanvas);
+			Renderer = IsAsync ? new UWPDispatcherCanvasScoreRenderer(MainCanvas, this) : new UWPCanvasScoreRenderer(MainCanvas);
 			Renderer.Settings.RenderingMode = RenderingMode;
 			Renderer.Settings.CurrentPage = CurrentPage;
 			var brush = Foreground as SolidColorBrush;
@@ -303,7 +303,7 @@ namespace Manufaktura.Controls.UniversalApps
 			if (IsAsync) await Renderer.RenderAsync(score);
 			else Renderer.Render(score);
 
-			if (IsAsync) ((DispatcherCanvasScoreRenderer)Renderer).FlushBuffer();
+			if (IsAsync) ((UWPDispatcherCanvasScoreRenderer)Renderer).FlushBuffer();
 			if (SelectedElement != null) ColorElement(SelectedElement, Colors.Magenta);
 			InvalidateMeasure();
 
@@ -312,7 +312,7 @@ namespace Manufaktura.Controls.UniversalApps
 
 		private void RenderOnCanvas(Measure measure)
 		{
-			if (Renderer == null) Renderer = new CanvasScoreRenderer(MainCanvas);
+			if (Renderer == null) Renderer = new UWPCanvasScoreRenderer(MainCanvas);
 			var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
 			foreach (var beamGroup in beamGroupsForThisMeasure)
 			{
