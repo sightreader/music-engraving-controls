@@ -21,7 +21,9 @@
             <Button Content="Panorama" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
             <Button Content="Jedna strona" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
             <Button Content="Wszystkie strony" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_5"/>
+            <Button Content="Identifikacja" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="IdentifyClick"/>
             <Slider Minimum="1" Maximum="4" x:Name="zoomSlider" />
+            <TextBlock Text="{Binding SelectedElement, ElementName=noteViewer1}" />
         </StackPanel>
     <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Column="1">
 

@@ -156,5 +156,10 @@ namespace Manufaktura.Controls.WPF.Test
             if (noteViewer1.SelectedElement == null) return;
             noteViewer1.SelectedElement.IsBreakpointSet = true;
         }
+
+        private void IdentifyClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(noteViewer1.SelectedElement?.ToString());
+        }
     }
 }
