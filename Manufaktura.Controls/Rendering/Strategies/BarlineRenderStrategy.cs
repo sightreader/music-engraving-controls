@@ -45,7 +45,7 @@ namespace Manufaktura.Controls.Rendering
 
 			var lightPen = new Pen(element.CoalesceColor(renderer), 1);
 			var thickPen = new Pen(element.CoalesceColor(renderer), 3);
-            var barlinePen = new Pen(element.CoalesceColor(renderer), renderer.Settings.DefaultBarlineThickness);
+            var barlinePen = renderer.CreatePenFromDefaults(element, "thinBarlineThickness", s => s.DefaultBarlineThickness);
 
             if (measurementService.LastNoteInMeasureEndXPosition > scoreService.CursorPositionX)
 			{

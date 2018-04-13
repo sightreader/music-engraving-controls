@@ -36,12 +36,13 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 			var lightPen = new Pen(renderer.Settings.DefaultColor, 1);
 			var thickPen = new Pen(renderer.Settings.DefaultColor, 3);
             var defaultPen = new Pen(renderer.Settings.DefaultColor, renderer.Settings.DefaultStaffLineThickness);
-            var barlinePen = new Pen(renderer.Settings.DefaultColor, renderer.Settings.DefaultBarlineThickness);
+
 
             for (var i = 0; i < scoreService.CurrentScore.Staves.Count - 1; i++)
 			{
 				var staff = scoreService.CurrentScore.Staves[i];
-				foreach (var system in scoreService.CurrentScore.Systems)
+                var barlinePen = renderer.CreatePenFromDefaults(staff, "thinBarlineThickness", s => s.DefaultBarlineThickness);
+                foreach (var system in scoreService.CurrentScore.Systems)
 				{
 					if (renderer.Settings.RenderingMode == ScoreRenderingModes.SinglePage)
 					{

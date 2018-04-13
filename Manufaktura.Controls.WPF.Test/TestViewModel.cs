@@ -43,6 +43,8 @@ namespace Manufaktura.Controls.WPF.Test
             firstStaff.AddRange(new Pitch[] { Pitch.C4, Pitch.E4, Pitch.G4 }.AddUniformRhythm(4).MakeChord());
             firstStaff.AddRange(new Pitch[] { Pitch.D4, Pitch.FSharp4, Pitch.A4 }.AddUniformRhythm(4).MakeChord());
             firstStaff.AddRange(new Pitch[] { Pitch.E4, Pitch.GSharp4, Pitch.B4 }.AddUniformRhythm(4).ApplyStemDirection(VerticalDirection.Up).MakeChord());
+            firstStaff.Add(new PrintSuggestion { IsSystemBreak = true });
+            firstStaff.AddRange(new Pitch[] { Pitch.C4, Pitch.D4 }.AddUniformRhythm(4));
 
             firstStaff.AddBarline();
 
