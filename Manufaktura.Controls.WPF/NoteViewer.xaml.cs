@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -135,6 +136,26 @@ namespace Manufaktura.Controls.WPF
 
         protected WpfCanvasScoreRenderer Renderer { get; set; }
 
+        public void LoadFont(FontFamily family, double fontSize, string metadata)
+        {
+            rendererSettings.LoadSMuFLMetadata(metadata);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
+            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
+            rendererSettings.SetFont(MusicFontStyles.TrillFont, family);
+        }
+
+        public async Task LoadFontAsync(FontFamily family, double fontSize, string metadata)
+        {
+            await rendererSettings.LoadSMuFLMetadataAsync(metadata);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
+            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
+            rendererSettings.SetFont(MusicFontStyles.TrillFont, family);
+        }
+
         public void LoadFont(FontFamily family, double fontSize, SMuFLFontMetadata metadata)
         {
             rendererSettings.CurrentFont = new SMuFLMusicFont();
@@ -146,12 +167,7 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.TrillFont, family);
         }
 
-        public void LoadDefaultFont()
-        {
-            rendererSettings.CurrentFont = new PolihymniaFont();
-            rendererSettings.CurrentSMuFLMetadata = null;
-            rendererSettings.SetPolihymniaFont();
-        }
+        public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
 
         public void MoveLayout(StaffSystem system, Point delta)
         {

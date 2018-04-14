@@ -82,6 +82,9 @@ namespace Manufaktura.Controls.WPF
 
         public void SetPolihymniaFont()
         {
+            CurrentFont = new PolihymniaFont();
+            CurrentSMuFLMetadata = null;
+
             fonts[MusicFontStyles.MusicFont] = defaultFonts[MusicFontStyles.MusicFont];
             fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];
             fonts[MusicFontStyles.StaffFont] = defaultFonts[MusicFontStyles.StaffFont];

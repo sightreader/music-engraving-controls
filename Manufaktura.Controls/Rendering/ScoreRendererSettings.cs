@@ -78,6 +78,7 @@ namespace Manufaktura.Controls.Rendering
         public void LoadSMuFLMetadata (string metadataJson)
         {
             CurrentSMuFLMetadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(metadataJson);
+            CurrentFont = new SMuFLMusicFont();
         }
 
         public void LoadSMuFLMetadata(Stream stream)
@@ -92,6 +93,7 @@ namespace Manufaktura.Controls.Rendering
         public async Task LoadSMuFLMetadataAsync(string metadataJson)
         {
             CurrentSMuFLMetadata = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<SMuFLFontMetadata>(metadataJson));
+            CurrentFont = new SMuFLMusicFont();
         }
         public async Task LoadSMuFLMetadataAsync(Stream stream)
         {
