@@ -11,15 +11,15 @@ namespace Manufaktura.Controls.WinForms
 	{
 		private Dictionary<MusicFontStyles, Font> _fonts = new Dictionary<MusicFontStyles, Font>()
 			{
-				{MusicFontStyles.MusicFont, new Font("Polihymnia", 20)},
-				{MusicFontStyles.GraceNoteFont, new Font("Polihymnia", 18)},
-				{MusicFontStyles.StaffFont, new Font("Polihymnia", 23)},
-				{MusicFontStyles.LyricsFont, new Font("Times New Roman", 8)},
-				{MusicFontStyles.LyricsFontBold, new Font("Times New Roman", 10, FontStyle.Bold)},
-				{MusicFontStyles.MiscArticulationFont, new Font("Microsoft Sans Serif", 8, FontStyle.Bold)},
-				{MusicFontStyles.DirectionFont, new Font("Microsoft Sans Serif", 9, FontStyle.Italic | FontStyle.Bold)},
-				{MusicFontStyles.TrillFont, new Font("Times New Roman", 9, FontStyle.Italic | FontStyle.Bold)},
-				{MusicFontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 10, FontStyle.Bold)}
+				{MusicFontStyles.MusicFont, new Font("Polihymnia", 27.5f, GraphicsUnit.Pixel)},
+				{MusicFontStyles.GraceNoteFont, new Font("Polihymnia", 20, GraphicsUnit.Pixel)},
+				{MusicFontStyles.StaffFont, new Font("Polihymnia", 30.5f, GraphicsUnit.Pixel)},
+				{MusicFontStyles.LyricsFont, new Font("Times New Roman", 11, GraphicsUnit.Pixel)},
+				{MusicFontStyles.LyricsFontBold, new Font("Times New Roman", 11, FontStyle.Bold, GraphicsUnit.Pixel)},
+				{MusicFontStyles.MiscArticulationFont, new Font("Microsoft Sans Serif", 14, FontStyle.Bold, GraphicsUnit.Pixel)},
+				{MusicFontStyles.DirectionFont, new Font("Microsoft Sans Serif", 11, FontStyle.Italic | FontStyle.Bold, GraphicsUnit.Pixel)},
+				{MusicFontStyles.TrillFont, new Font("Times New Roman", 14, FontStyle.Italic | FontStyle.Bold, GraphicsUnit.Pixel)},
+				{MusicFontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 14.5f, FontStyle.Bold, GraphicsUnit.Pixel)}
 			};
 
 		private Dictionary<Primitives.Pen, Pen> _penCache = new Dictionary<Primitives.Pen, Pen>();
@@ -48,11 +48,11 @@ namespace Manufaktura.Controls.WinForms
 		{
             var font = _fonts[fontStyle];
             var baselineDesignUnits = font.FontFamily.GetCellAscent(font.Style);
-            var baselinePixels = (baselineDesignUnits * font.Size) / font.FontFamily.GetEmHeight(font.Style) + (float)LinespacesToPixels(1);
+            var baselinePixels = (baselineDesignUnits * font.Size) / font.FontFamily.GetEmHeight(font.Style);
             Canvas.DrawString(text, font, new SolidBrush(ConvertColor(color)), new PointF((float)location.X - 4, (float)location.Y - baselinePixels));
 		}
 
-		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+		public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
 		{
 		}
 
