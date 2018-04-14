@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Manufaktura.Controls.Rendering;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.CompilerServices;
 
 namespace Manufaktura.Controls.WinForms
 {
@@ -27,6 +20,8 @@ namespace Manufaktura.Controls.WinForms
 
         public Model.Score DataSource { get; set; }
 
+        public ScoreRenderingModes RenderingMode { get; set; } = ScoreRenderingModes.AllPages;
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -36,6 +31,7 @@ namespace Manufaktura.Controls.WinForms
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             GdiPlusScoreRenderer renderer = new GdiPlusScoreRenderer(e.Graphics);
             renderer.Settings.PageWidth = Width;
+            renderer.Settings.RenderingMode = RenderingMode;
             renderer.Render(DataSource);
         }
     }

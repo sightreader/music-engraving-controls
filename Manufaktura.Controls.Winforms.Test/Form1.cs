@@ -31,10 +31,6 @@ namespace Manufaktura.Controls.Winforms.Test
                 Score score = parser.Parse(XDocument.Parse(File.ReadAllText(dialog.FileName)));
                 noteViewer1.DataSource = score;
                 noteViewer1.Refresh();
-                noteViewer2.DataSource = score;
-                noteViewer2.Refresh();
-                noteViewer3.DataSource = score;
-                noteViewer3.Refresh();
             }
         }
     }
