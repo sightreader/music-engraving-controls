@@ -8,6 +8,7 @@ using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
@@ -141,10 +142,12 @@ namespace Manufaktura.Controls.UniversalApps
             textBlock.UseLayoutRounding = true;
             textBlock.Visibility = BoolToVisibility(owner.IsVisible);
 
-            var baseline = 24.8;   //TODO: Jak wyznaczyć baseline? Patrz komentarz do DrawCharacterInBounds
+            var compatibleFont = TypedSettings.GetCompatibleFont(fontStyle);
+            var baselineDesignUnits = compatibleFont.FontFamily.GetCellAscent(compatibleFont.Style);
+            var baselinePixels = (baselineDesignUnits * compatibleFont.Size) / compatibleFont.FontFamily.GetEmHeight(compatibleFont.Style);
 
             Canvas.SetLeft(textBlock, location.X);
-            Canvas.SetTop(textBlock, location.Y - baseline);
+            Canvas.SetTop(textBlock, location.Y - baselinePixels);
             Canvas.Children.Add(textBlock);
 
             OwnershipDictionary.Add(textBlock, owner);

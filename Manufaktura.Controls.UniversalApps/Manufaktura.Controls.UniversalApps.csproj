@@ -133,6 +133,9 @@
     <EmbeddedResource Include="Properties\Manufaktura.Controls.UniversalApps.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CoreCompat.System.Drawing">
+      <Version>1.0.0-beta006</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.6</Version>
     </PackageReference>

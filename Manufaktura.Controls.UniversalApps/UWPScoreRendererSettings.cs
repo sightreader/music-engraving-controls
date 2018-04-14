@@ -22,6 +22,19 @@ namespace Manufaktura.Controls.UniversalApps
                 {MusicFontStyles.TimeSignatureFont, new FontFamily("Microsoft Sans Serif")}
             };
 
+        private Dictionary<MusicFontStyles, System.Drawing.Font> compatibilityFonts = new Dictionary<MusicFontStyles, System.Drawing.Font>()
+            {
+                {MusicFontStyles.MusicFont, new System.Drawing.Font("Polihymnia", 27.5f, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.GraceNoteFont, new System.Drawing.Font("Polihymnia", 20, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.StaffFont, new System.Drawing.Font("Polihymnia", 30.5f, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.LyricsFont, new System.Drawing.Font("Times New Roman", 11, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.LyricsFontBold, new System.Drawing.Font("Times New Roman", 11, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.MiscArticulationFont, new System.Drawing.Font("Microsoft Sans Serif", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.DirectionFont, new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.TrillFont, new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
+                {MusicFontStyles.TimeSignatureFont, new System.Drawing.Font("Microsoft Sans Serif", 14.5f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)}
+            };
+
         private static Dictionary<MusicFontStyles, double> fontSizes = new Dictionary<MusicFontStyles, double>()
         {
                 {MusicFontStyles.MusicFont, 27.5},
@@ -64,6 +77,11 @@ namespace Manufaktura.Controls.UniversalApps
         public FontFamily GetFont(MusicFontStyles style)
         {
             return fonts[style];
+        }
+
+        public System.Drawing.Font GetCompatibleFont(MusicFontStyles style)
+        {
+            return compatibilityFonts[style];
         }
 
         public double GetFontSize(MusicFontStyles style)
