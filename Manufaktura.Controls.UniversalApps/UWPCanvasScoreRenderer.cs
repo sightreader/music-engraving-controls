@@ -4,11 +4,11 @@ using Manufaktura.Controls.Model.Fonts;
 
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
@@ -155,24 +155,10 @@ namespace Manufaktura.Controls.UniversalApps
 
         public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
         {
-            return;
-
-            //TODO: W UWP Nie ma klasy Typeface ani TryGetGlyphTypeface (one chyba korzystają z Win32 Api). Być może trzeba będzie użyć DirectX (SharpDX).
-            //Albo użyć .NET Core Compatibility pack: https://blogs.msdn.microsoft.com/dotnet/2017/11/16/announcing-the-windows-compatibility-pack-for-net-core/
-
-            /*
             if (!EnsureProperPage(owner)) return;
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
-            Typeface typeface = TypedSettings.GetFont(fontStyle);
-
-            GlyphTypeface glyphTypeface;
-            if (!typeface.TryGetGlyphTypeface(out glyphTypeface)) return;
-
-            var glyphMap = glyphTypeface.CharacterToGlyphMap;
-            var outline = glyphTypeface.GetGlyphOutline(glyphMap[character], 1000, 100);
-            var path = new Path();
-            path.Data = outline;
+            var path = GetPathFromCharacter(character, fontStyle);
 
             path.Stroke = new SolidColorBrush(ConvertColor(color));
             path.Fill = new SolidColorBrush(ConvertColor(color));
@@ -188,7 +174,21 @@ namespace Manufaktura.Controls.UniversalApps
             Canvas.SetTop(viewBox, location.Y);
             Canvas.Children.Add(viewBox);
 
-            OwnershipDictionary.Add(path, owner);*/
+            OwnershipDictionary.Add(path, owner);
+        }
+
+        private Path GetPathFromCharacter(char character, MusicFontStyles style)
+        {
+            var compatibleFont = TypedSettings.GetCompatibleFont(style);
+            var drawingPath = new GraphicsPath();
+            drawingPath.AddString(character.ToString(), compatibleFont.FontFamily, (int)compatibleFont.Style, compatibleFont.Size,
+                new System.Drawing.Point(0, 0), new System.Drawing.StringFormat());
+
+            var wpfPath = new Path();
+            wpfPath.Data = new GeometryGroup(); //Do children będziemy dodawać geometrie
+            //wpfPath.Data = drawingPath.PathData;  //TODO: Konwersja jednego PathData na drugie
+            //Do konwersji brać Points i Types (https://msdn.microsoft.com/en-us/library/system.drawing.drawing2d.graphicspath.pathtypes(v=vs.110).aspx) i na podst. typu tworzyć geometrie
+            return wpfPath;
         }
 
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
