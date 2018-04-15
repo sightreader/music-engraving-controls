@@ -82,6 +82,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
         /// </summary>
         public HtmlRenderSurface RenderSurface { get; set; }
 
+        public double Scale { get; set; } = 1d;
+
         /// <summary>
         /// Score CSS class
         /// </summary>
@@ -91,7 +93,22 @@ namespace Manufaktura.Controls.Rendering.Implementations
         /// Width adjusting mode
         /// </summary>
         public HtmlSizeHint SizeHint { get; set; } = HtmlSizeHint.FixedWidth;
+        public void LoadSMuFLFont(string metadataJson, string name, double size, params string[] fontPaths)
+        {
+            LoadSMuFLMetadata(metadataJson);
+            SetFont(MusicFontStyles.MusicFont, name, size, fontPaths);
+            SetFont(MusicFontStyles.GraceNoteFont, name, size, fontPaths);
+            SetFont(MusicFontStyles.StaffFont, name, size, fontPaths);
+            SetFont(MusicFontStyles.TimeSignatureFont, name, size, fontPaths);
+            SetFont(MusicFontStyles.TrillFont, name, size, fontPaths);
+            SetFont(MusicFontStyles.MiscArticulationFont, name, size, fontPaths);
+        }
 
-        public double Scale { get; set; } = 1d;
+        public void SetFont(MusicFontStyles style, string name, double size, params string[] fontFiles)
+        {
+            var fontInfo = new HtmlFontInfo(name, size, fontFiles);
+            if (!Fonts.ContainsKey(style)) Fonts.Add(style, fontInfo);
+            else Fonts[style] = fontInfo;
+        }
     }
 }
