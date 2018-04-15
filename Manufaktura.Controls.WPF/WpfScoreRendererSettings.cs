@@ -80,10 +80,9 @@ namespace Manufaktura.Controls.WPF
             else fontSizes[style] = defaultFontSizes[MusicFontStyles.TrillFont];
         }
 
-        public void SetPolihymniaFont()
+        public override void SetPolihymniaFont()
         {
-            CurrentFont = new PolihymniaFont();
-            CurrentSMuFLMetadata = null;
+            base.SetPolihymniaFont();
 
             fonts[MusicFontStyles.MusicFont] = defaultFonts[MusicFontStyles.MusicFont];
             fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];

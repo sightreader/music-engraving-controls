@@ -15,8 +15,8 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char DoubleFlat => '\uE264';
         public char DoubleSharp => '\uE263';
         public char FClef => '\uE062';
-        public char FermataDown => throw new NotImplementedException();
-        public char FermataUp => throw new NotImplementedException();
+        public char FermataDown => '\uE4C1';
+        public char FermataUp => '\uE4C0';
         public char Flat => '\uE260';
         public char GClef => '\uE050';
         public char Mordent => '\uE56C';

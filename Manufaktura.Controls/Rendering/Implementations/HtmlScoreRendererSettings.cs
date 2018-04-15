@@ -13,10 +13,12 @@ namespace Manufaktura.Controls.Rendering.Implementations
         /// Not set
         /// </summary>
         None,
+
         /// <summary>
         /// Score will be rendered in fixed width. In SVG mode it will also have viewBox attribute.
         /// </summary>
         FixedWidth,
+
         /// <summary>
         /// Score will be rendered in 100% width
         /// </summary>
@@ -89,6 +91,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         /// Width adjusting mode
         /// </summary>
         public HtmlSizeHint SizeHint { get; set; } = HtmlSizeHint.FixedWidth;
+
         public double Scale { get; set; } = 1d;
     }
 }

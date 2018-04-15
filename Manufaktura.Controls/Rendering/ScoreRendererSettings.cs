@@ -104,5 +104,11 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
+        public virtual void SetPolihymniaFont()
+        {
+            CurrentFont = new PolihymniaFont();
+            CurrentSMuFLMetadata = null;
+        }
+
     }
 }
