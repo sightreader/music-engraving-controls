@@ -433,7 +433,6 @@ namespace Manufaktura.Controls.Rendering
                     beamingService.CurrentStemEndPositionY = notePositionForCalculatingStemEnd + defaultStemLength;
                 else
                     beamingService.CurrentStemEndPositionY = customStemEndPosition - 4;
-
             }
             else
             {
@@ -441,7 +440,6 @@ namespace Manufaktura.Controls.Rendering
                     beamingService.CurrentStemEndPositionY = notePositionForCalculatingStemEnd - defaultStemLength;
                 else
                     beamingService.CurrentStemEndPositionY = customStemEndPosition - 6;
-
             }
 
             if (renderer.IsSMuFLFont)
@@ -459,15 +457,15 @@ namespace Manufaktura.Controls.Rendering
                     (element.IsGraceNote || element.IsCueNote ? -2 : 0);
             }
 
-                if (element.BeamList.Count > 0 && (element.BeamList[0] != NoteBeamType.Continue || element.HasCustomStemEndPosition))
-                {
-                    var stemPen = renderer.CreatePenFromDefaults(element, "stemThickness", s => s.DefaultStemThickness);
-                    renderer.DrawLine(
-                        new Point(beamingService.CurrentStemPositionX, notePositionForCalculatingStemStart),
-                        new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY),
-                        stemPen,
-                        element);
-                }
+            if (element.BeamList.Count > 0 && (element.BeamList[0] != NoteBeamType.Continue || element.HasCustomStemEndPosition))
+            {
+                var stemPen = renderer.CreatePenFromDefaults(element, "stemThickness", s => s.DefaultStemThickness);
+                renderer.DrawLine(
+                    new Point(beamingService.CurrentStemPositionX, notePositionForCalculatingStemStart),
+                    new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY),
+                    stemPen,
+                    element);
+            }
             element.StemEndLocation = new Point(beamingService.CurrentStemPositionX, beamingService.CurrentStemEndPositionY);
 
             if (element.GraceNoteType == GraceNoteType.Slashed)
@@ -481,27 +479,54 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.TieType == NoteTieType.Start)
             {
+                measurementService.TieStartSystem = element.Measure?.System;
                 measurementService.TieStartPoint = new Point(scoreService.CursorPositionX + GetNoteheadWidthPx(element, renderer), notePositionY);
             }
             else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
             {
-                double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X - 13;
-                double arcHeight = arcWidth * 0.7d;
-                if (element.StemDirection == VerticalDirection.Down)
+                var tieEndpointThickness = renderer.GetEngravingDefault("tieEndpointThickness") ?? 1;
+                var tieMidpointThickness = renderer.GetEngravingDefault("tieMidpointThickness") ?? 2;
+                var tiePen = new Pen(element.CoalesceColor(renderer), tieEndpointThickness);
+
+                double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X + element.GetNoteheadWidthPx(renderer);
+                double arcHeight = renderer.LinespacesToPixels(2);
+                var modifierY = element.StemDirection == VerticalDirection.Down ? -1 : 1;
+                var arcStartX = measurementService.TieStartPoint.X - element.GetNoteheadWidthPx(renderer) / 2;
+                var arcStartY = measurementService.TieStartPoint.Y + renderer.LinespacesToPixels(1) * modifierY;
+
+                if (renderer.Settings.RenderingMode == ScoreRenderingModes.Panorama || element.Measure?.System == measurementService.TieStartSystem)
                 {
-                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y - 3,
-                        arcWidth, arcHeight), 180, 180, new Pen(renderer.CoalesceColor(element), 1.5), element);
+                    DrawTiesInternal(renderer, arcStartX, arcStartY, arcStartY, arcWidth, arcHeight, modifierY, element, tiePen, tieMidpointThickness);
                 }
-                else if (element.StemDirection == VerticalDirection.Up)
+                else
                 {
-                    renderer.DrawArc(new Rectangle(measurementService.TieStartPoint.X + 9, measurementService.TieStartPoint.Y - 3,
-                        arcWidth, arcHeight), 0, 180, new Pen(renderer.CoalesceColor(element), 1.5), element);
+                    //TODO: Obsługa łuków pomiędzy łamaniem systemów
+                    //DrawTiesInternal(renderer, arcStartX, arcStartY, arcStartY + arcHeight * modifierY, arcWidth / 2, arcHeight, modifierY, element, tiePen, tieMidpointThickness);
                 }
+
                 if (element.TieType == NoteTieType.StopAndStartAnother)
                 {
                     measurementService.TieStartPoint = new Point(scoreService.CursorPositionX + 2, notePositionY);
                 }
             }
+        }
+
+        private void DrawTiesInternal(ScoreRendererBase renderer, double arcStartX, double arcStartY, double arcEndY, double arcWidth, double arcHeight, int modifierY, Note element, Pen tiePen, double tieMidpointThickness)
+        {
+            renderer.DrawBezier(
+                new Point(arcStartX, arcStartY),
+                new Point(arcStartX + 0.25 * arcWidth, arcStartY + arcHeight * modifierY),
+                new Point(arcStartX + 0.75 * arcWidth, arcStartY + arcHeight * modifierY),
+                new Point(arcStartX + arcWidth, arcEndY),
+                tiePen,
+                element);
+            renderer.DrawBezier(
+                new Point(arcStartX, arcStartY),
+                new Point(arcStartX + 0.25 * arcWidth, arcStartY + (arcHeight + tieMidpointThickness) * modifierY),
+                new Point(arcStartX + 0.75 * arcWidth, arcStartY + (arcHeight + tieMidpointThickness) * modifierY),
+                new Point(arcStartX + arcWidth, arcEndY),
+                tiePen,
+                element);
         }
 
         private void DrawTremolos(ScoreRendererBase renderer, Note element, double notePositionY)
@@ -588,6 +613,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.StemDirection == VerticalDirection.Down) return CalculateNotePositionY(chord.Last(), renderer);
             else return notePositionY;
         }
+
         private void MakeSpaceForAccidentals(ScoreRendererBase renderer, Note element, Note[] chord)
         {
             if (element.DefaultXPosition.HasValue && !renderer.Settings.IgnoreCustomElementPositions) return;

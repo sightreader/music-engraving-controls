@@ -49,14 +49,14 @@ namespace Manufaktura.Controls.Rendering.Strategies.Slurs
             
             if (slurStartInfo.StartPlacement == VerticalPlacement.Above)
             {
-                var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? noteheadWidth : noteheadWidth * 1.25;
+                var xShiftConcerningStemDirectionEnd = noteheadWidth / 2;
                 bool hasFlagOrBeam = element.BaseDuration.Denominator > 4;
                 endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd,
                     (element.StemDirection == VerticalDirection.Up ? element.StemEndLocation.Y + (hasFlagOrBeam ? -2 : 0) : notePositionY - 7));
             }
             else if (slurStartInfo.StartPlacement == VerticalPlacement.Below)
             {
-                var xShiftConcerningStemDirectionEnd = element.StemDirection == VerticalDirection.Up ? noteheadWidth * 1.25 : noteheadWidth;
+                var xShiftConcerningStemDirectionEnd = noteheadWidth / 2;
                 endPoint = new Point(scoreService.CursorPositionX + xShiftConcerningStemDirectionEnd, notePositionY + 5);
             }
             else throw new Exception("Unsupported placement type.");

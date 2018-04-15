@@ -19,6 +19,7 @@ namespace Manufaktura.Controls.Services
         Dictionary<int, SlurInfo> Slurs { get; }
 
         Point TieStartPoint { get; set; }
+        StaffSystem TieStartSystem { get; set; }
 
         //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
         Tuplet TupletState { get; set; }
