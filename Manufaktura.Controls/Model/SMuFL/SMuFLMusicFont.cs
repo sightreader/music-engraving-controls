@@ -19,8 +19,8 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char FermataUp => throw new NotImplementedException();
         public char Flat => '\uE260';
         public char GClef => '\uE050';
-        public char Mordent => throw new NotImplementedException();
-        public char MordentShort => throw new NotImplementedException();
+        public char Mordent => '\uE56C';
+        public char MordentShort => '\uE56C';
         public char Natural => '\uE261';
         public char NoteEighth => throw new NotImplementedException();
         public char NoteFlag128th => '\uE248';
@@ -39,7 +39,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char NoteQuarter => '\uE0A4';
         public char NoteSixteenth => throw new NotImplementedException();
         public char NoteWhole => '\uE0A2';
-        public char PercussionClef => throw new NotImplementedException();
+        public char PercussionClef => '\uE069';
         public char RepeatBackward => '\uE041';
         public char RepeatForward => '\uE040';
         public char Rest32nd => '\uE4E8';
@@ -62,7 +62,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char Time7 => '\uE087';
         public char Time8 => '\uE088';
         public char Time9 => '\uE089';
-        public char Trill => throw new NotImplementedException();
+        public char Trill => '\uE566';
 
         public char CClef8va => CClef;
 
