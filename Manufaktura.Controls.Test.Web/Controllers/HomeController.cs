@@ -15,12 +15,13 @@ namespace Manufaktura.Controls.Test.Web.Controllers
             if (useSmufl)
             {
                 var fontMetadata = System.IO.File.ReadAllText(fontMetadataPath);
-                vm.Settings.LoadSMuFLFont(fontMetadata, "Bravura", 22, "~/fonts/Bravura.otf");
+                vm.Settings.LoadSMuFLFont(fontMetadata, "Bravura", 20, "~/fonts/Bravura.otf");
             }
 
             //var serverPath = Server.MapPath("~/Content/036 Bogurodzica[1].xml");
             //var serverPath = Server.MapPath("~/Content/010 DWOK tom 25, s. 120, nr 273.xml");
-            var serverPath = Server.MapPath("~/Content/JohannChristophBachFull3.0.xml");
+            var serverPath = Server.MapPath("~/Content/Kyrie.Salamon2.xml");
+            //var serverPath = Server.MapPath("~/Content/JohannChristophBachFull3.0.xml");
             //var serverPath = Server.MapPath("~/Content/030 Oj, zabujały 67 I nr 214.xml");
             //var serverPath = Server.MapPath("~/Content/0014 Larum w obozie.xml");
             vm.SampleScore = System.IO.File.ReadAllText(serverPath).ToScore();

@@ -23,17 +23,20 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, Model.MusicalSymbol owner)
         {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+
             var element = new XElement("path",
-                new XAttribute("d", string.Format("M{0},{1} A{2},{3} {4} {5},{6} {7},{8}",
+                new XAttribute("d", string.Format("M{0} {1} A{2} {3} {4} {5} {6} {7} {8}",
                     rect.X.ToStringInvariant(),
                     rect.Y.ToStringInvariant(),
-                    rect.Height.ToStringInvariant(),
-                    rect.Width.ToStringInvariant(),
-                    (sweepAngle / 2).ToStringInvariant(),
-                    0,
-                    1,
                     (rect.X + rect.Width).ToStringInvariant(),
-                    rect.Y.ToStringInvariant())),
+                    rect.Y.ToStringInvariant(),
+                    startAngle.ToStringInvariant(),
+                    sweepAngle > 180 ? 1 : 0,
+                    sweepAngle < 180 ? 0 : 1,
+                    (rect.X + rect.Width).ToStringInvariant(),
+                    (rect.Y).ToStringInvariant())),
                 new XAttribute("style", pen.ToCss()),
                 new XAttribute("id", BuildElementId(owner)));
 
@@ -51,8 +54,17 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void DrawBezier(Point p1, Point p2, Point p3, Point p4, Pen pen, Model.MusicalSymbol owner)
         {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            {
+                p1 = p1.Translate(CurrentScore.DefaultPageSettings);
+                p2 = p2.Translate(CurrentScore.DefaultPageSettings);
+                p3 = p3.Translate(CurrentScore.DefaultPageSettings);
+                p4 = p4.Translate(CurrentScore.DefaultPageSettings);
+            }
+
             var element = new XElement("path",
-                new XAttribute("d", string.Format("M{0},{1} C{2},{3} {4},{5} {6},{7}",
+                new XAttribute("d", string.Format("M{0} {1} C{2} {3}, {4} {5}, {6} {7}",
                     p1.X.ToStringInvariant(),
                     p1.Y.ToStringInvariant(),
                     p2.X.ToStringInvariant(),
@@ -78,6 +90,13 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void DrawLine(Point startPoint, Point endPoint, Pen pen, Model.MusicalSymbol owner)
         {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            {
+                startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
+                endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
+            }
+
             var element = new XElement("line",
                 new XAttribute("x1", startPoint.X.ToStringInvariant()),
                 new XAttribute("y1", startPoint.Y.ToStringInvariant()),
@@ -103,6 +122,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public override void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, Model.MusicalSymbol owner)
         {
             if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
+
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
             location = TranslateTextLocation(location, fontStyle);
 
@@ -130,6 +152,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
         {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
+
+            //TODO: Zaimplementować
         }
 
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
