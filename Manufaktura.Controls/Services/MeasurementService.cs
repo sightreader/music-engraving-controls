@@ -35,5 +35,7 @@ namespace Manufaktura.Controls.Services
         //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
         public Tuplet TupletState { get; set; }
         public StaffSystem TieStartSystem { get; set; }
+
+        public Note TieStartElement { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace Manufaktura.Controls.Services
 
         Point TieStartPoint { get; set; }
         StaffSystem TieStartSystem { get; set; }
+        Note TieStartElement { get; set; }
 
         //for many voices - location of the last note in the measure / dla wielu głosów - punkt ostatniej nuty w takcie
         Tuplet TupletState { get; set; }

@@ -481,6 +481,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 measurementService.TieStartSystem = element.Measure?.System;
                 measurementService.TieStartPoint = new Point(scoreService.CursorPositionX + GetNoteheadWidthPx(element, renderer), notePositionY);
+                measurementService.TieStartElement = element;
             }
             else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
             {
@@ -488,7 +489,6 @@ namespace Manufaktura.Controls.Rendering
                 var tieMidpointThickness = renderer.GetEngravingDefault("tieMidpointThickness") ?? 2;
                 var tiePen = new Pen(element.CoalesceColor(renderer), tieEndpointThickness);
 
-                double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X + element.GetNoteheadWidthPx(renderer);
                 double arcHeight = renderer.LinespacesToPixels(2);
                 var modifierY = element.StemDirection == VerticalDirection.Down ? -1 : 1;
                 var arcStartX = measurementService.TieStartPoint.X - element.GetNoteheadWidthPx(renderer) / 2;
@@ -496,12 +496,20 @@ namespace Manufaktura.Controls.Rendering
 
                 if (renderer.Settings.RenderingMode == ScoreRenderingModes.Panorama || element.Measure?.System == measurementService.TieStartSystem)
                 {
+                    double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X + element.GetNoteheadWidthPx(renderer);
                     DrawTiesInternal(renderer, arcStartX, arcStartY, arcStartY, arcWidth, arcHeight, modifierY, element, tiePen, tieMidpointThickness);
                 }
                 else
                 {
-                    //TODO: Obsługa łuków pomiędzy łamaniem systemów
-                    //DrawTiesInternal(renderer, arcStartX, arcStartY, arcStartY + arcHeight * modifierY, arcWidth / 2, arcHeight, modifierY, element, tiePen, tieMidpointThickness);
+                    //Draw ties at system breaks
+                    var firstHalfOfArcWidth = (measurementService.TieStartElement.Measure?.BarlineLocationX ?? measurementService.TieStartSystem.Width) 
+                        - measurementService.TieStartElement.TextBlockLocation.X - measurementService.TieStartElement.GetNoteheadWidthPx(renderer) / 2;
+                    DrawTiesInternal(renderer, arcStartX, arcStartY, arcStartY + arcHeight * modifierY, firstHalfOfArcWidth, arcHeight, modifierY, measurementService.TieStartElement, tiePen, tieMidpointThickness);
+
+                    var secondHalfOfArcStartX = element.TextBlockLocation.X - 20;
+                    var arcStartYSecondHalf = element.TextBlockLocation.Y + renderer.LinespacesToPixels(1) * modifierY;
+                    DrawTiesInternal(renderer, secondHalfOfArcStartX, arcStartYSecondHalf, arcStartYSecondHalf,
+                        element.TextBlockLocation.X - secondHalfOfArcStartX, arcHeight, modifierY, element, tiePen, tieMidpointThickness);
                 }
 
                 if (element.TieType == NoteTieType.StopAndStartAnother)
