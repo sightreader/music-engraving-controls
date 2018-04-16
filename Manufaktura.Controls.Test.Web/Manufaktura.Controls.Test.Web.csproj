@@ -192,6 +192,7 @@
     <Content Include="Content\129 Marsz pułku 49 piechoty 1835, t 36, 1320, k 17.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Dzidzm.xml" />
     <Content Include="Content\JohannChristophBachFull3.0.xml" />
     <Content Include="Content\Kyrie.Salamon2.xml" />
     <Content Include="favicon.ico" />

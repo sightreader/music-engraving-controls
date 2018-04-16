@@ -128,21 +128,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
             location = TranslateTextLocation(location, fontStyle);
 
-            var element = new XElement("text",
-                new XAttribute("x", location.X.ToStringInvariant()),
-                new XAttribute("y", location.Y.ToStringInvariant()),
-                new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
-                    color.ToCss(),
-                    TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
-                    TypedSettings.Fonts[fontStyle].Name)),
-                new XAttribute("id", BuildElementId(owner)));
-            element.Value = TypedSettings.Fonts[fontStyle].Name == "Polihymnia" ? string.Format("{0}{1}", text, EmptyCharacterWithWidth) : text;
-
-            var playbackAttributes = BuildPlaybackAttributes(owner);
-            foreach (var playbackAttr in playbackAttributes)
-            {
-                element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
-            }
+            var element = GetTextElement(text, fontStyle, location, color, owner);
 
             if (location.X > ActualWidth) ActualWidth = location.X;
             if (location.Y > ActualHeight) ActualHeight = location.Y;
@@ -150,12 +136,46 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Canvas.Add(element);
         }
 
+        private XElement GetTextElement(string text, MusicFontStyles fontStyle, Point location, Color color, Model.MusicalSymbol owner)
+        {
+            var element = new XElement("text",
+               new XAttribute("x", location.X.ToStringInvariant()),
+               new XAttribute("y", location.Y.ToStringInvariant()),
+               new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
+                   color.ToCss(),
+                   TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
+                   TypedSettings.Fonts[fontStyle].Name)),
+               new XAttribute("id", BuildElementId(owner)));
+            element.Value = TypedSettings.Fonts[fontStyle].Name == "Polihymnia" ? string.Format("{0}{1}", text, EmptyCharacterWithWidth) : text;
+
+            var playbackAttributes = BuildPlaybackAttributes(owner);
+            foreach (var playbackAttr in playbackAttributes)
+            {
+                element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
+            }
+            return element;
+        }
+
         public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
         {
             if (!EnsureProperPage(owner)) return;
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
-            //TODO: Zaimplementować
+            var element = GetTextElement(character.ToString(), fontStyle, new Point(0, 0), color, owner);
+            var svg = new XElement("svg",
+                new XAttribute("x", location.X.ToStringInvariant()),
+                new XAttribute("y", location.Y.ToStringInvariant()),
+                new XAttribute("width", size.Width.ToStringInvariant()),
+                new XAttribute("height", size.Height.ToStringInvariant()),
+                new XAttribute("viewBox", $"0 0 {size.Width.ToStringInvariant()} {size.Height.ToStringInvariant()}"));
+            svg.Add(element);
+            
+            //element.SetAttributeValue(XName.Get("viewBox"), $"0 0 {size.Width.ToStringInvariant()} {size.Height.ToStringInvariant()}");
+
+            if (location.X > ActualWidth) ActualWidth = location.X;
+            if (location.Y > ActualHeight) ActualHeight = location.Y;
+
+            Canvas.Add(svg);
         }
 
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
