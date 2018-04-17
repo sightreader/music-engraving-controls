@@ -10,6 +10,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
     {
         private const string EmptyCharacterWithWidth = "j";
 
+        public override bool CanDrawCharacterInBounds => false;
+
         public HtmlSvgScoreRenderer()
             : base(null)
         {

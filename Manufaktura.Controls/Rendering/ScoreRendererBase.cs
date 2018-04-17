@@ -20,6 +20,7 @@ namespace Manufaktura.Controls.Rendering
         protected IMeasurementService measurementService = new MeasurementService();
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
+        public abstract bool CanDrawCharacterInBounds { get; }
 
         protected ScoreRendererBase() : this(new ScoreRendererSettings())
         {

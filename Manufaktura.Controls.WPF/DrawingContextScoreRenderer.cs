@@ -20,6 +20,7 @@ namespace Manufaktura.Controls.WPF
         {
         }
 
+        public override bool CanDrawCharacterInBounds => false;
         public WpfScoreRendererSettings TypedSettings => Settings as WpfScoreRendererSettings;
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
 		{
@@ -36,8 +37,12 @@ namespace Manufaktura.Controls.WPF
 		{
 		}
 
-		public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
-		{
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+        {
+        }
+
+        public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
+        {
 			Canvas.DrawLine(ConvertPen(pen), ConvertPoint(startPoint), ConvertPoint(endPoint));
 		}
 
@@ -47,11 +52,6 @@ namespace Manufaktura.Controls.WPF
                             TypedSettings.GetFont(fontStyle), TypedSettings.GetFontSize(fontStyle), new SolidColorBrush(ConvertColor(color))),
 							new System.Windows.Point(location.X + 3d, location.Y));
 		}
-
-        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
-        {
-        }
-
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
 		{
 		}

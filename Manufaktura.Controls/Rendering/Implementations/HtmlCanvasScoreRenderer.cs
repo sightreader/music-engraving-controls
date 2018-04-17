@@ -44,7 +44,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
     /// </summary>
 	public class HtmlCanvasScoreRenderer : HtmlScoreRenderer<StringBuilder>
 	{
-		public HtmlCanvasScoreRenderer()
+        public override bool CanDrawCharacterInBounds => false;
+
+        public HtmlCanvasScoreRenderer()
 			: base(null)
 		{
 		}

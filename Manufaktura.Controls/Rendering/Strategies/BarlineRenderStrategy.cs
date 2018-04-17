@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering.Implementations;
 using Manufaktura.Controls.Services;
 using System;
 using System.Linq;
@@ -108,8 +109,11 @@ namespace Manufaktura.Controls.Rendering
             {
                 BeforeDrawRepeatSign(renderer, element, measureWidth);
 
-                if (renderer.IsSMuFLFont && renderer.Settings.CurrentSMuFLMetadata != null) DrawRepeatSignSMuFL(renderer, element, measureWidth);
-                else DrawRepeatSignPolihymnia(renderer, element, measureWidth, 4);
+                //TODO: Usunąć warunek na HtmlScoreRendererSettings jak zaimplementuję w SVG DrawCharacterInBounds
+                if (renderer.IsSMuFLFont && renderer.Settings.CurrentSMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
+                    DrawRepeatSignSMuFL(renderer, element, measureWidth);
+                else
+                    DrawRepeatSignAsText(renderer, element, measureWidth, 4);
 
                 AfterDrawRepeatSign(renderer, element, measureWidth, 20);
             }
@@ -117,8 +121,11 @@ namespace Manufaktura.Controls.Rendering
             {
                 BeforeDrawRepeatSign(renderer, element, measureWidth);
 
-                if (renderer.IsSMuFLFont && renderer.Settings.CurrentSMuFLMetadata != null) DrawRepeatSignSMuFL(renderer, element, measureWidth);
-                else DrawRepeatSignPolihymnia(renderer, element, measureWidth, -14.5);
+                //TODO: Usunąć warunek na HtmlScoreRendererSettings jak zaimplementuję w SVG DrawCharacterInBounds
+                if (renderer.IsSMuFLFont && renderer.Settings.CurrentSMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
+                    DrawRepeatSignSMuFL(renderer, element, measureWidth);
+                else
+                    DrawRepeatSignAsText(renderer, element, measureWidth, -14.5);
 
                 AfterDrawRepeatSign(renderer, element, measureWidth, 6);
             }
@@ -144,9 +151,12 @@ namespace Manufaktura.Controls.Rendering
 
         private void BeforeDrawRepeatSign(ScoreRendererBase renderer, Barline element, double? measureWidth)
         {
-            if (!renderer.IsSMuFLFont && element.RepeatSign == RepeatSignType.Forward && scoreService.CurrentStaff.Elements.IndexOf(element) > 0)
+            if (element.RepeatSign == RepeatSignType.Forward && scoreService.CurrentStaff.Elements.IndexOf(element) > 0)
             {
-                scoreService.CursorPositionX -= 8;   //TODO: Temporary workaround!!
+                if (!renderer.IsSMuFLFont)
+                    scoreService.CursorPositionX -= 8;   //TODO: Temporary workaround!!
+                else if (!renderer.CanDrawCharacterInBounds)
+                    scoreService.CursorPositionX -= renderer.LinespacesToPixels(1);
             }
 
             if (renderer.Settings.IgnoreCustomElementPositions || !measureWidth.HasValue)
@@ -158,10 +168,11 @@ namespace Manufaktura.Controls.Rendering
                 scoreService.CursorPositionX = element.RenderedXPositionForFirstStaffInMultiStaffPart;
         }
 
-        private void DrawRepeatSignPolihymnia(ScoreRendererBase renderer, Barline element, double? measureWidth, double shiftX)
+        private void DrawRepeatSignAsText(ScoreRendererBase renderer, Barline element, double? measureWidth, double shiftX)
         {
+            var positionY = scoreService.CurrentLinePositions[renderer.IsSMuFLFont ? 4 : 2];
             renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.StaffFont, scoreService.CursorPositionX + shiftX,
-                scoreService.CurrentLinePositions[2], element);
+                positionY, element);
         }
 
         private void DrawRepeatSignSMuFL(ScoreRendererBase renderer, Barline element, double? measureWidth)

@@ -27,6 +27,7 @@ namespace Manufaktura.Controls.WPF
             OwnershipDictionary = new Dictionary<FrameworkElement, MusicalSymbol>();
         }
 
+        public override bool CanDrawCharacterInBounds => true;
         public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
         public WpfScoreRendererSettings TypedSettings => Settings as WpfScoreRendererSettings;
 
@@ -109,6 +110,38 @@ namespace Manufaktura.Controls.WPF
             OwnershipDictionary.Add(path, owner);
         }
 
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+        {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
+
+            Typeface typeface = TypedSettings.GetFont(fontStyle);
+
+            GlyphTypeface glyphTypeface;
+            if (!typeface.TryGetGlyphTypeface(out glyphTypeface)) return;
+
+            var glyphMap = glyphTypeface.CharacterToGlyphMap;
+            var outline = glyphTypeface.GetGlyphOutline(glyphMap[character], 1000, 100);
+            var path = new Path();
+            path.Data = outline;
+
+            path.Stroke = new SolidColorBrush(ConvertColor(color));
+            path.Fill = new SolidColorBrush(ConvertColor(color));
+            path.Visibility = BoolToVisibility(owner.IsVisible);
+            path.Stretch = Stretch.Fill;
+
+            var viewBox = new Viewbox();
+            viewBox.Child = path;
+            viewBox.Width = size.Width;
+            viewBox.Height = size.Height;
+            viewBox.Stretch = Stretch.Fill;
+            Canvas.SetLeft(viewBox, location.X);
+            Canvas.SetTop(viewBox, location.Y);
+            Canvas.Children.Add(viewBox);
+
+            OwnershipDictionary.Add(path, owner);
+        }
+
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
         {
             if (!EnsureProperPage(owner)) return;
@@ -155,39 +188,6 @@ namespace Manufaktura.Controls.WPF
 
             OwnershipDictionary.Add(textBlock, owner);
         }
-
-        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
-        {
-            if (!EnsureProperPage(owner)) return;
-            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
-
-            Typeface typeface = TypedSettings.GetFont(fontStyle);
-
-            GlyphTypeface glyphTypeface;
-            if (!typeface.TryGetGlyphTypeface(out glyphTypeface)) return;
-
-            var glyphMap = glyphTypeface.CharacterToGlyphMap;
-            var outline = glyphTypeface.GetGlyphOutline(glyphMap[character], 1000, 100);
-            var path = new Path();
-            path.Data = outline;
-
-            path.Stroke = new SolidColorBrush(ConvertColor(color));
-            path.Fill = new SolidColorBrush(ConvertColor(color));
-            path.Visibility = BoolToVisibility(owner.IsVisible);
-            path.Stretch = Stretch.Fill;
-
-            var viewBox = new Viewbox();
-            viewBox.Child = path;
-            viewBox.Width = size.Width;
-            viewBox.Height = size.Height;
-            viewBox.Stretch = Stretch.Fill;
-            Canvas.SetLeft(viewBox, location.X);
-            Canvas.SetTop(viewBox, location.Y);
-            Canvas.Children.Add(viewBox);
-
-            OwnershipDictionary.Add(path, owner);
-        }
-
         public void MoveLayout(StaffSystem system, Point delta)
         {
             foreach (var staffFragment in system.Staves)

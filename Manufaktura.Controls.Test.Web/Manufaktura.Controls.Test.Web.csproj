@@ -238,6 +238,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="soundfont\acoustic_grand_piano-mp3.js" />
     <Content Include="soundfont\acoustic_grand_piano-ogg.js" />
+    <Content Include="ViewModelsClient\PlaybackManager.js" />
     <Content Include="Views\WebUserControl1.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
