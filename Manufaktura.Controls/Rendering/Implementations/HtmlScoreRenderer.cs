@@ -68,11 +68,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
             var durationElement = element as IHasDuration;
             if (durationElement != null)
             {
-                var timelineElement = currentPlaybackTimeline.FirstOrDefault(p => p.What == durationElement);
-                if (timelineElement != null)
+                var timelineElements = currentPlaybackTimeline.Where(p => p.What == durationElement).ToArray();
+                if (timelineElements.Any())
                 {
+                    //In most cases there will be one start point for one element. The next ones are for repetitions.
+                    var playbackStartPoints = string.Join(" ", timelineElements.Select(te => (long)te.When.TotalMilliseconds));
+
                     var duration = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToTimeSpan(new Tempo(RhythmicDuration.Quarter, TypedSettings.PlaybackTempo));
-                    dict.Add("data-playback-start", ((long)timelineElement.When.TotalMilliseconds).ToString());
+                    dict.Add("data-playback-start", playbackStartPoints);
                     dict.Add("data-playback-duration", ((long)duration.TotalMilliseconds).ToString());
                 }
             }

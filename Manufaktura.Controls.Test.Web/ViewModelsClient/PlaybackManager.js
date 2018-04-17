@@ -33,31 +33,44 @@
             }
         }
 
+        function getNoteForIdAndRepetition(noteCollection, id, repetition) {
+            if (noteCollection == null) return null;
+            for (var n in noteCollection) {
+                if (noteCollection[n].id === id && noteCollection[n].repetition === repetition) return noteCollection[n];
+            }
+            return null;
+        }
+
         var notes = [];
 
-
         svg.children().each(function (i, e) {
+            var unparsedPlaybackStartAttribute = $(e).attr("data-playback-start");
+            if (unparsedPlaybackStartAttribute == null) return;
 
-            var delayTime = $(e).attr("data-playback-start");
-
-            if (delayTime == null) return;
-            delayTime = parseInt(delayTime);
+            var delayTimes = unparsedPlaybackStartAttribute.split(" ");
+            if (delayTimes == null) return;
 
             var pitchUnparsed = $(e).attr("data-midi-pitch");
             var pitch = pitchUnparsed ? parseInt(pitchUnparsed) : null;
             var durationUnparsed = $(e).attr("data-playback-duration");
             if (durationUnparsed == null) return;
             var duration = parseInt(durationUnparsed);
+            var elementId = $(e).attr("id");
 
-            if (notes.length > 0 && notes[notes.length - 1].id === $(e).attr("id")) {
-                notes[notes.length - 1].elements.push(e);
+            for (var repetitionNumber in delayTimes) {
+                var delayTime = parseInt(delayTimes[repetitionNumber]);
+
+                var existingNoteInfo = getNoteForIdAndRepetition(notes, elementId, repetitionNumber);
+                if (existingNoteInfo != null) {
+                    existingNoteInfo.elements.push(e);
+                }
+                else {
+                    var note = { delayTime: delayTime, pitch: pitch, duration: duration, elements: [], id: elementId, repetition: repetitionNumber };
+                    note.elements.push(e);
+                    notes.push(note);
+                    overalTime = delayTime + duration;
+                }
             }
-            else {
-                var note = { delayTime: delayTime, pitch: pitch, duration: duration, elements: [], id: $(e).attr("id") };
-                note.elements.push(e);
-                notes.push(note);
-            }
-            overalTime = delayTime + duration;
         });
 
         for (var i in notes) {
@@ -71,6 +84,7 @@
                     }
 
                     if (note.pitch != null) {
+                        //console.info('Playing repetition ' + note.pitch + ' with ' + note.elements.length + ' elements.');
                         MIDI.noteOn(0, note.pitch, 127, 0);
                         MIDI.noteOff(0, note.pitch, note.duration * 0.001);
                     }
