@@ -1,14 +1,10 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Music.Xml;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Parser.MusicXml
 {
-    class SoundParsingStrategy : MusicXmlParsingStrategy
+    internal class SoundParsingStrategy : MusicXmlParsingStrategy
     {
         public override string ElementName
         {

@@ -480,7 +480,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.TieType == NoteTieType.Start)
             {
                 measurementService.TieStartSystem = element.Measure?.System;
-                measurementService.TieStartPoint = new Point(scoreService.CursorPositionX + GetNoteheadWidthPx(element, renderer), notePositionY);
+                measurementService.TieStartPoint = new Point(scoreService.CursorPositionX + GetNoteheadWidthPx(element, renderer) / 2, notePositionY);
                 measurementService.TieStartElement = element;
             }
             else if (element.TieType != NoteTieType.None) //Stop or StopAndStartAnother / Stop lub StopAndStartAnother
@@ -491,12 +491,12 @@ namespace Manufaktura.Controls.Rendering
 
                 double arcHeight = renderer.LinespacesToPixels(2);
                 var modifierY = element.StemDirection == VerticalDirection.Down ? -1 : 1;
-                var arcStartX = measurementService.TieStartPoint.X - element.GetNoteheadWidthPx(renderer) / 2;
+                var arcStartX = measurementService.TieStartPoint.X;// - element.GetNoteheadWidthPx(renderer) / 2;
                 var arcStartY = measurementService.TieStartPoint.Y + renderer.LinespacesToPixels(1) * modifierY;
 
                 if (renderer.Settings.RenderingMode == ScoreRenderingModes.Panorama || element.Measure?.System == measurementService.TieStartSystem)
                 {
-                    double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X + element.GetNoteheadWidthPx(renderer);
+                    double arcWidth = scoreService.CursorPositionX - measurementService.TieStartPoint.X + element.GetNoteheadWidthPx(renderer) / 2 - 2; //-2 to modyfikator, żeby łuki się nie krzyżowały
                     DrawTiesInternal(renderer, arcStartX, arcStartY, arcStartY, arcWidth, arcHeight, modifierY, element, tiePen, tieMidpointThickness);
                 }
                 else
@@ -521,6 +521,8 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawTiesInternal(ScoreRendererBase renderer, double arcStartX, double arcStartY, double arcEndY, double arcWidth, double arcHeight, int modifierY, Note element, Pen tiePen, double tieMidpointThickness)
         {
+            var gap = tieMidpointThickness - tiePen.Thickness;
+
             renderer.DrawBezier(
                 new Point(arcStartX, arcStartY),
                 new Point(arcStartX + 0.25 * arcWidth, arcStartY + arcHeight * modifierY),
@@ -528,6 +530,16 @@ namespace Manufaktura.Controls.Rendering
                 new Point(arcStartX + arcWidth, arcEndY),
                 tiePen,
                 element);
+            if (gap >= tiePen.Thickness)
+            {
+                renderer.DrawBezier(
+                    new Point(arcStartX, arcStartY),
+                    new Point(arcStartX + 0.25 * arcWidth, arcStartY + (arcHeight + tieMidpointThickness / 2) * modifierY),
+                    new Point(arcStartX + 0.75 * arcWidth, arcStartY + (arcHeight + tieMidpointThickness / 2) * modifierY),
+                    new Point(arcStartX + arcWidth, arcEndY),
+                    tiePen,
+                    element);
+            }
             renderer.DrawBezier(
                 new Point(arcStartX, arcStartY),
                 new Point(arcStartX + 0.25 * arcWidth, arcStartY + (arcHeight + tieMidpointThickness) * modifierY),
