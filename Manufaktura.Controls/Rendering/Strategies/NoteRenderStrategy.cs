@@ -38,6 +38,19 @@ namespace Manufaktura.Controls.Rendering
             this.beamingService = beamingService;
         }
 
+        public static Note[] GetChord(Note lowestNote, Staff staff)
+        {
+            var chordElements = new List<Note>() { lowestNote };
+            for (int i = staff.Elements.IndexOf(lowestNote) + 1; i < staff.Elements.Count; i++)
+            {
+                Note currentNote = staff.Elements[i] as Note;
+                if (currentNote == null) continue;
+                if (currentNote.IsUpperMemberOfChord) chordElements.Add(currentNote);
+                else break;
+            }
+            return chordElements.ToArray();
+        }
+
         /// <summary>
         /// Renders a note with a specific score renderer
         /// </summary>
@@ -128,20 +141,6 @@ namespace Manufaktura.Controls.Rendering
 
             return space;
         }
-
-        private static Note[] GetChord(Note lowestNote, Staff staff)
-        {
-            var chordElements = new List<Note>() { lowestNote };
-            for (int i = staff.Elements.IndexOf(lowestNote) + 1; i < staff.Elements.Count; i++)
-            {
-                Note currentNote = staff.Elements[i] as Note;
-                if (currentNote == null) continue;
-                if (currentNote.IsUpperMemberOfChord) chordElements.Add(currentNote);
-                else break;
-            }
-            return chordElements.ToArray();
-        }
-
         private static double GetNoteheadWidthPx(Note element, ScoreRendererBase renderer, double ratio = 1) =>
             renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
 
