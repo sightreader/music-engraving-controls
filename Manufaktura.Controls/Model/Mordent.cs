@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Manufaktura.Controls.Model.Fonts;
 
 namespace Manufaktura.Controls.Model
 {
@@ -14,5 +11,10 @@ namespace Manufaktura.Controls.Model
         /// Indicates if the mordent is inverted.
         /// </summary>
         public bool IsInverted { get; set; }
+
+        public char GetCharacter(IMusicFont font)
+        {
+            return IsInverted ? font.MordentInverted : font.Mordent;
+        }
     }
 }

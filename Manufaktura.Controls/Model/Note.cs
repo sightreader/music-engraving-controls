@@ -361,7 +361,7 @@ namespace Manufaktura.Controls.Model
             if (renderer.IsSMuFLFont)
             {
                 if (renderer.Settings.CurrentSMuFLMetadata == null) return 1.18;
-                var bounds = GetSMuFLNoteheadBounds(BaseDuration, renderer.Settings.CurrentSMuFLMetadata);
+                var bounds = GetSMuFLNoteheadBounds(this, renderer.Settings.CurrentSMuFLMetadata);
                 return bounds.BBoxNe[0] - bounds.BBoxSw[0];
             }
             return IsGraceNote || IsCueNote ? 0.6 : 1.1;
@@ -382,11 +382,29 @@ namespace Manufaktura.Controls.Model
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
         }
 
-        private static BoundingBox GetSMuFLNoteheadBounds(RhythmicDuration duration, SMuFLFontMetadata metadata)
+        private static BoundingBox GetSMuFLNoteheadBounds(Note note, SMuFLFontMetadata metadata)
         {
-            if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWhole;
-            else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalf;
-            else return metadata.GlyphBBoxes.NoteheadBlack;
+            var duration = note.BaseDuration;
+            switch (note.Size)
+            {
+                case NoteOrRestSize.Full:
+                    if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWhole;
+                    else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalf;
+                    else return metadata.GlyphBBoxes.NoteheadBlack;
+
+                case NoteOrRestSize.Cue:
+                    if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWholeSmall;
+                    else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalfSmall;
+                    else return metadata.GlyphBBoxes.NoteheadBlackSmall;
+
+                case NoteOrRestSize.Large:
+                    if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWholeOversized;
+                    else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalfOversized;
+                    else return metadata.GlyphBBoxes.NoteheadBlackOversized;
+
+                default:
+                    throw new Exception($"Note size {note.Size} not supported.");
+            }
         }
 
         private void DetermineMusicalCharacter()

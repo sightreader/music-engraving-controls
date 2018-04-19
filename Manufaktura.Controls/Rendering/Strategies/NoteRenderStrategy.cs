@@ -141,6 +141,7 @@ namespace Manufaktura.Controls.Rendering
 
             return space;
         }
+
         private static double GetNoteheadWidthPx(Note element, ScoreRendererBase renderer, double ratio = 1) =>
             renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
 
@@ -390,14 +391,25 @@ namespace Manufaktura.Controls.Rendering
                 else
                     yPosition = notePositionY + (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
 
+                if (ornament.Placement == VerticalPlacement.Above && yPosition > element.StemEndLocation.Y)
+                    yPosition = element.StemEndLocation.Y - renderer.Settings.LineSpacing;  //Chwilowe rozwiązanie, zanim odkryję jak działa default-y w mordentach i czy w ogóle działa
                 if (ornament.Placement == VerticalPlacement.Above && yPosition > notePositionY)
                     yPosition = notePositionY - renderer.Settings.LineSpacing;  //Chwilowe rozwiązanie, zanim odkryję jak działa default-y w mordentach i czy w ogóle działa
 
                 Mordent mordent = ornament as Mordent;
                 if (mordent != null)
                 {
-                    renderer.DrawCharacter(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX, yPosition, element);
-                    renderer.DrawCharacter(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 5.5, yPosition, element);
+                    if (renderer.IsSMuFLFont)
+                    {
+                        renderer.DrawCharacter(mordent.GetCharacter(renderer.Settings.CurrentFont), 
+                            MusicFontStyles.MusicFont, scoreService.CursorPositionX - element.GetNoteheadWidthPx(renderer) / 2, 
+                            yPosition, element);
+                    }
+                    else
+                    {
+                        renderer.DrawCharacter(renderer.Settings.CurrentFont.MordentShort, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX, yPosition, element);
+                        renderer.DrawCharacter(renderer.Settings.CurrentFont.Mordent, MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 5.5, yPosition, element);
+                    }
                 }
             }
         }
@@ -443,9 +455,10 @@ namespace Manufaktura.Controls.Rendering
 
             if (renderer.IsSMuFLFont)
             {
+                var cueNoteShift = element.StemDirection == VerticalDirection.Up ? -3 : 0;
                 beamingService.CurrentStemPositionX = scoreService.CursorPositionX +
                     element.GetNoteheadWidthPx(renderer) * (element.StemDirection == VerticalDirection.Down ? 0 : 1) +
-                    (element.IsGraceNote || element.IsCueNote ? -2 : 0);
+                    (element.IsGraceNote || element.IsCueNote ? cueNoteShift : 0);
             }
             else
             {
@@ -501,7 +514,7 @@ namespace Manufaktura.Controls.Rendering
                 else
                 {
                     //Draw ties at system breaks
-                    var firstHalfOfArcWidth = (measurementService.TieStartElement.Measure?.BarlineLocationX ?? measurementService.TieStartSystem.Width) 
+                    var firstHalfOfArcWidth = (measurementService.TieStartElement.Measure?.BarlineLocationX ?? measurementService.TieStartSystem.Width)
                         - measurementService.TieStartElement.TextBlockLocation.X - measurementService.TieStartElement.GetNoteheadWidthPx(renderer) / 2;
                     DrawTiesInternal(renderer, arcStartX, arcStartY, arcStartY + arcHeight * modifierY, firstHalfOfArcWidth, arcHeight, modifierY, measurementService.TieStartElement, tiePen, tieMidpointThickness);
 
