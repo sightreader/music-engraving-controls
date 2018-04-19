@@ -5,72 +5,79 @@ using System.Text;
 
 namespace Manufaktura.Music.Model
 {
-	/// <summary>
-	/// Represents a rhythmic duration.
-	/// </summary>
-	public struct RhythmicDuration
-	{
-		public RhythmicDuration(int denominator, int dots)
-			: this()
-		{
-			Denominator = denominator;
-			Dots = dots;
-		}
+    /// <summary>
+    /// Represents a rhythmic duration.
+    /// </summary>
+    public struct RhythmicDuration
+    {
+        public RhythmicDuration(int denominatorAsPowerOfTwo, int dots)
+            : this()
+        {
+            DenominatorAsPowerOfTwo = denominatorAsPowerOfTwo;
+            Dots = dots;
+        }
 
-		public RhythmicDuration(int denominator)
-			: this(denominator, 0)
-		{
-		}
+        public RhythmicDuration(int denominatorAsPowerOfTwo)
+            : this(denominatorAsPowerOfTwo, 0)
+        {
+        }
 
         /// <summary>
         /// Rhythmic duration of 128th note or rest.
         /// </summary>
-		public static RhythmicDuration D128th { get { return new RhythmicDuration(128); } }
+		public static RhythmicDuration D128th { get { return new RhythmicDuration(7); } }
 
         /// <summary>
         /// Rhythmic duration of 256th note or rest.
         /// </summary>
-        public static RhythmicDuration D256th { get { return new RhythmicDuration(256); } }
+        public static RhythmicDuration D256th { get { return new RhythmicDuration(8); } }
 
         /// <summary>
         /// Rhythmic duration of 32nd note or rest.
         /// </summary>
-        public static RhythmicDuration D32nd { get { return new RhythmicDuration(32); } }
+        public static RhythmicDuration D32nd { get { return new RhythmicDuration(5); } }
 
         /// <summary>
         /// Rhythmic duration of 64th note or rest.
         /// </summary>
-        public static RhythmicDuration D64th { get { return new RhythmicDuration(64); } }
+        public static RhythmicDuration D64th { get { return new RhythmicDuration(6); } }
 
         /// <summary>
         /// Rhythmic duration of eighth note or rest.
         /// </summary>
-        public static RhythmicDuration Eighth { get { return new RhythmicDuration(8); } }
+        public static RhythmicDuration Eighth { get { return new RhythmicDuration(3); } }
 
         /// <summary>
         /// Rhythmic duration of half note or rest.
         /// </summary>
-        public static RhythmicDuration Half { get { return new RhythmicDuration(2); } }
+        public static RhythmicDuration Half { get { return new RhythmicDuration(1); } }
 
         /// <summary>
         /// Rhythmic duration of quarter note or rest.
         /// </summary>
-        public static RhythmicDuration Quarter { get { return new RhythmicDuration(4); } }
+        public static RhythmicDuration Quarter { get { return new RhythmicDuration(2); } }
 
         /// <summary>
         /// Rhythmic duration of sixteenth note or rest.
         /// </summary>
-        public static RhythmicDuration Sixteenth { get { return new RhythmicDuration(16); } }
+        public static RhythmicDuration Sixteenth { get { return new RhythmicDuration(4); } }
 
         /// <summary>
         /// Rhythmic duration of whole note or rest.
         /// </summary>
-        public static RhythmicDuration Whole { get { return new RhythmicDuration(1); } }
+        public static RhythmicDuration Whole { get { return new RhythmicDuration(0); } }
+
+        /// <summary>
+        /// Rhythmic duration of double whole note or rest.
+        /// </summary>
+        public static RhythmicDuration DoubleWhole { get { return new RhythmicDuration(-1); } }
 
         /// <summary>
         /// Rhythmic duration denominator, i.e. 1 for whole, 2 for half, 8 for eighth, 16 for sixteenth, etc.
         /// </summary>
-        public int Denominator { get; private set; }
+        public double Denominator => Math.Pow(2, DenominatorAsPowerOfTwo);
+
+        public int DenominatorAsPowerOfTwo { get; private set; }
 
         /// <summary>
         /// Number of dots
@@ -81,12 +88,12 @@ namespace Manufaktura.Music.Model
         /// Returns a clone of this RhythmicDuration object but without dots
         /// </summary>
 		public RhythmicDuration WithoutDots
-		{
-			get
-			{
-				return new RhythmicDuration(Denominator);
-			}
-		}
+        {
+            get
+            {
+                return new RhythmicDuration(DenominatorAsPowerOfTwo);
+            }
+        }
 
         /// <summary>
         /// Subtracts two rhythmic durations
@@ -95,10 +102,10 @@ namespace Manufaktura.Music.Model
         /// <param name="d2"></param>
         /// <returns></returns>
 		public static Proportion operator -(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			var sum = d1.ToProportion() - d2.ToProportion();
-			return sum.Normalize();
-		}
+        {
+            var sum = d1.ToProportion() - d2.ToProportion();
+            return sum.Normalize();
+        }
 
         /// <summary>
         /// Returns true if two RhythmicDurations are different
@@ -107,10 +114,9 @@ namespace Manufaktura.Music.Model
         /// <param name="d2"></param>
         /// <returns></returns>
 		public static bool operator !=(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			return d1.Denominator != d2.Denominator || d1.Dots != d2.Dots;
-		}
-
+        {
+            return d1.Denominator != d2.Denominator || d1.Dots != d2.Dots;
+        }
 
         /// <summary>
         /// Adds two RhythmicDurations
@@ -119,10 +125,10 @@ namespace Manufaktura.Music.Model
         /// <param name="d2"></param>
         /// <returns></returns>
 		public static Proportion operator +(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			var sum = d1.ToProportion() + d2.ToProportion();
-			return sum.Normalize();
-		}
+        {
+            var sum = d1.ToProportion() + d2.ToProportion();
+            return sum.Normalize();
+        }
 
         /// <summary>
         /// Returns true if first RhythmicDuration is less than the second RhythmicDuration
@@ -131,45 +137,45 @@ namespace Manufaktura.Music.Model
         /// <param name="d2"></param>
         /// <returns></returns>
 		public static bool operator <(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			if (d1.Denominator == d2.Denominator) return d1.Dots > d2.Dots;
-			return d1.Denominator > d2.Denominator;
-		}
+        {
+            if (d1.DenominatorAsPowerOfTwo == d2.DenominatorAsPowerOfTwo) return d1.Dots > d2.Dots;
+            return d1.DenominatorAsPowerOfTwo > d2.DenominatorAsPowerOfTwo;
+        }
 
         /// <summary>
         /// Returns true if first RhythmicDuration is less than or equal to the second RhythmicDuration
         /// </summary>
         public static bool operator <=(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			if (d1.Denominator == d2.Denominator) return d1.Dots >= d2.Dots;
-			return d1.Denominator > d2.Denominator;
-		}
+        {
+            if (d1.DenominatorAsPowerOfTwo == d2.DenominatorAsPowerOfTwo) return d1.Dots >= d2.Dots;
+            return d1.DenominatorAsPowerOfTwo > d2.DenominatorAsPowerOfTwo;
+        }
 
         /// <summary>
         /// Returns true if first RhythmicDuration is equal to the second RhythmicDuration
         /// </summary>
         public static bool operator ==(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			return d1.Denominator == d2.Denominator && d1.Dots == d2.Dots;
-		}
+        {
+            return d1.DenominatorAsPowerOfTwo == d2.DenominatorAsPowerOfTwo && d1.Dots == d2.Dots;
+        }
 
         /// <summary>
         /// Returns true if first RhythmicDuration is greater than the second RhythmicDuration
         /// </summary>
         public static bool operator >(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			if (d1.Denominator == d2.Denominator) return d1.Dots < d2.Dots;
-			return d1.Denominator < d2.Denominator;
-		}
+        {
+            if (d1.DenominatorAsPowerOfTwo == d2.DenominatorAsPowerOfTwo) return d1.Dots < d2.Dots;
+            return d1.DenominatorAsPowerOfTwo < d2.DenominatorAsPowerOfTwo;
+        }
 
         /// <summary>
         /// Returns true if first RhythmicDuration is greater than or equal to the second RhythmicDuration
         /// </summary>
         public static bool operator >=(RhythmicDuration d1, RhythmicDuration d2)
-		{
-			if (d1.Denominator == d2.Denominator) return d1.Dots <= d2.Dots;
-			return d1.Denominator < d2.Denominator;
-		}
+        {
+            if (d1.DenominatorAsPowerOfTwo == d2.DenominatorAsPowerOfTwo) return d1.Dots <= d2.Dots;
+            return d1.DenominatorAsPowerOfTwo < d2.DenominatorAsPowerOfTwo;
+        }
 
         /// <summary>
         /// Parses RhythmicDuration from a string
@@ -177,39 +183,46 @@ namespace Manufaktura.Music.Model
         /// <param name="s"></param>
         /// <returns></returns>
 		public static RhythmicDuration Parse(string s)
-		{
-			var numberOfDots = s.ToCharArray().Count(c => c == '.');
-			int denominator;
-			if (!int.TryParse(s.Replace(".", ""), out denominator)) throw new Exception("Could not parse string. Unrecognized duration.");
-			return new RhythmicDuration(denominator, numberOfDots);
-		}
+        {
+            var numberOfDots = s.ToCharArray().Count(c => c == '.');
+            int denominator;
+            if (!int.TryParse(s.Replace(".", ""), out denominator)) throw new Exception("Could not parse string. Unrecognized duration.");
 
-		public static IEnumerable<RhythmicDuration> Parse(string s, string separator)
-		{
-			var result = new List<RhythmicDuration>();
-			foreach (var substring in s.Split(separator.ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
-			{
-				result.Add(Parse(substring));
-			}
-			return result;
-		}
+            var denominatorAsPowerOfTwo = (int)Math.Log(denominator, 2);
+            return new RhythmicDuration(denominatorAsPowerOfTwo, numberOfDots);
+        }
 
-		public static IEnumerable<RhythmicDuration> Parse(params int[] durations)
-		{
-			return durations.Select(i => new RhythmicDuration(i)).ToArray();
-		}
+        public static IEnumerable<RhythmicDuration> Parse(string s, string separator)
+        {
+            var result = new List<RhythmicDuration>();
+            foreach (var substring in s.Split(separator.ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
+            {
+                result.Add(Parse(substring));
+            }
+            return result;
+        }
+
+        public static IEnumerable<RhythmicDuration> Parse(params int[] durations)
+        {
+            return durations.Select(i =>
+            {
+                var denominatorAsPowerOfTwo = (int)Math.Log(i, 2);
+                return new RhythmicDuration(denominatorAsPowerOfTwo);
+            }).ToArray();
+        }
 
         public static bool TryParse(string s, out RhythmicDuration duration)
-		{
-			int val;
-			if (!int.TryParse(s, out val))
-			{
-				duration = default(RhythmicDuration);
-				return false;
-			}
-			duration = new RhythmicDuration(val);
-			return true;
-		}
+        {
+            int val;
+            if (!int.TryParse(s, out val))
+            {
+                duration = default(RhythmicDuration);
+                return false;
+            }
+            var denominatorAsPowerOfTwo = (int)Math.Log(val, 2);
+            duration = new RhythmicDuration(denominatorAsPowerOfTwo);
+            return true;
+        }
 
         /// <summary>
         /// Returns a RhythmicDuration with a specific number of dots added
@@ -217,9 +230,9 @@ namespace Manufaktura.Music.Model
         /// <param name="dots"></param>
         /// <returns></returns>
 		public RhythmicDuration AddDots(int dots)
-		{
-			return new RhythmicDuration(Denominator, dots);
-		}
+        {
+            return new RhythmicDuration(DenominatorAsPowerOfTwo, dots);
+        }
 
 #if !CSHTML5
 
@@ -228,9 +241,9 @@ namespace Manufaktura.Music.Model
         /// </summary>
         /// <returns></returns>
         public decimal ToDecimal()
-		{
-			return ToProportion().DecimalValue;
-		}
+        {
+            return ToProportion().DecimalValue;
+        }
 
 #endif
 
@@ -238,9 +251,9 @@ namespace Manufaktura.Music.Model
         /// Returns a fraction representing this RhythmicDuration as double value
         /// </summary>
         public double ToDouble()
-		{
-			return ToProportion().DoubleValue;
-		}
+        {
+            return ToProportion().DoubleValue;
+        }
 
         /// <summary>
         /// Returns a proportion of this RhythmicDuration to the second RhythmicDuration. Dots are not taken into account.
@@ -249,23 +262,37 @@ namespace Manufaktura.Music.Model
         /// <param name="duration"></param>
         /// <returns></returns>
 		public Proportion ToFractionOf(RhythmicDuration duration)
-		{
-			return new Proportion(duration.Denominator, Denominator);
-		}
+        {
+            var factor = GetFactor();
+            return new Proportion(((int)duration.Denominator * factor), (int)(Denominator * factor));
+        }
+
+        private int GetFactor()
+        {
+            var dp2 = Denominator;
+            int factor = 1;
+            while (dp2 < 1)
+            {
+                dp2 *= 2;
+                factor *= 2;
+            }
+            return factor;
+        }
 
         /// <summary>
         /// Converts this RhythmicDuration to fraction and returns it as Proportion structure. Dots are taken into account.
         /// </summary>
         /// <returns></returns>
 		public Proportion ToProportion()
-		{
-			var prop = new Proportion(1, Denominator);
-			for (int i=0; i< Dots; i++)
-			{
-				prop += new Proportion(1, Denominator * (int)Math.Pow(2, i + 1));
-			}
-			return prop;
-		}
+        {
+            var factor = GetFactor();
+            var prop = new Proportion(factor, (int)(Denominator * factor));
+            for (int i = 0; i < Dots; i++)
+            {
+                prop += new Proportion(factor, (int)(Denominator * factor) * (int)Math.Pow(2, i + 1));
+            }
+            return prop;
+        }
 
         /// <summary>
         /// Converts this RhythmicDuration to RhythmicUnit.
@@ -273,27 +300,27 @@ namespace Manufaktura.Music.Model
         /// <param name="isRest"></param>
         /// <returns></returns>
 		public RhythmicUnit ToRhythmicUnit(bool isRest)
-		{
-			return new RhythmicUnit(this, isRest);
-		}
+        {
+            return new RhythmicUnit(this, isRest);
+        }
 
-		public override string ToString()
-		{
-			var sb = new StringBuilder();
-			for (var i = 0; i < Dots; i++) sb.Append(".");
-			return string.Format("{0}{1}", Denominator, sb);
-		}
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < Dots; i++) sb.Append(".");
+            return string.Format("{0}{1}", Denominator, sb);
+        }
 
         /// <summary>
-        /// Converts this RhythmicDuration to TimeSpan for a specific Tempo. 
+        /// Converts this RhythmicDuration to TimeSpan for a specific Tempo.
         /// I.e. returns the real duration of this RhythmicDuration in time units for a specific Tempo.
         /// </summary>
         /// <param name="tempo"></param>
         /// <returns></returns>
 		public TimeSpan ToTimeSpan(Tempo tempo)
-		{
-			var proportion = ToFractionOf(tempo.BeatUnit);
-			return TimeSpan.FromMilliseconds(tempo.BeatTimeSpan.TotalMilliseconds * proportion.DoubleValue);
-		}
-	}
+        {
+            var proportion = ToFractionOf(tempo.BeatUnit);
+            return TimeSpan.FromMilliseconds(tempo.BeatTimeSpan.TotalMilliseconds * proportion.DoubleValue);
+        }
+    }
 }

@@ -21,9 +21,15 @@ namespace Manufaktura.Controls.Parser.MusicXml
             element.IfAttribute("measure").HasValue("yes").Then(m => builder.FullMeasure = true);
             element.IfAttribute("print-object").HasValue(new Dictionary<string, bool> {
                 {"yes", true}, {"no", false}}).Then(m => builder.IsVisible = m);
-            element.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);
+            element.IfAttribute("size").HasValue(new Dictionary<string, NoteOrRestSize>
+            {
+                { "cue", NoteOrRestSize.Cue },
+                { "full", NoteOrRestSize.Full },
+                { "large", NoteOrRestSize.Large },
+            }).Then(s => builder.Size = s);
             element.IfElement("staff").HasValue<int>().Then(m => builder.Staff = staff.Part.Staves.ElementAt(m - 1));
             element.IfElement("type").HasValue(new Dictionary<string, RhythmicDuration> {
+                 { "breve", RhythmicDuration.DoubleWhole },
                  { "whole", RhythmicDuration.Whole },
                  { "half", RhythmicDuration.Half },
                  { "quarter",  RhythmicDuration.Quarter },
@@ -35,7 +41,12 @@ namespace Manufaktura.Controls.Parser.MusicXml
             var typeElement = element.GetElement("type");
             if (typeElement != null)
             {
-                typeElement.IfAttribute("size").HasValue("cue").Then(() => builder.IsCueNote = true);   //"size" attribute apparently can be added to element "type" too
+                typeElement.IfAttribute("size").HasValue(new Dictionary<string, NoteOrRestSize>
+                {
+                    { "cue", NoteOrRestSize.Cue },
+                    { "full", NoteOrRestSize.Full },
+                    { "large", NoteOrRestSize.Large },
+                }).Then(s => builder.Size = s);   //"size" attribute apparently can be added to element "type" too
             }
 
             element.IfElement("voice").HasValue<int>().Then(m => builder.Voice = m);

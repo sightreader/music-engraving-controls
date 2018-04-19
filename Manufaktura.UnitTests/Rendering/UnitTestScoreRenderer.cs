@@ -15,7 +15,9 @@ namespace Manufaktura.UnitTests.Rendering
 		{
 		}
 
-		public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
+        public override bool CanDrawCharacterInBounds => false;
+
+        public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
 		{
 			var entry = new ScoreRenderingTestEntry();
 			entry.Location = GetTopLeftPoint(new Point(rect.X, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
@@ -34,7 +36,12 @@ namespace Manufaktura.UnitTests.Rendering
 			Canvas.Put(entry);
 		}
 
-		public override void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner)
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner)
 		{
 			var entry = new ScoreRenderingTestEntry();
 			entry.Location = GetTopLeftPoint(startPoint, endPoint);
@@ -48,15 +55,12 @@ namespace Manufaktura.UnitTests.Rendering
 		{
 			var entry = new ScoreRenderingTestEntry();
 			entry.Location = location;
-			entry.Text = text;
+			entry.Text = text; 
 			entry.Type = owner.GetType().Name;
 			SetIndexes(entry, owner);
 			Canvas.Put(entry);
 		}
 
-		public override void DrawStringInBounds(string text, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)
-		{
-		}
 
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
         {

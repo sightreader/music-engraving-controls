@@ -18,6 +18,7 @@
         /// C clef character
         /// </summary>
         char CClef { get; }
+
         char CClef8va { get; }
         char CClef8vb { get; }
         char CClef15ma { get; }
@@ -98,13 +99,22 @@
         /// Black notehead character
         /// </summary>
         char NoteheadBlack { get; }
+
         char NoteheadHalf { get; }
+        char NoteheadBlackCue { get; }
+        char NoteheadHalfCue { get; }
+        char NoteheadBlackLarge { get; }
+        char NoteheadHalfLarge { get; }
 
         char NoteQuarter { get; }
 
         char NoteSixteenth { get; }
-
+        char NoteDoubleWhole { get; }
+        char NoteDoubleWholeCue { get; }
+        char NoteDoubleWholeLarge { get; }
         char NoteWhole { get; }
+        char NoteWholeCue { get; }
+        char NoteWholeLarge { get; }
 
         char PercussionClef { get; }
 
@@ -116,10 +126,12 @@
         /// 32-nd rest character
         /// </summary>
         char Rest32nd { get; }
+
         /// <summary>
         /// Eighth rest character
         /// </summary>
         char RestEighth { get; }
+
         char RestHalf { get; }
         char RestQuarter { get; }
         char RestSixteenth { get; }

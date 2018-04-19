@@ -12,6 +12,8 @@ namespace Manufaktura.Controls.Model
         protected bool hasFermataSign = false;
         protected Point location = new Point();
 
+        private NoteOrRestSize size;
+
         /// <summary>
         /// Default X position of note or rest
         /// </summary>
@@ -39,6 +41,8 @@ namespace Manufaktura.Controls.Model
         /// Tuplet sign placement (above or below).
         /// </summary>
 		public VerticalPlacement? TupletPlacement { get; set; }
+
+        public NoteOrRestSize Size { get => size; set { size = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// Creates a Note or Rest from RhythmicUnit.

@@ -176,7 +176,7 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Indicates that the note is cue note.
         /// </summary>
-        public bool IsCueNote { get; set; }
+        public bool IsCueNote => Size == NoteOrRestSize.Cue;
 
         /// <summary>
         /// Indicates that the note is grace note.
@@ -309,15 +309,29 @@ namespace Manufaktura.Controls.Model
 
         public override char GetCharacter(IMusicFont font)
         {
-            if (BaseDuration == RhythmicDuration.Whole) return font.NoteWhole;
-            else if (BaseDuration == RhythmicDuration.Half) return font.NoteheadHalf;
-            else if (BaseDuration == RhythmicDuration.Quarter) return font.NoteheadBlack;
-            else if (BaseDuration == RhythmicDuration.Eighth) return font.NoteheadBlack;
-            else if (BaseDuration == RhythmicDuration.Sixteenth) return font.NoteheadBlack;
-            else if (BaseDuration == RhythmicDuration.D32nd) return font.NoteheadBlack;
-            else if (BaseDuration == RhythmicDuration.D64th) return font.NoteheadBlack;
-            else if (BaseDuration == RhythmicDuration.D128th) return font.NoteheadBlack;
-            else return font.NoteheadBlack;
+            switch (Size)
+            {
+                case NoteOrRestSize.Full:
+                    if (BaseDuration == RhythmicDuration.DoubleWhole) return font.NoteDoubleWhole;
+                    else if (BaseDuration == RhythmicDuration.Whole) return font.NoteWhole;
+                    else if (BaseDuration == RhythmicDuration.Half) return font.NoteheadHalf;
+                    else return font.NoteheadBlack;
+
+                case NoteOrRestSize.Cue:
+                    if (BaseDuration == RhythmicDuration.DoubleWhole) return font.NoteDoubleWholeCue;
+                    else if (BaseDuration == RhythmicDuration.Whole) return font.NoteWholeCue;
+                    else if (BaseDuration == RhythmicDuration.Half) return font.NoteheadHalfCue;
+                    else return font.NoteheadBlackCue;
+
+                case NoteOrRestSize.Large:
+                    if (BaseDuration == RhythmicDuration.DoubleWhole) return font.NoteDoubleWholeLarge;
+                    else if (BaseDuration == RhythmicDuration.Whole) return font.NoteWholeLarge;
+                    else if (BaseDuration == RhythmicDuration.Half) return font.NoteheadHalfLarge;
+                    else return font.NoteheadBlackLarge;
+
+                default:
+                    throw new Exception($"Note size {Size} not supported.");
+            }
         }
 
         /// <summary>
@@ -358,6 +372,7 @@ namespace Manufaktura.Controls.Model
         {
             return renderer.LinespacesToPixels(GetNoteheadWidthLs(renderer));
         }
+
         /// <summary>
         /// Returns a string representation of this symbol for debugging purposes
         /// </summary>
@@ -373,6 +388,7 @@ namespace Manufaktura.Controls.Model
             else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalf;
             else return metadata.GlyphBBoxes.NoteheadBlack;
         }
+
         private void DetermineMusicalCharacter()
         {
         }

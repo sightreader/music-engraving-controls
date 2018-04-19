@@ -72,7 +72,7 @@ namespace Manufaktura.Controls.Formatting
 			if (currentNote == notes.Last()) return NoteBeamType.BackwardHook;
 			if (currentNote == notes.First()) return NoteBeamType.ForwardHook;
 
-			int pulse;
+			double pulse;
 			double currentBeat;
 			switch (hookDirectionAlgorithm)
 			{

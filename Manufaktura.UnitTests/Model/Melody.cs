@@ -1,4 +1,4 @@
-﻿using Manufaktura.Model;
+﻿/*using Manufaktura.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,3 +77,4 @@ namespace Manufaktura.UnitTests.Model
         public double MelodyContourDistance { get; set; }
     }
 }
+*/

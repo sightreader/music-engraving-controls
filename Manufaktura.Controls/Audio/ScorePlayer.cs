@@ -79,7 +79,7 @@ namespace Manufaktura.Controls.Audio
             {
                 var noteOrRest = CurrentElement as NoteOrRest;
                 if (noteOrRest == null) return lastPosition;
-                lastPosition = new PlaybackCursorPosition(Score.Systems.IndexOf(noteOrRest.Measure.System) + 1, noteOrRest.TextBlockLocation.X, DateTime.Now, new RhythmicDuration(noteOrRest.BaseDuration.Denominator, noteOrRest.NumberOfDots).ToTimeSpan(Tempo));
+                lastPosition = new PlaybackCursorPosition(Score.Systems.IndexOf(noteOrRest.Measure.System) + 1, noteOrRest.TextBlockLocation.X, DateTime.Now, new RhythmicDuration(noteOrRest.BaseDuration.DenominatorAsPowerOfTwo, noteOrRest.NumberOfDots).ToTimeSpan(Tempo));
                 return lastPosition;
             }
         }
@@ -164,7 +164,7 @@ namespace Manufaktura.Controls.Audio
                 var lastItem = orderedElements.Any() ? orderedElements.Last() : null;
                 if (lastItem != null)
                 {
-                    var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.Denominator, lastItem.Item2.NumberOfDots).ToDouble();
+                    var endOfMeasure = lastItem.Item1 + new RhythmicDuration(lastItem.Item2.BaseDuration.DenominatorAsPowerOfTwo, lastItem.Item2.NumberOfDots).ToDouble();
                     elapsedTime += TimeSpan.FromMilliseconds(endOfMeasure * (4 * 4 / Tempo.BeatUnit.Denominator) * Tempo.BeatTimeSpan.TotalMilliseconds);
                 }
                 if (repeat && repeats.Any()) i = repeats.Pop() - 1; 
@@ -185,7 +185,7 @@ namespace Manufaktura.Controls.Audio
                 if (durationElement is PlaybackSuggestion playbackSuggestion)
                 {
                     playbackSuggestion.CalculateDurationFromMusicXmlDuration(quarterNoteDuration);
-                    var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDouble() * 
+                    var dueTime = new RhythmicDuration(durationElement.BaseDuration.DenominatorAsPowerOfTwo, durationElement.NumberOfDots).ToDouble() * 
                         playbackSuggestion.DurationMultiplicator *
                         (playbackSuggestion.IsBackward ? -1 : 1);
                     elapsed[voice] += dueTime;
@@ -214,7 +214,7 @@ namespace Manufaktura.Controls.Audio
                         }
                     }
 
-                    var dueTime = new RhythmicDuration(durationElement.BaseDuration.Denominator, durationElement.NumberOfDots).ToDouble();
+                    var dueTime = new RhythmicDuration(durationElement.BaseDuration.DenominatorAsPowerOfTwo, durationElement.NumberOfDots).ToDouble();
                     if (tupletState != null) dueTime = dueTime / tupletState.NumberOfNotesUnderTuplet * (durationElement.BaseDuration.Denominator / Tempo.BeatUnit.Denominator);
 
                     chordBaseStartTime = elapsed[voice];

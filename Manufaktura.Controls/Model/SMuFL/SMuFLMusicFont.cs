@@ -87,5 +87,23 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char GClef15ma => '\uE054';
 
         public char GClef15mb => '\uE051';
+
+        public char NoteheadBlackCue => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+
+        public char NoteheadHalfCue => SMuFLGlyphs.Instance.NoteheadHalf.Character;
+
+        public char NoteheadBlackLarge => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+
+        public char NoteheadHalfLarge => SMuFLGlyphs.Instance.NoteheadHalf.Character;
+
+        public char NoteDoubleWhole => '\uE0A0';
+
+        public char NoteDoubleWholeCue => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
+
+        public char NoteDoubleWholeLarge => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
+
+        public char NoteWholeCue => SMuFLGlyphs.Instance.NoteWhole.Character;
+
+        public char NoteWholeLarge => SMuFLGlyphs.Instance.NoteWhole.Character;
     }
 }

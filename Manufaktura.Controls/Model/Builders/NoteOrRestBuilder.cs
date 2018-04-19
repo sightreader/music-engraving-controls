@@ -73,6 +73,8 @@ namespace Manufaktura.Controls.Model.Builders
 
         public int Voice { get; set; }
 
+        public NoteOrRestSize Size { get; set; }
+
         public NoteOrRestBuilder(MusicXmlParserState state)
         {
             State = state;
@@ -119,7 +121,7 @@ namespace Manufaktura.Controls.Model.Builders
                 nt.ArticulationPlacement = ArticulationPlacement;
                 nt.HasNatural = HasNatural;
                 nt.GraceNoteType = GraceNoteType;
-                nt.IsCueNote = IsCueNote;
+                nt.Size = Size;
                 nt.IsUnpitched = IsUnpitched;
                 nt.IsUpperMemberOfChord = IsChordElement;
                 nt.StemDefaultY = StemDefaultY;
@@ -149,6 +151,7 @@ namespace Manufaktura.Controls.Model.Builders
                 rt.IsVisible = IsVisible;
                 rt.FullMeasure = FullMeasure;
                 rt.Staff = Staff;
+                rt.Size = Size;
                 return rt;
             }
         }

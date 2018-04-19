@@ -59,7 +59,7 @@ namespace Manufaktura.Controls.Desktop.Audio
             if (!pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Add(note.MidiPitch);
             outDevice.Send(note, true, actualChannelNumber, firstNoteInMeasure ? 127 : 100);
 
-            await Task.Delay(new RhythmicDuration(note.BaseDuration.Denominator, note.NumberOfDots).ToTimeSpan(Tempo));
+            await Task.Delay(new RhythmicDuration(note.BaseDuration.DenominatorAsPowerOfTwo, note.NumberOfDots).ToTimeSpan(Tempo));
 
             outDevice.Send(note, false, actualChannelNumber);
             if (pitchesPlaying[channelNumber].Contains(note.MidiPitch)) pitchesPlaying[channelNumber].Remove(note.MidiPitch);

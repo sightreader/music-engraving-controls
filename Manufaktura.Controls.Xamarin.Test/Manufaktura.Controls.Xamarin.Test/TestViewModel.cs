@@ -40,10 +40,10 @@ namespace Manufaktura.Controls.Xamarin.Test
             }
 
 
-            var rd = new RhythmicDuration(4, 0).ToProportion();
-			rd = new RhythmicDuration(4, 1).ToProportion();
-			rd = new RhythmicDuration(4, 2).ToProportion();
-			rd = new RhythmicDuration(4, 3).ToProportion();
+            var rd = new RhythmicDuration(2, 0).ToProportion();
+			rd = new RhythmicDuration(2, 1).ToProportion();
+			rd = new RhythmicDuration(2, 2).ToProportion();
+			rd = new RhythmicDuration(2, 3).ToProportion();
 
 			var score = Score.CreateOneStaffScore(Clef.Alto, new MajorScale(Step.C, false));
 			var firstStaff = score.FirstStaff;

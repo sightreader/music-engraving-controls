@@ -91,6 +91,14 @@
     <Compile Include="TuningTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
+      <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
+      <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
+      <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
+      <Name>Manufaktura.Music</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Orm.MySql\Manufaktura.Orm.MySql.csproj">
       <Project>{a1e0439b-a7ea-4f93-98b1-b33f8f0277d9}</Project>
       <Name>Manufaktura.Orm.MySql</Name>

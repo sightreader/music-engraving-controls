@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Model
             }
             set
             {
-                Duration = new RhythmicDuration(BaseDuration.Denominator, value);
+                Duration = new RhythmicDuration(BaseDuration.DenominatorAsPowerOfTwo, value);
             }
         }
 

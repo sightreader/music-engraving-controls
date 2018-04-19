@@ -414,7 +414,7 @@ namespace Manufaktura.Controls.Rendering
 
         private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
         {
-            if (element.Duration == RhythmicDuration.Whole || element.IsUpperMemberOfChord) return;
+            if (element.BaseDuration > RhythmicDuration.Half || element.IsUpperMemberOfChord) return;
 
             var additionalPlaceForFlag = Math.Log(element.BaseDuration.Denominator, 2) - 2;
             if (additionalPlaceForFlag < 0) additionalPlaceForFlag = 0;
