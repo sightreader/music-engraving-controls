@@ -142,8 +142,24 @@ namespace Manufaktura.Controls.Rendering
             return space;
         }
 
+        private static double CorrectOrnamentYPositionToAvoidIntersection(ScoreRendererBase renderer, VerticalPlacement placement,
+            double ornamentHeight,
+            double yPosition, Note element, double notePositionY)
+        {
+            if (placement == VerticalPlacement.Above && yPosition + ornamentHeight > element.StemEndLocation.Y)
+                yPosition = element.StemEndLocation.Y - ornamentHeight - renderer.Settings.LineSpacing;
+            if (placement == VerticalPlacement.Above && yPosition + ornamentHeight > notePositionY)
+                yPosition = notePositionY - ornamentHeight - renderer.Settings.LineSpacing;
+            if (placement == VerticalPlacement.Below && yPosition + ornamentHeight < element.StemEndLocation.Y)
+                yPosition = element.StemEndLocation.Y + ornamentHeight + renderer.Settings.LineSpacing;
+            if (placement == VerticalPlacement.Below && yPosition + ornamentHeight < notePositionY)
+                yPosition = notePositionY + ornamentHeight + renderer.Settings.LineSpacing;
+
+            return yPosition;
+        }
+
         private static double GetNoteheadWidthPx(Note element, ScoreRendererBase renderer, double ratio = 1) =>
-            renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
+                    renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
 
         private static Note[] GetNotesUnderBeam(Note firstOrLastNote, Staff staff)
         {
@@ -391,18 +407,15 @@ namespace Manufaktura.Controls.Rendering
                 else
                     yPosition = notePositionY + (ornament.Placement == VerticalPlacement.Above ? -20 : 20);
 
-                if (ornament.Placement == VerticalPlacement.Above && yPosition > element.StemEndLocation.Y)
-                    yPosition = element.StemEndLocation.Y - renderer.Settings.LineSpacing;  //Chwilowe rozwiązanie, zanim odkryję jak działa default-y w mordentach i czy w ogóle działa
-                if (ornament.Placement == VerticalPlacement.Above && yPosition > notePositionY)
-                    yPosition = notePositionY - renderer.Settings.LineSpacing;  //Chwilowe rozwiązanie, zanim odkryję jak działa default-y w mordentach i czy w ogóle działa
+                yPosition = CorrectOrnamentYPositionToAvoidIntersection(renderer, ornament.Placement, renderer.LinespacesToPixels(1), yPosition, element, notePositionY);
 
                 Mordent mordent = ornament as Mordent;
                 if (mordent != null)
                 {
                     if (renderer.IsSMuFLFont)
                     {
-                        renderer.DrawCharacter(mordent.GetCharacter(renderer.Settings.CurrentFont), 
-                            MusicFontStyles.MusicFont, scoreService.CursorPositionX - element.GetNoteheadWidthPx(renderer) / 2, 
+                        renderer.DrawCharacter(mordent.GetCharacter(renderer.Settings.CurrentFont),
+                            MusicFontStyles.MusicFont, scoreService.CursorPositionX - element.GetNoteheadWidthPx(renderer) / 2,
                             yPosition, element);
                     }
                     else
@@ -585,19 +598,9 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.TrillMark != NoteTrillMark.None)
             {
-                double trillPos = notePositionY - 1;
-                if (element.TrillMark == NoteTrillMark.Above)
-                {
-                    trillPos = notePositionY - 1;
-                    if (trillPos > scoreService.CurrentLinePositions[0])
-                    {
-                        trillPos = scoreService.CurrentLinePositions[0] - 1.0f;
-                    }
-                }
-                else if (element.TrillMark == NoteTrillMark.Below)
-                {
-                    trillPos = notePositionY + 10;
-                }
+                var placement = element.TrillMark == NoteTrillMark.Above ? VerticalPlacement.Above : VerticalPlacement.Below;
+                double trillPos = CorrectOrnamentYPositionToAvoidIntersection(renderer, placement, renderer.LinespacesToPixels(2), notePositionY, element, notePositionY);
+                
                 renderer.DrawCharacter(renderer.Settings.CurrentFont.Trill, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 1, trillPos, element);
             }
         }
