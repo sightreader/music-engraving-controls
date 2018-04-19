@@ -19,7 +19,8 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char FermataUp => '\uE4C0';
         public char Flat => '\uE260';
         public char GClef => '\uE050';
-        public char Mordent => '\uE56C';
+        public char Mordent => SMuFLGlyphs.Instance.OrnamentMordent.Character;
+        public char MordentInverted => SMuFLGlyphs.Instance.OrnamentMordentInverted.Character;
         public char MordentShort => '\uE56C';
         public char Natural => '\uE261';
         public char NoteEighth => throw new NotImplementedException();
@@ -37,7 +38,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char NoteheadBlack => SMuFLGlyphs.Instance.NoteheadBlack.Character;
         public char NoteheadHalf => '\uE0A3';
         public char NoteQuarter => '\uE0A4';
-        public char NoteSixteenth => throw new NotImplementedException();
+        public char NoteSixteenth => SMuFLGlyphs.Instance.Note16ThUp.Character;
         public char NoteWhole => '\uE0A2';
         public char PercussionClef => '\uE069';
         public char RepeatBackward => '\uE041';
@@ -49,7 +50,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char RestSixteenth => '\uE4E7';
         public char RestWhole => '\uE4E3';
         public char Sharp => '\uE262';
-        public char SquareBracketLeft => throw new NotImplementedException();
+        public char SquareBracketLeft => SMuFLGlyphs.Instance.Bracket.Character;
         public char Staff4Lines => throw new NotImplementedException();
         public char Staff5Lines => throw new NotImplementedException();
         public char Time0 => '\uE080';

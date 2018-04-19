@@ -31,6 +31,7 @@
         public char GClef8va => GClef;
         public char GClef8vb => GClef;
         public char Mordent => 'm';
+        public char MordentInverted => 'm';
         public char MordentShort => 'n';
         public char Natural => 'k';
         public char NoteDoubleWhole => 'w';

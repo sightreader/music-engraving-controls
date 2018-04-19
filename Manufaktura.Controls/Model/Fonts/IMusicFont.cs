@@ -63,6 +63,7 @@
         char GClef15mb { get; }
 
         char Mordent { get; }
+        char MordentInverted { get; }
 
         char MordentShort { get; }
 
