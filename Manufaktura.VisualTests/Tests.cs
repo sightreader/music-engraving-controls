@@ -46,6 +46,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2018, 3, 5, 21, 15, 00));     //Poprawki rozmieszczenia nut w akordach dla Ricardo Garcii
             AcceptTo(new DateTime(2018, 4, 11, 21, 17, 00));    //Duża zmiana obsługi współrzędnych rysowanych znaków, obsługa fontów SMuFL
             AcceptTo(new DateTime(2018, 4, 18, 20, 29, 00));    //Wiele poprawek regresji i nowych funkcjonalności
+            AcceptTo(new DateTime(2018, 4, 20, 13, 12, 00));    //Poprawka regresji związanej ze zmianą tonacji, klucza lub metrum na końcu systemu
 
             var tests = CreatePathDictionary();
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
