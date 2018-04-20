@@ -62,6 +62,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         [Obsolete("Use ScoreClass property instead to set class of the score container and set height in css class definition. You can also use AddFullWidthStyle property to automatically generate css style.")]
         public double Height { get; set; }
 
+        public bool IgnorePageMargins { get; set; }
         /// <summary>
         /// Moves all musical symbols a specific number of pixels to right. Used for improving readability of some music fonts.
         /// </summary>

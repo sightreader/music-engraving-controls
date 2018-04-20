@@ -10,8 +10,6 @@ namespace Manufaktura.Controls.Rendering.Implementations
     {
         private const string EmptyCharacterWithWidth = "j";
 
-        public override bool CanDrawCharacterInBounds => false;
-
         public HtmlSvgScoreRenderer()
             : base(null)
         {
@@ -23,10 +21,11 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Settings = settings;
         }
 
+        public override bool CanDrawCharacterInBounds => false;
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, Model.MusicalSymbol owner)
         {
             if (!EnsureProperPage(owner)) return;
-            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) rect = rect.Translate(CurrentScore.DefaultPageSettings);
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama && !TypedSettings.IgnorePageMargins) rect = rect.Translate(CurrentScore.DefaultPageSettings);
 
             var element = new XElement("path",
                 new XAttribute("d", string.Format("M{0} {1} A{2} {3} {4} {5} {6} {7} {8}",
@@ -57,7 +56,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         public override void DrawBezier(Point p1, Point p2, Point p3, Point p4, Pen pen, Model.MusicalSymbol owner)
         {
             if (!EnsureProperPage(owner)) return;
-            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama && !TypedSettings.IgnorePageMargins)
             {
                 p1 = p1.Translate(CurrentScore.DefaultPageSettings);
                 p2 = p2.Translate(CurrentScore.DefaultPageSettings);
@@ -90,10 +89,32 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Canvas.Add(element);
         }
 
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
+        {
+            if (!EnsureProperPage(owner)) return;
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama && !TypedSettings.IgnorePageMargins) location = location.Translate(CurrentScore.DefaultPageSettings);
+
+            var element = GetTextElement(character.ToString(), fontStyle, new Point(0, 0), color, owner);
+            var svg = new XElement("svg",
+                new XAttribute("x", location.X.ToStringInvariant()),
+                new XAttribute("y", location.Y.ToStringInvariant()),
+                new XAttribute("width", size.Width.ToStringInvariant()),
+                new XAttribute("height", size.Height.ToStringInvariant()),
+                new XAttribute("viewBox", $"0 0 {size.Width.ToStringInvariant()} {size.Height.ToStringInvariant()}"));
+            svg.Add(element);
+
+            //element.SetAttributeValue(XName.Get("viewBox"), $"0 0 {size.Width.ToStringInvariant()} {size.Height.ToStringInvariant()}");
+
+            if (location.X > ActualWidth) ActualWidth = location.X;
+            if (location.Y > ActualHeight) ActualHeight = location.Y;
+
+            Canvas.Add(svg);
+        }
+
         public override void DrawLine(Point startPoint, Point endPoint, Pen pen, Model.MusicalSymbol owner)
         {
             if (!EnsureProperPage(owner)) return;
-            if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama && !TypedSettings.IgnorePageMargins)
             {
                 startPoint = startPoint.Translate(CurrentScore.DefaultPageSettings);
                 endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
@@ -126,7 +147,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             if (!TypedSettings.Fonts.ContainsKey(fontStyle)) return;   //Nie ma takiego fontu zdefiniowanego. Nie rysuj.
 
             if (!EnsureProperPage(owner)) return;
-            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
+            if (Settings.RenderingMode != ScoreRenderingModes.Panorama && !TypedSettings.IgnorePageMargins) location = location.Translate(CurrentScore.DefaultPageSettings);
 
             location = TranslateTextLocation(location, fontStyle);
 
@@ -136,6 +157,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
             if (location.Y > ActualHeight) ActualHeight = location.Y;
 
             Canvas.Add(element);
+        }
+
+        protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
+        {
         }
 
         private XElement GetTextElement(string text, MusicFontStyles fontStyle, Point location, Color color, Model.MusicalSymbol owner)
@@ -156,32 +181,6 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
             }
             return element;
-        }
-
-        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, Model.MusicalSymbol owner)
-        {
-            if (!EnsureProperPage(owner)) return;
-            if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
-
-            var element = GetTextElement(character.ToString(), fontStyle, new Point(0, 0), color, owner);
-            var svg = new XElement("svg",
-                new XAttribute("x", location.X.ToStringInvariant()),
-                new XAttribute("y", location.Y.ToStringInvariant()),
-                new XAttribute("width", size.Width.ToStringInvariant()),
-                new XAttribute("height", size.Height.ToStringInvariant()),
-                new XAttribute("viewBox", $"0 0 {size.Width.ToStringInvariant()} {size.Height.ToStringInvariant()}"));
-            svg.Add(element);
-            
-            //element.SetAttributeValue(XName.Get("viewBox"), $"0 0 {size.Width.ToStringInvariant()} {size.Height.ToStringInvariant()}");
-
-            if (location.X > ActualWidth) ActualWidth = location.X;
-            if (location.Y > ActualHeight) ActualHeight = location.Y;
-
-            Canvas.Add(svg);
-        }
-
-        protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
-        {
         }
     }
 }
