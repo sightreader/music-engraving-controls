@@ -1,7 +1,6 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Music.Model;
 using Manufaktura.Music.Model.MajorAndMinor;
-using System;
 
 namespace Manufaktura.Controls.Model
 {
@@ -21,25 +20,12 @@ namespace Manufaktura.Controls.Model
             fifths = numberOfFifths;
         }
 
-        
-
         /// <summary>
         /// Number on the Circle of Fifths
         /// </summary>
-		public int Fifths { get { return fifths; } }
+        public int Fifths { get { return fifths; } }
 
-
-        public Primitives.Point TextBlockLocation
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public Primitives.Point TextBlockLocation { get; internal set; }
 
         /// <summary>
         /// Creates a new instance of Key from given midi pitch.

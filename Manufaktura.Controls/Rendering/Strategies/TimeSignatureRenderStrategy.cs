@@ -31,16 +31,13 @@ namespace Manufaktura.Controls.Rendering
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
             var topLinePosition = scoreService.CurrentLinePositions[0];
+            scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
 
-            if (element.SignatureType == TimeSignatureType.Common)
+            if (element.SignatureType != TimeSignatureType.Numbers)
             {
-                renderer.DrawCharacter(renderer.Settings.CurrentFont.CommonTime, MusicFontStyles.MusicFont,
+                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont,
                     scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(2), element);
-            }
-            else if (element.SignatureType == TimeSignatureType.Cut)
-            {
-                renderer.DrawCharacter(renderer.Settings.CurrentFont.CutTime, MusicFontStyles.MusicFont,
-                    scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(2), element);
+                element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(2));
             }
             else
             {
@@ -50,6 +47,8 @@ namespace Manufaktura.Controls.Rendering
                         MusicFontStyles.MusicFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(1), element);
                     renderer.DrawString(GetSMuFLNumberCharacters(renderer, element.TypeOfBeats),
                         MusicFontStyles.MusicFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(3), element);
+
+                    element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(3));
                 }
                 else
                 {
@@ -57,6 +56,8 @@ namespace Manufaktura.Controls.Rendering
                         MusicFontStyles.TimeSignatureFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(2), element);
                     renderer.DrawString(Convert.ToString(element.TypeOfBeats),
                         MusicFontStyles.TimeSignatureFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(4), element);
+
+                    element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(4));
                 }
             }
             scoreService.CursorPositionX += 20;

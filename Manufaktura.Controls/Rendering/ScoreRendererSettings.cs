@@ -50,6 +50,7 @@ namespace Manufaktura.Controls.Rendering
 
         public double DefaultStaffLineThickness { get; set; } = 0.5;
         public double DefaultStemThickness { get; set; } = 1;
+        public double DefaultTupletBracketThickness { get; set; } = 1;
         /// <summary>
         /// True, to ignore element positions which are implicitly set in MusicXml file
         /// </summary>

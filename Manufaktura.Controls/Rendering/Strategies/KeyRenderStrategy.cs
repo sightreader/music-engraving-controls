@@ -3,12 +3,9 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Manufaktura.Controls.Rendering
-{   
+{
     /// <summary>
     /// Strategy for rendering a Key.
     /// </summary>
@@ -35,28 +32,30 @@ namespace Manufaktura.Controls.Rendering
             if (scoreService.CurrentClef.TypeOfClef == ClefType.GClef) octaveShiftSharp = 1;
             int octaveShiftFlat = 0;
             if (scoreService.CurrentClef.TypeOfClef == ClefType.FClef) octaveShiftFlat = -1;
+
+            element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]);
+
             if (scoreService.CurrentKey.Fifths > 0)
             {
                 flatOrSharpPositionY = scoreService.CurrentClef.TextBlockLocation.Y
                     + Pitch.StepDistance(scoreService.CurrentClef,
-                      Pitch.FromStep(Step.F, scoreService.CurrentClef.Pitch.Octave + octaveShiftSharp)) 
+                      Pitch.FromStep(Step.F, scoreService.CurrentClef.Pitch.Octave + octaveShiftSharp))
                       * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = 1;
-
             }
             else if (scoreService.CurrentKey.Fifths < 0)
             {
                 flatOrSharpPositionY = scoreService.CurrentClef.TextBlockLocation.Y +
                     Pitch.StepDistance(scoreService.CurrentClef,
-                    Pitch.FromStep(Step.B, scoreService.CurrentClef.Pitch.Octave + octaveShiftFlat)) 
+                    Pitch.FromStep(Step.B, scoreService.CurrentClef.Pitch.Octave + octaveShiftFlat))
                     * (renderer.Settings.LineSpacing / 2);
                 jumpFourth = true;
                 jumpDirection = -1;
             }
+
             for (int i = 0; i < Math.Abs(scoreService.CurrentKey.Fifths); i++)
             {
-
                 renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
                 if (jumpFourth) flatOrSharpPositionY += 3 * 3 * jumpDirection;
                 else flatOrSharpPositionY += 3 * 4 * jumpDirection;

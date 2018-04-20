@@ -66,6 +66,9 @@ namespace Manufaktura.Controls.Rendering.Snippets
 		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, NoteOrRest element, int beamLoop)
 		{
 			if (measurementService.TupletState == null) throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
+
+            var tupletBracketPen = renderer.CreatePenFromDefaults(element, "tupletBracketThickness", s => s.DefaultTupletBracketThickness);
+
 			Staff staff = scoreService.CurrentStaff;
 
 			NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, PeekType.BeginningOfTuplet);
@@ -83,11 +86,11 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
 			{
 				renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-								  new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), element);
+								  new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), tupletBracketPen, element);
 				renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-								  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), element);
+								  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), tupletBracketPen, element);
 				renderer.DrawLine(new Point(tupletBracketEndXPosition, tupletBracketEndYPosition),
-								  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), element);
+								  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), tupletBracketPen, element);
 			}
 
             double numberOfNotesYTranslation = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -18 : 18;

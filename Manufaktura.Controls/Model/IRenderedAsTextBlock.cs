@@ -13,6 +13,6 @@ namespace Manufaktura.Controls.Model
         /// <summary>
         /// Location of text block with text representing the musical symbol
         /// </summary>
-        Point TextBlockLocation { get; set; }
+        Point TextBlockLocation { get; }
     }
 }
