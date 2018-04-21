@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GdiPlusScoreRenderer.cs" />
+    <Compile Include="GdiPlusScoreRendererSettings.cs" />
     <Compile Include="NoteViewer.cs">
       <SubType>Component</SubType>
     </Compile>
