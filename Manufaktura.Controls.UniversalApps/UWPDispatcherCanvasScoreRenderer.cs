@@ -18,6 +18,11 @@ namespace Manufaktura.Controls.UniversalApps
             this.control = control;
         }
 
+        public UWPDispatcherCanvasScoreRenderer(Canvas canvas, UWPScoreRendererSettings rendererSettings, NoteViewer control) : base(canvas, rendererSettings)
+        {
+            this.control = control;
+        }
+
         public int BufferSize { get; } = 1600;
 
         public override void DrawArc(Primitives.Rectangle rect, double startAngle, double sweepAngle, Primitives.Pen pen, MusicalSymbol owner)
@@ -30,6 +35,13 @@ namespace Manufaktura.Controls.UniversalApps
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
         {
             renderingQueue.Enqueue(() => base.DrawBezier(p1, p2, p3, p4, pen, owner));
+
+            if (renderingQueue.Count > BufferSize) FlushBuffer();
+        }
+
+        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
+        {
+            renderingQueue.Enqueue(() => base.DrawCharacterInBounds(character, fontStyle, location, size, color, owner));
 
             if (renderingQueue.Count > BufferSize) FlushBuffer();
         }
@@ -47,14 +59,6 @@ namespace Manufaktura.Controls.UniversalApps
 
             if (renderingQueue.Count > BufferSize) FlushBuffer();
         }
-
-        public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
-        {
-            renderingQueue.Enqueue(() => base.DrawCharacterInBounds(character, fontStyle, location, size, color, owner));
-
-            if (renderingQueue.Count > BufferSize) FlushBuffer();
-        }
-
         public async void FlushBuffer()
         {
             await control.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () =>

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Input;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace Manufaktura.Controls.UniversalApps
 {
@@ -14,5 +9,7 @@ namespace Manufaktura.Controls.UniversalApps
         {
             InitializeComponent();
         }
+
+        public FontFamily DummyFontFamily => dummyTextBlock.FontFamily;
     }
 }

@@ -1,11 +1,15 @@
 ﻿using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Foundation;
 using Windows.UI;
@@ -38,8 +42,9 @@ namespace Manufaktura.Controls.UniversalApps
 		public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
 
 		private DraggingState _draggingState = new DraggingState();
+        private Lazy<UWPScoreRendererSettings> rendererSettings = new Lazy<UWPScoreRendererSettings>(() => new UWPScoreRendererSettings());
 
-		private Score _innerScore;
+        private Score _innerScore;
 
 		private Color previousColor;
 
@@ -155,7 +160,40 @@ namespace Manufaktura.Controls.UniversalApps
 				positionElement.DefaultXPosition.HasValue ? positionElement.DefaultXPosition.Value.ToString() : "(not set)");
 		}
 
-		protected override Size MeasureOverride(Size availableSize)
+        public void LoadFont(FontFamily family, double fontSize, string metadata)
+        {
+            rendererSettings.Value.LoadSMuFLMetadata(metadata);
+            rendererSettings.Value.SetFont(MusicFontStyles.MusicFont, family, fontSize);
+            rendererSettings.Value.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.StaffFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.TimeSignatureFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.TrillFont, family);
+        }
+
+        public async Task LoadFontAsync(FontFamily family, double fontSize, string metadata)
+        {
+            await rendererSettings.Value.LoadSMuFLMetadataAsync(metadata);
+            rendererSettings.Value.SetFont(MusicFontStyles.MusicFont, family, fontSize);
+            rendererSettings.Value.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.StaffFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.TimeSignatureFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.TrillFont, family);
+        }
+
+        public void LoadFont(FontFamily family, double fontSize, SMuFLFontMetadata metadata)
+        {
+            rendererSettings.Value.CurrentFont = new SMuFLMusicFont();
+            rendererSettings.Value.CurrentSMuFLMetadata = metadata;
+            rendererSettings.Value.SetFont(MusicFontStyles.MusicFont, family, fontSize);
+            rendererSettings.Value.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.StaffFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.TimeSignatureFont, family);
+            rendererSettings.Value.SetFont(MusicFontStyles.TrillFont, family);
+        }
+
+        public void LoadDefaultFont() => rendererSettings.Value.SetPolihymniaFont();
+
+        protected override Size MeasureOverride(Size availableSize)
 		{
 			if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
 			var children = MainCanvas.Children.OfType<UIElement>();
@@ -293,7 +331,7 @@ namespace Manufaktura.Controls.UniversalApps
 			score.MeasureInvalidated -= Score_MeasureInvalidated;
 
 			MainCanvas.Children.Clear();
-			Renderer = IsAsync ? new UWPDispatcherCanvasScoreRenderer(MainCanvas, this) : new UWPCanvasScoreRenderer(MainCanvas);
+			Renderer = IsAsync ? new UWPDispatcherCanvasScoreRenderer(MainCanvas, rendererSettings.Value, this) : new UWPCanvasScoreRenderer(MainCanvas, rendererSettings.Value);
 			Renderer.Settings.RenderingMode = RenderingMode;
 			Renderer.Settings.CurrentPage = CurrentPage;
 			var brush = Foreground as SolidColorBrush;
@@ -312,7 +350,7 @@ namespace Manufaktura.Controls.UniversalApps
 
 		private void RenderOnCanvas(Measure measure)
 		{
-			if (Renderer == null) Renderer = new UWPCanvasScoreRenderer(MainCanvas);
+			if (Renderer == null) Renderer = new UWPCanvasScoreRenderer(MainCanvas, rendererSettings.Value);
 			var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
 			foreach (var beamGroup in beamGroupsForThisMeasure)
 			{
