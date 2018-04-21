@@ -22,7 +22,7 @@ namespace Manufaktura.Controls.Parser.Digest
 					var midiPitch = int.Parse(pitchAndDuration[1]);
 					var denominator = int.Parse(pitchAndDuration[0].Replace(".", ""));
 					var numberOfNotes = pitchAndDuration[0].ToCharArray().Where(c => c == '.').Count();
-                    var denominatorAsPowerOfTwo = (int)Math.Log(denominator, 2);
+                    var denominatorAsPowerOfTwo = UsefulMath.Log2(denominator);
                     var note = Note.FromMidiPitch(midiPitch, new RhythmicDuration(denominatorAsPowerOfTwo, numberOfNotes));
 					score.FirstStaff.Elements.Add(note);
 				}
@@ -34,7 +34,7 @@ namespace Manufaktura.Controls.Parser.Digest
 				{
 					var denominator = int.Parse(element.Replace(".", ""));
 					var numberOfNotes = element.ToCharArray().Where(c => c == '.').Count();
-                    var denominatorAsPowerOfTwo = (int)Math.Log(denominator, 2);
+                    var denominatorAsPowerOfTwo = UsefulMath.Log2(denominator);
                     var rest = new Rest(new RhythmicDuration(denominatorAsPowerOfTwo, numberOfNotes));
 					score.FirstStaff.Elements.Add(rest);
 				}

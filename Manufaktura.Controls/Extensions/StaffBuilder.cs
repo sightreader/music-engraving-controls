@@ -115,7 +115,7 @@ namespace Manufaktura.Controls.Extensions
 
         public static IEnumerable<Note> AddUniformRhythm(this IEnumerable<Pitch> pitches, int duration)
         {
-            var durationAsPowerOfTwo = (int)Math.Log(duration, 2);
+            var durationAsPowerOfTwo = UsefulMath.Log2(duration);
             return AddUniformRhythm(pitches, new RhythmicDuration(durationAsPowerOfTwo));
         }
 
