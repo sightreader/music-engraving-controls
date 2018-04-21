@@ -18,6 +18,7 @@
             <mf:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
             <Button Content="Zapisz MusicXML" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_9"/>
             <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Button Content="Breakpoint" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Breakpoint_Click"/>
             <Button Content="Odtwórz" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
             <Button Content="Pauza" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_7"/>
             <Button Content="Stop" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_8"/>

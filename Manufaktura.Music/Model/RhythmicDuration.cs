@@ -188,7 +188,7 @@ namespace Manufaktura.Music.Model
             int denominator;
             if (!int.TryParse(s.Replace(".", ""), out denominator)) throw new Exception("Could not parse string. Unrecognized duration.");
 
-            var denominatorAsPowerOfTwo = (int)Math.Log(denominator, 2);
+            var denominatorAsPowerOfTwo = UsefulMath.Log2(denominator);
             return new RhythmicDuration(denominatorAsPowerOfTwo, numberOfDots);
         }
 
@@ -206,7 +206,7 @@ namespace Manufaktura.Music.Model
         {
             return durations.Select(i =>
             {
-                var denominatorAsPowerOfTwo = (int)Math.Log(i, 2);
+                var denominatorAsPowerOfTwo = UsefulMath.Log2(i);
                 return new RhythmicDuration(denominatorAsPowerOfTwo);
             }).ToArray();
         }
@@ -219,7 +219,7 @@ namespace Manufaktura.Music.Model
                 duration = default(RhythmicDuration);
                 return false;
             }
-            var denominatorAsPowerOfTwo = (int)Math.Log(val, 2);
+            var denominatorAsPowerOfTwo = UsefulMath.Log2(val);
             duration = new RhythmicDuration(denominatorAsPowerOfTwo);
             return true;
         }

@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
+using Manufaktura.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +33,13 @@ namespace Manufaktura.Controls.Formatting
 				nextNote = i == noteArray.Length - 1 ? null : noteArray[i + 1] as Note;
 
 				currentNote.BeamList.Clear();
-				var numberOfBeams = Math.Log(currentNote.BaseDuration.Denominator, 2) - 2;
-				var numberOfBeamsOnPreviousNote = previousNote == null ? 0 : Math.Log(previousNote.BaseDuration.Denominator, 2) - 2;
-				var numberOfBeamsOnNextNote = nextNote == null ? 0 : Math.Log(nextNote.BaseDuration.Denominator, 2) - 2;
-				for (var b = 0; b < numberOfBeams; b++)
+				var numberOfBeams = currentNote.BaseDuration > RhythmicDuration.Eighth ? 0 : UsefulMath.Log2((int)currentNote.BaseDuration.Denominator) - 2;
+				var numberOfBeamsOnPreviousNote = previousNote == null || previousNote.BaseDuration > RhythmicDuration.Eighth ? 
+                    0 : UsefulMath.Log2((int)previousNote.BaseDuration.Denominator) - 2;
+				var numberOfBeamsOnNextNote = nextNote == null || nextNote.BaseDuration > RhythmicDuration.Eighth ? 
+                    0 : UsefulMath.Log2((int)nextNote.BaseDuration.Denominator) - 2;
+
+                for (var b = 0; b < numberOfBeams; b++)
 				{
 					if (previousNote == null)
 					{

@@ -136,5 +136,16 @@ namespace Manufaktura.Controls.UWP.Test
             var unsupported = MusicXmlWritingStrategyBase.UnsupportedElements;
             var createdDocument = new MusicXmlParser().ParseBack(vm.Data);
         }
+
+        private void Breakpoint_Click(object sender, RoutedEventArgs e)
+        {
+            if (noteViewerTest.SelectedElement == null) return;
+            var vm = (TestViewModel)DataContext;
+            DataContext = null;
+            noteViewerTest.SelectedElement.IsBreakpointSet = true;
+            DataContext = vm;
+
+
+        }
     }
 }

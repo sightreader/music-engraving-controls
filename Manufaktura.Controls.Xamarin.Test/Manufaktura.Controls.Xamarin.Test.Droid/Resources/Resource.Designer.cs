@@ -794,8 +794,6 @@ namespace Manufaktura.Controls.Xamarin.Test.Droid
 			global::Manufaktura.Controls.Xamarin.Droid.Resource.Layout.select_dialog_multichoice_material = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::Manufaktura.Controls.Xamarin.Droid.Resource.Layout.select_dialog_singlechoice_material = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.Layout.select_dialog_singlechoice_material;
 			global::Manufaktura.Controls.Xamarin.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Manufaktura.Controls.Xamarin.Droid.Resource.String.ApplicationName = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.String.ApplicationName;
-			global::Manufaktura.Controls.Xamarin.Droid.Resource.String.Hello = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.String.Hello;
 			global::Manufaktura.Controls.Xamarin.Droid.Resource.String.abc_action_bar_home_description = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.String.abc_action_bar_home_description;
 			global::Manufaktura.Controls.Xamarin.Droid.Resource.String.abc_action_bar_home_description_format = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.String.abc_action_bar_home_description_format;
 			global::Manufaktura.Controls.Xamarin.Droid.Resource.String.abc_action_bar_home_subtitle_description_format = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
@@ -3993,12 +3991,6 @@ namespace Manufaktura.Controls.Xamarin.Test.Droid
 		
 		public partial class String
 		{
-			
-			// aapt resource value: 0x7f05001f
-			public const int ApplicationName = 2131034143;
-			
-			// aapt resource value: 0x7f05001e
-			public const int Hello = 2131034142;
 			
 			// aapt resource value: 0x7f05000b
 			public const int abc_action_bar_home_description = 2131034123;
