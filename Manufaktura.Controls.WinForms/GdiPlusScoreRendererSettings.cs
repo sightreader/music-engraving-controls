@@ -14,10 +14,7 @@ namespace Manufaktura.Controls.WinForms
                 {MusicFontStyles.GraceNoteFont, new Font("Polihymnia", 20, GraphicsUnit.Pixel)},
                 {MusicFontStyles.StaffFont, new Font("Polihymnia", 30.5f, GraphicsUnit.Pixel)},
                 {MusicFontStyles.LyricsFont, new Font("Times New Roman", 11, GraphicsUnit.Pixel)},
-                {MusicFontStyles.LyricsFontBold, new Font("Times New Roman", 11, FontStyle.Bold, GraphicsUnit.Pixel)},
-                {MusicFontStyles.MiscArticulationFont, new Font("Microsoft Sans Serif", 14, FontStyle.Bold, GraphicsUnit.Pixel)},
                 {MusicFontStyles.DirectionFont, new Font("Microsoft Sans Serif", 11, FontStyle.Italic | FontStyle.Bold, GraphicsUnit.Pixel)},
-                {MusicFontStyles.TrillFont, new Font("Times New Roman", 14, FontStyle.Italic | FontStyle.Bold, GraphicsUnit.Pixel)},
                 {MusicFontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 14.5f, FontStyle.Bold, GraphicsUnit.Pixel)}
             };
 
@@ -27,10 +24,7 @@ namespace Manufaktura.Controls.WinForms
                 {MusicFontStyles.GraceNoteFont, new Font("Polihymnia", 20, GraphicsUnit.Pixel)},
                 {MusicFontStyles.StaffFont, new Font("Polihymnia", 30.5f, GraphicsUnit.Pixel)},
                 {MusicFontStyles.LyricsFont, new Font("Times New Roman", 11, GraphicsUnit.Pixel)},
-                {MusicFontStyles.LyricsFontBold, new Font("Times New Roman", 11, FontStyle.Bold, GraphicsUnit.Pixel)},
-                {MusicFontStyles.MiscArticulationFont, new Font("Microsoft Sans Serif", 14, FontStyle.Bold, GraphicsUnit.Pixel)},
                 {MusicFontStyles.DirectionFont, new Font("Microsoft Sans Serif", 11, FontStyle.Italic | FontStyle.Bold, GraphicsUnit.Pixel)},
-                {MusicFontStyles.TrillFont, new Font("Times New Roman", 14, FontStyle.Italic | FontStyle.Bold, GraphicsUnit.Pixel)},
                 {MusicFontStyles.TimeSignatureFont, new Font("Microsoft Sans Serif", 14.5f, FontStyle.Bold, GraphicsUnit.Pixel)}
             };
 
@@ -67,13 +61,12 @@ namespace Manufaktura.Controls.WinForms
             fonts[MusicFontStyles.MusicFont] = defaultFonts[MusicFontStyles.MusicFont];
             fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];
             fonts[MusicFontStyles.StaffFont] = defaultFonts[MusicFontStyles.StaffFont];
-            fonts[MusicFontStyles.TrillFont] = defaultFonts[MusicFontStyles.TrillFont];
         }
 
         public void SetPolihymniaFontFromPath(string fontPath)
         {
             base.SetPolihymniaFont();
-            foreach (var fontStyle in new[] { MusicFontStyles.MusicFont, MusicFontStyles.GraceNoteFont, MusicFontStyles.StaffFont, MusicFontStyles.TrillFont })
+            foreach (var fontStyle in new[] { MusicFontStyles.MusicFont, MusicFontStyles.GraceNoteFont, MusicFontStyles.StaffFont })
             {
                 var defaultFont = defaultFonts[fontStyle];
                 SetFontFromPath(fontStyle, fontPath, defaultFont.Size, defaultFont.Style);

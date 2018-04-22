@@ -26,37 +26,45 @@ namespace Manufaktura.Controls.WinForms
                 //Do nothing
             }
         }
+
         public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
 
-        public void LoadFont(string fontName, float fontSize, string metadata, FontStyle fontStyle = FontStyle.Regular)
+        public void LoadFont(MusicFontStyles style, string fontName, float fontSize, string metadata, FontStyle fontStyle = FontStyle.Regular)
         {
             rendererSettings.LoadSMuFLMetadata(metadata);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.TrillFont, fontName, fontSize, fontStyle);
+            rendererSettings.SetFont(style, fontName, fontSize, fontStyle);
         }
 
-        public void LoadFont(string fontName, float fontSize, SMuFLFontMetadata metadata, FontStyle fontStyle = FontStyle.Regular)
+        public void LoadFont(MusicFontStyles style, string fontName, float fontSize, SMuFLFontMetadata metadata, FontStyle fontStyle = FontStyle.Regular)
         {
             rendererSettings.CurrentFont = new SMuFLMusicFont();
             rendererSettings.CurrentSMuFLMetadata = metadata;
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.TrillFont, fontName, fontSize, fontStyle);
+            rendererSettings.SetFont(style, fontName, fontSize, fontStyle);
         }
 
-        public async Task LoadFontAsync(string fontName, float fontSize, string metadata, FontStyle fontStyle = FontStyle.Regular)
+        public async Task LoadFontAsync(MusicFontStyles style, string fontName, float fontSize, string metadata, FontStyle fontStyle = FontStyle.Regular)
         {
             await rendererSettings.LoadSMuFLMetadataAsync(metadata);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, fontName, fontSize, fontStyle);
-            rendererSettings.SetFont(MusicFontStyles.TrillFont, fontName, fontSize, fontStyle);
+            rendererSettings.SetFont(style, fontName, fontSize, fontStyle);
+        }
+
+        public void LoadFontFromPath(MusicFontStyles style, string fontPath, float fontSize, string metadata, FontStyle fontStyle = FontStyle.Regular)
+        {
+            rendererSettings.LoadSMuFLMetadata(metadata);
+            rendererSettings.SetFontFromPath(style, fontPath, fontSize, fontStyle);
+        }
+
+        public void LoadFontFromPath(MusicFontStyles style, string fontPath, float fontSize, SMuFLFontMetadata metadata, FontStyle fontStyle = FontStyle.Regular)
+        {
+            rendererSettings.CurrentFont = new SMuFLMusicFont();
+            rendererSettings.CurrentSMuFLMetadata = metadata;
+            rendererSettings.SetFontFromPath(style, fontPath, fontSize, fontStyle);
+        }
+
+        public async Task LoadFontFromPathAsync(MusicFontStyles style, string fontPath, float fontSize, string metadata, FontStyle fontStyle = FontStyle.Regular)
+        {
+            await rendererSettings.LoadSMuFLMetadataAsync(metadata);
+            rendererSettings.SetFontFromPath(style, fontPath, fontSize, fontStyle);
         }
 
         protected override void OnPaint(PaintEventArgs e)

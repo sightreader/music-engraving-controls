@@ -73,8 +73,10 @@ namespace Manufaktura.Controls.UniversalApps
             compatibilityFonts[style] = new System.Drawing.Font(compatibilityFont.FontFamily, (float)fontSize, compatibilityFont.Style, System.Drawing.GraphicsUnit.Pixel);
         }
 
-        public void SetPolihymniaFont()
+        public override void SetPolihymniaFont()
         {
+            base.SetPolihymniaFont();
+
             fonts[MusicFontStyles.MusicFont] = defaultFonts[MusicFontStyles.MusicFont];
             fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];
             fonts[MusicFontStyles.StaffFont] = defaultFonts[MusicFontStyles.StaffFont];
