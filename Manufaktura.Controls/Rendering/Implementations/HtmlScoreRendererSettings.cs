@@ -101,8 +101,6 @@ namespace Manufaktura.Controls.Rendering.Implementations
             SetFont(MusicFontStyles.GraceNoteFont, name, size, fontPaths);
             SetFont(MusicFontStyles.StaffFont, name, size, fontPaths);
             SetFont(MusicFontStyles.TimeSignatureFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.TrillFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.MiscArticulationFont, name, size, fontPaths);
         }
 
         public void SetFont(MusicFontStyles style, string name, double size, params string[] fontFiles)

@@ -17,10 +17,7 @@ namespace Manufaktura.Controls.WPF
                 {MusicFontStyles.GraceNoteFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
                 {MusicFontStyles.StaffFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
                 {MusicFontStyles.LyricsFont, new Typeface("Times New Roman")},
-                {MusicFontStyles.LyricsFontBold, new Typeface("Times New Roman")},
-                {MusicFontStyles.MiscArticulationFont, new Typeface("Microsoft Sans Serif")},
                 {MusicFontStyles.DirectionFont, new Typeface("Microsoft Sans Serif")},
-                {MusicFontStyles.TrillFont, new Typeface("Times New Roman")},
                 {MusicFontStyles.TimeSignatureFont, new Typeface(new FontFamily("Microsoft Sans Serif"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal)}
             };
 
@@ -30,10 +27,7 @@ namespace Manufaktura.Controls.WPF
                 {MusicFontStyles.GraceNoteFont, 20},
                 {MusicFontStyles.StaffFont, 30.5},
                 {MusicFontStyles.LyricsFont, 11},
-                {MusicFontStyles.LyricsFontBold, 0.8},
-                {MusicFontStyles.MiscArticulationFont, 14},
                 {MusicFontStyles.DirectionFont, 11},
-                {MusicFontStyles.TrillFont, 14},
                 {MusicFontStyles.TimeSignatureFont, 14.5}
         };
 
@@ -43,10 +37,7 @@ namespace Manufaktura.Controls.WPF
                 {MusicFontStyles.GraceNoteFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
                 {MusicFontStyles.StaffFont, new Typeface(PolihymniaFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal)},
                 {MusicFontStyles.LyricsFont, new Typeface("Times New Roman")},
-                {MusicFontStyles.LyricsFontBold, new Typeface("Times New Roman")},
-                {MusicFontStyles.MiscArticulationFont, new Typeface("Microsoft Sans Serif")},
                 {MusicFontStyles.DirectionFont, new Typeface("Microsoft Sans Serif")},
-                {MusicFontStyles.TrillFont, new Typeface("Times New Roman")},
                 {MusicFontStyles.TimeSignatureFont, new Typeface(new FontFamily("Microsoft Sans Serif"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal)}
             };
 
@@ -56,10 +47,7 @@ namespace Manufaktura.Controls.WPF
                 {MusicFontStyles.GraceNoteFont, 20},
                 {MusicFontStyles.StaffFont, 30.5},
                 {MusicFontStyles.LyricsFont, 11},
-                {MusicFontStyles.LyricsFontBold, 0.8},
-                {MusicFontStyles.MiscArticulationFont, 14},
                 {MusicFontStyles.DirectionFont, 11},
-                {MusicFontStyles.TrillFont, 14},
                 {MusicFontStyles.TimeSignatureFont, 14.5}
         };
 
@@ -77,7 +65,7 @@ namespace Manufaktura.Controls.WPF
         {
             fonts[style] = new Typeface(family, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
             if (fontSize != 0) fontSizes[style] = fontSize;
-            else fontSizes[style] = defaultFontSizes[MusicFontStyles.TrillFont];
+            else fontSizes[style] = defaultFontSizes[MusicFontStyles.DirectionFont];
         }
 
         public override void SetPolihymniaFont()
@@ -88,13 +76,11 @@ namespace Manufaktura.Controls.WPF
             fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];
             fonts[MusicFontStyles.StaffFont] = defaultFonts[MusicFontStyles.StaffFont];
             fonts[MusicFontStyles.TimeSignatureFont] = defaultFonts[MusicFontStyles.TimeSignatureFont];
-            fonts[MusicFontStyles.TrillFont] = defaultFonts[MusicFontStyles.TrillFont];
 
             fontSizes[MusicFontStyles.MusicFont] = defaultFontSizes[MusicFontStyles.MusicFont];
             fontSizes[MusicFontStyles.GraceNoteFont] = defaultFontSizes[MusicFontStyles.GraceNoteFont];
             fontSizes[MusicFontStyles.StaffFont] = defaultFontSizes[MusicFontStyles.StaffFont];
             fontSizes[MusicFontStyles.TimeSignatureFont] = defaultFontSizes[MusicFontStyles.TimeSignatureFont];
-            fontSizes[MusicFontStyles.TrillFont] = defaultFontSizes[MusicFontStyles.TrillFont];
         }
     }
 }

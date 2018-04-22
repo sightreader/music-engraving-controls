@@ -143,7 +143,6 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-            rendererSettings.SetFont(MusicFontStyles.TrillFont, family);
         }
 
         public async Task LoadFontAsync(FontFamily family, double fontSize, string metadata)
@@ -153,7 +152,6 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-            rendererSettings.SetFont(MusicFontStyles.TrillFont, family);
         }
 
         public void LoadFont(FontFamily family, double fontSize, SMuFLFontMetadata metadata)
@@ -164,7 +162,6 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-            rendererSettings.SetFont(MusicFontStyles.TrillFont, family);
         }
 
         public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();

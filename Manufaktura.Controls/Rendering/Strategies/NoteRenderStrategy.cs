@@ -250,7 +250,7 @@ namespace Manufaktura.Controls.Rendering
                 if (element.Articulation == ArticulationType.Staccato)
                     renderer.DrawCharacter(renderer.Settings.CurrentFont.AugmentationDot, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 1, articulationPosition, element);
                 else if (element.Articulation == ArticulationType.Accent)
-                    renderer.DrawString(">", MusicFontStyles.MiscArticulationFont, scoreService.CursorPositionX - 1, articulationPosition + 16, element);
+                    renderer.DrawString(">", MusicFontStyles.DirectionFont, scoreService.CursorPositionX - 1, articulationPosition + 16, element);
             }
         }
 

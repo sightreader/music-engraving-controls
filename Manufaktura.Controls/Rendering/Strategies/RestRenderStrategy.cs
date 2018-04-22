@@ -65,7 +65,7 @@ namespace Manufaktura.Controls.Rendering
             //Draw number of measures for multimeasure rests / Rysuj ilość taktów dla pauz wielotaktowych:
             if (element.MultiMeasure > 1)
             {
-                renderer.DrawString(Convert.ToString(element.MultiMeasure), MusicFontStyles.LyricsFontBold, scoreService.CursorPositionX + 6, restPositionY, element);
+                renderer.DrawString(Convert.ToString(element.MultiMeasure), MusicFontStyles.DirectionFont, scoreService.CursorPositionX + 6, restPositionY, element);
             }
 
             //Draw dots / Rysuj kropki:

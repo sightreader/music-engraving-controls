@@ -16,10 +16,7 @@ namespace Manufaktura.Controls.UniversalApps
                 {MusicFontStyles.GraceNoteFont, new System.Drawing.Font("Polihymnia", 20, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.StaffFont, new System.Drawing.Font("Polihymnia", 30.5f, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.LyricsFont, new System.Drawing.Font("Times New Roman", 11, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.LyricsFontBold, new System.Drawing.Font("Times New Roman", 11, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.MiscArticulationFont, new System.Drawing.Font("Microsoft Sans Serif", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.DirectionFont, new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.TrillFont, new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.TimeSignatureFont, new System.Drawing.Font("Microsoft Sans Serif", 14.5f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)}
             };
 
@@ -29,10 +26,7 @@ namespace Manufaktura.Controls.UniversalApps
                 {MusicFontStyles.GraceNoteFont, new System.Drawing.Font("Polihymnia", 20, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.StaffFont, new System.Drawing.Font("Polihymnia", 30.5f, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.LyricsFont, new System.Drawing.Font("Times New Roman", 11, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.LyricsFontBold, new System.Drawing.Font("Times New Roman", 11, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.MiscArticulationFont, new System.Drawing.Font("Microsoft Sans Serif", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.DirectionFont, new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.TrillFont, new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
                 {MusicFontStyles.TimeSignatureFont, new System.Drawing.Font("Microsoft Sans Serif", 14.5f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)}
             };
 
@@ -42,10 +36,7 @@ namespace Manufaktura.Controls.UniversalApps
                 {MusicFontStyles.GraceNoteFont, PolihymniaFamily},
                 {MusicFontStyles.StaffFont, PolihymniaFamily},
                 {MusicFontStyles.LyricsFont, new FontFamily("Segoe UI")},
-                {MusicFontStyles.LyricsFontBold, new FontFamily("Segoe UI")},
-                {MusicFontStyles.MiscArticulationFont, new FontFamily("Microsoft Sans Serif")},
                 {MusicFontStyles.DirectionFont, new FontFamily("Microsoft Sans Serif")},
-                {MusicFontStyles.TrillFont, new FontFamily("Times New Roman")},
                 {MusicFontStyles.TimeSignatureFont, new FontFamily("Microsoft Sans Serif")}
             };
 
@@ -55,10 +46,7 @@ namespace Manufaktura.Controls.UniversalApps
                 {MusicFontStyles.GraceNoteFont, PolihymniaFamily},
                 {MusicFontStyles.StaffFont, PolihymniaFamily},
                 {MusicFontStyles.LyricsFont, new FontFamily("Segoe UI")},
-                {MusicFontStyles.LyricsFontBold, new FontFamily("Segoe UI")},
-                {MusicFontStyles.MiscArticulationFont, new FontFamily("Microsoft Sans Serif")},
                 {MusicFontStyles.DirectionFont, new FontFamily("Microsoft Sans Serif")},
-                {MusicFontStyles.TrillFont, new FontFamily("Times New Roman")},
                 {MusicFontStyles.TimeSignatureFont, new FontFamily("Microsoft Sans Serif")}
             };
         public System.Drawing.Font GetCompatibleFont(MusicFontStyles style)
@@ -80,7 +68,7 @@ namespace Manufaktura.Controls.UniversalApps
         {
             fonts[style] = family;
             if (fontSize == 0)
-                fontSize = compatibilityFonts[MusicFontStyles.TrillFont].Size;
+                fontSize = compatibilityFonts[MusicFontStyles.DirectionFont].Size;
             var compatibilityFont = compatibilityFonts[style];
             compatibilityFonts[style] = new System.Drawing.Font(compatibilityFont.FontFamily, (float)fontSize, compatibilityFont.Style, System.Drawing.GraphicsUnit.Pixel);
         }
@@ -91,13 +79,11 @@ namespace Manufaktura.Controls.UniversalApps
             fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];
             fonts[MusicFontStyles.StaffFont] = defaultFonts[MusicFontStyles.StaffFont];
             fonts[MusicFontStyles.TimeSignatureFont] = defaultFonts[MusicFontStyles.TimeSignatureFont];
-            fonts[MusicFontStyles.TrillFont] = defaultFonts[MusicFontStyles.TrillFont];
 
             compatibilityFonts[MusicFontStyles.MusicFont] = defaultCompatibilityFonts[MusicFontStyles.MusicFont];
             compatibilityFonts[MusicFontStyles.GraceNoteFont] = defaultCompatibilityFonts[MusicFontStyles.GraceNoteFont];
             compatibilityFonts[MusicFontStyles.StaffFont] = defaultCompatibilityFonts[MusicFontStyles.StaffFont];
             compatibilityFonts[MusicFontStyles.TimeSignatureFont] = defaultCompatibilityFonts[MusicFontStyles.TimeSignatureFont];
-            compatibilityFonts[MusicFontStyles.TrillFont] = defaultCompatibilityFonts[MusicFontStyles.TrillFont];
         }
     }
 }
