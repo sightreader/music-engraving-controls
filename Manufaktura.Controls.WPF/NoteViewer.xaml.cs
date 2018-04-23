@@ -8,6 +8,7 @@ using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -139,6 +140,15 @@ namespace Manufaktura.Controls.WPF
         public void LoadFont(FontFamily family, double fontSize, string metadata)
         {
             rendererSettings.LoadSMuFLMetadata(metadata);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
+            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
+        }
+
+        public void LoadFontFromBinaryMetadataStream(FontFamily family, double fontSize, Stream metadataStream)
+        {
+            rendererSettings.LoadSMuFLMetadataFromBinaryStream(metadataStream);
             rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
             rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);

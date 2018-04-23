@@ -53,6 +53,10 @@ namespace Manufaktura.Controls.WPF.Test
                     noteViewer1.LoadFont(family, 25, metadataJson);
                     noteViewer2.LoadFont(family, 25, metadataJson);
                     noteViewer3.LoadFont(family, 25, metadataJson);
+
+                    //var s = new WpfScoreRendererSettings();
+                    //s.CurrentSMuFLMetadata = metadataJson;
+                    //var ba = ((MemoryStream)s.GetSMuFLMetadataBinaryStream()).ToArray();
                 }
             }
 

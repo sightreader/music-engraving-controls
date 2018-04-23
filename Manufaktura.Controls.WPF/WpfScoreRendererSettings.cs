@@ -1,7 +1,10 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows;
 using System.Windows.Media;
 
@@ -59,6 +62,35 @@ namespace Manufaktura.Controls.WPF
         public double GetFontSize(MusicFontStyles style)
         {
             return fontSizes[style];
+        }
+
+        public void LoadSMuFLMetadataFromBinaryStream(Stream stream)
+        {
+            var serializer = new BinaryFormatter();
+            var metadata = serializer.Deserialize(stream) as SMuFLFontMetadata;
+            CurrentSMuFLMetadata = metadata;
+        }
+
+        public Stream GetSMuFLMetadataBinaryStream()
+        {
+            if (CurrentSMuFLMetadata == null) return null;
+
+            var serializer = new BinaryFormatter();
+            var ms = new MemoryStream();
+            serializer.Serialize(ms, CurrentSMuFLMetadata);
+            ms.Seek(0, SeekOrigin.Begin);
+            return ms;
+        }
+
+        public void SaveSMuFLMetadataAsBinary(string filePath)
+        {
+            using (var ms = GetSMuFLMetadataBinaryStream())
+            {
+                using (var fs = new FileStream(filePath, FileMode.CreateNew))
+                {
+                    ms.CopyTo(fs);
+                }
+            }
         }
 
         public void SetFont(MusicFontStyles style, FontFamily family, double fontSize = 0)
