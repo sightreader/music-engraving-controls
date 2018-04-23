@@ -29,6 +29,11 @@ namespace Manufaktura.Controls.WinForms
 
         public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
 
+        public void LoadDefaultFontFromPath(string fontPath)
+        {
+            rendererSettings.SetPolihymniaFontFromPath(fontPath);
+        }
+
         public void LoadFont(MusicFontStyles style, string fontName, float fontSize, string metadata, FontStyle fontStyle = FontStyle.Regular)
         {
             rendererSettings.LoadSMuFLMetadata(metadata);

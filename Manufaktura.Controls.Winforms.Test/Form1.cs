@@ -19,6 +19,9 @@ namespace Manufaktura.Controls.Winforms.Test
         public Form1()
         {
             InitializeComponent();
+
+            var path = Path.Combine(Application.StartupPath, "Assets", "Polihymnia.ttf");
+            noteViewer1.LoadDefaultFontFromPath(path);
         }
 
         private void button1_Click(object sender, EventArgs e)

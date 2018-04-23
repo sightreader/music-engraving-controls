@@ -74,6 +74,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Assets\Bravura.otf" />
+    <None Include="Assets\bravura_metadata.json" />
+    <None Include="Assets\Gootville.otf" />
+    <None Include="Assets\gootville_metadata.json" />
+    <None Include="Assets\Polihymnia.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
