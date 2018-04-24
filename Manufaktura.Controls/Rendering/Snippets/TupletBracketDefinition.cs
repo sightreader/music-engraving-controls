@@ -1,0 +1,27 @@
+﻿using Manufaktura.Controls.Primitives;
+using System;
+
+namespace Manufaktura.Controls.Rendering.Snippets
+{
+    public struct TupletBracketDefinition
+    {
+        public TupletBracketDefinition(double startX, double startY, double endX, double endY)
+        {
+            StartPoint = new Point(startX, startY);
+            EndPoint = new Point(endX, endY);
+            Width = Point.Distance(StartPoint, EndPoint);
+            Angle = Math.Asin(Math.Abs(endY - startY) / Width);// Point.BeamAngle(StartPoint, EndPoint);
+            Point25 = StartPoint.TranslateByAngle(Angle, Width * 0.25);
+            MidPoint = StartPoint.TranslateByAngle(Angle, Width * 0.5);
+            Point75 = StartPoint.TranslateByAngle(Angle, Width * 0.75);
+        }
+
+        public double Angle { get; private set; }
+        public Point EndPoint { get; private set; }
+        public Point MidPoint { get; private set; }
+        public Point Point25 { get; private set; }
+        public Point Point75 { get; private set; }
+        public Point StartPoint { get; private set; }
+        public double Width { get; private set; }
+    }
+}

@@ -77,31 +77,28 @@ namespace Manufaktura.Controls.Rendering.Snippets
 			var elementsUnderTupletForAverageStemLength = elementsUnderTuplet.OfType<Note>().Where(n => MusicalSymbol.DirectionToPlacement(n.StemDirection) == measurementService.TupletState.TupletPlacement).ToList();
 			double averageStemLength = elementsUnderTupletForAverageStemLength.Count == 0 ? 0 : elementsUnderTupletForAverageStemLength.Average(n => n.ActualStemLength);
 			averageStemLength += 10;    //Add space
+
 			int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
-			double tupletBracketStartXPosition = firstElementInTuplet.TextBlockLocation.X;
-			double tupletBracketStartYPosition = firstElementInTuplet.TextBlockLocation.Y + averageStemLength * placementMod;
-			double tupletBracketEndXPosition = element.TextBlockLocation.X + 12;
-			double tupletBracketEndYPosition = element.TextBlockLocation.Y + averageStemLength * placementMod;
+            var bracketDefinition = new TupletBracketDefinition(
+                firstElementInTuplet.TextBlockLocation.X, firstElementInTuplet.TextBlockLocation.Y + averageStemLength * placementMod,
+                element.TextBlockLocation.X + 12, element.TextBlockLocation.Y + averageStemLength * placementMod);
+
 
 			if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
 			{
-				renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-								  new Point(tupletBracketEndXPosition, tupletBracketEndYPosition), tupletBracketPen, element);
-				renderer.DrawLine(new Point(tupletBracketStartXPosition, tupletBracketStartYPosition),
-								  new Point(tupletBracketStartXPosition, firstElementInTuplet.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), tupletBracketPen, element);
-				renderer.DrawLine(new Point(tupletBracketEndXPosition, tupletBracketEndYPosition),
-								  new Point(tupletBracketEndXPosition, element.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), tupletBracketPen, element);
+                renderer.DrawLine(bracketDefinition.StartPoint, bracketDefinition.EndPoint, tupletBracketPen, element);
+                //renderer.DrawLine(bracketDefinition.StartPoint, bracketDefinition.Point25, tupletBracketPen, element);
+                //renderer.DrawLine(bracketDefinition.Point75, bracketDefinition.EndPoint, tupletBracketPen, element);
+                renderer.DrawLine(bracketDefinition.StartPoint,
+								  new Point(bracketDefinition.StartPoint.X, firstElementInTuplet.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), tupletBracketPen, element);
+				renderer.DrawLine(bracketDefinition.EndPoint,
+								  new Point(bracketDefinition.EndPoint.X, element.TextBlockLocation.Y + (averageStemLength - 4) * placementMod), tupletBracketPen, element);
 			}
-
-            double numberOfNotesYTranslation = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -18 : 18;
-			if (!measurementService.TupletState.AreSingleBeamsPresentUnderTuplet) numberOfNotesYTranslation += 10 * (measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? 1 : -1);
 
 			var allElementsUnderTuplet = elementsUnderTuplet.OfType<NoteOrRest>().ToList();
 			allElementsUnderTuplet.Add(element);
 			var tupletNumber = CalculateTupletNumber(allElementsUnderTuplet);
-			renderer.DrawString(Convert.ToString(tupletNumber), MusicFontStyles.LyricsFont,
-					new Point(tupletBracketStartXPosition + (tupletBracketEndXPosition - tupletBracketStartXPosition) / 2 - 7,
-							  tupletBracketStartYPosition + (tupletBracketEndYPosition - tupletBracketStartYPosition) / 2 + numberOfNotesYTranslation), element);
+			renderer.DrawString(Convert.ToString(tupletNumber), MusicFontStyles.LyricsFont, bracketDefinition.MidPoint, element);
 		}
 
 		private static int CalculateTupletNumber(IEnumerable<NoteOrRest> elements)
