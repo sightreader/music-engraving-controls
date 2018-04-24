@@ -11,18 +11,16 @@ namespace Manufaktura.Controls.Rendering
     /// </summary>
     public class ClefRenderStrategy : MusicalSymbolRenderStrategy<Clef>
     {
-        private readonly IScoreService scoreService;
-
         /// <summary>
         /// /// Initializes a new instance of ClefRenderStrategy
         /// </summary>
         /// <param name="scoreService"></param>
-        public ClefRenderStrategy(IScoreService scoreService)
+        public ClefRenderStrategy(IScoreService scoreService) : base(scoreService)
         {
-            this.scoreService = scoreService;
         }
 
         public bool WasSystemChanged { get; set; }
+
 
         public void DrawPercussionClef(Clef element, ScoreRendererBase renderer)
         {
@@ -45,6 +43,7 @@ namespace Manufaktura.Controls.Rendering
             if (!WasSystemChanged && element.TypeOfClef == scoreService.CurrentClef.TypeOfClef && element.Pitch == scoreService.CurrentClef.Pitch && element.Line == scoreService.CurrentClef.Line) return;
 
             element.TextBlockLocation = new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4] - (element.Line - 1) * renderer.Settings.LineSpacing);
+
             scoreService.CurrentClef = element;
             if (element.TypeOfClef == ClefType.Percussion)
                 DrawPercussionClef(element, renderer);

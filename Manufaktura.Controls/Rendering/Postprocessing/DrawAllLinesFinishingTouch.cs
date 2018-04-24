@@ -72,14 +72,14 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
         /// <returns></returns>
         private double ExtendXPositionForMemoElements(double endPositionX, Measure lastMeasureInSystem, Staff staff, StaffSystem system)
         {
-            var elementWidth = 12;  //TODO: Pobrać prawdziwą szerokość
-
             var nextMeasure = lastMeasureInSystem == null ? null : staff.Measures.ElementAtOrDefault(staff.Measures.IndexOf(lastMeasureInSystem) + 1);
             if (nextMeasure != null)    //Wydłuż linie, jeśli są na końcu taktu nowe znaki przykluczowe lub nowe metrum
             {
                 var elementsWithPosition = nextMeasure.Elements.OfType<IRenderedAsTextBlock>().Where(e => e is Clef || e is TimeSignature || e is Key);
-                var memoElementPositionX = !elementsWithPosition.Any() ? 0 : elementsWithPosition.Max(e => e.TextBlockLocation.X);
-                if (endPositionX < memoElementPositionX + elementWidth) endPositionX = memoElementPositionX + elementWidth;
+                var memoElement =  elementsWithPosition.OrderBy(e => e.TextBlockLocation.X).LastOrDefault();
+                if (memoElement == null) return endPositionX;
+
+                if (endPositionX < memoElement.TextBlockLocation.X + memoElement.RenderedWidth) endPositionX = memoElement.TextBlockLocation.X + memoElement.RenderedWidth;
             }
 
             return endPositionX;

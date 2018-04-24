@@ -15,7 +15,6 @@ namespace Manufaktura.Controls.Rendering
     {
         private readonly IAlterationService alterationService;
         private readonly IMeasurementService measurementService;
-        private readonly IScoreService scoreService;
 
         /// <summary>
         /// Initializes a new instance of BarlineRenderStrategy
@@ -23,11 +22,10 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="measurementService"></param>
         /// <param name="alterationService"></param>
         /// <param name="scoreService"></param>
-        public BarlineRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService)
+        public BarlineRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService) : base(scoreService)
         {
             this.measurementService = measurementService;
             this.alterationService = alterationService;
-            this.scoreService = scoreService;
         }
 
         public double? GetCursorPositionForCurrentBarline(ScoreRendererBase renderer)

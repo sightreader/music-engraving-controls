@@ -14,17 +14,15 @@ namespace Manufaktura.Controls.Rendering
     public class RestRenderStrategy : MusicalSymbolRenderStrategy<Rest>
     {
         private readonly IMeasurementService measurementService;
-        private readonly IScoreService scoreService;
 
         /// <summary>
         /// Initializes a new instance of RestRenderStrategy
         /// </summary>
         /// <param name="measurementService"></param>
         /// <param name="scoreService"></param>
-        public RestRenderStrategy(IMeasurementService measurementService, IScoreService scoreService)
+        public RestRenderStrategy(IMeasurementService measurementService, IScoreService scoreService) : base(scoreService)
         {
             this.measurementService = measurementService;
-            this.scoreService = scoreService;
         }
 
         /// <summary>

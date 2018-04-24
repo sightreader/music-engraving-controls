@@ -10,15 +10,13 @@ namespace Manufaktura.Controls.Rendering.Strategies
     /// </summary>
     public class PrintSuggestionRenderStrategy : MusicalSymbolRenderStrategy<PrintSuggestion>
     {
-        private readonly IScoreService scoreService;
 
         /// <summary>
         /// Initializes a new instance of PrintSuggestionRenderStrategy
         /// </summary>
         /// <param name="scoreService"></param>
-        public PrintSuggestionRenderStrategy(IScoreService scoreService)
+        public PrintSuggestionRenderStrategy(IScoreService scoreService) : base(scoreService)
         {
-            this.scoreService = scoreService;
         }
 
         /// <summary>
@@ -32,11 +30,11 @@ namespace Manufaktura.Controls.Rendering.Strategies
             {
                 renderer.BreakSystem(renderer.TenthsToPixels(element.SystemDistance ?? scoreService.CurrentScore.DefaultPageSettings.DefaultSystemDistance ?? 0), element.IsPageBreak);
 
-                MusicalSymbolRenderStrategyBase strategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
-                strategy.Render(scoreService.CurrentClef, renderer);
+                var clefRenderStrategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
+                clefRenderStrategy.Render(scoreService.CurrentClef, renderer);
 
-                strategy = new KeyRenderStrategy(scoreService);
-                strategy.Render(scoreService.CurrentKey, renderer);
+                var keyRenderStrategy = new KeyRenderStrategy(scoreService) { IsVirtualKey = true };
+                keyRenderStrategy.Render(scoreService.CurrentKey, renderer);
 
                 //Time signature is not rendered in new line.
 

@@ -20,7 +20,6 @@ namespace Manufaktura.Controls.Rendering
         private readonly IAlterationService alterationService;
         private readonly IBeamingService beamingService;
         private readonly IMeasurementService measurementService;
-        private readonly IScoreService scoreService;
         private SlurRenderStrategy[] slurRenderStrategies;
 
         /// <summary>
@@ -30,11 +29,10 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="alterationService"></param>
         /// <param name="scoreService"></param>
         /// <param name="beamingService"></param>
-		public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService, IBeamingService beamingService)
+		public NoteRenderStrategy(IMeasurementService measurementService, IAlterationService alterationService, IScoreService scoreService, IBeamingService beamingService) : base(scoreService)
         {
             this.measurementService = measurementService;
             this.alterationService = alterationService;
-            this.scoreService = scoreService;
             this.beamingService = beamingService;
         }
 

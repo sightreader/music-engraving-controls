@@ -90,6 +90,7 @@ namespace Manufaktura.Controls.Model
         public Guid Id { get; private set; }
 
         public bool IsBreakpointSet { get; set; }
+
         /// <summary>
         /// Gets or sets the symbol's visibility. Visibility can be treated differently varying on implementation of rendering.
         /// </summary>
@@ -124,6 +125,10 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public int? PageNumber => Page == null ? null : Staff?.Score?.Pages?.IndexOf(Page) + 1;
 
+        /// <summary>
+        /// Difference between scoreService.CursorPositionX at the beginning and at the end of Render method
+        /// </summary>
+        public double RenderedWidth { get; internal set; }
         /// <summary>
         /// Staff that contains this MusicalSymbol. Null if MusicalSymbol doesn't belong to any staff.
         /// </summary>

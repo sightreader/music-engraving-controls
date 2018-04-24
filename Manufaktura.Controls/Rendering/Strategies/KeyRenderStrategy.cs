@@ -11,19 +11,22 @@ namespace Manufaktura.Controls.Rendering
     /// </summary>
     public class KeyRenderStrategy : MusicalSymbolRenderStrategy<Key>
     {
-        private readonly IScoreService scoreService;
+
+        public bool IsVirtualKey { get; set; }
 
         /// <summary>
         /// /// Initializes a new instance of KeyRenderStrategy
         /// </summary>
         /// <param name="scoreService"></param>
-        public KeyRenderStrategy(IScoreService scoreService)
+        public KeyRenderStrategy(IScoreService scoreService) : base(scoreService)
         {
-            this.scoreService = scoreService;
         }
 
         public override void Render(Key element, ScoreRendererBase renderer)
         {
+            if (element.Fifths != 0)
+                scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
+
             scoreService.CurrentKey = element;
             double flatOrSharpPositionY = 0;
             bool jumpFourth = false;
@@ -33,7 +36,7 @@ namespace Manufaktura.Controls.Rendering
             int octaveShiftFlat = 0;
             if (scoreService.CurrentClef.TypeOfClef == ClefType.FClef) octaveShiftFlat = -1;
 
-            element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]);
+            if (!IsVirtualKey) element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]);
 
             if (scoreService.CurrentKey.Fifths > 0)
             {

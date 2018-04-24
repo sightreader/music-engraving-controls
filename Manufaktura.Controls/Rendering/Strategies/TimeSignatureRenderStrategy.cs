@@ -12,15 +12,13 @@ namespace Manufaktura.Controls.Rendering
     /// </summary>
     public class TimeSignatureRenderStrategy : MusicalSymbolRenderStrategy<TimeSignature>
     {
-        private readonly IScoreService scoreService;
 
         /// <summary>
         /// Initializes a new instance of TimeSignatureRenderStrategy
         /// </summary>
         /// <param name="scoreService"></param>
-        public TimeSignatureRenderStrategy(IScoreService scoreService)
+        public TimeSignatureRenderStrategy(IScoreService scoreService) : base(scoreService)
         {
-            this.scoreService = scoreService;
         }
 
         /// <summary>
