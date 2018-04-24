@@ -126,7 +126,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
             foreach (var element in elements)
             {
                 if (element is Rest) yield return element;
-                if (element is Note note && (note.IsCueNote || note.IsGraceNote)) yield return note;
+                if (element is Note note && (note.IsCueNote || note.IsGraceNote) && !note.IsUpperMemberOfChord) yield return note;
             }
         }
 
@@ -135,7 +135,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
             foreach (var element in elements)
             {
                 if (element is Rest) yield return element;
-                if (element is Note note && !note.IsCueNote && !note.IsGraceNote) yield return note;
+                if (element is Note note && !note.IsCueNote && !note.IsGraceNote && !note.IsUpperMemberOfChord) yield return note;
             }
         }
     }

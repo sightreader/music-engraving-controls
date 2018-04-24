@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace Manufaktura.Controls.Model.SMuFL
 {
@@ -20,6 +21,26 @@ namespace Manufaktura.Controls.Model.SMuFL
                 return JsonConvert.DeserializeObject<SMuFLGlyphs>(result);
             }
         });
+
+        public string BuildNumberFromGlyphs(int number)
+        {
+            var sb = new StringBuilder();
+            var digits = number.ToString();
+            foreach (var digit in digits)
+            {
+                if (digit == '0') sb.Append(TimeSig0.Character);
+                if (digit == '1') sb.Append(TimeSig1.Character);
+                if (digit == '2') sb.Append(TimeSig2.Character);
+                if (digit == '3') sb.Append(TimeSig3.Character);
+                if (digit == '4') sb.Append(TimeSig4.Character);
+                if (digit == '5') sb.Append(TimeSig5.Character);
+                if (digit == '6') sb.Append(TimeSig6.Character);
+                if (digit == '7') sb.Append(TimeSig7.Character);
+                if (digit == '8') sb.Append(TimeSig8.Character);
+                if (digit == '9') sb.Append(TimeSig9.Character);
+            }
+            return sb.ToString();
+        }
 
         public static SMuFLGlyphs Instance => instance.Value;
 

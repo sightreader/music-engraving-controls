@@ -41,9 +41,9 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (renderer.IsSMuFLFont)
                 {
-                    renderer.DrawString(GetSMuFLNumberCharacters(renderer, element.NumberOfBeats),
+                    renderer.DrawString(SMuFLGlyphs.Instance.BuildNumberFromGlyphs(element.NumberOfBeats),
                         MusicFontStyles.MusicFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(1), element);
-                    renderer.DrawString(GetSMuFLNumberCharacters(renderer, element.TypeOfBeats),
+                    renderer.DrawString(SMuFLGlyphs.Instance.BuildNumberFromGlyphs(element.TypeOfBeats),
                         MusicFontStyles.MusicFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(3), element);
 
                     element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(3));
@@ -61,24 +61,6 @@ namespace Manufaktura.Controls.Rendering
             scoreService.CursorPositionX += 20;
         }
 
-        private string GetSMuFLNumberCharacters(ScoreRendererBase renderer, int number)
-        {
-            var sb = new StringBuilder();
-            var digits = number.ToString();
-            foreach (var digit in digits)
-            {
-                if (digit == '0') sb.Append(SMuFLGlyphs.Instance.TimeSig0.Character);
-                if (digit == '1') sb.Append(SMuFLGlyphs.Instance.TimeSig1.Character);
-                if (digit == '2') sb.Append(SMuFLGlyphs.Instance.TimeSig2.Character);
-                if (digit == '3') sb.Append(SMuFLGlyphs.Instance.TimeSig3.Character);
-                if (digit == '4') sb.Append(SMuFLGlyphs.Instance.TimeSig4.Character);
-                if (digit == '5') sb.Append(SMuFLGlyphs.Instance.TimeSig5.Character);
-                if (digit == '6') sb.Append(SMuFLGlyphs.Instance.TimeSig6.Character);
-                if (digit == '7') sb.Append(SMuFLGlyphs.Instance.TimeSig7.Character);
-                if (digit == '8') sb.Append(SMuFLGlyphs.Instance.TimeSig8.Character);
-                if (digit == '9') sb.Append(SMuFLGlyphs.Instance.TimeSig9.Character);
-            }
-            return sb.ToString();
-        }
+
     }
 }

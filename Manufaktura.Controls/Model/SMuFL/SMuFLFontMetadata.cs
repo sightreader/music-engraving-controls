@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public partial class SMuFLFontMetadata
+    public class SMuFLFontMetadata
     {
         [JsonProperty("fontName")]
         public string FontName { get; set; }
