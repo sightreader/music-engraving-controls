@@ -1,5 +1,6 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.UniversalApps.Common;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Media;
 
@@ -7,85 +8,50 @@ namespace Manufaktura.Controls.UniversalApps
 {
     public class UWPScoreRendererSettings : ScoreRendererSettings
     {
-        private static FontFamily PolihymniaFamily = //new DummyControl().DummyFontFamily;//
-            new FontFamily("Polihymnia.ttf#Polihymnia");
+        private static Windows.UI.Xaml.Media.FontFamily PolihymniaFamily = //new DummyControl().DummyFontFamily;//
+            new Windows.UI.Xaml.Media.FontFamily("Polihymnia.ttf#Polihymnia");
 
-        private Dictionary<MusicFontStyles, System.Drawing.Font> compatibilityFonts = new Dictionary<MusicFontStyles, System.Drawing.Font>()
-            {
-                {MusicFontStyles.MusicFont, new System.Drawing.Font("Polihymnia", 27.5f, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.GraceNoteFont, new System.Drawing.Font("Polihymnia", 20, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.StaffFont, new System.Drawing.Font("Polihymnia", 30.5f, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.LyricsFont, new System.Drawing.Font("Times New Roman", 11, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.DirectionFont, new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.TimeSignatureFont, new System.Drawing.Font("Microsoft Sans Serif", 14.5f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)}
-            };
-
-        private Dictionary<MusicFontStyles, System.Drawing.Font> defaultCompatibilityFonts = new Dictionary<MusicFontStyles, System.Drawing.Font>()
-            {
-                {MusicFontStyles.MusicFont, new System.Drawing.Font("Polihymnia", 27.5f, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.GraceNoteFont, new System.Drawing.Font("Polihymnia", 20, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.StaffFont, new System.Drawing.Font("Polihymnia", 30.5f, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.LyricsFont, new System.Drawing.Font("Times New Roman", 11, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.DirectionFont, new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)},
-                {MusicFontStyles.TimeSignatureFont, new System.Drawing.Font("Microsoft Sans Serif", 14.5f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)}
-            };
-
-        private Dictionary<MusicFontStyles, FontFamily> defaultFonts = new Dictionary<MusicFontStyles, FontFamily>()
-            {
-                {MusicFontStyles.MusicFont, PolihymniaFamily},
-                {MusicFontStyles.GraceNoteFont, PolihymniaFamily},
-                {MusicFontStyles.StaffFont, PolihymniaFamily},
-                {MusicFontStyles.LyricsFont, new FontFamily("Segoe UI")},
-                {MusicFontStyles.DirectionFont, new FontFamily("Microsoft Sans Serif")},
-                {MusicFontStyles.TimeSignatureFont, new FontFamily("Microsoft Sans Serif")}
-            };
-
-        private Dictionary<MusicFontStyles, FontFamily> fonts = new Dictionary<MusicFontStyles, FontFamily>()
-            {
-                {MusicFontStyles.MusicFont, PolihymniaFamily},
-                {MusicFontStyles.GraceNoteFont, PolihymniaFamily},
-                {MusicFontStyles.StaffFont, PolihymniaFamily},
-                {MusicFontStyles.LyricsFont, new FontFamily("Segoe UI")},
-                {MusicFontStyles.DirectionFont, new FontFamily("Microsoft Sans Serif")},
-                {MusicFontStyles.TimeSignatureFont, new FontFamily("Microsoft Sans Serif")}
-            };
-        public System.Drawing.Font GetCompatibleFont(MusicFontStyles style)
+        /// <summary>
+        /// Font mappings
+        /// </summary>
+        public Dictionary<MusicFontStyles, UWPFontInfo> Fonts { get; private set; } = new Dictionary<MusicFontStyles, UWPFontInfo>
         {
-            return compatibilityFonts[style];
+            {  MusicFontStyles.MusicFont, new UWPFontInfo("Polihymnia", PolihymniaFamily, 27.5) },
+            {  MusicFontStyles.GraceNoteFont, new UWPFontInfo("Polihymnia",PolihymniaFamily, 20) },
+            {  MusicFontStyles.StaffFont, new UWPFontInfo("Polihymnia", PolihymniaFamily, 30.5) },
+            {  MusicFontStyles.LyricsFont, new UWPFontInfo("Segoe UI", new Windows.UI.Xaml.Media.FontFamily("Segoe UI"), 11, 0) },
+            {  MusicFontStyles.DirectionFont, new UWPFontInfo("Microsoft Sans Serif", new Windows.UI.Xaml.Media.FontFamily("Microsoft Sans Serif"), 11, 0) },
+            {  MusicFontStyles.TimeSignatureFont, new UWPFontInfo("Microsoft Sans Serif", new Windows.UI.Xaml.Media.FontFamily("Microsoft Sans Serif"), 14.5, 15) }
+        };
+
+        public static double CalculateCellAscent(string fontPath, float size)
+        {
+            var font = new System.Drawing.Font(new System.Drawing.FontFamily(fontPath), size);
+            var baselineDesignUnits = font.FontFamily.GetCellAscent(font.Style);
+            var baselinePixels = (baselineDesignUnits * font.Size) / font.FontFamily.GetEmHeight(font.Style);
+            return baselinePixels;
         }
 
-        public FontFamily GetFont(MusicFontStyles style)
+        public void SetFont(string fontName, FontFamily family, double fontSizeMusic, double fontSizeGrace, double fontSizeStaff, double cellAscent = 24.8)
         {
-            return fonts[style];
-        }
-
-        public double GetFontSize(MusicFontStyles style)
-        {
-            return compatibilityFonts[style].Size;
-        }
-
-        public void SetFont(MusicFontStyles style, FontFamily family, double fontSize = 0)
-        {
-            fonts[style] = family;
-            if (fontSize == 0)
-                fontSize = compatibilityFonts[MusicFontStyles.DirectionFont].Size;
-            var compatibilityFont = compatibilityFonts[style];
-            compatibilityFonts[style] = new System.Drawing.Font(compatibilityFont.FontFamily, (float)fontSize, compatibilityFont.Style, System.Drawing.GraphicsUnit.Pixel);
+            Fonts[MusicFontStyles.MusicFont] = new UWPFontInfo(fontName, family, fontSizeMusic, cellAscent);
+            Fonts[MusicFontStyles.GraceNoteFont] = new UWPFontInfo(fontName, family, fontSizeGrace, cellAscent);
+            Fonts[MusicFontStyles.StaffFont] = new UWPFontInfo(fontName, family, fontSizeStaff, cellAscent);
         }
 
         public override void SetPolihymniaFont()
         {
             base.SetPolihymniaFont();
 
-            fonts[MusicFontStyles.MusicFont] = defaultFonts[MusicFontStyles.MusicFont];
-            fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];
-            fonts[MusicFontStyles.StaffFont] = defaultFonts[MusicFontStyles.StaffFont];
-            fonts[MusicFontStyles.TimeSignatureFont] = defaultFonts[MusicFontStyles.TimeSignatureFont];
-
-            compatibilityFonts[MusicFontStyles.MusicFont] = defaultCompatibilityFonts[MusicFontStyles.MusicFont];
-            compatibilityFonts[MusicFontStyles.GraceNoteFont] = defaultCompatibilityFonts[MusicFontStyles.GraceNoteFont];
-            compatibilityFonts[MusicFontStyles.StaffFont] = defaultCompatibilityFonts[MusicFontStyles.StaffFont];
-            compatibilityFonts[MusicFontStyles.TimeSignatureFont] = defaultCompatibilityFonts[MusicFontStyles.TimeSignatureFont];
+            Fonts = new Dictionary<MusicFontStyles, UWPFontInfo>
+        {
+            {  MusicFontStyles.MusicFont, new UWPFontInfo("Polihymnia", PolihymniaFamily, 27.5) },
+            {  MusicFontStyles.GraceNoteFont, new UWPFontInfo("Polihymnia",PolihymniaFamily, 20) },
+            {  MusicFontStyles.StaffFont, new UWPFontInfo("Polihymnia", PolihymniaFamily, 30.5) },
+            {  MusicFontStyles.LyricsFont, new UWPFontInfo("Segoe UI", new Windows.UI.Xaml.Media.FontFamily("Segoe UI"), 30.5) },
+            {  MusicFontStyles.DirectionFont, new UWPFontInfo("Microsoft Sans Serif", new Windows.UI.Xaml.Media.FontFamily("Microsoft Sans Serif"), 30.5) },
+            {  MusicFontStyles.TimeSignatureFont, new UWPFontInfo("Microsoft Sans Serif", new Windows.UI.Xaml.Media.FontFamily("Microsoft Sans Serif"), 30.5) }
+        };
         }
     }
 }

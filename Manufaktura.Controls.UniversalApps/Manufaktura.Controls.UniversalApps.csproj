@@ -107,6 +107,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Audio\TestTaskScorePlayer.cs" />
+    <Compile Include="Common\UWPFontInfo.cs" />
     <Compile Include="UWPCanvasScoreRenderer.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\ViewModelCommand.cs" />

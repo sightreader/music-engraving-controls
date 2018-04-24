@@ -4,7 +4,6 @@ using Manufaktura.Controls.Model.Fonts;
 
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
-using System.Drawing.Drawing2D;
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -33,6 +32,7 @@ namespace Manufaktura.Controls.UniversalApps
         public override bool CanDrawCharacterInBounds => false;
         public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
         public UWPScoreRendererSettings TypedSettings => Settings as UWPScoreRendererSettings;
+
         public static Point ConvertPoint(Primitives.Point point)
         {
             return new Point(point.X, point.Y);
@@ -113,7 +113,7 @@ namespace Manufaktura.Controls.UniversalApps
             if (!EnsureProperPage(owner)) return;
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
-            var path = GetPathFromCharacter(character, fontStyle);
+            /*var path = GetPathFromCharacter(character, fontStyle);
 
             path.Stroke = new SolidColorBrush(ConvertColor(color));
             path.Fill = new SolidColorBrush(ConvertColor(color));
@@ -129,7 +129,7 @@ namespace Manufaktura.Controls.UniversalApps
             Canvas.SetTop(viewBox, location.Y);
             Canvas.Children.Add(viewBox);
 
-            OwnershipDictionary.Add(path, owner);
+            OwnershipDictionary.Add(path, owner);*/
         }
 
         public override void DrawLine(Primitives.Point startPoint, Primitives.Point endPoint, Primitives.Pen pen, MusicalSymbol owner)
@@ -157,17 +157,18 @@ namespace Manufaktura.Controls.UniversalApps
         {
             location = location.Translate(CurrentScore.DefaultPageSettings);
 
+            var font = TypedSettings.Fonts[fontStyle];
             TextBlock textBlock = new TextBlock();
-            textBlock.FontSize = TypedSettings.GetFontSize(fontStyle);
-            textBlock.FontFamily = TypedSettings.GetFont(fontStyle);
+            textBlock.FontSize = font.Size;
+            textBlock.FontFamily = font.Family;
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
             textBlock.UseLayoutRounding = true;
             textBlock.Visibility = BoolToVisibility(owner.IsVisible);
 
-            var compatibleFont = TypedSettings.GetCompatibleFont(fontStyle);
-            var baselineDesignUnits = compatibleFont.FontFamily.GetCellAscent(compatibleFont.Style);
-            var baselinePixels = (baselineDesignUnits * compatibleFont.Size) / compatibleFont.FontFamily.GetEmHeight(compatibleFont.Style);
+            //var compatibleFont = TypedSettings.GetCompatibleFont(fontStyle);
+            //var baselineDesignUnits = compatibleFont.FontFamily.GetCellAscent(compatibleFont.Style);
+            var baselinePixels = font.CellAscent; // (baselineDesignUnits * compatibleFont.Size) / compatibleFont.FontFamily.GetEmHeight(compatibleFont.Style);
 
             Canvas.SetLeft(textBlock, location.X);
             Canvas.SetTop(textBlock, location.Y - baselinePixels);
@@ -175,6 +176,7 @@ namespace Manufaktura.Controls.UniversalApps
 
             OwnershipDictionary.Add(textBlock, owner);
         }
+
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Primitives.Point start, Primitives.Point end)
         {
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama)
@@ -207,7 +209,7 @@ namespace Manufaktura.Controls.UniversalApps
             return isVisible ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private Path GetPathFromCharacter(char character, MusicFontStyles style)
+        /*private Path GetPathFromCharacter(char character, MusicFontStyles style)
         {
             var compatibleFont = TypedSettings.GetCompatibleFont(style);
             var drawingPath = new GraphicsPath();
@@ -219,6 +221,6 @@ namespace Manufaktura.Controls.UniversalApps
             //wpfPath.Data = drawingPath.PathData;  //TODO: Konwersja jednego PathData na drugie
             //Do konwersji brać Points i Types (https://msdn.microsoft.com/en-us/library/system.drawing.drawing2d.graphicspath.pathtypes(v=vs.110).aspx) i na podst. typu tworzyć geometrie
             return wpfPath;
-        }
+        }*/
     }
 }
