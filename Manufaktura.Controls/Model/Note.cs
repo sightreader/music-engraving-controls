@@ -318,13 +318,18 @@ namespace Manufaktura.Controls.Model
         {
             var upperY = TextBlockLocation.Y < StemEndLocation.Y || StemEndLocation.Y == 0 ? TextBlockLocation.Y : StemEndLocation.Y;
             var lowerY = TextBlockLocation.Y > StemEndLocation.Y || StemEndLocation.Y == 0 ? TextBlockLocation.Y : StemEndLocation.Y;
+            var leftX = TextBlockLocation.X < StemEndLocation.X || StemEndLocation.X == 0 ? TextBlockLocation.X : StemEndLocation.X;
+            var rightX = TextBlockLocation.X > StemEndLocation.X || StemEndLocation.X == 0 ? TextBlockLocation.X : StemEndLocation.X;
+            if (StemDirection == VerticalDirection.Down) rightX += GetNoteheadWidthPx(renderer);
+
             return new Quadrangle(
-                new Point(TextBlockLocation.X, upperY),
-                new Point(TextBlockLocation.X + GetNoteheadWidthPx(renderer), upperY),
-                new Point(TextBlockLocation.X, lowerY),
-                new Point(TextBlockLocation.X + GetNoteheadWidthPx(renderer), lowerY)
+                new Point(rightX, upperY),
+                new Point(leftX, upperY),
+                new Point(rightX, lowerY),
+                new Point(leftX, lowerY)
             );
         }
+
         public override char GetCharacter(IMusicFont font)
         {
             switch (Size)

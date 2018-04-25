@@ -78,10 +78,10 @@ namespace Manufaktura.Controls.Rendering.Snippets
             List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index + 1);
 
             var noteGroupBounds = elementsUnderTuplet.OfType<Note>().GetBounds(renderer);
-            renderer.DrawLine(noteGroupBounds.NW, noteGroupBounds.NE, new Pen(Color.Red), element);
-            renderer.DrawLine(noteGroupBounds.NE, noteGroupBounds.SE, new Pen(Color.Red), element);
-            renderer.DrawLine(noteGroupBounds.SE, noteGroupBounds.SW, new Pen(Color.Red), element);
-            renderer.DrawLine(noteGroupBounds.SW, noteGroupBounds.NW, new Pen(Color.Red), element);
+            //renderer.DrawLine(noteGroupBounds.NW, noteGroupBounds.NE, new Pen(Color.Red), element);   //DEBUG
+            //renderer.DrawLine(noteGroupBounds.NE, noteGroupBounds.SE, new Pen(Color.Red), element);
+            //renderer.DrawLine(noteGroupBounds.SE, noteGroupBounds.SW, new Pen(Color.Red), element);
+            //renderer.DrawLine(noteGroupBounds.SW, noteGroupBounds.NW, new Pen(Color.Red), element);
 
             var boundsOnOneSide = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ?
                 new Tuple<Point, Point>(noteGroupBounds.NW, noteGroupBounds.NE) :
