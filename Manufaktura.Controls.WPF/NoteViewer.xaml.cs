@@ -137,39 +137,39 @@ namespace Manufaktura.Controls.WPF
 
         protected WpfCanvasScoreRenderer Renderer { get; set; }
 
-        public void LoadFont(FontFamily family, double fontSize, string metadata)
+        public void LoadFont(FontFamily family, double musicFontSize, double graceNoteFontSize, string metadata)
         {
             rendererSettings.LoadSMuFLMetadata(metadata);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
-        public void LoadFontFromBinaryMetadataStream(FontFamily family, double fontSize, Stream metadataStream)
+        public void LoadFontFromBinaryMetadataStream(FontFamily family, double musicFontSize, double graceNoteFontSize, Stream metadataStream)
         {
             rendererSettings.LoadSMuFLMetadataFromBinaryStream(metadataStream);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
-        public async Task LoadFontAsync(FontFamily family, double fontSize, string metadata)
+        public async Task LoadFontAsync(FontFamily family, double musicFontSize, double graceNoteFontSize, string metadata)
         {
             await rendererSettings.LoadSMuFLMetadataAsync(metadata);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, fontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
-        public void LoadFont(FontFamily family, double musicFontSize, SMuFLFontMetadata metadata)
+        public void LoadFont(FontFamily family, double musicFontSize, double graceNoteFontSize, SMuFLFontMetadata metadata)
         {
             rendererSettings.CurrentFont = new SMuFLMusicFont();
             rendererSettings.CurrentSMuFLMetadata = metadata;
             rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family);
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }

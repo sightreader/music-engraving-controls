@@ -21,6 +21,7 @@ namespace Manufaktura.Controls.Rendering
         protected IScoreService scoreService = new ScoreService();
         private ManufakturaResolver resolver = new ManufakturaResolver();
         public abstract bool CanDrawCharacterInBounds { get; }
+        public virtual bool CanMeasureString => false;
 
         protected ScoreRendererBase() : this(new ScoreRendererSettings())
         {
@@ -316,6 +317,8 @@ namespace Manufaktura.Controls.Rendering
             return IsSMuFLFont && (Settings.CurrentSMuFLMetadata?.EngravingDefaults?.ContainsKey(engravingDefaultsKey) ?? false) ?
                 LinespacesToPixels(Settings.CurrentSMuFLMetadata.EngravingDefaults[engravingDefaultsKey]) : (double?)null;
         }
+
+        public virtual Size MeasureString(MusicFontStyles style, string s) => default(Size);
 
         internal void BreakSystem(double distance = 0, bool breakPage = false)
         {

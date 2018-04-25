@@ -312,7 +312,7 @@ namespace Manufaktura.Controls.Rendering
                     //Draw tuplet mark / Rysuj oznaczenie trioli:
                     if (element.Tuplet == TupletType.Stop && measurementService.TupletState != null)
                     {
-                        Beams.TupletMark(measurementService, scoreService, renderer, element, beamLoop);
+                        Beams.TupletMark(measurementService, scoreService, renderer, element);
                         measurementService.TupletState = null;
                     }
                 }

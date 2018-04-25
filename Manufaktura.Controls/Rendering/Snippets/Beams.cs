@@ -16,6 +16,8 @@ namespace Manufaktura.Controls.Rendering.Snippets
     /// </summary>
 	public static class Beams
     {
+        public static bool IsDebugMode { get; set; } = false;
+
         /// <summary>
         /// Draws note flag
         /// </summary>
@@ -51,7 +53,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
                 measurementService.TupletState.AreSingleBeamsPresentUnderTuplet = true;
                 if (element.Tuplet == TupletType.Stop)
                 {
-                    TupletMark(measurementService, scoreService, renderer, element, beamNumber);
+                    TupletMark(measurementService, scoreService, renderer, element);
                     measurementService.TupletState = null;
                 }
             }
@@ -64,8 +66,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
         /// <param name="scoreService"></param>
         /// <param name="renderer"></param>
         /// <param name="element"></param>
-        /// <param name="beamLoop"></param>
-		public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, NoteOrRest element, int beamLoop)
+        public static void TupletMark(IMeasurementService measurementService, IScoreService scoreService, ScoreRendererBase renderer, NoteOrRest element)
         {
             if (measurementService.TupletState == null)
                 throw new Exception("DrawTupletMark was called but no tuplet is currently open in staff.");
@@ -78,10 +79,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
             List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index + 1);
 
             var noteGroupBounds = elementsUnderTuplet.OfType<Note>().GetBounds(renderer);
-            //renderer.DrawLine(noteGroupBounds.NW, noteGroupBounds.NE, new Pen(Color.Red), element);   //DEBUG
-            //renderer.DrawLine(noteGroupBounds.NE, noteGroupBounds.SE, new Pen(Color.Red), element);
-            //renderer.DrawLine(noteGroupBounds.SE, noteGroupBounds.SW, new Pen(Color.Red), element);
-            //renderer.DrawLine(noteGroupBounds.SW, noteGroupBounds.NW, new Pen(Color.Red), element);
+            if (IsDebugMode) DrawNoteGroupOutline(renderer, noteGroupBounds, element);
 
             var boundsOnOneSide = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ?
                 new Tuple<Point, Point>(noteGroupBounds.NW, noteGroupBounds.NE) :
@@ -89,9 +87,9 @@ namespace Manufaktura.Controls.Rendering.Snippets
 
             int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
             var bracketDefinition = new TupletBracketDefinition(
-                boundsOnOneSide.Item1.X, 
-                boundsOnOneSide.Item1.Y + renderer.LinespacesToPixels(2) * placementMod, 
-                boundsOnOneSide.Item2.X, 
+                boundsOnOneSide.Item1.X,
+                boundsOnOneSide.Item1.Y + renderer.LinespacesToPixels(2) * placementMod,
+                boundsOnOneSide.Item2.X,
                 boundsOnOneSide.Item2.Y + renderer.LinespacesToPixels(2) * placementMod);
 
             if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
@@ -102,13 +100,15 @@ namespace Manufaktura.Controls.Rendering.Snippets
                 renderer.DrawLine(bracketDefinition.EndPoint, bracketDefinition.EndPoint.Translate(0, renderer.LinespacesToPixels(-1) * placementMod), tupletBracketPen, element);
             }
 
-            var allElementsUnderTuplet = elementsUnderTuplet.OfType<NoteOrRest>().ToList();
-            var tupletNumber = CalculateTupletNumber(allElementsUnderTuplet);
+            var tupletNumber = CalculateTupletNumber(elementsUnderTuplet.OfType<NoteOrRest>());
 
-            if (renderer.IsSMuFLFont)
-                renderer.DrawString(SMuFLGlyphs.Instance.BuildNumberFromGlyphs(tupletNumber), MusicFontStyles.GraceNoteFont, bracketDefinition.MidPoint, element);
-            else
-                renderer.DrawString(Convert.ToString(tupletNumber), MusicFontStyles.LyricsFont, bracketDefinition.MidPoint, element);
+            var textToWrite = renderer.IsSMuFLFont ? SMuFLGlyphs.Instance.BuildTupletNumberFromGlyphs(tupletNumber) : Convert.ToString(tupletNumber);
+            var fontStyle = renderer.IsSMuFLFont ? MusicFontStyles.MusicFont : MusicFontStyles.LyricsFont;
+            var textSize = renderer.CanMeasureString ? renderer.MeasureString(fontStyle, textToWrite) : new Size();
+            var textPosition = renderer.CanMeasureString ?
+                bracketDefinition.MidPoint.Translate(textSize.Width / -2, textSize.Height / 2) : bracketDefinition.MidPoint;
+
+            renderer.DrawString(textToWrite, fontStyle, textPosition, element);
         }
 
         private static int CalculateTupletNumber(IEnumerable<NoteOrRest> elements)
@@ -128,6 +128,13 @@ namespace Manufaktura.Controls.Rendering.Snippets
             return (int)weight;
         }
 
+        private static void DrawNoteGroupOutline(ScoreRendererBase renderer, Quadrangle noteGroupBounds, NoteOrRest element)
+        {
+            renderer.DrawLine(noteGroupBounds.NW, noteGroupBounds.NE, new Pen(Color.Red), element);
+            renderer.DrawLine(noteGroupBounds.NE, noteGroupBounds.SE, new Pen(Color.Red), element);
+            renderer.DrawLine(noteGroupBounds.SE, noteGroupBounds.SW, new Pen(Color.Red), element);
+            renderer.DrawLine(noteGroupBounds.SW, noteGroupBounds.NW, new Pen(Color.Red), element);
+        }
         private static IEnumerable<NoteOrRest> EnumerateLargeNotes(IEnumerable<NoteOrRest> elements)
         {
             foreach (var element in elements)

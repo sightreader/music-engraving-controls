@@ -27,7 +27,7 @@ namespace Manufaktura.Controls.WPF
         private Dictionary<MusicFontStyles, double> defaultFontSizes = new Dictionary<MusicFontStyles, double>()
         {
                 {MusicFontStyles.MusicFont, 27.5},
-                {MusicFontStyles.GraceNoteFont, 20},
+                {MusicFontStyles.GraceNoteFont, 22},
                 {MusicFontStyles.StaffFont, 30.5},
                 {MusicFontStyles.LyricsFont, 11},
                 {MusicFontStyles.DirectionFont, 11},
@@ -47,7 +47,7 @@ namespace Manufaktura.Controls.WPF
         private Dictionary<MusicFontStyles, double> fontSizes = new Dictionary<MusicFontStyles, double>()
         {
                 {MusicFontStyles.MusicFont, 27.5},
-                {MusicFontStyles.GraceNoteFont, 20},
+                {MusicFontStyles.GraceNoteFont, 22},
                 {MusicFontStyles.StaffFont, 30.5},
                 {MusicFontStyles.LyricsFont, 11},
                 {MusicFontStyles.DirectionFont, 11},

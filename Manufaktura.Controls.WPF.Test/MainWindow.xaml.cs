@@ -49,10 +49,10 @@ namespace Manufaktura.Controls.WPF.Test
                 {
                     string result = reader.ReadToEnd();
                     var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
-                    noteViewerTest.LoadFont(family, 25, metadataJson);
-                    noteViewer1.LoadFont(family, 25, metadataJson);
-                    noteViewer2.LoadFont(family, 25, metadataJson);
-                    noteViewer3.LoadFont(family, 25, metadataJson);
+                    noteViewerTest.LoadFont(family, 25, 16, metadataJson);
+                    noteViewer1.LoadFont(family, 25, 16, metadataJson);
+                    noteViewer2.LoadFont(family, 25, 16, metadataJson);
+                    noteViewer3.LoadFont(family, 25, 16, metadataJson);
 
                     //var s = new WpfScoreRendererSettings();
                     //s.CurrentSMuFLMetadata = metadataJson;

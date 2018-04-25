@@ -3,6 +3,7 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,9 @@ namespace Manufaktura.Controls.WPF
         }
 
         public override bool CanDrawCharacterInBounds => true;
+
+        public override bool CanMeasureString => true;
+
         public Dictionary<FrameworkElement, MusicalSymbol> OwnershipDictionary { get; private set; }
         public WpfScoreRendererSettings TypedSettings => Settings as WpfScoreRendererSettings;
 
@@ -188,6 +192,23 @@ namespace Manufaktura.Controls.WPF
 
             OwnershipDictionary.Add(textBlock, owner);
         }
+
+        public override Primitives.Size MeasureString(MusicFontStyles style, string s)
+        {
+            var font = TypedSettings.GetFont(style);
+            var fontSize = TypedSettings.GetFontSize(style);
+            var formattedText = new FormattedText(
+                    s,
+                    CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    font,
+                    fontSize,
+                    Brushes.Black);
+
+            var geometry = formattedText.BuildGeometry(new Point(0, 0));
+            return new Primitives.Size(formattedText.Width, geometry.Bounds.Height);
+        }
+
         public void MoveLayout(StaffSystem system, Point delta)
         {
             foreach (var staffFragment in system.Staves)

@@ -22,7 +22,7 @@ namespace Manufaktura.Controls.Model.SMuFL
             }
         });
 
-        public string BuildNumberFromGlyphs(int number)
+        public string BuildTimeSignatureNumberFromGlyphs(int number)
         {
             var sb = new StringBuilder();
             var digits = number.ToString();
@@ -38,6 +38,26 @@ namespace Manufaktura.Controls.Model.SMuFL
                 if (digit == '7') sb.Append(TimeSig7.Character);
                 if (digit == '8') sb.Append(TimeSig8.Character);
                 if (digit == '9') sb.Append(TimeSig9.Character);
+            }
+            return sb.ToString();
+        }
+
+        public string BuildTupletNumberFromGlyphs(int number)
+        {
+            var sb = new StringBuilder();
+            var digits = number.ToString();
+            foreach (var digit in digits)
+            {
+                if (digit == '0') sb.Append(Tuplet0.Character);
+                if (digit == '1') sb.Append(Tuplet1.Character);
+                if (digit == '2') sb.Append(Tuplet2.Character);
+                if (digit == '3') sb.Append(Tuplet3.Character);
+                if (digit == '4') sb.Append(Tuplet4.Character);
+                if (digit == '5') sb.Append(Tuplet5.Character);
+                if (digit == '6') sb.Append(Tuplet6.Character);
+                if (digit == '7') sb.Append(Tuplet7.Character);
+                if (digit == '8') sb.Append(Tuplet8.Character);
+                if (digit == '9') sb.Append(Tuplet9.Character);
             }
             return sb.ToString();
         }
