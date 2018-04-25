@@ -1,4 +1,5 @@
-﻿using Manufaktura.Controls.Model;
+﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.PeekStrategies;
 using Manufaktura.Controls.Model.SMuFL;
@@ -74,14 +75,24 @@ namespace Manufaktura.Controls.Rendering.Snippets
 
             NoteOrRest firstElementInTuplet = staff.Peek<NoteOrRest>(element, PeekType.BeginningOfTuplet);
             int index = staff.Elements.IndexOf(firstElementInTuplet);
-            List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index);
+            List<MusicalSymbol> elementsUnderTuplet = staff.Elements.GetRange(index, staff.Elements.IndexOf(element) - index + 1);
 
-            var averageStemLength = GetAverageStemLength(elementsUnderTuplet.OfType<Note>(), measurementService);
+            var noteGroupBounds = elementsUnderTuplet.OfType<Note>().GetBounds(renderer);
+            renderer.DrawLine(noteGroupBounds.NW, noteGroupBounds.NE, new Pen(Color.Red), element);
+            renderer.DrawLine(noteGroupBounds.NE, noteGroupBounds.SE, new Pen(Color.Red), element);
+            renderer.DrawLine(noteGroupBounds.SE, noteGroupBounds.SW, new Pen(Color.Red), element);
+            renderer.DrawLine(noteGroupBounds.SW, noteGroupBounds.NW, new Pen(Color.Red), element);
+
+            var boundsOnOneSide = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ?
+                new Tuple<Point, Point>(noteGroupBounds.NW, noteGroupBounds.NE) :
+                new Tuple<Point, Point>(noteGroupBounds.SW, noteGroupBounds.SE);
 
             int placementMod = measurementService.TupletState.TupletPlacement == VerticalPlacement.Above ? -1 : 1;
             var bracketDefinition = new TupletBracketDefinition(
-                firstElementInTuplet.TextBlockLocation.X, firstElementInTuplet.TextBlockLocation.Y + averageStemLength * placementMod,
-                element.TextBlockLocation.X + 12, element.TextBlockLocation.Y + averageStemLength * placementMod);
+                boundsOnOneSide.Item1.X, 
+                boundsOnOneSide.Item1.Y + renderer.LinespacesToPixels(2) * placementMod, 
+                boundsOnOneSide.Item2.X, 
+                boundsOnOneSide.Item2.Y + renderer.LinespacesToPixels(2) * placementMod);
 
             if (measurementService.TupletState.AreSingleBeamsPresentUnderTuplet)    //Draw tuplet bracket
             {
@@ -92,7 +103,6 @@ namespace Manufaktura.Controls.Rendering.Snippets
             }
 
             var allElementsUnderTuplet = elementsUnderTuplet.OfType<NoteOrRest>().ToList();
-            allElementsUnderTuplet.Add(element);
             var tupletNumber = CalculateTupletNumber(allElementsUnderTuplet);
 
             if (renderer.IsSMuFLFont)

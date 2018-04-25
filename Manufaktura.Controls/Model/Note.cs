@@ -117,7 +117,9 @@ namespace Manufaktura.Controls.Model
         }
 
         public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
+
         public int Alter { get { return pitch.Alter; } }
+
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; OnPropertyChanged(); } }
 
         public VerticalPlacement ArticulationPlacement
@@ -191,7 +193,9 @@ namespace Manufaktura.Controls.Model
         public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(); } }
 
         public LyricsCollection Lyrics { get { return lyrics; } private set { lyrics = value; } }
+
         public int MidiPitch { get { return pitch.MidiPitch; } }
+
         public RebeamMode? ModeUsedForRebeaming { get; internal set; }
 
         /// <summary>
@@ -217,8 +221,11 @@ namespace Manufaktura.Controls.Model
         }
 
         public List<Slur> Slurs { get; } = new List<Slur>();
+
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
+
         public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(); } }
+
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(); } }
 
         /// <summary>
@@ -307,6 +314,17 @@ namespace Manufaktura.Controls.Model
             Pitch = Pitch.FromMidiPitch(midiPitch, Pitch.MidiPitchTranslationMode.Auto);
         }
 
+        public Quadrangle GetBounds(ScoreRendererBase renderer)
+        {
+            var upperY = TextBlockLocation.Y < StemEndLocation.Y || StemEndLocation.Y == 0 ? TextBlockLocation.Y : StemEndLocation.Y;
+            var lowerY = TextBlockLocation.Y > StemEndLocation.Y || StemEndLocation.Y == 0 ? TextBlockLocation.Y : StemEndLocation.Y;
+            return new Quadrangle(
+                new Point(TextBlockLocation.X, upperY),
+                new Point(TextBlockLocation.X + GetNoteheadWidthPx(renderer), upperY),
+                new Point(TextBlockLocation.X, lowerY),
+                new Point(TextBlockLocation.X + GetNoteheadWidthPx(renderer), lowerY)
+            );
+        }
         public override char GetCharacter(IMusicFont font)
         {
             switch (Size)

@@ -1,6 +1,8 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.Digest;
+using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,26 +14,52 @@ namespace Manufaktura.Controls.Linq
     /// Extensions methods for operations on Scores
     /// </summary>
 	public static class ScoreExtensions
-	{
-		/// <summary>
-		/// Returns the largest denominator (pulse) of note collection
-		/// </summary>
-		/// <param name="noteOrRests"></param>
-		/// <returns></returns>
-		public static double Pulse(this IEnumerable<NoteOrRest> noteOrRests)
-		{
-			return noteOrRests.Max(n => n.BaseDuration.Denominator);
-		}
+    {
+        public static Quadrangle GetBounds(this IEnumerable<Note> notes, ScoreRendererBase renderer)
+        {
+            if (!notes.Any()) return default(Quadrangle);
 
-		/// <summary>
-		/// Creates a Score from stream.
-		/// </summary>
-		/// <param name="reader"></param>
-		/// <returns></returns>
-		public static Score ReadMusicXmlScoreToEnd(this StreamReader reader)
-		{
-			return ToScore(reader.ReadToEnd());
-		}
+            var boundsCollection = notes.Select(n => n.GetBounds(renderer)).ToArray();
+            var bounds = new Quadrangle(
+                boundsCollection.Last().NE,
+                boundsCollection.First().NW,
+                boundsCollection.Last().SE,
+                boundsCollection.First().SW);
+            var lowestB = bounds.SW.Y > bounds.SE.Y ? bounds.SW.Y : bounds.SE.Y;
+            var highestB = bounds.NW.Y < bounds.NE.Y ? bounds.NW.Y : bounds.NE.Y;
+
+            var lowest = boundsCollection.Max(b => b.SW.Y);
+            var highest = boundsCollection.Min(b => b.NW.Y);
+
+            var deltaYL = lowest - lowestB;
+            var deltaYH = highest - highestB;
+
+            return new Quadrangle(
+                new Point(bounds.NE.X, bounds.NE.Y + deltaYH),
+                new Point(bounds.NW.X, bounds.NW.Y + deltaYH),
+                new Point(bounds.SE.X, bounds.SE.Y + deltaYL),
+                new Point(bounds.SW.X, bounds.SW.Y + deltaYL));
+        }
+
+        /// <summary>
+        /// Returns the largest denominator (pulse) of note collection
+        /// </summary>
+        /// <param name="noteOrRests"></param>
+        /// <returns></returns>
+        public static double Pulse(this IEnumerable<NoteOrRest> noteOrRests)
+        {
+            return noteOrRests.Max(n => n.BaseDuration.Denominator);
+        }
+
+        /// <summary>
+        /// Creates a Score from stream.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        public static Score ReadMusicXmlScoreToEnd(this StreamReader reader)
+        {
+            return ToScore(reader.ReadToEnd());
+        }
 
         /// <summary>
         /// Returns interval array obtained from MelodicContourDigestParser
@@ -39,10 +67,10 @@ namespace Manufaktura.Controls.Linq
         /// <param name="score"></param>
         /// <returns></returns>
 		public static int[] ToIntervals(this Score score)
-		{
-			MelodicContourDigestParser parser = new MelodicContourDigestParser();
-			return parser.ParseBack(score);
-		}
+        {
+            MelodicContourDigestParser parser = new MelodicContourDigestParser();
+            return parser.ParseBack(score);
+        }
 
         /// <summary>
         /// Returns lyrics digest obtained by LyricsDigestParser
@@ -50,21 +78,21 @@ namespace Manufaktura.Controls.Linq
         /// <param name="score"></param>
         /// <returns></returns>
 		public static string ToLyricsDigest(this Score score)
-		{
-			LyricsDigestParser parser = new LyricsDigestParser();
-			return parser.ParseBack(score);
-		}
+        {
+            LyricsDigestParser parser = new LyricsDigestParser();
+            return parser.ParseBack(score);
+        }
 
-		/// <summary>
-		/// Calculates rhythmic digest of specified score.
-		/// </summary>
-		/// <param name="score"></param>
-		/// <returns></returns>
-		public static string ToRhythmDigest(this Score score)
-		{
-			RhythmDigestParser parser = new RhythmDigestParser();
-			return parser.ParseBack(score);
-		}
+        /// <summary>
+        /// Calculates rhythmic digest of specified score.
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
+        public static string ToRhythmDigest(this Score score)
+        {
+            RhythmDigestParser parser = new RhythmDigestParser();
+            return parser.ParseBack(score);
+        }
 
         /// <summary>
         /// Returns rhythm digest obtained with RhythmDigestParser
@@ -74,20 +102,20 @@ namespace Manufaktura.Controls.Linq
         /// <param name="includeBarlines"></param>
         /// <returns></returns>
 		public static string ToRhythmDigest(this Score score, bool markRests, bool includeBarlines)
-		{
-			RhythmDigestParser parser = new RhythmDigestParser { MarkRests = markRests, IncludeBarlines = includeBarlines };
-			return parser.ParseBack(score);
-		}
+        {
+            RhythmDigestParser parser = new RhythmDigestParser { MarkRests = markRests, IncludeBarlines = includeBarlines };
+            return parser.ParseBack(score);
+        }
 
-		/// <summary>
-		/// Converts MusicXml string to Score.
-		/// </summary>
-		/// <param name="document">MuicXml document as string</param>
-		/// <returns>Score</returns>
-		public static Score ToScore(this string document)
-		{
-			return ToScore(XDocument.Parse(document));
-		}
+        /// <summary>
+        /// Converts MusicXml string to Score.
+        /// </summary>
+        /// <param name="document">MuicXml document as string</param>
+        /// <returns>Score</returns>
+        public static Score ToScore(this string document)
+        {
+            return ToScore(XDocument.Parse(document));
+        }
 
         /// <summary>
         /// Converts MusicXML string to Score
@@ -96,9 +124,9 @@ namespace Manufaktura.Controls.Linq
         /// <param name="transformer"></param>
         /// <returns></returns>
 		public static Score ToScore(this string document, XTransformerParser transformer)
-		{
-			return ToScore(XDocument.Parse(document), transformer);
-		}
+        {
+            return ToScore(XDocument.Parse(document), transformer);
+        }
 
         /// <summary>
         /// Converts MusicXml XDocument to Score
@@ -106,24 +134,24 @@ namespace Manufaktura.Controls.Linq
         /// <param name="document"></param>
         /// <returns></returns>
 		public static Score ToScore(this XDocument document)
-		{
-			return ToScore(document, null);
-		}
+        {
+            return ToScore(document, null);
+        }
 
-		/// <summary>
-		/// Reads a score from MusicXml document with specific XTransformerParser.
-		/// </summary>
-		/// <param name="document"></param>
-		/// <param name="transformer"></param>
-		/// <returns></returns>
-		public static Score ToScore(this XDocument document, XTransformerParser transformer)
-		{
-			MusicXmlParser parser = new MusicXmlParser();
-			if (transformer != null)
-			{
-				document = transformer.Parse(document);
-			}
-			return parser.Parse(document);
-		}
-	}
+        /// <summary>
+        /// Reads a score from MusicXml document with specific XTransformerParser.
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="transformer"></param>
+        /// <returns></returns>
+        public static Score ToScore(this XDocument document, XTransformerParser transformer)
+        {
+            MusicXmlParser parser = new MusicXmlParser();
+            if (transformer != null)
+            {
+                document = transformer.Parse(document);
+            }
+            return parser.Parse(document);
+        }
+    }
 }
