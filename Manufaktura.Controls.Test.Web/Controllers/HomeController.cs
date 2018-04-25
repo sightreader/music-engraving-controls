@@ -15,7 +15,7 @@ namespace Manufaktura.Controls.Test.Web.Controllers
             if (useSmufl)
             {
                 var fontMetadata = System.IO.File.ReadAllText(fontMetadataPath);
-                vm.Settings.LoadSMuFLFont(fontMetadata, "Bravura", 20, "~/fonts/Bravura.otf");
+                vm.Settings.LoadSMuFLFont(fontMetadata, "Bravura", 20, "/fonts/Bravura.otf");
             }
 
             //var serverPath = Server.MapPath("~/Content/036 Bogurodzica[1].xml");

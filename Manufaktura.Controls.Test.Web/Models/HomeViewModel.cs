@@ -20,6 +20,7 @@ namespace Manufaktura.Controls.Test.Web.Models
             settings.Fonts.Add(MusicFontStyles.TimeSignatureFont, new HtmlFontInfo("Open Sans", 12, "/fonts/OpenSans-Regular.ttf"));
             settings.Fonts.Add(MusicFontStyles.DirectionFont, new HtmlFontInfo("Open Sans", 10, "/fonts/OpenSans-Regular.ttf"));
             settings.Scale = 1;
+            settings.CustomElementPositionRatio = 0.8;
             settings.IgnorePageMargins = true;
             Settings = settings;
         }
