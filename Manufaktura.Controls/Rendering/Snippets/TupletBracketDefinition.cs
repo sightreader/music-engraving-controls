@@ -10,10 +10,10 @@ namespace Manufaktura.Controls.Rendering.Snippets
             StartPoint = new Point(startX, startY);
             EndPoint = new Point(endX, endY);
             Width = Point.Distance(StartPoint, EndPoint);
-            Angle = Math.Asin(Math.Abs(endY - startY) / Width);// Point.BeamAngle(StartPoint, EndPoint);
-            Point25 = StartPoint.TranslateByAngle(Angle, Width * 0.25);
-            MidPoint = StartPoint.TranslateByAngle(Angle, Width * 0.5);
-            Point75 = StartPoint.TranslateByAngle(Angle, Width * 0.75);
+            Angle =  Point.BeamAngle(StartPoint, EndPoint);
+            Point25 = StartPoint.TranslateByAngleOld(Angle, Width * 0.25);
+            MidPoint = StartPoint.TranslateByAngleOld(Angle, Width * 0.5);
+            Point75 = StartPoint.TranslateByAngleOld(Angle, Width * 0.75);
         }
 
         public double Angle { get; private set; }
