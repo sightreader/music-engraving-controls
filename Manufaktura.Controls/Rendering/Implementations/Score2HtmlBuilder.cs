@@ -30,7 +30,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         };
 
         protected abstract void BuildFontInformation(TCanvas canvas);
-        protected abstract void BuildScoreElementWrapper(TCanvas canvas, TCanvas scoreCanvas, Score score, string scoreElementName, Size calculatedScoreSize);
+        protected abstract void BuildScoreElementWrapper(TCanvas canvas, TCanvas scoreCanvas, Score score, string scoreElementName, Size calculatedScoreSize, double clippedAreaY);
         protected abstract string GetHtmlStringFromCanvas(TCanvas canvas);
         public abstract TCanvas CreateCanvas();
 
@@ -54,7 +54,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 var score = Scores.ElementAt(i);
                 renderer.Render(score);
 
-                BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName, new Size(renderer.ActualWidth + 20, renderer.ActualHeight + 20));
+                BuildScoreElementWrapper(canvas, scoreCanvas, score, canvasName, new Size(renderer.ActualWidth + 20, renderer.ActualHeight + 20), renderer.ClippedAreaY);
             }
             return GetHtmlStringFromCanvas(canvas);
         }

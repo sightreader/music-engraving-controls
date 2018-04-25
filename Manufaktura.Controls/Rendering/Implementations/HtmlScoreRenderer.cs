@@ -21,6 +21,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
         }
 
+        public double ClippedAreaY { get; protected set; }
+
         /// <summary>
         /// Height of rendered score
         /// </summary>

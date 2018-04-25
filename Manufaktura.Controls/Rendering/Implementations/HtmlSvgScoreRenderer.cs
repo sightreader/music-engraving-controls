@@ -21,7 +21,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Settings = settings;
         }
 
+
         public override bool CanDrawCharacterInBounds => false;
+
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, Model.MusicalSymbol owner)
         {
             if (!EnsureProperPage(owner)) return;
@@ -47,6 +49,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
             }
 
+            if (rect.Y < ClippedAreaY) ClippedAreaY = rect.Y;
             if (rect.X + rect.Width > ActualWidth) ActualWidth = rect.X + rect.Width;
             if (rect.Y + rect.Height > ActualHeight) ActualHeight = rect.Y + rect.Height;
 
@@ -83,6 +86,10 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
             }
 
+            if (p1.Y < ClippedAreaY) ClippedAreaY = p1.Y;
+            if (p2.Y < ClippedAreaY) ClippedAreaY = p2.Y;
+            if (p3.Y < ClippedAreaY) ClippedAreaY = p3.Y;
+            if (p4.Y < ClippedAreaY) ClippedAreaY = p4.Y;
             if (p4.X > ActualWidth) ActualWidth = p4.X;
             if (p1.Y > ActualHeight) ActualHeight = p1.Y;
 
@@ -105,6 +112,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
             //element.SetAttributeValue(XName.Get("viewBox"), $"0 0 {size.Width.ToStringInvariant()} {size.Height.ToStringInvariant()}");
 
+            if (location.Y < ClippedAreaY) ClippedAreaY = location.Y;
             if (location.X > ActualWidth) ActualWidth = location.X;
             if (location.Y > ActualHeight) ActualHeight = location.Y;
 
@@ -134,6 +142,8 @@ namespace Manufaktura.Controls.Rendering.Implementations
                 element.Add(new XAttribute(playbackAttr.Key, playbackAttr.Value));
             }
 
+            if (startPoint.Y < ClippedAreaY) ClippedAreaY = startPoint.Y;
+            if (endPoint.Y < ClippedAreaY) ClippedAreaY = endPoint.Y;
             if (startPoint.X > ActualWidth) ActualWidth = startPoint.X;
             if (endPoint.X > ActualWidth) ActualWidth = endPoint.X;
             if (startPoint.Y > ActualHeight) ActualHeight = startPoint.Y;
@@ -153,6 +163,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
             var element = GetTextElement(text, fontStyle, location, color, owner);
 
+            if (location.Y < ClippedAreaY) ClippedAreaY = location.Y;
             if (location.X > ActualWidth) ActualWidth = location.X;
             if (location.Y > ActualHeight) ActualHeight = location.Y;
 

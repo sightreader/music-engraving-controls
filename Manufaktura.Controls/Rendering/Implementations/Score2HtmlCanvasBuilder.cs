@@ -35,7 +35,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             stringBuilder.AppendLine("</style>");
         }
 
-        protected override void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName, Size calculatedScoreSize)
+        protected override void BuildScoreElementWrapper(StringBuilder stringBuilder, StringBuilder scoreStringBuilder, Score score, string scoreElementName, Size calculatedScoreSize, double clippedAreaY)
         {
             stringBuilder.AppendLine(string.Format("<div><canvas id=\"{0}\" height=\"{1}\"></canvas>", scoreElementName, calculatedScoreSize.Height.ToStringInvariant()));
             stringBuilder.AppendLine("<script>");

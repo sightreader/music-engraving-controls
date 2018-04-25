@@ -35,7 +35,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             canvas.Add(element);
         }
 
-        protected override void BuildScoreElementWrapper(XElement canvas, XElement scoreCanvas, Score score, string scoreElementName, Size calculatedScoreSize)
+        protected override void BuildScoreElementWrapper(XElement canvas, XElement scoreCanvas, Score score, string scoreElementName, Size calculatedScoreSize, double clippedAreaY)
         {
 			var wrapper = new XElement("svg");//,
 			if (!string.IsNullOrWhiteSpace(Settings.ScoreClass)) wrapper.Add(new XAttribute("class", Settings.ScoreClass));
@@ -48,8 +48,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
 			if (Settings.SizeHint == HtmlSizeHint.Stretch)
                 wrapper.Add(new XAttribute("style", $"width:100%; height:{calculatedScoreSize.Height.ToStringInvariant()}px;"));
             else if (Settings.SizeHint ==  HtmlSizeHint.FixedWidth)
-            { 
-                wrapper.Add(new XAttribute("style", $"width:{(calculatedScoreSize.Width * Settings.Scale).ToStringInvariant()}px; height:{(calculatedScoreSize.Height * Settings.Scale).ToStringInvariant()}px;"));
+            {
+                var antiClipStyle = clippedAreaY > 0 ? $" overflow: visible; margin-top:{(clippedAreaY * Settings.Scale).ToStringInvariant()}px;" : "";
+                wrapper.Add(new XAttribute("style", $"width:{(calculatedScoreSize.Width * Settings.Scale).ToStringInvariant()}px; height:{(calculatedScoreSize.Height * Settings.Scale).ToStringInvariant()}px;{antiClipStyle}"));
                 wrapper.Add(new XAttribute("viewBox", $"0 0 {calculatedScoreSize.Width.ToStringInvariant()} {calculatedScoreSize.Height.ToStringInvariant()}"));
             }
         }
