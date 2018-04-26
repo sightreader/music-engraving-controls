@@ -163,7 +163,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
             var element = GetTextElement(text, fontStyle, location, color, owner);
 
-            if (location.Y - 5 < ClippedAreaY) ClippedAreaY = location.Y - 5;
+            if (location.Y - 15 < ClippedAreaY) ClippedAreaY = location.Y - 15;
             if (location.X > ActualWidth) ActualWidth = location.X;
             if (location.Y > ActualHeight) ActualHeight = location.Y;
 

@@ -46,6 +46,7 @@ namespace Manufaktura.Music.Model
         public static int Log2(int number)
         {
             if (number <= 0) throw new Exception("Number must be greater than or equal 0.");
+            if (number == 1) return 0;
             if (number % 2 != 0) throw new Exception("Number must be divisible by 2.");
 
             var logarithm = 0;

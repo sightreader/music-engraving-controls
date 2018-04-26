@@ -106,7 +106,8 @@ namespace Manufaktura.Controls.Rendering.Snippets
             var fontStyle = renderer.IsSMuFLFont ? MusicFontStyles.MusicFont : MusicFontStyles.LyricsFont;
             var textSize = renderer.CanMeasureString ? renderer.MeasureString(fontStyle, textToWrite) : new Size();
             var textPosition = renderer.CanMeasureString ?
-                bracketDefinition.MidPoint.Translate(textSize.Width / -2, textSize.Height / 2) : bracketDefinition.MidPoint;
+                bracketDefinition.MidPoint.Translate(textSize.Width / -2, textSize.Height / 2) :
+                bracketDefinition.MidPoint.Translate(-3.7, 4.7);
 
             renderer.DrawString(textToWrite, fontStyle, textPosition, element);
         }
@@ -135,6 +136,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
             renderer.DrawLine(noteGroupBounds.SE, noteGroupBounds.SW, new Pen(Color.Red), element);
             renderer.DrawLine(noteGroupBounds.SW, noteGroupBounds.NW, new Pen(Color.Red), element);
         }
+
         private static IEnumerable<NoteOrRest> EnumerateLargeNotes(IEnumerable<NoteOrRest> elements)
         {
             foreach (var element in elements)
