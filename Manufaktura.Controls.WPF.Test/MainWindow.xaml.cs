@@ -44,6 +44,9 @@ namespace Manufaktura.Controls.WPF.Test
             var useSMuFL = true;
             
             if (useSMuFL) {
+                //var jsonTest = JsonConvert.SerializeObject(new SMuFLFontMetadata());
+                //var jsonTest2 = JsonConvert.DeserializeObject<SMuFLFontMetadata>(jsonTest);
+
                 using (var stream = assembly.GetManifestResourceStream(resourceName))
                 using (var reader = new StreamReader(stream))
                 {

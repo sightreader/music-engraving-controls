@@ -3,6 +3,7 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Services;
 using Manufaktura.Music.Model;
 using System;
+using System.Linq;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -24,7 +25,7 @@ namespace Manufaktura.Controls.Rendering
 
         public override void Render(Key element, ScoreRendererBase renderer)
         {
-            if (element.Fifths != 0)
+            if (element.Fifths != 0 && element.Measure.Elements.FirstOrDefault() == element)
                 scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
 
             scoreService.CurrentKey = element;

@@ -3,6 +3,7 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Services;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace Manufaktura.Controls.Rendering
@@ -29,7 +30,8 @@ namespace Manufaktura.Controls.Rendering
         public override void Render(TimeSignature element, ScoreRendererBase renderer)
         {
             var topLinePosition = scoreService.CurrentLinePositions[0];
-            scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
+            if (element.Measure.Elements.FirstOrDefault() == element)
+                scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
 
             if (element.SignatureType != TimeSignatureType.Numbers)
             {
