@@ -83,10 +83,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Manufaktura.Controls.Desktop\Manufaktura.Controls.Desktop.csproj">
-      <Project>{ddb37937-0275-4733-a1f3-50f442d4bc0f}</Project>
-      <Name>Manufaktura.Controls.Desktop</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
       <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
       <Name>Manufaktura.Controls</Name>

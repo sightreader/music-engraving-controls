@@ -1,6 +1,5 @@
 ﻿using Manufaktura.Controls.Desktop.Audio;
 using Manufaktura.Controls.Desktop.Audio.Midi;
-using Manufaktura.Controls.Desktop.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.SMuFL;
@@ -35,7 +34,6 @@ namespace Manufaktura.Controls.WPF.Test
 
             var assembly = typeof(MainWindow).Assembly;
             var resourceName = $"{typeof(MainWindow).Namespace}.Assets.bravura_metadata.json";
-            var binaryResourceName = $"{typeof(MainWindow).Namespace}.Assets.bravura_metadata.bin";
             //var resourceName = $"{typeof(MainWindow).Namespace}.Assets.gootville_metadata.json";
             //var resourceName = $"{typeof(MainWindow).Namespace}.Assets.jazzy_metadata.json";
             //noteViewerTest.LoadFont(family);
@@ -46,25 +44,20 @@ namespace Manufaktura.Controls.WPF.Test
             var useSMuFL = true;
             
             if (useSMuFL) {
-                var s = new WpfScoreRendererSettings();
-
-                using (var stream = assembly.GetManifestResourceStream(binaryResourceName))
+                using (var stream = assembly.GetManifestResourceStream(resourceName))
+                using (var reader = new StreamReader(stream))
                 {
-                    var metadataJson = s.DeserializeSMuFLBinaryMetadata(stream);
+                    string result = reader.ReadToEnd();
+                    var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
                     noteViewerTest.LoadFont(family, 25, 16, metadataJson);
                     noteViewer1.LoadFont(family, 25, 16, metadataJson);
                     noteViewer2.LoadFont(family, 25, 16, metadataJson);
                     noteViewer3.LoadFont(family, 25, 16, metadataJson);
-                }
-                /*using (var reader = new StreamReader(stream))
-                {
-                    string result = reader.ReadToEnd();
-                    var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
 
+                    //var s = new WpfScoreRendererSettings();
                     //s.CurrentSMuFLMetadata = metadataJson;
-                    //var ba = s.GetSMuFLMetadataAsBinary();
-                    //File.WriteAllBytes(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "bravura_metadata.bin"), ba);
-                }*/
+                    //var ba = ((MemoryStream)s.GetSMuFLMetadataBinaryStream()).ToArray();
+                }
             }
 
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);

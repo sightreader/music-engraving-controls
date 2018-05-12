@@ -1,5 +1,4 @@
 ﻿using Manufaktura.Controls.Audio;
-using Manufaktura.Controls.Desktop.Extensions;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
