@@ -42,23 +42,10 @@ namespace Manufaktura.Controls.Parser.Digest
 
                     if (previousElement != null)
                     {
-                        int greaterDuration;
-                        int lesserDuration;
-                        string sign;
-                        if (previousElement.BaseDuration <= durationElement.BaseDuration)
-                        {
-                            greaterDuration = (int)durationElement.BaseDuration.Denominator;
-                            lesserDuration = (int)previousElement.BaseDuration.Denominator;
-                            sign = "*";
-                        }
-                        else
-                        {
-                            lesserDuration = (int)durationElement.BaseDuration.Denominator;
-                            greaterDuration = (int)previousElement.BaseDuration.Denominator;
-                            sign = "/";
-                        }
-                        sb.Append(sign);
-                        sb.Append(greaterDuration / lesserDuration);
+                        sb.Append(previousElement.BaseDuration <= durationElement.BaseDuration ? "*" : "/");
+                        var dur1 = (int)durationElement.BaseDuration.Denominator;
+                        var dur2 = (int)previousElement.BaseDuration.Denominator;
+                        sb.Append(dur2 > dur1 ? dur2 / dur1 : dur1 / dur2);
                     }
                     for (int i = 0; i < durationElement.NumberOfDots; i++) sb.Append(".");
                     if (element is Rest && MarkRests) sb.Append("r");

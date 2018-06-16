@@ -79,6 +79,7 @@
     <Compile Include="Model\ProvenanceToPage.cs" />
     <Compile Include="MusicTheoryTests.cs" />
     <Compile Include="OrmTests.cs" />
+    <Compile Include="ParsingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderingTests.cs" />
     <Compile Include="Rendering\IRenderingAssertionRule.cs" />
