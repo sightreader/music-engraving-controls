@@ -26,8 +26,6 @@ namespace Manufaktura.Controls.Xamarin.Test.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Manufaktura.Controls.Xamarin.Droid.Resource.String.ApplicationName = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.String.ApplicationName;
-			global::Manufaktura.Controls.Xamarin.Droid.Resource.String.Hello = global::Manufaktura.Controls.Xamarin.Test.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -55,25 +53,6 @@ namespace Manufaktura.Controls.Xamarin.Test.Droid
 			}
 			
 			private Drawable()
-			{
-			}
-		}
-		
-		public partial class String
-		{
-			
-			// aapt resource value: 0x7f030001
-			public const int ApplicationName = 2130903041;
-			
-			// aapt resource value: 0x7f030000
-			public const int Hello = 2130903040;
-			
-			static String()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private String()
 			{
 			}
 		}
