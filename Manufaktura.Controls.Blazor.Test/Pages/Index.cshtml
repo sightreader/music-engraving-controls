@@ -12,13 +12,12 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
 <NoteViewer Score=@score Settings=@settings />
 <button class="btn btn-primary" onclick="@AddNote">Add note</button>
 
 
 @functions {
-    Score score = Score.CreateOneStaffScore(Clef.Treble, MajorScale.G);
+    Score score = Score.CreateOneStaffScore(Clef.Treble, MajorScale.C);
 
     HtmlScoreRendererSettings settings = new HtmlScoreRendererSettings
     {
@@ -34,9 +33,8 @@ Welcome to your new app.
     {
         base.OnInit();
         score.FirstStaff.AddRange(StaffBuilder
-        .FromPitches(Pitch.C4, Pitch.C4, Pitch.C4, Pitch.C4)
-                    .AddRhythm("4 4 4 4")
-                    .ApplyStemDirection(VerticalDirection.Up));
+            .FromPitches(Pitch.C4, Pitch.D4, Pitch.E4, Pitch.F4, Pitch.G4, Pitch.E4)
+            .AddRhythm("8 8 8 8 4 4"));
         var musicFontUris = new[] { "/fonts/Polihymnia.svg", "/fonts/Polihymnia.ttf", "/fonts/Polihymnia.woff" };
         settings.RenderingMode = ScoreRenderingModes.AllPages;
         settings.Fonts.Add(MusicFontStyles.MusicFont, new HtmlFontInfo("Polihymnia", 22, musicFontUris));
