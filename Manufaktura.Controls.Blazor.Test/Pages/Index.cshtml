@@ -1,7 +1,52 @@
-﻿@page "/"
+﻿@using Manufaktura.Controls.Model
+@using Manufaktura.Controls.Linq
+@using Manufaktura.Controls.Extensions
+@using Manufaktura.Controls.Rendering
+@using Manufaktura.Controls.Rendering.Implementations
+@using Manufaktura.Music.Model
+@using Manufaktura.Music.Model.MajorAndMinor
+@using Manufaktura.Controls.Model.Fonts
+@page "/"
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+<NoteViewer Score=@score Settings=@settings />
+<button class="btn btn-primary" onclick="@AddNote">Add note</button>
+
+
+@functions {
+    Score score = Score.CreateOneStaffScore(Clef.Treble, MajorScale.G);
+
+    HtmlScoreRendererSettings settings = new HtmlScoreRendererSettings
+    {
+        RenderSurface = HtmlScoreRendererSettings.HtmlRenderSurface.Svg
+    };
+
+    void AddNote()
+    {
+        score.FirstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter));         //https://github.com/aspnet/Blazor/issues/934
+    }
+
+    protected override void OnInit()
+    {
+        base.OnInit();
+        score.FirstStaff.AddRange(StaffBuilder
+        .FromPitches(Pitch.C4, Pitch.C4, Pitch.C4, Pitch.C4)
+                    .AddRhythm("4 4 4 4")
+                    .ApplyStemDirection(VerticalDirection.Up));
+        var musicFontUris = new[] { "/fonts/Polihymnia.svg", "/fonts/Polihymnia.ttf", "/fonts/Polihymnia.woff" };
+        settings.RenderingMode = ScoreRenderingModes.AllPages;
+        settings.Fonts.Add(MusicFontStyles.MusicFont, new HtmlFontInfo("Polihymnia", 22, musicFontUris));
+        settings.Fonts.Add(MusicFontStyles.StaffFont, new HtmlFontInfo("Polihymnia", 24, musicFontUris));
+        settings.Fonts.Add(MusicFontStyles.GraceNoteFont, new HtmlFontInfo("Polihymnia", 14, musicFontUris));
+        settings.Fonts.Add(MusicFontStyles.LyricsFont, new HtmlFontInfo("Open Sans", 9, "/fonts/OpenSans-Regular.ttf"));
+        settings.Fonts.Add(MusicFontStyles.TimeSignatureFont, new HtmlFontInfo("Open Sans", 12, "/fonts/OpenSans-Regular.ttf"));
+        settings.Fonts.Add(MusicFontStyles.DirectionFont, new HtmlFontInfo("Open Sans", 10, "/fonts/OpenSans-Regular.ttf"));
+        settings.Scale = 1;
+        settings.CustomElementPositionRatio = 0.8;
+        settings.IgnorePageMargins = true;
+    }
+}

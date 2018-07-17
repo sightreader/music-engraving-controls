@@ -1,0 +1,31 @@
+﻿@using Manufaktura.Controls.Model
+@using Manufaktura.Controls.Rendering.Implementations
+
+<RawHtml Content="@RenderScore()"></RawHtml>
+
+@functions {
+[Parameter]
+Score Score { get; set; }
+
+[Parameter]
+HtmlScoreRendererSettings Settings { get; set; }
+
+private int canvasIdCount = 0;
+
+public string RenderScore()
+{
+
+    IScore2HtmlBuilder builder;
+    if (Settings.RenderSurface == HtmlScoreRendererSettings.HtmlRenderSurface.Canvas)
+        builder = new Score2HtmlCanvasBuilder(Score, string.Format("scoreCanvas{0}", canvasIdCount), Settings);
+    else if (Settings.RenderSurface == HtmlScoreRendererSettings.HtmlRenderSurface.Svg)
+        builder = new Score2HtmlSvgBuilder(Score, string.Format("scoreCanvas{0}", canvasIdCount), Settings);
+    else throw new NotImplementedException("Unsupported rendering engine.");
+
+    string html = builder.Build();
+
+    canvasIdCount++;
+
+    return html;
+}
+}
