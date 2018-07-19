@@ -44,13 +44,16 @@ namespace Manufaktura.Core.Expressions.Parsers
             var method = staticType.GetTypeInfo().GetDeclaredMethod(methodName);
             if (method == null) throw new Exception($"Could not find metehod {methodName} in type {typeName}.");
             var unparsedParameters = s.Replace(fullName, "").Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(up => up.Trim()).ToArray();
+            var methodParameters = method.GetParameters();
+            var paramIndex = 0;
             var parameters = unparsedParameters.Select(up =>
                 {
                     var parser = UnaryExpressionParser.For(up);
                     if (up == null) throw new Exception($"Unrecognized expression {up} in parameters of function {fullName}.");
-                    return parser.Parse(up);
+                    var parameterExpression = parser.Parse(up);
+                    return Expression.Convert(parameterExpression, methodParameters[paramIndex++].ParameterType);
                 }
-            );
+            ).ToArray();
 
             return Expression.Call(method, parameters);
         }

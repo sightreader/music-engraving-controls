@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Manufaktura.Controls.WPF.Formulas.Test"
         xmlns:bindings="clr-namespace:Manufaktura.Controls.WPF.Bindings;assembly=Manufaktura.Controls.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="596.066" Width="800">
     <StackPanel Orientation="Vertical">
         <Border Margin="50" Width="100" Height="100" Background="Turquoise" x:Name="someBorder">
             <Border.Triggers>
@@ -35,9 +35,17 @@
                 </RotateTransform>
             </Border.RenderTransform>
         </Border>
-        <TextBlock Margin="20,20,20,0" Text="Change center of rotation X:" FontSize="24" />
+        <TextBlock Margin="20,20,20,0" Text="Change center of rotation X (0-1):" FontSize="24" />
         <Slider Margin="20" x:Name="sliderX" Minimum="0" Maximum="1" Value="0.5" LargeChange="0.1" SmallChange="0.01" />
-        <TextBlock Margin="20,20,20,0" Text="Change center of rotation Y:" FontSize="24" />
+        <TextBlock Margin="20,20,20,0" Text="Change center of rotation Y (0-1):" FontSize="24" />
         <Slider Margin="20" x:Name="sliderY" Minimum="0" Maximum="1" Value="0.5" LargeChange="0.1" SmallChange="0.01" />
+        <TextBlock Margin="20,20,20,0" Text="Example of function (Asin of rotation Y):" FontSize="24" />
+        <TextBox Margin="20" FontSize="24">
+            <TextBox.Text>
+                <bindings:FormulaBinding Formula="System.Math.Asin(@p0)" StringFormat="0:0.00">
+                    <Binding Path="Value" ElementName="sliderY" />
+                </bindings:FormulaBinding>
+            </TextBox.Text>
+        </TextBox>
     </StackPanel>
 </Window>

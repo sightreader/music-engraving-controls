@@ -149,6 +149,15 @@ namespace Manufaktura.Core.Expressions.Parsers
             {
                 Parameters.Add(((UnaryExpression)expression).Operand as ParameterExpression);
             }
+            else if (expression.NodeType == ExpressionType.Call)
+            {
+                var methodCallExpression = expression as MethodCallExpression;
+                foreach (var param in methodCallExpression.Arguments)
+                {
+                    var paramExpression = ((UnaryExpression)param).Operand as ParameterExpression ?? param as ParameterExpression;
+                    Parameters.Add(paramExpression);
+                }
+            }
 
             return expression;
         }
