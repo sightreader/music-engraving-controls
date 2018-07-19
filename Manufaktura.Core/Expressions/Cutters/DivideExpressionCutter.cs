@@ -24,7 +24,7 @@ namespace Manufaktura.Core.Expressions.Cutters
 
         public override Expression CreateExpression(Expression left, Expression right)
         {
-            return Expression.Divide(left, right);
+            return Expression.Divide(Expression.Convert(left, typeof(double)), Expression.Convert(right, typeof(double)));
         }
     }
 }
