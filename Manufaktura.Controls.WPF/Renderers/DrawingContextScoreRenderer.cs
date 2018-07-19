@@ -12,7 +12,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
 using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
@@ -22,7 +21,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Manufaktura.Controls.WPF
+namespace Manufaktura.Controls.WPF.Renderers
 {
 	public class DrawingContextScoreRenderer : ScoreRenderer<DrawingContext>
 	{

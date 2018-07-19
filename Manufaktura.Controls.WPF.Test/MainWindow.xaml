@@ -40,7 +40,7 @@
             </WPF:NoteViewer>
                 <WPF:NoteViewer Visibility="Collapsed" RenderingMode="Panorama" x:Name="noteViewer2" HorizontalAlignment="Stretch" IsOccupyingSpace="True" VerticalAlignment="Top" />
             <WPF:NoteViewer Visibility="Collapsed" x:Name="noteViewer3" HorizontalAlignment="Stretch" Height="100"  VerticalAlignment="Top" />
-                <WPF:RadialChart  Visibility="Collapsed" Samples="{Binding ChartSamples}" Width="300" Height="300" LabelToAxisDistance="30" />
+                <WPF:RadialChart  Samples="{Binding ChartSamples}" Width="300" Height="300" LabelToAxisDistance="30" />
 
         </StackPanel>
     </ScrollViewer>

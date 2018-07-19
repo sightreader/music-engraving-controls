@@ -12,7 +12,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
 using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
@@ -20,6 +19,8 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.WPF.Bindings;
+using Manufaktura.Controls.WPF.Renderers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -54,10 +54,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WpfCanvasScoreRenderer.cs" />
-    <Compile Include="DependencyPropertyEx.cs" />
-    <Compile Include="DispatcherCanvasScoreRenderer.cs" />
-    <Compile Include="DrawingContextScoreRenderer.cs" />
+    <Compile Include="Bindings\FormulaBinding.cs" />
+    <Compile Include="Converters\FormulaConverter.cs" />
+    <Compile Include="Converters\FormulaVisibilityConverter.cs" />
+    <Compile Include="Renderers\WpfCanvasScoreRenderer.cs" />
+    <Compile Include="Bindings\DependencyPropertyEx.cs" />
+    <Compile Include="Renderers\DispatcherCanvasScoreRenderer.cs" />
+    <Compile Include="Renderers\DrawingContextScoreRenderer.cs" />
     <Compile Include="NoteViewer.xaml.cs">
       <DependentUpon>NoteViewer.xaml</DependentUpon>
     </Compile>
@@ -65,7 +68,7 @@
     <Compile Include="RadialChart.xaml.cs">
       <DependentUpon>RadialChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WpfScoreRendererSettings.cs" />
+    <Compile Include="Renderers\WpfScoreRendererSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Polihymnia.ttf">
@@ -87,10 +90,17 @@
       <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
       <Name>Manufaktura.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Core\Manufaktura.Core.csproj">
+      <Project>{486a9d05-703e-4ade-a7a8-610d68358f3c}</Project>
+      <Name>Manufaktura.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
       <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
       <Name>Manufaktura.Music</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Manufaktura.Controls.WPF.licenseheader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
