@@ -30,6 +30,8 @@ namespace Manufaktura.Controls.WPF.Test
 
         public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
         {
+
+
             var mScore = Score.CreateOneStaffScore(Clef.Treble, Music.Model.MajorAndMinor.MajorScale.G);
 
             mScore.FirstStaff.AddTimeSignature(TimeSignatureType.Numbers, 4, 4);
@@ -79,9 +81,10 @@ namespace Manufaktura.Controls.WPF.Test
             mScore.FirstStaff.Add(n1);
 
             mScore.FirstStaff.AddBarline(BarlineStyle.Regular);
-
-            PrintSuggestion ps = new PrintSuggestion();
-            ps.IsSystemBreak = true;
+            PrintSuggestion ps = new PrintSuggestion
+            {
+                IsSystemBreak = true
+            };
 
             mScore.FirstStaff.Add(ps);
 
