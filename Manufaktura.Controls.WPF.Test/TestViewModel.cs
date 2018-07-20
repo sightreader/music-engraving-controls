@@ -3,7 +3,6 @@ using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
-using Manufaktura.Music.Model.MajorAndMinor;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -15,10 +14,10 @@ namespace Manufaktura.Controls.WPF.Test
 
         public RadialChartSample[] ChartSamples { get; } = new[] {
             new RadialChartSample("A", "A", 5),
-        new RadialChartSample("B", "B", 5.2),
-        new RadialChartSample("C", "C", 1.8),
-        new RadialChartSample("D", "D", 3),
-        new RadialChartSample("E", "E", 3.7)
+            new RadialChartSample("B", "B", 5.2),
+            new RadialChartSample("C", "C", 1.8),
+            new RadialChartSample("D", "D", 3),
+            new RadialChartSample("E", "E", 3.7)
         };
 
         public Score Data
@@ -31,196 +30,84 @@ namespace Manufaktura.Controls.WPF.Test
 
         public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
         {
-            var rd = new RhythmicDuration(2, 0).ToProportion();
-            rd = new RhythmicDuration(2, 1).ToProportion();
-            rd = new RhythmicDuration(2, 2).ToProportion();
-            rd = new RhythmicDuration(2, 3).ToProportion();
+            var mScore = Score.CreateOneStaffScore(Clef.Treble, Music.Model.MajorAndMinor.MajorScale.G);
 
-            var score = Score.CreateOneStaffScore(Clef.Treble, MajorScale.C);
-            var firstStaff = score.FirstStaff;
+            mScore.FirstStaff.AddTimeSignature(TimeSignatureType.Numbers, 4, 4);
+            mScore.FirstStaff.AddNote(Pitch.G4, RhythmicDuration.Half);
+            mScore.FirstStaff.Add(new Rest(RhythmicDuration.Quarter));
+            mScore.FirstStaff.AddNote(Pitch.FromMidiPitch(60, Pitch.MidiPitchTranslationMode.Auto), RhythmicDuration.Half);
+            mScore.FirstStaff.AddBarline(BarlineStyle.Regular);
+            mScore.FirstStaff.AddNote(Pitch.G4, RhythmicDuration.Quarter);
 
-            firstStaff.AddTimeSignature(TimeSignatureType.Numbers, 4, 4);
-            firstStaff.AddRange(new Pitch[] { Pitch.C4, Pitch.E4, Pitch.G4 }.AddUniformRhythm(4).MakeChord());
-            firstStaff.AddRange(new Pitch[] { Pitch.D4, Pitch.FSharp4, Pitch.A4 }.AddUniformRhythm(4).MakeChord());
-            firstStaff.AddRange(new Pitch[] { Pitch.E4, Pitch.GSharp4, Pitch.B4 }.AddUniformRhythm(4).ApplyStemDirection(VerticalDirection.Up).MakeChord());
-            firstStaff.Add(new PrintSuggestion { IsSystemBreak = true });
-            firstStaff.AddRange(new Pitch[] { Pitch.C4, Pitch.D4 }.AddUniformRhythm(4));
+            mScore.FirstStaff.AddNote(Pitch.FromMidiPitch(61, Pitch.MidiPitchTranslationMode.Auto), RhythmicDuration.Quarter);
+            mScore.FirstStaff.AddRange(new Note[] {
+                    Note.FromMidiPitch(63, RhythmicDuration.Quarter),
+                    Note.FromMidiPitch(67, RhythmicDuration.Quarter)
+            }.MakeChord());
+            mScore.FirstStaff.AddBarline(BarlineStyle.Regular);
+            mScore.FirstStaff.AddRange(StaffBuilder.FromPitches(
+                Pitch.C4,
+                Pitch.E4,
+                Pitch.G4,
+                Pitch.A4,
+                Pitch.C4,
+                Pitch.E4,
+                Pitch.G4,
+                Pitch.A4).AddUniformRhythm(RhythmicDuration.Sixteenth).ApplyStemDirection(VerticalDirection.Up).Rebeam());
 
-            firstStaff.AddBarline();
+            Note n1 = new Note();
+            n1.ApplyMidiPitch(63);
+            n1.Duration = RhythmicDuration.Quarter;
+            n1.Tuplet = TupletType.Start;
+            n1.TupletWeightOverride = 1;
+            mScore.FirstStaff.Add(n1);
 
-            /*firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.C4, Pitch.C4, Pitch.C4)
-				.AddRhythm("16. 32 16 16")
-				.ApplyStemDirection(VerticalDirection.Up)
-				.Rebeam());
+            n1 = new Note();
+            n1.ApplyMidiPitch(66);
 
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
-				.AddRhythm(16, 32, 16, 32, 8, 8, 16)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.AddLyrics("Wlazł ko-tek na pło-tek"));
-			firstStaff.Elements.Add(new MetronomeDirection(Tempo.Allegro, DirectionPlacementType.Above));
+            n1.Duration = RhythmicDuration.Quarter;
+            n1.TupletWeightOverride = 1;
 
-			firstStaff.Elements.Add(new Barline());
+            mScore.FirstStaff.Add(n1);
 
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4)
-				.AddRhythm("8.. 32")
-				.ApplyStemDirection(VerticalDirection.Up)
-				.AddLyrics("i mru-"));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromRhythm(8, 8)
-				.AddPitches(Pitch.C4, Pitch.E4)
-				.ApplyStemDirection(VerticalDirection.Up));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4, Pitch.G4)
-				.AddRhythm(32, 32, 32, 16, 16, 32)
-				.ApplyStemDirection(VerticalDirection.Up));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
-				.AddRhythm(8, 32, 16, 32)
-				.ApplyStemDirection(VerticalDirection.Up));
+            n1 = new Note();
+            n1.ApplyMidiPitch(66);
+            n1.Duration = RhythmicDuration.Quarter;
+            n1.TupletWeightOverride = 1;
 
-			firstStaff.Elements.Add(new Barline());
+            n1.Tuplet = TupletType.Stop;
+            mScore.FirstStaff.Add(n1);
 
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4)
-				.AddRhythm(8, 32)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(2, 0));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4)
-				.AddRhythm(8, 8)
-				.ApplyStemDirection(VerticalDirection.Up));
+            mScore.FirstStaff.AddBarline(BarlineStyle.Regular);
 
-			firstStaff.Elements.Add(new Barline());
+            PrintSuggestion ps = new PrintSuggestion();
+            ps.IsSystemBreak = true;
 
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4, Pitch.E4)
-				.AddRhythm(32, 32, 32, 32, 8)
-				.ApplyStemDirection(VerticalDirection.Up));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4)
-				.AddRhythm(8, 16, 16)
-				.ApplyStemDirection(VerticalDirection.Up));
+            mScore.FirstStaff.Add(ps);
 
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4, Pitch.C4)
-				.AddRhythm(8, 16, 32, 32)
-				.ApplyStemDirection(VerticalDirection.Up));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4)
-				.AddRhythm(8, 16)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(1, 0));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4)
-				.AddRhythm(8, 32)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(2, 0));
-			firstStaff.Elements.AddRange(StaffBuilder
-				.FromPitches(Pitch.C4, Pitch.E4, Pitch.G4)
-				.AddRhythm(32, 16, 8)
-				.ApplyStemDirection(VerticalDirection.Up)
-				.AddDots(0, 1, 0));
+            mScore.FirstStaff.AddRange(StaffBuilder.FromPitches(Pitch.G4, Pitch.B4, Pitch.D5, Pitch.C4, Pitch.E4, Pitch.G4, Pitch.D4, Pitch.DSharp4, Pitch.A4)
+                .AddRhythm("8 8 8 8 4 4 4 4 4"));
+            mScore.FirstStaff.AddBarline(BarlineStyle.Regular);
 
-			firstStaff.Elements.OfType<Note>().FirstOrDefault(n => n.Pitch == Pitch.E4 && n.BaseDuration == RhythmicDuration.D32nd).DesiredHookDirection = DesiredHookDirections.ForwardHook;
-			firstStaff.Elements.OfType<NoteOrRest>().Rebeam(RebeamMode.ToBeats, hookDirectionAlgorithm);
-            */
-            /*
-			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
-			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { TieType = NoteTieType.Start });
-			firstStaff.Elements.Add(new Barline() { CustomColor = KolbergColors.OsterodeWheat });
-			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { CustomColor = Color.Red, TieType = NoteTieType.Stop });
-			firstStaff.Elements.Add(new Barline());
-			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)));
-			firstStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
+            mScore.FirstStaff.AddRange(StaffBuilder.FromPitches(Pitch.G4, Pitch.B4, Pitch.D5, Pitch.C4, Pitch.E4, Pitch.G4, Pitch.D4, Pitch.DSharp4, Pitch.A4)
+                .AddRhythm("8 8 8 8 4 4 4 4 4"));
 
-			score.FirstStaff.Elements.Add(new Note(Pitch.C5, RhythmicDuration.Sixteenth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Start, NoteBeamType.ForwardHook }));
-			score.FirstStaff.Elements.Add(new Note(Pitch.F4, RhythmicDuration.Eighth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Continue  }));
-			score.FirstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.Sixteenth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.End, NoteBeamType.BackwardHook }));
-			score.FirstStaff.Elements.Add(new MetronomeDirection(new Tempo(RhythmicDuration.Eighth, 120), DirectionPlacementType.Above));
+            mScore.FirstStaff.Elements.Add(new Barline());
 
-			var secondStaff = new Staff();
-			score.Staves.Add(secondStaff);
-			secondStaff.Elements.Add(Clef.Bass);
-			secondStaff.Elements.Add(new Key(0));
-			secondStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Eighth) { Tuplet = TupletType.Start, TupletWeightOverride = 1 });
-			secondStaff.Elements.Add(new Note(Pitch.D3, RhythmicDuration.Sixteenth) { TupletWeightOverride = 0.5 });
-			secondStaff.Elements.Add(new Note(Pitch.F3, RhythmicDuration.Sixteenth) {  TupletWeightOverride = 0.5});
-			secondStaff.Elements.Add(new Note(Pitch.E3, RhythmicDuration.Eighth) { Tuplet = TupletType.Stop, TupletWeightOverride = 1 } );
-			secondStaff.Elements.Add(new Barline());
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Barline());
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
-			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
+            mScore.FirstStaff.Add(new PrintSuggestion() { IsSystemBreak = true });
 
-            var secondStaff = new Staff();
-			score.Staves.Add(secondStaff);
-			secondStaff.Elements.Add(Clef.Bass);
-			secondStaff.Elements.Add(new Key(0));
-			secondStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Eighth) { Tuplet = TupletType.Start });
-			secondStaff.Elements.Add(new Note(Pitch.D3, RhythmicDuration.Eighth));
-			secondStaff.Elements.Add(new Note(Pitch.E3, RhythmicDuration.Eighth) { Tuplet = TupletType.Stop });
-			secondStaff.Elements.Add(new Barline());
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Barline());
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
-			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
+            mScore.FirstStaff.AddBarline(BarlineStyle.LightHeavy);
 
-			var nn = secondStaff.Elements.OfType<Note>().Last();
-			var timeSignature = secondStaff.Peek<TimeSignature>(nn, Model.PeekStrategies.PeekType.PreviousElement);
-            */
-            Data = score;
+            mScore.FirstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
+            mScore.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { TieType = NoteTieType.Start });
 
-            var part = new Part(firstStaff) { PartId = "1" };
-            //part.Staves.Add(secondStaff);
-            //score.Parts.Add(part);
-            //part = new Part(secondStaff) { PartId = "2" };
-            //score.Parts.Add(part);
+            mScore.FirstStaff.Elements.Add(new Barline());
+            mScore.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { TieType = NoteTieType.Stop });
+            mScore.FirstStaff.Elements.Add(new Barline());
+            mScore.FirstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)));
+            mScore.FirstStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
 
-            //Z Xamarina:
-            /*
-			score = Score.CreateOneStaffScore(Clef.Treble, new MajorScale(Step.C, false));
-			firstStaff = score.FirstStaff;
-			firstStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
-			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { TieType = NoteTieType.Start });
-			firstStaff.Elements.Add(new Barline() { CustomColor = KolbergColors.OsterodeWheat });
-			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)) { CustomColor = Color.Red, TieType = NoteTieType.Stop });
-			firstStaff.Elements.Add(new Barline());
-			firstStaff.Elements.Add(new Note(Pitch.C4, RhythmicDuration.Half.AddDots(1)));
-			firstStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
-
-			var note = new Note(Pitch.A5, RhythmicDuration.Eighth, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Start });
-			note.Lyrics.Clear();
-			note.Lyrics.Add(new Lyrics() { Syllables = new List<Lyrics.Syllable>() { new Lyrics.Syllable(SyllableType.Begin, "xxx") } });
-			score.FirstStaff.Elements.Add(note);
-			score.FirstStaff.Elements.Add(new Note(Pitch.C5, RhythmicDuration.Sixteenth.AddDots(1), VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.Continue, NoteBeamType.Start }));
-			score.FirstStaff.Elements.Add(new Note(Pitch.D4, RhythmicDuration.D32nd, VerticalDirection.Up, NoteTieType.None, new List<NoteBeamType>() { NoteBeamType.End, NoteBeamType.End, NoteBeamType.BackwardHook }));
-
-			secondStaff = new Staff();
-			score.Staves.Add(secondStaff);
-			secondStaff.Elements.Add(Clef.Bass);
-			secondStaff.Elements.Add(new Key(0));
-			secondStaff.Elements.Add(new TimeSignature(TimeSignatureType.Numbers, 3, 4));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Eighth) { Tuplet = TupletType.Start });
-			secondStaff.Elements.Add(new Note(Pitch.D3, RhythmicDuration.Eighth));
-			secondStaff.Elements.Add(new Note(Pitch.E3, RhythmicDuration.Eighth) { Tuplet = TupletType.Stop });
-			secondStaff.Elements.Add(new Barline());
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Quarter));
-			secondStaff.Elements.Add(new Barline());
-			secondStaff.Elements.Add(new Note(Pitch.C3, RhythmicDuration.Half.AddDots(1)));
-			secondStaff.Elements.Add(new Barline(BarlineStyle.LightHeavy));
-
-			Data = score;*/
+            Data = mScore;
         }
     }
 }

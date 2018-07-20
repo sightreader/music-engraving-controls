@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Manufaktura.Controls.WPF.Test</RootNamespace>
     <AssemblyName>Manufaktura.Controls.WPF.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -129,6 +129,10 @@
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
       <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
       <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Core\Manufaktura.Core.csproj">
+      <Project>{486a9d05-703e-4ade-a7a8-610d68358f3c}</Project>
+      <Name>Manufaktura.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
       <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
