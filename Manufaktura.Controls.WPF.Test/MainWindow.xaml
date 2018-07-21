@@ -48,6 +48,6 @@
             </StackPanel>
         </ScrollViewer>
         <GridSplitter Grid.Column="2" HorizontalAlignment="Stretch" Width="2" />
-        <xctk:PropertyGrid Grid.Column="3" SelectedObject="{Binding}" />
+        <xctk:PropertyGrid Grid.Column="3" SelectedObject="{Binding SelectedElement, ElementName=noteViewerTest}" />
     </Grid>
 </Window>

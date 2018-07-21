@@ -77,7 +77,9 @@ namespace Manufaktura.Controls.Model
 
 		public override string ToString()
 		{
-			return string.Format("Measure {0}", Number.HasValue ? Number.Value.ToString() : "(unnumbered)");
+            if (System != null && Staff?.Score != null && Staff.Score.Systems.Contains(System))
+                return $"Measure {(Number.HasValue ? Number.Value.ToString() : "(unnumbered)")} in system {Staff.Score.Systems.IndexOf(System) + 1}";
+            return string.Format("Measure {0}", Number.HasValue ? Number.Value.ToString() : "(unnumbered)");
 		}
 	}
 }
