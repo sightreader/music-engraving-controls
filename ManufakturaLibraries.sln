@@ -75,7 +75,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manufaktura.Controls.Blazor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{CCADBFD4-411E-41D6-9A7E-378532E9C730}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Core", "Manufaktura.Core\Manufaktura.Core.csproj", "{486A9D05-703E-4ADE-A7A8-610D68358F3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manufaktura.Core", "Manufaktura.Core\Manufaktura.Core.csproj", "{486A9D05-703E-4ADE-A7A8-610D68358F3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.WPF.Formulas.Test", "Manufaktura.Controls.WPF.Formulas.Test\Manufaktura.Controls.WPF.Formulas.Test.csproj", "{EEDDC66F-B2CF-4C74-AF87-3EC4ED4F8C57}"
 EndProject
@@ -146,6 +146,7 @@ Global
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Debug|x86.Build.0 = Debug|Any CPU
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Demo Release|Any CPU.ActiveCfg = Demo Release|Any CPU
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Demo Release|Any CPU.Build.0 = Demo Release|Any CPU
 		{17FBBC7D-BD94-4510-87C6-656090D0FCEB}.Demo Release|ARM.ActiveCfg = Demo Release|Any CPU
