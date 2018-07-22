@@ -20,7 +20,7 @@
             <Button Content="Stop" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_8"/>
             <Button Content="Następna strona" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
             <Button Content="Koloruj drugi system" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
-
+            <Button Content="Dodaj nutę" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="AddNote_Click"/>
             <Button Content="Panorama" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
             <Button Content="Jedna strona" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
             <Button Content="Wszystkie strony" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_5"/>

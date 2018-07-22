@@ -41,9 +41,11 @@ namespace Manufaktura.Controls.WPF.Test
             //noteViewer2.LoadFont(family);
             //noteViewer3.LoadFont(family);
 
+            //noteViewerTest.IsMusicPaperMode = true;
             var useSMuFL = true;
-            
-            if (useSMuFL) {
+
+            if (useSMuFL)
+            {
                 //var jsonTest = JsonConvert.SerializeObject(new SMuFLFontMetadata());
                 //var jsonTest2 = JsonConvert.DeserializeObject<SMuFLFontMetadata>(jsonTest);
 
@@ -64,7 +66,6 @@ namespace Manufaktura.Controls.WPF.Test
             }
 
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -167,6 +168,12 @@ namespace Manufaktura.Controls.WPF.Test
         private void IdentifyClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(noteViewer1.SelectedElement?.ToString());
+        }
+
+        private void AddNote_Click(object sender, RoutedEventArgs e)
+        {
+            var testViewModel = DataContext as TestViewModel;
+            testViewModel.Data.FirstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter));
         }
     }
 }

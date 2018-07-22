@@ -14,6 +14,7 @@ namespace Manufaktura.Controls.Winforms.Test
         public Form1()
         {
             InitializeComponent();
+            //noteViewer1.Settings.IsMusicPaperMode = true;
 
             var fontPath = Path.Combine(Application.StartupPath, "Assets", "Bravura.otf");
             var metaPath = Path.Combine(Application.StartupPath, "Assets", "bravura_metadata.json");

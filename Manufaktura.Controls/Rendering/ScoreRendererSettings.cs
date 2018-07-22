@@ -57,14 +57,15 @@ namespace Manufaktura.Controls.Rendering
         public double CustomElementPositionRatio { get; set; }
         public double DefaultBarlineThickness { get; set; } = 0.7;
         public double DefaultBeamThickness { get; set; } = 2.6;
-
         /// <summary>
         /// Default color
         /// </summary>
         public Color DefaultColor { get; set; }
 
         public double DefaultStaffLineThickness { get; set; } = 0.5;
+
         public double DefaultStemThickness { get; set; } = 1;
+
         public double DefaultTupletBracketThickness { get; set; } = 1;
 
         /// <summary>
@@ -72,6 +73,10 @@ namespace Manufaktura.Controls.Rendering
         /// </summary>
         public bool IgnoreCustomElementPositions { get; set; }
 
+        /// <summary>
+        /// If true, all staves will have equal width (like in blank music paper)
+        /// </summary>
+        public bool IsMusicPaperMode { get; set; }
         public bool IsSMuFLFont { get; private set; }
 
         /// <summary>

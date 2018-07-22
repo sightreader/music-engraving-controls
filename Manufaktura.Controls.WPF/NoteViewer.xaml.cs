@@ -1,17 +1,18 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
@@ -46,6 +47,7 @@ namespace Manufaktura.Controls.WPF
         public static readonly DependencyProperty InvalidatingModeProperty = DependencyPropertyEx.Register<NoteViewer, InvalidatingModes>(v => v.InvalidatingMode, InvalidatingModes.RedrawInvalidatedRegion);
         public static readonly DependencyProperty IsAsyncProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsAsync, false);
         public static readonly DependencyProperty IsInsertModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsInsertMode, false);
+        public static readonly DependencyProperty IsMusicPaperModeProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsMusicPaperMode, false, (c, o, n) => c.rendererSettings.IsMusicPaperMode = n);
         public static readonly DependencyProperty IsOccupyingSpaceProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsOccupyingSpace, true);
         public static readonly DependencyProperty IsSelectableProperty = DependencyPropertyEx.Register<NoteViewer, bool>(v => v.IsSelectable, true);
         public static readonly DependencyProperty PlaybackCursorPositionProperty = DependencyPropertyEx.Register<NoteViewer, PlaybackCursorPosition>(v => v.PlaybackCursorPosition, default(PlaybackCursorPosition), PlaybackCursorPositionChanged);
@@ -56,12 +58,9 @@ namespace Manufaktura.Controls.WPF
         public static readonly DependencyProperty XmlTransformationsProperty = DependencyPropertyEx.Register<NoteViewer, IEnumerable<XTransformerParser>>(v => v.XmlTransformations, null);
         public static readonly DependencyProperty ZoomFactorProperty = DependencyPropertyEx.Register<NoteViewer, double>(v => v.ZoomFactor, 1d, ZoomFactorChanged);
         private DraggingState _draggingState = new DraggingState();
-        private WpfScoreRendererSettings rendererSettings = new WpfScoreRendererSettings();
-
         private Score _innerScore;
-
         private Color previousColor;
-
+        private WpfScoreRendererSettings rendererSettings = new WpfScoreRendererSettings();
         public NoteViewer()
         {
             InitializeComponent();
@@ -91,6 +90,12 @@ namespace Manufaktura.Controls.WPF
         {
             get { return (bool)GetValue(IsInsertModeProperty); }
             set { SetValue(IsInsertModeProperty, value); }
+        }
+
+        public bool IsMusicPaperMode
+        {
+            get { return (bool)GetValue(IsMusicPaperModeProperty); }
+            set { SetValue(IsMusicPaperModeProperty, value); }
         }
 
         /// <summary>
@@ -150,30 +155,13 @@ namespace Manufaktura.Controls.WPF
             get { return (double)GetValue(ZoomFactorProperty); }
             set { SetValue(ZoomFactorProperty, value); }
         }
-
         protected WpfCanvasScoreRenderer Renderer { get; set; }
+
+        public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
 
         public void LoadFont(FontFamily family, string metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
         {
             rendererSettings.LoadSMuFLMetadata(metadata);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-        }
-
-        public void LoadFontFromBinaryMetadataStream(FontFamily family, Stream metadataStream, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
-        {
-            rendererSettings.LoadSMuFLMetadataFromBinaryStream(metadataStream);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-        }
-
-        public async Task LoadFontAsync(FontFamily family, string metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
-        {
-            await rendererSettings.LoadSMuFLMetadataAsync(metadata);
             rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
             rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
             rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
@@ -190,8 +178,23 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
-        public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
+        public async Task LoadFontAsync(FontFamily family, string metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
+        {
+            await rendererSettings.LoadSMuFLMetadataAsync(metadata);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
+            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
+            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
+        }
 
+        public void LoadFontFromBinaryMetadataStream(FontFamily family, Stream metadataStream, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
+        {
+            rendererSettings.LoadSMuFLMetadataFromBinaryStream(metadataStream);
+            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
+            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
+            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
+            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
+        }
         public void MoveLayout(StaffSystem system, Point delta)
         {
             if (Renderer == null) return;

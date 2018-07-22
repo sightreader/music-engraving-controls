@@ -49,25 +49,33 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
             var staffLinePen = renderer.CreatePenFromDefaults(staff, "staffLineThickness", s => s.DefaultStaffLineThickness);
             staffLinePen.ZIndex = -1;
 
+            var staffLineWidth = renderer.Settings.IsMusicPaperMode && scoreService.Systems.Any() ?
+                (double?)scoreService.Systems.Max(s => CalculateStaffLineWidth(staff, s, renderer.Settings)) : null;
             foreach (var system in scoreService.Systems)
             {
                 if (system.LinePositions == null) continue;
                 var staffFragment = system.Staves[scoreService.CurrentStaffNo - 1];
-                Draw(staff, renderer, staffFragment, system, staffLinePen);
+                Draw(staff, renderer, staffFragment, system, staffLinePen, staffLineWidth);
             }
         }
 
-        private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system, Pen staffLinePen)
+        private double CalculateStaffLineWidth(Staff staff, StaffSystem system, ScoreRendererSettings settings)
         {
-            renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], staffLinePen, staffFragment);
-
             var lastMeasureInSystem = staff.Measures.LastOrDefault(m => m.System == system);
             var endPositionX = lastMeasureInSystem?.BarlineLocationX ?? system.Width;
             if (endPositionX == 0) endPositionX = system.Width;
 
-            if (renderer.Settings.RenderingMode != ScoreRenderingModes.Panorama)
+            if (settings.RenderingMode != ScoreRenderingModes.Panorama)
                 endPositionX = ExtendXPositionForMemoElements(endPositionX, lastMeasureInSystem, staff, system);
 
+            return endPositionX;
+        }
+
+        private void Draw(Staff staff, ScoreRendererBase renderer, StaffFragment staffFragment, StaffSystem system, Pen staffLinePen, double? staffLineWidth)
+        {
+            renderer.DrawLine(0, staffFragment.LinePositions[0], 0, staffFragment.LinePositions[4], staffLinePen, staffFragment);
+            var endPositionX = staffLineWidth ?? CalculateStaffLineWidth(staff, system, renderer.Settings);
+            
             foreach (double linePositionY in staffFragment.LinePositions)
             {
                 Point startPoint = new Point(0, linePositionY);
