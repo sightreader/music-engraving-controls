@@ -220,6 +220,13 @@ namespace Manufaktura.Controls.Services
             return measuresInOthersStaff[measureIndex];
         }
 
+        public void MoveToContent(Measure measure, ScoreRendererSettings rendererSettings)
+        {
+            var firstElement = measure.Elements.FirstOrDefault();
+            if (firstElement is PrintSuggestion || firstElement is NoteOrRest)
+                CursorPositionX = measure.FirstNoteInMeasureXPosition;
+        }
+
         public void MoveTo(Measure measure, ScoreRendererSettings rendererSettings)
         {
             var measureIndex = measure.Staff.Measures.IndexOf(measure);

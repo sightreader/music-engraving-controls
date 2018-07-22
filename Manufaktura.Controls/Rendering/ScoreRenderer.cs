@@ -55,7 +55,8 @@ namespace Manufaktura.Controls.Rendering
 			measurementService.LastNotePositionX = scoreService.CursorPositionX;
 			measurementService.LastNoteInMeasureEndXPosition = scoreService.CursorPositionX;
 			alterationService.Reset();
-			foreach (MusicalSymbol symbol in measure.Elements.Where(e => !(e is Barline) && !(e is PrintSuggestion)))
+            scoreService.MoveToContent(measure, Settings);
+            foreach (MusicalSymbol symbol in measure.Elements.Where(e => !(e is Barline) && !(e is PrintSuggestion)))
 			{
 				try
 				{

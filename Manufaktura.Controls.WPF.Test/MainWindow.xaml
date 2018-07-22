@@ -48,6 +48,13 @@
             </StackPanel>
         </ScrollViewer>
         <GridSplitter Grid.Column="2" HorizontalAlignment="Stretch" Width="2" />
-        <xctk:PropertyGrid Grid.Column="3" SelectedObject="{Binding SelectedElement, ElementName=noteViewerTest}" />
+        <TabControl  Grid.Column="3">
+            <TabItem Header="noteViewerTest">
+                <xctk:PropertyGrid SelectedObject="{Binding SelectedElement, ElementName=noteViewerTest}" />
+            </TabItem>
+            <TabItem Header="noteViewer1">
+                <xctk:PropertyGrid SelectedObject="{Binding SelectedElement, ElementName=noteViewer1}" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

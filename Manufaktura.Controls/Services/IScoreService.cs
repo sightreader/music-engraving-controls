@@ -130,6 +130,7 @@ namespace Manufaktura.Controls.Services
 		Measure GetCorrespondingMeasure(Measure measure, Staff otherStaff);
 
         void MoveTo(Measure measure, ScoreRendererSettings rendererSettings);
+        void MoveToContent(Measure measure, ScoreRendererSettings rendererSettings);
 
         void ReturnToFirstSystem();
 	}
