@@ -13,6 +13,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 using System;
+using System.Linq;
 
 namespace Manufaktura.Controls.Model.Rules
 {
@@ -49,6 +50,21 @@ namespace Manufaktura.Controls.Model.Rules
             var typedSymbol = newElement as TSymbol;
             if (typedSymbol == null) return false;
             return Condition(staff, typedSymbol);
+        }
+
+        protected static StaffSystem GetSystem(Staff staff)
+        {
+            StaffSystem system = null;
+            if (staff.Score != null)
+            {
+                system = staff.Score.Systems.LastOrDefault();
+                if (system == null)
+                {
+                    system = new StaffSystem(staff.Score);
+                    staff.Score.Pages.Last().Systems.Add(system);
+                }
+            }
+            return system;
         }
     }
 

@@ -36,7 +36,7 @@ namespace Manufaktura.Controls.Model
         {
             Elements = new MusicalSymbolCollection(this);
             Elements.CollectionChanged += Elements_CollectionChanged;
-            Rules = new List<StaffRule> { new NoteStemRule(), new ManualAddMeasuresRule(), new AutomaticAddMeasuresRule() };
+            Rules = new List<StaffRule> { new NoteStemRule(), new ManualAddMeasuresRule(), new AutomaticAddMeasuresRule(), new BreakSystemRule() };
             Measures = new List<Measure>();
             MeasureAddingRule = MeasureAddingRuleEnum.AddMeasureOnInsertingBarline;
         }

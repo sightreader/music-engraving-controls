@@ -44,20 +44,7 @@ namespace Manufaktura.Controls.Model.Rules
             newElement.Measure = currentMeasure;
         }
 
-        private static StaffSystem GetSystem(Staff staff)
-        {
-            StaffSystem system = null;
-            if (staff.Score != null)
-            {
-                system = staff.Score.Systems.LastOrDefault();
-                if (system == null)
-                {
-                    system = new StaffSystem(staff.Score);
-                    staff.Score.Pages.Last().Systems.Add(system);
-                }
-            }
-            return system;
-        }
+
 
         public override bool Condition(Staff staff, MusicalSymbol newElement)
         {
