@@ -49,6 +49,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2018, 4, 20, 13, 12, 00));    //Poprawka regresji związanej ze zmianą tonacji, klucza lub metrum na końcu systemu
             AcceptTo(new DateTime(2018, 4, 24, 21, 00, 00));    //Poprawka powyższej poprawki dot. zmiany tonacji
             AcceptTo(new DateTime(2018, 4, 25, 19, 22, 00));    //Duży lifting triol
+            AcceptTo(new DateTime(2018, 7, 22, 22, 05, 00));    //Problems with refreshing measures in manual note entering mode
 
             var tests = CreatePathDictionary();
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
