@@ -200,7 +200,7 @@ namespace Manufaktura.Controls.Rendering
         }
         private bool IsLastBarline(Barline element)
         {
-            return element == scoreService.CurrentStaff.Elements.LastOrDefault();
+            return element == scoreService.CurrentStaff.Elements.OfType<Barline>().LastOrDefault();
         }
     }
 }
