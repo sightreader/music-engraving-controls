@@ -23,7 +23,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -35,8 +34,6 @@ namespace Manufaktura.Controls.WPF
     /// </summary>
     public partial class RadialChart : UserControl
     {
-        private readonly WPFRadialChartRenderer renderer;
-
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AxisStrokeProperty =
             DependencyProperty.Register(nameof(AxisStroke), typeof(Brush), typeof(RadialChart), new PropertyMetadata(Brushes.Black));
@@ -89,11 +86,10 @@ namespace Manufaktura.Controls.WPF
         public static readonly DependencyProperty WeblineStrokeThicknessProperty =
             DependencyProperty.Register(nameof(WeblineStrokeThickness), typeof(double), typeof(RadialChart), new PropertyMetadata(0.5d, ChartPropertyChanged));
 
-        private Dictionary<Ellipse, double> angleDictionary = new Dictionary<Ellipse, double>();
-
+        private readonly WPFRadialChartRenderer renderer;
         private Ellipse draggedElement;
 
-        private Dictionary<Ellipse, RadialChartSample> sampleDictionary = new Dictionary<Ellipse, RadialChartSample>();
+        private double maxLineLength = 0;
 
         public RadialChart()
         {
@@ -195,29 +191,58 @@ namespace Manufaktura.Controls.WPF
 
         private void DrawSamples(string axis, double lineLength, double currentAngle)
         {
-            var axisSamples = Samples.Where(s => s.AxisShortName == axis);
-            foreach (var sample in axisSamples)
-            {
-                var ellipse = new Ellipse();
-                ellipse.Stroke = SamplePointStroke;
-                ellipse.SetBinding(Ellipse.StrokeProperty, new Binding(nameof(SamplePointStroke)) { Source = this });
-                ellipse.StrokeThickness = SamplePointStrokeThickness;
-                ellipse.SetBinding(Ellipse.StrokeThicknessProperty, new Binding(nameof(SamplePointStrokeThickness)) { Source = this });
-                ellipse.Fill = SamplePointFill;
-                ellipse.SetBinding(Ellipse.FillProperty, new Binding(nameof(SamplePointFill)) { Source = this });
-                ellipse.Width = SamplePointDiameter;
-                ellipse.Height = SamplePointDiameter;
-                Panel.SetZIndex(ellipse, 999);
-                angleDictionary.Add(ellipse, currentAngle);
-                sampleDictionary.Add(ellipse, sample);
+            renderer.DrawSamples(axis, lineLength, currentAngle);
+        }
 
-                var valueLength = sample.Value * sample.Scale * lineLength / MaxValue;
-                var dx = valueLength * Math.Sin(currentAngle);
-                var dy = valueLength * Math.Cos(currentAngle);
-                Canvas.SetLeft(ellipse, mainCanvas.ActualWidth / 2 + dx - ellipse.Width / 2);
-                Canvas.SetTop(ellipse, mainCanvas.ActualHeight / 2 + dy - ellipse.Height / 2);
-                mainCanvas.Children.Add(ellipse);
+        private void DrawValueCompartmentsPolygons(double lineLength)
+        {
+            var compartmentIndex = 0;
+            while (true)
+            {
+                if (Samples.All(s => s.ValidationCompartments == null || s.ValidationCompartments.Length <= compartmentIndex)) break;
+
+                var innerPoints = new List<System.Windows.Point>();
+                var outerPoints = new List<System.Windows.Point>();
+                foreach (var sample in Samples)
+                {
+                    var compartment = (sample.ValidationCompartments?.Length ?? 0) > compartmentIndex ? sample.ValidationCompartments[compartmentIndex] : null;
+                    var compartmentMinValue = compartment == null ? 0 : (compartment.From ?? 0);
+                    var compartmentMaxValue = compartment == null ? 0 : (compartment.To ?? MaxValue / sample.Scale);
+
+                    var ellipse = renderer.SampleDictionary.First(s => s.Value == sample);
+                    var currentAngle = renderer.AngleDictionary[ellipse.Key];
+
+                    var valueLength = compartmentMaxValue * sample.Scale * lineLength / MaxValue;
+                    var dx = valueLength * Math.Sin(currentAngle);
+                    var dy = valueLength * Math.Cos(currentAngle);
+                    outerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
+
+                    valueLength = compartmentMinValue * sample.Scale * lineLength / MaxValue;
+                    dx = valueLength * Math.Sin(currentAngle);
+                    dy = valueLength * Math.Cos(currentAngle);
+                    innerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
+                }
+
+                var polygon = new Polygon();
+                polygon.Stroke = Brushes.Green;
+                polygon.Fill = Brushes.LightGreen;
+                polygon.Opacity = 0.5;
+                polygon.StrokeThickness = 2;
+                foreach (var p in innerPoints) polygon.Points.Add(p);
+                polygon.Points.Add(innerPoints.First());
+                foreach (var p in outerPoints) polygon.Points.Add(p);
+                polygon.Points.Add(outerPoints.First());
+
+                Canvas.SetZIndex(polygon, -2);
+                mainCanvas.Children.Add(polygon);
+
+                compartmentIndex++;
             }
+        }
+
+        private void DrawValueRangePolygon(double lineLength)
+        {
+            renderer.DrawValueRangePolygon(Samples, lineLength, MaxValue);
         }
 
         private void DrawWebLines(List<Tuple<double, double>> ticks1, List<Tuple<double, double>> ticks2)
@@ -265,9 +290,9 @@ namespace Manufaktura.Controls.WPF
             }
 
             position = new System.Windows.Point(position.X - mainCanvas.ActualWidth / 2, position.Y - mainCanvas.ActualHeight / 2);
-            if (!angleDictionary.ContainsKey(draggedElement)) return;
-            var angle = angleDictionary[draggedElement];
-            var sample = sampleDictionary[draggedElement];
+            if (!renderer.AngleDictionary.ContainsKey(draggedElement)) return;
+            var angle = renderer.AngleDictionary[draggedElement];
+            var sample = renderer.SampleDictionary[draggedElement];
 
             var maxLength = mainCanvas.ActualWidth / 2;
             var newLength = Math.Sqrt(Math.Pow(position.X, 2) + Math.Pow(position.Y, 2));
@@ -284,94 +309,12 @@ namespace Manufaktura.Controls.WPF
             RedrawChart();
         }
 
-        private void DrawValueCompartmentsPolygons(double lineLength)
-        {
-            var compartmentIndex = 0;
-            while (true)
-            {
-                if (Samples.All(s => s.ValidationCompartments == null || s.ValidationCompartments.Length <= compartmentIndex)) break;
-
-                var innerPoints = new List<System.Windows.Point>();
-                var outerPoints = new List<System.Windows.Point>();
-                foreach (var sample in Samples)
-                {
-                    var compartment = (sample.ValidationCompartments?.Length ?? 0) > compartmentIndex ? sample.ValidationCompartments[compartmentIndex] : null;
-                    var compartmentMinValue = compartment == null ? 0 : (compartment.From ?? 0);
-                    var compartmentMaxValue = compartment == null ? 0 : (compartment.To ?? MaxValue / sample.Scale);
-
-                    var ellipse = sampleDictionary.First(s => s.Value == sample);
-                    var currentAngle = angleDictionary[ellipse.Key];
-
-                    var valueLength = compartmentMaxValue * sample.Scale * lineLength / MaxValue;
-                    var dx = valueLength * Math.Sin(currentAngle);
-                    var dy = valueLength * Math.Cos(currentAngle);
-                    outerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
-
-                    valueLength = compartmentMinValue * sample.Scale * lineLength / MaxValue;
-                    dx = valueLength * Math.Sin(currentAngle);
-                    dy = valueLength * Math.Cos(currentAngle);
-                    innerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
-                }
-
-                var polygon = new Polygon();
-                polygon.Stroke = Brushes.Green;
-                polygon.Fill = Brushes.LightGreen;
-                polygon.Opacity = 0.5;
-                polygon.StrokeThickness = 2;
-                foreach (var p in innerPoints) polygon.Points.Add(p);
-                polygon.Points.Add(innerPoints.First());
-                foreach (var p in outerPoints) polygon.Points.Add(p);
-                polygon.Points.Add(outerPoints.First());
-
-                Canvas.SetZIndex(polygon, -2);
-                mainCanvas.Children.Add(polygon);
-
-                compartmentIndex++;
-            }
-        }
-
-        private void DrawValueRangePolygon(double lineLength)
-        {
-            var innerPoints = new List<System.Windows.Point>();
-            var outerPoints = new List<System.Windows.Point>();
-            foreach (var sample in Samples)
-            {
-                var ellipse = sampleDictionary.First(s => s.Value == sample);
-                var currentAngle = angleDictionary[ellipse.Key];
-
-                var valueLength = sample.ValidationMaxValue * sample.Scale * lineLength / MaxValue;
-                var dx = valueLength * Math.Sin(currentAngle);
-                var dy = valueLength * Math.Cos(currentAngle);
-                outerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
-
-                valueLength = sample.ValidationMinValue * sample.Scale * lineLength / MaxValue;
-                dx = valueLength * Math.Sin(currentAngle);
-                dy = valueLength * Math.Cos(currentAngle);
-                innerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
-            }
-
-            var polygon = new Polygon();
-            polygon.Stroke = Brushes.Green;
-            polygon.Fill = Brushes.LightGreen;
-            polygon.Opacity = 0.5;
-            polygon.StrokeThickness = 2;
-            foreach (var p in innerPoints) polygon.Points.Add(p);
-            polygon.Points.Add(innerPoints.First());
-            foreach (var p in outerPoints) polygon.Points.Add(p);
-            polygon.Points.Add(outerPoints.First());
-
-            Canvas.SetZIndex(polygon, -2);
-            mainCanvas.Children.Add(polygon);
-        }
-
-        private double maxLineLength = 0;
-
         private void RedrawChart()
         {
             InvalidateArrange();
             InvalidateMeasure();
-            angleDictionary.Clear();
-            sampleDictionary.Clear();
+            renderer.AngleDictionary.Clear();
+            renderer.SampleDictionary.Clear();
             mainCanvas.Children.Clear();
             if (Samples == null || !Samples.Any()) return;
             var axes = Samples.Select(s => s.AxisShortName).ToArray();
