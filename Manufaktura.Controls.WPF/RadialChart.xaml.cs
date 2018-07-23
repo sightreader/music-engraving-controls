@@ -17,9 +17,9 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.WPF.Renderers;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,6 +35,8 @@ namespace Manufaktura.Controls.WPF
     /// </summary>
     public partial class RadialChart : UserControl
     {
+        private readonly WPFRadialChartRenderer renderer;
+
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AxisStrokeProperty =
             DependencyProperty.Register(nameof(AxisStroke), typeof(Brush), typeof(RadialChart), new PropertyMetadata(Brushes.Black));
@@ -96,6 +98,7 @@ namespace Manufaktura.Controls.WPF
         public RadialChart()
         {
             InitializeComponent();
+            renderer = new WPFRadialChartRenderer(this, mainCanvas);
 
             mainCanvas.MouseLeftButtonDown += MainCanvas_MouseLeftButtonDown;
             mainCanvas.MouseLeftButtonUp += MainCanvas_MouseLeftButtonUp;
@@ -187,24 +190,7 @@ namespace Manufaktura.Controls.WPF
 
         private void DrawAxis(string axisName, double axisLength, double currentAngle)
         {
-            var line = new Line();
-            line.Stroke = AxisStroke;
-            line.SetBinding(Line.StrokeProperty, new Binding(nameof(AxisStroke)) { Source = this });
-            line.StrokeThickness = AxisStrokeThickness;
-            line.SetBinding(Line.StrokeThicknessProperty, new Binding(nameof(AxisStrokeThickness)) { Source = this });
-            var position = new Primitives.Point(mainCanvas.ActualWidth / 2, mainCanvas.ActualHeight / 2);
-            line.X1 = position.X;
-            line.Y1 = position.Y;
-            line.X2 = position.TranslateByAngle(currentAngle, axisLength).X;
-            line.Y2 = position.TranslateByAngle(currentAngle, axisLength).Y;
-            mainCanvas.Children.Add(line);
-
-            var textBlock = new TextBlock();
-            var formattedText = new FormattedText(axisName, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, new Typeface(textBlock.FontFamily, textBlock.FontStyle, textBlock.FontWeight, textBlock.FontStretch), textBlock.FontSize, textBlock.Foreground);
-            textBlock.Text = axisName;
-            Canvas.SetLeft(textBlock, line.X2 - formattedText.Width / 2 + LabelToAxisDistance * Math.Sin(currentAngle));
-            Canvas.SetTop(textBlock, line.Y2 - formattedText.Height / 2 + LabelToAxisDistance * Math.Cos(currentAngle));
-            mainCanvas.Children.Add(textBlock);
+            renderer.DrawAxis(axisName, axisLength, currentAngle);
         }
 
         private void DrawSamples(string axis, double lineLength, double currentAngle)
@@ -377,7 +363,9 @@ namespace Manufaktura.Controls.WPF
             Canvas.SetZIndex(polygon, -2);
             mainCanvas.Children.Add(polygon);
         }
+
         private double maxLineLength = 0;
+
         private void RedrawChart()
         {
             InvalidateArrange();
@@ -432,8 +420,6 @@ namespace Manufaktura.Controls.WPF
 
             DrawValueRangePolygon(lineLength);
             DrawValueCompartmentsPolygons(lineLength);
-
-
         }
     }
 }

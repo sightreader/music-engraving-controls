@@ -68,6 +68,7 @@
     <Compile Include="RadialChart.xaml.cs">
       <DependentUpon>RadialChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Renderers\WPFRadialChartRenderer.cs" />
     <Compile Include="Renderers\WpfScoreRendererSettings.cs" />
   </ItemGroup>
   <ItemGroup>
