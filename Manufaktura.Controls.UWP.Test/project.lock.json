@@ -2246,6 +2246,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
+          "Manufaktura.Core": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1"
@@ -2268,6 +2269,13 @@
           "Manufaktura.Controls": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+        }
+      },
+      "Manufaktura.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Manufaktura.Music/1.0.0": {
@@ -4716,6 +4724,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
+          "Manufaktura.Core": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1"
@@ -4738,6 +4747,13 @@
           "Manufaktura.Controls": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+        }
+      },
+      "Manufaktura.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Manufaktura.Music/1.0.0": {
@@ -7205,6 +7221,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
+          "Manufaktura.Core": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1"
@@ -7227,6 +7244,13 @@
           "Manufaktura.Controls": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+        }
+      },
+      "Manufaktura.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Manufaktura.Music/1.0.0": {
@@ -9684,6 +9708,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
+          "Manufaktura.Core": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1"
@@ -9706,6 +9731,13 @@
           "Manufaktura.Controls": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+        }
+      },
+      "Manufaktura.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Manufaktura.Music/1.0.0": {
@@ -12173,6 +12205,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
+          "Manufaktura.Core": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1"
@@ -12195,6 +12228,13 @@
           "Manufaktura.Controls": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+        }
+      },
+      "Manufaktura.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Manufaktura.Music/1.0.0": {
@@ -14652,6 +14692,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
+          "Manufaktura.Core": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1"
@@ -14674,6 +14715,13 @@
           "Manufaktura.Controls": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+        }
+      },
+      "Manufaktura.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Manufaktura.Music/1.0.0": {
@@ -17141,6 +17189,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
+          "Manufaktura.Core": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1"
@@ -17163,6 +17212,13 @@
           "Manufaktura.Controls": "1.0.0",
           "Manufaktura.Music": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+        }
+      },
+      "Manufaktura.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Manufaktura.Music/1.0.0": {
@@ -23260,6 +23316,11 @@
       "type": "project",
       "path": "../Manufaktura.Controls.UniversalApps.Media/project.json",
       "msbuildProject": "../Manufaktura.Controls.UniversalApps.Media/Manufaktura.Controls.UniversalApps.Media.csproj"
+    },
+    "Manufaktura.Core/1.0.0": {
+      "type": "project",
+      "path": "../Manufaktura.Core/Manufaktura.Core.csproj",
+      "msbuildProject": "../Manufaktura.Core/Manufaktura.Core.csproj"
     },
     "Manufaktura.Music/1.0.0": {
       "type": "project",

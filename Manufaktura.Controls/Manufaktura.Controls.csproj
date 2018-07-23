@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Core\Manufaktura.Core.csproj" />
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj" />
   </ItemGroup>
 
