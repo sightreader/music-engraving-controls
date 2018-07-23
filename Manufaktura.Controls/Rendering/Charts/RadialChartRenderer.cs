@@ -51,7 +51,7 @@ namespace Manufaktura.Controls.Rendering.Charts
                     previousTicks = ticks;
                 }
 
-                DrawSamples(axis, lineLength, currentAngle);
+                DrawSamples(samples, axis, lineLength, currentAngle);
 
                 currentAngle += angleChange;
             }
@@ -65,7 +65,7 @@ namespace Manufaktura.Controls.Rendering.Charts
 
         protected abstract void DrawAxisLine(Primitives.Point start, Primitives.Point end);
 
-        protected abstract void DrawSamples(string axis, double lineLength, double currentAngle);
+        protected abstract void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle);
 
         protected abstract void DrawTick(double x1, double y1, double x2, double y2);
 
@@ -86,12 +86,27 @@ namespace Manufaktura.Controls.Rendering.Charts
             }
             return ticks;
         }
+
         private void DrawAxis(string axisName, double axisLength, double currentAngle)
         {
             var startPosition = new Primitives.Point(CanvasWidth / 2, CanvasHeight / 2);
             var endPosition = new Primitives.Point(startPosition.TranslateByAngle(currentAngle, axisLength).X, startPosition.TranslateByAngle(currentAngle, axisLength).Y);
             DrawAxisLine(startPosition, endPosition);
             DrawAxisLabel(endPosition, currentAngle, axisName);
+        }
+
+        private void DrawSamples(RadialChartSample[] samples, string axis, double lineLength, double currentAngle)
+        {
+            var axisSamples = samples.Where(s => s.AxisShortName == axis);
+            foreach (var sample in axisSamples)
+            {
+                var valueLength = sample.Value * sample.Scale * lineLength / MaxValue;
+                var dx = valueLength * Math.Sin(currentAngle);
+                var dy = valueLength * Math.Cos(currentAngle);
+
+                SampleToAngleDictionary.Add(sample, currentAngle);
+                DrawSample(sample, dx, dy, currentAngle);
+            }
         }
         private void DrawValueRangePolygon(RadialChartSample[] samples, double lineLength, double maxValue)
         {

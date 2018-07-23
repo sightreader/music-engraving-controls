@@ -25,6 +25,7 @@ namespace Manufaktura.Controls.WPF.Renderers
         public Dictionary<Ellipse, RadialChartSample> SampleDictionary { get; } = new Dictionary<Ellipse, RadialChartSample>();
         protected override double CanvasHeight => Canvas.ActualHeight;
         protected override double CanvasWidth => Canvas.ActualWidth;
+
         public override void ClearCanvas()
         {
             AngleDictionary.Clear();
@@ -50,8 +51,6 @@ namespace Manufaktura.Controls.WPF.Renderers
             Canvas.Children.Add(polygon);
         }
 
-
-
         protected override void DrawAxisLabel(Primitives.Point position, double currentAngle, string axisName)
         {
             var textBlock = new TextBlock();
@@ -74,40 +73,34 @@ namespace Manufaktura.Controls.WPF.Renderers
             Canvas.Children.Add(line);
         }
 
-        protected override void DrawSamples(string axis, double lineLength, double currentAngle)
+        protected override void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle)
         {
-            var axisSamples = Control.Samples.Where(s => s.AxisShortName == axis);
-            foreach (var sample in axisSamples)
-            {
-                var ellipse = new Ellipse();
-                ellipse.SetBinding(Shape.StrokeProperty, new Binding(nameof(RadialChart.SamplePointStroke)) { Source = Control });
-                ellipse.SetBinding(Shape.StrokeThicknessProperty, new Binding(nameof(RadialChart.SamplePointStrokeThickness)) { Source = Control });
-                ellipse.SetBinding(Shape.FillProperty, new Binding(nameof(RadialChart.SamplePointFill)) { Source = Control });
-                ellipse.Width = Control.SamplePointDiameter;
-                ellipse.Height = Control.SamplePointDiameter;
-                Panel.SetZIndex(ellipse, 999);
-                AngleDictionary.Add(ellipse, currentAngle);
-                SampleDictionary.Add(ellipse, sample);
-                SampleToAngleDictionary.Add(sample, currentAngle);
+            var ellipse = new Ellipse();
+            ellipse.SetBinding(Shape.StrokeProperty, new Binding(nameof(RadialChart.SamplePointStroke)) { Source = Control });
+            ellipse.SetBinding(Shape.StrokeThicknessProperty, new Binding(nameof(RadialChart.SamplePointStrokeThickness)) { Source = Control });
+            ellipse.SetBinding(Shape.FillProperty, new Binding(nameof(RadialChart.SamplePointFill)) { Source = Control });
+            ellipse.Width = Control.SamplePointDiameter;
+            ellipse.Height = Control.SamplePointDiameter;
+            Panel.SetZIndex(ellipse, 999);
+            AngleDictionary.Add(ellipse, currentAngle);
+            SampleDictionary.Add(ellipse, sample);
 
-                var valueLength = sample.Value * sample.Scale * lineLength / Control.MaxValue;
-                var dx = valueLength * Math.Sin(currentAngle);
-                var dy = valueLength * Math.Cos(currentAngle);
-                Canvas.SetLeft(ellipse, CanvasWidth / 2 + dx - Control.SamplePointDiameter / 2);
-                Canvas.SetTop(ellipse, CanvasHeight / 2 + dy - Control.SamplePointDiameter / 2);
-                Canvas.Children.Add(ellipse);
-            }
+            Canvas.SetLeft(ellipse, CanvasWidth / 2 + dx - Control.SamplePointDiameter / 2);
+            Canvas.SetTop(ellipse, CanvasHeight / 2 + dy - Control.SamplePointDiameter / 2);
+            Canvas.Children.Add(ellipse);
         }
 
         protected override void DrawTick(double x1, double y1, double x2, double y2)
         {
-            var tick = new Line();
-            tick.Stroke = Brushes.Black;
-            tick.StrokeThickness = 6;
-            tick.X1 = x1;
-            tick.Y1 = y1;
-            tick.X2 = x2;
-            tick.Y2 = y2;
+            var tick = new Line
+            {
+                Stroke = Brushes.Black,
+                StrokeThickness = 6,
+                X1 = x1,
+                Y1 = y1,
+                X2 = x2,
+                Y2 = y2
+            };
             Canvas.Children.Add(tick);
         }
 
