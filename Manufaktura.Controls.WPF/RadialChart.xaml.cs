@@ -89,7 +89,7 @@ namespace Manufaktura.Controls.WPF
         private readonly WPFRadialChartRenderer renderer;
         private Ellipse draggedElement;
 
-        private double maxLineLength = 0;
+
 
         public RadialChart()
         {
@@ -184,83 +184,6 @@ namespace Manufaktura.Controls.WPF
             ((RadialChart)d).RedrawChart();
         }
 
-        private void DrawAxis(string axisName, double axisLength, double currentAngle)
-        {
-            renderer.DrawAxis(axisName, axisLength, currentAngle);
-        }
-
-        private void DrawSamples(string axis, double lineLength, double currentAngle)
-        {
-            renderer.DrawSamples(axis, lineLength, currentAngle);
-        }
-
-        private void DrawValueCompartmentsPolygons(double lineLength)
-        {
-            var compartmentIndex = 0;
-            while (true)
-            {
-                if (Samples.All(s => s.ValidationCompartments == null || s.ValidationCompartments.Length <= compartmentIndex)) break;
-
-                var innerPoints = new List<System.Windows.Point>();
-                var outerPoints = new List<System.Windows.Point>();
-                foreach (var sample in Samples)
-                {
-                    var compartment = (sample.ValidationCompartments?.Length ?? 0) > compartmentIndex ? sample.ValidationCompartments[compartmentIndex] : null;
-                    var compartmentMinValue = compartment == null ? 0 : (compartment.From ?? 0);
-                    var compartmentMaxValue = compartment == null ? 0 : (compartment.To ?? MaxValue / sample.Scale);
-
-                    var ellipse = renderer.SampleDictionary.First(s => s.Value == sample);
-                    var currentAngle = renderer.AngleDictionary[ellipse.Key];
-
-                    var valueLength = compartmentMaxValue * sample.Scale * lineLength / MaxValue;
-                    var dx = valueLength * Math.Sin(currentAngle);
-                    var dy = valueLength * Math.Cos(currentAngle);
-                    outerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
-
-                    valueLength = compartmentMinValue * sample.Scale * lineLength / MaxValue;
-                    dx = valueLength * Math.Sin(currentAngle);
-                    dy = valueLength * Math.Cos(currentAngle);
-                    innerPoints.Add(new System.Windows.Point(mainCanvas.ActualWidth / 2 + dx, mainCanvas.ActualHeight / 2 + dy));
-                }
-
-                var polygon = new Polygon();
-                polygon.Stroke = Brushes.Green;
-                polygon.Fill = Brushes.LightGreen;
-                polygon.Opacity = 0.5;
-                polygon.StrokeThickness = 2;
-                foreach (var p in innerPoints) polygon.Points.Add(p);
-                polygon.Points.Add(innerPoints.First());
-                foreach (var p in outerPoints) polygon.Points.Add(p);
-                polygon.Points.Add(outerPoints.First());
-
-                Canvas.SetZIndex(polygon, -2);
-                mainCanvas.Children.Add(polygon);
-
-                compartmentIndex++;
-            }
-        }
-
-        private void DrawValueRangePolygon(double lineLength)
-        {
-            renderer.DrawValueRangePolygon(Samples, lineLength, MaxValue);
-        }
-
-        private void DrawWebLines(List<Tuple<double, double>> ticks1, List<Tuple<double, double>> ticks2)
-        {
-            for (int i = 0; i < NumberOfTicks; i++)
-            {
-                var webLine = new Line();
-                webLine.Stroke = WeblineStroke;
-                webLine.StrokeThickness = WeblineStrokeThickness;
-                webLine.StrokeDashArray = new DoubleCollection(new double[] { 4, 4 });
-                webLine.X1 = ticks1[i].Item1;
-                webLine.Y1 = ticks1[i].Item2;
-                webLine.X2 = ticks2[i].Item1;
-                webLine.Y2 = ticks2[i].Item2;
-                mainCanvas.Children.Add(webLine);
-            }
-        }
-
         private void MainCanvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             mainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
@@ -297,7 +220,7 @@ namespace Manufaktura.Controls.WPF
             var maxLength = mainCanvas.ActualWidth / 2;
             var newLength = Math.Sqrt(Math.Pow(position.X, 2) + Math.Pow(position.Y, 2));
             var delta = new PolarPoint(angle, newLength).ToCartesian();
-            sample.Value = ((MaxValue * newLength) / maxLineLength) / sample.Scale;
+            sample.Value = ((MaxValue * newLength) / renderer.CalculatedMaxLineLength) / sample.Scale;
             SampleValueChangedCommand?.Execute(sample);
 
             Canvas.SetLeft(draggedElement, (mainCanvas.ActualWidth / 2 - (SamplePointDiameter / 2)) + delta.X);
@@ -309,60 +232,12 @@ namespace Manufaktura.Controls.WPF
             RedrawChart();
         }
 
+
         private void RedrawChart()
         {
             InvalidateArrange();
             InvalidateMeasure();
-            renderer.AngleDictionary.Clear();
-            renderer.SampleDictionary.Clear();
-            mainCanvas.Children.Clear();
-            if (Samples == null || !Samples.Any()) return;
-            var axes = Samples.Select(s => s.AxisShortName).ToArray();
-            var currentAngle = 0d;
-            var angleChange = (2 * Math.PI) / axes.Length;
-            var lineLength = mainCanvas.ActualHeight < mainCanvas.ActualWidth ? mainCanvas.ActualHeight / 2 : mainCanvas.ActualWidth / 2;
-            maxLineLength = lineLength;
-
-            List<Tuple<double, double>> previousTicks = null;
-            List<Tuple<double, double>> firstTicks = null;
-            foreach (var axis in axes)
-            {
-                DrawAxis(axis, lineLength, currentAngle);
-
-                var ticks = new List<Tuple<double, double>>();
-                for (int i = 0; i < NumberOfTicks; i++)
-                {
-                    var tickOffset = (lineLength / NumberOfTicks) * (i + 1);
-                    var tickLocation = new Primitives.Point(mainCanvas.ActualWidth / 2, mainCanvas.ActualHeight / 2).TranslateByAngle(currentAngle, tickOffset);
-                    ticks.Add(new Tuple<double, double>(tickLocation.X + 0.5, tickLocation.Y + 0.5));
-
-                    if (axes.Length < 3)
-                    {
-                        var tick = new Line();
-                        tick.Stroke = Brushes.Black;
-                        tick.StrokeThickness = 6;
-                        tick.X1 = tickLocation.X;
-                        tick.Y1 = tickLocation.Y;
-                        tick.X2 = tickLocation.TranslateByAngle(currentAngle, 1).X;
-                        tick.Y2 = tickLocation.TranslateByAngle(currentAngle, 1).Y;
-                        mainCanvas.Children.Add(tick);
-                    }
-                }
-                if (axes.Length > 2)
-                {
-                    if (firstTicks == null) firstTicks = new List<Tuple<double, double>>(ticks);
-                    if (previousTicks != null) DrawWebLines(previousTicks, ticks);
-                    previousTicks = ticks;
-                }
-
-                DrawSamples(axis, lineLength, currentAngle);
-
-                currentAngle += angleChange;
-            }
-            if (axes.Length > 2) DrawWebLines(firstTicks, previousTicks);
-
-            DrawValueRangePolygon(lineLength);
-            DrawValueCompartmentsPolygons(lineLength);
+            renderer.RedrawChart(Samples);
         }
     }
 }
