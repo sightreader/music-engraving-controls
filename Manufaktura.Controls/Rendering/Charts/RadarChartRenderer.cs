@@ -40,10 +40,6 @@ namespace Manufaktura.Controls.Rendering.Charts
         protected abstract double CanvasWidth { get; }
         protected abstract double MaxValue { get; }
         protected abstract int NumberOfTicks { get; }
-        public abstract void ClearCanvas();
-
-        public abstract void DrawPolygon(IEnumerable<Primitives.Point> innerPoints, IEnumerable<Primitives.Point> outerPoints);
-
         public void RedrawChart(RadialChartSample[] samples)
         {
             SampleToAngleDictionary.Clear();
@@ -80,10 +76,13 @@ namespace Manufaktura.Controls.Rendering.Charts
             DrawValueCompartmentsPolygons(lineLength);
         }
 
+        protected abstract void ClearCanvas();
+
         protected abstract void DrawAxisLabel(Primitives.Point position, double currentAngle, string axisName);
 
         protected abstract void DrawAxisLine(Primitives.Point start, Primitives.Point end);
 
+        protected abstract void DrawPolygon(IEnumerable<Primitives.Point> innerPoints, IEnumerable<Primitives.Point> outerPoints);
         protected abstract void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle);
 
         protected abstract void DrawTick(double x1, double y1, double x2, double y2);

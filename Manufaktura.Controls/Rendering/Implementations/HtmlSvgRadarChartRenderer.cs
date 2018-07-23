@@ -20,7 +20,6 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Charts;
 using Manufaktura.Music.Extensions;
-using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -32,19 +31,12 @@ namespace Manufaktura.Controls.Rendering.Implementations
         {
         }
 
+        protected override double MaxValue => Control.MaxValue;
+        protected override int NumberOfTicks => Control.NumberOfTicks;
         protected override double CanvasHeight => Control.Height;
 
         protected override double CanvasWidth => Control.Width;
-
-        protected override double MaxValue => Control.MaxValue;
-
-        protected override int NumberOfTicks => Control.NumberOfTicks;
-
-        public override void ClearCanvas()
-        {
-        }
-
-        public override void DrawPolygon(IEnumerable<Point> innerPoints, IEnumerable<Point> outerPoints)
+        protected override void ClearCanvas()
         {
         }
 
@@ -73,6 +65,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
             Canvas.Add(element);
         }
 
+        protected override void DrawPolygon(IEnumerable<Point> innerPoints, IEnumerable<Point> outerPoints)
+        {
+        }
         protected override void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle)
         {
             var element = new XElement("ellipse",

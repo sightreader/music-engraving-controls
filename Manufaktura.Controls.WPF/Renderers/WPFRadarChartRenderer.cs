@@ -44,29 +44,11 @@ namespace Manufaktura.Controls.WPF.Renderers
         protected override double CanvasHeight => Canvas.ActualHeight;
         protected override double CanvasWidth => Canvas.ActualWidth;
 
-        public override void ClearCanvas()
+        protected override void ClearCanvas()
         {
             AngleDictionary.Clear();
             SampleDictionary.Clear();
             Canvas.Children.Clear();
-        }
-
-        public override void DrawPolygon(IEnumerable<Primitives.Point> innerPoints, IEnumerable<Primitives.Point> outerPoints)
-        {
-            var polygon = new Polygon();
-            polygon.Stroke = Brushes.Green;
-            polygon.Fill = Brushes.LightGreen;
-            polygon.Opacity = 0.5;
-            polygon.StrokeThickness = 2;
-            foreach (var p in innerPoints) polygon.Points.Add(new System.Windows.Point(p.X, p.Y));
-            var firstPoint = innerPoints.First();
-            polygon.Points.Add(new System.Windows.Point(firstPoint.X, firstPoint.Y));
-            foreach (var p in outerPoints) polygon.Points.Add(new System.Windows.Point(p.X, p.Y));
-            firstPoint = outerPoints.First();
-            polygon.Points.Add(new System.Windows.Point(firstPoint.X, firstPoint.Y));
-
-            Panel.SetZIndex(polygon, -2);
-            Canvas.Children.Add(polygon);
         }
 
         protected override void DrawAxisLabel(Primitives.Point position, double currentAngle, string axisName)
@@ -91,6 +73,23 @@ namespace Manufaktura.Controls.WPF.Renderers
             Canvas.Children.Add(line);
         }
 
+        protected override void DrawPolygon(IEnumerable<Primitives.Point> innerPoints, IEnumerable<Primitives.Point> outerPoints)
+        {
+            var polygon = new Polygon();
+            polygon.Stroke = Brushes.Green;
+            polygon.Fill = Brushes.LightGreen;
+            polygon.Opacity = 0.5;
+            polygon.StrokeThickness = 2;
+            foreach (var p in innerPoints) polygon.Points.Add(new System.Windows.Point(p.X, p.Y));
+            var firstPoint = innerPoints.First();
+            polygon.Points.Add(new System.Windows.Point(firstPoint.X, firstPoint.Y));
+            foreach (var p in outerPoints) polygon.Points.Add(new System.Windows.Point(p.X, p.Y));
+            firstPoint = outerPoints.First();
+            polygon.Points.Add(new System.Windows.Point(firstPoint.X, firstPoint.Y));
+
+            Panel.SetZIndex(polygon, -2);
+            Canvas.Children.Add(polygon);
+        }
         protected override void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle)
         {
             var ellipse = new Ellipse();
