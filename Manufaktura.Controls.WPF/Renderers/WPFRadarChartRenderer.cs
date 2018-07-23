@@ -30,9 +30,9 @@ using System.Windows.Shapes;
 
 namespace Manufaktura.Controls.WPF.Renderers
 {
-    public class WPFRadialChartRenderer : RadialChartRenderer<RadialChart, Canvas>
+    public class WPFRadarChartRenderer : RadarChartRenderer<RadialChart, Canvas>
     {
-        public WPFRadialChartRenderer(RadialChart control, Canvas canvas) : base(control, canvas)
+        public WPFRadarChartRenderer(RadialChart control, Canvas canvas) : base(control, canvas)
         {
         }
 

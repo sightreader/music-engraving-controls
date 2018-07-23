@@ -2,7 +2,7 @@
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class HtmlRadialChartRendererSettings
+    public class HtmlRadarChartRendererSettings
     {
         public double AxisLabelFontSize { get; set; } = 12;
         public Pen AxisLinePen { get; set; } = new Pen(Color.Black);

@@ -24,9 +24,9 @@ using System.Linq;
 
 namespace Manufaktura.Controls.Rendering.Charts
 {
-    public abstract class RadialChartRenderer<TControl, TCanvas>
+    public abstract class RadarChartRenderer<TControl, TCanvas>
     {
-        public RadialChartRenderer(TControl control, TCanvas canvas)
+        public RadarChartRenderer(TControl control, TCanvas canvas)
         {
             Canvas = canvas;
             Control = control;

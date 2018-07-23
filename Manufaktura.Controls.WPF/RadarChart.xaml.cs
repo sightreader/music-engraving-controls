@@ -86,7 +86,7 @@ namespace Manufaktura.Controls.WPF
         public static readonly DependencyProperty WeblineStrokeThicknessProperty =
             DependencyProperty.Register(nameof(WeblineStrokeThickness), typeof(double), typeof(RadialChart), new PropertyMetadata(0.5d, ChartPropertyChanged));
 
-        private readonly WPFRadialChartRenderer renderer;
+        private readonly WPFRadarChartRenderer renderer;
         private Ellipse draggedElement;
 
 
@@ -94,7 +94,7 @@ namespace Manufaktura.Controls.WPF
         public RadialChart()
         {
             InitializeComponent();
-            renderer = new WPFRadialChartRenderer(this, mainCanvas);
+            renderer = new WPFRadarChartRenderer(this, mainCanvas);
 
             mainCanvas.MouseLeftButtonDown += MainCanvas_MouseLeftButtonDown;
             mainCanvas.MouseLeftButtonUp += MainCanvas_MouseLeftButtonUp;

@@ -90,7 +90,7 @@ namespace Manufaktura.Controls.AspNetMvc
         }
 
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString RadialChartFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, RadialChartSample[]>> expression, HtmlRadialChartRendererSettings settings)
+        public static MvcHtmlString RadialChartFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, RadialChartSample[]>> expression, HtmlRadarChartRendererSettings settings)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
             if (settings == null) throw new ArgumentNullException(nameof(settings));
@@ -123,11 +123,11 @@ namespace Manufaktura.Controls.AspNetMvc
             return NoteViewerHelper(htmlHelper, score, settings);
         }
 
-        private static MvcHtmlString RadialChartHelper(HtmlHelper helper, RadialChartSample[] samples, HtmlRadialChartRendererSettings settings)
+        private static MvcHtmlString RadialChartHelper(HtmlHelper helper, RadialChartSample[] samples, HtmlRadarChartRendererSettings settings)
         {
             var xElement = new XElement("svg");
             xElement.Add(new XAttribute("style", $"width:{settings.Width.ToStringInvariant()}px; height:{settings.Height.ToStringInvariant()}px;"));
-            new HtmlSvgRadialChartRenderer(settings, xElement).RedrawChart(samples);
+            new HtmlSvgRadarChartRenderer(settings, xElement).RedrawChart(samples);
             return MvcHtmlString.Create(xElement.ToString());
         }
     }

@@ -65,10 +65,10 @@
       <DependentUpon>NoteViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RadialChart.xaml.cs">
-      <DependentUpon>RadialChart.xaml</DependentUpon>
+    <Compile Include="RadarChart.xaml.cs">
+      <DependentUpon>RadarChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Renderers\WPFRadialChartRenderer.cs" />
+    <Compile Include="Renderers\WPFRadarChartRenderer.cs" />
     <Compile Include="Renderers\WpfScoreRendererSettings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +81,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RadialChart.xaml">
+    <Page Include="RadarChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

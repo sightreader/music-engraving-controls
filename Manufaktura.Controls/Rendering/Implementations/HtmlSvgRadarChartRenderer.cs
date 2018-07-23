@@ -26,9 +26,9 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class HtmlSvgRadialChartRenderer : RadialChartRenderer<HtmlRadialChartRendererSettings, XElement>
+    public class HtmlSvgRadarChartRenderer : RadarChartRenderer<HtmlRadarChartRendererSettings, XElement>
     {
-        public HtmlSvgRadialChartRenderer(HtmlRadialChartRendererSettings control, XElement canvas) : base(control, canvas)
+        public HtmlSvgRadarChartRenderer(HtmlRadarChartRendererSettings control, XElement canvas) : base(control, canvas)
         {
         }
 
