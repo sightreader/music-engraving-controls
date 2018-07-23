@@ -103,8 +103,8 @@ namespace Manufaktura.Controls.WPF.Renderers
             AngleDictionary.Add(ellipse, currentAngle);
             SampleDictionary.Add(ellipse, sample);
 
-            Canvas.SetLeft(ellipse, CanvasWidth / 2 + dx - Control.SamplePointDiameter / 2);
-            Canvas.SetTop(ellipse, CanvasHeight / 2 + dy - Control.SamplePointDiameter / 2);
+            Canvas.SetLeft(ellipse, dx - Control.SamplePointDiameter / 2);
+            Canvas.SetTop(ellipse, dy - Control.SamplePointDiameter / 2);
             Canvas.Children.Add(ellipse);
         }
 

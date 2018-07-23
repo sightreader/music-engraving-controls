@@ -26,12 +26,12 @@ namespace Manufaktura.Controls.Test.Web.Models
 
             RadialChartSettings = new HtmlRadialChartRendererSettings();
             Samples = new[] {
-                new RadialChartSample("A", "A", 5),
-                new RadialChartSample("B", "B", 5.2),
-                new RadialChartSample("C", "C", 1.8),
-                new RadialChartSample("D", "D", 3),
-                new RadialChartSample("E", "E", 3.7)
-                };
+            new RadialChartSample("Performance", "Performance", 50) { ValidationMinValue = 40, ValidationMaxValue = 60 },
+            new RadialChartSample("User experience", "User experience", 52) { ValidationMinValue = 20, ValidationMaxValue = 40 },
+            new RadialChartSample("Responsiveness", "Responsiveness", 18) { ValidationMinValue = 20, ValidationMaxValue = 40 },
+            new RadialChartSample("Cost", "Cost", 30) { ValidationMinValue = 30, ValidationMaxValue = 60 },
+            new RadialChartSample("Awesomeness", "Awesomeness", 37) { ValidationMinValue = 20, ValidationMaxValue = 40 }
+            };
         }
 
         public HtmlRadialChartRendererSettings RadialChartSettings { get; private set; }

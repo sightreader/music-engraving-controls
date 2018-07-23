@@ -124,7 +124,7 @@ namespace Manufaktura.Controls.Rendering.Charts
                 var dy = valueLength * Math.Cos(currentAngle);
 
                 SampleToAngleDictionary.Add(sample, currentAngle);
-                DrawSample(sample, dx, dy, currentAngle);
+                DrawSample(sample, CanvasWidth / 2 + dx, CanvasHeight / 2 + dy, currentAngle);
             }
         }
 
