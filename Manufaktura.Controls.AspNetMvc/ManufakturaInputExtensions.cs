@@ -21,6 +21,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using Manufaktura.Music.Extensions;
 
 namespace Manufaktura.Controls.AspNetMvc
 {
@@ -89,13 +90,14 @@ namespace Manufaktura.Controls.AspNetMvc
         }
 
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString RadialChartFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, RadialChartSample[]>> expression)
+        public static MvcHtmlString RadialChartFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, RadialChartSample[]>> expression, HtmlRadialChartRendererSettings settings)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
+            if (settings == null) throw new ArgumentNullException(nameof(settings));
 
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             RadialChartSample[] samples = metadata.Model == null ? null : metadata.Model as RadialChartSample[];
-            return RadialChartHelper(htmlHelper, samples);
+            return RadialChartHelper(htmlHelper, samples, settings);
         }
 
         private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, Score score, HtmlScoreRendererSettings settings)
@@ -121,9 +123,12 @@ namespace Manufaktura.Controls.AspNetMvc
             return NoteViewerHelper(htmlHelper, score, settings);
         }
 
-        private static MvcHtmlString RadialChartHelper(HtmlHelper helper, RadialChartSample[] samples)
+        private static MvcHtmlString RadialChartHelper(HtmlHelper helper, RadialChartSample[] samples, HtmlRadialChartRendererSettings settings)
         {
-            throw new NotImplementedException();
+            var xElement = new XElement("svg");
+            xElement.Add(new XAttribute("style", $"width:{settings.Width.ToStringInvariant()}px; height:{settings.Height.ToStringInvariant()}px;"));
+            new HtmlSvgRadialChartRenderer(settings, xElement).RedrawChart(samples);
+            return MvcHtmlString.Create(xElement.ToString());
         }
     }
 }

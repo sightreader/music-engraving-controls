@@ -26,19 +26,19 @@ using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class HtmSvgRadialChartRenderer : RadialChartRenderer<HtmlRadialChartRendererSettings, XElement>
+    public class HtmlSvgRadialChartRenderer : RadialChartRenderer<HtmlRadialChartRendererSettings, XElement>
     {
-        public HtmSvgRadialChartRenderer(HtmlRadialChartRendererSettings control, XElement canvas) : base(control, canvas)
+        public HtmlSvgRadialChartRenderer(HtmlRadialChartRendererSettings control, XElement canvas) : base(control, canvas)
         {
         }
 
-        protected override double CanvasHeight => throw new NotImplementedException();
+        protected override double CanvasHeight => Control.Height;
 
-        protected override double CanvasWidth => throw new NotImplementedException();
+        protected override double CanvasWidth => Control.Width;
 
-        protected override double MaxValue => throw new NotImplementedException();
+        protected override double MaxValue => Control.MaxValue;
 
-        protected override int NumberOfTicks => throw new NotImplementedException();
+        protected override int NumberOfTicks => Control.NumberOfTicks;
 
         public override void ClearCanvas()
         {
@@ -75,7 +75,14 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         protected override void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle)
         {
-            throw new NotImplementedException();
+            var element = new XElement("ellipse",
+                            new XAttribute("cx", (dx - Control.SampleDiameter / 2).ToStringInvariant()),
+                            new XAttribute("cy", (dy - Control.SampleDiameter / 2).ToStringInvariant()),
+                            new XAttribute("rx", Control.SampleDiameter.ToStringInvariant()),
+                            new XAttribute("ry", Control.SampleDiameter.ToStringInvariant()),
+                            new XAttribute("style", Control.SamplePen.ToCss()));
+
+            Canvas.Add(element);
         }
 
         protected override void DrawTick(double x1, double y1, double x2, double y2)

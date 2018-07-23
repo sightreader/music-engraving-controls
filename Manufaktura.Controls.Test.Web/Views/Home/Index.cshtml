@@ -35,6 +35,9 @@
         <div>
             @Html.NoteViewer(Model.SampleScore, Model.Settings)
         </div>
+        <div>
+            @Html.RadialChartFor(x => x.Samples, Model.RadialChartSettings)
+        </div>
     </div>
 
     <script type="text/javascript">

@@ -23,8 +23,19 @@ namespace Manufaktura.Controls.Test.Web.Models
             settings.CustomElementPositionRatio = 0.8;
             settings.IgnorePageMargins = true;
             Settings = settings;
+
+            RadialChartSettings = new HtmlRadialChartRendererSettings();
+            Samples = new[] {
+                new RadialChartSample("A", "A", 5),
+                new RadialChartSample("B", "B", 5.2),
+                new RadialChartSample("C", "C", 1.8),
+                new RadialChartSample("D", "D", 3),
+                new RadialChartSample("E", "E", 3.7)
+                };
         }
 
+        public HtmlRadialChartRendererSettings RadialChartSettings { get; private set; }
+        public RadialChartSample[] Samples { get; set; }
         public Score SampleScore { get; set; }
         public HtmlScoreRendererSettings Settings { get; private set; }
     }
