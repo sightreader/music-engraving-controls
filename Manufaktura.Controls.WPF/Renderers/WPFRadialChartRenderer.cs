@@ -1,18 +1,18 @@
 ﻿/*
-Copyright 2018 Manufaktura Programów Jacek Salamon 
+Copyright 2018 Manufaktura Programów Jacek Salamon
 Website: http://musicengravingcontrols.com/
 Patreon: https://www.patreon.com/jacek_salamon
 
 MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
@@ -167,20 +167,19 @@ namespace Manufaktura.Controls.WPF.Renderers
             }
         }
 
-        protected override void DrawWebLines(List<Tuple<double, double>> ticks1, List<Tuple<double, double>> ticks2)
+        protected override void DrawWebLine(Primitives.Point p1, Primitives.Point p2)
         {
-            for (int i = 0; i < Control.NumberOfTicks; i++)
+            var webLine = new Line
             {
-                var webLine = new Line();
-                webLine.Stroke = Control.WeblineStroke;
-                webLine.StrokeThickness = Control.WeblineStrokeThickness;
-                webLine.StrokeDashArray = new DoubleCollection(new double[] { 4, 4 });
-                webLine.X1 = ticks1[i].Item1;
-                webLine.Y1 = ticks1[i].Item2;
-                webLine.X2 = ticks2[i].Item1;
-                webLine.Y2 = ticks2[i].Item2;
-                Canvas.Children.Add(webLine);
-            }
+                Stroke = Control.WeblineStroke,
+                StrokeThickness = Control.WeblineStrokeThickness,
+                StrokeDashArray = new DoubleCollection(new double[] { 4, 4 }),
+                X1 = p1.X,
+                Y1 = p1.Y,
+                X2 = p2.X,
+                Y2 = p2.Y
+            };
+            Canvas.Children.Add(webLine);
         }
     }
 }

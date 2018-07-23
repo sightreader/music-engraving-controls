@@ -17,6 +17,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +90,7 @@ namespace Manufaktura.Controls.Rendering.Charts
 
         protected abstract void DrawValueCompartmentsPolygons(double lineLength);
 
-        protected abstract void DrawWebLines(List<Tuple<double, double>> ticks1, List<Tuple<double, double>> ticks2);
+        protected abstract void DrawWebLine(Point p1, Point p2);
 
         private List<Tuple<double, double>> CalculateTicks(string axis, double currentAngle, double lineLength, bool alsoDraw)
         {
@@ -126,6 +127,7 @@ namespace Manufaktura.Controls.Rendering.Charts
                 DrawSample(sample, dx, dy, currentAngle);
             }
         }
+
         private void DrawValueRangePolygon(RadialChartSample[] samples, double lineLength, double maxValue)
         {
             var innerPoints = new List<Primitives.Point>();
@@ -146,6 +148,14 @@ namespace Manufaktura.Controls.Rendering.Charts
             }
 
             DrawPolygon(innerPoints, outerPoints);
+        }
+
+        private void DrawWebLines(List<Tuple<double, double>> ticksOnOneAxis, List<Tuple<double, double>> ticksOnAnotherAxis)
+        {
+            for (int i = 0; i < NumberOfTicks; i++)
+            {
+                DrawWebLine(new Point(ticksOnOneAxis[i].Item1, ticksOnOneAxis[i].Item2), new Point(ticksOnAnotherAxis[i].Item1, ticksOnAnotherAxis[i].Item2));
+            }
         }
     }
 }

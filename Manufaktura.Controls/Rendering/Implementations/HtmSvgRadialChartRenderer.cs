@@ -19,15 +19,16 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Charts;
+using Manufaktura.Music.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Xml.Linq;
 
 namespace Manufaktura.Controls.Rendering.Implementations
 {
-    public class HtmSvgRadialChartRenderer : RadialChartRenderer<object, StringBuilder>
+    public class HtmSvgRadialChartRenderer : RadialChartRenderer<HtmlRadialChartRendererSettings, XElement>
     {
-        public HtmSvgRadialChartRenderer(object control, StringBuilder canvas) : base(control, canvas)
+        public HtmSvgRadialChartRenderer(HtmlRadialChartRendererSettings control, XElement canvas) : base(control, canvas)
         {
         }
 
@@ -41,22 +42,35 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         public override void ClearCanvas()
         {
-            throw new NotImplementedException();
         }
 
         public override void DrawPolygon(IEnumerable<Point> innerPoints, IEnumerable<Point> outerPoints)
         {
-            throw new NotImplementedException();
         }
 
         protected override void DrawAxisLabel(Point position, double currentAngle, string axisName)
         {
-            throw new NotImplementedException();
+            var element = new XElement("text",
+               new XAttribute("x", position.X.ToStringInvariant()),
+               new XAttribute("y", position.Y.ToStringInvariant()),
+               new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt;",
+                   Control.AxisLinePen.Color.ToCss(),
+                   Control.AxisLabelFontSize.ToStringInvariant())));
+            element.Value = axisName;
+
+            Canvas.Add(element);
         }
 
         protected override void DrawAxisLine(Point start, Point end)
         {
-            throw new NotImplementedException();
+            var element = new XElement("line",
+                            new XAttribute("x1", start.X.ToStringInvariant()),
+                            new XAttribute("y1", start.Y.ToStringInvariant()),
+                            new XAttribute("x2", end.X.ToStringInvariant()),
+                            new XAttribute("y2", end.Y.ToStringInvariant()),
+                            new XAttribute("style", Control.AxisLinePen.ToCss()));
+
+            Canvas.Add(element);
         }
 
         protected override void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle)
@@ -66,17 +80,23 @@ namespace Manufaktura.Controls.Rendering.Implementations
 
         protected override void DrawTick(double x1, double y1, double x2, double y2)
         {
-            throw new NotImplementedException();
+            DrawAxisLine(new Point(x1, y1), new Point(x2, y2));
         }
 
         protected override void DrawValueCompartmentsPolygons(double lineLength)
         {
-            throw new NotImplementedException();
         }
 
-        protected override void DrawWebLines(List<Tuple<double, double>> ticks1, List<Tuple<double, double>> ticks2)
+        protected override void DrawWebLine(Point p1, Point p2)
         {
-            throw new NotImplementedException();
+            var element = new XElement("line",
+                new XAttribute("x1", p1.X.ToStringInvariant()),
+                new XAttribute("y1", p1.Y.ToStringInvariant()),
+                new XAttribute("x2", p2.X.ToStringInvariant()),
+                new XAttribute("y2", p2.Y.ToStringInvariant()),
+                new XAttribute("style", Control.AxisLinePen.ToCss()));
+
+            Canvas.Add(element);
         }
     }
 }
