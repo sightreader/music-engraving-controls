@@ -17,7 +17,7 @@ using Manufaktura.Core.Models;
 
 namespace Manufaktura.Controls.Model
 {
-    public class RadialChartSample : ViewModel
+    public class RadarChartSample : ViewModel
     {
         private string axisDisplayName;
         private string axisShortName;
@@ -25,7 +25,7 @@ namespace Manufaktura.Controls.Model
         private double validationMaxValue;
         private double validationMinValue;
         private double value;
-        public RadialChartSample(string axisDisplayName, string axisShortName, double value)
+        public RadarChartSample(string axisDisplayName, string axisShortName, double value)
         {
             this.axisDisplayName = axisDisplayName;
             this.axisShortName = axisShortName;

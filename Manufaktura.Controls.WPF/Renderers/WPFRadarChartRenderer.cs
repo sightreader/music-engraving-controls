@@ -40,7 +40,7 @@ namespace Manufaktura.Controls.WPF.Renderers
 
         protected override double MaxValue => Control.MaxValue;
         protected override int NumberOfTicks => Control.NumberOfTicks;
-        public Dictionary<Ellipse, RadialChartSample> SampleDictionary { get; } = new Dictionary<Ellipse, RadialChartSample>();
+        public Dictionary<Ellipse, RadarChartSample> SampleDictionary { get; } = new Dictionary<Ellipse, RadarChartSample>();
         protected override double CanvasHeight => Canvas.ActualHeight;
         protected override double CanvasWidth => Canvas.ActualWidth;
 
@@ -90,7 +90,7 @@ namespace Manufaktura.Controls.WPF.Renderers
             Panel.SetZIndex(polygon, -2);
             Canvas.Children.Add(polygon);
         }
-        protected override void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle)
+        protected override void DrawSample(RadarChartSample sample, double dx, double dy, double currentAngle)
         {
             var ellipse = new Ellipse();
             ellipse.SetBinding(Shape.StrokeProperty, new Binding(nameof(RadialChart.SamplePointStroke)) { Source = Control });

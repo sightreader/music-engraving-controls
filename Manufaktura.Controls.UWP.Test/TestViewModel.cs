@@ -14,12 +14,12 @@ namespace Manufaktura.Controls.UWP.Test
 
 		private ScorePlayer player;
 
-		public RadialChartSample[] ChartSamples { get; } = new[] {
-			new RadialChartSample("A", "A", 5),
-		new RadialChartSample("B", "B", 5.2),
-		new RadialChartSample("C", "C", 1.8),
-		new RadialChartSample("D", "D", 3),
-		new RadialChartSample("E", "E", 3.7)
+		public RadarChartSample[] ChartSamples { get; } = new[] {
+			new RadarChartSample("A", "A", 5),
+		new RadarChartSample("B", "B", 5.2),
+		new RadarChartSample("C", "C", 1.8),
+		new RadarChartSample("D", "D", 3),
+		new RadarChartSample("E", "E", 3.7)
 		};
 
 		public Score Data

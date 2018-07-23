@@ -35,12 +35,12 @@ namespace Manufaktura.Controls.Rendering.Charts
         public double CalculatedMaxLineLength { get; private set; } = 0;
         public TCanvas Canvas { get; private set; }
         public TControl Control { get; private set; }
-        public Dictionary<RadialChartSample, double> SampleToAngleDictionary { get; } = new Dictionary<RadialChartSample, double>();
+        public Dictionary<RadarChartSample, double> SampleToAngleDictionary { get; } = new Dictionary<RadarChartSample, double>();
         protected abstract double CanvasHeight { get; }
         protected abstract double CanvasWidth { get; }
         protected abstract double MaxValue { get; }
         protected abstract int NumberOfTicks { get; }
-        public void RedrawChart(RadialChartSample[] samples)
+        public void RedrawChart(RadarChartSample[] samples)
         {
             SampleToAngleDictionary.Clear();
             ClearCanvas();
@@ -83,7 +83,7 @@ namespace Manufaktura.Controls.Rendering.Charts
         protected abstract void DrawAxisLine(Primitives.Point start, Primitives.Point end);
 
         protected abstract void DrawPolygon(IEnumerable<Primitives.Point> innerPoints, IEnumerable<Primitives.Point> outerPoints);
-        protected abstract void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle);
+        protected abstract void DrawSample(RadarChartSample sample, double dx, double dy, double currentAngle);
 
         protected abstract void DrawTick(double x1, double y1, double x2, double y2);
 
@@ -113,7 +113,7 @@ namespace Manufaktura.Controls.Rendering.Charts
             DrawAxisLabel(endPosition, currentAngle, axisName);
         }
 
-        private void DrawSamples(RadialChartSample[] samples, string axis, double lineLength, double currentAngle)
+        private void DrawSamples(RadarChartSample[] samples, string axis, double lineLength, double currentAngle)
         {
             var axisSamples = samples.Where(s => s.AxisShortName == axis);
             foreach (var sample in axisSamples)
@@ -127,7 +127,7 @@ namespace Manufaktura.Controls.Rendering.Charts
             }
         }
 
-        private void DrawValueRangePolygon(RadialChartSample[] samples, double lineLength, double maxValue)
+        private void DrawValueRangePolygon(RadarChartSample[] samples, double lineLength, double maxValue)
         {
             var innerPoints = new List<Primitives.Point>();
             var outerPoints = new List<Primitives.Point>();

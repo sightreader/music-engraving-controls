@@ -68,7 +68,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
         protected override void DrawPolygon(IEnumerable<Point> innerPoints, IEnumerable<Point> outerPoints)
         {
         }
-        protected override void DrawSample(RadialChartSample sample, double dx, double dy, double currentAngle)
+        protected override void DrawSample(RadarChartSample sample, double dx, double dy, double currentAngle)
         {
             var element = new XElement("ellipse",
                             new XAttribute("cx", (dx - Control.SampleDiameter / 2).ToStringInvariant()),

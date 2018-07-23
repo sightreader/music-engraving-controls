@@ -72,7 +72,7 @@ namespace Manufaktura.Controls.WPF
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SamplesProperty =
-            DependencyProperty.Register(nameof(Samples), typeof(RadialChartSample[]), typeof(RadialChart), new PropertyMetadata(null, ChartPropertyChanged));
+            DependencyProperty.Register(nameof(Samples), typeof(RadarChartSample[]), typeof(RadialChart), new PropertyMetadata(null, ChartPropertyChanged));
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SampleValueChangedCommandProperty =
@@ -155,9 +155,9 @@ namespace Manufaktura.Controls.WPF
             set { SetValue(SamplePointStrokeThicknessProperty, value); }
         }
 
-        public RadialChartSample[] Samples
+        public RadarChartSample[] Samples
         {
-            get { return (RadialChartSample[])GetValue(SamplesProperty); }
+            get { return (RadarChartSample[])GetValue(SamplesProperty); }
             set { SetValue(SamplesProperty, value); }
         }
 

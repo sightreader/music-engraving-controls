@@ -12,12 +12,12 @@ namespace Manufaktura.Controls.WPF.Test
 
         private ScorePlayer player;
 
-        public RadialChartSample[] ChartSamples { get; } = new[] {
-            new RadialChartSample("Performance", "Performance", 50) { ValidationMinValue = 40, ValidationMaxValue = 60 },
-            new RadialChartSample("User experience", "User experience", 52) { ValidationMinValue = 20, ValidationMaxValue = 40 },
-            new RadialChartSample("Responsiveness", "Responsiveness", 18) { ValidationMinValue = 20, ValidationMaxValue = 40 },
-            new RadialChartSample("Cost", "Cost", 30) { ValidationMinValue = 30, ValidationMaxValue = 60 },
-            new RadialChartSample("Awesomeness", "Awesomeness", 37) { ValidationMinValue = 20, ValidationMaxValue = 40 }
+        public RadarChartSample[] ChartSamples { get; } = new[] {
+            new RadarChartSample("Performance", "Performance", 50) { ValidationMinValue = 40, ValidationMaxValue = 60 },
+            new RadarChartSample("User experience", "User experience", 52) { ValidationMinValue = 20, ValidationMaxValue = 40 },
+            new RadarChartSample("Responsiveness", "Responsiveness", 18) { ValidationMinValue = 20, ValidationMaxValue = 40 },
+            new RadarChartSample("Cost", "Cost", 30) { ValidationMinValue = 30, ValidationMaxValue = 60 },
+            new RadarChartSample("Awesomeness", "Awesomeness", 37) { ValidationMinValue = 20, ValidationMaxValue = 40 }
         };
 
         public Score Data
