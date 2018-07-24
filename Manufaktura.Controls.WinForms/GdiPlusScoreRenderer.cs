@@ -46,7 +46,7 @@ namespace Manufaktura.Controls.WinForms
                 rect = rect.Translate(CurrentScore.DefaultPageSettings);
             }
 
-            Canvas.DrawArc(ConvertPen(pen), new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height), (float)startAngle, (float)sweepAngle);
+            Canvas.DrawArc(ConvertPen(pen), new RectangleF((float)rect.X, (float)rect.Y, (float)rect.Width, (float)rect.Height), (float)startAngle, (float)sweepAngle);
         }
 
         public override void DrawBezier(Primitives.Point p1, Primitives.Point p2, Primitives.Point p3, Primitives.Point p4, Primitives.Pen pen, MusicalSymbol owner)
@@ -60,7 +60,7 @@ namespace Manufaktura.Controls.WinForms
                 p4 = p4.Translate(CurrentScore.DefaultPageSettings);
             }
 
-            Canvas.DrawBezier(ConvertPen(pen), new Point((int)p1.X, (int)p1.Y), new Point((int)p2.X, (int)p2.Y), new Point((int)p3.X, (int)p3.Y), new Point((int)p4.X, (int)p4.Y));
+            Canvas.DrawBezier(ConvertPen(pen), new PointF((float)p1.X, (float)p1.Y), new PointF((float)p2.X, (float)p2.Y), new PointF((float)p3.X, (float)p3.Y), new PointF((float)p4.X, (float)p4.Y));
         }
 
         public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Size size, Primitives.Color color, MusicalSymbol owner)
@@ -94,7 +94,7 @@ namespace Manufaktura.Controls.WinForms
                 endPoint = endPoint.Translate(CurrentScore.DefaultPageSettings);
             }
 
-            Canvas.DrawLine(ConvertPen(pen), new Point((int)startPoint.X, (int)startPoint.Y), new Point((int)endPoint.X, (int)endPoint.Y));
+            Canvas.DrawLine(ConvertPen(pen), new PointF((float)startPoint.X, (float)startPoint.Y), new PointF((float)endPoint.X, (float)endPoint.Y));
         }
 
         public override void DrawString(string text, MusicFontStyles fontStyle, Primitives.Point location, Primitives.Color color, MusicalSymbol owner)
