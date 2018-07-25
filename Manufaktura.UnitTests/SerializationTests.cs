@@ -1,17 +1,16 @@
 ﻿using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Core.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Manufaktura.Orm.UnitTests
 {
     [TestClass]
-   public  class SerializationTests
+    public class SerializationTests
     {
         [TestMethod]
         public void JsonSerializationTest()
@@ -25,8 +24,17 @@ namespace Manufaktura.Orm.UnitTests
                 string result = reader.ReadToEnd();
                 var metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(result);
                 var defaults = metadata.EngravingDefaults;
+                var bboxes = metadata.GlyphBBoxes;
+
+                var sw = new Stopwatch();
+                sw.Start();
+                var traditionallyLoadedMetadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result); //TODO: it must be cached. How to clear cache?
+                sw.Stop();
+
+                var metadataAsProxy = (LazyLoadJsonProxy<ISMuFLFontMetadata>)metadata;
+                var elapsedWithProxy = new TimeSpan(metadataAsProxy.PerformanceLog.Sum(pl => pl.Value.Ticks));
+                Assert.IsTrue(elapsedWithProxy < sw.Elapsed); 
             }
-        
         }
     }
 }
