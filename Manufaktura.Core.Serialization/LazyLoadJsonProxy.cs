@@ -1,20 +1,34 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.IO;
-using System.Reflection;
-using Manufaktura.Core.Reflection;
+﻿using Manufaktura.Core.Reflection;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Manufaktura.Core.Serialization
 {
-    public class LazyLoadJsonProxy<TInterface> : DispatchProxy
+    public abstract class LazyLoadJsonProxy : DispatchProxy
     {
+        public ConcurrentDictionary<string, TimeSpan> PerformanceLog { get; } = new ConcurrentDictionary<string, TimeSpan>();
 
+        public TimeSpan TotalTimeSpentOnDeserialization => TimeSpan.FromTicks(PerformanceLog.Sum(pl => pl.Value.Ticks));
+
+        public static object Create(Type interfaceType, string json)
+        {
+            var proxyType = typeof(LazyLoadJsonProxy<>).MakeGenericType(interfaceType);
+            var method = proxyType.GetTypeInfo().GetDeclaredMethods(nameof(Create)).First(m => m.GetParameters().First().ParameterType == typeof(string));
+            return method.Invoke(null, new object[] { json });
+        }
+    }
+
+    public class LazyLoadJsonProxy<TInterface> : LazyLoadJsonProxy
+    {
         private ConcurrentDictionary<string, object> cache = new ConcurrentDictionary<string, object>();
         private string jsonString;
-        public ConcurrentDictionary<string, TimeSpan> PerformanceLog { get; } = new ConcurrentDictionary<string, TimeSpan>();
+
 
         public static TInterface Create(string json)
         {
@@ -30,7 +44,7 @@ namespace Manufaktura.Core.Serialization
             var sw = new Stopwatch();
             sw.Start();
             try
-            { 
+            {
                 var jsonPropertyAttribute = targetMethod.DeclaringType
                     .GetTypeInfo()
                     .GetDeclaredProperty(targetMethod.Name.Replace("get_", ""))?
@@ -46,6 +60,21 @@ namespace Manufaktura.Core.Serialization
                         if (reader.Path != jsonPropertyAttribute.PropertyName) continue;
 
                         var token = JToken.Load(reader);
+                        if (targetMethod.ReturnType.GetTypeInfo().IsInterface)
+                        {
+                            var prop = token as JProperty;
+                            if (prop != null)
+                            {
+                                var proxy = Create(targetMethod.ReturnType, prop.Value.ToString());
+                                return TryAddValue(targetMethod.Name, proxy);
+                            }
+                            else
+                            {
+                                var proxy = Create(targetMethod.ReturnType, token.ToString());
+                                return TryAddValue(targetMethod.Name, proxy);
+                            }
+                        }
+
                         var property = token as JProperty;
                         if (property != null)
                             return TryAddValue(targetMethod.Name, property.Value.ToObject(targetMethod.ReturnType));
