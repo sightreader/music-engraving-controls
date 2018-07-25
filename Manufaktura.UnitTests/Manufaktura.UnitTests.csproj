@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Manufaktura.Orm.UnitTests</RootNamespace>
     <AssemblyName>Manufaktura.Orm.UnitTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +55,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Reflection.DispatchProxy, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.DispatchProxy.4.5.1\lib\netstandard1.3\System.Reflection.DispatchProxy.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
@@ -89,12 +93,17 @@
     <Compile Include="Rendering\ScoreRenderingTestEntry.cs" />
     <Compile Include="Rendering\ScoreRenderingTestResultsRepository.cs" />
     <Compile Include="Rendering\UnitTestScoreRenderer.cs" />
+    <Compile Include="SerializationTests.cs" />
     <Compile Include="TuningTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
       <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
       <Name>Manufaktura.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Core.Serialization\Manufaktura.Core.Serialization.csproj">
+      <Project>{6e5f23b8-7b4b-45a2-886e-bb1b99a96968}</Project>
+      <Name>Manufaktura.Core.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
       <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
@@ -108,6 +117,11 @@
       <Project>{b6302ee4-b0fd-41d2-b2d2-1d46df69d925}</Project>
       <Name>Manufaktura.Orm</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EmbeddedResource Include="Assets\bravura_metadata.json" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

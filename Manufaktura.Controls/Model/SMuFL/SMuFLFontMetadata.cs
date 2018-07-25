@@ -17,7 +17,7 @@ namespace Manufaktura.Controls.Model.SMuFL
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class SMuFLFontMetadata
+    public class SMuFLFontMetadata : ISMuFLFontMetadata
     {
         [JsonProperty("fontName")]
         public string FontName { get; set; }
