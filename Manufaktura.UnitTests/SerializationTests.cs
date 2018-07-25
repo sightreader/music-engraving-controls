@@ -13,7 +13,7 @@ namespace Manufaktura.Orm.UnitTests
     public class SerializationTests
     {
         [TestMethod]
-        public void JsonSerializationTest()
+        public void JsonDeserializationTestWithProxy()
         {
             var assembly = typeof(SerializationTests).Assembly;
             var resourceName = $"{typeof(SerializationTests).Namespace}.Assets.bravura_metadata.json";
@@ -26,14 +26,30 @@ namespace Manufaktura.Orm.UnitTests
                 var defaults = metadata.EngravingDefaults;
                 var bboxes = metadata.GlyphBBoxes;
 
+                var metadataAsProxy = (LazyLoadJsonProxy<ISMuFLFontMetadata>)metadata;
+                var elapsedWithProxy = new TimeSpan(metadataAsProxy.PerformanceLog.Sum(pl => pl.Value.Ticks));
+
+                Debug.WriteLine(elapsedWithProxy);
+            }
+        }
+
+        [TestMethod]
+        public void JsonDeserialziationTestWithoutProxy()
+        {
+            var assembly = typeof(SerializationTests).Assembly;
+            var resourceName = $"{typeof(SerializationTests).Namespace}.Assets.bravura_metadata.json";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            using (var reader = new StreamReader(stream))
+            {
+                string result = reader.ReadToEnd();
+
                 var sw = new Stopwatch();
                 sw.Start();
                 var traditionallyLoadedMetadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result); //TODO: it must be cached. How to clear cache?
                 sw.Stop();
 
-                var metadataAsProxy = (LazyLoadJsonProxy<ISMuFLFontMetadata>)metadata;
-                var elapsedWithProxy = new TimeSpan(metadataAsProxy.PerformanceLog.Sum(pl => pl.Value.Ticks));
-                Assert.IsTrue(elapsedWithProxy < sw.Elapsed); 
+                Debug.WriteLine(sw.Elapsed);
             }
         }
     }

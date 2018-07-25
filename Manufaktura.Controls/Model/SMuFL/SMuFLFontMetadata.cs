@@ -14,6 +14,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 namespace Manufaktura.Controls.Model.SMuFL
 {
+    using Manufaktura.Controls.Parser;
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
@@ -29,7 +30,8 @@ namespace Manufaktura.Controls.Model.SMuFL
         public Dictionary<string, double> EngravingDefaults { get; set; }
 
         [JsonProperty("glyphBBoxes")]
-        public GlyphBBoxes GlyphBBoxes { get; set; }
+        [JsonConverter(typeof(JsonConcreteConverter<GlyphBBoxes>))]
+        public IGlyphBBoxes GlyphBBoxes { get; set; }
 
         [JsonProperty("glyphsWithAlternates")]
         public Dictionary<string, GlyphsWithAlternate> GlyphsWithAlternates { get; set; }

@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Manufaktura.Controls.Model.SMuFL
 {
-    public partial class GlyphBBoxes
+    public partial class GlyphBBoxes : IGlyphBBoxes
     {
         [JsonProperty("4stringTabClef")]
         public BoundingBox The4StringTabClef { get; set; }

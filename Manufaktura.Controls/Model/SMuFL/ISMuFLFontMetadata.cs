@@ -17,7 +17,7 @@ namespace Manufaktura.Controls.Model.SMuFL
         Dictionary<string, double> EngravingDefaults { get; set; }
 
         [JsonProperty("glyphBBoxes")]
-        GlyphBBoxes GlyphBBoxes { get; set; }
+        IGlyphBBoxes GlyphBBoxes { get; set; }
 
         [JsonProperty("glyphsWithAlternates")]
         Dictionary<string, GlyphsWithAlternate> GlyphsWithAlternates { get; set; }
