@@ -67,7 +67,7 @@ namespace Manufaktura.Controls.Model
         }
 
         [Units(Units.Linespaces)]
-        public BoundingBox GetSMuFLBoundingBox(SMuFLFontMetadata metadata)
+        public BoundingBox GetSMuFLBoundingBox(ISMuFLFontMetadata metadata)
         {
             if (RepeatSign == RepeatSignType.Backward) return metadata.GlyphBBoxes.RepeatRight;
             else if (RepeatSign == RepeatSignType.Forward) return metadata.GlyphBBoxes.RepeatLeft;
@@ -76,7 +76,7 @@ namespace Manufaktura.Controls.Model
 
 
         [Units(Units.Pixels)]
-        public BoundingBox GetSMuFLBoundingBoxPx(SMuFLFontMetadata metadata, ScoreRendererSettings settings)
+        public BoundingBox GetSMuFLBoundingBoxPx(ISMuFLFontMetadata metadata, ScoreRendererSettings settings)
         {
             var bbox = GetSMuFLBoundingBox(metadata);
             return new BoundingBox

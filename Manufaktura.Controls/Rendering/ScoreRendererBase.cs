@@ -313,7 +313,7 @@ namespace Manufaktura.Controls.Rendering
             return new Point(TenthsToPixels(point.X), TenthsToPixels(point.Y));
         }
 
-        public Pen CreatePen(MusicalSymbol element, Func<SMuFLFontMetadata, double> smuflProperty, double defaultProperty)
+        public Pen CreatePen(MusicalSymbol element, Func<ISMuFLFontMetadata, double> smuflProperty, double defaultProperty)
         {
             var thickness = IsSMuFLFont && Settings.CurrentSMuFLMetadata != null ? LinespacesToPixels(smuflProperty(Settings.CurrentSMuFLMetadata)) : defaultProperty;
             return new Pen(CoalesceColor(element), thickness);

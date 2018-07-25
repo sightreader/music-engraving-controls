@@ -5,6 +5,7 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
+using Manufaktura.Core.Serialization;
 using Manufaktura.Music.Model;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -53,7 +54,8 @@ namespace Manufaktura.Controls.WPF.Test
                 using (var reader = new StreamReader(stream))
                 {
                     string result = reader.ReadToEnd();
-                    var metadataJson = JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
+                    var metadataJson = //JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
+                        LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(result);
                     noteViewerTest.LoadFont(family, metadataJson);
                     noteViewer1.LoadFont(family, metadataJson);
                     noteViewer2.LoadFont(family, metadataJson);

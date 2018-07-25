@@ -53,7 +53,7 @@ namespace Manufaktura.Controls.Rendering
         /// </summary>
         public int CurrentPage { get; set; }
 
-        public SMuFLFontMetadata CurrentSMuFLMetadata { get; set; }
+        public ISMuFLFontMetadata CurrentSMuFLMetadata { get; set; }
         public double CustomElementPositionRatio { get; set; }
         public double DefaultBarlineThickness { get; set; } = 0.7;
         public double DefaultBeamThickness { get; set; } = 2.6;

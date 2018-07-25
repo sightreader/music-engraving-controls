@@ -419,7 +419,7 @@ namespace Manufaktura.Controls.Model
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
         }
 
-        private static BoundingBox GetSMuFLNoteheadBounds(Note note, SMuFLFontMetadata metadata)
+        private static BoundingBox GetSMuFLNoteheadBounds(Note note, ISMuFLFontMetadata metadata)
         {
             var duration = note.BaseDuration;
             switch (note.Size)

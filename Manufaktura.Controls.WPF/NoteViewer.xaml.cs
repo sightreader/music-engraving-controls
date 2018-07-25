@@ -168,7 +168,7 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
-        public void LoadFont(FontFamily family, SMuFLFontMetadata metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
+        public void LoadFont(FontFamily family, ISMuFLFontMetadata metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
         {
             rendererSettings.CurrentFont = new SMuFLMusicFont();
             rendererSettings.CurrentSMuFLMetadata = metadata;
