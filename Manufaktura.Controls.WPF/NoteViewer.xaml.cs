@@ -17,7 +17,6 @@ using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
 using Manufaktura.Controls.WPF.Bindings;
@@ -25,9 +24,7 @@ using Manufaktura.Controls.WPF.Renderers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -61,6 +58,7 @@ namespace Manufaktura.Controls.WPF
         private Score _innerScore;
         private Color previousColor;
         private WpfScoreRendererSettings rendererSettings = new WpfScoreRendererSettings();
+
         public NoteViewer()
         {
             InitializeComponent();
@@ -155,38 +153,16 @@ namespace Manufaktura.Controls.WPF
             get { return (double)GetValue(ZoomFactorProperty); }
             set { SetValue(ZoomFactorProperty, value); }
         }
+
         protected WpfCanvasScoreRenderer Renderer { get; set; }
 
         public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
 
-        [Obsolete]
-        public void LoadFont(FontFamily family, string metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
+        public void SetFont(FontFamily family, FontProfile musicFontProfile)
         {
-            rendererSettings.LoadSMuFLMetadata(metadata);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-        }
-
-        public void LoadFont(FontFamily family, ISMuFLFontMetadata metadata,  IMusicFont font, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
-        {
-            rendererSettings.CurrentFont = font;
-            rendererSettings.CurrentSMuFLMetadata = metadata;
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-        }
-
-        [Obsolete]
-        public async Task LoadFontAsync(FontFamily family, string metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
-        {
-            await rendererSettings.LoadSMuFLMetadataAsync(metadata);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
+            rendererSettings.MusicFontProfile = musicFontProfile;
+            foreach (var size in musicFontProfile.FontSizes)
+                rendererSettings.SetFont(size.Key, family, size.Value);
         }
 
         public void MoveLayout(StaffSystem system, Point delta)

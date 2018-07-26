@@ -67,15 +67,15 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
 
             var location = new Point(locationXAndWidth.Item1, system.LinePositions[1][0]);
             var size = new Size(locationXAndWidth.Item2, system.LinePositions[part.Staves.Count][4] - system.LinePositions[1][0]);
-            renderer.DrawCharacterInBounds(renderer.Settings.CurrentFont.BraceLeft, Model.Fonts.MusicFontStyles.MusicFont, location, size,
+            renderer.DrawCharacterInBounds(renderer.Settings.MusicFontProfile.MusicFont.BraceLeft, Model.Fonts.MusicFontStyles.MusicFont, location, size,
                 renderer.Settings.DefaultColor, part.Staves.First());
         }
 
         private Tuple<double, double> GetBraceLocationXAndWidth(ScoreRendererBase renderer)
         {
-            if (renderer.IsSMuFLFont && renderer.Settings.CurrentSMuFLMetadata != null)
+            if (renderer.IsSMuFLFont && renderer.Settings.MusicFontProfile.SMuFLMetadata != null)
             {
-                var bounds = renderer.Settings.CurrentSMuFLMetadata.GlyphBBoxes.Brace;
+                var bounds = renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.Brace;
                 var width = (bounds.BBoxNe[0] + bounds.BBoxSw[0]) * 3;  //TODO: Sprawdzić czemu Brace ma tak mały bounding box w SMuFL
                 return new Tuple<double, double>(renderer.LinespacesToPixels(bounds.BBoxSw[0] * -3 - width), renderer.LinespacesToPixels(width));
             }

@@ -14,13 +14,50 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Core.Serialization;
 using System;
+using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace Manufaktura.Controls.SMuFL
 {
     public class SMuFLMusicFont : IMusicFont
     {
+        public static SMuFLFontProfile CreateFromJsonString(string json)
+        {
+            var metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json);
+            return new SMuFLFontProfile(metadata);
+        }
+
+        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream)
+        {
+            using (var reader = new StreamReader(jsonStream))
+            {
+                string json = reader.ReadToEnd();
+                var metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json);
+                return new SMuFLFontProfile(metadata);
+            }
+        }
+
+        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName)
+        {
+            using (var stream = assembly.GetManifestResourceStream(resourceFullName))
+            using (var reader = new StreamReader(stream))
+            {
+                string result = reader.ReadToEnd();
+                return CreateFromJsonString(result);
+            }
+        }
+
+        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName)
+        {
+            var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
+            var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
+            return CreateFromJsonResource(assembly, resourceName);
+        }
+
         public char AugmentationDot => '\uE1E7';
         public char BraceLeft => '\uE000';
         public char BraceRight => '\uE001';

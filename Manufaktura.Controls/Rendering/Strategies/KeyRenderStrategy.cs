@@ -74,7 +74,7 @@ namespace Manufaktura.Controls.Rendering
 
             for (int i = 0; i < Math.Abs(scoreService.CurrentKey.Fifths); i++)
             {
-                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
+                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
                 if (jumpFourth) flatOrSharpPositionY += 3 * 3 * jumpDirection;
                 else flatOrSharpPositionY += 3 * 4 * jumpDirection;
                 jumpFourth = !jumpFourth;

@@ -2,14 +2,12 @@
 using Manufaktura.Controls.Desktop.Audio.Midi;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Controls.SMuFL;
-using Manufaktura.Core.Serialization;
 using Manufaktura.Music.Model;
 using Microsoft.Win32;
-using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;
@@ -48,24 +46,11 @@ namespace Manufaktura.Controls.WPF.Test
 
             if (useSMuFL)
             {
-                //var jsonTest = JsonConvert.SerializeObject(new SMuFLFontMetadata());
-                //var jsonTest2 = JsonConvert.DeserializeObject<SMuFLFontMetadata>(jsonTest);
-
-                using (var stream = assembly.GetManifestResourceStream(resourceName))
-                using (var reader = new StreamReader(stream))
-                {
-                    string result = reader.ReadToEnd();
-                    var metadataJson = //JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
-                       LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(result);
-                    noteViewerTest.LoadFont(family, metadataJson, new SMuFLMusicFont());
-                    noteViewer1.LoadFont(family, metadataJson, new SMuFLMusicFont());
-                    noteViewer2.LoadFont(family, metadataJson, new SMuFLMusicFont());
-                    noteViewer3.LoadFont(family, metadataJson, new SMuFLMusicFont());
-
-                    //var s = new WpfScoreRendererSettings();
-                    //s.CurrentSMuFLMetadata = metadataJson;
-                    //var ba = ((MemoryStream)s.GetSMuFLMetadataBinaryStream()).ToArray();
-                }
+                var fontProfile = SMuFLMusicFont.CreateFromJsonResource(assembly, resourceName);
+                noteViewerTest.SetFont(family, fontProfile);
+                noteViewer1.SetFont(family, fontProfile);
+                noteViewer2.SetFont(family, fontProfile);
+                noteViewer3.SetFont(family, fontProfile);
             }
 
             LoadTestModel(HookDirectionAlgorithm.ProductionCandidate);

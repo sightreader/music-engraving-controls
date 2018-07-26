@@ -14,7 +14,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 
 using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Model.SMuFL;
 using System;
 using System.Collections.Generic;
 
@@ -112,29 +111,18 @@ namespace Manufaktura.Controls.Rendering.Implementations
         /// </summary>
         public HtmlSizeHint SizeHint { get; set; } = HtmlSizeHint.FixedWidth;
 
-        public void LoadSMuFLFont(string metadataJson, string name, double size, params string[] fontPaths)
-        {
-            LoadSMuFLMetadata(metadataJson);
-            SetFont(MusicFontStyles.MusicFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.GraceNoteFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.StaffFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.TimeSignatureFont, name, size, fontPaths);
-        }
-
-        public void LoadSMuFLFont(ISMuFLFontMetadata metadata, IMusicFont musicFont, string name, double size, params string[] fontPaths)
-        {
-            LoadSMuFLMetadata(metadata, musicFont);
-            SetFont(MusicFontStyles.MusicFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.GraceNoteFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.StaffFont, name, size, fontPaths);
-            SetFont(MusicFontStyles.TimeSignatureFont, name, size, fontPaths);
-        }
-
         public void SetFont(MusicFontStyles style, string name, double size, params string[] fontFiles)
         {
             var fontInfo = new HtmlFontInfo(name, size, fontFiles);
             if (!Fonts.ContainsKey(style)) Fonts.Add(style, fontInfo);
             else Fonts[style] = fontInfo;
+        }
+
+        public void SetMusicFont(FontProfile musicFontProfile, string fontName, params string[] fontPaths)
+        {
+            SetMusicFontProfile(musicFontProfile);
+            foreach (var fontSize in musicFontProfile.FontSizes)
+                SetFont(fontSize.Key, fontName, fontSize.Value, fontPaths);
         }
     }
 }

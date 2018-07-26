@@ -14,11 +14,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 
 using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace Manufaktura.Controls.Rendering
 {
@@ -27,8 +23,6 @@ namespace Manufaktura.Controls.Rendering
     /// </summary>
     public class ScoreRendererSettings
     {
-        private IMusicFont currentFont;
-
         /// <summary>
         /// Initializes a new instance of ScoreRendererSettings
         /// </summary>
@@ -41,20 +35,14 @@ namespace Manufaktura.Controls.Rendering
             PaddingTop = 20;
             LineSpacing = 6;
             DefaultColor = Color.Black;
-            CurrentFont = new PolihymniaFont();
+            MusicFontProfile = PolihymniaFont.CreateProfile();
         }
-
-        /// <summary>
-        /// Key mapping for current font
-        /// </summary>
-        public IMusicFont CurrentFont { get => currentFont; set { currentFont = value; IsSMuFLFont = value.IsSMuFLFont; } }
 
         /// <summary>
         /// Page to display if renderer is in SinglePage mode.
         /// </summary>
         public int CurrentPage { get; set; }
 
-        public ISMuFLFontMetadata CurrentSMuFLMetadata { get; set; }
         public double CustomElementPositionRatio { get; set; }
         public double DefaultBarlineThickness { get; set; } = 0.7;
         public double DefaultBeamThickness { get; set; } = 2.6;
@@ -65,9 +53,7 @@ namespace Manufaktura.Controls.Rendering
         public Color DefaultColor { get; set; }
 
         public double DefaultStaffLineThickness { get; set; } = 0.5;
-
         public double DefaultStemThickness { get; set; } = 1;
-
         public double DefaultTupletBracketThickness { get; set; } = 1;
 
         /// <summary>
@@ -80,12 +66,12 @@ namespace Manufaktura.Controls.Rendering
         /// </summary>
         public bool IsMusicPaperMode { get; set; }
 
-        public bool IsSMuFLFont { get; private set; }
-
         /// <summary>
         /// Default line spacing
         /// </summary>
         public int LineSpacing { get; private set; }
+
+        public FontProfile MusicFontProfile { get; set; }
 
         /// <summary>
         /// Default padding top
@@ -102,45 +88,14 @@ namespace Manufaktura.Controls.Rendering
         /// </summary>
         public ScoreRenderingModes RenderingMode { get; set; }
 
-        [Obsolete]
-        public void LoadSMuFLMetadata(string metadataJson)
+        public void SetMusicFontProfile(FontProfile profile)
         {
-            ThrowObsoleteException();
-        }
-
-        private void ThrowObsoleteException()
-        {
-            throw new Exception($"This method is deprecated. You can deserialize JSON manually or reference Manufaktura.Controls.SMuFL and Manufaktura.Core.Serialization to use our lazy loading proxy.");
-        }
-
-        public void LoadSMuFLMetadata(ISMuFLFontMetadata metadata, IMusicFont musicFont)
-        {
-            CurrentSMuFLMetadata = metadata;
-            CurrentFont = musicFont;
-        }
-
-        [Obsolete]
-        public void LoadSMuFLMetadata(Stream stream)
-        {
-            ThrowObsoleteException();
-        }
-
-        [Obsolete]
-        public async Task LoadSMuFLMetadataAsync(string metadataJson)
-        {
-            ThrowObsoleteException();
-        }
-
-        [Obsolete]
-        public async Task LoadSMuFLMetadataAsync(Stream stream)
-        {
-            ThrowObsoleteException();
+            MusicFontProfile = profile;
         }
 
         public virtual void SetPolihymniaFont()
         {
-            CurrentFont = new PolihymniaFont();
-            CurrentSMuFLMetadata = null;
+            MusicFontProfile = PolihymniaFont.CreateProfile();
         }
     }
 }

@@ -51,16 +51,16 @@ namespace Manufaktura.Controls.Rendering.Snippets
             if (element.StemDirection == VerticalDirection.Down)
             {
                 if (element.IsGraceNote || element.IsCueNote)
-                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.MusicFontProfile.MusicFont, true), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
                 else
-                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.MusicFontProfile.MusicFont, true), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
             }
             else
             {
                 if (element.IsGraceNote || element.IsCueNote)
-                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.MusicFontProfile.MusicFont, false), MusicFontStyles.GraceNoteFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
                 else
-                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.CurrentFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
+                    renderer.DrawCharacter(element.GetNoteFlagCharacter(renderer.Settings.MusicFontProfile.MusicFont, false), MusicFontStyles.MusicFont, new Point(xPos, beamingService.CurrentStemEndPositionY), element);
             }
             if (measurementService.TupletState != null)
             {
@@ -116,7 +116,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 
             var tupletNumber = CalculateTupletNumber(elementsUnderTuplet.OfType<NoteOrRest>());
 
-            var textToWrite = renderer.Settings.CurrentFont.BuildTupletNumber(tupletNumber);
+            var textToWrite = renderer.Settings.MusicFontProfile.MusicFont.BuildTupletNumber(tupletNumber);
             var fontStyle = renderer.IsSMuFLFont ? MusicFontStyles.MusicFont : MusicFontStyles.LyricsFont;
             var textSize = renderer.CanMeasureString ? renderer.MeasureString(fontStyle, textToWrite) : new Size();
             var textPosition = renderer.CanMeasureString ?

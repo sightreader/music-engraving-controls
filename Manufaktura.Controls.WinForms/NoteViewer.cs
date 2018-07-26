@@ -14,7 +14,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 
 using Manufaktura.Controls.Model.Fonts;
-using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Rendering;
 using System.Drawing;
 using System.Windows.Forms;
@@ -27,6 +26,7 @@ namespace Manufaktura.Controls.WinForms
         public Model.Score DataSource { get; set; }
         public ScoreRenderingModes RenderingMode { get; set; } = ScoreRenderingModes.AllPages;
         public GdiPlusScoreRendererSettings Settings => rendererSettings;
+
         protected override bool DoubleBuffered
         {
             get
@@ -46,60 +46,18 @@ namespace Manufaktura.Controls.WinForms
             rendererSettings.SetPolihymniaFontFromPath(fontPath);
         }
 
-        public void LoadFont(string fontName, string metadataJson, float musicFontSize = 25, float graceNoteFontSize = 16, float staffFontSize = 30.5f, float timeSignatureFontSize = 14.5f)
+        public void SetFont(string fontName, FontProfile musicFontProfile)
         {
-            rendererSettings.LoadSMuFLMetadata(metadataJson);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, fontName, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, fontName, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, fontName, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, fontName, timeSignatureFontSize);
+            rendererSettings.MusicFontProfile = musicFontProfile;
+            foreach (var size in musicFontProfile.FontSizes)
+                rendererSettings.SetFont(size.Key, fontName, (float)size.Value);
         }
 
-        public void LoadFont(string fontName, SMuFLFontMetadata metadata, float musicFontSize = 25, float graceNoteFontSize = 16, float staffFontSize = 30.5f, float timeSignatureFontSize = 14.5f)
+        public void SetFontFromPath(string fontPath, FontProfile musicFontProfile)
         {
-            rendererSettings.CurrentFont = new SMuFLMusicFont();
-            rendererSettings.CurrentSMuFLMetadata = metadata;
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, fontName, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, fontName, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, fontName, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, fontName, timeSignatureFontSize);
-        }
-
-        public async void LoadFontAsync(string fontName, string metadataJson, float musicFontSize = 25, float graceNoteFontSize = 16, float staffFontSize = 30.5f, float timeSignatureFontSize = 14.5f)
-        {
-            await rendererSettings.LoadSMuFLMetadataAsync(metadataJson);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, fontName, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, fontName, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, fontName, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, fontName, timeSignatureFontSize);
-        }
-
-        public void LoadFontFromPath(string fontPath, string metadataJson, float musicFontSize = 25, float graceNoteFontSize = 16, float staffFontSize = 30.5f, float timeSignatureFontSize = 14.5f)
-        {
-            rendererSettings.LoadSMuFLMetadata(metadataJson);
-            rendererSettings.SetFontFromPath(MusicFontStyles.MusicFont, fontPath, musicFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.GraceNoteFont, fontPath, graceNoteFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.StaffFont, fontPath, staffFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.TimeSignatureFont, fontPath, timeSignatureFontSize);
-        }
-
-        public void LoadFontFromPath(string fontPath, SMuFLFontMetadata metadata, float musicFontSize = 25, float graceNoteFontSize = 16, float staffFontSize = 30.5f, float timeSignatureFontSize = 14.5f)
-        {
-            rendererSettings.CurrentFont = new SMuFLMusicFont();
-            rendererSettings.CurrentSMuFLMetadata = metadata;
-            rendererSettings.SetFontFromPath(MusicFontStyles.MusicFont, fontPath, musicFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.GraceNoteFont, fontPath, graceNoteFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.StaffFont, fontPath, staffFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.TimeSignatureFont, fontPath, timeSignatureFontSize);
-        }
-
-        public async void LoadFontFromPathAsync(string fontPath, string metadataJson, float musicFontSize = 25, float graceNoteFontSize = 16, float staffFontSize = 30.5f, float timeSignatureFontSize = 14.5f)
-        {
-            await rendererSettings.LoadSMuFLMetadataAsync(metadataJson);
-            rendererSettings.SetFontFromPath(MusicFontStyles.MusicFont, fontPath, musicFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.GraceNoteFont, fontPath, graceNoteFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.StaffFont, fontPath, staffFontSize);
-            rendererSettings.SetFontFromPath(MusicFontStyles.TimeSignatureFont, fontPath, timeSignatureFontSize);
+            rendererSettings.MusicFontProfile = musicFontProfile;
+            foreach (var size in musicFontProfile.FontSizes)
+                rendererSettings.SetFontFromPath(size.Key, fontPath, (float)size.Value);
         }
 
         protected override void OnPaint(PaintEventArgs e)

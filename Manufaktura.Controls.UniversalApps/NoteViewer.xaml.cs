@@ -1,14 +1,13 @@
 ﻿using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Foundation;
 using Windows.UI;
@@ -44,6 +43,7 @@ namespace Manufaktura.Controls.UniversalApps
         private Score _innerScore;
         private Color previousColor;
         private Lazy<UWPScoreRendererSettings> rendererSettings = new Lazy<UWPScoreRendererSettings>(() => new UWPScoreRendererSettings());
+
         public NoteViewer()
         {
             InitializeComponent();
@@ -143,23 +143,10 @@ namespace Manufaktura.Controls.UniversalApps
 
         public void LoadDefaultFont() => rendererSettings.Value.SetPolihymniaFont();
 
-        public void LoadFont(string fontName, FontFamily family, double fontSizeMusic, double fontSizeGrace, double fontSizeStaff, string metadata, double cellAscent = 24.8)
+        public void SetFont(string fontName, FontFamily family, FontProfile fontProfile, double cellAscent = 24.8)
         {
-            rendererSettings.Value.LoadSMuFLMetadata(metadata);
-            rendererSettings.Value.SetFont(fontName, family, fontSizeMusic, fontSizeGrace, fontSizeStaff, cellAscent);
-        }
-
-        public void LoadFont(string fontName, FontFamily family, double fontSizeMusic, double fontSizeGrace, double fontSizeStaff, SMuFLFontMetadata metadata, double cellAscent = 24.8)
-        {
-            rendererSettings.Value.CurrentFont = new SMuFLMusicFont();
-            rendererSettings.Value.CurrentSMuFLMetadata = metadata;
-            rendererSettings.Value.SetFont(fontName, family, fontSizeMusic, fontSizeGrace, fontSizeStaff, cellAscent);
-        }
-
-        public async Task LoadFontAsync(string fontName, FontFamily family, double fontSizeMusic, double fontSizeGrace, double fontSizeStaff, string metadata, double cellAscent = 24.8)
-        {
-            await rendererSettings.Value.LoadSMuFLMetadataAsync(metadata);
-            rendererSettings.Value.SetFont(fontName, family, fontSizeMusic, fontSizeGrace, fontSizeStaff, cellAscent);
+            rendererSettings.Value.MusicFontProfile = fontProfile;
+            rendererSettings.Value.SetFont(fontName, family, fontProfile.FontSizes[MusicFontStyles.MusicFont], fontProfile.FontSizes[MusicFontStyles.GraceNoteFont], fontProfile.FontSizes[MusicFontStyles.StaffFont], cellAscent);
         }
 
         public void Select(MusicalSymbol element)
@@ -176,6 +163,7 @@ namespace Manufaktura.Controls.UniversalApps
             if (positionElement != null) Debug.WriteLine("Default-x for selected element: {0}",
                 positionElement.DefaultXPosition.HasValue ? positionElement.DefaultXPosition.Value.ToString() : "(not set)");
         }
+
         protected override Size MeasureOverride(Size availableSize)
         {
             if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);

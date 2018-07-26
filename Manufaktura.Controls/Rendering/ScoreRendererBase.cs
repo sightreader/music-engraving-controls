@@ -68,7 +68,7 @@ namespace Manufaktura.Controls.Rendering
 
         public virtual ScoreRendererSettings Settings { get; set; }
 
-        public bool IsSMuFLFont => Settings.IsSMuFLFont;
+        public bool IsSMuFLFont => Settings.MusicFontProfile.IsSMuFLFont;
 
         internal virtual MusicalSymbolRenderStrategyBase[] Strategies { get; private set; }
 
@@ -315,21 +315,21 @@ namespace Manufaktura.Controls.Rendering
 
         public Pen CreatePen(MusicalSymbol element, Func<ISMuFLFontMetadata, double> smuflProperty, double defaultProperty)
         {
-            var thickness = IsSMuFLFont && Settings.CurrentSMuFLMetadata != null ? LinespacesToPixels(smuflProperty(Settings.CurrentSMuFLMetadata)) : defaultProperty;
+            var thickness = IsSMuFLFont && Settings.MusicFontProfile.SMuFLMetadata != null ? LinespacesToPixels(smuflProperty(Settings.MusicFontProfile.SMuFLMetadata)) : defaultProperty;
             return new Pen(CoalesceColor(element), thickness);
         }
 
         public Pen CreatePenFromDefaults(MusicalSymbol element, string engravingDefaultsKey, Func<ScoreRendererSettings, double> defaultPropertySelector)
         {
-            var thickness = IsSMuFLFont && (Settings.CurrentSMuFLMetadata?.EngravingDefaults?.ContainsKey(engravingDefaultsKey) ?? false) ?
-                LinespacesToPixels(Settings.CurrentSMuFLMetadata.EngravingDefaults[engravingDefaultsKey]) : defaultPropertySelector(Settings);
+            var thickness = IsSMuFLFont && (Settings.MusicFontProfile.SMuFLMetadata?.EngravingDefaults?.ContainsKey(engravingDefaultsKey) ?? false) ?
+                LinespacesToPixels(Settings.MusicFontProfile.SMuFLMetadata.EngravingDefaults[engravingDefaultsKey]) : defaultPropertySelector(Settings);
             return new Pen(CoalesceColor(element), thickness);
         }
 
         public double? GetEngravingDefault(string engravingDefaultsKey)
         {
-            return IsSMuFLFont && (Settings.CurrentSMuFLMetadata?.EngravingDefaults?.ContainsKey(engravingDefaultsKey) ?? false) ?
-                LinespacesToPixels(Settings.CurrentSMuFLMetadata.EngravingDefaults[engravingDefaultsKey]) : (double?)null;
+            return IsSMuFLFont && (Settings.MusicFontProfile.SMuFLMetadata?.EngravingDefaults?.ContainsKey(engravingDefaultsKey) ?? false) ?
+                LinespacesToPixels(Settings.MusicFontProfile.SMuFLMetadata.EngravingDefaults[engravingDefaultsKey]) : (double?)null;
         }
 
         public virtual Size MeasureString(MusicFontStyles style, string s) => default(Size);
@@ -419,7 +419,7 @@ namespace Manufaktura.Controls.Rendering
             if (clef.TypeOfClef == ClefType.Percussion)
                 new ClefRenderStrategy(scoreService).DrawPercussionClef(clef, this);
             else
-                DrawCharacter(clef.GetCharacter(Settings.CurrentFont), MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
+                DrawCharacter(clef.GetCharacter(Settings.MusicFontProfile.MusicFont), MusicFontStyles.MusicFont, clef.TextBlockLocation.X, clef.TextBlockLocation.Y, clef);
             scoreService.CursorPositionX += 20;
         }
 

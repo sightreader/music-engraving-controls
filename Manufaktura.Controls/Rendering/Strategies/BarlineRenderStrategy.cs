@@ -122,7 +122,7 @@ namespace Manufaktura.Controls.Rendering
                 BeforeDrawRepeatSign(renderer, element, measureWidth);
 
                 //TODO: Usunąć warunek na HtmlScoreRendererSettings jak zaimplementuję w SVG DrawCharacterInBounds
-                if (renderer.IsSMuFLFont && renderer.Settings.CurrentSMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
+                if (renderer.IsSMuFLFont && renderer.Settings.MusicFontProfile.SMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
                     DrawRepeatSignSMuFL(renderer, element, measureWidth);
                 else
                     DrawRepeatSignAsText(renderer, element, measureWidth, 4);
@@ -134,7 +134,7 @@ namespace Manufaktura.Controls.Rendering
                 BeforeDrawRepeatSign(renderer, element, measureWidth);
 
                 //TODO: Usunąć warunek na HtmlScoreRendererSettings jak zaimplementuję w SVG DrawCharacterInBounds
-                if (renderer.IsSMuFLFont && renderer.Settings.CurrentSMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
+                if (renderer.IsSMuFLFont && renderer.Settings.MusicFontProfile.SMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
                     DrawRepeatSignSMuFL(renderer, element, measureWidth);
                 else
                     DrawRepeatSignAsText(renderer, element, measureWidth, -14.5);
@@ -183,16 +183,16 @@ namespace Manufaktura.Controls.Rendering
         private void DrawRepeatSignAsText(ScoreRendererBase renderer, Barline element, double? measureWidth, double shiftX)
         {
             var positionY = scoreService.CurrentLinePositions[renderer.IsSMuFLFont ? 4 : 2];
-            renderer.DrawCharacter(element.GetCharacter(renderer.Settings.CurrentFont), MusicFontStyles.StaffFont, scoreService.CursorPositionX + shiftX,
+            renderer.DrawCharacter(element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont), MusicFontStyles.StaffFont, scoreService.CursorPositionX + shiftX,
                 positionY, element);
         }
 
         private void DrawRepeatSignSMuFL(ScoreRendererBase renderer, Barline element, double? measureWidth)
         {
-            var bounds = element.GetSMuFLBoundingBoxPx(renderer.Settings.CurrentSMuFLMetadata, renderer.Settings);
+            var bounds = element.GetSMuFLBoundingBoxPx(renderer.Settings.MusicFontProfile.SMuFLMetadata, renderer.Settings);
             var shiftX = element.RepeatSign == RepeatSignType.Forward ? bounds.BBoxSw[0] : bounds.BBoxNe[0];
             renderer.DrawCharacterInBounds(
-                element.GetCharacter(renderer.Settings.CurrentFont),
+                element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont),
                 MusicFontStyles.MusicFont,
                 new Point(scoreService.CursorPositionX - shiftX, scoreService.CurrentLinePositions[0]),
                 new Size(bounds.BBoxNe[0] - bounds.BBoxSw[0], bounds.BBoxNe[1] - bounds.BBoxSw[1]),

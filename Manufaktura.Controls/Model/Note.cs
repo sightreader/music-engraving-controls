@@ -397,8 +397,8 @@ namespace Manufaktura.Controls.Model
         {
             if (renderer.IsSMuFLFont)
             {
-                if (renderer.Settings.CurrentSMuFLMetadata == null) return 1.18;
-                var bounds = GetSMuFLNoteheadBounds(this, renderer.Settings.CurrentSMuFLMetadata);
+                if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1.18;
+                var bounds = GetSMuFLNoteheadBounds(this, renderer.Settings.MusicFontProfile.SMuFLMetadata);
                 return bounds.BBoxNe[0] - bounds.BBoxSw[0];
             }
             return IsGraceNote || IsCueNote ? 0.6 : 1.1;
