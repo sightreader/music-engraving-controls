@@ -1,11 +1,12 @@
-﻿using Manufaktura.Controls.Model.SMuFL;
+﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Controls.Rendering.Implementations;
 using Manufaktura.Core.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
+using System.Xml.Linq;
 
 namespace Manufaktura.Orm.UnitTests
 {
@@ -24,7 +25,7 @@ namespace Manufaktura.Orm.UnitTests
                 string result = reader.ReadToEnd();
                 var metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(result);
                 var defaults = metadata.EngravingDefaults;
-                
+
                 var bboxes = metadata.GlyphBBoxes;
                 var prop1 = bboxes.AccdnCombDot;
                 var prop2 = bboxes.WindTightEmbouchure;
@@ -48,10 +49,47 @@ namespace Manufaktura.Orm.UnitTests
                 var prop20 = bboxes.AccdnCombLh2RanksEmpty;
 
                 var metadataAsProxy = (LazyLoadJsonProxy)metadata;
-                var bboxesAsProxy = (LazyLoadJsonProxy)bboxes;
-                var elapsedWithProxy = metadataAsProxy.TotalTimeSpentOnDeserialization + bboxesAsProxy.TotalTimeSpentOnDeserialization;
+                var elapsedWithProxy = metadataAsProxy.GetTotalDeserializationTimeWithChildElements();
 
                 Debug.WriteLine(elapsedWithProxy);
+            }
+        }
+
+        [TestMethod]
+        public void JsonDeserializationTestWithProxyOnRealExample()
+        {
+            var assembly = typeof(SerializationTests).Assembly;
+            var resourceName = $"{typeof(SerializationTests).Namespace}.Assets.bravura_metadata.json";
+            var scoreResourceName = $"{typeof(SerializationTests).Namespace}.Assets.JohannChristophBachFull3.0.xml";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            using (var scoreStream = assembly.GetManifestResourceStream(scoreResourceName))
+            using (var reader = new StreamReader(stream))
+            using (var scoreReader = new StreamReader(scoreStream))
+            {
+                var sw = new Stopwatch();
+                sw.Start();
+
+                string metadataJson = reader.ReadToEnd();
+                var metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(metadataJson);
+
+                var scoreString = scoreReader.ReadToEnd();
+                var settings = new HtmlScoreRendererSettings();
+                settings.RenderSurface = HtmlScoreRendererSettings.HtmlRenderSurface.Svg;
+                settings.LoadSMuFLFont(metadata, "Bravura", 24, "/fakeuri");
+                settings.Scale = 1;
+                settings.CustomElementPositionRatio = 0.8;
+                settings.IgnorePageMargins = true;
+                var renderer = new HtmlSvgScoreRenderer(new XElement("root"), "testCanvas", settings);
+
+                renderer.Render(scoreString.ToScore());
+
+                sw.Stop();
+
+                var metadataAsProxy = (LazyLoadJsonProxy)metadata;
+                Debug.WriteLine($"All rendering done in {sw.Elapsed}");
+                var deserTime = metadataAsProxy.GetTotalDeserializationTimeWithChildElements();
+                Debug.WriteLine($"Deserialization done in {deserTime}");
             }
         }
 

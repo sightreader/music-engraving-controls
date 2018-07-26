@@ -12,23 +12,46 @@ namespace Manufaktura.Core.Serialization
 {
     public abstract class LazyLoadJsonProxy : DispatchProxy
     {
+        protected ConcurrentDictionary<string, object> cache = new ConcurrentDictionary<string, object>();
+        public int NumberOfAccessedMethods => cache.Count;
         public ConcurrentDictionary<string, TimeSpan> PerformanceLog { get; } = new ConcurrentDictionary<string, TimeSpan>();
 
         public TimeSpan TotalTimeSpentOnDeserialization => TimeSpan.FromTicks(PerformanceLog.Sum(pl => pl.Value.Ticks));
-
         public static object Create(Type interfaceType, string json)
         {
             var proxyType = typeof(LazyLoadJsonProxy<>).MakeGenericType(interfaceType);
             var method = proxyType.GetTypeInfo().GetDeclaredMethods(nameof(Create)).First(m => m.GetParameters().First().ParameterType == typeof(string));
             return method.Invoke(null, new object[] { json });
         }
+
+        public TimeSpan GetTotalDeserializationTimeWithChildElements()
+        {
+            var time = TotalTimeSpentOnDeserialization;
+            foreach (var prop in GetType().GetRuntimeProperties().Where(p => p.PropertyType.GetTypeInfo().IsInterface))
+            {
+                var proxy = prop.GetValue(this) as LazyLoadJsonProxy;
+                if (proxy == null) continue;
+                time += proxy.GetTotalDeserializationTimeWithChildElements();
+            }
+            return time;
+        }
+
+        public int GetTotalNumberOfAccessedMethodsWithChildElements()
+        {
+            var count = NumberOfAccessedMethods;
+            foreach (var prop in GetType().GetRuntimeProperties().Where(p => p.PropertyType.GetTypeInfo().IsInterface))
+            {
+                var proxy = prop.GetValue(this) as LazyLoadJsonProxy;
+                if (proxy == null) continue;
+                count += proxy.GetTotalNumberOfAccessedMethodsWithChildElements();
+            }
+            return count;
+        }
     }
 
     public class LazyLoadJsonProxy<TInterface> : LazyLoadJsonProxy
     {
-        private ConcurrentDictionary<string, object> cache = new ConcurrentDictionary<string, object>();
         private string jsonString;
-
 
         public static TInterface Create(string json)
         {

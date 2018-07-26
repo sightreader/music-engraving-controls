@@ -105,6 +105,12 @@ namespace Manufaktura.Controls.Rendering
             CurrentFont = new SMuFLMusicFont();
         }
 
+        public void LoadSMuFLMetadata(ISMuFLFontMetadata metadata)
+        {
+            CurrentSMuFLMetadata = metadata;
+            CurrentFont = new SMuFLMusicFont();
+        }
+
         public void LoadSMuFLMetadata(Stream stream)
         {
             using (var reader = new StreamReader(stream))
