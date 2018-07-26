@@ -12,22 +12,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-using Newtonsoft.Json;
+
+using System.Runtime.Serialization;
 
 namespace Manufaktura.Controls.Model.SMuFL
 {
     public partial class CutOut
     {
-        [JsonProperty("cutOutNW")]
+        [DataMember(Name="cutOutNW")]
         public double[] CutOutNw { get; set; }
 
-        [JsonProperty("cutOutSE")]
+        [DataMember(Name="cutOutSE")]
         public double[] CutOutSe { get; set; }
 
-        [JsonProperty("cutOutSW")]
+        [DataMember(Name="cutOutSW")]
         public double[] CutOutSw { get; set; }
 
-        [JsonProperty("cutOutNE")]
+        [DataMember(Name="cutOutNE")]
         public double[] CutOutNe { get; set; }
     }
 }

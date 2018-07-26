@@ -12,25 +12,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-using Newtonsoft.Json;
+
 using System;
+using System.Runtime.Serialization;
 
 namespace Manufaktura.Controls.Model.SMuFL
 {
     public partial class GlyphDefinition
     {
-        [JsonIgnore]
+        [IgnoreDataMember]
         public char AlternateCharacter => GetCharFromCodepoint(AlternateCodepoint);
 
-        [JsonProperty("alternateCodepoint")]
+        [DataMember(Name="alternateCodepoint")]
         public string AlternateCodepoint { get; set; }
 
-        [JsonIgnore]
+        [IgnoreDataMember]
         public char Character => GetCharFromCodepoint(Codepoint);
 
-        [JsonProperty("codepoint")]
+        [DataMember(Name="codepoint")]
         public string Codepoint { get; set; }
-        [JsonProperty("description")]
+        [DataMember(Name="description")]
         public string Description { get; set; }
 
         private static char GetCharFromCodepoint(string codepoint)

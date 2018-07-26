@@ -159,6 +159,7 @@ namespace Manufaktura.Controls.WPF
 
         public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
 
+        [Obsolete]
         public void LoadFont(FontFamily family, string metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
         {
             rendererSettings.LoadSMuFLMetadata(metadata);
@@ -168,9 +169,9 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
-        public void LoadFont(FontFamily family, ISMuFLFontMetadata metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
+        public void LoadFont(FontFamily family, ISMuFLFontMetadata metadata,  IMusicFont font, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
         {
-            rendererSettings.CurrentFont = new SMuFLMusicFont();
+            rendererSettings.CurrentFont = font;
             rendererSettings.CurrentSMuFLMetadata = metadata;
             rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
             rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
@@ -178,6 +179,7 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
+        [Obsolete]
         public async Task LoadFontAsync(FontFamily family, string metadata, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
         {
             await rendererSettings.LoadSMuFLMetadataAsync(metadata);
@@ -187,14 +189,6 @@ namespace Manufaktura.Controls.WPF
             rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
         }
 
-        public void LoadFontFromBinaryMetadataStream(FontFamily family, Stream metadataStream, double musicFontSize = 25, double graceNoteFontSize = 16, double staffFontSize = 30.5d)
-        {
-            rendererSettings.LoadSMuFLMetadataFromBinaryStream(metadataStream);
-            rendererSettings.SetFont(MusicFontStyles.MusicFont, family, musicFontSize);
-            rendererSettings.SetFont(MusicFontStyles.GraceNoteFont, family, graceNoteFontSize);
-            rendererSettings.SetFont(MusicFontStyles.StaffFont, family, staffFontSize);
-            rendererSettings.SetFont(MusicFontStyles.TimeSignatureFont, family);
-        }
         public void MoveLayout(StaffSystem system, Point delta)
         {
             if (Renderer == null) return;

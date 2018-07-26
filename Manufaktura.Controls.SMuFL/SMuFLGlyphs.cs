@@ -12,7291 +12,7255 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-using Newtonsoft.Json;
+
 using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Core.Serialization;
 
-namespace Manufaktura.Controls.Model.SMuFL
+namespace Manufaktura.Controls.SMuFL
 {
-    public class SMuFLGlyphs
+    public class SMuFLGlyphs : ISMuFLGlyphs
     {
-        private static Lazy<SMuFLGlyphs> instance = new Lazy<SMuFLGlyphs>(() =>
+        private static Lazy<ISMuFLGlyphs> instance = new Lazy<ISMuFLGlyphs>(() =>
         {
             var assembly = typeof(SMuFLGlyphs).GetTypeInfo().Assembly;
-            //var x = assembly.GetManifestResourceNames();
             var resourceName = $"{typeof(SMuFLGlyphs).Namespace}.glyphnames.json";
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             using (var reader = new StreamReader(stream))
             {
                 string result = reader.ReadToEnd();
-                return JsonConvert.DeserializeObject<SMuFLGlyphs>(result);
+                return LazyLoadJsonProxy<ISMuFLGlyphs>.Create(result);
             }
         });
 
-        public string BuildTimeSignatureNumberFromGlyphs(int number)
-        {
-            var sb = new StringBuilder();
-            var digits = number.ToString();
-            foreach (var digit in digits)
-            {
-                if (digit == '0') sb.Append(TimeSig0.Character);
-                if (digit == '1') sb.Append(TimeSig1.Character);
-                if (digit == '2') sb.Append(TimeSig2.Character);
-                if (digit == '3') sb.Append(TimeSig3.Character);
-                if (digit == '4') sb.Append(TimeSig4.Character);
-                if (digit == '5') sb.Append(TimeSig5.Character);
-                if (digit == '6') sb.Append(TimeSig6.Character);
-                if (digit == '7') sb.Append(TimeSig7.Character);
-                if (digit == '8') sb.Append(TimeSig8.Character);
-                if (digit == '9') sb.Append(TimeSig9.Character);
-            }
-            return sb.ToString();
-        }
 
-        public string BuildTupletNumberFromGlyphs(int number)
-        {
-            var sb = new StringBuilder();
-            var digits = number.ToString();
-            foreach (var digit in digits)
-            {
-                if (digit == '0') sb.Append(Tuplet0.Character);
-                if (digit == '1') sb.Append(Tuplet1.Character);
-                if (digit == '2') sb.Append(Tuplet2.Character);
-                if (digit == '3') sb.Append(Tuplet3.Character);
-                if (digit == '4') sb.Append(Tuplet4.Character);
-                if (digit == '5') sb.Append(Tuplet5.Character);
-                if (digit == '6') sb.Append(Tuplet6.Character);
-                if (digit == '7') sb.Append(Tuplet7.Character);
-                if (digit == '8') sb.Append(Tuplet8.Character);
-                if (digit == '9') sb.Append(Tuplet9.Character);
-            }
-            return sb.ToString();
-        }
+        public static ISMuFLGlyphs Instance => instance.Value;
 
-        public static SMuFLGlyphs Instance => instance.Value;
-
-        [JsonProperty("4stringTabClef")]
+        [DataMember(Name="4stringTabClef")]
         public GlyphDefinition The4StringTabClef { get; set; }
 
-        [JsonProperty("6stringTabClef")]
+        [DataMember(Name="6stringTabClef")]
         public GlyphDefinition The6StringTabClef { get; set; }
 
-        [JsonProperty("accSagittal11LargeDiesisDown")]
+        [DataMember(Name="accSagittal11LargeDiesisDown")]
         public GlyphDefinition AccSagittal11LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11LargeDiesisUp")]
+        [DataMember(Name="accSagittal11LargeDiesisUp")]
         public GlyphDefinition AccSagittal11LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11MediumDiesisDown")]
+        [DataMember(Name="accSagittal11MediumDiesisDown")]
         public GlyphDefinition AccSagittal11MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11MediumDiesisUp")]
+        [DataMember(Name="accSagittal11MediumDiesisUp")]
         public GlyphDefinition AccSagittal11MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11v19LargeDiesisDown")]
+        [DataMember(Name="accSagittal11v19LargeDiesisDown")]
         public GlyphDefinition AccSagittal11V19LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11v19LargeDiesisUp")]
+        [DataMember(Name="accSagittal11v19LargeDiesisUp")]
         public GlyphDefinition AccSagittal11V19LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11v19MediumDiesisDown")]
+        [DataMember(Name="accSagittal11v19MediumDiesisDown")]
         public GlyphDefinition AccSagittal11V19MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11v19MediumDiesisUp")]
+        [DataMember(Name="accSagittal11v19MediumDiesisUp")]
         public GlyphDefinition AccSagittal11V19MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11v49CommaDown")]
+        [DataMember(Name="accSagittal11v49CommaDown")]
         public GlyphDefinition AccSagittal11V49CommaDown { get; set; }
 
-        [JsonProperty("accSagittal11v49CommaUp")]
+        [DataMember(Name="accSagittal11v49CommaUp")]
         public GlyphDefinition AccSagittal11V49CommaUp { get; set; }
 
-        [JsonProperty("accSagittal143CommaDown")]
+        [DataMember(Name="accSagittal143CommaDown")]
         public GlyphDefinition AccSagittal143CommaDown { get; set; }
 
-        [JsonProperty("accSagittal143CommaUp")]
+        [DataMember(Name="accSagittal143CommaUp")]
         public GlyphDefinition AccSagittal143CommaUp { get; set; }
 
-        [JsonProperty("accSagittal17CommaDown")]
+        [DataMember(Name="accSagittal17CommaDown")]
         public GlyphDefinition AccSagittal17CommaDown { get; set; }
 
-        [JsonProperty("accSagittal17CommaUp")]
+        [DataMember(Name="accSagittal17CommaUp")]
         public GlyphDefinition AccSagittal17CommaUp { get; set; }
 
-        [JsonProperty("accSagittal17KleismaDown")]
+        [DataMember(Name="accSagittal17KleismaDown")]
         public GlyphDefinition AccSagittal17KleismaDown { get; set; }
 
-        [JsonProperty("accSagittal17KleismaUp")]
+        [DataMember(Name="accSagittal17KleismaUp")]
         public GlyphDefinition AccSagittal17KleismaUp { get; set; }
 
-        [JsonProperty("accSagittal19CommaDown")]
+        [DataMember(Name="accSagittal19CommaDown")]
         public GlyphDefinition AccSagittal19CommaDown { get; set; }
 
-        [JsonProperty("accSagittal19CommaUp")]
+        [DataMember(Name="accSagittal19CommaUp")]
         public GlyphDefinition AccSagittal19CommaUp { get; set; }
 
-        [JsonProperty("accSagittal19SchismaDown")]
+        [DataMember(Name="accSagittal19SchismaDown")]
         public GlyphDefinition AccSagittal19SchismaDown { get; set; }
 
-        [JsonProperty("accSagittal19SchismaUp")]
+        [DataMember(Name="accSagittal19SchismaUp")]
         public GlyphDefinition AccSagittal19SchismaUp { get; set; }
 
-        [JsonProperty("accSagittal23CommaDown")]
+        [DataMember(Name="accSagittal23CommaDown")]
         public GlyphDefinition AccSagittal23CommaDown { get; set; }
 
-        [JsonProperty("accSagittal23CommaUp")]
+        [DataMember(Name="accSagittal23CommaUp")]
         public GlyphDefinition AccSagittal23CommaUp { get; set; }
 
-        [JsonProperty("accSagittal23SmallDiesisDown")]
+        [DataMember(Name="accSagittal23SmallDiesisDown")]
         public GlyphDefinition AccSagittal23SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal23SmallDiesisUp")]
+        [DataMember(Name="accSagittal23SmallDiesisUp")]
         public GlyphDefinition AccSagittal23SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal25SmallDiesisDown")]
+        [DataMember(Name="accSagittal25SmallDiesisDown")]
         public GlyphDefinition AccSagittal25SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal25SmallDiesisUp")]
+        [DataMember(Name="accSagittal25SmallDiesisUp")]
         public GlyphDefinition AccSagittal25SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal35LargeDiesisDown")]
+        [DataMember(Name="accSagittal35LargeDiesisDown")]
         public GlyphDefinition AccSagittal35LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal35LargeDiesisUp")]
+        [DataMember(Name="accSagittal35LargeDiesisUp")]
         public GlyphDefinition AccSagittal35LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal35MediumDiesisDown")]
+        [DataMember(Name="accSagittal35MediumDiesisDown")]
         public GlyphDefinition AccSagittal35MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal35MediumDiesisUp")]
+        [DataMember(Name="accSagittal35MediumDiesisUp")]
         public GlyphDefinition AccSagittal35MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal49LargeDiesisDown")]
+        [DataMember(Name="accSagittal49LargeDiesisDown")]
         public GlyphDefinition AccSagittal49LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal49LargeDiesisUp")]
+        [DataMember(Name="accSagittal49LargeDiesisUp")]
         public GlyphDefinition AccSagittal49LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal49MediumDiesisDown")]
+        [DataMember(Name="accSagittal49MediumDiesisDown")]
         public GlyphDefinition AccSagittal49MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal49MediumDiesisUp")]
+        [DataMember(Name="accSagittal49MediumDiesisUp")]
         public GlyphDefinition AccSagittal49MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal49SmallDiesisDown")]
+        [DataMember(Name="accSagittal49SmallDiesisDown")]
         public GlyphDefinition AccSagittal49SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal49SmallDiesisUp")]
+        [DataMember(Name="accSagittal49SmallDiesisUp")]
         public GlyphDefinition AccSagittal49SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal55CommaDown")]
+        [DataMember(Name="accSagittal55CommaDown")]
         public GlyphDefinition AccSagittal55CommaDown { get; set; }
 
-        [JsonProperty("accSagittal55CommaUp")]
+        [DataMember(Name="accSagittal55CommaUp")]
         public GlyphDefinition AccSagittal55CommaUp { get; set; }
 
-        [JsonProperty("accSagittal5CommaDown")]
+        [DataMember(Name="accSagittal5CommaDown")]
         public GlyphDefinition AccSagittal5CommaDown { get; set; }
 
-        [JsonProperty("accSagittal5CommaUp")]
+        [DataMember(Name="accSagittal5CommaUp")]
         public GlyphDefinition AccSagittal5CommaUp { get; set; }
 
-        [JsonProperty("accSagittal5v11SmallDiesisDown")]
+        [DataMember(Name="accSagittal5v11SmallDiesisDown")]
         public GlyphDefinition AccSagittal5V11SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v11SmallDiesisUp")]
+        [DataMember(Name="accSagittal5v11SmallDiesisUp")]
         public GlyphDefinition AccSagittal5V11SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v13LargeDiesisDown")]
+        [DataMember(Name="accSagittal5v13LargeDiesisDown")]
         public GlyphDefinition AccSagittal5V13LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v13LargeDiesisUp")]
+        [DataMember(Name="accSagittal5v13LargeDiesisUp")]
         public GlyphDefinition AccSagittal5V13LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v13MediumDiesisDown")]
+        [DataMember(Name="accSagittal5v13MediumDiesisDown")]
         public GlyphDefinition AccSagittal5V13MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v13MediumDiesisUp")]
+        [DataMember(Name="accSagittal5v13MediumDiesisUp")]
         public GlyphDefinition AccSagittal5V13MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v19CommaDown")]
+        [DataMember(Name="accSagittal5v19CommaDown")]
         public GlyphDefinition AccSagittal5V19CommaDown { get; set; }
 
-        [JsonProperty("accSagittal5v19CommaUp")]
+        [DataMember(Name="accSagittal5v19CommaUp")]
         public GlyphDefinition AccSagittal5V19CommaUp { get; set; }
 
-        [JsonProperty("accSagittal5v23SmallDiesisDown")]
+        [DataMember(Name="accSagittal5v23SmallDiesisDown")]
         public GlyphDefinition AccSagittal5V23SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v23SmallDiesisUp")]
+        [DataMember(Name="accSagittal5v23SmallDiesisUp")]
         public GlyphDefinition AccSagittal5V23SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v49MediumDiesisDown")]
+        [DataMember(Name="accSagittal5v49MediumDiesisDown")]
         public GlyphDefinition AccSagittal5V49MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v49MediumDiesisUp")]
+        [DataMember(Name="accSagittal5v49MediumDiesisUp")]
         public GlyphDefinition AccSagittal5V49MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v7KleismaDown")]
+        [DataMember(Name="accSagittal5v7KleismaDown")]
         public GlyphDefinition AccSagittal5V7KleismaDown { get; set; }
 
-        [JsonProperty("accSagittal5v7KleismaUp")]
+        [DataMember(Name="accSagittal5v7KleismaUp")]
         public GlyphDefinition AccSagittal5V7KleismaUp { get; set; }
 
-        [JsonProperty("accSagittal7CommaDown")]
+        [DataMember(Name="accSagittal7CommaDown")]
         public GlyphDefinition AccSagittal7CommaDown { get; set; }
 
-        [JsonProperty("accSagittal7CommaUp")]
+        [DataMember(Name="accSagittal7CommaUp")]
         public GlyphDefinition AccSagittal7CommaUp { get; set; }
 
-        [JsonProperty("accSagittal7v11CommaDown")]
+        [DataMember(Name="accSagittal7v11CommaDown")]
         public GlyphDefinition AccSagittal7V11CommaDown { get; set; }
 
-        [JsonProperty("accSagittal7v11CommaUp")]
+        [DataMember(Name="accSagittal7v11CommaUp")]
         public GlyphDefinition AccSagittal7V11CommaUp { get; set; }
 
-        [JsonProperty("accSagittal7v11KleismaDown")]
+        [DataMember(Name="accSagittal7v11KleismaDown")]
         public GlyphDefinition AccSagittal7V11KleismaDown { get; set; }
 
-        [JsonProperty("accSagittal7v11KleismaUp")]
+        [DataMember(Name="accSagittal7v11KleismaUp")]
         public GlyphDefinition AccSagittal7V11KleismaUp { get; set; }
 
-        [JsonProperty("accSagittal7v19CommaDown")]
+        [DataMember(Name="accSagittal7v19CommaDown")]
         public GlyphDefinition AccSagittal7V19CommaDown { get; set; }
 
-        [JsonProperty("accSagittal7v19CommaUp")]
+        [DataMember(Name="accSagittal7v19CommaUp")]
         public GlyphDefinition AccSagittal7V19CommaUp { get; set; }
 
-        [JsonProperty("accSagittalAcute")]
+        [DataMember(Name="accSagittalAcute")]
         public GlyphDefinition AccSagittalAcute { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat")]
+        [DataMember(Name="accSagittalDoubleFlat")]
         public GlyphDefinition AccSagittalDoubleFlat { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat11v49CUp")]
+        [DataMember(Name="accSagittalDoubleFlat11v49CUp")]
         public GlyphDefinition AccSagittalDoubleFlat11V49CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat143CUp")]
+        [DataMember(Name="accSagittalDoubleFlat143CUp")]
         public GlyphDefinition AccSagittalDoubleFlat143CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat17CUp")]
+        [DataMember(Name="accSagittalDoubleFlat17CUp")]
         public GlyphDefinition AccSagittalDoubleFlat17CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat17kUp")]
+        [DataMember(Name="accSagittalDoubleFlat17kUp")]
         public GlyphDefinition AccSagittalDoubleFlat17KUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat19CUp")]
+        [DataMember(Name="accSagittalDoubleFlat19CUp")]
         public GlyphDefinition AccSagittalDoubleFlat19CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat19sUp")]
+        [DataMember(Name="accSagittalDoubleFlat19sUp")]
         public GlyphDefinition AccSagittalDoubleFlat19SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat23CUp")]
+        [DataMember(Name="accSagittalDoubleFlat23CUp")]
         public GlyphDefinition AccSagittalDoubleFlat23CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat23SUp")]
+        [DataMember(Name="accSagittalDoubleFlat23SUp")]
         public GlyphDefinition AccSagittalDoubleFlat23SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat25SUp")]
+        [DataMember(Name="accSagittalDoubleFlat25SUp")]
         public GlyphDefinition AccSagittalDoubleFlat25SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat49SUp")]
+        [DataMember(Name="accSagittalDoubleFlat49SUp")]
         public GlyphDefinition AccSagittalDoubleFlat49SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat55CUp")]
+        [DataMember(Name="accSagittalDoubleFlat55CUp")]
         public GlyphDefinition AccSagittalDoubleFlat55CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5CUp")]
+        [DataMember(Name="accSagittalDoubleFlat5CUp")]
         public GlyphDefinition AccSagittalDoubleFlat5CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v11SUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v11SUp")]
         public GlyphDefinition AccSagittalDoubleFlat5V11SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v19CUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v19CUp")]
         public GlyphDefinition AccSagittalDoubleFlat5V19CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v23SUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v23SUp")]
         public GlyphDefinition AccSagittalDoubleFlat5V23SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v7kUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v7kUp")]
         public GlyphDefinition AccSagittalDoubleFlat5V7KUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7CUp")]
+        [DataMember(Name="accSagittalDoubleFlat7CUp")]
         public GlyphDefinition AccSagittalDoubleFlat7CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7v11CUp")]
+        [DataMember(Name="accSagittalDoubleFlat7v11CUp")]
         public GlyphDefinition AccSagittalDoubleFlat7V11CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7v11kUp")]
+        [DataMember(Name="accSagittalDoubleFlat7v11kUp")]
         public GlyphDefinition AccSagittalDoubleFlat7V11KUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7v19CUp")]
+        [DataMember(Name="accSagittalDoubleFlat7v19CUp")]
         public GlyphDefinition AccSagittalDoubleFlat7V19CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp")]
+        [DataMember(Name="accSagittalDoubleSharp")]
         public GlyphDefinition AccSagittalDoubleSharp { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp11v49CDown")]
+        [DataMember(Name="accSagittalDoubleSharp11v49CDown")]
         public GlyphDefinition AccSagittalDoubleSharp11V49CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp143CDown")]
+        [DataMember(Name="accSagittalDoubleSharp143CDown")]
         public GlyphDefinition AccSagittalDoubleSharp143CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp17CDown")]
+        [DataMember(Name="accSagittalDoubleSharp17CDown")]
         public GlyphDefinition AccSagittalDoubleSharp17CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp17kDown")]
+        [DataMember(Name="accSagittalDoubleSharp17kDown")]
         public GlyphDefinition AccSagittalDoubleSharp17KDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp19CDown")]
+        [DataMember(Name="accSagittalDoubleSharp19CDown")]
         public GlyphDefinition AccSagittalDoubleSharp19CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp19sDown")]
+        [DataMember(Name="accSagittalDoubleSharp19sDown")]
         public GlyphDefinition AccSagittalDoubleSharp19SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp23CDown")]
+        [DataMember(Name="accSagittalDoubleSharp23CDown")]
         public GlyphDefinition AccSagittalDoubleSharp23CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp23SDown")]
+        [DataMember(Name="accSagittalDoubleSharp23SDown")]
         public GlyphDefinition AccSagittalDoubleSharp23SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp25SDown")]
+        [DataMember(Name="accSagittalDoubleSharp25SDown")]
         public GlyphDefinition AccSagittalDoubleSharp25SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp49SDown")]
+        [DataMember(Name="accSagittalDoubleSharp49SDown")]
         public GlyphDefinition AccSagittalDoubleSharp49SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp55CDown")]
+        [DataMember(Name="accSagittalDoubleSharp55CDown")]
         public GlyphDefinition AccSagittalDoubleSharp55CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5CDown")]
+        [DataMember(Name="accSagittalDoubleSharp5CDown")]
         public GlyphDefinition AccSagittalDoubleSharp5CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v11SDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v11SDown")]
         public GlyphDefinition AccSagittalDoubleSharp5V11SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v19CDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v19CDown")]
         public GlyphDefinition AccSagittalDoubleSharp5V19CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v23SDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v23SDown")]
         public GlyphDefinition AccSagittalDoubleSharp5V23SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v7kDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v7kDown")]
         public GlyphDefinition AccSagittalDoubleSharp5V7KDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7CDown")]
+        [DataMember(Name="accSagittalDoubleSharp7CDown")]
         public GlyphDefinition AccSagittalDoubleSharp7CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7v11CDown")]
+        [DataMember(Name="accSagittalDoubleSharp7v11CDown")]
         public GlyphDefinition AccSagittalDoubleSharp7V11CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7v11kDown")]
+        [DataMember(Name="accSagittalDoubleSharp7v11kDown")]
         public GlyphDefinition AccSagittalDoubleSharp7V11KDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7v19CDown")]
+        [DataMember(Name="accSagittalDoubleSharp7v19CDown")]
         public GlyphDefinition AccSagittalDoubleSharp7V19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat")]
+        [DataMember(Name="accSagittalFlat")]
         public GlyphDefinition AccSagittalFlat { get; set; }
 
-        [JsonProperty("accSagittalFlat11LDown")]
+        [DataMember(Name="accSagittalFlat11LDown")]
         public GlyphDefinition AccSagittalFlat11LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11MDown")]
+        [DataMember(Name="accSagittalFlat11MDown")]
         public GlyphDefinition AccSagittalFlat11MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v19LDown")]
+        [DataMember(Name="accSagittalFlat11v19LDown")]
         public GlyphDefinition AccSagittalFlat11V19LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v19MDown")]
+        [DataMember(Name="accSagittalFlat11v19MDown")]
         public GlyphDefinition AccSagittalFlat11V19MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v49CDown")]
+        [DataMember(Name="accSagittalFlat11v49CDown")]
         public GlyphDefinition AccSagittalFlat11V49CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v49CUp")]
+        [DataMember(Name="accSagittalFlat11v49CUp")]
         public GlyphDefinition AccSagittalFlat11V49CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat143CDown")]
+        [DataMember(Name="accSagittalFlat143CDown")]
         public GlyphDefinition AccSagittalFlat143CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat143CUp")]
+        [DataMember(Name="accSagittalFlat143CUp")]
         public GlyphDefinition AccSagittalFlat143CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat17CDown")]
+        [DataMember(Name="accSagittalFlat17CDown")]
         public GlyphDefinition AccSagittalFlat17CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat17CUp")]
+        [DataMember(Name="accSagittalFlat17CUp")]
         public GlyphDefinition AccSagittalFlat17CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat17kDown")]
+        [DataMember(Name="accSagittalFlat17kDown")]
         public GlyphDefinition AccSagittalFlat17KDown { get; set; }
 
-        [JsonProperty("accSagittalFlat17kUp")]
+        [DataMember(Name="accSagittalFlat17kUp")]
         public GlyphDefinition AccSagittalFlat17KUp { get; set; }
 
-        [JsonProperty("accSagittalFlat19CDown")]
+        [DataMember(Name="accSagittalFlat19CDown")]
         public GlyphDefinition AccSagittalFlat19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat19CUp")]
+        [DataMember(Name="accSagittalFlat19CUp")]
         public GlyphDefinition AccSagittalFlat19CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat19sDown")]
+        [DataMember(Name="accSagittalFlat19sDown")]
         public GlyphDefinition AccSagittalFlat19SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat19sUp")]
+        [DataMember(Name="accSagittalFlat19sUp")]
         public GlyphDefinition AccSagittalFlat19SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat23CDown")]
+        [DataMember(Name="accSagittalFlat23CDown")]
         public GlyphDefinition AccSagittalFlat23CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat23CUp")]
+        [DataMember(Name="accSagittalFlat23CUp")]
         public GlyphDefinition AccSagittalFlat23CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat23SDown")]
+        [DataMember(Name="accSagittalFlat23SDown")]
         public GlyphDefinition AccSagittalFlat23SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat23SUp")]
+        [DataMember(Name="accSagittalFlat23SUp")]
         public GlyphDefinition AccSagittalFlat23SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat25SDown")]
+        [DataMember(Name="accSagittalFlat25SDown")]
         public GlyphDefinition AccSagittalFlat25SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat25SUp")]
+        [DataMember(Name="accSagittalFlat25SUp")]
         public GlyphDefinition AccSagittalFlat25SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat35LDown")]
+        [DataMember(Name="accSagittalFlat35LDown")]
         public GlyphDefinition AccSagittalFlat35LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat35MDown")]
+        [DataMember(Name="accSagittalFlat35MDown")]
         public GlyphDefinition AccSagittalFlat35MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49LDown")]
+        [DataMember(Name="accSagittalFlat49LDown")]
         public GlyphDefinition AccSagittalFlat49LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49MDown")]
+        [DataMember(Name="accSagittalFlat49MDown")]
         public GlyphDefinition AccSagittalFlat49MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49SDown")]
+        [DataMember(Name="accSagittalFlat49SDown")]
         public GlyphDefinition AccSagittalFlat49SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49SUp")]
+        [DataMember(Name="accSagittalFlat49SUp")]
         public GlyphDefinition AccSagittalFlat49SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat55CDown")]
+        [DataMember(Name="accSagittalFlat55CDown")]
         public GlyphDefinition AccSagittalFlat55CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat55CUp")]
+        [DataMember(Name="accSagittalFlat55CUp")]
         public GlyphDefinition AccSagittalFlat55CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5CDown")]
+        [DataMember(Name="accSagittalFlat5CDown")]
         public GlyphDefinition AccSagittalFlat5CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5CUp")]
+        [DataMember(Name="accSagittalFlat5CUp")]
         public GlyphDefinition AccSagittalFlat5CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v11SDown")]
+        [DataMember(Name="accSagittalFlat5v11SDown")]
         public GlyphDefinition AccSagittalFlat5V11SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v11SUp")]
+        [DataMember(Name="accSagittalFlat5v11SUp")]
         public GlyphDefinition AccSagittalFlat5V11SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v13LDown")]
+        [DataMember(Name="accSagittalFlat5v13LDown")]
         public GlyphDefinition AccSagittalFlat5V13LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v13MDown")]
+        [DataMember(Name="accSagittalFlat5v13MDown")]
         public GlyphDefinition AccSagittalFlat5V13MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v19CDown")]
+        [DataMember(Name="accSagittalFlat5v19CDown")]
         public GlyphDefinition AccSagittalFlat5V19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v19CUp")]
+        [DataMember(Name="accSagittalFlat5v19CUp")]
         public GlyphDefinition AccSagittalFlat5V19CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v23SDown")]
+        [DataMember(Name="accSagittalFlat5v23SDown")]
         public GlyphDefinition AccSagittalFlat5V23SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v23SUp")]
+        [DataMember(Name="accSagittalFlat5v23SUp")]
         public GlyphDefinition AccSagittalFlat5V23SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v49MDown")]
+        [DataMember(Name="accSagittalFlat5v49MDown")]
         public GlyphDefinition AccSagittalFlat5V49MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v7kDown")]
+        [DataMember(Name="accSagittalFlat5v7kDown")]
         public GlyphDefinition AccSagittalFlat5V7KDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v7kUp")]
+        [DataMember(Name="accSagittalFlat5v7kUp")]
         public GlyphDefinition AccSagittalFlat5V7KUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7CDown")]
+        [DataMember(Name="accSagittalFlat7CDown")]
         public GlyphDefinition AccSagittalFlat7CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7CUp")]
+        [DataMember(Name="accSagittalFlat7CUp")]
         public GlyphDefinition AccSagittalFlat7CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11CDown")]
+        [DataMember(Name="accSagittalFlat7v11CDown")]
         public GlyphDefinition AccSagittalFlat7V11CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11CUp")]
+        [DataMember(Name="accSagittalFlat7v11CUp")]
         public GlyphDefinition AccSagittalFlat7V11CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11kDown")]
+        [DataMember(Name="accSagittalFlat7v11kDown")]
         public GlyphDefinition AccSagittalFlat7V11KDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11kUp")]
+        [DataMember(Name="accSagittalFlat7v11kUp")]
         public GlyphDefinition AccSagittalFlat7V11KUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7v19CDown")]
+        [DataMember(Name="accSagittalFlat7v19CDown")]
         public GlyphDefinition AccSagittalFlat7V19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7v19CUp")]
+        [DataMember(Name="accSagittalFlat7v19CUp")]
         public GlyphDefinition AccSagittalFlat7V19CUp { get; set; }
 
-        [JsonProperty("accSagittalGrave")]
+        [DataMember(Name="accSagittalGrave")]
         public GlyphDefinition AccSagittalGrave { get; set; }
 
-        [JsonProperty("accSagittalShaftDown")]
+        [DataMember(Name="accSagittalShaftDown")]
         public GlyphDefinition AccSagittalShaftDown { get; set; }
 
-        [JsonProperty("accSagittalShaftUp")]
+        [DataMember(Name="accSagittalShaftUp")]
         public GlyphDefinition AccSagittalShaftUp { get; set; }
 
-        [JsonProperty("accSagittalSharp")]
+        [DataMember(Name="accSagittalSharp")]
         public GlyphDefinition AccSagittalSharp { get; set; }
 
-        [JsonProperty("accSagittalSharp11LUp")]
+        [DataMember(Name="accSagittalSharp11LUp")]
         public GlyphDefinition AccSagittalSharp11LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11MUp")]
+        [DataMember(Name="accSagittalSharp11MUp")]
         public GlyphDefinition AccSagittalSharp11MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11v19LUp")]
+        [DataMember(Name="accSagittalSharp11v19LUp")]
         public GlyphDefinition AccSagittalSharp11V19LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11v19MUp")]
+        [DataMember(Name="accSagittalSharp11v19MUp")]
         public GlyphDefinition AccSagittalSharp11V19MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11v49CDown")]
+        [DataMember(Name="accSagittalSharp11v49CDown")]
         public GlyphDefinition AccSagittalSharp11V49CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp11v49CUp")]
+        [DataMember(Name="accSagittalSharp11v49CUp")]
         public GlyphDefinition AccSagittalSharp11V49CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp143CDown")]
+        [DataMember(Name="accSagittalSharp143CDown")]
         public GlyphDefinition AccSagittalSharp143CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp143CUp")]
+        [DataMember(Name="accSagittalSharp143CUp")]
         public GlyphDefinition AccSagittalSharp143CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp17CDown")]
+        [DataMember(Name="accSagittalSharp17CDown")]
         public GlyphDefinition AccSagittalSharp17CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp17CUp")]
+        [DataMember(Name="accSagittalSharp17CUp")]
         public GlyphDefinition AccSagittalSharp17CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp17kDown")]
+        [DataMember(Name="accSagittalSharp17kDown")]
         public GlyphDefinition AccSagittalSharp17KDown { get; set; }
 
-        [JsonProperty("accSagittalSharp17kUp")]
+        [DataMember(Name="accSagittalSharp17kUp")]
         public GlyphDefinition AccSagittalSharp17KUp { get; set; }
 
-        [JsonProperty("accSagittalSharp19CDown")]
+        [DataMember(Name="accSagittalSharp19CDown")]
         public GlyphDefinition AccSagittalSharp19CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp19CUp")]
+        [DataMember(Name="accSagittalSharp19CUp")]
         public GlyphDefinition AccSagittalSharp19CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp19sDown")]
+        [DataMember(Name="accSagittalSharp19sDown")]
         public GlyphDefinition AccSagittalSharp19SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp19sUp")]
+        [DataMember(Name="accSagittalSharp19sUp")]
         public GlyphDefinition AccSagittalSharp19SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp23CDown")]
+        [DataMember(Name="accSagittalSharp23CDown")]
         public GlyphDefinition AccSagittalSharp23CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp23CUp")]
+        [DataMember(Name="accSagittalSharp23CUp")]
         public GlyphDefinition AccSagittalSharp23CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp23SDown")]
+        [DataMember(Name="accSagittalSharp23SDown")]
         public GlyphDefinition AccSagittalSharp23SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp23SUp")]
+        [DataMember(Name="accSagittalSharp23SUp")]
         public GlyphDefinition AccSagittalSharp23SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp25SDown")]
+        [DataMember(Name="accSagittalSharp25SDown")]
         public GlyphDefinition AccSagittalSharp25SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp25SUp")]
+        [DataMember(Name="accSagittalSharp25SUp")]
         public GlyphDefinition AccSagittalSharp25SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp35LUp")]
+        [DataMember(Name="accSagittalSharp35LUp")]
         public GlyphDefinition AccSagittalSharp35LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp35MUp")]
+        [DataMember(Name="accSagittalSharp35MUp")]
         public GlyphDefinition AccSagittalSharp35MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp49LUp")]
+        [DataMember(Name="accSagittalSharp49LUp")]
         public GlyphDefinition AccSagittalSharp49LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp49MUp")]
+        [DataMember(Name="accSagittalSharp49MUp")]
         public GlyphDefinition AccSagittalSharp49MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp49SDown")]
+        [DataMember(Name="accSagittalSharp49SDown")]
         public GlyphDefinition AccSagittalSharp49SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp49SUp")]
+        [DataMember(Name="accSagittalSharp49SUp")]
         public GlyphDefinition AccSagittalSharp49SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp55CDown")]
+        [DataMember(Name="accSagittalSharp55CDown")]
         public GlyphDefinition AccSagittalSharp55CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp55CUp")]
+        [DataMember(Name="accSagittalSharp55CUp")]
         public GlyphDefinition AccSagittalSharp55CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5CDown")]
+        [DataMember(Name="accSagittalSharp5CDown")]
         public GlyphDefinition AccSagittalSharp5CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5CUp")]
+        [DataMember(Name="accSagittalSharp5CUp")]
         public GlyphDefinition AccSagittalSharp5CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v11SDown")]
+        [DataMember(Name="accSagittalSharp5v11SDown")]
         public GlyphDefinition AccSagittalSharp5V11SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v11SUp")]
+        [DataMember(Name="accSagittalSharp5v11SUp")]
         public GlyphDefinition AccSagittalSharp5V11SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v13LUp")]
+        [DataMember(Name="accSagittalSharp5v13LUp")]
         public GlyphDefinition AccSagittalSharp5V13LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v13MUp")]
+        [DataMember(Name="accSagittalSharp5v13MUp")]
         public GlyphDefinition AccSagittalSharp5V13MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v19CDown")]
+        [DataMember(Name="accSagittalSharp5v19CDown")]
         public GlyphDefinition AccSagittalSharp5V19CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v19CUp")]
+        [DataMember(Name="accSagittalSharp5v19CUp")]
         public GlyphDefinition AccSagittalSharp5V19CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v23SDown")]
+        [DataMember(Name="accSagittalSharp5v23SDown")]
         public GlyphDefinition AccSagittalSharp5V23SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v23SUp")]
+        [DataMember(Name="accSagittalSharp5v23SUp")]
         public GlyphDefinition AccSagittalSharp5V23SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v49MUp")]
+        [DataMember(Name="accSagittalSharp5v49MUp")]
         public GlyphDefinition AccSagittalSharp5V49MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v7kDown")]
+        [DataMember(Name="accSagittalSharp5v7kDown")]
         public GlyphDefinition AccSagittalSharp5V7KDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v7kUp")]
+        [DataMember(Name="accSagittalSharp5v7kUp")]
         public GlyphDefinition AccSagittalSharp5V7KUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7CDown")]
+        [DataMember(Name="accSagittalSharp7CDown")]
         public GlyphDefinition AccSagittalSharp7CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7CUp")]
+        [DataMember(Name="accSagittalSharp7CUp")]
         public GlyphDefinition AccSagittalSharp7CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11CDown")]
+        [DataMember(Name="accSagittalSharp7v11CDown")]
         public GlyphDefinition AccSagittalSharp7V11CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11CUp")]
+        [DataMember(Name="accSagittalSharp7v11CUp")]
         public GlyphDefinition AccSagittalSharp7V11CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11kDown")]
+        [DataMember(Name="accSagittalSharp7v11kDown")]
         public GlyphDefinition AccSagittalSharp7V11KDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11kUp")]
+        [DataMember(Name="accSagittalSharp7v11kUp")]
         public GlyphDefinition AccSagittalSharp7V11KUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7v19CDown")]
+        [DataMember(Name="accSagittalSharp7v19CDown")]
         public GlyphDefinition AccSagittalSharp7V19CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7v19CUp")]
+        [DataMember(Name="accSagittalSharp7v19CUp")]
         public GlyphDefinition AccSagittalSharp7V19CUp { get; set; }
 
-        [JsonProperty("accSagittalUnused1")]
+        [DataMember(Name="accSagittalUnused1")]
         public GlyphDefinition AccSagittalUnused1 { get; set; }
 
-        [JsonProperty("accSagittalUnused2")]
+        [DataMember(Name="accSagittalUnused2")]
         public GlyphDefinition AccSagittalUnused2 { get; set; }
 
-        [JsonProperty("accSagittalUnused3")]
+        [DataMember(Name="accSagittalUnused3")]
         public GlyphDefinition AccSagittalUnused3 { get; set; }
 
-        [JsonProperty("accSagittalUnused4")]
+        [DataMember(Name="accSagittalUnused4")]
         public GlyphDefinition AccSagittalUnused4 { get; set; }
 
-        [JsonProperty("accdnCombDot")]
+        [DataMember(Name="accdnCombDot")]
         public GlyphDefinition AccdnCombDot { get; set; }
 
-        [JsonProperty("accdnCombLH2RanksEmpty")]
+        [DataMember(Name="accdnCombLH2RanksEmpty")]
         public GlyphDefinition AccdnCombLh2RanksEmpty { get; set; }
 
-        [JsonProperty("accdnCombLH3RanksEmptySquare")]
+        [DataMember(Name="accdnCombLH3RanksEmptySquare")]
         public GlyphDefinition AccdnCombLh3RanksEmptySquare { get; set; }
 
-        [JsonProperty("accdnCombRH3RanksEmpty")]
+        [DataMember(Name="accdnCombRH3RanksEmpty")]
         public GlyphDefinition AccdnCombRh3RanksEmpty { get; set; }
 
-        [JsonProperty("accdnCombRH4RanksEmpty")]
+        [DataMember(Name="accdnCombRH4RanksEmpty")]
         public GlyphDefinition AccdnCombRh4RanksEmpty { get; set; }
 
-        [JsonProperty("accdnDiatonicClef")]
+        [DataMember(Name="accdnDiatonicClef")]
         public GlyphDefinition AccdnDiatonicClef { get; set; }
 
-        [JsonProperty("accdnLH2Ranks16Round")]
+        [DataMember(Name="accdnLH2Ranks16Round")]
         public GlyphDefinition AccdnLh2Ranks16Round { get; set; }
 
-        [JsonProperty("accdnLH2Ranks8Plus16Round")]
+        [DataMember(Name="accdnLH2Ranks8Plus16Round")]
         public GlyphDefinition AccdnLh2Ranks8Plus16Round { get; set; }
 
-        [JsonProperty("accdnLH2Ranks8Round")]
+        [DataMember(Name="accdnLH2Ranks8Round")]
         public GlyphDefinition AccdnLh2Ranks8Round { get; set; }
 
-        [JsonProperty("accdnLH2RanksFullMasterRound")]
+        [DataMember(Name="accdnLH2RanksFullMasterRound")]
         public GlyphDefinition AccdnLh2RanksFullMasterRound { get; set; }
 
-        [JsonProperty("accdnLH2RanksMasterPlus16Round")]
+        [DataMember(Name="accdnLH2RanksMasterPlus16Round")]
         public GlyphDefinition AccdnLh2RanksMasterPlus16Round { get; set; }
 
-        [JsonProperty("accdnLH2RanksMasterRound")]
+        [DataMember(Name="accdnLH2RanksMasterRound")]
         public GlyphDefinition AccdnLh2RanksMasterRound { get; set; }
 
-        [JsonProperty("accdnLH3Ranks2Plus8Square")]
+        [DataMember(Name="accdnLH3Ranks2Plus8Square")]
         public GlyphDefinition AccdnLh3Ranks2Plus8Square { get; set; }
 
-        [JsonProperty("accdnLH3Ranks2Square")]
+        [DataMember(Name="accdnLH3Ranks2Square")]
         public GlyphDefinition AccdnLh3Ranks2Square { get; set; }
 
-        [JsonProperty("accdnLH3Ranks8Square")]
+        [DataMember(Name="accdnLH3Ranks8Square")]
         public GlyphDefinition AccdnLh3Ranks8Square { get; set; }
 
-        [JsonProperty("accdnLH3RanksDouble8Square")]
+        [DataMember(Name="accdnLH3RanksDouble8Square")]
         public GlyphDefinition AccdnLh3RanksDouble8Square { get; set; }
 
-        [JsonProperty("accdnLH3RanksTuttiSquare")]
+        [DataMember(Name="accdnLH3RanksTuttiSquare")]
         public GlyphDefinition AccdnLh3RanksTuttiSquare { get; set; }
 
-        [JsonProperty("accdnPull")]
+        [DataMember(Name="accdnPull")]
         public GlyphDefinition AccdnPull { get; set; }
 
-        [JsonProperty("accdnPush")]
+        [DataMember(Name="accdnPush")]
         public GlyphDefinition AccdnPush { get; set; }
 
-        [JsonProperty("accdnRH3RanksAccordion")]
+        [DataMember(Name="accdnRH3RanksAccordion")]
         public GlyphDefinition AccdnRh3RanksAccordion { get; set; }
 
-        [JsonProperty("accdnRH3RanksAuthenticMusette")]
+        [DataMember(Name="accdnRH3RanksAuthenticMusette")]
         public GlyphDefinition AccdnRh3RanksAuthenticMusette { get; set; }
 
-        [JsonProperty("accdnRH3RanksBandoneon")]
+        [DataMember(Name="accdnRH3RanksBandoneon")]
         public GlyphDefinition AccdnRh3RanksBandoneon { get; set; }
 
-        [JsonProperty("accdnRH3RanksBassoon")]
+        [DataMember(Name="accdnRH3RanksBassoon")]
         public GlyphDefinition AccdnRh3RanksBassoon { get; set; }
 
-        [JsonProperty("accdnRH3RanksClarinet")]
+        [DataMember(Name="accdnRH3RanksClarinet")]
         public GlyphDefinition AccdnRh3RanksClarinet { get; set; }
 
-        [JsonProperty("accdnRH3RanksDoubleTremoloLower8ve")]
+        [DataMember(Name="accdnRH3RanksDoubleTremoloLower8ve")]
         public GlyphDefinition AccdnRh3RanksDoubleTremoloLower8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksDoubleTremoloUpper8ve")]
+        [DataMember(Name="accdnRH3RanksDoubleTremoloUpper8ve")]
         public GlyphDefinition AccdnRh3RanksDoubleTremoloUpper8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksFullFactory")]
+        [DataMember(Name="accdnRH3RanksFullFactory")]
         public GlyphDefinition AccdnRh3RanksFullFactory { get; set; }
 
-        [JsonProperty("accdnRH3RanksHarmonium")]
+        [DataMember(Name="accdnRH3RanksHarmonium")]
         public GlyphDefinition AccdnRh3RanksHarmonium { get; set; }
 
-        [JsonProperty("accdnRH3RanksImitationMusette")]
+        [DataMember(Name="accdnRH3RanksImitationMusette")]
         public GlyphDefinition AccdnRh3RanksImitationMusette { get; set; }
 
-        [JsonProperty("accdnRH3RanksLowerTremolo8")]
+        [DataMember(Name="accdnRH3RanksLowerTremolo8")]
         public GlyphDefinition AccdnRh3RanksLowerTremolo8 { get; set; }
 
-        [JsonProperty("accdnRH3RanksMaster")]
+        [DataMember(Name="accdnRH3RanksMaster")]
         public GlyphDefinition AccdnRh3RanksMaster { get; set; }
 
-        [JsonProperty("accdnRH3RanksOboe")]
+        [DataMember(Name="accdnRH3RanksOboe")]
         public GlyphDefinition AccdnRh3RanksOboe { get; set; }
 
-        [JsonProperty("accdnRH3RanksOrgan")]
+        [DataMember(Name="accdnRH3RanksOrgan")]
         public GlyphDefinition AccdnRh3RanksOrgan { get; set; }
 
-        [JsonProperty("accdnRH3RanksPiccolo")]
+        [DataMember(Name="accdnRH3RanksPiccolo")]
         public GlyphDefinition AccdnRh3RanksPiccolo { get; set; }
 
-        [JsonProperty("accdnRH3RanksTremoloLower8ve")]
+        [DataMember(Name="accdnRH3RanksTremoloLower8ve")]
         public GlyphDefinition AccdnRh3RanksTremoloLower8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksTremoloUpper8ve")]
+        [DataMember(Name="accdnRH3RanksTremoloUpper8ve")]
         public GlyphDefinition AccdnRh3RanksTremoloUpper8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksTwoChoirs")]
+        [DataMember(Name="accdnRH3RanksTwoChoirs")]
         public GlyphDefinition AccdnRh3RanksTwoChoirs { get; set; }
 
-        [JsonProperty("accdnRH3RanksUpperTremolo8")]
+        [DataMember(Name="accdnRH3RanksUpperTremolo8")]
         public GlyphDefinition AccdnRh3RanksUpperTremolo8 { get; set; }
 
-        [JsonProperty("accdnRH3RanksViolin")]
+        [DataMember(Name="accdnRH3RanksViolin")]
         public GlyphDefinition AccdnRh3RanksViolin { get; set; }
 
-        [JsonProperty("accdnRH4RanksAlto")]
+        [DataMember(Name="accdnRH4RanksAlto")]
         public GlyphDefinition AccdnRh4RanksAlto { get; set; }
 
-        [JsonProperty("accdnRH4RanksBassAlto")]
+        [DataMember(Name="accdnRH4RanksBassAlto")]
         public GlyphDefinition AccdnRh4RanksBassAlto { get; set; }
 
-        [JsonProperty("accdnRH4RanksMaster")]
+        [DataMember(Name="accdnRH4RanksMaster")]
         public GlyphDefinition AccdnRh4RanksMaster { get; set; }
 
-        [JsonProperty("accdnRH4RanksSoftBass")]
+        [DataMember(Name="accdnRH4RanksSoftBass")]
         public GlyphDefinition AccdnRh4RanksSoftBass { get; set; }
 
-        [JsonProperty("accdnRH4RanksSoftTenor")]
+        [DataMember(Name="accdnRH4RanksSoftTenor")]
         public GlyphDefinition AccdnRh4RanksSoftTenor { get; set; }
 
-        [JsonProperty("accdnRH4RanksSoprano")]
+        [DataMember(Name="accdnRH4RanksSoprano")]
         public GlyphDefinition AccdnRh4RanksSoprano { get; set; }
 
-        [JsonProperty("accdnRH4RanksTenor")]
+        [DataMember(Name="accdnRH4RanksTenor")]
         public GlyphDefinition AccdnRh4RanksTenor { get; set; }
 
-        [JsonProperty("accdnRicochet2")]
+        [DataMember(Name="accdnRicochet2")]
         public GlyphDefinition AccdnRicochet2 { get; set; }
 
-        [JsonProperty("accdnRicochet3")]
+        [DataMember(Name="accdnRicochet3")]
         public GlyphDefinition AccdnRicochet3 { get; set; }
 
-        [JsonProperty("accdnRicochet4")]
+        [DataMember(Name="accdnRicochet4")]
         public GlyphDefinition AccdnRicochet4 { get; set; }
 
-        [JsonProperty("accdnRicochet5")]
+        [DataMember(Name="accdnRicochet5")]
         public GlyphDefinition AccdnRicochet5 { get; set; }
 
-        [JsonProperty("accdnRicochet6")]
+        [DataMember(Name="accdnRicochet6")]
         public GlyphDefinition AccdnRicochet6 { get; set; }
 
-        [JsonProperty("accdnRicochetStem2")]
+        [DataMember(Name="accdnRicochetStem2")]
         public GlyphDefinition AccdnRicochetStem2 { get; set; }
 
-        [JsonProperty("accdnRicochetStem3")]
+        [DataMember(Name="accdnRicochetStem3")]
         public GlyphDefinition AccdnRicochetStem3 { get; set; }
 
-        [JsonProperty("accdnRicochetStem4")]
+        [DataMember(Name="accdnRicochetStem4")]
         public GlyphDefinition AccdnRicochetStem4 { get; set; }
 
-        [JsonProperty("accdnRicochetStem5")]
+        [DataMember(Name="accdnRicochetStem5")]
         public GlyphDefinition AccdnRicochetStem5 { get; set; }
 
-        [JsonProperty("accdnRicochetStem6")]
+        [DataMember(Name="accdnRicochetStem6")]
         public GlyphDefinition AccdnRicochetStem6 { get; set; }
 
-        [JsonProperty("accidental1CommaFlat")]
+        [DataMember(Name="accidental1CommaFlat")]
         public GlyphDefinition Accidental1CommaFlat { get; set; }
 
-        [JsonProperty("accidental1CommaSharp")]
+        [DataMember(Name="accidental1CommaSharp")]
         public GlyphDefinition Accidental1CommaSharp { get; set; }
 
-        [JsonProperty("accidental2CommaFlat")]
+        [DataMember(Name="accidental2CommaFlat")]
         public GlyphDefinition Accidental2CommaFlat { get; set; }
 
-        [JsonProperty("accidental2CommaSharp")]
+        [DataMember(Name="accidental2CommaSharp")]
         public GlyphDefinition Accidental2CommaSharp { get; set; }
 
-        [JsonProperty("accidental3CommaFlat")]
+        [DataMember(Name="accidental3CommaFlat")]
         public GlyphDefinition Accidental3CommaFlat { get; set; }
 
-        [JsonProperty("accidental3CommaSharp")]
+        [DataMember(Name="accidental3CommaSharp")]
         public GlyphDefinition Accidental3CommaSharp { get; set; }
 
-        [JsonProperty("accidental4CommaFlat")]
+        [DataMember(Name="accidental4CommaFlat")]
         public GlyphDefinition Accidental4CommaFlat { get; set; }
 
-        [JsonProperty("accidental5CommaSharp")]
+        [DataMember(Name="accidental5CommaSharp")]
         public GlyphDefinition Accidental5CommaSharp { get; set; }
 
-        [JsonProperty("accidentalArrowDown")]
+        [DataMember(Name="accidentalArrowDown")]
         public GlyphDefinition AccidentalArrowDown { get; set; }
 
-        [JsonProperty("accidentalArrowUp")]
+        [DataMember(Name="accidentalArrowUp")]
         public GlyphDefinition AccidentalArrowUp { get; set; }
 
-        [JsonProperty("accidentalBakiyeFlat")]
+        [DataMember(Name="accidentalBakiyeFlat")]
         public GlyphDefinition AccidentalBakiyeFlat { get; set; }
 
-        [JsonProperty("accidentalBakiyeSharp")]
+        [DataMember(Name="accidentalBakiyeSharp")]
         public GlyphDefinition AccidentalBakiyeSharp { get; set; }
 
-        [JsonProperty("accidentalBuyukMucennebFlat")]
+        [DataMember(Name="accidentalBuyukMucennebFlat")]
         public GlyphDefinition AccidentalBuyukMucennebFlat { get; set; }
 
-        [JsonProperty("accidentalBuyukMucennebSharp")]
+        [DataMember(Name="accidentalBuyukMucennebSharp")]
         public GlyphDefinition AccidentalBuyukMucennebSharp { get; set; }
 
-        [JsonProperty("accidentalCombiningCloseCurlyBrace")]
+        [DataMember(Name="accidentalCombiningCloseCurlyBrace")]
         public GlyphDefinition AccidentalCombiningCloseCurlyBrace { get; set; }
 
-        [JsonProperty("accidentalCombiningLower17Schisma")]
+        [DataMember(Name="accidentalCombiningLower17Schisma")]
         public GlyphDefinition AccidentalCombiningLower17Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningLower19Schisma")]
+        [DataMember(Name="accidentalCombiningLower19Schisma")]
         public GlyphDefinition AccidentalCombiningLower19Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningLower23Limit29LimitComma")]
+        [DataMember(Name="accidentalCombiningLower23Limit29LimitComma")]
         public GlyphDefinition AccidentalCombiningLower23Limit29LimitComma { get; set; }
 
-        [JsonProperty("accidentalCombiningLower31Schisma")]
+        [DataMember(Name="accidentalCombiningLower31Schisma")]
         public GlyphDefinition AccidentalCombiningLower31Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningOpenCurlyBrace")]
+        [DataMember(Name="accidentalCombiningOpenCurlyBrace")]
         public GlyphDefinition AccidentalCombiningOpenCurlyBrace { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise17Schisma")]
+        [DataMember(Name="accidentalCombiningRaise17Schisma")]
         public GlyphDefinition AccidentalCombiningRaise17Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise19Schisma")]
+        [DataMember(Name="accidentalCombiningRaise19Schisma")]
         public GlyphDefinition AccidentalCombiningRaise19Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise23Limit29LimitComma")]
+        [DataMember(Name="accidentalCombiningRaise23Limit29LimitComma")]
         public GlyphDefinition AccidentalCombiningRaise23Limit29LimitComma { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise31Schisma")]
+        [DataMember(Name="accidentalCombiningRaise31Schisma")]
         public GlyphDefinition AccidentalCombiningRaise31Schisma { get; set; }
 
-        [JsonProperty("accidentalCommaSlashDown")]
+        [DataMember(Name="accidentalCommaSlashDown")]
         public GlyphDefinition AccidentalCommaSlashDown { get; set; }
 
-        [JsonProperty("accidentalCommaSlashUp")]
+        [DataMember(Name="accidentalCommaSlashUp")]
         public GlyphDefinition AccidentalCommaSlashUp { get; set; }
 
-        [JsonProperty("GlyphDefinition")]
+        [DataMember(Name="GlyphDefinition")]
         public GlyphDefinition GlyphDefinition { get; set; }
 
-        [JsonProperty("GlyphDefinitionEqualTempered")]
+        [DataMember(Name="GlyphDefinitionEqualTempered")]
         public GlyphDefinition GlyphDefinitionEqualTempered { get; set; }
 
-        [JsonProperty("GlyphDefinitionOneArrowDown")]
+        [DataMember(Name="GlyphDefinitionOneArrowDown")]
         public GlyphDefinition GlyphDefinitionOneArrowDown { get; set; }
 
-        [JsonProperty("GlyphDefinitionOneArrowUp")]
+        [DataMember(Name="GlyphDefinitionOneArrowUp")]
         public GlyphDefinition GlyphDefinitionOneArrowUp { get; set; }
 
-        [JsonProperty("GlyphDefinitionReversed")]
+        [DataMember(Name="GlyphDefinitionReversed")]
         public GlyphDefinition GlyphDefinitionReversed { get; set; }
 
-        [JsonProperty("GlyphDefinitionThreeArrowsDown")]
+        [DataMember(Name="GlyphDefinitionThreeArrowsDown")]
         public GlyphDefinition GlyphDefinitionThreeArrowsDown { get; set; }
 
-        [JsonProperty("GlyphDefinitionThreeArrowsUp")]
+        [DataMember(Name="GlyphDefinitionThreeArrowsUp")]
         public GlyphDefinition GlyphDefinitionThreeArrowsUp { get; set; }
 
-        [JsonProperty("GlyphDefinitionTurned")]
+        [DataMember(Name="GlyphDefinitionTurned")]
         public GlyphDefinition GlyphDefinitionTurned { get; set; }
 
-        [JsonProperty("GlyphDefinitionTwoArrowsDown")]
+        [DataMember(Name="GlyphDefinitionTwoArrowsDown")]
         public GlyphDefinition GlyphDefinitionTwoArrowsDown { get; set; }
 
-        [JsonProperty("GlyphDefinitionTwoArrowsUp")]
+        [DataMember(Name="GlyphDefinitionTwoArrowsUp")]
         public GlyphDefinition GlyphDefinitionTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharp")]
+        [DataMember(Name="accidentalDoubleSharp")]
         public GlyphDefinition AccidentalDoubleSharp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpEqualTempered")]
+        [DataMember(Name="accidentalDoubleSharpEqualTempered")]
         public GlyphDefinition AccidentalDoubleSharpEqualTempered { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpOneArrowDown")]
+        [DataMember(Name="accidentalDoubleSharpOneArrowDown")]
         public GlyphDefinition AccidentalDoubleSharpOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpOneArrowUp")]
+        [DataMember(Name="accidentalDoubleSharpOneArrowUp")]
         public GlyphDefinition AccidentalDoubleSharpOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpThreeArrowsDown")]
+        [DataMember(Name="accidentalDoubleSharpThreeArrowsDown")]
         public GlyphDefinition AccidentalDoubleSharpThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpThreeArrowsUp")]
+        [DataMember(Name="accidentalDoubleSharpThreeArrowsUp")]
         public GlyphDefinition AccidentalDoubleSharpThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpTwoArrowsDown")]
+        [DataMember(Name="accidentalDoubleSharpTwoArrowsDown")]
         public GlyphDefinition AccidentalDoubleSharpTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpTwoArrowsUp")]
+        [DataMember(Name="accidentalDoubleSharpTwoArrowsUp")]
         public GlyphDefinition AccidentalDoubleSharpTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatAndFlat")]
+        [DataMember(Name="accidentalFilledReversedFlatAndFlat")]
         public GlyphDefinition AccidentalFilledReversedFlatAndFlat { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatAndFlatArrowDown")]
+        [DataMember(Name="accidentalFilledReversedFlatAndFlatArrowDown")]
         public GlyphDefinition AccidentalFilledReversedFlatAndFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatAndFlatArrowUp")]
+        [DataMember(Name="accidentalFilledReversedFlatAndFlatArrowUp")]
         public GlyphDefinition AccidentalFilledReversedFlatAndFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatArrowDown")]
+        [DataMember(Name="accidentalFilledReversedFlatArrowDown")]
         public GlyphDefinition AccidentalFilledReversedFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatArrowUp")]
+        [DataMember(Name="accidentalFilledReversedFlatArrowUp")]
         public GlyphDefinition AccidentalFilledReversedFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalFiveQuarterTonesFlatArrowDown")]
+        [DataMember(Name="accidentalFiveQuarterTonesFlatArrowDown")]
         public GlyphDefinition AccidentalFiveQuarterTonesFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalFiveQuarterTonesSharpArrowUp")]
+        [DataMember(Name="accidentalFiveQuarterTonesSharpArrowUp")]
         public GlyphDefinition AccidentalFiveQuarterTonesSharpArrowUp { get; set; }
 
-        [JsonProperty("accidentalFlat")]
+        [DataMember(Name="accidentalFlat")]
         public GlyphDefinition AccidentalFlat { get; set; }
 
-        [JsonProperty("accidentalFlatEqualTempered")]
+        [DataMember(Name="accidentalFlatEqualTempered")]
         public GlyphDefinition AccidentalFlatEqualTempered { get; set; }
 
-        [JsonProperty("accidentalFlatOneArrowDown")]
+        [DataMember(Name="accidentalFlatOneArrowDown")]
         public GlyphDefinition AccidentalFlatOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalFlatOneArrowUp")]
+        [DataMember(Name="accidentalFlatOneArrowUp")]
         public GlyphDefinition AccidentalFlatOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalFlatThreeArrowsDown")]
+        [DataMember(Name="accidentalFlatThreeArrowsDown")]
         public GlyphDefinition AccidentalFlatThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalFlatThreeArrowsUp")]
+        [DataMember(Name="accidentalFlatThreeArrowsUp")]
         public GlyphDefinition AccidentalFlatThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalFlatTurned")]
+        [DataMember(Name="accidentalFlatTurned")]
         public GlyphDefinition AccidentalFlatTurned { get; set; }
 
-        [JsonProperty("accidentalFlatTwoArrowsDown")]
+        [DataMember(Name="accidentalFlatTwoArrowsDown")]
         public GlyphDefinition AccidentalFlatTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalFlatTwoArrowsUp")]
+        [DataMember(Name="accidentalFlatTwoArrowsUp")]
         public GlyphDefinition AccidentalFlatTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalHalfSharpArrowDown")]
+        [DataMember(Name="accidentalHalfSharpArrowDown")]
         public GlyphDefinition AccidentalHalfSharpArrowDown { get; set; }
 
-        [JsonProperty("accidentalHalfSharpArrowUp")]
+        [DataMember(Name="accidentalHalfSharpArrowUp")]
         public GlyphDefinition AccidentalHalfSharpArrowUp { get; set; }
 
-        [JsonProperty("accidentalJohnston13")]
+        [DataMember(Name="accidentalJohnston13")]
         public GlyphDefinition AccidentalJohnston13 { get; set; }
 
-        [JsonProperty("accidentalJohnston31")]
+        [DataMember(Name="accidentalJohnston31")]
         public GlyphDefinition AccidentalJohnston31 { get; set; }
 
-        [JsonProperty("accidentalJohnstonDown")]
+        [DataMember(Name="accidentalJohnstonDown")]
         public GlyphDefinition AccidentalJohnstonDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonEl")]
+        [DataMember(Name="accidentalJohnstonEl")]
         public GlyphDefinition AccidentalJohnstonEl { get; set; }
 
-        [JsonProperty("accidentalJohnstonMinus")]
+        [DataMember(Name="accidentalJohnstonMinus")]
         public GlyphDefinition AccidentalJohnstonMinus { get; set; }
 
-        [JsonProperty("accidentalJohnstonPlus")]
+        [DataMember(Name="accidentalJohnstonPlus")]
         public GlyphDefinition AccidentalJohnstonPlus { get; set; }
 
-        [JsonProperty("accidentalJohnstonSeven")]
+        [DataMember(Name="accidentalJohnstonSeven")]
         public GlyphDefinition AccidentalJohnstonSeven { get; set; }
 
-        [JsonProperty("accidentalJohnstonUp")]
+        [DataMember(Name="accidentalJohnstonUp")]
         public GlyphDefinition AccidentalJohnstonUp { get; set; }
 
-        [JsonProperty("accidentalKomaFlat")]
+        [DataMember(Name="accidentalKomaFlat")]
         public GlyphDefinition AccidentalKomaFlat { get; set; }
 
-        [JsonProperty("accidentalKomaSharp")]
+        [DataMember(Name="accidentalKomaSharp")]
         public GlyphDefinition AccidentalKomaSharp { get; set; }
 
-        [JsonProperty("accidentalKoron")]
+        [DataMember(Name="accidentalKoron")]
         public GlyphDefinition AccidentalKoron { get; set; }
 
-        [JsonProperty("accidentalKucukMucennebFlat")]
+        [DataMember(Name="accidentalKucukMucennebFlat")]
         public GlyphDefinition AccidentalKucukMucennebFlat { get; set; }
 
-        [JsonProperty("accidentalKucukMucennebSharp")]
+        [DataMember(Name="accidentalKucukMucennebSharp")]
         public GlyphDefinition AccidentalKucukMucennebSharp { get; set; }
 
-        [JsonProperty("accidentalLargeDoubleSharp")]
+        [DataMember(Name="accidentalLargeDoubleSharp")]
         public GlyphDefinition AccidentalLargeDoubleSharp { get; set; }
 
-        [JsonProperty("accidentalLowerOneSeptimalComma")]
+        [DataMember(Name="accidentalLowerOneSeptimalComma")]
         public GlyphDefinition AccidentalLowerOneSeptimalComma { get; set; }
 
-        [JsonProperty("accidentalLowerOneTridecimalQuartertone")]
+        [DataMember(Name="accidentalLowerOneTridecimalQuartertone")]
         public GlyphDefinition AccidentalLowerOneTridecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalLowerOneUndecimalQuartertone")]
+        [DataMember(Name="accidentalLowerOneUndecimalQuartertone")]
         public GlyphDefinition AccidentalLowerOneUndecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalLowerTwoSeptimalCommas")]
+        [DataMember(Name="accidentalLowerTwoSeptimalCommas")]
         public GlyphDefinition AccidentalLowerTwoSeptimalCommas { get; set; }
 
-        [JsonProperty("accidentalNarrowReversedFlat")]
+        [DataMember(Name="accidentalNarrowReversedFlat")]
         public GlyphDefinition AccidentalNarrowReversedFlat { get; set; }
 
-        [JsonProperty("accidentalNarrowReversedFlatAndFlat")]
+        [DataMember(Name="accidentalNarrowReversedFlatAndFlat")]
         public GlyphDefinition AccidentalNarrowReversedFlatAndFlat { get; set; }
 
-        [JsonProperty("accidentalNatural")]
+        [DataMember(Name="accidentalNatural")]
         public GlyphDefinition AccidentalNatural { get; set; }
 
-        [JsonProperty("accidentalNaturalEqualTempered")]
+        [DataMember(Name="accidentalNaturalEqualTempered")]
         public GlyphDefinition AccidentalNaturalEqualTempered { get; set; }
 
-        [JsonProperty("accidentalNaturalFlat")]
+        [DataMember(Name="accidentalNaturalFlat")]
         public GlyphDefinition AccidentalNaturalFlat { get; set; }
 
-        [JsonProperty("accidentalNaturalOneArrowDown")]
+        [DataMember(Name="accidentalNaturalOneArrowDown")]
         public GlyphDefinition AccidentalNaturalOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalNaturalOneArrowUp")]
+        [DataMember(Name="accidentalNaturalOneArrowUp")]
         public GlyphDefinition AccidentalNaturalOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalNaturalReversed")]
+        [DataMember(Name="accidentalNaturalReversed")]
         public GlyphDefinition AccidentalNaturalReversed { get; set; }
 
-        [JsonProperty("accidentalNaturalSharp")]
+        [DataMember(Name="accidentalNaturalSharp")]
         public GlyphDefinition AccidentalNaturalSharp { get; set; }
 
-        [JsonProperty("accidentalNaturalThreeArrowsDown")]
+        [DataMember(Name="accidentalNaturalThreeArrowsDown")]
         public GlyphDefinition AccidentalNaturalThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalNaturalThreeArrowsUp")]
+        [DataMember(Name="accidentalNaturalThreeArrowsUp")]
         public GlyphDefinition AccidentalNaturalThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalNaturalTwoArrowsDown")]
+        [DataMember(Name="accidentalNaturalTwoArrowsDown")]
         public GlyphDefinition AccidentalNaturalTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalNaturalTwoArrowsUp")]
+        [DataMember(Name="accidentalNaturalTwoArrowsUp")]
         public GlyphDefinition AccidentalNaturalTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalOneAndAHalfSharpsArrowDown")]
+        [DataMember(Name="accidentalOneAndAHalfSharpsArrowDown")]
         public GlyphDefinition AccidentalOneAndAHalfSharpsArrowDown { get; set; }
 
-        [JsonProperty("accidentalOneAndAHalfSharpsArrowUp")]
+        [DataMember(Name="accidentalOneAndAHalfSharpsArrowUp")]
         public GlyphDefinition AccidentalOneAndAHalfSharpsArrowUp { get; set; }
 
-        [JsonProperty("accidentalOneThirdToneFlatFerneyhough")]
+        [DataMember(Name="accidentalOneThirdToneFlatFerneyhough")]
         public GlyphDefinition AccidentalOneThirdToneFlatFerneyhough { get; set; }
 
-        [JsonProperty("accidentalOneThirdToneSharpFerneyhough")]
+        [DataMember(Name="accidentalOneThirdToneSharpFerneyhough")]
         public GlyphDefinition AccidentalOneThirdToneSharpFerneyhough { get; set; }
 
-        [JsonProperty("accidentalParensLeft")]
+        [DataMember(Name="accidentalParensLeft")]
         public GlyphDefinition AccidentalParensLeft { get; set; }
 
-        [JsonProperty("accidentalParensRight")]
+        [DataMember(Name="accidentalParensRight")]
         public GlyphDefinition AccidentalParensRight { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlat4")]
+        [DataMember(Name="accidentalQuarterToneFlat4")]
         public GlyphDefinition AccidentalQuarterToneFlat4 { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatArrowUp")]
+        [DataMember(Name="accidentalQuarterToneFlatArrowUp")]
         public GlyphDefinition AccidentalQuarterToneFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatFilledReversed")]
+        [DataMember(Name="accidentalQuarterToneFlatFilledReversed")]
         public GlyphDefinition AccidentalQuarterToneFlatFilledReversed { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatNaturalArrowDown")]
+        [DataMember(Name="accidentalQuarterToneFlatNaturalArrowDown")]
         public GlyphDefinition AccidentalQuarterToneFlatNaturalArrowDown { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatPenderecki")]
+        [DataMember(Name="accidentalQuarterToneFlatPenderecki")]
         public GlyphDefinition AccidentalQuarterToneFlatPenderecki { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatStein")]
+        [DataMember(Name="accidentalQuarterToneFlatStein")]
         public GlyphDefinition AccidentalQuarterToneFlatStein { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatVanBlankenburg")]
+        [DataMember(Name="accidentalQuarterToneFlatVanBlankenburg")]
         public GlyphDefinition AccidentalQuarterToneFlatVanBlankenburg { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharp4")]
+        [DataMember(Name="accidentalQuarterToneSharp4")]
         public GlyphDefinition AccidentalQuarterToneSharp4 { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpArrowDown")]
+        [DataMember(Name="accidentalQuarterToneSharpArrowDown")]
         public GlyphDefinition AccidentalQuarterToneSharpArrowDown { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpBusotti")]
+        [DataMember(Name="accidentalQuarterToneSharpBusotti")]
         public GlyphDefinition AccidentalQuarterToneSharpBusotti { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpNaturalArrowUp")]
+        [DataMember(Name="accidentalQuarterToneSharpNaturalArrowUp")]
         public GlyphDefinition AccidentalQuarterToneSharpNaturalArrowUp { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpStein")]
+        [DataMember(Name="accidentalQuarterToneSharpStein")]
         public GlyphDefinition AccidentalQuarterToneSharpStein { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpWiggle")]
+        [DataMember(Name="accidentalQuarterToneSharpWiggle")]
         public GlyphDefinition AccidentalQuarterToneSharpWiggle { get; set; }
 
-        [JsonProperty("accidentalRaiseOneSeptimalComma")]
+        [DataMember(Name="accidentalRaiseOneSeptimalComma")]
         public GlyphDefinition AccidentalRaiseOneSeptimalComma { get; set; }
 
-        [JsonProperty("accidentalRaiseOneTridecimalQuartertone")]
+        [DataMember(Name="accidentalRaiseOneTridecimalQuartertone")]
         public GlyphDefinition AccidentalRaiseOneTridecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalRaiseOneUndecimalQuartertone")]
+        [DataMember(Name="accidentalRaiseOneUndecimalQuartertone")]
         public GlyphDefinition AccidentalRaiseOneUndecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalRaiseTwoSeptimalCommas")]
+        [DataMember(Name="accidentalRaiseTwoSeptimalCommas")]
         public GlyphDefinition AccidentalRaiseTwoSeptimalCommas { get; set; }
 
-        [JsonProperty("accidentalReversedFlatAndFlatArrowDown")]
+        [DataMember(Name="accidentalReversedFlatAndFlatArrowDown")]
         public GlyphDefinition AccidentalReversedFlatAndFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalReversedFlatAndFlatArrowUp")]
+        [DataMember(Name="accidentalReversedFlatAndFlatArrowUp")]
         public GlyphDefinition AccidentalReversedFlatAndFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalReversedFlatArrowDown")]
+        [DataMember(Name="accidentalReversedFlatArrowDown")]
         public GlyphDefinition AccidentalReversedFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalReversedFlatArrowUp")]
+        [DataMember(Name="accidentalReversedFlatArrowUp")]
         public GlyphDefinition AccidentalReversedFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalSharp")]
+        [DataMember(Name="accidentalSharp")]
         public GlyphDefinition AccidentalSharp { get; set; }
 
-        [JsonProperty("accidentalSharpEqualTempered")]
+        [DataMember(Name="accidentalSharpEqualTempered")]
         public GlyphDefinition AccidentalSharpEqualTempered { get; set; }
 
-        [JsonProperty("accidentalSharpOneArrowDown")]
+        [DataMember(Name="accidentalSharpOneArrowDown")]
         public GlyphDefinition AccidentalSharpOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalSharpOneArrowUp")]
+        [DataMember(Name="accidentalSharpOneArrowUp")]
         public GlyphDefinition AccidentalSharpOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalSharpOneHorizontalStroke")]
+        [DataMember(Name="accidentalSharpOneHorizontalStroke")]
         public GlyphDefinition AccidentalSharpOneHorizontalStroke { get; set; }
 
-        [JsonProperty("accidentalSharpReversed")]
+        [DataMember(Name="accidentalSharpReversed")]
         public GlyphDefinition AccidentalSharpReversed { get; set; }
 
-        [JsonProperty("accidentalSharpSharp")]
+        [DataMember(Name="accidentalSharpSharp")]
         public GlyphDefinition AccidentalSharpSharp { get; set; }
 
-        [JsonProperty("accidentalSharpThreeArrowsDown")]
+        [DataMember(Name="accidentalSharpThreeArrowsDown")]
         public GlyphDefinition AccidentalSharpThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalSharpThreeArrowsUp")]
+        [DataMember(Name="accidentalSharpThreeArrowsUp")]
         public GlyphDefinition AccidentalSharpThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalSharpTwoArrowsDown")]
+        [DataMember(Name="accidentalSharpTwoArrowsDown")]
         public GlyphDefinition AccidentalSharpTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalSharpTwoArrowsUp")]
+        [DataMember(Name="accidentalSharpTwoArrowsUp")]
         public GlyphDefinition AccidentalSharpTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalSims12Down")]
+        [DataMember(Name="accidentalSims12Down")]
         public GlyphDefinition AccidentalSims12Down { get; set; }
 
-        [JsonProperty("accidentalSims12Up")]
+        [DataMember(Name="accidentalSims12Up")]
         public GlyphDefinition AccidentalSims12Up { get; set; }
 
-        [JsonProperty("accidentalSims4Down")]
+        [DataMember(Name="accidentalSims4Down")]
         public GlyphDefinition AccidentalSims4Down { get; set; }
 
-        [JsonProperty("accidentalSims4Up")]
+        [DataMember(Name="accidentalSims4Up")]
         public GlyphDefinition AccidentalSims4Up { get; set; }
 
-        [JsonProperty("accidentalSims6Down")]
+        [DataMember(Name="accidentalSims6Down")]
         public GlyphDefinition AccidentalSims6Down { get; set; }
 
-        [JsonProperty("accidentalSims6Up")]
+        [DataMember(Name="accidentalSims6Up")]
         public GlyphDefinition AccidentalSims6Up { get; set; }
 
-        [JsonProperty("accidentalSori")]
+        [DataMember(Name="accidentalSori")]
         public GlyphDefinition AccidentalSori { get; set; }
 
-        [JsonProperty("accidentalTavenerFlat")]
+        [DataMember(Name="accidentalTavenerFlat")]
         public GlyphDefinition AccidentalTavenerFlat { get; set; }
 
-        [JsonProperty("accidentalTavenerSharp")]
+        [DataMember(Name="accidentalTavenerSharp")]
         public GlyphDefinition AccidentalTavenerSharp { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatArrowDown")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatArrowDown")]
         public GlyphDefinition AccidentalThreeQuarterTonesFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatArrowUp")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatArrowUp")]
         public GlyphDefinition AccidentalThreeQuarterTonesFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatCouper")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatCouper")]
         public GlyphDefinition AccidentalThreeQuarterTonesFlatCouper { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatGrisey")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatGrisey")]
         public GlyphDefinition AccidentalThreeQuarterTonesFlatGrisey { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatTartini")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatTartini")]
         public GlyphDefinition AccidentalThreeQuarterTonesFlatTartini { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatZimmermann")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatZimmermann")]
         public GlyphDefinition AccidentalThreeQuarterTonesFlatZimmermann { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpArrowDown")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpArrowDown")]
         public GlyphDefinition AccidentalThreeQuarterTonesSharpArrowDown { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpArrowUp")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpArrowUp")]
         public GlyphDefinition AccidentalThreeQuarterTonesSharpArrowUp { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpBusotti")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpBusotti")]
         public GlyphDefinition AccidentalThreeQuarterTonesSharpBusotti { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpStein")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpStein")]
         public GlyphDefinition AccidentalThreeQuarterTonesSharpStein { get; set; }
 
-        [JsonProperty("accidentalTripleFlat")]
+        [DataMember(Name="accidentalTripleFlat")]
         public GlyphDefinition AccidentalTripleFlat { get; set; }
 
-        [JsonProperty("accidentalTripleSharp")]
+        [DataMember(Name="accidentalTripleSharp")]
         public GlyphDefinition AccidentalTripleSharp { get; set; }
 
-        [JsonProperty("accidentalTwoThirdTonesFlatFerneyhough")]
+        [DataMember(Name="accidentalTwoThirdTonesFlatFerneyhough")]
         public GlyphDefinition AccidentalTwoThirdTonesFlatFerneyhough { get; set; }
 
-        [JsonProperty("accidentalTwoThirdTonesSharpFerneyhough")]
+        [DataMember(Name="accidentalTwoThirdTonesSharpFerneyhough")]
         public GlyphDefinition AccidentalTwoThirdTonesSharpFerneyhough { get; set; }
 
-        [JsonProperty("accidentalWilsonMinus")]
+        [DataMember(Name="accidentalWilsonMinus")]
         public GlyphDefinition AccidentalWilsonMinus { get; set; }
 
-        [JsonProperty("accidentalWilsonPlus")]
+        [DataMember(Name="accidentalWilsonPlus")]
         public GlyphDefinition AccidentalWilsonPlus { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky10TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky10TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky10TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky10TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky10TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky10TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky11TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky11TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky11TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky11TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky11TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky11TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky1TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky1TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky1TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky1TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky1TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky1TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky2TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky2TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky2TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky2TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky2TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky2TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky3TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky3TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky3TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky3TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky3TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky3TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky4TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky4TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky4TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky4TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky4TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky4TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky5TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky5TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky5TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky5TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky5TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky5TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky6TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky6TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky6TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky6TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky6TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky6TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky7TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky7TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky7TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky7TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky7TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky7TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky8TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky8TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky8TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky8TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky8TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky8TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky9TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky9TwelfthsFlat")]
         public GlyphDefinition AccidentalWyschnegradsky9TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky9TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky9TwelfthsSharp")]
         public GlyphDefinition AccidentalWyschnegradsky9TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalXenakisOneThirdToneSharp")]
+        [DataMember(Name="accidentalXenakisOneThirdToneSharp")]
         public GlyphDefinition AccidentalXenakisOneThirdToneSharp { get; set; }
 
-        [JsonProperty("accidentalXenakisTwoThirdTonesSharp")]
+        [DataMember(Name="accidentalXenakisTwoThirdTonesSharp")]
         public GlyphDefinition AccidentalXenakisTwoThirdTonesSharp { get; set; }
 
-        [JsonProperty("analyticsChoralmelodie")]
+        [DataMember(Name="analyticsChoralmelodie")]
         public GlyphDefinition AnalyticsChoralmelodie { get; set; }
 
-        [JsonProperty("analyticsEndStimme")]
+        [DataMember(Name="analyticsEndStimme")]
         public GlyphDefinition AnalyticsEndStimme { get; set; }
 
-        [JsonProperty("analyticsHauptrhythmus")]
+        [DataMember(Name="analyticsHauptrhythmus")]
         public GlyphDefinition AnalyticsHauptrhythmus { get; set; }
 
-        [JsonProperty("analyticsHauptstimme")]
+        [DataMember(Name="analyticsHauptstimme")]
         public GlyphDefinition AnalyticsHauptstimme { get; set; }
 
-        [JsonProperty("analyticsInversion1")]
+        [DataMember(Name="analyticsInversion1")]
         public GlyphDefinition AnalyticsInversion1 { get; set; }
 
-        [JsonProperty("analyticsNebenstimme")]
+        [DataMember(Name="analyticsNebenstimme")]
         public GlyphDefinition AnalyticsNebenstimme { get; set; }
 
-        [JsonProperty("analyticsStartStimme")]
+        [DataMember(Name="analyticsStartStimme")]
         public GlyphDefinition AnalyticsStartStimme { get; set; }
 
-        [JsonProperty("analyticsTheme")]
+        [DataMember(Name="analyticsTheme")]
         public GlyphDefinition AnalyticsTheme { get; set; }
 
-        [JsonProperty("analyticsTheme1")]
+        [DataMember(Name="analyticsTheme1")]
         public GlyphDefinition AnalyticsTheme1 { get; set; }
 
-        [JsonProperty("analyticsThemeInversion")]
+        [DataMember(Name="analyticsThemeInversion")]
         public GlyphDefinition AnalyticsThemeInversion { get; set; }
 
-        [JsonProperty("analyticsThemeRetrograde")]
+        [DataMember(Name="analyticsThemeRetrograde")]
         public GlyphDefinition AnalyticsThemeRetrograde { get; set; }
 
-        [JsonProperty("analyticsThemeRetrogradeInversion")]
+        [DataMember(Name="analyticsThemeRetrogradeInversion")]
         public GlyphDefinition AnalyticsThemeRetrogradeInversion { get; set; }
 
-        [JsonProperty("arpeggiatoDown")]
+        [DataMember(Name="arpeggiatoDown")]
         public GlyphDefinition ArpeggiatoDown { get; set; }
 
-        [JsonProperty("arpeggiatoUp")]
+        [DataMember(Name="arpeggiatoUp")]
         public GlyphDefinition ArpeggiatoUp { get; set; }
 
-        [JsonProperty("arrowBlackDown")]
+        [DataMember(Name="arrowBlackDown")]
         public GlyphDefinition ArrowBlackDown { get; set; }
 
-        [JsonProperty("arrowBlackDownLeft")]
+        [DataMember(Name="arrowBlackDownLeft")]
         public GlyphDefinition ArrowBlackDownLeft { get; set; }
 
-        [JsonProperty("arrowBlackDownRight")]
+        [DataMember(Name="arrowBlackDownRight")]
         public GlyphDefinition ArrowBlackDownRight { get; set; }
 
-        [JsonProperty("arrowBlackLeft")]
+        [DataMember(Name="arrowBlackLeft")]
         public GlyphDefinition ArrowBlackLeft { get; set; }
 
-        [JsonProperty("arrowBlackRight")]
+        [DataMember(Name="arrowBlackRight")]
         public GlyphDefinition ArrowBlackRight { get; set; }
 
-        [JsonProperty("arrowBlackUp")]
+        [DataMember(Name="arrowBlackUp")]
         public GlyphDefinition ArrowBlackUp { get; set; }
 
-        [JsonProperty("arrowBlackUpLeft")]
+        [DataMember(Name="arrowBlackUpLeft")]
         public GlyphDefinition ArrowBlackUpLeft { get; set; }
 
-        [JsonProperty("arrowBlackUpRight")]
+        [DataMember(Name="arrowBlackUpRight")]
         public GlyphDefinition ArrowBlackUpRight { get; set; }
 
-        [JsonProperty("arrowOpenDown")]
+        [DataMember(Name="arrowOpenDown")]
         public GlyphDefinition ArrowOpenDown { get; set; }
 
-        [JsonProperty("arrowOpenDownLeft")]
+        [DataMember(Name="arrowOpenDownLeft")]
         public GlyphDefinition ArrowOpenDownLeft { get; set; }
 
-        [JsonProperty("arrowOpenDownRight")]
+        [DataMember(Name="arrowOpenDownRight")]
         public GlyphDefinition ArrowOpenDownRight { get; set; }
 
-        [JsonProperty("arrowOpenLeft")]
+        [DataMember(Name="arrowOpenLeft")]
         public GlyphDefinition ArrowOpenLeft { get; set; }
 
-        [JsonProperty("arrowOpenRight")]
+        [DataMember(Name="arrowOpenRight")]
         public GlyphDefinition ArrowOpenRight { get; set; }
 
-        [JsonProperty("arrowOpenUp")]
+        [DataMember(Name="arrowOpenUp")]
         public GlyphDefinition ArrowOpenUp { get; set; }
 
-        [JsonProperty("arrowOpenUpLeft")]
+        [DataMember(Name="arrowOpenUpLeft")]
         public GlyphDefinition ArrowOpenUpLeft { get; set; }
 
-        [JsonProperty("arrowOpenUpRight")]
+        [DataMember(Name="arrowOpenUpRight")]
         public GlyphDefinition ArrowOpenUpRight { get; set; }
 
-        [JsonProperty("arrowWhiteDown")]
+        [DataMember(Name="arrowWhiteDown")]
         public GlyphDefinition ArrowWhiteDown { get; set; }
 
-        [JsonProperty("arrowWhiteDownLeft")]
+        [DataMember(Name="arrowWhiteDownLeft")]
         public GlyphDefinition ArrowWhiteDownLeft { get; set; }
 
-        [JsonProperty("arrowWhiteDownRight")]
+        [DataMember(Name="arrowWhiteDownRight")]
         public GlyphDefinition ArrowWhiteDownRight { get; set; }
 
-        [JsonProperty("arrowWhiteLeft")]
+        [DataMember(Name="arrowWhiteLeft")]
         public GlyphDefinition ArrowWhiteLeft { get; set; }
 
-        [JsonProperty("arrowWhiteRight")]
+        [DataMember(Name="arrowWhiteRight")]
         public GlyphDefinition ArrowWhiteRight { get; set; }
 
-        [JsonProperty("arrowWhiteUp")]
+        [DataMember(Name="arrowWhiteUp")]
         public GlyphDefinition ArrowWhiteUp { get; set; }
 
-        [JsonProperty("arrowWhiteUpLeft")]
+        [DataMember(Name="arrowWhiteUpLeft")]
         public GlyphDefinition ArrowWhiteUpLeft { get; set; }
 
-        [JsonProperty("arrowWhiteUpRight")]
+        [DataMember(Name="arrowWhiteUpRight")]
         public GlyphDefinition ArrowWhiteUpRight { get; set; }
 
-        [JsonProperty("arrowheadBlackDown")]
+        [DataMember(Name="arrowheadBlackDown")]
         public GlyphDefinition ArrowheadBlackDown { get; set; }
 
-        [JsonProperty("arrowheadBlackDownLeft")]
+        [DataMember(Name="arrowheadBlackDownLeft")]
         public GlyphDefinition ArrowheadBlackDownLeft { get; set; }
 
-        [JsonProperty("arrowheadBlackDownRight")]
+        [DataMember(Name="arrowheadBlackDownRight")]
         public GlyphDefinition ArrowheadBlackDownRight { get; set; }
 
-        [JsonProperty("arrowheadBlackLeft")]
+        [DataMember(Name="arrowheadBlackLeft")]
         public GlyphDefinition ArrowheadBlackLeft { get; set; }
 
-        [JsonProperty("arrowheadBlackRight")]
+        [DataMember(Name="arrowheadBlackRight")]
         public GlyphDefinition ArrowheadBlackRight { get; set; }
 
-        [JsonProperty("arrowheadBlackUp")]
+        [DataMember(Name="arrowheadBlackUp")]
         public GlyphDefinition ArrowheadBlackUp { get; set; }
 
-        [JsonProperty("arrowheadBlackUpLeft")]
+        [DataMember(Name="arrowheadBlackUpLeft")]
         public GlyphDefinition ArrowheadBlackUpLeft { get; set; }
 
-        [JsonProperty("arrowheadBlackUpRight")]
+        [DataMember(Name="arrowheadBlackUpRight")]
         public GlyphDefinition ArrowheadBlackUpRight { get; set; }
 
-        [JsonProperty("arrowheadOpenDown")]
+        [DataMember(Name="arrowheadOpenDown")]
         public GlyphDefinition ArrowheadOpenDown { get; set; }
 
-        [JsonProperty("arrowheadOpenDownLeft")]
+        [DataMember(Name="arrowheadOpenDownLeft")]
         public GlyphDefinition ArrowheadOpenDownLeft { get; set; }
 
-        [JsonProperty("arrowheadOpenDownRight")]
+        [DataMember(Name="arrowheadOpenDownRight")]
         public GlyphDefinition ArrowheadOpenDownRight { get; set; }
 
-        [JsonProperty("arrowheadOpenLeft")]
+        [DataMember(Name="arrowheadOpenLeft")]
         public GlyphDefinition ArrowheadOpenLeft { get; set; }
 
-        [JsonProperty("arrowheadOpenRight")]
+        [DataMember(Name="arrowheadOpenRight")]
         public GlyphDefinition ArrowheadOpenRight { get; set; }
 
-        [JsonProperty("arrowheadOpenUp")]
+        [DataMember(Name="arrowheadOpenUp")]
         public GlyphDefinition ArrowheadOpenUp { get; set; }
 
-        [JsonProperty("arrowheadOpenUpLeft")]
+        [DataMember(Name="arrowheadOpenUpLeft")]
         public GlyphDefinition ArrowheadOpenUpLeft { get; set; }
 
-        [JsonProperty("arrowheadOpenUpRight")]
+        [DataMember(Name="arrowheadOpenUpRight")]
         public GlyphDefinition ArrowheadOpenUpRight { get; set; }
 
-        [JsonProperty("arrowheadWhiteDown")]
+        [DataMember(Name="arrowheadWhiteDown")]
         public GlyphDefinition ArrowheadWhiteDown { get; set; }
 
-        [JsonProperty("arrowheadWhiteDownLeft")]
+        [DataMember(Name="arrowheadWhiteDownLeft")]
         public GlyphDefinition ArrowheadWhiteDownLeft { get; set; }
 
-        [JsonProperty("arrowheadWhiteDownRight")]
+        [DataMember(Name="arrowheadWhiteDownRight")]
         public GlyphDefinition ArrowheadWhiteDownRight { get; set; }
 
-        [JsonProperty("arrowheadWhiteLeft")]
+        [DataMember(Name="arrowheadWhiteLeft")]
         public GlyphDefinition ArrowheadWhiteLeft { get; set; }
 
-        [JsonProperty("arrowheadWhiteRight")]
+        [DataMember(Name="arrowheadWhiteRight")]
         public GlyphDefinition ArrowheadWhiteRight { get; set; }
 
-        [JsonProperty("arrowheadWhiteUp")]
+        [DataMember(Name="arrowheadWhiteUp")]
         public GlyphDefinition ArrowheadWhiteUp { get; set; }
 
-        [JsonProperty("arrowheadWhiteUpLeft")]
+        [DataMember(Name="arrowheadWhiteUpLeft")]
         public GlyphDefinition ArrowheadWhiteUpLeft { get; set; }
 
-        [JsonProperty("arrowheadWhiteUpRight")]
+        [DataMember(Name="arrowheadWhiteUpRight")]
         public GlyphDefinition ArrowheadWhiteUpRight { get; set; }
 
-        [JsonProperty("articAccentAbove")]
+        [DataMember(Name="articAccentAbove")]
         public GlyphDefinition ArticAccentAbove { get; set; }
 
-        [JsonProperty("articAccentBelow")]
+        [DataMember(Name="articAccentBelow")]
         public GlyphDefinition ArticAccentBelow { get; set; }
 
-        [JsonProperty("articAccentStaccatoAbove")]
+        [DataMember(Name="articAccentStaccatoAbove")]
         public GlyphDefinition ArticAccentStaccatoAbove { get; set; }
 
-        [JsonProperty("articAccentStaccatoBelow")]
+        [DataMember(Name="articAccentStaccatoBelow")]
         public GlyphDefinition ArticAccentStaccatoBelow { get; set; }
 
-        [JsonProperty("articLaissezVibrerAbove")]
+        [DataMember(Name="articLaissezVibrerAbove")]
         public GlyphDefinition ArticLaissezVibrerAbove { get; set; }
 
-        [JsonProperty("articLaissezVibrerBelow")]
+        [DataMember(Name="articLaissezVibrerBelow")]
         public GlyphDefinition ArticLaissezVibrerBelow { get; set; }
 
-        [JsonProperty("articMarcatoAbove")]
+        [DataMember(Name="articMarcatoAbove")]
         public GlyphDefinition ArticMarcatoAbove { get; set; }
 
-        [JsonProperty("articMarcatoBelow")]
+        [DataMember(Name="articMarcatoBelow")]
         public GlyphDefinition ArticMarcatoBelow { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoAbove")]
+        [DataMember(Name="articMarcatoStaccatoAbove")]
         public GlyphDefinition ArticMarcatoStaccatoAbove { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoBelow")]
+        [DataMember(Name="articMarcatoStaccatoBelow")]
         public GlyphDefinition ArticMarcatoStaccatoBelow { get; set; }
 
-        [JsonProperty("articStaccatissimoAbove")]
+        [DataMember(Name="articStaccatissimoAbove")]
         public GlyphDefinition ArticStaccatissimoAbove { get; set; }
 
-        [JsonProperty("articStaccatissimoBelow")]
+        [DataMember(Name="articStaccatissimoBelow")]
         public GlyphDefinition ArticStaccatissimoBelow { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeAbove")]
+        [DataMember(Name="articStaccatissimoStrokeAbove")]
         public GlyphDefinition ArticStaccatissimoStrokeAbove { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeBelow")]
+        [DataMember(Name="articStaccatissimoStrokeBelow")]
         public GlyphDefinition ArticStaccatissimoStrokeBelow { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeAbove")]
+        [DataMember(Name="articStaccatissimoWedgeAbove")]
         public GlyphDefinition ArticStaccatissimoWedgeAbove { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeBelow")]
+        [DataMember(Name="articStaccatissimoWedgeBelow")]
         public GlyphDefinition ArticStaccatissimoWedgeBelow { get; set; }
 
-        [JsonProperty("articStaccatoAbove")]
+        [DataMember(Name="articStaccatoAbove")]
         public GlyphDefinition ArticStaccatoAbove { get; set; }
 
-        [JsonProperty("articStaccatoBelow")]
+        [DataMember(Name="articStaccatoBelow")]
         public GlyphDefinition ArticStaccatoBelow { get; set; }
 
-        [JsonProperty("articStressAbove")]
+        [DataMember(Name="articStressAbove")]
         public GlyphDefinition ArticStressAbove { get; set; }
 
-        [JsonProperty("articStressBelow")]
+        [DataMember(Name="articStressBelow")]
         public GlyphDefinition ArticStressBelow { get; set; }
 
-        [JsonProperty("articTenutoAbove")]
+        [DataMember(Name="articTenutoAbove")]
         public GlyphDefinition ArticTenutoAbove { get; set; }
 
-        [JsonProperty("articTenutoAccentAbove")]
+        [DataMember(Name="articTenutoAccentAbove")]
         public GlyphDefinition ArticTenutoAccentAbove { get; set; }
 
-        [JsonProperty("articTenutoAccentBelow")]
+        [DataMember(Name="articTenutoAccentBelow")]
         public GlyphDefinition ArticTenutoAccentBelow { get; set; }
 
-        [JsonProperty("articTenutoBelow")]
+        [DataMember(Name="articTenutoBelow")]
         public GlyphDefinition ArticTenutoBelow { get; set; }
 
-        [JsonProperty("articTenutoStaccatoAbove")]
+        [DataMember(Name="articTenutoStaccatoAbove")]
         public GlyphDefinition ArticTenutoStaccatoAbove { get; set; }
 
-        [JsonProperty("articTenutoStaccatoBelow")]
+        [DataMember(Name="articTenutoStaccatoBelow")]
         public GlyphDefinition ArticTenutoStaccatoBelow { get; set; }
 
-        [JsonProperty("articUnstressAbove")]
+        [DataMember(Name="articUnstressAbove")]
         public GlyphDefinition ArticUnstressAbove { get; set; }
 
-        [JsonProperty("articUnstressBelow")]
+        [DataMember(Name="articUnstressBelow")]
         public GlyphDefinition ArticUnstressBelow { get; set; }
 
-        [JsonProperty("augmentationDot")]
+        [DataMember(Name="augmentationDot")]
         public GlyphDefinition AugmentationDot { get; set; }
 
-        [JsonProperty("barlineDashed")]
+        [DataMember(Name="barlineDashed")]
         public GlyphDefinition BarlineDashed { get; set; }
 
-        [JsonProperty("barlineDotted")]
+        [DataMember(Name="barlineDotted")]
         public GlyphDefinition BarlineDotted { get; set; }
 
-        [JsonProperty("barlineDouble")]
+        [DataMember(Name="barlineDouble")]
         public GlyphDefinition BarlineDouble { get; set; }
 
-        [JsonProperty("barlineFinal")]
+        [DataMember(Name="barlineFinal")]
         public GlyphDefinition BarlineFinal { get; set; }
 
-        [JsonProperty("barlineHeavy")]
+        [DataMember(Name="barlineHeavy")]
         public GlyphDefinition BarlineHeavy { get; set; }
 
-        [JsonProperty("barlineHeavyHeavy")]
+        [DataMember(Name="barlineHeavyHeavy")]
         public GlyphDefinition BarlineHeavyHeavy { get; set; }
 
-        [JsonProperty("barlineReverseFinal")]
+        [DataMember(Name="barlineReverseFinal")]
         public GlyphDefinition BarlineReverseFinal { get; set; }
 
-        [JsonProperty("barlineShort")]
+        [DataMember(Name="barlineShort")]
         public GlyphDefinition BarlineShort { get; set; }
 
-        [JsonProperty("barlineSingle")]
+        [DataMember(Name="barlineSingle")]
         public GlyphDefinition BarlineSingle { get; set; }
 
-        [JsonProperty("barlineTick")]
+        [DataMember(Name="barlineTick")]
         public GlyphDefinition BarlineTick { get; set; }
 
-        [JsonProperty("beamAccelRit1")]
+        [DataMember(Name="beamAccelRit1")]
         public GlyphDefinition BeamAccelRit1 { get; set; }
 
-        [JsonProperty("beamAccelRit10")]
+        [DataMember(Name="beamAccelRit10")]
         public GlyphDefinition BeamAccelRit10 { get; set; }
 
-        [JsonProperty("beamAccelRit11")]
+        [DataMember(Name="beamAccelRit11")]
         public GlyphDefinition BeamAccelRit11 { get; set; }
 
-        [JsonProperty("beamAccelRit12")]
+        [DataMember(Name="beamAccelRit12")]
         public GlyphDefinition BeamAccelRit12 { get; set; }
 
-        [JsonProperty("beamAccelRit13")]
+        [DataMember(Name="beamAccelRit13")]
         public GlyphDefinition BeamAccelRit13 { get; set; }
 
-        [JsonProperty("beamAccelRit14")]
+        [DataMember(Name="beamAccelRit14")]
         public GlyphDefinition BeamAccelRit14 { get; set; }
 
-        [JsonProperty("beamAccelRit15")]
+        [DataMember(Name="beamAccelRit15")]
         public GlyphDefinition BeamAccelRit15 { get; set; }
 
-        [JsonProperty("beamAccelRit2")]
+        [DataMember(Name="beamAccelRit2")]
         public GlyphDefinition BeamAccelRit2 { get; set; }
 
-        [JsonProperty("beamAccelRit3")]
+        [DataMember(Name="beamAccelRit3")]
         public GlyphDefinition BeamAccelRit3 { get; set; }
 
-        [JsonProperty("beamAccelRit4")]
+        [DataMember(Name="beamAccelRit4")]
         public GlyphDefinition BeamAccelRit4 { get; set; }
 
-        [JsonProperty("beamAccelRit5")]
+        [DataMember(Name="beamAccelRit5")]
         public GlyphDefinition BeamAccelRit5 { get; set; }
 
-        [JsonProperty("beamAccelRit6")]
+        [DataMember(Name="beamAccelRit6")]
         public GlyphDefinition BeamAccelRit6 { get; set; }
 
-        [JsonProperty("beamAccelRit7")]
+        [DataMember(Name="beamAccelRit7")]
         public GlyphDefinition BeamAccelRit7 { get; set; }
 
-        [JsonProperty("beamAccelRit8")]
+        [DataMember(Name="beamAccelRit8")]
         public GlyphDefinition BeamAccelRit8 { get; set; }
 
-        [JsonProperty("beamAccelRit9")]
+        [DataMember(Name="beamAccelRit9")]
         public GlyphDefinition BeamAccelRit9 { get; set; }
 
-        [JsonProperty("beamAccelRitFinal")]
+        [DataMember(Name="beamAccelRitFinal")]
         public GlyphDefinition BeamAccelRitFinal { get; set; }
 
-        [JsonProperty("brace")]
+        [DataMember(Name="brace")]
         public GlyphDefinition Brace { get; set; }
 
-        [JsonProperty("bracket")]
+        [DataMember(Name="bracket")]
         public GlyphDefinition Bracket { get; set; }
 
-        [JsonProperty("bracketBottom")]
+        [DataMember(Name="bracketBottom")]
         public GlyphDefinition BracketBottom { get; set; }
 
-        [JsonProperty("bracketTop")]
+        [DataMember(Name="bracketTop")]
         public GlyphDefinition BracketTop { get; set; }
 
-        [JsonProperty("brassBend")]
+        [DataMember(Name="brassBend")]
         public GlyphDefinition BrassBend { get; set; }
 
-        [JsonProperty("brassDoitLong")]
+        [DataMember(Name="brassDoitLong")]
         public GlyphDefinition BrassDoitLong { get; set; }
 
-        [JsonProperty("brassDoitMedium")]
+        [DataMember(Name="brassDoitMedium")]
         public GlyphDefinition BrassDoitMedium { get; set; }
 
-        [JsonProperty("brassDoitShort")]
+        [DataMember(Name="brassDoitShort")]
         public GlyphDefinition BrassDoitShort { get; set; }
 
-        [JsonProperty("brassFallLipLong")]
+        [DataMember(Name="brassFallLipLong")]
         public GlyphDefinition BrassFallLipLong { get; set; }
 
-        [JsonProperty("brassFallLipMedium")]
+        [DataMember(Name="brassFallLipMedium")]
         public GlyphDefinition BrassFallLipMedium { get; set; }
 
-        [JsonProperty("brassFallLipShort")]
+        [DataMember(Name="brassFallLipShort")]
         public GlyphDefinition BrassFallLipShort { get; set; }
 
-        [JsonProperty("brassFallRoughLong")]
+        [DataMember(Name="brassFallRoughLong")]
         public GlyphDefinition BrassFallRoughLong { get; set; }
 
-        [JsonProperty("brassFallRoughMedium")]
+        [DataMember(Name="brassFallRoughMedium")]
         public GlyphDefinition BrassFallRoughMedium { get; set; }
 
-        [JsonProperty("brassFallRoughShort")]
+        [DataMember(Name="brassFallRoughShort")]
         public GlyphDefinition BrassFallRoughShort { get; set; }
 
-        [JsonProperty("brassFallSmoothLong")]
+        [DataMember(Name="brassFallSmoothLong")]
         public GlyphDefinition BrassFallSmoothLong { get; set; }
 
-        [JsonProperty("brassFallSmoothMedium")]
+        [DataMember(Name="brassFallSmoothMedium")]
         public GlyphDefinition BrassFallSmoothMedium { get; set; }
 
-        [JsonProperty("brassFallSmoothShort")]
+        [DataMember(Name="brassFallSmoothShort")]
         public GlyphDefinition BrassFallSmoothShort { get; set; }
 
-        [JsonProperty("brassFlip")]
+        [DataMember(Name="brassFlip")]
         public GlyphDefinition BrassFlip { get; set; }
 
-        [JsonProperty("brassHarmonMuteClosed")]
+        [DataMember(Name="brassHarmonMuteClosed")]
         public GlyphDefinition BrassHarmonMuteClosed { get; set; }
 
-        [JsonProperty("brassHarmonMuteStemHalfLeft")]
+        [DataMember(Name="brassHarmonMuteStemHalfLeft")]
         public GlyphDefinition BrassHarmonMuteStemHalfLeft { get; set; }
 
-        [JsonProperty("brassHarmonMuteStemHalfRight")]
+        [DataMember(Name="brassHarmonMuteStemHalfRight")]
         public GlyphDefinition BrassHarmonMuteStemHalfRight { get; set; }
 
-        [JsonProperty("brassHarmonMuteStemOpen")]
+        [DataMember(Name="brassHarmonMuteStemOpen")]
         public GlyphDefinition BrassHarmonMuteStemOpen { get; set; }
 
-        [JsonProperty("brassJazzTurn")]
+        [DataMember(Name="brassJazzTurn")]
         public GlyphDefinition BrassJazzTurn { get; set; }
 
-        [JsonProperty("brassLiftLong")]
+        [DataMember(Name="brassLiftLong")]
         public GlyphDefinition BrassLiftLong { get; set; }
 
-        [JsonProperty("brassLiftMedium")]
+        [DataMember(Name="brassLiftMedium")]
         public GlyphDefinition BrassLiftMedium { get; set; }
 
-        [JsonProperty("brassLiftShort")]
+        [DataMember(Name="brassLiftShort")]
         public GlyphDefinition BrassLiftShort { get; set; }
 
-        [JsonProperty("brassLiftSmoothLong")]
+        [DataMember(Name="brassLiftSmoothLong")]
         public GlyphDefinition BrassLiftSmoothLong { get; set; }
 
-        [JsonProperty("brassLiftSmoothMedium")]
+        [DataMember(Name="brassLiftSmoothMedium")]
         public GlyphDefinition BrassLiftSmoothMedium { get; set; }
 
-        [JsonProperty("brassLiftSmoothShort")]
+        [DataMember(Name="brassLiftSmoothShort")]
         public GlyphDefinition BrassLiftSmoothShort { get; set; }
 
-        [JsonProperty("brassMuteClosed")]
+        [DataMember(Name="brassMuteClosed")]
         public GlyphDefinition BrassMuteClosed { get; set; }
 
-        [JsonProperty("brassMuteHalfClosed")]
+        [DataMember(Name="brassMuteHalfClosed")]
         public GlyphDefinition BrassMuteHalfClosed { get; set; }
 
-        [JsonProperty("brassMuteOpen")]
+        [DataMember(Name="brassMuteOpen")]
         public GlyphDefinition BrassMuteOpen { get; set; }
 
-        [JsonProperty("brassPlop")]
+        [DataMember(Name="brassPlop")]
         public GlyphDefinition BrassPlop { get; set; }
 
-        [JsonProperty("brassScoop")]
+        [DataMember(Name="brassScoop")]
         public GlyphDefinition BrassScoop { get; set; }
 
-        [JsonProperty("brassSmear")]
+        [DataMember(Name="brassSmear")]
         public GlyphDefinition BrassSmear { get; set; }
 
-        [JsonProperty("breathMarkComma")]
+        [DataMember(Name="breathMarkComma")]
         public GlyphDefinition BreathMarkComma { get; set; }
 
-        [JsonProperty("breathMarkSalzedo")]
+        [DataMember(Name="breathMarkSalzedo")]
         public GlyphDefinition BreathMarkSalzedo { get; set; }
 
-        [JsonProperty("breathMarkTick")]
+        [DataMember(Name="breathMarkTick")]
         public GlyphDefinition BreathMarkTick { get; set; }
 
-        [JsonProperty("breathMarkUpbow")]
+        [DataMember(Name="breathMarkUpbow")]
         public GlyphDefinition BreathMarkUpbow { get; set; }
 
-        [JsonProperty("bridgeClef")]
+        [DataMember(Name="bridgeClef")]
         public GlyphDefinition BridgeClef { get; set; }
 
-        [JsonProperty("buzzRoll")]
+        [DataMember(Name="buzzRoll")]
         public GlyphDefinition BuzzRoll { get; set; }
 
-        [JsonProperty("cClef")]
+        [DataMember(Name="cClef")]
         public GlyphDefinition CClef { get; set; }
 
-        [JsonProperty("cClef8vb")]
+        [DataMember(Name="cClef8vb")]
         public GlyphDefinition CClef8Vb { get; set; }
 
-        [JsonProperty("cClefArrowDown")]
+        [DataMember(Name="cClefArrowDown")]
         public GlyphDefinition CClefArrowDown { get; set; }
 
-        [JsonProperty("cClefArrowUp")]
+        [DataMember(Name="cClefArrowUp")]
         public GlyphDefinition CClefArrowUp { get; set; }
 
-        [JsonProperty("cClefChange")]
+        [DataMember(Name="cClefChange")]
         public GlyphDefinition CClefChange { get; set; }
 
-        [JsonProperty("cClefCombining")]
+        [DataMember(Name="cClefCombining")]
         public GlyphDefinition CClefCombining { get; set; }
 
-        [JsonProperty("cClefReversed")]
+        [DataMember(Name="cClefReversed")]
         public GlyphDefinition CClefReversed { get; set; }
 
-        [JsonProperty("cClefSquare")]
+        [DataMember(Name="cClefSquare")]
         public GlyphDefinition CClefSquare { get; set; }
 
-        [JsonProperty("cClefTriangular")]
+        [DataMember(Name="cClefTriangular")]
         public GlyphDefinition CClefTriangular { get; set; }
 
-        [JsonProperty("cClefTriangularToFClef")]
+        [DataMember(Name="cClefTriangularToFClef")]
         public GlyphDefinition CClefTriangularToFClef { get; set; }
 
-        [JsonProperty("caesura")]
+        [DataMember(Name="caesura")]
         public GlyphDefinition Caesura { get; set; }
 
-        [JsonProperty("caesuraCurved")]
+        [DataMember(Name="caesuraCurved")]
         public GlyphDefinition CaesuraCurved { get; set; }
 
-        [JsonProperty("caesuraShort")]
+        [DataMember(Name="caesuraShort")]
         public GlyphDefinition CaesuraShort { get; set; }
 
-        [JsonProperty("caesuraThick")]
+        [DataMember(Name="caesuraThick")]
         public GlyphDefinition CaesuraThick { get; set; }
 
-        [JsonProperty("chantAccentusAbove")]
+        [DataMember(Name="chantAccentusAbove")]
         public GlyphDefinition ChantAccentusAbove { get; set; }
 
-        [JsonProperty("chantAccentusBelow")]
+        [DataMember(Name="chantAccentusBelow")]
         public GlyphDefinition ChantAccentusBelow { get; set; }
 
-        [JsonProperty("chantAuctumAsc")]
+        [DataMember(Name="chantAuctumAsc")]
         public GlyphDefinition ChantAuctumAsc { get; set; }
 
-        [JsonProperty("chantAuctumDesc")]
+        [DataMember(Name="chantAuctumDesc")]
         public GlyphDefinition ChantAuctumDesc { get; set; }
 
-        [JsonProperty("chantAugmentum")]
+        [DataMember(Name="chantAugmentum")]
         public GlyphDefinition ChantAugmentum { get; set; }
 
-        [JsonProperty("chantCaesura")]
+        [DataMember(Name="chantCaesura")]
         public GlyphDefinition ChantCaesura { get; set; }
 
-        [JsonProperty("chantCclef")]
+        [DataMember(Name="chantCclef")]
         public GlyphDefinition ChantCclef { get; set; }
 
-        [JsonProperty("chantCirculusAbove")]
+        [DataMember(Name="chantCirculusAbove")]
         public GlyphDefinition ChantCirculusAbove { get; set; }
 
-        [JsonProperty("chantCirculusBelow")]
+        [DataMember(Name="chantCirculusBelow")]
         public GlyphDefinition ChantCirculusBelow { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc2nd")]
+        [DataMember(Name="chantConnectingLineAsc2nd")]
         public GlyphDefinition ChantConnectingLineAsc2Nd { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc3rd")]
+        [DataMember(Name="chantConnectingLineAsc3rd")]
         public GlyphDefinition ChantConnectingLineAsc3Rd { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc4th")]
+        [DataMember(Name="chantConnectingLineAsc4th")]
         public GlyphDefinition ChantConnectingLineAsc4Th { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc5th")]
+        [DataMember(Name="chantConnectingLineAsc5th")]
         public GlyphDefinition ChantConnectingLineAsc5Th { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc6th")]
+        [DataMember(Name="chantConnectingLineAsc6th")]
         public GlyphDefinition ChantConnectingLineAsc6Th { get; set; }
 
-        [JsonProperty("chantCustosStemDownPosHigh")]
+        [DataMember(Name="chantCustosStemDownPosHigh")]
         public GlyphDefinition ChantCustosStemDownPosHigh { get; set; }
 
-        [JsonProperty("chantCustosStemDownPosHighest")]
+        [DataMember(Name="chantCustosStemDownPosHighest")]
         public GlyphDefinition ChantCustosStemDownPosHighest { get; set; }
 
-        [JsonProperty("chantCustosStemDownPosMiddle")]
+        [DataMember(Name="chantCustosStemDownPosMiddle")]
         public GlyphDefinition ChantCustosStemDownPosMiddle { get; set; }
 
-        [JsonProperty("chantCustosStemUpPosLow")]
+        [DataMember(Name="chantCustosStemUpPosLow")]
         public GlyphDefinition ChantCustosStemUpPosLow { get; set; }
 
-        [JsonProperty("chantCustosStemUpPosLowest")]
+        [DataMember(Name="chantCustosStemUpPosLowest")]
         public GlyphDefinition ChantCustosStemUpPosLowest { get; set; }
 
-        [JsonProperty("chantCustosStemUpPosMiddle")]
+        [DataMember(Name="chantCustosStemUpPosMiddle")]
         public GlyphDefinition ChantCustosStemUpPosMiddle { get; set; }
 
-        [JsonProperty("chantDeminutumLower")]
+        [DataMember(Name="chantDeminutumLower")]
         public GlyphDefinition ChantDeminutumLower { get; set; }
 
-        [JsonProperty("chantDeminutumUpper")]
+        [DataMember(Name="chantDeminutumUpper")]
         public GlyphDefinition ChantDeminutumUpper { get; set; }
 
-        [JsonProperty("chantDivisioFinalis")]
+        [DataMember(Name="chantDivisioFinalis")]
         public GlyphDefinition ChantDivisioFinalis { get; set; }
 
-        [JsonProperty("chantDivisioMaior")]
+        [DataMember(Name="chantDivisioMaior")]
         public GlyphDefinition ChantDivisioMaior { get; set; }
 
-        [JsonProperty("chantDivisioMaxima")]
+        [DataMember(Name="chantDivisioMaxima")]
         public GlyphDefinition ChantDivisioMaxima { get; set; }
 
-        [JsonProperty("chantDivisioMinima")]
+        [DataMember(Name="chantDivisioMinima")]
         public GlyphDefinition ChantDivisioMinima { get; set; }
 
-        [JsonProperty("chantEntryLineAsc2nd")]
+        [DataMember(Name="chantEntryLineAsc2nd")]
         public GlyphDefinition ChantEntryLineAsc2Nd { get; set; }
 
-        [JsonProperty("chantEntryLineAsc3rd")]
+        [DataMember(Name="chantEntryLineAsc3rd")]
         public GlyphDefinition ChantEntryLineAsc3Rd { get; set; }
 
-        [JsonProperty("chantEntryLineAsc4th")]
+        [DataMember(Name="chantEntryLineAsc4th")]
         public GlyphDefinition ChantEntryLineAsc4Th { get; set; }
 
-        [JsonProperty("chantEntryLineAsc5th")]
+        [DataMember(Name="chantEntryLineAsc5th")]
         public GlyphDefinition ChantEntryLineAsc5Th { get; set; }
 
-        [JsonProperty("chantEntryLineAsc6th")]
+        [DataMember(Name="chantEntryLineAsc6th")]
         public GlyphDefinition ChantEntryLineAsc6Th { get; set; }
 
-        [JsonProperty("chantEpisema")]
+        [DataMember(Name="chantEpisema")]
         public GlyphDefinition ChantEpisema { get; set; }
 
-        [JsonProperty("chantFclef")]
+        [DataMember(Name="chantFclef")]
         public GlyphDefinition ChantFclef { get; set; }
 
-        [JsonProperty("chantIctusAbove")]
+        [DataMember(Name="chantIctusAbove")]
         public GlyphDefinition ChantIctusAbove { get; set; }
 
-        [JsonProperty("chantIctusBelow")]
+        [DataMember(Name="chantIctusBelow")]
         public GlyphDefinition ChantIctusBelow { get; set; }
 
-        [JsonProperty("chantLigaturaDesc2nd")]
+        [DataMember(Name="chantLigaturaDesc2nd")]
         public GlyphDefinition ChantLigaturaDesc2Nd { get; set; }
 
-        [JsonProperty("chantLigaturaDesc3rd")]
+        [DataMember(Name="chantLigaturaDesc3rd")]
         public GlyphDefinition ChantLigaturaDesc3Rd { get; set; }
 
-        [JsonProperty("chantLigaturaDesc4th")]
+        [DataMember(Name="chantLigaturaDesc4th")]
         public GlyphDefinition ChantLigaturaDesc4Th { get; set; }
 
-        [JsonProperty("chantLigaturaDesc5th")]
+        [DataMember(Name="chantLigaturaDesc5th")]
         public GlyphDefinition ChantLigaturaDesc5Th { get; set; }
 
-        [JsonProperty("chantOriscusAscending")]
+        [DataMember(Name="chantOriscusAscending")]
         public GlyphDefinition ChantOriscusAscending { get; set; }
 
-        [JsonProperty("chantOriscusDescending")]
+        [DataMember(Name="chantOriscusDescending")]
         public GlyphDefinition ChantOriscusDescending { get; set; }
 
-        [JsonProperty("chantOriscusLiquescens")]
+        [DataMember(Name="chantOriscusLiquescens")]
         public GlyphDefinition ChantOriscusLiquescens { get; set; }
 
-        [JsonProperty("chantPodatusLower")]
+        [DataMember(Name="chantPodatusLower")]
         public GlyphDefinition ChantPodatusLower { get; set; }
 
-        [JsonProperty("chantPodatusUpper")]
+        [DataMember(Name="chantPodatusUpper")]
         public GlyphDefinition ChantPodatusUpper { get; set; }
 
-        [JsonProperty("chantPunctum")]
+        [DataMember(Name="chantPunctum")]
         public GlyphDefinition ChantPunctum { get; set; }
 
-        [JsonProperty("chantPunctumCavum")]
+        [DataMember(Name="chantPunctumCavum")]
         public GlyphDefinition ChantPunctumCavum { get; set; }
 
-        [JsonProperty("chantPunctumDeminutum")]
+        [DataMember(Name="chantPunctumDeminutum")]
         public GlyphDefinition ChantPunctumDeminutum { get; set; }
 
-        [JsonProperty("chantPunctumInclinatum")]
+        [DataMember(Name="chantPunctumInclinatum")]
         public GlyphDefinition ChantPunctumInclinatum { get; set; }
 
-        [JsonProperty("chantPunctumInclinatumAuctum")]
+        [DataMember(Name="chantPunctumInclinatumAuctum")]
         public GlyphDefinition ChantPunctumInclinatumAuctum { get; set; }
 
-        [JsonProperty("chantPunctumInclinatumDeminutum")]
+        [DataMember(Name="chantPunctumInclinatumDeminutum")]
         public GlyphDefinition ChantPunctumInclinatumDeminutum { get; set; }
 
-        [JsonProperty("chantPunctumLinea")]
+        [DataMember(Name="chantPunctumLinea")]
         public GlyphDefinition ChantPunctumLinea { get; set; }
 
-        [JsonProperty("chantPunctumLineaCavum")]
+        [DataMember(Name="chantPunctumLineaCavum")]
         public GlyphDefinition ChantPunctumLineaCavum { get; set; }
 
-        [JsonProperty("chantPunctumVirga")]
+        [DataMember(Name="chantPunctumVirga")]
         public GlyphDefinition ChantPunctumVirga { get; set; }
 
-        [JsonProperty("chantPunctumVirgaReversed")]
+        [DataMember(Name="chantPunctumVirgaReversed")]
         public GlyphDefinition ChantPunctumVirgaReversed { get; set; }
 
-        [JsonProperty("chantQuilisma")]
+        [DataMember(Name="chantQuilisma")]
         public GlyphDefinition ChantQuilisma { get; set; }
 
-        [JsonProperty("chantSemicirculusAbove")]
+        [DataMember(Name="chantSemicirculusAbove")]
         public GlyphDefinition ChantSemicirculusAbove { get; set; }
 
-        [JsonProperty("chantSemicirculusBelow")]
+        [DataMember(Name="chantSemicirculusBelow")]
         public GlyphDefinition ChantSemicirculusBelow { get; set; }
 
-        [JsonProperty("chantStaff")]
+        [DataMember(Name="chantStaff")]
         public GlyphDefinition ChantStaff { get; set; }
 
-        [JsonProperty("chantStaffNarrow")]
+        [DataMember(Name="chantStaffNarrow")]
         public GlyphDefinition ChantStaffNarrow { get; set; }
 
-        [JsonProperty("chantStaffWide")]
+        [DataMember(Name="chantStaffWide")]
         public GlyphDefinition ChantStaffWide { get; set; }
 
-        [JsonProperty("chantStrophicus")]
+        [DataMember(Name="chantStrophicus")]
         public GlyphDefinition ChantStrophicus { get; set; }
 
-        [JsonProperty("chantStrophicusAuctus")]
+        [DataMember(Name="chantStrophicusAuctus")]
         public GlyphDefinition ChantStrophicusAuctus { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens2nd")]
+        [DataMember(Name="chantStrophicusLiquescens2nd")]
         public GlyphDefinition ChantStrophicusLiquescens2Nd { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens3rd")]
+        [DataMember(Name="chantStrophicusLiquescens3rd")]
         public GlyphDefinition ChantStrophicusLiquescens3Rd { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens4th")]
+        [DataMember(Name="chantStrophicusLiquescens4th")]
         public GlyphDefinition ChantStrophicusLiquescens4Th { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens5th")]
+        [DataMember(Name="chantStrophicusLiquescens5th")]
         public GlyphDefinition ChantStrophicusLiquescens5Th { get; set; }
 
-        [JsonProperty("chantVirgula")]
+        [DataMember(Name="chantVirgula")]
         public GlyphDefinition ChantVirgula { get; set; }
 
-        [JsonProperty("clef15")]
+        [DataMember(Name="clef15")]
         public GlyphDefinition Clef15 { get; set; }
 
-        [JsonProperty("clef8")]
+        [DataMember(Name="clef8")]
         public GlyphDefinition Clef8 { get; set; }
 
-        [JsonProperty("clefChangeCombining")]
+        [DataMember(Name="clefChangeCombining")]
         public GlyphDefinition ClefChangeCombining { get; set; }
 
-        [JsonProperty("coda")]
+        [DataMember(Name="coda")]
         public GlyphDefinition Coda { get; set; }
 
-        [JsonProperty("codaSquare")]
+        [DataMember(Name="codaSquare")]
         public GlyphDefinition CodaSquare { get; set; }
 
-        [JsonProperty("conductorBeat2Compound")]
+        [DataMember(Name="conductorBeat2Compound")]
         public GlyphDefinition ConductorBeat2Compound { get; set; }
 
-        [JsonProperty("conductorBeat2Simple")]
+        [DataMember(Name="conductorBeat2Simple")]
         public GlyphDefinition ConductorBeat2Simple { get; set; }
 
-        [JsonProperty("conductorBeat3Compound")]
+        [DataMember(Name="conductorBeat3Compound")]
         public GlyphDefinition ConductorBeat3Compound { get; set; }
 
-        [JsonProperty("conductorBeat3Simple")]
+        [DataMember(Name="conductorBeat3Simple")]
         public GlyphDefinition ConductorBeat3Simple { get; set; }
 
-        [JsonProperty("conductorBeat4Compound")]
+        [DataMember(Name="conductorBeat4Compound")]
         public GlyphDefinition ConductorBeat4Compound { get; set; }
 
-        [JsonProperty("conductorBeat4Simple")]
+        [DataMember(Name="conductorBeat4Simple")]
         public GlyphDefinition ConductorBeat4Simple { get; set; }
 
-        [JsonProperty("conductorLeftBeat")]
+        [DataMember(Name="conductorLeftBeat")]
         public GlyphDefinition ConductorLeftBeat { get; set; }
 
-        [JsonProperty("conductorRightBeat")]
+        [DataMember(Name="conductorRightBeat")]
         public GlyphDefinition ConductorRightBeat { get; set; }
 
-        [JsonProperty("conductorStrongBeat")]
+        [DataMember(Name="conductorStrongBeat")]
         public GlyphDefinition ConductorStrongBeat { get; set; }
 
-        [JsonProperty("conductorWeakBeat")]
+        [DataMember(Name="conductorWeakBeat")]
         public GlyphDefinition ConductorWeakBeat { get; set; }
 
-        [JsonProperty("controlBeginBeam")]
+        [DataMember(Name="controlBeginBeam")]
         public GlyphDefinition ControlBeginBeam { get; set; }
 
-        [JsonProperty("controlBeginPhrase")]
+        [DataMember(Name="controlBeginPhrase")]
         public GlyphDefinition ControlBeginPhrase { get; set; }
 
-        [JsonProperty("controlBeginSlur")]
+        [DataMember(Name="controlBeginSlur")]
         public GlyphDefinition ControlBeginSlur { get; set; }
 
-        [JsonProperty("controlBeginTie")]
+        [DataMember(Name="controlBeginTie")]
         public GlyphDefinition ControlBeginTie { get; set; }
 
-        [JsonProperty("controlEndBeam")]
+        [DataMember(Name="controlEndBeam")]
         public GlyphDefinition ControlEndBeam { get; set; }
 
-        [JsonProperty("controlEndPhrase")]
+        [DataMember(Name="controlEndPhrase")]
         public GlyphDefinition ControlEndPhrase { get; set; }
 
-        [JsonProperty("controlEndSlur")]
+        [DataMember(Name="controlEndSlur")]
         public GlyphDefinition ControlEndSlur { get; set; }
 
-        [JsonProperty("controlEndTie")]
+        [DataMember(Name="controlEndTie")]
         public GlyphDefinition ControlEndTie { get; set; }
 
-        [JsonProperty("csymAugmented")]
+        [DataMember(Name="csymAugmented")]
         public GlyphDefinition CsymAugmented { get; set; }
 
-        [JsonProperty("csymBracketLeftTall")]
+        [DataMember(Name="csymBracketLeftTall")]
         public GlyphDefinition CsymBracketLeftTall { get; set; }
 
-        [JsonProperty("csymBracketRightTall")]
+        [DataMember(Name="csymBracketRightTall")]
         public GlyphDefinition CsymBracketRightTall { get; set; }
 
-        [JsonProperty("csymDiminished")]
+        [DataMember(Name="csymDiminished")]
         public GlyphDefinition CsymDiminished { get; set; }
 
-        [JsonProperty("csymHalfDiminished")]
+        [DataMember(Name="csymHalfDiminished")]
         public GlyphDefinition CsymHalfDiminished { get; set; }
 
-        [JsonProperty("csymMajorSeventh")]
+        [DataMember(Name="csymMajorSeventh")]
         public GlyphDefinition CsymMajorSeventh { get; set; }
 
-        [JsonProperty("csymMinor")]
+        [DataMember(Name="csymMinor")]
         public GlyphDefinition CsymMinor { get; set; }
 
-        [JsonProperty("csymParensLeftTall")]
+        [DataMember(Name="csymParensLeftTall")]
         public GlyphDefinition CsymParensLeftTall { get; set; }
 
-        [JsonProperty("csymParensRightTall")]
+        [DataMember(Name="csymParensRightTall")]
         public GlyphDefinition CsymParensRightTall { get; set; }
 
-        [JsonProperty("curlewSign")]
+        [DataMember(Name="curlewSign")]
         public GlyphDefinition CurlewSign { get; set; }
 
-        [JsonProperty("daCapo")]
+        [DataMember(Name="daCapo")]
         public GlyphDefinition DaCapo { get; set; }
 
-        [JsonProperty("dalSegno")]
+        [DataMember(Name="dalSegno")]
         public GlyphDefinition DalSegno { get; set; }
 
-        [JsonProperty("daseianExcellentes1")]
+        [DataMember(Name="daseianExcellentes1")]
         public GlyphDefinition DaseianExcellentes1 { get; set; }
 
-        [JsonProperty("daseianExcellentes2")]
+        [DataMember(Name="daseianExcellentes2")]
         public GlyphDefinition DaseianExcellentes2 { get; set; }
 
-        [JsonProperty("daseianExcellentes3")]
+        [DataMember(Name="daseianExcellentes3")]
         public GlyphDefinition DaseianExcellentes3 { get; set; }
 
-        [JsonProperty("daseianExcellentes4")]
+        [DataMember(Name="daseianExcellentes4")]
         public GlyphDefinition DaseianExcellentes4 { get; set; }
 
-        [JsonProperty("daseianFinales1")]
+        [DataMember(Name="daseianFinales1")]
         public GlyphDefinition DaseianFinales1 { get; set; }
 
-        [JsonProperty("daseianFinales2")]
+        [DataMember(Name="daseianFinales2")]
         public GlyphDefinition DaseianFinales2 { get; set; }
 
-        [JsonProperty("daseianFinales3")]
+        [DataMember(Name="daseianFinales3")]
         public GlyphDefinition DaseianFinales3 { get; set; }
 
-        [JsonProperty("daseianFinales4")]
+        [DataMember(Name="daseianFinales4")]
         public GlyphDefinition DaseianFinales4 { get; set; }
 
-        [JsonProperty("daseianGraves1")]
+        [DataMember(Name="daseianGraves1")]
         public GlyphDefinition DaseianGraves1 { get; set; }
 
-        [JsonProperty("daseianGraves2")]
+        [DataMember(Name="daseianGraves2")]
         public GlyphDefinition DaseianGraves2 { get; set; }
 
-        [JsonProperty("daseianGraves3")]
+        [DataMember(Name="daseianGraves3")]
         public GlyphDefinition DaseianGraves3 { get; set; }
 
-        [JsonProperty("daseianGraves4")]
+        [DataMember(Name="daseianGraves4")]
         public GlyphDefinition DaseianGraves4 { get; set; }
 
-        [JsonProperty("daseianResidua1")]
+        [DataMember(Name="daseianResidua1")]
         public GlyphDefinition DaseianResidua1 { get; set; }
 
-        [JsonProperty("daseianResidua2")]
+        [DataMember(Name="daseianResidua2")]
         public GlyphDefinition DaseianResidua2 { get; set; }
 
-        [JsonProperty("daseianSuperiores1")]
+        [DataMember(Name="daseianSuperiores1")]
         public GlyphDefinition DaseianSuperiores1 { get; set; }
 
-        [JsonProperty("daseianSuperiores2")]
+        [DataMember(Name="daseianSuperiores2")]
         public GlyphDefinition DaseianSuperiores2 { get; set; }
 
-        [JsonProperty("daseianSuperiores3")]
+        [DataMember(Name="daseianSuperiores3")]
         public GlyphDefinition DaseianSuperiores3 { get; set; }
 
-        [JsonProperty("daseianSuperiores4")]
+        [DataMember(Name="daseianSuperiores4")]
         public GlyphDefinition DaseianSuperiores4 { get; set; }
 
-        [JsonProperty("doubleTongueAbove")]
+        [DataMember(Name="doubleTongueAbove")]
         public GlyphDefinition DoubleTongueAbove { get; set; }
 
-        [JsonProperty("doubleTongueBelow")]
+        [DataMember(Name="doubleTongueBelow")]
         public GlyphDefinition DoubleTongueBelow { get; set; }
 
-        [JsonProperty("dynamicCrescendoHairpin")]
+        [DataMember(Name="dynamicCrescendoHairpin")]
         public GlyphDefinition DynamicCrescendoHairpin { get; set; }
 
-        [JsonProperty("dynamicDiminuendoHairpin")]
+        [DataMember(Name="dynamicDiminuendoHairpin")]
         public GlyphDefinition DynamicDiminuendoHairpin { get; set; }
 
-        [JsonProperty("dynamicFF")]
+        [DataMember(Name="dynamicFF")]
         public GlyphDefinition DynamicFf { get; set; }
 
-        [JsonProperty("dynamicFFF")]
+        [DataMember(Name="dynamicFFF")]
         public GlyphDefinition DynamicFff { get; set; }
 
-        [JsonProperty("dynamicFFFF")]
+        [DataMember(Name="dynamicFFFF")]
         public GlyphDefinition DynamicFfff { get; set; }
 
-        [JsonProperty("dynamicFFFFF")]
+        [DataMember(Name="dynamicFFFFF")]
         public GlyphDefinition DynamicFffff { get; set; }
 
-        [JsonProperty("dynamicFFFFFF")]
+        [DataMember(Name="dynamicFFFFFF")]
         public GlyphDefinition DynamicFfffff { get; set; }
 
-        [JsonProperty("dynamicForte")]
+        [DataMember(Name="dynamicForte")]
         public GlyphDefinition DynamicForte { get; set; }
 
-        [JsonProperty("dynamicFortePiano")]
+        [DataMember(Name="dynamicFortePiano")]
         public GlyphDefinition DynamicFortePiano { get; set; }
 
-        [JsonProperty("dynamicForzando")]
+        [DataMember(Name="dynamicForzando")]
         public GlyphDefinition DynamicForzando { get; set; }
 
-        [JsonProperty("dynamicMF")]
+        [DataMember(Name="dynamicMF")]
         public GlyphDefinition DynamicMf { get; set; }
 
-        [JsonProperty("dynamicMP")]
+        [DataMember(Name="dynamicMP")]
         public GlyphDefinition DynamicMp { get; set; }
 
-        [JsonProperty("dynamicMessaDiVoce")]
+        [DataMember(Name="dynamicMessaDiVoce")]
         public GlyphDefinition DynamicMessaDiVoce { get; set; }
 
-        [JsonProperty("dynamicMezzo")]
+        [DataMember(Name="dynamicMezzo")]
         public GlyphDefinition DynamicMezzo { get; set; }
 
-        [JsonProperty("dynamicNiente")]
+        [DataMember(Name="dynamicNiente")]
         public GlyphDefinition DynamicNiente { get; set; }
 
-        [JsonProperty("dynamicNienteForHairpin")]
+        [DataMember(Name="dynamicNienteForHairpin")]
         public GlyphDefinition DynamicNienteForHairpin { get; set; }
 
-        [JsonProperty("dynamicPF")]
+        [DataMember(Name="dynamicPF")]
         public GlyphDefinition DynamicPf { get; set; }
 
-        [JsonProperty("dynamicPP")]
+        [DataMember(Name="dynamicPP")]
         public GlyphDefinition DynamicPp { get; set; }
 
-        [JsonProperty("dynamicPPP")]
+        [DataMember(Name="dynamicPPP")]
         public GlyphDefinition DynamicPpp { get; set; }
 
-        [JsonProperty("dynamicPPPP")]
+        [DataMember(Name="dynamicPPPP")]
         public GlyphDefinition DynamicPppp { get; set; }
 
-        [JsonProperty("dynamicPPPPP")]
+        [DataMember(Name="dynamicPPPPP")]
         public GlyphDefinition DynamicPpppp { get; set; }
 
-        [JsonProperty("dynamicPPPPPP")]
+        [DataMember(Name="dynamicPPPPPP")]
         public GlyphDefinition DynamicPppppp { get; set; }
 
-        [JsonProperty("dynamicPiano")]
+        [DataMember(Name="dynamicPiano")]
         public GlyphDefinition DynamicPiano { get; set; }
 
-        [JsonProperty("dynamicRinforzando")]
+        [DataMember(Name="dynamicRinforzando")]
         public GlyphDefinition DynamicRinforzando { get; set; }
 
-        [JsonProperty("dynamicRinforzando1")]
+        [DataMember(Name="dynamicRinforzando1")]
         public GlyphDefinition DynamicRinforzando1 { get; set; }
 
-        [JsonProperty("dynamicRinforzando2")]
+        [DataMember(Name="dynamicRinforzando2")]
         public GlyphDefinition DynamicRinforzando2 { get; set; }
 
-        [JsonProperty("dynamicSforzando")]
+        [DataMember(Name="dynamicSforzando")]
         public GlyphDefinition DynamicSforzando { get; set; }
 
-        [JsonProperty("dynamicSforzando1")]
+        [DataMember(Name="dynamicSforzando1")]
         public GlyphDefinition DynamicSforzando1 { get; set; }
 
-        [JsonProperty("dynamicSforzandoPianissimo")]
+        [DataMember(Name="dynamicSforzandoPianissimo")]
         public GlyphDefinition DynamicSforzandoPianissimo { get; set; }
 
-        [JsonProperty("dynamicSforzandoPiano")]
+        [DataMember(Name="dynamicSforzandoPiano")]
         public GlyphDefinition DynamicSforzandoPiano { get; set; }
 
-        [JsonProperty("dynamicSforzato")]
+        [DataMember(Name="dynamicSforzato")]
         public GlyphDefinition DynamicSforzato { get; set; }
 
-        [JsonProperty("dynamicSforzatoFF")]
+        [DataMember(Name="dynamicSforzatoFF")]
         public GlyphDefinition DynamicSforzatoFf { get; set; }
 
-        [JsonProperty("dynamicSforzatoPiano")]
+        [DataMember(Name="dynamicSforzatoPiano")]
         public GlyphDefinition DynamicSforzatoPiano { get; set; }
 
-        [JsonProperty("dynamicZ")]
+        [DataMember(Name="dynamicZ")]
         public GlyphDefinition DynamicZ { get; set; }
 
-        [JsonProperty("elecAudioChannelsEight")]
+        [DataMember(Name="elecAudioChannelsEight")]
         public GlyphDefinition ElecAudioChannelsEight { get; set; }
 
-        [JsonProperty("elecAudioChannelsFive")]
+        [DataMember(Name="elecAudioChannelsFive")]
         public GlyphDefinition ElecAudioChannelsFive { get; set; }
 
-        [JsonProperty("elecAudioChannelsFour")]
+        [DataMember(Name="elecAudioChannelsFour")]
         public GlyphDefinition ElecAudioChannelsFour { get; set; }
 
-        [JsonProperty("elecAudioChannelsOne")]
+        [DataMember(Name="elecAudioChannelsOne")]
         public GlyphDefinition ElecAudioChannelsOne { get; set; }
 
-        [JsonProperty("elecAudioChannelsSeven")]
+        [DataMember(Name="elecAudioChannelsSeven")]
         public GlyphDefinition ElecAudioChannelsSeven { get; set; }
 
-        [JsonProperty("elecAudioChannelsSix")]
+        [DataMember(Name="elecAudioChannelsSix")]
         public GlyphDefinition ElecAudioChannelsSix { get; set; }
 
-        [JsonProperty("elecAudioChannelsThreeFrontal")]
+        [DataMember(Name="elecAudioChannelsThreeFrontal")]
         public GlyphDefinition ElecAudioChannelsThreeFrontal { get; set; }
 
-        [JsonProperty("elecAudioChannelsThreeSurround")]
+        [DataMember(Name="elecAudioChannelsThreeSurround")]
         public GlyphDefinition ElecAudioChannelsThreeSurround { get; set; }
 
-        [JsonProperty("elecAudioChannelsTwo")]
+        [DataMember(Name="elecAudioChannelsTwo")]
         public GlyphDefinition ElecAudioChannelsTwo { get; set; }
 
-        [JsonProperty("elecAudioIn")]
+        [DataMember(Name="elecAudioIn")]
         public GlyphDefinition ElecAudioIn { get; set; }
 
-        [JsonProperty("elecAudioMono")]
+        [DataMember(Name="elecAudioMono")]
         public GlyphDefinition ElecAudioMono { get; set; }
 
-        [JsonProperty("elecAudioOut")]
+        [DataMember(Name="elecAudioOut")]
         public GlyphDefinition ElecAudioOut { get; set; }
 
-        [JsonProperty("elecAudioStereo")]
+        [DataMember(Name="elecAudioStereo")]
         public GlyphDefinition ElecAudioStereo { get; set; }
 
-        [JsonProperty("elecCamera")]
+        [DataMember(Name="elecCamera")]
         public GlyphDefinition ElecCamera { get; set; }
 
-        [JsonProperty("elecDataIn")]
+        [DataMember(Name="elecDataIn")]
         public GlyphDefinition ElecDataIn { get; set; }
 
-        [JsonProperty("elecDataOut")]
+        [DataMember(Name="elecDataOut")]
         public GlyphDefinition ElecDataOut { get; set; }
 
-        [JsonProperty("elecDisc")]
+        [DataMember(Name="elecDisc")]
         public GlyphDefinition ElecDisc { get; set; }
 
-        [JsonProperty("elecDownload")]
+        [DataMember(Name="elecDownload")]
         public GlyphDefinition ElecDownload { get; set; }
 
-        [JsonProperty("elecEject")]
+        [DataMember(Name="elecEject")]
         public GlyphDefinition ElecEject { get; set; }
 
-        [JsonProperty("elecFastForward")]
+        [DataMember(Name="elecFastForward")]
         public GlyphDefinition ElecFastForward { get; set; }
 
-        [JsonProperty("elecHeadphones")]
+        [DataMember(Name="elecHeadphones")]
         public GlyphDefinition ElecHeadphones { get; set; }
 
-        [JsonProperty("elecHeadset")]
+        [DataMember(Name="elecHeadset")]
         public GlyphDefinition ElecHeadset { get; set; }
 
-        [JsonProperty("elecLineIn")]
+        [DataMember(Name="elecLineIn")]
         public GlyphDefinition ElecLineIn { get; set; }
 
-        [JsonProperty("elecLineOut")]
+        [DataMember(Name="elecLineOut")]
         public GlyphDefinition ElecLineOut { get; set; }
 
-        [JsonProperty("elecLoop")]
+        [DataMember(Name="elecLoop")]
         public GlyphDefinition ElecLoop { get; set; }
 
-        [JsonProperty("elecLoudspeaker")]
+        [DataMember(Name="elecLoudspeaker")]
         public GlyphDefinition ElecLoudspeaker { get; set; }
 
-        [JsonProperty("elecMIDIController0")]
+        [DataMember(Name="elecMIDIController0")]
         public GlyphDefinition ElecMidiController0 { get; set; }
 
-        [JsonProperty("elecMIDIController100")]
+        [DataMember(Name="elecMIDIController100")]
         public GlyphDefinition ElecMidiController100 { get; set; }
 
-        [JsonProperty("elecMIDIController20")]
+        [DataMember(Name="elecMIDIController20")]
         public GlyphDefinition ElecMidiController20 { get; set; }
 
-        [JsonProperty("elecMIDIController40")]
+        [DataMember(Name="elecMIDIController40")]
         public GlyphDefinition ElecMidiController40 { get; set; }
 
-        [JsonProperty("elecMIDIController60")]
+        [DataMember(Name="elecMIDIController60")]
         public GlyphDefinition ElecMidiController60 { get; set; }
 
-        [JsonProperty("elecMIDIController80")]
+        [DataMember(Name="elecMIDIController80")]
         public GlyphDefinition ElecMidiController80 { get; set; }
 
-        [JsonProperty("elecMIDIIn")]
+        [DataMember(Name="elecMIDIIn")]
         public GlyphDefinition ElecMidiIn { get; set; }
 
-        [JsonProperty("elecMIDIOut")]
+        [DataMember(Name="elecMIDIOut")]
         public GlyphDefinition ElecMidiOut { get; set; }
 
-        [JsonProperty("elecMicrophone")]
+        [DataMember(Name="elecMicrophone")]
         public GlyphDefinition ElecMicrophone { get; set; }
 
-        [JsonProperty("elecMicrophoneMute")]
+        [DataMember(Name="elecMicrophoneMute")]
         public GlyphDefinition ElecMicrophoneMute { get; set; }
 
-        [JsonProperty("elecMicrophoneUnmute")]
+        [DataMember(Name="elecMicrophoneUnmute")]
         public GlyphDefinition ElecMicrophoneUnmute { get; set; }
 
-        [JsonProperty("elecMixingConsole")]
+        [DataMember(Name="elecMixingConsole")]
         public GlyphDefinition ElecMixingConsole { get; set; }
 
-        [JsonProperty("elecMonitor")]
+        [DataMember(Name="elecMonitor")]
         public GlyphDefinition ElecMonitor { get; set; }
 
-        [JsonProperty("elecMute")]
+        [DataMember(Name="elecMute")]
         public GlyphDefinition ElecMute { get; set; }
 
-        [JsonProperty("elecPause")]
+        [DataMember(Name="elecPause")]
         public GlyphDefinition ElecPause { get; set; }
 
-        [JsonProperty("elecPlay")]
+        [DataMember(Name="elecPlay")]
         public GlyphDefinition ElecPlay { get; set; }
 
-        [JsonProperty("elecPowerOnOff")]
+        [DataMember(Name="elecPowerOnOff")]
         public GlyphDefinition ElecPowerOnOff { get; set; }
 
-        [JsonProperty("elecProjector")]
+        [DataMember(Name="elecProjector")]
         public GlyphDefinition ElecProjector { get; set; }
 
-        [JsonProperty("elecReplay")]
+        [DataMember(Name="elecReplay")]
         public GlyphDefinition ElecReplay { get; set; }
 
-        [JsonProperty("elecRewind")]
+        [DataMember(Name="elecRewind")]
         public GlyphDefinition ElecRewind { get; set; }
 
-        [JsonProperty("elecShuffle")]
+        [DataMember(Name="elecShuffle")]
         public GlyphDefinition ElecShuffle { get; set; }
 
-        [JsonProperty("elecSkipBackwards")]
+        [DataMember(Name="elecSkipBackwards")]
         public GlyphDefinition ElecSkipBackwards { get; set; }
 
-        [JsonProperty("elecSkipForwards")]
+        [DataMember(Name="elecSkipForwards")]
         public GlyphDefinition ElecSkipForwards { get; set; }
 
-        [JsonProperty("elecStop")]
+        [DataMember(Name="elecStop")]
         public GlyphDefinition ElecStop { get; set; }
 
-        [JsonProperty("elecTape")]
+        [DataMember(Name="elecTape")]
         public GlyphDefinition ElecTape { get; set; }
 
-        [JsonProperty("elecUSB")]
+        [DataMember(Name="elecUSB")]
         public GlyphDefinition ElecUsb { get; set; }
 
-        [JsonProperty("elecUnmute")]
+        [DataMember(Name="elecUnmute")]
         public GlyphDefinition ElecUnmute { get; set; }
 
-        [JsonProperty("elecUpload")]
+        [DataMember(Name="elecUpload")]
         public GlyphDefinition ElecUpload { get; set; }
 
-        [JsonProperty("elecVideoCamera")]
+        [DataMember(Name="elecVideoCamera")]
         public GlyphDefinition ElecVideoCamera { get; set; }
 
-        [JsonProperty("elecVideoIn")]
+        [DataMember(Name="elecVideoIn")]
         public GlyphDefinition ElecVideoIn { get; set; }
 
-        [JsonProperty("elecVideoOut")]
+        [DataMember(Name="elecVideoOut")]
         public GlyphDefinition ElecVideoOut { get; set; }
 
-        [JsonProperty("elecVolumeFader")]
+        [DataMember(Name="elecVolumeFader")]
         public GlyphDefinition ElecVolumeFader { get; set; }
 
-        [JsonProperty("elecVolumeFaderThumb")]
+        [DataMember(Name="elecVolumeFaderThumb")]
         public GlyphDefinition ElecVolumeFaderThumb { get; set; }
 
-        [JsonProperty("elecVolumeLevel0")]
+        [DataMember(Name="elecVolumeLevel0")]
         public GlyphDefinition ElecVolumeLevel0 { get; set; }
 
-        [JsonProperty("elecVolumeLevel100")]
+        [DataMember(Name="elecVolumeLevel100")]
         public GlyphDefinition ElecVolumeLevel100 { get; set; }
 
-        [JsonProperty("elecVolumeLevel20")]
+        [DataMember(Name="elecVolumeLevel20")]
         public GlyphDefinition ElecVolumeLevel20 { get; set; }
 
-        [JsonProperty("elecVolumeLevel40")]
+        [DataMember(Name="elecVolumeLevel40")]
         public GlyphDefinition ElecVolumeLevel40 { get; set; }
 
-        [JsonProperty("elecVolumeLevel60")]
+        [DataMember(Name="elecVolumeLevel60")]
         public GlyphDefinition ElecVolumeLevel60 { get; set; }
 
-        [JsonProperty("elecVolumeLevel80")]
+        [DataMember(Name="elecVolumeLevel80")]
         public GlyphDefinition ElecVolumeLevel80 { get; set; }
 
-        [JsonProperty("fClef")]
+        [DataMember(Name="fClef")]
         public GlyphDefinition FClef { get; set; }
 
-        [JsonProperty("fClef15ma")]
+        [DataMember(Name="fClef15ma")]
         public GlyphDefinition FClef15Ma { get; set; }
 
-        [JsonProperty("fClef15mb")]
+        [DataMember(Name="fClef15mb")]
         public GlyphDefinition FClef15Mb { get; set; }
 
-        [JsonProperty("fClef8va")]
+        [DataMember(Name="fClef8va")]
         public GlyphDefinition FClef8Va { get; set; }
 
-        [JsonProperty("fClef8vb")]
+        [DataMember(Name="fClef8vb")]
         public GlyphDefinition FClef8Vb { get; set; }
 
-        [JsonProperty("fClefArrowDown")]
+        [DataMember(Name="fClefArrowDown")]
         public GlyphDefinition FClefArrowDown { get; set; }
 
-        [JsonProperty("fClefArrowUp")]
+        [DataMember(Name="fClefArrowUp")]
         public GlyphDefinition FClefArrowUp { get; set; }
 
-        [JsonProperty("fClefChange")]
+        [DataMember(Name="fClefChange")]
         public GlyphDefinition FClefChange { get; set; }
 
-        [JsonProperty("fClefReversed")]
+        [DataMember(Name="fClefReversed")]
         public GlyphDefinition FClefReversed { get; set; }
 
-        [JsonProperty("fClefTriangular")]
+        [DataMember(Name="fClefTriangular")]
         public GlyphDefinition FClefTriangular { get; set; }
 
-        [JsonProperty("fClefTriangularToCClef")]
+        [DataMember(Name="fClefTriangularToCClef")]
         public GlyphDefinition FClefTriangularToCClef { get; set; }
 
-        [JsonProperty("fClefTurned")]
+        [DataMember(Name="fClefTurned")]
         public GlyphDefinition FClefTurned { get; set; }
 
-        [JsonProperty("fermataAbove")]
+        [DataMember(Name="fermataAbove")]
         public GlyphDefinition FermataAbove { get; set; }
 
-        [JsonProperty("fermataBelow")]
+        [DataMember(Name="fermataBelow")]
         public GlyphDefinition FermataBelow { get; set; }
 
-        [JsonProperty("fermataLongAbove")]
+        [DataMember(Name="fermataLongAbove")]
         public GlyphDefinition FermataLongAbove { get; set; }
 
-        [JsonProperty("fermataLongBelow")]
+        [DataMember(Name="fermataLongBelow")]
         public GlyphDefinition FermataLongBelow { get; set; }
 
-        [JsonProperty("fermataLongHenzeAbove")]
+        [DataMember(Name="fermataLongHenzeAbove")]
         public GlyphDefinition FermataLongHenzeAbove { get; set; }
 
-        [JsonProperty("fermataLongHenzeBelow")]
+        [DataMember(Name="fermataLongHenzeBelow")]
         public GlyphDefinition FermataLongHenzeBelow { get; set; }
 
-        [JsonProperty("fermataShortAbove")]
+        [DataMember(Name="fermataShortAbove")]
         public GlyphDefinition FermataShortAbove { get; set; }
 
-        [JsonProperty("fermataShortBelow")]
+        [DataMember(Name="fermataShortBelow")]
         public GlyphDefinition FermataShortBelow { get; set; }
 
-        [JsonProperty("fermataShortHenzeAbove")]
+        [DataMember(Name="fermataShortHenzeAbove")]
         public GlyphDefinition FermataShortHenzeAbove { get; set; }
 
-        [JsonProperty("fermataShortHenzeBelow")]
+        [DataMember(Name="fermataShortHenzeBelow")]
         public GlyphDefinition FermataShortHenzeBelow { get; set; }
 
-        [JsonProperty("fermataVeryLongAbove")]
+        [DataMember(Name="fermataVeryLongAbove")]
         public GlyphDefinition FermataVeryLongAbove { get; set; }
 
-        [JsonProperty("fermataVeryLongBelow")]
+        [DataMember(Name="fermataVeryLongBelow")]
         public GlyphDefinition FermataVeryLongBelow { get; set; }
 
-        [JsonProperty("fermataVeryShortAbove")]
+        [DataMember(Name="fermataVeryShortAbove")]
         public GlyphDefinition FermataVeryShortAbove { get; set; }
 
-        [JsonProperty("fermataVeryShortBelow")]
+        [DataMember(Name="fermataVeryShortBelow")]
         public GlyphDefinition FermataVeryShortBelow { get; set; }
 
-        [JsonProperty("figbass0")]
+        [DataMember(Name="figbass0")]
         public GlyphDefinition Figbass0 { get; set; }
 
-        [JsonProperty("figbass1")]
+        [DataMember(Name="figbass1")]
         public GlyphDefinition Figbass1 { get; set; }
 
-        [JsonProperty("figbass2")]
+        [DataMember(Name="figbass2")]
         public GlyphDefinition Figbass2 { get; set; }
 
-        [JsonProperty("figbass2Raised")]
+        [DataMember(Name="figbass2Raised")]
         public GlyphDefinition Figbass2Raised { get; set; }
 
-        [JsonProperty("figbass3")]
+        [DataMember(Name="figbass3")]
         public GlyphDefinition Figbass3 { get; set; }
 
-        [JsonProperty("figbass4")]
+        [DataMember(Name="figbass4")]
         public GlyphDefinition Figbass4 { get; set; }
 
-        [JsonProperty("figbass4Raised")]
+        [DataMember(Name="figbass4Raised")]
         public GlyphDefinition Figbass4Raised { get; set; }
 
-        [JsonProperty("figbass5")]
+        [DataMember(Name="figbass5")]
         public GlyphDefinition Figbass5 { get; set; }
 
-        [JsonProperty("figbass5Raised1")]
+        [DataMember(Name="figbass5Raised1")]
         public GlyphDefinition Figbass5Raised1 { get; set; }
 
-        [JsonProperty("figbass5Raised2")]
+        [DataMember(Name="figbass5Raised2")]
         public GlyphDefinition Figbass5Raised2 { get; set; }
 
-        [JsonProperty("figbass5Raised3")]
+        [DataMember(Name="figbass5Raised3")]
         public GlyphDefinition Figbass5Raised3 { get; set; }
 
-        [JsonProperty("figbass6")]
+        [DataMember(Name="figbass6")]
         public GlyphDefinition Figbass6 { get; set; }
 
-        [JsonProperty("figbass6Raised")]
+        [DataMember(Name="figbass6Raised")]
         public GlyphDefinition Figbass6Raised { get; set; }
 
-        [JsonProperty("figbass7")]
+        [DataMember(Name="figbass7")]
         public GlyphDefinition Figbass7 { get; set; }
 
-        [JsonProperty("figbass7Raised1")]
+        [DataMember(Name="figbass7Raised1")]
         public GlyphDefinition Figbass7Raised1 { get; set; }
 
-        [JsonProperty("figbass7Raised2")]
+        [DataMember(Name="figbass7Raised2")]
         public GlyphDefinition Figbass7Raised2 { get; set; }
 
-        [JsonProperty("figbass8")]
+        [DataMember(Name="figbass8")]
         public GlyphDefinition Figbass8 { get; set; }
 
-        [JsonProperty("figbass9")]
+        [DataMember(Name="figbass9")]
         public GlyphDefinition Figbass9 { get; set; }
 
-        [JsonProperty("figbass9Raised")]
+        [DataMember(Name="figbass9Raised")]
         public GlyphDefinition Figbass9Raised { get; set; }
 
-        [JsonProperty("figbassBracketLeft")]
+        [DataMember(Name="figbassBracketLeft")]
         public GlyphDefinition FigbassBracketLeft { get; set; }
 
-        [JsonProperty("figbassBracketRight")]
+        [DataMember(Name="figbassBracketRight")]
         public GlyphDefinition FigbassBracketRight { get; set; }
 
-        [JsonProperty("figbassCombiningLowering")]
+        [DataMember(Name="figbassCombiningLowering")]
         public GlyphDefinition FigbassCombiningLowering { get; set; }
 
-        [JsonProperty("figbassCombiningRaising")]
+        [DataMember(Name="figbassCombiningRaising")]
         public GlyphDefinition FigbassCombiningRaising { get; set; }
 
-        [JsonProperty("figbassDoubleFlat")]
+        [DataMember(Name="figbassDoubleFlat")]
         public GlyphDefinition FigbassDoubleFlat { get; set; }
 
-        [JsonProperty("figbassDoubleSharp")]
+        [DataMember(Name="figbassDoubleSharp")]
         public GlyphDefinition FigbassDoubleSharp { get; set; }
 
-        [JsonProperty("figbassFlat")]
+        [DataMember(Name="figbassFlat")]
         public GlyphDefinition FigbassFlat { get; set; }
 
-        [JsonProperty("figbassNatural")]
+        [DataMember(Name="figbassNatural")]
         public GlyphDefinition FigbassNatural { get; set; }
 
-        [JsonProperty("figbassParensLeft")]
+        [DataMember(Name="figbassParensLeft")]
         public GlyphDefinition FigbassParensLeft { get; set; }
 
-        [JsonProperty("figbassParensRight")]
+        [DataMember(Name="figbassParensRight")]
         public GlyphDefinition FigbassParensRight { get; set; }
 
-        [JsonProperty("figbassPlus")]
+        [DataMember(Name="figbassPlus")]
         public GlyphDefinition FigbassPlus { get; set; }
 
-        [JsonProperty("figbassSharp")]
+        [DataMember(Name="figbassSharp")]
         public GlyphDefinition FigbassSharp { get; set; }
 
-        [JsonProperty("flag1024thDown")]
+        [DataMember(Name="flag1024thDown")]
         public GlyphDefinition Flag1024ThDown { get; set; }
 
-        [JsonProperty("flag1024thUp")]
+        [DataMember(Name="flag1024thUp")]
         public GlyphDefinition Flag1024ThUp { get; set; }
 
-        [JsonProperty("flag128thDown")]
+        [DataMember(Name="flag128thDown")]
         public GlyphDefinition Flag128ThDown { get; set; }
 
-        [JsonProperty("flag128thUp")]
+        [DataMember(Name="flag128thUp")]
         public GlyphDefinition Flag128ThUp { get; set; }
 
-        [JsonProperty("flag16thDown")]
+        [DataMember(Name="flag16thDown")]
         public GlyphDefinition Flag16ThDown { get; set; }
 
-        [JsonProperty("flag16thUp")]
+        [DataMember(Name="flag16thUp")]
         public GlyphDefinition Flag16ThUp { get; set; }
 
-        [JsonProperty("flag256thDown")]
+        [DataMember(Name="flag256thDown")]
         public GlyphDefinition Flag256ThDown { get; set; }
 
-        [JsonProperty("flag256thUp")]
+        [DataMember(Name="flag256thUp")]
         public GlyphDefinition Flag256ThUp { get; set; }
 
-        [JsonProperty("flag32ndDown")]
+        [DataMember(Name="flag32ndDown")]
         public GlyphDefinition Flag32NdDown { get; set; }
 
-        [JsonProperty("flag32ndUp")]
+        [DataMember(Name="flag32ndUp")]
         public GlyphDefinition Flag32NdUp { get; set; }
 
-        [JsonProperty("flag512thDown")]
+        [DataMember(Name="flag512thDown")]
         public GlyphDefinition Flag512ThDown { get; set; }
 
-        [JsonProperty("flag512thUp")]
+        [DataMember(Name="flag512thUp")]
         public GlyphDefinition Flag512ThUp { get; set; }
 
-        [JsonProperty("flag64thDown")]
+        [DataMember(Name="flag64thDown")]
         public GlyphDefinition Flag64ThDown { get; set; }
 
-        [JsonProperty("flag64thUp")]
+        [DataMember(Name="flag64thUp")]
         public GlyphDefinition Flag64ThUp { get; set; }
 
-        [JsonProperty("flag8thDown")]
+        [DataMember(Name="flag8thDown")]
         public GlyphDefinition Flag8ThDown { get; set; }
 
-        [JsonProperty("flag8thUp")]
+        [DataMember(Name="flag8thUp")]
         public GlyphDefinition Flag8ThUp { get; set; }
 
-        [JsonProperty("flagInternalDown")]
+        [DataMember(Name="flagInternalDown")]
         public GlyphDefinition FlagInternalDown { get; set; }
 
-        [JsonProperty("flagInternalUp")]
+        [DataMember(Name="flagInternalUp")]
         public GlyphDefinition FlagInternalUp { get; set; }
 
-        [JsonProperty("fretboard3String")]
+        [DataMember(Name="fretboard3String")]
         public GlyphDefinition Fretboard3String { get; set; }
 
-        [JsonProperty("fretboard3StringNut")]
+        [DataMember(Name="fretboard3StringNut")]
         public GlyphDefinition Fretboard3StringNut { get; set; }
 
-        [JsonProperty("fretboard4String")]
+        [DataMember(Name="fretboard4String")]
         public GlyphDefinition Fretboard4String { get; set; }
 
-        [JsonProperty("fretboard4StringNut")]
+        [DataMember(Name="fretboard4StringNut")]
         public GlyphDefinition Fretboard4StringNut { get; set; }
 
-        [JsonProperty("fretboard5String")]
+        [DataMember(Name="fretboard5String")]
         public GlyphDefinition Fretboard5String { get; set; }
 
-        [JsonProperty("fretboard5StringNut")]
+        [DataMember(Name="fretboard5StringNut")]
         public GlyphDefinition Fretboard5StringNut { get; set; }
 
-        [JsonProperty("fretboard6String")]
+        [DataMember(Name="fretboard6String")]
         public GlyphDefinition Fretboard6String { get; set; }
 
-        [JsonProperty("fretboard6StringNut")]
+        [DataMember(Name="fretboard6StringNut")]
         public GlyphDefinition Fretboard6StringNut { get; set; }
 
-        [JsonProperty("fretboardFilledCircle")]
+        [DataMember(Name="fretboardFilledCircle")]
         public GlyphDefinition FretboardFilledCircle { get; set; }
 
-        [JsonProperty("fretboardO")]
+        [DataMember(Name="fretboardO")]
         public GlyphDefinition FretboardO { get; set; }
 
-        [JsonProperty("fretboardX")]
+        [DataMember(Name="fretboardX")]
         public GlyphDefinition FretboardX { get; set; }
 
-        [JsonProperty("functionAngleLeft")]
+        [DataMember(Name="functionAngleLeft")]
         public GlyphDefinition FunctionAngleLeft { get; set; }
 
-        [JsonProperty("functionAngleRight")]
+        [DataMember(Name="functionAngleRight")]
         public GlyphDefinition FunctionAngleRight { get; set; }
 
-        [JsonProperty("functionBracketLeft")]
+        [DataMember(Name="functionBracketLeft")]
         public GlyphDefinition FunctionBracketLeft { get; set; }
 
-        [JsonProperty("functionBracketRight")]
+        [DataMember(Name="functionBracketRight")]
         public GlyphDefinition FunctionBracketRight { get; set; }
 
-        [JsonProperty("functionDD")]
+        [DataMember(Name="functionDD")]
         public GlyphDefinition FunctionDd { get; set; }
 
-        [JsonProperty("functionDLower")]
+        [DataMember(Name="functionDLower")]
         public GlyphDefinition FunctionDLower { get; set; }
 
-        [JsonProperty("functionDUpper")]
+        [DataMember(Name="functionDUpper")]
         public GlyphDefinition FunctionDUpper { get; set; }
 
-        [JsonProperty("functionEight")]
+        [DataMember(Name="functionEight")]
         public GlyphDefinition FunctionEight { get; set; }
 
-        [JsonProperty("functionFive")]
+        [DataMember(Name="functionFive")]
         public GlyphDefinition FunctionFive { get; set; }
 
-        [JsonProperty("functionFour")]
+        [DataMember(Name="functionFour")]
         public GlyphDefinition FunctionFour { get; set; }
 
-        [JsonProperty("functionGLower")]
+        [DataMember(Name="functionGLower")]
         public GlyphDefinition FunctionGLower { get; set; }
 
-        [JsonProperty("functionGUpper")]
+        [DataMember(Name="functionGUpper")]
         public GlyphDefinition FunctionGUpper { get; set; }
 
-        [JsonProperty("functionGreaterThan")]
+        [DataMember(Name="functionGreaterThan")]
         public GlyphDefinition FunctionGreaterThan { get; set; }
 
-        [JsonProperty("functionLessThan")]
+        [DataMember(Name="functionLessThan")]
         public GlyphDefinition FunctionLessThan { get; set; }
 
-        [JsonProperty("functionMinus")]
+        [DataMember(Name="functionMinus")]
         public GlyphDefinition FunctionMinus { get; set; }
 
-        [JsonProperty("functionNLower")]
+        [DataMember(Name="functionNLower")]
         public GlyphDefinition FunctionNLower { get; set; }
 
-        [JsonProperty("functionNUpper")]
+        [DataMember(Name="functionNUpper")]
         public GlyphDefinition FunctionNUpper { get; set; }
 
-        [JsonProperty("functionNine")]
+        [DataMember(Name="functionNine")]
         public GlyphDefinition FunctionNine { get; set; }
 
-        [JsonProperty("functionOne")]
+        [DataMember(Name="functionOne")]
         public GlyphDefinition FunctionOne { get; set; }
 
-        [JsonProperty("functionPLower")]
+        [DataMember(Name="functionPLower")]
         public GlyphDefinition FunctionPLower { get; set; }
 
-        [JsonProperty("functionPUpper")]
+        [DataMember(Name="functionPUpper")]
         public GlyphDefinition FunctionPUpper { get; set; }
 
-        [JsonProperty("functionParensLeft")]
+        [DataMember(Name="functionParensLeft")]
         public GlyphDefinition FunctionParensLeft { get; set; }
 
-        [JsonProperty("functionParensRight")]
+        [DataMember(Name="functionParensRight")]
         public GlyphDefinition FunctionParensRight { get; set; }
 
-        [JsonProperty("functionPlus")]
+        [DataMember(Name="functionPlus")]
         public GlyphDefinition FunctionPlus { get; set; }
 
-        [JsonProperty("functionRepetition1")]
+        [DataMember(Name="functionRepetition1")]
         public GlyphDefinition FunctionRepetition1 { get; set; }
 
-        [JsonProperty("functionRepetition2")]
+        [DataMember(Name="functionRepetition2")]
         public GlyphDefinition FunctionRepetition2 { get; set; }
 
-        [JsonProperty("functionRing")]
+        [DataMember(Name="functionRing")]
         public GlyphDefinition FunctionRing { get; set; }
 
-        [JsonProperty("functionSLower")]
+        [DataMember(Name="functionSLower")]
         public GlyphDefinition FunctionSLower { get; set; }
 
-        [JsonProperty("functionSSLower")]
+        [DataMember(Name="functionSSLower")]
         public GlyphDefinition FunctionSsLower { get; set; }
 
-        [JsonProperty("functionSSUpper")]
+        [DataMember(Name="functionSSUpper")]
         public GlyphDefinition FunctionSsUpper { get; set; }
 
-        [JsonProperty("functionSUpper")]
+        [DataMember(Name="functionSUpper")]
         public GlyphDefinition FunctionSUpper { get; set; }
 
-        [JsonProperty("functionSeven")]
+        [DataMember(Name="functionSeven")]
         public GlyphDefinition FunctionSeven { get; set; }
 
-        [JsonProperty("functionSix")]
+        [DataMember(Name="functionSix")]
         public GlyphDefinition FunctionSix { get; set; }
 
-        [JsonProperty("functionSlashedDD")]
+        [DataMember(Name="functionSlashedDD")]
         public GlyphDefinition FunctionSlashedDd { get; set; }
 
-        [JsonProperty("functionTLower")]
+        [DataMember(Name="functionTLower")]
         public GlyphDefinition FunctionTLower { get; set; }
 
-        [JsonProperty("functionTUpper")]
+        [DataMember(Name="functionTUpper")]
         public GlyphDefinition FunctionTUpper { get; set; }
 
-        [JsonProperty("functionThree")]
+        [DataMember(Name="functionThree")]
         public GlyphDefinition FunctionThree { get; set; }
 
-        [JsonProperty("functionTwo")]
+        [DataMember(Name="functionTwo")]
         public GlyphDefinition FunctionTwo { get; set; }
 
-        [JsonProperty("functionVLower")]
+        [DataMember(Name="functionVLower")]
         public GlyphDefinition FunctionVLower { get; set; }
 
-        [JsonProperty("functionVUpper")]
+        [DataMember(Name="functionVUpper")]
         public GlyphDefinition FunctionVUpper { get; set; }
 
-        [JsonProperty("functionZero")]
+        [DataMember(Name="functionZero")]
         public GlyphDefinition FunctionZero { get; set; }
 
-        [JsonProperty("gClef")]
+        [DataMember(Name="gClef")]
         public GlyphDefinition GClef { get; set; }
 
-        [JsonProperty("gClef15ma")]
+        [DataMember(Name="gClef15ma")]
         public GlyphDefinition GClef15Ma { get; set; }
 
-        [JsonProperty("gClef15mb")]
+        [DataMember(Name="gClef15mb")]
         public GlyphDefinition GClef15Mb { get; set; }
 
-        [JsonProperty("gClef8va")]
+        [DataMember(Name="gClef8va")]
         public GlyphDefinition GClef8Va { get; set; }
 
-        [JsonProperty("gClef8vb")]
+        [DataMember(Name="gClef8vb")]
         public GlyphDefinition GClef8Vb { get; set; }
 
-        [JsonProperty("gClef8vbCClef")]
+        [DataMember(Name="gClef8vbCClef")]
         public GlyphDefinition GClef8VbCClef { get; set; }
 
-        [JsonProperty("gClef8vbOld")]
+        [DataMember(Name="gClef8vbOld")]
         public GlyphDefinition GClef8VbOld { get; set; }
 
-        [JsonProperty("gClef8vbParens")]
+        [DataMember(Name="gClef8vbParens")]
         public GlyphDefinition GClef8VbParens { get; set; }
 
-        [JsonProperty("gClefArrowDown")]
+        [DataMember(Name="gClefArrowDown")]
         public GlyphDefinition GClefArrowDown { get; set; }
 
-        [JsonProperty("gClefArrowUp")]
+        [DataMember(Name="gClefArrowUp")]
         public GlyphDefinition GClefArrowUp { get; set; }
 
-        [JsonProperty("gClefChange")]
+        [DataMember(Name="gClefChange")]
         public GlyphDefinition GClefChange { get; set; }
 
-        [JsonProperty("gClefLigatedNumberAbove")]
+        [DataMember(Name="gClefLigatedNumberAbove")]
         public GlyphDefinition GClefLigatedNumberAbove { get; set; }
 
-        [JsonProperty("gClefLigatedNumberBelow")]
+        [DataMember(Name="gClefLigatedNumberBelow")]
         public GlyphDefinition GClefLigatedNumberBelow { get; set; }
 
-        [JsonProperty("gClefReversed")]
+        [DataMember(Name="gClefReversed")]
         public GlyphDefinition GClefReversed { get; set; }
 
-        [JsonProperty("gClefTurned")]
+        [DataMember(Name="gClefTurned")]
         public GlyphDefinition GClefTurned { get; set; }
 
-        [JsonProperty("glissandoDown")]
+        [DataMember(Name="glissandoDown")]
         public GlyphDefinition GlissandoDown { get; set; }
 
-        [JsonProperty("glissandoUp")]
+        [DataMember(Name="glissandoUp")]
         public GlyphDefinition GlissandoUp { get; set; }
 
-        [JsonProperty("graceNoteAcciaccaturaStemDown")]
+        [DataMember(Name="graceNoteAcciaccaturaStemDown")]
         public GlyphDefinition GraceNoteAcciaccaturaStemDown { get; set; }
 
-        [JsonProperty("graceNoteAcciaccaturaStemUp")]
+        [DataMember(Name="graceNoteAcciaccaturaStemUp")]
         public GlyphDefinition GraceNoteAcciaccaturaStemUp { get; set; }
 
-        [JsonProperty("graceNoteAppoggiaturaStemDown")]
+        [DataMember(Name="graceNoteAppoggiaturaStemDown")]
         public GlyphDefinition GraceNoteAppoggiaturaStemDown { get; set; }
 
-        [JsonProperty("graceNoteAppoggiaturaStemUp")]
+        [DataMember(Name="graceNoteAppoggiaturaStemUp")]
         public GlyphDefinition GraceNoteAppoggiaturaStemUp { get; set; }
 
-        [JsonProperty("graceNoteSlashStemDown")]
+        [DataMember(Name="graceNoteSlashStemDown")]
         public GlyphDefinition GraceNoteSlashStemDown { get; set; }
 
-        [JsonProperty("graceNoteSlashStemUp")]
+        [DataMember(Name="graceNoteSlashStemUp")]
         public GlyphDefinition GraceNoteSlashStemUp { get; set; }
 
-        [JsonProperty("guitarClosePedal")]
+        [DataMember(Name="guitarClosePedal")]
         public GlyphDefinition GuitarClosePedal { get; set; }
 
-        [JsonProperty("guitarFadeIn")]
+        [DataMember(Name="guitarFadeIn")]
         public GlyphDefinition GuitarFadeIn { get; set; }
 
-        [JsonProperty("guitarFadeOut")]
+        [DataMember(Name="guitarFadeOut")]
         public GlyphDefinition GuitarFadeOut { get; set; }
 
-        [JsonProperty("guitarGolpe")]
+        [DataMember(Name="guitarGolpe")]
         public GlyphDefinition GuitarGolpe { get; set; }
 
-        [JsonProperty("guitarHalfOpenPedal")]
+        [DataMember(Name="guitarHalfOpenPedal")]
         public GlyphDefinition GuitarHalfOpenPedal { get; set; }
 
-        [JsonProperty("guitarLeftHandTapping")]
+        [DataMember(Name="guitarLeftHandTapping")]
         public GlyphDefinition GuitarLeftHandTapping { get; set; }
 
-        [JsonProperty("guitarOpenPedal")]
+        [DataMember(Name="guitarOpenPedal")]
         public GlyphDefinition GuitarOpenPedal { get; set; }
 
-        [JsonProperty("guitarRightHandTapping")]
+        [DataMember(Name="guitarRightHandTapping")]
         public GlyphDefinition GuitarRightHandTapping { get; set; }
 
-        [JsonProperty("guitarShake")]
+        [DataMember(Name="guitarShake")]
         public GlyphDefinition GuitarShake { get; set; }
 
-        [JsonProperty("guitarString0")]
+        [DataMember(Name="guitarString0")]
         public GlyphDefinition GuitarString0 { get; set; }
 
-        [JsonProperty("guitarString1")]
+        [DataMember(Name="guitarString1")]
         public GlyphDefinition GuitarString1 { get; set; }
 
-        [JsonProperty("guitarString2")]
+        [DataMember(Name="guitarString2")]
         public GlyphDefinition GuitarString2 { get; set; }
 
-        [JsonProperty("guitarString3")]
+        [DataMember(Name="guitarString3")]
         public GlyphDefinition GuitarString3 { get; set; }
 
-        [JsonProperty("guitarString4")]
+        [DataMember(Name="guitarString4")]
         public GlyphDefinition GuitarString4 { get; set; }
 
-        [JsonProperty("guitarString5")]
+        [DataMember(Name="guitarString5")]
         public GlyphDefinition GuitarString5 { get; set; }
 
-        [JsonProperty("guitarString6")]
+        [DataMember(Name="guitarString6")]
         public GlyphDefinition GuitarString6 { get; set; }
 
-        [JsonProperty("guitarString7")]
+        [DataMember(Name="guitarString7")]
         public GlyphDefinition GuitarString7 { get; set; }
 
-        [JsonProperty("guitarString8")]
+        [DataMember(Name="guitarString8")]
         public GlyphDefinition GuitarString8 { get; set; }
 
-        [JsonProperty("guitarString9")]
+        [DataMember(Name="guitarString9")]
         public GlyphDefinition GuitarString9 { get; set; }
 
-        [JsonProperty("guitarStrumDown")]
+        [DataMember(Name="guitarStrumDown")]
         public GlyphDefinition GuitarStrumDown { get; set; }
 
-        [JsonProperty("guitarStrumUp")]
+        [DataMember(Name="guitarStrumUp")]
         public GlyphDefinition GuitarStrumUp { get; set; }
 
-        [JsonProperty("guitarVibratoBarDip")]
+        [DataMember(Name="guitarVibratoBarDip")]
         public GlyphDefinition GuitarVibratoBarDip { get; set; }
 
-        [JsonProperty("guitarVibratoBarScoop")]
+        [DataMember(Name="guitarVibratoBarScoop")]
         public GlyphDefinition GuitarVibratoBarScoop { get; set; }
 
-        [JsonProperty("guitarVibratoStroke")]
+        [DataMember(Name="guitarVibratoStroke")]
         public GlyphDefinition GuitarVibratoStroke { get; set; }
 
-        [JsonProperty("guitarVolumeSwell")]
+        [DataMember(Name="guitarVolumeSwell")]
         public GlyphDefinition GuitarVolumeSwell { get; set; }
 
-        [JsonProperty("guitarWideVibratoStroke")]
+        [DataMember(Name="guitarWideVibratoStroke")]
         public GlyphDefinition GuitarWideVibratoStroke { get; set; }
 
-        [JsonProperty("handbellsBelltree")]
+        [DataMember(Name="handbellsBelltree")]
         public GlyphDefinition HandbellsBelltree { get; set; }
 
-        [JsonProperty("handbellsDamp3")]
+        [DataMember(Name="handbellsDamp3")]
         public GlyphDefinition HandbellsDamp3 { get; set; }
 
-        [JsonProperty("handbellsEcho1")]
+        [DataMember(Name="handbellsEcho1")]
         public GlyphDefinition HandbellsEcho1 { get; set; }
 
-        [JsonProperty("handbellsEcho2")]
+        [DataMember(Name="handbellsEcho2")]
         public GlyphDefinition HandbellsEcho2 { get; set; }
 
-        [JsonProperty("handbellsGyro")]
+        [DataMember(Name="handbellsGyro")]
         public GlyphDefinition HandbellsGyro { get; set; }
 
-        [JsonProperty("handbellsHandMartellato")]
+        [DataMember(Name="handbellsHandMartellato")]
         public GlyphDefinition HandbellsHandMartellato { get; set; }
 
-        [JsonProperty("handbellsMalletBellOnTable")]
+        [DataMember(Name="handbellsMalletBellOnTable")]
         public GlyphDefinition HandbellsMalletBellOnTable { get; set; }
 
-        [JsonProperty("handbellsMalletBellSuspended")]
+        [DataMember(Name="handbellsMalletBellSuspended")]
         public GlyphDefinition HandbellsMalletBellSuspended { get; set; }
 
-        [JsonProperty("handbellsMalletLft")]
+        [DataMember(Name="handbellsMalletLft")]
         public GlyphDefinition HandbellsMalletLft { get; set; }
 
-        [JsonProperty("handbellsMartellato")]
+        [DataMember(Name="handbellsMartellato")]
         public GlyphDefinition HandbellsMartellato { get; set; }
 
-        [JsonProperty("handbellsMartellatoLift")]
+        [DataMember(Name="handbellsMartellatoLift")]
         public GlyphDefinition HandbellsMartellatoLift { get; set; }
 
-        [JsonProperty("handbellsMutedMartellato")]
+        [DataMember(Name="handbellsMutedMartellato")]
         public GlyphDefinition HandbellsMutedMartellato { get; set; }
 
-        [JsonProperty("handbellsPluckLift")]
+        [DataMember(Name="handbellsPluckLift")]
         public GlyphDefinition HandbellsPluckLift { get; set; }
 
-        [JsonProperty("handbellsSwing")]
+        [DataMember(Name="handbellsSwing")]
         public GlyphDefinition HandbellsSwing { get; set; }
 
-        [JsonProperty("handbellsSwingDown")]
+        [DataMember(Name="handbellsSwingDown")]
         public GlyphDefinition HandbellsSwingDown { get; set; }
 
-        [JsonProperty("handbellsSwingUp")]
+        [DataMember(Name="handbellsSwingUp")]
         public GlyphDefinition HandbellsSwingUp { get; set; }
 
-        [JsonProperty("handbellsTablePairBells")]
+        [DataMember(Name="handbellsTablePairBells")]
         public GlyphDefinition HandbellsTablePairBells { get; set; }
 
-        [JsonProperty("handbellsTableSingleBell")]
+        [DataMember(Name="handbellsTableSingleBell")]
         public GlyphDefinition HandbellsTableSingleBell { get; set; }
 
-        [JsonProperty("harpMetalRod")]
+        [DataMember(Name="harpMetalRod")]
         public GlyphDefinition HarpMetalRod { get; set; }
 
-        [JsonProperty("harpPedalCentered")]
+        [DataMember(Name="harpPedalCentered")]
         public GlyphDefinition HarpPedalCentered { get; set; }
 
-        [JsonProperty("harpPedalDivider")]
+        [DataMember(Name="harpPedalDivider")]
         public GlyphDefinition HarpPedalDivider { get; set; }
 
-        [JsonProperty("harpPedalLowered")]
+        [DataMember(Name="harpPedalLowered")]
         public GlyphDefinition HarpPedalLowered { get; set; }
 
-        [JsonProperty("harpPedalRaised")]
+        [DataMember(Name="harpPedalRaised")]
         public GlyphDefinition HarpPedalRaised { get; set; }
 
-        [JsonProperty("harpSalzedoAeolianAscending")]
+        [DataMember(Name="harpSalzedoAeolianAscending")]
         public GlyphDefinition HarpSalzedoAeolianAscending { get; set; }
 
-        [JsonProperty("harpSalzedoAeolianDescending")]
+        [DataMember(Name="harpSalzedoAeolianDescending")]
         public GlyphDefinition HarpSalzedoAeolianDescending { get; set; }
 
-        [JsonProperty("harpSalzedoFluidicSoundsLeft")]
+        [DataMember(Name="harpSalzedoFluidicSoundsLeft")]
         public GlyphDefinition HarpSalzedoFluidicSoundsLeft { get; set; }
 
-        [JsonProperty("harpSalzedoFluidicSoundsRight")]
+        [DataMember(Name="harpSalzedoFluidicSoundsRight")]
         public GlyphDefinition HarpSalzedoFluidicSoundsRight { get; set; }
 
-        [JsonProperty("harpSalzedoMetallicSounds")]
+        [DataMember(Name="harpSalzedoMetallicSounds")]
         public GlyphDefinition HarpSalzedoMetallicSounds { get; set; }
 
-        [JsonProperty("harpSalzedoMuffleTotally")]
+        [DataMember(Name="harpSalzedoMuffleTotally")]
         public GlyphDefinition HarpSalzedoMuffleTotally { get; set; }
 
-        [JsonProperty("harpSalzedoOboicFlux")]
+        [DataMember(Name="harpSalzedoOboicFlux")]
         public GlyphDefinition HarpSalzedoOboicFlux { get; set; }
 
-        [JsonProperty("harpSalzedoPlayUpperEnd")]
+        [DataMember(Name="harpSalzedoPlayUpperEnd")]
         public GlyphDefinition HarpSalzedoPlayUpperEnd { get; set; }
 
-        [JsonProperty("harpSalzedoSlideWithSuppleness")]
+        [DataMember(Name="harpSalzedoSlideWithSuppleness")]
         public GlyphDefinition HarpSalzedoSlideWithSuppleness { get; set; }
 
-        [JsonProperty("harpSalzedoTamTamSounds")]
+        [DataMember(Name="harpSalzedoTamTamSounds")]
         public GlyphDefinition HarpSalzedoTamTamSounds { get; set; }
 
-        [JsonProperty("harpSalzedoThunderEffect")]
+        [DataMember(Name="harpSalzedoThunderEffect")]
         public GlyphDefinition HarpSalzedoThunderEffect { get; set; }
 
-        [JsonProperty("harpSalzedoTimpanicSounds")]
+        [DataMember(Name="harpSalzedoTimpanicSounds")]
         public GlyphDefinition HarpSalzedoTimpanicSounds { get; set; }
 
-        [JsonProperty("harpSalzedoWhistlingSounds")]
+        [DataMember(Name="harpSalzedoWhistlingSounds")]
         public GlyphDefinition HarpSalzedoWhistlingSounds { get; set; }
 
-        [JsonProperty("harpStringNoiseStem")]
+        [DataMember(Name="harpStringNoiseStem")]
         public GlyphDefinition HarpStringNoiseStem { get; set; }
 
-        [JsonProperty("harpTuningKey")]
+        [DataMember(Name="harpTuningKey")]
         public GlyphDefinition HarpTuningKey { get; set; }
 
-        [JsonProperty("harpTuningKeyGlissando")]
+        [DataMember(Name="harpTuningKeyGlissando")]
         public GlyphDefinition HarpTuningKeyGlissando { get; set; }
 
-        [JsonProperty("harpTuningKeyHandle")]
+        [DataMember(Name="harpTuningKeyHandle")]
         public GlyphDefinition HarpTuningKeyHandle { get; set; }
 
-        [JsonProperty("harpTuningKeyShank")]
+        [DataMember(Name="harpTuningKeyShank")]
         public GlyphDefinition HarpTuningKeyShank { get; set; }
 
-        [JsonProperty("keyboardBebung2DotsAbove")]
+        [DataMember(Name="keyboardBebung2DotsAbove")]
         public GlyphDefinition KeyboardBebung2DotsAbove { get; set; }
 
-        [JsonProperty("keyboardBebung2DotsBelow")]
+        [DataMember(Name="keyboardBebung2DotsBelow")]
         public GlyphDefinition KeyboardBebung2DotsBelow { get; set; }
 
-        [JsonProperty("keyboardBebung3DotsAbove")]
+        [DataMember(Name="keyboardBebung3DotsAbove")]
         public GlyphDefinition KeyboardBebung3DotsAbove { get; set; }
 
-        [JsonProperty("keyboardBebung3DotsBelow")]
+        [DataMember(Name="keyboardBebung3DotsBelow")]
         public GlyphDefinition KeyboardBebung3DotsBelow { get; set; }
 
-        [JsonProperty("keyboardBebung4DotsAbove")]
+        [DataMember(Name="keyboardBebung4DotsAbove")]
         public GlyphDefinition KeyboardBebung4DotsAbove { get; set; }
 
-        [JsonProperty("keyboardBebung4DotsBelow")]
+        [DataMember(Name="keyboardBebung4DotsBelow")]
         public GlyphDefinition KeyboardBebung4DotsBelow { get; set; }
 
-        [JsonProperty("keyboardLeftPedalPictogram")]
+        [DataMember(Name="keyboardLeftPedalPictogram")]
         public GlyphDefinition KeyboardLeftPedalPictogram { get; set; }
 
-        [JsonProperty("keyboardMiddlePedalPictogram")]
+        [DataMember(Name="keyboardMiddlePedalPictogram")]
         public GlyphDefinition KeyboardMiddlePedalPictogram { get; set; }
 
-        [JsonProperty("keyboardPedalD")]
+        [DataMember(Name="keyboardPedalD")]
         public GlyphDefinition KeyboardPedalD { get; set; }
 
-        [JsonProperty("keyboardPedalDot")]
+        [DataMember(Name="keyboardPedalDot")]
         public GlyphDefinition KeyboardPedalDot { get; set; }
 
-        [JsonProperty("keyboardPedalE")]
+        [DataMember(Name="keyboardPedalE")]
         public GlyphDefinition KeyboardPedalE { get; set; }
 
-        [JsonProperty("keyboardPedalHalf")]
+        [DataMember(Name="keyboardPedalHalf")]
         public GlyphDefinition KeyboardPedalHalf { get; set; }
 
-        [JsonProperty("keyboardPedalHalf2")]
+        [DataMember(Name="keyboardPedalHalf2")]
         public GlyphDefinition KeyboardPedalHalf2 { get; set; }
 
-        [JsonProperty("keyboardPedalHalf3")]
+        [DataMember(Name="keyboardPedalHalf3")]
         public GlyphDefinition KeyboardPedalHalf3 { get; set; }
 
-        [JsonProperty("keyboardPedalHeel1")]
+        [DataMember(Name="keyboardPedalHeel1")]
         public GlyphDefinition KeyboardPedalHeel1 { get; set; }
 
-        [JsonProperty("keyboardPedalHeel2")]
+        [DataMember(Name="keyboardPedalHeel2")]
         public GlyphDefinition KeyboardPedalHeel2 { get; set; }
 
-        [JsonProperty("keyboardPedalHeel3")]
+        [DataMember(Name="keyboardPedalHeel3")]
         public GlyphDefinition KeyboardPedalHeel3 { get; set; }
 
-        [JsonProperty("keyboardPedalHeelToe")]
+        [DataMember(Name="keyboardPedalHeelToe")]
         public GlyphDefinition KeyboardPedalHeelToe { get; set; }
 
-        [JsonProperty("keyboardPedalHyphen")]
+        [DataMember(Name="keyboardPedalHyphen")]
         public GlyphDefinition KeyboardPedalHyphen { get; set; }
 
-        [JsonProperty("keyboardPedalP")]
+        [DataMember(Name="keyboardPedalP")]
         public GlyphDefinition KeyboardPedalP { get; set; }
 
-        [JsonProperty("keyboardPedalPed")]
+        [DataMember(Name="keyboardPedalPed")]
         public GlyphDefinition KeyboardPedalPed { get; set; }
 
-        [JsonProperty("keyboardPedalS")]
+        [DataMember(Name="keyboardPedalS")]
         public GlyphDefinition KeyboardPedalS { get; set; }
 
-        [JsonProperty("keyboardPedalSost")]
+        [DataMember(Name="keyboardPedalSost")]
         public GlyphDefinition KeyboardPedalSost { get; set; }
 
-        [JsonProperty("keyboardPedalToe1")]
+        [DataMember(Name="keyboardPedalToe1")]
         public GlyphDefinition KeyboardPedalToe1 { get; set; }
 
-        [JsonProperty("keyboardPedalToe2")]
+        [DataMember(Name="keyboardPedalToe2")]
         public GlyphDefinition KeyboardPedalToe2 { get; set; }
 
-        [JsonProperty("keyboardPedalUp")]
+        [DataMember(Name="keyboardPedalUp")]
         public GlyphDefinition KeyboardPedalUp { get; set; }
 
-        [JsonProperty("keyboardPedalUpNotch")]
+        [DataMember(Name="keyboardPedalUpNotch")]
         public GlyphDefinition KeyboardPedalUpNotch { get; set; }
 
-        [JsonProperty("keyboardPedalUpSpecial")]
+        [DataMember(Name="keyboardPedalUpSpecial")]
         public GlyphDefinition KeyboardPedalUpSpecial { get; set; }
 
-        [JsonProperty("keyboardPlayWithLH")]
+        [DataMember(Name="keyboardPlayWithLH")]
         public GlyphDefinition KeyboardPlayWithLh { get; set; }
 
-        [JsonProperty("keyboardPlayWithLHEnd")]
+        [DataMember(Name="keyboardPlayWithLHEnd")]
         public GlyphDefinition KeyboardPlayWithLhEnd { get; set; }
 
-        [JsonProperty("keyboardPlayWithRH")]
+        [DataMember(Name="keyboardPlayWithRH")]
         public GlyphDefinition KeyboardPlayWithRh { get; set; }
 
-        [JsonProperty("keyboardPlayWithRHEnd")]
+        [DataMember(Name="keyboardPlayWithRHEnd")]
         public GlyphDefinition KeyboardPlayWithRhEnd { get; set; }
 
-        [JsonProperty("keyboardPluckInside")]
+        [DataMember(Name="keyboardPluckInside")]
         public GlyphDefinition KeyboardPluckInside { get; set; }
 
-        [JsonProperty("keyboardRightPedalPictogram")]
+        [DataMember(Name="keyboardRightPedalPictogram")]
         public GlyphDefinition KeyboardRightPedalPictogram { get; set; }
 
-        [JsonProperty("kievanAccidentalFlat")]
+        [DataMember(Name="kievanAccidentalFlat")]
         public GlyphDefinition KievanAccidentalFlat { get; set; }
 
-        [JsonProperty("kievanAccidentalSharp")]
+        [DataMember(Name="kievanAccidentalSharp")]
         public GlyphDefinition KievanAccidentalSharp { get; set; }
 
-        [JsonProperty("kievanAugmentationDot")]
+        [DataMember(Name="kievanAugmentationDot")]
         public GlyphDefinition KievanAugmentationDot { get; set; }
 
-        [JsonProperty("kievanCClef")]
+        [DataMember(Name="kievanCClef")]
         public GlyphDefinition KievanCClef { get; set; }
 
-        [JsonProperty("kievanEndingSymbol")]
+        [DataMember(Name="kievanEndingSymbol")]
         public GlyphDefinition KievanEndingSymbol { get; set; }
 
-        [JsonProperty("kievanNote8thStemDown")]
+        [DataMember(Name="kievanNote8thStemDown")]
         public GlyphDefinition KievanNote8ThStemDown { get; set; }
 
-        [JsonProperty("kievanNote8thStemUp")]
+        [DataMember(Name="kievanNote8thStemUp")]
         public GlyphDefinition KievanNote8ThStemUp { get; set; }
 
-        [JsonProperty("kievanNoteBeam")]
+        [DataMember(Name="kievanNoteBeam")]
         public GlyphDefinition KievanNoteBeam { get; set; }
 
-        [JsonProperty("kievanNoteHalfStaffLine")]
+        [DataMember(Name="kievanNoteHalfStaffLine")]
         public GlyphDefinition KievanNoteHalfStaffLine { get; set; }
 
-        [JsonProperty("kievanNoteHalfStaffSpace")]
+        [DataMember(Name="kievanNoteHalfStaffSpace")]
         public GlyphDefinition KievanNoteHalfStaffSpace { get; set; }
 
-        [JsonProperty("kievanNoteQuarterStemDown")]
+        [DataMember(Name="kievanNoteQuarterStemDown")]
         public GlyphDefinition KievanNoteQuarterStemDown { get; set; }
 
-        [JsonProperty("kievanNoteQuarterStemUp")]
+        [DataMember(Name="kievanNoteQuarterStemUp")]
         public GlyphDefinition KievanNoteQuarterStemUp { get; set; }
 
-        [JsonProperty("kievanNoteReciting")]
+        [DataMember(Name="kievanNoteReciting")]
         public GlyphDefinition KievanNoteReciting { get; set; }
 
-        [JsonProperty("kievanNoteWhole")]
+        [DataMember(Name="kievanNoteWhole")]
         public GlyphDefinition KievanNoteWhole { get; set; }
 
-        [JsonProperty("kievanNoteWholeFinal")]
+        [DataMember(Name="kievanNoteWholeFinal")]
         public GlyphDefinition KievanNoteWholeFinal { get; set; }
 
-        [JsonProperty("kodalyHandDo")]
+        [DataMember(Name="kodalyHandDo")]
         public GlyphDefinition KodalyHandDo { get; set; }
 
-        [JsonProperty("kodalyHandFa")]
+        [DataMember(Name="kodalyHandFa")]
         public GlyphDefinition KodalyHandFa { get; set; }
 
-        [JsonProperty("kodalyHandLa")]
+        [DataMember(Name="kodalyHandLa")]
         public GlyphDefinition KodalyHandLa { get; set; }
 
-        [JsonProperty("kodalyHandMi")]
+        [DataMember(Name="kodalyHandMi")]
         public GlyphDefinition KodalyHandMi { get; set; }
 
-        [JsonProperty("kodalyHandRe")]
+        [DataMember(Name="kodalyHandRe")]
         public GlyphDefinition KodalyHandRe { get; set; }
 
-        [JsonProperty("kodalyHandSo")]
+        [DataMember(Name="kodalyHandSo")]
         public GlyphDefinition KodalyHandSo { get; set; }
 
-        [JsonProperty("kodalyHandTi")]
+        [DataMember(Name="kodalyHandTi")]
         public GlyphDefinition KodalyHandTi { get; set; }
 
-        [JsonProperty("leftRepeatSmall")]
+        [DataMember(Name="leftRepeatSmall")]
         public GlyphDefinition LeftRepeatSmall { get; set; }
 
-        [JsonProperty("legerLine")]
+        [DataMember(Name="legerLine")]
         public GlyphDefinition LegerLine { get; set; }
 
-        [JsonProperty("legerLineNarrow")]
+        [DataMember(Name="legerLineNarrow")]
         public GlyphDefinition LegerLineNarrow { get; set; }
 
-        [JsonProperty("legerLineWide")]
+        [DataMember(Name="legerLineWide")]
         public GlyphDefinition LegerLineWide { get; set; }
 
-        [JsonProperty("luteBarlineEndRepeat")]
+        [DataMember(Name="luteBarlineEndRepeat")]
         public GlyphDefinition LuteBarlineEndRepeat { get; set; }
 
-        [JsonProperty("luteBarlineFinal")]
+        [DataMember(Name="luteBarlineFinal")]
         public GlyphDefinition LuteBarlineFinal { get; set; }
 
-        [JsonProperty("luteBarlineStartRepeat")]
+        [DataMember(Name="luteBarlineStartRepeat")]
         public GlyphDefinition LuteBarlineStartRepeat { get; set; }
 
-        [JsonProperty("luteDuration16th")]
+        [DataMember(Name="luteDuration16th")]
         public GlyphDefinition LuteDuration16Th { get; set; }
 
-        [JsonProperty("luteDuration32nd")]
+        [DataMember(Name="luteDuration32nd")]
         public GlyphDefinition LuteDuration32Nd { get; set; }
 
-        [JsonProperty("luteDuration8th")]
+        [DataMember(Name="luteDuration8th")]
         public GlyphDefinition LuteDuration8Th { get; set; }
 
-        [JsonProperty("luteDurationDoubleWhole")]
+        [DataMember(Name="luteDurationDoubleWhole")]
         public GlyphDefinition LuteDurationDoubleWhole { get; set; }
 
-        [JsonProperty("luteDurationHalf")]
+        [DataMember(Name="luteDurationHalf")]
         public GlyphDefinition LuteDurationHalf { get; set; }
 
-        [JsonProperty("luteDurationQuarter")]
+        [DataMember(Name="luteDurationQuarter")]
         public GlyphDefinition LuteDurationQuarter { get; set; }
 
-        [JsonProperty("luteDurationWhole")]
+        [DataMember(Name="luteDurationWhole")]
         public GlyphDefinition LuteDurationWhole { get; set; }
 
-        [JsonProperty("luteFingeringRHFirst")]
+        [DataMember(Name="luteFingeringRHFirst")]
         public GlyphDefinition LuteFingeringRhFirst { get; set; }
 
-        [JsonProperty("luteFingeringRHSecond")]
+        [DataMember(Name="luteFingeringRHSecond")]
         public GlyphDefinition LuteFingeringRhSecond { get; set; }
 
-        [JsonProperty("luteFingeringRHThird")]
+        [DataMember(Name="luteFingeringRHThird")]
         public GlyphDefinition LuteFingeringRhThird { get; set; }
 
-        [JsonProperty("luteFingeringRHThumb")]
+        [DataMember(Name="luteFingeringRHThumb")]
         public GlyphDefinition LuteFingeringRhThumb { get; set; }
 
-        [JsonProperty("luteFrench10thCourse")]
+        [DataMember(Name="luteFrench10thCourse")]
         public GlyphDefinition LuteFrench10ThCourse { get; set; }
 
-        [JsonProperty("luteFrench7thCourse")]
+        [DataMember(Name="luteFrench7thCourse")]
         public GlyphDefinition LuteFrench7ThCourse { get; set; }
 
-        [JsonProperty("luteFrench8thCourse")]
+        [DataMember(Name="luteFrench8thCourse")]
         public GlyphDefinition LuteFrench8ThCourse { get; set; }
 
-        [JsonProperty("luteFrench9thCourse")]
+        [DataMember(Name="luteFrench9thCourse")]
         public GlyphDefinition LuteFrench9ThCourse { get; set; }
 
-        [JsonProperty("luteFrenchAppoggiaturaAbove")]
+        [DataMember(Name="luteFrenchAppoggiaturaAbove")]
         public GlyphDefinition LuteFrenchAppoggiaturaAbove { get; set; }
 
-        [JsonProperty("luteFrenchAppoggiaturaBelow")]
+        [DataMember(Name="luteFrenchAppoggiaturaBelow")]
         public GlyphDefinition LuteFrenchAppoggiaturaBelow { get; set; }
 
-        [JsonProperty("luteFrenchFretA")]
+        [DataMember(Name="luteFrenchFretA")]
         public GlyphDefinition LuteFrenchFretA { get; set; }
 
-        [JsonProperty("luteFrenchFretB")]
+        [DataMember(Name="luteFrenchFretB")]
         public GlyphDefinition LuteFrenchFretB { get; set; }
 
-        [JsonProperty("luteFrenchFretC")]
+        [DataMember(Name="luteFrenchFretC")]
         public GlyphDefinition LuteFrenchFretC { get; set; }
 
-        [JsonProperty("luteFrenchFretD")]
+        [DataMember(Name="luteFrenchFretD")]
         public GlyphDefinition LuteFrenchFretD { get; set; }
 
-        [JsonProperty("luteFrenchFretE")]
+        [DataMember(Name="luteFrenchFretE")]
         public GlyphDefinition LuteFrenchFretE { get; set; }
 
-        [JsonProperty("luteFrenchFretF")]
+        [DataMember(Name="luteFrenchFretF")]
         public GlyphDefinition LuteFrenchFretF { get; set; }
 
-        [JsonProperty("luteFrenchFretG")]
+        [DataMember(Name="luteFrenchFretG")]
         public GlyphDefinition LuteFrenchFretG { get; set; }
 
-        [JsonProperty("luteFrenchFretH")]
+        [DataMember(Name="luteFrenchFretH")]
         public GlyphDefinition LuteFrenchFretH { get; set; }
 
-        [JsonProperty("luteFrenchFretI")]
+        [DataMember(Name="luteFrenchFretI")]
         public GlyphDefinition LuteFrenchFretI { get; set; }
 
-        [JsonProperty("luteFrenchFretK")]
+        [DataMember(Name="luteFrenchFretK")]
         public GlyphDefinition LuteFrenchFretK { get; set; }
 
-        [JsonProperty("luteFrenchFretL")]
+        [DataMember(Name="luteFrenchFretL")]
         public GlyphDefinition LuteFrenchFretL { get; set; }
 
-        [JsonProperty("luteFrenchFretM")]
+        [DataMember(Name="luteFrenchFretM")]
         public GlyphDefinition LuteFrenchFretM { get; set; }
 
-        [JsonProperty("luteFrenchFretN")]
+        [DataMember(Name="luteFrenchFretN")]
         public GlyphDefinition LuteFrenchFretN { get; set; }
 
-        [JsonProperty("luteFrenchMordentInverted")]
+        [DataMember(Name="luteFrenchMordentInverted")]
         public GlyphDefinition LuteFrenchMordentInverted { get; set; }
 
-        [JsonProperty("luteFrenchMordentLower")]
+        [DataMember(Name="luteFrenchMordentLower")]
         public GlyphDefinition LuteFrenchMordentLower { get; set; }
 
-        [JsonProperty("luteFrenchMordentUpper")]
+        [DataMember(Name="luteFrenchMordentUpper")]
         public GlyphDefinition LuteFrenchMordentUpper { get; set; }
 
-        [JsonProperty("luteGermanALower")]
+        [DataMember(Name="luteGermanALower")]
         public GlyphDefinition LuteGermanALower { get; set; }
 
-        [JsonProperty("luteGermanAUpper")]
+        [DataMember(Name="luteGermanAUpper")]
         public GlyphDefinition LuteGermanAUpper { get; set; }
 
-        [JsonProperty("luteGermanBLower")]
+        [DataMember(Name="luteGermanBLower")]
         public GlyphDefinition LuteGermanBLower { get; set; }
 
-        [JsonProperty("luteGermanBUpper")]
+        [DataMember(Name="luteGermanBUpper")]
         public GlyphDefinition LuteGermanBUpper { get; set; }
 
-        [JsonProperty("luteGermanCLower")]
+        [DataMember(Name="luteGermanCLower")]
         public GlyphDefinition LuteGermanCLower { get; set; }
 
-        [JsonProperty("luteGermanCUpper")]
+        [DataMember(Name="luteGermanCUpper")]
         public GlyphDefinition LuteGermanCUpper { get; set; }
 
-        [JsonProperty("luteGermanDLower")]
+        [DataMember(Name="luteGermanDLower")]
         public GlyphDefinition LuteGermanDLower { get; set; }
 
-        [JsonProperty("luteGermanDUpper")]
+        [DataMember(Name="luteGermanDUpper")]
         public GlyphDefinition LuteGermanDUpper { get; set; }
 
-        [JsonProperty("luteGermanELower")]
+        [DataMember(Name="luteGermanELower")]
         public GlyphDefinition LuteGermanELower { get; set; }
 
-        [JsonProperty("luteGermanEUpper")]
+        [DataMember(Name="luteGermanEUpper")]
         public GlyphDefinition LuteGermanEUpper { get; set; }
 
-        [JsonProperty("luteGermanFLower")]
+        [DataMember(Name="luteGermanFLower")]
         public GlyphDefinition LuteGermanFLower { get; set; }
 
-        [JsonProperty("luteGermanFUpper")]
+        [DataMember(Name="luteGermanFUpper")]
         public GlyphDefinition LuteGermanFUpper { get; set; }
 
-        [JsonProperty("luteGermanGLower")]
+        [DataMember(Name="luteGermanGLower")]
         public GlyphDefinition LuteGermanGLower { get; set; }
 
-        [JsonProperty("luteGermanGUpper")]
+        [DataMember(Name="luteGermanGUpper")]
         public GlyphDefinition LuteGermanGUpper { get; set; }
 
-        [JsonProperty("luteGermanHLower")]
+        [DataMember(Name="luteGermanHLower")]
         public GlyphDefinition LuteGermanHLower { get; set; }
 
-        [JsonProperty("luteGermanHUpper")]
+        [DataMember(Name="luteGermanHUpper")]
         public GlyphDefinition LuteGermanHUpper { get; set; }
 
-        [JsonProperty("luteGermanILower")]
+        [DataMember(Name="luteGermanILower")]
         public GlyphDefinition LuteGermanILower { get; set; }
 
-        [JsonProperty("luteGermanIUpper")]
+        [DataMember(Name="luteGermanIUpper")]
         public GlyphDefinition LuteGermanIUpper { get; set; }
 
-        [JsonProperty("luteGermanKLower")]
+        [DataMember(Name="luteGermanKLower")]
         public GlyphDefinition LuteGermanKLower { get; set; }
 
-        [JsonProperty("luteGermanKUpper")]
+        [DataMember(Name="luteGermanKUpper")]
         public GlyphDefinition LuteGermanKUpper { get; set; }
 
-        [JsonProperty("luteGermanLLower")]
+        [DataMember(Name="luteGermanLLower")]
         public GlyphDefinition LuteGermanLLower { get; set; }
 
-        [JsonProperty("luteGermanLUpper")]
+        [DataMember(Name="luteGermanLUpper")]
         public GlyphDefinition LuteGermanLUpper { get; set; }
 
-        [JsonProperty("luteGermanMLower")]
+        [DataMember(Name="luteGermanMLower")]
         public GlyphDefinition LuteGermanMLower { get; set; }
 
-        [JsonProperty("luteGermanMUpper")]
+        [DataMember(Name="luteGermanMUpper")]
         public GlyphDefinition LuteGermanMUpper { get; set; }
 
-        [JsonProperty("luteGermanNLower")]
+        [DataMember(Name="luteGermanNLower")]
         public GlyphDefinition LuteGermanNLower { get; set; }
 
-        [JsonProperty("luteGermanNUpper")]
+        [DataMember(Name="luteGermanNUpper")]
         public GlyphDefinition LuteGermanNUpper { get; set; }
 
-        [JsonProperty("luteGermanOLower")]
+        [DataMember(Name="luteGermanOLower")]
         public GlyphDefinition LuteGermanOLower { get; set; }
 
-        [JsonProperty("luteGermanPLower")]
+        [DataMember(Name="luteGermanPLower")]
         public GlyphDefinition LuteGermanPLower { get; set; }
 
-        [JsonProperty("luteGermanQLower")]
+        [DataMember(Name="luteGermanQLower")]
         public GlyphDefinition LuteGermanQLower { get; set; }
 
-        [JsonProperty("luteGermanRLower")]
+        [DataMember(Name="luteGermanRLower")]
         public GlyphDefinition LuteGermanRLower { get; set; }
 
-        [JsonProperty("luteGermanSLower")]
+        [DataMember(Name="luteGermanSLower")]
         public GlyphDefinition LuteGermanSLower { get; set; }
 
-        [JsonProperty("luteGermanTLower")]
+        [DataMember(Name="luteGermanTLower")]
         public GlyphDefinition LuteGermanTLower { get; set; }
 
-        [JsonProperty("luteGermanVLower")]
+        [DataMember(Name="luteGermanVLower")]
         public GlyphDefinition LuteGermanVLower { get; set; }
 
-        [JsonProperty("luteGermanXLower")]
+        [DataMember(Name="luteGermanXLower")]
         public GlyphDefinition LuteGermanXLower { get; set; }
 
-        [JsonProperty("luteGermanYLower")]
+        [DataMember(Name="luteGermanYLower")]
         public GlyphDefinition LuteGermanYLower { get; set; }
 
-        [JsonProperty("luteGermanZLower")]
+        [DataMember(Name="luteGermanZLower")]
         public GlyphDefinition LuteGermanZLower { get; set; }
 
-        [JsonProperty("luteItalianClefCSolFaUt")]
+        [DataMember(Name="luteItalianClefCSolFaUt")]
         public GlyphDefinition LuteItalianClefCSolFaUt { get; set; }
 
-        [JsonProperty("luteItalianClefFFaUt")]
+        [DataMember(Name="luteItalianClefFFaUt")]
         public GlyphDefinition LuteItalianClefFFaUt { get; set; }
 
-        [JsonProperty("luteItalianFret0")]
+        [DataMember(Name="luteItalianFret0")]
         public GlyphDefinition LuteItalianFret0 { get; set; }
 
-        [JsonProperty("luteItalianFret1")]
+        [DataMember(Name="luteItalianFret1")]
         public GlyphDefinition LuteItalianFret1 { get; set; }
 
-        [JsonProperty("luteItalianFret2")]
+        [DataMember(Name="luteItalianFret2")]
         public GlyphDefinition LuteItalianFret2 { get; set; }
 
-        [JsonProperty("luteItalianFret3")]
+        [DataMember(Name="luteItalianFret3")]
         public GlyphDefinition LuteItalianFret3 { get; set; }
 
-        [JsonProperty("luteItalianFret4")]
+        [DataMember(Name="luteItalianFret4")]
         public GlyphDefinition LuteItalianFret4 { get; set; }
 
-        [JsonProperty("luteItalianFret5")]
+        [DataMember(Name="luteItalianFret5")]
         public GlyphDefinition LuteItalianFret5 { get; set; }
 
-        [JsonProperty("luteItalianFret6")]
+        [DataMember(Name="luteItalianFret6")]
         public GlyphDefinition LuteItalianFret6 { get; set; }
 
-        [JsonProperty("luteItalianFret7")]
+        [DataMember(Name="luteItalianFret7")]
         public GlyphDefinition LuteItalianFret7 { get; set; }
 
-        [JsonProperty("luteItalianFret8")]
+        [DataMember(Name="luteItalianFret8")]
         public GlyphDefinition LuteItalianFret8 { get; set; }
 
-        [JsonProperty("luteItalianFret9")]
+        [DataMember(Name="luteItalianFret9")]
         public GlyphDefinition LuteItalianFret9 { get; set; }
 
-        [JsonProperty("luteItalianHoldFinger")]
+        [DataMember(Name="luteItalianHoldFinger")]
         public GlyphDefinition LuteItalianHoldFinger { get; set; }
 
-        [JsonProperty("luteItalianHoldNote")]
+        [DataMember(Name="luteItalianHoldNote")]
         public GlyphDefinition LuteItalianHoldNote { get; set; }
 
-        [JsonProperty("luteItalianReleaseFinger")]
+        [DataMember(Name="luteItalianReleaseFinger")]
         public GlyphDefinition LuteItalianReleaseFinger { get; set; }
 
-        [JsonProperty("luteItalianTempoFast")]
+        [DataMember(Name="luteItalianTempoFast")]
         public GlyphDefinition LuteItalianTempoFast { get; set; }
 
-        [JsonProperty("luteItalianTempoNeitherFastNorSlow")]
+        [DataMember(Name="luteItalianTempoNeitherFastNorSlow")]
         public GlyphDefinition LuteItalianTempoNeitherFastNorSlow { get; set; }
 
-        [JsonProperty("luteItalianTempoSlow")]
+        [DataMember(Name="luteItalianTempoSlow")]
         public GlyphDefinition LuteItalianTempoSlow { get; set; }
 
-        [JsonProperty("luteItalianTempoSomewhatFast")]
+        [DataMember(Name="luteItalianTempoSomewhatFast")]
         public GlyphDefinition LuteItalianTempoSomewhatFast { get; set; }
 
-        [JsonProperty("luteItalianTempoVerySlow")]
+        [DataMember(Name="luteItalianTempoVerySlow")]
         public GlyphDefinition LuteItalianTempoVerySlow { get; set; }
 
-        [JsonProperty("luteItalianTimeTriple")]
+        [DataMember(Name="luteItalianTimeTriple")]
         public GlyphDefinition LuteItalianTimeTriple { get; set; }
 
-        [JsonProperty("luteItalianTremolo")]
+        [DataMember(Name="luteItalianTremolo")]
         public GlyphDefinition LuteItalianTremolo { get; set; }
 
-        [JsonProperty("luteItalianVibrato")]
+        [DataMember(Name="luteItalianVibrato")]
         public GlyphDefinition LuteItalianVibrato { get; set; }
 
-        [JsonProperty("luteStaff6Lines")]
+        [DataMember(Name="luteStaff6Lines")]
         public GlyphDefinition LuteStaff6Lines { get; set; }
 
-        [JsonProperty("luteStaff6LinesNarrow")]
+        [DataMember(Name="luteStaff6LinesNarrow")]
         public GlyphDefinition LuteStaff6LinesNarrow { get; set; }
 
-        [JsonProperty("luteStaff6LinesWide")]
+        [DataMember(Name="luteStaff6LinesWide")]
         public GlyphDefinition LuteStaff6LinesWide { get; set; }
 
-        [JsonProperty("lyricsElision")]
+        [DataMember(Name="lyricsElision")]
         public GlyphDefinition LyricsElision { get; set; }
 
-        [JsonProperty("lyricsElisionNarrow")]
+        [DataMember(Name="lyricsElisionNarrow")]
         public GlyphDefinition LyricsElisionNarrow { get; set; }
 
-        [JsonProperty("lyricsElisionWide")]
+        [DataMember(Name="lyricsElisionWide")]
         public GlyphDefinition LyricsElisionWide { get; set; }
 
-        [JsonProperty("lyricsHyphenBaseline")]
+        [DataMember(Name="lyricsHyphenBaseline")]
         public GlyphDefinition LyricsHyphenBaseline { get; set; }
 
-        [JsonProperty("lyricsHyphenBaselineNonBreaking")]
+        [DataMember(Name="lyricsHyphenBaselineNonBreaking")]
         public GlyphDefinition LyricsHyphenBaselineNonBreaking { get; set; }
 
-        [JsonProperty("medRenFlatHardB")]
+        [DataMember(Name="medRenFlatHardB")]
         public GlyphDefinition MedRenFlatHardB { get; set; }
 
-        [JsonProperty("medRenFlatSoftB")]
+        [DataMember(Name="medRenFlatSoftB")]
         public GlyphDefinition MedRenFlatSoftB { get; set; }
 
-        [JsonProperty("medRenFlatWithDot")]
+        [DataMember(Name="medRenFlatWithDot")]
         public GlyphDefinition MedRenFlatWithDot { get; set; }
 
-        [JsonProperty("medRenGClefCMN")]
+        [DataMember(Name="medRenGClefCMN")]
         public GlyphDefinition MedRenGClefCmn { get; set; }
 
-        [JsonProperty("medRenLiquescenceCMN")]
+        [DataMember(Name="medRenLiquescenceCMN")]
         public GlyphDefinition MedRenLiquescenceCmn { get; set; }
 
-        [JsonProperty("medRenLiquescentAscCMN")]
+        [DataMember(Name="medRenLiquescentAscCMN")]
         public GlyphDefinition MedRenLiquescentAscCmn { get; set; }
 
-        [JsonProperty("medRenLiquescentDescCMN")]
+        [DataMember(Name="medRenLiquescentDescCMN")]
         public GlyphDefinition MedRenLiquescentDescCmn { get; set; }
 
-        [JsonProperty("medRenNatural")]
+        [DataMember(Name="medRenNatural")]
         public GlyphDefinition MedRenNatural { get; set; }
 
-        [JsonProperty("medRenNaturalWithCross")]
+        [DataMember(Name="medRenNaturalWithCross")]
         public GlyphDefinition MedRenNaturalWithCross { get; set; }
 
-        [JsonProperty("medRenOriscusCMN")]
+        [DataMember(Name="medRenOriscusCMN")]
         public GlyphDefinition MedRenOriscusCmn { get; set; }
 
-        [JsonProperty("medRenPlicaCMN")]
+        [DataMember(Name="medRenPlicaCMN")]
         public GlyphDefinition MedRenPlicaCmn { get; set; }
 
-        [JsonProperty("medRenPunctumCMN")]
+        [DataMember(Name="medRenPunctumCMN")]
         public GlyphDefinition MedRenPunctumCmn { get; set; }
 
-        [JsonProperty("medRenQuilismaCMN")]
+        [DataMember(Name="medRenQuilismaCMN")]
         public GlyphDefinition MedRenQuilismaCmn { get; set; }
 
-        [JsonProperty("medRenSharpCroix")]
+        [DataMember(Name="medRenSharpCroix")]
         public GlyphDefinition MedRenSharpCroix { get; set; }
 
-        [JsonProperty("medRenStrophicusCMN")]
+        [DataMember(Name="medRenStrophicusCMN")]
         public GlyphDefinition MedRenStrophicusCmn { get; set; }
 
-        [JsonProperty("mensuralAlterationSign")]
+        [DataMember(Name="mensuralAlterationSign")]
         public GlyphDefinition MensuralAlterationSign { get; set; }
 
-        [JsonProperty("mensuralBlackBrevis")]
+        [DataMember(Name="mensuralBlackBrevis")]
         public GlyphDefinition MensuralBlackBrevis { get; set; }
 
-        [JsonProperty("mensuralBlackBrevisVoid")]
+        [DataMember(Name="mensuralBlackBrevisVoid")]
         public GlyphDefinition MensuralBlackBrevisVoid { get; set; }
 
-        [JsonProperty("mensuralBlackDragma")]
+        [DataMember(Name="mensuralBlackDragma")]
         public GlyphDefinition MensuralBlackDragma { get; set; }
 
-        [JsonProperty("mensuralBlackLonga")]
+        [DataMember(Name="mensuralBlackLonga")]
         public GlyphDefinition MensuralBlackLonga { get; set; }
 
-        [JsonProperty("mensuralBlackMaxima")]
+        [DataMember(Name="mensuralBlackMaxima")]
         public GlyphDefinition MensuralBlackMaxima { get; set; }
 
-        [JsonProperty("mensuralBlackMinima")]
+        [DataMember(Name="mensuralBlackMinima")]
         public GlyphDefinition MensuralBlackMinima { get; set; }
 
-        [JsonProperty("mensuralBlackMinimaVoid")]
+        [DataMember(Name="mensuralBlackMinimaVoid")]
         public GlyphDefinition MensuralBlackMinimaVoid { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevis")]
+        [DataMember(Name="mensuralBlackSemibrevis")]
         public GlyphDefinition MensuralBlackSemibrevis { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevisCaudata")]
+        [DataMember(Name="mensuralBlackSemibrevisCaudata")]
         public GlyphDefinition MensuralBlackSemibrevisCaudata { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevisOblique")]
+        [DataMember(Name="mensuralBlackSemibrevisOblique")]
         public GlyphDefinition MensuralBlackSemibrevisOblique { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevisVoid")]
+        [DataMember(Name="mensuralBlackSemibrevisVoid")]
         public GlyphDefinition MensuralBlackSemibrevisVoid { get; set; }
 
-        [JsonProperty("mensuralBlackSemiminima")]
+        [DataMember(Name="mensuralBlackSemiminima")]
         public GlyphDefinition MensuralBlackSemiminima { get; set; }
 
-        [JsonProperty("mensuralCclef")]
+        [DataMember(Name="mensuralCclef")]
         public GlyphDefinition MensuralCclef { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosHigh")]
+        [DataMember(Name="mensuralCclefPetrucciPosHigh")]
         public GlyphDefinition MensuralCclefPetrucciPosHigh { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosHighest")]
+        [DataMember(Name="mensuralCclefPetrucciPosHighest")]
         public GlyphDefinition MensuralCclefPetrucciPosHighest { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosLow")]
+        [DataMember(Name="mensuralCclefPetrucciPosLow")]
         public GlyphDefinition MensuralCclefPetrucciPosLow { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosLowest")]
+        [DataMember(Name="mensuralCclefPetrucciPosLowest")]
         public GlyphDefinition MensuralCclefPetrucciPosLowest { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosMiddle")]
+        [DataMember(Name="mensuralCclefPetrucciPosMiddle")]
         public GlyphDefinition MensuralCclefPetrucciPosMiddle { get; set; }
 
-        [JsonProperty("mensuralColorationEndRound")]
+        [DataMember(Name="mensuralColorationEndRound")]
         public GlyphDefinition MensuralColorationEndRound { get; set; }
 
-        [JsonProperty("mensuralColorationEndSquare")]
+        [DataMember(Name="mensuralColorationEndSquare")]
         public GlyphDefinition MensuralColorationEndSquare { get; set; }
 
-        [JsonProperty("mensuralColorationStartRound")]
+        [DataMember(Name="mensuralColorationStartRound")]
         public GlyphDefinition MensuralColorationStartRound { get; set; }
 
-        [JsonProperty("mensuralColorationStartSquare")]
+        [DataMember(Name="mensuralColorationStartSquare")]
         public GlyphDefinition MensuralColorationStartSquare { get; set; }
 
-        [JsonProperty("mensuralCombStemDiagonal")]
+        [DataMember(Name="mensuralCombStemDiagonal")]
         public GlyphDefinition MensuralCombStemDiagonal { get; set; }
 
-        [JsonProperty("mensuralCombStemDown")]
+        [DataMember(Name="mensuralCombStemDown")]
         public GlyphDefinition MensuralCombStemDown { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagExtended")]
+        [DataMember(Name="mensuralCombStemDownFlagExtended")]
         public GlyphDefinition MensuralCombStemDownFlagExtended { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagFlared")]
+        [DataMember(Name="mensuralCombStemDownFlagFlared")]
         public GlyphDefinition MensuralCombStemDownFlagFlared { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagFusa")]
+        [DataMember(Name="mensuralCombStemDownFlagFusa")]
         public GlyphDefinition MensuralCombStemDownFlagFusa { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagLeft")]
+        [DataMember(Name="mensuralCombStemDownFlagLeft")]
         public GlyphDefinition MensuralCombStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagRight")]
+        [DataMember(Name="mensuralCombStemDownFlagRight")]
         public GlyphDefinition MensuralCombStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagSemiminima")]
+        [DataMember(Name="mensuralCombStemDownFlagSemiminima")]
         public GlyphDefinition MensuralCombStemDownFlagSemiminima { get; set; }
 
-        [JsonProperty("mensuralCombStemUp")]
+        [DataMember(Name="mensuralCombStemUp")]
         public GlyphDefinition MensuralCombStemUp { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagExtended")]
+        [DataMember(Name="mensuralCombStemUpFlagExtended")]
         public GlyphDefinition MensuralCombStemUpFlagExtended { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagFlared")]
+        [DataMember(Name="mensuralCombStemUpFlagFlared")]
         public GlyphDefinition MensuralCombStemUpFlagFlared { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagFusa")]
+        [DataMember(Name="mensuralCombStemUpFlagFusa")]
         public GlyphDefinition MensuralCombStemUpFlagFusa { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagLeft")]
+        [DataMember(Name="mensuralCombStemUpFlagLeft")]
         public GlyphDefinition MensuralCombStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagRight")]
+        [DataMember(Name="mensuralCombStemUpFlagRight")]
         public GlyphDefinition MensuralCombStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagSemiminima")]
+        [DataMember(Name="mensuralCombStemUpFlagSemiminima")]
         public GlyphDefinition MensuralCombStemUpFlagSemiminima { get; set; }
 
-        [JsonProperty("mensuralCustosCheckmark")]
+        [DataMember(Name="mensuralCustosCheckmark")]
         public GlyphDefinition MensuralCustosCheckmark { get; set; }
 
-        [JsonProperty("mensuralCustosDown")]
+        [DataMember(Name="mensuralCustosDown")]
         public GlyphDefinition MensuralCustosDown { get; set; }
 
-        [JsonProperty("mensuralCustosTurn")]
+        [DataMember(Name="mensuralCustosTurn")]
         public GlyphDefinition MensuralCustosTurn { get; set; }
 
-        [JsonProperty("mensuralCustosUp")]
+        [DataMember(Name="mensuralCustosUp")]
         public GlyphDefinition MensuralCustosUp { get; set; }
 
-        [JsonProperty("mensuralFclef")]
+        [DataMember(Name="mensuralFclef")]
         public GlyphDefinition MensuralFclef { get; set; }
 
-        [JsonProperty("mensuralFclefPetrucci")]
+        [DataMember(Name="mensuralFclefPetrucci")]
         public GlyphDefinition MensuralFclefPetrucci { get; set; }
 
-        [JsonProperty("mensuralGclef")]
+        [DataMember(Name="mensuralGclef")]
         public GlyphDefinition MensuralGclef { get; set; }
 
-        [JsonProperty("mensuralGclefPetrucci")]
+        [DataMember(Name="mensuralGclefPetrucci")]
         public GlyphDefinition MensuralGclefPetrucci { get; set; }
 
-        [JsonProperty("mensuralModusImperfectumVert")]
+        [DataMember(Name="mensuralModusImperfectumVert")]
         public GlyphDefinition MensuralModusImperfectumVert { get; set; }
 
-        [JsonProperty("mensuralModusPerfectumVert")]
+        [DataMember(Name="mensuralModusPerfectumVert")]
         public GlyphDefinition MensuralModusPerfectumVert { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaBlack")]
+        [DataMember(Name="mensuralNoteheadLongaBlack")]
         public GlyphDefinition MensuralNoteheadLongaBlack { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaBlackVoid")]
+        [DataMember(Name="mensuralNoteheadLongaBlackVoid")]
         public GlyphDefinition MensuralNoteheadLongaBlackVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaVoid")]
+        [DataMember(Name="mensuralNoteheadLongaVoid")]
         public GlyphDefinition MensuralNoteheadLongaVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaWhite")]
+        [DataMember(Name="mensuralNoteheadLongaWhite")]
         public GlyphDefinition MensuralNoteheadLongaWhite { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaBlack")]
+        [DataMember(Name="mensuralNoteheadMaximaBlack")]
         public GlyphDefinition MensuralNoteheadMaximaBlack { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaBlackVoid")]
+        [DataMember(Name="mensuralNoteheadMaximaBlackVoid")]
         public GlyphDefinition MensuralNoteheadMaximaBlackVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaVoid")]
+        [DataMember(Name="mensuralNoteheadMaximaVoid")]
         public GlyphDefinition MensuralNoteheadMaximaVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaWhite")]
+        [DataMember(Name="mensuralNoteheadMaximaWhite")]
         public GlyphDefinition MensuralNoteheadMaximaWhite { get; set; }
 
-        [JsonProperty("mensuralNoteheadMinimaWhite")]
+        [DataMember(Name="mensuralNoteheadMinimaWhite")]
         public GlyphDefinition MensuralNoteheadMinimaWhite { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisBlack")]
+        [DataMember(Name="mensuralNoteheadSemibrevisBlack")]
         public GlyphDefinition MensuralNoteheadSemibrevisBlack { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisBlackVoid")]
+        [DataMember(Name="mensuralNoteheadSemibrevisBlackVoid")]
         public GlyphDefinition MensuralNoteheadSemibrevisBlackVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisBlackVoidTurned")]
+        [DataMember(Name="mensuralNoteheadSemibrevisBlackVoidTurned")]
         public GlyphDefinition MensuralNoteheadSemibrevisBlackVoidTurned { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisVoid")]
+        [DataMember(Name="mensuralNoteheadSemibrevisVoid")]
         public GlyphDefinition MensuralNoteheadSemibrevisVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemiminimaWhite")]
+        [DataMember(Name="mensuralNoteheadSemiminimaWhite")]
         public GlyphDefinition MensuralNoteheadSemiminimaWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndBlack")]
+        [DataMember(Name="mensuralObliqueAsc2ndBlack")]
         public GlyphDefinition MensuralObliqueAsc2NdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc2ndBlackVoid")]
         public GlyphDefinition MensuralObliqueAsc2NdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndVoid")]
+        [DataMember(Name="mensuralObliqueAsc2ndVoid")]
         public GlyphDefinition MensuralObliqueAsc2NdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndWhite")]
+        [DataMember(Name="mensuralObliqueAsc2ndWhite")]
         public GlyphDefinition MensuralObliqueAsc2NdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdBlack")]
+        [DataMember(Name="mensuralObliqueAsc3rdBlack")]
         public GlyphDefinition MensuralObliqueAsc3RdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc3rdBlackVoid")]
         public GlyphDefinition MensuralObliqueAsc3RdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdVoid")]
+        [DataMember(Name="mensuralObliqueAsc3rdVoid")]
         public GlyphDefinition MensuralObliqueAsc3RdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdWhite")]
+        [DataMember(Name="mensuralObliqueAsc3rdWhite")]
         public GlyphDefinition MensuralObliqueAsc3RdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thBlack")]
+        [DataMember(Name="mensuralObliqueAsc4thBlack")]
         public GlyphDefinition MensuralObliqueAsc4ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc4thBlackVoid")]
         public GlyphDefinition MensuralObliqueAsc4ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thVoid")]
+        [DataMember(Name="mensuralObliqueAsc4thVoid")]
         public GlyphDefinition MensuralObliqueAsc4ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thWhite")]
+        [DataMember(Name="mensuralObliqueAsc4thWhite")]
         public GlyphDefinition MensuralObliqueAsc4ThWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thBlack")]
+        [DataMember(Name="mensuralObliqueAsc5thBlack")]
         public GlyphDefinition MensuralObliqueAsc5ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc5thBlackVoid")]
         public GlyphDefinition MensuralObliqueAsc5ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thVoid")]
+        [DataMember(Name="mensuralObliqueAsc5thVoid")]
         public GlyphDefinition MensuralObliqueAsc5ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thWhite")]
+        [DataMember(Name="mensuralObliqueAsc5thWhite")]
         public GlyphDefinition MensuralObliqueAsc5ThWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndBlack")]
+        [DataMember(Name="mensuralObliqueDesc2ndBlack")]
         public GlyphDefinition MensuralObliqueDesc2NdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc2ndBlackVoid")]
         public GlyphDefinition MensuralObliqueDesc2NdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndVoid")]
+        [DataMember(Name="mensuralObliqueDesc2ndVoid")]
         public GlyphDefinition MensuralObliqueDesc2NdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndWhite")]
+        [DataMember(Name="mensuralObliqueDesc2ndWhite")]
         public GlyphDefinition MensuralObliqueDesc2NdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdBlack")]
+        [DataMember(Name="mensuralObliqueDesc3rdBlack")]
         public GlyphDefinition MensuralObliqueDesc3RdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc3rdBlackVoid")]
         public GlyphDefinition MensuralObliqueDesc3RdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdVoid")]
+        [DataMember(Name="mensuralObliqueDesc3rdVoid")]
         public GlyphDefinition MensuralObliqueDesc3RdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdWhite")]
+        [DataMember(Name="mensuralObliqueDesc3rdWhite")]
         public GlyphDefinition MensuralObliqueDesc3RdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thBlack")]
+        [DataMember(Name="mensuralObliqueDesc4thBlack")]
         public GlyphDefinition MensuralObliqueDesc4ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc4thBlackVoid")]
         public GlyphDefinition MensuralObliqueDesc4ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thVoid")]
+        [DataMember(Name="mensuralObliqueDesc4thVoid")]
         public GlyphDefinition MensuralObliqueDesc4ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thWhite")]
+        [DataMember(Name="mensuralObliqueDesc4thWhite")]
         public GlyphDefinition MensuralObliqueDesc4ThWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thBlack")]
+        [DataMember(Name="mensuralObliqueDesc5thBlack")]
         public GlyphDefinition MensuralObliqueDesc5ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc5thBlackVoid")]
         public GlyphDefinition MensuralObliqueDesc5ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thVoid")]
+        [DataMember(Name="mensuralObliqueDesc5thVoid")]
         public GlyphDefinition MensuralObliqueDesc5ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thWhite")]
+        [DataMember(Name="mensuralObliqueDesc5thWhite")]
         public GlyphDefinition MensuralObliqueDesc5ThWhite { get; set; }
 
-        [JsonProperty("mensuralProlation1")]
+        [DataMember(Name="mensuralProlation1")]
         public GlyphDefinition MensuralProlation1 { get; set; }
 
-        [JsonProperty("mensuralProlation10")]
+        [DataMember(Name="mensuralProlation10")]
         public GlyphDefinition MensuralProlation10 { get; set; }
 
-        [JsonProperty("mensuralProlation11")]
+        [DataMember(Name="mensuralProlation11")]
         public GlyphDefinition MensuralProlation11 { get; set; }
 
-        [JsonProperty("mensuralProlation2")]
+        [DataMember(Name="mensuralProlation2")]
         public GlyphDefinition MensuralProlation2 { get; set; }
 
-        [JsonProperty("mensuralProlation3")]
+        [DataMember(Name="mensuralProlation3")]
         public GlyphDefinition MensuralProlation3 { get; set; }
 
-        [JsonProperty("mensuralProlation4")]
+        [DataMember(Name="mensuralProlation4")]
         public GlyphDefinition MensuralProlation4 { get; set; }
 
-        [JsonProperty("mensuralProlation5")]
+        [DataMember(Name="mensuralProlation5")]
         public GlyphDefinition MensuralProlation5 { get; set; }
 
-        [JsonProperty("mensuralProlation6")]
+        [DataMember(Name="mensuralProlation6")]
         public GlyphDefinition MensuralProlation6 { get; set; }
 
-        [JsonProperty("mensuralProlation7")]
+        [DataMember(Name="mensuralProlation7")]
         public GlyphDefinition MensuralProlation7 { get; set; }
 
-        [JsonProperty("mensuralProlation8")]
+        [DataMember(Name="mensuralProlation8")]
         public GlyphDefinition MensuralProlation8 { get; set; }
 
-        [JsonProperty("mensuralProlation9")]
+        [DataMember(Name="mensuralProlation9")]
         public GlyphDefinition MensuralProlation9 { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningDot")]
+        [DataMember(Name="mensuralProlationCombiningDot")]
         public GlyphDefinition MensuralProlationCombiningDot { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningDotVoid")]
+        [DataMember(Name="mensuralProlationCombiningDotVoid")]
         public GlyphDefinition MensuralProlationCombiningDotVoid { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningStroke")]
+        [DataMember(Name="mensuralProlationCombiningStroke")]
         public GlyphDefinition MensuralProlationCombiningStroke { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningThreeDots")]
+        [DataMember(Name="mensuralProlationCombiningThreeDots")]
         public GlyphDefinition MensuralProlationCombiningThreeDots { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningThreeDotsTri")]
+        [DataMember(Name="mensuralProlationCombiningThreeDotsTri")]
         public GlyphDefinition MensuralProlationCombiningThreeDotsTri { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningTwoDots")]
+        [DataMember(Name="mensuralProlationCombiningTwoDots")]
         public GlyphDefinition MensuralProlationCombiningTwoDots { get; set; }
 
-        [JsonProperty("mensuralProportion1")]
+        [DataMember(Name="mensuralProportion1")]
         public GlyphDefinition MensuralProportion1 { get; set; }
 
-        [JsonProperty("mensuralProportion2")]
+        [DataMember(Name="mensuralProportion2")]
         public GlyphDefinition MensuralProportion2 { get; set; }
 
-        [JsonProperty("mensuralProportion3")]
+        [DataMember(Name="mensuralProportion3")]
         public GlyphDefinition MensuralProportion3 { get; set; }
 
-        [JsonProperty("mensuralProportion4")]
+        [DataMember(Name="mensuralProportion4")]
         public GlyphDefinition MensuralProportion4 { get; set; }
 
-        [JsonProperty("mensuralProportionMajor")]
+        [DataMember(Name="mensuralProportionMajor")]
         public GlyphDefinition MensuralProportionMajor { get; set; }
 
-        [JsonProperty("mensuralProportionMinor")]
+        [DataMember(Name="mensuralProportionMinor")]
         public GlyphDefinition MensuralProportionMinor { get; set; }
 
-        [JsonProperty("mensuralProportionProportioDupla1")]
+        [DataMember(Name="mensuralProportionProportioDupla1")]
         public GlyphDefinition MensuralProportionProportioDupla1 { get; set; }
 
-        [JsonProperty("mensuralProportionProportioDupla2")]
+        [DataMember(Name="mensuralProportionProportioDupla2")]
         public GlyphDefinition MensuralProportionProportioDupla2 { get; set; }
 
-        [JsonProperty("mensuralProportionProportioQuadrupla")]
+        [DataMember(Name="mensuralProportionProportioQuadrupla")]
         public GlyphDefinition MensuralProportionProportioQuadrupla { get; set; }
 
-        [JsonProperty("mensuralProportionProportioTripla")]
+        [DataMember(Name="mensuralProportionProportioTripla")]
         public GlyphDefinition MensuralProportionProportioTripla { get; set; }
 
-        [JsonProperty("mensuralProportionTempusPerfectum")]
+        [DataMember(Name="mensuralProportionTempusPerfectum")]
         public GlyphDefinition MensuralProportionTempusPerfectum { get; set; }
 
-        [JsonProperty("mensuralRestBrevis")]
+        [DataMember(Name="mensuralRestBrevis")]
         public GlyphDefinition MensuralRestBrevis { get; set; }
 
-        [JsonProperty("mensuralRestFusa")]
+        [DataMember(Name="mensuralRestFusa")]
         public GlyphDefinition MensuralRestFusa { get; set; }
 
-        [JsonProperty("mensuralRestLongaImperfecta")]
+        [DataMember(Name="mensuralRestLongaImperfecta")]
         public GlyphDefinition MensuralRestLongaImperfecta { get; set; }
 
-        [JsonProperty("mensuralRestLongaPerfecta")]
+        [DataMember(Name="mensuralRestLongaPerfecta")]
         public GlyphDefinition MensuralRestLongaPerfecta { get; set; }
 
-        [JsonProperty("mensuralRestMaxima")]
+        [DataMember(Name="mensuralRestMaxima")]
         public GlyphDefinition MensuralRestMaxima { get; set; }
 
-        [JsonProperty("mensuralRestMinima")]
+        [DataMember(Name="mensuralRestMinima")]
         public GlyphDefinition MensuralRestMinima { get; set; }
 
-        [JsonProperty("mensuralRestSemibrevis")]
+        [DataMember(Name="mensuralRestSemibrevis")]
         public GlyphDefinition MensuralRestSemibrevis { get; set; }
 
-        [JsonProperty("mensuralRestSemifusa")]
+        [DataMember(Name="mensuralRestSemifusa")]
         public GlyphDefinition MensuralRestSemifusa { get; set; }
 
-        [JsonProperty("mensuralRestSemiminima")]
+        [DataMember(Name="mensuralRestSemiminima")]
         public GlyphDefinition MensuralRestSemiminima { get; set; }
 
-        [JsonProperty("mensuralSignumDown")]
+        [DataMember(Name="mensuralSignumDown")]
         public GlyphDefinition MensuralSignumDown { get; set; }
 
-        [JsonProperty("mensuralSignumUp")]
+        [DataMember(Name="mensuralSignumUp")]
         public GlyphDefinition MensuralSignumUp { get; set; }
 
-        [JsonProperty("mensuralTempusImperfectumHoriz")]
+        [DataMember(Name="mensuralTempusImperfectumHoriz")]
         public GlyphDefinition MensuralTempusImperfectumHoriz { get; set; }
 
-        [JsonProperty("mensuralTempusPerfectumHoriz")]
+        [DataMember(Name="mensuralTempusPerfectumHoriz")]
         public GlyphDefinition MensuralTempusPerfectumHoriz { get; set; }
 
-        [JsonProperty("mensuralWhiteBrevis")]
+        [DataMember(Name="mensuralWhiteBrevis")]
         public GlyphDefinition MensuralWhiteBrevis { get; set; }
 
-        [JsonProperty("mensuralWhiteFusa")]
+        [DataMember(Name="mensuralWhiteFusa")]
         public GlyphDefinition MensuralWhiteFusa { get; set; }
 
-        [JsonProperty("mensuralWhiteLonga")]
+        [DataMember(Name="mensuralWhiteLonga")]
         public GlyphDefinition MensuralWhiteLonga { get; set; }
 
-        [JsonProperty("mensuralWhiteMaxima")]
+        [DataMember(Name="mensuralWhiteMaxima")]
         public GlyphDefinition MensuralWhiteMaxima { get; set; }
 
-        [JsonProperty("mensuralWhiteMinima")]
+        [DataMember(Name="mensuralWhiteMinima")]
         public GlyphDefinition MensuralWhiteMinima { get; set; }
 
-        [JsonProperty("mensuralWhiteSemiminima")]
+        [DataMember(Name="mensuralWhiteSemiminima")]
         public GlyphDefinition MensuralWhiteSemiminima { get; set; }
 
-        [JsonProperty("metricModulationArrowLeft")]
+        [DataMember(Name="metricModulationArrowLeft")]
         public GlyphDefinition MetricModulationArrowLeft { get; set; }
 
-        [JsonProperty("metricModulationArrowRight")]
+        [DataMember(Name="metricModulationArrowRight")]
         public GlyphDefinition MetricModulationArrowRight { get; set; }
 
-        [JsonProperty("miscDoNotCopy")]
+        [DataMember(Name="miscDoNotCopy")]
         public GlyphDefinition MiscDoNotCopy { get; set; }
 
-        [JsonProperty("miscDoNotPhotocopy")]
+        [DataMember(Name="miscDoNotPhotocopy")]
         public GlyphDefinition MiscDoNotPhotocopy { get; set; }
 
-        [JsonProperty("miscEyeglasses")]
+        [DataMember(Name="miscEyeglasses")]
         public GlyphDefinition MiscEyeglasses { get; set; }
 
-        [JsonProperty("note1024thDown")]
+        [DataMember(Name="note1024thDown")]
         public GlyphDefinition Note1024ThDown { get; set; }
 
-        [JsonProperty("note1024thUp")]
+        [DataMember(Name="note1024thUp")]
         public GlyphDefinition Note1024ThUp { get; set; }
 
-        [JsonProperty("note128thDown")]
+        [DataMember(Name="note128thDown")]
         public GlyphDefinition Note128ThDown { get; set; }
 
-        [JsonProperty("note128thUp")]
+        [DataMember(Name="note128thUp")]
         public GlyphDefinition Note128ThUp { get; set; }
 
-        [JsonProperty("note16thDown")]
+        [DataMember(Name="note16thDown")]
         public GlyphDefinition Note16ThDown { get; set; }
 
-        [JsonProperty("note16thUp")]
+        [DataMember(Name="note16thUp")]
         public GlyphDefinition Note16ThUp { get; set; }
 
-        [JsonProperty("note256thDown")]
+        [DataMember(Name="note256thDown")]
         public GlyphDefinition Note256ThDown { get; set; }
 
-        [JsonProperty("note256thUp")]
+        [DataMember(Name="note256thUp")]
         public GlyphDefinition Note256ThUp { get; set; }
 
-        [JsonProperty("note32ndDown")]
+        [DataMember(Name="note32ndDown")]
         public GlyphDefinition Note32NdDown { get; set; }
 
-        [JsonProperty("note32ndUp")]
+        [DataMember(Name="note32ndUp")]
         public GlyphDefinition Note32NdUp { get; set; }
 
-        [JsonProperty("note512thDown")]
+        [DataMember(Name="note512thDown")]
         public GlyphDefinition Note512ThDown { get; set; }
 
-        [JsonProperty("note512thUp")]
+        [DataMember(Name="note512thUp")]
         public GlyphDefinition Note512ThUp { get; set; }
 
-        [JsonProperty("note64thDown")]
+        [DataMember(Name="note64thDown")]
         public GlyphDefinition Note64ThDown { get; set; }
 
-        [JsonProperty("note64thUp")]
+        [DataMember(Name="note64thUp")]
         public GlyphDefinition Note64ThUp { get; set; }
 
-        [JsonProperty("note8thDown")]
+        [DataMember(Name="note8thDown")]
         public GlyphDefinition Note8ThDown { get; set; }
 
-        [JsonProperty("note8thUp")]
+        [DataMember(Name="note8thUp")]
         public GlyphDefinition Note8ThUp { get; set; }
 
-        [JsonProperty("noteABlack")]
+        [DataMember(Name="noteABlack")]
         public GlyphDefinition NoteABlack { get; set; }
 
-        [JsonProperty("noteAFlatBlack")]
+        [DataMember(Name="noteAFlatBlack")]
         public GlyphDefinition NoteAFlatBlack { get; set; }
 
-        [JsonProperty("noteAFlatHalf")]
+        [DataMember(Name="noteAFlatHalf")]
         public GlyphDefinition NoteAFlatHalf { get; set; }
 
-        [JsonProperty("noteAFlatWhole")]
+        [DataMember(Name="noteAFlatWhole")]
         public GlyphDefinition NoteAFlatWhole { get; set; }
 
-        [JsonProperty("noteAHalf")]
+        [DataMember(Name="noteAHalf")]
         public GlyphDefinition NoteAHalf { get; set; }
 
-        [JsonProperty("noteASharpBlack")]
+        [DataMember(Name="noteASharpBlack")]
         public GlyphDefinition NoteASharpBlack { get; set; }
 
-        [JsonProperty("noteASharpHalf")]
+        [DataMember(Name="noteASharpHalf")]
         public GlyphDefinition NoteASharpHalf { get; set; }
 
-        [JsonProperty("noteASharpWhole")]
+        [DataMember(Name="noteASharpWhole")]
         public GlyphDefinition NoteASharpWhole { get; set; }
 
-        [JsonProperty("noteAWhole")]
+        [DataMember(Name="noteAWhole")]
         public GlyphDefinition NoteAWhole { get; set; }
 
-        [JsonProperty("noteBBlack")]
+        [DataMember(Name="noteBBlack")]
         public GlyphDefinition NoteBBlack { get; set; }
 
-        [JsonProperty("noteBFlatBlack")]
+        [DataMember(Name="noteBFlatBlack")]
         public GlyphDefinition NoteBFlatBlack { get; set; }
 
-        [JsonProperty("noteBFlatHalf")]
+        [DataMember(Name="noteBFlatHalf")]
         public GlyphDefinition NoteBFlatHalf { get; set; }
 
-        [JsonProperty("noteBFlatWhole")]
+        [DataMember(Name="noteBFlatWhole")]
         public GlyphDefinition NoteBFlatWhole { get; set; }
 
-        [JsonProperty("noteBHalf")]
+        [DataMember(Name="noteBHalf")]
         public GlyphDefinition NoteBHalf { get; set; }
 
-        [JsonProperty("noteBSharpBlack")]
+        [DataMember(Name="noteBSharpBlack")]
         public GlyphDefinition NoteBSharpBlack { get; set; }
 
-        [JsonProperty("noteBSharpHalf")]
+        [DataMember(Name="noteBSharpHalf")]
         public GlyphDefinition NoteBSharpHalf { get; set; }
 
-        [JsonProperty("noteBSharpWhole")]
+        [DataMember(Name="noteBSharpWhole")]
         public GlyphDefinition NoteBSharpWhole { get; set; }
 
-        [JsonProperty("noteBWhole")]
+        [DataMember(Name="noteBWhole")]
         public GlyphDefinition NoteBWhole { get; set; }
 
-        [JsonProperty("noteCBlack")]
+        [DataMember(Name="noteCBlack")]
         public GlyphDefinition NoteCBlack { get; set; }
 
-        [JsonProperty("noteCFlatBlack")]
+        [DataMember(Name="noteCFlatBlack")]
         public GlyphDefinition NoteCFlatBlack { get; set; }
 
-        [JsonProperty("noteCFlatHalf")]
+        [DataMember(Name="noteCFlatHalf")]
         public GlyphDefinition NoteCFlatHalf { get; set; }
 
-        [JsonProperty("noteCFlatWhole")]
+        [DataMember(Name="noteCFlatWhole")]
         public GlyphDefinition NoteCFlatWhole { get; set; }
 
-        [JsonProperty("noteCHalf")]
+        [DataMember(Name="noteCHalf")]
         public GlyphDefinition NoteCHalf { get; set; }
 
-        [JsonProperty("noteCSharpBlack")]
+        [DataMember(Name="noteCSharpBlack")]
         public GlyphDefinition NoteCSharpBlack { get; set; }
 
-        [JsonProperty("noteCSharpHalf")]
+        [DataMember(Name="noteCSharpHalf")]
         public GlyphDefinition NoteCSharpHalf { get; set; }
 
-        [JsonProperty("noteCSharpWhole")]
+        [DataMember(Name="noteCSharpWhole")]
         public GlyphDefinition NoteCSharpWhole { get; set; }
 
-        [JsonProperty("noteCWhole")]
+        [DataMember(Name="noteCWhole")]
         public GlyphDefinition NoteCWhole { get; set; }
 
-        [JsonProperty("noteDBlack")]
+        [DataMember(Name="noteDBlack")]
         public GlyphDefinition NoteDBlack { get; set; }
 
-        [JsonProperty("noteDFlatBlack")]
+        [DataMember(Name="noteDFlatBlack")]
         public GlyphDefinition NoteDFlatBlack { get; set; }
 
-        [JsonProperty("noteDFlatHalf")]
+        [DataMember(Name="noteDFlatHalf")]
         public GlyphDefinition NoteDFlatHalf { get; set; }
 
-        [JsonProperty("noteDFlatWhole")]
+        [DataMember(Name="noteDFlatWhole")]
         public GlyphDefinition NoteDFlatWhole { get; set; }
 
-        [JsonProperty("noteDHalf")]
+        [DataMember(Name="noteDHalf")]
         public GlyphDefinition NoteDHalf { get; set; }
 
-        [JsonProperty("noteDSharpBlack")]
+        [DataMember(Name="noteDSharpBlack")]
         public GlyphDefinition NoteDSharpBlack { get; set; }
 
-        [JsonProperty("noteDSharpHalf")]
+        [DataMember(Name="noteDSharpHalf")]
         public GlyphDefinition NoteDSharpHalf { get; set; }
 
-        [JsonProperty("noteDSharpWhole")]
+        [DataMember(Name="noteDSharpWhole")]
         public GlyphDefinition NoteDSharpWhole { get; set; }
 
-        [JsonProperty("noteDWhole")]
+        [DataMember(Name="noteDWhole")]
         public GlyphDefinition NoteDWhole { get; set; }
 
-        [JsonProperty("noteDoBlack")]
+        [DataMember(Name="noteDoBlack")]
         public GlyphDefinition NoteDoBlack { get; set; }
 
-        [JsonProperty("noteDoHalf")]
+        [DataMember(Name="noteDoHalf")]
         public GlyphDefinition NoteDoHalf { get; set; }
 
-        [JsonProperty("noteDoWhole")]
+        [DataMember(Name="noteDoWhole")]
         public GlyphDefinition NoteDoWhole { get; set; }
 
-        [JsonProperty("noteDoubleWhole")]
+        [DataMember(Name="noteDoubleWhole")]
         public GlyphDefinition NoteDoubleWhole { get; set; }
 
-        [JsonProperty("noteDoubleWholeSquare")]
+        [DataMember(Name="noteDoubleWholeSquare")]
         public GlyphDefinition NoteDoubleWholeSquare { get; set; }
 
-        [JsonProperty("noteEBlack")]
+        [DataMember(Name="noteEBlack")]
         public GlyphDefinition NoteEBlack { get; set; }
 
-        [JsonProperty("noteEFlatBlack")]
+        [DataMember(Name="noteEFlatBlack")]
         public GlyphDefinition NoteEFlatBlack { get; set; }
 
-        [JsonProperty("noteEFlatHalf")]
+        [DataMember(Name="noteEFlatHalf")]
         public GlyphDefinition NoteEFlatHalf { get; set; }
 
-        [JsonProperty("noteEFlatWhole")]
+        [DataMember(Name="noteEFlatWhole")]
         public GlyphDefinition NoteEFlatWhole { get; set; }
 
-        [JsonProperty("noteEHalf")]
+        [DataMember(Name="noteEHalf")]
         public GlyphDefinition NoteEHalf { get; set; }
 
-        [JsonProperty("noteESharpBlack")]
+        [DataMember(Name="noteESharpBlack")]
         public GlyphDefinition NoteESharpBlack { get; set; }
 
-        [JsonProperty("noteESharpHalf")]
+        [DataMember(Name="noteESharpHalf")]
         public GlyphDefinition NoteESharpHalf { get; set; }
 
-        [JsonProperty("noteESharpWhole")]
+        [DataMember(Name="noteESharpWhole")]
         public GlyphDefinition NoteESharpWhole { get; set; }
 
-        [JsonProperty("noteEWhole")]
+        [DataMember(Name="noteEWhole")]
         public GlyphDefinition NoteEWhole { get; set; }
 
-        [JsonProperty("noteEmptyBlack")]
+        [DataMember(Name="noteEmptyBlack")]
         public GlyphDefinition NoteEmptyBlack { get; set; }
 
-        [JsonProperty("noteEmptyHalf")]
+        [DataMember(Name="noteEmptyHalf")]
         public GlyphDefinition NoteEmptyHalf { get; set; }
 
-        [JsonProperty("noteEmptyWhole")]
+        [DataMember(Name="noteEmptyWhole")]
         public GlyphDefinition NoteEmptyWhole { get; set; }
 
-        [JsonProperty("noteFBlack")]
+        [DataMember(Name="noteFBlack")]
         public GlyphDefinition NoteFBlack { get; set; }
 
-        [JsonProperty("noteFFlatBlack")]
+        [DataMember(Name="noteFFlatBlack")]
         public GlyphDefinition NoteFFlatBlack { get; set; }
 
-        [JsonProperty("noteFFlatHalf")]
+        [DataMember(Name="noteFFlatHalf")]
         public GlyphDefinition NoteFFlatHalf { get; set; }
 
-        [JsonProperty("noteFFlatWhole")]
+        [DataMember(Name="noteFFlatWhole")]
         public GlyphDefinition NoteFFlatWhole { get; set; }
 
-        [JsonProperty("noteFHalf")]
+        [DataMember(Name="noteFHalf")]
         public GlyphDefinition NoteFHalf { get; set; }
 
-        [JsonProperty("noteFSharpBlack")]
+        [DataMember(Name="noteFSharpBlack")]
         public GlyphDefinition NoteFSharpBlack { get; set; }
 
-        [JsonProperty("noteFSharpHalf")]
+        [DataMember(Name="noteFSharpHalf")]
         public GlyphDefinition NoteFSharpHalf { get; set; }
 
-        [JsonProperty("noteFSharpWhole")]
+        [DataMember(Name="noteFSharpWhole")]
         public GlyphDefinition NoteFSharpWhole { get; set; }
 
-        [JsonProperty("noteFWhole")]
+        [DataMember(Name="noteFWhole")]
         public GlyphDefinition NoteFWhole { get; set; }
 
-        [JsonProperty("noteFaBlack")]
+        [DataMember(Name="noteFaBlack")]
         public GlyphDefinition NoteFaBlack { get; set; }
 
-        [JsonProperty("noteFaHalf")]
+        [DataMember(Name="noteFaHalf")]
         public GlyphDefinition NoteFaHalf { get; set; }
 
-        [JsonProperty("noteFaWhole")]
+        [DataMember(Name="noteFaWhole")]
         public GlyphDefinition NoteFaWhole { get; set; }
 
-        [JsonProperty("noteGBlack")]
+        [DataMember(Name="noteGBlack")]
         public GlyphDefinition NoteGBlack { get; set; }
 
-        [JsonProperty("noteGFlatBlack")]
+        [DataMember(Name="noteGFlatBlack")]
         public GlyphDefinition NoteGFlatBlack { get; set; }
 
-        [JsonProperty("noteGFlatHalf")]
+        [DataMember(Name="noteGFlatHalf")]
         public GlyphDefinition NoteGFlatHalf { get; set; }
 
-        [JsonProperty("noteGFlatWhole")]
+        [DataMember(Name="noteGFlatWhole")]
         public GlyphDefinition NoteGFlatWhole { get; set; }
 
-        [JsonProperty("noteGHalf")]
+        [DataMember(Name="noteGHalf")]
         public GlyphDefinition NoteGHalf { get; set; }
 
-        [JsonProperty("noteGSharpBlack")]
+        [DataMember(Name="noteGSharpBlack")]
         public GlyphDefinition NoteGSharpBlack { get; set; }
 
-        [JsonProperty("noteGSharpHalf")]
+        [DataMember(Name="noteGSharpHalf")]
         public GlyphDefinition NoteGSharpHalf { get; set; }
 
-        [JsonProperty("noteGSharpWhole")]
+        [DataMember(Name="noteGSharpWhole")]
         public GlyphDefinition NoteGSharpWhole { get; set; }
 
-        [JsonProperty("noteGWhole")]
+        [DataMember(Name="noteGWhole")]
         public GlyphDefinition NoteGWhole { get; set; }
 
-        [JsonProperty("noteHBlack")]
+        [DataMember(Name="noteHBlack")]
         public GlyphDefinition NoteHBlack { get; set; }
 
-        [JsonProperty("noteHHalf")]
+        [DataMember(Name="noteHHalf")]
         public GlyphDefinition NoteHHalf { get; set; }
 
-        [JsonProperty("noteHSharpBlack")]
+        [DataMember(Name="noteHSharpBlack")]
         public GlyphDefinition NoteHSharpBlack { get; set; }
 
-        [JsonProperty("noteHSharpHalf")]
+        [DataMember(Name="noteHSharpHalf")]
         public GlyphDefinition NoteHSharpHalf { get; set; }
 
-        [JsonProperty("noteHSharpWhole")]
+        [DataMember(Name="noteHSharpWhole")]
         public GlyphDefinition NoteHSharpWhole { get; set; }
 
-        [JsonProperty("noteHWhole")]
+        [DataMember(Name="noteHWhole")]
         public GlyphDefinition NoteHWhole { get; set; }
 
-        [JsonProperty("noteHalfDown")]
+        [DataMember(Name="noteHalfDown")]
         public GlyphDefinition NoteHalfDown { get; set; }
 
-        [JsonProperty("noteHalfUp")]
+        [DataMember(Name="noteHalfUp")]
         public GlyphDefinition NoteHalfUp { get; set; }
 
-        [JsonProperty("noteLaBlack")]
+        [DataMember(Name="noteLaBlack")]
         public GlyphDefinition NoteLaBlack { get; set; }
 
-        [JsonProperty("noteLaHalf")]
+        [DataMember(Name="noteLaHalf")]
         public GlyphDefinition NoteLaHalf { get; set; }
 
-        [JsonProperty("noteLaWhole")]
+        [DataMember(Name="noteLaWhole")]
         public GlyphDefinition NoteLaWhole { get; set; }
 
-        [JsonProperty("noteMiBlack")]
+        [DataMember(Name="noteMiBlack")]
         public GlyphDefinition NoteMiBlack { get; set; }
 
-        [JsonProperty("noteMiHalf")]
+        [DataMember(Name="noteMiHalf")]
         public GlyphDefinition NoteMiHalf { get; set; }
 
-        [JsonProperty("noteMiWhole")]
+        [DataMember(Name="noteMiWhole")]
         public GlyphDefinition NoteMiWhole { get; set; }
 
-        [JsonProperty("noteQuarterDown")]
+        [DataMember(Name="noteQuarterDown")]
         public GlyphDefinition NoteQuarterDown { get; set; }
 
-        [JsonProperty("noteQuarterUp")]
+        [DataMember(Name="noteQuarterUp")]
         public GlyphDefinition NoteQuarterUp { get; set; }
 
-        [JsonProperty("noteReBlack")]
+        [DataMember(Name="noteReBlack")]
         public GlyphDefinition NoteReBlack { get; set; }
 
-        [JsonProperty("noteReHalf")]
+        [DataMember(Name="noteReHalf")]
         public GlyphDefinition NoteReHalf { get; set; }
 
-        [JsonProperty("noteReWhole")]
+        [DataMember(Name="noteReWhole")]
         public GlyphDefinition NoteReWhole { get; set; }
 
-        [JsonProperty("noteShapeArrowheadLeftBlack")]
+        [DataMember(Name="noteShapeArrowheadLeftBlack")]
         public GlyphDefinition NoteShapeArrowheadLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeArrowheadLeftWhite")]
+        [DataMember(Name="noteShapeArrowheadLeftWhite")]
         public GlyphDefinition NoteShapeArrowheadLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeDiamondBlack")]
+        [DataMember(Name="noteShapeDiamondBlack")]
         public GlyphDefinition NoteShapeDiamondBlack { get; set; }
 
-        [JsonProperty("noteShapeDiamondWhite")]
+        [DataMember(Name="noteShapeDiamondWhite")]
         public GlyphDefinition NoteShapeDiamondWhite { get; set; }
 
-        [JsonProperty("noteShapeIsoscelesTriangleBlack")]
+        [DataMember(Name="noteShapeIsoscelesTriangleBlack")]
         public GlyphDefinition NoteShapeIsoscelesTriangleBlack { get; set; }
 
-        [JsonProperty("noteShapeIsoscelesTriangleWhite")]
+        [DataMember(Name="noteShapeIsoscelesTriangleWhite")]
         public GlyphDefinition NoteShapeIsoscelesTriangleWhite { get; set; }
 
-        [JsonProperty("noteShapeKeystoneBlack")]
+        [DataMember(Name="noteShapeKeystoneBlack")]
         public GlyphDefinition NoteShapeKeystoneBlack { get; set; }
 
-        [JsonProperty("noteShapeKeystoneWhite")]
+        [DataMember(Name="noteShapeKeystoneWhite")]
         public GlyphDefinition NoteShapeKeystoneWhite { get; set; }
 
-        [JsonProperty("noteShapeMoonBlack")]
+        [DataMember(Name="noteShapeMoonBlack")]
         public GlyphDefinition NoteShapeMoonBlack { get; set; }
 
-        [JsonProperty("noteShapeMoonLeftBlack")]
+        [DataMember(Name="noteShapeMoonLeftBlack")]
         public GlyphDefinition NoteShapeMoonLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeMoonLeftWhite")]
+        [DataMember(Name="noteShapeMoonLeftWhite")]
         public GlyphDefinition NoteShapeMoonLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeMoonWhite")]
+        [DataMember(Name="noteShapeMoonWhite")]
         public GlyphDefinition NoteShapeMoonWhite { get; set; }
 
-        [JsonProperty("noteShapeQuarterMoonBlack")]
+        [DataMember(Name="noteShapeQuarterMoonBlack")]
         public GlyphDefinition NoteShapeQuarterMoonBlack { get; set; }
 
-        [JsonProperty("noteShapeQuarterMoonWhite")]
+        [DataMember(Name="noteShapeQuarterMoonWhite")]
         public GlyphDefinition NoteShapeQuarterMoonWhite { get; set; }
 
-        [JsonProperty("noteShapeRoundBlack")]
+        [DataMember(Name="noteShapeRoundBlack")]
         public GlyphDefinition NoteShapeRoundBlack { get; set; }
 
-        [JsonProperty("noteShapeRoundWhite")]
+        [DataMember(Name="noteShapeRoundWhite")]
         public GlyphDefinition NoteShapeRoundWhite { get; set; }
 
-        [JsonProperty("noteShapeSquareBlack")]
+        [DataMember(Name="noteShapeSquareBlack")]
         public GlyphDefinition NoteShapeSquareBlack { get; set; }
 
-        [JsonProperty("noteShapeSquareWhite")]
+        [DataMember(Name="noteShapeSquareWhite")]
         public GlyphDefinition NoteShapeSquareWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleLeftBlack")]
+        [DataMember(Name="noteShapeTriangleLeftBlack")]
         public GlyphDefinition NoteShapeTriangleLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleLeftWhite")]
+        [DataMember(Name="noteShapeTriangleLeftWhite")]
         public GlyphDefinition NoteShapeTriangleLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleRightBlack")]
+        [DataMember(Name="noteShapeTriangleRightBlack")]
         public GlyphDefinition NoteShapeTriangleRightBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleRightWhite")]
+        [DataMember(Name="noteShapeTriangleRightWhite")]
         public GlyphDefinition NoteShapeTriangleRightWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundBlack")]
+        [DataMember(Name="noteShapeTriangleRoundBlack")]
         public GlyphDefinition NoteShapeTriangleRoundBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundLeftBlack")]
+        [DataMember(Name="noteShapeTriangleRoundLeftBlack")]
         public GlyphDefinition NoteShapeTriangleRoundLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundLeftWhite")]
+        [DataMember(Name="noteShapeTriangleRoundLeftWhite")]
         public GlyphDefinition NoteShapeTriangleRoundLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundWhite")]
+        [DataMember(Name="noteShapeTriangleRoundWhite")]
         public GlyphDefinition NoteShapeTriangleRoundWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleUpBlack")]
+        [DataMember(Name="noteShapeTriangleUpBlack")]
         public GlyphDefinition NoteShapeTriangleUpBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleUpWhite")]
+        [DataMember(Name="noteShapeTriangleUpWhite")]
         public GlyphDefinition NoteShapeTriangleUpWhite { get; set; }
 
-        [JsonProperty("noteSiBlack")]
+        [DataMember(Name="noteSiBlack")]
         public GlyphDefinition NoteSiBlack { get; set; }
 
-        [JsonProperty("noteSiHalf")]
+        [DataMember(Name="noteSiHalf")]
         public GlyphDefinition NoteSiHalf { get; set; }
 
-        [JsonProperty("noteSiWhole")]
+        [DataMember(Name="noteSiWhole")]
         public GlyphDefinition NoteSiWhole { get; set; }
 
-        [JsonProperty("noteSoBlack")]
+        [DataMember(Name="noteSoBlack")]
         public GlyphDefinition NoteSoBlack { get; set; }
 
-        [JsonProperty("noteSoHalf")]
+        [DataMember(Name="noteSoHalf")]
         public GlyphDefinition NoteSoHalf { get; set; }
 
-        [JsonProperty("noteSoWhole")]
+        [DataMember(Name="noteSoWhole")]
         public GlyphDefinition NoteSoWhole { get; set; }
 
-        [JsonProperty("noteTiBlack")]
+        [DataMember(Name="noteTiBlack")]
         public GlyphDefinition NoteTiBlack { get; set; }
 
-        [JsonProperty("noteTiHalf")]
+        [DataMember(Name="noteTiHalf")]
         public GlyphDefinition NoteTiHalf { get; set; }
 
-        [JsonProperty("noteTiWhole")]
+        [DataMember(Name="noteTiWhole")]
         public GlyphDefinition NoteTiWhole { get; set; }
 
-        [JsonProperty("noteWhole")]
+        [DataMember(Name="noteWhole")]
         public GlyphDefinition NoteWhole { get; set; }
 
-        [JsonProperty("noteheadBlack")]
+        [DataMember(Name="noteheadBlack")]
         public GlyphDefinition NoteheadBlack { get; set; }
 
-        [JsonProperty("noteheadCircleSlash")]
+        [DataMember(Name="noteheadCircleSlash")]
         public GlyphDefinition NoteheadCircleSlash { get; set; }
 
-        [JsonProperty("noteheadCircleX")]
+        [DataMember(Name="noteheadCircleX")]
         public GlyphDefinition NoteheadCircleX { get; set; }
 
-        [JsonProperty("noteheadCircleXDoubleWhole")]
+        [DataMember(Name="noteheadCircleXDoubleWhole")]
         public GlyphDefinition NoteheadCircleXDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadCircleXHalf")]
+        [DataMember(Name="noteheadCircleXHalf")]
         public GlyphDefinition NoteheadCircleXHalf { get; set; }
 
-        [JsonProperty("noteheadCircleXWhole")]
+        [DataMember(Name="noteheadCircleXWhole")]
         public GlyphDefinition NoteheadCircleXWhole { get; set; }
 
-        [JsonProperty("noteheadCircledBlack")]
+        [DataMember(Name="noteheadCircledBlack")]
         public GlyphDefinition NoteheadCircledBlack { get; set; }
 
-        [JsonProperty("noteheadCircledBlackLarge")]
+        [DataMember(Name="noteheadCircledBlackLarge")]
         public GlyphDefinition NoteheadCircledBlackLarge { get; set; }
 
-        [JsonProperty("noteheadCircledDoubleWhole")]
+        [DataMember(Name="noteheadCircledDoubleWhole")]
         public GlyphDefinition NoteheadCircledDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadCircledDoubleWholeLarge")]
+        [DataMember(Name="noteheadCircledDoubleWholeLarge")]
         public GlyphDefinition NoteheadCircledDoubleWholeLarge { get; set; }
 
-        [JsonProperty("noteheadCircledHalf")]
+        [DataMember(Name="noteheadCircledHalf")]
         public GlyphDefinition NoteheadCircledHalf { get; set; }
 
-        [JsonProperty("noteheadCircledHalfLarge")]
+        [DataMember(Name="noteheadCircledHalfLarge")]
         public GlyphDefinition NoteheadCircledHalfLarge { get; set; }
 
-        [JsonProperty("noteheadCircledWhole")]
+        [DataMember(Name="noteheadCircledWhole")]
         public GlyphDefinition NoteheadCircledWhole { get; set; }
 
-        [JsonProperty("noteheadCircledWholeLarge")]
+        [DataMember(Name="noteheadCircledWholeLarge")]
         public GlyphDefinition NoteheadCircledWholeLarge { get; set; }
 
-        [JsonProperty("noteheadCircledXLarge")]
+        [DataMember(Name="noteheadCircledXLarge")]
         public GlyphDefinition NoteheadCircledXLarge { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWhole2nd")]
+        [DataMember(Name="noteheadClusterDoubleWhole2nd")]
         public GlyphDefinition NoteheadClusterDoubleWhole2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWhole3rd")]
+        [DataMember(Name="noteheadClusterDoubleWhole3rd")]
         public GlyphDefinition NoteheadClusterDoubleWhole3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWholeBottom")]
+        [DataMember(Name="noteheadClusterDoubleWholeBottom")]
         public GlyphDefinition NoteheadClusterDoubleWholeBottom { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWholeMiddle")]
+        [DataMember(Name="noteheadClusterDoubleWholeMiddle")]
         public GlyphDefinition NoteheadClusterDoubleWholeMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWholeTop")]
+        [DataMember(Name="noteheadClusterDoubleWholeTop")]
         public GlyphDefinition NoteheadClusterDoubleWholeTop { get; set; }
 
-        [JsonProperty("noteheadClusterHalf2nd")]
+        [DataMember(Name="noteheadClusterHalf2nd")]
         public GlyphDefinition NoteheadClusterHalf2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterHalf3rd")]
+        [DataMember(Name="noteheadClusterHalf3rd")]
         public GlyphDefinition NoteheadClusterHalf3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterHalfBottom")]
+        [DataMember(Name="noteheadClusterHalfBottom")]
         public GlyphDefinition NoteheadClusterHalfBottom { get; set; }
 
-        [JsonProperty("noteheadClusterHalfMiddle")]
+        [DataMember(Name="noteheadClusterHalfMiddle")]
         public GlyphDefinition NoteheadClusterHalfMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterHalfTop")]
+        [DataMember(Name="noteheadClusterHalfTop")]
         public GlyphDefinition NoteheadClusterHalfTop { get; set; }
 
-        [JsonProperty("noteheadClusterQuarter2nd")]
+        [DataMember(Name="noteheadClusterQuarter2nd")]
         public GlyphDefinition NoteheadClusterQuarter2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterQuarter3rd")]
+        [DataMember(Name="noteheadClusterQuarter3rd")]
         public GlyphDefinition NoteheadClusterQuarter3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterQuarterBottom")]
+        [DataMember(Name="noteheadClusterQuarterBottom")]
         public GlyphDefinition NoteheadClusterQuarterBottom { get; set; }
 
-        [JsonProperty("noteheadClusterQuarterMiddle")]
+        [DataMember(Name="noteheadClusterQuarterMiddle")]
         public GlyphDefinition NoteheadClusterQuarterMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterQuarterTop")]
+        [DataMember(Name="noteheadClusterQuarterTop")]
         public GlyphDefinition NoteheadClusterQuarterTop { get; set; }
 
-        [JsonProperty("noteheadClusterRoundBlack")]
+        [DataMember(Name="noteheadClusterRoundBlack")]
         public GlyphDefinition NoteheadClusterRoundBlack { get; set; }
 
-        [JsonProperty("noteheadClusterRoundWhite")]
+        [DataMember(Name="noteheadClusterRoundWhite")]
         public GlyphDefinition NoteheadClusterRoundWhite { get; set; }
 
-        [JsonProperty("noteheadClusterSquareBlack")]
+        [DataMember(Name="noteheadClusterSquareBlack")]
         public GlyphDefinition NoteheadClusterSquareBlack { get; set; }
 
-        [JsonProperty("noteheadClusterSquareWhite")]
+        [DataMember(Name="noteheadClusterSquareWhite")]
         public GlyphDefinition NoteheadClusterSquareWhite { get; set; }
 
-        [JsonProperty("noteheadClusterWhole2nd")]
+        [DataMember(Name="noteheadClusterWhole2nd")]
         public GlyphDefinition NoteheadClusterWhole2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterWhole3rd")]
+        [DataMember(Name="noteheadClusterWhole3rd")]
         public GlyphDefinition NoteheadClusterWhole3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterWholeBottom")]
+        [DataMember(Name="noteheadClusterWholeBottom")]
         public GlyphDefinition NoteheadClusterWholeBottom { get; set; }
 
-        [JsonProperty("noteheadClusterWholeMiddle")]
+        [DataMember(Name="noteheadClusterWholeMiddle")]
         public GlyphDefinition NoteheadClusterWholeMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterWholeTop")]
+        [DataMember(Name="noteheadClusterWholeTop")]
         public GlyphDefinition NoteheadClusterWholeTop { get; set; }
 
-        [JsonProperty("noteheadDiamondBlack")]
+        [DataMember(Name="noteheadDiamondBlack")]
         public GlyphDefinition NoteheadDiamondBlack { get; set; }
 
-        [JsonProperty("noteheadDiamondBlackOld")]
+        [DataMember(Name="noteheadDiamondBlackOld")]
         public GlyphDefinition NoteheadDiamondBlackOld { get; set; }
 
-        [JsonProperty("noteheadDiamondBlackWide")]
+        [DataMember(Name="noteheadDiamondBlackWide")]
         public GlyphDefinition NoteheadDiamondBlackWide { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlack2nd")]
+        [DataMember(Name="noteheadDiamondClusterBlack2nd")]
         public GlyphDefinition NoteheadDiamondClusterBlack2Nd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlack3rd")]
+        [DataMember(Name="noteheadDiamondClusterBlack3rd")]
         public GlyphDefinition NoteheadDiamondClusterBlack3Rd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlackBottom")]
+        [DataMember(Name="noteheadDiamondClusterBlackBottom")]
         public GlyphDefinition NoteheadDiamondClusterBlackBottom { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlackMiddle")]
+        [DataMember(Name="noteheadDiamondClusterBlackMiddle")]
         public GlyphDefinition NoteheadDiamondClusterBlackMiddle { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlackTop")]
+        [DataMember(Name="noteheadDiamondClusterBlackTop")]
         public GlyphDefinition NoteheadDiamondClusterBlackTop { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhite2nd")]
+        [DataMember(Name="noteheadDiamondClusterWhite2nd")]
         public GlyphDefinition NoteheadDiamondClusterWhite2Nd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhite3rd")]
+        [DataMember(Name="noteheadDiamondClusterWhite3rd")]
         public GlyphDefinition NoteheadDiamondClusterWhite3Rd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhiteBottom")]
+        [DataMember(Name="noteheadDiamondClusterWhiteBottom")]
         public GlyphDefinition NoteheadDiamondClusterWhiteBottom { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhiteMiddle")]
+        [DataMember(Name="noteheadDiamondClusterWhiteMiddle")]
         public GlyphDefinition NoteheadDiamondClusterWhiteMiddle { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhiteTop")]
+        [DataMember(Name="noteheadDiamondClusterWhiteTop")]
         public GlyphDefinition NoteheadDiamondClusterWhiteTop { get; set; }
 
-        [JsonProperty("noteheadDiamondDoubleWhole")]
+        [DataMember(Name="noteheadDiamondDoubleWhole")]
         public GlyphDefinition NoteheadDiamondDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadDiamondDoubleWholeOld")]
+        [DataMember(Name="noteheadDiamondDoubleWholeOld")]
         public GlyphDefinition NoteheadDiamondDoubleWholeOld { get; set; }
 
-        [JsonProperty("noteheadDiamondHalf")]
+        [DataMember(Name="noteheadDiamondHalf")]
         public GlyphDefinition NoteheadDiamondHalf { get; set; }
 
-        [JsonProperty("noteheadDiamondHalfFilled")]
+        [DataMember(Name="noteheadDiamondHalfFilled")]
         public GlyphDefinition NoteheadDiamondHalfFilled { get; set; }
 
-        [JsonProperty("noteheadDiamondHalfOld")]
+        [DataMember(Name="noteheadDiamondHalfOld")]
         public GlyphDefinition NoteheadDiamondHalfOld { get; set; }
 
-        [JsonProperty("noteheadDiamondHalfWide")]
+        [DataMember(Name="noteheadDiamondHalfWide")]
         public GlyphDefinition NoteheadDiamondHalfWide { get; set; }
 
-        [JsonProperty("noteheadDiamondOpen")]
+        [DataMember(Name="noteheadDiamondOpen")]
         public GlyphDefinition NoteheadDiamondOpen { get; set; }
 
-        [JsonProperty("noteheadDiamondWhite")]
+        [DataMember(Name="noteheadDiamondWhite")]
         public GlyphDefinition NoteheadDiamondWhite { get; set; }
 
-        [JsonProperty("noteheadDiamondWhiteWide")]
+        [DataMember(Name="noteheadDiamondWhiteWide")]
         public GlyphDefinition NoteheadDiamondWhiteWide { get; set; }
 
-        [JsonProperty("noteheadDiamondWhole")]
+        [DataMember(Name="noteheadDiamondWhole")]
         public GlyphDefinition NoteheadDiamondWhole { get; set; }
 
-        [JsonProperty("noteheadDiamondWholeOld")]
+        [DataMember(Name="noteheadDiamondWholeOld")]
         public GlyphDefinition NoteheadDiamondWholeOld { get; set; }
 
-        [JsonProperty("noteheadDoubleWhole")]
+        [DataMember(Name="noteheadDoubleWhole")]
         public GlyphDefinition NoteheadDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeSquare")]
+        [DataMember(Name="noteheadDoubleWholeSquare")]
         public GlyphDefinition NoteheadDoubleWholeSquare { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeWithX")]
+        [DataMember(Name="noteheadDoubleWholeWithX")]
         public GlyphDefinition NoteheadDoubleWholeWithX { get; set; }
 
-        [JsonProperty("noteheadHalf")]
+        [DataMember(Name="noteheadHalf")]
         public GlyphDefinition NoteheadHalf { get; set; }
 
-        [JsonProperty("noteheadHalfFilled")]
+        [DataMember(Name="noteheadHalfFilled")]
         public GlyphDefinition NoteheadHalfFilled { get; set; }
 
-        [JsonProperty("noteheadHalfWithX")]
+        [DataMember(Name="noteheadHalfWithX")]
         public GlyphDefinition NoteheadHalfWithX { get; set; }
 
-        [JsonProperty("noteheadHeavyX")]
+        [DataMember(Name="noteheadHeavyX")]
         public GlyphDefinition NoteheadHeavyX { get; set; }
 
-        [JsonProperty("noteheadHeavyXHat")]
+        [DataMember(Name="noteheadHeavyXHat")]
         public GlyphDefinition NoteheadHeavyXHat { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownBlack")]
+        [DataMember(Name="noteheadLargeArrowDownBlack")]
         public GlyphDefinition NoteheadLargeArrowDownBlack { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownDoubleWhole")]
+        [DataMember(Name="noteheadLargeArrowDownDoubleWhole")]
         public GlyphDefinition NoteheadLargeArrowDownDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownHalf")]
+        [DataMember(Name="noteheadLargeArrowDownHalf")]
         public GlyphDefinition NoteheadLargeArrowDownHalf { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownWhole")]
+        [DataMember(Name="noteheadLargeArrowDownWhole")]
         public GlyphDefinition NoteheadLargeArrowDownWhole { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpBlack")]
+        [DataMember(Name="noteheadLargeArrowUpBlack")]
         public GlyphDefinition NoteheadLargeArrowUpBlack { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpDoubleWhole")]
+        [DataMember(Name="noteheadLargeArrowUpDoubleWhole")]
         public GlyphDefinition NoteheadLargeArrowUpDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpHalf")]
+        [DataMember(Name="noteheadLargeArrowUpHalf")]
         public GlyphDefinition NoteheadLargeArrowUpHalf { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpWhole")]
+        [DataMember(Name="noteheadLargeArrowUpWhole")]
         public GlyphDefinition NoteheadLargeArrowUpWhole { get; set; }
 
-        [JsonProperty("noteheadMoonBlack")]
+        [DataMember(Name="noteheadMoonBlack")]
         public GlyphDefinition NoteheadMoonBlack { get; set; }
 
-        [JsonProperty("noteheadMoonWhite")]
+        [DataMember(Name="noteheadMoonWhite")]
         public GlyphDefinition NoteheadMoonWhite { get; set; }
 
-        [JsonProperty("noteheadNull")]
+        [DataMember(Name="noteheadNull")]
         public GlyphDefinition NoteheadNull { get; set; }
 
-        [JsonProperty("noteheadParenthesis")]
+        [DataMember(Name="noteheadParenthesis")]
         public GlyphDefinition NoteheadParenthesis { get; set; }
 
-        [JsonProperty("noteheadParenthesisLeft")]
+        [DataMember(Name="noteheadParenthesisLeft")]
         public GlyphDefinition NoteheadParenthesisLeft { get; set; }
 
-        [JsonProperty("noteheadParenthesisRight")]
+        [DataMember(Name="noteheadParenthesisRight")]
         public GlyphDefinition NoteheadParenthesisRight { get; set; }
 
-        [JsonProperty("noteheadPlusBlack")]
+        [DataMember(Name="noteheadPlusBlack")]
         public GlyphDefinition NoteheadPlusBlack { get; set; }
 
-        [JsonProperty("noteheadPlusDoubleWhole")]
+        [DataMember(Name="noteheadPlusDoubleWhole")]
         public GlyphDefinition NoteheadPlusDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadPlusHalf")]
+        [DataMember(Name="noteheadPlusHalf")]
         public GlyphDefinition NoteheadPlusHalf { get; set; }
 
-        [JsonProperty("noteheadPlusWhole")]
+        [DataMember(Name="noteheadPlusWhole")]
         public GlyphDefinition NoteheadPlusWhole { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterBlackBottom")]
+        [DataMember(Name="noteheadRectangularClusterBlackBottom")]
         public GlyphDefinition NoteheadRectangularClusterBlackBottom { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterBlackMiddle")]
+        [DataMember(Name="noteheadRectangularClusterBlackMiddle")]
         public GlyphDefinition NoteheadRectangularClusterBlackMiddle { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterBlackTop")]
+        [DataMember(Name="noteheadRectangularClusterBlackTop")]
         public GlyphDefinition NoteheadRectangularClusterBlackTop { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterWhiteBottom")]
+        [DataMember(Name="noteheadRectangularClusterWhiteBottom")]
         public GlyphDefinition NoteheadRectangularClusterWhiteBottom { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterWhiteMiddle")]
+        [DataMember(Name="noteheadRectangularClusterWhiteMiddle")]
         public GlyphDefinition NoteheadRectangularClusterWhiteMiddle { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterWhiteTop")]
+        [DataMember(Name="noteheadRectangularClusterWhiteTop")]
         public GlyphDefinition NoteheadRectangularClusterWhiteTop { get; set; }
 
-        [JsonProperty("noteheadRoundBlack")]
+        [DataMember(Name="noteheadRoundBlack")]
         public GlyphDefinition NoteheadRoundBlack { get; set; }
 
-        [JsonProperty("noteheadRoundBlackLarge")]
+        [DataMember(Name="noteheadRoundBlackLarge")]
         public GlyphDefinition NoteheadRoundBlackLarge { get; set; }
 
-        [JsonProperty("noteheadRoundBlackSlashed")]
+        [DataMember(Name="noteheadRoundBlackSlashed")]
         public GlyphDefinition NoteheadRoundBlackSlashed { get; set; }
 
-        [JsonProperty("noteheadRoundBlackSlashedLarge")]
+        [DataMember(Name="noteheadRoundBlackSlashedLarge")]
         public GlyphDefinition NoteheadRoundBlackSlashedLarge { get; set; }
 
-        [JsonProperty("noteheadRoundWhite")]
+        [DataMember(Name="noteheadRoundWhite")]
         public GlyphDefinition NoteheadRoundWhite { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteLarge")]
+        [DataMember(Name="noteheadRoundWhiteLarge")]
         public GlyphDefinition NoteheadRoundWhiteLarge { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteSlashed")]
+        [DataMember(Name="noteheadRoundWhiteSlashed")]
         public GlyphDefinition NoteheadRoundWhiteSlashed { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteSlashedLarge")]
+        [DataMember(Name="noteheadRoundWhiteSlashedLarge")]
         public GlyphDefinition NoteheadRoundWhiteSlashedLarge { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteWithDot")]
+        [DataMember(Name="noteheadRoundWhiteWithDot")]
         public GlyphDefinition NoteheadRoundWhiteWithDot { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteWithDotLarge")]
+        [DataMember(Name="noteheadRoundWhiteWithDotLarge")]
         public GlyphDefinition NoteheadRoundWhiteWithDotLarge { get; set; }
 
-        [JsonProperty("noteheadSlashDiamondWhite")]
+        [DataMember(Name="noteheadSlashDiamondWhite")]
         public GlyphDefinition NoteheadSlashDiamondWhite { get; set; }
 
-        [JsonProperty("noteheadSlashHorizontalEnds")]
+        [DataMember(Name="noteheadSlashHorizontalEnds")]
         public GlyphDefinition NoteheadSlashHorizontalEnds { get; set; }
 
-        [JsonProperty("noteheadSlashHorizontalEndsMuted")]
+        [DataMember(Name="noteheadSlashHorizontalEndsMuted")]
         public GlyphDefinition NoteheadSlashHorizontalEndsMuted { get; set; }
 
-        [JsonProperty("noteheadSlashVerticalEnds")]
+        [DataMember(Name="noteheadSlashVerticalEnds")]
         public GlyphDefinition NoteheadSlashVerticalEnds { get; set; }
 
-        [JsonProperty("noteheadSlashVerticalEndsMuted")]
+        [DataMember(Name="noteheadSlashVerticalEndsMuted")]
         public GlyphDefinition NoteheadSlashVerticalEndsMuted { get; set; }
 
-        [JsonProperty("noteheadSlashVerticalEndsSmall")]
+        [DataMember(Name="noteheadSlashVerticalEndsSmall")]
         public GlyphDefinition NoteheadSlashVerticalEndsSmall { get; set; }
 
-        [JsonProperty("noteheadSlashWhiteHalf")]
+        [DataMember(Name="noteheadSlashWhiteHalf")]
         public GlyphDefinition NoteheadSlashWhiteHalf { get; set; }
 
-        [JsonProperty("noteheadSlashWhiteMuted")]
+        [DataMember(Name="noteheadSlashWhiteMuted")]
         public GlyphDefinition NoteheadSlashWhiteMuted { get; set; }
 
-        [JsonProperty("noteheadSlashWhiteWhole")]
+        [DataMember(Name="noteheadSlashWhiteWhole")]
         public GlyphDefinition NoteheadSlashWhiteWhole { get; set; }
 
-        [JsonProperty("noteheadSlashX")]
+        [DataMember(Name="noteheadSlashX")]
         public GlyphDefinition NoteheadSlashX { get; set; }
 
-        [JsonProperty("noteheadSlashedBlack1")]
+        [DataMember(Name="noteheadSlashedBlack1")]
         public GlyphDefinition NoteheadSlashedBlack1 { get; set; }
 
-        [JsonProperty("noteheadSlashedBlack2")]
+        [DataMember(Name="noteheadSlashedBlack2")]
         public GlyphDefinition NoteheadSlashedBlack2 { get; set; }
 
-        [JsonProperty("noteheadSlashedDoubleWhole1")]
+        [DataMember(Name="noteheadSlashedDoubleWhole1")]
         public GlyphDefinition NoteheadSlashedDoubleWhole1 { get; set; }
 
-        [JsonProperty("noteheadSlashedDoubleWhole2")]
+        [DataMember(Name="noteheadSlashedDoubleWhole2")]
         public GlyphDefinition NoteheadSlashedDoubleWhole2 { get; set; }
 
-        [JsonProperty("noteheadSlashedHalf1")]
+        [DataMember(Name="noteheadSlashedHalf1")]
         public GlyphDefinition NoteheadSlashedHalf1 { get; set; }
 
-        [JsonProperty("noteheadSlashedHalf2")]
+        [DataMember(Name="noteheadSlashedHalf2")]
         public GlyphDefinition NoteheadSlashedHalf2 { get; set; }
 
-        [JsonProperty("noteheadSlashedWhole1")]
+        [DataMember(Name="noteheadSlashedWhole1")]
         public GlyphDefinition NoteheadSlashedWhole1 { get; set; }
 
-        [JsonProperty("noteheadSlashedWhole2")]
+        [DataMember(Name="noteheadSlashedWhole2")]
         public GlyphDefinition NoteheadSlashedWhole2 { get; set; }
 
-        [JsonProperty("noteheadSquareBlack")]
+        [DataMember(Name="noteheadSquareBlack")]
         public GlyphDefinition NoteheadSquareBlack { get; set; }
 
-        [JsonProperty("noteheadSquareBlackLarge")]
+        [DataMember(Name="noteheadSquareBlackLarge")]
         public GlyphDefinition NoteheadSquareBlackLarge { get; set; }
 
-        [JsonProperty("noteheadSquareBlackWhite")]
+        [DataMember(Name="noteheadSquareBlackWhite")]
         public GlyphDefinition NoteheadSquareBlackWhite { get; set; }
 
-        [JsonProperty("noteheadSquareWhite")]
+        [DataMember(Name="noteheadSquareWhite")]
         public GlyphDefinition NoteheadSquareWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleDownBlack")]
+        [DataMember(Name="noteheadTriangleDownBlack")]
         public GlyphDefinition NoteheadTriangleDownBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleDownDoubleWhole")]
+        [DataMember(Name="noteheadTriangleDownDoubleWhole")]
         public GlyphDefinition NoteheadTriangleDownDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadTriangleDownHalf")]
+        [DataMember(Name="noteheadTriangleDownHalf")]
         public GlyphDefinition NoteheadTriangleDownHalf { get; set; }
 
-        [JsonProperty("noteheadTriangleDownWhite")]
+        [DataMember(Name="noteheadTriangleDownWhite")]
         public GlyphDefinition NoteheadTriangleDownWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleDownWhole")]
+        [DataMember(Name="noteheadTriangleDownWhole")]
         public GlyphDefinition NoteheadTriangleDownWhole { get; set; }
 
-        [JsonProperty("noteheadTriangleLeftBlack")]
+        [DataMember(Name="noteheadTriangleLeftBlack")]
         public GlyphDefinition NoteheadTriangleLeftBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleLeftWhite")]
+        [DataMember(Name="noteheadTriangleLeftWhite")]
         public GlyphDefinition NoteheadTriangleLeftWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleRightBlack")]
+        [DataMember(Name="noteheadTriangleRightBlack")]
         public GlyphDefinition NoteheadTriangleRightBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleRightWhite")]
+        [DataMember(Name="noteheadTriangleRightWhite")]
         public GlyphDefinition NoteheadTriangleRightWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleRoundDownBlack")]
+        [DataMember(Name="noteheadTriangleRoundDownBlack")]
         public GlyphDefinition NoteheadTriangleRoundDownBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleRoundDownWhite")]
+        [DataMember(Name="noteheadTriangleRoundDownWhite")]
         public GlyphDefinition NoteheadTriangleRoundDownWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleUpBlack")]
+        [DataMember(Name="noteheadTriangleUpBlack")]
         public GlyphDefinition NoteheadTriangleUpBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleUpDoubleWhole")]
+        [DataMember(Name="noteheadTriangleUpDoubleWhole")]
         public GlyphDefinition NoteheadTriangleUpDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadTriangleUpHalf")]
+        [DataMember(Name="noteheadTriangleUpHalf")]
         public GlyphDefinition NoteheadTriangleUpHalf { get; set; }
 
-        [JsonProperty("noteheadTriangleUpRightBlack")]
+        [DataMember(Name="noteheadTriangleUpRightBlack")]
         public GlyphDefinition NoteheadTriangleUpRightBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleUpRightWhite")]
+        [DataMember(Name="noteheadTriangleUpRightWhite")]
         public GlyphDefinition NoteheadTriangleUpRightWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleUpWhite")]
+        [DataMember(Name="noteheadTriangleUpWhite")]
         public GlyphDefinition NoteheadTriangleUpWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleUpWhole")]
+        [DataMember(Name="noteheadTriangleUpWhole")]
         public GlyphDefinition NoteheadTriangleUpWhole { get; set; }
 
-        [JsonProperty("noteheadVoidWithX")]
+        [DataMember(Name="noteheadVoidWithX")]
         public GlyphDefinition NoteheadVoidWithX { get; set; }
 
-        [JsonProperty("noteheadWhole")]
+        [DataMember(Name="noteheadWhole")]
         public GlyphDefinition NoteheadWhole { get; set; }
 
-        [JsonProperty("noteheadWholeFilled")]
+        [DataMember(Name="noteheadWholeFilled")]
         public GlyphDefinition NoteheadWholeFilled { get; set; }
 
-        [JsonProperty("noteheadWholeWithX")]
+        [DataMember(Name="noteheadWholeWithX")]
         public GlyphDefinition NoteheadWholeWithX { get; set; }
 
-        [JsonProperty("noteheadXBlack")]
+        [DataMember(Name="noteheadXBlack")]
         public GlyphDefinition NoteheadXBlack { get; set; }
 
-        [JsonProperty("noteheadXDoubleWhole")]
+        [DataMember(Name="noteheadXDoubleWhole")]
         public GlyphDefinition NoteheadXDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadXHalf")]
+        [DataMember(Name="noteheadXHalf")]
         public GlyphDefinition NoteheadXHalf { get; set; }
 
-        [JsonProperty("noteheadXOrnate")]
+        [DataMember(Name="noteheadXOrnate")]
         public GlyphDefinition NoteheadXOrnate { get; set; }
 
-        [JsonProperty("noteheadXOrnateEllipse")]
+        [DataMember(Name="noteheadXOrnateEllipse")]
         public GlyphDefinition NoteheadXOrnateEllipse { get; set; }
 
-        [JsonProperty("noteheadXWhole")]
+        [DataMember(Name="noteheadXWhole")]
         public GlyphDefinition NoteheadXWhole { get; set; }
 
-        [JsonProperty("octaveBassa")]
+        [DataMember(Name="octaveBassa")]
         public GlyphDefinition OctaveBassa { get; set; }
 
-        [JsonProperty("octaveLoco")]
+        [DataMember(Name="octaveLoco")]
         public GlyphDefinition OctaveLoco { get; set; }
 
-        [JsonProperty("octaveParensLeft")]
+        [DataMember(Name="octaveParensLeft")]
         public GlyphDefinition OctaveParensLeft { get; set; }
 
-        [JsonProperty("octaveParensRight")]
+        [DataMember(Name="octaveParensRight")]
         public GlyphDefinition OctaveParensRight { get; set; }
 
-        [JsonProperty("ornamentBottomLeftConcaveStroke")]
+        [DataMember(Name="ornamentBottomLeftConcaveStroke")]
         public GlyphDefinition OrnamentBottomLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentBottomLeftConcaveStrokeLarge")]
+        [DataMember(Name="ornamentBottomLeftConcaveStrokeLarge")]
         public GlyphDefinition OrnamentBottomLeftConcaveStrokeLarge { get; set; }
 
-        [JsonProperty("ornamentBottomLeftConvexStroke")]
+        [DataMember(Name="ornamentBottomLeftConvexStroke")]
         public GlyphDefinition OrnamentBottomLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentBottomRightConcaveStroke")]
+        [DataMember(Name="ornamentBottomRightConcaveStroke")]
         public GlyphDefinition OrnamentBottomRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentBottomRightConvexStroke")]
+        [DataMember(Name="ornamentBottomRightConvexStroke")]
         public GlyphDefinition OrnamentBottomRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentComma")]
+        [DataMember(Name="ornamentComma")]
         public GlyphDefinition OrnamentComma { get; set; }
 
-        [JsonProperty("ornamentDoubleObliqueLinesAfterNote")]
+        [DataMember(Name="ornamentDoubleObliqueLinesAfterNote")]
         public GlyphDefinition OrnamentDoubleObliqueLinesAfterNote { get; set; }
 
-        [JsonProperty("ornamentDoubleObliqueLinesBeforeNote")]
+        [DataMember(Name="ornamentDoubleObliqueLinesBeforeNote")]
         public GlyphDefinition OrnamentDoubleObliqueLinesBeforeNote { get; set; }
 
-        [JsonProperty("ornamentDownCurve")]
+        [DataMember(Name="ornamentDownCurve")]
         public GlyphDefinition OrnamentDownCurve { get; set; }
 
-        [JsonProperty("ornamentHaydn")]
+        [DataMember(Name="ornamentHaydn")]
         public GlyphDefinition OrnamentHaydn { get; set; }
 
-        [JsonProperty("ornamentHighLeftConcaveStroke")]
+        [DataMember(Name="ornamentHighLeftConcaveStroke")]
         public GlyphDefinition OrnamentHighLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentHighLeftConvexStroke")]
+        [DataMember(Name="ornamentHighLeftConvexStroke")]
         public GlyphDefinition OrnamentHighLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentHighRightConcaveStroke")]
+        [DataMember(Name="ornamentHighRightConcaveStroke")]
         public GlyphDefinition OrnamentHighRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentHighRightConvexStroke")]
+        [DataMember(Name="ornamentHighRightConvexStroke")]
         public GlyphDefinition OrnamentHighRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentHookAfterNote")]
+        [DataMember(Name="ornamentHookAfterNote")]
         public GlyphDefinition OrnamentHookAfterNote { get; set; }
 
-        [JsonProperty("ornamentHookBeforeNote")]
+        [DataMember(Name="ornamentHookBeforeNote")]
         public GlyphDefinition OrnamentHookBeforeNote { get; set; }
 
-        [JsonProperty("ornamentLeftFacingHalfCircle")]
+        [DataMember(Name="ornamentLeftFacingHalfCircle")]
         public GlyphDefinition OrnamentLeftFacingHalfCircle { get; set; }
 
-        [JsonProperty("ornamentLeftFacingHook")]
+        [DataMember(Name="ornamentLeftFacingHook")]
         public GlyphDefinition OrnamentLeftFacingHook { get; set; }
 
-        [JsonProperty("ornamentLeftPlus")]
+        [DataMember(Name="ornamentLeftPlus")]
         public GlyphDefinition OrnamentLeftPlus { get; set; }
 
-        [JsonProperty("ornamentLeftShakeT")]
+        [DataMember(Name="ornamentLeftShakeT")]
         public GlyphDefinition OrnamentLeftShakeT { get; set; }
 
-        [JsonProperty("ornamentLeftVerticalStroke")]
+        [DataMember(Name="ornamentLeftVerticalStroke")]
         public GlyphDefinition OrnamentLeftVerticalStroke { get; set; }
 
-        [JsonProperty("ornamentLeftVerticalStrokeWithCross")]
+        [DataMember(Name="ornamentLeftVerticalStrokeWithCross")]
         public GlyphDefinition OrnamentLeftVerticalStrokeWithCross { get; set; }
 
-        [JsonProperty("ornamentLowLeftConcaveStroke")]
+        [DataMember(Name="ornamentLowLeftConcaveStroke")]
         public GlyphDefinition OrnamentLowLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentLowLeftConvexStroke")]
+        [DataMember(Name="ornamentLowLeftConvexStroke")]
         public GlyphDefinition OrnamentLowLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentLowRightConcaveStroke")]
+        [DataMember(Name="ornamentLowRightConcaveStroke")]
         public GlyphDefinition OrnamentLowRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentLowRightConvexStroke")]
+        [DataMember(Name="ornamentLowRightConvexStroke")]
         public GlyphDefinition OrnamentLowRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentMiddleVerticalStroke")]
+        [DataMember(Name="ornamentMiddleVerticalStroke")]
         public GlyphDefinition OrnamentMiddleVerticalStroke { get; set; }
 
-        [JsonProperty("ornamentMordent")]
+        [DataMember(Name="ornamentMordent")]
         public GlyphDefinition OrnamentMordent { get; set; }
 
-        [JsonProperty("ornamentMordentInverted")]
+        [DataMember(Name="ornamentMordentInverted")]
         public GlyphDefinition OrnamentMordentInverted { get; set; }
 
-        [JsonProperty("ornamentObliqueLineAfterNote")]
+        [DataMember(Name="ornamentObliqueLineAfterNote")]
         public GlyphDefinition OrnamentObliqueLineAfterNote { get; set; }
 
-        [JsonProperty("ornamentObliqueLineBeforeNote")]
+        [DataMember(Name="ornamentObliqueLineBeforeNote")]
         public GlyphDefinition OrnamentObliqueLineBeforeNote { get; set; }
 
-        [JsonProperty("ornamentObliqueLineHorizAfterNote")]
+        [DataMember(Name="ornamentObliqueLineHorizAfterNote")]
         public GlyphDefinition OrnamentObliqueLineHorizAfterNote { get; set; }
 
-        [JsonProperty("ornamentObliqueLineHorizBeforeNote")]
+        [DataMember(Name="ornamentObliqueLineHorizBeforeNote")]
         public GlyphDefinition OrnamentObliqueLineHorizBeforeNote { get; set; }
 
-        [JsonProperty("ornamentOriscus")]
+        [DataMember(Name="ornamentOriscus")]
         public GlyphDefinition OrnamentOriscus { get; set; }
 
-        [JsonProperty("ornamentPinceCouperin")]
+        [DataMember(Name="ornamentPinceCouperin")]
         public GlyphDefinition OrnamentPinceCouperin { get; set; }
 
-        [JsonProperty("ornamentPortDeVoixV")]
+        [DataMember(Name="ornamentPortDeVoixV")]
         public GlyphDefinition OrnamentPortDeVoixV { get; set; }
 
-        [JsonProperty("ornamentPrecompAppoggTrill")]
+        [DataMember(Name="ornamentPrecompAppoggTrill")]
         public GlyphDefinition OrnamentPrecompAppoggTrill { get; set; }
 
-        [JsonProperty("ornamentPrecompAppoggTrillSuffix")]
+        [DataMember(Name="ornamentPrecompAppoggTrillSuffix")]
         public GlyphDefinition OrnamentPrecompAppoggTrillSuffix { get; set; }
 
-        [JsonProperty("ornamentPrecompCadence")]
+        [DataMember(Name="ornamentPrecompCadence")]
         public GlyphDefinition OrnamentPrecompCadence { get; set; }
 
-        [JsonProperty("ornamentPrecompCadenceUpperPrefix ")]
+        [DataMember(Name="ornamentPrecompCadenceUpperPrefix ")]
         public GlyphDefinition OrnamentPrecompCadenceUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompCadenceUpperPrefixTurn")]
+        [DataMember(Name="ornamentPrecompCadenceUpperPrefixTurn")]
         public GlyphDefinition OrnamentPrecompCadenceUpperPrefixTurn { get; set; }
 
-        [JsonProperty("ornamentPrecompCadenceWithTurn ")]
+        [DataMember(Name="ornamentPrecompCadenceWithTurn ")]
         public GlyphDefinition OrnamentPrecompCadenceWithTurn { get; set; }
 
-        [JsonProperty("ornamentPrecompDescendingSlide")]
+        [DataMember(Name="ornamentPrecompDescendingSlide")]
         public GlyphDefinition OrnamentPrecompDescendingSlide { get; set; }
 
-        [JsonProperty("ornamentPrecompDoubleCadenceLowerPrefix")]
+        [DataMember(Name="ornamentPrecompDoubleCadenceLowerPrefix")]
         public GlyphDefinition OrnamentPrecompDoubleCadenceLowerPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompDoubleCadenceUpperPrefix ")]
+        [DataMember(Name="ornamentPrecompDoubleCadenceUpperPrefix ")]
         public GlyphDefinition OrnamentPrecompDoubleCadenceUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompDoubleCadenceUpperPrefixTurn")]
+        [DataMember(Name="ornamentPrecompDoubleCadenceUpperPrefixTurn")]
         public GlyphDefinition OrnamentPrecompDoubleCadenceUpperPrefixTurn { get; set; }
 
-        [JsonProperty("ornamentPrecompInvertedMordentUpperPrefix")]
+        [DataMember(Name="ornamentPrecompInvertedMordentUpperPrefix")]
         public GlyphDefinition OrnamentPrecompInvertedMordentUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompMordentRelease")]
+        [DataMember(Name="ornamentPrecompMordentRelease")]
         public GlyphDefinition OrnamentPrecompMordentRelease { get; set; }
 
-        [JsonProperty("ornamentPrecompMordentUpperPrefix")]
+        [DataMember(Name="ornamentPrecompMordentUpperPrefix")]
         public GlyphDefinition OrnamentPrecompMordentUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompPortDeVoixMordent")]
+        [DataMember(Name="ornamentPrecompPortDeVoixMordent")]
         public GlyphDefinition OrnamentPrecompPortDeVoixMordent { get; set; }
 
-        [JsonProperty("ornamentPrecompSlide")]
+        [DataMember(Name="ornamentPrecompSlide")]
         public GlyphDefinition OrnamentPrecompSlide { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillBach")]
+        [DataMember(Name="ornamentPrecompSlideTrillBach")]
         public GlyphDefinition OrnamentPrecompSlideTrillBach { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillDAnglebert")]
+        [DataMember(Name="ornamentPrecompSlideTrillDAnglebert")]
         public GlyphDefinition OrnamentPrecompSlideTrillDAnglebert { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillMarpurg")]
+        [DataMember(Name="ornamentPrecompSlideTrillMarpurg")]
         public GlyphDefinition OrnamentPrecompSlideTrillMarpurg { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillMuffat")]
+        [DataMember(Name="ornamentPrecompSlideTrillMuffat")]
         public GlyphDefinition OrnamentPrecompSlideTrillMuffat { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillSuffixMuffat")]
+        [DataMember(Name="ornamentPrecompSlideTrillSuffixMuffat")]
         public GlyphDefinition OrnamentPrecompSlideTrillSuffixMuffat { get; set; }
 
-        [JsonProperty("ornamentPrecompTrillLowerSuffix")]
+        [DataMember(Name="ornamentPrecompTrillLowerSuffix")]
         public GlyphDefinition OrnamentPrecompTrillLowerSuffix { get; set; }
 
-        [JsonProperty("ornamentPrecompTrillSuffixDandrieu")]
+        [DataMember(Name="ornamentPrecompTrillSuffixDandrieu")]
         public GlyphDefinition OrnamentPrecompTrillSuffixDandrieu { get; set; }
 
-        [JsonProperty("ornamentPrecompTrillWithMordent")]
+        [DataMember(Name="ornamentPrecompTrillWithMordent")]
         public GlyphDefinition OrnamentPrecompTrillWithMordent { get; set; }
 
-        [JsonProperty("ornamentPrecompTurnTrillBach")]
+        [DataMember(Name="ornamentPrecompTurnTrillBach")]
         public GlyphDefinition OrnamentPrecompTurnTrillBach { get; set; }
 
-        [JsonProperty("ornamentPrecompTurnTrillDAnglebert")]
+        [DataMember(Name="ornamentPrecompTurnTrillDAnglebert")]
         public GlyphDefinition OrnamentPrecompTurnTrillDAnglebert { get; set; }
 
-        [JsonProperty("ornamentQuilisma")]
+        [DataMember(Name="ornamentQuilisma")]
         public GlyphDefinition OrnamentQuilisma { get; set; }
 
-        [JsonProperty("ornamentRightFacingHalfCircle")]
+        [DataMember(Name="ornamentRightFacingHalfCircle")]
         public GlyphDefinition OrnamentRightFacingHalfCircle { get; set; }
 
-        [JsonProperty("ornamentRightFacingHook")]
+        [DataMember(Name="ornamentRightFacingHook")]
         public GlyphDefinition OrnamentRightFacingHook { get; set; }
 
-        [JsonProperty("ornamentRightVerticalStroke")]
+        [DataMember(Name="ornamentRightVerticalStroke")]
         public GlyphDefinition OrnamentRightVerticalStroke { get; set; }
 
-        [JsonProperty("ornamentSchleifer")]
+        [DataMember(Name="ornamentSchleifer")]
         public GlyphDefinition OrnamentSchleifer { get; set; }
 
-        [JsonProperty("ornamentShake3")]
+        [DataMember(Name="ornamentShake3")]
         public GlyphDefinition OrnamentShake3 { get; set; }
 
-        [JsonProperty("ornamentShakeMuffat1")]
+        [DataMember(Name="ornamentShakeMuffat1")]
         public GlyphDefinition OrnamentShakeMuffat1 { get; set; }
 
-        [JsonProperty("ornamentShortObliqueLineAfterNote")]
+        [DataMember(Name="ornamentShortObliqueLineAfterNote")]
         public GlyphDefinition OrnamentShortObliqueLineAfterNote { get; set; }
 
-        [JsonProperty("ornamentShortObliqueLineBeforeNote")]
+        [DataMember(Name="ornamentShortObliqueLineBeforeNote")]
         public GlyphDefinition OrnamentShortObliqueLineBeforeNote { get; set; }
 
-        [JsonProperty("ornamentTopLeftConcaveStroke")]
+        [DataMember(Name="ornamentTopLeftConcaveStroke")]
         public GlyphDefinition OrnamentTopLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentTopLeftConvexStroke")]
+        [DataMember(Name="ornamentTopLeftConvexStroke")]
         public GlyphDefinition OrnamentTopLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentTopRightConcaveStroke")]
+        [DataMember(Name="ornamentTopRightConcaveStroke")]
         public GlyphDefinition OrnamentTopRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentTopRightConvexStroke")]
+        [DataMember(Name="ornamentTopRightConvexStroke")]
         public GlyphDefinition OrnamentTopRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentTremblement")]
+        [DataMember(Name="ornamentTremblement")]
         public GlyphDefinition OrnamentTremblement { get; set; }
 
-        [JsonProperty("ornamentTremblementCouperin")]
+        [DataMember(Name="ornamentTremblementCouperin")]
         public GlyphDefinition OrnamentTremblementCouperin { get; set; }
 
-        [JsonProperty("ornamentTrill")]
+        [DataMember(Name="ornamentTrill")]
         public GlyphDefinition OrnamentTrill { get; set; }
 
-        [JsonProperty("ornamentTurn")]
+        [DataMember(Name="ornamentTurn")]
         public GlyphDefinition OrnamentTurn { get; set; }
 
-        [JsonProperty("ornamentTurnInverted")]
+        [DataMember(Name="ornamentTurnInverted")]
         public GlyphDefinition OrnamentTurnInverted { get; set; }
 
-        [JsonProperty("ornamentTurnSlash")]
+        [DataMember(Name="ornamentTurnSlash")]
         public GlyphDefinition OrnamentTurnSlash { get; set; }
 
-        [JsonProperty("ornamentTurnUp")]
+        [DataMember(Name="ornamentTurnUp")]
         public GlyphDefinition OrnamentTurnUp { get; set; }
 
-        [JsonProperty("ornamentTurnUpS")]
+        [DataMember(Name="ornamentTurnUpS")]
         public GlyphDefinition OrnamentTurnUpS { get; set; }
 
-        [JsonProperty("ornamentUpCurve")]
+        [DataMember(Name="ornamentUpCurve")]
         public GlyphDefinition OrnamentUpCurve { get; set; }
 
-        [JsonProperty("ornamentVerticalLine")]
+        [DataMember(Name="ornamentVerticalLine")]
         public GlyphDefinition OrnamentVerticalLine { get; set; }
 
-        [JsonProperty("ornamentZigZagLineNoRightEnd")]
+        [DataMember(Name="ornamentZigZagLineNoRightEnd")]
         public GlyphDefinition OrnamentZigZagLineNoRightEnd { get; set; }
 
-        [JsonProperty("ornamentZigZagLineWithRightEnd")]
+        [DataMember(Name="ornamentZigZagLineWithRightEnd")]
         public GlyphDefinition OrnamentZigZagLineWithRightEnd { get; set; }
 
-        [JsonProperty("ottava")]
+        [DataMember(Name="ottava")]
         public GlyphDefinition Ottava { get; set; }
 
-        [JsonProperty("ottavaAlta")]
+        [DataMember(Name="ottavaAlta")]
         public GlyphDefinition OttavaAlta { get; set; }
 
-        [JsonProperty("ottavaBassa")]
+        [DataMember(Name="ottavaBassa")]
         public GlyphDefinition OttavaBassa { get; set; }
 
-        [JsonProperty("ottavaBassaBa")]
+        [DataMember(Name="ottavaBassaBa")]
         public GlyphDefinition OttavaBassaBa { get; set; }
 
-        [JsonProperty("ottavaBassaVb")]
+        [DataMember(Name="ottavaBassaVb")]
         public GlyphDefinition OttavaBassaVb { get; set; }
 
-        [JsonProperty("pendereckiTremolo")]
+        [DataMember(Name="pendereckiTremolo")]
         public GlyphDefinition PendereckiTremolo { get; set; }
 
-        [JsonProperty("pictAgogo")]
+        [DataMember(Name="pictAgogo")]
         public GlyphDefinition PictAgogo { get; set; }
 
-        [JsonProperty("pictAlmglocken")]
+        [DataMember(Name="pictAlmglocken")]
         public GlyphDefinition PictAlmglocken { get; set; }
 
-        [JsonProperty("pictAnvil")]
+        [DataMember(Name="pictAnvil")]
         public GlyphDefinition PictAnvil { get; set; }
 
-        [JsonProperty("pictBambooChimes")]
+        [DataMember(Name="pictBambooChimes")]
         public GlyphDefinition PictBambooChimes { get; set; }
 
-        [JsonProperty("pictBambooScraper")]
+        [DataMember(Name="pictBambooScraper")]
         public GlyphDefinition PictBambooScraper { get; set; }
 
-        [JsonProperty("pictBassDrum")]
+        [DataMember(Name="pictBassDrum")]
         public GlyphDefinition PictBassDrum { get; set; }
 
-        [JsonProperty("pictBassDrumOnSide")]
+        [DataMember(Name="pictBassDrumOnSide")]
         public GlyphDefinition PictBassDrumOnSide { get; set; }
 
-        [JsonProperty("pictBeaterBow")]
+        [DataMember(Name="pictBeaterBow")]
         public GlyphDefinition PictBeaterBow { get; set; }
 
-        [JsonProperty("pictBeaterBox")]
+        [DataMember(Name="pictBeaterBox")]
         public GlyphDefinition PictBeaterBox { get; set; }
 
-        [JsonProperty("pictBeaterBrassMalletsDown")]
+        [DataMember(Name="pictBeaterBrassMalletsDown")]
         public GlyphDefinition PictBeaterBrassMalletsDown { get; set; }
 
-        [JsonProperty("pictBeaterBrassMalletsUp")]
+        [DataMember(Name="pictBeaterBrassMalletsUp")]
         public GlyphDefinition PictBeaterBrassMalletsUp { get; set; }
 
-        [JsonProperty("pictBeaterCombiningDashedCircle")]
+        [DataMember(Name="pictBeaterCombiningDashedCircle")]
         public GlyphDefinition PictBeaterCombiningDashedCircle { get; set; }
 
-        [JsonProperty("pictBeaterCombiningParentheses")]
+        [DataMember(Name="pictBeaterCombiningParentheses")]
         public GlyphDefinition PictBeaterCombiningParentheses { get; set; }
 
-        [JsonProperty("pictBeaterDoubleBassDrumDown")]
+        [DataMember(Name="pictBeaterDoubleBassDrumDown")]
         public GlyphDefinition PictBeaterDoubleBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterDoubleBassDrumUp")]
+        [DataMember(Name="pictBeaterDoubleBassDrumUp")]
         public GlyphDefinition PictBeaterDoubleBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterFinger")]
+        [DataMember(Name="pictBeaterFinger")]
         public GlyphDefinition PictBeaterFinger { get; set; }
 
-        [JsonProperty("pictBeaterFingernails")]
+        [DataMember(Name="pictBeaterFingernails")]
         public GlyphDefinition PictBeaterFingernails { get; set; }
 
-        [JsonProperty("pictBeaterFist")]
+        [DataMember(Name="pictBeaterFist")]
         public GlyphDefinition PictBeaterFist { get; set; }
 
-        [JsonProperty("pictBeaterGuiroScraper")]
+        [DataMember(Name="pictBeaterGuiroScraper")]
         public GlyphDefinition PictBeaterGuiroScraper { get; set; }
 
-        [JsonProperty("pictBeaterHammer")]
+        [DataMember(Name="pictBeaterHammer")]
         public GlyphDefinition PictBeaterHammer { get; set; }
 
-        [JsonProperty("pictBeaterHammerMetalDown")]
+        [DataMember(Name="pictBeaterHammerMetalDown")]
         public GlyphDefinition PictBeaterHammerMetalDown { get; set; }
 
-        [JsonProperty("pictBeaterHammerMetalUp")]
+        [DataMember(Name="pictBeaterHammerMetalUp")]
         public GlyphDefinition PictBeaterHammerMetalUp { get; set; }
 
-        [JsonProperty("pictBeaterHammerPlasticDown")]
+        [DataMember(Name="pictBeaterHammerPlasticDown")]
         public GlyphDefinition PictBeaterHammerPlasticDown { get; set; }
 
-        [JsonProperty("pictBeaterHammerPlasticUp")]
+        [DataMember(Name="pictBeaterHammerPlasticUp")]
         public GlyphDefinition PictBeaterHammerPlasticUp { get; set; }
 
-        [JsonProperty("pictBeaterHammerWoodDown")]
+        [DataMember(Name="pictBeaterHammerWoodDown")]
         public GlyphDefinition PictBeaterHammerWoodDown { get; set; }
 
-        [JsonProperty("pictBeaterHammerWoodUp")]
+        [DataMember(Name="pictBeaterHammerWoodUp")]
         public GlyphDefinition PictBeaterHammerWoodUp { get; set; }
 
-        [JsonProperty("pictBeaterHand")]
+        [DataMember(Name="pictBeaterHand")]
         public GlyphDefinition PictBeaterHand { get; set; }
 
-        [JsonProperty("pictBeaterHardBassDrumDown")]
+        [DataMember(Name="pictBeaterHardBassDrumDown")]
         public GlyphDefinition PictBeaterHardBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterHardBassDrumUp")]
+        [DataMember(Name="pictBeaterHardBassDrumUp")]
         public GlyphDefinition PictBeaterHardBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielDown")]
+        [DataMember(Name="pictBeaterHardGlockenspielDown")]
         public GlyphDefinition PictBeaterHardGlockenspielDown { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielLeft")]
+        [DataMember(Name="pictBeaterHardGlockenspielLeft")]
         public GlyphDefinition PictBeaterHardGlockenspielLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielRight")]
+        [DataMember(Name="pictBeaterHardGlockenspielRight")]
         public GlyphDefinition PictBeaterHardGlockenspielRight { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielUp")]
+        [DataMember(Name="pictBeaterHardGlockenspielUp")]
         public GlyphDefinition PictBeaterHardGlockenspielUp { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniDown")]
+        [DataMember(Name="pictBeaterHardTimpaniDown")]
         public GlyphDefinition PictBeaterHardTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniLeft")]
+        [DataMember(Name="pictBeaterHardTimpaniLeft")]
         public GlyphDefinition PictBeaterHardTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniRight")]
+        [DataMember(Name="pictBeaterHardTimpaniRight")]
         public GlyphDefinition PictBeaterHardTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniUp")]
+        [DataMember(Name="pictBeaterHardTimpaniUp")]
         public GlyphDefinition PictBeaterHardTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneDown")]
+        [DataMember(Name="pictBeaterHardXylophoneDown")]
         public GlyphDefinition PictBeaterHardXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneLeft")]
+        [DataMember(Name="pictBeaterHardXylophoneLeft")]
         public GlyphDefinition PictBeaterHardXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneRight")]
+        [DataMember(Name="pictBeaterHardXylophoneRight")]
         public GlyphDefinition PictBeaterHardXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneUp")]
+        [DataMember(Name="pictBeaterHardXylophoneUp")]
         public GlyphDefinition PictBeaterHardXylophoneUp { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnDown")]
+        [DataMember(Name="pictBeaterHardYarnDown")]
         public GlyphDefinition PictBeaterHardYarnDown { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnLeft")]
+        [DataMember(Name="pictBeaterHardYarnLeft")]
         public GlyphDefinition PictBeaterHardYarnLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnRight")]
+        [DataMember(Name="pictBeaterHardYarnRight")]
         public GlyphDefinition PictBeaterHardYarnRight { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnUp")]
+        [DataMember(Name="pictBeaterHardYarnUp")]
         public GlyphDefinition PictBeaterHardYarnUp { get; set; }
 
-        [JsonProperty("pictBeaterJazzSticksDown")]
+        [DataMember(Name="pictBeaterJazzSticksDown")]
         public GlyphDefinition PictBeaterJazzSticksDown { get; set; }
 
-        [JsonProperty("pictBeaterJazzSticksUp")]
+        [DataMember(Name="pictBeaterJazzSticksUp")]
         public GlyphDefinition PictBeaterJazzSticksUp { get; set; }
 
-        [JsonProperty("pictBeaterKnittingNeedle")]
+        [DataMember(Name="pictBeaterKnittingNeedle")]
         public GlyphDefinition PictBeaterKnittingNeedle { get; set; }
 
-        [JsonProperty("pictBeaterMallet")]
+        [DataMember(Name="pictBeaterMallet")]
         public GlyphDefinition PictBeaterMallet { get; set; }
 
-        [JsonProperty("pictBeaterMediumBassDrumDown")]
+        [DataMember(Name="pictBeaterMediumBassDrumDown")]
         public GlyphDefinition PictBeaterMediumBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumBassDrumUp")]
+        [DataMember(Name="pictBeaterMediumBassDrumUp")]
         public GlyphDefinition PictBeaterMediumBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniDown")]
+        [DataMember(Name="pictBeaterMediumTimpaniDown")]
         public GlyphDefinition PictBeaterMediumTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniLeft")]
+        [DataMember(Name="pictBeaterMediumTimpaniLeft")]
         public GlyphDefinition PictBeaterMediumTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniRight")]
+        [DataMember(Name="pictBeaterMediumTimpaniRight")]
         public GlyphDefinition PictBeaterMediumTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniUp")]
+        [DataMember(Name="pictBeaterMediumTimpaniUp")]
         public GlyphDefinition PictBeaterMediumTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneDown")]
+        [DataMember(Name="pictBeaterMediumXylophoneDown")]
         public GlyphDefinition PictBeaterMediumXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneLeft")]
+        [DataMember(Name="pictBeaterMediumXylophoneLeft")]
         public GlyphDefinition PictBeaterMediumXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneRight")]
+        [DataMember(Name="pictBeaterMediumXylophoneRight")]
         public GlyphDefinition PictBeaterMediumXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneUp")]
+        [DataMember(Name="pictBeaterMediumXylophoneUp")]
         public GlyphDefinition PictBeaterMediumXylophoneUp { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnDown")]
+        [DataMember(Name="pictBeaterMediumYarnDown")]
         public GlyphDefinition PictBeaterMediumYarnDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnLeft")]
+        [DataMember(Name="pictBeaterMediumYarnLeft")]
         public GlyphDefinition PictBeaterMediumYarnLeft { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnRight")]
+        [DataMember(Name="pictBeaterMediumYarnRight")]
         public GlyphDefinition PictBeaterMediumYarnRight { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnUp")]
+        [DataMember(Name="pictBeaterMediumYarnUp")]
         public GlyphDefinition PictBeaterMediumYarnUp { get; set; }
 
-        [JsonProperty("pictBeaterMetalBassDrumDown")]
+        [DataMember(Name="pictBeaterMetalBassDrumDown")]
         public GlyphDefinition PictBeaterMetalBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterMetalBassDrumUp")]
+        [DataMember(Name="pictBeaterMetalBassDrumUp")]
         public GlyphDefinition PictBeaterMetalBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterMetalDown")]
+        [DataMember(Name="pictBeaterMetalDown")]
         public GlyphDefinition PictBeaterMetalDown { get; set; }
 
-        [JsonProperty("pictBeaterMetalHammer")]
+        [DataMember(Name="pictBeaterMetalHammer")]
         public GlyphDefinition PictBeaterMetalHammer { get; set; }
 
-        [JsonProperty("pictBeaterMetalLeft")]
+        [DataMember(Name="pictBeaterMetalLeft")]
         public GlyphDefinition PictBeaterMetalLeft { get; set; }
 
-        [JsonProperty("pictBeaterMetalRight")]
+        [DataMember(Name="pictBeaterMetalRight")]
         public GlyphDefinition PictBeaterMetalRight { get; set; }
 
-        [JsonProperty("pictBeaterMetalUp")]
+        [DataMember(Name="pictBeaterMetalUp")]
         public GlyphDefinition PictBeaterMetalUp { get; set; }
 
-        [JsonProperty("pictBeaterSnareSticksDown")]
+        [DataMember(Name="pictBeaterSnareSticksDown")]
         public GlyphDefinition PictBeaterSnareSticksDown { get; set; }
 
-        [JsonProperty("pictBeaterSnareSticksUp")]
+        [DataMember(Name="pictBeaterSnareSticksUp")]
         public GlyphDefinition PictBeaterSnareSticksUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftBassDrumDown")]
+        [DataMember(Name="pictBeaterSoftBassDrumDown")]
         public GlyphDefinition PictBeaterSoftBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftBassDrumUp")]
+        [DataMember(Name="pictBeaterSoftBassDrumUp")]
         public GlyphDefinition PictBeaterSoftBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielDown")]
+        [DataMember(Name="pictBeaterSoftGlockenspielDown")]
         public GlyphDefinition PictBeaterSoftGlockenspielDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielLeft")]
+        [DataMember(Name="pictBeaterSoftGlockenspielLeft")]
         public GlyphDefinition PictBeaterSoftGlockenspielLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielRight")]
+        [DataMember(Name="pictBeaterSoftGlockenspielRight")]
         public GlyphDefinition PictBeaterSoftGlockenspielRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielUp")]
+        [DataMember(Name="pictBeaterSoftGlockenspielUp")]
         public GlyphDefinition PictBeaterSoftGlockenspielUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniDown")]
+        [DataMember(Name="pictBeaterSoftTimpaniDown")]
         public GlyphDefinition PictBeaterSoftTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniLeft")]
+        [DataMember(Name="pictBeaterSoftTimpaniLeft")]
         public GlyphDefinition PictBeaterSoftTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniRight")]
+        [DataMember(Name="pictBeaterSoftTimpaniRight")]
         public GlyphDefinition PictBeaterSoftTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniUp")]
+        [DataMember(Name="pictBeaterSoftTimpaniUp")]
         public GlyphDefinition PictBeaterSoftTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophone")]
+        [DataMember(Name="pictBeaterSoftXylophone")]
         public GlyphDefinition PictBeaterSoftXylophone { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneDown")]
+        [DataMember(Name="pictBeaterSoftXylophoneDown")]
         public GlyphDefinition PictBeaterSoftXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneLeft")]
+        [DataMember(Name="pictBeaterSoftXylophoneLeft")]
         public GlyphDefinition PictBeaterSoftXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneRight")]
+        [DataMember(Name="pictBeaterSoftXylophoneRight")]
         public GlyphDefinition PictBeaterSoftXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneUp")]
+        [DataMember(Name="pictBeaterSoftXylophoneUp")]
         public GlyphDefinition PictBeaterSoftXylophoneUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnDown")]
+        [DataMember(Name="pictBeaterSoftYarnDown")]
         public GlyphDefinition PictBeaterSoftYarnDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnLeft")]
+        [DataMember(Name="pictBeaterSoftYarnLeft")]
         public GlyphDefinition PictBeaterSoftYarnLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnRight")]
+        [DataMember(Name="pictBeaterSoftYarnRight")]
         public GlyphDefinition PictBeaterSoftYarnRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnUp")]
+        [DataMember(Name="pictBeaterSoftYarnUp")]
         public GlyphDefinition PictBeaterSoftYarnUp { get; set; }
 
-        [JsonProperty("pictBeaterSpoonWoodenMallet")]
+        [DataMember(Name="pictBeaterSpoonWoodenMallet")]
         public GlyphDefinition PictBeaterSpoonWoodenMallet { get; set; }
 
-        [JsonProperty("pictBeaterSuperballDown")]
+        [DataMember(Name="pictBeaterSuperballDown")]
         public GlyphDefinition PictBeaterSuperballDown { get; set; }
 
-        [JsonProperty("pictBeaterSuperballLeft")]
+        [DataMember(Name="pictBeaterSuperballLeft")]
         public GlyphDefinition PictBeaterSuperballLeft { get; set; }
 
-        [JsonProperty("pictBeaterSuperballRight")]
+        [DataMember(Name="pictBeaterSuperballRight")]
         public GlyphDefinition PictBeaterSuperballRight { get; set; }
 
-        [JsonProperty("pictBeaterSuperballUp")]
+        [DataMember(Name="pictBeaterSuperballUp")]
         public GlyphDefinition PictBeaterSuperballUp { get; set; }
 
-        [JsonProperty("pictBeaterTriangleDown")]
+        [DataMember(Name="pictBeaterTriangleDown")]
         public GlyphDefinition PictBeaterTriangleDown { get; set; }
 
-        [JsonProperty("pictBeaterTriangleUp")]
+        [DataMember(Name="pictBeaterTriangleUp")]
         public GlyphDefinition PictBeaterTriangleUp { get; set; }
 
-        [JsonProperty("pictBeaterWireBrushesDown")]
+        [DataMember(Name="pictBeaterWireBrushesDown")]
         public GlyphDefinition PictBeaterWireBrushesDown { get; set; }
 
-        [JsonProperty("pictBeaterWireBrushesUp")]
+        [DataMember(Name="pictBeaterWireBrushesUp")]
         public GlyphDefinition PictBeaterWireBrushesUp { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniDown")]
+        [DataMember(Name="pictBeaterWoodTimpaniDown")]
         public GlyphDefinition PictBeaterWoodTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniLeft")]
+        [DataMember(Name="pictBeaterWoodTimpaniLeft")]
         public GlyphDefinition PictBeaterWoodTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniRight")]
+        [DataMember(Name="pictBeaterWoodTimpaniRight")]
         public GlyphDefinition PictBeaterWoodTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniUp")]
+        [DataMember(Name="pictBeaterWoodTimpaniUp")]
         public GlyphDefinition PictBeaterWoodTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneDown")]
+        [DataMember(Name="pictBeaterWoodXylophoneDown")]
         public GlyphDefinition PictBeaterWoodXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneLeft")]
+        [DataMember(Name="pictBeaterWoodXylophoneLeft")]
         public GlyphDefinition PictBeaterWoodXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneRight")]
+        [DataMember(Name="pictBeaterWoodXylophoneRight")]
         public GlyphDefinition PictBeaterWoodXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneUp")]
+        [DataMember(Name="pictBeaterWoodXylophoneUp")]
         public GlyphDefinition PictBeaterWoodXylophoneUp { get; set; }
 
-        [JsonProperty("pictBell")]
+        [DataMember(Name="pictBell")]
         public GlyphDefinition PictBell { get; set; }
 
-        [JsonProperty("pictBellOfCymbal")]
+        [DataMember(Name="pictBellOfCymbal")]
         public GlyphDefinition PictBellOfCymbal { get; set; }
 
-        [JsonProperty("pictBellPlate")]
+        [DataMember(Name="pictBellPlate")]
         public GlyphDefinition PictBellPlate { get; set; }
 
-        [JsonProperty("pictBellTree")]
+        [DataMember(Name="pictBellTree")]
         public GlyphDefinition PictBellTree { get; set; }
 
-        [JsonProperty("pictBirdWhistle")]
+        [DataMember(Name="pictBirdWhistle")]
         public GlyphDefinition PictBirdWhistle { get; set; }
 
-        [JsonProperty("pictBoardClapper")]
+        [DataMember(Name="pictBoardClapper")]
         public GlyphDefinition PictBoardClapper { get; set; }
 
-        [JsonProperty("pictBongos")]
+        [DataMember(Name="pictBongos")]
         public GlyphDefinition PictBongos { get; set; }
 
-        [JsonProperty("pictBrakeDrum")]
+        [DataMember(Name="pictBrakeDrum")]
         public GlyphDefinition PictBrakeDrum { get; set; }
 
-        [JsonProperty("pictCabasa")]
+        [DataMember(Name="pictCabasa")]
         public GlyphDefinition PictCabasa { get; set; }
 
-        [JsonProperty("pictCannon")]
+        [DataMember(Name="pictCannon")]
         public GlyphDefinition PictCannon { get; set; }
 
-        [JsonProperty("pictCarHorn")]
+        [DataMember(Name="pictCarHorn")]
         public GlyphDefinition PictCarHorn { get; set; }
 
-        [JsonProperty("pictCastanets")]
+        [DataMember(Name="pictCastanets")]
         public GlyphDefinition PictCastanets { get; set; }
 
-        [JsonProperty("pictCastanetsWithHandle")]
+        [DataMember(Name="pictCastanetsWithHandle")]
         public GlyphDefinition PictCastanetsWithHandle { get; set; }
 
-        [JsonProperty("pictCelesta")]
+        [DataMember(Name="pictCelesta")]
         public GlyphDefinition PictCelesta { get; set; }
 
-        [JsonProperty("pictCencerro")]
+        [DataMember(Name="pictCencerro")]
         public GlyphDefinition PictCencerro { get; set; }
 
-        [JsonProperty("pictCenter1")]
+        [DataMember(Name="pictCenter1")]
         public GlyphDefinition PictCenter1 { get; set; }
 
-        [JsonProperty("pictCenter2")]
+        [DataMember(Name="pictCenter2")]
         public GlyphDefinition PictCenter2 { get; set; }
 
-        [JsonProperty("pictCenter3")]
+        [DataMember(Name="pictCenter3")]
         public GlyphDefinition PictCenter3 { get; set; }
 
-        [JsonProperty("pictChainRattle")]
+        [DataMember(Name="pictChainRattle")]
         public GlyphDefinition PictChainRattle { get; set; }
 
-        [JsonProperty("pictChimes")]
+        [DataMember(Name="pictChimes")]
         public GlyphDefinition PictChimes { get; set; }
 
-        [JsonProperty("pictChineseCymbal")]
+        [DataMember(Name="pictChineseCymbal")]
         public GlyphDefinition PictChineseCymbal { get; set; }
 
-        [JsonProperty("pictChokeCymbal")]
+        [DataMember(Name="pictChokeCymbal")]
         public GlyphDefinition PictChokeCymbal { get; set; }
 
-        [JsonProperty("pictClaves")]
+        [DataMember(Name="pictClaves")]
         public GlyphDefinition PictClaves { get; set; }
 
-        [JsonProperty("pictCoins")]
+        [DataMember(Name="pictCoins")]
         public GlyphDefinition PictCoins { get; set; }
 
-        [JsonProperty("pictConga")]
+        [DataMember(Name="pictConga")]
         public GlyphDefinition PictConga { get; set; }
 
-        [JsonProperty("pictCowBell")]
+        [DataMember(Name="pictCowBell")]
         public GlyphDefinition PictCowBell { get; set; }
 
-        [JsonProperty("pictCrashCymbals")]
+        [DataMember(Name="pictCrashCymbals")]
         public GlyphDefinition PictCrashCymbals { get; set; }
 
-        [JsonProperty("pictCrotales")]
+        [DataMember(Name="pictCrotales")]
         public GlyphDefinition PictCrotales { get; set; }
 
-        [JsonProperty("pictCrushStem")]
+        [DataMember(Name="pictCrushStem")]
         public GlyphDefinition PictCrushStem { get; set; }
 
-        [JsonProperty("pictCuica")]
+        [DataMember(Name="pictCuica")]
         public GlyphDefinition PictCuica { get; set; }
 
-        [JsonProperty("pictCymbalTongs")]
+        [DataMember(Name="pictCymbalTongs")]
         public GlyphDefinition PictCymbalTongs { get; set; }
 
-        [JsonProperty("pictDamp1")]
+        [DataMember(Name="pictDamp1")]
         public GlyphDefinition PictDamp1 { get; set; }
 
-        [JsonProperty("pictDamp2")]
+        [DataMember(Name="pictDamp2")]
         public GlyphDefinition PictDamp2 { get; set; }
 
-        [JsonProperty("pictDamp3")]
+        [DataMember(Name="pictDamp3")]
         public GlyphDefinition PictDamp3 { get; set; }
 
-        [JsonProperty("pictDamp4")]
+        [DataMember(Name="pictDamp4")]
         public GlyphDefinition PictDamp4 { get; set; }
 
-        [JsonProperty("pictDeadNoteStem")]
+        [DataMember(Name="pictDeadNoteStem")]
         public GlyphDefinition PictDeadNoteStem { get; set; }
 
-        [JsonProperty("pictDrumStick")]
+        [DataMember(Name="pictDrumStick")]
         public GlyphDefinition PictDrumStick { get; set; }
 
-        [JsonProperty("pictDuckCall")]
+        [DataMember(Name="pictDuckCall")]
         public GlyphDefinition PictDuckCall { get; set; }
 
-        [JsonProperty("pictEdgeOfCymbal")]
+        [DataMember(Name="pictEdgeOfCymbal")]
         public GlyphDefinition PictEdgeOfCymbal { get; set; }
 
-        [JsonProperty("pictEmptyTrap")]
+        [DataMember(Name="pictEmptyTrap")]
         public GlyphDefinition PictEmptyTrap { get; set; }
 
-        [JsonProperty("pictFingerCymbals")]
+        [DataMember(Name="pictFingerCymbals")]
         public GlyphDefinition PictFingerCymbals { get; set; }
 
-        [JsonProperty("pictFlexatone")]
+        [DataMember(Name="pictFlexatone")]
         public GlyphDefinition PictFlexatone { get; set; }
 
-        [JsonProperty("pictFootballRatchet")]
+        [DataMember(Name="pictFootballRatchet")]
         public GlyphDefinition PictFootballRatchet { get; set; }
 
-        [JsonProperty("pictGlassHarmonica")]
+        [DataMember(Name="pictGlassHarmonica")]
         public GlyphDefinition PictGlassHarmonica { get; set; }
 
-        [JsonProperty("pictGlassHarp")]
+        [DataMember(Name="pictGlassHarp")]
         public GlyphDefinition PictGlassHarp { get; set; }
 
-        [JsonProperty("pictGlassPlateChimes")]
+        [DataMember(Name="pictGlassPlateChimes")]
         public GlyphDefinition PictGlassPlateChimes { get; set; }
 
-        [JsonProperty("pictGlassTubeChimes")]
+        [DataMember(Name="pictGlassTubeChimes")]
         public GlyphDefinition PictGlassTubeChimes { get; set; }
 
-        [JsonProperty("pictGlsp")]
+        [DataMember(Name="pictGlsp")]
         public GlyphDefinition PictGlsp { get; set; }
 
-        [JsonProperty("pictGlspSmithBrindle")]
+        [DataMember(Name="pictGlspSmithBrindle")]
         public GlyphDefinition PictGlspSmithBrindle { get; set; }
 
-        [JsonProperty("pictGobletDrum")]
+        [DataMember(Name="pictGobletDrum")]
         public GlyphDefinition PictGobletDrum { get; set; }
 
-        [JsonProperty("pictGong")]
+        [DataMember(Name="pictGong")]
         public GlyphDefinition PictGong { get; set; }
 
-        [JsonProperty("pictGongWithButton")]
+        [DataMember(Name="pictGongWithButton")]
         public GlyphDefinition PictGongWithButton { get; set; }
 
-        [JsonProperty("pictGuiro")]
+        [DataMember(Name="pictGuiro")]
         public GlyphDefinition PictGuiro { get; set; }
 
-        [JsonProperty("pictGumHardDown")]
+        [DataMember(Name="pictGumHardDown")]
         public GlyphDefinition PictGumHardDown { get; set; }
 
-        [JsonProperty("pictGumHardLeft")]
+        [DataMember(Name="pictGumHardLeft")]
         public GlyphDefinition PictGumHardLeft { get; set; }
 
-        [JsonProperty("pictGumHardRight")]
+        [DataMember(Name="pictGumHardRight")]
         public GlyphDefinition PictGumHardRight { get; set; }
 
-        [JsonProperty("pictGumHardUp")]
+        [DataMember(Name="pictGumHardUp")]
         public GlyphDefinition PictGumHardUp { get; set; }
 
-        [JsonProperty("pictGumMediumDown")]
+        [DataMember(Name="pictGumMediumDown")]
         public GlyphDefinition PictGumMediumDown { get; set; }
 
-        [JsonProperty("pictGumMediumLeft")]
+        [DataMember(Name="pictGumMediumLeft")]
         public GlyphDefinition PictGumMediumLeft { get; set; }
 
-        [JsonProperty("pictGumMediumRight")]
+        [DataMember(Name="pictGumMediumRight")]
         public GlyphDefinition PictGumMediumRight { get; set; }
 
-        [JsonProperty("pictGumMediumUp")]
+        [DataMember(Name="pictGumMediumUp")]
         public GlyphDefinition PictGumMediumUp { get; set; }
 
-        [JsonProperty("pictGumSoftDown")]
+        [DataMember(Name="pictGumSoftDown")]
         public GlyphDefinition PictGumSoftDown { get; set; }
 
-        [JsonProperty("pictGumSoftLeft")]
+        [DataMember(Name="pictGumSoftLeft")]
         public GlyphDefinition PictGumSoftLeft { get; set; }
 
-        [JsonProperty("pictGumSoftRight")]
+        [DataMember(Name="pictGumSoftRight")]
         public GlyphDefinition PictGumSoftRight { get; set; }
 
-        [JsonProperty("pictGumSoftUp")]
+        [DataMember(Name="pictGumSoftUp")]
         public GlyphDefinition PictGumSoftUp { get; set; }
 
-        [JsonProperty("pictHalfOpen1")]
+        [DataMember(Name="pictHalfOpen1")]
         public GlyphDefinition PictHalfOpen1 { get; set; }
 
-        [JsonProperty("pictHalfOpen2")]
+        [DataMember(Name="pictHalfOpen2")]
         public GlyphDefinition PictHalfOpen2 { get; set; }
 
-        [JsonProperty("pictHandbell")]
+        [DataMember(Name="pictHandbell")]
         public GlyphDefinition PictHandbell { get; set; }
 
-        [JsonProperty("pictHiHat")]
+        [DataMember(Name="pictHiHat")]
         public GlyphDefinition PictHiHat { get; set; }
 
-        [JsonProperty("pictHiHatOnStand")]
+        [DataMember(Name="pictHiHatOnStand")]
         public GlyphDefinition PictHiHatOnStand { get; set; }
 
-        [JsonProperty("pictJawHarp")]
+        [DataMember(Name="pictJawHarp")]
         public GlyphDefinition PictJawHarp { get; set; }
 
-        [JsonProperty("pictJingleBells")]
+        [DataMember(Name="pictJingleBells")]
         public GlyphDefinition PictJingleBells { get; set; }
 
-        [JsonProperty("pictKlaxonHorn")]
+        [DataMember(Name="pictKlaxonHorn")]
         public GlyphDefinition PictKlaxonHorn { get; set; }
 
-        [JsonProperty("pictLeftHandCircle")]
+        [DataMember(Name="pictLeftHandCircle")]
         public GlyphDefinition PictLeftHandCircle { get; set; }
 
-        [JsonProperty("pictLionsRoar")]
+        [DataMember(Name="pictLionsRoar")]
         public GlyphDefinition PictLionsRoar { get; set; }
 
-        [JsonProperty("pictLithophone")]
+        [DataMember(Name="pictLithophone")]
         public GlyphDefinition PictLithophone { get; set; }
 
-        [JsonProperty("pictLogDrum")]
+        [DataMember(Name="pictLogDrum")]
         public GlyphDefinition PictLogDrum { get; set; }
 
-        [JsonProperty("pictLotusFlute")]
+        [DataMember(Name="pictLotusFlute")]
         public GlyphDefinition PictLotusFlute { get; set; }
 
-        [JsonProperty("pictMar")]
+        [DataMember(Name="pictMar")]
         public GlyphDefinition PictMar { get; set; }
 
-        [JsonProperty("pictMarSmithBrindle")]
+        [DataMember(Name="pictMarSmithBrindle")]
         public GlyphDefinition PictMarSmithBrindle { get; set; }
 
-        [JsonProperty("pictMaraca")]
+        [DataMember(Name="pictMaraca")]
         public GlyphDefinition PictMaraca { get; set; }
 
-        [JsonProperty("pictMaracas")]
+        [DataMember(Name="pictMaracas")]
         public GlyphDefinition PictMaracas { get; set; }
 
-        [JsonProperty("pictMegaphone")]
+        [DataMember(Name="pictMegaphone")]
         public GlyphDefinition PictMegaphone { get; set; }
 
-        [JsonProperty("pictMetalPlateChimes")]
+        [DataMember(Name="pictMetalPlateChimes")]
         public GlyphDefinition PictMetalPlateChimes { get; set; }
 
-        [JsonProperty("pictMetalTubeChimes")]
+        [DataMember(Name="pictMetalTubeChimes")]
         public GlyphDefinition PictMetalTubeChimes { get; set; }
 
-        [JsonProperty("pictMusicalSaw")]
+        [DataMember(Name="pictMusicalSaw")]
         public GlyphDefinition PictMusicalSaw { get; set; }
 
-        [JsonProperty("pictNormalPosition")]
+        [DataMember(Name="pictNormalPosition")]
         public GlyphDefinition PictNormalPosition { get; set; }
 
-        [JsonProperty("pictOnRim")]
+        [DataMember(Name="pictOnRim")]
         public GlyphDefinition PictOnRim { get; set; }
 
-        [JsonProperty("pictOpen")]
+        [DataMember(Name="pictOpen")]
         public GlyphDefinition PictOpen { get; set; }
 
-        [JsonProperty("pictOpenRimShot")]
+        [DataMember(Name="pictOpenRimShot")]
         public GlyphDefinition PictOpenRimShot { get; set; }
 
-        [JsonProperty("pictPistolShot")]
+        [DataMember(Name="pictPistolShot")]
         public GlyphDefinition PictPistolShot { get; set; }
 
-        [JsonProperty("pictPoliceWhistle")]
+        [DataMember(Name="pictPoliceWhistle")]
         public GlyphDefinition PictPoliceWhistle { get; set; }
 
-        [JsonProperty("pictQuijada")]
+        [DataMember(Name="pictQuijada")]
         public GlyphDefinition PictQuijada { get; set; }
 
-        [JsonProperty("pictRainstick")]
+        [DataMember(Name="pictRainstick")]
         public GlyphDefinition PictRainstick { get; set; }
 
-        [JsonProperty("pictRatchet")]
+        [DataMember(Name="pictRatchet")]
         public GlyphDefinition PictRatchet { get; set; }
 
-        [JsonProperty("pictRecoReco")]
+        [DataMember(Name="pictRecoReco")]
         public GlyphDefinition PictRecoReco { get; set; }
 
-        [JsonProperty("pictRightHandSquare")]
+        [DataMember(Name="pictRightHandSquare")]
         public GlyphDefinition PictRightHandSquare { get; set; }
 
-        [JsonProperty("pictRim1")]
+        [DataMember(Name="pictRim1")]
         public GlyphDefinition PictRim1 { get; set; }
 
-        [JsonProperty("pictRim2")]
+        [DataMember(Name="pictRim2")]
         public GlyphDefinition PictRim2 { get; set; }
 
-        [JsonProperty("pictRim3")]
+        [DataMember(Name="pictRim3")]
         public GlyphDefinition PictRim3 { get; set; }
 
-        [JsonProperty("pictRimShotOnStem")]
+        [DataMember(Name="pictRimShotOnStem")]
         public GlyphDefinition PictRimShotOnStem { get; set; }
 
-        [JsonProperty("pictSandpaperBlocks")]
+        [DataMember(Name="pictSandpaperBlocks")]
         public GlyphDefinition PictSandpaperBlocks { get; set; }
 
-        [JsonProperty("pictScrapeAroundRim")]
+        [DataMember(Name="pictScrapeAroundRim")]
         public GlyphDefinition PictScrapeAroundRim { get; set; }
 
-        [JsonProperty("pictScrapeCenterToEdge")]
+        [DataMember(Name="pictScrapeCenterToEdge")]
         public GlyphDefinition PictScrapeCenterToEdge { get; set; }
 
-        [JsonProperty("pictScrapeEdgeToCenter")]
+        [DataMember(Name="pictScrapeEdgeToCenter")]
         public GlyphDefinition PictScrapeEdgeToCenter { get; set; }
 
-        [JsonProperty("pictShellBells")]
+        [DataMember(Name="pictShellBells")]
         public GlyphDefinition PictShellBells { get; set; }
 
-        [JsonProperty("pictShellChimes")]
+        [DataMember(Name="pictShellChimes")]
         public GlyphDefinition PictShellChimes { get; set; }
 
-        [JsonProperty("pictSiren")]
+        [DataMember(Name="pictSiren")]
         public GlyphDefinition PictSiren { get; set; }
 
-        [JsonProperty("pictSistrum")]
+        [DataMember(Name="pictSistrum")]
         public GlyphDefinition PictSistrum { get; set; }
 
-        [JsonProperty("pictSizzleCymbal")]
+        [DataMember(Name="pictSizzleCymbal")]
         public GlyphDefinition PictSizzleCymbal { get; set; }
 
-        [JsonProperty("pictSleighBell")]
+        [DataMember(Name="pictSleighBell")]
         public GlyphDefinition PictSleighBell { get; set; }
 
-        [JsonProperty("pictSlideBrushOnGong")]
+        [DataMember(Name="pictSlideBrushOnGong")]
         public GlyphDefinition PictSlideBrushOnGong { get; set; }
 
-        [JsonProperty("pictSlideWhistle")]
+        [DataMember(Name="pictSlideWhistle")]
         public GlyphDefinition PictSlideWhistle { get; set; }
 
-        [JsonProperty("pictSlitDrum")]
+        [DataMember(Name="pictSlitDrum")]
         public GlyphDefinition PictSlitDrum { get; set; }
 
-        [JsonProperty("pictSnareDrum")]
+        [DataMember(Name="pictSnareDrum")]
         public GlyphDefinition PictSnareDrum { get; set; }
 
-        [JsonProperty("pictSnareDrumMilitary")]
+        [DataMember(Name="pictSnareDrumMilitary")]
         public GlyphDefinition PictSnareDrumMilitary { get; set; }
 
-        [JsonProperty("pictSnareDrumSnaresOff")]
+        [DataMember(Name="pictSnareDrumSnaresOff")]
         public GlyphDefinition PictSnareDrumSnaresOff { get; set; }
 
-        [JsonProperty("pictSteelDrums")]
+        [DataMember(Name="pictSteelDrums")]
         public GlyphDefinition PictSteelDrums { get; set; }
 
-        [JsonProperty("pictStickShot")]
+        [DataMember(Name="pictStickShot")]
         public GlyphDefinition PictStickShot { get; set; }
 
-        [JsonProperty("pictSuperball")]
+        [DataMember(Name="pictSuperball")]
         public GlyphDefinition PictSuperball { get; set; }
 
-        [JsonProperty("pictSuspendedCymbal")]
+        [DataMember(Name="pictSuspendedCymbal")]
         public GlyphDefinition PictSuspendedCymbal { get; set; }
 
-        [JsonProperty("pictSwishStem")]
+        [DataMember(Name="pictSwishStem")]
         public GlyphDefinition PictSwishStem { get; set; }
 
-        [JsonProperty("pictTabla")]
+        [DataMember(Name="pictTabla")]
         public GlyphDefinition PictTabla { get; set; }
 
-        [JsonProperty("pictTamTam")]
+        [DataMember(Name="pictTamTam")]
         public GlyphDefinition PictTamTam { get; set; }
 
-        [JsonProperty("pictTamTamWithBeater")]
+        [DataMember(Name="pictTamTamWithBeater")]
         public GlyphDefinition PictTamTamWithBeater { get; set; }
 
-        [JsonProperty("pictTambourine")]
+        [DataMember(Name="pictTambourine")]
         public GlyphDefinition PictTambourine { get; set; }
 
-        [JsonProperty("pictTempleBlocks")]
+        [DataMember(Name="pictTempleBlocks")]
         public GlyphDefinition PictTempleBlocks { get; set; }
 
-        [JsonProperty("pictTenorDrum")]
+        [DataMember(Name="pictTenorDrum")]
         public GlyphDefinition PictTenorDrum { get; set; }
 
-        [JsonProperty("pictThundersheet")]
+        [DataMember(Name="pictThundersheet")]
         public GlyphDefinition PictThundersheet { get; set; }
 
-        [JsonProperty("pictTimbales")]
+        [DataMember(Name="pictTimbales")]
         public GlyphDefinition PictTimbales { get; set; }
 
-        [JsonProperty("pictTimpani")]
+        [DataMember(Name="pictTimpani")]
         public GlyphDefinition PictTimpani { get; set; }
 
-        [JsonProperty("pictTomTom")]
+        [DataMember(Name="pictTomTom")]
         public GlyphDefinition PictTomTom { get; set; }
 
-        [JsonProperty("pictTomTomChinese")]
+        [DataMember(Name="pictTomTomChinese")]
         public GlyphDefinition PictTomTomChinese { get; set; }
 
-        [JsonProperty("pictTomTomIndoAmerican")]
+        [DataMember(Name="pictTomTomIndoAmerican")]
         public GlyphDefinition PictTomTomIndoAmerican { get; set; }
 
-        [JsonProperty("pictTomTomJapanese")]
+        [DataMember(Name="pictTomTomJapanese")]
         public GlyphDefinition PictTomTomJapanese { get; set; }
 
-        [JsonProperty("pictTriangle")]
+        [DataMember(Name="pictTriangle")]
         public GlyphDefinition PictTriangle { get; set; }
 
-        [JsonProperty("pictTubaphone")]
+        [DataMember(Name="pictTubaphone")]
         public GlyphDefinition PictTubaphone { get; set; }
 
-        [JsonProperty("pictTubularBells")]
+        [DataMember(Name="pictTubularBells")]
         public GlyphDefinition PictTubularBells { get; set; }
 
-        [JsonProperty("pictTurnLeftStem")]
+        [DataMember(Name="pictTurnLeftStem")]
         public GlyphDefinition PictTurnLeftStem { get; set; }
 
-        [JsonProperty("pictTurnRightLeftStem")]
+        [DataMember(Name="pictTurnRightLeftStem")]
         public GlyphDefinition PictTurnRightLeftStem { get; set; }
 
-        [JsonProperty("pictTurnRightStem")]
+        [DataMember(Name="pictTurnRightStem")]
         public GlyphDefinition PictTurnRightStem { get; set; }
 
-        [JsonProperty("pictVib")]
+        [DataMember(Name="pictVib")]
         public GlyphDefinition PictVib { get; set; }
 
-        [JsonProperty("pictVibMotorOff")]
+        [DataMember(Name="pictVibMotorOff")]
         public GlyphDefinition PictVibMotorOff { get; set; }
 
-        [JsonProperty("pictVibSmithBrindle")]
+        [DataMember(Name="pictVibSmithBrindle")]
         public GlyphDefinition PictVibSmithBrindle { get; set; }
 
-        [JsonProperty("pictVibraslap")]
+        [DataMember(Name="pictVibraslap")]
         public GlyphDefinition PictVibraslap { get; set; }
 
-        [JsonProperty("pictVietnameseHat")]
+        [DataMember(Name="pictVietnameseHat")]
         public GlyphDefinition PictVietnameseHat { get; set; }
 
-        [JsonProperty("pictWhip")]
+        [DataMember(Name="pictWhip")]
         public GlyphDefinition PictWhip { get; set; }
 
-        [JsonProperty("pictWindChimesGlass")]
+        [DataMember(Name="pictWindChimesGlass")]
         public GlyphDefinition PictWindChimesGlass { get; set; }
 
-        [JsonProperty("pictWindMachine")]
+        [DataMember(Name="pictWindMachine")]
         public GlyphDefinition PictWindMachine { get; set; }
 
-        [JsonProperty("pictWindWhistle")]
+        [DataMember(Name="pictWindWhistle")]
         public GlyphDefinition PictWindWhistle { get; set; }
 
-        [JsonProperty("pictWoodBlock")]
+        [DataMember(Name="pictWoodBlock")]
         public GlyphDefinition PictWoodBlock { get; set; }
 
-        [JsonProperty("pictWoundHardDown")]
+        [DataMember(Name="pictWoundHardDown")]
         public GlyphDefinition PictWoundHardDown { get; set; }
 
-        [JsonProperty("pictWoundHardLeft")]
+        [DataMember(Name="pictWoundHardLeft")]
         public GlyphDefinition PictWoundHardLeft { get; set; }
 
-        [JsonProperty("pictWoundHardRight")]
+        [DataMember(Name="pictWoundHardRight")]
         public GlyphDefinition PictWoundHardRight { get; set; }
 
-        [JsonProperty("pictWoundHardUp")]
+        [DataMember(Name="pictWoundHardUp")]
         public GlyphDefinition PictWoundHardUp { get; set; }
 
-        [JsonProperty("pictWoundSoftDown")]
+        [DataMember(Name="pictWoundSoftDown")]
         public GlyphDefinition PictWoundSoftDown { get; set; }
 
-        [JsonProperty("pictWoundSoftLeft")]
+        [DataMember(Name="pictWoundSoftLeft")]
         public GlyphDefinition PictWoundSoftLeft { get; set; }
 
-        [JsonProperty("pictWoundSoftRight")]
+        [DataMember(Name="pictWoundSoftRight")]
         public GlyphDefinition PictWoundSoftRight { get; set; }
 
-        [JsonProperty("pictWoundSoftUp")]
+        [DataMember(Name="pictWoundSoftUp")]
         public GlyphDefinition PictWoundSoftUp { get; set; }
 
-        [JsonProperty("pictXyl")]
+        [DataMember(Name="pictXyl")]
         public GlyphDefinition PictXyl { get; set; }
 
-        [JsonProperty("pictXylBass")]
+        [DataMember(Name="pictXylBass")]
         public GlyphDefinition PictXylBass { get; set; }
 
-        [JsonProperty("pictXylSmithBrindle")]
+        [DataMember(Name="pictXylSmithBrindle")]
         public GlyphDefinition PictXylSmithBrindle { get; set; }
 
-        [JsonProperty("pictXylTenor")]
+        [DataMember(Name="pictXylTenor")]
         public GlyphDefinition PictXylTenor { get; set; }
 
-        [JsonProperty("pictXylTenorTrough")]
+        [DataMember(Name="pictXylTenorTrough")]
         public GlyphDefinition PictXylTenorTrough { get; set; }
 
-        [JsonProperty("pictXylTrough")]
+        [DataMember(Name="pictXylTrough")]
         public GlyphDefinition PictXylTrough { get; set; }
 
-        [JsonProperty("pluckedBuzzPizzicato")]
+        [DataMember(Name="pluckedBuzzPizzicato")]
         public GlyphDefinition PluckedBuzzPizzicato { get; set; }
 
-        [JsonProperty("pluckedDamp")]
+        [DataMember(Name="pluckedDamp")]
         public GlyphDefinition PluckedDamp { get; set; }
 
-        [JsonProperty("pluckedDampAll")]
+        [DataMember(Name="pluckedDampAll")]
         public GlyphDefinition PluckedDampAll { get; set; }
 
-        [JsonProperty("pluckedDampOnStem")]
+        [DataMember(Name="pluckedDampOnStem")]
         public GlyphDefinition PluckedDampOnStem { get; set; }
 
-        [JsonProperty("pluckedFingernailFlick")]
+        [DataMember(Name="pluckedFingernailFlick")]
         public GlyphDefinition PluckedFingernailFlick { get; set; }
 
-        [JsonProperty("pluckedLeftHandPizzicato")]
+        [DataMember(Name="pluckedLeftHandPizzicato")]
         public GlyphDefinition PluckedLeftHandPizzicato { get; set; }
 
-        [JsonProperty("pluckedPlectrum")]
+        [DataMember(Name="pluckedPlectrum")]
         public GlyphDefinition PluckedPlectrum { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoAbove")]
+        [DataMember(Name="pluckedSnapPizzicatoAbove")]
         public GlyphDefinition PluckedSnapPizzicatoAbove { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoBelow")]
+        [DataMember(Name="pluckedSnapPizzicatoBelow")]
         public GlyphDefinition PluckedSnapPizzicatoBelow { get; set; }
 
-        [JsonProperty("pluckedWithFingernails")]
+        [DataMember(Name="pluckedWithFingernails")]
         public GlyphDefinition PluckedWithFingernails { get; set; }
 
-        [JsonProperty("quindicesima")]
+        [DataMember(Name="quindicesima")]
         public GlyphDefinition Quindicesima { get; set; }
 
-        [JsonProperty("quindicesimaAlta")]
+        [DataMember(Name="quindicesimaAlta")]
         public GlyphDefinition QuindicesimaAlta { get; set; }
 
-        [JsonProperty("quindicesimaBassa")]
+        [DataMember(Name="quindicesimaBassa")]
         public GlyphDefinition QuindicesimaBassa { get; set; }
 
-        [JsonProperty("quindicesimaBassaMb")]
+        [DataMember(Name="quindicesimaBassaMb")]
         public GlyphDefinition QuindicesimaBassaMb { get; set; }
 
-        [JsonProperty("repeat1Bar")]
+        [DataMember(Name="repeat1Bar")]
         public GlyphDefinition Repeat1Bar { get; set; }
 
-        [JsonProperty("repeat2Bars")]
+        [DataMember(Name="repeat2Bars")]
         public GlyphDefinition Repeat2Bars { get; set; }
 
-        [JsonProperty("repeat4Bars")]
+        [DataMember(Name="repeat4Bars")]
         public GlyphDefinition Repeat4Bars { get; set; }
 
-        [JsonProperty("repeatDot")]
+        [DataMember(Name="repeatDot")]
         public GlyphDefinition RepeatDot { get; set; }
 
-        [JsonProperty("repeatDots")]
+        [DataMember(Name="repeatDots")]
         public GlyphDefinition RepeatDots { get; set; }
 
-        [JsonProperty("repeatLeft")]
+        [DataMember(Name="repeatLeft")]
         public GlyphDefinition RepeatLeft { get; set; }
 
-        [JsonProperty("repeatRight")]
+        [DataMember(Name="repeatRight")]
         public GlyphDefinition RepeatRight { get; set; }
 
-        [JsonProperty("repeatRightLeft")]
+        [DataMember(Name="repeatRightLeft")]
         public GlyphDefinition RepeatRightLeft { get; set; }
 
-        [JsonProperty("rest1024th")]
+        [DataMember(Name="rest1024th")]
         public GlyphDefinition Rest1024Th { get; set; }
 
-        [JsonProperty("rest128th")]
+        [DataMember(Name="rest128th")]
         public GlyphDefinition Rest128Th { get; set; }
 
-        [JsonProperty("rest16th")]
+        [DataMember(Name="rest16th")]
         public GlyphDefinition Rest16Th { get; set; }
 
-        [JsonProperty("rest256th")]
+        [DataMember(Name="rest256th")]
         public GlyphDefinition Rest256Th { get; set; }
 
-        [JsonProperty("rest32nd")]
+        [DataMember(Name="rest32nd")]
         public GlyphDefinition Rest32Nd { get; set; }
 
-        [JsonProperty("rest512th")]
+        [DataMember(Name="rest512th")]
         public GlyphDefinition Rest512Th { get; set; }
 
-        [JsonProperty("rest64th")]
+        [DataMember(Name="rest64th")]
         public GlyphDefinition Rest64Th { get; set; }
 
-        [JsonProperty("rest8th")]
+        [DataMember(Name="rest8th")]
         public GlyphDefinition Rest8Th { get; set; }
 
-        [JsonProperty("restDoubleWhole")]
+        [DataMember(Name="restDoubleWhole")]
         public GlyphDefinition RestDoubleWhole { get; set; }
 
-        [JsonProperty("restDoubleWholeLegerLine")]
+        [DataMember(Name="restDoubleWholeLegerLine")]
         public GlyphDefinition RestDoubleWholeLegerLine { get; set; }
 
-        [JsonProperty("restHBar")]
+        [DataMember(Name="restHBar")]
         public GlyphDefinition RestHBar { get; set; }
 
-        [JsonProperty("restHBarLeft")]
+        [DataMember(Name="restHBarLeft")]
         public GlyphDefinition RestHBarLeft { get; set; }
 
-        [JsonProperty("restHBarMiddle")]
+        [DataMember(Name="restHBarMiddle")]
         public GlyphDefinition RestHBarMiddle { get; set; }
 
-        [JsonProperty("restHBarRight")]
+        [DataMember(Name="restHBarRight")]
         public GlyphDefinition RestHBarRight { get; set; }
 
-        [JsonProperty("restHalf")]
+        [DataMember(Name="restHalf")]
         public GlyphDefinition RestHalf { get; set; }
 
-        [JsonProperty("restHalfLegerLine")]
+        [DataMember(Name="restHalfLegerLine")]
         public GlyphDefinition RestHalfLegerLine { get; set; }
 
-        [JsonProperty("restLonga")]
+        [DataMember(Name="restLonga")]
         public GlyphDefinition RestLonga { get; set; }
 
-        [JsonProperty("restMaxima")]
+        [DataMember(Name="restMaxima")]
         public GlyphDefinition RestMaxima { get; set; }
 
-        [JsonProperty("restQuarter")]
+        [DataMember(Name="restQuarter")]
         public GlyphDefinition RestQuarter { get; set; }
 
-        [JsonProperty("restQuarterOld")]
+        [DataMember(Name="restQuarterOld")]
         public GlyphDefinition RestQuarterOld { get; set; }
 
-        [JsonProperty("restWhole")]
+        [DataMember(Name="restWhole")]
         public GlyphDefinition RestWhole { get; set; }
 
-        [JsonProperty("restWholeLegerLine")]
+        [DataMember(Name="restWholeLegerLine")]
         public GlyphDefinition RestWholeLegerLine { get; set; }
 
-        [JsonProperty("reversedBrace")]
+        [DataMember(Name="reversedBrace")]
         public GlyphDefinition ReversedBrace { get; set; }
 
-        [JsonProperty("reversedBracketBottom")]
+        [DataMember(Name="reversedBracketBottom")]
         public GlyphDefinition ReversedBracketBottom { get; set; }
 
-        [JsonProperty("reversedBracketTop")]
+        [DataMember(Name="reversedBracketTop")]
         public GlyphDefinition ReversedBracketTop { get; set; }
 
-        [JsonProperty("rightRepeatSmall")]
+        [DataMember(Name="rightRepeatSmall")]
         public GlyphDefinition RightRepeatSmall { get; set; }
 
-        [JsonProperty("segno")]
+        [DataMember(Name="segno")]
         public GlyphDefinition Segno { get; set; }
 
-        [JsonProperty("segnoSerpent1")]
+        [DataMember(Name="segnoSerpent1")]
         public GlyphDefinition SegnoSerpent1 { get; set; }
 
-        [JsonProperty("segnoSerpent2")]
+        [DataMember(Name="segnoSerpent2")]
         public GlyphDefinition SegnoSerpent2 { get; set; }
 
-        [JsonProperty("semipitchedPercussionClef1")]
+        [DataMember(Name="semipitchedPercussionClef1")]
         public GlyphDefinition SemipitchedPercussionClef1 { get; set; }
 
-        [JsonProperty("semipitchedPercussionClef2")]
+        [DataMember(Name="semipitchedPercussionClef2")]
         public GlyphDefinition SemipitchedPercussionClef2 { get; set; }
 
-        [JsonProperty("smnFlat")]
+        [DataMember(Name="smnFlat")]
         public GlyphDefinition SmnFlat { get; set; }
 
-        [JsonProperty("smnFlatWhite")]
+        [DataMember(Name="smnFlatWhite")]
         public GlyphDefinition SmnFlatWhite { get; set; }
 
-        [JsonProperty("smnHistoryDoubleFlat")]
+        [DataMember(Name="smnHistoryDoubleFlat")]
         public GlyphDefinition SmnHistoryDoubleFlat { get; set; }
 
-        [JsonProperty("smnHistoryDoubleSharp")]
+        [DataMember(Name="smnHistoryDoubleSharp")]
         public GlyphDefinition SmnHistoryDoubleSharp { get; set; }
 
-        [JsonProperty("smnHistoryFlat")]
+        [DataMember(Name="smnHistoryFlat")]
         public GlyphDefinition SmnHistoryFlat { get; set; }
 
-        [JsonProperty("smnHistorySharp")]
+        [DataMember(Name="smnHistorySharp")]
         public GlyphDefinition SmnHistorySharp { get; set; }
 
-        [JsonProperty("smnNatural")]
+        [DataMember(Name="smnNatural")]
         public GlyphDefinition SmnNatural { get; set; }
 
-        [JsonProperty("smnSharp")]
+        [DataMember(Name="smnSharp")]
         public GlyphDefinition SmnSharp { get; set; }
 
-        [JsonProperty("smnSharpDown")]
+        [DataMember(Name="smnSharpDown")]
         public GlyphDefinition SmnSharpDown { get; set; }
 
-        [JsonProperty("smnSharpWhite")]
+        [DataMember(Name="smnSharpWhite")]
         public GlyphDefinition SmnSharpWhite { get; set; }
 
-        [JsonProperty("smnSharpWhiteDown")]
+        [DataMember(Name="smnSharpWhiteDown")]
         public GlyphDefinition SmnSharpWhiteDown { get; set; }
 
-        [JsonProperty("splitBarDivider")]
+        [DataMember(Name="splitBarDivider")]
         public GlyphDefinition SplitBarDivider { get; set; }
 
-        [JsonProperty("staff1Line")]
+        [DataMember(Name="staff1Line")]
         public GlyphDefinition Staff1Line { get; set; }
 
-        [JsonProperty("staff1LineNarrow")]
+        [DataMember(Name="staff1LineNarrow")]
         public GlyphDefinition Staff1LineNarrow { get; set; }
 
-        [JsonProperty("staff1LineWide")]
+        [DataMember(Name="staff1LineWide")]
         public GlyphDefinition Staff1LineWide { get; set; }
 
-        [JsonProperty("staff2Lines")]
+        [DataMember(Name="staff2Lines")]
         public GlyphDefinition Staff2Lines { get; set; }
 
-        [JsonProperty("staff2LinesNarrow")]
+        [DataMember(Name="staff2LinesNarrow")]
         public GlyphDefinition Staff2LinesNarrow { get; set; }
 
-        [JsonProperty("staff2LinesWide")]
+        [DataMember(Name="staff2LinesWide")]
         public GlyphDefinition Staff2LinesWide { get; set; }
 
-        [JsonProperty("staff3Lines")]
+        [DataMember(Name="staff3Lines")]
         public GlyphDefinition Staff3Lines { get; set; }
 
-        [JsonProperty("staff3LinesNarrow")]
+        [DataMember(Name="staff3LinesNarrow")]
         public GlyphDefinition Staff3LinesNarrow { get; set; }
 
-        [JsonProperty("staff3LinesWide")]
+        [DataMember(Name="staff3LinesWide")]
         public GlyphDefinition Staff3LinesWide { get; set; }
 
-        [JsonProperty("staff4Lines")]
+        [DataMember(Name="staff4Lines")]
         public GlyphDefinition Staff4Lines { get; set; }
 
-        [JsonProperty("staff4LinesNarrow")]
+        [DataMember(Name="staff4LinesNarrow")]
         public GlyphDefinition Staff4LinesNarrow { get; set; }
 
-        [JsonProperty("staff4LinesWide")]
+        [DataMember(Name="staff4LinesWide")]
         public GlyphDefinition Staff4LinesWide { get; set; }
 
-        [JsonProperty("staff5Lines")]
+        [DataMember(Name="staff5Lines")]
         public GlyphDefinition Staff5Lines { get; set; }
 
-        [JsonProperty("staff5LinesNarrow")]
+        [DataMember(Name="staff5LinesNarrow")]
         public GlyphDefinition Staff5LinesNarrow { get; set; }
 
-        [JsonProperty("staff5LinesWide")]
+        [DataMember(Name="staff5LinesWide")]
         public GlyphDefinition Staff5LinesWide { get; set; }
 
-        [JsonProperty("staff6Lines")]
+        [DataMember(Name="staff6Lines")]
         public GlyphDefinition Staff6Lines { get; set; }
 
-        [JsonProperty("staff6LinesNarrow")]
+        [DataMember(Name="staff6LinesNarrow")]
         public GlyphDefinition Staff6LinesNarrow { get; set; }
 
-        [JsonProperty("staff6LinesWide")]
+        [DataMember(Name="staff6LinesWide")]
         public GlyphDefinition Staff6LinesWide { get; set; }
 
-        [JsonProperty("staffDivideArrowDown")]
+        [DataMember(Name="staffDivideArrowDown")]
         public GlyphDefinition StaffDivideArrowDown { get; set; }
 
-        [JsonProperty("staffDivideArrowUp")]
+        [DataMember(Name="staffDivideArrowUp")]
         public GlyphDefinition StaffDivideArrowUp { get; set; }
 
-        [JsonProperty("staffDivideArrowUpDown")]
+        [DataMember(Name="staffDivideArrowUpDown")]
         public GlyphDefinition StaffDivideArrowUpDown { get; set; }
 
-        [JsonProperty("staffPosLower1")]
+        [DataMember(Name="staffPosLower1")]
         public GlyphDefinition StaffPosLower1 { get; set; }
 
-        [JsonProperty("staffPosLower2")]
+        [DataMember(Name="staffPosLower2")]
         public GlyphDefinition StaffPosLower2 { get; set; }
 
-        [JsonProperty("staffPosLower3")]
+        [DataMember(Name="staffPosLower3")]
         public GlyphDefinition StaffPosLower3 { get; set; }
 
-        [JsonProperty("staffPosLower4")]
+        [DataMember(Name="staffPosLower4")]
         public GlyphDefinition StaffPosLower4 { get; set; }
 
-        [JsonProperty("staffPosLower5")]
+        [DataMember(Name="staffPosLower5")]
         public GlyphDefinition StaffPosLower5 { get; set; }
 
-        [JsonProperty("staffPosLower6")]
+        [DataMember(Name="staffPosLower6")]
         public GlyphDefinition StaffPosLower6 { get; set; }
 
-        [JsonProperty("staffPosLower7")]
+        [DataMember(Name="staffPosLower7")]
         public GlyphDefinition StaffPosLower7 { get; set; }
 
-        [JsonProperty("staffPosLower8")]
+        [DataMember(Name="staffPosLower8")]
         public GlyphDefinition StaffPosLower8 { get; set; }
 
-        [JsonProperty("staffPosRaise1")]
+        [DataMember(Name="staffPosRaise1")]
         public GlyphDefinition StaffPosRaise1 { get; set; }
 
-        [JsonProperty("staffPosRaise2")]
+        [DataMember(Name="staffPosRaise2")]
         public GlyphDefinition StaffPosRaise2 { get; set; }
 
-        [JsonProperty("staffPosRaise3")]
+        [DataMember(Name="staffPosRaise3")]
         public GlyphDefinition StaffPosRaise3 { get; set; }
 
-        [JsonProperty("staffPosRaise4")]
+        [DataMember(Name="staffPosRaise4")]
         public GlyphDefinition StaffPosRaise4 { get; set; }
 
-        [JsonProperty("staffPosRaise5")]
+        [DataMember(Name="staffPosRaise5")]
         public GlyphDefinition StaffPosRaise5 { get; set; }
 
-        [JsonProperty("staffPosRaise6")]
+        [DataMember(Name="staffPosRaise6")]
         public GlyphDefinition StaffPosRaise6 { get; set; }
 
-        [JsonProperty("staffPosRaise7")]
+        [DataMember(Name="staffPosRaise7")]
         public GlyphDefinition StaffPosRaise7 { get; set; }
 
-        [JsonProperty("staffPosRaise8")]
+        [DataMember(Name="staffPosRaise8")]
         public GlyphDefinition StaffPosRaise8 { get; set; }
 
-        [JsonProperty("stem")]
+        [DataMember(Name="stem")]
         public GlyphDefinition Stem { get; set; }
 
-        [JsonProperty("stemBowOnBridge")]
+        [DataMember(Name="stemBowOnBridge")]
         public GlyphDefinition StemBowOnBridge { get; set; }
 
-        [JsonProperty("stemBowOnTailpiece")]
+        [DataMember(Name="stemBowOnTailpiece")]
         public GlyphDefinition StemBowOnTailpiece { get; set; }
 
-        [JsonProperty("stemBuzzRoll")]
+        [DataMember(Name="stemBuzzRoll")]
         public GlyphDefinition StemBuzzRoll { get; set; }
 
-        [JsonProperty("stemDamp")]
+        [DataMember(Name="stemDamp")]
         public GlyphDefinition StemDamp { get; set; }
 
-        [JsonProperty("stemHarpStringNoise")]
+        [DataMember(Name="stemHarpStringNoise")]
         public GlyphDefinition StemHarpStringNoise { get; set; }
 
-        [JsonProperty("stemMultiphonicsBlack")]
+        [DataMember(Name="stemMultiphonicsBlack")]
         public GlyphDefinition StemMultiphonicsBlack { get; set; }
 
-        [JsonProperty("stemMultiphonicsBlackWhite")]
+        [DataMember(Name="stemMultiphonicsBlackWhite")]
         public GlyphDefinition StemMultiphonicsBlackWhite { get; set; }
 
-        [JsonProperty("stemMultiphonicsWhite")]
+        [DataMember(Name="stemMultiphonicsWhite")]
         public GlyphDefinition StemMultiphonicsWhite { get; set; }
 
-        [JsonProperty("stemPendereckiTremolo")]
+        [DataMember(Name="stemPendereckiTremolo")]
         public GlyphDefinition StemPendereckiTremolo { get; set; }
 
-        [JsonProperty("stemRimShot")]
+        [DataMember(Name="stemRimShot")]
         public GlyphDefinition StemRimShot { get; set; }
 
-        [JsonProperty("stemSprechgesang")]
+        [DataMember(Name="stemSprechgesang")]
         public GlyphDefinition StemSprechgesang { get; set; }
 
-        [JsonProperty("stemSulPonticello")]
+        [DataMember(Name="stemSulPonticello")]
         public GlyphDefinition StemSulPonticello { get; set; }
 
-        [JsonProperty("stemSussurando")]
+        [DataMember(Name="stemSussurando")]
         public GlyphDefinition StemSussurando { get; set; }
 
-        [JsonProperty("stemSwished")]
+        [DataMember(Name="stemSwished")]
         public GlyphDefinition StemSwished { get; set; }
 
-        [JsonProperty("stemVibratoPulse")]
+        [DataMember(Name="stemVibratoPulse")]
         public GlyphDefinition StemVibratoPulse { get; set; }
 
-        [JsonProperty("stringsBowBehindBridge")]
+        [DataMember(Name="stringsBowBehindBridge")]
         public GlyphDefinition StringsBowBehindBridge { get; set; }
 
-        [JsonProperty("stringsBowOnBridge")]
+        [DataMember(Name="stringsBowOnBridge")]
         public GlyphDefinition StringsBowOnBridge { get; set; }
 
-        [JsonProperty("stringsBowOnTailpiece")]
+        [DataMember(Name="stringsBowOnTailpiece")]
         public GlyphDefinition StringsBowOnTailpiece { get; set; }
 
-        [JsonProperty("stringsChangeBowDirection")]
+        [DataMember(Name="stringsChangeBowDirection")]
         public GlyphDefinition StringsChangeBowDirection { get; set; }
 
-        [JsonProperty("stringsDownBow")]
+        [DataMember(Name="stringsDownBow")]
         public GlyphDefinition StringsDownBow { get; set; }
 
-        [JsonProperty("stringsDownBowTurned")]
+        [DataMember(Name="stringsDownBowTurned")]
         public GlyphDefinition StringsDownBowTurned { get; set; }
 
-        [JsonProperty("stringsFouette")]
+        [DataMember(Name="stringsFouette")]
         public GlyphDefinition StringsFouette { get; set; }
 
-        [JsonProperty("stringsHalfHarmonic")]
+        [DataMember(Name="stringsHalfHarmonic")]
         public GlyphDefinition StringsHalfHarmonic { get; set; }
 
-        [JsonProperty("stringsHarmonic")]
+        [DataMember(Name="stringsHarmonic")]
         public GlyphDefinition StringsHarmonic { get; set; }
 
-        [JsonProperty("stringsJeteAbove")]
+        [DataMember(Name="stringsJeteAbove")]
         public GlyphDefinition StringsJeteAbove { get; set; }
 
-        [JsonProperty("stringsJeteBelow")]
+        [DataMember(Name="stringsJeteBelow")]
         public GlyphDefinition StringsJeteBelow { get; set; }
 
-        [JsonProperty("stringsMuteOff")]
+        [DataMember(Name="stringsMuteOff")]
         public GlyphDefinition StringsMuteOff { get; set; }
 
-        [JsonProperty("stringsMuteOn")]
+        [DataMember(Name="stringsMuteOn")]
         public GlyphDefinition StringsMuteOn { get; set; }
 
-        [JsonProperty("stringsOverpressureDownBow")]
+        [DataMember(Name="stringsOverpressureDownBow")]
         public GlyphDefinition StringsOverpressureDownBow { get; set; }
 
-        [JsonProperty("stringsOverpressureNoDirection")]
+        [DataMember(Name="stringsOverpressureNoDirection")]
         public GlyphDefinition StringsOverpressureNoDirection { get; set; }
 
-        [JsonProperty("stringsOverpressurePossibileDownBow")]
+        [DataMember(Name="stringsOverpressurePossibileDownBow")]
         public GlyphDefinition StringsOverpressurePossibileDownBow { get; set; }
 
-        [JsonProperty("stringsOverpressurePossibileUpBow")]
+        [DataMember(Name="stringsOverpressurePossibileUpBow")]
         public GlyphDefinition StringsOverpressurePossibileUpBow { get; set; }
 
-        [JsonProperty("stringsOverpressureUpBow")]
+        [DataMember(Name="stringsOverpressureUpBow")]
         public GlyphDefinition StringsOverpressureUpBow { get; set; }
 
-        [JsonProperty("stringsThumbPosition")]
+        [DataMember(Name="stringsThumbPosition")]
         public GlyphDefinition StringsThumbPosition { get; set; }
 
-        [JsonProperty("stringsThumbPositionTurned")]
+        [DataMember(Name="stringsThumbPositionTurned")]
         public GlyphDefinition StringsThumbPositionTurned { get; set; }
 
-        [JsonProperty("stringsUpBow")]
+        [DataMember(Name="stringsUpBow")]
         public GlyphDefinition StringsUpBow { get; set; }
 
-        [JsonProperty("stringsUpBowTurned")]
+        [DataMember(Name="stringsUpBowTurned")]
         public GlyphDefinition StringsUpBowTurned { get; set; }
 
-        [JsonProperty("stringsVibratoPulse")]
+        [DataMember(Name="stringsVibratoPulse")]
         public GlyphDefinition StringsVibratoPulse { get; set; }
 
-        [JsonProperty("systemDivider")]
+        [DataMember(Name="systemDivider")]
         public GlyphDefinition SystemDivider { get; set; }
 
-        [JsonProperty("systemDividerExtraLong")]
+        [DataMember(Name="systemDividerExtraLong")]
         public GlyphDefinition SystemDividerExtraLong { get; set; }
 
-        [JsonProperty("systemDividerLong")]
+        [DataMember(Name="systemDividerLong")]
         public GlyphDefinition SystemDividerLong { get; set; }
 
-        [JsonProperty("textAugmentationDot")]
+        [DataMember(Name="textAugmentationDot")]
         public GlyphDefinition TextAugmentationDot { get; set; }
 
-        [JsonProperty("textBlackNoteFrac16thLongStem")]
+        [DataMember(Name="textBlackNoteFrac16thLongStem")]
         public GlyphDefinition TextBlackNoteFrac16ThLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac16thShortStem")]
+        [DataMember(Name="textBlackNoteFrac16thShortStem")]
         public GlyphDefinition TextBlackNoteFrac16ThShortStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac32ndLongStem")]
+        [DataMember(Name="textBlackNoteFrac32ndLongStem")]
         public GlyphDefinition TextBlackNoteFrac32NdLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac8thLongStem")]
+        [DataMember(Name="textBlackNoteFrac8thLongStem")]
         public GlyphDefinition TextBlackNoteFrac8ThLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac8thShortStem")]
+        [DataMember(Name="textBlackNoteFrac8thShortStem")]
         public GlyphDefinition TextBlackNoteFrac8ThShortStem { get; set; }
 
-        [JsonProperty("textBlackNoteLongStem")]
+        [DataMember(Name="textBlackNoteLongStem")]
         public GlyphDefinition TextBlackNoteLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteShortStem")]
+        [DataMember(Name="textBlackNoteShortStem")]
         public GlyphDefinition TextBlackNoteShortStem { get; set; }
 
-        [JsonProperty("textCont16thBeamLongStem")]
+        [DataMember(Name="textCont16thBeamLongStem")]
         public GlyphDefinition TextCont16ThBeamLongStem { get; set; }
 
-        [JsonProperty("textCont16thBeamShortStem")]
+        [DataMember(Name="textCont16thBeamShortStem")]
         public GlyphDefinition TextCont16ThBeamShortStem { get; set; }
 
-        [JsonProperty("textCont32ndBeamLongStem")]
+        [DataMember(Name="textCont32ndBeamLongStem")]
         public GlyphDefinition TextCont32NdBeamLongStem { get; set; }
 
-        [JsonProperty("textCont8thBeamLongStem")]
+        [DataMember(Name="textCont8thBeamLongStem")]
         public GlyphDefinition TextCont8ThBeamLongStem { get; set; }
 
-        [JsonProperty("textCont8thBeamShortStem")]
+        [DataMember(Name="textCont8thBeamShortStem")]
         public GlyphDefinition TextCont8ThBeamShortStem { get; set; }
 
-        [JsonProperty("textTie")]
+        [DataMember(Name="textTie")]
         public GlyphDefinition TextTie { get; set; }
 
-        [JsonProperty("textTuplet3LongStem")]
+        [DataMember(Name="textTuplet3LongStem")]
         public GlyphDefinition TextTuplet3LongStem { get; set; }
 
-        [JsonProperty("textTuplet3ShortStem")]
+        [DataMember(Name="textTuplet3ShortStem")]
         public GlyphDefinition TextTuplet3ShortStem { get; set; }
 
-        [JsonProperty("textTupletBracketEndLongStem")]
+        [DataMember(Name="textTupletBracketEndLongStem")]
         public GlyphDefinition TextTupletBracketEndLongStem { get; set; }
 
-        [JsonProperty("textTupletBracketEndShortStem")]
+        [DataMember(Name="textTupletBracketEndShortStem")]
         public GlyphDefinition TextTupletBracketEndShortStem { get; set; }
 
-        [JsonProperty("textTupletBracketStartLongStem")]
+        [DataMember(Name="textTupletBracketStartLongStem")]
         public GlyphDefinition TextTupletBracketStartLongStem { get; set; }
 
-        [JsonProperty("textTupletBracketStartShortStem")]
+        [DataMember(Name="textTupletBracketStartShortStem")]
         public GlyphDefinition TextTupletBracketStartShortStem { get; set; }
 
-        [JsonProperty("timeSig0")]
+        [DataMember(Name="timeSig0")]
         public GlyphDefinition TimeSig0 { get; set; }
 
-        [JsonProperty("timeSig1")]
+        [DataMember(Name="timeSig1")]
         public GlyphDefinition TimeSig1 { get; set; }
 
-        [JsonProperty("timeSig2")]
+        [DataMember(Name="timeSig2")]
         public GlyphDefinition TimeSig2 { get; set; }
 
-        [JsonProperty("timeSig3")]
+        [DataMember(Name="timeSig3")]
         public GlyphDefinition TimeSig3 { get; set; }
 
-        [JsonProperty("timeSig4")]
+        [DataMember(Name="timeSig4")]
         public GlyphDefinition TimeSig4 { get; set; }
 
-        [JsonProperty("timeSig5")]
+        [DataMember(Name="timeSig5")]
         public GlyphDefinition TimeSig5 { get; set; }
 
-        [JsonProperty("timeSig6")]
+        [DataMember(Name="timeSig6")]
         public GlyphDefinition TimeSig6 { get; set; }
 
-        [JsonProperty("timeSig7")]
+        [DataMember(Name="timeSig7")]
         public GlyphDefinition TimeSig7 { get; set; }
 
-        [JsonProperty("timeSig8")]
+        [DataMember(Name="timeSig8")]
         public GlyphDefinition TimeSig8 { get; set; }
 
-        [JsonProperty("timeSig9")]
+        [DataMember(Name="timeSig9")]
         public GlyphDefinition TimeSig9 { get; set; }
 
-        [JsonProperty("timeSigBracketLeft")]
+        [DataMember(Name="timeSigBracketLeft")]
         public GlyphDefinition TimeSigBracketLeft { get; set; }
 
-        [JsonProperty("timeSigBracketLeftSmall")]
+        [DataMember(Name="timeSigBracketLeftSmall")]
         public GlyphDefinition TimeSigBracketLeftSmall { get; set; }
 
-        [JsonProperty("timeSigBracketRight")]
+        [DataMember(Name="timeSigBracketRight")]
         public GlyphDefinition TimeSigBracketRight { get; set; }
 
-        [JsonProperty("timeSigBracketRightSmall")]
+        [DataMember(Name="timeSigBracketRightSmall")]
         public GlyphDefinition TimeSigBracketRightSmall { get; set; }
 
-        [JsonProperty("timeSigCombDenominator")]
+        [DataMember(Name="timeSigCombDenominator")]
         public GlyphDefinition TimeSigCombDenominator { get; set; }
 
-        [JsonProperty("timeSigCombNumerator")]
+        [DataMember(Name="timeSigCombNumerator")]
         public GlyphDefinition TimeSigCombNumerator { get; set; }
 
-        [JsonProperty("timeSigComma")]
+        [DataMember(Name="timeSigComma")]
         public GlyphDefinition TimeSigComma { get; set; }
 
-        [JsonProperty("timeSigCommon")]
+        [DataMember(Name="timeSigCommon")]
         public GlyphDefinition TimeSigCommon { get; set; }
 
-        [JsonProperty("timeSigCut2")]
+        [DataMember(Name="timeSigCut2")]
         public GlyphDefinition TimeSigCut2 { get; set; }
 
-        [JsonProperty("timeSigCutCommon")]
+        [DataMember(Name="timeSigCutCommon")]
         public GlyphDefinition TimeSigCutCommon { get; set; }
 
-        [JsonProperty("timeSigEquals")]
+        [DataMember(Name="timeSigEquals")]
         public GlyphDefinition TimeSigEquals { get; set; }
 
-        [JsonProperty("timeSigFractionHalf")]
+        [DataMember(Name="timeSigFractionHalf")]
         public GlyphDefinition TimeSigFractionHalf { get; set; }
 
-        [JsonProperty("timeSigFractionOneThird")]
+        [DataMember(Name="timeSigFractionOneThird")]
         public GlyphDefinition TimeSigFractionOneThird { get; set; }
 
-        [JsonProperty("timeSigFractionQuarter")]
+        [DataMember(Name="timeSigFractionQuarter")]
         public GlyphDefinition TimeSigFractionQuarter { get; set; }
 
-        [JsonProperty("timeSigFractionThreeQuarters")]
+        [DataMember(Name="timeSigFractionThreeQuarters")]
         public GlyphDefinition TimeSigFractionThreeQuarters { get; set; }
 
-        [JsonProperty("timeSigFractionTwoThirds")]
+        [DataMember(Name="timeSigFractionTwoThirds")]
         public GlyphDefinition TimeSigFractionTwoThirds { get; set; }
 
-        [JsonProperty("timeSigFractionalSlash")]
+        [DataMember(Name="timeSigFractionalSlash")]
         public GlyphDefinition TimeSigFractionalSlash { get; set; }
 
-        [JsonProperty("timeSigMinus")]
+        [DataMember(Name="timeSigMinus")]
         public GlyphDefinition TimeSigMinus { get; set; }
 
-        [JsonProperty("timeSigMultiply")]
+        [DataMember(Name="timeSigMultiply")]
         public GlyphDefinition TimeSigMultiply { get; set; }
 
-        [JsonProperty("timeSigOpenPenderecki")]
+        [DataMember(Name="timeSigOpenPenderecki")]
         public GlyphDefinition TimeSigOpenPenderecki { get; set; }
 
-        [JsonProperty("timeSigParensLeft")]
+        [DataMember(Name="timeSigParensLeft")]
         public GlyphDefinition TimeSigParensLeft { get; set; }
 
-        [JsonProperty("timeSigParensLeftSmall")]
+        [DataMember(Name="timeSigParensLeftSmall")]
         public GlyphDefinition TimeSigParensLeftSmall { get; set; }
 
-        [JsonProperty("timeSigParensRight")]
+        [DataMember(Name="timeSigParensRight")]
         public GlyphDefinition TimeSigParensRight { get; set; }
 
-        [JsonProperty("timeSigParensRightSmall")]
+        [DataMember(Name="timeSigParensRightSmall")]
         public GlyphDefinition TimeSigParensRightSmall { get; set; }
 
-        [JsonProperty("timeSigPlus")]
+        [DataMember(Name="timeSigPlus")]
         public GlyphDefinition TimeSigPlus { get; set; }
 
-        [JsonProperty("timeSigPlusSmall")]
+        [DataMember(Name="timeSigPlusSmall")]
         public GlyphDefinition TimeSigPlusSmall { get; set; }
 
-        [JsonProperty("timeSigSlash")]
+        [DataMember(Name="timeSigSlash")]
         public GlyphDefinition TimeSigSlash { get; set; }
 
-        [JsonProperty("timeSigX")]
+        [DataMember(Name="timeSigX")]
         public GlyphDefinition TimeSigX { get; set; }
 
-        [JsonProperty("tremolo1")]
+        [DataMember(Name="tremolo1")]
         public GlyphDefinition Tremolo1 { get; set; }
 
-        [JsonProperty("tremolo2")]
+        [DataMember(Name="tremolo2")]
         public GlyphDefinition Tremolo2 { get; set; }
 
-        [JsonProperty("tremolo3")]
+        [DataMember(Name="tremolo3")]
         public GlyphDefinition Tremolo3 { get; set; }
 
-        [JsonProperty("tremolo4")]
+        [DataMember(Name="tremolo4")]
         public GlyphDefinition Tremolo4 { get; set; }
 
-        [JsonProperty("tremolo5")]
+        [DataMember(Name="tremolo5")]
         public GlyphDefinition Tremolo5 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots2")]
+        [DataMember(Name="tremoloDivisiDots2")]
         public GlyphDefinition TremoloDivisiDots2 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots3")]
+        [DataMember(Name="tremoloDivisiDots3")]
         public GlyphDefinition TremoloDivisiDots3 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots4")]
+        [DataMember(Name="tremoloDivisiDots4")]
         public GlyphDefinition TremoloDivisiDots4 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots6")]
+        [DataMember(Name="tremoloDivisiDots6")]
         public GlyphDefinition TremoloDivisiDots6 { get; set; }
 
-        [JsonProperty("tremoloFingered1")]
+        [DataMember(Name="tremoloFingered1")]
         public GlyphDefinition TremoloFingered1 { get; set; }
 
-        [JsonProperty("tremoloFingered2")]
+        [DataMember(Name="tremoloFingered2")]
         public GlyphDefinition TremoloFingered2 { get; set; }
 
-        [JsonProperty("tremoloFingered3")]
+        [DataMember(Name="tremoloFingered3")]
         public GlyphDefinition TremoloFingered3 { get; set; }
 
-        [JsonProperty("tremoloFingered4")]
+        [DataMember(Name="tremoloFingered4")]
         public GlyphDefinition TremoloFingered4 { get; set; }
 
-        [JsonProperty("tremoloFingered5")]
+        [DataMember(Name="tremoloFingered5")]
         public GlyphDefinition TremoloFingered5 { get; set; }
 
-        [JsonProperty("tripleTongueAbove")]
+        [DataMember(Name="tripleTongueAbove")]
         public GlyphDefinition TripleTongueAbove { get; set; }
 
-        [JsonProperty("tripleTongueBelow")]
+        [DataMember(Name="tripleTongueBelow")]
         public GlyphDefinition TripleTongueBelow { get; set; }
 
-        [JsonProperty("tuplet0")]
+        [DataMember(Name="tuplet0")]
         public GlyphDefinition Tuplet0 { get; set; }
 
-        [JsonProperty("tuplet1")]
+        [DataMember(Name="tuplet1")]
         public GlyphDefinition Tuplet1 { get; set; }
 
-        [JsonProperty("tuplet2")]
+        [DataMember(Name="tuplet2")]
         public GlyphDefinition Tuplet2 { get; set; }
 
-        [JsonProperty("tuplet3")]
+        [DataMember(Name="tuplet3")]
         public GlyphDefinition Tuplet3 { get; set; }
 
-        [JsonProperty("tuplet4")]
+        [DataMember(Name="tuplet4")]
         public GlyphDefinition Tuplet4 { get; set; }
 
-        [JsonProperty("tuplet5")]
+        [DataMember(Name="tuplet5")]
         public GlyphDefinition Tuplet5 { get; set; }
 
-        [JsonProperty("tuplet6")]
+        [DataMember(Name="tuplet6")]
         public GlyphDefinition Tuplet6 { get; set; }
 
-        [JsonProperty("tuplet7")]
+        [DataMember(Name="tuplet7")]
         public GlyphDefinition Tuplet7 { get; set; }
 
-        [JsonProperty("tuplet8")]
+        [DataMember(Name="tuplet8")]
         public GlyphDefinition Tuplet8 { get; set; }
 
-        [JsonProperty("tuplet9")]
+        [DataMember(Name="tuplet9")]
         public GlyphDefinition Tuplet9 { get; set; }
 
-        [JsonProperty("tupletColon")]
+        [DataMember(Name="tupletColon")]
         public GlyphDefinition TupletColon { get; set; }
 
-        [JsonProperty("unmeasuredTremolo")]
+        [DataMember(Name="unmeasuredTremolo")]
         public GlyphDefinition UnmeasuredTremolo { get; set; }
 
-        [JsonProperty("unmeasuredTremoloSimple")]
+        [DataMember(Name="unmeasuredTremoloSimple")]
         public GlyphDefinition UnmeasuredTremoloSimple { get; set; }
 
-        [JsonProperty("unpitchedPercussionClef1")]
+        [DataMember(Name="unpitchedPercussionClef1")]
         public GlyphDefinition UnpitchedPercussionClef1 { get; set; }
 
-        [JsonProperty("unpitchedPercussionClef2")]
+        [DataMember(Name="unpitchedPercussionClef2")]
         public GlyphDefinition UnpitchedPercussionClef2 { get; set; }
 
-        [JsonProperty("ventiduesima")]
+        [DataMember(Name="ventiduesima")]
         public GlyphDefinition Ventiduesima { get; set; }
 
-        [JsonProperty("ventiduesimaAlta")]
+        [DataMember(Name="ventiduesimaAlta")]
         public GlyphDefinition VentiduesimaAlta { get; set; }
 
-        [JsonProperty("ventiduesimaBassa")]
+        [DataMember(Name="ventiduesimaBassa")]
         public GlyphDefinition VentiduesimaBassa { get; set; }
 
-        [JsonProperty("ventiduesimaBassaMb")]
+        [DataMember(Name="ventiduesimaBassaMb")]
         public GlyphDefinition VentiduesimaBassaMb { get; set; }
 
-        [JsonProperty("vocalMouthClosed")]
+        [DataMember(Name="vocalMouthClosed")]
         public GlyphDefinition VocalMouthClosed { get; set; }
 
-        [JsonProperty("vocalMouthOpen")]
+        [DataMember(Name="vocalMouthOpen")]
         public GlyphDefinition VocalMouthOpen { get; set; }
 
-        [JsonProperty("vocalMouthPursed")]
+        [DataMember(Name="vocalMouthPursed")]
         public GlyphDefinition VocalMouthPursed { get; set; }
 
-        [JsonProperty("vocalMouthSlightlyOpen")]
+        [DataMember(Name="vocalMouthSlightlyOpen")]
         public GlyphDefinition VocalMouthSlightlyOpen { get; set; }
 
-        [JsonProperty("vocalMouthWideOpen")]
+        [DataMember(Name="vocalMouthWideOpen")]
         public GlyphDefinition VocalMouthWideOpen { get; set; }
 
-        [JsonProperty("vocalSprechgesang")]
+        [DataMember(Name="vocalSprechgesang")]
         public GlyphDefinition VocalSprechgesang { get; set; }
 
-        [JsonProperty("vocalsSussurando")]
+        [DataMember(Name="vocalsSussurando")]
         public GlyphDefinition VocalsSussurando { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDown")]
+        [DataMember(Name="wiggleArpeggiatoDown")]
         public GlyphDefinition WiggleArpeggiatoDown { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDownArrow")]
+        [DataMember(Name="wiggleArpeggiatoDownArrow")]
         public GlyphDefinition WiggleArpeggiatoDownArrow { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDownSwash")]
+        [DataMember(Name="wiggleArpeggiatoDownSwash")]
         public GlyphDefinition WiggleArpeggiatoDownSwash { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUp")]
+        [DataMember(Name="wiggleArpeggiatoUp")]
         public GlyphDefinition WiggleArpeggiatoUp { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUpArrow")]
+        [DataMember(Name="wiggleArpeggiatoUpArrow")]
         public GlyphDefinition WiggleArpeggiatoUpArrow { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUpSwash")]
+        [DataMember(Name="wiggleArpeggiatoUpSwash")]
         public GlyphDefinition WiggleArpeggiatoUpSwash { get; set; }
 
-        [JsonProperty("wiggleCircular")]
+        [DataMember(Name="wiggleCircular")]
         public GlyphDefinition WiggleCircular { get; set; }
 
-        [JsonProperty("wiggleCircularConstant")]
+        [DataMember(Name="wiggleCircularConstant")]
         public GlyphDefinition WiggleCircularConstant { get; set; }
 
-        [JsonProperty("wiggleCircularConstantFlipped")]
+        [DataMember(Name="wiggleCircularConstantFlipped")]
         public GlyphDefinition WiggleCircularConstantFlipped { get; set; }
 
-        [JsonProperty("wiggleCircularConstantFlippedLarge")]
+        [DataMember(Name="wiggleCircularConstantFlippedLarge")]
         public GlyphDefinition WiggleCircularConstantFlippedLarge { get; set; }
 
-        [JsonProperty("wiggleCircularConstantLarge")]
+        [DataMember(Name="wiggleCircularConstantLarge")]
         public GlyphDefinition WiggleCircularConstantLarge { get; set; }
 
-        [JsonProperty("wiggleCircularEnd")]
+        [DataMember(Name="wiggleCircularEnd")]
         public GlyphDefinition WiggleCircularEnd { get; set; }
 
-        [JsonProperty("wiggleCircularLarge")]
+        [DataMember(Name="wiggleCircularLarge")]
         public GlyphDefinition WiggleCircularLarge { get; set; }
 
-        [JsonProperty("wiggleCircularLarger")]
+        [DataMember(Name="wiggleCircularLarger")]
         public GlyphDefinition WiggleCircularLarger { get; set; }
 
-        [JsonProperty("wiggleCircularLargerStill")]
+        [DataMember(Name="wiggleCircularLargerStill")]
         public GlyphDefinition WiggleCircularLargerStill { get; set; }
 
-        [JsonProperty("wiggleCircularLargest")]
+        [DataMember(Name="wiggleCircularLargest")]
         public GlyphDefinition WiggleCircularLargest { get; set; }
 
-        [JsonProperty("wiggleCircularSmall")]
+        [DataMember(Name="wiggleCircularSmall")]
         public GlyphDefinition WiggleCircularSmall { get; set; }
 
-        [JsonProperty("wiggleCircularStart")]
+        [DataMember(Name="wiggleCircularStart")]
         public GlyphDefinition WiggleCircularStart { get; set; }
 
-        [JsonProperty("wiggleGlissando")]
+        [DataMember(Name="wiggleGlissando")]
         public GlyphDefinition WiggleGlissando { get; set; }
 
-        [JsonProperty("wiggleGlissandoGroup1")]
+        [DataMember(Name="wiggleGlissandoGroup1")]
         public GlyphDefinition WiggleGlissandoGroup1 { get; set; }
 
-        [JsonProperty("wiggleGlissandoGroup2")]
+        [DataMember(Name="wiggleGlissandoGroup2")]
         public GlyphDefinition WiggleGlissandoGroup2 { get; set; }
 
-        [JsonProperty("wiggleGlissandoGroup3")]
+        [DataMember(Name="wiggleGlissandoGroup3")]
         public GlyphDefinition WiggleGlissandoGroup3 { get; set; }
 
-        [JsonProperty("wiggleRandom1")]
+        [DataMember(Name="wiggleRandom1")]
         public GlyphDefinition WiggleRandom1 { get; set; }
 
-        [JsonProperty("wiggleRandom2")]
+        [DataMember(Name="wiggleRandom2")]
         public GlyphDefinition WiggleRandom2 { get; set; }
 
-        [JsonProperty("wiggleRandom3")]
+        [DataMember(Name="wiggleRandom3")]
         public GlyphDefinition WiggleRandom3 { get; set; }
 
-        [JsonProperty("wiggleRandom4")]
+        [DataMember(Name="wiggleRandom4")]
         public GlyphDefinition WiggleRandom4 { get; set; }
 
-        [JsonProperty("wiggleSawtooth")]
+        [DataMember(Name="wiggleSawtooth")]
         public GlyphDefinition WiggleSawtooth { get; set; }
 
-        [JsonProperty("wiggleSawtoothNarrow")]
+        [DataMember(Name="wiggleSawtoothNarrow")]
         public GlyphDefinition WiggleSawtoothNarrow { get; set; }
 
-        [JsonProperty("wiggleSawtoothWide")]
+        [DataMember(Name="wiggleSawtoothWide")]
         public GlyphDefinition WiggleSawtoothWide { get; set; }
 
-        [JsonProperty("wiggleSquareWave")]
+        [DataMember(Name="wiggleSquareWave")]
         public GlyphDefinition WiggleSquareWave { get; set; }
 
-        [JsonProperty("wiggleSquareWaveNarrow")]
+        [DataMember(Name="wiggleSquareWaveNarrow")]
         public GlyphDefinition WiggleSquareWaveNarrow { get; set; }
 
-        [JsonProperty("wiggleSquareWaveWide")]
+        [DataMember(Name="wiggleSquareWaveWide")]
         public GlyphDefinition WiggleSquareWaveWide { get; set; }
 
-        [JsonProperty("wiggleTrill")]
+        [DataMember(Name="wiggleTrill")]
         public GlyphDefinition WiggleTrill { get; set; }
 
-        [JsonProperty("wiggleTrillFast")]
+        [DataMember(Name="wiggleTrillFast")]
         public GlyphDefinition WiggleTrillFast { get; set; }
 
-        [JsonProperty("wiggleTrillFaster")]
+        [DataMember(Name="wiggleTrillFaster")]
         public GlyphDefinition WiggleTrillFaster { get; set; }
 
-        [JsonProperty("wiggleTrillFasterStill")]
+        [DataMember(Name="wiggleTrillFasterStill")]
         public GlyphDefinition WiggleTrillFasterStill { get; set; }
 
-        [JsonProperty("wiggleTrillFastest")]
+        [DataMember(Name="wiggleTrillFastest")]
         public GlyphDefinition WiggleTrillFastest { get; set; }
 
-        [JsonProperty("wiggleTrillSlow")]
+        [DataMember(Name="wiggleTrillSlow")]
         public GlyphDefinition WiggleTrillSlow { get; set; }
 
-        [JsonProperty("wiggleTrillSlower")]
+        [DataMember(Name="wiggleTrillSlower")]
         public GlyphDefinition WiggleTrillSlower { get; set; }
 
-        [JsonProperty("wiggleTrillSlowerStill")]
+        [DataMember(Name="wiggleTrillSlowerStill")]
         public GlyphDefinition WiggleTrillSlowerStill { get; set; }
 
-        [JsonProperty("wiggleTrillSlowest")]
+        [DataMember(Name="wiggleTrillSlowest")]
         public GlyphDefinition WiggleTrillSlowest { get; set; }
 
-        [JsonProperty("wiggleVIbratoLargestSlower")]
+        [DataMember(Name="wiggleVIbratoLargestSlower")]
         public GlyphDefinition WiggleVIbratoLargestSlower { get; set; }
 
-        [JsonProperty("wiggleVIbratoMediumSlower")]
+        [DataMember(Name="wiggleVIbratoMediumSlower")]
         public GlyphDefinition WiggleVIbratoMediumSlower { get; set; }
 
-        [JsonProperty("wiggleVibrato")]
+        [DataMember(Name="wiggleVibrato")]
         public GlyphDefinition WiggleVibrato { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFast")]
+        [DataMember(Name="wiggleVibratoLargeFast")]
         public GlyphDefinition WiggleVibratoLargeFast { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFaster")]
+        [DataMember(Name="wiggleVibratoLargeFaster")]
         public GlyphDefinition WiggleVibratoLargeFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFasterStill")]
+        [DataMember(Name="wiggleVibratoLargeFasterStill")]
         public GlyphDefinition WiggleVibratoLargeFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFastest")]
+        [DataMember(Name="wiggleVibratoLargeFastest")]
         public GlyphDefinition WiggleVibratoLargeFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeSlow")]
+        [DataMember(Name="wiggleVibratoLargeSlow")]
         public GlyphDefinition WiggleVibratoLargeSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeSlower")]
+        [DataMember(Name="wiggleVibratoLargeSlower")]
         public GlyphDefinition WiggleVibratoLargeSlower { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeSlowest")]
+        [DataMember(Name="wiggleVibratoLargeSlowest")]
         public GlyphDefinition WiggleVibratoLargeSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFast")]
+        [DataMember(Name="wiggleVibratoLargestFast")]
         public GlyphDefinition WiggleVibratoLargestFast { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFaster")]
+        [DataMember(Name="wiggleVibratoLargestFaster")]
         public GlyphDefinition WiggleVibratoLargestFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFasterStill")]
+        [DataMember(Name="wiggleVibratoLargestFasterStill")]
         public GlyphDefinition WiggleVibratoLargestFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFastest")]
+        [DataMember(Name="wiggleVibratoLargestFastest")]
         public GlyphDefinition WiggleVibratoLargestFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestSlow")]
+        [DataMember(Name="wiggleVibratoLargestSlow")]
         public GlyphDefinition WiggleVibratoLargestSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestSlowest")]
+        [DataMember(Name="wiggleVibratoLargestSlowest")]
         public GlyphDefinition WiggleVibratoLargestSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFast")]
+        [DataMember(Name="wiggleVibratoMediumFast")]
         public GlyphDefinition WiggleVibratoMediumFast { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFaster")]
+        [DataMember(Name="wiggleVibratoMediumFaster")]
         public GlyphDefinition WiggleVibratoMediumFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFasterStill")]
+        [DataMember(Name="wiggleVibratoMediumFasterStill")]
         public GlyphDefinition WiggleVibratoMediumFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFastest")]
+        [DataMember(Name="wiggleVibratoMediumFastest")]
         public GlyphDefinition WiggleVibratoMediumFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumSlow")]
+        [DataMember(Name="wiggleVibratoMediumSlow")]
         public GlyphDefinition WiggleVibratoMediumSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumSlowest")]
+        [DataMember(Name="wiggleVibratoMediumSlowest")]
         public GlyphDefinition WiggleVibratoMediumSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFast")]
+        [DataMember(Name="wiggleVibratoSmallFast")]
         public GlyphDefinition WiggleVibratoSmallFast { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFaster")]
+        [DataMember(Name="wiggleVibratoSmallFaster")]
         public GlyphDefinition WiggleVibratoSmallFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFasterStill")]
+        [DataMember(Name="wiggleVibratoSmallFasterStill")]
         public GlyphDefinition WiggleVibratoSmallFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFastest")]
+        [DataMember(Name="wiggleVibratoSmallFastest")]
         public GlyphDefinition WiggleVibratoSmallFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallSlow")]
+        [DataMember(Name="wiggleVibratoSmallSlow")]
         public GlyphDefinition WiggleVibratoSmallSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallSlower")]
+        [DataMember(Name="wiggleVibratoSmallSlower")]
         public GlyphDefinition WiggleVibratoSmallSlower { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallSlowest")]
+        [DataMember(Name="wiggleVibratoSmallSlowest")]
         public GlyphDefinition WiggleVibratoSmallSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFast")]
+        [DataMember(Name="wiggleVibratoSmallestFast")]
         public GlyphDefinition WiggleVibratoSmallestFast { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFaster")]
+        [DataMember(Name="wiggleVibratoSmallestFaster")]
         public GlyphDefinition WiggleVibratoSmallestFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFasterStill")]
+        [DataMember(Name="wiggleVibratoSmallestFasterStill")]
         public GlyphDefinition WiggleVibratoSmallestFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFastest")]
+        [DataMember(Name="wiggleVibratoSmallestFastest")]
         public GlyphDefinition WiggleVibratoSmallestFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestSlow")]
+        [DataMember(Name="wiggleVibratoSmallestSlow")]
         public GlyphDefinition WiggleVibratoSmallestSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestSlower")]
+        [DataMember(Name="wiggleVibratoSmallestSlower")]
         public GlyphDefinition WiggleVibratoSmallestSlower { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestSlowest")]
+        [DataMember(Name="wiggleVibratoSmallestSlowest")]
         public GlyphDefinition WiggleVibratoSmallestSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoStart")]
+        [DataMember(Name="wiggleVibratoStart")]
         public GlyphDefinition WiggleVibratoStart { get; set; }
 
-        [JsonProperty("wiggleVibratoWide")]
+        [DataMember(Name="wiggleVibratoWide")]
         public GlyphDefinition WiggleVibratoWide { get; set; }
 
-        [JsonProperty("wiggleWavy")]
+        [DataMember(Name="wiggleWavy")]
         public GlyphDefinition WiggleWavy { get; set; }
 
-        [JsonProperty("wiggleWavyNarrow")]
+        [DataMember(Name="wiggleWavyNarrow")]
         public GlyphDefinition WiggleWavyNarrow { get; set; }
 
-        [JsonProperty("wiggleWavyWide")]
+        [DataMember(Name="wiggleWavyWide")]
         public GlyphDefinition WiggleWavyWide { get; set; }
 
-        [JsonProperty("windClosedHole")]
+        [DataMember(Name="windClosedHole")]
         public GlyphDefinition WindClosedHole { get; set; }
 
-        [JsonProperty("windFlatEmbouchure")]
+        [DataMember(Name="windFlatEmbouchure")]
         public GlyphDefinition WindFlatEmbouchure { get; set; }
 
-        [JsonProperty("windHalfClosedHole1")]
+        [DataMember(Name="windHalfClosedHole1")]
         public GlyphDefinition WindHalfClosedHole1 { get; set; }
 
-        [JsonProperty("windHalfClosedHole2")]
+        [DataMember(Name="windHalfClosedHole2")]
         public GlyphDefinition WindHalfClosedHole2 { get; set; }
 
-        [JsonProperty("windHalfClosedHole3")]
+        [DataMember(Name="windHalfClosedHole3")]
         public GlyphDefinition WindHalfClosedHole3 { get; set; }
 
-        [JsonProperty("windLessRelaxedEmbouchure")]
+        [DataMember(Name="windLessRelaxedEmbouchure")]
         public GlyphDefinition WindLessRelaxedEmbouchure { get; set; }
 
-        [JsonProperty("windLessTightEmbouchure")]
+        [DataMember(Name="windLessTightEmbouchure")]
         public GlyphDefinition WindLessTightEmbouchure { get; set; }
 
-        [JsonProperty("windMultiphonicsBlackStem")]
+        [DataMember(Name="windMultiphonicsBlackStem")]
         public GlyphDefinition WindMultiphonicsBlackStem { get; set; }
 
-        [JsonProperty("windMultiphonicsBlackWhiteStem")]
+        [DataMember(Name="windMultiphonicsBlackWhiteStem")]
         public GlyphDefinition WindMultiphonicsBlackWhiteStem { get; set; }
 
-        [JsonProperty("windMultiphonicsWhiteStem")]
+        [DataMember(Name="windMultiphonicsWhiteStem")]
         public GlyphDefinition WindMultiphonicsWhiteStem { get; set; }
 
-        [JsonProperty("windOpenHole")]
+        [DataMember(Name="windOpenHole")]
         public GlyphDefinition WindOpenHole { get; set; }
 
-        [JsonProperty("windReedPositionIn")]
+        [DataMember(Name="windReedPositionIn")]
         public GlyphDefinition WindReedPositionIn { get; set; }
 
-        [JsonProperty("windReedPositionNormal")]
+        [DataMember(Name="windReedPositionNormal")]
         public GlyphDefinition WindReedPositionNormal { get; set; }
 
-        [JsonProperty("windReedPositionOut")]
+        [DataMember(Name="windReedPositionOut")]
         public GlyphDefinition WindReedPositionOut { get; set; }
 
-        [JsonProperty("windRelaxedEmbouchure")]
+        [DataMember(Name="windRelaxedEmbouchure")]
         public GlyphDefinition WindRelaxedEmbouchure { get; set; }
 
-        [JsonProperty("windSharpEmbouchure")]
+        [DataMember(Name="windSharpEmbouchure")]
         public GlyphDefinition WindSharpEmbouchure { get; set; }
 
-        [JsonProperty("windStrongAirPressure")]
+        [DataMember(Name="windStrongAirPressure")]
         public GlyphDefinition WindStrongAirPressure { get; set; }
 
-        [JsonProperty("windThreeQuartersClosedHole")]
+        [DataMember(Name="windThreeQuartersClosedHole")]
         public GlyphDefinition WindThreeQuartersClosedHole { get; set; }
 
-        [JsonProperty("windTightEmbouchure")]
+        [DataMember(Name="windTightEmbouchure")]
         public GlyphDefinition WindTightEmbouchure { get; set; }
 
-        [JsonProperty("windTrillKey")]
+        [DataMember(Name="windTrillKey")]
         public GlyphDefinition WindTrillKey { get; set; }
 
-        [JsonProperty("windVeryTightEmbouchure")]
+        [DataMember(Name="windVeryTightEmbouchure")]
         public GlyphDefinition WindVeryTightEmbouchure { get; set; }
 
-        [JsonProperty("windWeakAirPressure")]
+        [DataMember(Name="windWeakAirPressure")]
         public GlyphDefinition WindWeakAirPressure { get; set; }
     }
 }

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="glyphnames.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="glyphnames.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj" />
+    <ProjectReference Include="..\Manufaktura.Core.Serialization\Manufaktura.Core.Serialization.csproj" />
+    <ProjectReference Include="..\Manufaktura.Core\Manufaktura.Core.csproj" />
+  </ItemGroup>
+
+</Project>

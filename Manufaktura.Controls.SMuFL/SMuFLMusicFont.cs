@@ -1,21 +1,23 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Model.Fonts;
 using System;
+using System.Text;
 
-namespace Manufaktura.Controls.Model.SMuFL
+namespace Manufaktura.Controls.SMuFL
 {
     public class SMuFLMusicFont : IMusicFont
     {
@@ -120,5 +122,47 @@ namespace Manufaktura.Controls.Model.SMuFL
         public char NoteWholeCue => SMuFLGlyphs.Instance.NoteWhole.Character;
 
         public char NoteWholeLarge => SMuFLGlyphs.Instance.NoteWhole.Character;
+
+        public bool IsSMuFLFont => true;
+
+        public string BuildTimeSignature(int number)
+        {
+            var sb = new StringBuilder();
+            var digits = number.ToString();
+            foreach (var digit in digits)
+            {
+                if (digit == '0') sb.Append(SMuFLGlyphs.Instance.TimeSig0.Character);
+                if (digit == '1') sb.Append(SMuFLGlyphs.Instance.TimeSig1.Character);
+                if (digit == '2') sb.Append(SMuFLGlyphs.Instance.TimeSig2.Character);
+                if (digit == '3') sb.Append(SMuFLGlyphs.Instance.TimeSig3.Character);
+                if (digit == '4') sb.Append(SMuFLGlyphs.Instance.TimeSig4.Character);
+                if (digit == '5') sb.Append(SMuFLGlyphs.Instance.TimeSig5.Character);
+                if (digit == '6') sb.Append(SMuFLGlyphs.Instance.TimeSig6.Character);
+                if (digit == '7') sb.Append(SMuFLGlyphs.Instance.TimeSig7.Character);
+                if (digit == '8') sb.Append(SMuFLGlyphs.Instance.TimeSig8.Character);
+                if (digit == '9') sb.Append(SMuFLGlyphs.Instance.TimeSig9.Character);
+            }
+            return sb.ToString();
+        }
+
+        public string BuildTupletNumber(int number)
+        {
+            var sb = new StringBuilder();
+            var digits = number.ToString();
+            foreach (var digit in digits)
+            {
+                if (digit == '0') sb.Append(SMuFLGlyphs.Instance.Tuplet0.Character);
+                if (digit == '1') sb.Append(SMuFLGlyphs.Instance.Tuplet1.Character);
+                if (digit == '2') sb.Append(SMuFLGlyphs.Instance.Tuplet2.Character);
+                if (digit == '3') sb.Append(SMuFLGlyphs.Instance.Tuplet3.Character);
+                if (digit == '4') sb.Append(SMuFLGlyphs.Instance.Tuplet4.Character);
+                if (digit == '5') sb.Append(SMuFLGlyphs.Instance.Tuplet5.Character);
+                if (digit == '6') sb.Append(SMuFLGlyphs.Instance.Tuplet6.Character);
+                if (digit == '7') sb.Append(SMuFLGlyphs.Instance.Tuplet7.Character);
+                if (digit == '8') sb.Append(SMuFLGlyphs.Instance.Tuplet8.Character);
+                if (digit == '9') sb.Append(SMuFLGlyphs.Instance.Tuplet9.Character);
+            }
+            return sb.ToString();
+        }
     }
 }

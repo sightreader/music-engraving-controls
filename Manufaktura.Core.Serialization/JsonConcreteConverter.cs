@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using System;
 
-namespace Manufaktura.Controls.Parser
+namespace Manufaktura.Controls.Serialization
 {
     public class JsonConcreteConverter<T> : JsonConverter
     {

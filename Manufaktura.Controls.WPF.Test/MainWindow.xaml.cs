@@ -5,6 +5,7 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
+using Manufaktura.Controls.SMuFL;
 using Manufaktura.Core.Serialization;
 using Manufaktura.Music.Model;
 using Microsoft.Win32;
@@ -55,11 +56,11 @@ namespace Manufaktura.Controls.WPF.Test
                 {
                     string result = reader.ReadToEnd();
                     var metadataJson = //JsonConvert.DeserializeObject<SMuFLFontMetadata>(result);
-                        LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(result);
-                    noteViewerTest.LoadFont(family, metadataJson);
-                    noteViewer1.LoadFont(family, metadataJson);
-                    noteViewer2.LoadFont(family, metadataJson);
-                    noteViewer3.LoadFont(family, metadataJson);
+                       LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(result);
+                    noteViewerTest.LoadFont(family, metadataJson, new SMuFLMusicFont());
+                    noteViewer1.LoadFont(family, metadataJson, new SMuFLMusicFont());
+                    noteViewer2.LoadFont(family, metadataJson, new SMuFLMusicFont());
+                    noteViewer3.LoadFont(family, metadataJson, new SMuFLMusicFont());
 
                     //var s = new WpfScoreRendererSettings();
                     //s.CurrentSMuFLMetadata = metadataJson;

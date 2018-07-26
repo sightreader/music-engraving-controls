@@ -12,6 +12,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+using System;
+
 namespace Manufaktura.Controls.Model.Fonts
 {
     /// <summary>
@@ -19,6 +21,8 @@ namespace Manufaktura.Controls.Model.Fonts
     /// </summary>
     public class PolihymniaFont : IMusicFont
     {
+        public bool IsSMuFLFont => false;
+
         public char AugmentationDot => '.';
         public char BraceLeft => '{';
         public char BraceRight => '}';
@@ -90,5 +94,9 @@ namespace Manufaktura.Controls.Model.Fonts
         public char Staff5Lines => '=';
 
         public char Trill => 'r';
+
+        public string BuildTimeSignature(int number) => Convert.ToString(number);
+
+        public string BuildTupletNumber(int number) => Convert.ToString(number);
     }
 }

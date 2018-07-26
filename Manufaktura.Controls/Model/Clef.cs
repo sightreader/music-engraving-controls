@@ -235,7 +235,7 @@ namespace Manufaktura.Controls.Model
             else return '\0';
         }
 
-        public BoundingBox GetSMuFLBoundingBox(SMuFLFontMetadata metadata)
+        public BoundingBox GetSMuFLBoundingBox(ISMuFLFontMetadata metadata)
         {
             if (typeOfClef == ClefType.GClef) return metadata.GlyphBBoxes.GClef;
             else if (typeOfClef == ClefType.FClef) return metadata.GlyphBBoxes.FClef;

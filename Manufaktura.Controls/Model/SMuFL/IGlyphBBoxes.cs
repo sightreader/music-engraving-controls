@@ -1,8902 +1,8902 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Manufaktura.Controls.Model.SMuFL
 {
     public interface IGlyphBBoxes
     {
-        [JsonProperty("4stringTabClef")]
+        [DataMember(Name="4stringTabClef")]
         BoundingBox The4StringTabClef { get; set; }
 
-        [JsonProperty("4stringTabClefSerif")]
+        [DataMember(Name="4stringTabClefSerif")]
         BoundingBox The4StringTabClefSerif { get; set; }
 
-        [JsonProperty("4stringTabClefTall")]
+        [DataMember(Name="4stringTabClefTall")]
         BoundingBox The4StringTabClefTall { get; set; }
 
-        [JsonProperty("6stringTabClef")]
+        [DataMember(Name="6stringTabClef")]
         BoundingBox The6StringTabClef { get; set; }
 
-        [JsonProperty("6stringTabClefSerif")]
+        [DataMember(Name="6stringTabClefSerif")]
         BoundingBox The6StringTabClefSerif { get; set; }
 
-        [JsonProperty("6stringTabClefTall")]
+        [DataMember(Name="6stringTabClefTall")]
         BoundingBox The6StringTabClefTall { get; set; }
 
-        [JsonProperty("accSagittal11LargeDiesisDown")]
+        [DataMember(Name="accSagittal11LargeDiesisDown")]
         BoundingBox AccSagittal11LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11LargeDiesisUp")]
+        [DataMember(Name="accSagittal11LargeDiesisUp")]
         BoundingBox AccSagittal11LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11MediumDiesisDown")]
+        [DataMember(Name="accSagittal11MediumDiesisDown")]
         BoundingBox AccSagittal11MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11MediumDiesisUp")]
+        [DataMember(Name="accSagittal11MediumDiesisUp")]
         BoundingBox AccSagittal11MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11v19LargeDiesisDown")]
+        [DataMember(Name="accSagittal11v19LargeDiesisDown")]
         BoundingBox AccSagittal11V19LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11v19LargeDiesisUp")]
+        [DataMember(Name="accSagittal11v19LargeDiesisUp")]
         BoundingBox AccSagittal11V19LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11v19MediumDiesisDown")]
+        [DataMember(Name="accSagittal11v19MediumDiesisDown")]
         BoundingBox AccSagittal11V19MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal11v19MediumDiesisUp")]
+        [DataMember(Name="accSagittal11v19MediumDiesisUp")]
         BoundingBox AccSagittal11V19MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal11v49CommaDown")]
+        [DataMember(Name="accSagittal11v49CommaDown")]
         BoundingBox AccSagittal11V49CommaDown { get; set; }
 
-        [JsonProperty("accSagittal11v49CommaUp")]
+        [DataMember(Name="accSagittal11v49CommaUp")]
         BoundingBox AccSagittal11V49CommaUp { get; set; }
 
-        [JsonProperty("accSagittal143CommaDown")]
+        [DataMember(Name="accSagittal143CommaDown")]
         BoundingBox AccSagittal143CommaDown { get; set; }
 
-        [JsonProperty("accSagittal143CommaUp")]
+        [DataMember(Name="accSagittal143CommaUp")]
         BoundingBox AccSagittal143CommaUp { get; set; }
 
-        [JsonProperty("accSagittal17CommaDown")]
+        [DataMember(Name="accSagittal17CommaDown")]
         BoundingBox AccSagittal17CommaDown { get; set; }
 
-        [JsonProperty("accSagittal17CommaUp")]
+        [DataMember(Name="accSagittal17CommaUp")]
         BoundingBox AccSagittal17CommaUp { get; set; }
 
-        [JsonProperty("accSagittal17KleismaDown")]
+        [DataMember(Name="accSagittal17KleismaDown")]
         BoundingBox AccSagittal17KleismaDown { get; set; }
 
-        [JsonProperty("accSagittal17KleismaUp")]
+        [DataMember(Name="accSagittal17KleismaUp")]
         BoundingBox AccSagittal17KleismaUp { get; set; }
 
-        [JsonProperty("accSagittal19CommaDown")]
+        [DataMember(Name="accSagittal19CommaDown")]
         BoundingBox AccSagittal19CommaDown { get; set; }
 
-        [JsonProperty("accSagittal19CommaUp")]
+        [DataMember(Name="accSagittal19CommaUp")]
         BoundingBox AccSagittal19CommaUp { get; set; }
 
-        [JsonProperty("accSagittal19SchismaDown")]
+        [DataMember(Name="accSagittal19SchismaDown")]
         BoundingBox AccSagittal19SchismaDown { get; set; }
 
-        [JsonProperty("accSagittal19SchismaUp")]
+        [DataMember(Name="accSagittal19SchismaUp")]
         BoundingBox AccSagittal19SchismaUp { get; set; }
 
-        [JsonProperty("accSagittal23CommaDown")]
+        [DataMember(Name="accSagittal23CommaDown")]
         BoundingBox AccSagittal23CommaDown { get; set; }
 
-        [JsonProperty("accSagittal23CommaUp")]
+        [DataMember(Name="accSagittal23CommaUp")]
         BoundingBox AccSagittal23CommaUp { get; set; }
 
-        [JsonProperty("accSagittal23SmallDiesisDown")]
+        [DataMember(Name="accSagittal23SmallDiesisDown")]
         BoundingBox AccSagittal23SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal23SmallDiesisUp")]
+        [DataMember(Name="accSagittal23SmallDiesisUp")]
         BoundingBox AccSagittal23SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal25SmallDiesisDown")]
+        [DataMember(Name="accSagittal25SmallDiesisDown")]
         BoundingBox AccSagittal25SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal25SmallDiesisUp")]
+        [DataMember(Name="accSagittal25SmallDiesisUp")]
         BoundingBox AccSagittal25SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal35LargeDiesisDown")]
+        [DataMember(Name="accSagittal35LargeDiesisDown")]
         BoundingBox AccSagittal35LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal35LargeDiesisUp")]
+        [DataMember(Name="accSagittal35LargeDiesisUp")]
         BoundingBox AccSagittal35LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal35MediumDiesisDown")]
+        [DataMember(Name="accSagittal35MediumDiesisDown")]
         BoundingBox AccSagittal35MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal35MediumDiesisUp")]
+        [DataMember(Name="accSagittal35MediumDiesisUp")]
         BoundingBox AccSagittal35MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal49LargeDiesisDown")]
+        [DataMember(Name="accSagittal49LargeDiesisDown")]
         BoundingBox AccSagittal49LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal49LargeDiesisUp")]
+        [DataMember(Name="accSagittal49LargeDiesisUp")]
         BoundingBox AccSagittal49LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal49MediumDiesisDown")]
+        [DataMember(Name="accSagittal49MediumDiesisDown")]
         BoundingBox AccSagittal49MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal49MediumDiesisUp")]
+        [DataMember(Name="accSagittal49MediumDiesisUp")]
         BoundingBox AccSagittal49MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal49SmallDiesisDown")]
+        [DataMember(Name="accSagittal49SmallDiesisDown")]
         BoundingBox AccSagittal49SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal49SmallDiesisUp")]
+        [DataMember(Name="accSagittal49SmallDiesisUp")]
         BoundingBox AccSagittal49SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal55CommaDown")]
+        [DataMember(Name="accSagittal55CommaDown")]
         BoundingBox AccSagittal55CommaDown { get; set; }
 
-        [JsonProperty("accSagittal55CommaUp")]
+        [DataMember(Name="accSagittal55CommaUp")]
         BoundingBox AccSagittal55CommaUp { get; set; }
 
-        [JsonProperty("accSagittal5CommaDown")]
+        [DataMember(Name="accSagittal5CommaDown")]
         BoundingBox AccSagittal5CommaDown { get; set; }
 
-        [JsonProperty("accSagittal5CommaUp")]
+        [DataMember(Name="accSagittal5CommaUp")]
         BoundingBox AccSagittal5CommaUp { get; set; }
 
-        [JsonProperty("accSagittal5v11SmallDiesisDown")]
+        [DataMember(Name="accSagittal5v11SmallDiesisDown")]
         BoundingBox AccSagittal5V11SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v11SmallDiesisUp")]
+        [DataMember(Name="accSagittal5v11SmallDiesisUp")]
         BoundingBox AccSagittal5V11SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v13LargeDiesisDown")]
+        [DataMember(Name="accSagittal5v13LargeDiesisDown")]
         BoundingBox AccSagittal5V13LargeDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v13LargeDiesisUp")]
+        [DataMember(Name="accSagittal5v13LargeDiesisUp")]
         BoundingBox AccSagittal5V13LargeDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v13MediumDiesisDown")]
+        [DataMember(Name="accSagittal5v13MediumDiesisDown")]
         BoundingBox AccSagittal5V13MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v13MediumDiesisUp")]
+        [DataMember(Name="accSagittal5v13MediumDiesisUp")]
         BoundingBox AccSagittal5V13MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v19CommaDown")]
+        [DataMember(Name="accSagittal5v19CommaDown")]
         BoundingBox AccSagittal5V19CommaDown { get; set; }
 
-        [JsonProperty("accSagittal5v19CommaUp")]
+        [DataMember(Name="accSagittal5v19CommaUp")]
         BoundingBox AccSagittal5V19CommaUp { get; set; }
 
-        [JsonProperty("accSagittal5v23SmallDiesisDown")]
+        [DataMember(Name="accSagittal5v23SmallDiesisDown")]
         BoundingBox AccSagittal5V23SmallDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v23SmallDiesisUp")]
+        [DataMember(Name="accSagittal5v23SmallDiesisUp")]
         BoundingBox AccSagittal5V23SmallDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v49MediumDiesisDown")]
+        [DataMember(Name="accSagittal5v49MediumDiesisDown")]
         BoundingBox AccSagittal5V49MediumDiesisDown { get; set; }
 
-        [JsonProperty("accSagittal5v49MediumDiesisUp")]
+        [DataMember(Name="accSagittal5v49MediumDiesisUp")]
         BoundingBox AccSagittal5V49MediumDiesisUp { get; set; }
 
-        [JsonProperty("accSagittal5v7KleismaDown")]
+        [DataMember(Name="accSagittal5v7KleismaDown")]
         BoundingBox AccSagittal5V7KleismaDown { get; set; }
 
-        [JsonProperty("accSagittal5v7KleismaUp")]
+        [DataMember(Name="accSagittal5v7KleismaUp")]
         BoundingBox AccSagittal5V7KleismaUp { get; set; }
 
-        [JsonProperty("accSagittal7CommaDown")]
+        [DataMember(Name="accSagittal7CommaDown")]
         BoundingBox AccSagittal7CommaDown { get; set; }
 
-        [JsonProperty("accSagittal7CommaUp")]
+        [DataMember(Name="accSagittal7CommaUp")]
         BoundingBox AccSagittal7CommaUp { get; set; }
 
-        [JsonProperty("accSagittal7v11CommaDown")]
+        [DataMember(Name="accSagittal7v11CommaDown")]
         BoundingBox AccSagittal7V11CommaDown { get; set; }
 
-        [JsonProperty("accSagittal7v11CommaUp")]
+        [DataMember(Name="accSagittal7v11CommaUp")]
         BoundingBox AccSagittal7V11CommaUp { get; set; }
 
-        [JsonProperty("accSagittal7v11KleismaDown")]
+        [DataMember(Name="accSagittal7v11KleismaDown")]
         BoundingBox AccSagittal7V11KleismaDown { get; set; }
 
-        [JsonProperty("accSagittal7v11KleismaUp")]
+        [DataMember(Name="accSagittal7v11KleismaUp")]
         BoundingBox AccSagittal7V11KleismaUp { get; set; }
 
-        [JsonProperty("accSagittal7v19CommaDown")]
+        [DataMember(Name="accSagittal7v19CommaDown")]
         BoundingBox AccSagittal7V19CommaDown { get; set; }
 
-        [JsonProperty("accSagittal7v19CommaUp")]
+        [DataMember(Name="accSagittal7v19CommaUp")]
         BoundingBox AccSagittal7V19CommaUp { get; set; }
 
-        [JsonProperty("accSagittalAcute")]
+        [DataMember(Name="accSagittalAcute")]
         BoundingBox AccSagittalAcute { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat")]
+        [DataMember(Name="accSagittalDoubleFlat")]
         BoundingBox AccSagittalDoubleFlat { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat11v49CUp")]
+        [DataMember(Name="accSagittalDoubleFlat11v49CUp")]
         BoundingBox AccSagittalDoubleFlat11V49CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat143CUp")]
+        [DataMember(Name="accSagittalDoubleFlat143CUp")]
         BoundingBox AccSagittalDoubleFlat143CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat17CUp")]
+        [DataMember(Name="accSagittalDoubleFlat17CUp")]
         BoundingBox AccSagittalDoubleFlat17CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat17kUp")]
+        [DataMember(Name="accSagittalDoubleFlat17kUp")]
         BoundingBox AccSagittalDoubleFlat17KUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat19CUp")]
+        [DataMember(Name="accSagittalDoubleFlat19CUp")]
         BoundingBox AccSagittalDoubleFlat19CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat19sUp")]
+        [DataMember(Name="accSagittalDoubleFlat19sUp")]
         BoundingBox AccSagittalDoubleFlat19SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat23CUp")]
+        [DataMember(Name="accSagittalDoubleFlat23CUp")]
         BoundingBox AccSagittalDoubleFlat23CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat23SUp")]
+        [DataMember(Name="accSagittalDoubleFlat23SUp")]
         BoundingBox AccSagittalDoubleFlat23SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat25SUp")]
+        [DataMember(Name="accSagittalDoubleFlat25SUp")]
         BoundingBox AccSagittalDoubleFlat25SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat49SUp")]
+        [DataMember(Name="accSagittalDoubleFlat49SUp")]
         BoundingBox AccSagittalDoubleFlat49SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat55CUp")]
+        [DataMember(Name="accSagittalDoubleFlat55CUp")]
         BoundingBox AccSagittalDoubleFlat55CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5CUp")]
+        [DataMember(Name="accSagittalDoubleFlat5CUp")]
         BoundingBox AccSagittalDoubleFlat5CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v11SUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v11SUp")]
         BoundingBox AccSagittalDoubleFlat5V11SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v19CUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v19CUp")]
         BoundingBox AccSagittalDoubleFlat5V19CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v23SUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v23SUp")]
         BoundingBox AccSagittalDoubleFlat5V23SUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat5v7kUp")]
+        [DataMember(Name="accSagittalDoubleFlat5v7kUp")]
         BoundingBox AccSagittalDoubleFlat5V7KUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7CUp")]
+        [DataMember(Name="accSagittalDoubleFlat7CUp")]
         BoundingBox AccSagittalDoubleFlat7CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7v11CUp")]
+        [DataMember(Name="accSagittalDoubleFlat7v11CUp")]
         BoundingBox AccSagittalDoubleFlat7V11CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7v11kUp")]
+        [DataMember(Name="accSagittalDoubleFlat7v11kUp")]
         BoundingBox AccSagittalDoubleFlat7V11KUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleFlat7v19CUp")]
+        [DataMember(Name="accSagittalDoubleFlat7v19CUp")]
         BoundingBox AccSagittalDoubleFlat7V19CUp { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp")]
+        [DataMember(Name="accSagittalDoubleSharp")]
         BoundingBox AccSagittalDoubleSharp { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp11v49CDown")]
+        [DataMember(Name="accSagittalDoubleSharp11v49CDown")]
         BoundingBox AccSagittalDoubleSharp11V49CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp143CDown")]
+        [DataMember(Name="accSagittalDoubleSharp143CDown")]
         BoundingBox AccSagittalDoubleSharp143CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp17CDown")]
+        [DataMember(Name="accSagittalDoubleSharp17CDown")]
         BoundingBox AccSagittalDoubleSharp17CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp17kDown")]
+        [DataMember(Name="accSagittalDoubleSharp17kDown")]
         BoundingBox AccSagittalDoubleSharp17KDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp19CDown")]
+        [DataMember(Name="accSagittalDoubleSharp19CDown")]
         BoundingBox AccSagittalDoubleSharp19CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp19sDown")]
+        [DataMember(Name="accSagittalDoubleSharp19sDown")]
         BoundingBox AccSagittalDoubleSharp19SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp23CDown")]
+        [DataMember(Name="accSagittalDoubleSharp23CDown")]
         BoundingBox AccSagittalDoubleSharp23CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp23SDown")]
+        [DataMember(Name="accSagittalDoubleSharp23SDown")]
         BoundingBox AccSagittalDoubleSharp23SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp25SDown")]
+        [DataMember(Name="accSagittalDoubleSharp25SDown")]
         BoundingBox AccSagittalDoubleSharp25SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp49SDown")]
+        [DataMember(Name="accSagittalDoubleSharp49SDown")]
         BoundingBox AccSagittalDoubleSharp49SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp55CDown")]
+        [DataMember(Name="accSagittalDoubleSharp55CDown")]
         BoundingBox AccSagittalDoubleSharp55CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5CDown")]
+        [DataMember(Name="accSagittalDoubleSharp5CDown")]
         BoundingBox AccSagittalDoubleSharp5CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v11SDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v11SDown")]
         BoundingBox AccSagittalDoubleSharp5V11SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v19CDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v19CDown")]
         BoundingBox AccSagittalDoubleSharp5V19CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v23SDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v23SDown")]
         BoundingBox AccSagittalDoubleSharp5V23SDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp5v7kDown")]
+        [DataMember(Name="accSagittalDoubleSharp5v7kDown")]
         BoundingBox AccSagittalDoubleSharp5V7KDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7CDown")]
+        [DataMember(Name="accSagittalDoubleSharp7CDown")]
         BoundingBox AccSagittalDoubleSharp7CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7v11CDown")]
+        [DataMember(Name="accSagittalDoubleSharp7v11CDown")]
         BoundingBox AccSagittalDoubleSharp7V11CDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7v11kDown")]
+        [DataMember(Name="accSagittalDoubleSharp7v11kDown")]
         BoundingBox AccSagittalDoubleSharp7V11KDown { get; set; }
 
-        [JsonProperty("accSagittalDoubleSharp7v19CDown")]
+        [DataMember(Name="accSagittalDoubleSharp7v19CDown")]
         BoundingBox AccSagittalDoubleSharp7V19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat")]
+        [DataMember(Name="accSagittalFlat")]
         BoundingBox AccSagittalFlat { get; set; }
 
-        [JsonProperty("accSagittalFlat11LDown")]
+        [DataMember(Name="accSagittalFlat11LDown")]
         BoundingBox AccSagittalFlat11LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11MDown")]
+        [DataMember(Name="accSagittalFlat11MDown")]
         BoundingBox AccSagittalFlat11MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v19LDown")]
+        [DataMember(Name="accSagittalFlat11v19LDown")]
         BoundingBox AccSagittalFlat11V19LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v19MDown")]
+        [DataMember(Name="accSagittalFlat11v19MDown")]
         BoundingBox AccSagittalFlat11V19MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v49CDown")]
+        [DataMember(Name="accSagittalFlat11v49CDown")]
         BoundingBox AccSagittalFlat11V49CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat11v49CUp")]
+        [DataMember(Name="accSagittalFlat11v49CUp")]
         BoundingBox AccSagittalFlat11V49CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat143CDown")]
+        [DataMember(Name="accSagittalFlat143CDown")]
         BoundingBox AccSagittalFlat143CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat143CUp")]
+        [DataMember(Name="accSagittalFlat143CUp")]
         BoundingBox AccSagittalFlat143CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat17CDown")]
+        [DataMember(Name="accSagittalFlat17CDown")]
         BoundingBox AccSagittalFlat17CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat17CUp")]
+        [DataMember(Name="accSagittalFlat17CUp")]
         BoundingBox AccSagittalFlat17CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat17kDown")]
+        [DataMember(Name="accSagittalFlat17kDown")]
         BoundingBox AccSagittalFlat17KDown { get; set; }
 
-        [JsonProperty("accSagittalFlat17kUp")]
+        [DataMember(Name="accSagittalFlat17kUp")]
         BoundingBox AccSagittalFlat17KUp { get; set; }
 
-        [JsonProperty("accSagittalFlat19CDown")]
+        [DataMember(Name="accSagittalFlat19CDown")]
         BoundingBox AccSagittalFlat19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat19CUp")]
+        [DataMember(Name="accSagittalFlat19CUp")]
         BoundingBox AccSagittalFlat19CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat19sDown")]
+        [DataMember(Name="accSagittalFlat19sDown")]
         BoundingBox AccSagittalFlat19SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat19sUp")]
+        [DataMember(Name="accSagittalFlat19sUp")]
         BoundingBox AccSagittalFlat19SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat23CDown")]
+        [DataMember(Name="accSagittalFlat23CDown")]
         BoundingBox AccSagittalFlat23CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat23CUp")]
+        [DataMember(Name="accSagittalFlat23CUp")]
         BoundingBox AccSagittalFlat23CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat23SDown")]
+        [DataMember(Name="accSagittalFlat23SDown")]
         BoundingBox AccSagittalFlat23SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat23SUp")]
+        [DataMember(Name="accSagittalFlat23SUp")]
         BoundingBox AccSagittalFlat23SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat25SDown")]
+        [DataMember(Name="accSagittalFlat25SDown")]
         BoundingBox AccSagittalFlat25SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat25SUp")]
+        [DataMember(Name="accSagittalFlat25SUp")]
         BoundingBox AccSagittalFlat25SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat35LDown")]
+        [DataMember(Name="accSagittalFlat35LDown")]
         BoundingBox AccSagittalFlat35LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat35MDown")]
+        [DataMember(Name="accSagittalFlat35MDown")]
         BoundingBox AccSagittalFlat35MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49LDown")]
+        [DataMember(Name="accSagittalFlat49LDown")]
         BoundingBox AccSagittalFlat49LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49MDown")]
+        [DataMember(Name="accSagittalFlat49MDown")]
         BoundingBox AccSagittalFlat49MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49SDown")]
+        [DataMember(Name="accSagittalFlat49SDown")]
         BoundingBox AccSagittalFlat49SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat49SUp")]
+        [DataMember(Name="accSagittalFlat49SUp")]
         BoundingBox AccSagittalFlat49SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat55CDown")]
+        [DataMember(Name="accSagittalFlat55CDown")]
         BoundingBox AccSagittalFlat55CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat55CUp")]
+        [DataMember(Name="accSagittalFlat55CUp")]
         BoundingBox AccSagittalFlat55CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5CDown")]
+        [DataMember(Name="accSagittalFlat5CDown")]
         BoundingBox AccSagittalFlat5CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5CUp")]
+        [DataMember(Name="accSagittalFlat5CUp")]
         BoundingBox AccSagittalFlat5CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v11SDown")]
+        [DataMember(Name="accSagittalFlat5v11SDown")]
         BoundingBox AccSagittalFlat5V11SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v11SUp")]
+        [DataMember(Name="accSagittalFlat5v11SUp")]
         BoundingBox AccSagittalFlat5V11SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v13LDown")]
+        [DataMember(Name="accSagittalFlat5v13LDown")]
         BoundingBox AccSagittalFlat5V13LDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v13MDown")]
+        [DataMember(Name="accSagittalFlat5v13MDown")]
         BoundingBox AccSagittalFlat5V13MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v19CDown")]
+        [DataMember(Name="accSagittalFlat5v19CDown")]
         BoundingBox AccSagittalFlat5V19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v19CUp")]
+        [DataMember(Name="accSagittalFlat5v19CUp")]
         BoundingBox AccSagittalFlat5V19CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v23SDown")]
+        [DataMember(Name="accSagittalFlat5v23SDown")]
         BoundingBox AccSagittalFlat5V23SDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v23SUp")]
+        [DataMember(Name="accSagittalFlat5v23SUp")]
         BoundingBox AccSagittalFlat5V23SUp { get; set; }
 
-        [JsonProperty("accSagittalFlat5v49MDown")]
+        [DataMember(Name="accSagittalFlat5v49MDown")]
         BoundingBox AccSagittalFlat5V49MDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v7kDown")]
+        [DataMember(Name="accSagittalFlat5v7kDown")]
         BoundingBox AccSagittalFlat5V7KDown { get; set; }
 
-        [JsonProperty("accSagittalFlat5v7kUp")]
+        [DataMember(Name="accSagittalFlat5v7kUp")]
         BoundingBox AccSagittalFlat5V7KUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7CDown")]
+        [DataMember(Name="accSagittalFlat7CDown")]
         BoundingBox AccSagittalFlat7CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7CUp")]
+        [DataMember(Name="accSagittalFlat7CUp")]
         BoundingBox AccSagittalFlat7CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11CDown")]
+        [DataMember(Name="accSagittalFlat7v11CDown")]
         BoundingBox AccSagittalFlat7V11CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11CUp")]
+        [DataMember(Name="accSagittalFlat7v11CUp")]
         BoundingBox AccSagittalFlat7V11CUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11kDown")]
+        [DataMember(Name="accSagittalFlat7v11kDown")]
         BoundingBox AccSagittalFlat7V11KDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7v11kUp")]
+        [DataMember(Name="accSagittalFlat7v11kUp")]
         BoundingBox AccSagittalFlat7V11KUp { get; set; }
 
-        [JsonProperty("accSagittalFlat7v19CDown")]
+        [DataMember(Name="accSagittalFlat7v19CDown")]
         BoundingBox AccSagittalFlat7V19CDown { get; set; }
 
-        [JsonProperty("accSagittalFlat7v19CUp")]
+        [DataMember(Name="accSagittalFlat7v19CUp")]
         BoundingBox AccSagittalFlat7V19CUp { get; set; }
 
-        [JsonProperty("accSagittalGrave")]
+        [DataMember(Name="accSagittalGrave")]
         BoundingBox AccSagittalGrave { get; set; }
 
-        [JsonProperty("accSagittalShaftDown")]
+        [DataMember(Name="accSagittalShaftDown")]
         BoundingBox AccSagittalShaftDown { get; set; }
 
-        [JsonProperty("accSagittalShaftUp")]
+        [DataMember(Name="accSagittalShaftUp")]
         BoundingBox AccSagittalShaftUp { get; set; }
 
-        [JsonProperty("accSagittalSharp")]
+        [DataMember(Name="accSagittalSharp")]
         BoundingBox AccSagittalSharp { get; set; }
 
-        [JsonProperty("accSagittalSharp11LUp")]
+        [DataMember(Name="accSagittalSharp11LUp")]
         BoundingBox AccSagittalSharp11LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11MUp")]
+        [DataMember(Name="accSagittalSharp11MUp")]
         BoundingBox AccSagittalSharp11MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11v19LUp")]
+        [DataMember(Name="accSagittalSharp11v19LUp")]
         BoundingBox AccSagittalSharp11V19LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11v19MUp")]
+        [DataMember(Name="accSagittalSharp11v19MUp")]
         BoundingBox AccSagittalSharp11V19MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp11v49CDown")]
+        [DataMember(Name="accSagittalSharp11v49CDown")]
         BoundingBox AccSagittalSharp11V49CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp11v49CUp")]
+        [DataMember(Name="accSagittalSharp11v49CUp")]
         BoundingBox AccSagittalSharp11V49CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp143CDown")]
+        [DataMember(Name="accSagittalSharp143CDown")]
         BoundingBox AccSagittalSharp143CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp143CUp")]
+        [DataMember(Name="accSagittalSharp143CUp")]
         BoundingBox AccSagittalSharp143CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp17CDown")]
+        [DataMember(Name="accSagittalSharp17CDown")]
         BoundingBox AccSagittalSharp17CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp17CUp")]
+        [DataMember(Name="accSagittalSharp17CUp")]
         BoundingBox AccSagittalSharp17CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp17kDown")]
+        [DataMember(Name="accSagittalSharp17kDown")]
         BoundingBox AccSagittalSharp17KDown { get; set; }
 
-        [JsonProperty("accSagittalSharp17kUp")]
+        [DataMember(Name="accSagittalSharp17kUp")]
         BoundingBox AccSagittalSharp17KUp { get; set; }
 
-        [JsonProperty("accSagittalSharp19CDown")]
+        [DataMember(Name="accSagittalSharp19CDown")]
         BoundingBox AccSagittalSharp19CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp19CUp")]
+        [DataMember(Name="accSagittalSharp19CUp")]
         BoundingBox AccSagittalSharp19CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp19sDown")]
+        [DataMember(Name="accSagittalSharp19sDown")]
         BoundingBox AccSagittalSharp19SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp19sUp")]
+        [DataMember(Name="accSagittalSharp19sUp")]
         BoundingBox AccSagittalSharp19SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp23CDown")]
+        [DataMember(Name="accSagittalSharp23CDown")]
         BoundingBox AccSagittalSharp23CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp23CUp")]
+        [DataMember(Name="accSagittalSharp23CUp")]
         BoundingBox AccSagittalSharp23CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp23SDown")]
+        [DataMember(Name="accSagittalSharp23SDown")]
         BoundingBox AccSagittalSharp23SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp23SUp")]
+        [DataMember(Name="accSagittalSharp23SUp")]
         BoundingBox AccSagittalSharp23SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp25SDown")]
+        [DataMember(Name="accSagittalSharp25SDown")]
         BoundingBox AccSagittalSharp25SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp25SUp")]
+        [DataMember(Name="accSagittalSharp25SUp")]
         BoundingBox AccSagittalSharp25SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp35LUp")]
+        [DataMember(Name="accSagittalSharp35LUp")]
         BoundingBox AccSagittalSharp35LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp35MUp")]
+        [DataMember(Name="accSagittalSharp35MUp")]
         BoundingBox AccSagittalSharp35MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp49LUp")]
+        [DataMember(Name="accSagittalSharp49LUp")]
         BoundingBox AccSagittalSharp49LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp49MUp")]
+        [DataMember(Name="accSagittalSharp49MUp")]
         BoundingBox AccSagittalSharp49MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp49SDown")]
+        [DataMember(Name="accSagittalSharp49SDown")]
         BoundingBox AccSagittalSharp49SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp49SUp")]
+        [DataMember(Name="accSagittalSharp49SUp")]
         BoundingBox AccSagittalSharp49SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp55CDown")]
+        [DataMember(Name="accSagittalSharp55CDown")]
         BoundingBox AccSagittalSharp55CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp55CUp")]
+        [DataMember(Name="accSagittalSharp55CUp")]
         BoundingBox AccSagittalSharp55CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5CDown")]
+        [DataMember(Name="accSagittalSharp5CDown")]
         BoundingBox AccSagittalSharp5CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5CUp")]
+        [DataMember(Name="accSagittalSharp5CUp")]
         BoundingBox AccSagittalSharp5CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v11SDown")]
+        [DataMember(Name="accSagittalSharp5v11SDown")]
         BoundingBox AccSagittalSharp5V11SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v11SUp")]
+        [DataMember(Name="accSagittalSharp5v11SUp")]
         BoundingBox AccSagittalSharp5V11SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v13LUp")]
+        [DataMember(Name="accSagittalSharp5v13LUp")]
         BoundingBox AccSagittalSharp5V13LUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v13MUp")]
+        [DataMember(Name="accSagittalSharp5v13MUp")]
         BoundingBox AccSagittalSharp5V13MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v19CDown")]
+        [DataMember(Name="accSagittalSharp5v19CDown")]
         BoundingBox AccSagittalSharp5V19CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v19CUp")]
+        [DataMember(Name="accSagittalSharp5v19CUp")]
         BoundingBox AccSagittalSharp5V19CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v23SDown")]
+        [DataMember(Name="accSagittalSharp5v23SDown")]
         BoundingBox AccSagittalSharp5V23SDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v23SUp")]
+        [DataMember(Name="accSagittalSharp5v23SUp")]
         BoundingBox AccSagittalSharp5V23SUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v49MUp")]
+        [DataMember(Name="accSagittalSharp5v49MUp")]
         BoundingBox AccSagittalSharp5V49MUp { get; set; }
 
-        [JsonProperty("accSagittalSharp5v7kDown")]
+        [DataMember(Name="accSagittalSharp5v7kDown")]
         BoundingBox AccSagittalSharp5V7KDown { get; set; }
 
-        [JsonProperty("accSagittalSharp5v7kUp")]
+        [DataMember(Name="accSagittalSharp5v7kUp")]
         BoundingBox AccSagittalSharp5V7KUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7CDown")]
+        [DataMember(Name="accSagittalSharp7CDown")]
         BoundingBox AccSagittalSharp7CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7CUp")]
+        [DataMember(Name="accSagittalSharp7CUp")]
         BoundingBox AccSagittalSharp7CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11CDown")]
+        [DataMember(Name="accSagittalSharp7v11CDown")]
         BoundingBox AccSagittalSharp7V11CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11CUp")]
+        [DataMember(Name="accSagittalSharp7v11CUp")]
         BoundingBox AccSagittalSharp7V11CUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11kDown")]
+        [DataMember(Name="accSagittalSharp7v11kDown")]
         BoundingBox AccSagittalSharp7V11KDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7v11kUp")]
+        [DataMember(Name="accSagittalSharp7v11kUp")]
         BoundingBox AccSagittalSharp7V11KUp { get; set; }
 
-        [JsonProperty("accSagittalSharp7v19CDown")]
+        [DataMember(Name="accSagittalSharp7v19CDown")]
         BoundingBox AccSagittalSharp7V19CDown { get; set; }
 
-        [JsonProperty("accSagittalSharp7v19CUp")]
+        [DataMember(Name="accSagittalSharp7v19CUp")]
         BoundingBox AccSagittalSharp7V19CUp { get; set; }
 
-        [JsonProperty("accdnCombDot")]
+        [DataMember(Name="accdnCombDot")]
         BoundingBox AccdnCombDot { get; set; }
 
-        [JsonProperty("accdnCombLH2RanksEmpty")]
+        [DataMember(Name="accdnCombLH2RanksEmpty")]
         BoundingBox AccdnCombLh2RanksEmpty { get; set; }
 
-        [JsonProperty("accdnCombLH3RanksEmptySquare")]
+        [DataMember(Name="accdnCombLH3RanksEmptySquare")]
         BoundingBox AccdnCombLh3RanksEmptySquare { get; set; }
 
-        [JsonProperty("accdnCombRH3RanksEmpty")]
+        [DataMember(Name="accdnCombRH3RanksEmpty")]
         BoundingBox AccdnCombRh3RanksEmpty { get; set; }
 
-        [JsonProperty("accdnCombRH4RanksEmpty")]
+        [DataMember(Name="accdnCombRH4RanksEmpty")]
         BoundingBox AccdnCombRh4RanksEmpty { get; set; }
 
-        [JsonProperty("accdnDiatonicClef")]
+        [DataMember(Name="accdnDiatonicClef")]
         BoundingBox AccdnDiatonicClef { get; set; }
 
-        [JsonProperty("accdnLH2Ranks16Round")]
+        [DataMember(Name="accdnLH2Ranks16Round")]
         BoundingBox AccdnLh2Ranks16Round { get; set; }
 
-        [JsonProperty("accdnLH2Ranks8Plus16Round")]
+        [DataMember(Name="accdnLH2Ranks8Plus16Round")]
         BoundingBox AccdnLh2Ranks8Plus16Round { get; set; }
 
-        [JsonProperty("accdnLH2Ranks8Round")]
+        [DataMember(Name="accdnLH2Ranks8Round")]
         BoundingBox AccdnLh2Ranks8Round { get; set; }
 
-        [JsonProperty("accdnLH2RanksFullMasterRound")]
+        [DataMember(Name="accdnLH2RanksFullMasterRound")]
         BoundingBox AccdnLh2RanksFullMasterRound { get; set; }
 
-        [JsonProperty("accdnLH2RanksMasterPlus16Round")]
+        [DataMember(Name="accdnLH2RanksMasterPlus16Round")]
         BoundingBox AccdnLh2RanksMasterPlus16Round { get; set; }
 
-        [JsonProperty("accdnLH2RanksMasterRound")]
+        [DataMember(Name="accdnLH2RanksMasterRound")]
         BoundingBox AccdnLh2RanksMasterRound { get; set; }
 
-        [JsonProperty("accdnLH3Ranks2Plus8Square")]
+        [DataMember(Name="accdnLH3Ranks2Plus8Square")]
         BoundingBox AccdnLh3Ranks2Plus8Square { get; set; }
 
-        [JsonProperty("accdnLH3Ranks2Square")]
+        [DataMember(Name="accdnLH3Ranks2Square")]
         BoundingBox AccdnLh3Ranks2Square { get; set; }
 
-        [JsonProperty("accdnLH3Ranks8Square")]
+        [DataMember(Name="accdnLH3Ranks8Square")]
         BoundingBox AccdnLh3Ranks8Square { get; set; }
 
-        [JsonProperty("accdnLH3RanksDouble8Square")]
+        [DataMember(Name="accdnLH3RanksDouble8Square")]
         BoundingBox AccdnLh3RanksDouble8Square { get; set; }
 
-        [JsonProperty("accdnLH3RanksTuttiSquare")]
+        [DataMember(Name="accdnLH3RanksTuttiSquare")]
         BoundingBox AccdnLh3RanksTuttiSquare { get; set; }
 
-        [JsonProperty("accdnPull")]
+        [DataMember(Name="accdnPull")]
         BoundingBox AccdnPull { get; set; }
 
-        [JsonProperty("accdnPush")]
+        [DataMember(Name="accdnPush")]
         BoundingBox AccdnPush { get; set; }
 
-        [JsonProperty("accdnPushAlt")]
+        [DataMember(Name="accdnPushAlt")]
         BoundingBox AccdnPushAlt { get; set; }
 
-        [JsonProperty("accdnRH3RanksAccordion")]
+        [DataMember(Name="accdnRH3RanksAccordion")]
         BoundingBox AccdnRh3RanksAccordion { get; set; }
 
-        [JsonProperty("accdnRH3RanksAuthenticMusette")]
+        [DataMember(Name="accdnRH3RanksAuthenticMusette")]
         BoundingBox AccdnRh3RanksAuthenticMusette { get; set; }
 
-        [JsonProperty("accdnRH3RanksBandoneon")]
+        [DataMember(Name="accdnRH3RanksBandoneon")]
         BoundingBox AccdnRh3RanksBandoneon { get; set; }
 
-        [JsonProperty("accdnRH3RanksBassoon")]
+        [DataMember(Name="accdnRH3RanksBassoon")]
         BoundingBox AccdnRh3RanksBassoon { get; set; }
 
-        [JsonProperty("accdnRH3RanksClarinet")]
+        [DataMember(Name="accdnRH3RanksClarinet")]
         BoundingBox AccdnRh3RanksClarinet { get; set; }
 
-        [JsonProperty("accdnRH3RanksDoubleTremoloLower8ve")]
+        [DataMember(Name="accdnRH3RanksDoubleTremoloLower8ve")]
         BoundingBox AccdnRh3RanksDoubleTremoloLower8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksDoubleTremoloUpper8ve")]
+        [DataMember(Name="accdnRH3RanksDoubleTremoloUpper8ve")]
         BoundingBox AccdnRh3RanksDoubleTremoloUpper8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksFullFactory")]
+        [DataMember(Name="accdnRH3RanksFullFactory")]
         BoundingBox AccdnRh3RanksFullFactory { get; set; }
 
-        [JsonProperty("accdnRH3RanksHarmonium")]
+        [DataMember(Name="accdnRH3RanksHarmonium")]
         BoundingBox AccdnRh3RanksHarmonium { get; set; }
 
-        [JsonProperty("accdnRH3RanksImitationMusette")]
+        [DataMember(Name="accdnRH3RanksImitationMusette")]
         BoundingBox AccdnRh3RanksImitationMusette { get; set; }
 
-        [JsonProperty("accdnRH3RanksLowerTremolo8")]
+        [DataMember(Name="accdnRH3RanksLowerTremolo8")]
         BoundingBox AccdnRh3RanksLowerTremolo8 { get; set; }
 
-        [JsonProperty("accdnRH3RanksMaster")]
+        [DataMember(Name="accdnRH3RanksMaster")]
         BoundingBox AccdnRh3RanksMaster { get; set; }
 
-        [JsonProperty("accdnRH3RanksOboe")]
+        [DataMember(Name="accdnRH3RanksOboe")]
         BoundingBox AccdnRh3RanksOboe { get; set; }
 
-        [JsonProperty("accdnRH3RanksOrgan")]
+        [DataMember(Name="accdnRH3RanksOrgan")]
         BoundingBox AccdnRh3RanksOrgan { get; set; }
 
-        [JsonProperty("accdnRH3RanksPiccolo")]
+        [DataMember(Name="accdnRH3RanksPiccolo")]
         BoundingBox AccdnRh3RanksPiccolo { get; set; }
 
-        [JsonProperty("accdnRH3RanksTremoloLower8ve")]
+        [DataMember(Name="accdnRH3RanksTremoloLower8ve")]
         BoundingBox AccdnRh3RanksTremoloLower8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksTremoloUpper8ve")]
+        [DataMember(Name="accdnRH3RanksTremoloUpper8ve")]
         BoundingBox AccdnRh3RanksTremoloUpper8Ve { get; set; }
 
-        [JsonProperty("accdnRH3RanksTwoChoirs")]
+        [DataMember(Name="accdnRH3RanksTwoChoirs")]
         BoundingBox AccdnRh3RanksTwoChoirs { get; set; }
 
-        [JsonProperty("accdnRH3RanksUpperTremolo8")]
+        [DataMember(Name="accdnRH3RanksUpperTremolo8")]
         BoundingBox AccdnRh3RanksUpperTremolo8 { get; set; }
 
-        [JsonProperty("accdnRH3RanksViolin")]
+        [DataMember(Name="accdnRH3RanksViolin")]
         BoundingBox AccdnRh3RanksViolin { get; set; }
 
-        [JsonProperty("accdnRH4RanksAlto")]
+        [DataMember(Name="accdnRH4RanksAlto")]
         BoundingBox AccdnRh4RanksAlto { get; set; }
 
-        [JsonProperty("accdnRH4RanksBassAlto")]
+        [DataMember(Name="accdnRH4RanksBassAlto")]
         BoundingBox AccdnRh4RanksBassAlto { get; set; }
 
-        [JsonProperty("accdnRH4RanksMaster")]
+        [DataMember(Name="accdnRH4RanksMaster")]
         BoundingBox AccdnRh4RanksMaster { get; set; }
 
-        [JsonProperty("accdnRH4RanksSoftBass")]
+        [DataMember(Name="accdnRH4RanksSoftBass")]
         BoundingBox AccdnRh4RanksSoftBass { get; set; }
 
-        [JsonProperty("accdnRH4RanksSoftTenor")]
+        [DataMember(Name="accdnRH4RanksSoftTenor")]
         BoundingBox AccdnRh4RanksSoftTenor { get; set; }
 
-        [JsonProperty("accdnRH4RanksSoprano")]
+        [DataMember(Name="accdnRH4RanksSoprano")]
         BoundingBox AccdnRh4RanksSoprano { get; set; }
 
-        [JsonProperty("accdnRH4RanksTenor")]
+        [DataMember(Name="accdnRH4RanksTenor")]
         BoundingBox AccdnRh4RanksTenor { get; set; }
 
-        [JsonProperty("accdnRicochet2")]
+        [DataMember(Name="accdnRicochet2")]
         BoundingBox AccdnRicochet2 { get; set; }
 
-        [JsonProperty("accdnRicochet3")]
+        [DataMember(Name="accdnRicochet3")]
         BoundingBox AccdnRicochet3 { get; set; }
 
-        [JsonProperty("accdnRicochet4")]
+        [DataMember(Name="accdnRicochet4")]
         BoundingBox AccdnRicochet4 { get; set; }
 
-        [JsonProperty("accdnRicochet5")]
+        [DataMember(Name="accdnRicochet5")]
         BoundingBox AccdnRicochet5 { get; set; }
 
-        [JsonProperty("accdnRicochet6")]
+        [DataMember(Name="accdnRicochet6")]
         BoundingBox AccdnRicochet6 { get; set; }
 
-        [JsonProperty("accdnRicochetStem2")]
+        [DataMember(Name="accdnRicochetStem2")]
         BoundingBox AccdnRicochetStem2 { get; set; }
 
-        [JsonProperty("accdnRicochetStem3")]
+        [DataMember(Name="accdnRicochetStem3")]
         BoundingBox AccdnRicochetStem3 { get; set; }
 
-        [JsonProperty("accdnRicochetStem4")]
+        [DataMember(Name="accdnRicochetStem4")]
         BoundingBox AccdnRicochetStem4 { get; set; }
 
-        [JsonProperty("accdnRicochetStem5")]
+        [DataMember(Name="accdnRicochetStem5")]
         BoundingBox AccdnRicochetStem5 { get; set; }
 
-        [JsonProperty("accdnRicochetStem6")]
+        [DataMember(Name="accdnRicochetStem6")]
         BoundingBox AccdnRicochetStem6 { get; set; }
 
-        [JsonProperty("accidental1CommaFlat")]
+        [DataMember(Name="accidental1CommaFlat")]
         BoundingBox Accidental1CommaFlat { get; set; }
 
-        [JsonProperty("accidental1CommaSharp")]
+        [DataMember(Name="accidental1CommaSharp")]
         BoundingBox Accidental1CommaSharp { get; set; }
 
-        [JsonProperty("accidental2CommaFlat")]
+        [DataMember(Name="accidental2CommaFlat")]
         BoundingBox Accidental2CommaFlat { get; set; }
 
-        [JsonProperty("accidental2CommaSharp")]
+        [DataMember(Name="accidental2CommaSharp")]
         BoundingBox Accidental2CommaSharp { get; set; }
 
-        [JsonProperty("accidental3CommaFlat")]
+        [DataMember(Name="accidental3CommaFlat")]
         BoundingBox Accidental3CommaFlat { get; set; }
 
-        [JsonProperty("accidental3CommaSharp")]
+        [DataMember(Name="accidental3CommaSharp")]
         BoundingBox Accidental3CommaSharp { get; set; }
 
-        [JsonProperty("accidental4CommaFlat")]
+        [DataMember(Name="accidental4CommaFlat")]
         BoundingBox Accidental4CommaFlat { get; set; }
 
-        [JsonProperty("accidental5CommaSharp")]
+        [DataMember(Name="accidental5CommaSharp")]
         BoundingBox Accidental5CommaSharp { get; set; }
 
-        [JsonProperty("accidentalArrowDown")]
+        [DataMember(Name="accidentalArrowDown")]
         BoundingBox AccidentalArrowDown { get; set; }
 
-        [JsonProperty("accidentalArrowUp")]
+        [DataMember(Name="accidentalArrowUp")]
         BoundingBox AccidentalArrowUp { get; set; }
 
-        [JsonProperty("accidentalBakiyeFlat")]
+        [DataMember(Name="accidentalBakiyeFlat")]
         BoundingBox AccidentalBakiyeFlat { get; set; }
 
-        [JsonProperty("accidentalBakiyeSharp")]
+        [DataMember(Name="accidentalBakiyeSharp")]
         BoundingBox AccidentalBakiyeSharp { get; set; }
 
-        [JsonProperty("accidentalBracketLeft")]
+        [DataMember(Name="accidentalBracketLeft")]
         BoundingBox AccidentalBracketLeft { get; set; }
 
-        [JsonProperty("accidentalBracketRight")]
+        [DataMember(Name="accidentalBracketRight")]
         BoundingBox AccidentalBracketRight { get; set; }
 
-        [JsonProperty("accidentalBuyukMucennebFlat")]
+        [DataMember(Name="accidentalBuyukMucennebFlat")]
         BoundingBox AccidentalBuyukMucennebFlat { get; set; }
 
-        [JsonProperty("accidentalBuyukMucennebSharp")]
+        [DataMember(Name="accidentalBuyukMucennebSharp")]
         BoundingBox AccidentalBuyukMucennebSharp { get; set; }
 
-        [JsonProperty("accidentalCombiningCloseCurlyBrace")]
+        [DataMember(Name="accidentalCombiningCloseCurlyBrace")]
         BoundingBox AccidentalCombiningCloseCurlyBrace { get; set; }
 
-        [JsonProperty("accidentalCombiningLower17Schisma")]
+        [DataMember(Name="accidentalCombiningLower17Schisma")]
         BoundingBox AccidentalCombiningLower17Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningLower19Schisma")]
+        [DataMember(Name="accidentalCombiningLower19Schisma")]
         BoundingBox AccidentalCombiningLower19Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningLower23Limit29LimitComma")]
+        [DataMember(Name="accidentalCombiningLower23Limit29LimitComma")]
         BoundingBox AccidentalCombiningLower23Limit29LimitComma { get; set; }
 
-        [JsonProperty("accidentalCombiningLower31Schisma")]
+        [DataMember(Name="accidentalCombiningLower31Schisma")]
         BoundingBox AccidentalCombiningLower31Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningLower53LimitComma")]
+        [DataMember(Name="accidentalCombiningLower53LimitComma")]
         BoundingBox AccidentalCombiningLower53LimitComma { get; set; }
 
-        [JsonProperty("accidentalCombiningOpenCurlyBrace")]
+        [DataMember(Name="accidentalCombiningOpenCurlyBrace")]
         BoundingBox AccidentalCombiningOpenCurlyBrace { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise17Schisma")]
+        [DataMember(Name="accidentalCombiningRaise17Schisma")]
         BoundingBox AccidentalCombiningRaise17Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise19Schisma")]
+        [DataMember(Name="accidentalCombiningRaise19Schisma")]
         BoundingBox AccidentalCombiningRaise19Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise23Limit29LimitComma")]
+        [DataMember(Name="accidentalCombiningRaise23Limit29LimitComma")]
         BoundingBox AccidentalCombiningRaise23Limit29LimitComma { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise31Schisma")]
+        [DataMember(Name="accidentalCombiningRaise31Schisma")]
         BoundingBox AccidentalCombiningRaise31Schisma { get; set; }
 
-        [JsonProperty("accidentalCombiningRaise53LimitComma")]
+        [DataMember(Name="accidentalCombiningRaise53LimitComma")]
         BoundingBox AccidentalCombiningRaise53LimitComma { get; set; }
 
-        [JsonProperty("accidentalCommaSlashDown")]
+        [DataMember(Name="accidentalCommaSlashDown")]
         BoundingBox AccidentalCommaSlashDown { get; set; }
 
-        [JsonProperty("accidentalCommaSlashUp")]
+        [DataMember(Name="accidentalCommaSlashUp")]
         BoundingBox AccidentalCommaSlashUp { get; set; }
 
-        [JsonProperty("accidentalDoubleFlat")]
+        [DataMember(Name="accidentalDoubleFlat")]
         BoundingBox AccidentalDoubleFlat { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatArabic")]
+        [DataMember(Name="accidentalDoubleFlatArabic")]
         BoundingBox AccidentalDoubleFlatArabic { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatEqualTempered")]
+        [DataMember(Name="accidentalDoubleFlatEqualTempered")]
         BoundingBox AccidentalDoubleFlatEqualTempered { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatJoinedStems")]
+        [DataMember(Name="accidentalDoubleFlatJoinedStems")]
         BoundingBox AccidentalDoubleFlatJoinedStems { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatOneArrowDown")]
+        [DataMember(Name="accidentalDoubleFlatOneArrowDown")]
         BoundingBox AccidentalDoubleFlatOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatOneArrowUp")]
+        [DataMember(Name="accidentalDoubleFlatOneArrowUp")]
         BoundingBox AccidentalDoubleFlatOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatParens")]
+        [DataMember(Name="accidentalDoubleFlatParens")]
         BoundingBox AccidentalDoubleFlatParens { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatReversed")]
+        [DataMember(Name="accidentalDoubleFlatReversed")]
         BoundingBox AccidentalDoubleFlatReversed { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatThreeArrowsDown")]
+        [DataMember(Name="accidentalDoubleFlatThreeArrowsDown")]
         BoundingBox AccidentalDoubleFlatThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatThreeArrowsUp")]
+        [DataMember(Name="accidentalDoubleFlatThreeArrowsUp")]
         BoundingBox AccidentalDoubleFlatThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatTurned")]
+        [DataMember(Name="accidentalDoubleFlatTurned")]
         BoundingBox AccidentalDoubleFlatTurned { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatTwoArrowsDown")]
+        [DataMember(Name="accidentalDoubleFlatTwoArrowsDown")]
         BoundingBox AccidentalDoubleFlatTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatTwoArrowsUp")]
+        [DataMember(Name="accidentalDoubleFlatTwoArrowsUp")]
         BoundingBox AccidentalDoubleFlatTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharp")]
+        [DataMember(Name="accidentalDoubleSharp")]
         BoundingBox AccidentalDoubleSharp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpArabic")]
+        [DataMember(Name="accidentalDoubleSharpArabic")]
         BoundingBox AccidentalDoubleSharpArabic { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpEqualTempered")]
+        [DataMember(Name="accidentalDoubleSharpEqualTempered")]
         BoundingBox AccidentalDoubleSharpEqualTempered { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpOneArrowDown")]
+        [DataMember(Name="accidentalDoubleSharpOneArrowDown")]
         BoundingBox AccidentalDoubleSharpOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpOneArrowUp")]
+        [DataMember(Name="accidentalDoubleSharpOneArrowUp")]
         BoundingBox AccidentalDoubleSharpOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpParens")]
+        [DataMember(Name="accidentalDoubleSharpParens")]
         BoundingBox AccidentalDoubleSharpParens { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpThreeArrowsDown")]
+        [DataMember(Name="accidentalDoubleSharpThreeArrowsDown")]
         BoundingBox AccidentalDoubleSharpThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpThreeArrowsUp")]
+        [DataMember(Name="accidentalDoubleSharpThreeArrowsUp")]
         BoundingBox AccidentalDoubleSharpThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpTwoArrowsDown")]
+        [DataMember(Name="accidentalDoubleSharpTwoArrowsDown")]
         BoundingBox AccidentalDoubleSharpTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpTwoArrowsUp")]
+        [DataMember(Name="accidentalDoubleSharpTwoArrowsUp")]
         BoundingBox AccidentalDoubleSharpTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalEnharmonicAlmostEqualTo")]
+        [DataMember(Name="accidentalEnharmonicAlmostEqualTo")]
         BoundingBox AccidentalEnharmonicAlmostEqualTo { get; set; }
 
-        [JsonProperty("accidentalEnharmonicEquals")]
+        [DataMember(Name="accidentalEnharmonicEquals")]
         BoundingBox AccidentalEnharmonicEquals { get; set; }
 
-        [JsonProperty("accidentalEnharmonicTilde")]
+        [DataMember(Name="accidentalEnharmonicTilde")]
         BoundingBox AccidentalEnharmonicTilde { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatAndFlat")]
+        [DataMember(Name="accidentalFilledReversedFlatAndFlat")]
         BoundingBox AccidentalFilledReversedFlatAndFlat { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatAndFlatArrowDown")]
+        [DataMember(Name="accidentalFilledReversedFlatAndFlatArrowDown")]
         BoundingBox AccidentalFilledReversedFlatAndFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatAndFlatArrowUp")]
+        [DataMember(Name="accidentalFilledReversedFlatAndFlatArrowUp")]
         BoundingBox AccidentalFilledReversedFlatAndFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatArrowDown")]
+        [DataMember(Name="accidentalFilledReversedFlatArrowDown")]
         BoundingBox AccidentalFilledReversedFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalFilledReversedFlatArrowUp")]
+        [DataMember(Name="accidentalFilledReversedFlatArrowUp")]
         BoundingBox AccidentalFilledReversedFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalFiveQuarterTonesFlatArrowDown")]
+        [DataMember(Name="accidentalFiveQuarterTonesFlatArrowDown")]
         BoundingBox AccidentalFiveQuarterTonesFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalFiveQuarterTonesSharpArrowUp")]
+        [DataMember(Name="accidentalFiveQuarterTonesSharpArrowUp")]
         BoundingBox AccidentalFiveQuarterTonesSharpArrowUp { get; set; }
 
-        [JsonProperty("accidentalFlat")]
+        [DataMember(Name="accidentalFlat")]
         BoundingBox AccidentalFlat { get; set; }
 
-        [JsonProperty("accidentalFlatArabic")]
+        [DataMember(Name="accidentalFlatArabic")]
         BoundingBox AccidentalFlatArabic { get; set; }
 
-        [JsonProperty("accidentalFlatEqualTempered")]
+        [DataMember(Name="accidentalFlatEqualTempered")]
         BoundingBox AccidentalFlatEqualTempered { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonDown")]
+        [DataMember(Name="accidentalFlatJohnstonDown")]
         BoundingBox AccidentalFlatJohnstonDown { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonEl")]
+        [DataMember(Name="accidentalFlatJohnstonEl")]
         BoundingBox AccidentalFlatJohnstonEl { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonElDown")]
+        [DataMember(Name="accidentalFlatJohnstonElDown")]
         BoundingBox AccidentalFlatJohnstonElDown { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonUp")]
+        [DataMember(Name="accidentalFlatJohnstonUp")]
         BoundingBox AccidentalFlatJohnstonUp { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonUpEl")]
+        [DataMember(Name="accidentalFlatJohnstonUpEl")]
         BoundingBox AccidentalFlatJohnstonUpEl { get; set; }
 
-        [JsonProperty("accidentalFlatLoweredStockhausen")]
+        [DataMember(Name="accidentalFlatLoweredStockhausen")]
         BoundingBox AccidentalFlatLoweredStockhausen { get; set; }
 
-        [JsonProperty("accidentalFlatOneArrowDown")]
+        [DataMember(Name="accidentalFlatOneArrowDown")]
         BoundingBox AccidentalFlatOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalFlatOneArrowUp")]
+        [DataMember(Name="accidentalFlatOneArrowUp")]
         BoundingBox AccidentalFlatOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalFlatParens")]
+        [DataMember(Name="accidentalFlatParens")]
         BoundingBox AccidentalFlatParens { get; set; }
 
-        [JsonProperty("accidentalFlatRaisedStockhausen")]
+        [DataMember(Name="accidentalFlatRaisedStockhausen")]
         BoundingBox AccidentalFlatRaisedStockhausen { get; set; }
 
-        [JsonProperty("accidentalFlatRepeatedLineStockhausen")]
+        [DataMember(Name="accidentalFlatRepeatedLineStockhausen")]
         BoundingBox AccidentalFlatRepeatedLineStockhausen { get; set; }
 
-        [JsonProperty("accidentalFlatRepeatedSpaceStockhausen")]
+        [DataMember(Name="accidentalFlatRepeatedSpaceStockhausen")]
         BoundingBox AccidentalFlatRepeatedSpaceStockhausen { get; set; }
 
-        [JsonProperty("accidentalFlatSmall")]
+        [DataMember(Name="accidentalFlatSmall")]
         BoundingBox AccidentalFlatSmall { get; set; }
 
-        [JsonProperty("accidentalFlatThreeArrowsDown")]
+        [DataMember(Name="accidentalFlatThreeArrowsDown")]
         BoundingBox AccidentalFlatThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalFlatThreeArrowsUp")]
+        [DataMember(Name="accidentalFlatThreeArrowsUp")]
         BoundingBox AccidentalFlatThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalFlatTurned")]
+        [DataMember(Name="accidentalFlatTurned")]
         BoundingBox AccidentalFlatTurned { get; set; }
 
-        [JsonProperty("accidentalFlatTwoArrowsDown")]
+        [DataMember(Name="accidentalFlatTwoArrowsDown")]
         BoundingBox AccidentalFlatTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalFlatTwoArrowsUp")]
+        [DataMember(Name="accidentalFlatTwoArrowsUp")]
         BoundingBox AccidentalFlatTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalHalfSharpArrowDown")]
+        [DataMember(Name="accidentalHalfSharpArrowDown")]
         BoundingBox AccidentalHalfSharpArrowDown { get; set; }
 
-        [JsonProperty("accidentalHalfSharpArrowUp")]
+        [DataMember(Name="accidentalHalfSharpArrowUp")]
         BoundingBox AccidentalHalfSharpArrowUp { get; set; }
 
-        [JsonProperty("accidentalJohnston13")]
+        [DataMember(Name="accidentalJohnston13")]
         BoundingBox AccidentalJohnston13 { get; set; }
 
-        [JsonProperty("accidentalJohnston31")]
+        [DataMember(Name="accidentalJohnston31")]
         BoundingBox AccidentalJohnston31 { get; set; }
 
-        [JsonProperty("accidentalJohnstonDown")]
+        [DataMember(Name="accidentalJohnstonDown")]
         BoundingBox AccidentalJohnstonDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonDownEl")]
+        [DataMember(Name="accidentalJohnstonDownEl")]
         BoundingBox AccidentalJohnstonDownEl { get; set; }
 
-        [JsonProperty("accidentalJohnstonEl")]
+        [DataMember(Name="accidentalJohnstonEl")]
         BoundingBox AccidentalJohnstonEl { get; set; }
 
-        [JsonProperty("accidentalJohnstonMinus")]
+        [DataMember(Name="accidentalJohnstonMinus")]
         BoundingBox AccidentalJohnstonMinus { get; set; }
 
-        [JsonProperty("accidentalJohnstonPlus")]
+        [DataMember(Name="accidentalJohnstonPlus")]
         BoundingBox AccidentalJohnstonPlus { get; set; }
 
-        [JsonProperty("accidentalJohnstonSeven")]
+        [DataMember(Name="accidentalJohnstonSeven")]
         BoundingBox AccidentalJohnstonSeven { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenDown")]
+        [DataMember(Name="accidentalJohnstonSevenDown")]
         BoundingBox AccidentalJohnstonSevenDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenFlat")]
+        [DataMember(Name="accidentalJohnstonSevenFlat")]
         BoundingBox AccidentalJohnstonSevenFlat { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenFlatDown")]
+        [DataMember(Name="accidentalJohnstonSevenFlatDown")]
         BoundingBox AccidentalJohnstonSevenFlatDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenFlatUp")]
+        [DataMember(Name="accidentalJohnstonSevenFlatUp")]
         BoundingBox AccidentalJohnstonSevenFlatUp { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenSharp")]
+        [DataMember(Name="accidentalJohnstonSevenSharp")]
         BoundingBox AccidentalJohnstonSevenSharp { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenSharpDown")]
+        [DataMember(Name="accidentalJohnstonSevenSharpDown")]
         BoundingBox AccidentalJohnstonSevenSharpDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenSharpUp")]
+        [DataMember(Name="accidentalJohnstonSevenSharpUp")]
         BoundingBox AccidentalJohnstonSevenSharpUp { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenUp")]
+        [DataMember(Name="accidentalJohnstonSevenUp")]
         BoundingBox AccidentalJohnstonSevenUp { get; set; }
 
-        [JsonProperty("accidentalJohnstonUp")]
+        [DataMember(Name="accidentalJohnstonUp")]
         BoundingBox AccidentalJohnstonUp { get; set; }
 
-        [JsonProperty("accidentalJohnstonUpEl")]
+        [DataMember(Name="accidentalJohnstonUpEl")]
         BoundingBox AccidentalJohnstonUpEl { get; set; }
 
-        [JsonProperty("accidentalKomaFlat")]
+        [DataMember(Name="accidentalKomaFlat")]
         BoundingBox AccidentalKomaFlat { get; set; }
 
-        [JsonProperty("accidentalKomaSharp")]
+        [DataMember(Name="accidentalKomaSharp")]
         BoundingBox AccidentalKomaSharp { get; set; }
 
-        [JsonProperty("accidentalKoron")]
+        [DataMember(Name="accidentalKoron")]
         BoundingBox AccidentalKoron { get; set; }
 
-        [JsonProperty("accidentalKucukMucennebFlat")]
+        [DataMember(Name="accidentalKucukMucennebFlat")]
         BoundingBox AccidentalKucukMucennebFlat { get; set; }
 
-        [JsonProperty("accidentalKucukMucennebSharp")]
+        [DataMember(Name="accidentalKucukMucennebSharp")]
         BoundingBox AccidentalKucukMucennebSharp { get; set; }
 
-        [JsonProperty("accidentalLargeDoubleSharp")]
+        [DataMember(Name="accidentalLargeDoubleSharp")]
         BoundingBox AccidentalLargeDoubleSharp { get; set; }
 
-        [JsonProperty("accidentalLowerOneSeptimalComma")]
+        [DataMember(Name="accidentalLowerOneSeptimalComma")]
         BoundingBox AccidentalLowerOneSeptimalComma { get; set; }
 
-        [JsonProperty("accidentalLowerOneTridecimalQuartertone")]
+        [DataMember(Name="accidentalLowerOneTridecimalQuartertone")]
         BoundingBox AccidentalLowerOneTridecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalLowerOneUndecimalQuartertone")]
+        [DataMember(Name="accidentalLowerOneUndecimalQuartertone")]
         BoundingBox AccidentalLowerOneUndecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalLowerTwoSeptimalCommas")]
+        [DataMember(Name="accidentalLowerTwoSeptimalCommas")]
         BoundingBox AccidentalLowerTwoSeptimalCommas { get; set; }
 
-        [JsonProperty("accidentalLoweredStockhausen")]
+        [DataMember(Name="accidentalLoweredStockhausen")]
         BoundingBox AccidentalLoweredStockhausen { get; set; }
 
-        [JsonProperty("accidentalNarrowReversedFlat")]
+        [DataMember(Name="accidentalNarrowReversedFlat")]
         BoundingBox AccidentalNarrowReversedFlat { get; set; }
 
-        [JsonProperty("accidentalNarrowReversedFlatAndFlat")]
+        [DataMember(Name="accidentalNarrowReversedFlatAndFlat")]
         BoundingBox AccidentalNarrowReversedFlatAndFlat { get; set; }
 
-        [JsonProperty("accidentalNatural")]
+        [DataMember(Name="accidentalNatural")]
         BoundingBox AccidentalNatural { get; set; }
 
-        [JsonProperty("accidentalNaturalArabic")]
+        [DataMember(Name="accidentalNaturalArabic")]
         BoundingBox AccidentalNaturalArabic { get; set; }
 
-        [JsonProperty("accidentalNaturalEqualTempered")]
+        [DataMember(Name="accidentalNaturalEqualTempered")]
         BoundingBox AccidentalNaturalEqualTempered { get; set; }
 
-        [JsonProperty("accidentalNaturalFlat")]
+        [DataMember(Name="accidentalNaturalFlat")]
         BoundingBox AccidentalNaturalFlat { get; set; }
 
-        [JsonProperty("accidentalNaturalLoweredStockhausen")]
+        [DataMember(Name="accidentalNaturalLoweredStockhausen")]
         BoundingBox AccidentalNaturalLoweredStockhausen { get; set; }
 
-        [JsonProperty("accidentalNaturalOneArrowDown")]
+        [DataMember(Name="accidentalNaturalOneArrowDown")]
         BoundingBox AccidentalNaturalOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalNaturalOneArrowUp")]
+        [DataMember(Name="accidentalNaturalOneArrowUp")]
         BoundingBox AccidentalNaturalOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalNaturalParens")]
+        [DataMember(Name="accidentalNaturalParens")]
         BoundingBox AccidentalNaturalParens { get; set; }
 
-        [JsonProperty("accidentalNaturalRaisedStockhausen")]
+        [DataMember(Name="accidentalNaturalRaisedStockhausen")]
         BoundingBox AccidentalNaturalRaisedStockhausen { get; set; }
 
-        [JsonProperty("accidentalNaturalReversed")]
+        [DataMember(Name="accidentalNaturalReversed")]
         BoundingBox AccidentalNaturalReversed { get; set; }
 
-        [JsonProperty("accidentalNaturalSharp")]
+        [DataMember(Name="accidentalNaturalSharp")]
         BoundingBox AccidentalNaturalSharp { get; set; }
 
-        [JsonProperty("accidentalNaturalSmall")]
+        [DataMember(Name="accidentalNaturalSmall")]
         BoundingBox AccidentalNaturalSmall { get; set; }
 
-        [JsonProperty("accidentalNaturalThreeArrowsDown")]
+        [DataMember(Name="accidentalNaturalThreeArrowsDown")]
         BoundingBox AccidentalNaturalThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalNaturalThreeArrowsUp")]
+        [DataMember(Name="accidentalNaturalThreeArrowsUp")]
         BoundingBox AccidentalNaturalThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalNaturalTwoArrowsDown")]
+        [DataMember(Name="accidentalNaturalTwoArrowsDown")]
         BoundingBox AccidentalNaturalTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalNaturalTwoArrowsUp")]
+        [DataMember(Name="accidentalNaturalTwoArrowsUp")]
         BoundingBox AccidentalNaturalTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalOneAndAHalfSharpsArrowDown")]
+        [DataMember(Name="accidentalOneAndAHalfSharpsArrowDown")]
         BoundingBox AccidentalOneAndAHalfSharpsArrowDown { get; set; }
 
-        [JsonProperty("accidentalOneAndAHalfSharpsArrowUp")]
+        [DataMember(Name="accidentalOneAndAHalfSharpsArrowUp")]
         BoundingBox AccidentalOneAndAHalfSharpsArrowUp { get; set; }
 
-        [JsonProperty("accidentalOneQuarterToneFlatFerneyhough")]
+        [DataMember(Name="accidentalOneQuarterToneFlatFerneyhough")]
         BoundingBox AccidentalOneQuarterToneFlatFerneyhough { get; set; }
 
-        [JsonProperty("accidentalOneQuarterToneFlatStockhausen")]
+        [DataMember(Name="accidentalOneQuarterToneFlatStockhausen")]
         BoundingBox AccidentalOneQuarterToneFlatStockhausen { get; set; }
 
-        [JsonProperty("accidentalOneQuarterToneSharpFerneyhough")]
+        [DataMember(Name="accidentalOneQuarterToneSharpFerneyhough")]
         BoundingBox AccidentalOneQuarterToneSharpFerneyhough { get; set; }
 
-        [JsonProperty("accidentalOneQuarterToneSharpStockhausen")]
+        [DataMember(Name="accidentalOneQuarterToneSharpStockhausen")]
         BoundingBox AccidentalOneQuarterToneSharpStockhausen { get; set; }
 
-        [JsonProperty("accidentalOneThirdToneFlatFerneyhough")]
+        [DataMember(Name="accidentalOneThirdToneFlatFerneyhough")]
         BoundingBox AccidentalOneThirdToneFlatFerneyhough { get; set; }
 
-        [JsonProperty("accidentalOneThirdToneSharpFerneyhough")]
+        [DataMember(Name="accidentalOneThirdToneSharpFerneyhough")]
         BoundingBox AccidentalOneThirdToneSharpFerneyhough { get; set; }
 
-        [JsonProperty("accidentalParensLeft")]
+        [DataMember(Name="accidentalParensLeft")]
         BoundingBox AccidentalParensLeft { get; set; }
 
-        [JsonProperty("accidentalParensRight")]
+        [DataMember(Name="accidentalParensRight")]
         BoundingBox AccidentalParensRight { get; set; }
 
-        [JsonProperty("accidentalQuarterFlatEqualTempered")]
+        [DataMember(Name="accidentalQuarterFlatEqualTempered")]
         BoundingBox AccidentalQuarterFlatEqualTempered { get; set; }
 
-        [JsonProperty("accidentalQuarterSharpEqualTempered")]
+        [DataMember(Name="accidentalQuarterSharpEqualTempered")]
         BoundingBox AccidentalQuarterSharpEqualTempered { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlat4")]
+        [DataMember(Name="accidentalQuarterToneFlat4")]
         BoundingBox AccidentalQuarterToneFlat4 { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatArabic")]
+        [DataMember(Name="accidentalQuarterToneFlatArabic")]
         BoundingBox AccidentalQuarterToneFlatArabic { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatArrowUp")]
+        [DataMember(Name="accidentalQuarterToneFlatArrowUp")]
         BoundingBox AccidentalQuarterToneFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatFilledReversed")]
+        [DataMember(Name="accidentalQuarterToneFlatFilledReversed")]
         BoundingBox AccidentalQuarterToneFlatFilledReversed { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatNaturalArrowDown")]
+        [DataMember(Name="accidentalQuarterToneFlatNaturalArrowDown")]
         BoundingBox AccidentalQuarterToneFlatNaturalArrowDown { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatPenderecki")]
+        [DataMember(Name="accidentalQuarterToneFlatPenderecki")]
         BoundingBox AccidentalQuarterToneFlatPenderecki { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatStein")]
+        [DataMember(Name="accidentalQuarterToneFlatStein")]
         BoundingBox AccidentalQuarterToneFlatStein { get; set; }
 
-        [JsonProperty("accidentalQuarterToneFlatVanBlankenburg")]
+        [DataMember(Name="accidentalQuarterToneFlatVanBlankenburg")]
         BoundingBox AccidentalQuarterToneFlatVanBlankenburg { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharp4")]
+        [DataMember(Name="accidentalQuarterToneSharp4")]
         BoundingBox AccidentalQuarterToneSharp4 { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpArabic")]
+        [DataMember(Name="accidentalQuarterToneSharpArabic")]
         BoundingBox AccidentalQuarterToneSharpArabic { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpArrowDown")]
+        [DataMember(Name="accidentalQuarterToneSharpArrowDown")]
         BoundingBox AccidentalQuarterToneSharpArrowDown { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpBusotti")]
+        [DataMember(Name="accidentalQuarterToneSharpBusotti")]
         BoundingBox AccidentalQuarterToneSharpBusotti { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpNaturalArrowUp")]
+        [DataMember(Name="accidentalQuarterToneSharpNaturalArrowUp")]
         BoundingBox AccidentalQuarterToneSharpNaturalArrowUp { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpStein")]
+        [DataMember(Name="accidentalQuarterToneSharpStein")]
         BoundingBox AccidentalQuarterToneSharpStein { get; set; }
 
-        [JsonProperty("accidentalQuarterToneSharpWiggle")]
+        [DataMember(Name="accidentalQuarterToneSharpWiggle")]
         BoundingBox AccidentalQuarterToneSharpWiggle { get; set; }
 
-        [JsonProperty("accidentalRaiseOneSeptimalComma")]
+        [DataMember(Name="accidentalRaiseOneSeptimalComma")]
         BoundingBox AccidentalRaiseOneSeptimalComma { get; set; }
 
-        [JsonProperty("accidentalRaiseOneTridecimalQuartertone")]
+        [DataMember(Name="accidentalRaiseOneTridecimalQuartertone")]
         BoundingBox AccidentalRaiseOneTridecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalRaiseOneUndecimalQuartertone")]
+        [DataMember(Name="accidentalRaiseOneUndecimalQuartertone")]
         BoundingBox AccidentalRaiseOneUndecimalQuartertone { get; set; }
 
-        [JsonProperty("accidentalRaiseTwoSeptimalCommas")]
+        [DataMember(Name="accidentalRaiseTwoSeptimalCommas")]
         BoundingBox AccidentalRaiseTwoSeptimalCommas { get; set; }
 
-        [JsonProperty("accidentalRaisedStockhausen")]
+        [DataMember(Name="accidentalRaisedStockhausen")]
         BoundingBox AccidentalRaisedStockhausen { get; set; }
 
-        [JsonProperty("accidentalReversedFlatAndFlatArrowDown")]
+        [DataMember(Name="accidentalReversedFlatAndFlatArrowDown")]
         BoundingBox AccidentalReversedFlatAndFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalReversedFlatAndFlatArrowUp")]
+        [DataMember(Name="accidentalReversedFlatAndFlatArrowUp")]
         BoundingBox AccidentalReversedFlatAndFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalReversedFlatArrowDown")]
+        [DataMember(Name="accidentalReversedFlatArrowDown")]
         BoundingBox AccidentalReversedFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalReversedFlatArrowUp")]
+        [DataMember(Name="accidentalReversedFlatArrowUp")]
         BoundingBox AccidentalReversedFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalSharp")]
+        [DataMember(Name="accidentalSharp")]
         BoundingBox AccidentalSharp { get; set; }
 
-        [JsonProperty("accidentalSharpArabic")]
+        [DataMember(Name="accidentalSharpArabic")]
         BoundingBox AccidentalSharpArabic { get; set; }
 
-        [JsonProperty("accidentalSharpEqualTempered")]
+        [DataMember(Name="accidentalSharpEqualTempered")]
         BoundingBox AccidentalSharpEqualTempered { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonDown")]
+        [DataMember(Name="accidentalSharpJohnstonDown")]
         BoundingBox AccidentalSharpJohnstonDown { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonDownEl")]
+        [DataMember(Name="accidentalSharpJohnstonDownEl")]
         BoundingBox AccidentalSharpJohnstonDownEl { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonEl")]
+        [DataMember(Name="accidentalSharpJohnstonEl")]
         BoundingBox AccidentalSharpJohnstonEl { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonUp")]
+        [DataMember(Name="accidentalSharpJohnstonUp")]
         BoundingBox AccidentalSharpJohnstonUp { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonUpEl")]
+        [DataMember(Name="accidentalSharpJohnstonUpEl")]
         BoundingBox AccidentalSharpJohnstonUpEl { get; set; }
 
-        [JsonProperty("accidentalSharpLoweredStockhausen")]
+        [DataMember(Name="accidentalSharpLoweredStockhausen")]
         BoundingBox AccidentalSharpLoweredStockhausen { get; set; }
 
-        [JsonProperty("accidentalSharpOneArrowDown")]
+        [DataMember(Name="accidentalSharpOneArrowDown")]
         BoundingBox AccidentalSharpOneArrowDown { get; set; }
 
-        [JsonProperty("accidentalSharpOneArrowUp")]
+        [DataMember(Name="accidentalSharpOneArrowUp")]
         BoundingBox AccidentalSharpOneArrowUp { get; set; }
 
-        [JsonProperty("accidentalSharpOneHorizontalStroke")]
+        [DataMember(Name="accidentalSharpOneHorizontalStroke")]
         BoundingBox AccidentalSharpOneHorizontalStroke { get; set; }
 
-        [JsonProperty("accidentalSharpParens")]
+        [DataMember(Name="accidentalSharpParens")]
         BoundingBox AccidentalSharpParens { get; set; }
 
-        [JsonProperty("accidentalSharpRaisedStockhausen")]
+        [DataMember(Name="accidentalSharpRaisedStockhausen")]
         BoundingBox AccidentalSharpRaisedStockhausen { get; set; }
 
-        [JsonProperty("accidentalSharpRepeatedLineStockhausen")]
+        [DataMember(Name="accidentalSharpRepeatedLineStockhausen")]
         BoundingBox AccidentalSharpRepeatedLineStockhausen { get; set; }
 
-        [JsonProperty("accidentalSharpRepeatedSpaceStockhausen")]
+        [DataMember(Name="accidentalSharpRepeatedSpaceStockhausen")]
         BoundingBox AccidentalSharpRepeatedSpaceStockhausen { get; set; }
 
-        [JsonProperty("accidentalSharpReversed")]
+        [DataMember(Name="accidentalSharpReversed")]
         BoundingBox AccidentalSharpReversed { get; set; }
 
-        [JsonProperty("accidentalSharpSharp")]
+        [DataMember(Name="accidentalSharpSharp")]
         BoundingBox AccidentalSharpSharp { get; set; }
 
-        [JsonProperty("accidentalSharpSmall")]
+        [DataMember(Name="accidentalSharpSmall")]
         BoundingBox AccidentalSharpSmall { get; set; }
 
-        [JsonProperty("accidentalSharpThreeArrowsDown")]
+        [DataMember(Name="accidentalSharpThreeArrowsDown")]
         BoundingBox AccidentalSharpThreeArrowsDown { get; set; }
 
-        [JsonProperty("accidentalSharpThreeArrowsUp")]
+        [DataMember(Name="accidentalSharpThreeArrowsUp")]
         BoundingBox AccidentalSharpThreeArrowsUp { get; set; }
 
-        [JsonProperty("accidentalSharpTwoArrowsDown")]
+        [DataMember(Name="accidentalSharpTwoArrowsDown")]
         BoundingBox AccidentalSharpTwoArrowsDown { get; set; }
 
-        [JsonProperty("accidentalSharpTwoArrowsUp")]
+        [DataMember(Name="accidentalSharpTwoArrowsUp")]
         BoundingBox AccidentalSharpTwoArrowsUp { get; set; }
 
-        [JsonProperty("accidentalSims12Down")]
+        [DataMember(Name="accidentalSims12Down")]
         BoundingBox AccidentalSims12Down { get; set; }
 
-        [JsonProperty("accidentalSims12Up")]
+        [DataMember(Name="accidentalSims12Up")]
         BoundingBox AccidentalSims12Up { get; set; }
 
-        [JsonProperty("accidentalSims4Down")]
+        [DataMember(Name="accidentalSims4Down")]
         BoundingBox AccidentalSims4Down { get; set; }
 
-        [JsonProperty("accidentalSims4Up")]
+        [DataMember(Name="accidentalSims4Up")]
         BoundingBox AccidentalSims4Up { get; set; }
 
-        [JsonProperty("accidentalSims6Down")]
+        [DataMember(Name="accidentalSims6Down")]
         BoundingBox AccidentalSims6Down { get; set; }
 
-        [JsonProperty("accidentalSims6Up")]
+        [DataMember(Name="accidentalSims6Up")]
         BoundingBox AccidentalSims6Up { get; set; }
 
-        [JsonProperty("accidentalSori")]
+        [DataMember(Name="accidentalSori")]
         BoundingBox AccidentalSori { get; set; }
 
-        [JsonProperty("accidentalTavenerFlat")]
+        [DataMember(Name="accidentalTavenerFlat")]
         BoundingBox AccidentalTavenerFlat { get; set; }
 
-        [JsonProperty("accidentalTavenerSharp")]
+        [DataMember(Name="accidentalTavenerSharp")]
         BoundingBox AccidentalTavenerSharp { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatArabic")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatArabic")]
         BoundingBox AccidentalThreeQuarterTonesFlatArabic { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatArrowDown")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatArrowDown")]
         BoundingBox AccidentalThreeQuarterTonesFlatArrowDown { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatArrowUp")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatArrowUp")]
         BoundingBox AccidentalThreeQuarterTonesFlatArrowUp { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatCouper")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatCouper")]
         BoundingBox AccidentalThreeQuarterTonesFlatCouper { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatGrisey")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatGrisey")]
         BoundingBox AccidentalThreeQuarterTonesFlatGrisey { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatTartini")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatTartini")]
         BoundingBox AccidentalThreeQuarterTonesFlatTartini { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesFlatZimmermann")]
+        [DataMember(Name="accidentalThreeQuarterTonesFlatZimmermann")]
         BoundingBox AccidentalThreeQuarterTonesFlatZimmermann { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpArabic")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpArabic")]
         BoundingBox AccidentalThreeQuarterTonesSharpArabic { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpArrowDown")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpArrowDown")]
         BoundingBox AccidentalThreeQuarterTonesSharpArrowDown { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpArrowUp")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpArrowUp")]
         BoundingBox AccidentalThreeQuarterTonesSharpArrowUp { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpBusotti")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpBusotti")]
         BoundingBox AccidentalThreeQuarterTonesSharpBusotti { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpStein")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpStein")]
         BoundingBox AccidentalThreeQuarterTonesSharpStein { get; set; }
 
-        [JsonProperty("accidentalThreeQuarterTonesSharpStockhausen")]
+        [DataMember(Name="accidentalThreeQuarterTonesSharpStockhausen")]
         BoundingBox AccidentalThreeQuarterTonesSharpStockhausen { get; set; }
 
-        [JsonProperty("accidentalTripleFlat")]
+        [DataMember(Name="accidentalTripleFlat")]
         BoundingBox AccidentalTripleFlat { get; set; }
 
-        [JsonProperty("accidentalTripleFlatJoinedStems")]
+        [DataMember(Name="accidentalTripleFlatJoinedStems")]
         BoundingBox AccidentalTripleFlatJoinedStems { get; set; }
 
-        [JsonProperty("accidentalTripleSharp")]
+        [DataMember(Name="accidentalTripleSharp")]
         BoundingBox AccidentalTripleSharp { get; set; }
 
-        [JsonProperty("accidentalTwoThirdTonesFlatFerneyhough")]
+        [DataMember(Name="accidentalTwoThirdTonesFlatFerneyhough")]
         BoundingBox AccidentalTwoThirdTonesFlatFerneyhough { get; set; }
 
-        [JsonProperty("accidentalTwoThirdTonesSharpFerneyhough")]
+        [DataMember(Name="accidentalTwoThirdTonesSharpFerneyhough")]
         BoundingBox AccidentalTwoThirdTonesSharpFerneyhough { get; set; }
 
-        [JsonProperty("accidentalWilsonMinus")]
+        [DataMember(Name="accidentalWilsonMinus")]
         BoundingBox AccidentalWilsonMinus { get; set; }
 
-        [JsonProperty("accidentalWilsonPlus")]
+        [DataMember(Name="accidentalWilsonPlus")]
         BoundingBox AccidentalWilsonPlus { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky10TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky10TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky10TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky10TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky10TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky10TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky11TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky11TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky11TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky11TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky11TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky11TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky1TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky1TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky1TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky1TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky1TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky1TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky2TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky2TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky2TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky2TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky2TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky2TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky3TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky3TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky3TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky3TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky3TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky3TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky4TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky4TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky4TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky4TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky4TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky4TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky5TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky5TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky5TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky5TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky5TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky5TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky6TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky6TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky6TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky6TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky6TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky6TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky7TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky7TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky7TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky7TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky7TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky7TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky8TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky8TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky8TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky8TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky8TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky8TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky9TwelfthsFlat")]
+        [DataMember(Name="accidentalWyschnegradsky9TwelfthsFlat")]
         BoundingBox AccidentalWyschnegradsky9TwelfthsFlat { get; set; }
 
-        [JsonProperty("accidentalWyschnegradsky9TwelfthsSharp")]
+        [DataMember(Name="accidentalWyschnegradsky9TwelfthsSharp")]
         BoundingBox AccidentalWyschnegradsky9TwelfthsSharp { get; set; }
 
-        [JsonProperty("accidentalXenakisOneThirdToneSharp")]
+        [DataMember(Name="accidentalXenakisOneThirdToneSharp")]
         BoundingBox AccidentalXenakisOneThirdToneSharp { get; set; }
 
-        [JsonProperty("accidentalXenakisTwoThirdTonesSharp")]
+        [DataMember(Name="accidentalXenakisTwoThirdTonesSharp")]
         BoundingBox AccidentalXenakisTwoThirdTonesSharp { get; set; }
 
-        [JsonProperty("analyticsChoralmelodie")]
+        [DataMember(Name="analyticsChoralmelodie")]
         BoundingBox AnalyticsChoralmelodie { get; set; }
 
-        [JsonProperty("analyticsEndStimme")]
+        [DataMember(Name="analyticsEndStimme")]
         BoundingBox AnalyticsEndStimme { get; set; }
 
-        [JsonProperty("analyticsHauptrhythmus")]
+        [DataMember(Name="analyticsHauptrhythmus")]
         BoundingBox AnalyticsHauptrhythmus { get; set; }
 
-        [JsonProperty("analyticsHauptrhythmusR")]
+        [DataMember(Name="analyticsHauptrhythmusR")]
         BoundingBox AnalyticsHauptrhythmusR { get; set; }
 
-        [JsonProperty("analyticsHauptstimme")]
+        [DataMember(Name="analyticsHauptstimme")]
         BoundingBox AnalyticsHauptstimme { get; set; }
 
-        [JsonProperty("analyticsInversion1")]
+        [DataMember(Name="analyticsInversion1")]
         BoundingBox AnalyticsInversion1 { get; set; }
 
-        [JsonProperty("analyticsNebenstimme")]
+        [DataMember(Name="analyticsNebenstimme")]
         BoundingBox AnalyticsNebenstimme { get; set; }
 
-        [JsonProperty("analyticsStartStimme")]
+        [DataMember(Name="analyticsStartStimme")]
         BoundingBox AnalyticsStartStimme { get; set; }
 
-        [JsonProperty("analyticsTheme")]
+        [DataMember(Name="analyticsTheme")]
         BoundingBox AnalyticsTheme { get; set; }
 
-        [JsonProperty("analyticsTheme1")]
+        [DataMember(Name="analyticsTheme1")]
         BoundingBox AnalyticsTheme1 { get; set; }
 
-        [JsonProperty("analyticsThemeInversion")]
+        [DataMember(Name="analyticsThemeInversion")]
         BoundingBox AnalyticsThemeInversion { get; set; }
 
-        [JsonProperty("analyticsThemeRetrograde")]
+        [DataMember(Name="analyticsThemeRetrograde")]
         BoundingBox AnalyticsThemeRetrograde { get; set; }
 
-        [JsonProperty("analyticsThemeRetrogradeInversion")]
+        [DataMember(Name="analyticsThemeRetrogradeInversion")]
         BoundingBox AnalyticsThemeRetrogradeInversion { get; set; }
 
-        [JsonProperty("arpeggiatoDown")]
+        [DataMember(Name="arpeggiatoDown")]
         BoundingBox ArpeggiatoDown { get; set; }
 
-        [JsonProperty("arpeggiatoUp")]
+        [DataMember(Name="arpeggiatoUp")]
         BoundingBox ArpeggiatoUp { get; set; }
 
-        [JsonProperty("arrowBlackDown")]
+        [DataMember(Name="arrowBlackDown")]
         BoundingBox ArrowBlackDown { get; set; }
 
-        [JsonProperty("arrowBlackDownLeft")]
+        [DataMember(Name="arrowBlackDownLeft")]
         BoundingBox ArrowBlackDownLeft { get; set; }
 
-        [JsonProperty("arrowBlackDownRight")]
+        [DataMember(Name="arrowBlackDownRight")]
         BoundingBox ArrowBlackDownRight { get; set; }
 
-        [JsonProperty("arrowBlackLeft")]
+        [DataMember(Name="arrowBlackLeft")]
         BoundingBox ArrowBlackLeft { get; set; }
 
-        [JsonProperty("arrowBlackRight")]
+        [DataMember(Name="arrowBlackRight")]
         BoundingBox ArrowBlackRight { get; set; }
 
-        [JsonProperty("arrowBlackUp")]
+        [DataMember(Name="arrowBlackUp")]
         BoundingBox ArrowBlackUp { get; set; }
 
-        [JsonProperty("arrowBlackUpLeft")]
+        [DataMember(Name="arrowBlackUpLeft")]
         BoundingBox ArrowBlackUpLeft { get; set; }
 
-        [JsonProperty("arrowBlackUpRight")]
+        [DataMember(Name="arrowBlackUpRight")]
         BoundingBox ArrowBlackUpRight { get; set; }
 
-        [JsonProperty("arrowOpenDown")]
+        [DataMember(Name="arrowOpenDown")]
         BoundingBox ArrowOpenDown { get; set; }
 
-        [JsonProperty("arrowOpenDownLeft")]
+        [DataMember(Name="arrowOpenDownLeft")]
         BoundingBox ArrowOpenDownLeft { get; set; }
 
-        [JsonProperty("arrowOpenDownRight")]
+        [DataMember(Name="arrowOpenDownRight")]
         BoundingBox ArrowOpenDownRight { get; set; }
 
-        [JsonProperty("arrowOpenLeft")]
+        [DataMember(Name="arrowOpenLeft")]
         BoundingBox ArrowOpenLeft { get; set; }
 
-        [JsonProperty("arrowOpenRight")]
+        [DataMember(Name="arrowOpenRight")]
         BoundingBox ArrowOpenRight { get; set; }
 
-        [JsonProperty("arrowOpenUp")]
+        [DataMember(Name="arrowOpenUp")]
         BoundingBox ArrowOpenUp { get; set; }
 
-        [JsonProperty("arrowOpenUpLeft")]
+        [DataMember(Name="arrowOpenUpLeft")]
         BoundingBox ArrowOpenUpLeft { get; set; }
 
-        [JsonProperty("arrowOpenUpRight")]
+        [DataMember(Name="arrowOpenUpRight")]
         BoundingBox ArrowOpenUpRight { get; set; }
 
-        [JsonProperty("arrowWhiteDown")]
+        [DataMember(Name="arrowWhiteDown")]
         BoundingBox ArrowWhiteDown { get; set; }
 
-        [JsonProperty("arrowWhiteDownLeft")]
+        [DataMember(Name="arrowWhiteDownLeft")]
         BoundingBox ArrowWhiteDownLeft { get; set; }
 
-        [JsonProperty("arrowWhiteDownRight")]
+        [DataMember(Name="arrowWhiteDownRight")]
         BoundingBox ArrowWhiteDownRight { get; set; }
 
-        [JsonProperty("arrowWhiteLeft")]
+        [DataMember(Name="arrowWhiteLeft")]
         BoundingBox ArrowWhiteLeft { get; set; }
 
-        [JsonProperty("arrowWhiteRight")]
+        [DataMember(Name="arrowWhiteRight")]
         BoundingBox ArrowWhiteRight { get; set; }
 
-        [JsonProperty("arrowWhiteUp")]
+        [DataMember(Name="arrowWhiteUp")]
         BoundingBox ArrowWhiteUp { get; set; }
 
-        [JsonProperty("arrowWhiteUpLeft")]
+        [DataMember(Name="arrowWhiteUpLeft")]
         BoundingBox ArrowWhiteUpLeft { get; set; }
 
-        [JsonProperty("arrowWhiteUpRight")]
+        [DataMember(Name="arrowWhiteUpRight")]
         BoundingBox ArrowWhiteUpRight { get; set; }
 
-        [JsonProperty("arrowheadBlackDown")]
+        [DataMember(Name="arrowheadBlackDown")]
         BoundingBox ArrowheadBlackDown { get; set; }
 
-        [JsonProperty("arrowheadBlackDownLeft")]
+        [DataMember(Name="arrowheadBlackDownLeft")]
         BoundingBox ArrowheadBlackDownLeft { get; set; }
 
-        [JsonProperty("arrowheadBlackDownRight")]
+        [DataMember(Name="arrowheadBlackDownRight")]
         BoundingBox ArrowheadBlackDownRight { get; set; }
 
-        [JsonProperty("arrowheadBlackLeft")]
+        [DataMember(Name="arrowheadBlackLeft")]
         BoundingBox ArrowheadBlackLeft { get; set; }
 
-        [JsonProperty("arrowheadBlackRight")]
+        [DataMember(Name="arrowheadBlackRight")]
         BoundingBox ArrowheadBlackRight { get; set; }
 
-        [JsonProperty("arrowheadBlackUp")]
+        [DataMember(Name="arrowheadBlackUp")]
         BoundingBox ArrowheadBlackUp { get; set; }
 
-        [JsonProperty("arrowheadBlackUpLeft")]
+        [DataMember(Name="arrowheadBlackUpLeft")]
         BoundingBox ArrowheadBlackUpLeft { get; set; }
 
-        [JsonProperty("arrowheadBlackUpRight")]
+        [DataMember(Name="arrowheadBlackUpRight")]
         BoundingBox ArrowheadBlackUpRight { get; set; }
 
-        [JsonProperty("arrowheadOpenDown")]
+        [DataMember(Name="arrowheadOpenDown")]
         BoundingBox ArrowheadOpenDown { get; set; }
 
-        [JsonProperty("arrowheadOpenDownLeft")]
+        [DataMember(Name="arrowheadOpenDownLeft")]
         BoundingBox ArrowheadOpenDownLeft { get; set; }
 
-        [JsonProperty("arrowheadOpenDownRight")]
+        [DataMember(Name="arrowheadOpenDownRight")]
         BoundingBox ArrowheadOpenDownRight { get; set; }
 
-        [JsonProperty("arrowheadOpenLeft")]
+        [DataMember(Name="arrowheadOpenLeft")]
         BoundingBox ArrowheadOpenLeft { get; set; }
 
-        [JsonProperty("arrowheadOpenRight")]
+        [DataMember(Name="arrowheadOpenRight")]
         BoundingBox ArrowheadOpenRight { get; set; }
 
-        [JsonProperty("arrowheadOpenUp")]
+        [DataMember(Name="arrowheadOpenUp")]
         BoundingBox ArrowheadOpenUp { get; set; }
 
-        [JsonProperty("arrowheadOpenUpLeft")]
+        [DataMember(Name="arrowheadOpenUpLeft")]
         BoundingBox ArrowheadOpenUpLeft { get; set; }
 
-        [JsonProperty("arrowheadOpenUpRight")]
+        [DataMember(Name="arrowheadOpenUpRight")]
         BoundingBox ArrowheadOpenUpRight { get; set; }
 
-        [JsonProperty("arrowheadWhiteDown")]
+        [DataMember(Name="arrowheadWhiteDown")]
         BoundingBox ArrowheadWhiteDown { get; set; }
 
-        [JsonProperty("arrowheadWhiteDownLeft")]
+        [DataMember(Name="arrowheadWhiteDownLeft")]
         BoundingBox ArrowheadWhiteDownLeft { get; set; }
 
-        [JsonProperty("arrowheadWhiteDownRight")]
+        [DataMember(Name="arrowheadWhiteDownRight")]
         BoundingBox ArrowheadWhiteDownRight { get; set; }
 
-        [JsonProperty("arrowheadWhiteLeft")]
+        [DataMember(Name="arrowheadWhiteLeft")]
         BoundingBox ArrowheadWhiteLeft { get; set; }
 
-        [JsonProperty("arrowheadWhiteRight")]
+        [DataMember(Name="arrowheadWhiteRight")]
         BoundingBox ArrowheadWhiteRight { get; set; }
 
-        [JsonProperty("arrowheadWhiteUp")]
+        [DataMember(Name="arrowheadWhiteUp")]
         BoundingBox ArrowheadWhiteUp { get; set; }
 
-        [JsonProperty("arrowheadWhiteUpLeft")]
+        [DataMember(Name="arrowheadWhiteUpLeft")]
         BoundingBox ArrowheadWhiteUpLeft { get; set; }
 
-        [JsonProperty("arrowheadWhiteUpRight")]
+        [DataMember(Name="arrowheadWhiteUpRight")]
         BoundingBox ArrowheadWhiteUpRight { get; set; }
 
-        [JsonProperty("articAccentAbove")]
+        [DataMember(Name="articAccentAbove")]
         BoundingBox ArticAccentAbove { get; set; }
 
-        [JsonProperty("articAccentAboveLarge")]
+        [DataMember(Name="articAccentAboveLarge")]
         BoundingBox ArticAccentAboveLarge { get; set; }
 
-        [JsonProperty("articAccentAboveSmall")]
+        [DataMember(Name="articAccentAboveSmall")]
         BoundingBox ArticAccentAboveSmall { get; set; }
 
-        [JsonProperty("articAccentBelow")]
+        [DataMember(Name="articAccentBelow")]
         BoundingBox ArticAccentBelow { get; set; }
 
-        [JsonProperty("articAccentBelowLarge")]
+        [DataMember(Name="articAccentBelowLarge")]
         BoundingBox ArticAccentBelowLarge { get; set; }
 
-        [JsonProperty("articAccentBelowSmall")]
+        [DataMember(Name="articAccentBelowSmall")]
         BoundingBox ArticAccentBelowSmall { get; set; }
 
-        [JsonProperty("articAccentStaccatoAbove")]
+        [DataMember(Name="articAccentStaccatoAbove")]
         BoundingBox ArticAccentStaccatoAbove { get; set; }
 
-        [JsonProperty("articAccentStaccatoAboveSmall")]
+        [DataMember(Name="articAccentStaccatoAboveSmall")]
         BoundingBox ArticAccentStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articAccentStaccatoBelow")]
+        [DataMember(Name="articAccentStaccatoBelow")]
         BoundingBox ArticAccentStaccatoBelow { get; set; }
 
-        [JsonProperty("articAccentStaccatoBelowSmall")]
+        [DataMember(Name="articAccentStaccatoBelowSmall")]
         BoundingBox ArticAccentStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("articLaissezVibrerAbove")]
+        [DataMember(Name="articLaissezVibrerAbove")]
         BoundingBox ArticLaissezVibrerAbove { get; set; }
 
-        [JsonProperty("articLaissezVibrerBelow")]
+        [DataMember(Name="articLaissezVibrerBelow")]
         BoundingBox ArticLaissezVibrerBelow { get; set; }
 
-        [JsonProperty("articMarcatoAbove")]
+        [DataMember(Name="articMarcatoAbove")]
         BoundingBox ArticMarcatoAbove { get; set; }
 
-        [JsonProperty("articMarcatoAboveSmall")]
+        [DataMember(Name="articMarcatoAboveSmall")]
         BoundingBox ArticMarcatoAboveSmall { get; set; }
 
-        [JsonProperty("articMarcatoBelow")]
+        [DataMember(Name="articMarcatoBelow")]
         BoundingBox ArticMarcatoBelow { get; set; }
 
-        [JsonProperty("articMarcatoBelowSmall")]
+        [DataMember(Name="articMarcatoBelowSmall")]
         BoundingBox ArticMarcatoBelowSmall { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoAbove")]
+        [DataMember(Name="articMarcatoStaccatoAbove")]
         BoundingBox ArticMarcatoStaccatoAbove { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoAboveSmall")]
+        [DataMember(Name="articMarcatoStaccatoAboveSmall")]
         BoundingBox ArticMarcatoStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoBelow")]
+        [DataMember(Name="articMarcatoStaccatoBelow")]
         BoundingBox ArticMarcatoStaccatoBelow { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoBelowSmall")]
+        [DataMember(Name="articMarcatoStaccatoBelowSmall")]
         BoundingBox ArticMarcatoStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("articMarcatoTenutoAbove")]
+        [DataMember(Name="articMarcatoTenutoAbove")]
         BoundingBox ArticMarcatoTenutoAbove { get; set; }
 
-        [JsonProperty("articMarcatoTenutoBelow")]
+        [DataMember(Name="articMarcatoTenutoBelow")]
         BoundingBox ArticMarcatoTenutoBelow { get; set; }
 
-        [JsonProperty("articSoftAccentAbove")]
+        [DataMember(Name="articSoftAccentAbove")]
         BoundingBox ArticSoftAccentAbove { get; set; }
 
-        [JsonProperty("articSoftAccentBelow")]
+        [DataMember(Name="articSoftAccentBelow")]
         BoundingBox ArticSoftAccentBelow { get; set; }
 
-        [JsonProperty("articSoftAccentStaccatoAbove")]
+        [DataMember(Name="articSoftAccentStaccatoAbove")]
         BoundingBox ArticSoftAccentStaccatoAbove { get; set; }
 
-        [JsonProperty("articSoftAccentStaccatoBelow")]
+        [DataMember(Name="articSoftAccentStaccatoBelow")]
         BoundingBox ArticSoftAccentStaccatoBelow { get; set; }
 
-        [JsonProperty("articSoftAccentTenutoAbove")]
+        [DataMember(Name="articSoftAccentTenutoAbove")]
         BoundingBox ArticSoftAccentTenutoAbove { get; set; }
 
-        [JsonProperty("articSoftAccentTenutoBelow")]
+        [DataMember(Name="articSoftAccentTenutoBelow")]
         BoundingBox ArticSoftAccentTenutoBelow { get; set; }
 
-        [JsonProperty("articSoftAccentTenutoStaccatoAbove")]
+        [DataMember(Name="articSoftAccentTenutoStaccatoAbove")]
         BoundingBox ArticSoftAccentTenutoStaccatoAbove { get; set; }
 
-        [JsonProperty("articSoftAccentTenutoStaccatoBelow")]
+        [DataMember(Name="articSoftAccentTenutoStaccatoBelow")]
         BoundingBox ArticSoftAccentTenutoStaccatoBelow { get; set; }
 
-        [JsonProperty("articStaccatissimoAbove")]
+        [DataMember(Name="articStaccatissimoAbove")]
         BoundingBox ArticStaccatissimoAbove { get; set; }
 
-        [JsonProperty("articStaccatissimoAboveSmall")]
+        [DataMember(Name="articStaccatissimoAboveSmall")]
         BoundingBox ArticStaccatissimoAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoBelow")]
+        [DataMember(Name="articStaccatissimoBelow")]
         BoundingBox ArticStaccatissimoBelow { get; set; }
 
-        [JsonProperty("articStaccatissimoBelowSmall")]
+        [DataMember(Name="articStaccatissimoBelowSmall")]
         BoundingBox ArticStaccatissimoBelowSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeAbove")]
+        [DataMember(Name="articStaccatissimoStrokeAbove")]
         BoundingBox ArticStaccatissimoStrokeAbove { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeAboveSmall")]
+        [DataMember(Name="articStaccatissimoStrokeAboveSmall")]
         BoundingBox ArticStaccatissimoStrokeAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeBelow")]
+        [DataMember(Name="articStaccatissimoStrokeBelow")]
         BoundingBox ArticStaccatissimoStrokeBelow { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeBelowSmall")]
+        [DataMember(Name="articStaccatissimoStrokeBelowSmall")]
         BoundingBox ArticStaccatissimoStrokeBelowSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeAbove")]
+        [DataMember(Name="articStaccatissimoWedgeAbove")]
         BoundingBox ArticStaccatissimoWedgeAbove { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeAboveSmall")]
+        [DataMember(Name="articStaccatissimoWedgeAboveSmall")]
         BoundingBox ArticStaccatissimoWedgeAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeBelow")]
+        [DataMember(Name="articStaccatissimoWedgeBelow")]
         BoundingBox ArticStaccatissimoWedgeBelow { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeBelowSmall")]
+        [DataMember(Name="articStaccatissimoWedgeBelowSmall")]
         BoundingBox ArticStaccatissimoWedgeBelowSmall { get; set; }
 
-        [JsonProperty("articStaccatoAbove")]
+        [DataMember(Name="articStaccatoAbove")]
         BoundingBox ArticStaccatoAbove { get; set; }
 
-        [JsonProperty("articStaccatoAboveSmall")]
+        [DataMember(Name="articStaccatoAboveSmall")]
         BoundingBox ArticStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatoBelow")]
+        [DataMember(Name="articStaccatoBelow")]
         BoundingBox ArticStaccatoBelow { get; set; }
 
-        [JsonProperty("articStaccatoBelowSmall")]
+        [DataMember(Name="articStaccatoBelowSmall")]
         BoundingBox ArticStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("articStressAbove")]
+        [DataMember(Name="articStressAbove")]
         BoundingBox ArticStressAbove { get; set; }
 
-        [JsonProperty("articStressBelow")]
+        [DataMember(Name="articStressBelow")]
         BoundingBox ArticStressBelow { get; set; }
 
-        [JsonProperty("articTenutoAbove")]
+        [DataMember(Name="articTenutoAbove")]
         BoundingBox ArticTenutoAbove { get; set; }
 
-        [JsonProperty("articTenutoAboveSmall")]
+        [DataMember(Name="articTenutoAboveSmall")]
         BoundingBox ArticTenutoAboveSmall { get; set; }
 
-        [JsonProperty("articTenutoAccentAbove")]
+        [DataMember(Name="articTenutoAccentAbove")]
         BoundingBox ArticTenutoAccentAbove { get; set; }
 
-        [JsonProperty("articTenutoAccentAboveSmall")]
+        [DataMember(Name="articTenutoAccentAboveSmall")]
         BoundingBox ArticTenutoAccentAboveSmall { get; set; }
 
-        [JsonProperty("articTenutoAccentBelow")]
+        [DataMember(Name="articTenutoAccentBelow")]
         BoundingBox ArticTenutoAccentBelow { get; set; }
 
-        [JsonProperty("articTenutoAccentBelowSmall")]
+        [DataMember(Name="articTenutoAccentBelowSmall")]
         BoundingBox ArticTenutoAccentBelowSmall { get; set; }
 
-        [JsonProperty("articTenutoBelow")]
+        [DataMember(Name="articTenutoBelow")]
         BoundingBox ArticTenutoBelow { get; set; }
 
-        [JsonProperty("articTenutoBelowSmall")]
+        [DataMember(Name="articTenutoBelowSmall")]
         BoundingBox ArticTenutoBelowSmall { get; set; }
 
-        [JsonProperty("articTenutoStaccatoAbove")]
+        [DataMember(Name="articTenutoStaccatoAbove")]
         BoundingBox ArticTenutoStaccatoAbove { get; set; }
 
-        [JsonProperty("articTenutoStaccatoAboveSmall")]
+        [DataMember(Name="articTenutoStaccatoAboveSmall")]
         BoundingBox ArticTenutoStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articTenutoStaccatoBelow")]
+        [DataMember(Name="articTenutoStaccatoBelow")]
         BoundingBox ArticTenutoStaccatoBelow { get; set; }
 
-        [JsonProperty("articTenutoStaccatoBelowSmall")]
+        [DataMember(Name="articTenutoStaccatoBelowSmall")]
         BoundingBox ArticTenutoStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("articUnstressAbove")]
+        [DataMember(Name="articUnstressAbove")]
         BoundingBox ArticUnstressAbove { get; set; }
 
-        [JsonProperty("articUnstressBelow")]
+        [DataMember(Name="articUnstressBelow")]
         BoundingBox ArticUnstressBelow { get; set; }
 
-        [JsonProperty("augmentationDot")]
+        [DataMember(Name="augmentationDot")]
         BoundingBox AugmentationDot { get; set; }
 
-        [JsonProperty("barlineDashed")]
+        [DataMember(Name="barlineDashed")]
         BoundingBox BarlineDashed { get; set; }
 
-        [JsonProperty("barlineDotted")]
+        [DataMember(Name="barlineDotted")]
         BoundingBox BarlineDotted { get; set; }
 
-        [JsonProperty("barlineDouble")]
+        [DataMember(Name="barlineDouble")]
         BoundingBox BarlineDouble { get; set; }
 
-        [JsonProperty("barlineFinal")]
+        [DataMember(Name="barlineFinal")]
         BoundingBox BarlineFinal { get; set; }
 
-        [JsonProperty("barlineHeavy")]
+        [DataMember(Name="barlineHeavy")]
         BoundingBox BarlineHeavy { get; set; }
 
-        [JsonProperty("barlineHeavyHeavy")]
+        [DataMember(Name="barlineHeavyHeavy")]
         BoundingBox BarlineHeavyHeavy { get; set; }
 
-        [JsonProperty("barlineReverseFinal")]
+        [DataMember(Name="barlineReverseFinal")]
         BoundingBox BarlineReverseFinal { get; set; }
 
-        [JsonProperty("barlineShort")]
+        [DataMember(Name="barlineShort")]
         BoundingBox BarlineShort { get; set; }
 
-        [JsonProperty("barlineSingle")]
+        [DataMember(Name="barlineSingle")]
         BoundingBox BarlineSingle { get; set; }
 
-        [JsonProperty("barlineTick")]
+        [DataMember(Name="barlineTick")]
         BoundingBox BarlineTick { get; set; }
 
-        [JsonProperty("beamAccelRit1")]
+        [DataMember(Name="beamAccelRit1")]
         BoundingBox BeamAccelRit1 { get; set; }
 
-        [JsonProperty("beamAccelRit10")]
+        [DataMember(Name="beamAccelRit10")]
         BoundingBox BeamAccelRit10 { get; set; }
 
-        [JsonProperty("beamAccelRit11")]
+        [DataMember(Name="beamAccelRit11")]
         BoundingBox BeamAccelRit11 { get; set; }
 
-        [JsonProperty("beamAccelRit12")]
+        [DataMember(Name="beamAccelRit12")]
         BoundingBox BeamAccelRit12 { get; set; }
 
-        [JsonProperty("beamAccelRit13")]
+        [DataMember(Name="beamAccelRit13")]
         BoundingBox BeamAccelRit13 { get; set; }
 
-        [JsonProperty("beamAccelRit14")]
+        [DataMember(Name="beamAccelRit14")]
         BoundingBox BeamAccelRit14 { get; set; }
 
-        [JsonProperty("beamAccelRit15")]
+        [DataMember(Name="beamAccelRit15")]
         BoundingBox BeamAccelRit15 { get; set; }
 
-        [JsonProperty("beamAccelRit2")]
+        [DataMember(Name="beamAccelRit2")]
         BoundingBox BeamAccelRit2 { get; set; }
 
-        [JsonProperty("beamAccelRit3")]
+        [DataMember(Name="beamAccelRit3")]
         BoundingBox BeamAccelRit3 { get; set; }
 
-        [JsonProperty("beamAccelRit4")]
+        [DataMember(Name="beamAccelRit4")]
         BoundingBox BeamAccelRit4 { get; set; }
 
-        [JsonProperty("beamAccelRit5")]
+        [DataMember(Name="beamAccelRit5")]
         BoundingBox BeamAccelRit5 { get; set; }
 
-        [JsonProperty("beamAccelRit6")]
+        [DataMember(Name="beamAccelRit6")]
         BoundingBox BeamAccelRit6 { get; set; }
 
-        [JsonProperty("beamAccelRit7")]
+        [DataMember(Name="beamAccelRit7")]
         BoundingBox BeamAccelRit7 { get; set; }
 
-        [JsonProperty("beamAccelRit8")]
+        [DataMember(Name="beamAccelRit8")]
         BoundingBox BeamAccelRit8 { get; set; }
 
-        [JsonProperty("beamAccelRit9")]
+        [DataMember(Name="beamAccelRit9")]
         BoundingBox BeamAccelRit9 { get; set; }
 
-        [JsonProperty("beamAccelRitFinal")]
+        [DataMember(Name="beamAccelRitFinal")]
         BoundingBox BeamAccelRitFinal { get; set; }
 
-        [JsonProperty("brace")]
+        [DataMember(Name="brace")]
         BoundingBox Brace { get; set; }
 
-        [JsonProperty("braceFlat")]
+        [DataMember(Name="braceFlat")]
         BoundingBox BraceFlat { get; set; }
 
-        [JsonProperty("braceLarge")]
+        [DataMember(Name="braceLarge")]
         BoundingBox BraceLarge { get; set; }
 
-        [JsonProperty("braceLarger")]
+        [DataMember(Name="braceLarger")]
         BoundingBox BraceLarger { get; set; }
 
-        [JsonProperty("braceSmall")]
+        [DataMember(Name="braceSmall")]
         BoundingBox BraceSmall { get; set; }
 
-        [JsonProperty("bracket")]
+        [DataMember(Name="bracket")]
         BoundingBox Bracket { get; set; }
 
-        [JsonProperty("bracketBottom")]
+        [DataMember(Name="bracketBottom")]
         BoundingBox BracketBottom { get; set; }
 
-        [JsonProperty("bracketTop")]
+        [DataMember(Name="bracketTop")]
         BoundingBox BracketTop { get; set; }
 
-        [JsonProperty("brassBend")]
+        [DataMember(Name="brassBend")]
         BoundingBox BrassBend { get; set; }
 
-        [JsonProperty("brassDoitLong")]
+        [DataMember(Name="brassDoitLong")]
         BoundingBox BrassDoitLong { get; set; }
 
-        [JsonProperty("brassDoitMedium")]
+        [DataMember(Name="brassDoitMedium")]
         BoundingBox BrassDoitMedium { get; set; }
 
-        [JsonProperty("brassDoitShort")]
+        [DataMember(Name="brassDoitShort")]
         BoundingBox BrassDoitShort { get; set; }
 
-        [JsonProperty("brassFallLipLong")]
+        [DataMember(Name="brassFallLipLong")]
         BoundingBox BrassFallLipLong { get; set; }
 
-        [JsonProperty("brassFallLipMedium")]
+        [DataMember(Name="brassFallLipMedium")]
         BoundingBox BrassFallLipMedium { get; set; }
 
-        [JsonProperty("brassFallLipShort")]
+        [DataMember(Name="brassFallLipShort")]
         BoundingBox BrassFallLipShort { get; set; }
 
-        [JsonProperty("brassFallRoughLong")]
+        [DataMember(Name="brassFallRoughLong")]
         BoundingBox BrassFallRoughLong { get; set; }
 
-        [JsonProperty("brassFallRoughMedium")]
+        [DataMember(Name="brassFallRoughMedium")]
         BoundingBox BrassFallRoughMedium { get; set; }
 
-        [JsonProperty("brassFallRoughShort")]
+        [DataMember(Name="brassFallRoughShort")]
         BoundingBox BrassFallRoughShort { get; set; }
 
-        [JsonProperty("brassFallSmoothLong")]
+        [DataMember(Name="brassFallSmoothLong")]
         BoundingBox BrassFallSmoothLong { get; set; }
 
-        [JsonProperty("brassFallSmoothMedium")]
+        [DataMember(Name="brassFallSmoothMedium")]
         BoundingBox BrassFallSmoothMedium { get; set; }
 
-        [JsonProperty("brassFallSmoothShort")]
+        [DataMember(Name="brassFallSmoothShort")]
         BoundingBox BrassFallSmoothShort { get; set; }
 
-        [JsonProperty("brassFlip")]
+        [DataMember(Name="brassFlip")]
         BoundingBox BrassFlip { get; set; }
 
-        [JsonProperty("brassHarmonMuteClosed")]
+        [DataMember(Name="brassHarmonMuteClosed")]
         BoundingBox BrassHarmonMuteClosed { get; set; }
 
-        [JsonProperty("brassHarmonMuteStemHalfLeft")]
+        [DataMember(Name="brassHarmonMuteStemHalfLeft")]
         BoundingBox BrassHarmonMuteStemHalfLeft { get; set; }
 
-        [JsonProperty("brassHarmonMuteStemHalfRight")]
+        [DataMember(Name="brassHarmonMuteStemHalfRight")]
         BoundingBox BrassHarmonMuteStemHalfRight { get; set; }
 
-        [JsonProperty("brassHarmonMuteStemOpen")]
+        [DataMember(Name="brassHarmonMuteStemOpen")]
         BoundingBox BrassHarmonMuteStemOpen { get; set; }
 
-        [JsonProperty("brassJazzTurn")]
+        [DataMember(Name="brassJazzTurn")]
         BoundingBox BrassJazzTurn { get; set; }
 
-        [JsonProperty("brassLiftLong")]
+        [DataMember(Name="brassLiftLong")]
         BoundingBox BrassLiftLong { get; set; }
 
-        [JsonProperty("brassLiftMedium")]
+        [DataMember(Name="brassLiftMedium")]
         BoundingBox BrassLiftMedium { get; set; }
 
-        [JsonProperty("brassLiftShort")]
+        [DataMember(Name="brassLiftShort")]
         BoundingBox BrassLiftShort { get; set; }
 
-        [JsonProperty("brassLiftSmoothLong")]
+        [DataMember(Name="brassLiftSmoothLong")]
         BoundingBox BrassLiftSmoothLong { get; set; }
 
-        [JsonProperty("brassLiftSmoothMedium")]
+        [DataMember(Name="brassLiftSmoothMedium")]
         BoundingBox BrassLiftSmoothMedium { get; set; }
 
-        [JsonProperty("brassLiftSmoothShort")]
+        [DataMember(Name="brassLiftSmoothShort")]
         BoundingBox BrassLiftSmoothShort { get; set; }
 
-        [JsonProperty("brassMuteClosed")]
+        [DataMember(Name="brassMuteClosed")]
         BoundingBox BrassMuteClosed { get; set; }
 
-        [JsonProperty("brassMuteHalfClosed")]
+        [DataMember(Name="brassMuteHalfClosed")]
         BoundingBox BrassMuteHalfClosed { get; set; }
 
-        [JsonProperty("brassMuteOpen")]
+        [DataMember(Name="brassMuteOpen")]
         BoundingBox BrassMuteOpen { get; set; }
 
-        [JsonProperty("brassPlop")]
+        [DataMember(Name="brassPlop")]
         BoundingBox BrassPlop { get; set; }
 
-        [JsonProperty("brassScoop")]
+        [DataMember(Name="brassScoop")]
         BoundingBox BrassScoop { get; set; }
 
-        [JsonProperty("brassSmear")]
+        [DataMember(Name="brassSmear")]
         BoundingBox BrassSmear { get; set; }
 
-        [JsonProperty("brassValveTrill")]
+        [DataMember(Name="brassValveTrill")]
         BoundingBox BrassValveTrill { get; set; }
 
-        [JsonProperty("breathMarkComma")]
+        [DataMember(Name="breathMarkComma")]
         BoundingBox BreathMarkComma { get; set; }
 
-        [JsonProperty("breathMarkSalzedo")]
+        [DataMember(Name="breathMarkSalzedo")]
         BoundingBox BreathMarkSalzedo { get; set; }
 
-        [JsonProperty("breathMarkTick")]
+        [DataMember(Name="breathMarkTick")]
         BoundingBox BreathMarkTick { get; set; }
 
-        [JsonProperty("breathMarkUpbow")]
+        [DataMember(Name="breathMarkUpbow")]
         BoundingBox BreathMarkUpbow { get; set; }
 
-        [JsonProperty("bridgeClef")]
+        [DataMember(Name="bridgeClef")]
         BoundingBox BridgeClef { get; set; }
 
-        [JsonProperty("buzzRoll")]
+        [DataMember(Name="buzzRoll")]
         BoundingBox BuzzRoll { get; set; }
 
-        [JsonProperty("cClef")]
+        [DataMember(Name="cClef")]
         BoundingBox CClef { get; set; }
 
-        [JsonProperty("cClef8vb")]
+        [DataMember(Name="cClef8vb")]
         BoundingBox CClef8Vb { get; set; }
 
-        [JsonProperty("cClefArrowDown")]
+        [DataMember(Name="cClefArrowDown")]
         BoundingBox CClefArrowDown { get; set; }
 
-        [JsonProperty("cClefArrowUp")]
+        [DataMember(Name="cClefArrowUp")]
         BoundingBox CClefArrowUp { get; set; }
 
-        [JsonProperty("cClefChange")]
+        [DataMember(Name="cClefChange")]
         BoundingBox CClefChange { get; set; }
 
-        [JsonProperty("cClefCombining")]
+        [DataMember(Name="cClefCombining")]
         BoundingBox CClefCombining { get; set; }
 
-        [JsonProperty("cClefFrench")]
+        [DataMember(Name="cClefFrench")]
         BoundingBox CClefFrench { get; set; }
 
-        [JsonProperty("cClefFrench20C")]
+        [DataMember(Name="cClefFrench20C")]
         BoundingBox CClefFrench20C { get; set; }
 
-        [JsonProperty("cClefFrench20CChange")]
+        [DataMember(Name="cClefFrench20CChange")]
         BoundingBox CClefFrench20CChange { get; set; }
 
-        [JsonProperty("cClefReversed")]
+        [DataMember(Name="cClefReversed")]
         BoundingBox CClefReversed { get; set; }
 
-        [JsonProperty("cClefSmall")]
+        [DataMember(Name="cClefSmall")]
         BoundingBox CClefSmall { get; set; }
 
-        [JsonProperty("cClefSquare")]
+        [DataMember(Name="cClefSquare")]
         BoundingBox CClefSquare { get; set; }
 
-        [JsonProperty("caesura")]
+        [DataMember(Name="caesura")]
         BoundingBox Caesura { get; set; }
 
-        [JsonProperty("caesuraCurved")]
+        [DataMember(Name="caesuraCurved")]
         BoundingBox CaesuraCurved { get; set; }
 
-        [JsonProperty("caesuraShort")]
+        [DataMember(Name="caesuraShort")]
         BoundingBox CaesuraShort { get; set; }
 
-        [JsonProperty("caesuraSingleStroke")]
+        [DataMember(Name="caesuraSingleStroke")]
         BoundingBox CaesuraSingleStroke { get; set; }
 
-        [JsonProperty("caesuraThick")]
+        [DataMember(Name="caesuraThick")]
         BoundingBox CaesuraThick { get; set; }
 
-        [JsonProperty("chantAccentusAbove")]
+        [DataMember(Name="chantAccentusAbove")]
         BoundingBox ChantAccentusAbove { get; set; }
 
-        [JsonProperty("chantAccentusBelow")]
+        [DataMember(Name="chantAccentusBelow")]
         BoundingBox ChantAccentusBelow { get; set; }
 
-        [JsonProperty("chantAuctumAsc")]
+        [DataMember(Name="chantAuctumAsc")]
         BoundingBox ChantAuctumAsc { get; set; }
 
-        [JsonProperty("chantAuctumDesc")]
+        [DataMember(Name="chantAuctumDesc")]
         BoundingBox ChantAuctumDesc { get; set; }
 
-        [JsonProperty("chantAugmentum")]
+        [DataMember(Name="chantAugmentum")]
         BoundingBox ChantAugmentum { get; set; }
 
-        [JsonProperty("chantCaesura")]
+        [DataMember(Name="chantCaesura")]
         BoundingBox ChantCaesura { get; set; }
 
-        [JsonProperty("chantCclef")]
+        [DataMember(Name="chantCclef")]
         BoundingBox ChantCclef { get; set; }
 
-        [JsonProperty("chantCclefHufnagel")]
+        [DataMember(Name="chantCclefHufnagel")]
         BoundingBox ChantCclefHufnagel { get; set; }
 
-        [JsonProperty("chantCirculusAbove")]
+        [DataMember(Name="chantCirculusAbove")]
         BoundingBox ChantCirculusAbove { get; set; }
 
-        [JsonProperty("chantCirculusBelow")]
+        [DataMember(Name="chantCirculusBelow")]
         BoundingBox ChantCirculusBelow { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc2nd")]
+        [DataMember(Name="chantConnectingLineAsc2nd")]
         BoundingBox ChantConnectingLineAsc2Nd { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc3rd")]
+        [DataMember(Name="chantConnectingLineAsc3rd")]
         BoundingBox ChantConnectingLineAsc3Rd { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc4th")]
+        [DataMember(Name="chantConnectingLineAsc4th")]
         BoundingBox ChantConnectingLineAsc4Th { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc5th")]
+        [DataMember(Name="chantConnectingLineAsc5th")]
         BoundingBox ChantConnectingLineAsc5Th { get; set; }
 
-        [JsonProperty("chantConnectingLineAsc6th")]
+        [DataMember(Name="chantConnectingLineAsc6th")]
         BoundingBox ChantConnectingLineAsc6Th { get; set; }
 
-        [JsonProperty("chantCustosStemDownPosHigh")]
+        [DataMember(Name="chantCustosStemDownPosHigh")]
         BoundingBox ChantCustosStemDownPosHigh { get; set; }
 
-        [JsonProperty("chantCustosStemDownPosHighest")]
+        [DataMember(Name="chantCustosStemDownPosHighest")]
         BoundingBox ChantCustosStemDownPosHighest { get; set; }
 
-        [JsonProperty("chantCustosStemDownPosMiddle")]
+        [DataMember(Name="chantCustosStemDownPosMiddle")]
         BoundingBox ChantCustosStemDownPosMiddle { get; set; }
 
-        [JsonProperty("chantCustosStemUpPosLow")]
+        [DataMember(Name="chantCustosStemUpPosLow")]
         BoundingBox ChantCustosStemUpPosLow { get; set; }
 
-        [JsonProperty("chantCustosStemUpPosLowest")]
+        [DataMember(Name="chantCustosStemUpPosLowest")]
         BoundingBox ChantCustosStemUpPosLowest { get; set; }
 
-        [JsonProperty("chantCustosStemUpPosMiddle")]
+        [DataMember(Name="chantCustosStemUpPosMiddle")]
         BoundingBox ChantCustosStemUpPosMiddle { get; set; }
 
-        [JsonProperty("chantDeminutumLower")]
+        [DataMember(Name="chantDeminutumLower")]
         BoundingBox ChantDeminutumLower { get; set; }
 
-        [JsonProperty("chantDeminutumUpper")]
+        [DataMember(Name="chantDeminutumUpper")]
         BoundingBox ChantDeminutumUpper { get; set; }
 
-        [JsonProperty("chantDivisioFinalis")]
+        [DataMember(Name="chantDivisioFinalis")]
         BoundingBox ChantDivisioFinalis { get; set; }
 
-        [JsonProperty("chantDivisioMaior")]
+        [DataMember(Name="chantDivisioMaior")]
         BoundingBox ChantDivisioMaior { get; set; }
 
-        [JsonProperty("chantDivisioMaxima")]
+        [DataMember(Name="chantDivisioMaxima")]
         BoundingBox ChantDivisioMaxima { get; set; }
 
-        [JsonProperty("chantDivisioMinima")]
+        [DataMember(Name="chantDivisioMinima")]
         BoundingBox ChantDivisioMinima { get; set; }
 
-        [JsonProperty("chantEntryLineAsc2nd")]
+        [DataMember(Name="chantEntryLineAsc2nd")]
         BoundingBox ChantEntryLineAsc2Nd { get; set; }
 
-        [JsonProperty("chantEntryLineAsc3rd")]
+        [DataMember(Name="chantEntryLineAsc3rd")]
         BoundingBox ChantEntryLineAsc3Rd { get; set; }
 
-        [JsonProperty("chantEntryLineAsc4th")]
+        [DataMember(Name="chantEntryLineAsc4th")]
         BoundingBox ChantEntryLineAsc4Th { get; set; }
 
-        [JsonProperty("chantEntryLineAsc5th")]
+        [DataMember(Name="chantEntryLineAsc5th")]
         BoundingBox ChantEntryLineAsc5Th { get; set; }
 
-        [JsonProperty("chantEntryLineAsc6th")]
+        [DataMember(Name="chantEntryLineAsc6th")]
         BoundingBox ChantEntryLineAsc6Th { get; set; }
 
-        [JsonProperty("chantEpisema")]
+        [DataMember(Name="chantEpisema")]
         BoundingBox ChantEpisema { get; set; }
 
-        [JsonProperty("chantFclef")]
+        [DataMember(Name="chantFclef")]
         BoundingBox ChantFclef { get; set; }
 
-        [JsonProperty("chantFclefHufnagel")]
+        [DataMember(Name="chantFclefHufnagel")]
         BoundingBox ChantFclefHufnagel { get; set; }
 
-        [JsonProperty("chantIctusAbove")]
+        [DataMember(Name="chantIctusAbove")]
         BoundingBox ChantIctusAbove { get; set; }
 
-        [JsonProperty("chantIctusBelow")]
+        [DataMember(Name="chantIctusBelow")]
         BoundingBox ChantIctusBelow { get; set; }
 
-        [JsonProperty("chantLigaturaDesc2nd")]
+        [DataMember(Name="chantLigaturaDesc2nd")]
         BoundingBox ChantLigaturaDesc2Nd { get; set; }
 
-        [JsonProperty("chantLigaturaDesc3rd")]
+        [DataMember(Name="chantLigaturaDesc3rd")]
         BoundingBox ChantLigaturaDesc3Rd { get; set; }
 
-        [JsonProperty("chantLigaturaDesc4th")]
+        [DataMember(Name="chantLigaturaDesc4th")]
         BoundingBox ChantLigaturaDesc4Th { get; set; }
 
-        [JsonProperty("chantLigaturaDesc5th")]
+        [DataMember(Name="chantLigaturaDesc5th")]
         BoundingBox ChantLigaturaDesc5Th { get; set; }
 
-        [JsonProperty("chantOriscusAscending")]
+        [DataMember(Name="chantOriscusAscending")]
         BoundingBox ChantOriscusAscending { get; set; }
 
-        [JsonProperty("chantOriscusDescending")]
+        [DataMember(Name="chantOriscusDescending")]
         BoundingBox ChantOriscusDescending { get; set; }
 
-        [JsonProperty("chantOriscusLiquescens")]
+        [DataMember(Name="chantOriscusLiquescens")]
         BoundingBox ChantOriscusLiquescens { get; set; }
 
-        [JsonProperty("chantPodatusLower")]
+        [DataMember(Name="chantPodatusLower")]
         BoundingBox ChantPodatusLower { get; set; }
 
-        [JsonProperty("chantPodatusUpper")]
+        [DataMember(Name="chantPodatusUpper")]
         BoundingBox ChantPodatusUpper { get; set; }
 
-        [JsonProperty("chantPunctum")]
+        [DataMember(Name="chantPunctum")]
         BoundingBox ChantPunctum { get; set; }
 
-        [JsonProperty("chantPunctumCavum")]
+        [DataMember(Name="chantPunctumCavum")]
         BoundingBox ChantPunctumCavum { get; set; }
 
-        [JsonProperty("chantPunctumDeminutum")]
+        [DataMember(Name="chantPunctumDeminutum")]
         BoundingBox ChantPunctumDeminutum { get; set; }
 
-        [JsonProperty("chantPunctumInclinatum")]
+        [DataMember(Name="chantPunctumInclinatum")]
         BoundingBox ChantPunctumInclinatum { get; set; }
 
-        [JsonProperty("chantPunctumInclinatumAuctum")]
+        [DataMember(Name="chantPunctumInclinatumAuctum")]
         BoundingBox ChantPunctumInclinatumAuctum { get; set; }
 
-        [JsonProperty("chantPunctumInclinatumDeminutum")]
+        [DataMember(Name="chantPunctumInclinatumDeminutum")]
         BoundingBox ChantPunctumInclinatumDeminutum { get; set; }
 
-        [JsonProperty("chantPunctumLinea")]
+        [DataMember(Name="chantPunctumLinea")]
         BoundingBox ChantPunctumLinea { get; set; }
 
-        [JsonProperty("chantPunctumLineaCavum")]
+        [DataMember(Name="chantPunctumLineaCavum")]
         BoundingBox ChantPunctumLineaCavum { get; set; }
 
-        [JsonProperty("chantPunctumVirga")]
+        [DataMember(Name="chantPunctumVirga")]
         BoundingBox ChantPunctumVirga { get; set; }
 
-        [JsonProperty("chantPunctumVirgaReversed")]
+        [DataMember(Name="chantPunctumVirgaReversed")]
         BoundingBox ChantPunctumVirgaReversed { get; set; }
 
-        [JsonProperty("chantQuilisma")]
+        [DataMember(Name="chantQuilisma")]
         BoundingBox ChantQuilisma { get; set; }
 
-        [JsonProperty("chantSemicirculusAbove")]
+        [DataMember(Name="chantSemicirculusAbove")]
         BoundingBox ChantSemicirculusAbove { get; set; }
 
-        [JsonProperty("chantSemicirculusBelow")]
+        [DataMember(Name="chantSemicirculusBelow")]
         BoundingBox ChantSemicirculusBelow { get; set; }
 
-        [JsonProperty("chantStaff")]
+        [DataMember(Name="chantStaff")]
         BoundingBox ChantStaff { get; set; }
 
-        [JsonProperty("chantStaffNarrow")]
+        [DataMember(Name="chantStaffNarrow")]
         BoundingBox ChantStaffNarrow { get; set; }
 
-        [JsonProperty("chantStaffWide")]
+        [DataMember(Name="chantStaffWide")]
         BoundingBox ChantStaffWide { get; set; }
 
-        [JsonProperty("chantStrophicus")]
+        [DataMember(Name="chantStrophicus")]
         BoundingBox ChantStrophicus { get; set; }
 
-        [JsonProperty("chantStrophicusAuctus")]
+        [DataMember(Name="chantStrophicusAuctus")]
         BoundingBox ChantStrophicusAuctus { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens2nd")]
+        [DataMember(Name="chantStrophicusLiquescens2nd")]
         BoundingBox ChantStrophicusLiquescens2Nd { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens3rd")]
+        [DataMember(Name="chantStrophicusLiquescens3rd")]
         BoundingBox ChantStrophicusLiquescens3Rd { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens4th")]
+        [DataMember(Name="chantStrophicusLiquescens4th")]
         BoundingBox ChantStrophicusLiquescens4Th { get; set; }
 
-        [JsonProperty("chantStrophicusLiquescens5th")]
+        [DataMember(Name="chantStrophicusLiquescens5th")]
         BoundingBox ChantStrophicusLiquescens5Th { get; set; }
 
-        [JsonProperty("chantVirgula")]
+        [DataMember(Name="chantVirgula")]
         BoundingBox ChantVirgula { get; set; }
 
-        [JsonProperty("clef15")]
+        [DataMember(Name="clef15")]
         BoundingBox Clef15 { get; set; }
 
-        [JsonProperty("clef8")]
+        [DataMember(Name="clef8")]
         BoundingBox Clef8 { get; set; }
 
-        [JsonProperty("coda")]
+        [DataMember(Name="coda")]
         BoundingBox Coda { get; set; }
 
-        [JsonProperty("codaJapanese")]
+        [DataMember(Name="codaJapanese")]
         BoundingBox CodaJapanese { get; set; }
 
-        [JsonProperty("codaSquare")]
+        [DataMember(Name="codaSquare")]
         BoundingBox CodaSquare { get; set; }
 
-        [JsonProperty("conductorBeat2Compound")]
+        [DataMember(Name="conductorBeat2Compound")]
         BoundingBox ConductorBeat2Compound { get; set; }
 
-        [JsonProperty("conductorBeat2Simple")]
+        [DataMember(Name="conductorBeat2Simple")]
         BoundingBox ConductorBeat2Simple { get; set; }
 
-        [JsonProperty("conductorBeat3Compound")]
+        [DataMember(Name="conductorBeat3Compound")]
         BoundingBox ConductorBeat3Compound { get; set; }
 
-        [JsonProperty("conductorBeat3Simple")]
+        [DataMember(Name="conductorBeat3Simple")]
         BoundingBox ConductorBeat3Simple { get; set; }
 
-        [JsonProperty("conductorBeat4Compound")]
+        [DataMember(Name="conductorBeat4Compound")]
         BoundingBox ConductorBeat4Compound { get; set; }
 
-        [JsonProperty("conductorBeat4Simple")]
+        [DataMember(Name="conductorBeat4Simple")]
         BoundingBox ConductorBeat4Simple { get; set; }
 
-        [JsonProperty("conductorLeftBeat")]
+        [DataMember(Name="conductorLeftBeat")]
         BoundingBox ConductorLeftBeat { get; set; }
 
-        [JsonProperty("conductorRightBeat")]
+        [DataMember(Name="conductorRightBeat")]
         BoundingBox ConductorRightBeat { get; set; }
 
-        [JsonProperty("conductorStrongBeat")]
+        [DataMember(Name="conductorStrongBeat")]
         BoundingBox ConductorStrongBeat { get; set; }
 
-        [JsonProperty("conductorUnconducted")]
+        [DataMember(Name="conductorUnconducted")]
         BoundingBox ConductorUnconducted { get; set; }
 
-        [JsonProperty("conductorWeakBeat")]
+        [DataMember(Name="conductorWeakBeat")]
         BoundingBox ConductorWeakBeat { get; set; }
 
-        [JsonProperty("csymAugmented")]
+        [DataMember(Name="csymAugmented")]
         BoundingBox CsymAugmented { get; set; }
 
-        [JsonProperty("csymBracketLeftTall")]
+        [DataMember(Name="csymBracketLeftTall")]
         BoundingBox CsymBracketLeftTall { get; set; }
 
-        [JsonProperty("csymBracketRightTall")]
+        [DataMember(Name="csymBracketRightTall")]
         BoundingBox CsymBracketRightTall { get; set; }
 
-        [JsonProperty("csymDiminished")]
+        [DataMember(Name="csymDiminished")]
         BoundingBox CsymDiminished { get; set; }
 
-        [JsonProperty("csymHalfDiminished")]
+        [DataMember(Name="csymHalfDiminished")]
         BoundingBox CsymHalfDiminished { get; set; }
 
-        [JsonProperty("csymMajorSeventh")]
+        [DataMember(Name="csymMajorSeventh")]
         BoundingBox CsymMajorSeventh { get; set; }
 
-        [JsonProperty("csymMinor")]
+        [DataMember(Name="csymMinor")]
         BoundingBox CsymMinor { get; set; }
 
-        [JsonProperty("csymParensLeftTall")]
+        [DataMember(Name="csymParensLeftTall")]
         BoundingBox CsymParensLeftTall { get; set; }
 
-        [JsonProperty("csymParensRightTall")]
+        [DataMember(Name="csymParensRightTall")]
         BoundingBox CsymParensRightTall { get; set; }
 
-        [JsonProperty("curlewSign")]
+        [DataMember(Name="curlewSign")]
         BoundingBox CurlewSign { get; set; }
 
-        [JsonProperty("daCapo")]
+        [DataMember(Name="daCapo")]
         BoundingBox DaCapo { get; set; }
 
-        [JsonProperty("dalSegno")]
+        [DataMember(Name="dalSegno")]
         BoundingBox DalSegno { get; set; }
 
-        [JsonProperty("daseianExcellentes1")]
+        [DataMember(Name="daseianExcellentes1")]
         BoundingBox DaseianExcellentes1 { get; set; }
 
-        [JsonProperty("daseianExcellentes2")]
+        [DataMember(Name="daseianExcellentes2")]
         BoundingBox DaseianExcellentes2 { get; set; }
 
-        [JsonProperty("daseianExcellentes3")]
+        [DataMember(Name="daseianExcellentes3")]
         BoundingBox DaseianExcellentes3 { get; set; }
 
-        [JsonProperty("daseianExcellentes4")]
+        [DataMember(Name="daseianExcellentes4")]
         BoundingBox DaseianExcellentes4 { get; set; }
 
-        [JsonProperty("daseianFinales1")]
+        [DataMember(Name="daseianFinales1")]
         BoundingBox DaseianFinales1 { get; set; }
 
-        [JsonProperty("daseianFinales2")]
+        [DataMember(Name="daseianFinales2")]
         BoundingBox DaseianFinales2 { get; set; }
 
-        [JsonProperty("daseianFinales3")]
+        [DataMember(Name="daseianFinales3")]
         BoundingBox DaseianFinales3 { get; set; }
 
-        [JsonProperty("daseianFinales4")]
+        [DataMember(Name="daseianFinales4")]
         BoundingBox DaseianFinales4 { get; set; }
 
-        [JsonProperty("daseianGraves1")]
+        [DataMember(Name="daseianGraves1")]
         BoundingBox DaseianGraves1 { get; set; }
 
-        [JsonProperty("daseianGraves2")]
+        [DataMember(Name="daseianGraves2")]
         BoundingBox DaseianGraves2 { get; set; }
 
-        [JsonProperty("daseianGraves3")]
+        [DataMember(Name="daseianGraves3")]
         BoundingBox DaseianGraves3 { get; set; }
 
-        [JsonProperty("daseianGraves4")]
+        [DataMember(Name="daseianGraves4")]
         BoundingBox DaseianGraves4 { get; set; }
 
-        [JsonProperty("daseianResidua1")]
+        [DataMember(Name="daseianResidua1")]
         BoundingBox DaseianResidua1 { get; set; }
 
-        [JsonProperty("daseianResidua2")]
+        [DataMember(Name="daseianResidua2")]
         BoundingBox DaseianResidua2 { get; set; }
 
-        [JsonProperty("daseianSuperiores1")]
+        [DataMember(Name="daseianSuperiores1")]
         BoundingBox DaseianSuperiores1 { get; set; }
 
-        [JsonProperty("daseianSuperiores2")]
+        [DataMember(Name="daseianSuperiores2")]
         BoundingBox DaseianSuperiores2 { get; set; }
 
-        [JsonProperty("daseianSuperiores3")]
+        [DataMember(Name="daseianSuperiores3")]
         BoundingBox DaseianSuperiores3 { get; set; }
 
-        [JsonProperty("daseianSuperiores4")]
+        [DataMember(Name="daseianSuperiores4")]
         BoundingBox DaseianSuperiores4 { get; set; }
 
-        [JsonProperty("doubleTongueAbove")]
+        [DataMember(Name="doubleTongueAbove")]
         BoundingBox DoubleTongueAbove { get; set; }
 
-        [JsonProperty("doubleTongueAboveNoSlur")]
+        [DataMember(Name="doubleTongueAboveNoSlur")]
         BoundingBox DoubleTongueAboveNoSlur { get; set; }
 
-        [JsonProperty("doubleTongueBelow")]
+        [DataMember(Name="doubleTongueBelow")]
         BoundingBox DoubleTongueBelow { get; set; }
 
-        [JsonProperty("doubleTongueBelowNoSlur")]
+        [DataMember(Name="doubleTongueBelowNoSlur")]
         BoundingBox DoubleTongueBelowNoSlur { get; set; }
 
-        [JsonProperty("dynamicCombinedSeparatorColon")]
+        [DataMember(Name="dynamicCombinedSeparatorColon")]
         BoundingBox DynamicCombinedSeparatorColon { get; set; }
 
-        [JsonProperty("dynamicCombinedSeparatorHyphen")]
+        [DataMember(Name="dynamicCombinedSeparatorHyphen")]
         BoundingBox DynamicCombinedSeparatorHyphen { get; set; }
 
-        [JsonProperty("dynamicCrescendoHairpin")]
+        [DataMember(Name="dynamicCrescendoHairpin")]
         BoundingBox DynamicCrescendoHairpin { get; set; }
 
-        [JsonProperty("dynamicDiminuendoHairpin")]
+        [DataMember(Name="dynamicDiminuendoHairpin")]
         BoundingBox DynamicDiminuendoHairpin { get; set; }
 
-        [JsonProperty("dynamicFF")]
+        [DataMember(Name="dynamicFF")]
         BoundingBox DynamicFf { get; set; }
 
-        [JsonProperty("dynamicFFF")]
+        [DataMember(Name="dynamicFFF")]
         BoundingBox DynamicFff { get; set; }
 
-        [JsonProperty("dynamicFFFF")]
+        [DataMember(Name="dynamicFFFF")]
         BoundingBox DynamicFfff { get; set; }
 
-        [JsonProperty("dynamicFFFFF")]
+        [DataMember(Name="dynamicFFFFF")]
         BoundingBox DynamicFffff { get; set; }
 
-        [JsonProperty("dynamicFFFFFF")]
+        [DataMember(Name="dynamicFFFFFF")]
         BoundingBox DynamicFfffff { get; set; }
 
-        [JsonProperty("dynamicForte")]
+        [DataMember(Name="dynamicForte")]
         BoundingBox DynamicForte { get; set; }
 
-        [JsonProperty("dynamicFortePiano")]
+        [DataMember(Name="dynamicFortePiano")]
         BoundingBox DynamicFortePiano { get; set; }
 
-        [JsonProperty("dynamicForteSmall")]
+        [DataMember(Name="dynamicForteSmall")]
         BoundingBox DynamicForteSmall { get; set; }
 
-        [JsonProperty("dynamicForzando")]
+        [DataMember(Name="dynamicForzando")]
         BoundingBox DynamicForzando { get; set; }
 
-        [JsonProperty("dynamicHairpinBracketLeft")]
+        [DataMember(Name="dynamicHairpinBracketLeft")]
         BoundingBox DynamicHairpinBracketLeft { get; set; }
 
-        [JsonProperty("dynamicHairpinBracketRight")]
+        [DataMember(Name="dynamicHairpinBracketRight")]
         BoundingBox DynamicHairpinBracketRight { get; set; }
 
-        [JsonProperty("dynamicHairpinParenthesisLeft")]
+        [DataMember(Name="dynamicHairpinParenthesisLeft")]
         BoundingBox DynamicHairpinParenthesisLeft { get; set; }
 
-        [JsonProperty("dynamicHairpinParenthesisRight")]
+        [DataMember(Name="dynamicHairpinParenthesisRight")]
         BoundingBox DynamicHairpinParenthesisRight { get; set; }
 
-        [JsonProperty("dynamicMF")]
+        [DataMember(Name="dynamicMF")]
         BoundingBox DynamicMf { get; set; }
 
-        [JsonProperty("dynamicMP")]
+        [DataMember(Name="dynamicMP")]
         BoundingBox DynamicMp { get; set; }
 
-        [JsonProperty("dynamicMessaDiVoce")]
+        [DataMember(Name="dynamicMessaDiVoce")]
         BoundingBox DynamicMessaDiVoce { get; set; }
 
-        [JsonProperty("dynamicMezzo")]
+        [DataMember(Name="dynamicMezzo")]
         BoundingBox DynamicMezzo { get; set; }
 
-        [JsonProperty("dynamicMezzoSmall")]
+        [DataMember(Name="dynamicMezzoSmall")]
         BoundingBox DynamicMezzoSmall { get; set; }
 
-        [JsonProperty("dynamicNiente")]
+        [DataMember(Name="dynamicNiente")]
         BoundingBox DynamicNiente { get; set; }
 
-        [JsonProperty("dynamicNienteForHairpin")]
+        [DataMember(Name="dynamicNienteForHairpin")]
         BoundingBox DynamicNienteForHairpin { get; set; }
 
-        [JsonProperty("dynamicNienteSmall")]
+        [DataMember(Name="dynamicNienteSmall")]
         BoundingBox DynamicNienteSmall { get; set; }
 
-        [JsonProperty("dynamicPF")]
+        [DataMember(Name="dynamicPF")]
         BoundingBox DynamicPf { get; set; }
 
-        [JsonProperty("dynamicPP")]
+        [DataMember(Name="dynamicPP")]
         BoundingBox DynamicPp { get; set; }
 
-        [JsonProperty("dynamicPPP")]
+        [DataMember(Name="dynamicPPP")]
         BoundingBox DynamicPpp { get; set; }
 
-        [JsonProperty("dynamicPPPP")]
+        [DataMember(Name="dynamicPPPP")]
         BoundingBox DynamicPppp { get; set; }
 
-        [JsonProperty("dynamicPPPPP")]
+        [DataMember(Name="dynamicPPPPP")]
         BoundingBox DynamicPpppp { get; set; }
 
-        [JsonProperty("dynamicPPPPPP")]
+        [DataMember(Name="dynamicPPPPPP")]
         BoundingBox DynamicPppppp { get; set; }
 
-        [JsonProperty("dynamicPiano")]
+        [DataMember(Name="dynamicPiano")]
         BoundingBox DynamicPiano { get; set; }
 
-        [JsonProperty("dynamicPianoSmall")]
+        [DataMember(Name="dynamicPianoSmall")]
         BoundingBox DynamicPianoSmall { get; set; }
 
-        [JsonProperty("dynamicRinforzando")]
+        [DataMember(Name="dynamicRinforzando")]
         BoundingBox DynamicRinforzando { get; set; }
 
-        [JsonProperty("dynamicRinforzando1")]
+        [DataMember(Name="dynamicRinforzando1")]
         BoundingBox DynamicRinforzando1 { get; set; }
 
-        [JsonProperty("dynamicRinforzando2")]
+        [DataMember(Name="dynamicRinforzando2")]
         BoundingBox DynamicRinforzando2 { get; set; }
 
-        [JsonProperty("dynamicRinforzandoSmall")]
+        [DataMember(Name="dynamicRinforzandoSmall")]
         BoundingBox DynamicRinforzandoSmall { get; set; }
 
-        [JsonProperty("dynamicSforzando")]
+        [DataMember(Name="dynamicSforzando")]
         BoundingBox DynamicSforzando { get; set; }
 
-        [JsonProperty("dynamicSforzando1")]
+        [DataMember(Name="dynamicSforzando1")]
         BoundingBox DynamicSforzando1 { get; set; }
 
-        [JsonProperty("dynamicSforzandoPianissimo")]
+        [DataMember(Name="dynamicSforzandoPianissimo")]
         BoundingBox DynamicSforzandoPianissimo { get; set; }
 
-        [JsonProperty("dynamicSforzandoPiano")]
+        [DataMember(Name="dynamicSforzandoPiano")]
         BoundingBox DynamicSforzandoPiano { get; set; }
 
-        [JsonProperty("dynamicSforzandoSmall")]
+        [DataMember(Name="dynamicSforzandoSmall")]
         BoundingBox DynamicSforzandoSmall { get; set; }
 
-        [JsonProperty("dynamicSforzato")]
+        [DataMember(Name="dynamicSforzato")]
         BoundingBox DynamicSforzato { get; set; }
 
-        [JsonProperty("dynamicSforzatoFF")]
+        [DataMember(Name="dynamicSforzatoFF")]
         BoundingBox DynamicSforzatoFf { get; set; }
 
-        [JsonProperty("dynamicSforzatoPiano")]
+        [DataMember(Name="dynamicSforzatoPiano")]
         BoundingBox DynamicSforzatoPiano { get; set; }
 
-        [JsonProperty("dynamicZ")]
+        [DataMember(Name="dynamicZ")]
         BoundingBox DynamicZ { get; set; }
 
-        [JsonProperty("dynamicZSmall")]
+        [DataMember(Name="dynamicZSmall")]
         BoundingBox DynamicZSmall { get; set; }
 
-        [JsonProperty("elecAudioChannelsEight")]
+        [DataMember(Name="elecAudioChannelsEight")]
         BoundingBox ElecAudioChannelsEight { get; set; }
 
-        [JsonProperty("elecAudioChannelsFive")]
+        [DataMember(Name="elecAudioChannelsFive")]
         BoundingBox ElecAudioChannelsFive { get; set; }
 
-        [JsonProperty("elecAudioChannelsFour")]
+        [DataMember(Name="elecAudioChannelsFour")]
         BoundingBox ElecAudioChannelsFour { get; set; }
 
-        [JsonProperty("elecAudioChannelsOne")]
+        [DataMember(Name="elecAudioChannelsOne")]
         BoundingBox ElecAudioChannelsOne { get; set; }
 
-        [JsonProperty("elecAudioChannelsSeven")]
+        [DataMember(Name="elecAudioChannelsSeven")]
         BoundingBox ElecAudioChannelsSeven { get; set; }
 
-        [JsonProperty("elecAudioChannelsSix")]
+        [DataMember(Name="elecAudioChannelsSix")]
         BoundingBox ElecAudioChannelsSix { get; set; }
 
-        [JsonProperty("elecAudioChannelsThreeFrontal")]
+        [DataMember(Name="elecAudioChannelsThreeFrontal")]
         BoundingBox ElecAudioChannelsThreeFrontal { get; set; }
 
-        [JsonProperty("elecAudioChannelsThreeSurround")]
+        [DataMember(Name="elecAudioChannelsThreeSurround")]
         BoundingBox ElecAudioChannelsThreeSurround { get; set; }
 
-        [JsonProperty("elecAudioChannelsTwo")]
+        [DataMember(Name="elecAudioChannelsTwo")]
         BoundingBox ElecAudioChannelsTwo { get; set; }
 
-        [JsonProperty("elecAudioIn")]
+        [DataMember(Name="elecAudioIn")]
         BoundingBox ElecAudioIn { get; set; }
 
-        [JsonProperty("elecAudioMono")]
+        [DataMember(Name="elecAudioMono")]
         BoundingBox ElecAudioMono { get; set; }
 
-        [JsonProperty("elecAudioOut")]
+        [DataMember(Name="elecAudioOut")]
         BoundingBox ElecAudioOut { get; set; }
 
-        [JsonProperty("elecAudioStereo")]
+        [DataMember(Name="elecAudioStereo")]
         BoundingBox ElecAudioStereo { get; set; }
 
-        [JsonProperty("elecCamera")]
+        [DataMember(Name="elecCamera")]
         BoundingBox ElecCamera { get; set; }
 
-        [JsonProperty("elecDataIn")]
+        [DataMember(Name="elecDataIn")]
         BoundingBox ElecDataIn { get; set; }
 
-        [JsonProperty("elecDataOut")]
+        [DataMember(Name="elecDataOut")]
         BoundingBox ElecDataOut { get; set; }
 
-        [JsonProperty("elecDisc")]
+        [DataMember(Name="elecDisc")]
         Dictionary<string, long[]> ElecDisc { get; set; }
 
-        [JsonProperty("elecDownload")]
+        [DataMember(Name="elecDownload")]
         BoundingBox ElecDownload { get; set; }
 
-        [JsonProperty("elecEject")]
+        [DataMember(Name="elecEject")]
         BoundingBox ElecEject { get; set; }
 
-        [JsonProperty("elecFastForward")]
+        [DataMember(Name="elecFastForward")]
         BoundingBox ElecFastForward { get; set; }
 
-        [JsonProperty("elecHeadphones")]
+        [DataMember(Name="elecHeadphones")]
         BoundingBox ElecHeadphones { get; set; }
 
-        [JsonProperty("elecHeadset")]
+        [DataMember(Name="elecHeadset")]
         BoundingBox ElecHeadset { get; set; }
 
-        [JsonProperty("elecLineIn")]
+        [DataMember(Name="elecLineIn")]
         BoundingBox ElecLineIn { get; set; }
 
-        [JsonProperty("elecLineOut")]
+        [DataMember(Name="elecLineOut")]
         BoundingBox ElecLineOut { get; set; }
 
-        [JsonProperty("elecLoop")]
+        [DataMember(Name="elecLoop")]
         BoundingBox ElecLoop { get; set; }
 
-        [JsonProperty("elecLoudspeaker")]
+        [DataMember(Name="elecLoudspeaker")]
         BoundingBox ElecLoudspeaker { get; set; }
 
-        [JsonProperty("elecMIDIController0")]
+        [DataMember(Name="elecMIDIController0")]
         BoundingBox ElecMidiController0 { get; set; }
 
-        [JsonProperty("elecMIDIController100")]
+        [DataMember(Name="elecMIDIController100")]
         BoundingBox ElecMidiController100 { get; set; }
 
-        [JsonProperty("elecMIDIController20")]
+        [DataMember(Name="elecMIDIController20")]
         BoundingBox ElecMidiController20 { get; set; }
 
-        [JsonProperty("elecMIDIController40")]
+        [DataMember(Name="elecMIDIController40")]
         BoundingBox ElecMidiController40 { get; set; }
 
-        [JsonProperty("elecMIDIController60")]
+        [DataMember(Name="elecMIDIController60")]
         BoundingBox ElecMidiController60 { get; set; }
 
-        [JsonProperty("elecMIDIController80")]
+        [DataMember(Name="elecMIDIController80")]
         BoundingBox ElecMidiController80 { get; set; }
 
-        [JsonProperty("elecMIDIIn")]
+        [DataMember(Name="elecMIDIIn")]
         BoundingBox ElecMidiIn { get; set; }
 
-        [JsonProperty("elecMIDIOut")]
+        [DataMember(Name="elecMIDIOut")]
         BoundingBox ElecMidiOut { get; set; }
 
-        [JsonProperty("elecMicrophone")]
+        [DataMember(Name="elecMicrophone")]
         BoundingBox ElecMicrophone { get; set; }
 
-        [JsonProperty("elecMicrophoneMute")]
+        [DataMember(Name="elecMicrophoneMute")]
         BoundingBox ElecMicrophoneMute { get; set; }
 
-        [JsonProperty("elecMicrophoneUnmute")]
+        [DataMember(Name="elecMicrophoneUnmute")]
         BoundingBox ElecMicrophoneUnmute { get; set; }
 
-        [JsonProperty("elecMixingConsole")]
+        [DataMember(Name="elecMixingConsole")]
         BoundingBox ElecMixingConsole { get; set; }
 
-        [JsonProperty("elecMonitor")]
+        [DataMember(Name="elecMonitor")]
         BoundingBox ElecMonitor { get; set; }
 
-        [JsonProperty("elecMute")]
+        [DataMember(Name="elecMute")]
         BoundingBox ElecMute { get; set; }
 
-        [JsonProperty("elecPause")]
+        [DataMember(Name="elecPause")]
         BoundingBox ElecPause { get; set; }
 
-        [JsonProperty("elecPlay")]
+        [DataMember(Name="elecPlay")]
         BoundingBox ElecPlay { get; set; }
 
-        [JsonProperty("elecPowerOnOff")]
+        [DataMember(Name="elecPowerOnOff")]
         BoundingBox ElecPowerOnOff { get; set; }
 
-        [JsonProperty("elecProjector")]
+        [DataMember(Name="elecProjector")]
         BoundingBox ElecProjector { get; set; }
 
-        [JsonProperty("elecReplay")]
+        [DataMember(Name="elecReplay")]
         BoundingBox ElecReplay { get; set; }
 
-        [JsonProperty("elecRewind")]
+        [DataMember(Name="elecRewind")]
         BoundingBox ElecRewind { get; set; }
 
-        [JsonProperty("elecShuffle")]
+        [DataMember(Name="elecShuffle")]
         BoundingBox ElecShuffle { get; set; }
 
-        [JsonProperty("elecSkipBackwards")]
+        [DataMember(Name="elecSkipBackwards")]
         BoundingBox ElecSkipBackwards { get; set; }
 
-        [JsonProperty("elecSkipForwards")]
+        [DataMember(Name="elecSkipForwards")]
         BoundingBox ElecSkipForwards { get; set; }
 
-        [JsonProperty("elecStop")]
+        [DataMember(Name="elecStop")]
         BoundingBox ElecStop { get; set; }
 
-        [JsonProperty("elecTape")]
+        [DataMember(Name="elecTape")]
         BoundingBox ElecTape { get; set; }
 
-        [JsonProperty("elecUSB")]
+        [DataMember(Name="elecUSB")]
         BoundingBox ElecUsb { get; set; }
 
-        [JsonProperty("elecUnmute")]
+        [DataMember(Name="elecUnmute")]
         BoundingBox ElecUnmute { get; set; }
 
-        [JsonProperty("elecUpload")]
+        [DataMember(Name="elecUpload")]
         BoundingBox ElecUpload { get; set; }
 
-        [JsonProperty("elecVideoCamera")]
+        [DataMember(Name="elecVideoCamera")]
         BoundingBox ElecVideoCamera { get; set; }
 
-        [JsonProperty("elecVideoIn")]
+        [DataMember(Name="elecVideoIn")]
         BoundingBox ElecVideoIn { get; set; }
 
-        [JsonProperty("elecVideoOut")]
+        [DataMember(Name="elecVideoOut")]
         BoundingBox ElecVideoOut { get; set; }
 
-        [JsonProperty("elecVolumeFader")]
+        [DataMember(Name="elecVolumeFader")]
         BoundingBox ElecVolumeFader { get; set; }
 
-        [JsonProperty("elecVolumeFaderThumb")]
+        [DataMember(Name="elecVolumeFaderThumb")]
         BoundingBox ElecVolumeFaderThumb { get; set; }
 
-        [JsonProperty("elecVolumeLevel0")]
+        [DataMember(Name="elecVolumeLevel0")]
         BoundingBox ElecVolumeLevel0 { get; set; }
 
-        [JsonProperty("elecVolumeLevel100")]
+        [DataMember(Name="elecVolumeLevel100")]
         BoundingBox ElecVolumeLevel100 { get; set; }
 
-        [JsonProperty("elecVolumeLevel20")]
+        [DataMember(Name="elecVolumeLevel20")]
         BoundingBox ElecVolumeLevel20 { get; set; }
 
-        [JsonProperty("elecVolumeLevel40")]
+        [DataMember(Name="elecVolumeLevel40")]
         BoundingBox ElecVolumeLevel40 { get; set; }
 
-        [JsonProperty("elecVolumeLevel60")]
+        [DataMember(Name="elecVolumeLevel60")]
         BoundingBox ElecVolumeLevel60 { get; set; }
 
-        [JsonProperty("elecVolumeLevel80")]
+        [DataMember(Name="elecVolumeLevel80")]
         BoundingBox ElecVolumeLevel80 { get; set; }
 
-        [JsonProperty("fClef")]
+        [DataMember(Name="fClef")]
         BoundingBox FClef { get; set; }
 
-        [JsonProperty("fClef15ma")]
+        [DataMember(Name="fClef15ma")]
         BoundingBox FClef15Ma { get; set; }
 
-        [JsonProperty("fClef15mb")]
+        [DataMember(Name="fClef15mb")]
         BoundingBox FClef15Mb { get; set; }
 
-        [JsonProperty("fClef19thCentury")]
+        [DataMember(Name="fClef19thCentury")]
         BoundingBox FClef19ThCentury { get; set; }
 
-        [JsonProperty("fClef5Below")]
+        [DataMember(Name="fClef5Below")]
         BoundingBox FClef5Below { get; set; }
 
-        [JsonProperty("fClef8va")]
+        [DataMember(Name="fClef8va")]
         BoundingBox FClef8Va { get; set; }
 
-        [JsonProperty("fClef8vb")]
+        [DataMember(Name="fClef8vb")]
         BoundingBox FClef8Vb { get; set; }
 
-        [JsonProperty("fClefArrowDown")]
+        [DataMember(Name="fClefArrowDown")]
         BoundingBox FClefArrowDown { get; set; }
 
-        [JsonProperty("fClefArrowUp")]
+        [DataMember(Name="fClefArrowUp")]
         BoundingBox FClefArrowUp { get; set; }
 
-        [JsonProperty("fClefChange")]
+        [DataMember(Name="fClefChange")]
         BoundingBox FClefChange { get; set; }
 
-        [JsonProperty("fClefFrench")]
+        [DataMember(Name="fClefFrench")]
         BoundingBox FClefFrench { get; set; }
 
-        [JsonProperty("fClefReversed")]
+        [DataMember(Name="fClefReversed")]
         BoundingBox FClefReversed { get; set; }
 
-        [JsonProperty("fClefSmall")]
+        [DataMember(Name="fClefSmall")]
         BoundingBox FClefSmall { get; set; }
 
-        [JsonProperty("fClefTurned")]
+        [DataMember(Name="fClefTurned")]
         BoundingBox FClefTurned { get; set; }
 
-        [JsonProperty("fermataAbove")]
+        [DataMember(Name="fermataAbove")]
         BoundingBox FermataAbove { get; set; }
 
-        [JsonProperty("fermataBelow")]
+        [DataMember(Name="fermataBelow")]
         BoundingBox FermataBelow { get; set; }
 
-        [JsonProperty("fermataLongAbove")]
+        [DataMember(Name="fermataLongAbove")]
         BoundingBox FermataLongAbove { get; set; }
 
-        [JsonProperty("fermataLongBelow")]
+        [DataMember(Name="fermataLongBelow")]
         BoundingBox FermataLongBelow { get; set; }
 
-        [JsonProperty("fermataLongHenzeAbove")]
+        [DataMember(Name="fermataLongHenzeAbove")]
         BoundingBox FermataLongHenzeAbove { get; set; }
 
-        [JsonProperty("fermataLongHenzeBelow")]
+        [DataMember(Name="fermataLongHenzeBelow")]
         BoundingBox FermataLongHenzeBelow { get; set; }
 
-        [JsonProperty("fermataShortAbove")]
+        [DataMember(Name="fermataShortAbove")]
         BoundingBox FermataShortAbove { get; set; }
 
-        [JsonProperty("fermataShortBelow")]
+        [DataMember(Name="fermataShortBelow")]
         BoundingBox FermataShortBelow { get; set; }
 
-        [JsonProperty("fermataShortHenzeAbove")]
+        [DataMember(Name="fermataShortHenzeAbove")]
         BoundingBox FermataShortHenzeAbove { get; set; }
 
-        [JsonProperty("fermataShortHenzeBelow")]
+        [DataMember(Name="fermataShortHenzeBelow")]
         BoundingBox FermataShortHenzeBelow { get; set; }
 
-        [JsonProperty("fermataVeryLongAbove")]
+        [DataMember(Name="fermataVeryLongAbove")]
         BoundingBox FermataVeryLongAbove { get; set; }
 
-        [JsonProperty("fermataVeryLongBelow")]
+        [DataMember(Name="fermataVeryLongBelow")]
         BoundingBox FermataVeryLongBelow { get; set; }
 
-        [JsonProperty("fermataVeryShortAbove")]
+        [DataMember(Name="fermataVeryShortAbove")]
         BoundingBox FermataVeryShortAbove { get; set; }
 
-        [JsonProperty("fermataVeryShortBelow")]
+        [DataMember(Name="fermataVeryShortBelow")]
         BoundingBox FermataVeryShortBelow { get; set; }
 
-        [JsonProperty("figbass0")]
+        [DataMember(Name="figbass0")]
         BoundingBox Figbass0 { get; set; }
 
-        [JsonProperty("figbass1")]
+        [DataMember(Name="figbass1")]
         BoundingBox Figbass1 { get; set; }
 
-        [JsonProperty("figbass2")]
+        [DataMember(Name="figbass2")]
         BoundingBox Figbass2 { get; set; }
 
-        [JsonProperty("figbass2Raised")]
+        [DataMember(Name="figbass2Raised")]
         BoundingBox Figbass2Raised { get; set; }
 
-        [JsonProperty("figbass3")]
+        [DataMember(Name="figbass3")]
         BoundingBox Figbass3 { get; set; }
 
-        [JsonProperty("figbass4")]
+        [DataMember(Name="figbass4")]
         BoundingBox Figbass4 { get; set; }
 
-        [JsonProperty("figbass4Raised")]
+        [DataMember(Name="figbass4Raised")]
         BoundingBox Figbass4Raised { get; set; }
 
-        [JsonProperty("figbass5")]
+        [DataMember(Name="figbass5")]
         BoundingBox Figbass5 { get; set; }
 
-        [JsonProperty("figbass5Raised1")]
+        [DataMember(Name="figbass5Raised1")]
         BoundingBox Figbass5Raised1 { get; set; }
 
-        [JsonProperty("figbass5Raised2")]
+        [DataMember(Name="figbass5Raised2")]
         BoundingBox Figbass5Raised2 { get; set; }
 
-        [JsonProperty("figbass5Raised3")]
+        [DataMember(Name="figbass5Raised3")]
         BoundingBox Figbass5Raised3 { get; set; }
 
-        [JsonProperty("figbass6")]
+        [DataMember(Name="figbass6")]
         BoundingBox Figbass6 { get; set; }
 
-        [JsonProperty("figbass6Raised")]
+        [DataMember(Name="figbass6Raised")]
         BoundingBox Figbass6Raised { get; set; }
 
-        [JsonProperty("figbass6Raised2")]
+        [DataMember(Name="figbass6Raised2")]
         BoundingBox Figbass6Raised2 { get; set; }
 
-        [JsonProperty("figbass7")]
+        [DataMember(Name="figbass7")]
         BoundingBox Figbass7 { get; set; }
 
-        [JsonProperty("figbass7Diminished")]
+        [DataMember(Name="figbass7Diminished")]
         BoundingBox Figbass7Diminished { get; set; }
 
-        [JsonProperty("figbass7Raised1")]
+        [DataMember(Name="figbass7Raised1")]
         BoundingBox Figbass7Raised1 { get; set; }
 
-        [JsonProperty("figbass7Raised2")]
+        [DataMember(Name="figbass7Raised2")]
         BoundingBox Figbass7Raised2 { get; set; }
 
-        [JsonProperty("figbass8")]
+        [DataMember(Name="figbass8")]
         BoundingBox Figbass8 { get; set; }
 
-        [JsonProperty("figbass9")]
+        [DataMember(Name="figbass9")]
         BoundingBox Figbass9 { get; set; }
 
-        [JsonProperty("figbass9Raised")]
+        [DataMember(Name="figbass9Raised")]
         BoundingBox Figbass9Raised { get; set; }
 
-        [JsonProperty("figbassBracketLeft")]
+        [DataMember(Name="figbassBracketLeft")]
         BoundingBox FigbassBracketLeft { get; set; }
 
-        [JsonProperty("figbassBracketRight")]
+        [DataMember(Name="figbassBracketRight")]
         BoundingBox FigbassBracketRight { get; set; }
 
-        [JsonProperty("figbassCombiningLowering")]
+        [DataMember(Name="figbassCombiningLowering")]
         BoundingBox FigbassCombiningLowering { get; set; }
 
-        [JsonProperty("figbassCombiningRaising")]
+        [DataMember(Name="figbassCombiningRaising")]
         BoundingBox FigbassCombiningRaising { get; set; }
 
-        [JsonProperty("figbassDoubleFlat")]
+        [DataMember(Name="figbassDoubleFlat")]
         BoundingBox FigbassDoubleFlat { get; set; }
 
-        [JsonProperty("figbassDoubleSharp")]
+        [DataMember(Name="figbassDoubleSharp")]
         BoundingBox FigbassDoubleSharp { get; set; }
 
-        [JsonProperty("figbassFlat")]
+        [DataMember(Name="figbassFlat")]
         BoundingBox FigbassFlat { get; set; }
 
-        [JsonProperty("figbassNatural")]
+        [DataMember(Name="figbassNatural")]
         BoundingBox FigbassNatural { get; set; }
 
-        [JsonProperty("figbassParensLeft")]
+        [DataMember(Name="figbassParensLeft")]
         BoundingBox FigbassParensLeft { get; set; }
 
-        [JsonProperty("figbassParensRight")]
+        [DataMember(Name="figbassParensRight")]
         BoundingBox FigbassParensRight { get; set; }
 
-        [JsonProperty("figbassPlus")]
+        [DataMember(Name="figbassPlus")]
         BoundingBox FigbassPlus { get; set; }
 
-        [JsonProperty("figbassSharp")]
+        [DataMember(Name="figbassSharp")]
         BoundingBox FigbassSharp { get; set; }
 
-        [JsonProperty("fingering0")]
+        [DataMember(Name="fingering0")]
         BoundingBox Fingering0 { get; set; }
 
-        [JsonProperty("fingering1")]
+        [DataMember(Name="fingering1")]
         BoundingBox Fingering1 { get; set; }
 
-        [JsonProperty("fingering2")]
+        [DataMember(Name="fingering2")]
         BoundingBox Fingering2 { get; set; }
 
-        [JsonProperty("fingering3")]
+        [DataMember(Name="fingering3")]
         BoundingBox Fingering3 { get; set; }
 
-        [JsonProperty("fingering4")]
+        [DataMember(Name="fingering4")]
         BoundingBox Fingering4 { get; set; }
 
-        [JsonProperty("fingering5")]
+        [DataMember(Name="fingering5")]
         BoundingBox Fingering5 { get; set; }
 
-        [JsonProperty("fingeringALower")]
+        [DataMember(Name="fingeringALower")]
         BoundingBox FingeringALower { get; set; }
 
-        [JsonProperty("fingeringCLower")]
+        [DataMember(Name="fingeringCLower")]
         BoundingBox FingeringCLower { get; set; }
 
-        [JsonProperty("fingeringELower")]
+        [DataMember(Name="fingeringELower")]
         BoundingBox FingeringELower { get; set; }
 
-        [JsonProperty("fingeringILower")]
+        [DataMember(Name="fingeringILower")]
         BoundingBox FingeringILower { get; set; }
 
-        [JsonProperty("fingeringMLower")]
+        [DataMember(Name="fingeringMLower")]
         BoundingBox FingeringMLower { get; set; }
 
-        [JsonProperty("fingeringMultipleNotes")]
+        [DataMember(Name="fingeringMultipleNotes")]
         BoundingBox FingeringMultipleNotes { get; set; }
 
-        [JsonProperty("fingeringOLower")]
+        [DataMember(Name="fingeringOLower")]
         BoundingBox FingeringOLower { get; set; }
 
-        [JsonProperty("fingeringPLower")]
+        [DataMember(Name="fingeringPLower")]
         BoundingBox FingeringPLower { get; set; }
 
-        [JsonProperty("fingeringSubstitutionAbove")]
+        [DataMember(Name="fingeringSubstitutionAbove")]
         BoundingBox FingeringSubstitutionAbove { get; set; }
 
-        [JsonProperty("fingeringSubstitutionBelow")]
+        [DataMember(Name="fingeringSubstitutionBelow")]
         BoundingBox FingeringSubstitutionBelow { get; set; }
 
-        [JsonProperty("fingeringSubstitutionDash")]
+        [DataMember(Name="fingeringSubstitutionDash")]
         BoundingBox FingeringSubstitutionDash { get; set; }
 
-        [JsonProperty("fingeringTLower")]
+        [DataMember(Name="fingeringTLower")]
         BoundingBox FingeringTLower { get; set; }
 
-        [JsonProperty("fingeringTUpper")]
+        [DataMember(Name="fingeringTUpper")]
         BoundingBox FingeringTUpper { get; set; }
 
-        [JsonProperty("fingeringXLower")]
+        [DataMember(Name="fingeringXLower")]
         BoundingBox FingeringXLower { get; set; }
 
-        [JsonProperty("flag1024thDown")]
+        [DataMember(Name="flag1024thDown")]
         BoundingBox Flag1024ThDown { get; set; }
 
-        [JsonProperty("flag1024thDownSmall")]
+        [DataMember(Name="flag1024thDownSmall")]
         BoundingBox Flag1024ThDownSmall { get; set; }
 
-        [JsonProperty("flag1024thDownStraight")]
+        [DataMember(Name="flag1024thDownStraight")]
         BoundingBox Flag1024ThDownStraight { get; set; }
 
-        [JsonProperty("flag1024thUp")]
+        [DataMember(Name="flag1024thUp")]
         BoundingBox Flag1024ThUp { get; set; }
 
-        [JsonProperty("flag1024thUpShort")]
+        [DataMember(Name="flag1024thUpShort")]
         BoundingBox Flag1024ThUpShort { get; set; }
 
-        [JsonProperty("flag1024thUpSmall")]
+        [DataMember(Name="flag1024thUpSmall")]
         BoundingBox Flag1024ThUpSmall { get; set; }
 
-        [JsonProperty("flag1024thUpStraight")]
+        [DataMember(Name="flag1024thUpStraight")]
         BoundingBox Flag1024ThUpStraight { get; set; }
 
-        [JsonProperty("flag128thDown")]
+        [DataMember(Name="flag128thDown")]
         BoundingBox Flag128ThDown { get; set; }
 
-        [JsonProperty("flag128thDownSmall")]
+        [DataMember(Name="flag128thDownSmall")]
         BoundingBox Flag128ThDownSmall { get; set; }
 
-        [JsonProperty("flag128thDownStraight")]
+        [DataMember(Name="flag128thDownStraight")]
         BoundingBox Flag128ThDownStraight { get; set; }
 
-        [JsonProperty("flag128thUp")]
+        [DataMember(Name="flag128thUp")]
         BoundingBox Flag128ThUp { get; set; }
 
-        [JsonProperty("flag128thUpShort")]
+        [DataMember(Name="flag128thUpShort")]
         BoundingBox Flag128ThUpShort { get; set; }
 
-        [JsonProperty("flag128thUpSmall")]
+        [DataMember(Name="flag128thUpSmall")]
         BoundingBox Flag128ThUpSmall { get; set; }
 
-        [JsonProperty("flag128thUpStraight")]
+        [DataMember(Name="flag128thUpStraight")]
         BoundingBox Flag128ThUpStraight { get; set; }
 
-        [JsonProperty("flag16thDown")]
+        [DataMember(Name="flag16thDown")]
         BoundingBox Flag16ThDown { get; set; }
 
-        [JsonProperty("flag16thDownSmall")]
+        [DataMember(Name="flag16thDownSmall")]
         BoundingBox Flag16ThDownSmall { get; set; }
 
-        [JsonProperty("flag16thDownStraight")]
+        [DataMember(Name="flag16thDownStraight")]
         BoundingBox Flag16ThDownStraight { get; set; }
 
-        [JsonProperty("flag16thUp")]
+        [DataMember(Name="flag16thUp")]
         BoundingBox Flag16ThUp { get; set; }
 
-        [JsonProperty("flag16thUpShort")]
+        [DataMember(Name="flag16thUpShort")]
         BoundingBox Flag16ThUpShort { get; set; }
 
-        [JsonProperty("flag16thUpSmall")]
+        [DataMember(Name="flag16thUpSmall")]
         BoundingBox Flag16ThUpSmall { get; set; }
 
-        [JsonProperty("flag16thUpStraight")]
+        [DataMember(Name="flag16thUpStraight")]
         BoundingBox Flag16ThUpStraight { get; set; }
 
-        [JsonProperty("flag256thDown")]
+        [DataMember(Name="flag256thDown")]
         BoundingBox Flag256ThDown { get; set; }
 
-        [JsonProperty("flag256thDownSmall")]
+        [DataMember(Name="flag256thDownSmall")]
         BoundingBox Flag256ThDownSmall { get; set; }
 
-        [JsonProperty("flag256thDownStraight")]
+        [DataMember(Name="flag256thDownStraight")]
         BoundingBox Flag256ThDownStraight { get; set; }
 
-        [JsonProperty("flag256thUp")]
+        [DataMember(Name="flag256thUp")]
         BoundingBox Flag256ThUp { get; set; }
 
-        [JsonProperty("flag256thUpShort")]
+        [DataMember(Name="flag256thUpShort")]
         BoundingBox Flag256ThUpShort { get; set; }
 
-        [JsonProperty("flag256thUpSmall")]
+        [DataMember(Name="flag256thUpSmall")]
         BoundingBox Flag256ThUpSmall { get; set; }
 
-        [JsonProperty("flag256thUpStraight")]
+        [DataMember(Name="flag256thUpStraight")]
         BoundingBox Flag256ThUpStraight { get; set; }
 
-        [JsonProperty("flag32ndDown")]
+        [DataMember(Name="flag32ndDown")]
         BoundingBox Flag32NdDown { get; set; }
 
-        [JsonProperty("flag32ndDownSmall")]
+        [DataMember(Name="flag32ndDownSmall")]
         BoundingBox Flag32NdDownSmall { get; set; }
 
-        [JsonProperty("flag32ndDownStraight")]
+        [DataMember(Name="flag32ndDownStraight")]
         BoundingBox Flag32NdDownStraight { get; set; }
 
-        [JsonProperty("flag32ndUp")]
+        [DataMember(Name="flag32ndUp")]
         BoundingBox Flag32NdUp { get; set; }
 
-        [JsonProperty("flag32ndUpShort")]
+        [DataMember(Name="flag32ndUpShort")]
         BoundingBox Flag32NdUpShort { get; set; }
 
-        [JsonProperty("flag32ndUpSmall")]
+        [DataMember(Name="flag32ndUpSmall")]
         BoundingBox Flag32NdUpSmall { get; set; }
 
-        [JsonProperty("flag32ndUpStraight")]
+        [DataMember(Name="flag32ndUpStraight")]
         BoundingBox Flag32NdUpStraight { get; set; }
 
-        [JsonProperty("flag512thDown")]
+        [DataMember(Name="flag512thDown")]
         BoundingBox Flag512ThDown { get; set; }
 
-        [JsonProperty("flag512thDownSmall")]
+        [DataMember(Name="flag512thDownSmall")]
         BoundingBox Flag512ThDownSmall { get; set; }
 
-        [JsonProperty("flag512thDownStraight")]
+        [DataMember(Name="flag512thDownStraight")]
         BoundingBox Flag512ThDownStraight { get; set; }
 
-        [JsonProperty("flag512thUp")]
+        [DataMember(Name="flag512thUp")]
         BoundingBox Flag512ThUp { get; set; }
 
-        [JsonProperty("flag512thUpShort")]
+        [DataMember(Name="flag512thUpShort")]
         BoundingBox Flag512ThUpShort { get; set; }
 
-        [JsonProperty("flag512thUpSmall")]
+        [DataMember(Name="flag512thUpSmall")]
         BoundingBox Flag512ThUpSmall { get; set; }
 
-        [JsonProperty("flag512thUpStraight")]
+        [DataMember(Name="flag512thUpStraight")]
         BoundingBox Flag512ThUpStraight { get; set; }
 
-        [JsonProperty("flag64thDown")]
+        [DataMember(Name="flag64thDown")]
         BoundingBox Flag64ThDown { get; set; }
 
-        [JsonProperty("flag64thDownSmall")]
+        [DataMember(Name="flag64thDownSmall")]
         BoundingBox Flag64ThDownSmall { get; set; }
 
-        [JsonProperty("flag64thDownStraight")]
+        [DataMember(Name="flag64thDownStraight")]
         BoundingBox Flag64ThDownStraight { get; set; }
 
-        [JsonProperty("flag64thUp")]
+        [DataMember(Name="flag64thUp")]
         BoundingBox Flag64ThUp { get; set; }
 
-        [JsonProperty("flag64thUpShort")]
+        [DataMember(Name="flag64thUpShort")]
         BoundingBox Flag64ThUpShort { get; set; }
 
-        [JsonProperty("flag64thUpSmall")]
+        [DataMember(Name="flag64thUpSmall")]
         BoundingBox Flag64ThUpSmall { get; set; }
 
-        [JsonProperty("flag64thUpStraight")]
+        [DataMember(Name="flag64thUpStraight")]
         BoundingBox Flag64ThUpStraight { get; set; }
 
-        [JsonProperty("flag8thDown")]
+        [DataMember(Name="flag8thDown")]
         BoundingBox Flag8ThDown { get; set; }
 
-        [JsonProperty("flag8thDownSmall")]
+        [DataMember(Name="flag8thDownSmall")]
         BoundingBox Flag8ThDownSmall { get; set; }
 
-        [JsonProperty("flag8thDownStraight")]
+        [DataMember(Name="flag8thDownStraight")]
         BoundingBox Flag8ThDownStraight { get; set; }
 
-        [JsonProperty("flag8thUp")]
+        [DataMember(Name="flag8thUp")]
         BoundingBox Flag8ThUp { get; set; }
 
-        [JsonProperty("flag8thUpShort")]
+        [DataMember(Name="flag8thUpShort")]
         BoundingBox Flag8ThUpShort { get; set; }
 
-        [JsonProperty("flag8thUpSmall")]
+        [DataMember(Name="flag8thUpSmall")]
         BoundingBox Flag8ThUpSmall { get; set; }
 
-        [JsonProperty("flag8thUpStraight")]
+        [DataMember(Name="flag8thUpStraight")]
         BoundingBox Flag8ThUpStraight { get; set; }
 
-        [JsonProperty("flagInternalDown")]
+        [DataMember(Name="flagInternalDown")]
         BoundingBox FlagInternalDown { get; set; }
 
-        [JsonProperty("flagInternalUp")]
+        [DataMember(Name="flagInternalUp")]
         BoundingBox FlagInternalUp { get; set; }
 
-        [JsonProperty("fretboard3String")]
+        [DataMember(Name="fretboard3String")]
         BoundingBox Fretboard3String { get; set; }
 
-        [JsonProperty("fretboard3StringNut")]
+        [DataMember(Name="fretboard3StringNut")]
         BoundingBox Fretboard3StringNut { get; set; }
 
-        [JsonProperty("fretboard4String")]
+        [DataMember(Name="fretboard4String")]
         BoundingBox Fretboard4String { get; set; }
 
-        [JsonProperty("fretboard4StringNut")]
+        [DataMember(Name="fretboard4StringNut")]
         BoundingBox Fretboard4StringNut { get; set; }
 
-        [JsonProperty("fretboard5String")]
+        [DataMember(Name="fretboard5String")]
         BoundingBox Fretboard5String { get; set; }
 
-        [JsonProperty("fretboard5StringNut")]
+        [DataMember(Name="fretboard5StringNut")]
         BoundingBox Fretboard5StringNut { get; set; }
 
-        [JsonProperty("fretboard6String")]
+        [DataMember(Name="fretboard6String")]
         BoundingBox Fretboard6String { get; set; }
 
-        [JsonProperty("fretboard6StringNut")]
+        [DataMember(Name="fretboard6StringNut")]
         BoundingBox Fretboard6StringNut { get; set; }
 
-        [JsonProperty("fretboardFilledCircle")]
+        [DataMember(Name="fretboardFilledCircle")]
         BoundingBox FretboardFilledCircle { get; set; }
 
-        [JsonProperty("fretboardO")]
+        [DataMember(Name="fretboardO")]
         BoundingBox FretboardO { get; set; }
 
-        [JsonProperty("fretboardX")]
+        [DataMember(Name="fretboardX")]
         BoundingBox FretboardX { get; set; }
 
-        [JsonProperty("functionAngleLeft")]
+        [DataMember(Name="functionAngleLeft")]
         BoundingBox FunctionAngleLeft { get; set; }
 
-        [JsonProperty("functionAngleRight")]
+        [DataMember(Name="functionAngleRight")]
         BoundingBox FunctionAngleRight { get; set; }
 
-        [JsonProperty("functionBracketLeft")]
+        [DataMember(Name="functionBracketLeft")]
         BoundingBox FunctionBracketLeft { get; set; }
 
-        [JsonProperty("functionBracketRight")]
+        [DataMember(Name="functionBracketRight")]
         BoundingBox FunctionBracketRight { get; set; }
 
-        [JsonProperty("functionDD")]
+        [DataMember(Name="functionDD")]
         BoundingBox FunctionDd { get; set; }
 
-        [JsonProperty("functionDLower")]
+        [DataMember(Name="functionDLower")]
         BoundingBox FunctionDLower { get; set; }
 
-        [JsonProperty("functionDUpper")]
+        [DataMember(Name="functionDUpper")]
         BoundingBox FunctionDUpper { get; set; }
 
-        [JsonProperty("functionEight")]
+        [DataMember(Name="functionEight")]
         BoundingBox FunctionEight { get; set; }
 
-        [JsonProperty("functionFUpper")]
+        [DataMember(Name="functionFUpper")]
         BoundingBox FunctionFUpper { get; set; }
 
-        [JsonProperty("functionFive")]
+        [DataMember(Name="functionFive")]
         BoundingBox FunctionFive { get; set; }
 
-        [JsonProperty("functionFour")]
+        [DataMember(Name="functionFour")]
         BoundingBox FunctionFour { get; set; }
 
-        [JsonProperty("functionGLower")]
+        [DataMember(Name="functionGLower")]
         BoundingBox FunctionGLower { get; set; }
 
-        [JsonProperty("functionGUpper")]
+        [DataMember(Name="functionGUpper")]
         BoundingBox FunctionGUpper { get; set; }
 
-        [JsonProperty("functionGreaterThan")]
+        [DataMember(Name="functionGreaterThan")]
         BoundingBox FunctionGreaterThan { get; set; }
 
-        [JsonProperty("functionILower")]
+        [DataMember(Name="functionILower")]
         BoundingBox FunctionILower { get; set; }
 
-        [JsonProperty("functionIUpper")]
+        [DataMember(Name="functionIUpper")]
         BoundingBox FunctionIUpper { get; set; }
 
-        [JsonProperty("functionKLower")]
+        [DataMember(Name="functionKLower")]
         BoundingBox FunctionKLower { get; set; }
 
-        [JsonProperty("functionKUpper")]
+        [DataMember(Name="functionKUpper")]
         BoundingBox FunctionKUpper { get; set; }
 
-        [JsonProperty("functionLLower")]
+        [DataMember(Name="functionLLower")]
         BoundingBox FunctionLLower { get; set; }
 
-        [JsonProperty("functionLUpper")]
+        [DataMember(Name="functionLUpper")]
         BoundingBox FunctionLUpper { get; set; }
 
-        [JsonProperty("functionLessThan")]
+        [DataMember(Name="functionLessThan")]
         BoundingBox FunctionLessThan { get; set; }
 
-        [JsonProperty("functionMLower")]
+        [DataMember(Name="functionMLower")]
         BoundingBox FunctionMLower { get; set; }
 
-        [JsonProperty("functionMUpper")]
+        [DataMember(Name="functionMUpper")]
         BoundingBox FunctionMUpper { get; set; }
 
-        [JsonProperty("functionMinus")]
+        [DataMember(Name="functionMinus")]
         BoundingBox FunctionMinus { get; set; }
 
-        [JsonProperty("functionNLower")]
+        [DataMember(Name="functionNLower")]
         BoundingBox FunctionNLower { get; set; }
 
-        [JsonProperty("functionNUpper")]
+        [DataMember(Name="functionNUpper")]
         BoundingBox FunctionNUpper { get; set; }
 
-        [JsonProperty("functionNUpperSuperscript")]
+        [DataMember(Name="functionNUpperSuperscript")]
         BoundingBox FunctionNUpperSuperscript { get; set; }
 
-        [JsonProperty("functionNine")]
+        [DataMember(Name="functionNine")]
         BoundingBox FunctionNine { get; set; }
 
-        [JsonProperty("functionOne")]
+        [DataMember(Name="functionOne")]
         BoundingBox FunctionOne { get; set; }
 
-        [JsonProperty("functionPLower")]
+        [DataMember(Name="functionPLower")]
         BoundingBox FunctionPLower { get; set; }
 
-        [JsonProperty("functionPUpper")]
+        [DataMember(Name="functionPUpper")]
         BoundingBox FunctionPUpper { get; set; }
 
-        [JsonProperty("functionParensLeft")]
+        [DataMember(Name="functionParensLeft")]
         BoundingBox FunctionParensLeft { get; set; }
 
-        [JsonProperty("functionParensRight")]
+        [DataMember(Name="functionParensRight")]
         BoundingBox FunctionParensRight { get; set; }
 
-        [JsonProperty("functionPlus")]
+        [DataMember(Name="functionPlus")]
         BoundingBox FunctionPlus { get; set; }
 
-        [JsonProperty("functionRLower")]
+        [DataMember(Name="functionRLower")]
         BoundingBox FunctionRLower { get; set; }
 
-        [JsonProperty("functionRepetition1")]
+        [DataMember(Name="functionRepetition1")]
         BoundingBox FunctionRepetition1 { get; set; }
 
-        [JsonProperty("functionRepetition2")]
+        [DataMember(Name="functionRepetition2")]
         BoundingBox FunctionRepetition2 { get; set; }
 
-        [JsonProperty("functionRing")]
+        [DataMember(Name="functionRing")]
         BoundingBox FunctionRing { get; set; }
 
-        [JsonProperty("functionSLower")]
+        [DataMember(Name="functionSLower")]
         BoundingBox FunctionSLower { get; set; }
 
-        [JsonProperty("functionSSLower")]
+        [DataMember(Name="functionSSLower")]
         BoundingBox FunctionSsLower { get; set; }
 
-        [JsonProperty("functionSSUpper")]
+        [DataMember(Name="functionSSUpper")]
         BoundingBox FunctionSsUpper { get; set; }
 
-        [JsonProperty("functionSUpper")]
+        [DataMember(Name="functionSUpper")]
         BoundingBox FunctionSUpper { get; set; }
 
-        [JsonProperty("functionSeven")]
+        [DataMember(Name="functionSeven")]
         BoundingBox FunctionSeven { get; set; }
 
-        [JsonProperty("functionSix")]
+        [DataMember(Name="functionSix")]
         BoundingBox FunctionSix { get; set; }
 
-        [JsonProperty("functionSlashedDD")]
+        [DataMember(Name="functionSlashedDD")]
         BoundingBox FunctionSlashedDd { get; set; }
 
-        [JsonProperty("functionTLower")]
+        [DataMember(Name="functionTLower")]
         BoundingBox FunctionTLower { get; set; }
 
-        [JsonProperty("functionTUpper")]
+        [DataMember(Name="functionTUpper")]
         BoundingBox FunctionTUpper { get; set; }
 
-        [JsonProperty("functionThree")]
+        [DataMember(Name="functionThree")]
         BoundingBox FunctionThree { get; set; }
 
-        [JsonProperty("functionTwo")]
+        [DataMember(Name="functionTwo")]
         BoundingBox FunctionTwo { get; set; }
 
-        [JsonProperty("functionVLower")]
+        [DataMember(Name="functionVLower")]
         BoundingBox FunctionVLower { get; set; }
 
-        [JsonProperty("functionVUpper")]
+        [DataMember(Name="functionVUpper")]
         BoundingBox FunctionVUpper { get; set; }
 
-        [JsonProperty("functionZero")]
+        [DataMember(Name="functionZero")]
         BoundingBox FunctionZero { get; set; }
 
-        [JsonProperty("gClef")]
+        [DataMember(Name="gClef")]
         BoundingBox GClef { get; set; }
 
-        [JsonProperty("gClef0Below")]
+        [DataMember(Name="gClef0Below")]
         BoundingBox GClef0Below { get; set; }
 
-        [JsonProperty("gClef10Below")]
+        [DataMember(Name="gClef10Below")]
         BoundingBox GClef10Below { get; set; }
 
-        [JsonProperty("gClef11Below")]
+        [DataMember(Name="gClef11Below")]
         BoundingBox GClef11Below { get; set; }
 
-        [JsonProperty("gClef12Below")]
+        [DataMember(Name="gClef12Below")]
         BoundingBox GClef12Below { get; set; }
 
-        [JsonProperty("gClef13Below")]
+        [DataMember(Name="gClef13Below")]
         BoundingBox GClef13Below { get; set; }
 
-        [JsonProperty("gClef14Below")]
+        [DataMember(Name="gClef14Below")]
         BoundingBox GClef14Below { get; set; }
 
-        [JsonProperty("gClef15Below")]
+        [DataMember(Name="gClef15Below")]
         BoundingBox GClef15Below { get; set; }
 
-        [JsonProperty("gClef15ma")]
+        [DataMember(Name="gClef15ma")]
         BoundingBox GClef15Ma { get; set; }
 
-        [JsonProperty("gClef15mb")]
+        [DataMember(Name="gClef15mb")]
         BoundingBox GClef15Mb { get; set; }
 
-        [JsonProperty("gClef16Below")]
+        [DataMember(Name="gClef16Below")]
         BoundingBox GClef16Below { get; set; }
 
-        [JsonProperty("gClef17Below")]
+        [DataMember(Name="gClef17Below")]
         BoundingBox GClef17Below { get; set; }
 
-        [JsonProperty("gClef2Above")]
+        [DataMember(Name="gClef2Above")]
         BoundingBox GClef2Above { get; set; }
 
-        [JsonProperty("gClef2Below")]
+        [DataMember(Name="gClef2Below")]
         BoundingBox GClef2Below { get; set; }
 
-        [JsonProperty("gClef3Above")]
+        [DataMember(Name="gClef3Above")]
         BoundingBox GClef3Above { get; set; }
 
-        [JsonProperty("gClef3Below")]
+        [DataMember(Name="gClef3Below")]
         BoundingBox GClef3Below { get; set; }
 
-        [JsonProperty("gClef4Above")]
+        [DataMember(Name="gClef4Above")]
         BoundingBox GClef4Above { get; set; }
 
-        [JsonProperty("gClef4Below")]
+        [DataMember(Name="gClef4Below")]
         BoundingBox GClef4Below { get; set; }
 
-        [JsonProperty("gClef5Above")]
+        [DataMember(Name="gClef5Above")]
         BoundingBox GClef5Above { get; set; }
 
-        [JsonProperty("gClef5Below")]
+        [DataMember(Name="gClef5Below")]
         BoundingBox GClef5Below { get; set; }
 
-        [JsonProperty("gClef6Above")]
+        [DataMember(Name="gClef6Above")]
         BoundingBox GClef6Above { get; set; }
 
-        [JsonProperty("gClef6Below")]
+        [DataMember(Name="gClef6Below")]
         BoundingBox GClef6Below { get; set; }
 
-        [JsonProperty("gClef7Above")]
+        [DataMember(Name="gClef7Above")]
         BoundingBox GClef7Above { get; set; }
 
-        [JsonProperty("gClef7Below")]
+        [DataMember(Name="gClef7Below")]
         BoundingBox GClef7Below { get; set; }
 
-        [JsonProperty("gClef8Above")]
+        [DataMember(Name="gClef8Above")]
         BoundingBox GClef8Above { get; set; }
 
-        [JsonProperty("gClef8Below")]
+        [DataMember(Name="gClef8Below")]
         BoundingBox GClef8Below { get; set; }
 
-        [JsonProperty("gClef8va")]
+        [DataMember(Name="gClef8va")]
         BoundingBox GClef8Va { get; set; }
 
-        [JsonProperty("gClef8vb")]
+        [DataMember(Name="gClef8vb")]
         BoundingBox GClef8Vb { get; set; }
 
-        [JsonProperty("gClef8vbCClef")]
+        [DataMember(Name="gClef8vbCClef")]
         BoundingBox GClef8VbCClef { get; set; }
 
-        [JsonProperty("gClef8vbOld")]
+        [DataMember(Name="gClef8vbOld")]
         BoundingBox GClef8VbOld { get; set; }
 
-        [JsonProperty("gClef8vbParens")]
+        [DataMember(Name="gClef8vbParens")]
         BoundingBox GClef8VbParens { get; set; }
 
-        [JsonProperty("gClef9Above")]
+        [DataMember(Name="gClef9Above")]
         BoundingBox GClef9Above { get; set; }
 
-        [JsonProperty("gClef9Below")]
+        [DataMember(Name="gClef9Below")]
         BoundingBox GClef9Below { get; set; }
 
-        [JsonProperty("gClefArrowDown")]
+        [DataMember(Name="gClefArrowDown")]
         BoundingBox GClefArrowDown { get; set; }
 
-        [JsonProperty("gClefArrowUp")]
+        [DataMember(Name="gClefArrowUp")]
         BoundingBox GClefArrowUp { get; set; }
 
-        [JsonProperty("gClefChange")]
+        [DataMember(Name="gClefChange")]
         BoundingBox GClefChange { get; set; }
 
-        [JsonProperty("gClefFlat10Below")]
+        [DataMember(Name="gClefFlat10Below")]
         BoundingBox GClefFlat10Below { get; set; }
 
-        [JsonProperty("gClefFlat11Below")]
+        [DataMember(Name="gClefFlat11Below")]
         BoundingBox GClefFlat11Below { get; set; }
 
-        [JsonProperty("gClefFlat13Below")]
+        [DataMember(Name="gClefFlat13Below")]
         BoundingBox GClefFlat13Below { get; set; }
 
-        [JsonProperty("gClefFlat14Below")]
+        [DataMember(Name="gClefFlat14Below")]
         BoundingBox GClefFlat14Below { get; set; }
 
-        [JsonProperty("gClefFlat15Below")]
+        [DataMember(Name="gClefFlat15Below")]
         BoundingBox GClefFlat15Below { get; set; }
 
-        [JsonProperty("gClefFlat16Below")]
+        [DataMember(Name="gClefFlat16Below")]
         BoundingBox GClefFlat16Below { get; set; }
 
-        [JsonProperty("gClefFlat1Below")]
+        [DataMember(Name="gClefFlat1Below")]
         BoundingBox GClefFlat1Below { get; set; }
 
-        [JsonProperty("gClefFlat2Above")]
+        [DataMember(Name="gClefFlat2Above")]
         BoundingBox GClefFlat2Above { get; set; }
 
-        [JsonProperty("gClefFlat2Below")]
+        [DataMember(Name="gClefFlat2Below")]
         BoundingBox GClefFlat2Below { get; set; }
 
-        [JsonProperty("gClefFlat3Above")]
+        [DataMember(Name="gClefFlat3Above")]
         BoundingBox GClefFlat3Above { get; set; }
 
-        [JsonProperty("gClefFlat3Below")]
+        [DataMember(Name="gClefFlat3Below")]
         BoundingBox GClefFlat3Below { get; set; }
 
-        [JsonProperty("gClefFlat4Below")]
+        [DataMember(Name="gClefFlat4Below")]
         BoundingBox GClefFlat4Below { get; set; }
 
-        [JsonProperty("gClefFlat5Above")]
+        [DataMember(Name="gClefFlat5Above")]
         BoundingBox GClefFlat5Above { get; set; }
 
-        [JsonProperty("gClefFlat6Above")]
+        [DataMember(Name="gClefFlat6Above")]
         BoundingBox GClefFlat6Above { get; set; }
 
-        [JsonProperty("gClefFlat6Below")]
+        [DataMember(Name="gClefFlat6Below")]
         BoundingBox GClefFlat6Below { get; set; }
 
-        [JsonProperty("gClefFlat7Above")]
+        [DataMember(Name="gClefFlat7Above")]
         BoundingBox GClefFlat7Above { get; set; }
 
-        [JsonProperty("gClefFlat7Below")]
+        [DataMember(Name="gClefFlat7Below")]
         BoundingBox GClefFlat7Below { get; set; }
 
-        [JsonProperty("gClefFlat8Above")]
+        [DataMember(Name="gClefFlat8Above")]
         BoundingBox GClefFlat8Above { get; set; }
 
-        [JsonProperty("gClefFlat9Above")]
+        [DataMember(Name="gClefFlat9Above")]
         BoundingBox GClefFlat9Above { get; set; }
 
-        [JsonProperty("gClefFlat9Below")]
+        [DataMember(Name="gClefFlat9Below")]
         BoundingBox GClefFlat9Below { get; set; }
 
-        [JsonProperty("gClefLigatedNumberAbove")]
+        [DataMember(Name="gClefLigatedNumberAbove")]
         BoundingBox GClefLigatedNumberAbove { get; set; }
 
-        [JsonProperty("gClefLigatedNumberBelow")]
+        [DataMember(Name="gClefLigatedNumberBelow")]
         BoundingBox GClefLigatedNumberBelow { get; set; }
 
-        [JsonProperty("gClefNat2Below")]
+        [DataMember(Name="gClefNat2Below")]
         BoundingBox GClefNat2Below { get; set; }
 
-        [JsonProperty("gClefNatural10Below")]
+        [DataMember(Name="gClefNatural10Below")]
         BoundingBox GClefNatural10Below { get; set; }
 
-        [JsonProperty("gClefNatural13Below")]
+        [DataMember(Name="gClefNatural13Below")]
         BoundingBox GClefNatural13Below { get; set; }
 
-        [JsonProperty("gClefNatural17Below")]
+        [DataMember(Name="gClefNatural17Below")]
         BoundingBox GClefNatural17Below { get; set; }
 
-        [JsonProperty("gClefNatural2Above")]
+        [DataMember(Name="gClefNatural2Above")]
         BoundingBox GClefNatural2Above { get; set; }
 
-        [JsonProperty("gClefNatural3Above")]
+        [DataMember(Name="gClefNatural3Above")]
         BoundingBox GClefNatural3Above { get; set; }
 
-        [JsonProperty("gClefNatural3Below")]
+        [DataMember(Name="gClefNatural3Below")]
         BoundingBox GClefNatural3Below { get; set; }
 
-        [JsonProperty("gClefNatural6Above")]
+        [DataMember(Name="gClefNatural6Above")]
         BoundingBox GClefNatural6Above { get; set; }
 
-        [JsonProperty("gClefNatural6Below")]
+        [DataMember(Name="gClefNatural6Below")]
         BoundingBox GClefNatural6Below { get; set; }
 
-        [JsonProperty("gClefNatural7Above")]
+        [DataMember(Name="gClefNatural7Above")]
         BoundingBox GClefNatural7Above { get; set; }
 
-        [JsonProperty("gClefNatural9Above")]
+        [DataMember(Name="gClefNatural9Above")]
         BoundingBox GClefNatural9Above { get; set; }
 
-        [JsonProperty("gClefNatural9Below")]
+        [DataMember(Name="gClefNatural9Below")]
         BoundingBox GClefNatural9Below { get; set; }
 
-        [JsonProperty("gClefReversed")]
+        [DataMember(Name="gClefReversed")]
         BoundingBox GClefReversed { get; set; }
 
-        [JsonProperty("gClefSharp12Below")]
+        [DataMember(Name="gClefSharp12Below")]
         BoundingBox GClefSharp12Below { get; set; }
 
-        [JsonProperty("gClefSharp1Above")]
+        [DataMember(Name="gClefSharp1Above")]
         BoundingBox GClefSharp1Above { get; set; }
 
-        [JsonProperty("gClefSharp4Above")]
+        [DataMember(Name="gClefSharp4Above")]
         BoundingBox GClefSharp4Above { get; set; }
 
-        [JsonProperty("gClefSharp5Below")]
+        [DataMember(Name="gClefSharp5Below")]
         BoundingBox GClefSharp5Below { get; set; }
 
-        [JsonProperty("gClefSmall")]
+        [DataMember(Name="gClefSmall")]
         BoundingBox GClefSmall { get; set; }
 
-        [JsonProperty("gClefTurned")]
+        [DataMember(Name="gClefTurned")]
         BoundingBox GClefTurned { get; set; }
 
-        [JsonProperty("glissandoDown")]
+        [DataMember(Name="glissandoDown")]
         BoundingBox GlissandoDown { get; set; }
 
-        [JsonProperty("glissandoUp")]
+        [DataMember(Name="glissandoUp")]
         BoundingBox GlissandoUp { get; set; }
 
-        [JsonProperty("graceNoteAcciaccaturaStemDown")]
+        [DataMember(Name="graceNoteAcciaccaturaStemDown")]
         BoundingBox GraceNoteAcciaccaturaStemDown { get; set; }
 
-        [JsonProperty("graceNoteAcciaccaturaStemUp")]
+        [DataMember(Name="graceNoteAcciaccaturaStemUp")]
         BoundingBox GraceNoteAcciaccaturaStemUp { get; set; }
 
-        [JsonProperty("graceNoteAppoggiaturaStemDown")]
+        [DataMember(Name="graceNoteAppoggiaturaStemDown")]
         BoundingBox GraceNoteAppoggiaturaStemDown { get; set; }
 
-        [JsonProperty("graceNoteAppoggiaturaStemUp")]
+        [DataMember(Name="graceNoteAppoggiaturaStemUp")]
         BoundingBox GraceNoteAppoggiaturaStemUp { get; set; }
 
-        [JsonProperty("graceNoteSlashStemDown")]
+        [DataMember(Name="graceNoteSlashStemDown")]
         BoundingBox GraceNoteSlashStemDown { get; set; }
 
-        [JsonProperty("graceNoteSlashStemUp")]
+        [DataMember(Name="graceNoteSlashStemUp")]
         BoundingBox GraceNoteSlashStemUp { get; set; }
 
-        [JsonProperty("guitarBarreFull")]
+        [DataMember(Name="guitarBarreFull")]
         BoundingBox GuitarBarreFull { get; set; }
 
-        [JsonProperty("guitarBarreHalf")]
+        [DataMember(Name="guitarBarreHalf")]
         BoundingBox GuitarBarreHalf { get; set; }
 
-        [JsonProperty("guitarBarreHalfHorizontalFractionSlash")]
+        [DataMember(Name="guitarBarreHalfHorizontalFractionSlash")]
         BoundingBox GuitarBarreHalfHorizontalFractionSlash { get; set; }
 
-        [JsonProperty("guitarClosePedal")]
+        [DataMember(Name="guitarClosePedal")]
         BoundingBox GuitarClosePedal { get; set; }
 
-        [JsonProperty("guitarFadeIn")]
+        [DataMember(Name="guitarFadeIn")]
         BoundingBox GuitarFadeIn { get; set; }
 
-        [JsonProperty("guitarFadeOut")]
+        [DataMember(Name="guitarFadeOut")]
         BoundingBox GuitarFadeOut { get; set; }
 
-        [JsonProperty("guitarGolpe")]
+        [DataMember(Name="guitarGolpe")]
         BoundingBox GuitarGolpe { get; set; }
 
-        [JsonProperty("guitarGolpeFlamenco")]
+        [DataMember(Name="guitarGolpeFlamenco")]
         BoundingBox GuitarGolpeFlamenco { get; set; }
 
-        [JsonProperty("guitarHalfOpenPedal")]
+        [DataMember(Name="guitarHalfOpenPedal")]
         BoundingBox GuitarHalfOpenPedal { get; set; }
 
-        [JsonProperty("guitarLeftHandTapping")]
+        [DataMember(Name="guitarLeftHandTapping")]
         BoundingBox GuitarLeftHandTapping { get; set; }
 
-        [JsonProperty("guitarOpenPedal")]
+        [DataMember(Name="guitarOpenPedal")]
         BoundingBox GuitarOpenPedal { get; set; }
 
-        [JsonProperty("guitarRightHandTapping")]
+        [DataMember(Name="guitarRightHandTapping")]
         BoundingBox GuitarRightHandTapping { get; set; }
 
-        [JsonProperty("guitarShake")]
+        [DataMember(Name="guitarShake")]
         BoundingBox GuitarShake { get; set; }
 
-        [JsonProperty("guitarString0")]
+        [DataMember(Name="guitarString0")]
         BoundingBox GuitarString0 { get; set; }
 
-        [JsonProperty("guitarString1")]
+        [DataMember(Name="guitarString1")]
         BoundingBox GuitarString1 { get; set; }
 
-        [JsonProperty("guitarString2")]
+        [DataMember(Name="guitarString2")]
         BoundingBox GuitarString2 { get; set; }
 
-        [JsonProperty("guitarString3")]
+        [DataMember(Name="guitarString3")]
         BoundingBox GuitarString3 { get; set; }
 
-        [JsonProperty("guitarString4")]
+        [DataMember(Name="guitarString4")]
         BoundingBox GuitarString4 { get; set; }
 
-        [JsonProperty("guitarString5")]
+        [DataMember(Name="guitarString5")]
         BoundingBox GuitarString5 { get; set; }
 
-        [JsonProperty("guitarString6")]
+        [DataMember(Name="guitarString6")]
         BoundingBox GuitarString6 { get; set; }
 
-        [JsonProperty("guitarString7")]
+        [DataMember(Name="guitarString7")]
         BoundingBox GuitarString7 { get; set; }
 
-        [JsonProperty("guitarString8")]
+        [DataMember(Name="guitarString8")]
         BoundingBox GuitarString8 { get; set; }
 
-        [JsonProperty("guitarString9")]
+        [DataMember(Name="guitarString9")]
         BoundingBox GuitarString9 { get; set; }
 
-        [JsonProperty("guitarStrumDown")]
+        [DataMember(Name="guitarStrumDown")]
         BoundingBox GuitarStrumDown { get; set; }
 
-        [JsonProperty("guitarStrumUp")]
+        [DataMember(Name="guitarStrumUp")]
         BoundingBox GuitarStrumUp { get; set; }
 
-        [JsonProperty("guitarVibratoBarDip")]
+        [DataMember(Name="guitarVibratoBarDip")]
         BoundingBox GuitarVibratoBarDip { get; set; }
 
-        [JsonProperty("guitarVibratoBarScoop")]
+        [DataMember(Name="guitarVibratoBarScoop")]
         BoundingBox GuitarVibratoBarScoop { get; set; }
 
-        [JsonProperty("guitarVibratoStroke")]
+        [DataMember(Name="guitarVibratoStroke")]
         BoundingBox GuitarVibratoStroke { get; set; }
 
-        [JsonProperty("guitarVolumeSwell")]
+        [DataMember(Name="guitarVolumeSwell")]
         BoundingBox GuitarVolumeSwell { get; set; }
 
-        [JsonProperty("guitarWideVibratoStroke")]
+        [DataMember(Name="guitarWideVibratoStroke")]
         BoundingBox GuitarWideVibratoStroke { get; set; }
 
-        [JsonProperty("handbellsBelltree")]
+        [DataMember(Name="handbellsBelltree")]
         BoundingBox HandbellsBelltree { get; set; }
 
-        [JsonProperty("handbellsDamp3")]
+        [DataMember(Name="handbellsDamp3")]
         BoundingBox HandbellsDamp3 { get; set; }
 
-        [JsonProperty("handbellsEcho1")]
+        [DataMember(Name="handbellsEcho1")]
         BoundingBox HandbellsEcho1 { get; set; }
 
-        [JsonProperty("handbellsEcho2")]
+        [DataMember(Name="handbellsEcho2")]
         BoundingBox HandbellsEcho2 { get; set; }
 
-        [JsonProperty("handbellsGyro")]
+        [DataMember(Name="handbellsGyro")]
         BoundingBox HandbellsGyro { get; set; }
 
-        [JsonProperty("handbellsHandMartellato")]
+        [DataMember(Name="handbellsHandMartellato")]
         BoundingBox HandbellsHandMartellato { get; set; }
 
-        [JsonProperty("handbellsMalletBellOnTable")]
+        [DataMember(Name="handbellsMalletBellOnTable")]
         BoundingBox HandbellsMalletBellOnTable { get; set; }
 
-        [JsonProperty("handbellsMalletBellSuspended")]
+        [DataMember(Name="handbellsMalletBellSuspended")]
         BoundingBox HandbellsMalletBellSuspended { get; set; }
 
-        [JsonProperty("handbellsMalletLft")]
+        [DataMember(Name="handbellsMalletLft")]
         BoundingBox HandbellsMalletLft { get; set; }
 
-        [JsonProperty("handbellsMartellato")]
+        [DataMember(Name="handbellsMartellato")]
         BoundingBox HandbellsMartellato { get; set; }
 
-        [JsonProperty("handbellsMartellatoLift")]
+        [DataMember(Name="handbellsMartellatoLift")]
         BoundingBox HandbellsMartellatoLift { get; set; }
 
-        [JsonProperty("handbellsMutedMartellato")]
+        [DataMember(Name="handbellsMutedMartellato")]
         BoundingBox HandbellsMutedMartellato { get; set; }
 
-        [JsonProperty("handbellsPluckLift")]
+        [DataMember(Name="handbellsPluckLift")]
         BoundingBox HandbellsPluckLift { get; set; }
 
-        [JsonProperty("handbellsSwing")]
+        [DataMember(Name="handbellsSwing")]
         BoundingBox HandbellsSwing { get; set; }
 
-        [JsonProperty("handbellsSwingDown")]
+        [DataMember(Name="handbellsSwingDown")]
         BoundingBox HandbellsSwingDown { get; set; }
 
-        [JsonProperty("handbellsSwingUp")]
+        [DataMember(Name="handbellsSwingUp")]
         BoundingBox HandbellsSwingUp { get; set; }
 
-        [JsonProperty("handbellsTablePairBells")]
+        [DataMember(Name="handbellsTablePairBells")]
         BoundingBox HandbellsTablePairBells { get; set; }
 
-        [JsonProperty("handbellsTableSingleBell")]
+        [DataMember(Name="handbellsTableSingleBell")]
         BoundingBox HandbellsTableSingleBell { get; set; }
 
-        [JsonProperty("harpMetalRod")]
+        [DataMember(Name="harpMetalRod")]
         BoundingBox HarpMetalRod { get; set; }
 
-        [JsonProperty("harpMetalRodAlt")]
+        [DataMember(Name="harpMetalRodAlt")]
         BoundingBox HarpMetalRodAlt { get; set; }
 
-        [JsonProperty("harpPedalCentered")]
+        [DataMember(Name="harpPedalCentered")]
         BoundingBox HarpPedalCentered { get; set; }
 
-        [JsonProperty("harpPedalDivider")]
+        [DataMember(Name="harpPedalDivider")]
         Dictionary<string, long[]> HarpPedalDivider { get; set; }
 
-        [JsonProperty("harpPedalLowered")]
+        [DataMember(Name="harpPedalLowered")]
         BoundingBox HarpPedalLowered { get; set; }
 
-        [JsonProperty("harpPedalRaised")]
+        [DataMember(Name="harpPedalRaised")]
         BoundingBox HarpPedalRaised { get; set; }
 
-        [JsonProperty("harpSalzedoAeolianAscending")]
+        [DataMember(Name="harpSalzedoAeolianAscending")]
         BoundingBox HarpSalzedoAeolianAscending { get; set; }
 
-        [JsonProperty("harpSalzedoAeolianDescending")]
+        [DataMember(Name="harpSalzedoAeolianDescending")]
         BoundingBox HarpSalzedoAeolianDescending { get; set; }
 
-        [JsonProperty("harpSalzedoDampAbove")]
+        [DataMember(Name="harpSalzedoDampAbove")]
         BoundingBox HarpSalzedoDampAbove { get; set; }
 
-        [JsonProperty("harpSalzedoDampBelow")]
+        [DataMember(Name="harpSalzedoDampBelow")]
         BoundingBox HarpSalzedoDampBelow { get; set; }
 
-        [JsonProperty("harpSalzedoDampBothHands")]
+        [DataMember(Name="harpSalzedoDampBothHands")]
         BoundingBox HarpSalzedoDampBothHands { get; set; }
 
-        [JsonProperty("harpSalzedoDampLowStrings")]
+        [DataMember(Name="harpSalzedoDampLowStrings")]
         BoundingBox HarpSalzedoDampLowStrings { get; set; }
 
-        [JsonProperty("harpSalzedoFluidicSoundsLeft")]
+        [DataMember(Name="harpSalzedoFluidicSoundsLeft")]
         BoundingBox HarpSalzedoFluidicSoundsLeft { get; set; }
 
-        [JsonProperty("harpSalzedoFluidicSoundsRight")]
+        [DataMember(Name="harpSalzedoFluidicSoundsRight")]
         BoundingBox HarpSalzedoFluidicSoundsRight { get; set; }
 
-        [JsonProperty("harpSalzedoIsolatedSounds")]
+        [DataMember(Name="harpSalzedoIsolatedSounds")]
         BoundingBox HarpSalzedoIsolatedSounds { get; set; }
 
-        [JsonProperty("harpSalzedoMetallicSounds")]
+        [DataMember(Name="harpSalzedoMetallicSounds")]
         BoundingBox HarpSalzedoMetallicSounds { get; set; }
 
-        [JsonProperty("harpSalzedoMetallicSoundsOneString")]
+        [DataMember(Name="harpSalzedoMetallicSoundsOneString")]
         BoundingBox HarpSalzedoMetallicSoundsOneString { get; set; }
 
-        [JsonProperty("harpSalzedoMuffleTotally")]
+        [DataMember(Name="harpSalzedoMuffleTotally")]
         BoundingBox HarpSalzedoMuffleTotally { get; set; }
 
-        [JsonProperty("harpSalzedoOboicFlux")]
+        [DataMember(Name="harpSalzedoOboicFlux")]
         BoundingBox HarpSalzedoOboicFlux { get; set; }
 
-        [JsonProperty("harpSalzedoPlayUpperEnd")]
+        [DataMember(Name="harpSalzedoPlayUpperEnd")]
         BoundingBox HarpSalzedoPlayUpperEnd { get; set; }
 
-        [JsonProperty("harpSalzedoSlideWithSuppleness")]
+        [DataMember(Name="harpSalzedoSlideWithSuppleness")]
         BoundingBox HarpSalzedoSlideWithSuppleness { get; set; }
 
-        [JsonProperty("harpSalzedoSnareDrum")]
+        [DataMember(Name="harpSalzedoSnareDrum")]
         Dictionary<string, long[]> HarpSalzedoSnareDrum { get; set; }
 
-        [JsonProperty("harpSalzedoTamTamSounds")]
+        [DataMember(Name="harpSalzedoTamTamSounds")]
         BoundingBox HarpSalzedoTamTamSounds { get; set; }
 
-        [JsonProperty("harpSalzedoThunderEffect")]
+        [DataMember(Name="harpSalzedoThunderEffect")]
         BoundingBox HarpSalzedoThunderEffect { get; set; }
 
-        [JsonProperty("harpSalzedoTimpanicSounds")]
+        [DataMember(Name="harpSalzedoTimpanicSounds")]
         BoundingBox HarpSalzedoTimpanicSounds { get; set; }
 
-        [JsonProperty("harpSalzedoWhistlingSounds")]
+        [DataMember(Name="harpSalzedoWhistlingSounds")]
         BoundingBox HarpSalzedoWhistlingSounds { get; set; }
 
-        [JsonProperty("harpStringNoiseStem")]
+        [DataMember(Name="harpStringNoiseStem")]
         BoundingBox HarpStringNoiseStem { get; set; }
 
-        [JsonProperty("harpTuningKey")]
+        [DataMember(Name="harpTuningKey")]
         BoundingBox HarpTuningKey { get; set; }
 
-        [JsonProperty("harpTuningKeyAlt")]
+        [DataMember(Name="harpTuningKeyAlt")]
         BoundingBox HarpTuningKeyAlt { get; set; }
 
-        [JsonProperty("harpTuningKeyGlissando")]
+        [DataMember(Name="harpTuningKeyGlissando")]
         BoundingBox HarpTuningKeyGlissando { get; set; }
 
-        [JsonProperty("harpTuningKeyHandle")]
+        [DataMember(Name="harpTuningKeyHandle")]
         BoundingBox HarpTuningKeyHandle { get; set; }
 
-        [JsonProperty("harpTuningKeyShank")]
+        [DataMember(Name="harpTuningKeyShank")]
         BoundingBox HarpTuningKeyShank { get; set; }
 
-        [JsonProperty("keyboardBebung2DotsAbove")]
+        [DataMember(Name="keyboardBebung2DotsAbove")]
         BoundingBox KeyboardBebung2DotsAbove { get; set; }
 
-        [JsonProperty("keyboardBebung2DotsBelow")]
+        [DataMember(Name="keyboardBebung2DotsBelow")]
         BoundingBox KeyboardBebung2DotsBelow { get; set; }
 
-        [JsonProperty("keyboardBebung3DotsAbove")]
+        [DataMember(Name="keyboardBebung3DotsAbove")]
         BoundingBox KeyboardBebung3DotsAbove { get; set; }
 
-        [JsonProperty("keyboardBebung3DotsBelow")]
+        [DataMember(Name="keyboardBebung3DotsBelow")]
         BoundingBox KeyboardBebung3DotsBelow { get; set; }
 
-        [JsonProperty("keyboardBebung4DotsAbove")]
+        [DataMember(Name="keyboardBebung4DotsAbove")]
         BoundingBox KeyboardBebung4DotsAbove { get; set; }
 
-        [JsonProperty("keyboardBebung4DotsBelow")]
+        [DataMember(Name="keyboardBebung4DotsBelow")]
         BoundingBox KeyboardBebung4DotsBelow { get; set; }
 
-        [JsonProperty("keyboardLeftPedalPictogram")]
+        [DataMember(Name="keyboardLeftPedalPictogram")]
         BoundingBox KeyboardLeftPedalPictogram { get; set; }
 
-        [JsonProperty("keyboardMiddlePedalPictogram")]
+        [DataMember(Name="keyboardMiddlePedalPictogram")]
         BoundingBox KeyboardMiddlePedalPictogram { get; set; }
 
-        [JsonProperty("keyboardPedalD")]
+        [DataMember(Name="keyboardPedalD")]
         BoundingBox KeyboardPedalD { get; set; }
 
-        [JsonProperty("keyboardPedalDot")]
+        [DataMember(Name="keyboardPedalDot")]
         BoundingBox KeyboardPedalDot { get; set; }
 
-        [JsonProperty("keyboardPedalE")]
+        [DataMember(Name="keyboardPedalE")]
         BoundingBox KeyboardPedalE { get; set; }
 
-        [JsonProperty("keyboardPedalHalf")]
+        [DataMember(Name="keyboardPedalHalf")]
         BoundingBox KeyboardPedalHalf { get; set; }
 
-        [JsonProperty("keyboardPedalHalf2")]
+        [DataMember(Name="keyboardPedalHalf2")]
         BoundingBox KeyboardPedalHalf2 { get; set; }
 
-        [JsonProperty("keyboardPedalHalf3")]
+        [DataMember(Name="keyboardPedalHalf3")]
         BoundingBox KeyboardPedalHalf3 { get; set; }
 
-        [JsonProperty("keyboardPedalHeel1")]
+        [DataMember(Name="keyboardPedalHeel1")]
         BoundingBox KeyboardPedalHeel1 { get; set; }
 
-        [JsonProperty("keyboardPedalHeel2")]
+        [DataMember(Name="keyboardPedalHeel2")]
         BoundingBox KeyboardPedalHeel2 { get; set; }
 
-        [JsonProperty("keyboardPedalHeel3")]
+        [DataMember(Name="keyboardPedalHeel3")]
         Dictionary<string, long[]> KeyboardPedalHeel3 { get; set; }
 
-        [JsonProperty("keyboardPedalHeelToToe")]
+        [DataMember(Name="keyboardPedalHeelToToe")]
         BoundingBox KeyboardPedalHeelToToe { get; set; }
 
-        [JsonProperty("keyboardPedalHeelToe")]
+        [DataMember(Name="keyboardPedalHeelToe")]
         BoundingBox KeyboardPedalHeelToe { get; set; }
 
-        [JsonProperty("keyboardPedalHookEnd")]
+        [DataMember(Name="keyboardPedalHookEnd")]
         BoundingBox KeyboardPedalHookEnd { get; set; }
 
-        [JsonProperty("keyboardPedalHookStart")]
+        [DataMember(Name="keyboardPedalHookStart")]
         BoundingBox KeyboardPedalHookStart { get; set; }
 
-        [JsonProperty("keyboardPedalHyphen")]
+        [DataMember(Name="keyboardPedalHyphen")]
         BoundingBox KeyboardPedalHyphen { get; set; }
 
-        [JsonProperty("keyboardPedalP")]
+        [DataMember(Name="keyboardPedalP")]
         BoundingBox KeyboardPedalP { get; set; }
 
-        [JsonProperty("keyboardPedalPed")]
+        [DataMember(Name="keyboardPedalPed")]
         BoundingBox KeyboardPedalPed { get; set; }
 
-        [JsonProperty("keyboardPedalPedNoDot")]
+        [DataMember(Name="keyboardPedalPedNoDot")]
         BoundingBox KeyboardPedalPedNoDot { get; set; }
 
-        [JsonProperty("keyboardPedalS")]
+        [DataMember(Name="keyboardPedalS")]
         BoundingBox KeyboardPedalS { get; set; }
 
-        [JsonProperty("keyboardPedalSost")]
+        [DataMember(Name="keyboardPedalSost")]
         BoundingBox KeyboardPedalSost { get; set; }
 
-        [JsonProperty("keyboardPedalSostNoDot")]
+        [DataMember(Name="keyboardPedalSostNoDot")]
         BoundingBox KeyboardPedalSostNoDot { get; set; }
 
-        [JsonProperty("keyboardPedalToe1")]
+        [DataMember(Name="keyboardPedalToe1")]
         BoundingBox KeyboardPedalToe1 { get; set; }
 
-        [JsonProperty("keyboardPedalToe2")]
+        [DataMember(Name="keyboardPedalToe2")]
         BoundingBox KeyboardPedalToe2 { get; set; }
 
-        [JsonProperty("keyboardPedalToeToHeel")]
+        [DataMember(Name="keyboardPedalToeToHeel")]
         BoundingBox KeyboardPedalToeToHeel { get; set; }
 
-        [JsonProperty("keyboardPedalUp")]
+        [DataMember(Name="keyboardPedalUp")]
         BoundingBox KeyboardPedalUp { get; set; }
 
-        [JsonProperty("keyboardPedalUpNotch")]
+        [DataMember(Name="keyboardPedalUpNotch")]
         BoundingBox KeyboardPedalUpNotch { get; set; }
 
-        [JsonProperty("keyboardPedalUpSpecial")]
+        [DataMember(Name="keyboardPedalUpSpecial")]
         BoundingBox KeyboardPedalUpSpecial { get; set; }
 
-        [JsonProperty("keyboardPlayWithLH")]
+        [DataMember(Name="keyboardPlayWithLH")]
         BoundingBox KeyboardPlayWithLh { get; set; }
 
-        [JsonProperty("keyboardPlayWithLHEnd")]
+        [DataMember(Name="keyboardPlayWithLHEnd")]
         BoundingBox KeyboardPlayWithLhEnd { get; set; }
 
-        [JsonProperty("keyboardPlayWithRH")]
+        [DataMember(Name="keyboardPlayWithRH")]
         BoundingBox KeyboardPlayWithRh { get; set; }
 
-        [JsonProperty("keyboardPlayWithRHEnd")]
+        [DataMember(Name="keyboardPlayWithRHEnd")]
         BoundingBox KeyboardPlayWithRhEnd { get; set; }
 
-        [JsonProperty("keyboardPluckInside")]
+        [DataMember(Name="keyboardPluckInside")]
         BoundingBox KeyboardPluckInside { get; set; }
 
-        [JsonProperty("keyboardRightPedalPictogram")]
+        [DataMember(Name="keyboardRightPedalPictogram")]
         BoundingBox KeyboardRightPedalPictogram { get; set; }
 
-        [JsonProperty("kievanAccidentalFlat")]
+        [DataMember(Name="kievanAccidentalFlat")]
         BoundingBox KievanAccidentalFlat { get; set; }
 
-        [JsonProperty("kievanAccidentalSharp")]
+        [DataMember(Name="kievanAccidentalSharp")]
         BoundingBox KievanAccidentalSharp { get; set; }
 
-        [JsonProperty("kievanAugmentationDot")]
+        [DataMember(Name="kievanAugmentationDot")]
         BoundingBox KievanAugmentationDot { get; set; }
 
-        [JsonProperty("kievanCClef")]
+        [DataMember(Name="kievanCClef")]
         BoundingBox KievanCClef { get; set; }
 
-        [JsonProperty("kievanEndingSymbol")]
+        [DataMember(Name="kievanEndingSymbol")]
         BoundingBox KievanEndingSymbol { get; set; }
 
-        [JsonProperty("kievanNote8thStemDown")]
+        [DataMember(Name="kievanNote8thStemDown")]
         BoundingBox KievanNote8ThStemDown { get; set; }
 
-        [JsonProperty("kievanNote8thStemUp")]
+        [DataMember(Name="kievanNote8thStemUp")]
         BoundingBox KievanNote8ThStemUp { get; set; }
 
-        [JsonProperty("kievanNoteBeam")]
+        [DataMember(Name="kievanNoteBeam")]
         BoundingBox KievanNoteBeam { get; set; }
 
-        [JsonProperty("kievanNoteHalfStaffLine")]
+        [DataMember(Name="kievanNoteHalfStaffLine")]
         BoundingBox KievanNoteHalfStaffLine { get; set; }
 
-        [JsonProperty("kievanNoteHalfStaffSpace")]
+        [DataMember(Name="kievanNoteHalfStaffSpace")]
         BoundingBox KievanNoteHalfStaffSpace { get; set; }
 
-        [JsonProperty("kievanNoteQuarterStemDown")]
+        [DataMember(Name="kievanNoteQuarterStemDown")]
         BoundingBox KievanNoteQuarterStemDown { get; set; }
 
-        [JsonProperty("kievanNoteQuarterStemUp")]
+        [DataMember(Name="kievanNoteQuarterStemUp")]
         BoundingBox KievanNoteQuarterStemUp { get; set; }
 
-        [JsonProperty("kievanNoteReciting")]
+        [DataMember(Name="kievanNoteReciting")]
         BoundingBox KievanNoteReciting { get; set; }
 
-        [JsonProperty("kievanNoteWhole")]
+        [DataMember(Name="kievanNoteWhole")]
         BoundingBox KievanNoteWhole { get; set; }
 
-        [JsonProperty("kievanNoteWholeFinal")]
+        [DataMember(Name="kievanNoteWholeFinal")]
         BoundingBox KievanNoteWholeFinal { get; set; }
 
-        [JsonProperty("kodalyHandDo")]
+        [DataMember(Name="kodalyHandDo")]
         BoundingBox KodalyHandDo { get; set; }
 
-        [JsonProperty("kodalyHandFa")]
+        [DataMember(Name="kodalyHandFa")]
         BoundingBox KodalyHandFa { get; set; }
 
-        [JsonProperty("kodalyHandLa")]
+        [DataMember(Name="kodalyHandLa")]
         BoundingBox KodalyHandLa { get; set; }
 
-        [JsonProperty("kodalyHandMi")]
+        [DataMember(Name="kodalyHandMi")]
         BoundingBox KodalyHandMi { get; set; }
 
-        [JsonProperty("kodalyHandRe")]
+        [DataMember(Name="kodalyHandRe")]
         BoundingBox KodalyHandRe { get; set; }
 
-        [JsonProperty("kodalyHandSo")]
+        [DataMember(Name="kodalyHandSo")]
         BoundingBox KodalyHandSo { get; set; }
 
-        [JsonProperty("kodalyHandTi")]
+        [DataMember(Name="kodalyHandTi")]
         BoundingBox KodalyHandTi { get; set; }
 
-        [JsonProperty("leftRepeatSmall")]
+        [DataMember(Name="leftRepeatSmall")]
         BoundingBox LeftRepeatSmall { get; set; }
 
-        [JsonProperty("legerLine")]
+        [DataMember(Name="legerLine")]
         BoundingBox LegerLine { get; set; }
 
-        [JsonProperty("legerLineNarrow")]
+        [DataMember(Name="legerLineNarrow")]
         BoundingBox LegerLineNarrow { get; set; }
 
-        [JsonProperty("legerLineWide")]
+        [DataMember(Name="legerLineWide")]
         BoundingBox LegerLineWide { get; set; }
 
-        [JsonProperty("luteBarlineEndRepeat")]
+        [DataMember(Name="luteBarlineEndRepeat")]
         BoundingBox LuteBarlineEndRepeat { get; set; }
 
-        [JsonProperty("luteBarlineFinal")]
+        [DataMember(Name="luteBarlineFinal")]
         BoundingBox LuteBarlineFinal { get; set; }
 
-        [JsonProperty("luteBarlineStartRepeat")]
+        [DataMember(Name="luteBarlineStartRepeat")]
         BoundingBox LuteBarlineStartRepeat { get; set; }
 
-        [JsonProperty("luteDuration16th")]
+        [DataMember(Name="luteDuration16th")]
         BoundingBox LuteDuration16Th { get; set; }
 
-        [JsonProperty("luteDuration32nd")]
+        [DataMember(Name="luteDuration32nd")]
         BoundingBox LuteDuration32Nd { get; set; }
 
-        [JsonProperty("luteDuration8th")]
+        [DataMember(Name="luteDuration8th")]
         BoundingBox LuteDuration8Th { get; set; }
 
-        [JsonProperty("luteDurationDoubleWhole")]
+        [DataMember(Name="luteDurationDoubleWhole")]
         BoundingBox LuteDurationDoubleWhole { get; set; }
 
-        [JsonProperty("luteDurationHalf")]
+        [DataMember(Name="luteDurationHalf")]
         BoundingBox LuteDurationHalf { get; set; }
 
-        [JsonProperty("luteDurationQuarter")]
+        [DataMember(Name="luteDurationQuarter")]
         BoundingBox LuteDurationQuarter { get; set; }
 
-        [JsonProperty("luteDurationWhole")]
+        [DataMember(Name="luteDurationWhole")]
         BoundingBox LuteDurationWhole { get; set; }
 
-        [JsonProperty("luteFingeringRHFirst")]
+        [DataMember(Name="luteFingeringRHFirst")]
         BoundingBox LuteFingeringRhFirst { get; set; }
 
-        [JsonProperty("luteFingeringRHSecond")]
+        [DataMember(Name="luteFingeringRHSecond")]
         BoundingBox LuteFingeringRhSecond { get; set; }
 
-        [JsonProperty("luteFingeringRHThird")]
+        [DataMember(Name="luteFingeringRHThird")]
         BoundingBox LuteFingeringRhThird { get; set; }
 
-        [JsonProperty("luteFingeringRHThirdAlt")]
+        [DataMember(Name="luteFingeringRHThirdAlt")]
         BoundingBox LuteFingeringRhThirdAlt { get; set; }
 
-        [JsonProperty("luteFingeringRHThumb")]
+        [DataMember(Name="luteFingeringRHThumb")]
         BoundingBox LuteFingeringRhThumb { get; set; }
 
-        [JsonProperty("luteFrench10thCourse")]
+        [DataMember(Name="luteFrench10thCourse")]
         BoundingBox LuteFrench10ThCourse { get; set; }
 
-        [JsonProperty("luteFrench10thCourseRight")]
+        [DataMember(Name="luteFrench10thCourseRight")]
         BoundingBox LuteFrench10ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench10thCourseStrikethru")]
+        [DataMember(Name="luteFrench10thCourseStrikethru")]
         BoundingBox LuteFrench10ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench10thCourseUnderline")]
+        [DataMember(Name="luteFrench10thCourseUnderline")]
         BoundingBox LuteFrench10ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrench7thCourse")]
+        [DataMember(Name="luteFrench7thCourse")]
         BoundingBox LuteFrench7ThCourse { get; set; }
 
-        [JsonProperty("luteFrench7thCourseRight")]
+        [DataMember(Name="luteFrench7thCourseRight")]
         BoundingBox LuteFrench7ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench7thCourseStrikethru")]
+        [DataMember(Name="luteFrench7thCourseStrikethru")]
         BoundingBox LuteFrench7ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench7thCourseUnderline")]
+        [DataMember(Name="luteFrench7thCourseUnderline")]
         BoundingBox LuteFrench7ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrench8thCourse")]
+        [DataMember(Name="luteFrench8thCourse")]
         BoundingBox LuteFrench8ThCourse { get; set; }
 
-        [JsonProperty("luteFrench8thCourseRight")]
+        [DataMember(Name="luteFrench8thCourseRight")]
         BoundingBox LuteFrench8ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench8thCourseStrikethru")]
+        [DataMember(Name="luteFrench8thCourseStrikethru")]
         BoundingBox LuteFrench8ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench8thCourseUnderline")]
+        [DataMember(Name="luteFrench8thCourseUnderline")]
         BoundingBox LuteFrench8ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrench9thCourse")]
+        [DataMember(Name="luteFrench9thCourse")]
         BoundingBox LuteFrench9ThCourse { get; set; }
 
-        [JsonProperty("luteFrench9thCourseRight")]
+        [DataMember(Name="luteFrench9thCourseRight")]
         BoundingBox LuteFrench9ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench9thCourseStrikethru")]
+        [DataMember(Name="luteFrench9thCourseStrikethru")]
         BoundingBox LuteFrench9ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench9thCourseUnderline")]
+        [DataMember(Name="luteFrench9thCourseUnderline")]
         BoundingBox LuteFrench9ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrenchAppoggiaturaAbove")]
+        [DataMember(Name="luteFrenchAppoggiaturaAbove")]
         BoundingBox LuteFrenchAppoggiaturaAbove { get; set; }
 
-        [JsonProperty("luteFrenchAppoggiaturaBelow")]
+        [DataMember(Name="luteFrenchAppoggiaturaBelow")]
         BoundingBox LuteFrenchAppoggiaturaBelow { get; set; }
 
-        [JsonProperty("luteFrenchFretA")]
+        [DataMember(Name="luteFrenchFretA")]
         BoundingBox LuteFrenchFretA { get; set; }
 
-        [JsonProperty("luteFrenchFretB")]
+        [DataMember(Name="luteFrenchFretB")]
         BoundingBox LuteFrenchFretB { get; set; }
 
-        [JsonProperty("luteFrenchFretC")]
+        [DataMember(Name="luteFrenchFretC")]
         BoundingBox LuteFrenchFretC { get; set; }
 
-        [JsonProperty("luteFrenchFretCAlt")]
+        [DataMember(Name="luteFrenchFretCAlt")]
         BoundingBox LuteFrenchFretCAlt { get; set; }
 
-        [JsonProperty("luteFrenchFretD")]
+        [DataMember(Name="luteFrenchFretD")]
         BoundingBox LuteFrenchFretD { get; set; }
 
-        [JsonProperty("luteFrenchFretE")]
+        [DataMember(Name="luteFrenchFretE")]
         BoundingBox LuteFrenchFretE { get; set; }
 
-        [JsonProperty("luteFrenchFretF")]
+        [DataMember(Name="luteFrenchFretF")]
         BoundingBox LuteFrenchFretF { get; set; }
 
-        [JsonProperty("luteFrenchFretG")]
+        [DataMember(Name="luteFrenchFretG")]
         BoundingBox LuteFrenchFretG { get; set; }
 
-        [JsonProperty("luteFrenchFretH")]
+        [DataMember(Name="luteFrenchFretH")]
         BoundingBox LuteFrenchFretH { get; set; }
 
-        [JsonProperty("luteFrenchFretI")]
+        [DataMember(Name="luteFrenchFretI")]
         BoundingBox LuteFrenchFretI { get; set; }
 
-        [JsonProperty("luteFrenchFretK")]
+        [DataMember(Name="luteFrenchFretK")]
         BoundingBox LuteFrenchFretK { get; set; }
 
-        [JsonProperty("luteFrenchFretL")]
+        [DataMember(Name="luteFrenchFretL")]
         BoundingBox LuteFrenchFretL { get; set; }
 
-        [JsonProperty("luteFrenchFretM")]
+        [DataMember(Name="luteFrenchFretM")]
         BoundingBox LuteFrenchFretM { get; set; }
 
-        [JsonProperty("luteFrenchFretN")]
+        [DataMember(Name="luteFrenchFretN")]
         BoundingBox LuteFrenchFretN { get; set; }
 
-        [JsonProperty("luteFrenchMordentInverted")]
+        [DataMember(Name="luteFrenchMordentInverted")]
         BoundingBox LuteFrenchMordentInverted { get; set; }
 
-        [JsonProperty("luteFrenchMordentLower")]
+        [DataMember(Name="luteFrenchMordentLower")]
         BoundingBox LuteFrenchMordentLower { get; set; }
 
-        [JsonProperty("luteFrenchMordentUpper")]
+        [DataMember(Name="luteFrenchMordentUpper")]
         BoundingBox LuteFrenchMordentUpper { get; set; }
 
-        [JsonProperty("luteGermanALower")]
+        [DataMember(Name="luteGermanALower")]
         BoundingBox LuteGermanALower { get; set; }
 
-        [JsonProperty("luteGermanAUpper")]
+        [DataMember(Name="luteGermanAUpper")]
         BoundingBox LuteGermanAUpper { get; set; }
 
-        [JsonProperty("luteGermanBLower")]
+        [DataMember(Name="luteGermanBLower")]
         BoundingBox LuteGermanBLower { get; set; }
 
-        [JsonProperty("luteGermanBUpper")]
+        [DataMember(Name="luteGermanBUpper")]
         BoundingBox LuteGermanBUpper { get; set; }
 
-        [JsonProperty("luteGermanCLower")]
+        [DataMember(Name="luteGermanCLower")]
         BoundingBox LuteGermanCLower { get; set; }
 
-        [JsonProperty("luteGermanCUpper")]
+        [DataMember(Name="luteGermanCUpper")]
         BoundingBox LuteGermanCUpper { get; set; }
 
-        [JsonProperty("luteGermanDLower")]
+        [DataMember(Name="luteGermanDLower")]
         BoundingBox LuteGermanDLower { get; set; }
 
-        [JsonProperty("luteGermanDUpper")]
+        [DataMember(Name="luteGermanDUpper")]
         BoundingBox LuteGermanDUpper { get; set; }
 
-        [JsonProperty("luteGermanELower")]
+        [DataMember(Name="luteGermanELower")]
         BoundingBox LuteGermanELower { get; set; }
 
-        [JsonProperty("luteGermanEUpper")]
+        [DataMember(Name="luteGermanEUpper")]
         BoundingBox LuteGermanEUpper { get; set; }
 
-        [JsonProperty("luteGermanFLower")]
+        [DataMember(Name="luteGermanFLower")]
         BoundingBox LuteGermanFLower { get; set; }
 
-        [JsonProperty("luteGermanFUpper")]
+        [DataMember(Name="luteGermanFUpper")]
         BoundingBox LuteGermanFUpper { get; set; }
 
-        [JsonProperty("luteGermanGLower")]
+        [DataMember(Name="luteGermanGLower")]
         BoundingBox LuteGermanGLower { get; set; }
 
-        [JsonProperty("luteGermanGUpper")]
+        [DataMember(Name="luteGermanGUpper")]
         BoundingBox LuteGermanGUpper { get; set; }
 
-        [JsonProperty("luteGermanHLower")]
+        [DataMember(Name="luteGermanHLower")]
         BoundingBox LuteGermanHLower { get; set; }
 
-        [JsonProperty("luteGermanHUpper")]
+        [DataMember(Name="luteGermanHUpper")]
         BoundingBox LuteGermanHUpper { get; set; }
 
-        [JsonProperty("luteGermanILower")]
+        [DataMember(Name="luteGermanILower")]
         BoundingBox LuteGermanILower { get; set; }
 
-        [JsonProperty("luteGermanIUpper")]
+        [DataMember(Name="luteGermanIUpper")]
         BoundingBox LuteGermanIUpper { get; set; }
 
-        [JsonProperty("luteGermanKLower")]
+        [DataMember(Name="luteGermanKLower")]
         BoundingBox LuteGermanKLower { get; set; }
 
-        [JsonProperty("luteGermanKUpper")]
+        [DataMember(Name="luteGermanKUpper")]
         BoundingBox LuteGermanKUpper { get; set; }
 
-        [JsonProperty("luteGermanLLower")]
+        [DataMember(Name="luteGermanLLower")]
         BoundingBox LuteGermanLLower { get; set; }
 
-        [JsonProperty("luteGermanLUpper")]
+        [DataMember(Name="luteGermanLUpper")]
         BoundingBox LuteGermanLUpper { get; set; }
 
-        [JsonProperty("luteGermanMLower")]
+        [DataMember(Name="luteGermanMLower")]
         BoundingBox LuteGermanMLower { get; set; }
 
-        [JsonProperty("luteGermanMUpper")]
+        [DataMember(Name="luteGermanMUpper")]
         BoundingBox LuteGermanMUpper { get; set; }
 
-        [JsonProperty("luteGermanNLower")]
+        [DataMember(Name="luteGermanNLower")]
         BoundingBox LuteGermanNLower { get; set; }
 
-        [JsonProperty("luteGermanNUpper")]
+        [DataMember(Name="luteGermanNUpper")]
         BoundingBox LuteGermanNUpper { get; set; }
 
-        [JsonProperty("luteGermanOLower")]
+        [DataMember(Name="luteGermanOLower")]
         BoundingBox LuteGermanOLower { get; set; }
 
-        [JsonProperty("luteGermanPLower")]
+        [DataMember(Name="luteGermanPLower")]
         BoundingBox LuteGermanPLower { get; set; }
 
-        [JsonProperty("luteGermanQLower")]
+        [DataMember(Name="luteGermanQLower")]
         BoundingBox LuteGermanQLower { get; set; }
 
-        [JsonProperty("luteGermanRLower")]
+        [DataMember(Name="luteGermanRLower")]
         BoundingBox LuteGermanRLower { get; set; }
 
-        [JsonProperty("luteGermanSLower")]
+        [DataMember(Name="luteGermanSLower")]
         BoundingBox LuteGermanSLower { get; set; }
 
-        [JsonProperty("luteGermanTLower")]
+        [DataMember(Name="luteGermanTLower")]
         BoundingBox LuteGermanTLower { get; set; }
 
-        [JsonProperty("luteGermanVLower")]
+        [DataMember(Name="luteGermanVLower")]
         BoundingBox LuteGermanVLower { get; set; }
 
-        [JsonProperty("luteGermanXLower")]
+        [DataMember(Name="luteGermanXLower")]
         BoundingBox LuteGermanXLower { get; set; }
 
-        [JsonProperty("luteGermanYLower")]
+        [DataMember(Name="luteGermanYLower")]
         BoundingBox LuteGermanYLower { get; set; }
 
-        [JsonProperty("luteGermanZLower")]
+        [DataMember(Name="luteGermanZLower")]
         BoundingBox LuteGermanZLower { get; set; }
 
-        [JsonProperty("luteItalianClefCSolFaUt")]
+        [DataMember(Name="luteItalianClefCSolFaUt")]
         BoundingBox LuteItalianClefCSolFaUt { get; set; }
 
-        [JsonProperty("luteItalianClefFFaUt")]
+        [DataMember(Name="luteItalianClefFFaUt")]
         BoundingBox LuteItalianClefFFaUt { get; set; }
 
-        [JsonProperty("luteItalianFret0")]
+        [DataMember(Name="luteItalianFret0")]
         BoundingBox LuteItalianFret0 { get; set; }
 
-        [JsonProperty("luteItalianFret1")]
+        [DataMember(Name="luteItalianFret1")]
         BoundingBox LuteItalianFret1 { get; set; }
 
-        [JsonProperty("luteItalianFret2")]
+        [DataMember(Name="luteItalianFret2")]
         BoundingBox LuteItalianFret2 { get; set; }
 
-        [JsonProperty("luteItalianFret3")]
+        [DataMember(Name="luteItalianFret3")]
         BoundingBox LuteItalianFret3 { get; set; }
 
-        [JsonProperty("luteItalianFret4")]
+        [DataMember(Name="luteItalianFret4")]
         BoundingBox LuteItalianFret4 { get; set; }
 
-        [JsonProperty("luteItalianFret5")]
+        [DataMember(Name="luteItalianFret5")]
         BoundingBox LuteItalianFret5 { get; set; }
 
-        [JsonProperty("luteItalianFret6")]
+        [DataMember(Name="luteItalianFret6")]
         BoundingBox LuteItalianFret6 { get; set; }
 
-        [JsonProperty("luteItalianFret7")]
+        [DataMember(Name="luteItalianFret7")]
         BoundingBox LuteItalianFret7 { get; set; }
 
-        [JsonProperty("luteItalianFret8")]
+        [DataMember(Name="luteItalianFret8")]
         BoundingBox LuteItalianFret8 { get; set; }
 
-        [JsonProperty("luteItalianFret9")]
+        [DataMember(Name="luteItalianFret9")]
         BoundingBox LuteItalianFret9 { get; set; }
 
-        [JsonProperty("luteItalianHoldFinger")]
+        [DataMember(Name="luteItalianHoldFinger")]
         BoundingBox LuteItalianHoldFinger { get; set; }
 
-        [JsonProperty("luteItalianHoldNote")]
+        [DataMember(Name="luteItalianHoldNote")]
         BoundingBox LuteItalianHoldNote { get; set; }
 
-        [JsonProperty("luteItalianReleaseFinger")]
+        [DataMember(Name="luteItalianReleaseFinger")]
         BoundingBox LuteItalianReleaseFinger { get; set; }
 
-        [JsonProperty("luteItalianTempoFast")]
+        [DataMember(Name="luteItalianTempoFast")]
         BoundingBox LuteItalianTempoFast { get; set; }
 
-        [JsonProperty("luteItalianTempoNeitherFastNorSlow")]
+        [DataMember(Name="luteItalianTempoNeitherFastNorSlow")]
         BoundingBox LuteItalianTempoNeitherFastNorSlow { get; set; }
 
-        [JsonProperty("luteItalianTempoSlow")]
+        [DataMember(Name="luteItalianTempoSlow")]
         BoundingBox LuteItalianTempoSlow { get; set; }
 
-        [JsonProperty("luteItalianTempoSomewhatFast")]
+        [DataMember(Name="luteItalianTempoSomewhatFast")]
         BoundingBox LuteItalianTempoSomewhatFast { get; set; }
 
-        [JsonProperty("luteItalianTempoVerySlow")]
+        [DataMember(Name="luteItalianTempoVerySlow")]
         BoundingBox LuteItalianTempoVerySlow { get; set; }
 
-        [JsonProperty("luteItalianTimeTriple")]
+        [DataMember(Name="luteItalianTimeTriple")]
         BoundingBox LuteItalianTimeTriple { get; set; }
 
-        [JsonProperty("luteItalianTremolo")]
+        [DataMember(Name="luteItalianTremolo")]
         BoundingBox LuteItalianTremolo { get; set; }
 
-        [JsonProperty("luteItalianVibrato")]
+        [DataMember(Name="luteItalianVibrato")]
         BoundingBox LuteItalianVibrato { get; set; }
 
-        [JsonProperty("luteStaff6Lines")]
+        [DataMember(Name="luteStaff6Lines")]
         BoundingBox LuteStaff6Lines { get; set; }
 
-        [JsonProperty("luteStaff6LinesNarrow")]
+        [DataMember(Name="luteStaff6LinesNarrow")]
         BoundingBox LuteStaff6LinesNarrow { get; set; }
 
-        [JsonProperty("luteStaff6LinesWide")]
+        [DataMember(Name="luteStaff6LinesWide")]
         BoundingBox LuteStaff6LinesWide { get; set; }
 
-        [JsonProperty("lyricsElision")]
+        [DataMember(Name="lyricsElision")]
         BoundingBox LyricsElision { get; set; }
 
-        [JsonProperty("lyricsElisionNarrow")]
+        [DataMember(Name="lyricsElisionNarrow")]
         BoundingBox LyricsElisionNarrow { get; set; }
 
-        [JsonProperty("lyricsElisionWide")]
+        [DataMember(Name="lyricsElisionWide")]
         BoundingBox LyricsElisionWide { get; set; }
 
-        [JsonProperty("lyricsHyphenBaseline")]
+        [DataMember(Name="lyricsHyphenBaseline")]
         BoundingBox LyricsHyphenBaseline { get; set; }
 
-        [JsonProperty("lyricsHyphenBaselineNonBreaking")]
+        [DataMember(Name="lyricsHyphenBaselineNonBreaking")]
         BoundingBox LyricsHyphenBaselineNonBreaking { get; set; }
 
-        [JsonProperty("medRenFlatHardB")]
+        [DataMember(Name="medRenFlatHardB")]
         BoundingBox MedRenFlatHardB { get; set; }
 
-        [JsonProperty("medRenFlatSoftB")]
+        [DataMember(Name="medRenFlatSoftB")]
         BoundingBox MedRenFlatSoftB { get; set; }
 
-        [JsonProperty("medRenFlatSoftBHufnagel")]
+        [DataMember(Name="medRenFlatSoftBHufnagel")]
         BoundingBox MedRenFlatSoftBHufnagel { get; set; }
 
-        [JsonProperty("medRenFlatSoftBOld")]
+        [DataMember(Name="medRenFlatSoftBOld")]
         BoundingBox MedRenFlatSoftBOld { get; set; }
 
-        [JsonProperty("medRenFlatWithDot")]
+        [DataMember(Name="medRenFlatWithDot")]
         BoundingBox MedRenFlatWithDot { get; set; }
 
-        [JsonProperty("medRenGClefCMN")]
+        [DataMember(Name="medRenGClefCMN")]
         BoundingBox MedRenGClefCmn { get; set; }
 
-        [JsonProperty("medRenLiquescenceCMN")]
+        [DataMember(Name="medRenLiquescenceCMN")]
         BoundingBox MedRenLiquescenceCmn { get; set; }
 
-        [JsonProperty("medRenLiquescentAscCMN")]
+        [DataMember(Name="medRenLiquescentAscCMN")]
         BoundingBox MedRenLiquescentAscCmn { get; set; }
 
-        [JsonProperty("medRenLiquescentDescCMN")]
+        [DataMember(Name="medRenLiquescentDescCMN")]
         BoundingBox MedRenLiquescentDescCmn { get; set; }
 
-        [JsonProperty("medRenNatural")]
+        [DataMember(Name="medRenNatural")]
         BoundingBox MedRenNatural { get; set; }
 
-        [JsonProperty("medRenNaturalWithCross")]
+        [DataMember(Name="medRenNaturalWithCross")]
         BoundingBox MedRenNaturalWithCross { get; set; }
 
-        [JsonProperty("medRenOriscusCMN")]
+        [DataMember(Name="medRenOriscusCMN")]
         BoundingBox MedRenOriscusCmn { get; set; }
 
-        [JsonProperty("medRenPlicaCMN")]
+        [DataMember(Name="medRenPlicaCMN")]
         BoundingBox MedRenPlicaCmn { get; set; }
 
-        [JsonProperty("medRenPunctumCMN")]
+        [DataMember(Name="medRenPunctumCMN")]
         BoundingBox MedRenPunctumCmn { get; set; }
 
-        [JsonProperty("medRenQuilismaCMN")]
+        [DataMember(Name="medRenQuilismaCMN")]
         BoundingBox MedRenQuilismaCmn { get; set; }
 
-        [JsonProperty("medRenSharpCroix")]
+        [DataMember(Name="medRenSharpCroix")]
         BoundingBox MedRenSharpCroix { get; set; }
 
-        [JsonProperty("medRenStrophicusCMN")]
+        [DataMember(Name="medRenStrophicusCMN")]
         BoundingBox MedRenStrophicusCmn { get; set; }
 
-        [JsonProperty("mensuralAlterationSign")]
+        [DataMember(Name="mensuralAlterationSign")]
         BoundingBox MensuralAlterationSign { get; set; }
 
-        [JsonProperty("mensuralBlackBrevis")]
+        [DataMember(Name="mensuralBlackBrevis")]
         BoundingBox MensuralBlackBrevis { get; set; }
 
-        [JsonProperty("mensuralBlackBrevisVoid")]
+        [DataMember(Name="mensuralBlackBrevisVoid")]
         BoundingBox MensuralBlackBrevisVoid { get; set; }
 
-        [JsonProperty("mensuralBlackDragma")]
+        [DataMember(Name="mensuralBlackDragma")]
         BoundingBox MensuralBlackDragma { get; set; }
 
-        [JsonProperty("mensuralBlackLonga")]
+        [DataMember(Name="mensuralBlackLonga")]
         BoundingBox MensuralBlackLonga { get; set; }
 
-        [JsonProperty("mensuralBlackMaxima")]
+        [DataMember(Name="mensuralBlackMaxima")]
         BoundingBox MensuralBlackMaxima { get; set; }
 
-        [JsonProperty("mensuralBlackMinima")]
+        [DataMember(Name="mensuralBlackMinima")]
         BoundingBox MensuralBlackMinima { get; set; }
 
-        [JsonProperty("mensuralBlackMinimaVoid")]
+        [DataMember(Name="mensuralBlackMinimaVoid")]
         BoundingBox MensuralBlackMinimaVoid { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevis")]
+        [DataMember(Name="mensuralBlackSemibrevis")]
         BoundingBox MensuralBlackSemibrevis { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevisCaudata")]
+        [DataMember(Name="mensuralBlackSemibrevisCaudata")]
         BoundingBox MensuralBlackSemibrevisCaudata { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevisOblique")]
+        [DataMember(Name="mensuralBlackSemibrevisOblique")]
         BoundingBox MensuralBlackSemibrevisOblique { get; set; }
 
-        [JsonProperty("mensuralBlackSemibrevisVoid")]
+        [DataMember(Name="mensuralBlackSemibrevisVoid")]
         BoundingBox MensuralBlackSemibrevisVoid { get; set; }
 
-        [JsonProperty("mensuralBlackSemiminima")]
+        [DataMember(Name="mensuralBlackSemiminima")]
         BoundingBox MensuralBlackSemiminima { get; set; }
 
-        [JsonProperty("mensuralCclef")]
+        [DataMember(Name="mensuralCclef")]
         BoundingBox MensuralCclef { get; set; }
 
-        [JsonProperty("mensuralCclefBlack")]
+        [DataMember(Name="mensuralCclefBlack")]
         BoundingBox MensuralCclefBlack { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosHigh")]
+        [DataMember(Name="mensuralCclefPetrucciPosHigh")]
         BoundingBox MensuralCclefPetrucciPosHigh { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosHighest")]
+        [DataMember(Name="mensuralCclefPetrucciPosHighest")]
         BoundingBox MensuralCclefPetrucciPosHighest { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosLow")]
+        [DataMember(Name="mensuralCclefPetrucciPosLow")]
         BoundingBox MensuralCclefPetrucciPosLow { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosLowest")]
+        [DataMember(Name="mensuralCclefPetrucciPosLowest")]
         BoundingBox MensuralCclefPetrucciPosLowest { get; set; }
 
-        [JsonProperty("mensuralCclefPetrucciPosMiddle")]
+        [DataMember(Name="mensuralCclefPetrucciPosMiddle")]
         BoundingBox MensuralCclefPetrucciPosMiddle { get; set; }
 
-        [JsonProperty("mensuralCclefVoid")]
+        [DataMember(Name="mensuralCclefVoid")]
         BoundingBox MensuralCclefVoid { get; set; }
 
-        [JsonProperty("mensuralColorationEndRound")]
+        [DataMember(Name="mensuralColorationEndRound")]
         BoundingBox MensuralColorationEndRound { get; set; }
 
-        [JsonProperty("mensuralColorationEndSquare")]
+        [DataMember(Name="mensuralColorationEndSquare")]
         BoundingBox MensuralColorationEndSquare { get; set; }
 
-        [JsonProperty("mensuralColorationStartRound")]
+        [DataMember(Name="mensuralColorationStartRound")]
         BoundingBox MensuralColorationStartRound { get; set; }
 
-        [JsonProperty("mensuralColorationStartSquare")]
+        [DataMember(Name="mensuralColorationStartSquare")]
         BoundingBox MensuralColorationStartSquare { get; set; }
 
-        [JsonProperty("mensuralCombStemDiagonal")]
+        [DataMember(Name="mensuralCombStemDiagonal")]
         BoundingBox MensuralCombStemDiagonal { get; set; }
 
-        [JsonProperty("mensuralCombStemDown")]
+        [DataMember(Name="mensuralCombStemDown")]
         BoundingBox MensuralCombStemDown { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagExtended")]
+        [DataMember(Name="mensuralCombStemDownFlagExtended")]
         BoundingBox MensuralCombStemDownFlagExtended { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagFlared")]
+        [DataMember(Name="mensuralCombStemDownFlagFlared")]
         BoundingBox MensuralCombStemDownFlagFlared { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagFusa")]
+        [DataMember(Name="mensuralCombStemDownFlagFusa")]
         BoundingBox MensuralCombStemDownFlagFusa { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagLeft")]
+        [DataMember(Name="mensuralCombStemDownFlagLeft")]
         BoundingBox MensuralCombStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagRight")]
+        [DataMember(Name="mensuralCombStemDownFlagRight")]
         BoundingBox MensuralCombStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralCombStemDownFlagSemiminima")]
+        [DataMember(Name="mensuralCombStemDownFlagSemiminima")]
         BoundingBox MensuralCombStemDownFlagSemiminima { get; set; }
 
-        [JsonProperty("mensuralCombStemUp")]
+        [DataMember(Name="mensuralCombStemUp")]
         BoundingBox MensuralCombStemUp { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagExtended")]
+        [DataMember(Name="mensuralCombStemUpFlagExtended")]
         BoundingBox MensuralCombStemUpFlagExtended { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagFlared")]
+        [DataMember(Name="mensuralCombStemUpFlagFlared")]
         BoundingBox MensuralCombStemUpFlagFlared { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagFusa")]
+        [DataMember(Name="mensuralCombStemUpFlagFusa")]
         BoundingBox MensuralCombStemUpFlagFusa { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagLeft")]
+        [DataMember(Name="mensuralCombStemUpFlagLeft")]
         BoundingBox MensuralCombStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagRight")]
+        [DataMember(Name="mensuralCombStemUpFlagRight")]
         BoundingBox MensuralCombStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralCombStemUpFlagSemiminima")]
+        [DataMember(Name="mensuralCombStemUpFlagSemiminima")]
         BoundingBox MensuralCombStemUpFlagSemiminima { get; set; }
 
-        [JsonProperty("mensuralCustosCheckmark")]
+        [DataMember(Name="mensuralCustosCheckmark")]
         BoundingBox MensuralCustosCheckmark { get; set; }
 
-        [JsonProperty("mensuralCustosDown")]
+        [DataMember(Name="mensuralCustosDown")]
         BoundingBox MensuralCustosDown { get; set; }
 
-        [JsonProperty("mensuralCustosTurn")]
+        [DataMember(Name="mensuralCustosTurn")]
         BoundingBox MensuralCustosTurn { get; set; }
 
-        [JsonProperty("mensuralCustosUp")]
+        [DataMember(Name="mensuralCustosUp")]
         BoundingBox MensuralCustosUp { get; set; }
 
-        [JsonProperty("mensuralFclef")]
+        [DataMember(Name="mensuralFclef")]
         BoundingBox MensuralFclef { get; set; }
 
-        [JsonProperty("mensuralFclefPetrucci")]
+        [DataMember(Name="mensuralFclefPetrucci")]
         BoundingBox MensuralFclefPetrucci { get; set; }
 
-        [JsonProperty("mensuralFusaBlackStemDown")]
+        [DataMember(Name="mensuralFusaBlackStemDown")]
         BoundingBox MensuralFusaBlackStemDown { get; set; }
 
-        [JsonProperty("mensuralFusaBlackStemUp")]
+        [DataMember(Name="mensuralFusaBlackStemUp")]
         BoundingBox MensuralFusaBlackStemUp { get; set; }
 
-        [JsonProperty("mensuralFusaBlackVoidStemDown")]
+        [DataMember(Name="mensuralFusaBlackVoidStemDown")]
         BoundingBox MensuralFusaBlackVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralFusaBlackVoidStemUp")]
+        [DataMember(Name="mensuralFusaBlackVoidStemUp")]
         BoundingBox MensuralFusaBlackVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralFusaVoidStemDown")]
+        [DataMember(Name="mensuralFusaVoidStemDown")]
         BoundingBox MensuralFusaVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralFusaVoidStemUp")]
+        [DataMember(Name="mensuralFusaVoidStemUp")]
         BoundingBox MensuralFusaVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralGclef")]
+        [DataMember(Name="mensuralGclef")]
         BoundingBox MensuralGclef { get; set; }
 
-        [JsonProperty("mensuralGclefPetrucci")]
+        [DataMember(Name="mensuralGclefPetrucci")]
         BoundingBox MensuralGclefPetrucci { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemDownLeft")]
+        [DataMember(Name="mensuralLongaBlackStemDownLeft")]
         BoundingBox MensuralLongaBlackStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemDownRight")]
+        [DataMember(Name="mensuralLongaBlackStemDownRight")]
         BoundingBox MensuralLongaBlackStemDownRight { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemUpLeft")]
+        [DataMember(Name="mensuralLongaBlackStemUpLeft")]
         BoundingBox MensuralLongaBlackStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemUpRight")]
+        [DataMember(Name="mensuralLongaBlackStemUpRight")]
         BoundingBox MensuralLongaBlackStemUpRight { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemDownLeft")]
+        [DataMember(Name="mensuralLongaBlackVoidStemDownLeft")]
         BoundingBox MensuralLongaBlackVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemDownRight")]
+        [DataMember(Name="mensuralLongaBlackVoidStemDownRight")]
         BoundingBox MensuralLongaBlackVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemUpLeft")]
+        [DataMember(Name="mensuralLongaBlackVoidStemUpLeft")]
         BoundingBox MensuralLongaBlackVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemUpRight")]
+        [DataMember(Name="mensuralLongaBlackVoidStemUpRight")]
         BoundingBox MensuralLongaBlackVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemDownLeft")]
+        [DataMember(Name="mensuralLongaVoidStemDownLeft")]
         BoundingBox MensuralLongaVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemDownRight")]
+        [DataMember(Name="mensuralLongaVoidStemDownRight")]
         BoundingBox MensuralLongaVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemUpLeft")]
+        [DataMember(Name="mensuralLongaVoidStemUpLeft")]
         BoundingBox MensuralLongaVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemUpRight")]
+        [DataMember(Name="mensuralLongaVoidStemUpRight")]
         BoundingBox MensuralLongaVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemDownLeft")]
+        [DataMember(Name="mensuralMaximaBlackStemDownLeft")]
         BoundingBox MensuralMaximaBlackStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemDownRight")]
+        [DataMember(Name="mensuralMaximaBlackStemDownRight")]
         BoundingBox MensuralMaximaBlackStemDownRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemUpLeft")]
+        [DataMember(Name="mensuralMaximaBlackStemUpLeft")]
         BoundingBox MensuralMaximaBlackStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemUpRight")]
+        [DataMember(Name="mensuralMaximaBlackStemUpRight")]
         BoundingBox MensuralMaximaBlackStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemDownLeft")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemDownLeft")]
         BoundingBox MensuralMaximaBlackVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemDownRight")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemDownRight")]
         BoundingBox MensuralMaximaBlackVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemUpLeft")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemUpLeft")]
         BoundingBox MensuralMaximaBlackVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemUpRight")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemUpRight")]
         BoundingBox MensuralMaximaBlackVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemDownLeft")]
+        [DataMember(Name="mensuralMaximaVoidStemDownLeft")]
         BoundingBox MensuralMaximaVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemDownRight")]
+        [DataMember(Name="mensuralMaximaVoidStemDownRight")]
         BoundingBox MensuralMaximaVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemUpLeft")]
+        [DataMember(Name="mensuralMaximaVoidStemUpLeft")]
         BoundingBox MensuralMaximaVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemUpRight")]
+        [DataMember(Name="mensuralMaximaVoidStemUpRight")]
         BoundingBox MensuralMaximaVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDown")]
+        [DataMember(Name="mensuralMinimaBlackStemDown")]
         BoundingBox MensuralMinimaBlackStemDown { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemDownExtendedFlag")]
         BoundingBox MensuralMinimaBlackStemDownExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackStemDownFlagLeft")]
         BoundingBox MensuralMinimaBlackStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackStemDownFlagRight")]
         BoundingBox MensuralMinimaBlackStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemDownFlaredFlag")]
         BoundingBox MensuralMinimaBlackStemDownFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUp")]
+        [DataMember(Name="mensuralMinimaBlackStemUp")]
         BoundingBox MensuralMinimaBlackStemUp { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemUpExtendedFlag")]
         BoundingBox MensuralMinimaBlackStemUpExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackStemUpFlagLeft")]
         BoundingBox MensuralMinimaBlackStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackStemUpFlagRight")]
         BoundingBox MensuralMinimaBlackStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemUpFlaredFlag")]
         BoundingBox MensuralMinimaBlackStemUpFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDown")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDown")]
         BoundingBox MensuralMinimaBlackVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownExtendedFlag")]
         BoundingBox MensuralMinimaBlackVoidStemDownExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownFlagLeft")]
         BoundingBox MensuralMinimaBlackVoidStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownFlagRight")]
         BoundingBox MensuralMinimaBlackVoidStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownFlaredFlag")]
         BoundingBox MensuralMinimaBlackVoidStemDownFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUp")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUp")]
         BoundingBox MensuralMinimaBlackVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpExtendedFlag")]
         BoundingBox MensuralMinimaBlackVoidStemUpExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpFlagLeft")]
         BoundingBox MensuralMinimaBlackVoidStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpFlagRight")]
         BoundingBox MensuralMinimaBlackVoidStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpFlaredFlag")]
         BoundingBox MensuralMinimaBlackVoidStemUpFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDown")]
+        [DataMember(Name="mensuralMinimaVoidStemDown")]
         BoundingBox MensuralMinimaVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownExtendedFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemDownExtendedFlag")]
         BoundingBox MensuralMinimaVoidStemDownExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownFlagLeft")]
+        [DataMember(Name="mensuralMinimaVoidStemDownFlagLeft")]
         BoundingBox MensuralMinimaVoidStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownFlagRight")]
+        [DataMember(Name="mensuralMinimaVoidStemDownFlagRight")]
         BoundingBox MensuralMinimaVoidStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownFlaredFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemDownFlaredFlag")]
         BoundingBox MensuralMinimaVoidStemDownFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUp")]
+        [DataMember(Name="mensuralMinimaVoidStemUp")]
         BoundingBox MensuralMinimaVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpExtendedFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemUpExtendedFlag")]
         BoundingBox MensuralMinimaVoidStemUpExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpFlagLeft")]
+        [DataMember(Name="mensuralMinimaVoidStemUpFlagLeft")]
         BoundingBox MensuralMinimaVoidStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpFlagRight")]
+        [DataMember(Name="mensuralMinimaVoidStemUpFlagRight")]
         BoundingBox MensuralMinimaVoidStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpFlaredFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemUpFlaredFlag")]
         BoundingBox MensuralMinimaVoidStemUpFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralModusImperfectumVert")]
+        [DataMember(Name="mensuralModusImperfectumVert")]
         BoundingBox MensuralModusImperfectumVert { get; set; }
 
-        [JsonProperty("mensuralModusPerfectumVert")]
+        [DataMember(Name="mensuralModusPerfectumVert")]
         BoundingBox MensuralModusPerfectumVert { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaBlack")]
+        [DataMember(Name="mensuralNoteheadLongaBlack")]
         BoundingBox MensuralNoteheadLongaBlack { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaBlackVoid")]
+        [DataMember(Name="mensuralNoteheadLongaBlackVoid")]
         BoundingBox MensuralNoteheadLongaBlackVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaVoid")]
+        [DataMember(Name="mensuralNoteheadLongaVoid")]
         BoundingBox MensuralNoteheadLongaVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadLongaWhite")]
+        [DataMember(Name="mensuralNoteheadLongaWhite")]
         BoundingBox MensuralNoteheadLongaWhite { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaBlack")]
+        [DataMember(Name="mensuralNoteheadMaximaBlack")]
         BoundingBox MensuralNoteheadMaximaBlack { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaBlackVoid")]
+        [DataMember(Name="mensuralNoteheadMaximaBlackVoid")]
         BoundingBox MensuralNoteheadMaximaBlackVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaVoid")]
+        [DataMember(Name="mensuralNoteheadMaximaVoid")]
         BoundingBox MensuralNoteheadMaximaVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadMaximaWhite")]
+        [DataMember(Name="mensuralNoteheadMaximaWhite")]
         BoundingBox MensuralNoteheadMaximaWhite { get; set; }
 
-        [JsonProperty("mensuralNoteheadMinimaWhite")]
+        [DataMember(Name="mensuralNoteheadMinimaWhite")]
         BoundingBox MensuralNoteheadMinimaWhite { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisBlack")]
+        [DataMember(Name="mensuralNoteheadSemibrevisBlack")]
         BoundingBox MensuralNoteheadSemibrevisBlack { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisBlackVoid")]
+        [DataMember(Name="mensuralNoteheadSemibrevisBlackVoid")]
         BoundingBox MensuralNoteheadSemibrevisBlackVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisBlackVoidTurned")]
+        [DataMember(Name="mensuralNoteheadSemibrevisBlackVoidTurned")]
         BoundingBox MensuralNoteheadSemibrevisBlackVoidTurned { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemibrevisVoid")]
+        [DataMember(Name="mensuralNoteheadSemibrevisVoid")]
         BoundingBox MensuralNoteheadSemibrevisVoid { get; set; }
 
-        [JsonProperty("mensuralNoteheadSemiminimaWhite")]
+        [DataMember(Name="mensuralNoteheadSemiminimaWhite")]
         BoundingBox MensuralNoteheadSemiminimaWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndBlack")]
+        [DataMember(Name="mensuralObliqueAsc2ndBlack")]
         BoundingBox MensuralObliqueAsc2NdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc2ndBlackVoid")]
         BoundingBox MensuralObliqueAsc2NdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndVoid")]
+        [DataMember(Name="mensuralObliqueAsc2ndVoid")]
         BoundingBox MensuralObliqueAsc2NdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc2ndWhite")]
+        [DataMember(Name="mensuralObliqueAsc2ndWhite")]
         BoundingBox MensuralObliqueAsc2NdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdBlack")]
+        [DataMember(Name="mensuralObliqueAsc3rdBlack")]
         BoundingBox MensuralObliqueAsc3RdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc3rdBlackVoid")]
         BoundingBox MensuralObliqueAsc3RdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdVoid")]
+        [DataMember(Name="mensuralObliqueAsc3rdVoid")]
         BoundingBox MensuralObliqueAsc3RdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc3rdWhite")]
+        [DataMember(Name="mensuralObliqueAsc3rdWhite")]
         BoundingBox MensuralObliqueAsc3RdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thBlack")]
+        [DataMember(Name="mensuralObliqueAsc4thBlack")]
         BoundingBox MensuralObliqueAsc4ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc4thBlackVoid")]
         BoundingBox MensuralObliqueAsc4ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thVoid")]
+        [DataMember(Name="mensuralObliqueAsc4thVoid")]
         BoundingBox MensuralObliqueAsc4ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc4thWhite")]
+        [DataMember(Name="mensuralObliqueAsc4thWhite")]
         BoundingBox MensuralObliqueAsc4ThWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thBlack")]
+        [DataMember(Name="mensuralObliqueAsc5thBlack")]
         BoundingBox MensuralObliqueAsc5ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thBlackVoid")]
+        [DataMember(Name="mensuralObliqueAsc5thBlackVoid")]
         BoundingBox MensuralObliqueAsc5ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thVoid")]
+        [DataMember(Name="mensuralObliqueAsc5thVoid")]
         BoundingBox MensuralObliqueAsc5ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueAsc5thWhite")]
+        [DataMember(Name="mensuralObliqueAsc5thWhite")]
         BoundingBox MensuralObliqueAsc5ThWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndBlack")]
+        [DataMember(Name="mensuralObliqueDesc2ndBlack")]
         BoundingBox MensuralObliqueDesc2NdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc2ndBlackVoid")]
         BoundingBox MensuralObliqueDesc2NdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndVoid")]
+        [DataMember(Name="mensuralObliqueDesc2ndVoid")]
         BoundingBox MensuralObliqueDesc2NdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc2ndWhite")]
+        [DataMember(Name="mensuralObliqueDesc2ndWhite")]
         BoundingBox MensuralObliqueDesc2NdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdBlack")]
+        [DataMember(Name="mensuralObliqueDesc3rdBlack")]
         BoundingBox MensuralObliqueDesc3RdBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc3rdBlackVoid")]
         BoundingBox MensuralObliqueDesc3RdBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdVoid")]
+        [DataMember(Name="mensuralObliqueDesc3rdVoid")]
         BoundingBox MensuralObliqueDesc3RdVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc3rdWhite")]
+        [DataMember(Name="mensuralObliqueDesc3rdWhite")]
         BoundingBox MensuralObliqueDesc3RdWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thBlack")]
+        [DataMember(Name="mensuralObliqueDesc4thBlack")]
         BoundingBox MensuralObliqueDesc4ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc4thBlackVoid")]
         BoundingBox MensuralObliqueDesc4ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thVoid")]
+        [DataMember(Name="mensuralObliqueDesc4thVoid")]
         BoundingBox MensuralObliqueDesc4ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc4thWhite")]
+        [DataMember(Name="mensuralObliqueDesc4thWhite")]
         BoundingBox MensuralObliqueDesc4ThWhite { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thBlack")]
+        [DataMember(Name="mensuralObliqueDesc5thBlack")]
         BoundingBox MensuralObliqueDesc5ThBlack { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thBlackVoid")]
+        [DataMember(Name="mensuralObliqueDesc5thBlackVoid")]
         BoundingBox MensuralObliqueDesc5ThBlackVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thVoid")]
+        [DataMember(Name="mensuralObliqueDesc5thVoid")]
         BoundingBox MensuralObliqueDesc5ThVoid { get; set; }
 
-        [JsonProperty("mensuralObliqueDesc5thWhite")]
+        [DataMember(Name="mensuralObliqueDesc5thWhite")]
         BoundingBox MensuralObliqueDesc5ThWhite { get; set; }
 
-        [JsonProperty("mensuralProlation1")]
+        [DataMember(Name="mensuralProlation1")]
         BoundingBox MensuralProlation1 { get; set; }
 
-        [JsonProperty("mensuralProlation10")]
+        [DataMember(Name="mensuralProlation10")]
         BoundingBox MensuralProlation10 { get; set; }
 
-        [JsonProperty("mensuralProlation11")]
+        [DataMember(Name="mensuralProlation11")]
         BoundingBox MensuralProlation11 { get; set; }
 
-        [JsonProperty("mensuralProlation2")]
+        [DataMember(Name="mensuralProlation2")]
         BoundingBox MensuralProlation2 { get; set; }
 
-        [JsonProperty("mensuralProlation3")]
+        [DataMember(Name="mensuralProlation3")]
         BoundingBox MensuralProlation3 { get; set; }
 
-        [JsonProperty("mensuralProlation4")]
+        [DataMember(Name="mensuralProlation4")]
         BoundingBox MensuralProlation4 { get; set; }
 
-        [JsonProperty("mensuralProlation5")]
+        [DataMember(Name="mensuralProlation5")]
         BoundingBox MensuralProlation5 { get; set; }
 
-        [JsonProperty("mensuralProlation6")]
+        [DataMember(Name="mensuralProlation6")]
         BoundingBox MensuralProlation6 { get; set; }
 
-        [JsonProperty("mensuralProlation7")]
+        [DataMember(Name="mensuralProlation7")]
         BoundingBox MensuralProlation7 { get; set; }
 
-        [JsonProperty("mensuralProlation8")]
+        [DataMember(Name="mensuralProlation8")]
         BoundingBox MensuralProlation8 { get; set; }
 
-        [JsonProperty("mensuralProlation9")]
+        [DataMember(Name="mensuralProlation9")]
         BoundingBox MensuralProlation9 { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningDot")]
+        [DataMember(Name="mensuralProlationCombiningDot")]
         BoundingBox MensuralProlationCombiningDot { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningDotVoid")]
+        [DataMember(Name="mensuralProlationCombiningDotVoid")]
         BoundingBox MensuralProlationCombiningDotVoid { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningStroke")]
+        [DataMember(Name="mensuralProlationCombiningStroke")]
         BoundingBox MensuralProlationCombiningStroke { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningThreeDots")]
+        [DataMember(Name="mensuralProlationCombiningThreeDots")]
         BoundingBox MensuralProlationCombiningThreeDots { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningThreeDotsTri")]
+        [DataMember(Name="mensuralProlationCombiningThreeDotsTri")]
         BoundingBox MensuralProlationCombiningThreeDotsTri { get; set; }
 
-        [JsonProperty("mensuralProlationCombiningTwoDots")]
+        [DataMember(Name="mensuralProlationCombiningTwoDots")]
         BoundingBox MensuralProlationCombiningTwoDots { get; set; }
 
-        [JsonProperty("mensuralProportion1")]
+        [DataMember(Name="mensuralProportion1")]
         BoundingBox MensuralProportion1 { get; set; }
 
-        [JsonProperty("mensuralProportion2")]
+        [DataMember(Name="mensuralProportion2")]
         BoundingBox MensuralProportion2 { get; set; }
 
-        [JsonProperty("mensuralProportion3")]
+        [DataMember(Name="mensuralProportion3")]
         BoundingBox MensuralProportion3 { get; set; }
 
-        [JsonProperty("mensuralProportion4")]
+        [DataMember(Name="mensuralProportion4")]
         BoundingBox MensuralProportion4 { get; set; }
 
-        [JsonProperty("mensuralProportion4Old")]
+        [DataMember(Name="mensuralProportion4Old")]
         BoundingBox MensuralProportion4Old { get; set; }
 
-        [JsonProperty("mensuralProportionMajor")]
+        [DataMember(Name="mensuralProportionMajor")]
         BoundingBox MensuralProportionMajor { get; set; }
 
-        [JsonProperty("mensuralProportionMinor")]
+        [DataMember(Name="mensuralProportionMinor")]
         BoundingBox MensuralProportionMinor { get; set; }
 
-        [JsonProperty("mensuralProportionProportioDupla1")]
+        [DataMember(Name="mensuralProportionProportioDupla1")]
         BoundingBox MensuralProportionProportioDupla1 { get; set; }
 
-        [JsonProperty("mensuralProportionProportioDupla2")]
+        [DataMember(Name="mensuralProportionProportioDupla2")]
         BoundingBox MensuralProportionProportioDupla2 { get; set; }
 
-        [JsonProperty("mensuralProportionProportioQuadrupla")]
+        [DataMember(Name="mensuralProportionProportioQuadrupla")]
         BoundingBox MensuralProportionProportioQuadrupla { get; set; }
 
-        [JsonProperty("mensuralProportionProportioTripla")]
+        [DataMember(Name="mensuralProportionProportioTripla")]
         BoundingBox MensuralProportionProportioTripla { get; set; }
 
-        [JsonProperty("mensuralProportionTempusPerfectum")]
+        [DataMember(Name="mensuralProportionTempusPerfectum")]
         BoundingBox MensuralProportionTempusPerfectum { get; set; }
 
-        [JsonProperty("mensuralRestBrevis")]
+        [DataMember(Name="mensuralRestBrevis")]
         BoundingBox MensuralRestBrevis { get; set; }
 
-        [JsonProperty("mensuralRestFusa")]
+        [DataMember(Name="mensuralRestFusa")]
         BoundingBox MensuralRestFusa { get; set; }
 
-        [JsonProperty("mensuralRestLongaImperfecta")]
+        [DataMember(Name="mensuralRestLongaImperfecta")]
         BoundingBox MensuralRestLongaImperfecta { get; set; }
 
-        [JsonProperty("mensuralRestLongaPerfecta")]
+        [DataMember(Name="mensuralRestLongaPerfecta")]
         BoundingBox MensuralRestLongaPerfecta { get; set; }
 
-        [JsonProperty("mensuralRestMaxima")]
+        [DataMember(Name="mensuralRestMaxima")]
         BoundingBox MensuralRestMaxima { get; set; }
 
-        [JsonProperty("mensuralRestMinima")]
+        [DataMember(Name="mensuralRestMinima")]
         BoundingBox MensuralRestMinima { get; set; }
 
-        [JsonProperty("mensuralRestSemibrevis")]
+        [DataMember(Name="mensuralRestSemibrevis")]
         BoundingBox MensuralRestSemibrevis { get; set; }
 
-        [JsonProperty("mensuralRestSemifusa")]
+        [DataMember(Name="mensuralRestSemifusa")]
         BoundingBox MensuralRestSemifusa { get; set; }
 
-        [JsonProperty("mensuralRestSemiminima")]
+        [DataMember(Name="mensuralRestSemiminima")]
         BoundingBox MensuralRestSemiminima { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackStemDown")]
+        [DataMember(Name="mensuralSemiminimaBlackStemDown")]
         BoundingBox MensuralSemiminimaBlackStemDown { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackStemUp")]
+        [DataMember(Name="mensuralSemiminimaBlackStemUp")]
         BoundingBox MensuralSemiminimaBlackStemUp { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackVoidStemDown")]
+        [DataMember(Name="mensuralSemiminimaBlackVoidStemDown")]
         BoundingBox MensuralSemiminimaBlackVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackVoidStemUp")]
+        [DataMember(Name="mensuralSemiminimaBlackVoidStemUp")]
         BoundingBox MensuralSemiminimaBlackVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralSemiminimaVoidStemDown")]
+        [DataMember(Name="mensuralSemiminimaVoidStemDown")]
         BoundingBox MensuralSemiminimaVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralSemiminimaVoidStemUp")]
+        [DataMember(Name="mensuralSemiminimaVoidStemUp")]
         BoundingBox MensuralSemiminimaVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralSignumDown")]
+        [DataMember(Name="mensuralSignumDown")]
         BoundingBox MensuralSignumDown { get; set; }
 
-        [JsonProperty("mensuralSignumUp")]
+        [DataMember(Name="mensuralSignumUp")]
         BoundingBox MensuralSignumUp { get; set; }
 
-        [JsonProperty("mensuralTempusImperfectumHoriz")]
+        [DataMember(Name="mensuralTempusImperfectumHoriz")]
         BoundingBox MensuralTempusImperfectumHoriz { get; set; }
 
-        [JsonProperty("mensuralTempusPerfectumHoriz")]
+        [DataMember(Name="mensuralTempusPerfectumHoriz")]
         BoundingBox MensuralTempusPerfectumHoriz { get; set; }
 
-        [JsonProperty("mensuralWhiteBrevis")]
+        [DataMember(Name="mensuralWhiteBrevis")]
         BoundingBox MensuralWhiteBrevis { get; set; }
 
-        [JsonProperty("mensuralWhiteFusa")]
+        [DataMember(Name="mensuralWhiteFusa")]
         BoundingBox MensuralWhiteFusa { get; set; }
 
-        [JsonProperty("mensuralWhiteLonga")]
+        [DataMember(Name="mensuralWhiteLonga")]
         BoundingBox MensuralWhiteLonga { get; set; }
 
-        [JsonProperty("mensuralWhiteMaxima")]
+        [DataMember(Name="mensuralWhiteMaxima")]
         BoundingBox MensuralWhiteMaxima { get; set; }
 
-        [JsonProperty("mensuralWhiteMinima")]
+        [DataMember(Name="mensuralWhiteMinima")]
         BoundingBox MensuralWhiteMinima { get; set; }
 
-        [JsonProperty("mensuralWhiteSemiminima")]
+        [DataMember(Name="mensuralWhiteSemiminima")]
         BoundingBox MensuralWhiteSemiminima { get; set; }
 
-        [JsonProperty("metAugmentationDot")]
+        [DataMember(Name="metAugmentationDot")]
         BoundingBox MetAugmentationDot { get; set; }
 
-        [JsonProperty("metNote1024thDown")]
+        [DataMember(Name="metNote1024thDown")]
         BoundingBox MetNote1024ThDown { get; set; }
 
-        [JsonProperty("metNote1024thUp")]
+        [DataMember(Name="metNote1024thUp")]
         BoundingBox MetNote1024ThUp { get; set; }
 
-        [JsonProperty("metNote128thDown")]
+        [DataMember(Name="metNote128thDown")]
         BoundingBox MetNote128ThDown { get; set; }
 
-        [JsonProperty("metNote128thUp")]
+        [DataMember(Name="metNote128thUp")]
         BoundingBox MetNote128ThUp { get; set; }
 
-        [JsonProperty("metNote16thDown")]
+        [DataMember(Name="metNote16thDown")]
         BoundingBox MetNote16ThDown { get; set; }
 
-        [JsonProperty("metNote16thUp")]
+        [DataMember(Name="metNote16thUp")]
         BoundingBox MetNote16ThUp { get; set; }
 
-        [JsonProperty("metNote256thDown")]
+        [DataMember(Name="metNote256thDown")]
         BoundingBox MetNote256ThDown { get; set; }
 
-        [JsonProperty("metNote256thUp")]
+        [DataMember(Name="metNote256thUp")]
         BoundingBox MetNote256ThUp { get; set; }
 
-        [JsonProperty("metNote32ndDown")]
+        [DataMember(Name="metNote32ndDown")]
         BoundingBox MetNote32NdDown { get; set; }
 
-        [JsonProperty("metNote32ndUp")]
+        [DataMember(Name="metNote32ndUp")]
         BoundingBox MetNote32NdUp { get; set; }
 
-        [JsonProperty("metNote512thDown")]
+        [DataMember(Name="metNote512thDown")]
         BoundingBox MetNote512ThDown { get; set; }
 
-        [JsonProperty("metNote512thUp")]
+        [DataMember(Name="metNote512thUp")]
         BoundingBox MetNote512ThUp { get; set; }
 
-        [JsonProperty("metNote64thDown")]
+        [DataMember(Name="metNote64thDown")]
         BoundingBox MetNote64ThDown { get; set; }
 
-        [JsonProperty("metNote64thUp")]
+        [DataMember(Name="metNote64thUp")]
         BoundingBox MetNote64ThUp { get; set; }
 
-        [JsonProperty("metNote8thDown")]
+        [DataMember(Name="metNote8thDown")]
         BoundingBox MetNote8ThDown { get; set; }
 
-        [JsonProperty("metNote8thUp")]
+        [DataMember(Name="metNote8thUp")]
         BoundingBox MetNote8ThUp { get; set; }
 
-        [JsonProperty("metNoteDoubleWhole")]
+        [DataMember(Name="metNoteDoubleWhole")]
         BoundingBox MetNoteDoubleWhole { get; set; }
 
-        [JsonProperty("metNoteDoubleWholeSquare")]
+        [DataMember(Name="metNoteDoubleWholeSquare")]
         BoundingBox MetNoteDoubleWholeSquare { get; set; }
 
-        [JsonProperty("metNoteHalfDown")]
+        [DataMember(Name="metNoteHalfDown")]
         BoundingBox MetNoteHalfDown { get; set; }
 
-        [JsonProperty("metNoteHalfUp")]
+        [DataMember(Name="metNoteHalfUp")]
         BoundingBox MetNoteHalfUp { get; set; }
 
-        [JsonProperty("metNoteQuarterDown")]
+        [DataMember(Name="metNoteQuarterDown")]
         BoundingBox MetNoteQuarterDown { get; set; }
 
-        [JsonProperty("metNoteQuarterUp")]
+        [DataMember(Name="metNoteQuarterUp")]
         BoundingBox MetNoteQuarterUp { get; set; }
 
-        [JsonProperty("metNoteWhole")]
+        [DataMember(Name="metNoteWhole")]
         BoundingBox MetNoteWhole { get; set; }
 
-        [JsonProperty("metricModulationArrowLeft")]
+        [DataMember(Name="metricModulationArrowLeft")]
         BoundingBox MetricModulationArrowLeft { get; set; }
 
-        [JsonProperty("metricModulationArrowRight")]
+        [DataMember(Name="metricModulationArrowRight")]
         BoundingBox MetricModulationArrowRight { get; set; }
 
-        [JsonProperty("miscDoNotCopy")]
+        [DataMember(Name="miscDoNotCopy")]
         BoundingBox MiscDoNotCopy { get; set; }
 
-        [JsonProperty("miscDoNotPhotocopy")]
+        [DataMember(Name="miscDoNotPhotocopy")]
         BoundingBox MiscDoNotPhotocopy { get; set; }
 
-        [JsonProperty("miscEyeglasses")]
+        [DataMember(Name="miscEyeglasses")]
         BoundingBox MiscEyeglasses { get; set; }
 
-        [JsonProperty("note1024thDown")]
+        [DataMember(Name="note1024thDown")]
         BoundingBox Note1024ThDown { get; set; }
 
-        [JsonProperty("note1024thUp")]
+        [DataMember(Name="note1024thUp")]
         BoundingBox Note1024ThUp { get; set; }
 
-        [JsonProperty("note128thDown")]
+        [DataMember(Name="note128thDown")]
         BoundingBox Note128ThDown { get; set; }
 
-        [JsonProperty("note128thUp")]
+        [DataMember(Name="note128thUp")]
         BoundingBox Note128ThUp { get; set; }
 
-        [JsonProperty("note16thDown")]
+        [DataMember(Name="note16thDown")]
         BoundingBox Note16ThDown { get; set; }
 
-        [JsonProperty("note16thUp")]
+        [DataMember(Name="note16thUp")]
         BoundingBox Note16ThUp { get; set; }
 
-        [JsonProperty("note256thDown")]
+        [DataMember(Name="note256thDown")]
         BoundingBox Note256ThDown { get; set; }
 
-        [JsonProperty("note256thUp")]
+        [DataMember(Name="note256thUp")]
         BoundingBox Note256ThUp { get; set; }
 
-        [JsonProperty("note32ndDown")]
+        [DataMember(Name="note32ndDown")]
         BoundingBox Note32NdDown { get; set; }
 
-        [JsonProperty("note32ndUp")]
+        [DataMember(Name="note32ndUp")]
         BoundingBox Note32NdUp { get; set; }
 
-        [JsonProperty("note512thDown")]
+        [DataMember(Name="note512thDown")]
         BoundingBox Note512ThDown { get; set; }
 
-        [JsonProperty("note512thUp")]
+        [DataMember(Name="note512thUp")]
         BoundingBox Note512ThUp { get; set; }
 
-        [JsonProperty("note64thDown")]
+        [DataMember(Name="note64thDown")]
         BoundingBox Note64ThDown { get; set; }
 
-        [JsonProperty("note64thUp")]
+        [DataMember(Name="note64thUp")]
         BoundingBox Note64ThUp { get; set; }
 
-        [JsonProperty("note8thDown")]
+        [DataMember(Name="note8thDown")]
         BoundingBox Note8ThDown { get; set; }
 
-        [JsonProperty("note8thUp")]
+        [DataMember(Name="note8thUp")]
         BoundingBox Note8ThUp { get; set; }
 
-        [JsonProperty("noteABlack")]
+        [DataMember(Name="noteABlack")]
         BoundingBox NoteABlack { get; set; }
 
-        [JsonProperty("noteAFlatBlack")]
+        [DataMember(Name="noteAFlatBlack")]
         BoundingBox NoteAFlatBlack { get; set; }
 
-        [JsonProperty("noteAFlatHalf")]
+        [DataMember(Name="noteAFlatHalf")]
         BoundingBox NoteAFlatHalf { get; set; }
 
-        [JsonProperty("noteAFlatWhole")]
+        [DataMember(Name="noteAFlatWhole")]
         BoundingBox NoteAFlatWhole { get; set; }
 
-        [JsonProperty("noteAHalf")]
+        [DataMember(Name="noteAHalf")]
         BoundingBox NoteAHalf { get; set; }
 
-        [JsonProperty("noteASharpBlack")]
+        [DataMember(Name="noteASharpBlack")]
         BoundingBox NoteASharpBlack { get; set; }
 
-        [JsonProperty("noteASharpHalf")]
+        [DataMember(Name="noteASharpHalf")]
         BoundingBox NoteASharpHalf { get; set; }
 
-        [JsonProperty("noteASharpWhole")]
+        [DataMember(Name="noteASharpWhole")]
         BoundingBox NoteASharpWhole { get; set; }
 
-        [JsonProperty("noteAWhole")]
+        [DataMember(Name="noteAWhole")]
         BoundingBox NoteAWhole { get; set; }
 
-        [JsonProperty("noteBBlack")]
+        [DataMember(Name="noteBBlack")]
         BoundingBox NoteBBlack { get; set; }
 
-        [JsonProperty("noteBFlatBlack")]
+        [DataMember(Name="noteBFlatBlack")]
         BoundingBox NoteBFlatBlack { get; set; }
 
-        [JsonProperty("noteBFlatHalf")]
+        [DataMember(Name="noteBFlatHalf")]
         BoundingBox NoteBFlatHalf { get; set; }
 
-        [JsonProperty("noteBFlatWhole")]
+        [DataMember(Name="noteBFlatWhole")]
         BoundingBox NoteBFlatWhole { get; set; }
 
-        [JsonProperty("noteBHalf")]
+        [DataMember(Name="noteBHalf")]
         BoundingBox NoteBHalf { get; set; }
 
-        [JsonProperty("noteBSharpBlack")]
+        [DataMember(Name="noteBSharpBlack")]
         BoundingBox NoteBSharpBlack { get; set; }
 
-        [JsonProperty("noteBSharpHalf")]
+        [DataMember(Name="noteBSharpHalf")]
         BoundingBox NoteBSharpHalf { get; set; }
 
-        [JsonProperty("noteBSharpWhole")]
+        [DataMember(Name="noteBSharpWhole")]
         BoundingBox NoteBSharpWhole { get; set; }
 
-        [JsonProperty("noteBWhole")]
+        [DataMember(Name="noteBWhole")]
         BoundingBox NoteBWhole { get; set; }
 
-        [JsonProperty("noteCBlack")]
+        [DataMember(Name="noteCBlack")]
         BoundingBox NoteCBlack { get; set; }
 
-        [JsonProperty("noteCFlatBlack")]
+        [DataMember(Name="noteCFlatBlack")]
         BoundingBox NoteCFlatBlack { get; set; }
 
-        [JsonProperty("noteCFlatHalf")]
+        [DataMember(Name="noteCFlatHalf")]
         BoundingBox NoteCFlatHalf { get; set; }
 
-        [JsonProperty("noteCFlatWhole")]
+        [DataMember(Name="noteCFlatWhole")]
         BoundingBox NoteCFlatWhole { get; set; }
 
-        [JsonProperty("noteCHalf")]
+        [DataMember(Name="noteCHalf")]
         BoundingBox NoteCHalf { get; set; }
 
-        [JsonProperty("noteCSharpBlack")]
+        [DataMember(Name="noteCSharpBlack")]
         BoundingBox NoteCSharpBlack { get; set; }
 
-        [JsonProperty("noteCSharpHalf")]
+        [DataMember(Name="noteCSharpHalf")]
         BoundingBox NoteCSharpHalf { get; set; }
 
-        [JsonProperty("noteCSharpWhole")]
+        [DataMember(Name="noteCSharpWhole")]
         BoundingBox NoteCSharpWhole { get; set; }
 
-        [JsonProperty("noteCWhole")]
+        [DataMember(Name="noteCWhole")]
         BoundingBox NoteCWhole { get; set; }
 
-        [JsonProperty("noteDBlack")]
+        [DataMember(Name="noteDBlack")]
         BoundingBox NoteDBlack { get; set; }
 
-        [JsonProperty("noteDFlatBlack")]
+        [DataMember(Name="noteDFlatBlack")]
         BoundingBox NoteDFlatBlack { get; set; }
 
-        [JsonProperty("noteDFlatHalf")]
+        [DataMember(Name="noteDFlatHalf")]
         BoundingBox NoteDFlatHalf { get; set; }
 
-        [JsonProperty("noteDFlatWhole")]
+        [DataMember(Name="noteDFlatWhole")]
         BoundingBox NoteDFlatWhole { get; set; }
 
-        [JsonProperty("noteDHalf")]
+        [DataMember(Name="noteDHalf")]
         BoundingBox NoteDHalf { get; set; }
 
-        [JsonProperty("noteDSharpBlack")]
+        [DataMember(Name="noteDSharpBlack")]
         BoundingBox NoteDSharpBlack { get; set; }
 
-        [JsonProperty("noteDSharpHalf")]
+        [DataMember(Name="noteDSharpHalf")]
         BoundingBox NoteDSharpHalf { get; set; }
 
-        [JsonProperty("noteDSharpWhole")]
+        [DataMember(Name="noteDSharpWhole")]
         BoundingBox NoteDSharpWhole { get; set; }
 
-        [JsonProperty("noteDWhole")]
+        [DataMember(Name="noteDWhole")]
         BoundingBox NoteDWhole { get; set; }
 
-        [JsonProperty("noteDoBlack")]
+        [DataMember(Name="noteDoBlack")]
         BoundingBox NoteDoBlack { get; set; }
 
-        [JsonProperty("noteDoHalf")]
+        [DataMember(Name="noteDoHalf")]
         BoundingBox NoteDoHalf { get; set; }
 
-        [JsonProperty("noteDoWhole")]
+        [DataMember(Name="noteDoWhole")]
         BoundingBox NoteDoWhole { get; set; }
 
-        [JsonProperty("noteDoubleWhole")]
+        [DataMember(Name="noteDoubleWhole")]
         BoundingBox NoteDoubleWhole { get; set; }
 
-        [JsonProperty("noteDoubleWholeAlt")]
+        [DataMember(Name="noteDoubleWholeAlt")]
         BoundingBox NoteDoubleWholeAlt { get; set; }
 
-        [JsonProperty("noteDoubleWholeSquare")]
+        [DataMember(Name="noteDoubleWholeSquare")]
         BoundingBox NoteDoubleWholeSquare { get; set; }
 
-        [JsonProperty("noteEBlack")]
+        [DataMember(Name="noteEBlack")]
         BoundingBox NoteEBlack { get; set; }
 
-        [JsonProperty("noteEFlatBlack")]
+        [DataMember(Name="noteEFlatBlack")]
         BoundingBox NoteEFlatBlack { get; set; }
 
-        [JsonProperty("noteEFlatHalf")]
+        [DataMember(Name="noteEFlatHalf")]
         BoundingBox NoteEFlatHalf { get; set; }
 
-        [JsonProperty("noteEFlatWhole")]
+        [DataMember(Name="noteEFlatWhole")]
         BoundingBox NoteEFlatWhole { get; set; }
 
-        [JsonProperty("noteEHalf")]
+        [DataMember(Name="noteEHalf")]
         BoundingBox NoteEHalf { get; set; }
 
-        [JsonProperty("noteESharpBlack")]
+        [DataMember(Name="noteESharpBlack")]
         BoundingBox NoteESharpBlack { get; set; }
 
-        [JsonProperty("noteESharpHalf")]
+        [DataMember(Name="noteESharpHalf")]
         BoundingBox NoteESharpHalf { get; set; }
 
-        [JsonProperty("noteESharpWhole")]
+        [DataMember(Name="noteESharpWhole")]
         BoundingBox NoteESharpWhole { get; set; }
 
-        [JsonProperty("noteEWhole")]
+        [DataMember(Name="noteEWhole")]
         BoundingBox NoteEWhole { get; set; }
 
-        [JsonProperty("noteEmptyBlack")]
+        [DataMember(Name="noteEmptyBlack")]
         BoundingBox NoteEmptyBlack { get; set; }
 
-        [JsonProperty("noteEmptyHalf")]
+        [DataMember(Name="noteEmptyHalf")]
         BoundingBox NoteEmptyHalf { get; set; }
 
-        [JsonProperty("noteEmptyWhole")]
+        [DataMember(Name="noteEmptyWhole")]
         BoundingBox NoteEmptyWhole { get; set; }
 
-        [JsonProperty("noteFBlack")]
+        [DataMember(Name="noteFBlack")]
         BoundingBox NoteFBlack { get; set; }
 
-        [JsonProperty("noteFFlatBlack")]
+        [DataMember(Name="noteFFlatBlack")]
         BoundingBox NoteFFlatBlack { get; set; }
 
-        [JsonProperty("noteFFlatHalf")]
+        [DataMember(Name="noteFFlatHalf")]
         BoundingBox NoteFFlatHalf { get; set; }
 
-        [JsonProperty("noteFFlatWhole")]
+        [DataMember(Name="noteFFlatWhole")]
         BoundingBox NoteFFlatWhole { get; set; }
 
-        [JsonProperty("noteFHalf")]
+        [DataMember(Name="noteFHalf")]
         BoundingBox NoteFHalf { get; set; }
 
-        [JsonProperty("noteFSharpBlack")]
+        [DataMember(Name="noteFSharpBlack")]
         BoundingBox NoteFSharpBlack { get; set; }
 
-        [JsonProperty("noteFSharpHalf")]
+        [DataMember(Name="noteFSharpHalf")]
         BoundingBox NoteFSharpHalf { get; set; }
 
-        [JsonProperty("noteFSharpWhole")]
+        [DataMember(Name="noteFSharpWhole")]
         BoundingBox NoteFSharpWhole { get; set; }
 
-        [JsonProperty("noteFWhole")]
+        [DataMember(Name="noteFWhole")]
         BoundingBox NoteFWhole { get; set; }
 
-        [JsonProperty("noteFaBlack")]
+        [DataMember(Name="noteFaBlack")]
         BoundingBox NoteFaBlack { get; set; }
 
-        [JsonProperty("noteFaHalf")]
+        [DataMember(Name="noteFaHalf")]
         BoundingBox NoteFaHalf { get; set; }
 
-        [JsonProperty("noteFaWhole")]
+        [DataMember(Name="noteFaWhole")]
         BoundingBox NoteFaWhole { get; set; }
 
-        [JsonProperty("noteGBlack")]
+        [DataMember(Name="noteGBlack")]
         BoundingBox NoteGBlack { get; set; }
 
-        [JsonProperty("noteGFlatBlack")]
+        [DataMember(Name="noteGFlatBlack")]
         BoundingBox NoteGFlatBlack { get; set; }
 
-        [JsonProperty("noteGFlatHalf")]
+        [DataMember(Name="noteGFlatHalf")]
         BoundingBox NoteGFlatHalf { get; set; }
 
-        [JsonProperty("noteGFlatWhole")]
+        [DataMember(Name="noteGFlatWhole")]
         BoundingBox NoteGFlatWhole { get; set; }
 
-        [JsonProperty("noteGHalf")]
+        [DataMember(Name="noteGHalf")]
         BoundingBox NoteGHalf { get; set; }
 
-        [JsonProperty("noteGSharpBlack")]
+        [DataMember(Name="noteGSharpBlack")]
         BoundingBox NoteGSharpBlack { get; set; }
 
-        [JsonProperty("noteGSharpHalf")]
+        [DataMember(Name="noteGSharpHalf")]
         BoundingBox NoteGSharpHalf { get; set; }
 
-        [JsonProperty("noteGSharpWhole")]
+        [DataMember(Name="noteGSharpWhole")]
         BoundingBox NoteGSharpWhole { get; set; }
 
-        [JsonProperty("noteGWhole")]
+        [DataMember(Name="noteGWhole")]
         BoundingBox NoteGWhole { get; set; }
 
-        [JsonProperty("noteHBlack")]
+        [DataMember(Name="noteHBlack")]
         BoundingBox NoteHBlack { get; set; }
 
-        [JsonProperty("noteHHalf")]
+        [DataMember(Name="noteHHalf")]
         BoundingBox NoteHHalf { get; set; }
 
-        [JsonProperty("noteHSharpBlack")]
+        [DataMember(Name="noteHSharpBlack")]
         BoundingBox NoteHSharpBlack { get; set; }
 
-        [JsonProperty("noteHSharpHalf")]
+        [DataMember(Name="noteHSharpHalf")]
         BoundingBox NoteHSharpHalf { get; set; }
 
-        [JsonProperty("noteHSharpWhole")]
+        [DataMember(Name="noteHSharpWhole")]
         BoundingBox NoteHSharpWhole { get; set; }
 
-        [JsonProperty("noteHWhole")]
+        [DataMember(Name="noteHWhole")]
         BoundingBox NoteHWhole { get; set; }
 
-        [JsonProperty("noteHalfDown")]
+        [DataMember(Name="noteHalfDown")]
         BoundingBox NoteHalfDown { get; set; }
 
-        [JsonProperty("noteHalfUp")]
+        [DataMember(Name="noteHalfUp")]
         BoundingBox NoteHalfUp { get; set; }
 
-        [JsonProperty("noteLaBlack")]
+        [DataMember(Name="noteLaBlack")]
         BoundingBox NoteLaBlack { get; set; }
 
-        [JsonProperty("noteLaHalf")]
+        [DataMember(Name="noteLaHalf")]
         BoundingBox NoteLaHalf { get; set; }
 
-        [JsonProperty("noteLaWhole")]
+        [DataMember(Name="noteLaWhole")]
         BoundingBox NoteLaWhole { get; set; }
 
-        [JsonProperty("noteMiBlack")]
+        [DataMember(Name="noteMiBlack")]
         BoundingBox NoteMiBlack { get; set; }
 
-        [JsonProperty("noteMiHalf")]
+        [DataMember(Name="noteMiHalf")]
         BoundingBox NoteMiHalf { get; set; }
 
-        [JsonProperty("noteMiWhole")]
+        [DataMember(Name="noteMiWhole")]
         BoundingBox NoteMiWhole { get; set; }
 
-        [JsonProperty("noteQuarterDown")]
+        [DataMember(Name="noteQuarterDown")]
         BoundingBox NoteQuarterDown { get; set; }
 
-        [JsonProperty("noteQuarterUp")]
+        [DataMember(Name="noteQuarterUp")]
         BoundingBox NoteQuarterUp { get; set; }
 
-        [JsonProperty("noteReBlack")]
+        [DataMember(Name="noteReBlack")]
         BoundingBox NoteReBlack { get; set; }
 
-        [JsonProperty("noteReHalf")]
+        [DataMember(Name="noteReHalf")]
         BoundingBox NoteReHalf { get; set; }
 
-        [JsonProperty("noteReWhole")]
+        [DataMember(Name="noteReWhole")]
         BoundingBox NoteReWhole { get; set; }
 
-        [JsonProperty("noteShapeArrowheadLeftBlack")]
+        [DataMember(Name="noteShapeArrowheadLeftBlack")]
         BoundingBox NoteShapeArrowheadLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeArrowheadLeftDoubleWhole")]
+        [DataMember(Name="noteShapeArrowheadLeftDoubleWhole")]
         BoundingBox NoteShapeArrowheadLeftDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeArrowheadLeftWhite")]
+        [DataMember(Name="noteShapeArrowheadLeftWhite")]
         BoundingBox NoteShapeArrowheadLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeDiamondBlack")]
+        [DataMember(Name="noteShapeDiamondBlack")]
         BoundingBox NoteShapeDiamondBlack { get; set; }
 
-        [JsonProperty("noteShapeDiamondDoubleWhole")]
+        [DataMember(Name="noteShapeDiamondDoubleWhole")]
         BoundingBox NoteShapeDiamondDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeDiamondWhite")]
+        [DataMember(Name="noteShapeDiamondWhite")]
         BoundingBox NoteShapeDiamondWhite { get; set; }
 
-        [JsonProperty("noteShapeIsoscelesTriangleBlack")]
+        [DataMember(Name="noteShapeIsoscelesTriangleBlack")]
         BoundingBox NoteShapeIsoscelesTriangleBlack { get; set; }
 
-        [JsonProperty("noteShapeIsoscelesTriangleDoubleWhole")]
+        [DataMember(Name="noteShapeIsoscelesTriangleDoubleWhole")]
         BoundingBox NoteShapeIsoscelesTriangleDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeIsoscelesTriangleWhite")]
+        [DataMember(Name="noteShapeIsoscelesTriangleWhite")]
         BoundingBox NoteShapeIsoscelesTriangleWhite { get; set; }
 
-        [JsonProperty("noteShapeKeystoneBlack")]
+        [DataMember(Name="noteShapeKeystoneBlack")]
         BoundingBox NoteShapeKeystoneBlack { get; set; }
 
-        [JsonProperty("noteShapeKeystoneDoubleWhole")]
+        [DataMember(Name="noteShapeKeystoneDoubleWhole")]
         BoundingBox NoteShapeKeystoneDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeKeystoneWhite")]
+        [DataMember(Name="noteShapeKeystoneWhite")]
         BoundingBox NoteShapeKeystoneWhite { get; set; }
 
-        [JsonProperty("noteShapeMoonBlack")]
+        [DataMember(Name="noteShapeMoonBlack")]
         BoundingBox NoteShapeMoonBlack { get; set; }
 
-        [JsonProperty("noteShapeMoonDoubleWhole")]
+        [DataMember(Name="noteShapeMoonDoubleWhole")]
         BoundingBox NoteShapeMoonDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeMoonLeftBlack")]
+        [DataMember(Name="noteShapeMoonLeftBlack")]
         BoundingBox NoteShapeMoonLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeMoonLeftDoubleWhole")]
+        [DataMember(Name="noteShapeMoonLeftDoubleWhole")]
         BoundingBox NoteShapeMoonLeftDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeMoonLeftWhite")]
+        [DataMember(Name="noteShapeMoonLeftWhite")]
         BoundingBox NoteShapeMoonLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeMoonWhite")]
+        [DataMember(Name="noteShapeMoonWhite")]
         BoundingBox NoteShapeMoonWhite { get; set; }
 
-        [JsonProperty("noteShapeQuarterMoonBlack")]
+        [DataMember(Name="noteShapeQuarterMoonBlack")]
         BoundingBox NoteShapeQuarterMoonBlack { get; set; }
 
-        [JsonProperty("noteShapeQuarterMoonDoubleWhole")]
+        [DataMember(Name="noteShapeQuarterMoonDoubleWhole")]
         BoundingBox NoteShapeQuarterMoonDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeQuarterMoonWhite")]
+        [DataMember(Name="noteShapeQuarterMoonWhite")]
         BoundingBox NoteShapeQuarterMoonWhite { get; set; }
 
-        [JsonProperty("noteShapeRoundBlack")]
+        [DataMember(Name="noteShapeRoundBlack")]
         BoundingBox NoteShapeRoundBlack { get; set; }
 
-        [JsonProperty("noteShapeRoundDoubleWhole")]
+        [DataMember(Name="noteShapeRoundDoubleWhole")]
         BoundingBox NoteShapeRoundDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeRoundWhite")]
+        [DataMember(Name="noteShapeRoundWhite")]
         BoundingBox NoteShapeRoundWhite { get; set; }
 
-        [JsonProperty("noteShapeSquareBlack")]
+        [DataMember(Name="noteShapeSquareBlack")]
         BoundingBox NoteShapeSquareBlack { get; set; }
 
-        [JsonProperty("noteShapeSquareDoubleWhole")]
+        [DataMember(Name="noteShapeSquareDoubleWhole")]
         BoundingBox NoteShapeSquareDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeSquareWhite")]
+        [DataMember(Name="noteShapeSquareWhite")]
         BoundingBox NoteShapeSquareWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleLeftBlack")]
+        [DataMember(Name="noteShapeTriangleLeftBlack")]
         BoundingBox NoteShapeTriangleLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleLeftDoubleWhole")]
+        [DataMember(Name="noteShapeTriangleLeftDoubleWhole")]
         BoundingBox NoteShapeTriangleLeftDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeTriangleLeftWhite")]
+        [DataMember(Name="noteShapeTriangleLeftWhite")]
         BoundingBox NoteShapeTriangleLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleRightBlack")]
+        [DataMember(Name="noteShapeTriangleRightBlack")]
         BoundingBox NoteShapeTriangleRightBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleRightDoubleWhole")]
+        [DataMember(Name="noteShapeTriangleRightDoubleWhole")]
         BoundingBox NoteShapeTriangleRightDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeTriangleRightWhite")]
+        [DataMember(Name="noteShapeTriangleRightWhite")]
         BoundingBox NoteShapeTriangleRightWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundBlack")]
+        [DataMember(Name="noteShapeTriangleRoundBlack")]
         BoundingBox NoteShapeTriangleRoundBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundDoubleWhole")]
+        [DataMember(Name="noteShapeTriangleRoundDoubleWhole")]
         BoundingBox NoteShapeTriangleRoundDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundLeftBlack")]
+        [DataMember(Name="noteShapeTriangleRoundLeftBlack")]
         BoundingBox NoteShapeTriangleRoundLeftBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundLeftDoubleWhole")]
+        [DataMember(Name="noteShapeTriangleRoundLeftDoubleWhole")]
         BoundingBox NoteShapeTriangleRoundLeftDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundLeftWhite")]
+        [DataMember(Name="noteShapeTriangleRoundLeftWhite")]
         BoundingBox NoteShapeTriangleRoundLeftWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleRoundWhite")]
+        [DataMember(Name="noteShapeTriangleRoundWhite")]
         BoundingBox NoteShapeTriangleRoundWhite { get; set; }
 
-        [JsonProperty("noteShapeTriangleUpBlack")]
+        [DataMember(Name="noteShapeTriangleUpBlack")]
         BoundingBox NoteShapeTriangleUpBlack { get; set; }
 
-        [JsonProperty("noteShapeTriangleUpDoubleWhole")]
+        [DataMember(Name="noteShapeTriangleUpDoubleWhole")]
         BoundingBox NoteShapeTriangleUpDoubleWhole { get; set; }
 
-        [JsonProperty("noteShapeTriangleUpWhite")]
+        [DataMember(Name="noteShapeTriangleUpWhite")]
         BoundingBox NoteShapeTriangleUpWhite { get; set; }
 
-        [JsonProperty("noteSiBlack")]
+        [DataMember(Name="noteSiBlack")]
         BoundingBox NoteSiBlack { get; set; }
 
-        [JsonProperty("noteSiHalf")]
+        [DataMember(Name="noteSiHalf")]
         BoundingBox NoteSiHalf { get; set; }
 
-        [JsonProperty("noteSiWhole")]
+        [DataMember(Name="noteSiWhole")]
         BoundingBox NoteSiWhole { get; set; }
 
-        [JsonProperty("noteSoBlack")]
+        [DataMember(Name="noteSoBlack")]
         BoundingBox NoteSoBlack { get; set; }
 
-        [JsonProperty("noteSoHalf")]
+        [DataMember(Name="noteSoHalf")]
         BoundingBox NoteSoHalf { get; set; }
 
-        [JsonProperty("noteSoWhole")]
+        [DataMember(Name="noteSoWhole")]
         BoundingBox NoteSoWhole { get; set; }
 
-        [JsonProperty("noteTiBlack")]
+        [DataMember(Name="noteTiBlack")]
         BoundingBox NoteTiBlack { get; set; }
 
-        [JsonProperty("noteTiHalf")]
+        [DataMember(Name="noteTiHalf")]
         BoundingBox NoteTiHalf { get; set; }
 
-        [JsonProperty("noteTiWhole")]
+        [DataMember(Name="noteTiWhole")]
         BoundingBox NoteTiWhole { get; set; }
 
-        [JsonProperty("noteWhole")]
+        [DataMember(Name="noteWhole")]
         BoundingBox NoteWhole { get; set; }
 
-        [JsonProperty("noteheadBlack")]
+        [DataMember(Name="noteheadBlack")]
         BoundingBox NoteheadBlack { get; set; }
 
-        [JsonProperty("noteheadBlackOversized")]
+        [DataMember(Name="noteheadBlackOversized")]
         BoundingBox NoteheadBlackOversized { get; set; }
 
-        [JsonProperty("noteheadBlackParens")]
+        [DataMember(Name="noteheadBlackParens")]
         BoundingBox NoteheadBlackParens { get; set; }
 
-        [JsonProperty("noteheadBlackSmall")]
+        [DataMember(Name="noteheadBlackSmall")]
         BoundingBox NoteheadBlackSmall { get; set; }
 
-        [JsonProperty("noteheadCircleSlash")]
+        [DataMember(Name="noteheadCircleSlash")]
         BoundingBox NoteheadCircleSlash { get; set; }
 
-        [JsonProperty("noteheadCircleX")]
+        [DataMember(Name="noteheadCircleX")]
         BoundingBox NoteheadCircleX { get; set; }
 
-        [JsonProperty("noteheadCircleXDoubleWhole")]
+        [DataMember(Name="noteheadCircleXDoubleWhole")]
         BoundingBox NoteheadCircleXDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadCircleXHalf")]
+        [DataMember(Name="noteheadCircleXHalf")]
         BoundingBox NoteheadCircleXHalf { get; set; }
 
-        [JsonProperty("noteheadCircleXWhole")]
+        [DataMember(Name="noteheadCircleXWhole")]
         BoundingBox NoteheadCircleXWhole { get; set; }
 
-        [JsonProperty("noteheadCircledBlack")]
+        [DataMember(Name="noteheadCircledBlack")]
         BoundingBox NoteheadCircledBlack { get; set; }
 
-        [JsonProperty("noteheadCircledBlackLarge")]
+        [DataMember(Name="noteheadCircledBlackLarge")]
         BoundingBox NoteheadCircledBlackLarge { get; set; }
 
-        [JsonProperty("noteheadCircledDoubleWhole")]
+        [DataMember(Name="noteheadCircledDoubleWhole")]
         BoundingBox NoteheadCircledDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadCircledDoubleWholeLarge")]
+        [DataMember(Name="noteheadCircledDoubleWholeLarge")]
         BoundingBox NoteheadCircledDoubleWholeLarge { get; set; }
 
-        [JsonProperty("noteheadCircledHalf")]
+        [DataMember(Name="noteheadCircledHalf")]
         BoundingBox NoteheadCircledHalf { get; set; }
 
-        [JsonProperty("noteheadCircledHalfLarge")]
+        [DataMember(Name="noteheadCircledHalfLarge")]
         BoundingBox NoteheadCircledHalfLarge { get; set; }
 
-        [JsonProperty("noteheadCircledWhole")]
+        [DataMember(Name="noteheadCircledWhole")]
         BoundingBox NoteheadCircledWhole { get; set; }
 
-        [JsonProperty("noteheadCircledWholeLarge")]
+        [DataMember(Name="noteheadCircledWholeLarge")]
         BoundingBox NoteheadCircledWholeLarge { get; set; }
 
-        [JsonProperty("noteheadCircledXLarge")]
+        [DataMember(Name="noteheadCircledXLarge")]
         BoundingBox NoteheadCircledXLarge { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWhole2nd")]
+        [DataMember(Name="noteheadClusterDoubleWhole2nd")]
         BoundingBox NoteheadClusterDoubleWhole2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWhole3rd")]
+        [DataMember(Name="noteheadClusterDoubleWhole3rd")]
         BoundingBox NoteheadClusterDoubleWhole3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWholeBottom")]
+        [DataMember(Name="noteheadClusterDoubleWholeBottom")]
         BoundingBox NoteheadClusterDoubleWholeBottom { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWholeMiddle")]
+        [DataMember(Name="noteheadClusterDoubleWholeMiddle")]
         BoundingBox NoteheadClusterDoubleWholeMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterDoubleWholeTop")]
+        [DataMember(Name="noteheadClusterDoubleWholeTop")]
         BoundingBox NoteheadClusterDoubleWholeTop { get; set; }
 
-        [JsonProperty("noteheadClusterHalf2nd")]
+        [DataMember(Name="noteheadClusterHalf2nd")]
         BoundingBox NoteheadClusterHalf2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterHalf3rd")]
+        [DataMember(Name="noteheadClusterHalf3rd")]
         BoundingBox NoteheadClusterHalf3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterHalfBottom")]
+        [DataMember(Name="noteheadClusterHalfBottom")]
         BoundingBox NoteheadClusterHalfBottom { get; set; }
 
-        [JsonProperty("noteheadClusterHalfMiddle")]
+        [DataMember(Name="noteheadClusterHalfMiddle")]
         BoundingBox NoteheadClusterHalfMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterHalfTop")]
+        [DataMember(Name="noteheadClusterHalfTop")]
         BoundingBox NoteheadClusterHalfTop { get; set; }
 
-        [JsonProperty("noteheadClusterQuarter2nd")]
+        [DataMember(Name="noteheadClusterQuarter2nd")]
         BoundingBox NoteheadClusterQuarter2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterQuarter3rd")]
+        [DataMember(Name="noteheadClusterQuarter3rd")]
         BoundingBox NoteheadClusterQuarter3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterQuarterBottom")]
+        [DataMember(Name="noteheadClusterQuarterBottom")]
         BoundingBox NoteheadClusterQuarterBottom { get; set; }
 
-        [JsonProperty("noteheadClusterQuarterMiddle")]
+        [DataMember(Name="noteheadClusterQuarterMiddle")]
         BoundingBox NoteheadClusterQuarterMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterQuarterTop")]
+        [DataMember(Name="noteheadClusterQuarterTop")]
         BoundingBox NoteheadClusterQuarterTop { get; set; }
 
-        [JsonProperty("noteheadClusterRoundBlack")]
+        [DataMember(Name="noteheadClusterRoundBlack")]
         BoundingBox NoteheadClusterRoundBlack { get; set; }
 
-        [JsonProperty("noteheadClusterRoundWhite")]
+        [DataMember(Name="noteheadClusterRoundWhite")]
         BoundingBox NoteheadClusterRoundWhite { get; set; }
 
-        [JsonProperty("noteheadClusterSquareBlack")]
+        [DataMember(Name="noteheadClusterSquareBlack")]
         BoundingBox NoteheadClusterSquareBlack { get; set; }
 
-        [JsonProperty("noteheadClusterSquareWhite")]
+        [DataMember(Name="noteheadClusterSquareWhite")]
         BoundingBox NoteheadClusterSquareWhite { get; set; }
 
-        [JsonProperty("noteheadClusterWhole2nd")]
+        [DataMember(Name="noteheadClusterWhole2nd")]
         BoundingBox NoteheadClusterWhole2Nd { get; set; }
 
-        [JsonProperty("noteheadClusterWhole3rd")]
+        [DataMember(Name="noteheadClusterWhole3rd")]
         BoundingBox NoteheadClusterWhole3Rd { get; set; }
 
-        [JsonProperty("noteheadClusterWholeBottom")]
+        [DataMember(Name="noteheadClusterWholeBottom")]
         BoundingBox NoteheadClusterWholeBottom { get; set; }
 
-        [JsonProperty("noteheadClusterWholeMiddle")]
+        [DataMember(Name="noteheadClusterWholeMiddle")]
         BoundingBox NoteheadClusterWholeMiddle { get; set; }
 
-        [JsonProperty("noteheadClusterWholeTop")]
+        [DataMember(Name="noteheadClusterWholeTop")]
         BoundingBox NoteheadClusterWholeTop { get; set; }
 
-        [JsonProperty("noteheadDiamondBlack")]
+        [DataMember(Name="noteheadDiamondBlack")]
         BoundingBox NoteheadDiamondBlack { get; set; }
 
-        [JsonProperty("noteheadDiamondBlackOld")]
+        [DataMember(Name="noteheadDiamondBlackOld")]
         BoundingBox NoteheadDiamondBlackOld { get; set; }
 
-        [JsonProperty("noteheadDiamondBlackWide")]
+        [DataMember(Name="noteheadDiamondBlackWide")]
         BoundingBox NoteheadDiamondBlackWide { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlack2nd")]
+        [DataMember(Name="noteheadDiamondClusterBlack2nd")]
         BoundingBox NoteheadDiamondClusterBlack2Nd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlack3rd")]
+        [DataMember(Name="noteheadDiamondClusterBlack3rd")]
         BoundingBox NoteheadDiamondClusterBlack3Rd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlackBottom")]
+        [DataMember(Name="noteheadDiamondClusterBlackBottom")]
         BoundingBox NoteheadDiamondClusterBlackBottom { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlackMiddle")]
+        [DataMember(Name="noteheadDiamondClusterBlackMiddle")]
         BoundingBox NoteheadDiamondClusterBlackMiddle { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterBlackTop")]
+        [DataMember(Name="noteheadDiamondClusterBlackTop")]
         BoundingBox NoteheadDiamondClusterBlackTop { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhite2nd")]
+        [DataMember(Name="noteheadDiamondClusterWhite2nd")]
         BoundingBox NoteheadDiamondClusterWhite2Nd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhite3rd")]
+        [DataMember(Name="noteheadDiamondClusterWhite3rd")]
         BoundingBox NoteheadDiamondClusterWhite3Rd { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhiteBottom")]
+        [DataMember(Name="noteheadDiamondClusterWhiteBottom")]
         BoundingBox NoteheadDiamondClusterWhiteBottom { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhiteMiddle")]
+        [DataMember(Name="noteheadDiamondClusterWhiteMiddle")]
         BoundingBox NoteheadDiamondClusterWhiteMiddle { get; set; }
 
-        [JsonProperty("noteheadDiamondClusterWhiteTop")]
+        [DataMember(Name="noteheadDiamondClusterWhiteTop")]
         BoundingBox NoteheadDiamondClusterWhiteTop { get; set; }
 
-        [JsonProperty("noteheadDiamondDoubleWhole")]
+        [DataMember(Name="noteheadDiamondDoubleWhole")]
         BoundingBox NoteheadDiamondDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadDiamondDoubleWholeOld")]
+        [DataMember(Name="noteheadDiamondDoubleWholeOld")]
         BoundingBox NoteheadDiamondDoubleWholeOld { get; set; }
 
-        [JsonProperty("noteheadDiamondHalf")]
+        [DataMember(Name="noteheadDiamondHalf")]
         BoundingBox NoteheadDiamondHalf { get; set; }
 
-        [JsonProperty("noteheadDiamondHalfFilled")]
+        [DataMember(Name="noteheadDiamondHalfFilled")]
         BoundingBox NoteheadDiamondHalfFilled { get; set; }
 
-        [JsonProperty("noteheadDiamondHalfOld")]
+        [DataMember(Name="noteheadDiamondHalfOld")]
         BoundingBox NoteheadDiamondHalfOld { get; set; }
 
-        [JsonProperty("noteheadDiamondHalfWide")]
+        [DataMember(Name="noteheadDiamondHalfWide")]
         BoundingBox NoteheadDiamondHalfWide { get; set; }
 
-        [JsonProperty("noteheadDiamondOpen")]
+        [DataMember(Name="noteheadDiamondOpen")]
         BoundingBox NoteheadDiamondOpen { get; set; }
 
-        [JsonProperty("noteheadDiamondWhite")]
+        [DataMember(Name="noteheadDiamondWhite")]
         BoundingBox NoteheadDiamondWhite { get; set; }
 
-        [JsonProperty("noteheadDiamondWhiteWide")]
+        [DataMember(Name="noteheadDiamondWhiteWide")]
         BoundingBox NoteheadDiamondWhiteWide { get; set; }
 
-        [JsonProperty("noteheadDiamondWhole")]
+        [DataMember(Name="noteheadDiamondWhole")]
         BoundingBox NoteheadDiamondWhole { get; set; }
 
-        [JsonProperty("noteheadDiamondWholeOld")]
+        [DataMember(Name="noteheadDiamondWholeOld")]
         BoundingBox NoteheadDiamondWholeOld { get; set; }
 
-        [JsonProperty("noteheadDoubleWhole")]
+        [DataMember(Name="noteheadDoubleWhole")]
         BoundingBox NoteheadDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeAlt")]
+        [DataMember(Name="noteheadDoubleWholeAlt")]
         BoundingBox NoteheadDoubleWholeAlt { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeOversized")]
+        [DataMember(Name="noteheadDoubleWholeOversized")]
         BoundingBox NoteheadDoubleWholeOversized { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeParens")]
+        [DataMember(Name="noteheadDoubleWholeParens")]
         BoundingBox NoteheadDoubleWholeParens { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeSmall")]
+        [DataMember(Name="noteheadDoubleWholeSmall")]
         BoundingBox NoteheadDoubleWholeSmall { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeSquare")]
+        [DataMember(Name="noteheadDoubleWholeSquare")]
         BoundingBox NoteheadDoubleWholeSquare { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeSquareOversized")]
+        [DataMember(Name="noteheadDoubleWholeSquareOversized")]
         BoundingBox NoteheadDoubleWholeSquareOversized { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeWithX")]
+        [DataMember(Name="noteheadDoubleWholeWithX")]
         BoundingBox NoteheadDoubleWholeWithX { get; set; }
 
-        [JsonProperty("noteheadHalf")]
+        [DataMember(Name="noteheadHalf")]
         BoundingBox NoteheadHalf { get; set; }
 
-        [JsonProperty("noteheadHalfFilled")]
+        [DataMember(Name="noteheadHalfFilled")]
         BoundingBox NoteheadHalfFilled { get; set; }
 
-        [JsonProperty("noteheadHalfOversized")]
+        [DataMember(Name="noteheadHalfOversized")]
         BoundingBox NoteheadHalfOversized { get; set; }
 
-        [JsonProperty("noteheadHalfParens")]
+        [DataMember(Name="noteheadHalfParens")]
         BoundingBox NoteheadHalfParens { get; set; }
 
-        [JsonProperty("noteheadHalfSmall")]
+        [DataMember(Name="noteheadHalfSmall")]
         BoundingBox NoteheadHalfSmall { get; set; }
 
-        [JsonProperty("noteheadHalfWithX")]
+        [DataMember(Name="noteheadHalfWithX")]
         BoundingBox NoteheadHalfWithX { get; set; }
 
-        [JsonProperty("noteheadHeavyX")]
+        [DataMember(Name="noteheadHeavyX")]
         BoundingBox NoteheadHeavyX { get; set; }
 
-        [JsonProperty("noteheadHeavyXHat")]
+        [DataMember(Name="noteheadHeavyXHat")]
         BoundingBox NoteheadHeavyXHat { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownBlack")]
+        [DataMember(Name="noteheadLargeArrowDownBlack")]
         BoundingBox NoteheadLargeArrowDownBlack { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownDoubleWhole")]
+        [DataMember(Name="noteheadLargeArrowDownDoubleWhole")]
         BoundingBox NoteheadLargeArrowDownDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownHalf")]
+        [DataMember(Name="noteheadLargeArrowDownHalf")]
         BoundingBox NoteheadLargeArrowDownHalf { get; set; }
 
-        [JsonProperty("noteheadLargeArrowDownWhole")]
+        [DataMember(Name="noteheadLargeArrowDownWhole")]
         BoundingBox NoteheadLargeArrowDownWhole { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpBlack")]
+        [DataMember(Name="noteheadLargeArrowUpBlack")]
         BoundingBox NoteheadLargeArrowUpBlack { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpDoubleWhole")]
+        [DataMember(Name="noteheadLargeArrowUpDoubleWhole")]
         BoundingBox NoteheadLargeArrowUpDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpHalf")]
+        [DataMember(Name="noteheadLargeArrowUpHalf")]
         BoundingBox NoteheadLargeArrowUpHalf { get; set; }
 
-        [JsonProperty("noteheadLargeArrowUpWhole")]
+        [DataMember(Name="noteheadLargeArrowUpWhole")]
         BoundingBox NoteheadLargeArrowUpWhole { get; set; }
 
-        [JsonProperty("noteheadMoonBlack")]
+        [DataMember(Name="noteheadMoonBlack")]
         BoundingBox NoteheadMoonBlack { get; set; }
 
-        [JsonProperty("noteheadMoonWhite")]
+        [DataMember(Name="noteheadMoonWhite")]
         BoundingBox NoteheadMoonWhite { get; set; }
 
-        [JsonProperty("noteheadParenthesis")]
+        [DataMember(Name="noteheadParenthesis")]
         BoundingBox NoteheadParenthesis { get; set; }
 
-        [JsonProperty("noteheadParenthesisLeft")]
+        [DataMember(Name="noteheadParenthesisLeft")]
         BoundingBox NoteheadParenthesisLeft { get; set; }
 
-        [JsonProperty("noteheadParenthesisRight")]
+        [DataMember(Name="noteheadParenthesisRight")]
         BoundingBox NoteheadParenthesisRight { get; set; }
 
-        [JsonProperty("noteheadPlusBlack")]
+        [DataMember(Name="noteheadPlusBlack")]
         BoundingBox NoteheadPlusBlack { get; set; }
 
-        [JsonProperty("noteheadPlusDoubleWhole")]
+        [DataMember(Name="noteheadPlusDoubleWhole")]
         BoundingBox NoteheadPlusDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadPlusHalf")]
+        [DataMember(Name="noteheadPlusHalf")]
         BoundingBox NoteheadPlusHalf { get; set; }
 
-        [JsonProperty("noteheadPlusWhole")]
+        [DataMember(Name="noteheadPlusWhole")]
         BoundingBox NoteheadPlusWhole { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterBlackBottom")]
+        [DataMember(Name="noteheadRectangularClusterBlackBottom")]
         BoundingBox NoteheadRectangularClusterBlackBottom { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterBlackMiddle")]
+        [DataMember(Name="noteheadRectangularClusterBlackMiddle")]
         BoundingBox NoteheadRectangularClusterBlackMiddle { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterBlackTop")]
+        [DataMember(Name="noteheadRectangularClusterBlackTop")]
         BoundingBox NoteheadRectangularClusterBlackTop { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterWhiteBottom")]
+        [DataMember(Name="noteheadRectangularClusterWhiteBottom")]
         BoundingBox NoteheadRectangularClusterWhiteBottom { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterWhiteMiddle")]
+        [DataMember(Name="noteheadRectangularClusterWhiteMiddle")]
         BoundingBox NoteheadRectangularClusterWhiteMiddle { get; set; }
 
-        [JsonProperty("noteheadRectangularClusterWhiteTop")]
+        [DataMember(Name="noteheadRectangularClusterWhiteTop")]
         BoundingBox NoteheadRectangularClusterWhiteTop { get; set; }
 
-        [JsonProperty("noteheadRoundBlack")]
+        [DataMember(Name="noteheadRoundBlack")]
         BoundingBox NoteheadRoundBlack { get; set; }
 
-        [JsonProperty("noteheadRoundBlackDoubleSlashed")]
+        [DataMember(Name="noteheadRoundBlackDoubleSlashed")]
         BoundingBox NoteheadRoundBlackDoubleSlashed { get; set; }
 
-        [JsonProperty("noteheadRoundBlackLarge")]
+        [DataMember(Name="noteheadRoundBlackLarge")]
         Dictionary<string, long[]> NoteheadRoundBlackLarge { get; set; }
 
-        [JsonProperty("noteheadRoundBlackSlashed")]
+        [DataMember(Name="noteheadRoundBlackSlashed")]
         BoundingBox NoteheadRoundBlackSlashed { get; set; }
 
-        [JsonProperty("noteheadRoundBlackSlashedLarge")]
+        [DataMember(Name="noteheadRoundBlackSlashedLarge")]
         BoundingBox NoteheadRoundBlackSlashedLarge { get; set; }
 
-        [JsonProperty("noteheadRoundWhite")]
+        [DataMember(Name="noteheadRoundWhite")]
         BoundingBox NoteheadRoundWhite { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteDoubleSlashed")]
+        [DataMember(Name="noteheadRoundWhiteDoubleSlashed")]
         BoundingBox NoteheadRoundWhiteDoubleSlashed { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteLarge")]
+        [DataMember(Name="noteheadRoundWhiteLarge")]
         Dictionary<string, long[]> NoteheadRoundWhiteLarge { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteSlashed")]
+        [DataMember(Name="noteheadRoundWhiteSlashed")]
         BoundingBox NoteheadRoundWhiteSlashed { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteSlashedLarge")]
+        [DataMember(Name="noteheadRoundWhiteSlashedLarge")]
         BoundingBox NoteheadRoundWhiteSlashedLarge { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteWithDot")]
+        [DataMember(Name="noteheadRoundWhiteWithDot")]
         BoundingBox NoteheadRoundWhiteWithDot { get; set; }
 
-        [JsonProperty("noteheadRoundWhiteWithDotLarge")]
+        [DataMember(Name="noteheadRoundWhiteWithDotLarge")]
         BoundingBox NoteheadRoundWhiteWithDotLarge { get; set; }
 
-        [JsonProperty("noteheadSlashDiamondWhite")]
+        [DataMember(Name="noteheadSlashDiamondWhite")]
         Dictionary<string, long[]> NoteheadSlashDiamondWhite { get; set; }
 
-        [JsonProperty("noteheadSlashHorizontalEnds")]
+        [DataMember(Name="noteheadSlashHorizontalEnds")]
         BoundingBox NoteheadSlashHorizontalEnds { get; set; }
 
-        [JsonProperty("noteheadSlashHorizontalEndsMuted")]
+        [DataMember(Name="noteheadSlashHorizontalEndsMuted")]
         BoundingBox NoteheadSlashHorizontalEndsMuted { get; set; }
 
-        [JsonProperty("noteheadSlashVerticalEnds")]
+        [DataMember(Name="noteheadSlashVerticalEnds")]
         BoundingBox NoteheadSlashVerticalEnds { get; set; }
 
-        [JsonProperty("noteheadSlashVerticalEndsMuted")]
+        [DataMember(Name="noteheadSlashVerticalEndsMuted")]
         BoundingBox NoteheadSlashVerticalEndsMuted { get; set; }
 
-        [JsonProperty("noteheadSlashVerticalEndsSmall")]
+        [DataMember(Name="noteheadSlashVerticalEndsSmall")]
         BoundingBox NoteheadSlashVerticalEndsSmall { get; set; }
 
-        [JsonProperty("noteheadSlashWhiteDoubleWhole")]
+        [DataMember(Name="noteheadSlashWhiteDoubleWhole")]
         BoundingBox NoteheadSlashWhiteDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadSlashWhiteHalf")]
+        [DataMember(Name="noteheadSlashWhiteHalf")]
         BoundingBox NoteheadSlashWhiteHalf { get; set; }
 
-        [JsonProperty("noteheadSlashWhiteMuted")]
+        [DataMember(Name="noteheadSlashWhiteMuted")]
         BoundingBox NoteheadSlashWhiteMuted { get; set; }
 
-        [JsonProperty("noteheadSlashWhiteWhole")]
+        [DataMember(Name="noteheadSlashWhiteWhole")]
         BoundingBox NoteheadSlashWhiteWhole { get; set; }
 
-        [JsonProperty("noteheadSlashX")]
+        [DataMember(Name="noteheadSlashX")]
         BoundingBox NoteheadSlashX { get; set; }
 
-        [JsonProperty("noteheadSlashedBlack1")]
+        [DataMember(Name="noteheadSlashedBlack1")]
         BoundingBox NoteheadSlashedBlack1 { get; set; }
 
-        [JsonProperty("noteheadSlashedBlack2")]
+        [DataMember(Name="noteheadSlashedBlack2")]
         BoundingBox NoteheadSlashedBlack2 { get; set; }
 
-        [JsonProperty("noteheadSlashedDoubleWhole1")]
+        [DataMember(Name="noteheadSlashedDoubleWhole1")]
         BoundingBox NoteheadSlashedDoubleWhole1 { get; set; }
 
-        [JsonProperty("noteheadSlashedDoubleWhole2")]
+        [DataMember(Name="noteheadSlashedDoubleWhole2")]
         BoundingBox NoteheadSlashedDoubleWhole2 { get; set; }
 
-        [JsonProperty("noteheadSlashedHalf1")]
+        [DataMember(Name="noteheadSlashedHalf1")]
         BoundingBox NoteheadSlashedHalf1 { get; set; }
 
-        [JsonProperty("noteheadSlashedHalf2")]
+        [DataMember(Name="noteheadSlashedHalf2")]
         BoundingBox NoteheadSlashedHalf2 { get; set; }
 
-        [JsonProperty("noteheadSlashedWhole1")]
+        [DataMember(Name="noteheadSlashedWhole1")]
         BoundingBox NoteheadSlashedWhole1 { get; set; }
 
-        [JsonProperty("noteheadSlashedWhole2")]
+        [DataMember(Name="noteheadSlashedWhole2")]
         BoundingBox NoteheadSlashedWhole2 { get; set; }
 
-        [JsonProperty("noteheadSquareBlack")]
+        [DataMember(Name="noteheadSquareBlack")]
         BoundingBox NoteheadSquareBlack { get; set; }
 
-        [JsonProperty("noteheadSquareBlackLarge")]
+        [DataMember(Name="noteheadSquareBlackLarge")]
         Dictionary<string, long[]> NoteheadSquareBlackLarge { get; set; }
 
-        [JsonProperty("noteheadSquareBlackWhite")]
+        [DataMember(Name="noteheadSquareBlackWhite")]
         Dictionary<string, long[]> NoteheadSquareBlackWhite { get; set; }
 
-        [JsonProperty("noteheadSquareWhite")]
+        [DataMember(Name="noteheadSquareWhite")]
         BoundingBox NoteheadSquareWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleDownBlack")]
+        [DataMember(Name="noteheadTriangleDownBlack")]
         BoundingBox NoteheadTriangleDownBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleDownDoubleWhole")]
+        [DataMember(Name="noteheadTriangleDownDoubleWhole")]
         BoundingBox NoteheadTriangleDownDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadTriangleDownHalf")]
+        [DataMember(Name="noteheadTriangleDownHalf")]
         BoundingBox NoteheadTriangleDownHalf { get; set; }
 
-        [JsonProperty("noteheadTriangleDownWhite")]
+        [DataMember(Name="noteheadTriangleDownWhite")]
         BoundingBox NoteheadTriangleDownWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleDownWhole")]
+        [DataMember(Name="noteheadTriangleDownWhole")]
         BoundingBox NoteheadTriangleDownWhole { get; set; }
 
-        [JsonProperty("noteheadTriangleLeftBlack")]
+        [DataMember(Name="noteheadTriangleLeftBlack")]
         BoundingBox NoteheadTriangleLeftBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleLeftWhite")]
+        [DataMember(Name="noteheadTriangleLeftWhite")]
         BoundingBox NoteheadTriangleLeftWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleRightBlack")]
+        [DataMember(Name="noteheadTriangleRightBlack")]
         BoundingBox NoteheadTriangleRightBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleRightWhite")]
+        [DataMember(Name="noteheadTriangleRightWhite")]
         BoundingBox NoteheadTriangleRightWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleRoundDownBlack")]
+        [DataMember(Name="noteheadTriangleRoundDownBlack")]
         BoundingBox NoteheadTriangleRoundDownBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleRoundDownWhite")]
+        [DataMember(Name="noteheadTriangleRoundDownWhite")]
         BoundingBox NoteheadTriangleRoundDownWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleUpBlack")]
+        [DataMember(Name="noteheadTriangleUpBlack")]
         BoundingBox NoteheadTriangleUpBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleUpDoubleWhole")]
+        [DataMember(Name="noteheadTriangleUpDoubleWhole")]
         BoundingBox NoteheadTriangleUpDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadTriangleUpHalf")]
+        [DataMember(Name="noteheadTriangleUpHalf")]
         BoundingBox NoteheadTriangleUpHalf { get; set; }
 
-        [JsonProperty("noteheadTriangleUpRightBlack")]
+        [DataMember(Name="noteheadTriangleUpRightBlack")]
         BoundingBox NoteheadTriangleUpRightBlack { get; set; }
 
-        [JsonProperty("noteheadTriangleUpRightWhite")]
+        [DataMember(Name="noteheadTriangleUpRightWhite")]
         BoundingBox NoteheadTriangleUpRightWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleUpWhite")]
+        [DataMember(Name="noteheadTriangleUpWhite")]
         BoundingBox NoteheadTriangleUpWhite { get; set; }
 
-        [JsonProperty("noteheadTriangleUpWhole")]
+        [DataMember(Name="noteheadTriangleUpWhole")]
         BoundingBox NoteheadTriangleUpWhole { get; set; }
 
-        [JsonProperty("noteheadVoidWithX")]
+        [DataMember(Name="noteheadVoidWithX")]
         BoundingBox NoteheadVoidWithX { get; set; }
 
-        [JsonProperty("noteheadWhole")]
+        [DataMember(Name="noteheadWhole")]
         BoundingBox NoteheadWhole { get; set; }
 
-        [JsonProperty("noteheadWholeFilled")]
+        [DataMember(Name="noteheadWholeFilled")]
         BoundingBox NoteheadWholeFilled { get; set; }
 
-        [JsonProperty("noteheadWholeOversized")]
+        [DataMember(Name="noteheadWholeOversized")]
         BoundingBox NoteheadWholeOversized { get; set; }
 
-        [JsonProperty("noteheadWholeParens")]
+        [DataMember(Name="noteheadWholeParens")]
         BoundingBox NoteheadWholeParens { get; set; }
 
-        [JsonProperty("noteheadWholeSmall")]
+        [DataMember(Name="noteheadWholeSmall")]
         BoundingBox NoteheadWholeSmall { get; set; }
 
-        [JsonProperty("noteheadWholeWithX")]
+        [DataMember(Name="noteheadWholeWithX")]
         BoundingBox NoteheadWholeWithX { get; set; }
 
-        [JsonProperty("noteheadXBlack")]
+        [DataMember(Name="noteheadXBlack")]
         BoundingBox NoteheadXBlack { get; set; }
 
-        [JsonProperty("noteheadXDoubleWhole")]
+        [DataMember(Name="noteheadXDoubleWhole")]
         BoundingBox NoteheadXDoubleWhole { get; set; }
 
-        [JsonProperty("noteheadXHalf")]
+        [DataMember(Name="noteheadXHalf")]
         BoundingBox NoteheadXHalf { get; set; }
 
-        [JsonProperty("noteheadXOrnate")]
+        [DataMember(Name="noteheadXOrnate")]
         BoundingBox NoteheadXOrnate { get; set; }
 
-        [JsonProperty("noteheadXOrnateEllipse")]
+        [DataMember(Name="noteheadXOrnateEllipse")]
         BoundingBox NoteheadXOrnateEllipse { get; set; }
 
-        [JsonProperty("noteheadXWhole")]
+        [DataMember(Name="noteheadXWhole")]
         BoundingBox NoteheadXWhole { get; set; }
 
-        [JsonProperty("octaveBaselineA")]
+        [DataMember(Name="octaveBaselineA")]
         BoundingBox OctaveBaselineA { get; set; }
 
-        [JsonProperty("octaveBaselineB")]
+        [DataMember(Name="octaveBaselineB")]
         BoundingBox OctaveBaselineB { get; set; }
 
-        [JsonProperty("octaveBaselineM")]
+        [DataMember(Name="octaveBaselineM")]
         BoundingBox OctaveBaselineM { get; set; }
 
-        [JsonProperty("octaveBaselineV")]
+        [DataMember(Name="octaveBaselineV")]
         BoundingBox OctaveBaselineV { get; set; }
 
-        [JsonProperty("octaveBassa")]
+        [DataMember(Name="octaveBassa")]
         BoundingBox OctaveBassa { get; set; }
 
-        [JsonProperty("octaveLoco")]
+        [DataMember(Name="octaveLoco")]
         BoundingBox OctaveLoco { get; set; }
 
-        [JsonProperty("octaveParensLeft")]
+        [DataMember(Name="octaveParensLeft")]
         BoundingBox OctaveParensLeft { get; set; }
 
-        [JsonProperty("octaveParensRight")]
+        [DataMember(Name="octaveParensRight")]
         BoundingBox OctaveParensRight { get; set; }
 
-        [JsonProperty("octaveSuperscriptA")]
+        [DataMember(Name="octaveSuperscriptA")]
         BoundingBox OctaveSuperscriptA { get; set; }
 
-        [JsonProperty("octaveSuperscriptB")]
+        [DataMember(Name="octaveSuperscriptB")]
         BoundingBox OctaveSuperscriptB { get; set; }
 
-        [JsonProperty("octaveSuperscriptM")]
+        [DataMember(Name="octaveSuperscriptM")]
         BoundingBox OctaveSuperscriptM { get; set; }
 
-        [JsonProperty("octaveSuperscriptV")]
+        [DataMember(Name="octaveSuperscriptV")]
         BoundingBox OctaveSuperscriptV { get; set; }
 
-        [JsonProperty("ornamentBottomLeftConcaveStroke")]
+        [DataMember(Name="ornamentBottomLeftConcaveStroke")]
         BoundingBox OrnamentBottomLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentBottomLeftConcaveStrokeLarge")]
+        [DataMember(Name="ornamentBottomLeftConcaveStrokeLarge")]
         BoundingBox OrnamentBottomLeftConcaveStrokeLarge { get; set; }
 
-        [JsonProperty("ornamentBottomLeftConvexStroke")]
+        [DataMember(Name="ornamentBottomLeftConvexStroke")]
         BoundingBox OrnamentBottomLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentBottomRightConcaveStroke")]
+        [DataMember(Name="ornamentBottomRightConcaveStroke")]
         BoundingBox OrnamentBottomRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentBottomRightConvexStroke")]
+        [DataMember(Name="ornamentBottomRightConvexStroke")]
         BoundingBox OrnamentBottomRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentComma")]
+        [DataMember(Name="ornamentComma")]
         BoundingBox OrnamentComma { get; set; }
 
-        [JsonProperty("ornamentDoubleObliqueLinesAfterNote")]
+        [DataMember(Name="ornamentDoubleObliqueLinesAfterNote")]
         BoundingBox OrnamentDoubleObliqueLinesAfterNote { get; set; }
 
-        [JsonProperty("ornamentDoubleObliqueLinesBeforeNote")]
+        [DataMember(Name="ornamentDoubleObliqueLinesBeforeNote")]
         BoundingBox OrnamentDoubleObliqueLinesBeforeNote { get; set; }
 
-        [JsonProperty("ornamentDownCurve")]
+        [DataMember(Name="ornamentDownCurve")]
         BoundingBox OrnamentDownCurve { get; set; }
 
-        [JsonProperty("ornamentHaydn")]
+        [DataMember(Name="ornamentHaydn")]
         BoundingBox OrnamentHaydn { get; set; }
 
-        [JsonProperty("ornamentHighLeftConcaveStroke")]
+        [DataMember(Name="ornamentHighLeftConcaveStroke")]
         BoundingBox OrnamentHighLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentHighLeftConvexStroke")]
+        [DataMember(Name="ornamentHighLeftConvexStroke")]
         BoundingBox OrnamentHighLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentHighRightConcaveStroke")]
+        [DataMember(Name="ornamentHighRightConcaveStroke")]
         BoundingBox OrnamentHighRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentHighRightConvexStroke")]
+        [DataMember(Name="ornamentHighRightConvexStroke")]
         BoundingBox OrnamentHighRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentHookAfterNote")]
+        [DataMember(Name="ornamentHookAfterNote")]
         BoundingBox OrnamentHookAfterNote { get; set; }
 
-        [JsonProperty("ornamentHookBeforeNote")]
+        [DataMember(Name="ornamentHookBeforeNote")]
         BoundingBox OrnamentHookBeforeNote { get; set; }
 
-        [JsonProperty("ornamentLeftFacingHalfCircle")]
+        [DataMember(Name="ornamentLeftFacingHalfCircle")]
         BoundingBox OrnamentLeftFacingHalfCircle { get; set; }
 
-        [JsonProperty("ornamentLeftFacingHook")]
+        [DataMember(Name="ornamentLeftFacingHook")]
         BoundingBox OrnamentLeftFacingHook { get; set; }
 
-        [JsonProperty("ornamentLeftPlus")]
+        [DataMember(Name="ornamentLeftPlus")]
         BoundingBox OrnamentLeftPlus { get; set; }
 
-        [JsonProperty("ornamentLeftShakeT")]
+        [DataMember(Name="ornamentLeftShakeT")]
         BoundingBox OrnamentLeftShakeT { get; set; }
 
-        [JsonProperty("ornamentLeftVerticalStroke")]
+        [DataMember(Name="ornamentLeftVerticalStroke")]
         BoundingBox OrnamentLeftVerticalStroke { get; set; }
 
-        [JsonProperty("ornamentLeftVerticalStrokeWithCross")]
+        [DataMember(Name="ornamentLeftVerticalStrokeWithCross")]
         BoundingBox OrnamentLeftVerticalStrokeWithCross { get; set; }
 
-        [JsonProperty("ornamentLowLeftConcaveStroke")]
+        [DataMember(Name="ornamentLowLeftConcaveStroke")]
         BoundingBox OrnamentLowLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentLowLeftConvexStroke")]
+        [DataMember(Name="ornamentLowLeftConvexStroke")]
         BoundingBox OrnamentLowLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentLowRightConcaveStroke")]
+        [DataMember(Name="ornamentLowRightConcaveStroke")]
         BoundingBox OrnamentLowRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentLowRightConvexStroke")]
+        [DataMember(Name="ornamentLowRightConvexStroke")]
         BoundingBox OrnamentLowRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentMiddleVerticalStroke")]
+        [DataMember(Name="ornamentMiddleVerticalStroke")]
         BoundingBox OrnamentMiddleVerticalStroke { get; set; }
 
-        [JsonProperty("ornamentMordent")]
+        [DataMember(Name="ornamentMordent")]
         BoundingBox OrnamentMordent { get; set; }
 
-        [JsonProperty("ornamentMordentInverted")]
+        [DataMember(Name="ornamentMordentInverted")]
         BoundingBox OrnamentMordentInverted { get; set; }
 
-        [JsonProperty("ornamentObliqueLineAfterNote")]
+        [DataMember(Name="ornamentObliqueLineAfterNote")]
         BoundingBox OrnamentObliqueLineAfterNote { get; set; }
 
-        [JsonProperty("ornamentObliqueLineBeforeNote")]
+        [DataMember(Name="ornamentObliqueLineBeforeNote")]
         BoundingBox OrnamentObliqueLineBeforeNote { get; set; }
 
-        [JsonProperty("ornamentObliqueLineHorizAfterNote")]
+        [DataMember(Name="ornamentObliqueLineHorizAfterNote")]
         BoundingBox OrnamentObliqueLineHorizAfterNote { get; set; }
 
-        [JsonProperty("ornamentObliqueLineHorizBeforeNote")]
+        [DataMember(Name="ornamentObliqueLineHorizBeforeNote")]
         BoundingBox OrnamentObliqueLineHorizBeforeNote { get; set; }
 
-        [JsonProperty("ornamentOriscus")]
+        [DataMember(Name="ornamentOriscus")]
         BoundingBox OrnamentOriscus { get; set; }
 
-        [JsonProperty("ornamentPinceCouperin")]
+        [DataMember(Name="ornamentPinceCouperin")]
         BoundingBox OrnamentPinceCouperin { get; set; }
 
-        [JsonProperty("ornamentPortDeVoixV")]
+        [DataMember(Name="ornamentPortDeVoixV")]
         BoundingBox OrnamentPortDeVoixV { get; set; }
 
-        [JsonProperty("ornamentPrecompAppoggTrill")]
+        [DataMember(Name="ornamentPrecompAppoggTrill")]
         BoundingBox OrnamentPrecompAppoggTrill { get; set; }
 
-        [JsonProperty("ornamentPrecompAppoggTrillSuffix")]
+        [DataMember(Name="ornamentPrecompAppoggTrillSuffix")]
         BoundingBox OrnamentPrecompAppoggTrillSuffix { get; set; }
 
-        [JsonProperty("ornamentPrecompCadence")]
+        [DataMember(Name="ornamentPrecompCadence")]
         BoundingBox OrnamentPrecompCadence { get; set; }
 
-        [JsonProperty("ornamentPrecompCadenceUpperPrefix")]
+        [DataMember(Name="ornamentPrecompCadenceUpperPrefix")]
         BoundingBox OrnamentPrecompCadenceUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompCadenceUpperPrefixTurn")]
+        [DataMember(Name="ornamentPrecompCadenceUpperPrefixTurn")]
         BoundingBox OrnamentPrecompCadenceUpperPrefixTurn { get; set; }
 
-        [JsonProperty("ornamentPrecompCadenceWithTurn")]
+        [DataMember(Name="ornamentPrecompCadenceWithTurn")]
         BoundingBox OrnamentPrecompCadenceWithTurn { get; set; }
 
-        [JsonProperty("ornamentPrecompDescendingSlide")]
+        [DataMember(Name="ornamentPrecompDescendingSlide")]
         BoundingBox OrnamentPrecompDescendingSlide { get; set; }
 
-        [JsonProperty("ornamentPrecompDoubleCadenceLowerPrefix")]
+        [DataMember(Name="ornamentPrecompDoubleCadenceLowerPrefix")]
         BoundingBox OrnamentPrecompDoubleCadenceLowerPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompDoubleCadenceUpperPrefix")]
+        [DataMember(Name="ornamentPrecompDoubleCadenceUpperPrefix")]
         BoundingBox OrnamentPrecompDoubleCadenceUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompDoubleCadenceUpperPrefixTurn")]
+        [DataMember(Name="ornamentPrecompDoubleCadenceUpperPrefixTurn")]
         BoundingBox OrnamentPrecompDoubleCadenceUpperPrefixTurn { get; set; }
 
-        [JsonProperty("ornamentPrecompInvertedMordentUpperPrefix")]
+        [DataMember(Name="ornamentPrecompInvertedMordentUpperPrefix")]
         BoundingBox OrnamentPrecompInvertedMordentUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompMordentRelease")]
+        [DataMember(Name="ornamentPrecompMordentRelease")]
         BoundingBox OrnamentPrecompMordentRelease { get; set; }
 
-        [JsonProperty("ornamentPrecompMordentUpperPrefix")]
+        [DataMember(Name="ornamentPrecompMordentUpperPrefix")]
         BoundingBox OrnamentPrecompMordentUpperPrefix { get; set; }
 
-        [JsonProperty("ornamentPrecompPortDeVoixMordent")]
+        [DataMember(Name="ornamentPrecompPortDeVoixMordent")]
         BoundingBox OrnamentPrecompPortDeVoixMordent { get; set; }
 
-        [JsonProperty("ornamentPrecompSlide")]
+        [DataMember(Name="ornamentPrecompSlide")]
         BoundingBox OrnamentPrecompSlide { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillBach")]
+        [DataMember(Name="ornamentPrecompSlideTrillBach")]
         BoundingBox OrnamentPrecompSlideTrillBach { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillDAnglebert")]
+        [DataMember(Name="ornamentPrecompSlideTrillDAnglebert")]
         BoundingBox OrnamentPrecompSlideTrillDAnglebert { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillMarpurg")]
+        [DataMember(Name="ornamentPrecompSlideTrillMarpurg")]
         BoundingBox OrnamentPrecompSlideTrillMarpurg { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillMuffat")]
+        [DataMember(Name="ornamentPrecompSlideTrillMuffat")]
         BoundingBox OrnamentPrecompSlideTrillMuffat { get; set; }
 
-        [JsonProperty("ornamentPrecompSlideTrillSuffixMuffat")]
+        [DataMember(Name="ornamentPrecompSlideTrillSuffixMuffat")]
         BoundingBox OrnamentPrecompSlideTrillSuffixMuffat { get; set; }
 
-        [JsonProperty("ornamentPrecompTrillLowerSuffix")]
+        [DataMember(Name="ornamentPrecompTrillLowerSuffix")]
         BoundingBox OrnamentPrecompTrillLowerSuffix { get; set; }
 
-        [JsonProperty("ornamentPrecompTrillSuffixDandrieu")]
+        [DataMember(Name="ornamentPrecompTrillSuffixDandrieu")]
         BoundingBox OrnamentPrecompTrillSuffixDandrieu { get; set; }
 
-        [JsonProperty("ornamentPrecompTrillWithMordent")]
+        [DataMember(Name="ornamentPrecompTrillWithMordent")]
         BoundingBox OrnamentPrecompTrillWithMordent { get; set; }
 
-        [JsonProperty("ornamentPrecompTurnTrillBach")]
+        [DataMember(Name="ornamentPrecompTurnTrillBach")]
         BoundingBox OrnamentPrecompTurnTrillBach { get; set; }
 
-        [JsonProperty("ornamentPrecompTurnTrillDAnglebert")]
+        [DataMember(Name="ornamentPrecompTurnTrillDAnglebert")]
         BoundingBox OrnamentPrecompTurnTrillDAnglebert { get; set; }
 
-        [JsonProperty("ornamentQuilisma")]
+        [DataMember(Name="ornamentQuilisma")]
         BoundingBox OrnamentQuilisma { get; set; }
 
-        [JsonProperty("ornamentRightFacingHalfCircle")]
+        [DataMember(Name="ornamentRightFacingHalfCircle")]
         BoundingBox OrnamentRightFacingHalfCircle { get; set; }
 
-        [JsonProperty("ornamentRightFacingHook")]
+        [DataMember(Name="ornamentRightFacingHook")]
         BoundingBox OrnamentRightFacingHook { get; set; }
 
-        [JsonProperty("ornamentRightVerticalStroke")]
+        [DataMember(Name="ornamentRightVerticalStroke")]
         BoundingBox OrnamentRightVerticalStroke { get; set; }
 
-        [JsonProperty("ornamentSchleifer")]
+        [DataMember(Name="ornamentSchleifer")]
         BoundingBox OrnamentSchleifer { get; set; }
 
-        [JsonProperty("ornamentShake3")]
+        [DataMember(Name="ornamentShake3")]
         BoundingBox OrnamentShake3 { get; set; }
 
-        [JsonProperty("ornamentShakeMuffat1")]
+        [DataMember(Name="ornamentShakeMuffat1")]
         BoundingBox OrnamentShakeMuffat1 { get; set; }
 
-        [JsonProperty("ornamentShortObliqueLineAfterNote")]
+        [DataMember(Name="ornamentShortObliqueLineAfterNote")]
         BoundingBox OrnamentShortObliqueLineAfterNote { get; set; }
 
-        [JsonProperty("ornamentShortObliqueLineBeforeNote")]
+        [DataMember(Name="ornamentShortObliqueLineBeforeNote")]
         BoundingBox OrnamentShortObliqueLineBeforeNote { get; set; }
 
-        [JsonProperty("ornamentTopLeftConcaveStroke")]
+        [DataMember(Name="ornamentTopLeftConcaveStroke")]
         BoundingBox OrnamentTopLeftConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentTopLeftConvexStroke")]
+        [DataMember(Name="ornamentTopLeftConvexStroke")]
         BoundingBox OrnamentTopLeftConvexStroke { get; set; }
 
-        [JsonProperty("ornamentTopRightConcaveStroke")]
+        [DataMember(Name="ornamentTopRightConcaveStroke")]
         BoundingBox OrnamentTopRightConcaveStroke { get; set; }
 
-        [JsonProperty("ornamentTopRightConvexStroke")]
+        [DataMember(Name="ornamentTopRightConvexStroke")]
         BoundingBox OrnamentTopRightConvexStroke { get; set; }
 
-        [JsonProperty("ornamentTremblement")]
+        [DataMember(Name="ornamentTremblement")]
         BoundingBox OrnamentTremblement { get; set; }
 
-        [JsonProperty("ornamentTremblementCouperin")]
+        [DataMember(Name="ornamentTremblementCouperin")]
         BoundingBox OrnamentTremblementCouperin { get; set; }
 
-        [JsonProperty("ornamentTrill")]
+        [DataMember(Name="ornamentTrill")]
         BoundingBox OrnamentTrill { get; set; }
 
-        [JsonProperty("ornamentTrillFlatAbove")]
+        [DataMember(Name="ornamentTrillFlatAbove")]
         BoundingBox OrnamentTrillFlatAbove { get; set; }
 
-        [JsonProperty("ornamentTrillNaturalAbove")]
+        [DataMember(Name="ornamentTrillNaturalAbove")]
         BoundingBox OrnamentTrillNaturalAbove { get; set; }
 
-        [JsonProperty("ornamentTrillSharpAbove")]
+        [DataMember(Name="ornamentTrillSharpAbove")]
         BoundingBox OrnamentTrillSharpAbove { get; set; }
 
-        [JsonProperty("ornamentTurn")]
+        [DataMember(Name="ornamentTurn")]
         BoundingBox OrnamentTurn { get; set; }
 
-        [JsonProperty("ornamentTurnFlatAbove")]
+        [DataMember(Name="ornamentTurnFlatAbove")]
         BoundingBox OrnamentTurnFlatAbove { get; set; }
 
-        [JsonProperty("ornamentTurnFlatAboveSharpBelow")]
+        [DataMember(Name="ornamentTurnFlatAboveSharpBelow")]
         BoundingBox OrnamentTurnFlatAboveSharpBelow { get; set; }
 
-        [JsonProperty("ornamentTurnFlatBelow")]
+        [DataMember(Name="ornamentTurnFlatBelow")]
         BoundingBox OrnamentTurnFlatBelow { get; set; }
 
-        [JsonProperty("ornamentTurnInverted")]
+        [DataMember(Name="ornamentTurnInverted")]
         BoundingBox OrnamentTurnInverted { get; set; }
 
-        [JsonProperty("ornamentTurnNaturalAbove")]
+        [DataMember(Name="ornamentTurnNaturalAbove")]
         BoundingBox OrnamentTurnNaturalAbove { get; set; }
 
-        [JsonProperty("ornamentTurnNaturalBelow")]
+        [DataMember(Name="ornamentTurnNaturalBelow")]
         BoundingBox OrnamentTurnNaturalBelow { get; set; }
 
-        [JsonProperty("ornamentTurnSharpAbove")]
+        [DataMember(Name="ornamentTurnSharpAbove")]
         BoundingBox OrnamentTurnSharpAbove { get; set; }
 
-        [JsonProperty("ornamentTurnSharpAboveFlatBelow")]
+        [DataMember(Name="ornamentTurnSharpAboveFlatBelow")]
         BoundingBox OrnamentTurnSharpAboveFlatBelow { get; set; }
 
-        [JsonProperty("ornamentTurnSharpBelow")]
+        [DataMember(Name="ornamentTurnSharpBelow")]
         BoundingBox OrnamentTurnSharpBelow { get; set; }
 
-        [JsonProperty("ornamentTurnSlash")]
+        [DataMember(Name="ornamentTurnSlash")]
         BoundingBox OrnamentTurnSlash { get; set; }
 
-        [JsonProperty("ornamentTurnUp")]
+        [DataMember(Name="ornamentTurnUp")]
         BoundingBox OrnamentTurnUp { get; set; }
 
-        [JsonProperty("ornamentTurnUpS")]
+        [DataMember(Name="ornamentTurnUpS")]
         BoundingBox OrnamentTurnUpS { get; set; }
 
-        [JsonProperty("ornamentUpCurve")]
+        [DataMember(Name="ornamentUpCurve")]
         BoundingBox OrnamentUpCurve { get; set; }
 
-        [JsonProperty("ornamentVerticalLine")]
+        [DataMember(Name="ornamentVerticalLine")]
         BoundingBox OrnamentVerticalLine { get; set; }
 
-        [JsonProperty("ornamentZigZagLineNoRightEnd")]
+        [DataMember(Name="ornamentZigZagLineNoRightEnd")]
         BoundingBox OrnamentZigZagLineNoRightEnd { get; set; }
 
-        [JsonProperty("ornamentZigZagLineWithRightEnd")]
+        [DataMember(Name="ornamentZigZagLineWithRightEnd")]
         BoundingBox OrnamentZigZagLineWithRightEnd { get; set; }
 
-        [JsonProperty("ottava")]
+        [DataMember(Name="ottava")]
         BoundingBox Ottava { get; set; }
 
-        [JsonProperty("ottavaAlta")]
+        [DataMember(Name="ottavaAlta")]
         BoundingBox OttavaAlta { get; set; }
 
-        [JsonProperty("ottavaBassa")]
+        [DataMember(Name="ottavaBassa")]
         BoundingBox OttavaBassa { get; set; }
 
-        [JsonProperty("ottavaBassaBa")]
+        [DataMember(Name="ottavaBassaBa")]
         BoundingBox OttavaBassaBa { get; set; }
 
-        [JsonProperty("ottavaBassaVb")]
+        [DataMember(Name="ottavaBassaVb")]
         BoundingBox OttavaBassaVb { get; set; }
 
-        [JsonProperty("pendereckiTremolo")]
+        [DataMember(Name="pendereckiTremolo")]
         BoundingBox PendereckiTremolo { get; set; }
 
-        [JsonProperty("pictAgogo")]
+        [DataMember(Name="pictAgogo")]
         BoundingBox PictAgogo { get; set; }
 
-        [JsonProperty("pictAlmglocken")]
+        [DataMember(Name="pictAlmglocken")]
         BoundingBox PictAlmglocken { get; set; }
 
-        [JsonProperty("pictAnvil")]
+        [DataMember(Name="pictAnvil")]
         BoundingBox PictAnvil { get; set; }
 
-        [JsonProperty("pictBambooChimes")]
+        [DataMember(Name="pictBambooChimes")]
         BoundingBox PictBambooChimes { get; set; }
 
-        [JsonProperty("pictBambooScraper")]
+        [DataMember(Name="pictBambooScraper")]
         BoundingBox PictBambooScraper { get; set; }
 
-        [JsonProperty("pictBassDrum")]
+        [DataMember(Name="pictBassDrum")]
         BoundingBox PictBassDrum { get; set; }
 
-        [JsonProperty("pictBassDrumOnSide")]
+        [DataMember(Name="pictBassDrumOnSide")]
         BoundingBox PictBassDrumOnSide { get; set; }
 
-        [JsonProperty("pictBassDrumPeinkofer")]
+        [DataMember(Name="pictBassDrumPeinkofer")]
         BoundingBox PictBassDrumPeinkofer { get; set; }
 
-        [JsonProperty("pictBeaterBow")]
+        [DataMember(Name="pictBeaterBow")]
         BoundingBox PictBeaterBow { get; set; }
 
-        [JsonProperty("pictBeaterBox")]
+        [DataMember(Name="pictBeaterBox")]
         BoundingBox PictBeaterBox { get; set; }
 
-        [JsonProperty("pictBeaterBrassMalletsDown")]
+        [DataMember(Name="pictBeaterBrassMalletsDown")]
         BoundingBox PictBeaterBrassMalletsDown { get; set; }
 
-        [JsonProperty("pictBeaterBrassMalletsUp")]
+        [DataMember(Name="pictBeaterBrassMalletsUp")]
         BoundingBox PictBeaterBrassMalletsUp { get; set; }
 
-        [JsonProperty("pictBeaterCombiningDashedCircle")]
+        [DataMember(Name="pictBeaterCombiningDashedCircle")]
         BoundingBox PictBeaterCombiningDashedCircle { get; set; }
 
-        [JsonProperty("pictBeaterCombiningParentheses")]
+        [DataMember(Name="pictBeaterCombiningParentheses")]
         BoundingBox PictBeaterCombiningParentheses { get; set; }
 
-        [JsonProperty("pictBeaterDoubleBassDrumDown")]
+        [DataMember(Name="pictBeaterDoubleBassDrumDown")]
         BoundingBox PictBeaterDoubleBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterDoubleBassDrumUp")]
+        [DataMember(Name="pictBeaterDoubleBassDrumUp")]
         BoundingBox PictBeaterDoubleBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterFinger")]
+        [DataMember(Name="pictBeaterFinger")]
         BoundingBox PictBeaterFinger { get; set; }
 
-        [JsonProperty("pictBeaterFingernails")]
+        [DataMember(Name="pictBeaterFingernails")]
         BoundingBox PictBeaterFingernails { get; set; }
 
-        [JsonProperty("pictBeaterFist")]
+        [DataMember(Name="pictBeaterFist")]
         BoundingBox PictBeaterFist { get; set; }
 
-        [JsonProperty("pictBeaterGuiroScraper")]
+        [DataMember(Name="pictBeaterGuiroScraper")]
         BoundingBox PictBeaterGuiroScraper { get; set; }
 
-        [JsonProperty("pictBeaterHammer")]
+        [DataMember(Name="pictBeaterHammer")]
         BoundingBox PictBeaterHammer { get; set; }
 
-        [JsonProperty("pictBeaterHammerMetalDown")]
+        [DataMember(Name="pictBeaterHammerMetalDown")]
         BoundingBox PictBeaterHammerMetalDown { get; set; }
 
-        [JsonProperty("pictBeaterHammerMetalUp")]
+        [DataMember(Name="pictBeaterHammerMetalUp")]
         BoundingBox PictBeaterHammerMetalUp { get; set; }
 
-        [JsonProperty("pictBeaterHammerPlasticDown")]
+        [DataMember(Name="pictBeaterHammerPlasticDown")]
         BoundingBox PictBeaterHammerPlasticDown { get; set; }
 
-        [JsonProperty("pictBeaterHammerPlasticUp")]
+        [DataMember(Name="pictBeaterHammerPlasticUp")]
         BoundingBox PictBeaterHammerPlasticUp { get; set; }
 
-        [JsonProperty("pictBeaterHammerWoodDown")]
+        [DataMember(Name="pictBeaterHammerWoodDown")]
         BoundingBox PictBeaterHammerWoodDown { get; set; }
 
-        [JsonProperty("pictBeaterHammerWoodUp")]
+        [DataMember(Name="pictBeaterHammerWoodUp")]
         BoundingBox PictBeaterHammerWoodUp { get; set; }
 
-        [JsonProperty("pictBeaterHand")]
+        [DataMember(Name="pictBeaterHand")]
         BoundingBox PictBeaterHand { get; set; }
 
-        [JsonProperty("pictBeaterHardBassDrumDown")]
+        [DataMember(Name="pictBeaterHardBassDrumDown")]
         BoundingBox PictBeaterHardBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterHardBassDrumUp")]
+        [DataMember(Name="pictBeaterHardBassDrumUp")]
         BoundingBox PictBeaterHardBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielDown")]
+        [DataMember(Name="pictBeaterHardGlockenspielDown")]
         BoundingBox PictBeaterHardGlockenspielDown { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielLeft")]
+        [DataMember(Name="pictBeaterHardGlockenspielLeft")]
         BoundingBox PictBeaterHardGlockenspielLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielRight")]
+        [DataMember(Name="pictBeaterHardGlockenspielRight")]
         BoundingBox PictBeaterHardGlockenspielRight { get; set; }
 
-        [JsonProperty("pictBeaterHardGlockenspielUp")]
+        [DataMember(Name="pictBeaterHardGlockenspielUp")]
         BoundingBox PictBeaterHardGlockenspielUp { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniDown")]
+        [DataMember(Name="pictBeaterHardTimpaniDown")]
         BoundingBox PictBeaterHardTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniLeft")]
+        [DataMember(Name="pictBeaterHardTimpaniLeft")]
         BoundingBox PictBeaterHardTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniRight")]
+        [DataMember(Name="pictBeaterHardTimpaniRight")]
         BoundingBox PictBeaterHardTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterHardTimpaniUp")]
+        [DataMember(Name="pictBeaterHardTimpaniUp")]
         BoundingBox PictBeaterHardTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneDown")]
+        [DataMember(Name="pictBeaterHardXylophoneDown")]
         BoundingBox PictBeaterHardXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneLeft")]
+        [DataMember(Name="pictBeaterHardXylophoneLeft")]
         BoundingBox PictBeaterHardXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneRight")]
+        [DataMember(Name="pictBeaterHardXylophoneRight")]
         BoundingBox PictBeaterHardXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterHardXylophoneUp")]
+        [DataMember(Name="pictBeaterHardXylophoneUp")]
         BoundingBox PictBeaterHardXylophoneUp { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnDown")]
+        [DataMember(Name="pictBeaterHardYarnDown")]
         BoundingBox PictBeaterHardYarnDown { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnLeft")]
+        [DataMember(Name="pictBeaterHardYarnLeft")]
         BoundingBox PictBeaterHardYarnLeft { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnRight")]
+        [DataMember(Name="pictBeaterHardYarnRight")]
         BoundingBox PictBeaterHardYarnRight { get; set; }
 
-        [JsonProperty("pictBeaterHardYarnUp")]
+        [DataMember(Name="pictBeaterHardYarnUp")]
         BoundingBox PictBeaterHardYarnUp { get; set; }
 
-        [JsonProperty("pictBeaterJazzSticksDown")]
+        [DataMember(Name="pictBeaterJazzSticksDown")]
         BoundingBox PictBeaterJazzSticksDown { get; set; }
 
-        [JsonProperty("pictBeaterJazzSticksUp")]
+        [DataMember(Name="pictBeaterJazzSticksUp")]
         BoundingBox PictBeaterJazzSticksUp { get; set; }
 
-        [JsonProperty("pictBeaterKnittingNeedle")]
+        [DataMember(Name="pictBeaterKnittingNeedle")]
         BoundingBox PictBeaterKnittingNeedle { get; set; }
 
-        [JsonProperty("pictBeaterMallet")]
+        [DataMember(Name="pictBeaterMallet")]
         BoundingBox PictBeaterMallet { get; set; }
 
-        [JsonProperty("pictBeaterMediumBassDrumDown")]
+        [DataMember(Name="pictBeaterMediumBassDrumDown")]
         BoundingBox PictBeaterMediumBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumBassDrumUp")]
+        [DataMember(Name="pictBeaterMediumBassDrumUp")]
         BoundingBox PictBeaterMediumBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniDown")]
+        [DataMember(Name="pictBeaterMediumTimpaniDown")]
         BoundingBox PictBeaterMediumTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniLeft")]
+        [DataMember(Name="pictBeaterMediumTimpaniLeft")]
         BoundingBox PictBeaterMediumTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniRight")]
+        [DataMember(Name="pictBeaterMediumTimpaniRight")]
         BoundingBox PictBeaterMediumTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterMediumTimpaniUp")]
+        [DataMember(Name="pictBeaterMediumTimpaniUp")]
         BoundingBox PictBeaterMediumTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneDown")]
+        [DataMember(Name="pictBeaterMediumXylophoneDown")]
         BoundingBox PictBeaterMediumXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneLeft")]
+        [DataMember(Name="pictBeaterMediumXylophoneLeft")]
         BoundingBox PictBeaterMediumXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneRight")]
+        [DataMember(Name="pictBeaterMediumXylophoneRight")]
         BoundingBox PictBeaterMediumXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterMediumXylophoneUp")]
+        [DataMember(Name="pictBeaterMediumXylophoneUp")]
         BoundingBox PictBeaterMediumXylophoneUp { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnDown")]
+        [DataMember(Name="pictBeaterMediumYarnDown")]
         BoundingBox PictBeaterMediumYarnDown { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnLeft")]
+        [DataMember(Name="pictBeaterMediumYarnLeft")]
         BoundingBox PictBeaterMediumYarnLeft { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnRight")]
+        [DataMember(Name="pictBeaterMediumYarnRight")]
         BoundingBox PictBeaterMediumYarnRight { get; set; }
 
-        [JsonProperty("pictBeaterMediumYarnUp")]
+        [DataMember(Name="pictBeaterMediumYarnUp")]
         BoundingBox PictBeaterMediumYarnUp { get; set; }
 
-        [JsonProperty("pictBeaterMetalBassDrumDown")]
+        [DataMember(Name="pictBeaterMetalBassDrumDown")]
         BoundingBox PictBeaterMetalBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterMetalBassDrumUp")]
+        [DataMember(Name="pictBeaterMetalBassDrumUp")]
         BoundingBox PictBeaterMetalBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterMetalDown")]
+        [DataMember(Name="pictBeaterMetalDown")]
         BoundingBox PictBeaterMetalDown { get; set; }
 
-        [JsonProperty("pictBeaterMetalHammer")]
+        [DataMember(Name="pictBeaterMetalHammer")]
         BoundingBox PictBeaterMetalHammer { get; set; }
 
-        [JsonProperty("pictBeaterMetalLeft")]
+        [DataMember(Name="pictBeaterMetalLeft")]
         BoundingBox PictBeaterMetalLeft { get; set; }
 
-        [JsonProperty("pictBeaterMetalRight")]
+        [DataMember(Name="pictBeaterMetalRight")]
         BoundingBox PictBeaterMetalRight { get; set; }
 
-        [JsonProperty("pictBeaterMetalUp")]
+        [DataMember(Name="pictBeaterMetalUp")]
         BoundingBox PictBeaterMetalUp { get; set; }
 
-        [JsonProperty("pictBeaterSnareSticksDown")]
+        [DataMember(Name="pictBeaterSnareSticksDown")]
         BoundingBox PictBeaterSnareSticksDown { get; set; }
 
-        [JsonProperty("pictBeaterSnareSticksUp")]
+        [DataMember(Name="pictBeaterSnareSticksUp")]
         BoundingBox PictBeaterSnareSticksUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftBassDrumDown")]
+        [DataMember(Name="pictBeaterSoftBassDrumDown")]
         BoundingBox PictBeaterSoftBassDrumDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftBassDrumUp")]
+        [DataMember(Name="pictBeaterSoftBassDrumUp")]
         BoundingBox PictBeaterSoftBassDrumUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielDown")]
+        [DataMember(Name="pictBeaterSoftGlockenspielDown")]
         BoundingBox PictBeaterSoftGlockenspielDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielLeft")]
+        [DataMember(Name="pictBeaterSoftGlockenspielLeft")]
         BoundingBox PictBeaterSoftGlockenspielLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielRight")]
+        [DataMember(Name="pictBeaterSoftGlockenspielRight")]
         BoundingBox PictBeaterSoftGlockenspielRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftGlockenspielUp")]
+        [DataMember(Name="pictBeaterSoftGlockenspielUp")]
         BoundingBox PictBeaterSoftGlockenspielUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniDown")]
+        [DataMember(Name="pictBeaterSoftTimpaniDown")]
         BoundingBox PictBeaterSoftTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniLeft")]
+        [DataMember(Name="pictBeaterSoftTimpaniLeft")]
         BoundingBox PictBeaterSoftTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniRight")]
+        [DataMember(Name="pictBeaterSoftTimpaniRight")]
         BoundingBox PictBeaterSoftTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftTimpaniUp")]
+        [DataMember(Name="pictBeaterSoftTimpaniUp")]
         BoundingBox PictBeaterSoftTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophone")]
+        [DataMember(Name="pictBeaterSoftXylophone")]
         BoundingBox PictBeaterSoftXylophone { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneDown")]
+        [DataMember(Name="pictBeaterSoftXylophoneDown")]
         BoundingBox PictBeaterSoftXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneLeft")]
+        [DataMember(Name="pictBeaterSoftXylophoneLeft")]
         BoundingBox PictBeaterSoftXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneRight")]
+        [DataMember(Name="pictBeaterSoftXylophoneRight")]
         BoundingBox PictBeaterSoftXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftXylophoneUp")]
+        [DataMember(Name="pictBeaterSoftXylophoneUp")]
         BoundingBox PictBeaterSoftXylophoneUp { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnDown")]
+        [DataMember(Name="pictBeaterSoftYarnDown")]
         BoundingBox PictBeaterSoftYarnDown { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnLeft")]
+        [DataMember(Name="pictBeaterSoftYarnLeft")]
         BoundingBox PictBeaterSoftYarnLeft { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnRight")]
+        [DataMember(Name="pictBeaterSoftYarnRight")]
         BoundingBox PictBeaterSoftYarnRight { get; set; }
 
-        [JsonProperty("pictBeaterSoftYarnUp")]
+        [DataMember(Name="pictBeaterSoftYarnUp")]
         BoundingBox PictBeaterSoftYarnUp { get; set; }
 
-        [JsonProperty("pictBeaterSpoonWoodenMallet")]
+        [DataMember(Name="pictBeaterSpoonWoodenMallet")]
         BoundingBox PictBeaterSpoonWoodenMallet { get; set; }
 
-        [JsonProperty("pictBeaterSuperballDown")]
+        [DataMember(Name="pictBeaterSuperballDown")]
         BoundingBox PictBeaterSuperballDown { get; set; }
 
-        [JsonProperty("pictBeaterSuperballLeft")]
+        [DataMember(Name="pictBeaterSuperballLeft")]
         BoundingBox PictBeaterSuperballLeft { get; set; }
 
-        [JsonProperty("pictBeaterSuperballRight")]
+        [DataMember(Name="pictBeaterSuperballRight")]
         BoundingBox PictBeaterSuperballRight { get; set; }
 
-        [JsonProperty("pictBeaterSuperballUp")]
+        [DataMember(Name="pictBeaterSuperballUp")]
         BoundingBox PictBeaterSuperballUp { get; set; }
 
-        [JsonProperty("pictBeaterTriangleDown")]
+        [DataMember(Name="pictBeaterTriangleDown")]
         BoundingBox PictBeaterTriangleDown { get; set; }
 
-        [JsonProperty("pictBeaterTriangleUp")]
+        [DataMember(Name="pictBeaterTriangleUp")]
         BoundingBox PictBeaterTriangleUp { get; set; }
 
-        [JsonProperty("pictBeaterWireBrushesDown")]
+        [DataMember(Name="pictBeaterWireBrushesDown")]
         BoundingBox PictBeaterWireBrushesDown { get; set; }
 
-        [JsonProperty("pictBeaterWireBrushesUp")]
+        [DataMember(Name="pictBeaterWireBrushesUp")]
         BoundingBox PictBeaterWireBrushesUp { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniDown")]
+        [DataMember(Name="pictBeaterWoodTimpaniDown")]
         BoundingBox PictBeaterWoodTimpaniDown { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniLeft")]
+        [DataMember(Name="pictBeaterWoodTimpaniLeft")]
         BoundingBox PictBeaterWoodTimpaniLeft { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniRight")]
+        [DataMember(Name="pictBeaterWoodTimpaniRight")]
         BoundingBox PictBeaterWoodTimpaniRight { get; set; }
 
-        [JsonProperty("pictBeaterWoodTimpaniUp")]
+        [DataMember(Name="pictBeaterWoodTimpaniUp")]
         BoundingBox PictBeaterWoodTimpaniUp { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneDown")]
+        [DataMember(Name="pictBeaterWoodXylophoneDown")]
         BoundingBox PictBeaterWoodXylophoneDown { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneLeft")]
+        [DataMember(Name="pictBeaterWoodXylophoneLeft")]
         BoundingBox PictBeaterWoodXylophoneLeft { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneRight")]
+        [DataMember(Name="pictBeaterWoodXylophoneRight")]
         BoundingBox PictBeaterWoodXylophoneRight { get; set; }
 
-        [JsonProperty("pictBeaterWoodXylophoneUp")]
+        [DataMember(Name="pictBeaterWoodXylophoneUp")]
         BoundingBox PictBeaterWoodXylophoneUp { get; set; }
 
-        [JsonProperty("pictBell")]
+        [DataMember(Name="pictBell")]
         BoundingBox PictBell { get; set; }
 
-        [JsonProperty("pictBellOfCymbal")]
+        [DataMember(Name="pictBellOfCymbal")]
         BoundingBox PictBellOfCymbal { get; set; }
 
-        [JsonProperty("pictBellPlate")]
+        [DataMember(Name="pictBellPlate")]
         BoundingBox PictBellPlate { get; set; }
 
-        [JsonProperty("pictBellTree")]
+        [DataMember(Name="pictBellTree")]
         BoundingBox PictBellTree { get; set; }
 
-        [JsonProperty("pictBirdWhistle")]
+        [DataMember(Name="pictBirdWhistle")]
         BoundingBox PictBirdWhistle { get; set; }
 
-        [JsonProperty("pictBoardClapper")]
+        [DataMember(Name="pictBoardClapper")]
         BoundingBox PictBoardClapper { get; set; }
 
-        [JsonProperty("pictBongos")]
+        [DataMember(Name="pictBongos")]
         BoundingBox PictBongos { get; set; }
 
-        [JsonProperty("pictBongosPeinkofer")]
+        [DataMember(Name="pictBongosPeinkofer")]
         BoundingBox PictBongosPeinkofer { get; set; }
 
-        [JsonProperty("pictBrakeDrum")]
+        [DataMember(Name="pictBrakeDrum")]
         BoundingBox PictBrakeDrum { get; set; }
 
-        [JsonProperty("pictCabasa")]
+        [DataMember(Name="pictCabasa")]
         BoundingBox PictCabasa { get; set; }
 
-        [JsonProperty("pictCannon")]
+        [DataMember(Name="pictCannon")]
         BoundingBox PictCannon { get; set; }
 
-        [JsonProperty("pictCarHorn")]
+        [DataMember(Name="pictCarHorn")]
         BoundingBox PictCarHorn { get; set; }
 
-        [JsonProperty("pictCastanets")]
+        [DataMember(Name="pictCastanets")]
         BoundingBox PictCastanets { get; set; }
 
-        [JsonProperty("pictCastanetsSmithBrindle")]
+        [DataMember(Name="pictCastanetsSmithBrindle")]
         BoundingBox PictCastanetsSmithBrindle { get; set; }
 
-        [JsonProperty("pictCastanetsWithHandle")]
+        [DataMember(Name="pictCastanetsWithHandle")]
         BoundingBox PictCastanetsWithHandle { get; set; }
 
-        [JsonProperty("pictCelesta")]
+        [DataMember(Name="pictCelesta")]
         BoundingBox PictCelesta { get; set; }
 
-        [JsonProperty("pictCencerro")]
+        [DataMember(Name="pictCencerro")]
         BoundingBox PictCencerro { get; set; }
 
-        [JsonProperty("pictCenter1")]
+        [DataMember(Name="pictCenter1")]
         BoundingBox PictCenter1 { get; set; }
 
-        [JsonProperty("pictCenter2")]
+        [DataMember(Name="pictCenter2")]
         BoundingBox PictCenter2 { get; set; }
 
-        [JsonProperty("pictCenter3")]
+        [DataMember(Name="pictCenter3")]
         BoundingBox PictCenter3 { get; set; }
 
-        [JsonProperty("pictChainRattle")]
+        [DataMember(Name="pictChainRattle")]
         BoundingBox PictChainRattle { get; set; }
 
-        [JsonProperty("pictChimes")]
+        [DataMember(Name="pictChimes")]
         BoundingBox PictChimes { get; set; }
 
-        [JsonProperty("pictChineseCymbal")]
+        [DataMember(Name="pictChineseCymbal")]
         BoundingBox PictChineseCymbal { get; set; }
 
-        [JsonProperty("pictChokeCymbal")]
+        [DataMember(Name="pictChokeCymbal")]
         BoundingBox PictChokeCymbal { get; set; }
 
-        [JsonProperty("pictClaves")]
+        [DataMember(Name="pictClaves")]
         BoundingBox PictClaves { get; set; }
 
-        [JsonProperty("pictCoins")]
+        [DataMember(Name="pictCoins")]
         BoundingBox PictCoins { get; set; }
 
-        [JsonProperty("pictConga")]
+        [DataMember(Name="pictConga")]
         BoundingBox PictConga { get; set; }
 
-        [JsonProperty("pictCongaPeinkofer")]
+        [DataMember(Name="pictCongaPeinkofer")]
         BoundingBox PictCongaPeinkofer { get; set; }
 
-        [JsonProperty("pictCowBell")]
+        [DataMember(Name="pictCowBell")]
         BoundingBox PictCowBell { get; set; }
 
-        [JsonProperty("pictCowBellBerio")]
+        [DataMember(Name="pictCowBellBerio")]
         BoundingBox PictCowBellBerio { get; set; }
 
-        [JsonProperty("pictCrashCymbals")]
+        [DataMember(Name="pictCrashCymbals")]
         BoundingBox PictCrashCymbals { get; set; }
 
-        [JsonProperty("pictCrotales")]
+        [DataMember(Name="pictCrotales")]
         BoundingBox PictCrotales { get; set; }
 
-        [JsonProperty("pictCrushStem")]
+        [DataMember(Name="pictCrushStem")]
         BoundingBox PictCrushStem { get; set; }
 
-        [JsonProperty("pictCuica")]
+        [DataMember(Name="pictCuica")]
         BoundingBox PictCuica { get; set; }
 
-        [JsonProperty("pictCymbalTongs")]
+        [DataMember(Name="pictCymbalTongs")]
         BoundingBox PictCymbalTongs { get; set; }
 
-        [JsonProperty("pictDamp1")]
+        [DataMember(Name="pictDamp1")]
         BoundingBox PictDamp1 { get; set; }
 
-        [JsonProperty("pictDamp2")]
+        [DataMember(Name="pictDamp2")]
         BoundingBox PictDamp2 { get; set; }
 
-        [JsonProperty("pictDamp3")]
+        [DataMember(Name="pictDamp3")]
         BoundingBox PictDamp3 { get; set; }
 
-        [JsonProperty("pictDamp4")]
+        [DataMember(Name="pictDamp4")]
         BoundingBox PictDamp4 { get; set; }
 
-        [JsonProperty("pictDeadNoteStem")]
+        [DataMember(Name="pictDeadNoteStem")]
         BoundingBox PictDeadNoteStem { get; set; }
 
-        [JsonProperty("pictDrumStick")]
+        [DataMember(Name="pictDrumStick")]
         BoundingBox PictDrumStick { get; set; }
 
-        [JsonProperty("pictDuckCall")]
+        [DataMember(Name="pictDuckCall")]
         BoundingBox PictDuckCall { get; set; }
 
-        [JsonProperty("pictEdgeOfCymbal")]
+        [DataMember(Name="pictEdgeOfCymbal")]
         BoundingBox PictEdgeOfCymbal { get; set; }
 
-        [JsonProperty("pictEmptyTrap")]
+        [DataMember(Name="pictEmptyTrap")]
         BoundingBox PictEmptyTrap { get; set; }
 
-        [JsonProperty("pictFingerCymbals")]
+        [DataMember(Name="pictFingerCymbals")]
         BoundingBox PictFingerCymbals { get; set; }
 
-        [JsonProperty("pictFlexatone")]
+        [DataMember(Name="pictFlexatone")]
         BoundingBox PictFlexatone { get; set; }
 
-        [JsonProperty("pictFlexatonePeinkofer")]
+        [DataMember(Name="pictFlexatonePeinkofer")]
         BoundingBox PictFlexatonePeinkofer { get; set; }
 
-        [JsonProperty("pictFootballRatchet")]
+        [DataMember(Name="pictFootballRatchet")]
         BoundingBox PictFootballRatchet { get; set; }
 
-        [JsonProperty("pictGlassHarmonica")]
+        [DataMember(Name="pictGlassHarmonica")]
         BoundingBox PictGlassHarmonica { get; set; }
 
-        [JsonProperty("pictGlassHarp")]
+        [DataMember(Name="pictGlassHarp")]
         BoundingBox PictGlassHarp { get; set; }
 
-        [JsonProperty("pictGlassPlateChimes")]
+        [DataMember(Name="pictGlassPlateChimes")]
         BoundingBox PictGlassPlateChimes { get; set; }
 
-        [JsonProperty("pictGlassTubeChimes")]
+        [DataMember(Name="pictGlassTubeChimes")]
         BoundingBox PictGlassTubeChimes { get; set; }
 
-        [JsonProperty("pictGlsp")]
+        [DataMember(Name="pictGlsp")]
         BoundingBox PictGlsp { get; set; }
 
-        [JsonProperty("pictGlspPeinkofer")]
+        [DataMember(Name="pictGlspPeinkofer")]
         BoundingBox PictGlspPeinkofer { get; set; }
 
-        [JsonProperty("pictGlspSmithBrindle")]
+        [DataMember(Name="pictGlspSmithBrindle")]
         BoundingBox PictGlspSmithBrindle { get; set; }
 
-        [JsonProperty("pictGobletDrum")]
+        [DataMember(Name="pictGobletDrum")]
         BoundingBox PictGobletDrum { get; set; }
 
-        [JsonProperty("pictGong")]
+        [DataMember(Name="pictGong")]
         BoundingBox PictGong { get; set; }
 
-        [JsonProperty("pictGongWithButton")]
+        [DataMember(Name="pictGongWithButton")]
         BoundingBox PictGongWithButton { get; set; }
 
-        [JsonProperty("pictGuiro")]
+        [DataMember(Name="pictGuiro")]
         BoundingBox PictGuiro { get; set; }
 
-        [JsonProperty("pictGuiroPeinkofer")]
+        [DataMember(Name="pictGuiroPeinkofer")]
         BoundingBox PictGuiroPeinkofer { get; set; }
 
-        [JsonProperty("pictGuiroSevsay")]
+        [DataMember(Name="pictGuiroSevsay")]
         BoundingBox PictGuiroSevsay { get; set; }
 
-        [JsonProperty("pictGumHardDown")]
+        [DataMember(Name="pictGumHardDown")]
         BoundingBox PictGumHardDown { get; set; }
 
-        [JsonProperty("pictGumHardLeft")]
+        [DataMember(Name="pictGumHardLeft")]
         BoundingBox PictGumHardLeft { get; set; }
 
-        [JsonProperty("pictGumHardRight")]
+        [DataMember(Name="pictGumHardRight")]
         BoundingBox PictGumHardRight { get; set; }
 
-        [JsonProperty("pictGumHardUp")]
+        [DataMember(Name="pictGumHardUp")]
         BoundingBox PictGumHardUp { get; set; }
 
-        [JsonProperty("pictGumMediumDown")]
+        [DataMember(Name="pictGumMediumDown")]
         BoundingBox PictGumMediumDown { get; set; }
 
-        [JsonProperty("pictGumMediumLeft")]
+        [DataMember(Name="pictGumMediumLeft")]
         BoundingBox PictGumMediumLeft { get; set; }
 
-        [JsonProperty("pictGumMediumRight")]
+        [DataMember(Name="pictGumMediumRight")]
         BoundingBox PictGumMediumRight { get; set; }
 
-        [JsonProperty("pictGumMediumUp")]
+        [DataMember(Name="pictGumMediumUp")]
         BoundingBox PictGumMediumUp { get; set; }
 
-        [JsonProperty("pictGumSoftDown")]
+        [DataMember(Name="pictGumSoftDown")]
         BoundingBox PictGumSoftDown { get; set; }
 
-        [JsonProperty("pictGumSoftLeft")]
+        [DataMember(Name="pictGumSoftLeft")]
         BoundingBox PictGumSoftLeft { get; set; }
 
-        [JsonProperty("pictGumSoftRight")]
+        [DataMember(Name="pictGumSoftRight")]
         BoundingBox PictGumSoftRight { get; set; }
 
-        [JsonProperty("pictGumSoftUp")]
+        [DataMember(Name="pictGumSoftUp")]
         BoundingBox PictGumSoftUp { get; set; }
 
-        [JsonProperty("pictHalfOpen1")]
+        [DataMember(Name="pictHalfOpen1")]
         BoundingBox PictHalfOpen1 { get; set; }
 
-        [JsonProperty("pictHalfOpen2")]
+        [DataMember(Name="pictHalfOpen2")]
         BoundingBox PictHalfOpen2 { get; set; }
 
-        [JsonProperty("pictHandbell")]
+        [DataMember(Name="pictHandbell")]
         BoundingBox PictHandbell { get; set; }
 
-        [JsonProperty("pictHiHat")]
+        [DataMember(Name="pictHiHat")]
         BoundingBox PictHiHat { get; set; }
 
-        [JsonProperty("pictHiHatOnStand")]
+        [DataMember(Name="pictHiHatOnStand")]
         BoundingBox PictHiHatOnStand { get; set; }
 
-        [JsonProperty("pictJawHarp")]
+        [DataMember(Name="pictJawHarp")]
         Dictionary<string, long[]> PictJawHarp { get; set; }
 
-        [JsonProperty("pictJingleBells")]
+        [DataMember(Name="pictJingleBells")]
         BoundingBox PictJingleBells { get; set; }
 
-        [JsonProperty("pictKlaxonHorn")]
+        [DataMember(Name="pictKlaxonHorn")]
         BoundingBox PictKlaxonHorn { get; set; }
 
-        [JsonProperty("pictLeftHandCircle")]
+        [DataMember(Name="pictLeftHandCircle")]
         BoundingBox PictLeftHandCircle { get; set; }
 
-        [JsonProperty("pictLionsRoar")]
+        [DataMember(Name="pictLionsRoar")]
         BoundingBox PictLionsRoar { get; set; }
 
-        [JsonProperty("pictLithophone")]
+        [DataMember(Name="pictLithophone")]
         BoundingBox PictLithophone { get; set; }
 
-        [JsonProperty("pictLithophonePeinkofer")]
+        [DataMember(Name="pictLithophonePeinkofer")]
         BoundingBox PictLithophonePeinkofer { get; set; }
 
-        [JsonProperty("pictLogDrum")]
+        [DataMember(Name="pictLogDrum")]
         BoundingBox PictLogDrum { get; set; }
 
-        [JsonProperty("pictLotusFlute")]
+        [DataMember(Name="pictLotusFlute")]
         BoundingBox PictLotusFlute { get; set; }
 
-        [JsonProperty("pictLotusFlutePeinkofer")]
+        [DataMember(Name="pictLotusFlutePeinkofer")]
         BoundingBox PictLotusFlutePeinkofer { get; set; }
 
-        [JsonProperty("pictMar")]
+        [DataMember(Name="pictMar")]
         BoundingBox PictMar { get; set; }
 
-        [JsonProperty("pictMarPeinkofer")]
+        [DataMember(Name="pictMarPeinkofer")]
         BoundingBox PictMarPeinkofer { get; set; }
 
-        [JsonProperty("pictMarSmithBrindle")]
+        [DataMember(Name="pictMarSmithBrindle")]
         BoundingBox PictMarSmithBrindle { get; set; }
 
-        [JsonProperty("pictMaraca")]
+        [DataMember(Name="pictMaraca")]
         BoundingBox PictMaraca { get; set; }
 
-        [JsonProperty("pictMaracaSmithBrindle")]
+        [DataMember(Name="pictMaracaSmithBrindle")]
         BoundingBox PictMaracaSmithBrindle { get; set; }
 
-        [JsonProperty("pictMaracas")]
+        [DataMember(Name="pictMaracas")]
         BoundingBox PictMaracas { get; set; }
 
-        [JsonProperty("pictMegaphone")]
+        [DataMember(Name="pictMegaphone")]
         BoundingBox PictMegaphone { get; set; }
 
-        [JsonProperty("pictMetalPlateChimes")]
+        [DataMember(Name="pictMetalPlateChimes")]
         BoundingBox PictMetalPlateChimes { get; set; }
 
-        [JsonProperty("pictMetalTubeChimes")]
+        [DataMember(Name="pictMetalTubeChimes")]
         BoundingBox PictMetalTubeChimes { get; set; }
 
-        [JsonProperty("pictMusicalSaw")]
+        [DataMember(Name="pictMusicalSaw")]
         BoundingBox PictMusicalSaw { get; set; }
 
-        [JsonProperty("pictMusicalSawPeinkofer")]
+        [DataMember(Name="pictMusicalSawPeinkofer")]
         BoundingBox PictMusicalSawPeinkofer { get; set; }
 
-        [JsonProperty("pictNormalPosition")]
+        [DataMember(Name="pictNormalPosition")]
         BoundingBox PictNormalPosition { get; set; }
 
-        [JsonProperty("pictOnRim")]
+        [DataMember(Name="pictOnRim")]
         BoundingBox PictOnRim { get; set; }
 
-        [JsonProperty("pictOpen")]
+        [DataMember(Name="pictOpen")]
         BoundingBox PictOpen { get; set; }
 
-        [JsonProperty("pictOpenRimShot")]
+        [DataMember(Name="pictOpenRimShot")]
         BoundingBox PictOpenRimShot { get; set; }
 
-        [JsonProperty("pictPistolShot")]
+        [DataMember(Name="pictPistolShot")]
         BoundingBox PictPistolShot { get; set; }
 
-        [JsonProperty("pictPoliceWhistle")]
+        [DataMember(Name="pictPoliceWhistle")]
         BoundingBox PictPoliceWhistle { get; set; }
 
-        [JsonProperty("pictQuijada")]
+        [DataMember(Name="pictQuijada")]
         BoundingBox PictQuijada { get; set; }
 
-        [JsonProperty("pictRainstick")]
+        [DataMember(Name="pictRainstick")]
         BoundingBox PictRainstick { get; set; }
 
-        [JsonProperty("pictRatchet")]
+        [DataMember(Name="pictRatchet")]
         BoundingBox PictRatchet { get; set; }
 
-        [JsonProperty("pictRecoReco")]
+        [DataMember(Name="pictRecoReco")]
         BoundingBox PictRecoReco { get; set; }
 
-        [JsonProperty("pictRightHandSquare")]
+        [DataMember(Name="pictRightHandSquare")]
         BoundingBox PictRightHandSquare { get; set; }
 
-        [JsonProperty("pictRim1")]
+        [DataMember(Name="pictRim1")]
         BoundingBox PictRim1 { get; set; }
 
-        [JsonProperty("pictRim2")]
+        [DataMember(Name="pictRim2")]
         BoundingBox PictRim2 { get; set; }
 
-        [JsonProperty("pictRim3")]
+        [DataMember(Name="pictRim3")]
         BoundingBox PictRim3 { get; set; }
 
-        [JsonProperty("pictRimShotOnStem")]
+        [DataMember(Name="pictRimShotOnStem")]
         BoundingBox PictRimShotOnStem { get; set; }
 
-        [JsonProperty("pictSandpaperBlocks")]
+        [DataMember(Name="pictSandpaperBlocks")]
         BoundingBox PictSandpaperBlocks { get; set; }
 
-        [JsonProperty("pictScrapeAroundRim")]
+        [DataMember(Name="pictScrapeAroundRim")]
         BoundingBox PictScrapeAroundRim { get; set; }
 
-        [JsonProperty("pictScrapeAroundRimClockwise")]
+        [DataMember(Name="pictScrapeAroundRimClockwise")]
         BoundingBox PictScrapeAroundRimClockwise { get; set; }
 
-        [JsonProperty("pictScrapeCenterToEdge")]
+        [DataMember(Name="pictScrapeCenterToEdge")]
         BoundingBox PictScrapeCenterToEdge { get; set; }
 
-        [JsonProperty("pictScrapeEdgeToCenter")]
+        [DataMember(Name="pictScrapeEdgeToCenter")]
         BoundingBox PictScrapeEdgeToCenter { get; set; }
 
-        [JsonProperty("pictShellBells")]
+        [DataMember(Name="pictShellBells")]
         Dictionary<string, long[]> PictShellBells { get; set; }
 
-        [JsonProperty("pictShellChimes")]
+        [DataMember(Name="pictShellChimes")]
         BoundingBox PictShellChimes { get; set; }
 
-        [JsonProperty("pictSiren")]
+        [DataMember(Name="pictSiren")]
         BoundingBox PictSiren { get; set; }
 
-        [JsonProperty("pictSistrum")]
+        [DataMember(Name="pictSistrum")]
         BoundingBox PictSistrum { get; set; }
 
-        [JsonProperty("pictSizzleCymbal")]
+        [DataMember(Name="pictSizzleCymbal")]
         BoundingBox PictSizzleCymbal { get; set; }
 
-        [JsonProperty("pictSleighBell")]
+        [DataMember(Name="pictSleighBell")]
         BoundingBox PictSleighBell { get; set; }
 
-        [JsonProperty("pictSleighBellSmithBrindle")]
+        [DataMember(Name="pictSleighBellSmithBrindle")]
         BoundingBox PictSleighBellSmithBrindle { get; set; }
 
-        [JsonProperty("pictSlideBrushOnGong")]
+        [DataMember(Name="pictSlideBrushOnGong")]
         BoundingBox PictSlideBrushOnGong { get; set; }
 
-        [JsonProperty("pictSlideWhistle")]
+        [DataMember(Name="pictSlideWhistle")]
         BoundingBox PictSlideWhistle { get; set; }
 
-        [JsonProperty("pictSlitDrum")]
+        [DataMember(Name="pictSlitDrum")]
         BoundingBox PictSlitDrum { get; set; }
 
-        [JsonProperty("pictSnareDrum")]
+        [DataMember(Name="pictSnareDrum")]
         BoundingBox PictSnareDrum { get; set; }
 
-        [JsonProperty("pictSnareDrumMilitary")]
+        [DataMember(Name="pictSnareDrumMilitary")]
         BoundingBox PictSnareDrumMilitary { get; set; }
 
-        [JsonProperty("pictSnareDrumSnaresOff")]
+        [DataMember(Name="pictSnareDrumSnaresOff")]
         BoundingBox PictSnareDrumSnaresOff { get; set; }
 
-        [JsonProperty("pictSteelDrums")]
+        [DataMember(Name="pictSteelDrums")]
         BoundingBox PictSteelDrums { get; set; }
 
-        [JsonProperty("pictStickShot")]
+        [DataMember(Name="pictStickShot")]
         BoundingBox PictStickShot { get; set; }
 
-        [JsonProperty("pictSuperball")]
+        [DataMember(Name="pictSuperball")]
         BoundingBox PictSuperball { get; set; }
 
-        [JsonProperty("pictSuspendedCymbal")]
+        [DataMember(Name="pictSuspendedCymbal")]
         BoundingBox PictSuspendedCymbal { get; set; }
 
-        [JsonProperty("pictSwishStem")]
+        [DataMember(Name="pictSwishStem")]
         BoundingBox PictSwishStem { get; set; }
 
-        [JsonProperty("pictTabla")]
+        [DataMember(Name="pictTabla")]
         BoundingBox PictTabla { get; set; }
 
-        [JsonProperty("pictTamTam")]
+        [DataMember(Name="pictTamTam")]
         BoundingBox PictTamTam { get; set; }
 
-        [JsonProperty("pictTamTamWithBeater")]
+        [DataMember(Name="pictTamTamWithBeater")]
         BoundingBox PictTamTamWithBeater { get; set; }
 
-        [JsonProperty("pictTambourine")]
+        [DataMember(Name="pictTambourine")]
         BoundingBox PictTambourine { get; set; }
 
-        [JsonProperty("pictTambourineStockhausen")]
+        [DataMember(Name="pictTambourineStockhausen")]
         BoundingBox PictTambourineStockhausen { get; set; }
 
-        [JsonProperty("pictTempleBlocks")]
+        [DataMember(Name="pictTempleBlocks")]
         BoundingBox PictTempleBlocks { get; set; }
 
-        [JsonProperty("pictTenorDrum")]
+        [DataMember(Name="pictTenorDrum")]
         BoundingBox PictTenorDrum { get; set; }
 
-        [JsonProperty("pictThundersheet")]
+        [DataMember(Name="pictThundersheet")]
         BoundingBox PictThundersheet { get; set; }
 
-        [JsonProperty("pictTimbales")]
+        [DataMember(Name="pictTimbales")]
         BoundingBox PictTimbales { get; set; }
 
-        [JsonProperty("pictTimbalesPeinkofer")]
+        [DataMember(Name="pictTimbalesPeinkofer")]
         BoundingBox PictTimbalesPeinkofer { get; set; }
 
-        [JsonProperty("pictTimpani")]
+        [DataMember(Name="pictTimpani")]
         BoundingBox PictTimpani { get; set; }
 
-        [JsonProperty("pictTimpaniPeinkofer")]
+        [DataMember(Name="pictTimpaniPeinkofer")]
         BoundingBox PictTimpaniPeinkofer { get; set; }
 
-        [JsonProperty("pictTomTom")]
+        [DataMember(Name="pictTomTom")]
         BoundingBox PictTomTom { get; set; }
 
-        [JsonProperty("pictTomTomChinese")]
+        [DataMember(Name="pictTomTomChinese")]
         BoundingBox PictTomTomChinese { get; set; }
 
-        [JsonProperty("pictTomTomChinesePeinkofer")]
+        [DataMember(Name="pictTomTomChinesePeinkofer")]
         BoundingBox PictTomTomChinesePeinkofer { get; set; }
 
-        [JsonProperty("pictTomTomIndoAmerican")]
+        [DataMember(Name="pictTomTomIndoAmerican")]
         BoundingBox PictTomTomIndoAmerican { get; set; }
 
-        [JsonProperty("pictTomTomJapanese")]
+        [DataMember(Name="pictTomTomJapanese")]
         BoundingBox PictTomTomJapanese { get; set; }
 
-        [JsonProperty("pictTomTomPeinkofer")]
+        [DataMember(Name="pictTomTomPeinkofer")]
         BoundingBox PictTomTomPeinkofer { get; set; }
 
-        [JsonProperty("pictTriangle")]
+        [DataMember(Name="pictTriangle")]
         BoundingBox PictTriangle { get; set; }
 
-        [JsonProperty("pictTubaphone")]
+        [DataMember(Name="pictTubaphone")]
         BoundingBox PictTubaphone { get; set; }
 
-        [JsonProperty("pictTubaphonePeinkofer")]
+        [DataMember(Name="pictTubaphonePeinkofer")]
         BoundingBox PictTubaphonePeinkofer { get; set; }
 
-        [JsonProperty("pictTubularBells")]
+        [DataMember(Name="pictTubularBells")]
         BoundingBox PictTubularBells { get; set; }
 
-        [JsonProperty("pictTurnLeftStem")]
+        [DataMember(Name="pictTurnLeftStem")]
         BoundingBox PictTurnLeftStem { get; set; }
 
-        [JsonProperty("pictTurnRightLeftStem")]
+        [DataMember(Name="pictTurnRightLeftStem")]
         BoundingBox PictTurnRightLeftStem { get; set; }
 
-        [JsonProperty("pictTurnRightStem")]
+        [DataMember(Name="pictTurnRightStem")]
         BoundingBox PictTurnRightStem { get; set; }
 
-        [JsonProperty("pictVib")]
+        [DataMember(Name="pictVib")]
         BoundingBox PictVib { get; set; }
 
-        [JsonProperty("pictVibMotorOff")]
+        [DataMember(Name="pictVibMotorOff")]
         BoundingBox PictVibMotorOff { get; set; }
 
-        [JsonProperty("pictVibMotorOffPeinkofer")]
+        [DataMember(Name="pictVibMotorOffPeinkofer")]
         BoundingBox PictVibMotorOffPeinkofer { get; set; }
 
-        [JsonProperty("pictVibPeinkofer")]
+        [DataMember(Name="pictVibPeinkofer")]
         BoundingBox PictVibPeinkofer { get; set; }
 
-        [JsonProperty("pictVibSmithBrindle")]
+        [DataMember(Name="pictVibSmithBrindle")]
         BoundingBox PictVibSmithBrindle { get; set; }
 
-        [JsonProperty("pictVibraslap")]
+        [DataMember(Name="pictVibraslap")]
         BoundingBox PictVibraslap { get; set; }
 
-        [JsonProperty("pictVietnameseHat")]
+        [DataMember(Name="pictVietnameseHat")]
         BoundingBox PictVietnameseHat { get; set; }
 
-        [JsonProperty("pictWhip")]
+        [DataMember(Name="pictWhip")]
         BoundingBox PictWhip { get; set; }
 
-        [JsonProperty("pictWindChimesGlass")]
+        [DataMember(Name="pictWindChimesGlass")]
         BoundingBox PictWindChimesGlass { get; set; }
 
-        [JsonProperty("pictWindMachine")]
+        [DataMember(Name="pictWindMachine")]
         BoundingBox PictWindMachine { get; set; }
 
-        [JsonProperty("pictWindWhistle")]
+        [DataMember(Name="pictWindWhistle")]
         BoundingBox PictWindWhistle { get; set; }
 
-        [JsonProperty("pictWoodBlock")]
+        [DataMember(Name="pictWoodBlock")]
         BoundingBox PictWoodBlock { get; set; }
 
-        [JsonProperty("pictWoundHardDown")]
+        [DataMember(Name="pictWoundHardDown")]
         BoundingBox PictWoundHardDown { get; set; }
 
-        [JsonProperty("pictWoundHardLeft")]
+        [DataMember(Name="pictWoundHardLeft")]
         BoundingBox PictWoundHardLeft { get; set; }
 
-        [JsonProperty("pictWoundHardRight")]
+        [DataMember(Name="pictWoundHardRight")]
         BoundingBox PictWoundHardRight { get; set; }
 
-        [JsonProperty("pictWoundHardUp")]
+        [DataMember(Name="pictWoundHardUp")]
         BoundingBox PictWoundHardUp { get; set; }
 
-        [JsonProperty("pictWoundSoftDown")]
+        [DataMember(Name="pictWoundSoftDown")]
         BoundingBox PictWoundSoftDown { get; set; }
 
-        [JsonProperty("pictWoundSoftLeft")]
+        [DataMember(Name="pictWoundSoftLeft")]
         BoundingBox PictWoundSoftLeft { get; set; }
 
-        [JsonProperty("pictWoundSoftRight")]
+        [DataMember(Name="pictWoundSoftRight")]
         BoundingBox PictWoundSoftRight { get; set; }
 
-        [JsonProperty("pictWoundSoftUp")]
+        [DataMember(Name="pictWoundSoftUp")]
         BoundingBox PictWoundSoftUp { get; set; }
 
-        [JsonProperty("pictXyl")]
+        [DataMember(Name="pictXyl")]
         BoundingBox PictXyl { get; set; }
 
-        [JsonProperty("pictXylBass")]
+        [DataMember(Name="pictXylBass")]
         BoundingBox PictXylBass { get; set; }
 
-        [JsonProperty("pictXylBassPeinkofer")]
+        [DataMember(Name="pictXylBassPeinkofer")]
         BoundingBox PictXylBassPeinkofer { get; set; }
 
-        [JsonProperty("pictXylPeinkofer")]
+        [DataMember(Name="pictXylPeinkofer")]
         BoundingBox PictXylPeinkofer { get; set; }
 
-        [JsonProperty("pictXylSmithBrindle")]
+        [DataMember(Name="pictXylSmithBrindle")]
         BoundingBox PictXylSmithBrindle { get; set; }
 
-        [JsonProperty("pictXylTenor")]
+        [DataMember(Name="pictXylTenor")]
         BoundingBox PictXylTenor { get; set; }
 
-        [JsonProperty("pictXylTenorPeinkofer")]
+        [DataMember(Name="pictXylTenorPeinkofer")]
         BoundingBox PictXylTenorPeinkofer { get; set; }
 
-        [JsonProperty("pictXylTenorTrough")]
+        [DataMember(Name="pictXylTenorTrough")]
         BoundingBox PictXylTenorTrough { get; set; }
 
-        [JsonProperty("pictXylTrough")]
+        [DataMember(Name="pictXylTrough")]
         BoundingBox PictXylTrough { get; set; }
 
-        [JsonProperty("pluckedBuzzPizzicato")]
+        [DataMember(Name="pluckedBuzzPizzicato")]
         BoundingBox PluckedBuzzPizzicato { get; set; }
 
-        [JsonProperty("pluckedDamp")]
+        [DataMember(Name="pluckedDamp")]
         BoundingBox PluckedDamp { get; set; }
 
-        [JsonProperty("pluckedDampAll")]
+        [DataMember(Name="pluckedDampAll")]
         BoundingBox PluckedDampAll { get; set; }
 
-        [JsonProperty("pluckedDampOnStem")]
+        [DataMember(Name="pluckedDampOnStem")]
         BoundingBox PluckedDampOnStem { get; set; }
 
-        [JsonProperty("pluckedFingernailFlick")]
+        [DataMember(Name="pluckedFingernailFlick")]
         BoundingBox PluckedFingernailFlick { get; set; }
 
-        [JsonProperty("pluckedLeftHandPizzicato")]
+        [DataMember(Name="pluckedLeftHandPizzicato")]
         BoundingBox PluckedLeftHandPizzicato { get; set; }
 
-        [JsonProperty("pluckedPlectrum")]
+        [DataMember(Name="pluckedPlectrum")]
         BoundingBox PluckedPlectrum { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoAbove")]
+        [DataMember(Name="pluckedSnapPizzicatoAbove")]
         BoundingBox PluckedSnapPizzicatoAbove { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoAboveGerman")]
+        [DataMember(Name="pluckedSnapPizzicatoAboveGerman")]
         BoundingBox PluckedSnapPizzicatoAboveGerman { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoBelow")]
+        [DataMember(Name="pluckedSnapPizzicatoBelow")]
         BoundingBox PluckedSnapPizzicatoBelow { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoBelowGerman")]
+        [DataMember(Name="pluckedSnapPizzicatoBelowGerman")]
         BoundingBox PluckedSnapPizzicatoBelowGerman { get; set; }
 
-        [JsonProperty("pluckedWithFingernails")]
+        [DataMember(Name="pluckedWithFingernails")]
         BoundingBox PluckedWithFingernails { get; set; }
 
-        [JsonProperty("quindicesima")]
+        [DataMember(Name="quindicesima")]
         BoundingBox Quindicesima { get; set; }
 
-        [JsonProperty("quindicesimaAlta")]
+        [DataMember(Name="quindicesimaAlta")]
         BoundingBox QuindicesimaAlta { get; set; }
 
-        [JsonProperty("quindicesimaBassa")]
+        [DataMember(Name="quindicesimaBassa")]
         BoundingBox QuindicesimaBassa { get; set; }
 
-        [JsonProperty("quindicesimaBassaMb")]
+        [DataMember(Name="quindicesimaBassaMb")]
         BoundingBox QuindicesimaBassaMb { get; set; }
 
-        [JsonProperty("repeat1Bar")]
+        [DataMember(Name="repeat1Bar")]
         BoundingBox Repeat1Bar { get; set; }
 
-        [JsonProperty("repeat2Bars")]
+        [DataMember(Name="repeat2Bars")]
         BoundingBox Repeat2Bars { get; set; }
 
-        [JsonProperty("repeat4Bars")]
+        [DataMember(Name="repeat4Bars")]
         BoundingBox Repeat4Bars { get; set; }
 
-        [JsonProperty("repeatDot")]
+        [DataMember(Name="repeatDot")]
         BoundingBox RepeatDot { get; set; }
 
-        [JsonProperty("repeatDots")]
+        [DataMember(Name="repeatDots")]
         BoundingBox RepeatDots { get; set; }
 
-        [JsonProperty("repeatLeft")]
+        [DataMember(Name="repeatLeft")]
         BoundingBox RepeatLeft { get; set; }
 
-        [JsonProperty("repeatRight")]
+        [DataMember(Name="repeatRight")]
         BoundingBox RepeatRight { get; set; }
 
-        [JsonProperty("repeatRightLeft")]
+        [DataMember(Name="repeatRightLeft")]
         BoundingBox RepeatRightLeft { get; set; }
 
-        [JsonProperty("repeatRightLeftThick")]
+        [DataMember(Name="repeatRightLeftThick")]
         BoundingBox RepeatRightLeftThick { get; set; }
 
-        [JsonProperty("rest1024th")]
+        [DataMember(Name="rest1024th")]
         BoundingBox Rest1024Th { get; set; }
 
-        [JsonProperty("rest128th")]
+        [DataMember(Name="rest128th")]
         BoundingBox Rest128Th { get; set; }
 
-        [JsonProperty("rest16th")]
+        [DataMember(Name="rest16th")]
         BoundingBox Rest16Th { get; set; }
 
-        [JsonProperty("rest256th")]
+        [DataMember(Name="rest256th")]
         BoundingBox Rest256Th { get; set; }
 
-        [JsonProperty("rest32nd")]
+        [DataMember(Name="rest32nd")]
         BoundingBox Rest32Nd { get; set; }
 
-        [JsonProperty("rest512th")]
+        [DataMember(Name="rest512th")]
         BoundingBox Rest512Th { get; set; }
 
-        [JsonProperty("rest64th")]
+        [DataMember(Name="rest64th")]
         BoundingBox Rest64Th { get; set; }
 
-        [JsonProperty("rest8th")]
+        [DataMember(Name="rest8th")]
         BoundingBox Rest8Th { get; set; }
 
-        [JsonProperty("restDoubleWhole")]
+        [DataMember(Name="restDoubleWhole")]
         BoundingBox RestDoubleWhole { get; set; }
 
-        [JsonProperty("restDoubleWholeLegerLine")]
+        [DataMember(Name="restDoubleWholeLegerLine")]
         BoundingBox RestDoubleWholeLegerLine { get; set; }
 
-        [JsonProperty("restHBar")]
+        [DataMember(Name="restHBar")]
         BoundingBox RestHBar { get; set; }
 
-        [JsonProperty("restHBarLeft")]
+        [DataMember(Name="restHBarLeft")]
         BoundingBox RestHBarLeft { get; set; }
 
-        [JsonProperty("restHBarMiddle")]
+        [DataMember(Name="restHBarMiddle")]
         BoundingBox RestHBarMiddle { get; set; }
 
-        [JsonProperty("restHBarRight")]
+        [DataMember(Name="restHBarRight")]
         BoundingBox RestHBarRight { get; set; }
 
-        [JsonProperty("restHalf")]
+        [DataMember(Name="restHalf")]
         BoundingBox RestHalf { get; set; }
 
-        [JsonProperty("restHalfLegerLine")]
+        [DataMember(Name="restHalfLegerLine")]
         BoundingBox RestHalfLegerLine { get; set; }
 
-        [JsonProperty("restLonga")]
+        [DataMember(Name="restLonga")]
         BoundingBox RestLonga { get; set; }
 
-        [JsonProperty("restMaxima")]
+        [DataMember(Name="restMaxima")]
         BoundingBox RestMaxima { get; set; }
 
-        [JsonProperty("restQuarter")]
+        [DataMember(Name="restQuarter")]
         BoundingBox RestQuarter { get; set; }
 
-        [JsonProperty("restQuarterOld")]
+        [DataMember(Name="restQuarterOld")]
         BoundingBox RestQuarterOld { get; set; }
 
-        [JsonProperty("restQuarterZ")]
+        [DataMember(Name="restQuarterZ")]
         BoundingBox RestQuarterZ { get; set; }
 
-        [JsonProperty("restWhole")]
+        [DataMember(Name="restWhole")]
         BoundingBox RestWhole { get; set; }
 
-        [JsonProperty("restWholeLegerLine")]
+        [DataMember(Name="restWholeLegerLine")]
         BoundingBox RestWholeLegerLine { get; set; }
 
-        [JsonProperty("reversedBrace")]
+        [DataMember(Name="reversedBrace")]
         BoundingBox ReversedBrace { get; set; }
 
-        [JsonProperty("reversedBracketBottom")]
+        [DataMember(Name="reversedBracketBottom")]
         BoundingBox ReversedBracketBottom { get; set; }
 
-        [JsonProperty("reversedBracketTop")]
+        [DataMember(Name="reversedBracketTop")]
         BoundingBox ReversedBracketTop { get; set; }
 
-        [JsonProperty("rightRepeatSmall")]
+        [DataMember(Name="rightRepeatSmall")]
         BoundingBox RightRepeatSmall { get; set; }
 
-        [JsonProperty("schaefferClef")]
+        [DataMember(Name="schaefferClef")]
         BoundingBox SchaefferClef { get; set; }
 
-        [JsonProperty("schaefferFClefToGClef")]
+        [DataMember(Name="schaefferFClefToGClef")]
         BoundingBox SchaefferFClefToGClef { get; set; }
 
-        [JsonProperty("schaefferGClefToFClef")]
+        [DataMember(Name="schaefferGClefToFClef")]
         BoundingBox SchaefferGClefToFClef { get; set; }
 
-        [JsonProperty("schaefferPreviousClef")]
+        [DataMember(Name="schaefferPreviousClef")]
         BoundingBox SchaefferPreviousClef { get; set; }
 
-        [JsonProperty("sedicesima")]
+        [DataMember(Name="sedicesima")]
         BoundingBox Sedicesima { get; set; }
 
-        [JsonProperty("sedicesimaAlta")]
+        [DataMember(Name="sedicesimaAlta")]
         BoundingBox SedicesimaAlta { get; set; }
 
-        [JsonProperty("sedicesimaBassa")]
+        [DataMember(Name="sedicesimaBassa")]
         BoundingBox SedicesimaBassa { get; set; }
 
-        [JsonProperty("sedicesimaBassaMb")]
+        [DataMember(Name="sedicesimaBassaMb")]
         BoundingBox SedicesimaBassaMb { get; set; }
 
-        [JsonProperty("segno")]
+        [DataMember(Name="segno")]
         BoundingBox Segno { get; set; }
 
-        [JsonProperty("segnoJapanese")]
+        [DataMember(Name="segnoJapanese")]
         BoundingBox SegnoJapanese { get; set; }
 
-        [JsonProperty("segnoSerpent1")]
+        [DataMember(Name="segnoSerpent1")]
         BoundingBox SegnoSerpent1 { get; set; }
 
-        [JsonProperty("segnoSerpent2")]
+        [DataMember(Name="segnoSerpent2")]
         BoundingBox SegnoSerpent2 { get; set; }
 
-        [JsonProperty("semipitchedPercussionClef1")]
+        [DataMember(Name="semipitchedPercussionClef1")]
         BoundingBox SemipitchedPercussionClef1 { get; set; }
 
-        [JsonProperty("semipitchedPercussionClef2")]
+        [DataMember(Name="semipitchedPercussionClef2")]
         BoundingBox SemipitchedPercussionClef2 { get; set; }
 
-        [JsonProperty("smnFlat")]
+        [DataMember(Name="smnFlat")]
         BoundingBox SmnFlat { get; set; }
 
-        [JsonProperty("smnFlatWhite")]
+        [DataMember(Name="smnFlatWhite")]
         BoundingBox SmnFlatWhite { get; set; }
 
-        [JsonProperty("smnHistoryDoubleFlat")]
+        [DataMember(Name="smnHistoryDoubleFlat")]
         BoundingBox SmnHistoryDoubleFlat { get; set; }
 
-        [JsonProperty("smnHistoryDoubleSharp")]
+        [DataMember(Name="smnHistoryDoubleSharp")]
         BoundingBox SmnHistoryDoubleSharp { get; set; }
 
-        [JsonProperty("smnHistoryFlat")]
+        [DataMember(Name="smnHistoryFlat")]
         BoundingBox SmnHistoryFlat { get; set; }
 
-        [JsonProperty("smnHistorySharp")]
+        [DataMember(Name="smnHistorySharp")]
         BoundingBox SmnHistorySharp { get; set; }
 
-        [JsonProperty("smnNatural")]
+        [DataMember(Name="smnNatural")]
         BoundingBox SmnNatural { get; set; }
 
-        [JsonProperty("smnSharp")]
+        [DataMember(Name="smnSharp")]
         BoundingBox SmnSharp { get; set; }
 
-        [JsonProperty("smnSharpDown")]
+        [DataMember(Name="smnSharpDown")]
         BoundingBox SmnSharpDown { get; set; }
 
-        [JsonProperty("smnSharpWhite")]
+        [DataMember(Name="smnSharpWhite")]
         BoundingBox SmnSharpWhite { get; set; }
 
-        [JsonProperty("smnSharpWhiteDown")]
+        [DataMember(Name="smnSharpWhiteDown")]
         BoundingBox SmnSharpWhiteDown { get; set; }
 
-        [JsonProperty("splitBarDivider")]
+        [DataMember(Name="splitBarDivider")]
         BoundingBox SplitBarDivider { get; set; }
 
-        [JsonProperty("staff1Line")]
+        [DataMember(Name="staff1Line")]
         BoundingBox Staff1Line { get; set; }
 
-        [JsonProperty("staff1LineNarrow")]
+        [DataMember(Name="staff1LineNarrow")]
         BoundingBox Staff1LineNarrow { get; set; }
 
-        [JsonProperty("staff1LineWide")]
+        [DataMember(Name="staff1LineWide")]
         BoundingBox Staff1LineWide { get; set; }
 
-        [JsonProperty("staff2Lines")]
+        [DataMember(Name="staff2Lines")]
         BoundingBox Staff2Lines { get; set; }
 
-        [JsonProperty("staff2LinesNarrow")]
+        [DataMember(Name="staff2LinesNarrow")]
         BoundingBox Staff2LinesNarrow { get; set; }
 
-        [JsonProperty("staff2LinesWide")]
+        [DataMember(Name="staff2LinesWide")]
         BoundingBox Staff2LinesWide { get; set; }
 
-        [JsonProperty("staff3Lines")]
+        [DataMember(Name="staff3Lines")]
         BoundingBox Staff3Lines { get; set; }
 
-        [JsonProperty("staff3LinesNarrow")]
+        [DataMember(Name="staff3LinesNarrow")]
         BoundingBox Staff3LinesNarrow { get; set; }
 
-        [JsonProperty("staff3LinesWide")]
+        [DataMember(Name="staff3LinesWide")]
         BoundingBox Staff3LinesWide { get; set; }
 
-        [JsonProperty("staff4Lines")]
+        [DataMember(Name="staff4Lines")]
         BoundingBox Staff4Lines { get; set; }
 
-        [JsonProperty("staff4LinesNarrow")]
+        [DataMember(Name="staff4LinesNarrow")]
         BoundingBox Staff4LinesNarrow { get; set; }
 
-        [JsonProperty("staff4LinesWide")]
+        [DataMember(Name="staff4LinesWide")]
         BoundingBox Staff4LinesWide { get; set; }
 
-        [JsonProperty("staff5Lines")]
+        [DataMember(Name="staff5Lines")]
         BoundingBox Staff5Lines { get; set; }
 
-        [JsonProperty("staff5LinesNarrow")]
+        [DataMember(Name="staff5LinesNarrow")]
         BoundingBox Staff5LinesNarrow { get; set; }
 
-        [JsonProperty("staff5LinesWide")]
+        [DataMember(Name="staff5LinesWide")]
         BoundingBox Staff5LinesWide { get; set; }
 
-        [JsonProperty("staff6Lines")]
+        [DataMember(Name="staff6Lines")]
         BoundingBox Staff6Lines { get; set; }
 
-        [JsonProperty("staff6LinesNarrow")]
+        [DataMember(Name="staff6LinesNarrow")]
         BoundingBox Staff6LinesNarrow { get; set; }
 
-        [JsonProperty("staff6LinesWide")]
+        [DataMember(Name="staff6LinesWide")]
         BoundingBox Staff6LinesWide { get; set; }
 
-        [JsonProperty("staffDivideArrowDown")]
+        [DataMember(Name="staffDivideArrowDown")]
         BoundingBox StaffDivideArrowDown { get; set; }
 
-        [JsonProperty("staffDivideArrowUp")]
+        [DataMember(Name="staffDivideArrowUp")]
         BoundingBox StaffDivideArrowUp { get; set; }
 
-        [JsonProperty("staffDivideArrowUpDown")]
+        [DataMember(Name="staffDivideArrowUpDown")]
         BoundingBox StaffDivideArrowUpDown { get; set; }
 
-        [JsonProperty("stem")]
+        [DataMember(Name="stem")]
         BoundingBox Stem { get; set; }
 
-        [JsonProperty("stemBowOnBridge")]
+        [DataMember(Name="stemBowOnBridge")]
         BoundingBox StemBowOnBridge { get; set; }
 
-        [JsonProperty("stemBowOnTailpiece")]
+        [DataMember(Name="stemBowOnTailpiece")]
         BoundingBox StemBowOnTailpiece { get; set; }
 
-        [JsonProperty("stemBuzzRoll")]
+        [DataMember(Name="stemBuzzRoll")]
         BoundingBox StemBuzzRoll { get; set; }
 
-        [JsonProperty("stemDamp")]
+        [DataMember(Name="stemDamp")]
         BoundingBox StemDamp { get; set; }
 
-        [JsonProperty("stemHarpStringNoise")]
+        [DataMember(Name="stemHarpStringNoise")]
         BoundingBox StemHarpStringNoise { get; set; }
 
-        [JsonProperty("stemMultiphonicsBlack")]
+        [DataMember(Name="stemMultiphonicsBlack")]
         BoundingBox StemMultiphonicsBlack { get; set; }
 
-        [JsonProperty("stemMultiphonicsBlackWhite")]
+        [DataMember(Name="stemMultiphonicsBlackWhite")]
         BoundingBox StemMultiphonicsBlackWhite { get; set; }
 
-        [JsonProperty("stemMultiphonicsWhite")]
+        [DataMember(Name="stemMultiphonicsWhite")]
         BoundingBox StemMultiphonicsWhite { get; set; }
 
-        [JsonProperty("stemPendereckiTremolo")]
+        [DataMember(Name="stemPendereckiTremolo")]
         BoundingBox StemPendereckiTremolo { get; set; }
 
-        [JsonProperty("stemRimShot")]
+        [DataMember(Name="stemRimShot")]
         BoundingBox StemRimShot { get; set; }
 
-        [JsonProperty("stemSprechgesang")]
+        [DataMember(Name="stemSprechgesang")]
         BoundingBox StemSprechgesang { get; set; }
 
-        [JsonProperty("stemSulPonticello")]
+        [DataMember(Name="stemSulPonticello")]
         BoundingBox StemSulPonticello { get; set; }
 
-        [JsonProperty("stemSussurando")]
+        [DataMember(Name="stemSussurando")]
         BoundingBox StemSussurando { get; set; }
 
-        [JsonProperty("stemSwished")]
+        [DataMember(Name="stemSwished")]
         BoundingBox StemSwished { get; set; }
 
-        [JsonProperty("stemVibratoPulse")]
+        [DataMember(Name="stemVibratoPulse")]
         BoundingBox StemVibratoPulse { get; set; }
 
-        [JsonProperty("stockhausenTremolo")]
+        [DataMember(Name="stockhausenTremolo")]
         BoundingBox StockhausenTremolo { get; set; }
 
-        [JsonProperty("stringsBowBehindBridge")]
+        [DataMember(Name="stringsBowBehindBridge")]
         BoundingBox StringsBowBehindBridge { get; set; }
 
-        [JsonProperty("stringsBowBehindBridgeFourStrings")]
+        [DataMember(Name="stringsBowBehindBridgeFourStrings")]
         BoundingBox StringsBowBehindBridgeFourStrings { get; set; }
 
-        [JsonProperty("stringsBowBehindBridgeOneString")]
+        [DataMember(Name="stringsBowBehindBridgeOneString")]
         BoundingBox StringsBowBehindBridgeOneString { get; set; }
 
-        [JsonProperty("stringsBowBehindBridgeThreeStrings")]
+        [DataMember(Name="stringsBowBehindBridgeThreeStrings")]
         BoundingBox StringsBowBehindBridgeThreeStrings { get; set; }
 
-        [JsonProperty("stringsBowBehindBridgeTwoStrings")]
+        [DataMember(Name="stringsBowBehindBridgeTwoStrings")]
         BoundingBox StringsBowBehindBridgeTwoStrings { get; set; }
 
-        [JsonProperty("stringsBowOnBridge")]
+        [DataMember(Name="stringsBowOnBridge")]
         BoundingBox StringsBowOnBridge { get; set; }
 
-        [JsonProperty("stringsBowOnTailpiece")]
+        [DataMember(Name="stringsBowOnTailpiece")]
         BoundingBox StringsBowOnTailpiece { get; set; }
 
-        [JsonProperty("stringsChangeBowDirection")]
+        [DataMember(Name="stringsChangeBowDirection")]
         BoundingBox StringsChangeBowDirection { get; set; }
 
-        [JsonProperty("stringsChangeBowDirectionImposed")]
+        [DataMember(Name="stringsChangeBowDirectionImposed")]
         BoundingBox StringsChangeBowDirectionImposed { get; set; }
 
-        [JsonProperty("stringsChangeBowDirectionLiga")]
+        [DataMember(Name="stringsChangeBowDirectionLiga")]
         BoundingBox StringsChangeBowDirectionLiga { get; set; }
 
-        [JsonProperty("stringsDownBow")]
+        [DataMember(Name="stringsDownBow")]
         BoundingBox StringsDownBow { get; set; }
 
-        [JsonProperty("stringsDownBowTurned")]
+        [DataMember(Name="stringsDownBowTurned")]
         BoundingBox StringsDownBowTurned { get; set; }
 
-        [JsonProperty("stringsFouette")]
+        [DataMember(Name="stringsFouette")]
         BoundingBox StringsFouette { get; set; }
 
-        [JsonProperty("stringsHalfHarmonic")]
+        [DataMember(Name="stringsHalfHarmonic")]
         BoundingBox StringsHalfHarmonic { get; set; }
 
-        [JsonProperty("stringsHarmonic")]
+        [DataMember(Name="stringsHarmonic")]
         BoundingBox StringsHarmonic { get; set; }
 
-        [JsonProperty("stringsJeteAbove")]
+        [DataMember(Name="stringsJeteAbove")]
         BoundingBox StringsJeteAbove { get; set; }
 
-        [JsonProperty("stringsJeteBelow")]
+        [DataMember(Name="stringsJeteBelow")]
         BoundingBox StringsJeteBelow { get; set; }
 
-        [JsonProperty("stringsMuteOff")]
+        [DataMember(Name="stringsMuteOff")]
         BoundingBox StringsMuteOff { get; set; }
 
-        [JsonProperty("stringsMuteOn")]
+        [DataMember(Name="stringsMuteOn")]
         BoundingBox StringsMuteOn { get; set; }
 
-        [JsonProperty("stringsOverpressureDownBow")]
+        [DataMember(Name="stringsOverpressureDownBow")]
         BoundingBox StringsOverpressureDownBow { get; set; }
 
-        [JsonProperty("stringsOverpressureNoDirection")]
+        [DataMember(Name="stringsOverpressureNoDirection")]
         BoundingBox StringsOverpressureNoDirection { get; set; }
 
-        [JsonProperty("stringsOverpressurePossibileDownBow")]
+        [DataMember(Name="stringsOverpressurePossibileDownBow")]
         BoundingBox StringsOverpressurePossibileDownBow { get; set; }
 
-        [JsonProperty("stringsOverpressurePossibileUpBow")]
+        [DataMember(Name="stringsOverpressurePossibileUpBow")]
         BoundingBox StringsOverpressurePossibileUpBow { get; set; }
 
-        [JsonProperty("stringsOverpressureUpBow")]
+        [DataMember(Name="stringsOverpressureUpBow")]
         BoundingBox StringsOverpressureUpBow { get; set; }
 
-        [JsonProperty("stringsThumbPosition")]
+        [DataMember(Name="stringsThumbPosition")]
         BoundingBox StringsThumbPosition { get; set; }
 
-        [JsonProperty("stringsThumbPositionTurned")]
+        [DataMember(Name="stringsThumbPositionTurned")]
         BoundingBox StringsThumbPositionTurned { get; set; }
 
-        [JsonProperty("stringsUpBow")]
+        [DataMember(Name="stringsUpBow")]
         BoundingBox StringsUpBow { get; set; }
 
-        [JsonProperty("stringsUpBowTurned")]
+        [DataMember(Name="stringsUpBowTurned")]
         BoundingBox StringsUpBowTurned { get; set; }
 
-        [JsonProperty("stringsVibratoPulse")]
+        [DataMember(Name="stringsVibratoPulse")]
         BoundingBox StringsVibratoPulse { get; set; }
 
-        [JsonProperty("systemDivider")]
+        [DataMember(Name="systemDivider")]
         BoundingBox SystemDivider { get; set; }
 
-        [JsonProperty("systemDividerExtraLong")]
+        [DataMember(Name="systemDividerExtraLong")]
         BoundingBox SystemDividerExtraLong { get; set; }
 
-        [JsonProperty("systemDividerLong")]
+        [DataMember(Name="systemDividerLong")]
         BoundingBox SystemDividerLong { get; set; }
 
-        [JsonProperty("textAugmentationDot")]
+        [DataMember(Name="textAugmentationDot")]
         BoundingBox TextAugmentationDot { get; set; }
 
-        [JsonProperty("textBlackNoteFrac16thLongStem")]
+        [DataMember(Name="textBlackNoteFrac16thLongStem")]
         BoundingBox TextBlackNoteFrac16ThLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac16thShortStem")]
+        [DataMember(Name="textBlackNoteFrac16thShortStem")]
         BoundingBox TextBlackNoteFrac16ThShortStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac32ndLongStem")]
+        [DataMember(Name="textBlackNoteFrac32ndLongStem")]
         BoundingBox TextBlackNoteFrac32NdLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac8thLongStem")]
+        [DataMember(Name="textBlackNoteFrac8thLongStem")]
         BoundingBox TextBlackNoteFrac8ThLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteFrac8thShortStem")]
+        [DataMember(Name="textBlackNoteFrac8thShortStem")]
         BoundingBox TextBlackNoteFrac8ThShortStem { get; set; }
 
-        [JsonProperty("textBlackNoteLongStem")]
+        [DataMember(Name="textBlackNoteLongStem")]
         BoundingBox TextBlackNoteLongStem { get; set; }
 
-        [JsonProperty("textBlackNoteShortStem")]
+        [DataMember(Name="textBlackNoteShortStem")]
         BoundingBox TextBlackNoteShortStem { get; set; }
 
-        [JsonProperty("textCont16thBeamLongStem")]
+        [DataMember(Name="textCont16thBeamLongStem")]
         BoundingBox TextCont16ThBeamLongStem { get; set; }
 
-        [JsonProperty("textCont16thBeamShortStem")]
+        [DataMember(Name="textCont16thBeamShortStem")]
         BoundingBox TextCont16ThBeamShortStem { get; set; }
 
-        [JsonProperty("textCont32ndBeamLongStem")]
+        [DataMember(Name="textCont32ndBeamLongStem")]
         BoundingBox TextCont32NdBeamLongStem { get; set; }
 
-        [JsonProperty("textCont8thBeamLongStem")]
+        [DataMember(Name="textCont8thBeamLongStem")]
         BoundingBox TextCont8ThBeamLongStem { get; set; }
 
-        [JsonProperty("textCont8thBeamShortStem")]
+        [DataMember(Name="textCont8thBeamShortStem")]
         BoundingBox TextCont8ThBeamShortStem { get; set; }
 
-        [JsonProperty("textTie")]
+        [DataMember(Name="textTie")]
         BoundingBox TextTie { get; set; }
 
-        [JsonProperty("textTuplet3LongStem")]
+        [DataMember(Name="textTuplet3LongStem")]
         BoundingBox TextTuplet3LongStem { get; set; }
 
-        [JsonProperty("textTuplet3ShortStem")]
+        [DataMember(Name="textTuplet3ShortStem")]
         BoundingBox TextTuplet3ShortStem { get; set; }
 
-        [JsonProperty("textTupletBracketEndLongStem")]
+        [DataMember(Name="textTupletBracketEndLongStem")]
         BoundingBox TextTupletBracketEndLongStem { get; set; }
 
-        [JsonProperty("textTupletBracketEndShortStem")]
+        [DataMember(Name="textTupletBracketEndShortStem")]
         BoundingBox TextTupletBracketEndShortStem { get; set; }
 
-        [JsonProperty("textTupletBracketStartLongStem")]
+        [DataMember(Name="textTupletBracketStartLongStem")]
         BoundingBox TextTupletBracketStartLongStem { get; set; }
 
-        [JsonProperty("textTupletBracketStartShortStem")]
+        [DataMember(Name="textTupletBracketStartShortStem")]
         BoundingBox TextTupletBracketStartShortStem { get; set; }
 
-        [JsonProperty("timeSig0")]
+        [DataMember(Name="timeSig0")]
         BoundingBox TimeSig0 { get; set; }
 
-        [JsonProperty("timeSig0Denominator")]
+        [DataMember(Name="timeSig0Denominator")]
         BoundingBox TimeSig0Denominator { get; set; }
 
-        [JsonProperty("timeSig0Large")]
+        [DataMember(Name="timeSig0Large")]
         BoundingBox TimeSig0Large { get; set; }
 
-        [JsonProperty("timeSig0Numerator")]
+        [DataMember(Name="timeSig0Numerator")]
         BoundingBox TimeSig0Numerator { get; set; }
 
-        [JsonProperty("timeSig0Reversed")]
+        [DataMember(Name="timeSig0Reversed")]
         BoundingBox TimeSig0Reversed { get; set; }
 
-        [JsonProperty("timeSig0Small")]
+        [DataMember(Name="timeSig0Small")]
         BoundingBox TimeSig0Small { get; set; }
 
-        [JsonProperty("timeSig0Turned")]
+        [DataMember(Name="timeSig0Turned")]
         BoundingBox TimeSig0Turned { get; set; }
 
-        [JsonProperty("timeSig1")]
+        [DataMember(Name="timeSig1")]
         BoundingBox TimeSig1 { get; set; }
 
-        [JsonProperty("timeSig12over8")]
+        [DataMember(Name="timeSig12over8")]
         BoundingBox TimeSig12Over8 { get; set; }
 
-        [JsonProperty("timeSig1Denominator")]
+        [DataMember(Name="timeSig1Denominator")]
         BoundingBox TimeSig1Denominator { get; set; }
 
-        [JsonProperty("timeSig1Large")]
+        [DataMember(Name="timeSig1Large")]
         BoundingBox TimeSig1Large { get; set; }
 
-        [JsonProperty("timeSig1Numerator")]
+        [DataMember(Name="timeSig1Numerator")]
         BoundingBox TimeSig1Numerator { get; set; }
 
-        [JsonProperty("timeSig1Reversed")]
+        [DataMember(Name="timeSig1Reversed")]
         BoundingBox TimeSig1Reversed { get; set; }
 
-        [JsonProperty("timeSig1Small")]
+        [DataMember(Name="timeSig1Small")]
         BoundingBox TimeSig1Small { get; set; }
 
-        [JsonProperty("timeSig1Turned")]
+        [DataMember(Name="timeSig1Turned")]
         BoundingBox TimeSig1Turned { get; set; }
 
-        [JsonProperty("timeSig2")]
+        [DataMember(Name="timeSig2")]
         BoundingBox TimeSig2 { get; set; }
 
-        [JsonProperty("timeSig2Denominator")]
+        [DataMember(Name="timeSig2Denominator")]
         BoundingBox TimeSig2Denominator { get; set; }
 
-        [JsonProperty("timeSig2Large")]
+        [DataMember(Name="timeSig2Large")]
         BoundingBox TimeSig2Large { get; set; }
 
-        [JsonProperty("timeSig2Numerator")]
+        [DataMember(Name="timeSig2Numerator")]
         BoundingBox TimeSig2Numerator { get; set; }
 
-        [JsonProperty("timeSig2Reversed")]
+        [DataMember(Name="timeSig2Reversed")]
         BoundingBox TimeSig2Reversed { get; set; }
 
-        [JsonProperty("timeSig2Small")]
+        [DataMember(Name="timeSig2Small")]
         BoundingBox TimeSig2Small { get; set; }
 
-        [JsonProperty("timeSig2Turned")]
+        [DataMember(Name="timeSig2Turned")]
         BoundingBox TimeSig2Turned { get; set; }
 
-        [JsonProperty("timeSig2over2")]
+        [DataMember(Name="timeSig2over2")]
         BoundingBox TimeSig2Over2 { get; set; }
 
-        [JsonProperty("timeSig2over4")]
+        [DataMember(Name="timeSig2over4")]
         BoundingBox TimeSig2Over4 { get; set; }
 
-        [JsonProperty("timeSig3")]
+        [DataMember(Name="timeSig3")]
         BoundingBox TimeSig3 { get; set; }
 
-        [JsonProperty("timeSig3Denominator")]
+        [DataMember(Name="timeSig3Denominator")]
         BoundingBox TimeSig3Denominator { get; set; }
 
-        [JsonProperty("timeSig3Large")]
+        [DataMember(Name="timeSig3Large")]
         BoundingBox TimeSig3Large { get; set; }
 
-        [JsonProperty("timeSig3Numerator")]
+        [DataMember(Name="timeSig3Numerator")]
         BoundingBox TimeSig3Numerator { get; set; }
 
-        [JsonProperty("timeSig3Reversed")]
+        [DataMember(Name="timeSig3Reversed")]
         BoundingBox TimeSig3Reversed { get; set; }
 
-        [JsonProperty("timeSig3Small")]
+        [DataMember(Name="timeSig3Small")]
         BoundingBox TimeSig3Small { get; set; }
 
-        [JsonProperty("timeSig3Turned")]
+        [DataMember(Name="timeSig3Turned")]
         BoundingBox TimeSig3Turned { get; set; }
 
-        [JsonProperty("timeSig3over2")]
+        [DataMember(Name="timeSig3over2")]
         BoundingBox TimeSig3Over2 { get; set; }
 
-        [JsonProperty("timeSig3over4")]
+        [DataMember(Name="timeSig3over4")]
         BoundingBox TimeSig3Over4 { get; set; }
 
-        [JsonProperty("timeSig3over8")]
+        [DataMember(Name="timeSig3over8")]
         BoundingBox TimeSig3Over8 { get; set; }
 
-        [JsonProperty("timeSig4")]
+        [DataMember(Name="timeSig4")]
         BoundingBox TimeSig4 { get; set; }
 
-        [JsonProperty("timeSig4Denominator")]
+        [DataMember(Name="timeSig4Denominator")]
         BoundingBox TimeSig4Denominator { get; set; }
 
-        [JsonProperty("timeSig4Large")]
+        [DataMember(Name="timeSig4Large")]
         BoundingBox TimeSig4Large { get; set; }
 
-        [JsonProperty("timeSig4Numerator")]
+        [DataMember(Name="timeSig4Numerator")]
         BoundingBox TimeSig4Numerator { get; set; }
 
-        [JsonProperty("timeSig4Reversed")]
+        [DataMember(Name="timeSig4Reversed")]
         BoundingBox TimeSig4Reversed { get; set; }
 
-        [JsonProperty("timeSig4Small")]
+        [DataMember(Name="timeSig4Small")]
         BoundingBox TimeSig4Small { get; set; }
 
-        [JsonProperty("timeSig4Turned")]
+        [DataMember(Name="timeSig4Turned")]
         BoundingBox TimeSig4Turned { get; set; }
 
-        [JsonProperty("timeSig4over4")]
+        [DataMember(Name="timeSig4over4")]
         BoundingBox TimeSig4Over4 { get; set; }
 
-        [JsonProperty("timeSig5")]
+        [DataMember(Name="timeSig5")]
         BoundingBox TimeSig5 { get; set; }
 
-        [JsonProperty("timeSig5Denominator")]
+        [DataMember(Name="timeSig5Denominator")]
         BoundingBox TimeSig5Denominator { get; set; }
 
-        [JsonProperty("timeSig5Large")]
+        [DataMember(Name="timeSig5Large")]
         BoundingBox TimeSig5Large { get; set; }
 
-        [JsonProperty("timeSig5Numerator")]
+        [DataMember(Name="timeSig5Numerator")]
         BoundingBox TimeSig5Numerator { get; set; }
 
-        [JsonProperty("timeSig5Reversed")]
+        [DataMember(Name="timeSig5Reversed")]
         BoundingBox TimeSig5Reversed { get; set; }
 
-        [JsonProperty("timeSig5Small")]
+        [DataMember(Name="timeSig5Small")]
         BoundingBox TimeSig5Small { get; set; }
 
-        [JsonProperty("timeSig5Turned")]
+        [DataMember(Name="timeSig5Turned")]
         BoundingBox TimeSig5Turned { get; set; }
 
-        [JsonProperty("timeSig5over4")]
+        [DataMember(Name="timeSig5over4")]
         BoundingBox TimeSig5Over4 { get; set; }
 
-        [JsonProperty("timeSig5over8")]
+        [DataMember(Name="timeSig5over8")]
         BoundingBox TimeSig5Over8 { get; set; }
 
-        [JsonProperty("timeSig6")]
+        [DataMember(Name="timeSig6")]
         BoundingBox TimeSig6 { get; set; }
 
-        [JsonProperty("timeSig6Denominator")]
+        [DataMember(Name="timeSig6Denominator")]
         BoundingBox TimeSig6Denominator { get; set; }
 
-        [JsonProperty("timeSig6Large")]
+        [DataMember(Name="timeSig6Large")]
         BoundingBox TimeSig6Large { get; set; }
 
-        [JsonProperty("timeSig6Numerator")]
+        [DataMember(Name="timeSig6Numerator")]
         BoundingBox TimeSig6Numerator { get; set; }
 
-        [JsonProperty("timeSig6Reversed")]
+        [DataMember(Name="timeSig6Reversed")]
         BoundingBox TimeSig6Reversed { get; set; }
 
-        [JsonProperty("timeSig6Small")]
+        [DataMember(Name="timeSig6Small")]
         BoundingBox TimeSig6Small { get; set; }
 
-        [JsonProperty("timeSig6Turned")]
+        [DataMember(Name="timeSig6Turned")]
         BoundingBox TimeSig6Turned { get; set; }
 
-        [JsonProperty("timeSig6over4")]
+        [DataMember(Name="timeSig6over4")]
         BoundingBox TimeSig6Over4 { get; set; }
 
-        [JsonProperty("timeSig6over8")]
+        [DataMember(Name="timeSig6over8")]
         BoundingBox TimeSig6Over8 { get; set; }
 
-        [JsonProperty("timeSig7")]
+        [DataMember(Name="timeSig7")]
         BoundingBox TimeSig7 { get; set; }
 
-        [JsonProperty("timeSig7Denominator")]
+        [DataMember(Name="timeSig7Denominator")]
         BoundingBox TimeSig7Denominator { get; set; }
 
-        [JsonProperty("timeSig7Large")]
+        [DataMember(Name="timeSig7Large")]
         BoundingBox TimeSig7Large { get; set; }
 
-        [JsonProperty("timeSig7Numerator")]
+        [DataMember(Name="timeSig7Numerator")]
         BoundingBox TimeSig7Numerator { get; set; }
 
-        [JsonProperty("timeSig7Reversed")]
+        [DataMember(Name="timeSig7Reversed")]
         BoundingBox TimeSig7Reversed { get; set; }
 
-        [JsonProperty("timeSig7Small")]
+        [DataMember(Name="timeSig7Small")]
         BoundingBox TimeSig7Small { get; set; }
 
-        [JsonProperty("timeSig7Turned")]
+        [DataMember(Name="timeSig7Turned")]
         BoundingBox TimeSig7Turned { get; set; }
 
-        [JsonProperty("timeSig7over8")]
+        [DataMember(Name="timeSig7over8")]
         BoundingBox TimeSig7Over8 { get; set; }
 
-        [JsonProperty("timeSig8")]
+        [DataMember(Name="timeSig8")]
         BoundingBox TimeSig8 { get; set; }
 
-        [JsonProperty("timeSig8Denominator")]
+        [DataMember(Name="timeSig8Denominator")]
         BoundingBox TimeSig8Denominator { get; set; }
 
-        [JsonProperty("timeSig8Large")]
+        [DataMember(Name="timeSig8Large")]
         BoundingBox TimeSig8Large { get; set; }
 
-        [JsonProperty("timeSig8Numerator")]
+        [DataMember(Name="timeSig8Numerator")]
         BoundingBox TimeSig8Numerator { get; set; }
 
-        [JsonProperty("timeSig8Reversed")]
+        [DataMember(Name="timeSig8Reversed")]
         BoundingBox TimeSig8Reversed { get; set; }
 
-        [JsonProperty("timeSig8Small")]
+        [DataMember(Name="timeSig8Small")]
         BoundingBox TimeSig8Small { get; set; }
 
-        [JsonProperty("timeSig8Turned")]
+        [DataMember(Name="timeSig8Turned")]
         BoundingBox TimeSig8Turned { get; set; }
 
-        [JsonProperty("timeSig9")]
+        [DataMember(Name="timeSig9")]
         BoundingBox TimeSig9 { get; set; }
 
-        [JsonProperty("timeSig9Large")]
+        [DataMember(Name="timeSig9Large")]
         BoundingBox TimeSig9Large { get; set; }
 
-        [JsonProperty("timeSig9Reversed")]
+        [DataMember(Name="timeSig9Reversed")]
         BoundingBox TimeSig9Reversed { get; set; }
 
-        [JsonProperty("timeSig9Small")]
+        [DataMember(Name="timeSig9Small")]
         BoundingBox TimeSig9Small { get; set; }
 
-        [JsonProperty("timeSig9Turned")]
+        [DataMember(Name="timeSig9Turned")]
         BoundingBox TimeSig9Turned { get; set; }
 
-        [JsonProperty("timeSig9over8")]
+        [DataMember(Name="timeSig9over8")]
         BoundingBox TimeSig9Over8 { get; set; }
 
-        [JsonProperty("timeSigBracketLeft")]
+        [DataMember(Name="timeSigBracketLeft")]
         BoundingBox TimeSigBracketLeft { get; set; }
 
-        [JsonProperty("timeSigBracketLeftSmall")]
+        [DataMember(Name="timeSigBracketLeftSmall")]
         BoundingBox TimeSigBracketLeftSmall { get; set; }
 
-        [JsonProperty("timeSigBracketRight")]
+        [DataMember(Name="timeSigBracketRight")]
         BoundingBox TimeSigBracketRight { get; set; }
 
-        [JsonProperty("timeSigBracketRightSmall")]
+        [DataMember(Name="timeSigBracketRightSmall")]
         BoundingBox TimeSigBracketRightSmall { get; set; }
 
-        [JsonProperty("timeSigComma")]
+        [DataMember(Name="timeSigComma")]
         BoundingBox TimeSigComma { get; set; }
 
-        [JsonProperty("timeSigCommon")]
+        [DataMember(Name="timeSigCommon")]
         BoundingBox TimeSigCommon { get; set; }
 
-        [JsonProperty("timeSigCommonLarge")]
+        [DataMember(Name="timeSigCommonLarge")]
         BoundingBox TimeSigCommonLarge { get; set; }
 
-        [JsonProperty("timeSigCommonReversed")]
+        [DataMember(Name="timeSigCommonReversed")]
         BoundingBox TimeSigCommonReversed { get; set; }
 
-        [JsonProperty("timeSigCommonTurned")]
+        [DataMember(Name="timeSigCommonTurned")]
         BoundingBox TimeSigCommonTurned { get; set; }
 
-        [JsonProperty("timeSigCut2")]
+        [DataMember(Name="timeSigCut2")]
         BoundingBox TimeSigCut2 { get; set; }
 
-        [JsonProperty("timeSigCut3")]
+        [DataMember(Name="timeSigCut3")]
         BoundingBox TimeSigCut3 { get; set; }
 
-        [JsonProperty("timeSigCutCommon")]
+        [DataMember(Name="timeSigCutCommon")]
         BoundingBox TimeSigCutCommon { get; set; }
 
-        [JsonProperty("timeSigCutCommonLarge")]
+        [DataMember(Name="timeSigCutCommonLarge")]
         BoundingBox TimeSigCutCommonLarge { get; set; }
 
-        [JsonProperty("timeSigCutCommonReversed")]
+        [DataMember(Name="timeSigCutCommonReversed")]
         BoundingBox TimeSigCutCommonReversed { get; set; }
 
-        [JsonProperty("timeSigCutCommonTurned")]
+        [DataMember(Name="timeSigCutCommonTurned")]
         BoundingBox TimeSigCutCommonTurned { get; set; }
 
-        [JsonProperty("timeSigEquals")]
+        [DataMember(Name="timeSigEquals")]
         BoundingBox TimeSigEquals { get; set; }
 
-        [JsonProperty("timeSigFractionHalf")]
+        [DataMember(Name="timeSigFractionHalf")]
         BoundingBox TimeSigFractionHalf { get; set; }
 
-        [JsonProperty("timeSigFractionOneThird")]
+        [DataMember(Name="timeSigFractionOneThird")]
         BoundingBox TimeSigFractionOneThird { get; set; }
 
-        [JsonProperty("timeSigFractionQuarter")]
+        [DataMember(Name="timeSigFractionQuarter")]
         BoundingBox TimeSigFractionQuarter { get; set; }
 
-        [JsonProperty("timeSigFractionThreeQuarters")]
+        [DataMember(Name="timeSigFractionThreeQuarters")]
         BoundingBox TimeSigFractionThreeQuarters { get; set; }
 
-        [JsonProperty("timeSigFractionTwoThirds")]
+        [DataMember(Name="timeSigFractionTwoThirds")]
         BoundingBox TimeSigFractionTwoThirds { get; set; }
 
-        [JsonProperty("timeSigFractionalSlash")]
+        [DataMember(Name="timeSigFractionalSlash")]
         BoundingBox TimeSigFractionalSlash { get; set; }
 
-        [JsonProperty("timeSigMinus")]
+        [DataMember(Name="timeSigMinus")]
         BoundingBox TimeSigMinus { get; set; }
 
-        [JsonProperty("timeSigMultiply")]
+        [DataMember(Name="timeSigMultiply")]
         BoundingBox TimeSigMultiply { get; set; }
 
-        [JsonProperty("timeSigOpenPenderecki")]
+        [DataMember(Name="timeSigOpenPenderecki")]
         BoundingBox TimeSigOpenPenderecki { get; set; }
 
-        [JsonProperty("timeSigParensLeft")]
+        [DataMember(Name="timeSigParensLeft")]
         BoundingBox TimeSigParensLeft { get; set; }
 
-        [JsonProperty("timeSigParensLeftSmall")]
+        [DataMember(Name="timeSigParensLeftSmall")]
         BoundingBox TimeSigParensLeftSmall { get; set; }
 
-        [JsonProperty("timeSigParensRight")]
+        [DataMember(Name="timeSigParensRight")]
         BoundingBox TimeSigParensRight { get; set; }
 
-        [JsonProperty("timeSigParensRightSmall")]
+        [DataMember(Name="timeSigParensRightSmall")]
         BoundingBox TimeSigParensRightSmall { get; set; }
 
-        [JsonProperty("timeSigPlus")]
+        [DataMember(Name="timeSigPlus")]
         BoundingBox TimeSigPlus { get; set; }
 
-        [JsonProperty("timeSigPlusLarge")]
+        [DataMember(Name="timeSigPlusLarge")]
         BoundingBox TimeSigPlusLarge { get; set; }
 
-        [JsonProperty("timeSigPlusSmall")]
+        [DataMember(Name="timeSigPlusSmall")]
         BoundingBox TimeSigPlusSmall { get; set; }
 
-        [JsonProperty("timeSigSlash")]
+        [DataMember(Name="timeSigSlash")]
         BoundingBox TimeSigSlash { get; set; }
 
-        [JsonProperty("timeSigX")]
+        [DataMember(Name="timeSigX")]
         BoundingBox TimeSigX { get; set; }
 
-        [JsonProperty("tremolo1")]
+        [DataMember(Name="tremolo1")]
         BoundingBox Tremolo1 { get; set; }
 
-        [JsonProperty("tremolo2")]
+        [DataMember(Name="tremolo2")]
         BoundingBox Tremolo2 { get; set; }
 
-        [JsonProperty("tremolo3")]
+        [DataMember(Name="tremolo3")]
         BoundingBox Tremolo3 { get; set; }
 
-        [JsonProperty("tremolo4")]
+        [DataMember(Name="tremolo4")]
         BoundingBox Tremolo4 { get; set; }
 
-        [JsonProperty("tremolo5")]
+        [DataMember(Name="tremolo5")]
         BoundingBox Tremolo5 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots2")]
+        [DataMember(Name="tremoloDivisiDots2")]
         BoundingBox TremoloDivisiDots2 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots3")]
+        [DataMember(Name="tremoloDivisiDots3")]
         BoundingBox TremoloDivisiDots3 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots4")]
+        [DataMember(Name="tremoloDivisiDots4")]
         BoundingBox TremoloDivisiDots4 { get; set; }
 
-        [JsonProperty("tremoloDivisiDots6")]
+        [DataMember(Name="tremoloDivisiDots6")]
         BoundingBox TremoloDivisiDots6 { get; set; }
 
-        [JsonProperty("tremoloFingered1")]
+        [DataMember(Name="tremoloFingered1")]
         BoundingBox TremoloFingered1 { get; set; }
 
-        [JsonProperty("tremoloFingered2")]
+        [DataMember(Name="tremoloFingered2")]
         BoundingBox TremoloFingered2 { get; set; }
 
-        [JsonProperty("tremoloFingered3")]
+        [DataMember(Name="tremoloFingered3")]
         BoundingBox TremoloFingered3 { get; set; }
 
-        [JsonProperty("tremoloFingered4")]
+        [DataMember(Name="tremoloFingered4")]
         BoundingBox TremoloFingered4 { get; set; }
 
-        [JsonProperty("tremoloFingered5")]
+        [DataMember(Name="tremoloFingered5")]
         BoundingBox TremoloFingered5 { get; set; }
 
-        [JsonProperty("tripleTongueAbove")]
+        [DataMember(Name="tripleTongueAbove")]
         BoundingBox TripleTongueAbove { get; set; }
 
-        [JsonProperty("tripleTongueAboveNoSlur")]
+        [DataMember(Name="tripleTongueAboveNoSlur")]
         BoundingBox TripleTongueAboveNoSlur { get; set; }
 
-        [JsonProperty("tripleTongueBelow")]
+        [DataMember(Name="tripleTongueBelow")]
         BoundingBox TripleTongueBelow { get; set; }
 
-        [JsonProperty("tripleTongueBelowNoSlur")]
+        [DataMember(Name="tripleTongueBelowNoSlur")]
         BoundingBox TripleTongueBelowNoSlur { get; set; }
 
-        [JsonProperty("tuplet0")]
+        [DataMember(Name="tuplet0")]
         BoundingBox Tuplet0 { get; set; }
 
-        [JsonProperty("tuplet1")]
+        [DataMember(Name="tuplet1")]
         BoundingBox Tuplet1 { get; set; }
 
-        [JsonProperty("tuplet2")]
+        [DataMember(Name="tuplet2")]
         BoundingBox Tuplet2 { get; set; }
 
-        [JsonProperty("tuplet3")]
+        [DataMember(Name="tuplet3")]
         BoundingBox Tuplet3 { get; set; }
 
-        [JsonProperty("tuplet4")]
+        [DataMember(Name="tuplet4")]
         BoundingBox Tuplet4 { get; set; }
 
-        [JsonProperty("tuplet5")]
+        [DataMember(Name="tuplet5")]
         BoundingBox Tuplet5 { get; set; }
 
-        [JsonProperty("tuplet6")]
+        [DataMember(Name="tuplet6")]
         BoundingBox Tuplet6 { get; set; }
 
-        [JsonProperty("tuplet7")]
+        [DataMember(Name="tuplet7")]
         BoundingBox Tuplet7 { get; set; }
 
-        [JsonProperty("tuplet8")]
+        [DataMember(Name="tuplet8")]
         BoundingBox Tuplet8 { get; set; }
 
-        [JsonProperty("tuplet9")]
+        [DataMember(Name="tuplet9")]
         BoundingBox Tuplet9 { get; set; }
 
-        [JsonProperty("tupletColon")]
+        [DataMember(Name="tupletColon")]
         BoundingBox TupletColon { get; set; }
 
-        [JsonProperty("unmeasuredTremolo")]
+        [DataMember(Name="unmeasuredTremolo")]
         BoundingBox UnmeasuredTremolo { get; set; }
 
-        [JsonProperty("unmeasuredTremoloSimple")]
+        [DataMember(Name="unmeasuredTremoloSimple")]
         BoundingBox UnmeasuredTremoloSimple { get; set; }
 
-        [JsonProperty("unpitchedPercussionClef1")]
+        [DataMember(Name="unpitchedPercussionClef1")]
         BoundingBox UnpitchedPercussionClef1 { get; set; }
 
-        [JsonProperty("unpitchedPercussionClef1Alt")]
+        [DataMember(Name="unpitchedPercussionClef1Alt")]
         BoundingBox UnpitchedPercussionClef1Alt { get; set; }
 
-        [JsonProperty("unpitchedPercussionClef2")]
+        [DataMember(Name="unpitchedPercussionClef2")]
         BoundingBox UnpitchedPercussionClef2 { get; set; }
 
-        [JsonProperty("ventiduesima")]
+        [DataMember(Name="ventiduesima")]
         BoundingBox Ventiduesima { get; set; }
 
-        [JsonProperty("ventiduesimaAlta")]
+        [DataMember(Name="ventiduesimaAlta")]
         BoundingBox VentiduesimaAlta { get; set; }
 
-        [JsonProperty("ventiduesimaBassa")]
+        [DataMember(Name="ventiduesimaBassa")]
         BoundingBox VentiduesimaBassa { get; set; }
 
-        [JsonProperty("ventiduesimaBassaMb")]
+        [DataMember(Name="ventiduesimaBassaMb")]
         BoundingBox VentiduesimaBassaMb { get; set; }
 
-        [JsonProperty("ventiquattresima")]
+        [DataMember(Name="ventiquattresima")]
         BoundingBox Ventiquattresima { get; set; }
 
-        [JsonProperty("ventiquattresimaAlta")]
+        [DataMember(Name="ventiquattresimaAlta")]
         BoundingBox VentiquattresimaAlta { get; set; }
 
-        [JsonProperty("ventiquattresimaBassa")]
+        [DataMember(Name="ventiquattresimaBassa")]
         BoundingBox VentiquattresimaBassa { get; set; }
 
-        [JsonProperty("ventiquattresimaBassaMb")]
+        [DataMember(Name="ventiquattresimaBassaMb")]
         BoundingBox VentiquattresimaBassaMb { get; set; }
 
-        [JsonProperty("vocalFingerClickStockhausen")]
+        [DataMember(Name="vocalFingerClickStockhausen")]
         BoundingBox VocalFingerClickStockhausen { get; set; }
 
-        [JsonProperty("vocalMouthClosed")]
+        [DataMember(Name="vocalMouthClosed")]
         BoundingBox VocalMouthClosed { get; set; }
 
-        [JsonProperty("vocalMouthOpen")]
+        [DataMember(Name="vocalMouthOpen")]
         BoundingBox VocalMouthOpen { get; set; }
 
-        [JsonProperty("vocalMouthPursed")]
+        [DataMember(Name="vocalMouthPursed")]
         BoundingBox VocalMouthPursed { get; set; }
 
-        [JsonProperty("vocalMouthSlightlyOpen")]
+        [DataMember(Name="vocalMouthSlightlyOpen")]
         BoundingBox VocalMouthSlightlyOpen { get; set; }
 
-        [JsonProperty("vocalMouthWideOpen")]
+        [DataMember(Name="vocalMouthWideOpen")]
         BoundingBox VocalMouthWideOpen { get; set; }
 
-        [JsonProperty("vocalNasalVoice")]
+        [DataMember(Name="vocalNasalVoice")]
         BoundingBox VocalNasalVoice { get; set; }
 
-        [JsonProperty("vocalSprechgesang")]
+        [DataMember(Name="vocalSprechgesang")]
         BoundingBox VocalSprechgesang { get; set; }
 
-        [JsonProperty("vocalTongueClickStockhausen")]
+        [DataMember(Name="vocalTongueClickStockhausen")]
         BoundingBox VocalTongueClickStockhausen { get; set; }
 
-        [JsonProperty("vocalTongueFingerClickStockhausen")]
+        [DataMember(Name="vocalTongueFingerClickStockhausen")]
         BoundingBox VocalTongueFingerClickStockhausen { get; set; }
 
-        [JsonProperty("vocalsSussurando")]
+        [DataMember(Name="vocalsSussurando")]
         BoundingBox VocalsSussurando { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDown")]
+        [DataMember(Name="wiggleArpeggiatoDown")]
         BoundingBox WiggleArpeggiatoDown { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDownArrow")]
+        [DataMember(Name="wiggleArpeggiatoDownArrow")]
         BoundingBox WiggleArpeggiatoDownArrow { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDownSwash")]
+        [DataMember(Name="wiggleArpeggiatoDownSwash")]
         BoundingBox WiggleArpeggiatoDownSwash { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDownSwashCouperin")]
+        [DataMember(Name="wiggleArpeggiatoDownSwashCouperin")]
         BoundingBox WiggleArpeggiatoDownSwashCouperin { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUp")]
+        [DataMember(Name="wiggleArpeggiatoUp")]
         BoundingBox WiggleArpeggiatoUp { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUpArrow")]
+        [DataMember(Name="wiggleArpeggiatoUpArrow")]
         BoundingBox WiggleArpeggiatoUpArrow { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUpSwash")]
+        [DataMember(Name="wiggleArpeggiatoUpSwash")]
         BoundingBox WiggleArpeggiatoUpSwash { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUpSwashCouperin")]
+        [DataMember(Name="wiggleArpeggiatoUpSwashCouperin")]
         BoundingBox WiggleArpeggiatoUpSwashCouperin { get; set; }
 
-        [JsonProperty("wiggleCircular")]
+        [DataMember(Name="wiggleCircular")]
         BoundingBox WiggleCircular { get; set; }
 
-        [JsonProperty("wiggleCircularConstant")]
+        [DataMember(Name="wiggleCircularConstant")]
         BoundingBox WiggleCircularConstant { get; set; }
 
-        [JsonProperty("wiggleCircularConstantFlipped")]
+        [DataMember(Name="wiggleCircularConstantFlipped")]
         BoundingBox WiggleCircularConstantFlipped { get; set; }
 
-        [JsonProperty("wiggleCircularConstantFlippedLarge")]
+        [DataMember(Name="wiggleCircularConstantFlippedLarge")]
         BoundingBox WiggleCircularConstantFlippedLarge { get; set; }
 
-        [JsonProperty("wiggleCircularConstantLarge")]
+        [DataMember(Name="wiggleCircularConstantLarge")]
         BoundingBox WiggleCircularConstantLarge { get; set; }
 
-        [JsonProperty("wiggleCircularEnd")]
+        [DataMember(Name="wiggleCircularEnd")]
         BoundingBox WiggleCircularEnd { get; set; }
 
-        [JsonProperty("wiggleCircularLarge")]
+        [DataMember(Name="wiggleCircularLarge")]
         BoundingBox WiggleCircularLarge { get; set; }
 
-        [JsonProperty("wiggleCircularLarger")]
+        [DataMember(Name="wiggleCircularLarger")]
         BoundingBox WiggleCircularLarger { get; set; }
 
-        [JsonProperty("wiggleCircularLargerStill")]
+        [DataMember(Name="wiggleCircularLargerStill")]
         BoundingBox WiggleCircularLargerStill { get; set; }
 
-        [JsonProperty("wiggleCircularLargest")]
+        [DataMember(Name="wiggleCircularLargest")]
         BoundingBox WiggleCircularLargest { get; set; }
 
-        [JsonProperty("wiggleCircularSmall")]
+        [DataMember(Name="wiggleCircularSmall")]
         BoundingBox WiggleCircularSmall { get; set; }
 
-        [JsonProperty("wiggleCircularStart")]
+        [DataMember(Name="wiggleCircularStart")]
         BoundingBox WiggleCircularStart { get; set; }
 
-        [JsonProperty("wiggleGlissando")]
+        [DataMember(Name="wiggleGlissando")]
         BoundingBox WiggleGlissando { get; set; }
 
-        [JsonProperty("wiggleGlissandoGroup1")]
+        [DataMember(Name="wiggleGlissandoGroup1")]
         BoundingBox WiggleGlissandoGroup1 { get; set; }
 
-        [JsonProperty("wiggleGlissandoGroup2")]
+        [DataMember(Name="wiggleGlissandoGroup2")]
         BoundingBox WiggleGlissandoGroup2 { get; set; }
 
-        [JsonProperty("wiggleGlissandoGroup3")]
+        [DataMember(Name="wiggleGlissandoGroup3")]
         BoundingBox WiggleGlissandoGroup3 { get; set; }
 
-        [JsonProperty("wiggleRandom1")]
+        [DataMember(Name="wiggleRandom1")]
         BoundingBox WiggleRandom1 { get; set; }
 
-        [JsonProperty("wiggleRandom2")]
+        [DataMember(Name="wiggleRandom2")]
         BoundingBox WiggleRandom2 { get; set; }
 
-        [JsonProperty("wiggleRandom3")]
+        [DataMember(Name="wiggleRandom3")]
         BoundingBox WiggleRandom3 { get; set; }
 
-        [JsonProperty("wiggleRandom4")]
+        [DataMember(Name="wiggleRandom4")]
         BoundingBox WiggleRandom4 { get; set; }
 
-        [JsonProperty("wiggleSawtooth")]
+        [DataMember(Name="wiggleSawtooth")]
         BoundingBox WiggleSawtooth { get; set; }
 
-        [JsonProperty("wiggleSawtoothNarrow")]
+        [DataMember(Name="wiggleSawtoothNarrow")]
         BoundingBox WiggleSawtoothNarrow { get; set; }
 
-        [JsonProperty("wiggleSawtoothWide")]
+        [DataMember(Name="wiggleSawtoothWide")]
         BoundingBox WiggleSawtoothWide { get; set; }
 
-        [JsonProperty("wiggleSquareWave")]
+        [DataMember(Name="wiggleSquareWave")]
         BoundingBox WiggleSquareWave { get; set; }
 
-        [JsonProperty("wiggleSquareWaveNarrow")]
+        [DataMember(Name="wiggleSquareWaveNarrow")]
         BoundingBox WiggleSquareWaveNarrow { get; set; }
 
-        [JsonProperty("wiggleSquareWaveWide")]
+        [DataMember(Name="wiggleSquareWaveWide")]
         BoundingBox WiggleSquareWaveWide { get; set; }
 
-        [JsonProperty("wiggleTrill")]
+        [DataMember(Name="wiggleTrill")]
         BoundingBox WiggleTrill { get; set; }
 
-        [JsonProperty("wiggleTrillFast")]
+        [DataMember(Name="wiggleTrillFast")]
         BoundingBox WiggleTrillFast { get; set; }
 
-        [JsonProperty("wiggleTrillFaster")]
+        [DataMember(Name="wiggleTrillFaster")]
         BoundingBox WiggleTrillFaster { get; set; }
 
-        [JsonProperty("wiggleTrillFasterStill")]
+        [DataMember(Name="wiggleTrillFasterStill")]
         BoundingBox WiggleTrillFasterStill { get; set; }
 
-        [JsonProperty("wiggleTrillFastest")]
+        [DataMember(Name="wiggleTrillFastest")]
         BoundingBox WiggleTrillFastest { get; set; }
 
-        [JsonProperty("wiggleTrillSlow")]
+        [DataMember(Name="wiggleTrillSlow")]
         BoundingBox WiggleTrillSlow { get; set; }
 
-        [JsonProperty("wiggleTrillSlower")]
+        [DataMember(Name="wiggleTrillSlower")]
         BoundingBox WiggleTrillSlower { get; set; }
 
-        [JsonProperty("wiggleTrillSlowerStill")]
+        [DataMember(Name="wiggleTrillSlowerStill")]
         BoundingBox WiggleTrillSlowerStill { get; set; }
 
-        [JsonProperty("wiggleTrillSlowest")]
+        [DataMember(Name="wiggleTrillSlowest")]
         BoundingBox WiggleTrillSlowest { get; set; }
 
-        [JsonProperty("wiggleVIbratoLargestSlower")]
+        [DataMember(Name="wiggleVIbratoLargestSlower")]
         BoundingBox WiggleVIbratoLargestSlower { get; set; }
 
-        [JsonProperty("wiggleVIbratoMediumSlower")]
+        [DataMember(Name="wiggleVIbratoMediumSlower")]
         BoundingBox WiggleVIbratoMediumSlower { get; set; }
 
-        [JsonProperty("wiggleVibrato")]
+        [DataMember(Name="wiggleVibrato")]
         BoundingBox WiggleVibrato { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFast")]
+        [DataMember(Name="wiggleVibratoLargeFast")]
         BoundingBox WiggleVibratoLargeFast { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFaster")]
+        [DataMember(Name="wiggleVibratoLargeFaster")]
         BoundingBox WiggleVibratoLargeFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFasterStill")]
+        [DataMember(Name="wiggleVibratoLargeFasterStill")]
         BoundingBox WiggleVibratoLargeFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeFastest")]
+        [DataMember(Name="wiggleVibratoLargeFastest")]
         BoundingBox WiggleVibratoLargeFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeSlow")]
+        [DataMember(Name="wiggleVibratoLargeSlow")]
         BoundingBox WiggleVibratoLargeSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeSlower")]
+        [DataMember(Name="wiggleVibratoLargeSlower")]
         BoundingBox WiggleVibratoLargeSlower { get; set; }
 
-        [JsonProperty("wiggleVibratoLargeSlowest")]
+        [DataMember(Name="wiggleVibratoLargeSlowest")]
         BoundingBox WiggleVibratoLargeSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFast")]
+        [DataMember(Name="wiggleVibratoLargestFast")]
         BoundingBox WiggleVibratoLargestFast { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFaster")]
+        [DataMember(Name="wiggleVibratoLargestFaster")]
         BoundingBox WiggleVibratoLargestFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFasterStill")]
+        [DataMember(Name="wiggleVibratoLargestFasterStill")]
         BoundingBox WiggleVibratoLargestFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestFastest")]
+        [DataMember(Name="wiggleVibratoLargestFastest")]
         BoundingBox WiggleVibratoLargestFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestSlow")]
+        [DataMember(Name="wiggleVibratoLargestSlow")]
         BoundingBox WiggleVibratoLargestSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoLargestSlowest")]
+        [DataMember(Name="wiggleVibratoLargestSlowest")]
         BoundingBox WiggleVibratoLargestSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFast")]
+        [DataMember(Name="wiggleVibratoMediumFast")]
         BoundingBox WiggleVibratoMediumFast { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFaster")]
+        [DataMember(Name="wiggleVibratoMediumFaster")]
         BoundingBox WiggleVibratoMediumFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFasterStill")]
+        [DataMember(Name="wiggleVibratoMediumFasterStill")]
         BoundingBox WiggleVibratoMediumFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumFastest")]
+        [DataMember(Name="wiggleVibratoMediumFastest")]
         BoundingBox WiggleVibratoMediumFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumSlow")]
+        [DataMember(Name="wiggleVibratoMediumSlow")]
         BoundingBox WiggleVibratoMediumSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoMediumSlowest")]
+        [DataMember(Name="wiggleVibratoMediumSlowest")]
         BoundingBox WiggleVibratoMediumSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFast")]
+        [DataMember(Name="wiggleVibratoSmallFast")]
         BoundingBox WiggleVibratoSmallFast { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFaster")]
+        [DataMember(Name="wiggleVibratoSmallFaster")]
         BoundingBox WiggleVibratoSmallFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFasterStill")]
+        [DataMember(Name="wiggleVibratoSmallFasterStill")]
         BoundingBox WiggleVibratoSmallFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallFastest")]
+        [DataMember(Name="wiggleVibratoSmallFastest")]
         BoundingBox WiggleVibratoSmallFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallSlow")]
+        [DataMember(Name="wiggleVibratoSmallSlow")]
         BoundingBox WiggleVibratoSmallSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallSlower")]
+        [DataMember(Name="wiggleVibratoSmallSlower")]
         BoundingBox WiggleVibratoSmallSlower { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallSlowest")]
+        [DataMember(Name="wiggleVibratoSmallSlowest")]
         BoundingBox WiggleVibratoSmallSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFast")]
+        [DataMember(Name="wiggleVibratoSmallestFast")]
         BoundingBox WiggleVibratoSmallestFast { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFaster")]
+        [DataMember(Name="wiggleVibratoSmallestFaster")]
         BoundingBox WiggleVibratoSmallestFaster { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFasterStill")]
+        [DataMember(Name="wiggleVibratoSmallestFasterStill")]
         BoundingBox WiggleVibratoSmallestFasterStill { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestFastest")]
+        [DataMember(Name="wiggleVibratoSmallestFastest")]
         BoundingBox WiggleVibratoSmallestFastest { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestSlow")]
+        [DataMember(Name="wiggleVibratoSmallestSlow")]
         BoundingBox WiggleVibratoSmallestSlow { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestSlower")]
+        [DataMember(Name="wiggleVibratoSmallestSlower")]
         BoundingBox WiggleVibratoSmallestSlower { get; set; }
 
-        [JsonProperty("wiggleVibratoSmallestSlowest")]
+        [DataMember(Name="wiggleVibratoSmallestSlowest")]
         BoundingBox WiggleVibratoSmallestSlowest { get; set; }
 
-        [JsonProperty("wiggleVibratoStart")]
+        [DataMember(Name="wiggleVibratoStart")]
         BoundingBox WiggleVibratoStart { get; set; }
 
-        [JsonProperty("wiggleVibratoWide")]
+        [DataMember(Name="wiggleVibratoWide")]
         BoundingBox WiggleVibratoWide { get; set; }
 
-        [JsonProperty("wiggleWavy")]
+        [DataMember(Name="wiggleWavy")]
         BoundingBox WiggleWavy { get; set; }
 
-        [JsonProperty("wiggleWavyNarrow")]
+        [DataMember(Name="wiggleWavyNarrow")]
         BoundingBox WiggleWavyNarrow { get; set; }
 
-        [JsonProperty("wiggleWavyWide")]
+        [DataMember(Name="wiggleWavyWide")]
         BoundingBox WiggleWavyWide { get; set; }
 
-        [JsonProperty("windClosedHole")]
+        [DataMember(Name="windClosedHole")]
         BoundingBox WindClosedHole { get; set; }
 
-        [JsonProperty("windFlatEmbouchure")]
+        [DataMember(Name="windFlatEmbouchure")]
         BoundingBox WindFlatEmbouchure { get; set; }
 
-        [JsonProperty("windHalfClosedHole1")]
+        [DataMember(Name="windHalfClosedHole1")]
         BoundingBox WindHalfClosedHole1 { get; set; }
 
-        [JsonProperty("windHalfClosedHole2")]
+        [DataMember(Name="windHalfClosedHole2")]
         BoundingBox WindHalfClosedHole2 { get; set; }
 
-        [JsonProperty("windHalfClosedHole3")]
+        [DataMember(Name="windHalfClosedHole3")]
         BoundingBox WindHalfClosedHole3 { get; set; }
 
-        [JsonProperty("windLessRelaxedEmbouchure")]
+        [DataMember(Name="windLessRelaxedEmbouchure")]
         BoundingBox WindLessRelaxedEmbouchure { get; set; }
 
-        [JsonProperty("windLessTightEmbouchure")]
+        [DataMember(Name="windLessTightEmbouchure")]
         BoundingBox WindLessTightEmbouchure { get; set; }
 
-        [JsonProperty("windMouthpiecePop")]
+        [DataMember(Name="windMouthpiecePop")]
         BoundingBox WindMouthpiecePop { get; set; }
 
-        [JsonProperty("windMultiphonicsBlackStem")]
+        [DataMember(Name="windMultiphonicsBlackStem")]
         BoundingBox WindMultiphonicsBlackStem { get; set; }
 
-        [JsonProperty("windMultiphonicsBlackWhiteStem")]
+        [DataMember(Name="windMultiphonicsBlackWhiteStem")]
         BoundingBox WindMultiphonicsBlackWhiteStem { get; set; }
 
-        [JsonProperty("windMultiphonicsWhiteStem")]
+        [DataMember(Name="windMultiphonicsWhiteStem")]
         BoundingBox WindMultiphonicsWhiteStem { get; set; }
 
-        [JsonProperty("windOpenHole")]
+        [DataMember(Name="windOpenHole")]
         BoundingBox WindOpenHole { get; set; }
 
-        [JsonProperty("windReedPositionIn")]
+        [DataMember(Name="windReedPositionIn")]
         BoundingBox WindReedPositionIn { get; set; }
 
-        [JsonProperty("windReedPositionNormal")]
+        [DataMember(Name="windReedPositionNormal")]
         BoundingBox WindReedPositionNormal { get; set; }
 
-        [JsonProperty("windReedPositionOut")]
+        [DataMember(Name="windReedPositionOut")]
         BoundingBox WindReedPositionOut { get; set; }
 
-        [JsonProperty("windRelaxedEmbouchure")]
+        [DataMember(Name="windRelaxedEmbouchure")]
         BoundingBox WindRelaxedEmbouchure { get; set; }
 
-        [JsonProperty("windRimOnly")]
+        [DataMember(Name="windRimOnly")]
         BoundingBox WindRimOnly { get; set; }
 
-        [JsonProperty("windSharpEmbouchure")]
+        [DataMember(Name="windSharpEmbouchure")]
         BoundingBox WindSharpEmbouchure { get; set; }
 
-        [JsonProperty("windStrongAirPressure")]
+        [DataMember(Name="windStrongAirPressure")]
         BoundingBox WindStrongAirPressure { get; set; }
 
-        [JsonProperty("windThreeQuartersClosedHole")]
+        [DataMember(Name="windThreeQuartersClosedHole")]
         BoundingBox WindThreeQuartersClosedHole { get; set; }
 
-        [JsonProperty("windTightEmbouchure")]
+        [DataMember(Name="windTightEmbouchure")]
         BoundingBox WindTightEmbouchure { get; set; }
 
-        [JsonProperty("windTrillKey")]
+        [DataMember(Name="windTrillKey")]
         BoundingBox WindTrillKey { get; set; }
 
-        [JsonProperty("windVeryTightEmbouchure")]
+        [DataMember(Name="windVeryTightEmbouchure")]
         BoundingBox WindVeryTightEmbouchure { get; set; }
 
-        [JsonProperty("windWeakAirPressure")]
+        [DataMember(Name="windWeakAirPressure")]
         BoundingBox WindWeakAirPressure { get; set; }
     }
 }

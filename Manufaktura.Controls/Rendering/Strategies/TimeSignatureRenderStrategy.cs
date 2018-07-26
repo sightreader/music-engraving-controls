@@ -57,9 +57,9 @@ namespace Manufaktura.Controls.Rendering
             {
                 if (renderer.IsSMuFLFont)
                 {
-                    renderer.DrawString(SMuFLGlyphs.Instance.BuildTimeSignatureNumberFromGlyphs(element.NumberOfBeats),
+                    renderer.DrawString(renderer.Settings.CurrentFont.BuildTimeSignature(element.NumberOfBeats),
                         MusicFontStyles.MusicFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(1), element);
-                    renderer.DrawString(SMuFLGlyphs.Instance.BuildTimeSignatureNumberFromGlyphs(element.TypeOfBeats),
+                    renderer.DrawString(renderer.Settings.CurrentFont.BuildTimeSignature(element.TypeOfBeats),
                         MusicFontStyles.MusicFont, scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(3), element);
 
                     element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, topLinePosition + renderer.LinespacesToPixels(3));

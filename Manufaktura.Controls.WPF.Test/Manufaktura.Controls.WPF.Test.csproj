@@ -54,6 +54,10 @@
     <Reference Include="System.Reflection.DispatchProxy, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reflection.DispatchProxy.4.5.1\lib\net461\System.Reflection.DispatchProxy.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.1.1\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -143,6 +147,10 @@
     <ProjectReference Include="..\Manufaktura.Controls.Desktop\Manufaktura.Controls.Desktop.csproj">
       <Project>{ddb37937-0275-4733-a1f3-50f442d4bc0f}</Project>
       <Name>Manufaktura.Controls.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Controls.SMuFL\Manufaktura.Controls.SMuFL.csproj">
+      <Project>{e2735603-0c7f-45d4-bbcc-bfabb992e26e}</Project>
+      <Name>Manufaktura.Controls.SMuFL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls.WPF\Manufaktura.Controls.WPF.csproj">
       <Project>{878452F2-698F-48F8-8AC1-BEBFE55CFAF3}</Project>

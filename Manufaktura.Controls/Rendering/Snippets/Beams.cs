@@ -116,7 +116,7 @@ namespace Manufaktura.Controls.Rendering.Snippets
 
             var tupletNumber = CalculateTupletNumber(elementsUnderTuplet.OfType<NoteOrRest>());
 
-            var textToWrite = renderer.IsSMuFLFont ? SMuFLGlyphs.Instance.BuildTupletNumberFromGlyphs(tupletNumber) : Convert.ToString(tupletNumber);
+            var textToWrite = renderer.Settings.CurrentFont.BuildTupletNumber(tupletNumber);
             var fontStyle = renderer.IsSMuFLFont ? MusicFontStyles.MusicFont : MusicFontStyles.LyricsFont;
             var textSize = renderer.CanMeasureString ? renderer.MeasureString(fontStyle, textToWrite) : new Size();
             var textPosition = renderer.CanMeasureString ?

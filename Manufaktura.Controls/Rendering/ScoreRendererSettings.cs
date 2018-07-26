@@ -1,21 +1,22 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
-using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -46,7 +47,7 @@ namespace Manufaktura.Controls.Rendering
         /// <summary>
         /// Key mapping for current font
         /// </summary>
-        public IMusicFont CurrentFont { get => currentFont; set { currentFont = value; IsSMuFLFont = value is SMuFLMusicFont; } }
+        public IMusicFont CurrentFont { get => currentFont; set { currentFont = value; IsSMuFLFont = value.IsSMuFLFont; } }
 
         /// <summary>
         /// Page to display if renderer is in SinglePage mode.
@@ -57,6 +58,7 @@ namespace Manufaktura.Controls.Rendering
         public double CustomElementPositionRatio { get; set; }
         public double DefaultBarlineThickness { get; set; } = 0.7;
         public double DefaultBeamThickness { get; set; } = 2.6;
+
         /// <summary>
         /// Default color
         /// </summary>
@@ -77,6 +79,7 @@ namespace Manufaktura.Controls.Rendering
         /// If true, all staves will have equal width (like in blank music paper)
         /// </summary>
         public bool IsMusicPaperMode { get; set; }
+
         public bool IsSMuFLFont { get; private set; }
 
         /// <summary>
@@ -99,40 +102,39 @@ namespace Manufaktura.Controls.Rendering
         /// </summary>
         public ScoreRenderingModes RenderingMode { get; set; }
 
+        [Obsolete]
         public void LoadSMuFLMetadata(string metadataJson)
         {
-            CurrentSMuFLMetadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(metadataJson);
-            CurrentFont = new SMuFLMusicFont();
+            ThrowObsoleteException();
         }
 
-        public void LoadSMuFLMetadata(ISMuFLFontMetadata metadata)
+        private void ThrowObsoleteException()
+        {
+            throw new Exception($"This method is deprecated. You can deserialize JSON manually or reference Manufaktura.Controls.SMuFL and Manufaktura.Core.Serialization to use our lazy loading proxy.");
+        }
+
+        public void LoadSMuFLMetadata(ISMuFLFontMetadata metadata, IMusicFont musicFont)
         {
             CurrentSMuFLMetadata = metadata;
-            CurrentFont = new SMuFLMusicFont();
+            CurrentFont = musicFont;
         }
 
+        [Obsolete]
         public void LoadSMuFLMetadata(Stream stream)
         {
-            using (var reader = new StreamReader(stream))
-            {
-                var text = reader.ReadToEnd();
-                LoadSMuFLMetadata(text);
-            }
+            ThrowObsoleteException();
         }
 
+        [Obsolete]
         public async Task LoadSMuFLMetadataAsync(string metadataJson)
         {
-            CurrentSMuFLMetadata = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<SMuFLFontMetadata>(metadataJson));
-            CurrentFont = new SMuFLMusicFont();
+            ThrowObsoleteException();
         }
 
+        [Obsolete]
         public async Task LoadSMuFLMetadataAsync(Stream stream)
         {
-            using (var reader = new StreamReader(stream))
-            {
-                var text = await reader.ReadToEndAsync();
-                await LoadSMuFLMetadataAsync(text);
-            }
+            ThrowObsoleteException();
         }
 
         public virtual void SetPolihymniaFont()

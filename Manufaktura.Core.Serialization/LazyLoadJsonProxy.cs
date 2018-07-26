@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace Manufaktura.Core.Serialization
 {
@@ -86,19 +87,20 @@ namespace Manufaktura.Core.Serialization
             sw.Start();
             try
             {
-                var jsonPropertyAttribute = targetMethod.DeclaringType
+                var propertyOfThisGetter = targetMethod.DeclaringType
                     .GetTypeInfo()
-                    .GetDeclaredProperty(targetMethod.Name.Replace("get_", ""))?
-                    .GetCustomAttribute<JsonPropertyAttribute>();
+                    .GetDeclaredProperty(targetMethod.Name.Replace("get_", ""));
+                var jsonPropertyName = propertyOfThisGetter?.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ??
+                    propertyOfThisGetter?.GetCustomAttribute<DataMemberAttribute>()?.Name;
 
-                if (jsonPropertyAttribute == null) return TryAddDefaultValue(targetMethod.Name, targetMethod.ReturnType);
+                if (string.IsNullOrWhiteSpace(jsonPropertyName)) return TryAddDefaultValue(targetMethod.Name, targetMethod.ReturnType);
 
                 using (var textReader = new StringReader(jsonString))
                 using (var reader = new JsonTextReader(textReader))
                 {
                     while (reader.Read())
                     {
-                        if (reader.Path != jsonPropertyAttribute.PropertyName) continue;
+                        if (reader.Path != jsonPropertyName) continue;
 
                         var token = JToken.Load(reader);
                         if (targetMethod.ReturnType.GetTypeInfo().IsInterface)

@@ -12,37 +12,39 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-using Newtonsoft.Json;
+
+
+using System.Runtime.Serialization;
 
 namespace Manufaktura.Controls.Model.SMuFL
 {
     public class StemBoundaries
     {
-        [JsonProperty("stemDownSW")]
+        [DataMember(Name="stemDownSW")]
         public double[] StemDownSw { get; set; }
 
-        [JsonProperty("stemUpNW")]
+        [DataMember(Name="stemUpNW")]
         public double[] StemUpNw { get; set; }
 
-        [JsonProperty("stemDownNW")]
+        [DataMember(Name="stemDownNW")]
         public double[] StemDownNw { get; set; }
 
-        [JsonProperty("stemUpSE")]
+        [DataMember(Name="stemUpSE")]
         public double[] StemUpSe { get; set; }
     }
 
     public class GraceNoteStemBoundaries : StemBoundaries
     {
-        [JsonProperty("graceNoteSlashNW")]
+        [DataMember(Name="graceNoteSlashNW")]
         public double[] GraceNoteSlashNw { get; set; }
 
-        [JsonProperty("graceNoteSlashSE")]
+        [DataMember(Name="graceNoteSlashSE")]
         public double[] GraceNoteSlashSe { get; set; }
 
-        [JsonProperty("graceNoteSlashNE")]
+        [DataMember(Name="graceNoteSlashNE")]
         public double[] GraceNoteSlashNe { get; set; }
 
-        [JsonProperty("graceNoteSlashSW")]
+        [DataMember(Name="graceNoteSlashSW")]
         public double[] GraceNoteSlashSw { get; set; }
     }
 }

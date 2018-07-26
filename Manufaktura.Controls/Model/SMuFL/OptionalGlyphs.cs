@@ -12,1225 +12,1226 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-using Newtonsoft.Json;
+
+using System.Runtime.Serialization;
 
 namespace Manufaktura.Controls.Model.SMuFL
 {
     public partial class OptionalGlyphs
     {
-        [JsonProperty("4stringTabClefSerif")]
+        [DataMember(Name="4stringTabClefSerif")]
         public The4StringTabClefSerif The4StringTabClefSerif { get; set; }
 
-        [JsonProperty("4stringTabClefTall")]
+        [DataMember(Name="4stringTabClefTall")]
         public The4StringTabClefSerif The4StringTabClefTall { get; set; }
 
-        [JsonProperty("6stringTabClefSerif")]
+        [DataMember(Name="6stringTabClefSerif")]
         public The4StringTabClefSerif The6StringTabClefSerif { get; set; }
 
-        [JsonProperty("6stringTabClefTall")]
+        [DataMember(Name="6stringTabClefTall")]
         public The4StringTabClefSerif The6StringTabClefTall { get; set; }
 
-        [JsonProperty("accdnPushAlt")]
+        [DataMember(Name="accdnPushAlt")]
         public The4StringTabClefSerif AccdnPushAlt { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatJoinedStems")]
+        [DataMember(Name="accidentalDoubleFlatJoinedStems")]
         public The4StringTabClefSerif AccidentalDoubleFlatJoinedStems { get; set; }
 
-        [JsonProperty("accidentalDoubleFlatParens")]
+        [DataMember(Name="accidentalDoubleFlatParens")]
         public AccidentalDoubleFlatParens AccidentalDoubleFlatParens { get; set; }
 
-        [JsonProperty("accidentalDoubleSharpParens")]
+        [DataMember(Name="accidentalDoubleSharpParens")]
         public AccidentalDoubleFlatParens AccidentalDoubleSharpParens { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonDown")]
+        [DataMember(Name="accidentalFlatJohnstonDown")]
         public AccidentalDoubleFlatParens AccidentalFlatJohnstonDown { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonEl")]
+        [DataMember(Name="accidentalFlatJohnstonEl")]
         public AccidentalDoubleFlatParens AccidentalFlatJohnstonEl { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonElDown")]
+        [DataMember(Name="accidentalFlatJohnstonElDown")]
         public AccidentalDoubleFlatParens AccidentalFlatJohnstonElDown { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonUp")]
+        [DataMember(Name="accidentalFlatJohnstonUp")]
         public AccidentalDoubleFlatParens AccidentalFlatJohnstonUp { get; set; }
 
-        [JsonProperty("accidentalFlatJohnstonUpEl")]
+        [DataMember(Name="accidentalFlatJohnstonUpEl")]
         public AccidentalDoubleFlatParens AccidentalFlatJohnstonUpEl { get; set; }
 
-        [JsonProperty("accidentalFlatParens")]
+        [DataMember(Name="accidentalFlatParens")]
         public AccidentalDoubleFlatParens AccidentalFlatParens { get; set; }
 
-        [JsonProperty("accidentalFlatSmall")]
+        [DataMember(Name="accidentalFlatSmall")]
         public The4StringTabClefSerif AccidentalFlatSmall { get; set; }
 
-        [JsonProperty("accidentalJohnstonDownEl")]
+        [DataMember(Name="accidentalJohnstonDownEl")]
         public AccidentalDoubleFlatParens AccidentalJohnstonDownEl { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenDown")]
+        [DataMember(Name="accidentalJohnstonSevenDown")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenFlat")]
+        [DataMember(Name="accidentalJohnstonSevenFlat")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenFlat { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenFlatDown")]
+        [DataMember(Name="accidentalJohnstonSevenFlatDown")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenFlatDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenFlatUp")]
+        [DataMember(Name="accidentalJohnstonSevenFlatUp")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenFlatUp { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenSharp")]
+        [DataMember(Name="accidentalJohnstonSevenSharp")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenSharp { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenSharpDown")]
+        [DataMember(Name="accidentalJohnstonSevenSharpDown")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenSharpDown { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenSharpUp")]
+        [DataMember(Name="accidentalJohnstonSevenSharpUp")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenSharpUp { get; set; }
 
-        [JsonProperty("accidentalJohnstonSevenUp")]
+        [DataMember(Name="accidentalJohnstonSevenUp")]
         public AccidentalDoubleFlatParens AccidentalJohnstonSevenUp { get; set; }
 
-        [JsonProperty("accidentalJohnstonUpEl")]
+        [DataMember(Name="accidentalJohnstonUpEl")]
         public AccidentalDoubleFlatParens AccidentalJohnstonUpEl { get; set; }
 
-        [JsonProperty("accidentalNaturalParens")]
+        [DataMember(Name="accidentalNaturalParens")]
         public AccidentalDoubleFlatParens AccidentalNaturalParens { get; set; }
 
-        [JsonProperty("accidentalNaturalSmall")]
+        [DataMember(Name="accidentalNaturalSmall")]
         public The4StringTabClefSerif AccidentalNaturalSmall { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonDown")]
+        [DataMember(Name="accidentalSharpJohnstonDown")]
         public AccidentalDoubleFlatParens AccidentalSharpJohnstonDown { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonDownEl")]
+        [DataMember(Name="accidentalSharpJohnstonDownEl")]
         public AccidentalDoubleFlatParens AccidentalSharpJohnstonDownEl { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonEl")]
+        [DataMember(Name="accidentalSharpJohnstonEl")]
         public AccidentalDoubleFlatParens AccidentalSharpJohnstonEl { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonUp")]
+        [DataMember(Name="accidentalSharpJohnstonUp")]
         public AccidentalDoubleFlatParens AccidentalSharpJohnstonUp { get; set; }
 
-        [JsonProperty("accidentalSharpJohnstonUpEl")]
+        [DataMember(Name="accidentalSharpJohnstonUpEl")]
         public AccidentalDoubleFlatParens AccidentalSharpJohnstonUpEl { get; set; }
 
-        [JsonProperty("accidentalSharpParens")]
+        [DataMember(Name="accidentalSharpParens")]
         public AccidentalDoubleFlatParens AccidentalSharpParens { get; set; }
 
-        [JsonProperty("accidentalSharpSmall")]
+        [DataMember(Name="accidentalSharpSmall")]
         public The4StringTabClefSerif AccidentalSharpSmall { get; set; }
 
-        [JsonProperty("accidentalTripleFlatJoinedStems")]
+        [DataMember(Name="accidentalTripleFlatJoinedStems")]
         public The4StringTabClefSerif AccidentalTripleFlatJoinedStems { get; set; }
 
-        [JsonProperty("analyticsHauptrhythmusR")]
+        [DataMember(Name="analyticsHauptrhythmusR")]
         public The4StringTabClefSerif AnalyticsHauptrhythmusR { get; set; }
 
-        [JsonProperty("articAccentAboveLarge")]
+        [DataMember(Name="articAccentAboveLarge")]
         public The4StringTabClefSerif ArticAccentAboveLarge { get; set; }
 
-        [JsonProperty("articAccentAboveSmall")]
+        [DataMember(Name="articAccentAboveSmall")]
         public The4StringTabClefSerif ArticAccentAboveSmall { get; set; }
 
-        [JsonProperty("articAccentBelowLarge")]
+        [DataMember(Name="articAccentBelowLarge")]
         public The4StringTabClefSerif ArticAccentBelowLarge { get; set; }
 
-        [JsonProperty("articAccentBelowSmall")]
+        [DataMember(Name="articAccentBelowSmall")]
         public The4StringTabClefSerif ArticAccentBelowSmall { get; set; }
 
-        [JsonProperty("articAccentStaccatoAboveSmall")]
+        [DataMember(Name="articAccentStaccatoAboveSmall")]
         public The4StringTabClefSerif ArticAccentStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articAccentStaccatoBelowSmall")]
+        [DataMember(Name="articAccentStaccatoBelowSmall")]
         public The4StringTabClefSerif ArticAccentStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("articMarcatoAboveSmall")]
+        [DataMember(Name="articMarcatoAboveSmall")]
         public The4StringTabClefSerif ArticMarcatoAboveSmall { get; set; }
 
-        [JsonProperty("articMarcatoBelowSmall")]
+        [DataMember(Name="articMarcatoBelowSmall")]
         public The4StringTabClefSerif ArticMarcatoBelowSmall { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoAboveSmall")]
+        [DataMember(Name="articMarcatoStaccatoAboveSmall")]
         public The4StringTabClefSerif ArticMarcatoStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articMarcatoStaccatoBelowSmall")]
+        [DataMember(Name="articMarcatoStaccatoBelowSmall")]
         public The4StringTabClefSerif ArticMarcatoStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoAboveSmall")]
+        [DataMember(Name="articStaccatissimoAboveSmall")]
         public The4StringTabClefSerif ArticStaccatissimoAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoBelowSmall")]
+        [DataMember(Name="articStaccatissimoBelowSmall")]
         public The4StringTabClefSerif ArticStaccatissimoBelowSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeAboveSmall")]
+        [DataMember(Name="articStaccatissimoStrokeAboveSmall")]
         public The4StringTabClefSerif ArticStaccatissimoStrokeAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoStrokeBelowSmall")]
+        [DataMember(Name="articStaccatissimoStrokeBelowSmall")]
         public The4StringTabClefSerif ArticStaccatissimoStrokeBelowSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeAboveSmall")]
+        [DataMember(Name="articStaccatissimoWedgeAboveSmall")]
         public The4StringTabClefSerif ArticStaccatissimoWedgeAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatissimoWedgeBelowSmall")]
+        [DataMember(Name="articStaccatissimoWedgeBelowSmall")]
         public The4StringTabClefSerif ArticStaccatissimoWedgeBelowSmall { get; set; }
 
-        [JsonProperty("articStaccatoAboveSmall")]
+        [DataMember(Name="articStaccatoAboveSmall")]
         public The4StringTabClefSerif ArticStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articStaccatoBelowSmall")]
+        [DataMember(Name="articStaccatoBelowSmall")]
         public The4StringTabClefSerif ArticStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("articTenutoAboveSmall")]
+        [DataMember(Name="articTenutoAboveSmall")]
         public The4StringTabClefSerif ArticTenutoAboveSmall { get; set; }
 
-        [JsonProperty("articTenutoAccentAboveSmall")]
+        [DataMember(Name="articTenutoAccentAboveSmall")]
         public The4StringTabClefSerif ArticTenutoAccentAboveSmall { get; set; }
 
-        [JsonProperty("articTenutoAccentBelowSmall")]
+        [DataMember(Name="articTenutoAccentBelowSmall")]
         public The4StringTabClefSerif ArticTenutoAccentBelowSmall { get; set; }
 
-        [JsonProperty("articTenutoBelowSmall")]
+        [DataMember(Name="articTenutoBelowSmall")]
         public The4StringTabClefSerif ArticTenutoBelowSmall { get; set; }
 
-        [JsonProperty("articTenutoStaccatoAboveSmall")]
+        [DataMember(Name="articTenutoStaccatoAboveSmall")]
         public The4StringTabClefSerif ArticTenutoStaccatoAboveSmall { get; set; }
 
-        [JsonProperty("articTenutoStaccatoBelowSmall")]
+        [DataMember(Name="articTenutoStaccatoBelowSmall")]
         public The4StringTabClefSerif ArticTenutoStaccatoBelowSmall { get; set; }
 
-        [JsonProperty("braceFlat")]
+        [DataMember(Name="braceFlat")]
         public The4StringTabClefSerif BraceFlat { get; set; }
 
-        [JsonProperty("braceLarge")]
+        [DataMember(Name="braceLarge")]
         public The4StringTabClefSerif BraceLarge { get; set; }
 
-        [JsonProperty("braceLarger")]
+        [DataMember(Name="braceLarger")]
         public The4StringTabClefSerif BraceLarger { get; set; }
 
-        [JsonProperty("braceSmall")]
+        [DataMember(Name="braceSmall")]
         public The4StringTabClefSerif BraceSmall { get; set; }
 
-        [JsonProperty("cClefFrench")]
+        [DataMember(Name="cClefFrench")]
         public The4StringTabClefSerif CClefFrench { get; set; }
 
-        [JsonProperty("cClefFrench20C")]
+        [DataMember(Name="cClefFrench20C")]
         public The4StringTabClefSerif CClefFrench20C { get; set; }
 
-        [JsonProperty("cClefFrench20CChange")]
+        [DataMember(Name="cClefFrench20CChange")]
         public The4StringTabClefSerif CClefFrench20CChange { get; set; }
 
-        [JsonProperty("cClefSmall")]
+        [DataMember(Name="cClefSmall")]
         public The4StringTabClefSerif CClefSmall { get; set; }
 
-        [JsonProperty("caesuraSingleStroke")]
+        [DataMember(Name="caesuraSingleStroke")]
         public The4StringTabClefSerif CaesuraSingleStroke { get; set; }
 
-        [JsonProperty("chantCclefHufnagel")]
+        [DataMember(Name="chantCclefHufnagel")]
         public The4StringTabClefSerif ChantCclefHufnagel { get; set; }
 
-        [JsonProperty("chantFclefHufnagel")]
+        [DataMember(Name="chantFclefHufnagel")]
         public The4StringTabClefSerif ChantFclefHufnagel { get; set; }
 
-        [JsonProperty("codaJapanese")]
+        [DataMember(Name="codaJapanese")]
         public The4StringTabClefSerif CodaJapanese { get; set; }
 
-        [JsonProperty("doubleTongueAboveNoSlur")]
+        [DataMember(Name="doubleTongueAboveNoSlur")]
         public The4StringTabClefSerif DoubleTongueAboveNoSlur { get; set; }
 
-        [JsonProperty("doubleTongueBelowNoSlur")]
+        [DataMember(Name="doubleTongueBelowNoSlur")]
         public The4StringTabClefSerif DoubleTongueBelowNoSlur { get; set; }
 
-        [JsonProperty("dynamicForteSmall")]
+        [DataMember(Name="dynamicForteSmall")]
         public The4StringTabClefSerif DynamicForteSmall { get; set; }
 
-        [JsonProperty("dynamicMezzoSmall")]
+        [DataMember(Name="dynamicMezzoSmall")]
         public The4StringTabClefSerif DynamicMezzoSmall { get; set; }
 
-        [JsonProperty("dynamicNienteSmall")]
+        [DataMember(Name="dynamicNienteSmall")]
         public The4StringTabClefSerif DynamicNienteSmall { get; set; }
 
-        [JsonProperty("dynamicPianoSmall")]
+        [DataMember(Name="dynamicPianoSmall")]
         public The4StringTabClefSerif DynamicPianoSmall { get; set; }
 
-        [JsonProperty("dynamicRinforzandoSmall")]
+        [DataMember(Name="dynamicRinforzandoSmall")]
         public The4StringTabClefSerif DynamicRinforzandoSmall { get; set; }
 
-        [JsonProperty("dynamicSforzandoSmall")]
+        [DataMember(Name="dynamicSforzandoSmall")]
         public The4StringTabClefSerif DynamicSforzandoSmall { get; set; }
 
-        [JsonProperty("dynamicZSmall")]
+        [DataMember(Name="dynamicZSmall")]
         public The4StringTabClefSerif DynamicZSmall { get; set; }
 
-        [JsonProperty("fClef19thCentury")]
+        [DataMember(Name="fClef19thCentury")]
         public The4StringTabClefSerif FClef19ThCentury { get; set; }
 
-        [JsonProperty("fClef5Below")]
+        [DataMember(Name="fClef5Below")]
         public AccidentalDoubleFlatParens FClef5Below { get; set; }
 
-        [JsonProperty("fClefFrench")]
+        [DataMember(Name="fClefFrench")]
         public The4StringTabClefSerif FClefFrench { get; set; }
 
-        [JsonProperty("fClefSmall")]
+        [DataMember(Name="fClefSmall")]
         public The4StringTabClefSerif FClefSmall { get; set; }
 
-        [JsonProperty("flag1024thDownSmall")]
+        [DataMember(Name="flag1024thDownSmall")]
         public The4StringTabClefSerif Flag1024ThDownSmall { get; set; }
 
-        [JsonProperty("flag1024thDownStraight")]
+        [DataMember(Name="flag1024thDownStraight")]
         public The4StringTabClefSerif Flag1024ThDownStraight { get; set; }
 
-        [JsonProperty("flag1024thUpShort")]
+        [DataMember(Name="flag1024thUpShort")]
         public The4StringTabClefSerif Flag1024ThUpShort { get; set; }
 
-        [JsonProperty("flag1024thUpSmall")]
+        [DataMember(Name="flag1024thUpSmall")]
         public The4StringTabClefSerif Flag1024ThUpSmall { get; set; }
 
-        [JsonProperty("flag1024thUpStraight")]
+        [DataMember(Name="flag1024thUpStraight")]
         public The4StringTabClefSerif Flag1024ThUpStraight { get; set; }
 
-        [JsonProperty("flag128thDownSmall")]
+        [DataMember(Name="flag128thDownSmall")]
         public The4StringTabClefSerif Flag128ThDownSmall { get; set; }
 
-        [JsonProperty("flag128thDownStraight")]
+        [DataMember(Name="flag128thDownStraight")]
         public The4StringTabClefSerif Flag128ThDownStraight { get; set; }
 
-        [JsonProperty("flag128thUpShort")]
+        [DataMember(Name="flag128thUpShort")]
         public The4StringTabClefSerif Flag128ThUpShort { get; set; }
 
-        [JsonProperty("flag128thUpSmall")]
+        [DataMember(Name="flag128thUpSmall")]
         public The4StringTabClefSerif Flag128ThUpSmall { get; set; }
 
-        [JsonProperty("flag128thUpStraight")]
+        [DataMember(Name="flag128thUpStraight")]
         public The4StringTabClefSerif Flag128ThUpStraight { get; set; }
 
-        [JsonProperty("flag16thDownSmall")]
+        [DataMember(Name="flag16thDownSmall")]
         public The4StringTabClefSerif Flag16ThDownSmall { get; set; }
 
-        [JsonProperty("flag16thDownStraight")]
+        [DataMember(Name="flag16thDownStraight")]
         public The4StringTabClefSerif Flag16ThDownStraight { get; set; }
 
-        [JsonProperty("flag16thUpShort")]
+        [DataMember(Name="flag16thUpShort")]
         public The4StringTabClefSerif Flag16ThUpShort { get; set; }
 
-        [JsonProperty("flag16thUpSmall")]
+        [DataMember(Name="flag16thUpSmall")]
         public The4StringTabClefSerif Flag16ThUpSmall { get; set; }
 
-        [JsonProperty("flag16thUpStraight")]
+        [DataMember(Name="flag16thUpStraight")]
         public The4StringTabClefSerif Flag16ThUpStraight { get; set; }
 
-        [JsonProperty("flag256thDownSmall")]
+        [DataMember(Name="flag256thDownSmall")]
         public The4StringTabClefSerif Flag256ThDownSmall { get; set; }
 
-        [JsonProperty("flag256thDownStraight")]
+        [DataMember(Name="flag256thDownStraight")]
         public The4StringTabClefSerif Flag256ThDownStraight { get; set; }
 
-        [JsonProperty("flag256thUpShort")]
+        [DataMember(Name="flag256thUpShort")]
         public The4StringTabClefSerif Flag256ThUpShort { get; set; }
 
-        [JsonProperty("flag256thUpSmall")]
+        [DataMember(Name="flag256thUpSmall")]
         public The4StringTabClefSerif Flag256ThUpSmall { get; set; }
 
-        [JsonProperty("flag256thUpStraight")]
+        [DataMember(Name="flag256thUpStraight")]
         public The4StringTabClefSerif Flag256ThUpStraight { get; set; }
 
-        [JsonProperty("flag32ndDownSmall")]
+        [DataMember(Name="flag32ndDownSmall")]
         public The4StringTabClefSerif Flag32NdDownSmall { get; set; }
 
-        [JsonProperty("flag32ndDownStraight")]
+        [DataMember(Name="flag32ndDownStraight")]
         public The4StringTabClefSerif Flag32NdDownStraight { get; set; }
 
-        [JsonProperty("flag32ndUpShort")]
+        [DataMember(Name="flag32ndUpShort")]
         public The4StringTabClefSerif Flag32NdUpShort { get; set; }
 
-        [JsonProperty("flag32ndUpSmall")]
+        [DataMember(Name="flag32ndUpSmall")]
         public The4StringTabClefSerif Flag32NdUpSmall { get; set; }
 
-        [JsonProperty("flag32ndUpStraight")]
+        [DataMember(Name="flag32ndUpStraight")]
         public The4StringTabClefSerif Flag32NdUpStraight { get; set; }
 
-        [JsonProperty("flag512thDownSmall")]
+        [DataMember(Name="flag512thDownSmall")]
         public The4StringTabClefSerif Flag512ThDownSmall { get; set; }
 
-        [JsonProperty("flag512thDownStraight")]
+        [DataMember(Name="flag512thDownStraight")]
         public The4StringTabClefSerif Flag512ThDownStraight { get; set; }
 
-        [JsonProperty("flag512thUpShort")]
+        [DataMember(Name="flag512thUpShort")]
         public The4StringTabClefSerif Flag512ThUpShort { get; set; }
 
-        [JsonProperty("flag512thUpSmall")]
+        [DataMember(Name="flag512thUpSmall")]
         public The4StringTabClefSerif Flag512ThUpSmall { get; set; }
 
-        [JsonProperty("flag512thUpStraight")]
+        [DataMember(Name="flag512thUpStraight")]
         public The4StringTabClefSerif Flag512ThUpStraight { get; set; }
 
-        [JsonProperty("flag64thDownSmall")]
+        [DataMember(Name="flag64thDownSmall")]
         public The4StringTabClefSerif Flag64ThDownSmall { get; set; }
 
-        [JsonProperty("flag64thDownStraight")]
+        [DataMember(Name="flag64thDownStraight")]
         public The4StringTabClefSerif Flag64ThDownStraight { get; set; }
 
-        [JsonProperty("flag64thUpShort")]
+        [DataMember(Name="flag64thUpShort")]
         public The4StringTabClefSerif Flag64ThUpShort { get; set; }
 
-        [JsonProperty("flag64thUpSmall")]
+        [DataMember(Name="flag64thUpSmall")]
         public The4StringTabClefSerif Flag64ThUpSmall { get; set; }
 
-        [JsonProperty("flag64thUpStraight")]
+        [DataMember(Name="flag64thUpStraight")]
         public The4StringTabClefSerif Flag64ThUpStraight { get; set; }
 
-        [JsonProperty("flag8thDownSmall")]
+        [DataMember(Name="flag8thDownSmall")]
         public The4StringTabClefSerif Flag8ThDownSmall { get; set; }
 
-        [JsonProperty("flag8thDownStraight")]
+        [DataMember(Name="flag8thDownStraight")]
         public The4StringTabClefSerif Flag8ThDownStraight { get; set; }
 
-        [JsonProperty("flag8thUpShort")]
+        [DataMember(Name="flag8thUpShort")]
         public The4StringTabClefSerif Flag8ThUpShort { get; set; }
 
-        [JsonProperty("flag8thUpSmall")]
+        [DataMember(Name="flag8thUpSmall")]
         public The4StringTabClefSerif Flag8ThUpSmall { get; set; }
 
-        [JsonProperty("flag8thUpStraight")]
+        [DataMember(Name="flag8thUpStraight")]
         public The4StringTabClefSerif Flag8ThUpStraight { get; set; }
 
-        [JsonProperty("gClef0Below")]
+        [DataMember(Name="gClef0Below")]
         public AccidentalDoubleFlatParens GClef0Below { get; set; }
 
-        [JsonProperty("gClef10Below")]
+        [DataMember(Name="gClef10Below")]
         public AccidentalDoubleFlatParens GClef10Below { get; set; }
 
-        [JsonProperty("gClef11Below")]
+        [DataMember(Name="gClef11Below")]
         public AccidentalDoubleFlatParens GClef11Below { get; set; }
 
-        [JsonProperty("gClef12Below")]
+        [DataMember(Name="gClef12Below")]
         public AccidentalDoubleFlatParens GClef12Below { get; set; }
 
-        [JsonProperty("gClef13Below")]
+        [DataMember(Name="gClef13Below")]
         public AccidentalDoubleFlatParens GClef13Below { get; set; }
 
-        [JsonProperty("gClef14Below")]
+        [DataMember(Name="gClef14Below")]
         public AccidentalDoubleFlatParens GClef14Below { get; set; }
 
-        [JsonProperty("gClef15Below")]
+        [DataMember(Name="gClef15Below")]
         public AccidentalDoubleFlatParens GClef15Below { get; set; }
 
-        [JsonProperty("gClef16Below")]
+        [DataMember(Name="gClef16Below")]
         public AccidentalDoubleFlatParens GClef16Below { get; set; }
 
-        [JsonProperty("gClef17Below")]
+        [DataMember(Name="gClef17Below")]
         public AccidentalDoubleFlatParens GClef17Below { get; set; }
 
-        [JsonProperty("gClef2Above")]
+        [DataMember(Name="gClef2Above")]
         public AccidentalDoubleFlatParens GClef2Above { get; set; }
 
-        [JsonProperty("gClef2Below")]
+        [DataMember(Name="gClef2Below")]
         public AccidentalDoubleFlatParens GClef2Below { get; set; }
 
-        [JsonProperty("gClef3Above")]
+        [DataMember(Name="gClef3Above")]
         public AccidentalDoubleFlatParens GClef3Above { get; set; }
 
-        [JsonProperty("gClef3Below")]
+        [DataMember(Name="gClef3Below")]
         public AccidentalDoubleFlatParens GClef3Below { get; set; }
 
-        [JsonProperty("gClef4Above")]
+        [DataMember(Name="gClef4Above")]
         public AccidentalDoubleFlatParens GClef4Above { get; set; }
 
-        [JsonProperty("gClef4Below")]
+        [DataMember(Name="gClef4Below")]
         public AccidentalDoubleFlatParens GClef4Below { get; set; }
 
-        [JsonProperty("gClef5Above")]
+        [DataMember(Name="gClef5Above")]
         public AccidentalDoubleFlatParens GClef5Above { get; set; }
 
-        [JsonProperty("gClef5Below")]
+        [DataMember(Name="gClef5Below")]
         public AccidentalDoubleFlatParens GClef5Below { get; set; }
 
-        [JsonProperty("gClef6Above")]
+        [DataMember(Name="gClef6Above")]
         public AccidentalDoubleFlatParens GClef6Above { get; set; }
 
-        [JsonProperty("gClef6Below")]
+        [DataMember(Name="gClef6Below")]
         public AccidentalDoubleFlatParens GClef6Below { get; set; }
 
-        [JsonProperty("gClef7Above")]
+        [DataMember(Name="gClef7Above")]
         public AccidentalDoubleFlatParens GClef7Above { get; set; }
 
-        [JsonProperty("gClef7Below")]
+        [DataMember(Name="gClef7Below")]
         public AccidentalDoubleFlatParens GClef7Below { get; set; }
 
-        [JsonProperty("gClef8Above")]
+        [DataMember(Name="gClef8Above")]
         public AccidentalDoubleFlatParens GClef8Above { get; set; }
 
-        [JsonProperty("gClef8Below")]
+        [DataMember(Name="gClef8Below")]
         public AccidentalDoubleFlatParens GClef8Below { get; set; }
 
-        [JsonProperty("gClef9Above")]
+        [DataMember(Name="gClef9Above")]
         public AccidentalDoubleFlatParens GClef9Above { get; set; }
 
-        [JsonProperty("gClef9Below")]
+        [DataMember(Name="gClef9Below")]
         public AccidentalDoubleFlatParens GClef9Below { get; set; }
 
-        [JsonProperty("gClefFlat10Below")]
+        [DataMember(Name="gClefFlat10Below")]
         public AccidentalDoubleFlatParens GClefFlat10Below { get; set; }
 
-        [JsonProperty("gClefFlat11Below")]
+        [DataMember(Name="gClefFlat11Below")]
         public AccidentalDoubleFlatParens GClefFlat11Below { get; set; }
 
-        [JsonProperty("gClefFlat13Below")]
+        [DataMember(Name="gClefFlat13Below")]
         public AccidentalDoubleFlatParens GClefFlat13Below { get; set; }
 
-        [JsonProperty("gClefFlat14Below")]
+        [DataMember(Name="gClefFlat14Below")]
         public AccidentalDoubleFlatParens GClefFlat14Below { get; set; }
 
-        [JsonProperty("gClefFlat15Below")]
+        [DataMember(Name="gClefFlat15Below")]
         public AccidentalDoubleFlatParens GClefFlat15Below { get; set; }
 
-        [JsonProperty("gClefFlat16Below")]
+        [DataMember(Name="gClefFlat16Below")]
         public AccidentalDoubleFlatParens GClefFlat16Below { get; set; }
 
-        [JsonProperty("gClefFlat1Below")]
+        [DataMember(Name="gClefFlat1Below")]
         public AccidentalDoubleFlatParens GClefFlat1Below { get; set; }
 
-        [JsonProperty("gClefFlat2Above")]
+        [DataMember(Name="gClefFlat2Above")]
         public AccidentalDoubleFlatParens GClefFlat2Above { get; set; }
 
-        [JsonProperty("gClefFlat2Below")]
+        [DataMember(Name="gClefFlat2Below")]
         public AccidentalDoubleFlatParens GClefFlat2Below { get; set; }
 
-        [JsonProperty("gClefFlat3Above")]
+        [DataMember(Name="gClefFlat3Above")]
         public AccidentalDoubleFlatParens GClefFlat3Above { get; set; }
 
-        [JsonProperty("gClefFlat3Below")]
+        [DataMember(Name="gClefFlat3Below")]
         public AccidentalDoubleFlatParens GClefFlat3Below { get; set; }
 
-        [JsonProperty("gClefFlat4Below")]
+        [DataMember(Name="gClefFlat4Below")]
         public AccidentalDoubleFlatParens GClefFlat4Below { get; set; }
 
-        [JsonProperty("gClefFlat5Above")]
+        [DataMember(Name="gClefFlat5Above")]
         public AccidentalDoubleFlatParens GClefFlat5Above { get; set; }
 
-        [JsonProperty("gClefFlat6Above")]
+        [DataMember(Name="gClefFlat6Above")]
         public AccidentalDoubleFlatParens GClefFlat6Above { get; set; }
 
-        [JsonProperty("gClefFlat6Below")]
+        [DataMember(Name="gClefFlat6Below")]
         public AccidentalDoubleFlatParens GClefFlat6Below { get; set; }
 
-        [JsonProperty("gClefFlat7Above")]
+        [DataMember(Name="gClefFlat7Above")]
         public AccidentalDoubleFlatParens GClefFlat7Above { get; set; }
 
-        [JsonProperty("gClefFlat7Below")]
+        [DataMember(Name="gClefFlat7Below")]
         public AccidentalDoubleFlatParens GClefFlat7Below { get; set; }
 
-        [JsonProperty("gClefFlat8Above")]
+        [DataMember(Name="gClefFlat8Above")]
         public AccidentalDoubleFlatParens GClefFlat8Above { get; set; }
 
-        [JsonProperty("gClefFlat9Above")]
+        [DataMember(Name="gClefFlat9Above")]
         public AccidentalDoubleFlatParens GClefFlat9Above { get; set; }
 
-        [JsonProperty("gClefFlat9Below")]
+        [DataMember(Name="gClefFlat9Below")]
         public AccidentalDoubleFlatParens GClefFlat9Below { get; set; }
 
-        [JsonProperty("gClefNat2Below")]
+        [DataMember(Name="gClefNat2Below")]
         public AccidentalDoubleFlatParens GClefNat2Below { get; set; }
 
-        [JsonProperty("gClefNatural10Below")]
+        [DataMember(Name="gClefNatural10Below")]
         public AccidentalDoubleFlatParens GClefNatural10Below { get; set; }
 
-        [JsonProperty("gClefNatural13Below")]
+        [DataMember(Name="gClefNatural13Below")]
         public AccidentalDoubleFlatParens GClefNatural13Below { get; set; }
 
-        [JsonProperty("gClefNatural17Below")]
+        [DataMember(Name="gClefNatural17Below")]
         public AccidentalDoubleFlatParens GClefNatural17Below { get; set; }
 
-        [JsonProperty("gClefNatural2Above")]
+        [DataMember(Name="gClefNatural2Above")]
         public AccidentalDoubleFlatParens GClefNatural2Above { get; set; }
 
-        [JsonProperty("gClefNatural3Above")]
+        [DataMember(Name="gClefNatural3Above")]
         public AccidentalDoubleFlatParens GClefNatural3Above { get; set; }
 
-        [JsonProperty("gClefNatural3Below")]
+        [DataMember(Name="gClefNatural3Below")]
         public AccidentalDoubleFlatParens GClefNatural3Below { get; set; }
 
-        [JsonProperty("gClefNatural6Above")]
+        [DataMember(Name="gClefNatural6Above")]
         public AccidentalDoubleFlatParens GClefNatural6Above { get; set; }
 
-        [JsonProperty("gClefNatural6Below")]
+        [DataMember(Name="gClefNatural6Below")]
         public AccidentalDoubleFlatParens GClefNatural6Below { get; set; }
 
-        [JsonProperty("gClefNatural7Above")]
+        [DataMember(Name="gClefNatural7Above")]
         public AccidentalDoubleFlatParens GClefNatural7Above { get; set; }
 
-        [JsonProperty("gClefNatural9Above")]
+        [DataMember(Name="gClefNatural9Above")]
         public AccidentalDoubleFlatParens GClefNatural9Above { get; set; }
 
-        [JsonProperty("gClefNatural9Below")]
+        [DataMember(Name="gClefNatural9Below")]
         public AccidentalDoubleFlatParens GClefNatural9Below { get; set; }
 
-        [JsonProperty("gClefSharp12Below")]
+        [DataMember(Name="gClefSharp12Below")]
         public AccidentalDoubleFlatParens GClefSharp12Below { get; set; }
 
-        [JsonProperty("gClefSharp1Above")]
+        [DataMember(Name="gClefSharp1Above")]
         public AccidentalDoubleFlatParens GClefSharp1Above { get; set; }
 
-        [JsonProperty("gClefSharp4Above")]
+        [DataMember(Name="gClefSharp4Above")]
         public AccidentalDoubleFlatParens GClefSharp4Above { get; set; }
 
-        [JsonProperty("gClefSharp5Below")]
+        [DataMember(Name="gClefSharp5Below")]
         public AccidentalDoubleFlatParens GClefSharp5Below { get; set; }
 
-        [JsonProperty("gClefSmall")]
+        [DataMember(Name="gClefSmall")]
         public The4StringTabClefSerif GClefSmall { get; set; }
 
-        [JsonProperty("guitarBarreHalfHorizontalFractionSlash")]
+        [DataMember(Name="guitarBarreHalfHorizontalFractionSlash")]
         public The4StringTabClefSerif GuitarBarreHalfHorizontalFractionSlash { get; set; }
 
-        [JsonProperty("guitarGolpeFlamenco")]
+        [DataMember(Name="guitarGolpeFlamenco")]
         public The4StringTabClefSerif GuitarGolpeFlamenco { get; set; }
 
-        [JsonProperty("harpMetalRodAlt")]
+        [DataMember(Name="harpMetalRodAlt")]
         public The4StringTabClefSerif HarpMetalRodAlt { get; set; }
 
-        [JsonProperty("harpTuningKeyAlt")]
+        [DataMember(Name="harpTuningKeyAlt")]
         public The4StringTabClefSerif HarpTuningKeyAlt { get; set; }
 
-        [JsonProperty("keyboardPedalPedNoDot")]
+        [DataMember(Name="keyboardPedalPedNoDot")]
         public The4StringTabClefSerif KeyboardPedalPedNoDot { get; set; }
 
-        [JsonProperty("keyboardPedalSostNoDot")]
+        [DataMember(Name="keyboardPedalSostNoDot")]
         public The4StringTabClefSerif KeyboardPedalSostNoDot { get; set; }
 
-        [JsonProperty("luteFingeringRHThirdAlt")]
+        [DataMember(Name="luteFingeringRHThirdAlt")]
         public The4StringTabClefSerif LuteFingeringRhThirdAlt { get; set; }
 
-        [JsonProperty("luteFrench10thCourseRight")]
+        [DataMember(Name="luteFrench10thCourseRight")]
         public The4StringTabClefSerif LuteFrench10ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench10thCourseStrikethru")]
+        [DataMember(Name="luteFrench10thCourseStrikethru")]
         public The4StringTabClefSerif LuteFrench10ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench10thCourseUnderline")]
+        [DataMember(Name="luteFrench10thCourseUnderline")]
         public The4StringTabClefSerif LuteFrench10ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrench7thCourseRight")]
+        [DataMember(Name="luteFrench7thCourseRight")]
         public The4StringTabClefSerif LuteFrench7ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench7thCourseStrikethru")]
+        [DataMember(Name="luteFrench7thCourseStrikethru")]
         public The4StringTabClefSerif LuteFrench7ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench7thCourseUnderline")]
+        [DataMember(Name="luteFrench7thCourseUnderline")]
         public The4StringTabClefSerif LuteFrench7ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrench8thCourseRight")]
+        [DataMember(Name="luteFrench8thCourseRight")]
         public The4StringTabClefSerif LuteFrench8ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench8thCourseStrikethru")]
+        [DataMember(Name="luteFrench8thCourseStrikethru")]
         public The4StringTabClefSerif LuteFrench8ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench8thCourseUnderline")]
+        [DataMember(Name="luteFrench8thCourseUnderline")]
         public The4StringTabClefSerif LuteFrench8ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrench9thCourseRight")]
+        [DataMember(Name="luteFrench9thCourseRight")]
         public The4StringTabClefSerif LuteFrench9ThCourseRight { get; set; }
 
-        [JsonProperty("luteFrench9thCourseStrikethru")]
+        [DataMember(Name="luteFrench9thCourseStrikethru")]
         public The4StringTabClefSerif LuteFrench9ThCourseStrikethru { get; set; }
 
-        [JsonProperty("luteFrench9thCourseUnderline")]
+        [DataMember(Name="luteFrench9thCourseUnderline")]
         public The4StringTabClefSerif LuteFrench9ThCourseUnderline { get; set; }
 
-        [JsonProperty("luteFrenchFretCAlt")]
+        [DataMember(Name="luteFrenchFretCAlt")]
         public The4StringTabClefSerif LuteFrenchFretCAlt { get; set; }
 
-        [JsonProperty("medRenFlatSoftBHufnagel")]
+        [DataMember(Name="medRenFlatSoftBHufnagel")]
         public The4StringTabClefSerif MedRenFlatSoftBHufnagel { get; set; }
 
-        [JsonProperty("medRenFlatSoftBOld")]
+        [DataMember(Name="medRenFlatSoftBOld")]
         public The4StringTabClefSerif MedRenFlatSoftBOld { get; set; }
 
-        [JsonProperty("mensuralCclefBlack")]
+        [DataMember(Name="mensuralCclefBlack")]
         public The4StringTabClefSerif MensuralCclefBlack { get; set; }
 
-        [JsonProperty("mensuralCclefVoid")]
+        [DataMember(Name="mensuralCclefVoid")]
         public The4StringTabClefSerif MensuralCclefVoid { get; set; }
 
-        [JsonProperty("mensuralFusaBlackStemDown")]
+        [DataMember(Name="mensuralFusaBlackStemDown")]
         public AccidentalDoubleFlatParens MensuralFusaBlackStemDown { get; set; }
 
-        [JsonProperty("mensuralFusaBlackStemUp")]
+        [DataMember(Name="mensuralFusaBlackStemUp")]
         public AccidentalDoubleFlatParens MensuralFusaBlackStemUp { get; set; }
 
-        [JsonProperty("mensuralFusaBlackVoidStemDown")]
+        [DataMember(Name="mensuralFusaBlackVoidStemDown")]
         public AccidentalDoubleFlatParens MensuralFusaBlackVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralFusaBlackVoidStemUp")]
+        [DataMember(Name="mensuralFusaBlackVoidStemUp")]
         public AccidentalDoubleFlatParens MensuralFusaBlackVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralFusaVoidStemDown")]
+        [DataMember(Name="mensuralFusaVoidStemDown")]
         public AccidentalDoubleFlatParens MensuralFusaVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralFusaVoidStemUp")]
+        [DataMember(Name="mensuralFusaVoidStemUp")]
         public AccidentalDoubleFlatParens MensuralFusaVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemDownLeft")]
+        [DataMember(Name="mensuralLongaBlackStemDownLeft")]
         public AccidentalDoubleFlatParens MensuralLongaBlackStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemDownRight")]
+        [DataMember(Name="mensuralLongaBlackStemDownRight")]
         public AccidentalDoubleFlatParens MensuralLongaBlackStemDownRight { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemUpLeft")]
+        [DataMember(Name="mensuralLongaBlackStemUpLeft")]
         public AccidentalDoubleFlatParens MensuralLongaBlackStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackStemUpRight")]
+        [DataMember(Name="mensuralLongaBlackStemUpRight")]
         public AccidentalDoubleFlatParens MensuralLongaBlackStemUpRight { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemDownLeft")]
+        [DataMember(Name="mensuralLongaBlackVoidStemDownLeft")]
         public AccidentalDoubleFlatParens MensuralLongaBlackVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemDownRight")]
+        [DataMember(Name="mensuralLongaBlackVoidStemDownRight")]
         public AccidentalDoubleFlatParens MensuralLongaBlackVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemUpLeft")]
+        [DataMember(Name="mensuralLongaBlackVoidStemUpLeft")]
         public AccidentalDoubleFlatParens MensuralLongaBlackVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralLongaBlackVoidStemUpRight")]
+        [DataMember(Name="mensuralLongaBlackVoidStemUpRight")]
         public AccidentalDoubleFlatParens MensuralLongaBlackVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemDownLeft")]
+        [DataMember(Name="mensuralLongaVoidStemDownLeft")]
         public AccidentalDoubleFlatParens MensuralLongaVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemDownRight")]
+        [DataMember(Name="mensuralLongaVoidStemDownRight")]
         public AccidentalDoubleFlatParens MensuralLongaVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemUpLeft")]
+        [DataMember(Name="mensuralLongaVoidStemUpLeft")]
         public AccidentalDoubleFlatParens MensuralLongaVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralLongaVoidStemUpRight")]
+        [DataMember(Name="mensuralLongaVoidStemUpRight")]
         public AccidentalDoubleFlatParens MensuralLongaVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemDownLeft")]
+        [DataMember(Name="mensuralMaximaBlackStemDownLeft")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemDownRight")]
+        [DataMember(Name="mensuralMaximaBlackStemDownRight")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackStemDownRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemUpLeft")]
+        [DataMember(Name="mensuralMaximaBlackStemUpLeft")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackStemUpRight")]
+        [DataMember(Name="mensuralMaximaBlackStemUpRight")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemDownLeft")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemDownLeft")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemDownRight")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemDownRight")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemUpLeft")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemUpLeft")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaBlackVoidStemUpRight")]
+        [DataMember(Name="mensuralMaximaBlackVoidStemUpRight")]
         public AccidentalDoubleFlatParens MensuralMaximaBlackVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemDownLeft")]
+        [DataMember(Name="mensuralMaximaVoidStemDownLeft")]
         public AccidentalDoubleFlatParens MensuralMaximaVoidStemDownLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemDownRight")]
+        [DataMember(Name="mensuralMaximaVoidStemDownRight")]
         public AccidentalDoubleFlatParens MensuralMaximaVoidStemDownRight { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemUpLeft")]
+        [DataMember(Name="mensuralMaximaVoidStemUpLeft")]
         public AccidentalDoubleFlatParens MensuralMaximaVoidStemUpLeft { get; set; }
 
-        [JsonProperty("mensuralMaximaVoidStemUpRight")]
+        [DataMember(Name="mensuralMaximaVoidStemUpRight")]
         public AccidentalDoubleFlatParens MensuralMaximaVoidStemUpRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDown")]
+        [DataMember(Name="mensuralMinimaBlackStemDown")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemDown { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemDownExtendedFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemDownExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackStemDownFlagLeft")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackStemDownFlagRight")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemDownFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemDownFlaredFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemDownFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUp")]
+        [DataMember(Name="mensuralMinimaBlackStemUp")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemUp { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemUpExtendedFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemUpExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackStemUpFlagLeft")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackStemUpFlagRight")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackStemUpFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackStemUpFlaredFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackStemUpFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDown")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDown")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownExtendedFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemDownExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownFlagLeft")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownFlagRight")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemDownFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemDownFlaredFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemDownFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUp")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUp")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpExtendedFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpExtendedFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemUpExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpFlagLeft")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpFlagLeft")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpFlagRight")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpFlagRight")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaBlackVoidStemUpFlaredFlag")]
+        [DataMember(Name="mensuralMinimaBlackVoidStemUpFlaredFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaBlackVoidStemUpFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDown")]
+        [DataMember(Name="mensuralMinimaVoidStemDown")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownExtendedFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemDownExtendedFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemDownExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownFlagLeft")]
+        [DataMember(Name="mensuralMinimaVoidStemDownFlagLeft")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemDownFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownFlagRight")]
+        [DataMember(Name="mensuralMinimaVoidStemDownFlagRight")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemDownFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemDownFlaredFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemDownFlaredFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemDownFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUp")]
+        [DataMember(Name="mensuralMinimaVoidStemUp")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpExtendedFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemUpExtendedFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemUpExtendedFlag { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpFlagLeft")]
+        [DataMember(Name="mensuralMinimaVoidStemUpFlagLeft")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemUpFlagLeft { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpFlagRight")]
+        [DataMember(Name="mensuralMinimaVoidStemUpFlagRight")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemUpFlagRight { get; set; }
 
-        [JsonProperty("mensuralMinimaVoidStemUpFlaredFlag")]
+        [DataMember(Name="mensuralMinimaVoidStemUpFlaredFlag")]
         public AccidentalDoubleFlatParens MensuralMinimaVoidStemUpFlaredFlag { get; set; }
 
-        [JsonProperty("mensuralProportion4Old")]
+        [DataMember(Name="mensuralProportion4Old")]
         public The4StringTabClefSerif MensuralProportion4Old { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackStemDown")]
+        [DataMember(Name="mensuralSemiminimaBlackStemDown")]
         public AccidentalDoubleFlatParens MensuralSemiminimaBlackStemDown { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackStemUp")]
+        [DataMember(Name="mensuralSemiminimaBlackStemUp")]
         public AccidentalDoubleFlatParens MensuralSemiminimaBlackStemUp { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackVoidStemDown")]
+        [DataMember(Name="mensuralSemiminimaBlackVoidStemDown")]
         public AccidentalDoubleFlatParens MensuralSemiminimaBlackVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralSemiminimaBlackVoidStemUp")]
+        [DataMember(Name="mensuralSemiminimaBlackVoidStemUp")]
         public AccidentalDoubleFlatParens MensuralSemiminimaBlackVoidStemUp { get; set; }
 
-        [JsonProperty("mensuralSemiminimaVoidStemDown")]
+        [DataMember(Name="mensuralSemiminimaVoidStemDown")]
         public AccidentalDoubleFlatParens MensuralSemiminimaVoidStemDown { get; set; }
 
-        [JsonProperty("mensuralSemiminimaVoidStemUp")]
+        [DataMember(Name="mensuralSemiminimaVoidStemUp")]
         public AccidentalDoubleFlatParens MensuralSemiminimaVoidStemUp { get; set; }
 
-        [JsonProperty("noteDoubleWholeAlt")]
+        [DataMember(Name="noteDoubleWholeAlt")]
         public The4StringTabClefSerif NoteDoubleWholeAlt { get; set; }
 
-        [JsonProperty("noteheadBlackOversized")]
+        [DataMember(Name="noteheadBlackOversized")]
         public The4StringTabClefSerif NoteheadBlackOversized { get; set; }
 
-        [JsonProperty("noteheadBlackParens")]
+        [DataMember(Name="noteheadBlackParens")]
         public AccidentalDoubleFlatParens NoteheadBlackParens { get; set; }
 
-        [JsonProperty("noteheadBlackSmall")]
+        [DataMember(Name="noteheadBlackSmall")]
         public The4StringTabClefSerif NoteheadBlackSmall { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeAlt")]
+        [DataMember(Name="noteheadDoubleWholeAlt")]
         public The4StringTabClefSerif NoteheadDoubleWholeAlt { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeOversized")]
+        [DataMember(Name="noteheadDoubleWholeOversized")]
         public The4StringTabClefSerif NoteheadDoubleWholeOversized { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeParens")]
+        [DataMember(Name="noteheadDoubleWholeParens")]
         public AccidentalDoubleFlatParens NoteheadDoubleWholeParens { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeSmall")]
+        [DataMember(Name="noteheadDoubleWholeSmall")]
         public The4StringTabClefSerif NoteheadDoubleWholeSmall { get; set; }
 
-        [JsonProperty("noteheadDoubleWholeSquareOversized")]
+        [DataMember(Name="noteheadDoubleWholeSquareOversized")]
         public The4StringTabClefSerif NoteheadDoubleWholeSquareOversized { get; set; }
 
-        [JsonProperty("noteheadHalfOversized")]
+        [DataMember(Name="noteheadHalfOversized")]
         public The4StringTabClefSerif NoteheadHalfOversized { get; set; }
 
-        [JsonProperty("noteheadHalfParens")]
+        [DataMember(Name="noteheadHalfParens")]
         public AccidentalDoubleFlatParens NoteheadHalfParens { get; set; }
 
-        [JsonProperty("noteheadHalfSmall")]
+        [DataMember(Name="noteheadHalfSmall")]
         public The4StringTabClefSerif NoteheadHalfSmall { get; set; }
 
-        [JsonProperty("noteheadWholeOversized")]
+        [DataMember(Name="noteheadWholeOversized")]
         public The4StringTabClefSerif NoteheadWholeOversized { get; set; }
 
-        [JsonProperty("noteheadWholeParens")]
+        [DataMember(Name="noteheadWholeParens")]
         public AccidentalDoubleFlatParens NoteheadWholeParens { get; set; }
 
-        [JsonProperty("noteheadWholeSmall")]
+        [DataMember(Name="noteheadWholeSmall")]
         public The4StringTabClefSerif NoteheadWholeSmall { get; set; }
 
-        [JsonProperty("ornamentTrillFlatAbove")]
+        [DataMember(Name="ornamentTrillFlatAbove")]
         public AccidentalDoubleFlatParens OrnamentTrillFlatAbove { get; set; }
 
-        [JsonProperty("ornamentTrillNaturalAbove")]
+        [DataMember(Name="ornamentTrillNaturalAbove")]
         public AccidentalDoubleFlatParens OrnamentTrillNaturalAbove { get; set; }
 
-        [JsonProperty("ornamentTrillSharpAbove")]
+        [DataMember(Name="ornamentTrillSharpAbove")]
         public AccidentalDoubleFlatParens OrnamentTrillSharpAbove { get; set; }
 
-        [JsonProperty("ornamentTurnFlatAbove")]
+        [DataMember(Name="ornamentTurnFlatAbove")]
         public AccidentalDoubleFlatParens OrnamentTurnFlatAbove { get; set; }
 
-        [JsonProperty("ornamentTurnFlatAboveSharpBelow")]
+        [DataMember(Name="ornamentTurnFlatAboveSharpBelow")]
         public AccidentalDoubleFlatParens OrnamentTurnFlatAboveSharpBelow { get; set; }
 
-        [JsonProperty("ornamentTurnFlatBelow")]
+        [DataMember(Name="ornamentTurnFlatBelow")]
         public AccidentalDoubleFlatParens OrnamentTurnFlatBelow { get; set; }
 
-        [JsonProperty("ornamentTurnNaturalAbove")]
+        [DataMember(Name="ornamentTurnNaturalAbove")]
         public AccidentalDoubleFlatParens OrnamentTurnNaturalAbove { get; set; }
 
-        [JsonProperty("ornamentTurnNaturalBelow")]
+        [DataMember(Name="ornamentTurnNaturalBelow")]
         public AccidentalDoubleFlatParens OrnamentTurnNaturalBelow { get; set; }
 
-        [JsonProperty("ornamentTurnSharpAbove")]
+        [DataMember(Name="ornamentTurnSharpAbove")]
         public AccidentalDoubleFlatParens OrnamentTurnSharpAbove { get; set; }
 
-        [JsonProperty("ornamentTurnSharpAboveFlatBelow")]
+        [DataMember(Name="ornamentTurnSharpAboveFlatBelow")]
         public AccidentalDoubleFlatParens OrnamentTurnSharpAboveFlatBelow { get; set; }
 
-        [JsonProperty("ornamentTurnSharpBelow")]
+        [DataMember(Name="ornamentTurnSharpBelow")]
         public AccidentalDoubleFlatParens OrnamentTurnSharpBelow { get; set; }
 
-        [JsonProperty("pictBassDrumPeinkofer")]
+        [DataMember(Name="pictBassDrumPeinkofer")]
         public The4StringTabClefSerif PictBassDrumPeinkofer { get; set; }
 
-        [JsonProperty("pictBongosPeinkofer")]
+        [DataMember(Name="pictBongosPeinkofer")]
         public The4StringTabClefSerif PictBongosPeinkofer { get; set; }
 
-        [JsonProperty("pictCastanetsSmithBrindle")]
+        [DataMember(Name="pictCastanetsSmithBrindle")]
         public The4StringTabClefSerif PictCastanetsSmithBrindle { get; set; }
 
-        [JsonProperty("pictCongaPeinkofer")]
+        [DataMember(Name="pictCongaPeinkofer")]
         public The4StringTabClefSerif PictCongaPeinkofer { get; set; }
 
-        [JsonProperty("pictCowBellBerio")]
+        [DataMember(Name="pictCowBellBerio")]
         public The4StringTabClefSerif PictCowBellBerio { get; set; }
 
-        [JsonProperty("pictFlexatonePeinkofer")]
+        [DataMember(Name="pictFlexatonePeinkofer")]
         public The4StringTabClefSerif PictFlexatonePeinkofer { get; set; }
 
-        [JsonProperty("pictGlspPeinkofer")]
+        [DataMember(Name="pictGlspPeinkofer")]
         public The4StringTabClefSerif PictGlspPeinkofer { get; set; }
 
-        [JsonProperty("pictGuiroPeinkofer")]
+        [DataMember(Name="pictGuiroPeinkofer")]
         public The4StringTabClefSerif PictGuiroPeinkofer { get; set; }
 
-        [JsonProperty("pictGuiroSevsay")]
+        [DataMember(Name="pictGuiroSevsay")]
         public The4StringTabClefSerif PictGuiroSevsay { get; set; }
 
-        [JsonProperty("pictLithophonePeinkofer")]
+        [DataMember(Name="pictLithophonePeinkofer")]
         public The4StringTabClefSerif PictLithophonePeinkofer { get; set; }
 
-        [JsonProperty("pictLotusFlutePeinkofer")]
+        [DataMember(Name="pictLotusFlutePeinkofer")]
         public The4StringTabClefSerif PictLotusFlutePeinkofer { get; set; }
 
-        [JsonProperty("pictMarPeinkofer")]
+        [DataMember(Name="pictMarPeinkofer")]
         public The4StringTabClefSerif PictMarPeinkofer { get; set; }
 
-        [JsonProperty("pictMaracaSmithBrindle")]
+        [DataMember(Name="pictMaracaSmithBrindle")]
         public The4StringTabClefSerif PictMaracaSmithBrindle { get; set; }
 
-        [JsonProperty("pictMusicalSawPeinkofer")]
+        [DataMember(Name="pictMusicalSawPeinkofer")]
         public The4StringTabClefSerif PictMusicalSawPeinkofer { get; set; }
 
-        [JsonProperty("pictSleighBellSmithBrindle")]
+        [DataMember(Name="pictSleighBellSmithBrindle")]
         public The4StringTabClefSerif PictSleighBellSmithBrindle { get; set; }
 
-        [JsonProperty("pictTambourineStockhausen")]
+        [DataMember(Name="pictTambourineStockhausen")]
         public The4StringTabClefSerif PictTambourineStockhausen { get; set; }
 
-        [JsonProperty("pictTimbalesPeinkofer")]
+        [DataMember(Name="pictTimbalesPeinkofer")]
         public The4StringTabClefSerif PictTimbalesPeinkofer { get; set; }
 
-        [JsonProperty("pictTimpaniPeinkofer")]
+        [DataMember(Name="pictTimpaniPeinkofer")]
         public The4StringTabClefSerif PictTimpaniPeinkofer { get; set; }
 
-        [JsonProperty("pictTomTomChinesePeinkofer")]
+        [DataMember(Name="pictTomTomChinesePeinkofer")]
         public The4StringTabClefSerif PictTomTomChinesePeinkofer { get; set; }
 
-        [JsonProperty("pictTomTomPeinkofer")]
+        [DataMember(Name="pictTomTomPeinkofer")]
         public The4StringTabClefSerif PictTomTomPeinkofer { get; set; }
 
-        [JsonProperty("pictTubaphonePeinkofer")]
+        [DataMember(Name="pictTubaphonePeinkofer")]
         public The4StringTabClefSerif PictTubaphonePeinkofer { get; set; }
 
-        [JsonProperty("pictVibMotorOffPeinkofer")]
+        [DataMember(Name="pictVibMotorOffPeinkofer")]
         public The4StringTabClefSerif PictVibMotorOffPeinkofer { get; set; }
 
-        [JsonProperty("pictVibPeinkofer")]
+        [DataMember(Name="pictVibPeinkofer")]
         public The4StringTabClefSerif PictVibPeinkofer { get; set; }
 
-        [JsonProperty("pictXylBassPeinkofer")]
+        [DataMember(Name="pictXylBassPeinkofer")]
         public The4StringTabClefSerif PictXylBassPeinkofer { get; set; }
 
-        [JsonProperty("pictXylPeinkofer")]
+        [DataMember(Name="pictXylPeinkofer")]
         public The4StringTabClefSerif PictXylPeinkofer { get; set; }
 
-        [JsonProperty("pictXylTenorPeinkofer")]
+        [DataMember(Name="pictXylTenorPeinkofer")]
         public The4StringTabClefSerif PictXylTenorPeinkofer { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoAboveGerman")]
+        [DataMember(Name="pluckedSnapPizzicatoAboveGerman")]
         public The4StringTabClefSerif PluckedSnapPizzicatoAboveGerman { get; set; }
 
-        [JsonProperty("pluckedSnapPizzicatoBelowGerman")]
+        [DataMember(Name="pluckedSnapPizzicatoBelowGerman")]
         public The4StringTabClefSerif PluckedSnapPizzicatoBelowGerman { get; set; }
 
-        [JsonProperty("repeatRightLeftThick")]
+        [DataMember(Name="repeatRightLeftThick")]
         public The4StringTabClefSerif RepeatRightLeftThick { get; set; }
 
-        [JsonProperty("sedicesima")]
+        [DataMember(Name="sedicesima")]
         public The4StringTabClefSerif Sedicesima { get; set; }
 
-        [JsonProperty("sedicesimaAlta")]
+        [DataMember(Name="sedicesimaAlta")]
         public The4StringTabClefSerif SedicesimaAlta { get; set; }
 
-        [JsonProperty("sedicesimaBassa")]
+        [DataMember(Name="sedicesimaBassa")]
         public The4StringTabClefSerif SedicesimaBassa { get; set; }
 
-        [JsonProperty("sedicesimaBassaMb")]
+        [DataMember(Name="sedicesimaBassaMb")]
         public The4StringTabClefSerif SedicesimaBassaMb { get; set; }
 
-        [JsonProperty("segnoJapanese")]
+        [DataMember(Name="segnoJapanese")]
         public The4StringTabClefSerif SegnoJapanese { get; set; }
 
-        [JsonProperty("stringsChangeBowDirectionImposed")]
+        [DataMember(Name="stringsChangeBowDirectionImposed")]
         public The4StringTabClefSerif StringsChangeBowDirectionImposed { get; set; }
 
-        [JsonProperty("stringsChangeBowDirectionLiga")]
+        [DataMember(Name="stringsChangeBowDirectionLiga")]
         public The4StringTabClefSerif StringsChangeBowDirectionLiga { get; set; }
 
-        [JsonProperty("timeSig0Denominator")]
+        [DataMember(Name="timeSig0Denominator")]
         public AccidentalDoubleFlatParens TimeSig0Denominator { get; set; }
 
-        [JsonProperty("timeSig0Large")]
+        [DataMember(Name="timeSig0Large")]
         public The4StringTabClefSerif TimeSig0Large { get; set; }
 
-        [JsonProperty("timeSig0Numerator")]
+        [DataMember(Name="timeSig0Numerator")]
         public AccidentalDoubleFlatParens TimeSig0Numerator { get; set; }
 
-        [JsonProperty("timeSig0Small")]
+        [DataMember(Name="timeSig0Small")]
         public The4StringTabClefSerif TimeSig0Small { get; set; }
 
-        [JsonProperty("timeSig12over8")]
+        [DataMember(Name="timeSig12over8")]
         public AccidentalDoubleFlatParens TimeSig12Over8 { get; set; }
 
-        [JsonProperty("timeSig1Denominator")]
+        [DataMember(Name="timeSig1Denominator")]
         public AccidentalDoubleFlatParens TimeSig1Denominator { get; set; }
 
-        [JsonProperty("timeSig1Large")]
+        [DataMember(Name="timeSig1Large")]
         public The4StringTabClefSerif TimeSig1Large { get; set; }
 
-        [JsonProperty("timeSig1Numerator")]
+        [DataMember(Name="timeSig1Numerator")]
         public AccidentalDoubleFlatParens TimeSig1Numerator { get; set; }
 
-        [JsonProperty("timeSig1Small")]
+        [DataMember(Name="timeSig1Small")]
         public The4StringTabClefSerif TimeSig1Small { get; set; }
 
-        [JsonProperty("timeSig2Denominator")]
+        [DataMember(Name="timeSig2Denominator")]
         public AccidentalDoubleFlatParens TimeSig2Denominator { get; set; }
 
-        [JsonProperty("timeSig2Large")]
+        [DataMember(Name="timeSig2Large")]
         public The4StringTabClefSerif TimeSig2Large { get; set; }
 
-        [JsonProperty("timeSig2Numerator")]
+        [DataMember(Name="timeSig2Numerator")]
         public AccidentalDoubleFlatParens TimeSig2Numerator { get; set; }
 
-        [JsonProperty("timeSig2Small")]
+        [DataMember(Name="timeSig2Small")]
         public The4StringTabClefSerif TimeSig2Small { get; set; }
 
-        [JsonProperty("timeSig2over2")]
+        [DataMember(Name="timeSig2over2")]
         public AccidentalDoubleFlatParens TimeSig2Over2 { get; set; }
 
-        [JsonProperty("timeSig2over4")]
+        [DataMember(Name="timeSig2over4")]
         public AccidentalDoubleFlatParens TimeSig2Over4 { get; set; }
 
-        [JsonProperty("timeSig3Denominator")]
+        [DataMember(Name="timeSig3Denominator")]
         public AccidentalDoubleFlatParens TimeSig3Denominator { get; set; }
 
-        [JsonProperty("timeSig3Large")]
+        [DataMember(Name="timeSig3Large")]
         public The4StringTabClefSerif TimeSig3Large { get; set; }
 
-        [JsonProperty("timeSig3Numerator")]
+        [DataMember(Name="timeSig3Numerator")]
         public AccidentalDoubleFlatParens TimeSig3Numerator { get; set; }
 
-        [JsonProperty("timeSig3Small")]
+        [DataMember(Name="timeSig3Small")]
         public The4StringTabClefSerif TimeSig3Small { get; set; }
 
-        [JsonProperty("timeSig3over2")]
+        [DataMember(Name="timeSig3over2")]
         public AccidentalDoubleFlatParens TimeSig3Over2 { get; set; }
 
-        [JsonProperty("timeSig3over4")]
+        [DataMember(Name="timeSig3over4")]
         public AccidentalDoubleFlatParens TimeSig3Over4 { get; set; }
 
-        [JsonProperty("timeSig3over8")]
+        [DataMember(Name="timeSig3over8")]
         public AccidentalDoubleFlatParens TimeSig3Over8 { get; set; }
 
-        [JsonProperty("timeSig4Denominator")]
+        [DataMember(Name="timeSig4Denominator")]
         public AccidentalDoubleFlatParens TimeSig4Denominator { get; set; }
 
-        [JsonProperty("timeSig4Large")]
+        [DataMember(Name="timeSig4Large")]
         public The4StringTabClefSerif TimeSig4Large { get; set; }
 
-        [JsonProperty("timeSig4Numerator")]
+        [DataMember(Name="timeSig4Numerator")]
         public AccidentalDoubleFlatParens TimeSig4Numerator { get; set; }
 
-        [JsonProperty("timeSig4Small")]
+        [DataMember(Name="timeSig4Small")]
         public The4StringTabClefSerif TimeSig4Small { get; set; }
 
-        [JsonProperty("timeSig4over4")]
+        [DataMember(Name="timeSig4over4")]
         public AccidentalDoubleFlatParens TimeSig4Over4 { get; set; }
 
-        [JsonProperty("timeSig5Denominator")]
+        [DataMember(Name="timeSig5Denominator")]
         public AccidentalDoubleFlatParens TimeSig5Denominator { get; set; }
 
-        [JsonProperty("timeSig5Large")]
+        [DataMember(Name="timeSig5Large")]
         public The4StringTabClefSerif TimeSig5Large { get; set; }
 
-        [JsonProperty("timeSig5Numerator")]
+        [DataMember(Name="timeSig5Numerator")]
         public AccidentalDoubleFlatParens TimeSig5Numerator { get; set; }
 
-        [JsonProperty("timeSig5Small")]
+        [DataMember(Name="timeSig5Small")]
         public The4StringTabClefSerif TimeSig5Small { get; set; }
 
-        [JsonProperty("timeSig5over4")]
+        [DataMember(Name="timeSig5over4")]
         public AccidentalDoubleFlatParens TimeSig5Over4 { get; set; }
 
-        [JsonProperty("timeSig5over8")]
+        [DataMember(Name="timeSig5over8")]
         public AccidentalDoubleFlatParens TimeSig5Over8 { get; set; }
 
-        [JsonProperty("timeSig6Denominator")]
+        [DataMember(Name="timeSig6Denominator")]
         public AccidentalDoubleFlatParens TimeSig6Denominator { get; set; }
 
-        [JsonProperty("timeSig6Large")]
+        [DataMember(Name="timeSig6Large")]
         public The4StringTabClefSerif TimeSig6Large { get; set; }
 
-        [JsonProperty("timeSig6Numerator")]
+        [DataMember(Name="timeSig6Numerator")]
         public AccidentalDoubleFlatParens TimeSig6Numerator { get; set; }
 
-        [JsonProperty("timeSig6Small")]
+        [DataMember(Name="timeSig6Small")]
         public The4StringTabClefSerif TimeSig6Small { get; set; }
 
-        [JsonProperty("timeSig6over4")]
+        [DataMember(Name="timeSig6over4")]
         public AccidentalDoubleFlatParens TimeSig6Over4 { get; set; }
 
-        [JsonProperty("timeSig6over8")]
+        [DataMember(Name="timeSig6over8")]
         public AccidentalDoubleFlatParens TimeSig6Over8 { get; set; }
 
-        [JsonProperty("timeSig7Denominator")]
+        [DataMember(Name="timeSig7Denominator")]
         public AccidentalDoubleFlatParens TimeSig7Denominator { get; set; }
 
-        [JsonProperty("timeSig7Large")]
+        [DataMember(Name="timeSig7Large")]
         public The4StringTabClefSerif TimeSig7Large { get; set; }
 
-        [JsonProperty("timeSig7Numerator")]
+        [DataMember(Name="timeSig7Numerator")]
         public AccidentalDoubleFlatParens TimeSig7Numerator { get; set; }
 
-        [JsonProperty("timeSig7Small")]
+        [DataMember(Name="timeSig7Small")]
         public The4StringTabClefSerif TimeSig7Small { get; set; }
 
-        [JsonProperty("timeSig7over8")]
+        [DataMember(Name="timeSig7over8")]
         public AccidentalDoubleFlatParens TimeSig7Over8 { get; set; }
 
-        [JsonProperty("timeSig8Denominator")]
+        [DataMember(Name="timeSig8Denominator")]
         public AccidentalDoubleFlatParens TimeSig8Denominator { get; set; }
 
-        [JsonProperty("timeSig8Large")]
+        [DataMember(Name="timeSig8Large")]
         public The4StringTabClefSerif TimeSig8Large { get; set; }
 
-        [JsonProperty("timeSig8Numerator")]
+        [DataMember(Name="timeSig8Numerator")]
         public AccidentalDoubleFlatParens TimeSig8Numerator { get; set; }
 
-        [JsonProperty("timeSig8Small")]
+        [DataMember(Name="timeSig8Small")]
         public The4StringTabClefSerif TimeSig8Small { get; set; }
 
-        [JsonProperty("timeSig9Denominator")]
+        [DataMember(Name="timeSig9Denominator")]
         public AccidentalDoubleFlatParens TimeSig9Denominator { get; set; }
 
-        [JsonProperty("timeSig9Large")]
+        [DataMember(Name="timeSig9Large")]
         public The4StringTabClefSerif TimeSig9Large { get; set; }
 
-        [JsonProperty("timeSig9Numerator")]
+        [DataMember(Name="timeSig9Numerator")]
         public AccidentalDoubleFlatParens TimeSig9Numerator { get; set; }
 
-        [JsonProperty("timeSig9Small")]
+        [DataMember(Name="timeSig9Small")]
         public The4StringTabClefSerif TimeSig9Small { get; set; }
 
-        [JsonProperty("timeSig9over8")]
+        [DataMember(Name="timeSig9over8")]
         public AccidentalDoubleFlatParens TimeSig9Over8 { get; set; }
 
-        [JsonProperty("timeSigCommonLarge")]
+        [DataMember(Name="timeSigCommonLarge")]
         public The4StringTabClefSerif TimeSigCommonLarge { get; set; }
 
-        [JsonProperty("timeSigCutCommonLarge")]
+        [DataMember(Name="timeSigCutCommonLarge")]
         public The4StringTabClefSerif TimeSigCutCommonLarge { get; set; }
 
-        [JsonProperty("timeSigPlusLarge")]
+        [DataMember(Name="timeSigPlusLarge")]
         public The4StringTabClefSerif TimeSigPlusLarge { get; set; }
 
-        [JsonProperty("tripleTongueAboveNoSlur")]
+        [DataMember(Name="tripleTongueAboveNoSlur")]
         public The4StringTabClefSerif TripleTongueAboveNoSlur { get; set; }
 
-        [JsonProperty("tripleTongueBelowNoSlur")]
+        [DataMember(Name="tripleTongueBelowNoSlur")]
         public The4StringTabClefSerif TripleTongueBelowNoSlur { get; set; }
 
-        [JsonProperty("unpitchedPercussionClef1Alt")]
+        [DataMember(Name="unpitchedPercussionClef1Alt")]
         public The4StringTabClefSerif UnpitchedPercussionClef1Alt { get; set; }
 
-        [JsonProperty("ventiquattresima")]
+        [DataMember(Name="ventiquattresima")]
         public The4StringTabClefSerif Ventiquattresima { get; set; }
 
-        [JsonProperty("ventiquattresimaAlta")]
+        [DataMember(Name="ventiquattresimaAlta")]
         public The4StringTabClefSerif VentiquattresimaAlta { get; set; }
 
-        [JsonProperty("ventiquattresimaBassa")]
+        [DataMember(Name="ventiquattresimaBassa")]
         public The4StringTabClefSerif VentiquattresimaBassa { get; set; }
 
-        [JsonProperty("ventiquattresimaBassaMb")]
+        [DataMember(Name="ventiquattresimaBassaMb")]
         public The4StringTabClefSerif VentiquattresimaBassaMb { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoDownSwashCouperin")]
+        [DataMember(Name="wiggleArpeggiatoDownSwashCouperin")]
         public The4StringTabClefSerif WiggleArpeggiatoDownSwashCouperin { get; set; }
 
-        [JsonProperty("wiggleArpeggiatoUpSwashCouperin")]
+        [DataMember(Name="wiggleArpeggiatoUpSwashCouperin")]
         public The4StringTabClefSerif WiggleArpeggiatoUpSwashCouperin { get; set; }
     }
 }

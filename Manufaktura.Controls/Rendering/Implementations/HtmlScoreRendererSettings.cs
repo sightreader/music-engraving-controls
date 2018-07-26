@@ -121,9 +121,9 @@ namespace Manufaktura.Controls.Rendering.Implementations
             SetFont(MusicFontStyles.TimeSignatureFont, name, size, fontPaths);
         }
 
-        public void LoadSMuFLFont(ISMuFLFontMetadata metadata, string name, double size, params string[] fontPaths)
+        public void LoadSMuFLFont(ISMuFLFontMetadata metadata, IMusicFont musicFont, string name, double size, params string[] fontPaths)
         {
-            LoadSMuFLMetadata(metadata);
+            LoadSMuFLMetadata(metadata, musicFont);
             SetFont(MusicFontStyles.MusicFont, name, size, fontPaths);
             SetFont(MusicFontStyles.GraceNoteFont, name, size, fontPaths);
             SetFont(MusicFontStyles.StaffFont, name, size, fontPaths);
