@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.SMuFL;
 using Manufaktura.Controls.Test.Web.Models;
 using System.Web.Mvc;
 
@@ -14,8 +15,9 @@ namespace Manufaktura.Controls.Test.Web.Controllers
             var vm = new HomeViewModel();
             if (useSmufl)
             {
-                var fontMetadata = System.IO.File.ReadAllText(fontMetadataPath);
-                vm.Settings.LoadSMuFLFont(fontMetadata, "Bravura", 20, "/fonts/Bravura.otf");
+                var fontProfile = SMuFLMusicFont.CreateFromJsonString(System.IO.File.ReadAllText(fontMetadataPath));
+                fontProfile.SetFontSize(Model.Fonts.MusicFontStyles.MusicFont, 20);
+                vm.Settings.SetMusicFont(fontProfile, "Bravura", "/fonts/Bravura.otf");
             }
 
             //var serverPath = Server.MapPath("~/Content/036 Bogurodzica[1].xml");

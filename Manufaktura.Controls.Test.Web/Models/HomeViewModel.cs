@@ -24,7 +24,7 @@ namespace Manufaktura.Controls.Test.Web.Models
             settings.IgnorePageMargins = true;
             Settings = settings;
 
-            RadialChartSettings = new HtmlRadarChartRendererSettings();
+            RadarChartSettings = new HtmlRadarChartRendererSettings();
             Samples = new[] {
             new RadarChartSample("Performance", "Performance", 50) { ValidationMinValue = 40, ValidationMaxValue = 60 },
             new RadarChartSample("User experience", "User experience", 52) { ValidationMinValue = 20, ValidationMaxValue = 40 },
@@ -34,7 +34,7 @@ namespace Manufaktura.Controls.Test.Web.Models
             };
         }
 
-        public HtmlRadarChartRendererSettings RadialChartSettings { get; private set; }
+        public HtmlRadarChartRendererSettings RadarChartSettings { get; private set; }
         public RadarChartSample[] Samples { get; set; }
         public Score SampleScore { get; set; }
         public HtmlScoreRendererSettings Settings { get; private set; }

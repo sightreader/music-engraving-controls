@@ -90,14 +90,14 @@ namespace Manufaktura.Controls.AspNetMvc
         }
 
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "This is an appropriate nesting of generic types")]
-        public static MvcHtmlString RadialChartFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, RadarChartSample[]>> expression, HtmlRadarChartRendererSettings settings)
+        public static MvcHtmlString RadarChartFor<TModel>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, RadarChartSample[]>> expression, HtmlRadarChartRendererSettings settings)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
             if (settings == null) throw new ArgumentNullException(nameof(settings));
 
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             RadarChartSample[] samples = metadata.Model == null ? null : metadata.Model as RadarChartSample[];
-            return RadialChartHelper(htmlHelper, samples, settings);
+            return RadarChartHelper(htmlHelper, samples, settings);
         }
 
         private static MvcHtmlString NoteViewerHelper(HtmlHelper htmlHelper, Score score, HtmlScoreRendererSettings settings)
@@ -123,7 +123,7 @@ namespace Manufaktura.Controls.AspNetMvc
             return NoteViewerHelper(htmlHelper, score, settings);
         }
 
-        private static MvcHtmlString RadialChartHelper(HtmlHelper helper, RadarChartSample[] samples, HtmlRadarChartRendererSettings settings)
+        private static MvcHtmlString RadarChartHelper(HtmlHelper helper, RadarChartSample[] samples, HtmlRadarChartRendererSettings settings)
         {
             var xElement = new XElement("svg");
             xElement.Add(new XAttribute("style", $"width:{settings.Width.ToStringInvariant()}px; height:{settings.Height.ToStringInvariant()}px;"));
