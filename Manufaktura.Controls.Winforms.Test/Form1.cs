@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Parser;
+using Manufaktura.Controls.SMuFL;
 using Manufaktura.Music.Model;
 using System;
 using System.IO;
@@ -18,7 +19,8 @@ namespace Manufaktura.Controls.Winforms.Test
 
             var fontPath = Path.Combine(Application.StartupPath, "Assets", "Bravura.otf");
             var metaPath = Path.Combine(Application.StartupPath, "Assets", "bravura_metadata.json");
-            noteViewer1.LoadFontFromPath(fontPath, File.ReadAllText(metaPath));
+            var smuflProfile = SMuFLMusicFont.CreateFromJsonString(File.ReadAllText(metaPath));
+            noteViewer1.SetFontFromPath(fontPath, smuflProfile);
 
             var mScore = Score.CreateOneStaffScore(Clef.Treble, Music.Model.MajorAndMinor.MajorScale.G);
 
