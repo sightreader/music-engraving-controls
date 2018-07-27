@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Manufaktura.Orm.UnitTests</RootNamespace>
     <AssemblyName>Manufaktura.Orm.UnitTests</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -100,6 +100,10 @@
     <Compile Include="TuningTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls.SMuFL\Manufaktura.Controls.SMuFL.csproj">
+      <Project>{E2735603-0C7F-45D4-BBCC-BFABB992E26E}</Project>
+      <Name>Manufaktura.Controls.SMuFL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj">
       <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
       <Name>Manufaktura.Controls</Name>

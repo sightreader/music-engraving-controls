@@ -16,11 +16,12 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
+using Manufaktura.Controls.Model.SMuFL;
 
-namespace Manufaktura.Controls.Model.SMuFL
+namespace Manufaktura.Controls.SMuFL
 {
-    public partial class GlyphBBoxes : IGlyphBBoxes
+    [Serializable]
+    public class GlyphBBoxes : IGlyphBBoxes
     {
         [DataMember(Name="4stringTabClef")]
         public BoundingBox The4StringTabClef { get; set; }

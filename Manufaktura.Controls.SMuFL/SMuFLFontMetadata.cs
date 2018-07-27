@@ -18,9 +18,11 @@ namespace Manufaktura.Controls.SMuFL
     using Manufaktura.Controls.Parser;
     using Manufaktura.Controls.Serialization;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
+    [Serializable]
     public class SMuFLFontMetadata : ISMuFLFontMetadata
     {
         [DataMember(Name="fontName")]

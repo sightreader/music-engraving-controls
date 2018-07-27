@@ -16,46 +16,60 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Core.Serialization;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Manufaktura.Controls.SMuFL
 {
     public class SMuFLMusicFont : IMusicFont
     {
-        public static SMuFLFontProfile CreateFromJsonString(string json)
+        public static SMuFLFontProfile CreateFromJsonString(string json, bool useLazyProxy = true)
         {
-            var metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json);
+            var metadata = useLazyProxy ? LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json) : JsonConvert.DeserializeObject<SMuFLFontMetadata>(json);
             return new SMuFLFontProfile(metadata);
         }
 
-        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream)
+        public static SMuFLFontProfile CreateFromBinaryStream(Stream binaryStream)
+        {
+            var binaryFormatter = new BinaryFormatter();
+            var metadata = binaryFormatter.Deserialize(binaryStream) as ISMuFLFontMetadata;
+            return new SMuFLFontProfile(metadata);
+        }
+
+        public static SMuFLFontProfile CreateFromBinaryArray(byte[] byteArray)
+        {
+            using (var ms = new MemoryStream(byteArray))
+                return CreateFromBinaryStream(ms);
+        }
+
+        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, bool useLazyProxy = true)
         {
             using (var reader = new StreamReader(jsonStream))
             {
                 string json = reader.ReadToEnd();
-                var metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json);
-                return new SMuFLFontProfile(metadata);
+                return CreateFromJsonString(json, useLazyProxy);
             }
         }
 
-        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName)
+        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName, bool useLazyProxy = true)
         {
             using (var stream = assembly.GetManifestResourceStream(resourceFullName))
             using (var reader = new StreamReader(stream))
             {
                 string result = reader.ReadToEnd();
-                return CreateFromJsonString(result);
+                return CreateFromJsonString(result, useLazyProxy);
             }
         }
 
-        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName)
+        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName, bool useLazyProxy = true)
         {
             var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
             var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
-            return CreateFromJsonResource(assembly, resourceName);
+            return CreateFromJsonResource(assembly, resourceName, useLazyProxy);
         }
 
         public char AugmentationDot => '\uE1E7';
