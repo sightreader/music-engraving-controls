@@ -33,21 +33,6 @@ namespace Manufaktura.Controls.SMuFL
             return new SMuFLFontProfile(metadata);
         }
 
-        public static SMuFLFontProfile CreateFromBinaryStream(Stream binaryStream)
-        {
-            var settings = new SharpSerializerBinarySettings(BinarySerializationMode.SizeOptimized);
-            var serializer = new SharpSerializer(settings);
-
-            var metadata = serializer.Deserialize(binaryStream) as ISMuFLFontMetadata;
-            return new SMuFLFontProfile(metadata);
-        }
-
-        public static SMuFLFontProfile CreateFromBinaryArray(byte[] byteArray)
-        {
-            using (var ms = new MemoryStream(byteArray))
-                return CreateFromBinaryStream(ms);
-        }
-
         public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, bool useLazyProxy = true)
         {
             using (var reader = new StreamReader(jsonStream))
@@ -72,6 +57,34 @@ namespace Manufaktura.Controls.SMuFL
             var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
             var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
             return CreateFromJsonResource(assembly, resourceName, useLazyProxy);
+        }
+
+        public static SMuFLFontProfile CreateFromBinaryStream(Stream binaryStream)
+        {
+            var settings = new SharpSerializerBinarySettings(BinarySerializationMode.SizeOptimized);
+            var serializer = new SharpSerializer(settings);
+
+            var metadata = serializer.Deserialize(binaryStream) as ISMuFLFontMetadata;
+            return new SMuFLFontProfile(metadata);
+        }
+
+        public static SMuFLFontProfile CreateFromBinaryArray(byte[] byteArray)
+        {
+            using (var ms = new MemoryStream(byteArray))
+                return CreateFromBinaryStream(ms);
+        }
+
+        public static SMuFLFontProfile CreateFromBinaryResource(Assembly assembly, string resourceFullName)
+        {
+            using (var stream = assembly.GetManifestResourceStream(resourceFullName))
+                return CreateFromBinaryStream(stream);
+        }
+
+        public static SMuFLFontProfile CreateFromBinaryResource<TNamespace>(string resourceFileName)
+        {
+            var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
+            var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
+            return CreateFromBinaryResource(assembly, resourceName);
         }
 
         public char AugmentationDot => '\uE1E7';

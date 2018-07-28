@@ -32,21 +32,14 @@ namespace Manufaktura.Controls.WPF.Test
             InitializeComponent();
             var family = dummyTextBlock.FontFamily;
 
-            var assembly = typeof(MainWindow).Assembly;
-            var resourceName = $"{typeof(MainWindow).Namespace}.Assets.bravura_metadata.json";
-            //var resourceName = $"{typeof(MainWindow).Namespace}.Assets.gootville_metadata.json";
-            //var resourceName = $"{typeof(MainWindow).Namespace}.Assets.jazzy_metadata.json";
-            //noteViewerTest.LoadFont(family);
-            //noteViewer1.LoadFont(family);
-            //noteViewer2.LoadFont(family);
-            //noteViewer3.LoadFont(family);
-
             //noteViewerTest.IsMusicPaperMode = true;
             var useSMuFL = true;
 
             if (useSMuFL)
             {
-                var fontProfile = SMuFLMusicFont.CreateFromJsonResource(assembly, resourceName);
+                var fontProfile =
+                    SMuFLMusicFont.CreateFromJsonResource<MainWindow>("Assets.bravura_metadata.json");
+                    //SMuFLMusicFont.CreateFromBinaryResource<MainWindow>("Assets.bravura_metadata.bin");
                 noteViewerTest.SetFont(family, fontProfile);
                 noteViewer1.SetFont(family, fontProfile);
                 noteViewer2.SetFont(family, fontProfile);

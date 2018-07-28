@@ -131,6 +131,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <EmbeddedResource Include="Assets\bravura_metadata.json" />
+    <EmbeddedResource Include="Assets\gootville_metadata.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
