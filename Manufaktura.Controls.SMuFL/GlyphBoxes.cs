@@ -20,7 +20,6 @@ using Manufaktura.Controls.Model.SMuFL;
 
 namespace Manufaktura.Controls.SMuFL
 {
-    [Serializable]
     public class GlyphBBoxes : IGlyphBBoxes
     {
         [DataMember(Name="4stringTabClef")]

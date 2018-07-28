@@ -17,10 +17,10 @@ using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Core.Serialization;
 using Newtonsoft.Json;
+using Polenter.Serialization;
 using System;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Manufaktura.Controls.SMuFL
@@ -35,8 +35,10 @@ namespace Manufaktura.Controls.SMuFL
 
         public static SMuFLFontProfile CreateFromBinaryStream(Stream binaryStream)
         {
-            var binaryFormatter = new BinaryFormatter();
-            var metadata = binaryFormatter.Deserialize(binaryStream) as ISMuFLFontMetadata;
+            var settings = new SharpSerializerBinarySettings(BinarySerializationMode.SizeOptimized);
+            var serializer = new SharpSerializer(settings);
+
+            var metadata = serializer.Deserialize(binaryStream) as ISMuFLFontMetadata;
             return new SMuFLFontProfile(metadata);
         }
 

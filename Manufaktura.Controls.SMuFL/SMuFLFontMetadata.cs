@@ -22,7 +22,6 @@ namespace Manufaktura.Controls.SMuFL
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
-    [Serializable]
     public class SMuFLFontMetadata : ISMuFLFontMetadata
     {
         [DataMember(Name="fontName")]

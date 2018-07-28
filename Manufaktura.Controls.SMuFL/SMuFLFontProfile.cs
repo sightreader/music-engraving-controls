@@ -1,7 +1,7 @@
 ﻿using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
+using Polenter.Serialization;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Manufaktura.Controls.SMuFL
 {
@@ -21,8 +21,9 @@ namespace Manufaktura.Controls.SMuFL
 
         public void SerializeMetadataAsBinary(Stream outputStream)
         {
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(outputStream, SMuFLMetadata);
+            var settings = new SharpSerializerBinarySettings(BinarySerializationMode.SizeOptimized);
+            var serializer = new SharpSerializer(settings);
+            serializer.Serialize(SMuFLMetadata, outputStream);
         }
     }
 }

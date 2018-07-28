@@ -115,9 +115,18 @@ namespace Manufaktura.Orm.UnitTests
             var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json", false);
             using (var ms = new MemoryStream())
             {
+                var serializationSw = new Stopwatch();
+                serializationSw.Start();
                 profile.SerializeMetadataAsBinary(ms);
+                serializationSw.Stop();
                 var serializedData = ms.ToArray();
+
+                var deserializationSw = new Stopwatch();
+                deserializationSw.Start();
                 var newProfile = SMuFLMusicFont.CreateFromBinaryArray(serializedData);
+                deserializationSw.Stop();
+
+                Debug.WriteLine($"Serialization: {serializationSw.Elapsed}, Deserialization: {deserializationSw.Elapsed}");
             }
         }
     }
