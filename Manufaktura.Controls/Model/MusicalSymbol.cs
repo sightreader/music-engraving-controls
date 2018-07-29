@@ -97,6 +97,8 @@ namespace Manufaktura.Controls.Model
 
         public Quadrangle ActualRenderedBounds { get; internal set; }
 
+        public TimeSpan ActualRenderingTime { get; internal set; }
+
         /// <summary>
         /// Defines a custom color for drawing this MusicalSymbol. If null, the default color will be used.
         /// </summary>
