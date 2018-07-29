@@ -1,21 +1,21 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
-using Manufaktura.Controls.Rendering.Implementations;
 using Manufaktura.Controls.Services;
 using System;
 using System.Linq;
@@ -51,7 +51,7 @@ namespace Manufaktura.Controls.Rendering
             return measurementService.LastMeasurePositionX + width * renderer.Settings.CustomElementPositionRatio;
         }
 
-        public override void Render(Barline element, ScoreRendererBase renderer)
+        public override void Render(Barline element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
             var partGroup = element.Staff?.Part?.Group;
             var doNotDraw = partGroup != null && partGroup.GroupBarline == GroupBarlineType.Mensurstrich;
@@ -111,6 +111,12 @@ namespace Manufaktura.Controls.Rendering
                         renderer.DrawLine(new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
                                           new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]), lightPen, element);
                     }
+
+                    element.ActualRenderedBounds = new Quadrangle(
+                        new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]),
+                        new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]),
+                        new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
+                        new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]));
                 }
                 scoreService.CurrentMeasure.BarlineLocationX = scoreService.CursorPositionX;
                 scoreService.CurrentMeasure.Barline = element;
@@ -122,10 +128,10 @@ namespace Manufaktura.Controls.Rendering
                 BeforeDrawRepeatSign(renderer, element, measureWidth);
 
                 //TODO: Usunąć warunek na HtmlScoreRendererSettings jak zaimplementuję w SVG DrawCharacterInBounds
-                if (renderer.IsSMuFLFont && renderer.Settings.MusicFontProfile.SMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
-                    DrawRepeatSignSMuFL(renderer, element, measureWidth);
+                if (renderer.IsSMuFLFont && fontProfile.SMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
+                    DrawRepeatSignSMuFL(renderer, element, measureWidth, fontProfile);
                 else
-                    DrawRepeatSignAsText(renderer, element, measureWidth, 4);
+                    DrawRepeatSignAsText(renderer, element, measureWidth, 4, fontProfile);
 
                 AfterDrawRepeatSign(renderer, element, measureWidth, 20);
             }
@@ -134,10 +140,10 @@ namespace Manufaktura.Controls.Rendering
                 BeforeDrawRepeatSign(renderer, element, measureWidth);
 
                 //TODO: Usunąć warunek na HtmlScoreRendererSettings jak zaimplementuję w SVG DrawCharacterInBounds
-                if (renderer.IsSMuFLFont && renderer.Settings.MusicFontProfile.SMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
-                    DrawRepeatSignSMuFL(renderer, element, measureWidth);
+                if (renderer.IsSMuFLFont && fontProfile.SMuFLMetadata != null && renderer.CanDrawCharacterInBounds)
+                    DrawRepeatSignSMuFL(renderer, element, measureWidth, fontProfile);
                 else
-                    DrawRepeatSignAsText(renderer, element, measureWidth, -14.5);
+                    DrawRepeatSignAsText(renderer, element, measureWidth, -14.5, fontProfile);
 
                 AfterDrawRepeatSign(renderer, element, measureWidth, 6);
             }
@@ -152,6 +158,12 @@ namespace Manufaktura.Controls.Rendering
         private void AfterDrawRepeatSign(ScoreRendererBase renderer, Barline element, double? measureWidth, double spaceAfter)
         {
             if (scoreService.CurrentStaffNo == 1) element.RenderedXPositionForFirstStaffInMultiStaffPart = scoreService.CursorPositionX;
+
+            element.ActualRenderedBounds = new Quadrangle(
+                new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]),
+                new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]),
+                new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]),
+                new Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[4]));
 
             if (element.RepeatSign == RepeatSignType.Backward)
             {
@@ -180,24 +192,25 @@ namespace Manufaktura.Controls.Rendering
                 scoreService.CursorPositionX = element.RenderedXPositionForFirstStaffInMultiStaffPart;
         }
 
-        private void DrawRepeatSignAsText(ScoreRendererBase renderer, Barline element, double? measureWidth, double shiftX)
+        private void DrawRepeatSignAsText(ScoreRendererBase renderer, Barline element, double? measureWidth, double shiftX, FontProfile fontProfile)
         {
             var positionY = scoreService.CurrentLinePositions[renderer.IsSMuFLFont ? 4 : 2];
-            renderer.DrawCharacter(element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont), MusicFontStyles.StaffFont, scoreService.CursorPositionX + shiftX,
+            renderer.DrawCharacter(element.GetCharacter(fontProfile.MusicFont), MusicFontStyles.StaffFont, scoreService.CursorPositionX + shiftX,
                 positionY, element);
         }
 
-        private void DrawRepeatSignSMuFL(ScoreRendererBase renderer, Barline element, double? measureWidth)
+        private void DrawRepeatSignSMuFL(ScoreRendererBase renderer, Barline element, double? measureWidth, FontProfile fontProfile)
         {
-            var bounds = element.GetSMuFLBoundingBoxPx(renderer.Settings.MusicFontProfile.SMuFLMetadata, renderer.Settings);
+            var bounds = element.GetSMuFLBoundingBoxPx(fontProfile.SMuFLMetadata, renderer.Settings);
             var shiftX = element.RepeatSign == RepeatSignType.Forward ? bounds.BBoxSw[0] : bounds.BBoxNe[0];
             renderer.DrawCharacterInBounds(
-                element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont),
+                element.GetCharacter(fontProfile.MusicFont),
                 MusicFontStyles.MusicFont,
                 new Point(scoreService.CursorPositionX - shiftX, scoreService.CurrentLinePositions[0]),
                 new Size(bounds.BBoxNe[0] - bounds.BBoxSw[0], bounds.BBoxNe[1] - bounds.BBoxSw[1]),
                 element);
         }
+
         private bool IsLastBarline(Barline element)
         {
             return element == scoreService.CurrentStaff.Elements.OfType<Barline>().LastOrDefault();

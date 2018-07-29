@@ -28,5 +28,10 @@ namespace Manufaktura.Controls.Primitives
         public Point NW { get; set; }
         public Point SE { get; set; }
         public Point SW { get; set; }
+
+        public override string ToString()
+        {
+            return $"NE: {NE} NW: {NW} SE: {SE} SW: {SW}";
+        }
     }
 }

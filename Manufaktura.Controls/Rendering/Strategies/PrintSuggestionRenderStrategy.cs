@@ -38,7 +38,7 @@ namespace Manufaktura.Controls.Rendering.Strategies
         /// </summary>
         /// <param name="element"></param>
         /// <param name="renderer"></param>
-		public override void Render(PrintSuggestion element, ScoreRendererBase renderer)
+		public override void Render(PrintSuggestion element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
             if (element.IsSystemBreak && renderer.Settings.RenderingMode != ScoreRenderingModes.Panorama)
             {

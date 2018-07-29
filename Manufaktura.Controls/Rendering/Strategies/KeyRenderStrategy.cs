@@ -37,7 +37,7 @@ namespace Manufaktura.Controls.Rendering
         {
         }
 
-        public override void Render(Key element, ScoreRendererBase renderer)
+        public override void Render(Key element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
             if (element.Fifths != 0 && element.Measure.Elements.FirstOrDefault() == element)
                 scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
@@ -74,7 +74,7 @@ namespace Manufaktura.Controls.Rendering
 
             for (int i = 0; i < Math.Abs(scoreService.CurrentKey.Fifths); i++)
             {
-                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
+                renderer.DrawCharacter(element.GetCharacter(fontProfile.MusicFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
                 if (jumpFourth) flatOrSharpPositionY += 3 * 3 * jumpDirection;
                 else flatOrSharpPositionY += 3 * 4 * jumpDirection;
                 jumpFourth = !jumpFourth;

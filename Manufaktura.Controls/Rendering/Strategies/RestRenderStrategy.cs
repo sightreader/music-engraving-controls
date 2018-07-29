@@ -44,7 +44,7 @@ namespace Manufaktura.Controls.Rendering
         /// </summary>
         /// <param name="element"></param>
         /// <param name="renderer"></param>
-		public override void Render(Rest element, ScoreRendererBase renderer)
+		public override void Render(Rest element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
             var isOnlyElementInMeasure = element.Measure?.Elements?.OfType<NoteOrRest>().Count() == 1;
             if (!renderer.Settings.IgnoreCustomElementPositions && element.DefaultXPosition.HasValue) //Jeśli ustalono default-x, to pozycjonuj wg default-x, a nie automatycznie
@@ -70,7 +70,7 @@ namespace Manufaktura.Controls.Rendering
             double restPositionY = scoreService.CurrentLinePositions[0] + 
                 (element.DefaultYPosition.HasValue ? renderer.TenthsToPixels(element.DefaultYPosition.Value) : renderer.LinespacesToPixels(2));
 
-            renderer.DrawCharacter(element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
+            renderer.DrawCharacter(element.GetCharacter(fontProfile.MusicFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
             measurementService.LastNotePositionX = scoreService.CursorPositionX;
             element.TextBlockLocation = new Point(scoreService.CursorPositionX, restPositionY);
 
@@ -84,7 +84,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.NumberOfDots > 0) scoreService.CursorPositionX += 16;
             for (int i = 0; i < element.NumberOfDots; i++)
             {
-                renderer.DrawCharacter(renderer.Settings.MusicFontProfile.MusicFont.AugmentationDot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
+                renderer.DrawCharacter(fontProfile.MusicFont.AugmentationDot, MusicFontStyles.MusicFont, scoreService.CursorPositionX, restPositionY, element);
                 scoreService.CursorPositionX += 6;
             }
 

@@ -13,6 +13,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Services;
 using System;
 using System.Diagnostics;
@@ -42,7 +43,7 @@ namespace Manufaktura.Controls.Rendering
         /// </summary>
         /// <param name="element">Element to draw</param>
         /// <param name="renderer">Renderer</param>
-        public abstract void Render(TElement element, ScoreRendererBase renderer);
+        public abstract void Render(TElement element, ScoreRendererBase renderer, FontProfile fontProfile);
 
         /// <summary>
         /// Draw musical symbol
@@ -53,7 +54,7 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.IsBreakpointSet) Debugger.Break();
             var startPositionX = scoreService.CursorPositionX;
-            Render((TElement)element, renderer);
+            Render((TElement)element, renderer, renderer.Settings?.MusicFontProfile);
             element.RenderedWidth = scoreService.CursorPositionX - startPositionX;
         }
     }

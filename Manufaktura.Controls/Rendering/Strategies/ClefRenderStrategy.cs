@@ -44,9 +44,9 @@ namespace Manufaktura.Controls.Rendering
                 new Point(element.TextBlockLocation.X + 15, scoreService.CurrentLinePositions[3]), new Pen(element.CoalesceColor(renderer), 3), element);
         }
 
-        public override void Render(Clef element, ScoreRendererBase renderer)
+        public override void Render(Clef element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
-            if (!(renderer.Settings.MusicFontProfile.IsSMuFLFont))
+            if (!(fontProfile.IsSMuFLFont))
             {
                 var yPosition = element.OctaveChange > 0 ? scoreService.CurrentLinePositions[0] - renderer.LinespacesToPixels(2) : scoreService.CurrentLinePositions[4] + renderer.LinespacesToPixels(3.5);
                 var octaveChangeText = GetOctaveChangeNumberForPolihymniaFont(element.OctaveChange);
@@ -62,7 +62,7 @@ namespace Manufaktura.Controls.Rendering
             if (element.TypeOfClef == ClefType.Percussion)
                 DrawPercussionClef(element, renderer);
             else
-                renderer.DrawCharacter(element.GetCharacter(renderer.Settings.MusicFontProfile.MusicFont), MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
+                renderer.DrawCharacter(element.GetCharacter(fontProfile.MusicFont), MusicFontStyles.MusicFont, element.TextBlockLocation.X, element.TextBlockLocation.Y, element);
 
             scoreService.CursorPositionX += 20;
         }
