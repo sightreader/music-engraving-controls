@@ -1,7 +1,7 @@
 ﻿@using Manufaktura.Controls.Model
 @using Manufaktura.Controls.Rendering.Implementations
 
-<RawHtml Content="@RenderScore()"></RawHtml>
+@((MarkupString)RenderScore())
 
 @functions {
 [Parameter]
