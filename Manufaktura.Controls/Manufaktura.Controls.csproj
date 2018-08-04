@@ -5,6 +5,15 @@
     <AssemblyVersion>1.4.0.0</AssemblyVersion>
     <FileVersion>1.4.0.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>The best open source multiplatform music notation library for .NET</Description>
+    <Copyright>Manufaktura Programów Jacek  Salamon 2018</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>http://musicengravingcontrols.com/</PackageProjectUrl>
+    <PackageIconUrl>http://musicengravingcontrols.com/Images/logo_white_small.png</PackageIconUrl>
+    <RepositoryUrl>https://bitbucket.org/Ajcek/manufakturalibraries</RepositoryUrl>
+    <PackageTags>music .net controls</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.4.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

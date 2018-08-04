@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>ASP.NET Core implementation for Manufaktura.Controls music notation library</Description>
+    <Copyright>Manufaktura programów Jacek Salamon 2018</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>http://musicengravingcontrols.com/</PackageProjectUrl>
+    <PackageIconUrl>http://musicengravingcontrols.com/Images/logo_white_small.png</PackageIconUrl>
+    <RepositoryUrl>https://bitbucket.org/Ajcek/manufakturalibraries</RepositoryUrl>
+    <PackageTags>asp.net core music notation</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
