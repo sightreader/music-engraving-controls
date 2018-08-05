@@ -1,4 +1,5 @@
 ﻿using Manufaktura.Controls.Model;
+using Manufaktura.Core;
 using Manufaktura.Music.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -45,6 +46,26 @@ namespace Manufaktura.UnitTests
             var halfNoteTimeSpan = RhythmicDuration.Half.ToTimeSpan(Tempo.Allegro);
             var wholeNoteTimeSpan = RhythmicDuration.Whole.ToTimeSpan(Tempo.Adagio);
             Assert.IsFalse (halfNoteTimeSpan + halfNoteTimeSpan == wholeNoteTimeSpan);
+        }
+
+        [TestMethod]
+        public void ResetableLazyTest()
+        {
+            var random = new Random();
+            var resetableLazy = new ResetableLazy<int>(() => random.Next(int.MaxValue));
+            var val1 = resetableLazy.Value;
+            var val2 = resetableLazy.Value;
+            Assert.AreEqual(val1, val2);
+            resetableLazy.Reset();
+            var val3 = resetableLazy.Value;
+            Assert.AreNotEqual(val1, val3);
+            Assert.AreNotEqual(val2, val3);
+
+            int val4 = int.MinValue;
+            var task = Task.Factory.StartNew(() => { val4 = resetableLazy.Value; });
+            resetableLazy.Reset();
+            task.Wait();
+            Assert.AreNotEqual(val3, val4);
         }
 
     }

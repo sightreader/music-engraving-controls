@@ -115,6 +115,10 @@
       <Project>{6e5f23b8-7b4b-45a2-886e-bb1b99a96968}</Project>
       <Name>Manufaktura.Core.Serialization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Core\Manufaktura.Core.csproj">
+      <Project>{486A9D05-703E-4ADE-A7A8-610D68358F3C}</Project>
+      <Name>Manufaktura.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
       <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
       <Name>Manufaktura.Music</Name>
