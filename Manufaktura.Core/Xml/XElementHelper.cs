@@ -12,24 +12,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Xml.Linq;
 
-namespace Manufaktura.Music.Xml
+namespace Manufaktura.Core.Xml
 {
-	public interface IXHelper
-	{
-		XHelperExistsResult Exists();
+    public class XElementHelper : XHelperBase
+    {
+        private XElement element;
 
-		XHelperHasValueResult<string> HasAnyValue();
+        internal XElementHelper(XElement element)
+        {
+            this.element = element;
+        }
 
-		XHelperHasValueResult<T> HasValue<T>(Dictionary<string, T> values);
+        protected override bool ElementExists()
+        {
+            return element != null;
+        }
 
-		XHelperHasValueResult<T> HasValue<T>(Func<Dictionary<string, T>, Dictionary<string, T>> valueFactory);
+        protected override string GetValue()
+        {
+            return element?.Value;
+        }
 
-		XHelperHasValueResult<T> HasValue<T>() where T : struct;
-
-		XHelperHasValueResult<string> HasValue(string s);
-	}
+        protected override object GetObject()
+        {
+            return element;
+        }
+    }
 }

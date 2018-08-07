@@ -14,7 +14,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 using System;
 
-namespace Manufaktura.Music.Xml
+namespace Manufaktura.Core.Xml
 {
 	public class XHelperHasValueResult<T> : IXHelperResult<T>
 	{

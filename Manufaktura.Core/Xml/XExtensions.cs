@@ -16,7 +16,7 @@ using System;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Manufaktura.Music.Xml
+namespace Manufaktura.Core.Xml
 {
     public static class XExtensions
     {

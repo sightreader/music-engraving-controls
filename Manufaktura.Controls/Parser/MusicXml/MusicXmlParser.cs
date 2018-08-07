@@ -19,7 +19,7 @@ using Manufaktura.Controls.Model.Exceptions;
 using Manufaktura.Controls.Parser.MusicXml;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Music.Model;
-using Manufaktura.Music.Xml;
+using Manufaktura.Core.Xml;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -16,7 +16,7 @@ using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Builders;
 using Manufaktura.Controls.Model.Exceptions;
 using Manufaktura.Music.Model;
-using Manufaktura.Music.Xml;
+using Manufaktura.Core.Xml;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
