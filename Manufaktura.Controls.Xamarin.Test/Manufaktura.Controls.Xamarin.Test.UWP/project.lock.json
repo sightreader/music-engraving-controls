@@ -2202,12 +2202,12 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.targets": {}
         }
       },
-      "Manufaktura.Controls/1.0.0": {
+      "Manufaktura.Controls/1.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.0",
-          "Manufaktura.Music": "1.0.0",
+          "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -2234,7 +2234,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.0.0": {
+      "Manufaktura.Music/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -4628,12 +4628,12 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.targets": {}
         }
       },
-      "Manufaktura.Controls/1.0.0": {
+      "Manufaktura.Controls/1.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.0",
-          "Manufaktura.Music": "1.0.0",
+          "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -4660,7 +4660,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.0.0": {
+      "Manufaktura.Music/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -7079,12 +7079,12 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.targets": {}
         }
       },
-      "Manufaktura.Controls/1.0.0": {
+      "Manufaktura.Controls/1.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.0",
-          "Manufaktura.Music": "1.0.0",
+          "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -7111,7 +7111,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.0.0": {
+      "Manufaktura.Music/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -9512,12 +9512,12 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.targets": {}
         }
       },
-      "Manufaktura.Controls/1.0.0": {
+      "Manufaktura.Controls/1.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.0",
-          "Manufaktura.Music": "1.0.0",
+          "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -9544,7 +9544,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.0.0": {
+      "Manufaktura.Music/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -11963,12 +11963,12 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.targets": {}
         }
       },
-      "Manufaktura.Controls/1.0.0": {
+      "Manufaktura.Controls/1.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.0",
-          "Manufaktura.Music": "1.0.0",
+          "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -11995,7 +11995,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.0.0": {
+      "Manufaktura.Music/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -14396,12 +14396,12 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.targets": {}
         }
       },
-      "Manufaktura.Controls/1.0.0": {
+      "Manufaktura.Controls/1.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.0",
-          "Manufaktura.Music": "1.0.0",
+          "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -14428,7 +14428,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.0.0": {
+      "Manufaktura.Music/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -16847,12 +16847,12 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.targets": {}
         }
       },
-      "Manufaktura.Controls/1.0.0": {
+      "Manufaktura.Controls/1.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.0",
-          "Manufaktura.Music": "1.0.0",
+          "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -16879,7 +16879,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.0.0": {
+      "Manufaktura.Music/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -22809,7 +22809,7 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "Manufaktura.Controls/1.0.0": {
+    "Manufaktura.Controls/1.4.0": {
       "type": "project",
       "path": "../../Manufaktura.Controls/Manufaktura.Controls.csproj",
       "msbuildProject": "../../Manufaktura.Controls/Manufaktura.Controls.csproj"
@@ -22829,7 +22829,7 @@
       "path": "../../Manufaktura.Core/Manufaktura.Core.csproj",
       "msbuildProject": "../../Manufaktura.Core/Manufaktura.Core.csproj"
     },
-    "Manufaktura.Music/1.0.0": {
+    "Manufaktura.Music/1.1.0": {
       "type": "project",
       "path": "../../Manufaktura.Music/Manufaktura.Music.csproj",
       "msbuildProject": "../../Manufaktura.Music/Manufaktura.Music.csproj"
