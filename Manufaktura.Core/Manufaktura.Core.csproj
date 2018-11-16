@@ -11,6 +11,8 @@
     <PackageTags>.net music notation controls</PackageTags>
     <Description>Base class library for Manufaktura.Controls</Description>
     <Copyright>Manufaktura programów Jacek Salamon 2018</Copyright>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Minor changes</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>

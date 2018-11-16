@@ -2237,7 +2237,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.0",
+          "Manufaktura.Core": "1.0.1",
           "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -2262,7 +2262,7 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
-      "Manufaktura.Core/1.0.0": {
+      "Manufaktura.Core/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -4706,7 +4706,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.0",
+          "Manufaktura.Core": "1.0.1",
           "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -4731,7 +4731,7 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
-      "Manufaktura.Core/1.0.0": {
+      "Manufaktura.Core/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -7194,7 +7194,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.0",
+          "Manufaktura.Core": "1.0.1",
           "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -7219,7 +7219,7 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
-      "Manufaktura.Core/1.0.0": {
+      "Manufaktura.Core/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -9672,7 +9672,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.0",
+          "Manufaktura.Core": "1.0.1",
           "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -9697,7 +9697,7 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
-      "Manufaktura.Core/1.0.0": {
+      "Manufaktura.Core/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -12160,7 +12160,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.0",
+          "Manufaktura.Core": "1.0.1",
           "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -12185,7 +12185,7 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
-      "Manufaktura.Core/1.0.0": {
+      "Manufaktura.Core/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -14638,7 +14638,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.0",
+          "Manufaktura.Core": "1.0.1",
           "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -14663,7 +14663,7 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
-      "Manufaktura.Core/1.0.0": {
+      "Manufaktura.Core/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -17126,7 +17126,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.0",
+          "Manufaktura.Core": "1.0.1",
           "Manufaktura.Music": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -17151,7 +17151,7 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
         }
       },
-      "Manufaktura.Core/1.0.0": {
+      "Manufaktura.Core/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -23236,7 +23236,7 @@
       "path": "../Manufaktura.Controls.UniversalApps.Media/project.json",
       "msbuildProject": "../Manufaktura.Controls.UniversalApps.Media/Manufaktura.Controls.UniversalApps.Media.csproj"
     },
-    "Manufaktura.Core/1.0.0": {
+    "Manufaktura.Core/1.0.1": {
       "type": "project",
       "path": "../Manufaktura.Core/Manufaktura.Core.csproj",
       "msbuildProject": "../Manufaktura.Core/Manufaktura.Core.csproj"
