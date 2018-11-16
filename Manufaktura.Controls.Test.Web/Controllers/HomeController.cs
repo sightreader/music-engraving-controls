@@ -1,6 +1,9 @@
 ﻿using Manufaktura.Controls.Linq;
+using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.SMuFL;
 using Manufaktura.Controls.Test.Web.Models;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Manufaktura.Controls.Test.Web.Controllers
@@ -28,6 +31,10 @@ namespace Manufaktura.Controls.Test.Web.Controllers
             //var serverPath = Server.MapPath("~/Content/0014 Larum w obozie.xml");
             //var serverPath = Server.MapPath("~/Content/Dzidzm.xml");
             vm.SampleScore = System.IO.File.ReadAllText(serverPath).ToScore();
+            foreach (var note in vm.SampleScore.FirstStaff.Elements.OfType<Note>().Take(5))
+            {
+                note.CustomColor = Color.Red;
+            }
             return View(vm);
         }
 

@@ -193,7 +193,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             var element = new XElement("text",
                new XAttribute("x", location.X.ToStringInvariant()),
                new XAttribute("y", location.Y.ToStringInvariant()),
-               new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt; font-family: {2};",
+               new XAttribute("style", string.Format("fill:{0}; font-size:{1}pt; font-family: {2};",
                    color.ToCss(),
                    TypedSettings.Fonts[fontStyle].Size.ToStringInvariant(),
                    TypedSettings.Fonts[fontStyle].Name)),

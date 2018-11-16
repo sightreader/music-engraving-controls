@@ -45,7 +45,7 @@ namespace Manufaktura.Controls.Rendering.Implementations
             var element = new XElement("text",
                new XAttribute("x", position.X.ToStringInvariant()),
                new XAttribute("y", position.Y.ToStringInvariant()),
-               new XAttribute("style", string.Format("font-color:{0}; font-size:{1}pt;",
+               new XAttribute("style", string.Format("fill:{0}; font-size:{1}pt;",
                    Control.AxisLinePen.Color.ToCss(),
                    Control.AxisLabelFontSize.ToStringInvariant())));
             element.Value = axisName;
