@@ -14,6 +14,8 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 
 using System;
+using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Controls.Rendering;
 
 namespace Manufaktura.Controls.Model.Fonts
 {
@@ -90,6 +92,7 @@ namespace Manufaktura.Controls.Model.Fonts
         public char RestQuarter => 'Q';
         public char RestSixteenth => 'S';
         public char RestWhole => 'W';
+        public char RestMultimeasure => 'W';
         public char Sharp => 'X';
         public char SquareBracketLeft => '[';
         public char Staff4Lines => '_';
@@ -101,5 +104,15 @@ namespace Manufaktura.Controls.Model.Fonts
         public string BuildTimeSignature(int number) => Convert.ToString(number);
 
         public string BuildTupletNumber(int number) => Convert.ToString(number);
+
+        public double GetTupletNumberWidthLs(ISMuFLFontMetadata metadata, int number)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

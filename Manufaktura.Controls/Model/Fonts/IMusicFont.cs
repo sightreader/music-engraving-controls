@@ -13,6 +13,9 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Controls.Rendering;
+
 namespace Manufaktura.Controls.Model.Fonts
 {
     /// <summary>
@@ -25,6 +28,10 @@ namespace Manufaktura.Controls.Model.Fonts
         string BuildTupletNumber(int number);
 
         string BuildTimeSignature(int number);
+
+        double GetTupletNumberWidthLs(ISMuFLFontMetadata metadata, int number);
+
+        double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number);
 
         /// <summary>
         /// Dot character
@@ -158,6 +165,7 @@ namespace Manufaktura.Controls.Model.Fonts
         char RestQuarter { get; }
         char RestSixteenth { get; }
         char RestWhole { get; }
+        char RestMultimeasure { get; }
         char Sharp { get; }
         char SquareBracketLeft { get; }
         char Staff4Lines { get; }
@@ -165,5 +173,7 @@ namespace Manufaktura.Controls.Model.Fonts
         char Staff5Lines { get; }
 
         char Trill { get; }
+
+
     }
 }

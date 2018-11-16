@@ -13,8 +13,10 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using Manufaktura.Controls.Model.Assertions;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
+using Manufaktura.Controls.Rendering;
 using Manufaktura.Core.Serialization;
 using Newtonsoft.Json;
 using Polenter.Serialization;
@@ -131,6 +133,7 @@ namespace Manufaktura.Controls.SMuFL
         public char RestQuarter => '\uE4E5';
         public char RestSixteenth => '\uE4E7';
         public char RestWhole => '\uE4E3';
+        public char RestMultimeasure => SMuFLGlyphs.Instance.RestHBar.Character;
         public char Sharp => '\uE262';
         public char SquareBracketLeft => SMuFLGlyphs.Instance.Bracket.Character;
         public char Staff4Lines => throw new NotImplementedException();
@@ -229,6 +232,42 @@ namespace Manufaktura.Controls.SMuFL
                 if (digit == '9') sb.Append(SMuFLGlyphs.Instance.Tuplet9.Character);
             }
             return sb.ToString();
+        }
+
+        [Units(Units.Linespaces)]
+        public double GetTupletNumberWidthLs(ISMuFLFontMetadata metadata, int number)
+        {
+            if (metadata == null) return 0;
+
+            double width = 0;
+            var digits = number.ToString();
+            foreach (var digit in digits)
+            {
+                var bounds = GetTupletNumberBoundingBox(metadata, digit);
+                width += bounds.BBoxNe[0] - bounds.BBoxSw[0];
+            }
+            return width;
+        }
+
+        [Units(Units.Pixels)]
+        public double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number)
+        {
+            return renderer.LinespacesToPixels(GetTupletNumberWidthLs(renderer.Settings.MusicFontProfile.SMuFLMetadata, number));
+        }
+
+        private BoundingBox GetTupletNumberBoundingBox(ISMuFLFontMetadata metadata, char digit)
+        {
+            if (digit == '0') return metadata.GlyphBBoxes.Tuplet0;
+            if (digit == '1') return metadata.GlyphBBoxes.Tuplet1;
+            if (digit == '2') return metadata.GlyphBBoxes.Tuplet2;
+            if (digit == '3') return metadata.GlyphBBoxes.Tuplet3;
+            if (digit == '4') return metadata.GlyphBBoxes.Tuplet4;
+            if (digit == '5') return metadata.GlyphBBoxes.Tuplet5;
+            if (digit == '6') return metadata.GlyphBBoxes.Tuplet6;
+            if (digit == '7') return metadata.GlyphBBoxes.Tuplet7;
+            if (digit == '8') return metadata.GlyphBBoxes.Tuplet8;
+            if (digit == '9') return metadata.GlyphBBoxes.Tuplet9;
+            throw new Exception($"Character {digit} is not a digit.");
         }
     }
 }

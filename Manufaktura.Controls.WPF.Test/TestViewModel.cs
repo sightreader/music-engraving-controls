@@ -30,11 +30,16 @@ namespace Manufaktura.Controls.WPF.Test
 
         public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
         {
-
-
             var mScore = Score.CreateOneStaffScore(Clef.Treble, Music.Model.MajorAndMinor.MajorScale.G);
 
             mScore.FirstStaff.AddTimeSignature(TimeSignatureType.Numbers, 4, 4);
+
+            mScore.FirstStaff.Add(new Rest(24));
+            mScore.FirstStaff.AddBarline(BarlineStyle.Regular);
+
+            mScore.FirstStaff.Add(new Rest(9));
+            mScore.FirstStaff.AddBarline(BarlineStyle.Regular);
+
             mScore.FirstStaff.AddNote(Pitch.G4, RhythmicDuration.Half);
             mScore.FirstStaff.Add(new Rest(RhythmicDuration.Quarter));
             mScore.FirstStaff.AddNote(Pitch.FromMidiPitch(60, Pitch.MidiPitchTranslationMode.Auto), RhythmicDuration.Half);
