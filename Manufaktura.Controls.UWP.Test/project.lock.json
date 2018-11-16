@@ -2233,7 +2233,7 @@
           }
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -2248,7 +2248,7 @@
         "framework": "UAP,Version=v10.0.10240",
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "Manufaktura.Controls": "1.4.0",
+          "Manufaktura.Controls": "1.4.1",
           "Manufaktura.Music": "1.1.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
         }
@@ -4702,7 +4702,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -4717,7 +4717,7 @@
         "framework": "UAP,Version=v10.0.10240",
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "Manufaktura.Controls": "1.4.0",
+          "Manufaktura.Controls": "1.4.1",
           "Manufaktura.Music": "1.1.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
         }
@@ -7190,7 +7190,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -7205,7 +7205,7 @@
         "framework": "UAP,Version=v10.0.10240",
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "Manufaktura.Controls": "1.4.0",
+          "Manufaktura.Controls": "1.4.1",
           "Manufaktura.Music": "1.1.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
         }
@@ -9668,7 +9668,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -9683,7 +9683,7 @@
         "framework": "UAP,Version=v10.0.10240",
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "Manufaktura.Controls": "1.4.0",
+          "Manufaktura.Controls": "1.4.1",
           "Manufaktura.Music": "1.1.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
         }
@@ -12156,7 +12156,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -12171,7 +12171,7 @@
         "framework": "UAP,Version=v10.0.10240",
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "Manufaktura.Controls": "1.4.0",
+          "Manufaktura.Controls": "1.4.1",
           "Manufaktura.Music": "1.1.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
         }
@@ -14634,7 +14634,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -14649,7 +14649,7 @@
         "framework": "UAP,Version=v10.0.10240",
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "Manufaktura.Controls": "1.4.0",
+          "Manufaktura.Controls": "1.4.1",
           "Manufaktura.Music": "1.1.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
         }
@@ -17122,7 +17122,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -17137,7 +17137,7 @@
         "framework": "UAP,Version=v10.0.10240",
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
-          "Manufaktura.Controls": "1.4.0",
+          "Manufaktura.Controls": "1.4.1",
           "Manufaktura.Music": "1.1.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6"
         }
@@ -23221,7 +23221,7 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Manufaktura.Controls/1.4.0": {
+    "Manufaktura.Controls/1.4.1": {
       "type": "project",
       "path": "../Manufaktura.Controls/Manufaktura.Controls.csproj",
       "msbuildProject": "../Manufaktura.Controls/Manufaktura.Controls.csproj"

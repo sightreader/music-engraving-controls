@@ -2171,7 +2171,7 @@
           }
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -4566,7 +4566,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -6980,7 +6980,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -9384,7 +9384,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -11798,7 +11798,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -14202,7 +14202,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -16616,7 +16616,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.0": {
+      "Manufaktura.Controls/1.4.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -22562,7 +22562,7 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Manufaktura.Controls/1.4.0": {
+    "Manufaktura.Controls/1.4.1": {
       "type": "project",
       "path": "../Manufaktura.Controls/Manufaktura.Controls.csproj",
       "msbuildProject": "../Manufaktura.Controls/Manufaktura.Controls.csproj"
