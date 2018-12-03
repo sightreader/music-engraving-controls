@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <!--*-->
+    <id>1.0.1</id>
+    <!--*-->
+    <version>$version$</version>
+    <title></title>
+    <!--*-->
+    <authors>Manufaktura programów Jacek Salamon</authors>
+    <owners>$author$</owners>
+    <!--
+    <licenseUrl></licenseUrl>
+-->
+    <projectUrl>http://musicengravingcontrols.com/</projectUrl>
+    <iconUrl>http://manufaktura-programow.pl/Images/ManufakturaSmaller.png</iconUrl>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--*-->
+    <description>Components for desktop applications, such as MIDI player.</description>
+    <!--*-->
+    <releaseNotes> </releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags> </tags>
+    <dependencies>
+      <!--
+      <dependency id="SampleDependency" version="1.0" />
+-->
+    </dependencies>
+  </metadata>
+</package>
