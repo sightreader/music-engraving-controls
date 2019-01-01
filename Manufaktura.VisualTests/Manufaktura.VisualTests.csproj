@@ -39,6 +39,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
@@ -54,6 +55,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Providers\FileTestScoreProvider.cs" />
+    <Compile Include="Providers\ITestScoreProvider.cs" />
+    <Compile Include="Providers\PlaineAndEasieTestScoreProvider.cs" />
     <Compile Include="Renderers\IVisualTestRenderer.cs" />
     <Compile Include="Renderers\VisualTestRenderer.cs" />
     <Compile Include="Renderers\WpfTestRenderer.cs" />

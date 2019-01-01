@@ -1,4 +1,5 @@
-﻿using Manufaktura.VisualTests.Renderers;
+﻿using Manufaktura.VisualTests.Providers;
+using Manufaktura.VisualTests.Renderers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,9 @@ namespace Manufaktura.VisualTests
             var tests = CreatePathDictionary();
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
 
-            new WpfTestRenderer(testPath).GenerateImages(firstNotAcceptedTest);
+            var renderDate = DateTime.Now;
+            var outputPath = Path.Combine(firstNotAcceptedTest, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
+            new WpfTestRenderer(new FileTestScoreProvider(testPath)).GenerateImages(firstNotAcceptedTest, outputPath);
         }
 
         private Dictionary<DateTime, string> CreatePathDictionary ()

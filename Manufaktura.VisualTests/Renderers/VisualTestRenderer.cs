@@ -1,4 +1,6 @@
-﻿using Manufaktura.Controls.Rendering;
+﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Rendering;
+using Manufaktura.VisualTests.Providers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,28 +9,24 @@ namespace Manufaktura.VisualTests.Renderers
 {
     public abstract class VisualTestRenderer : IVisualTestRenderer
     {
-        private string testPath;
+        private readonly ITestScoreProvider scoreProvider;
 
-        protected VisualTestRenderer(string testPath)
+        protected VisualTestRenderer(ITestScoreProvider scoreProvider)
         {
-            this.testPath = testPath;
+            this.scoreProvider = scoreProvider;
         }
 
         public List<Exception> RenderExceptions { get; private set; } = new List<Exception>();
 
-        public void GenerateImages(string pathToCompare)
+        public void GenerateImages(string pathToCompare, string outputPath)
         {
-            var renderDate = DateTime.Now;
-            var scorePath = Path.Combine(testPath, "Scores");
-            var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
             if (!Directory.Exists(outputPath)) Directory.CreateDirectory(outputPath);
 
-            foreach (var file in Directory.EnumerateFiles(scorePath))
+            foreach (var scoreInfo in scoreProvider.EnumerateScores())
             {
                 try
                 {
-                    RenderImage(File.ReadAllText(file), Path.GetFileName(file), outputPath, ScoreRenderingModes.Panorama, pathToCompare);
-                    RenderImage(File.ReadAllText(file), Path.GetFileName(file), outputPath, ScoreRenderingModes.AllPages, pathToCompare);
+                    RenderImage(scoreInfo.Item2, scoreInfo.Item1, outputPath, scoreInfo.Item3, pathToCompare);
                 }
                 catch (OutOfMemoryException omex)
                 {
@@ -55,6 +53,6 @@ namespace Manufaktura.VisualTests.Renderers
             }
         }
 
-        protected abstract void RenderImage(string musicXml, string fileName, string outputPath, ScoreRenderingModes mode, string pathToCompare);
+        protected abstract void RenderImage(Score score, string fileName, string outputPath, ScoreRenderingModes mode, string pathToCompare);
     }
 }

@@ -1,5 +1,7 @@
-﻿using Manufaktura.Controls.Rendering;
+﻿using Manufaktura.Controls.Model;
+using Manufaktura.Controls.Rendering;
 using Manufaktura.Controls.WPF;
+using Manufaktura.VisualTests.Providers;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -12,18 +14,16 @@ namespace Manufaktura.VisualTests.Renderers
 {
     public class WpfTestRenderer : VisualTestRenderer
     {
-        public WpfTestRenderer(string testPath) : base(testPath)
+        public WpfTestRenderer(ITestScoreProvider scoreProvider) : base(scoreProvider)
         {
         }
 
-        protected override void RenderImage(string musicXml, string fileName, string outputPath, ScoreRenderingModes mode, string pathToCompare)
+        protected override void RenderImage(Score score, string imageFileName, string outputPath, ScoreRenderingModes mode, string pathToCompare)
         {
-            var newFileName = fileName.Replace(".xml", $"_{mode}.png");
-
             var noteViewer = new NoteViewer();
             noteViewer.RenderingMode = mode;
             noteViewer.IsOccupyingSpace = true;
-            noteViewer.XmlSource = musicXml;
+            noteViewer.ScoreSource = score;
 
             //Ustalamy orientacyjne wymiary i mierzymy kontrolkę, żeby uaktualniło się ActualWidth:
             noteViewer.Measure(new System.Windows.Size(double.MaxValue, double.MaxValue));
@@ -41,7 +41,7 @@ namespace Manufaktura.VisualTests.Renderers
                 drawingContext.DrawRectangle(System.Windows.Media.Brushes.White, null, new Rect(0, 0, newWidthX, newHeightY));
                 if (!string.IsNullOrWhiteSpace(pathToCompare))
                 {
-                    var oldVersion = Path.Combine(pathToCompare, newFileName);
+                    var oldVersion = Path.Combine(pathToCompare, imageFileName);
                     var tintedVersion = TintImage(oldVersion);
                     var tintedPath = Path.Combine(outputPath, Path.GetFileName(oldVersion).Replace(".png", "_TINT.png"));
                     tintedVersion.Save(tintedPath);
@@ -61,15 +61,13 @@ namespace Manufaktura.VisualTests.Renderers
             BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bmp));
 
-            var filePath = Path.Combine(outputPath, newFileName);
+            var filePath = Path.Combine(outputPath, imageFileName);
             using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {
                 encoder.Save(fs);
                 fs.Flush();
                 fs.Close();
             }
-
-
         }
 
         private Bitmap TintImage(string imagePath)
