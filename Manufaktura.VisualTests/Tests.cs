@@ -56,7 +56,7 @@ namespace Manufaktura.VisualTests
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
 
             var renderDate = DateTime.Now;
-            var outputPath = Path.Combine(firstNotAcceptedTest, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
+            var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
             new WpfTestRenderer(new FileTestScoreProvider(testPath)).GenerateImages(firstNotAcceptedTest, outputPath);
         }
 

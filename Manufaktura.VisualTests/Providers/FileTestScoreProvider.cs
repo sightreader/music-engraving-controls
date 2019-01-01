@@ -22,7 +22,7 @@ namespace Manufaktura.VisualTests.Providers
             foreach (var file in Directory.EnumerateFiles(scorePath))
             {
                 yield return new Tuple<string, Score, ScoreRenderingModes>(Path.GetFileName(file).Replace(".xml", $"_Panorama.png"), File.ReadAllText(file).ToScore(), ScoreRenderingModes.Panorama);
-                yield return new Tuple<string, Score, ScoreRenderingModes>(Path.GetFileName(file).Replace(".xml", $"AllPages.png"), File.ReadAllText(file).ToScore(), ScoreRenderingModes.AllPages);
+                yield return new Tuple<string, Score, ScoreRenderingModes>(Path.GetFileName(file).Replace(".xml", $"_AllPages.png"), File.ReadAllText(file).ToScore(), ScoreRenderingModes.AllPages);
             }
         }
     }
