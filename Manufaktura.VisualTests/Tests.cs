@@ -74,7 +74,9 @@ namespace Manufaktura.VisualTests
 
             var renderDate = DateTime.Now;
             var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
-            new WpfTestRenderer(new FileTestScoreProvider(testPath), new BravuraFontConfigurator()).GenerateImages(firstNotAcceptedTest, outputPath);
+            var fontConfigurator = new BravuraFontConfigurator();
+            new WpfTestRenderer(new FileTestScoreProvider(testPath), fontConfigurator).GenerateImages(firstNotAcceptedTest, outputPath);
+            new WpfTestRenderer(new PlaineAndEasieTestScoreProvider(), fontConfigurator).GenerateImages(firstNotAcceptedTest, outputPath);
         }
 
         private static Dictionary<DateTime, string> CreatePathDictionary(string testPath)
