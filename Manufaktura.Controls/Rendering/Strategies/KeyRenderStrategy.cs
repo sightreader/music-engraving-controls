@@ -39,7 +39,7 @@ namespace Manufaktura.Controls.Rendering
 
         public override void Render(Key element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
-            if (element.Fifths != 0 && element.Measure.Elements.FirstOrDefault() == element)
+            if (element.Fifths != 0 && element.Measure != null && element.Measure.Elements.FirstOrDefault() == element)
                 scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
 
             scoreService.CurrentKey = element;

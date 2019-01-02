@@ -3,6 +3,8 @@ using Manufaktura.Controls.Rendering;
 using Manufaktura.VisualTests.Providers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 
 namespace Manufaktura.VisualTests.Renderers
@@ -42,15 +44,26 @@ namespace Manufaktura.VisualTests.Renderers
                     throw;
                 }
             }
+        }
 
-            foreach (var file in Directory.EnumerateFiles(outputPath, "*TINT*"))
+        protected Bitmap TintImage(string imagePath)
+        {
+            var img = Image.FromFile(imagePath);
+            var bmp = new Bitmap(img.Width, img.Height, PixelFormat.Format16bppRgb555);
+            var gfx = Graphics.FromImage(bmp);
+
+            var ia = new ImageAttributes();
+            ia.SetColorMatrix(new ColorMatrix(new float[][]
             {
-                try
-                {
-                    File.Delete(file);
-                }
-                catch { }
-            }
+              new float[] {1, 0, 0, 0, 0},
+              new float[] {0, 1, 1, 0, 0},
+              new float[] {0, 0, 1, 0, 0},
+              new float[] {0, 0, 0, 1, 0},
+              new float[] {1, 0, 0, 0, 1}
+            }));
+            gfx.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+
+            return bmp;
         }
 
         protected abstract void RenderImage(Score score, string fileName, string outputPath, ScoreRenderingModes mode, string pathToCompare);

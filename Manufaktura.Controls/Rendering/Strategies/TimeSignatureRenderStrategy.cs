@@ -44,7 +44,7 @@ namespace Manufaktura.Controls.Rendering
         public override void Render(TimeSignature element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
             var topLinePosition = scoreService.CurrentLinePositions[0];
-            if (element.Measure.Elements.FirstOrDefault() == element)
+            if (element.Measure != null && element.Measure.Elements.FirstOrDefault() == element)
                 scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
 
             if (element.SignatureType != TimeSignatureType.Numbers)

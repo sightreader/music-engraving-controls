@@ -2,9 +2,6 @@
 using Manufaktura.Controls.Rendering;
 using Manufaktura.Controls.WPF;
 using Manufaktura.VisualTests.Providers;
-using System;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
 using System.Windows.Media;
@@ -14,19 +11,21 @@ namespace Manufaktura.VisualTests.Renderers
 {
     public class WpfTestRenderer : VisualTestRenderer
     {
+        private NoteViewer noteViewer = new NoteViewer();
+
         public WpfTestRenderer(ITestScoreProvider scoreProvider) : base(scoreProvider)
         {
         }
 
         protected override void RenderImage(Score score, string imageFileName, string outputPath, ScoreRenderingModes mode, string pathToCompare)
         {
-            var noteViewer = new NoteViewer();
+            noteViewer = new NoteViewer();
             noteViewer.RenderingMode = mode;
             noteViewer.IsOccupyingSpace = true;
             noteViewer.ScoreSource = score;
 
             //Ustalamy orientacyjne wymiary i mierzymy kontrolkę, żeby uaktualniło się ActualWidth:
-            noteViewer.Measure(new System.Windows.Size(double.MaxValue, double.MaxValue));
+            noteViewer.Measure(new Size(double.MaxValue, double.MaxValue));
             noteViewer.Arrange(new Rect(0, 0, double.MaxValue, double.MaxValue));
 
             int outputDpi = 200;
@@ -38,20 +37,33 @@ namespace Manufaktura.VisualTests.Renderers
             DrawingVisual drawingVisual = new DrawingVisual();
             using (DrawingContext drawingContext = drawingVisual.RenderOpen())
             {
-                drawingContext.DrawRectangle(System.Windows.Media.Brushes.White, null, new Rect(0, 0, newWidthX, newHeightY));
+                drawingContext.DrawRectangle(Brushes.White, null, new Rect(0, 0, newWidthX, newHeightY));
                 if (!string.IsNullOrWhiteSpace(pathToCompare))
                 {
                     var oldVersion = Path.Combine(pathToCompare, imageFileName);
-                    var tintedVersion = TintImage(oldVersion);
                     var tintedPath = Path.Combine(outputPath, Path.GetFileName(oldVersion).Replace(".png", "_TINT.png"));
-                    tintedVersion.Save(tintedPath);
-                    tintedVersion.Dispose();
+                    try
+                    {
+                        using (var tintedVersion = TintImage(oldVersion))
+                        {
+                            tintedVersion.Save(tintedPath);
+                        }
 
-                    BitmapImage resizedTintedImage = new BitmapImage();
-                    resizedTintedImage.BeginInit();
-                    resizedTintedImage.UriSource = new Uri(tintedPath);
-                    resizedTintedImage.EndInit();
-                    drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, resizedTintedImage.Width / (outputDpi / resizedTintedImage.DpiX), resizedTintedImage.Height / (outputDpi / resizedTintedImage.DpiY)));
+                        using (var stream = File.OpenRead(tintedPath))
+                        {
+                            var resizedTintedImage = new BitmapImage();
+                            resizedTintedImage.BeginInit();
+                            resizedTintedImage.CacheOption = BitmapCacheOption.OnLoad;
+                            resizedTintedImage.StreamSource = stream;
+                            resizedTintedImage.EndInit();
+                            drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, resizedTintedImage.Width / (outputDpi / resizedTintedImage.DpiX), resizedTintedImage.Height / (outputDpi / resizedTintedImage.DpiY)));
+                            stream.Close();
+                        }
+                    }
+                    finally
+                    {
+                        if (File.Exists(tintedPath)) File.Delete(tintedPath);
+                    }
                 }
             }
             bmp.Render(drawingVisual);
@@ -68,30 +80,6 @@ namespace Manufaktura.VisualTests.Renderers
                 fs.Flush();
                 fs.Close();
             }
-        }
-
-        private Bitmap TintImage(string imagePath)
-        {
-            var cm = new ColorMatrix(new float[][]
-            {
-              new float[] {1, 0, 0, 0, 0},
-              new float[] {0, 1, 1, 0, 0},
-              new float[] {0, 0, 1, 0, 0},
-              new float[] {0, 0, 0, 1, 0},
-              new float[] {1, 0, 0, 0, 1}
-            });
-
-            var img = System.Drawing.Image.FromFile(imagePath);
-            var ia = new ImageAttributes();
-            ia.SetColorMatrix(cm);
-
-            var bmp = new Bitmap(img.Width, img.Height);
-            var gfx = Graphics.FromImage(bmp);
-            var rect = new Rectangle(0, 0, img.Width, img.Height);
-
-            gfx.DrawImage(img, rect, 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
-
-            return bmp;
         }
     }
 }

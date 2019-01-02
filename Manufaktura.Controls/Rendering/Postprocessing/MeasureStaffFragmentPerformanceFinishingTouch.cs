@@ -19,7 +19,7 @@ namespace Manufaktura.Controls.Rendering.Postprocessing
             {
                 foreach (var staffFragment in system.Staves)
                 {
-                    var elementsOnThisFragment = staffFragment.Staff?.Elements?.Where(e => e.Measure.System == system).ToArray() ?? new MusicalSymbol[0];
+                    var elementsOnThisFragment = staffFragment.Staff?.Elements?.Where(e => e.Measure?.System == system).ToArray() ?? new MusicalSymbol[0];
                     if (elementsOnThisFragment.Length > 0)
                         staffFragment.ActualRenderingTime = TimeSpan.FromTicks(elementsOnThisFragment.Sum(e => e.ActualRenderingTime.Ticks));
                 }
