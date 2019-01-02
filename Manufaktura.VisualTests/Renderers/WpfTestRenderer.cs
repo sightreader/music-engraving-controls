@@ -1,6 +1,7 @@
 ﻿using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Rendering;
 using Manufaktura.Controls.WPF;
+using Manufaktura.VisualTests.Configurators;
 using Manufaktura.VisualTests.Providers;
 using System.IO;
 using System.Windows;
@@ -12,9 +13,11 @@ namespace Manufaktura.VisualTests.Renderers
     public class WpfTestRenderer : VisualTestRenderer
     {
         private NoteViewer noteViewer = new NoteViewer();
+        private readonly IFontConfigurator fontConfigurator;
 
-        public WpfTestRenderer(ITestScoreProvider scoreProvider) : base(scoreProvider)
+        public WpfTestRenderer(ITestScoreProvider scoreProvider, IFontConfigurator fontConfigurator) : base(scoreProvider)
         {
+            this.fontConfigurator = fontConfigurator;
         }
 
         protected override void RenderImage(Score score, string imageFileName, string outputPath, ScoreRenderingModes mode, string pathToCompare)
@@ -22,6 +25,7 @@ namespace Manufaktura.VisualTests.Renderers
             noteViewer = new NoteViewer();
             noteViewer.RenderingMode = mode;
             noteViewer.IsOccupyingSpace = true;
+            fontConfigurator.Configure(noteViewer);
             noteViewer.ScoreSource = score;
 
             //Ustalamy orientacyjne wymiary i mierzymy kontrolkę, żeby uaktualniło się ActualWidth:

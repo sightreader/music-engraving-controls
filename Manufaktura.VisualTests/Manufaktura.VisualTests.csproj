@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Manufaktura.VisualTests</RootNamespace>
     <AssemblyName>Manufaktura.VisualTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,14 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Reflection.DispatchProxy, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.DispatchProxy.4.5.1\lib\netstandard1.3\System.Reflection.DispatchProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.3.0\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -55,6 +64,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Configurators\BravuraFontConfigurator.cs" />
+    <Compile Include="Configurators\DefaultFontConfigurator.cs" />
+    <Compile Include="Configurators\DummyControl.xaml.cs">
+      <DependentUpon>DummyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configurators\IFontConfigurator.cs" />
     <Compile Include="Providers\FileTestScoreProvider.cs" />
     <Compile Include="Providers\ITestScoreProvider.cs" />
     <Compile Include="Providers\PlaineAndEasieTestScoreProvider.cs" />
@@ -65,6 +80,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls.SMuFL\Manufaktura.Controls.SMuFL.csproj">
+      <Project>{E2735603-0C7F-45D4-BBCC-BFABB992E26E}</Project>
+      <Name>Manufaktura.Controls.SMuFL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Controls.WPF\Manufaktura.Controls.WPF.csproj">
       <Project>{878452f2-698f-48f8-8ac1-bebfe55cfaf3}</Project>
       <Name>Manufaktura.Controls.WPF</Name>
@@ -73,12 +92,32 @@
       <Project>{aaa16095-ea86-4d51-8519-68c9d6c0322f}</Project>
       <Name>Manufaktura.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manufaktura.Core.Serialization\Manufaktura.Core.Serialization.csproj">
+      <Project>{6e5f23b8-7b4b-45a2-886e-bb1b99a96968}</Project>
+      <Name>Manufaktura.Core.Serialization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj">
       <Project>{610cdc2a-aac8-4c02-9a1b-7275d086b3d4}</Project>
       <Name>Manufaktura.Music</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Bravura.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\bravura_metadata.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Configurators\DummyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using Manufaktura.VisualTests.Providers;
+﻿using Manufaktura.VisualTests.Configurators;
+using Manufaktura.VisualTests.Providers;
 using Manufaktura.VisualTests.Renderers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -12,14 +13,13 @@ namespace Manufaktura.VisualTests
     [TestClass]
     public class Tests
     {
-        private const string testPath = @"D:\Dokumenty\Manufaktura programów\VisualTests";
-
         private DateTime lastAcceptedTestDateTime;
         private List<DateTime> testHistory = new List<DateTime>();
 
         [TestMethod]
         public void PerformVisualTests()
         {
+            var testPath = @"D:\Dokumenty\Manufaktura programów\VisualTests";
             UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
 
             AcceptTo(DateTime.MinValue);
@@ -52,15 +52,32 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2018, 4, 25, 19, 22, 00));    //Duży lifting triol
             AcceptTo(new DateTime(2018, 7, 22, 22, 05, 00));    //Problems with refreshing measures in manual note entering mode
 
-            var tests = CreatePathDictionary();
+            var tests = CreatePathDictionary(testPath);
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
 
             var renderDate = DateTime.Now;
             var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
-            new WpfTestRenderer(new FileTestScoreProvider(testPath)).GenerateImages(firstNotAcceptedTest, outputPath);
+            new WpfTestRenderer(new FileTestScoreProvider(testPath), new DefaultFontConfigurator()).GenerateImages(firstNotAcceptedTest, outputPath);
         }
 
-        private Dictionary<DateTime, string> CreatePathDictionary ()
+        [TestMethod]
+        public void PerformVisualTests_Bravura()
+        {
+            var testPath = @"D:\Dokumenty\Manufaktura programów\VisualTests_Bravura";
+            UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
+
+            AcceptTo(DateTime.MinValue);
+            AcceptTo(new DateTime(2019, 01, 02, 21, 30, 00));   //Initial state
+
+            var tests = CreatePathDictionary(testPath);
+            var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
+
+            var renderDate = DateTime.Now;
+            var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
+            new WpfTestRenderer(new FileTestScoreProvider(testPath), new BravuraFontConfigurator()).GenerateImages(firstNotAcceptedTest, outputPath);
+        }
+
+        private static Dictionary<DateTime, string> CreatePathDictionary(string testPath)
         {
             var dict = new Dictionary<DateTime, string>();
             foreach (var directory in Directory.EnumerateDirectories(testPath, "Test*"))
