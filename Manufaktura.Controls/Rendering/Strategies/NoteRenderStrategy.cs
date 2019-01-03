@@ -105,7 +105,7 @@ namespace Manufaktura.Controls.Rendering
             var chord = GetChord(element, scoreService.CurrentStaff);   //Chord or single note
 
             MakeSpaceForAccidentals(renderer, element, chord);                  //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
-            DrawNote(renderer, element, noteTextBlockPositionY, fontProfile);   //Draw an element / Rysuj nutę
+            DrawNotehead(renderer, element, noteTextBlockPositionY, fontProfile);   //Draw an element / Rysuj nutę
             DrawLedgerLines(renderer, element, noteTextBlockPositionY);         //Ledger lines / Linie dodane
             DrawStems(renderer, element, noteTextBlockPositionY, chord, fontProfile);        //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
             DrawFlagsAndTupletMarks(renderer, element);                         //Draw beams / Rysuj belki
@@ -398,10 +398,10 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
-        private void DrawNote(ScoreRendererBase renderer, Note element, double notePositionY, FontProfile fontProfile)
+        private void DrawNotehead(ScoreRendererBase renderer, Note element, double notePositionY, FontProfile fontProfile)
         {
             if (element.IsGraceNote || element.IsCueNote)
-                renderer.DrawCharacter(element.GetCharacter(fontProfile.MusicFont), MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX + 1, notePositionY, element);
+                renderer.DrawCharacter(element.GetCharacter(fontProfile.MusicFont), MusicFontStyles.GraceNoteFont, scoreService.CursorPositionX, notePositionY, element);
             else
                 renderer.DrawCharacter(element.GetCharacter(fontProfile.MusicFont), MusicFontStyles.MusicFont, scoreService.CursorPositionX, notePositionY, element);
 

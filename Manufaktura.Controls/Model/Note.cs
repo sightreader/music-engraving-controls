@@ -444,10 +444,28 @@ namespace Manufaktura.Controls.Model
             return IsGraceNote || IsCueNote ? 0.6 : 1.1;
         }
 
+        [Units(Units.Linespaces)]
+        public double GetNoteheadHeightLs(ScoreRendererBase renderer)
+        {
+            if (renderer.IsSMuFLFont)
+            {
+                if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1;
+                var bounds = GetSMuFLNoteheadBounds(this, renderer.Settings.MusicFontProfile.SMuFLMetadata);
+                return bounds.BBoxNe[1] - bounds.BBoxSw[1];
+            }
+            return IsGraceNote || IsCueNote ? 0.8 : 1;
+        }
+
         [Units(Units.Pixels)]
         public double GetNoteheadWidthPx(ScoreRendererBase renderer)
         {
             return renderer.LinespacesToPixels(GetNoteheadWidthLs(renderer));
+        }
+
+        [Units(Units.Pixels)]
+        public double GetNoteheadHeightPx(ScoreRendererBase renderer)
+        {
+            return renderer.LinespacesToPixels(GetNoteheadHeightLs(renderer));
         }
 
         /// <summary>
@@ -462,6 +480,14 @@ namespace Manufaktura.Controls.Model
         private static BoundingBox GetSMuFLNoteheadBounds(Note note, ISMuFLFontMetadata metadata)
         {
             var duration = note.BaseDuration;
+
+            if (note.GraceNoteType != GraceNoteType.None)
+            {
+                if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWholeSmall;
+                else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalfSmall;
+                else return metadata.GlyphBBoxes.NoteheadBlackSmall;
+            }
+
             switch (note.Size)
             {
                 case NoteOrRestSize.Full:
