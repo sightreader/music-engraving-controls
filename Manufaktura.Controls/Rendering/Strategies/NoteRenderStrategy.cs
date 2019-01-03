@@ -176,6 +176,7 @@ namespace Manufaktura.Controls.Rendering
         private static double GetNoteheadWidthPx(Note element, ScoreRendererBase renderer, double ratio = 1) =>
                     renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
 
+
         private static Note[] GetNotesUnderBeam(Note firstOrLastNote, Staff staff)
         {
             var notesUnderOneBeam = new List<Note>();
@@ -204,10 +205,52 @@ namespace Manufaktura.Controls.Rendering
             return notesUnderOneBeam.ToArray();
         }
 
+        private static ICanCalculateRenderedBounds[] GetElementsUnderBeam(Note firstOrLastNote, Staff staff)
+        {
+            var notesUnderOneBeam = new List<ICanCalculateRenderedBounds>();
+            if (firstOrLastNote.BeamList.Any() && firstOrLastNote.BeamList[0] == NoteBeamType.Start)
+            {
+                notesUnderOneBeam.Add(firstOrLastNote);
+                for (int i = staff.Elements.IndexOf(firstOrLastNote) + 1; i < staff.Elements.Count; i++)
+                {
+                    Note currentNote = staff.Elements[i] as Note;
+                    if (currentNote == null)
+                    {
+                        var el = staff.Elements[i] as ICanCalculateRenderedBounds;
+                        if (el != null) notesUnderOneBeam.Add(el);
+                        continue;
+                    }
+
+                    notesUnderOneBeam.Add(currentNote);
+                    if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.End) break;
+                }
+            }
+            else if (firstOrLastNote.BeamList.Any() && firstOrLastNote.BeamList[0] == NoteBeamType.End)
+            {
+                for (int i = staff.Elements.IndexOf(firstOrLastNote) - 1; i > 0; i--)
+                {
+                    Note currentNote = staff.Elements[i] as Note;
+                    if (currentNote == null)
+                    {
+                        var el = staff.Elements[i] as ICanCalculateRenderedBounds;
+                        if (el != null) notesUnderOneBeam.Add(el);
+                        continue;
+                    }
+
+                    notesUnderOneBeam.Add(currentNote);
+                    if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.Start) break;
+                }
+                notesUnderOneBeam.Add(firstOrLastNote);
+            }
+            return notesUnderOneBeam.ToArray();
+        }
+
         private double CalculateNotePositionY(Note element, ScoreRendererBase renderer)
         {
-            return scoreService.CurrentClef.TextBlockLocation.Y + Pitch.StepDistance(scoreService.CurrentClef.Pitch,
-                element.Pitch) * ((double)renderer.Settings.LineSpacing / 2.0f);
+            var stepDistanceFromClef = Pitch.StepDistance(scoreService.CurrentClef.Pitch, element.Pitch);
+            element.GoverningClef = scoreService.CurrentClef;
+            element.Line = element.GetLineInSpecificClef(element.GoverningClef);
+            return scoreService.CurrentClef.TextBlockLocation.Y + stepDistanceFromClef * ((double)renderer.Settings.LineSpacing / 2.0f);
         }
 
         private void DrawAccidentals(ScoreRendererBase renderer, Note element, double notePositionY, FontProfile fontProfile)
@@ -629,26 +672,28 @@ namespace Manufaktura.Controls.Rendering
                 if (element.StemDirection == VerticalDirection.Up) return CalculateNotePositionY(chord.Last(), renderer);
                 else return notePositionY;
             }
+
             var notesUnderBeam = GetNotesUnderBeam(element, scoreService.CurrentStaff);
             if (notesUnderBeam.Length > 2)
             {
-                var pitchDifferenceBetweenBounds = (notesUnderBeam.Last().MidiPitch - notesUnderBeam.First().MidiPitch);
-                if (pitchDifferenceBetweenBounds > 12) pitchDifferenceBetweenBounds = 12;
-                if (pitchDifferenceBetweenBounds < -12) pitchDifferenceBetweenBounds = -12;
+                var elementsUnderBeam = GetElementsUnderBeam(element, scoreService.CurrentStaff);
+                var lowestElementPos = elementsUnderBeam.Max(e => e is Note ? CalculateNotePositionY(e as Note, renderer) : e.GetBounds(renderer).SE.Y);    //TODO: Include clef change in CalculateNotePosition
+                var highestElementPos = elementsUnderBeam.Min(e => e is Note ? CalculateNotePositionY(e as Note, renderer) : e.GetBounds(renderer).NE.Y);   //TODO: Include clef change in CalculateNotePosition
+
+                //Previously I was counting the distance between midi pitches but it was misleading if clef changed under beam. Now I compare positions on lines.
+                var lineDistanceBetweenBounds = Math.Abs(notesUnderBeam.Last().Line - notesUnderBeam.First().Line); //Used only to add some slope
 
                 var isFirstNote = element == notesUnderBeam.First();
                 if (element.StemDirection == VerticalDirection.Down)
                 {
-                    var lowestPitch = notesUnderBeam.Min(n => n.MidiPitch);
-                    var lowerNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch < element.MidiPitch && n.MidiPitch == lowestPitch);
-                    if (lowerNote != null) return CalculateNotePositionY(lowerNote, renderer) + pitchDifferenceBetweenBounds * (isFirstNote ? 1 : -1);
+                    return lowestElementPos + lineDistanceBetweenBounds * (isFirstNote ? 2.4 : -2.4);
+                    
                 }
                 if (element.StemDirection == VerticalDirection.Up)
                 {
-                    var highestPitch = notesUnderBeam.Max(n => n.MidiPitch);
-                    var higherNote = notesUnderBeam.FirstOrDefault(n => n.MidiPitch > element.MidiPitch && n.MidiPitch == highestPitch);
-                    if (higherNote != null) return CalculateNotePositionY(higherNote, renderer) + pitchDifferenceBetweenBounds * (isFirstNote ? 1 : -1);
+                    return highestElementPos + lineDistanceBetweenBounds * (isFirstNote ? 2.4 : -2.4);
                 }
+                
             }
 
             if (renderer.IsSMuFLFont)

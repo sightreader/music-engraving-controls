@@ -1,20 +1,22 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Primitives;
+using Manufaktura.Controls.Rendering;
 using Manufaktura.Music.Model;
 
 namespace Manufaktura.Controls.Model
@@ -22,7 +24,7 @@ namespace Manufaktura.Controls.Model
     /// <summary>
     /// Represents a clef.
     /// </summary>
-    public class Clef : MusicalSymbol, IHasPitch, IRenderedAsTextBlock
+    public class Clef : MusicalSymbol, IHasPitch, IRenderedAsTextBlock, ICanCalculateRenderedBounds
     {
         private int line;
         private int octaveChange;
@@ -212,6 +214,47 @@ namespace Manufaktura.Controls.Model
                 else return currentClef;
             }
             else return new Clef(ClefType.GClef, 2);
+        }
+
+        public Quadrangle GetBounds(ScoreRendererBase renderer)
+        {
+            var baseline = TextBlockLocation.Y;
+            double upper = 0;
+            double lower = 0;
+            double left = 0;
+            double right = 0;
+            if (renderer.IsSMuFLFont)
+            {
+                switch (typeOfClef)
+                {
+                    case ClefType.GClef:
+                        upper = baseline - renderer.LinespacesToPixels( renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.GClef.BBoxNe[1]);
+                        lower = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.GClef.BBoxSw[1]);
+                        left = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.GClef.BBoxSw[0]);
+                        right = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.GClef.BBoxNe[0]);
+                        break;
+
+                    case ClefType.CClef:
+                        upper = baseline- renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.CClef.BBoxNe[1]);
+                        lower = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.CClef.BBoxSw[1]);
+                        left = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.CClef.BBoxSw[0]);
+                        right = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.CClef.BBoxNe[0]);
+                        break;
+
+                    case ClefType.FClef:
+                        upper = baseline- renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.FClef.BBoxNe[1]);
+                        lower = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.FClef.BBoxSw[1]);
+                        left = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.FClef.BBoxSw[0]);
+                        right = baseline - renderer.LinespacesToPixels(renderer.Settings.MusicFontProfile.SMuFLMetadata.GlyphBBoxes.FClef.BBoxNe[0]);
+                        break;
+                }
+            }
+            return new Quadrangle(
+             new Point(right, upper),
+             new Point(left, upper),
+             new Point(right, lower),
+             new Point(left, lower)
+         );
         }
 
         public char GetCharacter(IMusicFont font)

@@ -31,7 +31,7 @@ namespace Manufaktura.Controls.Model
     /// <summary>
     /// Represents a note.
     /// </summary>
-    public class Note : NoteOrRest, IHasPitch, ICanBeUpperMemberOfChord
+    public class Note : NoteOrRest, IHasPitch, ICanBeUpperMemberOfChord, ICanCalculateRenderedBounds
     {
         private ArticulationType articulation = ArticulationType.None;
 
@@ -134,7 +134,6 @@ namespace Manufaktura.Controls.Model
         public double ActualStemLength { get { return Math.Abs(StemEndLocation.Y - TextBlockLocation.Y); } }
 
         public int Alter { get { return pitch.Alter; } }
-
         public ArticulationType Articulation { get { return articulation; } set { articulation = value; OnPropertyChanged(); } }
 
         public VerticalPlacement ArticulationPlacement
@@ -168,6 +167,8 @@ namespace Manufaktura.Controls.Model
             }
         }
 
+        public Clef GoverningClef { get; internal set; }
+
         public GraceNoteType GraceNoteType
         {
             get
@@ -199,7 +200,6 @@ namespace Manufaktura.Controls.Model
         /// Indicates that the note is grace note.
         /// </summary>
         public bool IsGraceNote { get { return graceNoteType != GraceNoteType.None; } }
-
         public bool IsUnpitched { get; set; }
 
         /// <summary>
@@ -207,10 +207,9 @@ namespace Manufaktura.Controls.Model
         /// </summary>
         public bool IsUpperMemberOfChord { get { return isChordElement; } set { isChordElement = value; OnPropertyChanged(); } }
 
+        public double Line { get; internal set; }
         public LyricsCollection Lyrics { get { return lyrics; } private set { lyrics = value; } }
-
         public int MidiPitch { get { return pitch.MidiPitch; } }
-
         public RebeamMode? ModeUsedForRebeaming { get; internal set; }
 
         /// <summary>
@@ -236,11 +235,8 @@ namespace Manufaktura.Controls.Model
         }
 
         public List<Slur> Slurs { get; } = new List<Slur>();
-
         public double StemDefaultY { get { return stemDefaultY; } set { stemDefaultY = value; } }
-
         public VerticalDirection StemDirection { get { return stemDirection; } set { stemDirection = value; OnPropertyChanged(); } }
-
         public Point StemEndLocation { get { return stemEndLocation; } set { stemEndLocation = value; OnPropertyChanged(); } }
 
         /// <summary>
@@ -382,7 +378,6 @@ namespace Manufaktura.Controls.Model
             var stepDistance = (double)Pitch.StepDistance(this, clef);
             return clef.Line + (stepDistance / 2);
         }
-
         public char GetNoteFlagCharacter(IMusicFont font, bool isReverse)
         {
             if (BaseDuration == RhythmicDuration.Eighth) return isReverse ? font.NoteFlagEighthRev : font.NoteFlagEighth;
@@ -393,21 +388,49 @@ namespace Manufaktura.Controls.Model
             else return '\0';
         }
 
-        public double GetStemOriginY(ISMuFLFontMetadata metadata)
+        [Units(Units.Linespaces)]
+        public double GetNoteheadHeightLs(ScoreRendererBase renderer)
         {
-            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag8ThUp.StemUpSe?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag16ThUp.StemUpSe?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag32NdUp.StemUpSe?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag64ThUp.StemUpSe?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag128ThUp.StemUpSe?[1] ?? 0;
+            if (renderer.IsSMuFLFont)
+            {
+                if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1;
+                var bounds = GetSMuFLNoteheadBounds(Size, IsGraceNote, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
+                return bounds.BBoxNe[1] - bounds.BBoxSw[1];
+            }
+            return IsGraceNote || IsCueNote ? 0.8 : 1;
+        }
 
-            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag8ThDown.StemDownNw?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag16ThDown.StemDownNw?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag32NdDown.StemDownNw?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag64ThDown.StemDownNw?[1] ?? 0;
-            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag128ThDown.StemDownNw?[1] ?? 0;
+        [Units(Units.Pixels)]
+        public double GetNoteheadHeightPx(ScoreRendererBase renderer)
+        {
+            return renderer.LinespacesToPixels(GetNoteheadHeightLs(renderer));
+        }
 
-            return 0;
+        [Units(Units.Linespaces)]
+        public double GetNoteheadWidthLs(ScoreRendererBase renderer)
+        {
+            if (renderer.IsSMuFLFont)
+            {
+                if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1.18;
+                var bounds = GetSMuFLNoteheadBounds(Size, IsGraceNote, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
+                var width = bounds.BBoxNe[0] - bounds.BBoxSw[0];
+
+                if (IsGraceNote || Size == NoteOrRestSize.Cue)
+                {
+                    var fullSizeBounds = GetSMuFLNoteheadBounds(NoteOrRestSize.Full, false, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
+                    var fullSizeWidth = fullSizeBounds.BBoxNe[0] - fullSizeBounds.BBoxSw[0];
+                    var isMetadataBroken = width > fullSizeWidth;
+                    if (isMetadataBroken) return fullSizeWidth * 0.8;
+                }
+                return width;
+            }
+            return IsGraceNote || IsCueNote ? 0.6 : 1.1;
+        }
+
+        [Units(Units.Pixels)]
+        public double GetNoteheadWidthPx(ScoreRendererBase renderer)
+        {
+            return renderer.LinespacesToPixels(GetNoteheadWidthLs(renderer));
         }
 
         public double GetStemEndY(ISMuFLFontMetadata metadata)
@@ -432,49 +455,21 @@ namespace Manufaktura.Controls.Model
             return Math.Abs(metadata.GlyphBBoxes.Stem.BBoxNe[1] - metadata.GlyphBBoxes.Stem.BBoxSw[1]);
         }
 
-        [Units(Units.Linespaces)]
-        public double GetNoteheadWidthLs(ScoreRendererBase renderer)
+        public double GetStemOriginY(ISMuFLFontMetadata metadata)
         {
-            if (renderer.IsSMuFLFont)
-            {
-                if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1.18;
-                var bounds = GetSMuFLNoteheadBounds(Size, IsGraceNote, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
-                var width = bounds.BBoxNe[0] - bounds.BBoxSw[0];
+            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag8ThUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag16ThUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag32NdUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag64ThUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag128ThUp.StemUpSe?[1] ?? 0;
 
-                if (IsGraceNote || Size == NoteOrRestSize.Cue)
-                {
-                    var fullSizeBounds = GetSMuFLNoteheadBounds(NoteOrRestSize.Full, false, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
-                    var fullSizeWidth = fullSizeBounds.BBoxNe[0] - fullSizeBounds.BBoxSw[0];
-                    var isMetadataBroken = width > fullSizeWidth;
-                    if (isMetadataBroken) return fullSizeWidth * 0.8;
-                }
-                return width;
-            }
-            return IsGraceNote || IsCueNote ? 0.6 : 1.1;
-        }
+            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag8ThDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag16ThDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag32NdDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag64ThDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag128ThDown.StemDownNw?[1] ?? 0;
 
-        [Units(Units.Linespaces)]
-        public double GetNoteheadHeightLs(ScoreRendererBase renderer)
-        {
-            if (renderer.IsSMuFLFont)
-            {
-                if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1;
-                var bounds = GetSMuFLNoteheadBounds(Size, IsGraceNote, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
-                return bounds.BBoxNe[1] - bounds.BBoxSw[1];
-            }
-            return IsGraceNote || IsCueNote ? 0.8 : 1;
-        }
-
-        [Units(Units.Pixels)]
-        public double GetNoteheadWidthPx(ScoreRendererBase renderer)
-        {
-            return renderer.LinespacesToPixels(GetNoteheadWidthLs(renderer));
-        }
-
-        [Units(Units.Pixels)]
-        public double GetNoteheadHeightPx(ScoreRendererBase renderer)
-        {
-            return renderer.LinespacesToPixels(GetNoteheadHeightLs(renderer));
+            return 0;
         }
 
         /// <summary>
