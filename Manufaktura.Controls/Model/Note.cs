@@ -438,8 +438,17 @@ namespace Manufaktura.Controls.Model
             if (renderer.IsSMuFLFont)
             {
                 if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1.18;
-                var bounds = GetSMuFLNoteheadBounds(this, renderer.Settings.MusicFontProfile.SMuFLMetadata);
-                return bounds.BBoxNe[0] - bounds.BBoxSw[0];
+                var bounds = GetSMuFLNoteheadBounds(Size, IsGraceNote, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
+                var width = bounds.BBoxNe[0] - bounds.BBoxSw[0];
+
+                if (IsGraceNote || Size == NoteOrRestSize.Cue)
+                {
+                    var fullSizeBounds = GetSMuFLNoteheadBounds(NoteOrRestSize.Full, false, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
+                    var fullSizeWidth = fullSizeBounds.BBoxNe[0] - fullSizeBounds.BBoxSw[0];
+                    var isMetadataBroken = width > fullSizeWidth;
+                    if (isMetadataBroken) return fullSizeWidth * 0.8;
+                }
+                return width;
             }
             return IsGraceNote || IsCueNote ? 0.6 : 1.1;
         }
@@ -450,7 +459,7 @@ namespace Manufaktura.Controls.Model
             if (renderer.IsSMuFLFont)
             {
                 if (renderer.Settings.MusicFontProfile.SMuFLMetadata == null) return 1;
-                var bounds = GetSMuFLNoteheadBounds(this, renderer.Settings.MusicFontProfile.SMuFLMetadata);
+                var bounds = GetSMuFLNoteheadBounds(Size, IsGraceNote, BaseDuration, renderer.Settings.MusicFontProfile.SMuFLMetadata);
                 return bounds.BBoxNe[1] - bounds.BBoxSw[1];
             }
             return IsGraceNote || IsCueNote ? 0.8 : 1;
@@ -477,18 +486,16 @@ namespace Manufaktura.Controls.Model
             return string.Format("{0} {1} {2}", base.ToString(), Pitch.ToString(), Duration.ToString());
         }
 
-        private static BoundingBox GetSMuFLNoteheadBounds(Note note, ISMuFLFontMetadata metadata)
+        private static BoundingBox GetSMuFLNoteheadBounds(NoteOrRestSize size, bool isGraceNote, RhythmicDuration duration, ISMuFLFontMetadata metadata)
         {
-            var duration = note.BaseDuration;
-
-            if (note.GraceNoteType != GraceNoteType.None)
+            if (isGraceNote)
             {
                 if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWholeSmall;
                 else if (duration == RhythmicDuration.Half) return metadata.GlyphBBoxes.NoteheadHalfSmall;
                 else return metadata.GlyphBBoxes.NoteheadBlackSmall;
             }
 
-            switch (note.Size)
+            switch (size)
             {
                 case NoteOrRestSize.Full:
                     if (duration == RhythmicDuration.Whole) return metadata.GlyphBBoxes.NoteheadWhole;
@@ -506,7 +513,7 @@ namespace Manufaktura.Controls.Model
                     else return metadata.GlyphBBoxes.NoteheadBlackOversized;
 
                 default:
-                    throw new Exception($"Note size {note.Size} not supported.");
+                    throw new Exception($"Note size {size} not supported.");
             }
         }
 
