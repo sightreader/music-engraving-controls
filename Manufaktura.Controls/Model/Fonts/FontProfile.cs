@@ -8,7 +8,7 @@ namespace Manufaktura.Controls.Model.Fonts
         public Dictionary<MusicFontStyles, double> FontSizes { get; } = new Dictionary<MusicFontStyles, double>
         {
             { MusicFontStyles.MusicFont, 25 },
-            { MusicFontStyles.GraceNoteFont, 16 },
+            { MusicFontStyles.GraceNoteFont, 20 },
             { MusicFontStyles.StaffFont, 30.5 },
             { MusicFontStyles.LyricsFont, 11},
             { MusicFontStyles.DirectionFont, 11},

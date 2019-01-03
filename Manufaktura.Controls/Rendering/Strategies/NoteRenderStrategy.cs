@@ -1,17 +1,18 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Primitives;
@@ -106,7 +107,7 @@ namespace Manufaktura.Controls.Rendering
             MakeSpaceForAccidentals(renderer, element, chord);                  //Move the element a bit to the right if it has accidentals / Przesuń nutę trochę w prawo, jeśli nuta ma znaki przygodne
             DrawNote(renderer, element, noteTextBlockPositionY, fontProfile);   //Draw an element / Rysuj nutę
             DrawLedgerLines(renderer, element, noteTextBlockPositionY);         //Ledger lines / Linie dodane
-            DrawStems(renderer, element, noteTextBlockPositionY, chord);        //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
+            DrawStems(renderer, element, noteTextBlockPositionY, chord, fontProfile);        //Stems are vertical lines, beams are horizontal lines / Rysuj ogonki (ogonki to są te w pionie - poziome są belki)
             DrawFlagsAndTupletMarks(renderer, element);                         //Draw beams / Rysuj belki
             DrawTies(renderer, element, noteTextBlockPositionY);                //Draw ties / Rysuj łuki
             DrawSlurs(renderer, element, noteTextBlockPositionY, fontProfile);  //Draw slurs / Rysuj łuki legatowe
@@ -451,15 +452,13 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
-        private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
+        private void DrawStems(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord, FontProfile fontProfile)
         {
             if (element.BaseDuration > RhythmicDuration.Half || element.IsUpperMemberOfChord) return;
 
-            var additionalPlaceForFlag = Math.Log(element.BaseDuration.Denominator, 2) - 2;
-            if (additionalPlaceForFlag < 0) additionalPlaceForFlag = 0;
-            if (additionalPlaceForFlag > 1) additionalPlaceForFlag *= 0.8;
-            var defaultStemLengthLs = 3 + ((element.BeamList.Any(b => b == NoteBeamType.Single) ? additionalPlaceForFlag : 0)) * (element.IsCueNote || element.IsGraceNote ? 0.66 : 1);
+            var defaultStemLengthLs = fontProfile.IsSMuFLFont ? element.GetStemLength(fontProfile.SMuFLMetadata) : 3;
             var defaultStemLength = renderer.LinespacesToPixels(defaultStemLengthLs);
+            //var stemEndFix = fontProfile.IsSMuFLFont ? renderer.LinespacesToPixels(element.GetStemEndY(fontProfile.SMuFLMetadata) - element.GetStemOriginY(fontProfile.SMuFLMetadata)) : 0;
 
             double customStemEndPosition = scoreService.CurrentStaffTop + renderer.TenthsToPixels(element.StemDefaultY);
             double notePositionForCalculatingStemEnd = GetNotePositionForCalculatingStemEnd(renderer, element, notePositionY, chord);
@@ -482,10 +481,8 @@ namespace Manufaktura.Controls.Rendering
 
             if (renderer.IsSMuFLFont)
             {
-                var cueNoteShift = element.StemDirection == VerticalDirection.Up ? -3 : 0;
                 beamingService.CurrentStemPositionX = scoreService.CursorPositionX +
-                    element.GetNoteheadWidthPx(renderer) * (element.StemDirection == VerticalDirection.Down ? 0 : 1) +
-                    (element.IsGraceNote || element.IsCueNote ? cueNoteShift : 0);
+                    element.GetNoteheadWidthPx(renderer) * (element.StemDirection == VerticalDirection.Down ? 0 : 1);  //Upward stems are placed on the right side of notehead
             }
             else
             {
@@ -614,7 +611,7 @@ namespace Manufaktura.Controls.Rendering
             {
                 var placement = element.TrillMark == NoteTrillMark.Above ? VerticalPlacement.Above : VerticalPlacement.Below;
                 double trillPos = CorrectOrnamentYPositionToAvoidIntersection(renderer, placement, renderer.LinespacesToPixels(2), notePositionY, element, notePositionY);
-                
+
                 renderer.DrawCharacter(fontProfile.MusicFont.Trill, MusicFontStyles.MusicFont, scoreService.CursorPositionX - 1, trillPos, element);
             }
         }
@@ -653,6 +650,12 @@ namespace Manufaktura.Controls.Rendering
                     if (higherNote != null) return CalculateNotePositionY(higherNote, renderer) + pitchDifferenceBetweenBounds * (isFirstNote ? 1 : -1);
                 }
             }
+
+            if (renderer.IsSMuFLFont)
+            {
+                return notePositionY + element.GetStemOriginY(renderer.Settings.MusicFontProfile.SMuFLMetadata);
+            }
+
             return notePositionY;
         }
 

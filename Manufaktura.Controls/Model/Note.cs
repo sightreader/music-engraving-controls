@@ -1,17 +1,18 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model.Assertions;
@@ -390,6 +391,45 @@ namespace Manufaktura.Controls.Model
             else if (BaseDuration == RhythmicDuration.D64th) return isReverse ? font.NoteFlag64thRev : font.NoteFlag64th;
             else if (BaseDuration == RhythmicDuration.D128th) return isReverse ? font.NoteFlag128thRev : font.NoteFlag128th;
             else return '\0';
+        }
+
+        public double GetStemOriginY(ISMuFLFontMetadata metadata)
+        {
+            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag8ThUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag16ThUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag32NdUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag64ThUp.StemUpSe?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag128ThUp.StemUpSe?[1] ?? 0;
+
+            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag8ThDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag16ThDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag32NdDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag64ThDown.StemDownNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag128ThDown.StemDownNw?[1] ?? 0;
+
+            return 0;
+        }
+
+        public double GetStemEndY(ISMuFLFontMetadata metadata)
+        {
+            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag8ThUp.StemUpNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag16ThUp.StemUpNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag32NdUp.StemUpNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag64ThUp.StemUpNw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Up) return metadata.GlyphsWithAnchors.Flag128ThUp.StemUpNw?[1] ?? 0;
+
+            if (BaseDuration == RhythmicDuration.Eighth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag8ThDown.StemDownSw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.Sixteenth && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag16ThDown.StemDownSw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D32nd && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag32NdDown.StemDownSw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D64th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag64ThDown.StemDownSw?[1] ?? 0;
+            if (BaseDuration == RhythmicDuration.D128th && StemDirection == VerticalDirection.Down) return metadata.GlyphsWithAnchors.Flag128ThDown.StemDownSw?[1] ?? 0;
+
+            return 0;
+        }
+
+        public double GetStemLength(ISMuFLFontMetadata metadata)
+        {
+            return Math.Abs(metadata.GlyphBBoxes.Stem.BBoxNe[1] - metadata.GlyphBBoxes.Stem.BBoxSw[1]);
         }
 
         [Units(Units.Linespaces)]

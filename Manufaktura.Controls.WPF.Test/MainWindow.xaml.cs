@@ -2,7 +2,6 @@
 using Manufaktura.Controls.Desktop.Audio.Midi;
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
-using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Parser;
 using Manufaktura.Controls.Parser.MusicXml.Strategies;
 using Manufaktura.Controls.SMuFL;
@@ -39,7 +38,7 @@ namespace Manufaktura.Controls.WPF.Test
             {
                 var fontProfile =
                     SMuFLMusicFont.CreateFromJsonResource<MainWindow>("Assets.bravura_metadata.json");
-                    //SMuFLMusicFont.CreateFromBinaryResource<MainWindow>("Assets.bravura_metadata.bin");
+                //SMuFLMusicFont.CreateFromBinaryResource<MainWindow>("Assets.bravura_metadata.bin");
                 noteViewerTest.SetFont(family, fontProfile);
                 noteViewer1.SetFont(family, fontProfile);
                 noteViewer2.SetFont(family, fontProfile);
@@ -155,6 +154,12 @@ namespace Manufaktura.Controls.WPF.Test
         {
             var testViewModel = DataContext as TestViewModel;
             testViewModel.Data.FirstStaff.Elements.Add(new Note(Pitch.G4, RhythmicDuration.Quarter));
+        }
+
+        private void ParsePlaineAndEasieClick(object sender, RoutedEventArgs e)
+        {
+            var testViewModel = DataContext as TestViewModel;
+            testViewModel.ParsePlaineAndEasie();
         }
     }
 }

@@ -32,9 +32,10 @@
 
             <StackPanel Orientation="Vertical" >
 
-                <Canvas Height="50" Background="Gainsboro">
-                    <TextBlock Canvas.Top="10" Canvas.Left="10" Background="Red">XXXj</TextBlock>
-                </Canvas>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="200" Text="{Binding PlaineAndEasieCode, Mode=TwoWay}" />
+                    <Button Click="ParsePlaineAndEasieClick">Parsuj</Button>
+                </StackPanel>
                 <TextBlock FontFamily="/Manufaktura.Controls.WPF.Test;component/Assets/#Bravura" x:Name="dummyTextBlock" />
                 <WPF:NoteViewer ZoomFactor="{Binding Value, ElementName=zoomSlider}" ScoreSource="{Binding Data}" RenderingMode="AllPages" IsOccupyingSpace="True" x:Name="noteViewerTest" HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top">
                 </WPF:NoteViewer>

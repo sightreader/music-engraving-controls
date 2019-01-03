@@ -1,8 +1,10 @@
 ﻿using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.LibraryStandards.PlaineAndEasie;
 using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
+using System.Linq;
 
 namespace Manufaktura.Controls.WPF.Test
 {
@@ -26,7 +28,21 @@ namespace Manufaktura.Controls.WPF.Test
             set { data = value; OnPropertyChanged(() => Data); }
         }
 
+        private string plaineAndEasieCode = string.Empty;
+
         public ScorePlayer Player { get { return player; } set { player = value; OnPropertyChanged(); } }
+
+        public string PlaineAndEasieCode { get => plaineAndEasieCode; set { plaineAndEasieCode = value; OnPropertyChanged(); } }
+
+        public void ParsePlaineAndEasie()
+        {
+            if (string.IsNullOrWhiteSpace(PlaineAndEasieCode)) return;
+
+            var splitData = PlaineAndEasieCode.Split(';');
+            var parser = new PlaineAndEasie2ScoreParser();
+            var score = parser.Parse(splitData.ElementAtOrDefault(1), splitData.ElementAtOrDefault(2), splitData.ElementAtOrDefault(3), splitData.ElementAtOrDefault(0));
+            Data = score;
+        }
 
         public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
         {
