@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Manufaktura.VisualTests.Renderers
 {
@@ -30,6 +32,10 @@ namespace Manufaktura.VisualTests.Renderers
                 {
                     RenderImage(scoreInfo.Item2, scoreInfo.Item1, outputPath, scoreInfo.Item3, pathToCompare);
                 }
+                catch (ArgumentException aex) when (aex.InnerException is COMException)
+                {
+                    RenderExceptions.Add(aex);
+                }
                 catch (OutOfMemoryException omex)
                 {
                     RenderExceptions.Add(omex);
@@ -44,6 +50,8 @@ namespace Manufaktura.VisualTests.Renderers
                     throw;
                 }
             }
+
+            File.WriteAllText(Path.Combine(outputPath, "RenderExceptions.txt"), string.Join("\n\n\n\n", RenderExceptions.Select(re => re.ToString())));
         }
 
         protected Bitmap TintImage(string imagePath)

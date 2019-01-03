@@ -67,7 +67,7 @@ namespace Manufaktura.VisualTests
             UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
 
             AcceptTo(DateTime.MinValue);
-            AcceptTo(new DateTime(2019, 01, 02, 21, 30, 00));   //Initial state
+            AcceptTo(new DateTime(2019, 01, 03, 11, 52, 00));   //Initial state
 
             var tests = CreatePathDictionary(testPath);
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
