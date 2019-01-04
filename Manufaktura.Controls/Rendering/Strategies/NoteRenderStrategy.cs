@@ -15,6 +15,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
+using Manufaktura.Controls.Model.Misc;
 using Manufaktura.Controls.Primitives;
 using Manufaktura.Controls.Rendering.Snippets;
 using Manufaktura.Controls.Rendering.Strategies.Slurs;
@@ -140,6 +141,14 @@ namespace Manufaktura.Controls.Rendering
             element.ActualRenderedBounds = element.GetBounds(renderer);
         }
 
+        private static double CalculateNotePositionYForClef(Note element, Clef clef, ScoreRendererBase renderer)
+        {
+            var stepDistanceFromClef = Pitch.StepDistance(clef, element.Pitch);
+            element.GoverningClef = clef;
+            element.Line = element.GetLineInSpecificClef(element.GoverningClef);
+            return clef.TextBlockLocation.Y + stepDistanceFromClef * ((double)renderer.Settings.LineSpacing / 2.0f);
+        }
+
         private static double CalculateSpaceForAccidentals(Note element, Key key)
         {
             int numberOfSingleAccidentals = Math.Abs(element.Alter) % 2;
@@ -173,38 +182,6 @@ namespace Manufaktura.Controls.Rendering
             return yPosition;
         }
 
-        private static double GetNoteheadWidthPx(Note element, ScoreRendererBase renderer, double ratio = 1) =>
-                    renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
-
-
-        private static Note[] GetNotesUnderBeam(Note firstOrLastNote, Staff staff)
-        {
-            var notesUnderOneBeam = new List<Note>();
-            if (firstOrLastNote.BeamList.Any() && firstOrLastNote.BeamList[0] == NoteBeamType.Start)
-            {
-                notesUnderOneBeam.Add(firstOrLastNote);
-                for (int i = staff.Elements.IndexOf(firstOrLastNote) + 1; i < staff.Elements.Count; i++)
-                {
-                    Note currentNote = staff.Elements[i] as Note;
-                    if (currentNote == null) continue;
-                    notesUnderOneBeam.Add(currentNote);
-                    if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.End) break;
-                }
-            }
-            else if (firstOrLastNote.BeamList.Any() && firstOrLastNote.BeamList[0] == NoteBeamType.End)
-            {
-                for (int i = staff.Elements.IndexOf(firstOrLastNote) - 1; i > 0; i--)
-                {
-                    Note currentNote = staff.Elements[i] as Note;
-                    if (currentNote == null) continue;
-                    notesUnderOneBeam.Add(currentNote);
-                    if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.Start) break;
-                }
-                notesUnderOneBeam.Add(firstOrLastNote);
-            }
-            return notesUnderOneBeam.ToArray();
-        }
-
         private static ICanCalculateRenderedBounds[] GetElementsUnderBeam(Note firstOrLastNote, Staff staff)
         {
             var notesUnderOneBeam = new List<ICanCalculateRenderedBounds>();
@@ -233,11 +210,11 @@ namespace Manufaktura.Controls.Rendering
                     if (currentNote == null)
                     {
                         var el = staff.Elements[i] as ICanCalculateRenderedBounds;
-                        if (el != null) notesUnderOneBeam.Add(el);
+                        if (el != null) notesUnderOneBeam.Insert(0, el);
                         continue;
                     }
 
-                    notesUnderOneBeam.Add(currentNote);
+                    notesUnderOneBeam.Insert(0, currentNote);
                     if (currentNote.BeamList.Any() && currentNote.BeamList[0] == NoteBeamType.Start) break;
                 }
                 notesUnderOneBeam.Add(firstOrLastNote);
@@ -245,12 +222,26 @@ namespace Manufaktura.Controls.Rendering
             return notesUnderOneBeam.ToArray();
         }
 
-        private double CalculateNotePositionY(Note element, ScoreRendererBase renderer)
+        private static double GetNoteheadWidthPx(Note element, ScoreRendererBase renderer, double ratio = 1) =>
+                            renderer.LinespacesToPixels(element.GetNoteheadWidthLs(renderer) * ratio);
+
+        private double CalculateNotePositionY(Note element, ScoreRendererBase renderer) => CalculateNotePositionYForClef(element, scoreService.CurrentClef, renderer);
+
+        /// <summary>
+        /// Adds some slope to beam according to line distance between first and last note
+        /// </summary>
+        /// <param name="notesUnderBeam"></param>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        private double CreateBeamSlope(Note[] notesUnderBeam, Note element)
         {
-            var stepDistanceFromClef = Pitch.StepDistance(scoreService.CurrentClef.Pitch, element.Pitch);
-            element.GoverningClef = scoreService.CurrentClef;
-            element.Line = element.GetLineInSpecificClef(element.GoverningClef);
-            return scoreService.CurrentClef.TextBlockLocation.Y + stepDistanceFromClef * ((double)renderer.Settings.LineSpacing / 2.0f);
+            //Previously I was counting the distance between midi pitches but it was misleading if clef changed under beam. Now I compare positions on lines.
+            var firstNoteLine = notesUnderBeam.First().Line;
+            var lastNoteLine = notesUnderBeam.Last().Line;
+            var lineDistanceBetweenBounds = lastNoteLine - firstNoteLine;
+
+            var isFirstNote = element == notesUnderBeam.First();
+            return lineDistanceBetweenBounds * (isFirstNote ? 2.4 : -2.4);
         }
 
         private void DrawAccidentals(ScoreRendererBase renderer, Note element, double notePositionY, FontProfile fontProfile)
@@ -659,49 +650,39 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
-        private double GetMaxVertDistanceBetweenNotes(ScoreRendererBase renderer, params Note[] notes)
-        {
-            var distances = notes.Select(n => CalculateNotePositionY(n, renderer));
-            return distances.Max() - distances.Min();
-        }
-
+        /// <summary>
+        /// Calculates note position for drawing collision-free beams and chords with proper stem length.
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <param name="element"></param>
+        /// <param name="notePositionY"></param>
+        /// <param name="chord"></param>
+        /// <returns></returns>
         private double GetNotePositionForCalculatingStemEnd(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
         {
+            //If note is an element of a chord which has upwards stem, the lowest note is taken into account:
             if (chord.Length > 1)
             {
                 if (element.StemDirection == VerticalDirection.Up) return CalculateNotePositionY(chord.Last(), renderer);
                 else return notePositionY;
             }
 
-            var notesUnderBeam = GetNotesUnderBeam(element, scoreService.CurrentStaff);
+            //If note is placed under a beam, the lowest or highest element under beam is taken into account to avoid collisions:
+            var elementsUnderBeam = GetElementsUnderBeam(element, scoreService.CurrentStaff);
+            var notesUnderBeam = elementsUnderBeam.OfType<Note>().ToArray();
             if (notesUnderBeam.Length > 2)
             {
-                var elementsUnderBeam = GetElementsUnderBeam(element, scoreService.CurrentStaff);
-                var lowestElementPos = elementsUnderBeam.Max(e => e is Note ? CalculateNotePositionY(e as Note, renderer) : e.GetBounds(renderer).SE.Y);    //TODO: Include clef change in CalculateNotePosition
-                var highestElementPos = elementsUnderBeam.Min(e => e is Note ? CalculateNotePositionY(e as Note, renderer) : e.GetBounds(renderer).NE.Y);   //TODO: Include clef change in CalculateNotePosition
+                var bounds = InitializeYPositionsForElementsUnderBeam(renderer, elementsUnderBeam).ToArray();
+                var lowestElementPos = bounds.Select(b => b.Lower).Max();
+                var highestElementPos = bounds.Select(b => b.Upper).Min();
 
-                //Previously I was counting the distance between midi pitches but it was misleading if clef changed under beam. Now I compare positions on lines.
-                var lineDistanceBetweenBounds = Math.Abs(notesUnderBeam.Last().Line - notesUnderBeam.First().Line); //Used only to add some slope
-
-                var isFirstNote = element == notesUnderBeam.First();
                 if (element.StemDirection == VerticalDirection.Down)
-                {
-                    return lowestElementPos + lineDistanceBetweenBounds * (isFirstNote ? 2.4 : -2.4);
-                    
-                }
+                    return lowestElementPos + CreateBeamSlope(notesUnderBeam, element);
                 if (element.StemDirection == VerticalDirection.Up)
-                {
-                    return highestElementPos + lineDistanceBetweenBounds * (isFirstNote ? 2.4 : -2.4);
-                }
-                
+                    return highestElementPos + CreateBeamSlope(notesUnderBeam, element);
             }
 
-            if (renderer.IsSMuFLFont)
-            {
-                return notePositionY + element.GetStemOriginY(renderer.Settings.MusicFontProfile.SMuFLMetadata);
-            }
-
-            return notePositionY;
+            return notePositionY + (renderer.IsSMuFLFont ? element.GetStemOriginY(renderer.Settings.MusicFontProfile.SMuFLMetadata) : 0);
         }
 
         private double GetNotePositionForCalculatingStemStart(ScoreRendererBase renderer, Note element, double notePositionY, Note[] chord)
@@ -709,6 +690,39 @@ namespace Manufaktura.Controls.Rendering
             if (chord.Length == 1 && element == chord[0]) return notePositionY;
             if (element.StemDirection == VerticalDirection.Down) return CalculateNotePositionY(chord.Last(), renderer);
             else return notePositionY;
+        }
+
+        /// <summary>
+        /// Calculates Y positions for elements under beam (which were not yet rendered so they don't have bounds calcualated)
+        /// </summary>
+        /// <param name="elementsUnderBeam"></param>
+        /// <param name="getUpperBound"></param>
+        /// <returns></returns>
+        private IEnumerable<VerticalBounds> InitializeYPositionsForElementsUnderBeam(ScoreRendererBase renderer, ICanCalculateRenderedBounds[] elementsUnderBeam)
+        {
+            var currentClef = scoreService.CurrentClef;
+            foreach (var element in elementsUnderBeam)
+            {
+                var clef = element as Clef;
+                if (clef != null)
+                {
+                    currentClef = clef;
+                    clef.TextBlockLocation = new Point(clef.TextBlockLocation.X, scoreService.CurrentLinePositions[4] - (clef.Line - 1) * renderer.Settings.LineSpacing);
+                    var bounds = clef.GetBounds(renderer);
+                    yield return new VerticalBounds(bounds.NE.Y, bounds.SE.Y);
+                    continue;
+                }
+
+                var note = element as Note;
+                if (note != null)
+                {
+                    var notePositionY = CalculateNotePositionYForClef(note, currentClef, renderer);
+                    yield return new VerticalBounds(notePositionY, notePositionY);
+                    continue;
+                }
+
+                //TODO: Calculate for every element type
+            }
         }
 
         private void MakeSpaceForAccidentals(ScoreRendererBase renderer, Note element, Note[] chord)

@@ -10,17 +10,29 @@ using System.Linq;
 
 namespace Manufaktura.VisualTests
 {
+    /// <summary>
+    /// How to use visual tests:
+    /// 1. Create a testPath folder.
+    /// 2. Create Scores folder in a testPath folder if you use FileTestScoreProvider. Put MusicXmls in it.
+    /// 3. Run test.
+    /// 4. Add call to AcceptTo with date slighty after the test.
+    /// 5. Run test again to generate unaccepted test. If unaccapted test exists each run will generate differences between the first unaccepted test.
+    /// </summary>
     [TestClass]
     public class Tests
     {
         private DateTime lastAcceptedTestDateTime;
         private List<DateTime> testHistory = new List<DateTime>();
 
+        static Tests ()
+        {
+            UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
+        }
+
         [TestMethod]
         public void PerformVisualTests()
         {
             var testPath = @"D:\Dokumenty\Manufaktura programów\VisualTests";
-            UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
 
             AcceptTo(DateTime.MinValue);
             AcceptTo(new DateTime(2016, 12, 29, 22, 45, 00));   //Bug związany z rysowaniem łuków
@@ -64,7 +76,6 @@ namespace Manufaktura.VisualTests
         public void PerformVisualTests_Bravura()
         {
             var testPath = @"D:\Dokumenty\Manufaktura programów\VisualTests_Bravura";
-            UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
 
             AcceptTo(DateTime.MinValue);
             AcceptTo(new DateTime(2019, 01, 03, 16, 06, 00));   //Initial stem length fix for flags
