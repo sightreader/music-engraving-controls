@@ -80,6 +80,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(DateTime.MinValue);
             AcceptTo(new DateTime(2019, 01, 03, 16, 06, 00));   //Initial stem length fix for flags
             AcceptTo(new DateTime(2019, 01, 03, 17, 11, 00));   //Grace note stem fix
+            AcceptTo(new DateTime(2019, 01, 04, 10, 11, 00));   //Collision-free beams
 
             var tests = CreatePathDictionary(testPath);
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
