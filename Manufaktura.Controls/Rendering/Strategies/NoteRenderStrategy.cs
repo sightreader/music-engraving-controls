@@ -490,7 +490,7 @@ namespace Manufaktura.Controls.Rendering
         {
             if (element.BaseDuration > RhythmicDuration.Half || element.IsUpperMemberOfChord) return;
 
-            var defaultStemLengthLs = fontProfile.IsSMuFLFont ? element.GetStemLength(fontProfile.SMuFLMetadata) : 3;
+            var defaultStemLengthLs = fontProfile.IsSMuFLFont ? element.GetStemLength(fontProfile.SMuFLMetadata) : 3.5;
             var defaultStemLength = renderer.LinespacesToPixels(defaultStemLengthLs);
             //var stemEndFix = fontProfile.IsSMuFLFont ? renderer.LinespacesToPixels(element.GetStemEndY(fontProfile.SMuFLMetadata) - element.GetStemOriginY(fontProfile.SMuFLMetadata)) : 0;
 
