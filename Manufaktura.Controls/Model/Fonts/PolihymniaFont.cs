@@ -13,9 +13,9 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Rendering;
+using System;
 
 namespace Manufaktura.Controls.Model.Fonts
 {
@@ -111,6 +111,16 @@ namespace Manufaktura.Controls.Model.Fonts
         }
 
         public double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetTimeSignatureNumberWidthLs(ISMuFLFontMetadata metadata, int number)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetTimeSignatureNumberWidthPx(ScoreRendererBase renderer, int number)
         {
             throw new NotImplementedException();
         }

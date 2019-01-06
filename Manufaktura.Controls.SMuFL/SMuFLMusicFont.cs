@@ -17,58 +17,183 @@ using Manufaktura.Controls.Model.Assertions;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.SMuFL.Utilities;
 using Manufaktura.Core.Serialization;
 using Newtonsoft.Json;
 using Polenter.Serialization;
 using System;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace Manufaktura.Controls.SMuFL
 {
     public class SMuFLMusicFont : IMusicFont
     {
-        public static SMuFLFontProfile CreateFromJsonString(string json, bool useLazyProxy = true)
-        {
-            var metadata = useLazyProxy ? LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json) : JsonConvert.DeserializeObject<SMuFLFontMetadata>(json);
-            return new SMuFLFontProfile(metadata);
-        }
+        private readonly TimeSignatureNumberUtility timeSignatureNumberUtility = new TimeSignatureNumberUtility();
+        private readonly TupletNumberUtility tupletNumberUtility = new TupletNumberUtility();
+        public char AugmentationDot => '\uE1E7';
 
-        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, bool useLazyProxy = true)
-        {
-            using (var reader = new StreamReader(jsonStream))
-            {
-                string json = reader.ReadToEnd();
-                return CreateFromJsonString(json, useLazyProxy);
-            }
-        }
+        public char BraceLeft => '\uE000';
 
-        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName, bool useLazyProxy = true)
-        {
-            using (var stream = assembly.GetManifestResourceStream(resourceFullName))
-            using (var reader = new StreamReader(stream))
-            {
-                string result = reader.ReadToEnd();
-                return CreateFromJsonString(result, useLazyProxy);
-            }
-        }
+        public char BraceRight => '\uE001';
 
-        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName, bool useLazyProxy = true)
-        {
-            var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
-            var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
-            return CreateFromJsonResource(assembly, resourceName, useLazyProxy);
-        }
+        public char Bracket => '\uE002';
 
-        public static SMuFLFontProfile CreateFromBinaryStream(Stream binaryStream)
-        {
-            var settings = new SharpSerializerBinarySettings(BinarySerializationMode.SizeOptimized);
-            var serializer = new SharpSerializer(settings);
+        public char CClef => '\uE05C';
 
-            var metadata = serializer.Deserialize(binaryStream) as ISMuFLFontMetadata;
-            return new SMuFLFontProfile(metadata);
-        }
+        public char CClef15ma => CClef;
+
+        public char CClef15mb => CClef;
+
+        public char CClef8va => CClef;
+
+        public char CClef8vb => '\uE05D';
+
+        public char CommonTime => '\uE08A';
+
+        public char CutTime => '\uE08B';
+
+        public char DoubleFlat => '\uE264';
+
+        public char DoubleSharp => '\uE263';
+
+        public char FClef => '\uE062';
+
+        public char FClef15ma => '\uE066';
+
+        public char FClef15mb => '\uE063';
+
+        public char FClef8va => '\uE065';
+
+        public char FClef8vb => '\uE064';
+
+        public char FermataDown => '\uE4C1';
+
+        public char FermataUp => '\uE4C0';
+
+        public char Flat => '\uE260';
+
+        public char GClef => '\uE050';
+
+        public char GClef15ma => '\uE054';
+
+        public char GClef15mb => '\uE051';
+
+        public char GClef8va => '\uE053';
+
+        public char GClef8vb => '\uE052';
+
+        public bool IsSMuFLFont => true;
+
+        public char Mordent => SMuFLGlyphs.Instance.OrnamentMordent.Character;
+
+        public char MordentInverted => SMuFLGlyphs.Instance.OrnamentMordentInverted.Character;
+
+        public char MordentShort => '\uE56C';
+
+        public char Natural => '\uE261';
+
+        public char NoteDoubleWhole => '\uE0A0';
+
+        public char NoteDoubleWholeCue => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
+
+        public char NoteDoubleWholeLarge => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
+
+        public char NoteEighth => throw new NotImplementedException();
+
+        public char NoteFlag128th => '\uE248';
+
+        public char NoteFlag128thRev => '\uE249';
+
+        public char NoteFlag32nd => '\uE244';
+
+        public char NoteFlag32ndRev => '\uE245';
+
+        public char NoteFlag64th => '\uE246';
+
+        public char NoteFlag64thRev => '\uE247';
+
+        public char NoteFlagEighth => '\uE240';
+
+        public char NoteFlagEighthRev => '\uE241';
+
+        public char NoteFlagSixteenth => '\uE242';
+
+        public char NoteFlagSixteenthRev => '\uE243';
+
+        public char NoteHalf => '\uE0A3';
+
+        public char NoteheadBlack => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+
+        public char NoteheadBlackCue => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+
+        public char NoteheadBlackLarge => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+
+        public char NoteheadHalf => '\uE0A3';
+
+        public char NoteheadHalfCue => SMuFLGlyphs.Instance.NoteheadHalf.Character;
+
+        public char NoteheadHalfLarge => SMuFLGlyphs.Instance.NoteheadHalf.Character;
+
+        public char NoteQuarter => '\uE0A4';
+
+        public char NoteSixteenth => SMuFLGlyphs.Instance.Note16ThUp.Character;
+
+        public char NoteWhole => '\uE0A2';
+
+        public char NoteWholeCue => SMuFLGlyphs.Instance.NoteWhole.Character;
+
+        public char NoteWholeLarge => SMuFLGlyphs.Instance.NoteWhole.Character;
+
+        public char PercussionClef => '\uE069';
+
+        public char RepeatBackward => '\uE041';
+
+        public char RepeatForward => '\uE040';
+
+        public char Rest32nd => '\uE4E8';
+
+        public char RestEighth => '\uE4E6';
+
+        public char RestHalf => '\uE4E4';
+
+        public char RestMultimeasure => SMuFLGlyphs.Instance.RestHBar.Character;
+
+        public char RestQuarter => '\uE4E5';
+
+        public char RestSixteenth => '\uE4E7';
+
+        public char RestWhole => '\uE4E3';
+
+        public char Sharp => '\uE262';
+
+        public char SquareBracketLeft => SMuFLGlyphs.Instance.Bracket.Character;
+
+        public char Staff4Lines => throw new NotImplementedException();
+
+        public char Staff5Lines => throw new NotImplementedException();
+
+        public char Time0 => '\uE080';
+
+        public char Time1 => '\uE081';
+
+        public char Time2 => '\uE082';
+
+        public char Time3 => '\uE083';
+
+        public char Time4 => '\uE084';
+
+        public char Time5 => '\uE085';
+
+        public char Time6 => '\uE086';
+
+        public char Time7 => '\uE087';
+
+        public char Time8 => '\uE088';
+
+        public char Time9 => '\uE089';
+
+        public char Trill => '\uE566';
 
         public static SMuFLFontProfile CreateFromBinaryArray(byte[] byteArray)
         {
@@ -89,185 +214,60 @@ namespace Manufaktura.Controls.SMuFL
             return CreateFromBinaryResource(assembly, resourceName);
         }
 
-        public char AugmentationDot => '\uE1E7';
-        public char BraceLeft => '\uE000';
-        public char BraceRight => '\uE001';
-        public char Bracket => '\uE002';
-        public char CClef => '\uE05C';
-        public char CommonTime => '\uE08A';
-        public char CutTime => '\uE08B';
-        public char DoubleFlat => '\uE264';
-        public char DoubleSharp => '\uE263';
-        public char FClef => '\uE062';
-        public char FermataDown => '\uE4C1';
-        public char FermataUp => '\uE4C0';
-        public char Flat => '\uE260';
-        public char GClef => '\uE050';
-        public char Mordent => SMuFLGlyphs.Instance.OrnamentMordent.Character;
-        public char MordentInverted => SMuFLGlyphs.Instance.OrnamentMordentInverted.Character;
-        public char MordentShort => '\uE56C';
-        public char Natural => '\uE261';
-        public char NoteEighth => throw new NotImplementedException();
-        public char NoteFlag128th => '\uE248';
-        public char NoteFlag128thRev => '\uE249';
-        public char NoteFlag32nd => '\uE244';
-        public char NoteFlag32ndRev => '\uE245';
-        public char NoteFlag64th => '\uE246';
-        public char NoteFlag64thRev => '\uE247';
-        public char NoteFlagEighth => '\uE240';
-        public char NoteFlagEighthRev => '\uE241';
-        public char NoteFlagSixteenth => '\uE242';
-        public char NoteFlagSixteenthRev => '\uE243';
-        public char NoteHalf => '\uE0A3';
-        public char NoteheadBlack => SMuFLGlyphs.Instance.NoteheadBlack.Character;
-        public char NoteheadHalf => '\uE0A3';
-        public char NoteQuarter => '\uE0A4';
-        public char NoteSixteenth => SMuFLGlyphs.Instance.Note16ThUp.Character;
-        public char NoteWhole => '\uE0A2';
-        public char PercussionClef => '\uE069';
-        public char RepeatBackward => '\uE041';
-        public char RepeatForward => '\uE040';
-        public char Rest32nd => '\uE4E8';
-        public char RestEighth => '\uE4E6';
-        public char RestHalf => '\uE4E4';
-        public char RestQuarter => '\uE4E5';
-        public char RestSixteenth => '\uE4E7';
-        public char RestWhole => '\uE4E3';
-        public char RestMultimeasure => SMuFLGlyphs.Instance.RestHBar.Character;
-        public char Sharp => '\uE262';
-        public char SquareBracketLeft => SMuFLGlyphs.Instance.Bracket.Character;
-        public char Staff4Lines => throw new NotImplementedException();
-        public char Staff5Lines => throw new NotImplementedException();
-        public char Time0 => '\uE080';
-        public char Time1 => '\uE081';
-        public char Time2 => '\uE082';
-        public char Time3 => '\uE083';
-        public char Time4 => '\uE084';
-        public char Time5 => '\uE085';
-        public char Time6 => '\uE086';
-        public char Time7 => '\uE087';
-        public char Time8 => '\uE088';
-        public char Time9 => '\uE089';
-        public char Trill => '\uE566';
-
-        public char CClef8va => CClef;
-
-        public char CClef8vb => '\uE05D';
-
-        public char CClef15ma => CClef;
-
-        public char CClef15mb => CClef;
-
-        public char FClef8va => '\uE065';
-
-        public char FClef8vb => '\uE064';
-
-        public char FClef15ma => '\uE066';
-
-        public char FClef15mb => '\uE063';
-
-        public char GClef8va => '\uE053';
-
-        public char GClef8vb => '\uE052';
-
-        public char GClef15ma => '\uE054';
-
-        public char GClef15mb => '\uE051';
-
-        public char NoteheadBlackCue => SMuFLGlyphs.Instance.NoteheadBlack.Character;
-
-        public char NoteheadHalfCue => SMuFLGlyphs.Instance.NoteheadHalf.Character;
-
-        public char NoteheadBlackLarge => SMuFLGlyphs.Instance.NoteheadBlack.Character;
-
-        public char NoteheadHalfLarge => SMuFLGlyphs.Instance.NoteheadHalf.Character;
-
-        public char NoteDoubleWhole => '\uE0A0';
-
-        public char NoteDoubleWholeCue => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
-
-        public char NoteDoubleWholeLarge => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
-
-        public char NoteWholeCue => SMuFLGlyphs.Instance.NoteWhole.Character;
-
-        public char NoteWholeLarge => SMuFLGlyphs.Instance.NoteWhole.Character;
-
-        public bool IsSMuFLFont => true;
-
-        public string BuildTimeSignature(int number)
+        public static SMuFLFontProfile CreateFromBinaryStream(Stream binaryStream)
         {
-            var sb = new StringBuilder();
-            var digits = number.ToString();
-            foreach (var digit in digits)
-            {
-                if (digit == '0') sb.Append(SMuFLGlyphs.Instance.TimeSig0.Character);
-                if (digit == '1') sb.Append(SMuFLGlyphs.Instance.TimeSig1.Character);
-                if (digit == '2') sb.Append(SMuFLGlyphs.Instance.TimeSig2.Character);
-                if (digit == '3') sb.Append(SMuFLGlyphs.Instance.TimeSig3.Character);
-                if (digit == '4') sb.Append(SMuFLGlyphs.Instance.TimeSig4.Character);
-                if (digit == '5') sb.Append(SMuFLGlyphs.Instance.TimeSig5.Character);
-                if (digit == '6') sb.Append(SMuFLGlyphs.Instance.TimeSig6.Character);
-                if (digit == '7') sb.Append(SMuFLGlyphs.Instance.TimeSig7.Character);
-                if (digit == '8') sb.Append(SMuFLGlyphs.Instance.TimeSig8.Character);
-                if (digit == '9') sb.Append(SMuFLGlyphs.Instance.TimeSig9.Character);
-            }
-            return sb.ToString();
+            var settings = new SharpSerializerBinarySettings(BinarySerializationMode.SizeOptimized);
+            var serializer = new SharpSerializer(settings);
+
+            var metadata = serializer.Deserialize(binaryStream) as ISMuFLFontMetadata;
+            return new SMuFLFontProfile(metadata);
         }
 
-        public string BuildTupletNumber(int number)
+        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName, bool useLazyProxy = true)
         {
-            var sb = new StringBuilder();
-            var digits = number.ToString();
-            foreach (var digit in digits)
+            using (var stream = assembly.GetManifestResourceStream(resourceFullName))
+            using (var reader = new StreamReader(stream))
             {
-                if (digit == '0') sb.Append(SMuFLGlyphs.Instance.Tuplet0.Character);
-                if (digit == '1') sb.Append(SMuFLGlyphs.Instance.Tuplet1.Character);
-                if (digit == '2') sb.Append(SMuFLGlyphs.Instance.Tuplet2.Character);
-                if (digit == '3') sb.Append(SMuFLGlyphs.Instance.Tuplet3.Character);
-                if (digit == '4') sb.Append(SMuFLGlyphs.Instance.Tuplet4.Character);
-                if (digit == '5') sb.Append(SMuFLGlyphs.Instance.Tuplet5.Character);
-                if (digit == '6') sb.Append(SMuFLGlyphs.Instance.Tuplet6.Character);
-                if (digit == '7') sb.Append(SMuFLGlyphs.Instance.Tuplet7.Character);
-                if (digit == '8') sb.Append(SMuFLGlyphs.Instance.Tuplet8.Character);
-                if (digit == '9') sb.Append(SMuFLGlyphs.Instance.Tuplet9.Character);
+                string result = reader.ReadToEnd();
+                return CreateFromJsonString(result, useLazyProxy);
             }
-            return sb.ToString();
         }
+
+        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName, bool useLazyProxy = true)
+        {
+            var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
+            var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
+            return CreateFromJsonResource(assembly, resourceName, useLazyProxy);
+        }
+
+        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, bool useLazyProxy = true)
+        {
+            using (var reader = new StreamReader(jsonStream))
+            {
+                string json = reader.ReadToEnd();
+                return CreateFromJsonString(json, useLazyProxy);
+            }
+        }
+
+        public static SMuFLFontProfile CreateFromJsonString(string json, bool useLazyProxy = true)
+        {
+            var metadata = useLazyProxy ? LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json) : JsonConvert.DeserializeObject<SMuFLFontMetadata>(json);
+            return new SMuFLFontProfile(metadata);
+        }
+        public string BuildTimeSignature(int number) => timeSignatureNumberUtility.BuildNumber(number);
+
+        public string BuildTupletNumber(int number) => tupletNumberUtility.BuildNumber(number);
 
         [Units(Units.Linespaces)]
-        public double GetTupletNumberWidthLs(ISMuFLFontMetadata metadata, int number)
-        {
-            if (metadata == null) return 0;
-
-            double width = 0;
-            var digits = number.ToString();
-            foreach (var digit in digits)
-            {
-                var bounds = GetTupletNumberBoundingBox(metadata, digit);
-                width += bounds.BBoxNe[0] - bounds.BBoxSw[0];
-            }
-            return width;
-        }
+        public double GetTimeSignatureNumberWidthLs(ISMuFLFontMetadata metadata, int number) => timeSignatureNumberUtility.GetNumberWidthLs(metadata, number);
 
         [Units(Units.Pixels)]
-        public double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number)
-        {
-            return renderer.LinespacesToPixels(GetTupletNumberWidthLs(renderer.Settings.MusicFontProfile.SMuFLMetadata, number));
-        }
+        public double GetTimeSignatureNumberWidthPx(ScoreRendererBase renderer, int number) => timeSignatureNumberUtility.GetNumberWidthPx(renderer, number);
 
-        private BoundingBox GetTupletNumberBoundingBox(ISMuFLFontMetadata metadata, char digit)
-        {
-            if (digit == '0') return metadata.GlyphBBoxes.Tuplet0;
-            if (digit == '1') return metadata.GlyphBBoxes.Tuplet1;
-            if (digit == '2') return metadata.GlyphBBoxes.Tuplet2;
-            if (digit == '3') return metadata.GlyphBBoxes.Tuplet3;
-            if (digit == '4') return metadata.GlyphBBoxes.Tuplet4;
-            if (digit == '5') return metadata.GlyphBBoxes.Tuplet5;
-            if (digit == '6') return metadata.GlyphBBoxes.Tuplet6;
-            if (digit == '7') return metadata.GlyphBBoxes.Tuplet7;
-            if (digit == '8') return metadata.GlyphBBoxes.Tuplet8;
-            if (digit == '9') return metadata.GlyphBBoxes.Tuplet9;
-            throw new Exception($"Character {digit} is not a digit.");
-        }
+        [Units(Units.Linespaces)]
+        public double GetTupletNumberWidthLs(ISMuFLFontMetadata metadata, int number) => tupletNumberUtility.GetNumberWidthLs(metadata, number);
+
+        [Units(Units.Pixels)]
+        public double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number) => tupletNumberUtility.GetNumberWidthPx(renderer, number);
     }
 }

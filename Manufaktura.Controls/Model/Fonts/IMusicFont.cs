@@ -33,6 +33,10 @@ namespace Manufaktura.Controls.Model.Fonts
 
         double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number);
 
+        double GetTimeSignatureNumberWidthLs(ISMuFLFontMetadata metadata, int number);
+
+        double GetTimeSignatureNumberWidthPx(ScoreRendererBase renderer, int number);
+
         /// <summary>
         /// Dot character
         /// </summary>
@@ -173,7 +177,5 @@ namespace Manufaktura.Controls.Model.Fonts
         char Staff5Lines { get; }
 
         char Trill { get; }
-
-
     }
 }
