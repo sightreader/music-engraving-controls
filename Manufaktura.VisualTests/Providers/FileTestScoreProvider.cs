@@ -1,7 +1,6 @@
 ﻿using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Rendering;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -16,13 +15,13 @@ namespace Manufaktura.VisualTests.Providers
             this.testPath = testPath;
         }
 
-        public IEnumerable<Tuple<string, Score, ScoreRenderingModes>> EnumerateScores()
+        public IEnumerable<(string FileName, Score Score, ScoreRenderingModes Mode)> EnumerateScores()
         {
             var scorePath = Path.Combine(testPath, "Scores");
             foreach (var file in Directory.EnumerateFiles(scorePath))
             {
-                yield return new Tuple<string, Score, ScoreRenderingModes>(Path.GetFileName(file).Replace(".xml", $"_Panorama.png"), File.ReadAllText(file).ToScore(), ScoreRenderingModes.Panorama);
-                yield return new Tuple<string, Score, ScoreRenderingModes>(Path.GetFileName(file).Replace(".xml", $"_AllPages.png"), File.ReadAllText(file).ToScore(), ScoreRenderingModes.AllPages);
+                yield return (Path.GetFileName(file).Replace(".xml", $"_Panorama.png"), File.ReadAllText(file).ToScore(), ScoreRenderingModes.Panorama);
+                yield return (Path.GetFileName(file).Replace(".xml", $"_AllPages.png"), File.ReadAllText(file).ToScore(), ScoreRenderingModes.AllPages);
             }
         }
     }

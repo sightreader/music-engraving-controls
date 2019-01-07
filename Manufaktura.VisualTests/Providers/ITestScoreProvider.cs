@@ -7,6 +7,6 @@ namespace Manufaktura.VisualTests.Providers
 {
     public interface ITestScoreProvider
     {
-        IEnumerable<Tuple<string, Score, ScoreRenderingModes>> EnumerateScores();
+        IEnumerable<(string FileName, Score Score, ScoreRenderingModes Mode)> EnumerateScores();
     }
 }

@@ -30,7 +30,7 @@ namespace Manufaktura.VisualTests.Renderers
             {
                 try
                 {
-                    RenderImage(scoreInfo.Item2, scoreInfo.Item1, outputPath, scoreInfo.Item3, pathToCompare);
+                    RenderImage(scoreInfo.Score, scoreInfo.FileName, outputPath, scoreInfo.Mode, pathToCompare);
                 }
                 catch (ArgumentException aex) when (aex.InnerException is COMException)
                 {

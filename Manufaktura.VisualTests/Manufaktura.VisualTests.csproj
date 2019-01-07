@@ -190,6 +190,7 @@
       <DependentUpon>DummyControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Configurators\IFontConfigurator.cs" />
+    <Compile Include="Providers\ApiTestScoreProvider.cs" />
     <Compile Include="Providers\FileTestScoreProvider.cs" />
     <Compile Include="Providers\ITestScoreProvider.cs" />
     <Compile Include="Providers\PlaineAndEasieTestScoreProvider.cs" />

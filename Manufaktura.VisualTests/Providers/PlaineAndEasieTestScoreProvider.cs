@@ -9,14 +9,14 @@ namespace Manufaktura.VisualTests.Providers
 {
     public class PlaineAndEasieTestScoreProvider : ITestScoreProvider
     {
-        public IEnumerable<Tuple<string, Score, ScoreRenderingModes>> EnumerateScores()
+        public IEnumerable<(string FileName, Score Score, ScoreRenderingModes Mode)> EnumerateScores()
         {
             foreach (var data in GetPlaineAndEasieData())
             {
                 var splitData = data.Value.Split(';');
                 var parser = new PlaineAndEasie2ScoreParser();
                 var score = parser.Parse(splitData.ElementAtOrDefault(1), splitData.ElementAtOrDefault(2), splitData.ElementAtOrDefault(3), splitData.ElementAtOrDefault(0));
-                yield return new Tuple<string, Score, ScoreRenderingModes>(data.Key, score, ScoreRenderingModes.Panorama);
+                yield return (data.Key, score, ScoreRenderingModes.Panorama);
             }
         }
 

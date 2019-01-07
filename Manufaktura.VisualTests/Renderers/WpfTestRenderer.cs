@@ -45,28 +45,31 @@ namespace Manufaktura.VisualTests.Renderers
                 if (!string.IsNullOrWhiteSpace(pathToCompare))
                 {
                     var oldVersion = Path.Combine(pathToCompare, imageFileName);
-                    var tintedPath = Path.Combine(outputPath, Path.GetFileName(oldVersion).Replace(".png", "_TINT.png"));
-                    try
+                    if (File.Exists(oldVersion))
                     {
-                        using (var tintedVersion = TintImage(oldVersion))
+                        var tintedPath = Path.Combine(outputPath, Path.GetFileName(oldVersion).Replace(".png", "_TINT.png"));
+                        try
                         {
-                            tintedVersion.Save(tintedPath);
-                        }
+                            using (var tintedVersion = TintImage(oldVersion))
+                            {
+                                tintedVersion.Save(tintedPath);
+                            }
 
-                        using (var stream = File.OpenRead(tintedPath))
-                        {
-                            var resizedTintedImage = new BitmapImage();
-                            resizedTintedImage.BeginInit();
-                            resizedTintedImage.CacheOption = BitmapCacheOption.OnLoad;
-                            resizedTintedImage.StreamSource = stream;
-                            resizedTintedImage.EndInit();
-                            drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, resizedTintedImage.Width / (outputDpi / resizedTintedImage.DpiX), resizedTintedImage.Height / (outputDpi / resizedTintedImage.DpiY)));
-                            stream.Close();
+                            using (var stream = File.OpenRead(tintedPath))
+                            {
+                                var resizedTintedImage = new BitmapImage();
+                                resizedTintedImage.BeginInit();
+                                resizedTintedImage.CacheOption = BitmapCacheOption.OnLoad;
+                                resizedTintedImage.StreamSource = stream;
+                                resizedTintedImage.EndInit();
+                                drawingContext.DrawImage(resizedTintedImage, new Rect(0, 0, resizedTintedImage.Width / (outputDpi / resizedTintedImage.DpiX), resizedTintedImage.Height / (outputDpi / resizedTintedImage.DpiY)));
+                                stream.Close();
+                            }
                         }
-                    }
-                    finally
-                    {
-                        if (File.Exists(tintedPath)) File.Delete(tintedPath);
+                        finally
+                        {
+                            if (File.Exists(tintedPath)) File.Delete(tintedPath);
+                        }
                     }
                 }
             }

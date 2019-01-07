@@ -88,10 +88,11 @@ namespace Manufaktura.VisualTests
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
 
             var renderDate = DateTime.Now;
-            var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}");
+            var outputPath = Path.Combine(testPath, $"Test_{renderDate.ToString("yyyyMMddHHmmss")}{(firstNotAcceptedTest == null ? "_unchanged" : "")}");
             var fontConfigurator = new BravuraFontConfigurator();
             new WpfTestRenderer(new FileTestScoreProvider(testPath), fontConfigurator).GenerateImages(firstNotAcceptedTest, outputPath);
             new WpfTestRenderer(new PlaineAndEasieTestScoreProvider(), fontConfigurator).GenerateImages(firstNotAcceptedTest, outputPath);
+            new WpfTestRenderer(new ApiTestScoreProvider(), fontConfigurator).GenerateImages(firstNotAcceptedTest, outputPath);
         }
 
         private static Dictionary<DateTime, string> CreatePathDictionary(string testPath)
@@ -99,7 +100,7 @@ namespace Manufaktura.VisualTests
             var dict = new Dictionary<DateTime, string>();
             foreach (var directory in Directory.EnumerateDirectories(testPath, "Test*"))
             {
-                var unparsedDate = Path.GetFileName(directory).Replace("Test_", "");
+                var unparsedDate = Path.GetFileName(directory).Replace("Test_", "").Replace("_unchanged", "");
                 DateTime dt;
                 if (DateTime.TryParseExact(unparsedDate, "yyyyMMddHHmmss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out dt))
                     dict.Add(dt, directory);
