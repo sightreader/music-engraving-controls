@@ -36,31 +36,41 @@ namespace Manufaktura.Controls.Rendering
         {
         }
 
+        /// <summary>
+        /// If True, the key is a reminder drawn at the beginning of the staff.
+        /// </summary>
         public bool IsVirtualKey { get; set; }
+
         public override void Render(Key element, ScoreRendererBase renderer, FontProfile fontProfile)
         {
             if (element.Fifths != 0 && element.Measure != null && element.Measure.Elements.FirstOrDefault() == element)
                 scoreService.CursorPositionX += renderer.LinespacesToPixels(1); //Żeby był lekki margines między kreską taktową a symbolem. Być może ta linijka będzie do usunięcia
 
+            //Draw naturals if sharp key changes to flat ket or vice versa
+            if (scoreService.CurrentKey != null && Math.Sign(scoreService.CurrentKey.Fifths) != Math.Sign(element.Fifths))
+            {
+                var previousDictionary = CreateAlterationDictionary(scoreService.CurrentKey.Fifths);
+                DrawAlterationSigns(previousDictionary, renderer, scoreService.CurrentKey, fontProfile.MusicFont.Natural, fontProfile.MusicFont.Natural, scoreService.CurrentKey.Fifths < 0);
+            }
+
             scoreService.CurrentKey = element;
             if (!IsVirtualKey) element.TextBlockLocation = new Primitives.Point(scoreService.CursorPositionX, scoreService.CurrentLinePositions[0]);
 
+            var dictionary = CreateAlterationDictionary(scoreService.CurrentKey.Fifths);
+
             if (scoreService.CurrentKey.Fifths > 0)
-            {
-                var dictionary = CreateDictionary(CircleOfFifths.Sharps, CircleOfFifths.EnumerateSharps, scoreService.CurrentKey.Fifths);
-                DrawCharacters(dictionary, renderer, element, fontProfile.MusicFont.DoubleSharp, fontProfile.MusicFont.Sharp);
-            }
+                DrawAlterationSigns(dictionary, renderer, element, fontProfile.MusicFont.DoubleSharp, fontProfile.MusicFont.Sharp, false);
             else if (scoreService.CurrentKey.Fifths < 0)
-            {
-                var dictionary = CreateDictionary(CircleOfFifths.Flats, CircleOfFifths.EnumerateFlats, scoreService.CurrentKey.Fifths);
-                DrawCharacters(dictionary, renderer, element, fontProfile.MusicFont.DoubleFlat, fontProfile.MusicFont.Flat);
-            }
+                DrawAlterationSigns(dictionary, renderer, element, fontProfile.MusicFont.DoubleFlat, fontProfile.MusicFont.Flat, true);
 
             scoreService.CursorPositionX += 10;
         }
 
-        private Dictionary<Step, int> CreateDictionary(Step[] collection, Func<IEnumerable<Step>> enumerator, int fifths)
+        private Dictionary<Step, int> CreateAlterationDictionary(int fifths)
         {
+            var collection = fifths > 0 ? CircleOfFifths.Sharps : CircleOfFifths.Flats;
+            var enumerator = fifths > 0 ? (Func<IEnumerable<Step>>)(() => CircleOfFifths.EnumerateSharps()) : () => CircleOfFifths.EnumerateFlats();
+
             var dictionary = collection.ToDictionary(s => s, s => 0);
             foreach (var step in enumerator().Take(Math.Abs(scoreService.CurrentKey.Fifths)))
             {
@@ -70,20 +80,13 @@ namespace Manufaktura.Controls.Rendering
             return dictionary;
         }
 
-        private void DrawCharacter(char character, double line, ScoreRendererBase renderer, Key element)
-        {
-            var flatOrSharpPositionY = scoreService.CurrentClef.TextBlockLocation.Y + (scoreService.CurrentClef.Line - line) * renderer.Settings.LineSpacing;
-            renderer.DrawCharacter(character, MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
-            scoreService.CursorPositionX += 8;
-        }
-
-        private void DrawCharacters(Dictionary<Step, int> dictionary, ScoreRendererBase renderer, Key element, char doubleCharacter, char singleCharacter)
+        private void DrawAlterationSigns(Dictionary<Step, int> dictionary, ScoreRendererBase renderer, Key element, char doubleCharacter, char singleCharacter, bool isFlat)
         {
             foreach (var stepContent in dictionary)
             {
                 int numberOfSingleAccidentals = Math.Abs(stepContent.Value) % 2;
                 int numberOfDoubleAccidentals = Convert.ToInt32(Math.Floor((double)(Math.Abs(stepContent.Value) / 2)));
-                var line = GetHighestLineForStep(stepContent.Key);
+                var line = GetHighestLineForStep(stepContent.Key, isFlat);
                 for (var i = 0; i < numberOfDoubleAccidentals; i++)
                 {
                     DrawCharacter(doubleCharacter, line, renderer, element);
@@ -95,14 +98,22 @@ namespace Manufaktura.Controls.Rendering
             }
         }
 
-        private double GetHighestLineForStep(Step step)
+        private void DrawCharacter(char character, double line, ScoreRendererBase renderer, Key element)
         {
+            var flatOrSharpPositionY = scoreService.CurrentClef.TextBlockLocation.Y + (scoreService.CurrentClef.Line - line) * renderer.Settings.LineSpacing;
+            renderer.DrawCharacter(character, MusicFontStyles.MusicFont, scoreService.CursorPositionX, flatOrSharpPositionY, element);
+            scoreService.CursorPositionX += 8;
+        }
+
+        private double GetHighestLineForStep(Step step, bool isFlat)
+        {
+            var treshold = isFlat ? 5 : 6;
             var line1 = GetLine(step.ToPitch(scoreService.CurrentClef.Pitch.Octave + 1));
 
-            if (line1 < 6) return line1;
+            if (line1 < treshold) return line1;
 
             var line2 = GetLine(step.ToPitch(scoreService.CurrentClef.Pitch.Octave));
-            if (line2 < 6) return line2;
+            if (line2 < treshold) return line2;
 
             var line3 = GetLine(step.ToPitch(scoreService.CurrentClef.Pitch.Octave - 1));
             return line3;

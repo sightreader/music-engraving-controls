@@ -1,17 +1,18 @@
 ﻿/*
  * Copyright 2018 Manufaktura Programów Jacek Salamon http://musicengravingcontrols.com/
  * MIT LICENCE
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Services;
@@ -24,7 +25,6 @@ namespace Manufaktura.Controls.Rendering.Strategies
     /// </summary>
     public class PrintSuggestionRenderStrategy : MusicalSymbolRenderStrategy<PrintSuggestion>
     {
-
         /// <summary>
         /// Initializes a new instance of PrintSuggestionRenderStrategy
         /// </summary>
@@ -47,8 +47,18 @@ namespace Manufaktura.Controls.Rendering.Strategies
                 var clefRenderStrategy = new ClefRenderStrategy(scoreService) { WasSystemChanged = true };
                 clefRenderStrategy.Render(scoreService.CurrentClef, renderer);
 
-                var keyRenderStrategy = new KeyRenderStrategy(scoreService) { IsVirtualKey = true };
-                keyRenderStrategy.Render(scoreService.CurrentKey, renderer);
+                //Draw virtual key signature but only if there is no key change:
+                var nextKeyChange = scoreService.CurrentStaff.Peek<Key>(element, Model.PeekStrategies.PeekType.NextElement);
+                var nextNoteOrRest = scoreService.CurrentStaff.Peek<NoteOrRest>(element, Model.PeekStrategies.PeekType.NextElement);
+                if (nextKeyChange != null && (nextNoteOrRest == null || scoreService.CurrentStaff.Elements.IndexOf(nextNoteOrRest) > scoreService.CurrentStaff.Elements.IndexOf(nextKeyChange)))
+                {
+                    //Do not draw key signature
+                }
+                else
+                {
+                    var keyRenderStrategy = new KeyRenderStrategy(scoreService) { IsVirtualKey = true };
+                    keyRenderStrategy.Render(scoreService.CurrentKey, renderer);
+                }
 
                 //Time signature is not rendered in new line.
 
