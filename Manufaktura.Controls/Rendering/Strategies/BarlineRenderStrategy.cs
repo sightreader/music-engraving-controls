@@ -213,7 +213,8 @@ namespace Manufaktura.Controls.Rendering
 
         private bool IsLastBarline(Barline element)
         {
-            return element == scoreService.CurrentStaff.Elements.OfType<Barline>().LastOrDefault();
+            return element == scoreService.CurrentStaff.Elements.OfType<Barline>().LastOrDefault()                          //Element is the last barline in the staff 
+                && scoreService.CurrentStaff.Peek<NoteOrRest>(element, Model.PeekStrategies.PeekType.NextElement) == null;  //and there are no notes or rests after it
         }
     }
 }

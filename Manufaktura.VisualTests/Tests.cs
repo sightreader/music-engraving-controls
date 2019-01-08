@@ -83,6 +83,7 @@ namespace Manufaktura.VisualTests
             AcceptTo(new DateTime(2019, 01, 03, 17, 11, 00));   //Grace note stem fix
             AcceptTo(new DateTime(2019, 01, 04, 10, 11, 00));   //Collision-free beams
             AcceptTo(new DateTime(2019, 01, 06, 21, 05, 00));   //Centering of time signatures
+            AcceptTo(new DateTime(2019, 01, 08, 22, 31, 00));   //Proper rendering of keys
 
             var tests = CreatePathDictionary(testPath);
             var firstNotAcceptedTest = tests.Any(d => d.Key > lastAcceptedTestDateTime) ? tests.FirstOrDefault(d => d.Key > lastAcceptedTestDateTime).Value : null;
