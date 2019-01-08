@@ -13,7 +13,8 @@
     <RepositoryUrl>https://bitbucket.org/Ajcek/manufakturalibraries</RepositoryUrl>
     <PackageTags>music .net controls</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
+    <PackageReleaseNotes>Rendering corrections</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

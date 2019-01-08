@@ -2171,12 +2171,12 @@
           }
         }
       },
-      "Manufaktura.Controls/1.4.1": {
+      "Manufaktura.Controls/1.4.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.1",
-          "Manufaktura.Music": "1.1.0",
+          "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -2188,7 +2188,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.1.0": {
+      "Manufaktura.Music/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -4566,12 +4566,12 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.1": {
+      "Manufaktura.Controls/1.4.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.1",
-          "Manufaktura.Music": "1.1.0",
+          "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -4583,7 +4583,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.1.0": {
+      "Manufaktura.Music/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -6980,12 +6980,12 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.1": {
+      "Manufaktura.Controls/1.4.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.1",
-          "Manufaktura.Music": "1.1.0",
+          "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -6997,7 +6997,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.1.0": {
+      "Manufaktura.Music/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -9384,12 +9384,12 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.1": {
+      "Manufaktura.Controls/1.4.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.1",
-          "Manufaktura.Music": "1.1.0",
+          "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -9401,7 +9401,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.1.0": {
+      "Manufaktura.Music/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -11798,12 +11798,12 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.1": {
+      "Manufaktura.Controls/1.4.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.1",
-          "Manufaktura.Music": "1.1.0",
+          "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -11815,7 +11815,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.1.0": {
+      "Manufaktura.Music/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -14202,12 +14202,12 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.1": {
+      "Manufaktura.Controls/1.4.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.1",
-          "Manufaktura.Music": "1.1.0",
+          "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -14219,7 +14219,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.1.0": {
+      "Manufaktura.Music/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -16616,12 +16616,12 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Manufaktura.Controls/1.4.1": {
+      "Manufaktura.Controls/1.4.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Manufaktura.Core": "1.0.1",
-          "Manufaktura.Music": "1.1.0",
+          "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
@@ -16633,7 +16633,7 @@
           "NETStandard.Library": "1.6.1"
         }
       },
-      "Manufaktura.Music/1.1.0": {
+      "Manufaktura.Music/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -22562,7 +22562,7 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Manufaktura.Controls/1.4.1": {
+    "Manufaktura.Controls/1.4.2": {
       "type": "project",
       "path": "../Manufaktura.Controls/Manufaktura.Controls.csproj",
       "msbuildProject": "../Manufaktura.Controls/Manufaktura.Controls.csproj"
@@ -22572,7 +22572,7 @@
       "path": "../Manufaktura.Core/Manufaktura.Core.csproj",
       "msbuildProject": "../Manufaktura.Core/Manufaktura.Core.csproj"
     },
-    "Manufaktura.Music/1.1.0": {
+    "Manufaktura.Music/1.1.2": {
       "type": "project",
       "path": "../Manufaktura.Music/Manufaktura.Music.csproj",
       "msbuildProject": "../Manufaktura.Music/Manufaktura.Music.csproj"
