@@ -2175,13 +2175,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.1",
+          "Manufaktura.Core": "1.0.2",
           "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
       },
-      "Manufaktura.Core/1.0.1": {
+      "Manufaktura.Core/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -4570,13 +4570,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.1",
+          "Manufaktura.Core": "1.0.2",
           "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
       },
-      "Manufaktura.Core/1.0.1": {
+      "Manufaktura.Core/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -6984,13 +6984,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.1",
+          "Manufaktura.Core": "1.0.2",
           "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
       },
-      "Manufaktura.Core/1.0.1": {
+      "Manufaktura.Core/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -9388,13 +9388,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.1",
+          "Manufaktura.Core": "1.0.2",
           "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
       },
-      "Manufaktura.Core/1.0.1": {
+      "Manufaktura.Core/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -11802,13 +11802,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.1",
+          "Manufaktura.Core": "1.0.2",
           "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
       },
-      "Manufaktura.Core/1.0.1": {
+      "Manufaktura.Core/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -14206,13 +14206,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.1",
+          "Manufaktura.Core": "1.0.2",
           "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
       },
-      "Manufaktura.Core/1.0.1": {
+      "Manufaktura.Core/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -16620,13 +16620,13 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
-          "Manufaktura.Core": "1.0.1",
+          "Manufaktura.Core": "1.0.2",
           "Manufaktura.Music": "1.1.2",
           "NETStandard.Library": "1.6.1",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         }
       },
-      "Manufaktura.Core/1.0.1": {
+      "Manufaktura.Core/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -22567,7 +22567,7 @@
       "path": "../Manufaktura.Controls/Manufaktura.Controls.csproj",
       "msbuildProject": "../Manufaktura.Controls/Manufaktura.Controls.csproj"
     },
-    "Manufaktura.Core/1.0.1": {
+    "Manufaktura.Core/1.0.2": {
       "type": "project",
       "path": "../Manufaktura.Core/Manufaktura.Core.csproj",
       "msbuildProject": "../Manufaktura.Core/Manufaktura.Core.csproj"
