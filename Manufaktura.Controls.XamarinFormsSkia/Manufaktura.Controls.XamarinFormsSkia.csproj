@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls.Skia\Manufaktura.Controls.Skia.csproj" />
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj" />
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj" />
   </ItemGroup>
