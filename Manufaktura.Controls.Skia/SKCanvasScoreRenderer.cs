@@ -9,11 +9,13 @@ using System.Collections.Generic;
 
 namespace Manufaktura.Controls.Skia
 {
-    public class SKCanvasScoreRenderer : ScoreRenderer<SKCanvas>
+    public class SKCanvasScoreRenderer : ScoreRenderer<SKCanvas>, IDisposable
     {
         public Dictionary<SKObject, MusicalSymbol> OwnershipDictionary { get; private set; }
 
         public SKScoreRendererSettings TypedSettings => Settings as SKScoreRendererSettings;
+
+        private readonly Dictionary<Pen, SKPaint> penCache = new Dictionary<Pen, SKPaint>();
 
         public SKCanvasScoreRenderer(SKCanvas canvas) : base(canvas, new SKScoreRendererSettings())
         {
@@ -29,7 +31,13 @@ namespace Manufaktura.Controls.Skia
 
         private SKColor Convert(Color color) => new SKColor(color.R, color.G, color.B, color.A);
 
-        private SKPaint Convert(Pen pen) => new SKPaint { Color = Convert(pen.Color) }; //TODO: Dispose paints
+        private SKPaint Convert(Pen pen)
+        {
+            if (penCache.ContainsKey(pen)) return penCache[pen];
+            var paint = new SKPaint { Color = Convert(pen.Color), StrokeWidth = (float)pen.Thickness };
+            penCache.Add(pen, paint);
+            return paint;
+        }
 
         private SKPoint Convert(Point point) => new SKPoint((float)point.X, (float)point.Y);
 
@@ -76,6 +84,11 @@ namespace Manufaktura.Controls.Skia
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            foreach (var penEntry in penCache) penEntry.Value.Dispose();
         }
     }
 }

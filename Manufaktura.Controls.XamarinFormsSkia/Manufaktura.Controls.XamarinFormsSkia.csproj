@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Manufaktura.Music\Manufaktura.Music.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="NoteViewer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
