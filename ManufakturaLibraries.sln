@@ -89,9 +89,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manufaktura.Controls.Skia",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manufaktura.Controls.XamarinFormsSkia", "Manufaktura.Controls.XamarinFormsSkia\Manufaktura.Controls.XamarinFormsSkia.csproj", "{9A768D8F-0656-41DB-A381-9246DD88D2E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.XamarinSkia.Test.Android", "Manufaktura.Controls.XamarinSkia.Test\Manufaktura.Controls.XamarinSkia.Test.Android\Manufaktura.Controls.XamarinSkia.Test.Android.csproj", "{47CF5292-64D3-4A81-B785-80D5A83255AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.XamarinSkia.Test.Android", "Manufaktura.Controls.XamarinSkia.Test.Android\Manufaktura.Controls.XamarinSkia.Test.Android.csproj", "{47CF5292-64D3-4A81-B785-80D5A83255AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.XamarinSkia.Test", "Manufaktura.Controls.XamarinSkia.Test\Manufaktura.Controls.XamarinSkia.Test\Manufaktura.Controls.XamarinSkia.Test.csproj", "{651061B5-AF37-4B77-9FAA-7F84ED0D9621}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufaktura.Controls.XamarinSkia.Test", "Manufaktura.Controls.XamarinSkia.Test\Manufaktura.Controls.XamarinSkia.Test.csproj", "{651061B5-AF37-4B77-9FAA-7F84ED0D9621}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
