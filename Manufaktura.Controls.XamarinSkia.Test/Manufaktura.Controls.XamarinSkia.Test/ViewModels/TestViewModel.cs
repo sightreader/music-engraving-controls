@@ -13,23 +13,24 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using Manufaktura.Controls.SMuFL;
-using Manufaktura.Controls.XamarinSkia.Test.ViewModels;
-using Xamarin.Forms;
+using Manufaktura.Controls.Extensions;
+using Manufaktura.Controls.Model;
+using Manufaktura.Music.Model;
+using Manufaktura.Music.Model.MajorAndMinor;
 
-namespace Manufaktura.Controls.XamarinSkia.Test
+namespace Manufaktura.Controls.XamarinSkia.Test.ViewModels
 {
-    public partial class MainPage : ContentPage
+    public class TestViewModel : ViewModel
     {
-        public MainPage()
+        private Score testScore;
+
+        public Score TestScore { get => testScore; set { testScore = value; OnPropertyChanged(); } }
+
+        public TestViewModel()
         {
-            InitializeComponent();
-            var vm = new TestViewModel();
-
-            var fontProfile = SMuFLMusicFont.CreateFromJsonResource<MainPage>("Assets.bravura_metadata.json");
-            noteViewer1.SetFontFromResource<MainPage>("Assets.bravura.otf", fontProfile);
-
-            BindingContext = vm;
+            var score = Score.CreateOneStaffScore(Clef.Treble, MajorScale.G);
+            score.FirstStaff.AddRange(StaffBuilder.FromPitches(new[] { Pitch.G4, Pitch.B5, Pitch.D5 }).AddUniformRhythm(RhythmicDuration.Quarter));
+            TestScore = score;
         }
     }
 }

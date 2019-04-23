@@ -10,10 +10,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Bravura.otf" />
+    <None Remove="Assets\bravura_metadata.bin" />
+    <None Remove="Assets\bravura_metadata.json" />
+    <None Remove="Assets\Gootville.otf" />
+    <None Remove="Assets\gootville_metadata.bin" />
+    <None Remove="Assets\gootville_metadata.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Bravura.otf" />
+    <EmbeddedResource Include="Assets\bravura_metadata.bin" />
+    <EmbeddedResource Include="Assets\bravura_metadata.json" />
+    <EmbeddedResource Include="Assets\Gootville.otf" />
+    <EmbeddedResource Include="Assets\gootville_metadata.bin" />
+    <EmbeddedResource Include="Assets\gootville_metadata.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Manufaktura.Controls.SMuFL\Manufaktura.Controls.SMuFL.csproj" />
     <ProjectReference Include="..\..\Manufaktura.Controls.XamarinFormsSkia\Manufaktura.Controls.XamarinFormsSkia.csproj" />
   </ItemGroup>
 </Project>

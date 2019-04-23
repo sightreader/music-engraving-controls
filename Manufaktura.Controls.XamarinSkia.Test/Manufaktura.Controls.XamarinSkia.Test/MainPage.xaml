@@ -7,10 +7,9 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="Welcome to Xamarin.Forms!"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <xamarinformsskia:NoteViewer />
+        <xamarinformsskia:NoteViewer x:Name="noteViewer1" ScoreSource="{Binding TestScore}" />
     </StackLayout>
-
 </ContentPage>
