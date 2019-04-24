@@ -51,6 +51,7 @@ namespace Manufaktura.Orm.UnitTests
 
                 var metadataAsProxy = (LazyLoadJsonProxy)metadata;
                 var elapsedWithProxy = metadataAsProxy.GetTotalDeserializationTimeWithChildElements();
+                var cacheDump = metadataAsProxy.DumpCache(typeof(ISMuFLFontMetadata));
 
                 Debug.WriteLine(elapsedWithProxy);
             }
@@ -60,7 +61,7 @@ namespace Manufaktura.Orm.UnitTests
         public void JsonDeserializationTestWithProxyOnRealExample()
         {
             var assembly = typeof(SerializationTests).Assembly;
-            var scoreResourceName = $"{typeof(SerializationTests).Namespace}.Assets.JohannChristophBachFull3.0.xml";
+            var scoreResourceName = $"{typeof(SerializationTests).Namespace}.Assets.JohannChristophBachFull30.xml";
 
             using (var scoreStream = assembly.GetManifestResourceStream(scoreResourceName))
             using (var scoreReader = new StreamReader(scoreStream))
@@ -71,7 +72,7 @@ namespace Manufaktura.Orm.UnitTests
                 var scoreString = scoreReader.ReadToEnd();
                 var settings = new HtmlScoreRendererSettings();
                 settings.RenderSurface = HtmlScoreRendererSettings.HtmlRenderSurface.Svg;
-                var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("bravura_metadata.json");
+                var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json");
                 settings.SetMusicFont(profile, "Bravura", "/fakeuri");
                 settings.Scale = 1;
                 settings.CustomElementPositionRatio = 0.8;
@@ -86,6 +87,8 @@ namespace Manufaktura.Orm.UnitTests
                 Debug.WriteLine($"All rendering done in {sw.Elapsed}");
                 var deserTime = metadataAsProxy.GetTotalDeserializationTimeWithChildElements();
                 Debug.WriteLine($"Deserialization done in {deserTime}");
+
+                var cacheDump = metadataAsProxy.DumpCache(typeof(ISMuFLFontMetadata));
             }
         }
 

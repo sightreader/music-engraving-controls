@@ -26,6 +26,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace Manufaktura.Core.Serialization
 {
@@ -36,6 +37,7 @@ namespace Manufaktura.Core.Serialization
         public ConcurrentDictionary<string, TimeSpan> PerformanceLog { get; } = new ConcurrentDictionary<string, TimeSpan>();
 
         public TimeSpan TotalTimeSpentOnDeserialization => TimeSpan.FromTicks(PerformanceLog.Sum(pl => pl.Value.Ticks));
+
         public static object Create(Type interfaceType, string json)
         {
             var proxyType = typeof(LazyLoadJsonProxy<>).MakeGenericType(interfaceType);
@@ -65,6 +67,40 @@ namespace Manufaktura.Core.Serialization
                 count += proxy.GetTotalNumberOfAccessedMethodsWithChildElements();
             }
             return count;
+        }
+
+        public string DumpCache(Type type)
+        {
+            var sb = new StringBuilder();
+            var index = 0;
+            using (var textWriter = new StringWriter(sb))
+            using (var writer = new JsonTextWriter(textWriter))
+            {
+                writer.WriteStartObject();
+                foreach (var entry in cache)
+                {
+                    var property = type.GetTypeInfo().GetDeclaredProperty(entry.Key.Replace("get_", ""));
+                    var jsonPropertyName = property?.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ??
+                        property?.GetCustomAttribute<DataMemberAttribute>()?.Name;
+
+                    writer.WritePropertyName(jsonPropertyName);
+                    if (property.PropertyType.GetTypeInfo().IsInterface)
+                    {
+                        var valueAsProxy = entry.Value as LazyLoadJsonProxy;
+                        writer.WriteRawValue(valueAsProxy?.DumpCache(property.PropertyType));
+                    }
+                    else
+                    {
+                        var token = JToken.FromObject(entry.Value);
+                        writer.WriteRawValue(token?.ToString());
+                    }
+
+                    //if (index != cache.Count - 1) writer.WriteRaw(",");
+                    index++;
+                }
+                writer.WriteEnd();
+            }
+            return sb.ToString();
         }
     }
 

@@ -15,6 +15,9 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 
 using Manufaktura.Controls.SMuFL;
 using Manufaktura.Controls.XamarinSkia.Test.ViewModels;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
 using Xamarin.Forms;
 
 namespace Manufaktura.Controls.XamarinSkia.Test
@@ -26,10 +29,24 @@ namespace Manufaktura.Controls.XamarinSkia.Test
             InitializeComponent();
             var vm = new TestViewModel();
 
-            var fontProfile = SMuFLMusicFont.CreateFromJsonResource<MainPage>("Assets.bravura_metadata.json", true);
+            //var proxy = DispatchProxy.Create<IFakeProxy, FakeProxy>();
+
+            var fontProfile = SMuFLMusicFont.CreateFromJsonResource<MainPage>("Assets.bravura_metadata.json", false);
             noteViewer1.SetFontFromResource<MainPage>("Assets.bravura.otf", fontProfile);
 
             BindingContext = vm;
+        }
+
+        interface IFakeProxy
+        {
+
+        }
+        class FakeProxy : DispatchProxy, IFakeProxy
+        {
+            protected override object Invoke(MethodInfo targetMethod, object[] args)
+            {
+                return null;
+            }
         }
     }
 }
