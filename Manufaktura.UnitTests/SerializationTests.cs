@@ -115,7 +115,7 @@ namespace Manufaktura.Orm.UnitTests
         [TestMethod]
         public void TestBinarySerialization()
         {
-            var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json", false);
+            var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json", SMuFLMusicFont.LoadingModes.Eager);
             using (var ms = new MemoryStream())
             {
                 var serializationSw = new Stopwatch();
