@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Manufaktura.Controls.SMuFL.ProxylessLazyLoading
+namespace Manufaktura.Controls.SMuFL.LazyLoadingWithStaticProxy
 {
-    public class LazyGlyphBBoxes : ProxylessLazyloader<IGlyphBBoxes>, IGlyphBBoxes
+    public class LazyGlyphBBoxes : LazyLoadJsonStaticProxy<IGlyphBBoxes>, IGlyphBBoxes
     {
         public LazyGlyphBBoxes(string jsonString) : base(jsonString,  new[] {typeof(LazySMuFLFontMetadata), typeof(LazySMuFLGlyphs), typeof(LazyGlyphBBoxes) })
         {

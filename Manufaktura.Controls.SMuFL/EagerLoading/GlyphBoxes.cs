@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Manufaktura.Controls.Model.SMuFL;
 
-namespace Manufaktura.Controls.SMuFL
+namespace Manufaktura.Controls.SMuFL.EagerLoading
 {
     public class GlyphBBoxes : IGlyphBBoxes
     {

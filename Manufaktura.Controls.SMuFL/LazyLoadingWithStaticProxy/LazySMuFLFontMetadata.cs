@@ -2,9 +2,9 @@
 using Manufaktura.Core.Serialization;
 using System.Collections.Generic;
 
-namespace Manufaktura.Controls.SMuFL.ProxylessLazyLoading
+namespace Manufaktura.Controls.SMuFL.LazyLoadingWithStaticProxy
 {
-    public class LazySMuFLFontMetadata : ProxylessLazyloader<ISMuFLFontMetadata>, ISMuFLFontMetadata
+    public class LazySMuFLFontMetadata : LazyLoadJsonStaticProxy<ISMuFLFontMetadata>, ISMuFLFontMetadata
     {
         public LazySMuFLFontMetadata(string jsonString) : base(jsonString, new[] {typeof(LazySMuFLFontMetadata), typeof(LazySMuFLGlyphs), typeof(LazyGlyphBBoxes) })
         {

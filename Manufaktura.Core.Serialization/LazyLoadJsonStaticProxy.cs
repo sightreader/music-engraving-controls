@@ -11,13 +11,13 @@ using System.Runtime.Serialization;
 
 namespace Manufaktura.Core.Serialization
 {
-    public abstract class ProxylessLazyloader<TInterface>
+    public abstract class LazyLoadJsonStaticProxy<TInterface>
     {
         protected ConcurrentDictionary<string, object> cache = new ConcurrentDictionary<string, object>();
         private readonly string jsonString;
         private readonly Type[] concreteTypes;
 
-        public ProxylessLazyloader(string jsonString, Type[] concreteTypes)
+        public LazyLoadJsonStaticProxy(string jsonString, Type[] concreteTypes)
         {
             this.jsonString = jsonString;
             this.concreteTypes = concreteTypes;
@@ -68,7 +68,7 @@ namespace Manufaktura.Core.Serialization
 
         private object Create(Type interfaceType, string innerJson)
         {
-            var abstractLoaderType = typeof(ProxylessLazyloader<>).MakeGenericType(interfaceType);
+            var abstractLoaderType = typeof(LazyLoadJsonStaticProxy<>).MakeGenericType(interfaceType);
             var concreteLoaderType = concreteTypes.FirstOrDefault(t => t.GetTypeInfo().IsSubclassOf(abstractLoaderType));
             return Activator.CreateInstance(concreteLoaderType, innerJson);
         }

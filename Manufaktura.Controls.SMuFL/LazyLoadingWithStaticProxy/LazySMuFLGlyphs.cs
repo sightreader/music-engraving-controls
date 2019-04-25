@@ -4,9 +4,9 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace Manufaktura.Controls.SMuFL.ProxylessLazyLoading
+namespace Manufaktura.Controls.SMuFL.LazyLoadingWithStaticProxy
 {
-    public class LazySMuFLGlyphs : ProxylessLazyloader<ISMuFLGlyphs>, ISMuFLGlyphs
+    public class LazySMuFLGlyphs : LazyLoadJsonStaticProxy<ISMuFLGlyphs>, ISMuFLGlyphs
     {
         private static Lazy<ISMuFLGlyphs> instance = new Lazy<ISMuFLGlyphs>(() =>
         {

@@ -36,7 +36,7 @@ namespace Manufaktura.Controls.WPF.Test
 
             if (useSMuFL)
             {
-                var fontProfile = SMuFLMusicFont.CreateFromJsonResource<MainWindow>("Assets.bravura_metadata.json", SMuFLMusicFont.LoadingModes.Lazy);
+                var fontProfile = SMuFLMusicFont.CreateFromJsonResource<MainWindow>("Assets.bravura_metadata.json", SMuFLMusicFont.JSONLoadingModes.LazyWithStaticProxy);
                 //SMuFLMusicFont.CreateFromBinaryResource<MainWindow>("Assets.bravura_metadata.bin");
                 noteViewerTest.SetFont(family, fontProfile);
                 noteViewer1.SetFont(family, fontProfile);

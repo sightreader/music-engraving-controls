@@ -29,7 +29,7 @@ namespace Manufaktura.Controls.XamarinSkia.Test
             InitializeComponent();
             var vm = new TestViewModel();
 
-            var fontProfile = SMuFLMusicFont.CreateFromJsonResource<MainPage>("Assets.bravura_metadata.json", SMuFLMusicFont.LoadingModes.Lazy);
+            var fontProfile = SMuFLMusicFont.CreateFromJsonResource<MainPage>("Assets.bravura_metadata.json", SMuFLMusicFont.JSONLoadingModes.LazyWithStaticProxy);
             noteViewer1.SetFontFromResource<MainPage>("Assets.Bravura.otf", fontProfile);
 
             BindingContext = vm;

@@ -17,7 +17,8 @@ using Manufaktura.Controls.Model.Assertions;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Rendering;
-using Manufaktura.Controls.SMuFL.ProxylessLazyLoading;
+using Manufaktura.Controls.SMuFL.EagerLoading;
+using Manufaktura.Controls.SMuFL.LazyLoadingWithStaticProxy;
 using Manufaktura.Controls.SMuFL.Utilities;
 using Manufaktura.Core.Serialization;
 using Newtonsoft.Json;
@@ -230,10 +231,10 @@ namespace Manufaktura.Controls.SMuFL
             var serializer = new SharpSerializer(settings);
 
             var metadata = serializer.Deserialize(binaryStream) as ISMuFLFontMetadata;
-            return new SMuFLFontProfile(metadata, SMuFLGlyphs.Instance);
+            return new SMuFLFontProfile(metadata, LazySMuFLGlyphs.Instance);
         }
 
-        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
+        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName, JSONLoadingModes loadingMode = JSONLoadingModes.LazyWithDynamicProxy)
         {
             using (var stream = assembly.GetManifestResourceStream(resourceFullName))
             using (var reader = new StreamReader(stream))
@@ -243,14 +244,14 @@ namespace Manufaktura.Controls.SMuFL
             }
         }
 
-        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
+        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName, JSONLoadingModes loadingMode = JSONLoadingModes.LazyWithDynamicProxy)
         {
             var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
             var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
             return CreateFromJsonResource(assembly, resourceName, loadingMode);
         }
 
-        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
+        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, JSONLoadingModes loadingMode = JSONLoadingModes.LazyWithDynamicProxy)
         {
             using (var reader = new StreamReader(jsonStream))
             {
@@ -259,18 +260,18 @@ namespace Manufaktura.Controls.SMuFL
             }
         }
 
-        public static SMuFLFontProfile CreateFromJsonString(string json, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
+        public static SMuFLFontProfile CreateFromJsonString(string json, JSONLoadingModes loadingMode = JSONLoadingModes.LazyWithDynamicProxy)
         {
             ISMuFLFontMetadata metadata = null;
-            if (loadingMode == LoadingModes.Eager) metadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(json);
-            if (loadingMode == LoadingModes.LazyWithDynamicProxy) metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json);
-            if (loadingMode == LoadingModes.Lazy) metadata = new LazySMuFLFontMetadata(json);
+            if (loadingMode == JSONLoadingModes.Eager) metadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(json);
+            if (loadingMode == JSONLoadingModes.LazyWithDynamicProxy) metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json);
+            if (loadingMode == JSONLoadingModes.LazyWithStaticProxy) metadata = new LazySMuFLFontMetadata(json);
             if (metadata == null) throw new Exception($"Unknown loading mode {loadingMode}.");
 
             ISMuFLGlyphs glyphsInstance = null;
-            if (loadingMode == LoadingModes.Eager) glyphsInstance = LazySMuFLGlyphs.Instance;   //TODO: Eager loading
-            if (loadingMode == LoadingModes.LazyWithDynamicProxy) glyphsInstance = SMuFLGlyphs.Instance;  
-            if (loadingMode == LoadingModes.Lazy) glyphsInstance = LazySMuFLGlyphs.Instance;  
+            if (loadingMode == JSONLoadingModes.Eager) glyphsInstance = LazySMuFLGlyphs.Instance;   //TODO: Eager loading
+            if (loadingMode == JSONLoadingModes.LazyWithDynamicProxy) glyphsInstance = SMuFLGlyphs.Instance;
+            if (loadingMode == JSONLoadingModes.LazyWithStaticProxy) glyphsInstance = LazySMuFLGlyphs.Instance;
             if (glyphsInstance == null) throw new Exception($"Unknown loading mode {loadingMode}.");
 
             return new SMuFLFontProfile(metadata, glyphsInstance);
@@ -292,10 +293,22 @@ namespace Manufaktura.Controls.SMuFL
         [Units(Units.Pixels)]
         public double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number) => tupletNumberUtility.GetNumberWidthPx(renderer, number);
 
-        public enum LoadingModes
+        public enum JSONLoadingModes
         {
+            /// <summary>
+            /// Whole JSON document will be loaded at once
+            /// </summary>
             Eager,
-            Lazy,
+
+            /// <summary>
+            /// JSON will be lazy loaded with static proxy
+            /// </summary>
+            LazyWithStaticProxy,
+
+            /// <summary>
+            /// JSON will be lazy loaded with dynamic proxy.
+            /// This is using DispatchProxy implementation which can be unsupported on some platforms.
+            /// </summary>
             LazyWithDynamicProxy
         }
     }

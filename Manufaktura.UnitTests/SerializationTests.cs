@@ -2,6 +2,7 @@
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Rendering.Implementations;
 using Manufaktura.Controls.SMuFL;
+using Manufaktura.Controls.SMuFL.EagerLoading;
 using Manufaktura.Core.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -58,7 +59,14 @@ namespace Manufaktura.Orm.UnitTests
         }
 
         [TestMethod]
-        public void JsonDeserializationTestWithProxyOnRealExample()
+        public void JsonDeserializationTestWithDynamicProxyOnRealExample() =>
+            JsonDeserializationTestWithProxyOnRealExample(SMuFLMusicFont.JSONLoadingModes.LazyWithDynamicProxy);
+
+        [TestMethod]
+        public void JsonDeserializationTestWithStaticProxyOnRealExample() =>
+            JsonDeserializationTestWithProxyOnRealExample(SMuFLMusicFont.JSONLoadingModes.LazyWithStaticProxy);
+
+        private void JsonDeserializationTestWithProxyOnRealExample(SMuFLMusicFont.JSONLoadingModes loadingMode)
         {
             var assembly = typeof(SerializationTests).Assembly;
             var scoreResourceName = $"{typeof(SerializationTests).Namespace}.Assets.JohannChristophBachFull30.xml";
@@ -72,7 +80,7 @@ namespace Manufaktura.Orm.UnitTests
                 var scoreString = scoreReader.ReadToEnd();
                 var settings = new HtmlScoreRendererSettings();
                 settings.RenderSurface = HtmlScoreRendererSettings.HtmlRenderSurface.Svg;
-                var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json");
+                var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json", loadingMode);
                 settings.SetMusicFont(profile, "Bravura", "/fakeuri");
                 settings.Scale = 1;
                 settings.CustomElementPositionRatio = 0.8;
@@ -83,12 +91,15 @@ namespace Manufaktura.Orm.UnitTests
 
                 sw.Stop();
 
-                var metadataAsProxy = (LazyLoadJsonProxy)profile.SMuFLMetadata;
-                Debug.WriteLine($"All rendering done in {sw.Elapsed}");
-                var deserTime = metadataAsProxy.GetTotalDeserializationTimeWithChildElements();
-                Debug.WriteLine($"Deserialization done in {deserTime}");
+                var metadataAsProxy = profile.SMuFLMetadata as LazyLoadJsonProxy;
+                if (metadataAsProxy != null)
+                {
+                    Debug.WriteLine($"All rendering done in {sw.Elapsed}");
+                    var deserTime = metadataAsProxy.GetTotalDeserializationTimeWithChildElements();
+                    Debug.WriteLine($"Deserialization done in {deserTime}");
 
-                var cacheDump = metadataAsProxy.DumpCache(typeof(ISMuFLFontMetadata));
+                    var cacheDump = metadataAsProxy.DumpCache(typeof(ISMuFLFontMetadata));
+                }
             }
         }
 
@@ -115,7 +126,7 @@ namespace Manufaktura.Orm.UnitTests
         [TestMethod]
         public void TestBinarySerialization()
         {
-            var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json", SMuFLMusicFont.LoadingModes.Eager);
+            var profile = SMuFLMusicFont.CreateFromJsonResource<SerializationTests>("Assets.bravura_metadata.json", SMuFLMusicFont.JSONLoadingModes.Eager);
             using (var ms = new MemoryStream())
             {
                 var serializationSw = new Stopwatch();

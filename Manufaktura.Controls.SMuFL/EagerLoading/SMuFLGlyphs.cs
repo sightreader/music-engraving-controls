@@ -22,14 +22,14 @@ using Newtonsoft.Json;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Core.Serialization;
 
-namespace Manufaktura.Controls.SMuFL
+namespace Manufaktura.Controls.SMuFL.EagerLoading
 {
     public class SMuFLGlyphs : ISMuFLGlyphs
     {
         private static Lazy<ISMuFLGlyphs> instance = new Lazy<ISMuFLGlyphs>(() =>
         {
-            var assembly = typeof(SMuFLGlyphs).GetTypeInfo().Assembly;
-            var resourceName = $"{typeof(SMuFLGlyphs).Namespace}.glyphnames.json";
+            var assembly = typeof(ISMuFLGlyphs).GetTypeInfo().Assembly;
+            var resourceName = $"{typeof(ISMuFLGlyphs).Namespace}.glyphnames.json";
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             using (var reader = new StreamReader(stream))
