@@ -6,22 +6,29 @@ namespace Manufaktura.Controls.SMuFL.Utilities
 {
     public class TimeSignatureNumberUtility : NumberUtility
     {
+        private readonly ISMuFLGlyphs glyphsInstance;
+
+        public TimeSignatureNumberUtility(ISMuFLGlyphs glyphsInstance)
+        {
+            this.glyphsInstance = glyphsInstance;
+        }
+
         public override string BuildNumber(int number)
         {
             var sb = new StringBuilder();
             var digits = number.ToString();
             foreach (var digit in digits)
             {
-                if (digit == '0') sb.Append(SMuFLGlyphs.Instance.TimeSig0.Character);
-                if (digit == '1') sb.Append(SMuFLGlyphs.Instance.TimeSig1.Character);
-                if (digit == '2') sb.Append(SMuFLGlyphs.Instance.TimeSig2.Character);
-                if (digit == '3') sb.Append(SMuFLGlyphs.Instance.TimeSig3.Character);
-                if (digit == '4') sb.Append(SMuFLGlyphs.Instance.TimeSig4.Character);
-                if (digit == '5') sb.Append(SMuFLGlyphs.Instance.TimeSig5.Character);
-                if (digit == '6') sb.Append(SMuFLGlyphs.Instance.TimeSig6.Character);
-                if (digit == '7') sb.Append(SMuFLGlyphs.Instance.TimeSig7.Character);
-                if (digit == '8') sb.Append(SMuFLGlyphs.Instance.TimeSig8.Character);
-                if (digit == '9') sb.Append(SMuFLGlyphs.Instance.TimeSig9.Character);
+                if (digit == '0') sb.Append(glyphsInstance.TimeSig0.Character);
+                if (digit == '1') sb.Append(glyphsInstance.TimeSig1.Character);
+                if (digit == '2') sb.Append(glyphsInstance.TimeSig2.Character);
+                if (digit == '3') sb.Append(glyphsInstance.TimeSig3.Character);
+                if (digit == '4') sb.Append(glyphsInstance.TimeSig4.Character);
+                if (digit == '5') sb.Append(glyphsInstance.TimeSig5.Character);
+                if (digit == '6') sb.Append(glyphsInstance.TimeSig6.Character);
+                if (digit == '7') sb.Append(glyphsInstance.TimeSig7.Character);
+                if (digit == '8') sb.Append(glyphsInstance.TimeSig8.Character);
+                if (digit == '9') sb.Append(glyphsInstance.TimeSig9.Character);
             }
             return sb.ToString();
         }

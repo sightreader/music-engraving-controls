@@ -40,7 +40,7 @@ namespace Manufaktura.Controls.SMuFL
         });
 
 
-        public static ISMuFLGlyphs Instance => instance.Value;
+        internal static ISMuFLGlyphs Instance => instance.Value;
 
         [DataMember(Name="4stringTabClef")]
         public GlyphDefinition The4StringTabClef { get; set; }

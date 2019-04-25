@@ -17,6 +17,7 @@ using Manufaktura.Controls.Model.Assertions;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Model.SMuFL;
 using Manufaktura.Controls.Rendering;
+using Manufaktura.Controls.SMuFL.ProxylessLazyLoading;
 using Manufaktura.Controls.SMuFL.Utilities;
 using Manufaktura.Core.Serialization;
 using Newtonsoft.Json;
@@ -29,8 +30,17 @@ namespace Manufaktura.Controls.SMuFL
 {
     public class SMuFLMusicFont : IMusicFont
     {
-        private readonly TimeSignatureNumberUtility timeSignatureNumberUtility = new TimeSignatureNumberUtility();
-        private readonly TupletNumberUtility tupletNumberUtility = new TupletNumberUtility();
+        private readonly ISMuFLGlyphs glyphsInstance;
+        private readonly TimeSignatureNumberUtility timeSignatureNumberUtility;
+        private readonly TupletNumberUtility tupletNumberUtility;
+
+        public SMuFLMusicFont(ISMuFLGlyphs glyphsInstance)
+        {
+            this.glyphsInstance = glyphsInstance;
+            timeSignatureNumberUtility = new TimeSignatureNumberUtility(glyphsInstance);
+            tupletNumberUtility = new TupletNumberUtility(glyphsInstance);
+        }
+
         public char AugmentationDot => '\uE1E7';
 
         public char BraceLeft => '\uE000';
@@ -85,9 +95,9 @@ namespace Manufaktura.Controls.SMuFL
 
         public bool IsSMuFLFont => true;
 
-        public char Mordent => SMuFLGlyphs.Instance.OrnamentMordent.Character;
+        public char Mordent => glyphsInstance.OrnamentMordent.Character;
 
-        public char MordentInverted => SMuFLGlyphs.Instance.OrnamentMordentInverted.Character;
+        public char MordentInverted => glyphsInstance.OrnamentMordentInverted.Character;
 
         public char MordentShort => '\uE56C';
 
@@ -95,9 +105,9 @@ namespace Manufaktura.Controls.SMuFL
 
         public char NoteDoubleWhole => '\uE0A0';
 
-        public char NoteDoubleWholeCue => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
+        public char NoteDoubleWholeCue => glyphsInstance.NoteDoubleWhole.Character;
 
-        public char NoteDoubleWholeLarge => SMuFLGlyphs.Instance.NoteDoubleWhole.Character;
+        public char NoteDoubleWholeLarge => glyphsInstance.NoteDoubleWhole.Character;
 
         public char NoteEighth => throw new NotImplementedException();
 
@@ -123,27 +133,27 @@ namespace Manufaktura.Controls.SMuFL
 
         public char NoteHalf => '\uE0A3';
 
-        public char NoteheadBlack => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+        public char NoteheadBlack => glyphsInstance.NoteheadBlack.Character;
 
-        public char NoteheadBlackCue => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+        public char NoteheadBlackCue => glyphsInstance.NoteheadBlack.Character;
 
-        public char NoteheadBlackLarge => SMuFLGlyphs.Instance.NoteheadBlack.Character;
+        public char NoteheadBlackLarge => glyphsInstance.NoteheadBlack.Character;
 
         public char NoteheadHalf => '\uE0A3';
 
-        public char NoteheadHalfCue => SMuFLGlyphs.Instance.NoteheadHalf.Character;
+        public char NoteheadHalfCue => glyphsInstance.NoteheadHalf.Character;
 
-        public char NoteheadHalfLarge => SMuFLGlyphs.Instance.NoteheadHalf.Character;
+        public char NoteheadHalfLarge => glyphsInstance.NoteheadHalf.Character;
 
         public char NoteQuarter => '\uE0A4';
 
-        public char NoteSixteenth => SMuFLGlyphs.Instance.Note16ThUp.Character;
+        public char NoteSixteenth => glyphsInstance.Note16ThUp.Character;
 
         public char NoteWhole => '\uE0A2';
 
-        public char NoteWholeCue => SMuFLGlyphs.Instance.NoteWhole.Character;
+        public char NoteWholeCue => glyphsInstance.NoteWhole.Character;
 
-        public char NoteWholeLarge => SMuFLGlyphs.Instance.NoteWhole.Character;
+        public char NoteWholeLarge => glyphsInstance.NoteWhole.Character;
 
         public char PercussionClef => '\uE069';
 
@@ -157,7 +167,7 @@ namespace Manufaktura.Controls.SMuFL
 
         public char RestHalf => '\uE4E4';
 
-        public char RestMultimeasure => SMuFLGlyphs.Instance.RestHBar.Character;
+        public char RestMultimeasure => glyphsInstance.RestHBar.Character;
 
         public char RestQuarter => '\uE4E5';
 
@@ -167,7 +177,7 @@ namespace Manufaktura.Controls.SMuFL
 
         public char Sharp => '\uE262';
 
-        public char SquareBracketLeft => SMuFLGlyphs.Instance.Bracket.Character;
+        public char SquareBracketLeft => glyphsInstance.Bracket.Character;
 
         public char Staff4Lines => throw new NotImplementedException();
 
@@ -220,40 +230,52 @@ namespace Manufaktura.Controls.SMuFL
             var serializer = new SharpSerializer(settings);
 
             var metadata = serializer.Deserialize(binaryStream) as ISMuFLFontMetadata;
-            return new SMuFLFontProfile(metadata);
+            return new SMuFLFontProfile(metadata, SMuFLGlyphs.Instance);
         }
 
-        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName, bool useLazyProxy = true)
+        public static SMuFLFontProfile CreateFromJsonResource(Assembly assembly, string resourceFullName, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
         {
             using (var stream = assembly.GetManifestResourceStream(resourceFullName))
             using (var reader = new StreamReader(stream))
             {
                 string result = reader.ReadToEnd();
-                return CreateFromJsonString(result, useLazyProxy);
+                return CreateFromJsonString(result, loadingMode);
             }
         }
 
-        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName, bool useLazyProxy = true)
+        public static SMuFLFontProfile CreateFromJsonResource<TNamespace>(string resourceFileName, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
         {
             var assembly = typeof(TNamespace).GetTypeInfo().Assembly;
             var resourceName = $"{typeof(TNamespace).Namespace}.{resourceFileName}";
-            return CreateFromJsonResource(assembly, resourceName, useLazyProxy);
+            return CreateFromJsonResource(assembly, resourceName, loadingMode);
         }
 
-        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, bool useLazyProxy = true)
+        public static SMuFLFontProfile CreateFromJsonStream(Stream jsonStream, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
         {
             using (var reader = new StreamReader(jsonStream))
             {
                 string json = reader.ReadToEnd();
-                return CreateFromJsonString(json, useLazyProxy);
+                return CreateFromJsonString(json, loadingMode);
             }
         }
 
-        public static SMuFLFontProfile CreateFromJsonString(string json, bool useLazyProxy = true)
+        public static SMuFLFontProfile CreateFromJsonString(string json, LoadingModes loadingMode = LoadingModes.LazyWithDynamicProxy)
         {
-            var metadata = useLazyProxy ? LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json) : JsonConvert.DeserializeObject<SMuFLFontMetadata>(json);
-            return new SMuFLFontProfile(metadata);
+            ISMuFLFontMetadata metadata = null;
+            if (loadingMode == LoadingModes.Eager) metadata = JsonConvert.DeserializeObject<SMuFLFontMetadata>(json);
+            if (loadingMode == LoadingModes.LazyWithDynamicProxy) metadata = LazyLoadJsonProxy<ISMuFLFontMetadata>.Create(json);
+            if (loadingMode == LoadingModes.Lazy) metadata = new LazySMuFLFontMetadata(json);
+            if (metadata == null) throw new Exception($"Unknown loading mode {loadingMode}.");
+
+            ISMuFLGlyphs glyphsInstance = null;
+            if (loadingMode == LoadingModes.Eager) glyphsInstance = LazySMuFLGlyphs.Instance;   //TODO: Eager loading
+            if (loadingMode == LoadingModes.LazyWithDynamicProxy) glyphsInstance = SMuFLGlyphs.Instance;  
+            if (loadingMode == LoadingModes.Lazy) glyphsInstance = LazySMuFLGlyphs.Instance;  
+            if (glyphsInstance == null) throw new Exception($"Unknown loading mode {loadingMode}.");
+
+            return new SMuFLFontProfile(metadata, glyphsInstance);
         }
+
         public string BuildTimeSignature(int number) => timeSignatureNumberUtility.BuildNumber(number);
 
         public string BuildTupletNumber(int number) => tupletNumberUtility.BuildNumber(number);
@@ -269,5 +291,12 @@ namespace Manufaktura.Controls.SMuFL
 
         [Units(Units.Pixels)]
         public double GetTupletNumberWidthPx(ScoreRendererBase renderer, int number) => tupletNumberUtility.GetNumberWidthPx(renderer, number);
+
+        public enum LoadingModes
+        {
+            Eager,
+            Lazy,
+            LazyWithDynamicProxy
+        }
     }
 }

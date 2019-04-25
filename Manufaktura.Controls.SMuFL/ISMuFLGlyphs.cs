@@ -6,7224 +6,7224 @@ namespace Manufaktura.Controls.SMuFL
     public interface ISMuFLGlyphs
     {
         [DataMember(Name = "4stringTabClef")]
-        GlyphDefinition The4StringTabClef { get; set; }
+        GlyphDefinition The4StringTabClef { get; }
 
         [DataMember(Name = "6stringTabClef")]
-        GlyphDefinition The6StringTabClef { get; set; }
+        GlyphDefinition The6StringTabClef { get; }
 
         [DataMember(Name = "accSagittal11LargeDiesisDown")]
-        GlyphDefinition AccSagittal11LargeDiesisDown { get; set; }
+        GlyphDefinition AccSagittal11LargeDiesisDown { get; }
 
         [DataMember(Name = "accSagittal11LargeDiesisUp")]
-        GlyphDefinition AccSagittal11LargeDiesisUp { get; set; }
+        GlyphDefinition AccSagittal11LargeDiesisUp { get; }
 
         [DataMember(Name = "accSagittal11MediumDiesisDown")]
-        GlyphDefinition AccSagittal11MediumDiesisDown { get; set; }
+        GlyphDefinition AccSagittal11MediumDiesisDown { get; }
 
         [DataMember(Name = "accSagittal11MediumDiesisUp")]
-        GlyphDefinition AccSagittal11MediumDiesisUp { get; set; }
+        GlyphDefinition AccSagittal11MediumDiesisUp { get; }
 
         [DataMember(Name = "accSagittal11v19LargeDiesisDown")]
-        GlyphDefinition AccSagittal11V19LargeDiesisDown { get; set; }
+        GlyphDefinition AccSagittal11V19LargeDiesisDown { get; }
 
         [DataMember(Name = "accSagittal11v19LargeDiesisUp")]
-        GlyphDefinition AccSagittal11V19LargeDiesisUp { get; set; }
+        GlyphDefinition AccSagittal11V19LargeDiesisUp { get; }
 
         [DataMember(Name = "accSagittal11v19MediumDiesisDown")]
-        GlyphDefinition AccSagittal11V19MediumDiesisDown { get; set; }
+        GlyphDefinition AccSagittal11V19MediumDiesisDown { get; }
 
         [DataMember(Name = "accSagittal11v19MediumDiesisUp")]
-        GlyphDefinition AccSagittal11V19MediumDiesisUp { get; set; }
+        GlyphDefinition AccSagittal11V19MediumDiesisUp { get; }
 
         [DataMember(Name = "accSagittal11v49CommaDown")]
-        GlyphDefinition AccSagittal11V49CommaDown { get; set; }
+        GlyphDefinition AccSagittal11V49CommaDown { get; }
 
         [DataMember(Name = "accSagittal11v49CommaUp")]
-        GlyphDefinition AccSagittal11V49CommaUp { get; set; }
+        GlyphDefinition AccSagittal11V49CommaUp { get; }
 
         [DataMember(Name = "accSagittal143CommaDown")]
-        GlyphDefinition AccSagittal143CommaDown { get; set; }
+        GlyphDefinition AccSagittal143CommaDown { get; }
 
         [DataMember(Name = "accSagittal143CommaUp")]
-        GlyphDefinition AccSagittal143CommaUp { get; set; }
+        GlyphDefinition AccSagittal143CommaUp { get; }
 
         [DataMember(Name = "accSagittal17CommaDown")]
-        GlyphDefinition AccSagittal17CommaDown { get; set; }
+        GlyphDefinition AccSagittal17CommaDown { get; }
 
         [DataMember(Name = "accSagittal17CommaUp")]
-        GlyphDefinition AccSagittal17CommaUp { get; set; }
+        GlyphDefinition AccSagittal17CommaUp { get; }
 
         [DataMember(Name = "accSagittal17KleismaDown")]
-        GlyphDefinition AccSagittal17KleismaDown { get; set; }
+        GlyphDefinition AccSagittal17KleismaDown { get; }
 
         [DataMember(Name = "accSagittal17KleismaUp")]
-        GlyphDefinition AccSagittal17KleismaUp { get; set; }
+        GlyphDefinition AccSagittal17KleismaUp { get; }
 
         [DataMember(Name = "accSagittal19CommaDown")]
-        GlyphDefinition AccSagittal19CommaDown { get; set; }
+        GlyphDefinition AccSagittal19CommaDown { get; }
 
         [DataMember(Name = "accSagittal19CommaUp")]
-        GlyphDefinition AccSagittal19CommaUp { get; set; }
+        GlyphDefinition AccSagittal19CommaUp { get; }
 
         [DataMember(Name = "accSagittal19SchismaDown")]
-        GlyphDefinition AccSagittal19SchismaDown { get; set; }
+        GlyphDefinition AccSagittal19SchismaDown { get; }
 
         [DataMember(Name = "accSagittal19SchismaUp")]
-        GlyphDefinition AccSagittal19SchismaUp { get; set; }
+        GlyphDefinition AccSagittal19SchismaUp { get; }
 
         [DataMember(Name = "accSagittal23CommaDown")]
-        GlyphDefinition AccSagittal23CommaDown { get; set; }
+        GlyphDefinition AccSagittal23CommaDown { get; }
 
         [DataMember(Name = "accSagittal23CommaUp")]
-        GlyphDefinition AccSagittal23CommaUp { get; set; }
+        GlyphDefinition AccSagittal23CommaUp { get; }
 
         [DataMember(Name = "accSagittal23SmallDiesisDown")]
-        GlyphDefinition AccSagittal23SmallDiesisDown { get; set; }
+        GlyphDefinition AccSagittal23SmallDiesisDown { get; }
 
         [DataMember(Name = "accSagittal23SmallDiesisUp")]
-        GlyphDefinition AccSagittal23SmallDiesisUp { get; set; }
+        GlyphDefinition AccSagittal23SmallDiesisUp { get; }
 
         [DataMember(Name = "accSagittal25SmallDiesisDown")]
-        GlyphDefinition AccSagittal25SmallDiesisDown { get; set; }
+        GlyphDefinition AccSagittal25SmallDiesisDown { get; }
 
         [DataMember(Name = "accSagittal25SmallDiesisUp")]
-        GlyphDefinition AccSagittal25SmallDiesisUp { get; set; }
+        GlyphDefinition AccSagittal25SmallDiesisUp { get; }
 
         [DataMember(Name = "accSagittal35LargeDiesisDown")]
-        GlyphDefinition AccSagittal35LargeDiesisDown { get; set; }
+        GlyphDefinition AccSagittal35LargeDiesisDown { get; }
 
         [DataMember(Name = "accSagittal35LargeDiesisUp")]
-        GlyphDefinition AccSagittal35LargeDiesisUp { get; set; }
+        GlyphDefinition AccSagittal35LargeDiesisUp { get; }
 
         [DataMember(Name = "accSagittal35MediumDiesisDown")]
-        GlyphDefinition AccSagittal35MediumDiesisDown { get; set; }
+        GlyphDefinition AccSagittal35MediumDiesisDown { get; }
 
         [DataMember(Name = "accSagittal35MediumDiesisUp")]
-        GlyphDefinition AccSagittal35MediumDiesisUp { get; set; }
+        GlyphDefinition AccSagittal35MediumDiesisUp { get; }
 
         [DataMember(Name = "accSagittal49LargeDiesisDown")]
-        GlyphDefinition AccSagittal49LargeDiesisDown { get; set; }
+        GlyphDefinition AccSagittal49LargeDiesisDown { get; }
 
         [DataMember(Name = "accSagittal49LargeDiesisUp")]
-        GlyphDefinition AccSagittal49LargeDiesisUp { get; set; }
+        GlyphDefinition AccSagittal49LargeDiesisUp { get; }
 
         [DataMember(Name = "accSagittal49MediumDiesisDown")]
-        GlyphDefinition AccSagittal49MediumDiesisDown { get; set; }
+        GlyphDefinition AccSagittal49MediumDiesisDown { get; }
 
         [DataMember(Name = "accSagittal49MediumDiesisUp")]
-        GlyphDefinition AccSagittal49MediumDiesisUp { get; set; }
+        GlyphDefinition AccSagittal49MediumDiesisUp { get; }
 
         [DataMember(Name = "accSagittal49SmallDiesisDown")]
-        GlyphDefinition AccSagittal49SmallDiesisDown { get; set; }
+        GlyphDefinition AccSagittal49SmallDiesisDown { get; }
 
         [DataMember(Name = "accSagittal49SmallDiesisUp")]
-        GlyphDefinition AccSagittal49SmallDiesisUp { get; set; }
+        GlyphDefinition AccSagittal49SmallDiesisUp { get; }
 
         [DataMember(Name = "accSagittal55CommaDown")]
-        GlyphDefinition AccSagittal55CommaDown { get; set; }
+        GlyphDefinition AccSagittal55CommaDown { get; }
 
         [DataMember(Name = "accSagittal55CommaUp")]
-        GlyphDefinition AccSagittal55CommaUp { get; set; }
+        GlyphDefinition AccSagittal55CommaUp { get; }
 
         [DataMember(Name = "accSagittal5CommaDown")]
-        GlyphDefinition AccSagittal5CommaDown { get; set; }
+        GlyphDefinition AccSagittal5CommaDown { get; }
 
         [DataMember(Name = "accSagittal5CommaUp")]
-        GlyphDefinition AccSagittal5CommaUp { get; set; }
+        GlyphDefinition AccSagittal5CommaUp { get; }
 
         [DataMember(Name = "accSagittal5v11SmallDiesisDown")]
-        GlyphDefinition AccSagittal5V11SmallDiesisDown { get; set; }
+        GlyphDefinition AccSagittal5V11SmallDiesisDown { get; }
 
         [DataMember(Name = "accSagittal5v11SmallDiesisUp")]
-        GlyphDefinition AccSagittal5V11SmallDiesisUp { get; set; }
+        GlyphDefinition AccSagittal5V11SmallDiesisUp { get; }
 
         [DataMember(Name = "accSagittal5v13LargeDiesisDown")]
-        GlyphDefinition AccSagittal5V13LargeDiesisDown { get; set; }
+        GlyphDefinition AccSagittal5V13LargeDiesisDown { get; }
 
         [DataMember(Name = "accSagittal5v13LargeDiesisUp")]
-        GlyphDefinition AccSagittal5V13LargeDiesisUp { get; set; }
+        GlyphDefinition AccSagittal5V13LargeDiesisUp { get; }
 
         [DataMember(Name = "accSagittal5v13MediumDiesisDown")]
-        GlyphDefinition AccSagittal5V13MediumDiesisDown { get; set; }
+        GlyphDefinition AccSagittal5V13MediumDiesisDown { get; }
 
         [DataMember(Name = "accSagittal5v13MediumDiesisUp")]
-        GlyphDefinition AccSagittal5V13MediumDiesisUp { get; set; }
+        GlyphDefinition AccSagittal5V13MediumDiesisUp { get; }
 
         [DataMember(Name = "accSagittal5v19CommaDown")]
-        GlyphDefinition AccSagittal5V19CommaDown { get; set; }
+        GlyphDefinition AccSagittal5V19CommaDown { get; }
 
         [DataMember(Name = "accSagittal5v19CommaUp")]
-        GlyphDefinition AccSagittal5V19CommaUp { get; set; }
+        GlyphDefinition AccSagittal5V19CommaUp { get; }
 
         [DataMember(Name = "accSagittal5v23SmallDiesisDown")]
-        GlyphDefinition AccSagittal5V23SmallDiesisDown { get; set; }
+        GlyphDefinition AccSagittal5V23SmallDiesisDown { get; }
 
         [DataMember(Name = "accSagittal5v23SmallDiesisUp")]
-        GlyphDefinition AccSagittal5V23SmallDiesisUp { get; set; }
+        GlyphDefinition AccSagittal5V23SmallDiesisUp { get; }
 
         [DataMember(Name = "accSagittal5v49MediumDiesisDown")]
-        GlyphDefinition AccSagittal5V49MediumDiesisDown { get; set; }
+        GlyphDefinition AccSagittal5V49MediumDiesisDown { get; }
 
         [DataMember(Name = "accSagittal5v49MediumDiesisUp")]
-        GlyphDefinition AccSagittal5V49MediumDiesisUp { get; set; }
+        GlyphDefinition AccSagittal5V49MediumDiesisUp { get; }
 
         [DataMember(Name = "accSagittal5v7KleismaDown")]
-        GlyphDefinition AccSagittal5V7KleismaDown { get; set; }
+        GlyphDefinition AccSagittal5V7KleismaDown { get; }
 
         [DataMember(Name = "accSagittal5v7KleismaUp")]
-        GlyphDefinition AccSagittal5V7KleismaUp { get; set; }
+        GlyphDefinition AccSagittal5V7KleismaUp { get; }
 
         [DataMember(Name = "accSagittal7CommaDown")]
-        GlyphDefinition AccSagittal7CommaDown { get; set; }
+        GlyphDefinition AccSagittal7CommaDown { get; }
 
         [DataMember(Name = "accSagittal7CommaUp")]
-        GlyphDefinition AccSagittal7CommaUp { get; set; }
+        GlyphDefinition AccSagittal7CommaUp { get; }
 
         [DataMember(Name = "accSagittal7v11CommaDown")]
-        GlyphDefinition AccSagittal7V11CommaDown { get; set; }
+        GlyphDefinition AccSagittal7V11CommaDown { get; }
 
         [DataMember(Name = "accSagittal7v11CommaUp")]
-        GlyphDefinition AccSagittal7V11CommaUp { get; set; }
+        GlyphDefinition AccSagittal7V11CommaUp { get; }
 
         [DataMember(Name = "accSagittal7v11KleismaDown")]
-        GlyphDefinition AccSagittal7V11KleismaDown { get; set; }
+        GlyphDefinition AccSagittal7V11KleismaDown { get; }
 
         [DataMember(Name = "accSagittal7v11KleismaUp")]
-        GlyphDefinition AccSagittal7V11KleismaUp { get; set; }
+        GlyphDefinition AccSagittal7V11KleismaUp { get; }
 
         [DataMember(Name = "accSagittal7v19CommaDown")]
-        GlyphDefinition AccSagittal7V19CommaDown { get; set; }
+        GlyphDefinition AccSagittal7V19CommaDown { get; }
 
         [DataMember(Name = "accSagittal7v19CommaUp")]
-        GlyphDefinition AccSagittal7V19CommaUp { get; set; }
+        GlyphDefinition AccSagittal7V19CommaUp { get; }
 
         [DataMember(Name = "accSagittalAcute")]
-        GlyphDefinition AccSagittalAcute { get; set; }
+        GlyphDefinition AccSagittalAcute { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat")]
-        GlyphDefinition AccSagittalDoubleFlat { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat11v49CUp")]
-        GlyphDefinition AccSagittalDoubleFlat11V49CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat11V49CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat143CUp")]
-        GlyphDefinition AccSagittalDoubleFlat143CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat143CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat17CUp")]
-        GlyphDefinition AccSagittalDoubleFlat17CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat17CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat17kUp")]
-        GlyphDefinition AccSagittalDoubleFlat17KUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat17KUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat19CUp")]
-        GlyphDefinition AccSagittalDoubleFlat19CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat19CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat19sUp")]
-        GlyphDefinition AccSagittalDoubleFlat19SUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat19SUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat23CUp")]
-        GlyphDefinition AccSagittalDoubleFlat23CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat23CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat23SUp")]
-        GlyphDefinition AccSagittalDoubleFlat23SUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat23SUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat25SUp")]
-        GlyphDefinition AccSagittalDoubleFlat25SUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat25SUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat49SUp")]
-        GlyphDefinition AccSagittalDoubleFlat49SUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat49SUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat55CUp")]
-        GlyphDefinition AccSagittalDoubleFlat55CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat55CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat5CUp")]
-        GlyphDefinition AccSagittalDoubleFlat5CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat5CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat5v11SUp")]
-        GlyphDefinition AccSagittalDoubleFlat5V11SUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat5V11SUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat5v19CUp")]
-        GlyphDefinition AccSagittalDoubleFlat5V19CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat5V19CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat5v23SUp")]
-        GlyphDefinition AccSagittalDoubleFlat5V23SUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat5V23SUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat5v7kUp")]
-        GlyphDefinition AccSagittalDoubleFlat5V7KUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat5V7KUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat7CUp")]
-        GlyphDefinition AccSagittalDoubleFlat7CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat7CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat7v11CUp")]
-        GlyphDefinition AccSagittalDoubleFlat7V11CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat7V11CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat7v11kUp")]
-        GlyphDefinition AccSagittalDoubleFlat7V11KUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat7V11KUp { get; }
 
         [DataMember(Name = "accSagittalDoubleFlat7v19CUp")]
-        GlyphDefinition AccSagittalDoubleFlat7V19CUp { get; set; }
+        GlyphDefinition AccSagittalDoubleFlat7V19CUp { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp")]
-        GlyphDefinition AccSagittalDoubleSharp { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp11v49CDown")]
-        GlyphDefinition AccSagittalDoubleSharp11V49CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp11V49CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp143CDown")]
-        GlyphDefinition AccSagittalDoubleSharp143CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp143CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp17CDown")]
-        GlyphDefinition AccSagittalDoubleSharp17CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp17CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp17kDown")]
-        GlyphDefinition AccSagittalDoubleSharp17KDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp17KDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp19CDown")]
-        GlyphDefinition AccSagittalDoubleSharp19CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp19CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp19sDown")]
-        GlyphDefinition AccSagittalDoubleSharp19SDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp19SDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp23CDown")]
-        GlyphDefinition AccSagittalDoubleSharp23CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp23CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp23SDown")]
-        GlyphDefinition AccSagittalDoubleSharp23SDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp23SDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp25SDown")]
-        GlyphDefinition AccSagittalDoubleSharp25SDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp25SDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp49SDown")]
-        GlyphDefinition AccSagittalDoubleSharp49SDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp49SDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp55CDown")]
-        GlyphDefinition AccSagittalDoubleSharp55CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp55CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp5CDown")]
-        GlyphDefinition AccSagittalDoubleSharp5CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp5CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp5v11SDown")]
-        GlyphDefinition AccSagittalDoubleSharp5V11SDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp5V11SDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp5v19CDown")]
-        GlyphDefinition AccSagittalDoubleSharp5V19CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp5V19CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp5v23SDown")]
-        GlyphDefinition AccSagittalDoubleSharp5V23SDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp5V23SDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp5v7kDown")]
-        GlyphDefinition AccSagittalDoubleSharp5V7KDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp5V7KDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp7CDown")]
-        GlyphDefinition AccSagittalDoubleSharp7CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp7CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp7v11CDown")]
-        GlyphDefinition AccSagittalDoubleSharp7V11CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp7V11CDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp7v11kDown")]
-        GlyphDefinition AccSagittalDoubleSharp7V11KDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp7V11KDown { get; }
 
         [DataMember(Name = "accSagittalDoubleSharp7v19CDown")]
-        GlyphDefinition AccSagittalDoubleSharp7V19CDown { get; set; }
+        GlyphDefinition AccSagittalDoubleSharp7V19CDown { get; }
 
         [DataMember(Name = "accSagittalFlat")]
-        GlyphDefinition AccSagittalFlat { get; set; }
+        GlyphDefinition AccSagittalFlat { get; }
 
         [DataMember(Name = "accSagittalFlat11LDown")]
-        GlyphDefinition AccSagittalFlat11LDown { get; set; }
+        GlyphDefinition AccSagittalFlat11LDown { get; }
 
         [DataMember(Name = "accSagittalFlat11MDown")]
-        GlyphDefinition AccSagittalFlat11MDown { get; set; }
+        GlyphDefinition AccSagittalFlat11MDown { get; }
 
         [DataMember(Name = "accSagittalFlat11v19LDown")]
-        GlyphDefinition AccSagittalFlat11V19LDown { get; set; }
+        GlyphDefinition AccSagittalFlat11V19LDown { get; }
 
         [DataMember(Name = "accSagittalFlat11v19MDown")]
-        GlyphDefinition AccSagittalFlat11V19MDown { get; set; }
+        GlyphDefinition AccSagittalFlat11V19MDown { get; }
 
         [DataMember(Name = "accSagittalFlat11v49CDown")]
-        GlyphDefinition AccSagittalFlat11V49CDown { get; set; }
+        GlyphDefinition AccSagittalFlat11V49CDown { get; }
 
         [DataMember(Name = "accSagittalFlat11v49CUp")]
-        GlyphDefinition AccSagittalFlat11V49CUp { get; set; }
+        GlyphDefinition AccSagittalFlat11V49CUp { get; }
 
         [DataMember(Name = "accSagittalFlat143CDown")]
-        GlyphDefinition AccSagittalFlat143CDown { get; set; }
+        GlyphDefinition AccSagittalFlat143CDown { get; }
 
         [DataMember(Name = "accSagittalFlat143CUp")]
-        GlyphDefinition AccSagittalFlat143CUp { get; set; }
+        GlyphDefinition AccSagittalFlat143CUp { get; }
 
         [DataMember(Name = "accSagittalFlat17CDown")]
-        GlyphDefinition AccSagittalFlat17CDown { get; set; }
+        GlyphDefinition AccSagittalFlat17CDown { get; }
 
         [DataMember(Name = "accSagittalFlat17CUp")]
-        GlyphDefinition AccSagittalFlat17CUp { get; set; }
+        GlyphDefinition AccSagittalFlat17CUp { get; }
 
         [DataMember(Name = "accSagittalFlat17kDown")]
-        GlyphDefinition AccSagittalFlat17KDown { get; set; }
+        GlyphDefinition AccSagittalFlat17KDown { get; }
 
         [DataMember(Name = "accSagittalFlat17kUp")]
-        GlyphDefinition AccSagittalFlat17KUp { get; set; }
+        GlyphDefinition AccSagittalFlat17KUp { get; }
 
         [DataMember(Name = "accSagittalFlat19CDown")]
-        GlyphDefinition AccSagittalFlat19CDown { get; set; }
+        GlyphDefinition AccSagittalFlat19CDown { get; }
 
         [DataMember(Name = "accSagittalFlat19CUp")]
-        GlyphDefinition AccSagittalFlat19CUp { get; set; }
+        GlyphDefinition AccSagittalFlat19CUp { get; }
 
         [DataMember(Name = "accSagittalFlat19sDown")]
-        GlyphDefinition AccSagittalFlat19SDown { get; set; }
+        GlyphDefinition AccSagittalFlat19SDown { get; }
 
         [DataMember(Name = "accSagittalFlat19sUp")]
-        GlyphDefinition AccSagittalFlat19SUp { get; set; }
+        GlyphDefinition AccSagittalFlat19SUp { get; }
 
         [DataMember(Name = "accSagittalFlat23CDown")]
-        GlyphDefinition AccSagittalFlat23CDown { get; set; }
+        GlyphDefinition AccSagittalFlat23CDown { get; }
 
         [DataMember(Name = "accSagittalFlat23CUp")]
-        GlyphDefinition AccSagittalFlat23CUp { get; set; }
+        GlyphDefinition AccSagittalFlat23CUp { get; }
 
         [DataMember(Name = "accSagittalFlat23SDown")]
-        GlyphDefinition AccSagittalFlat23SDown { get; set; }
+        GlyphDefinition AccSagittalFlat23SDown { get; }
 
         [DataMember(Name = "accSagittalFlat23SUp")]
-        GlyphDefinition AccSagittalFlat23SUp { get; set; }
+        GlyphDefinition AccSagittalFlat23SUp { get; }
 
         [DataMember(Name = "accSagittalFlat25SDown")]
-        GlyphDefinition AccSagittalFlat25SDown { get; set; }
+        GlyphDefinition AccSagittalFlat25SDown { get; }
 
         [DataMember(Name = "accSagittalFlat25SUp")]
-        GlyphDefinition AccSagittalFlat25SUp { get; set; }
+        GlyphDefinition AccSagittalFlat25SUp { get; }
 
         [DataMember(Name = "accSagittalFlat35LDown")]
-        GlyphDefinition AccSagittalFlat35LDown { get; set; }
+        GlyphDefinition AccSagittalFlat35LDown { get; }
 
         [DataMember(Name = "accSagittalFlat35MDown")]
-        GlyphDefinition AccSagittalFlat35MDown { get; set; }
+        GlyphDefinition AccSagittalFlat35MDown { get; }
 
         [DataMember(Name = "accSagittalFlat49LDown")]
-        GlyphDefinition AccSagittalFlat49LDown { get; set; }
+        GlyphDefinition AccSagittalFlat49LDown { get; }
 
         [DataMember(Name = "accSagittalFlat49MDown")]
-        GlyphDefinition AccSagittalFlat49MDown { get; set; }
+        GlyphDefinition AccSagittalFlat49MDown { get; }
 
         [DataMember(Name = "accSagittalFlat49SDown")]
-        GlyphDefinition AccSagittalFlat49SDown { get; set; }
+        GlyphDefinition AccSagittalFlat49SDown { get; }
 
         [DataMember(Name = "accSagittalFlat49SUp")]
-        GlyphDefinition AccSagittalFlat49SUp { get; set; }
+        GlyphDefinition AccSagittalFlat49SUp { get; }
 
         [DataMember(Name = "accSagittalFlat55CDown")]
-        GlyphDefinition AccSagittalFlat55CDown { get; set; }
+        GlyphDefinition AccSagittalFlat55CDown { get; }
 
         [DataMember(Name = "accSagittalFlat55CUp")]
-        GlyphDefinition AccSagittalFlat55CUp { get; set; }
+        GlyphDefinition AccSagittalFlat55CUp { get; }
 
         [DataMember(Name = "accSagittalFlat5CDown")]
-        GlyphDefinition AccSagittalFlat5CDown { get; set; }
+        GlyphDefinition AccSagittalFlat5CDown { get; }
 
         [DataMember(Name = "accSagittalFlat5CUp")]
-        GlyphDefinition AccSagittalFlat5CUp { get; set; }
+        GlyphDefinition AccSagittalFlat5CUp { get; }
 
         [DataMember(Name = "accSagittalFlat5v11SDown")]
-        GlyphDefinition AccSagittalFlat5V11SDown { get; set; }
+        GlyphDefinition AccSagittalFlat5V11SDown { get; }
 
         [DataMember(Name = "accSagittalFlat5v11SUp")]
-        GlyphDefinition AccSagittalFlat5V11SUp { get; set; }
+        GlyphDefinition AccSagittalFlat5V11SUp { get; }
 
         [DataMember(Name = "accSagittalFlat5v13LDown")]
-        GlyphDefinition AccSagittalFlat5V13LDown { get; set; }
+        GlyphDefinition AccSagittalFlat5V13LDown { get; }
 
         [DataMember(Name = "accSagittalFlat5v13MDown")]
-        GlyphDefinition AccSagittalFlat5V13MDown { get; set; }
+        GlyphDefinition AccSagittalFlat5V13MDown { get; }
 
         [DataMember(Name = "accSagittalFlat5v19CDown")]
-        GlyphDefinition AccSagittalFlat5V19CDown { get; set; }
+        GlyphDefinition AccSagittalFlat5V19CDown { get; }
 
         [DataMember(Name = "accSagittalFlat5v19CUp")]
-        GlyphDefinition AccSagittalFlat5V19CUp { get; set; }
+        GlyphDefinition AccSagittalFlat5V19CUp { get; }
 
         [DataMember(Name = "accSagittalFlat5v23SDown")]
-        GlyphDefinition AccSagittalFlat5V23SDown { get; set; }
+        GlyphDefinition AccSagittalFlat5V23SDown { get; }
 
         [DataMember(Name = "accSagittalFlat5v23SUp")]
-        GlyphDefinition AccSagittalFlat5V23SUp { get; set; }
+        GlyphDefinition AccSagittalFlat5V23SUp { get; }
 
         [DataMember(Name = "accSagittalFlat5v49MDown")]
-        GlyphDefinition AccSagittalFlat5V49MDown { get; set; }
+        GlyphDefinition AccSagittalFlat5V49MDown { get; }
 
         [DataMember(Name = "accSagittalFlat5v7kDown")]
-        GlyphDefinition AccSagittalFlat5V7KDown { get; set; }
+        GlyphDefinition AccSagittalFlat5V7KDown { get; }
 
         [DataMember(Name = "accSagittalFlat5v7kUp")]
-        GlyphDefinition AccSagittalFlat5V7KUp { get; set; }
+        GlyphDefinition AccSagittalFlat5V7KUp { get; }
 
         [DataMember(Name = "accSagittalFlat7CDown")]
-        GlyphDefinition AccSagittalFlat7CDown { get; set; }
+        GlyphDefinition AccSagittalFlat7CDown { get; }
 
         [DataMember(Name = "accSagittalFlat7CUp")]
-        GlyphDefinition AccSagittalFlat7CUp { get; set; }
+        GlyphDefinition AccSagittalFlat7CUp { get; }
 
         [DataMember(Name = "accSagittalFlat7v11CDown")]
-        GlyphDefinition AccSagittalFlat7V11CDown { get; set; }
+        GlyphDefinition AccSagittalFlat7V11CDown { get; }
 
         [DataMember(Name = "accSagittalFlat7v11CUp")]
-        GlyphDefinition AccSagittalFlat7V11CUp { get; set; }
+        GlyphDefinition AccSagittalFlat7V11CUp { get; }
 
         [DataMember(Name = "accSagittalFlat7v11kDown")]
-        GlyphDefinition AccSagittalFlat7V11KDown { get; set; }
+        GlyphDefinition AccSagittalFlat7V11KDown { get; }
 
         [DataMember(Name = "accSagittalFlat7v11kUp")]
-        GlyphDefinition AccSagittalFlat7V11KUp { get; set; }
+        GlyphDefinition AccSagittalFlat7V11KUp { get; }
 
         [DataMember(Name = "accSagittalFlat7v19CDown")]
-        GlyphDefinition AccSagittalFlat7V19CDown { get; set; }
+        GlyphDefinition AccSagittalFlat7V19CDown { get; }
 
         [DataMember(Name = "accSagittalFlat7v19CUp")]
-        GlyphDefinition AccSagittalFlat7V19CUp { get; set; }
+        GlyphDefinition AccSagittalFlat7V19CUp { get; }
 
         [DataMember(Name = "accSagittalGrave")]
-        GlyphDefinition AccSagittalGrave { get; set; }
+        GlyphDefinition AccSagittalGrave { get; }
 
         [DataMember(Name = "accSagittalShaftDown")]
-        GlyphDefinition AccSagittalShaftDown { get; set; }
+        GlyphDefinition AccSagittalShaftDown { get; }
 
         [DataMember(Name = "accSagittalShaftUp")]
-        GlyphDefinition AccSagittalShaftUp { get; set; }
+        GlyphDefinition AccSagittalShaftUp { get; }
 
         [DataMember(Name = "accSagittalSharp")]
-        GlyphDefinition AccSagittalSharp { get; set; }
+        GlyphDefinition AccSagittalSharp { get; }
 
         [DataMember(Name = "accSagittalSharp11LUp")]
-        GlyphDefinition AccSagittalSharp11LUp { get; set; }
+        GlyphDefinition AccSagittalSharp11LUp { get; }
 
         [DataMember(Name = "accSagittalSharp11MUp")]
-        GlyphDefinition AccSagittalSharp11MUp { get; set; }
+        GlyphDefinition AccSagittalSharp11MUp { get; }
 
         [DataMember(Name = "accSagittalSharp11v19LUp")]
-        GlyphDefinition AccSagittalSharp11V19LUp { get; set; }
+        GlyphDefinition AccSagittalSharp11V19LUp { get; }
 
         [DataMember(Name = "accSagittalSharp11v19MUp")]
-        GlyphDefinition AccSagittalSharp11V19MUp { get; set; }
+        GlyphDefinition AccSagittalSharp11V19MUp { get; }
 
         [DataMember(Name = "accSagittalSharp11v49CDown")]
-        GlyphDefinition AccSagittalSharp11V49CDown { get; set; }
+        GlyphDefinition AccSagittalSharp11V49CDown { get; }
 
         [DataMember(Name = "accSagittalSharp11v49CUp")]
-        GlyphDefinition AccSagittalSharp11V49CUp { get; set; }
+        GlyphDefinition AccSagittalSharp11V49CUp { get; }
 
         [DataMember(Name = "accSagittalSharp143CDown")]
-        GlyphDefinition AccSagittalSharp143CDown { get; set; }
+        GlyphDefinition AccSagittalSharp143CDown { get; }
 
         [DataMember(Name = "accSagittalSharp143CUp")]
-        GlyphDefinition AccSagittalSharp143CUp { get; set; }
+        GlyphDefinition AccSagittalSharp143CUp { get; }
 
         [DataMember(Name = "accSagittalSharp17CDown")]
-        GlyphDefinition AccSagittalSharp17CDown { get; set; }
+        GlyphDefinition AccSagittalSharp17CDown { get; }
 
         [DataMember(Name = "accSagittalSharp17CUp")]
-        GlyphDefinition AccSagittalSharp17CUp { get; set; }
+        GlyphDefinition AccSagittalSharp17CUp { get; }
 
         [DataMember(Name = "accSagittalSharp17kDown")]
-        GlyphDefinition AccSagittalSharp17KDown { get; set; }
+        GlyphDefinition AccSagittalSharp17KDown { get; }
 
         [DataMember(Name = "accSagittalSharp17kUp")]
-        GlyphDefinition AccSagittalSharp17KUp { get; set; }
+        GlyphDefinition AccSagittalSharp17KUp { get; }
 
         [DataMember(Name = "accSagittalSharp19CDown")]
-        GlyphDefinition AccSagittalSharp19CDown { get; set; }
+        GlyphDefinition AccSagittalSharp19CDown { get; }
 
         [DataMember(Name = "accSagittalSharp19CUp")]
-        GlyphDefinition AccSagittalSharp19CUp { get; set; }
+        GlyphDefinition AccSagittalSharp19CUp { get; }
 
         [DataMember(Name = "accSagittalSharp19sDown")]
-        GlyphDefinition AccSagittalSharp19SDown { get; set; }
+        GlyphDefinition AccSagittalSharp19SDown { get; }
 
         [DataMember(Name = "accSagittalSharp19sUp")]
-        GlyphDefinition AccSagittalSharp19SUp { get; set; }
+        GlyphDefinition AccSagittalSharp19SUp { get; }
 
         [DataMember(Name = "accSagittalSharp23CDown")]
-        GlyphDefinition AccSagittalSharp23CDown { get; set; }
+        GlyphDefinition AccSagittalSharp23CDown { get; }
 
         [DataMember(Name = "accSagittalSharp23CUp")]
-        GlyphDefinition AccSagittalSharp23CUp { get; set; }
+        GlyphDefinition AccSagittalSharp23CUp { get; }
 
         [DataMember(Name = "accSagittalSharp23SDown")]
-        GlyphDefinition AccSagittalSharp23SDown { get; set; }
+        GlyphDefinition AccSagittalSharp23SDown { get; }
 
         [DataMember(Name = "accSagittalSharp23SUp")]
-        GlyphDefinition AccSagittalSharp23SUp { get; set; }
+        GlyphDefinition AccSagittalSharp23SUp { get; }
 
         [DataMember(Name = "accSagittalSharp25SDown")]
-        GlyphDefinition AccSagittalSharp25SDown { get; set; }
+        GlyphDefinition AccSagittalSharp25SDown { get; }
 
         [DataMember(Name = "accSagittalSharp25SUp")]
-        GlyphDefinition AccSagittalSharp25SUp { get; set; }
+        GlyphDefinition AccSagittalSharp25SUp { get; }
 
         [DataMember(Name = "accSagittalSharp35LUp")]
-        GlyphDefinition AccSagittalSharp35LUp { get; set; }
+        GlyphDefinition AccSagittalSharp35LUp { get; }
 
         [DataMember(Name = "accSagittalSharp35MUp")]
-        GlyphDefinition AccSagittalSharp35MUp { get; set; }
+        GlyphDefinition AccSagittalSharp35MUp { get; }
 
         [DataMember(Name = "accSagittalSharp49LUp")]
-        GlyphDefinition AccSagittalSharp49LUp { get; set; }
+        GlyphDefinition AccSagittalSharp49LUp { get; }
 
         [DataMember(Name = "accSagittalSharp49MUp")]
-        GlyphDefinition AccSagittalSharp49MUp { get; set; }
+        GlyphDefinition AccSagittalSharp49MUp { get; }
 
         [DataMember(Name = "accSagittalSharp49SDown")]
-        GlyphDefinition AccSagittalSharp49SDown { get; set; }
+        GlyphDefinition AccSagittalSharp49SDown { get; }
 
         [DataMember(Name = "accSagittalSharp49SUp")]
-        GlyphDefinition AccSagittalSharp49SUp { get; set; }
+        GlyphDefinition AccSagittalSharp49SUp { get; }
 
         [DataMember(Name = "accSagittalSharp55CDown")]
-        GlyphDefinition AccSagittalSharp55CDown { get; set; }
+        GlyphDefinition AccSagittalSharp55CDown { get; }
 
         [DataMember(Name = "accSagittalSharp55CUp")]
-        GlyphDefinition AccSagittalSharp55CUp { get; set; }
+        GlyphDefinition AccSagittalSharp55CUp { get; }
 
         [DataMember(Name = "accSagittalSharp5CDown")]
-        GlyphDefinition AccSagittalSharp5CDown { get; set; }
+        GlyphDefinition AccSagittalSharp5CDown { get; }
 
         [DataMember(Name = "accSagittalSharp5CUp")]
-        GlyphDefinition AccSagittalSharp5CUp { get; set; }
+        GlyphDefinition AccSagittalSharp5CUp { get; }
 
         [DataMember(Name = "accSagittalSharp5v11SDown")]
-        GlyphDefinition AccSagittalSharp5V11SDown { get; set; }
+        GlyphDefinition AccSagittalSharp5V11SDown { get; }
 
         [DataMember(Name = "accSagittalSharp5v11SUp")]
-        GlyphDefinition AccSagittalSharp5V11SUp { get; set; }
+        GlyphDefinition AccSagittalSharp5V11SUp { get; }
 
         [DataMember(Name = "accSagittalSharp5v13LUp")]
-        GlyphDefinition AccSagittalSharp5V13LUp { get; set; }
+        GlyphDefinition AccSagittalSharp5V13LUp { get; }
 
         [DataMember(Name = "accSagittalSharp5v13MUp")]
-        GlyphDefinition AccSagittalSharp5V13MUp { get; set; }
+        GlyphDefinition AccSagittalSharp5V13MUp { get; }
 
         [DataMember(Name = "accSagittalSharp5v19CDown")]
-        GlyphDefinition AccSagittalSharp5V19CDown { get; set; }
+        GlyphDefinition AccSagittalSharp5V19CDown { get; }
 
         [DataMember(Name = "accSagittalSharp5v19CUp")]
-        GlyphDefinition AccSagittalSharp5V19CUp { get; set; }
+        GlyphDefinition AccSagittalSharp5V19CUp { get; }
 
         [DataMember(Name = "accSagittalSharp5v23SDown")]
-        GlyphDefinition AccSagittalSharp5V23SDown { get; set; }
+        GlyphDefinition AccSagittalSharp5V23SDown { get; }
 
         [DataMember(Name = "accSagittalSharp5v23SUp")]
-        GlyphDefinition AccSagittalSharp5V23SUp { get; set; }
+        GlyphDefinition AccSagittalSharp5V23SUp { get; }
 
         [DataMember(Name = "accSagittalSharp5v49MUp")]
-        GlyphDefinition AccSagittalSharp5V49MUp { get; set; }
+        GlyphDefinition AccSagittalSharp5V49MUp { get; }
 
         [DataMember(Name = "accSagittalSharp5v7kDown")]
-        GlyphDefinition AccSagittalSharp5V7KDown { get; set; }
+        GlyphDefinition AccSagittalSharp5V7KDown { get; }
 
         [DataMember(Name = "accSagittalSharp5v7kUp")]
-        GlyphDefinition AccSagittalSharp5V7KUp { get; set; }
+        GlyphDefinition AccSagittalSharp5V7KUp { get; }
 
         [DataMember(Name = "accSagittalSharp7CDown")]
-        GlyphDefinition AccSagittalSharp7CDown { get; set; }
+        GlyphDefinition AccSagittalSharp7CDown { get; }
 
         [DataMember(Name = "accSagittalSharp7CUp")]
-        GlyphDefinition AccSagittalSharp7CUp { get; set; }
+        GlyphDefinition AccSagittalSharp7CUp { get; }
 
         [DataMember(Name = "accSagittalSharp7v11CDown")]
-        GlyphDefinition AccSagittalSharp7V11CDown { get; set; }
+        GlyphDefinition AccSagittalSharp7V11CDown { get; }
 
         [DataMember(Name = "accSagittalSharp7v11CUp")]
-        GlyphDefinition AccSagittalSharp7V11CUp { get; set; }
+        GlyphDefinition AccSagittalSharp7V11CUp { get; }
 
         [DataMember(Name = "accSagittalSharp7v11kDown")]
-        GlyphDefinition AccSagittalSharp7V11KDown { get; set; }
+        GlyphDefinition AccSagittalSharp7V11KDown { get; }
 
         [DataMember(Name = "accSagittalSharp7v11kUp")]
-        GlyphDefinition AccSagittalSharp7V11KUp { get; set; }
+        GlyphDefinition AccSagittalSharp7V11KUp { get; }
 
         [DataMember(Name = "accSagittalSharp7v19CDown")]
-        GlyphDefinition AccSagittalSharp7V19CDown { get; set; }
+        GlyphDefinition AccSagittalSharp7V19CDown { get; }
 
         [DataMember(Name = "accSagittalSharp7v19CUp")]
-        GlyphDefinition AccSagittalSharp7V19CUp { get; set; }
+        GlyphDefinition AccSagittalSharp7V19CUp { get; }
 
         [DataMember(Name = "accSagittalUnused1")]
-        GlyphDefinition AccSagittalUnused1 { get; set; }
+        GlyphDefinition AccSagittalUnused1 { get; }
 
         [DataMember(Name = "accSagittalUnused2")]
-        GlyphDefinition AccSagittalUnused2 { get; set; }
+        GlyphDefinition AccSagittalUnused2 { get; }
 
         [DataMember(Name = "accSagittalUnused3")]
-        GlyphDefinition AccSagittalUnused3 { get; set; }
+        GlyphDefinition AccSagittalUnused3 { get; }
 
         [DataMember(Name = "accSagittalUnused4")]
-        GlyphDefinition AccSagittalUnused4 { get; set; }
+        GlyphDefinition AccSagittalUnused4 { get; }
 
         [DataMember(Name = "accdnCombDot")]
-        GlyphDefinition AccdnCombDot { get; set; }
+        GlyphDefinition AccdnCombDot { get; }
 
         [DataMember(Name = "accdnCombLH2RanksEmpty")]
-        GlyphDefinition AccdnCombLh2RanksEmpty { get; set; }
+        GlyphDefinition AccdnCombLh2RanksEmpty { get; }
 
         [DataMember(Name = "accdnCombLH3RanksEmptySquare")]
-        GlyphDefinition AccdnCombLh3RanksEmptySquare { get; set; }
+        GlyphDefinition AccdnCombLh3RanksEmptySquare { get; }
 
         [DataMember(Name = "accdnCombRH3RanksEmpty")]
-        GlyphDefinition AccdnCombRh3RanksEmpty { get; set; }
+        GlyphDefinition AccdnCombRh3RanksEmpty { get; }
 
         [DataMember(Name = "accdnCombRH4RanksEmpty")]
-        GlyphDefinition AccdnCombRh4RanksEmpty { get; set; }
+        GlyphDefinition AccdnCombRh4RanksEmpty { get; }
 
         [DataMember(Name = "accdnDiatonicClef")]
-        GlyphDefinition AccdnDiatonicClef { get; set; }
+        GlyphDefinition AccdnDiatonicClef { get; }
 
         [DataMember(Name = "accdnLH2Ranks16Round")]
-        GlyphDefinition AccdnLh2Ranks16Round { get; set; }
+        GlyphDefinition AccdnLh2Ranks16Round { get; }
 
         [DataMember(Name = "accdnLH2Ranks8Plus16Round")]
-        GlyphDefinition AccdnLh2Ranks8Plus16Round { get; set; }
+        GlyphDefinition AccdnLh2Ranks8Plus16Round { get; }
 
         [DataMember(Name = "accdnLH2Ranks8Round")]
-        GlyphDefinition AccdnLh2Ranks8Round { get; set; }
+        GlyphDefinition AccdnLh2Ranks8Round { get; }
 
         [DataMember(Name = "accdnLH2RanksFullMasterRound")]
-        GlyphDefinition AccdnLh2RanksFullMasterRound { get; set; }
+        GlyphDefinition AccdnLh2RanksFullMasterRound { get; }
 
         [DataMember(Name = "accdnLH2RanksMasterPlus16Round")]
-        GlyphDefinition AccdnLh2RanksMasterPlus16Round { get; set; }
+        GlyphDefinition AccdnLh2RanksMasterPlus16Round { get; }
 
         [DataMember(Name = "accdnLH2RanksMasterRound")]
-        GlyphDefinition AccdnLh2RanksMasterRound { get; set; }
+        GlyphDefinition AccdnLh2RanksMasterRound { get; }
 
         [DataMember(Name = "accdnLH3Ranks2Plus8Square")]
-        GlyphDefinition AccdnLh3Ranks2Plus8Square { get; set; }
+        GlyphDefinition AccdnLh3Ranks2Plus8Square { get; }
 
         [DataMember(Name = "accdnLH3Ranks2Square")]
-        GlyphDefinition AccdnLh3Ranks2Square { get; set; }
+        GlyphDefinition AccdnLh3Ranks2Square { get; }
 
         [DataMember(Name = "accdnLH3Ranks8Square")]
-        GlyphDefinition AccdnLh3Ranks8Square { get; set; }
+        GlyphDefinition AccdnLh3Ranks8Square { get; }
 
         [DataMember(Name = "accdnLH3RanksDouble8Square")]
-        GlyphDefinition AccdnLh3RanksDouble8Square { get; set; }
+        GlyphDefinition AccdnLh3RanksDouble8Square { get; }
 
         [DataMember(Name = "accdnLH3RanksTuttiSquare")]
-        GlyphDefinition AccdnLh3RanksTuttiSquare { get; set; }
+        GlyphDefinition AccdnLh3RanksTuttiSquare { get; }
 
         [DataMember(Name = "accdnPull")]
-        GlyphDefinition AccdnPull { get; set; }
+        GlyphDefinition AccdnPull { get; }
 
         [DataMember(Name = "accdnPush")]
-        GlyphDefinition AccdnPush { get; set; }
+        GlyphDefinition AccdnPush { get; }
 
         [DataMember(Name = "accdnRH3RanksAccordion")]
-        GlyphDefinition AccdnRh3RanksAccordion { get; set; }
+        GlyphDefinition AccdnRh3RanksAccordion { get; }
 
         [DataMember(Name = "accdnRH3RanksAuthenticMusette")]
-        GlyphDefinition AccdnRh3RanksAuthenticMusette { get; set; }
+        GlyphDefinition AccdnRh3RanksAuthenticMusette { get; }
 
         [DataMember(Name = "accdnRH3RanksBandoneon")]
-        GlyphDefinition AccdnRh3RanksBandoneon { get; set; }
+        GlyphDefinition AccdnRh3RanksBandoneon { get; }
 
         [DataMember(Name = "accdnRH3RanksBassoon")]
-        GlyphDefinition AccdnRh3RanksBassoon { get; set; }
+        GlyphDefinition AccdnRh3RanksBassoon { get; }
 
         [DataMember(Name = "accdnRH3RanksClarinet")]
-        GlyphDefinition AccdnRh3RanksClarinet { get; set; }
+        GlyphDefinition AccdnRh3RanksClarinet { get; }
 
         [DataMember(Name = "accdnRH3RanksDoubleTremoloLower8ve")]
-        GlyphDefinition AccdnRh3RanksDoubleTremoloLower8Ve { get; set; }
+        GlyphDefinition AccdnRh3RanksDoubleTremoloLower8Ve { get; }
 
         [DataMember(Name = "accdnRH3RanksDoubleTremoloUpper8ve")]
-        GlyphDefinition AccdnRh3RanksDoubleTremoloUpper8Ve { get; set; }
+        GlyphDefinition AccdnRh3RanksDoubleTremoloUpper8Ve { get; }
 
         [DataMember(Name = "accdnRH3RanksFullFactory")]
-        GlyphDefinition AccdnRh3RanksFullFactory { get; set; }
+        GlyphDefinition AccdnRh3RanksFullFactory { get; }
 
         [DataMember(Name = "accdnRH3RanksHarmonium")]
-        GlyphDefinition AccdnRh3RanksHarmonium { get; set; }
+        GlyphDefinition AccdnRh3RanksHarmonium { get; }
 
         [DataMember(Name = "accdnRH3RanksImitationMusette")]
-        GlyphDefinition AccdnRh3RanksImitationMusette { get; set; }
+        GlyphDefinition AccdnRh3RanksImitationMusette { get; }
 
         [DataMember(Name = "accdnRH3RanksLowerTremolo8")]
-        GlyphDefinition AccdnRh3RanksLowerTremolo8 { get; set; }
+        GlyphDefinition AccdnRh3RanksLowerTremolo8 { get; }
 
         [DataMember(Name = "accdnRH3RanksMaster")]
-        GlyphDefinition AccdnRh3RanksMaster { get; set; }
+        GlyphDefinition AccdnRh3RanksMaster { get; }
 
         [DataMember(Name = "accdnRH3RanksOboe")]
-        GlyphDefinition AccdnRh3RanksOboe { get; set; }
+        GlyphDefinition AccdnRh3RanksOboe { get; }
 
         [DataMember(Name = "accdnRH3RanksOrgan")]
-        GlyphDefinition AccdnRh3RanksOrgan { get; set; }
+        GlyphDefinition AccdnRh3RanksOrgan { get; }
 
         [DataMember(Name = "accdnRH3RanksPiccolo")]
-        GlyphDefinition AccdnRh3RanksPiccolo { get; set; }
+        GlyphDefinition AccdnRh3RanksPiccolo { get; }
 
         [DataMember(Name = "accdnRH3RanksTremoloLower8ve")]
-        GlyphDefinition AccdnRh3RanksTremoloLower8Ve { get; set; }
+        GlyphDefinition AccdnRh3RanksTremoloLower8Ve { get; }
 
         [DataMember(Name = "accdnRH3RanksTremoloUpper8ve")]
-        GlyphDefinition AccdnRh3RanksTremoloUpper8Ve { get; set; }
+        GlyphDefinition AccdnRh3RanksTremoloUpper8Ve { get; }
 
         [DataMember(Name = "accdnRH3RanksTwoChoirs")]
-        GlyphDefinition AccdnRh3RanksTwoChoirs { get; set; }
+        GlyphDefinition AccdnRh3RanksTwoChoirs { get; }
 
         [DataMember(Name = "accdnRH3RanksUpperTremolo8")]
-        GlyphDefinition AccdnRh3RanksUpperTremolo8 { get; set; }
+        GlyphDefinition AccdnRh3RanksUpperTremolo8 { get; }
 
         [DataMember(Name = "accdnRH3RanksViolin")]
-        GlyphDefinition AccdnRh3RanksViolin { get; set; }
+        GlyphDefinition AccdnRh3RanksViolin { get; }
 
         [DataMember(Name = "accdnRH4RanksAlto")]
-        GlyphDefinition AccdnRh4RanksAlto { get; set; }
+        GlyphDefinition AccdnRh4RanksAlto { get; }
 
         [DataMember(Name = "accdnRH4RanksBassAlto")]
-        GlyphDefinition AccdnRh4RanksBassAlto { get; set; }
+        GlyphDefinition AccdnRh4RanksBassAlto { get; }
 
         [DataMember(Name = "accdnRH4RanksMaster")]
-        GlyphDefinition AccdnRh4RanksMaster { get; set; }
+        GlyphDefinition AccdnRh4RanksMaster { get; }
 
         [DataMember(Name = "accdnRH4RanksSoftBass")]
-        GlyphDefinition AccdnRh4RanksSoftBass { get; set; }
+        GlyphDefinition AccdnRh4RanksSoftBass { get; }
 
         [DataMember(Name = "accdnRH4RanksSoftTenor")]
-        GlyphDefinition AccdnRh4RanksSoftTenor { get; set; }
+        GlyphDefinition AccdnRh4RanksSoftTenor { get; }
 
         [DataMember(Name = "accdnRH4RanksSoprano")]
-        GlyphDefinition AccdnRh4RanksSoprano { get; set; }
+        GlyphDefinition AccdnRh4RanksSoprano { get; }
 
         [DataMember(Name = "accdnRH4RanksTenor")]
-        GlyphDefinition AccdnRh4RanksTenor { get; set; }
+        GlyphDefinition AccdnRh4RanksTenor { get; }
 
         [DataMember(Name = "accdnRicochet2")]
-        GlyphDefinition AccdnRicochet2 { get; set; }
+        GlyphDefinition AccdnRicochet2 { get; }
 
         [DataMember(Name = "accdnRicochet3")]
-        GlyphDefinition AccdnRicochet3 { get; set; }
+        GlyphDefinition AccdnRicochet3 { get; }
 
         [DataMember(Name = "accdnRicochet4")]
-        GlyphDefinition AccdnRicochet4 { get; set; }
+        GlyphDefinition AccdnRicochet4 { get; }
 
         [DataMember(Name = "accdnRicochet5")]
-        GlyphDefinition AccdnRicochet5 { get; set; }
+        GlyphDefinition AccdnRicochet5 { get; }
 
         [DataMember(Name = "accdnRicochet6")]
-        GlyphDefinition AccdnRicochet6 { get; set; }
+        GlyphDefinition AccdnRicochet6 { get; }
 
         [DataMember(Name = "accdnRicochetStem2")]
-        GlyphDefinition AccdnRicochetStem2 { get; set; }
+        GlyphDefinition AccdnRicochetStem2 { get; }
 
         [DataMember(Name = "accdnRicochetStem3")]
-        GlyphDefinition AccdnRicochetStem3 { get; set; }
+        GlyphDefinition AccdnRicochetStem3 { get; }
 
         [DataMember(Name = "accdnRicochetStem4")]
-        GlyphDefinition AccdnRicochetStem4 { get; set; }
+        GlyphDefinition AccdnRicochetStem4 { get; }
 
         [DataMember(Name = "accdnRicochetStem5")]
-        GlyphDefinition AccdnRicochetStem5 { get; set; }
+        GlyphDefinition AccdnRicochetStem5 { get; }
 
         [DataMember(Name = "accdnRicochetStem6")]
-        GlyphDefinition AccdnRicochetStem6 { get; set; }
+        GlyphDefinition AccdnRicochetStem6 { get; }
 
         [DataMember(Name = "accidental1CommaFlat")]
-        GlyphDefinition Accidental1CommaFlat { get; set; }
+        GlyphDefinition Accidental1CommaFlat { get; }
 
         [DataMember(Name = "accidental1CommaSharp")]
-        GlyphDefinition Accidental1CommaSharp { get; set; }
+        GlyphDefinition Accidental1CommaSharp { get; }
 
         [DataMember(Name = "accidental2CommaFlat")]
-        GlyphDefinition Accidental2CommaFlat { get; set; }
+        GlyphDefinition Accidental2CommaFlat { get; }
 
         [DataMember(Name = "accidental2CommaSharp")]
-        GlyphDefinition Accidental2CommaSharp { get; set; }
+        GlyphDefinition Accidental2CommaSharp { get; }
 
         [DataMember(Name = "accidental3CommaFlat")]
-        GlyphDefinition Accidental3CommaFlat { get; set; }
+        GlyphDefinition Accidental3CommaFlat { get; }
 
         [DataMember(Name = "accidental3CommaSharp")]
-        GlyphDefinition Accidental3CommaSharp { get; set; }
+        GlyphDefinition Accidental3CommaSharp { get; }
 
         [DataMember(Name = "accidental4CommaFlat")]
-        GlyphDefinition Accidental4CommaFlat { get; set; }
+        GlyphDefinition Accidental4CommaFlat { get; }
 
         [DataMember(Name = "accidental5CommaSharp")]
-        GlyphDefinition Accidental5CommaSharp { get; set; }
+        GlyphDefinition Accidental5CommaSharp { get; }
 
         [DataMember(Name = "accidentalArrowDown")]
-        GlyphDefinition AccidentalArrowDown { get; set; }
+        GlyphDefinition AccidentalArrowDown { get; }
 
         [DataMember(Name = "accidentalArrowUp")]
-        GlyphDefinition AccidentalArrowUp { get; set; }
+        GlyphDefinition AccidentalArrowUp { get; }
 
         [DataMember(Name = "accidentalBakiyeFlat")]
-        GlyphDefinition AccidentalBakiyeFlat { get; set; }
+        GlyphDefinition AccidentalBakiyeFlat { get; }
 
         [DataMember(Name = "accidentalBakiyeSharp")]
-        GlyphDefinition AccidentalBakiyeSharp { get; set; }
+        GlyphDefinition AccidentalBakiyeSharp { get; }
 
         [DataMember(Name = "accidentalBuyukMucennebFlat")]
-        GlyphDefinition AccidentalBuyukMucennebFlat { get; set; }
+        GlyphDefinition AccidentalBuyukMucennebFlat { get; }
 
         [DataMember(Name = "accidentalBuyukMucennebSharp")]
-        GlyphDefinition AccidentalBuyukMucennebSharp { get; set; }
+        GlyphDefinition AccidentalBuyukMucennebSharp { get; }
 
         [DataMember(Name = "accidentalCombiningCloseCurlyBrace")]
-        GlyphDefinition AccidentalCombiningCloseCurlyBrace { get; set; }
+        GlyphDefinition AccidentalCombiningCloseCurlyBrace { get; }
 
         [DataMember(Name = "accidentalCombiningLower17Schisma")]
-        GlyphDefinition AccidentalCombiningLower17Schisma { get; set; }
+        GlyphDefinition AccidentalCombiningLower17Schisma { get; }
 
         [DataMember(Name = "accidentalCombiningLower19Schisma")]
-        GlyphDefinition AccidentalCombiningLower19Schisma { get; set; }
+        GlyphDefinition AccidentalCombiningLower19Schisma { get; }
 
         [DataMember(Name = "accidentalCombiningLower23Limit29LimitComma")]
-        GlyphDefinition AccidentalCombiningLower23Limit29LimitComma { get; set; }
+        GlyphDefinition AccidentalCombiningLower23Limit29LimitComma { get; }
 
         [DataMember(Name = "accidentalCombiningLower31Schisma")]
-        GlyphDefinition AccidentalCombiningLower31Schisma { get; set; }
+        GlyphDefinition AccidentalCombiningLower31Schisma { get; }
 
         [DataMember(Name = "accidentalCombiningOpenCurlyBrace")]
-        GlyphDefinition AccidentalCombiningOpenCurlyBrace { get; set; }
+        GlyphDefinition AccidentalCombiningOpenCurlyBrace { get; }
 
         [DataMember(Name = "accidentalCombiningRaise17Schisma")]
-        GlyphDefinition AccidentalCombiningRaise17Schisma { get; set; }
+        GlyphDefinition AccidentalCombiningRaise17Schisma { get; }
 
         [DataMember(Name = "accidentalCombiningRaise19Schisma")]
-        GlyphDefinition AccidentalCombiningRaise19Schisma { get; set; }
+        GlyphDefinition AccidentalCombiningRaise19Schisma { get; }
 
         [DataMember(Name = "accidentalCombiningRaise23Limit29LimitComma")]
-        GlyphDefinition AccidentalCombiningRaise23Limit29LimitComma { get; set; }
+        GlyphDefinition AccidentalCombiningRaise23Limit29LimitComma { get; }
 
         [DataMember(Name = "accidentalCombiningRaise31Schisma")]
-        GlyphDefinition AccidentalCombiningRaise31Schisma { get; set; }
+        GlyphDefinition AccidentalCombiningRaise31Schisma { get; }
 
         [DataMember(Name = "accidentalCommaSlashDown")]
-        GlyphDefinition AccidentalCommaSlashDown { get; set; }
+        GlyphDefinition AccidentalCommaSlashDown { get; }
 
         [DataMember(Name = "accidentalCommaSlashUp")]
-        GlyphDefinition AccidentalCommaSlashUp { get; set; }
+        GlyphDefinition AccidentalCommaSlashUp { get; }
 
         [DataMember(Name = "GlyphDefinition")]
-        GlyphDefinition GlyphDefinition { get; set; }
+        GlyphDefinition GlyphDefinition { get; }
 
         [DataMember(Name = "GlyphDefinitionEqualTempered")]
-        GlyphDefinition GlyphDefinitionEqualTempered { get; set; }
+        GlyphDefinition GlyphDefinitionEqualTempered { get; }
 
         [DataMember(Name = "GlyphDefinitionOneArrowDown")]
-        GlyphDefinition GlyphDefinitionOneArrowDown { get; set; }
+        GlyphDefinition GlyphDefinitionOneArrowDown { get; }
 
         [DataMember(Name = "GlyphDefinitionOneArrowUp")]
-        GlyphDefinition GlyphDefinitionOneArrowUp { get; set; }
+        GlyphDefinition GlyphDefinitionOneArrowUp { get; }
 
         [DataMember(Name = "GlyphDefinitionReversed")]
-        GlyphDefinition GlyphDefinitionReversed { get; set; }
+        GlyphDefinition GlyphDefinitionReversed { get; }
 
         [DataMember(Name = "GlyphDefinitionThreeArrowsDown")]
-        GlyphDefinition GlyphDefinitionThreeArrowsDown { get; set; }
+        GlyphDefinition GlyphDefinitionThreeArrowsDown { get; }
 
         [DataMember(Name = "GlyphDefinitionThreeArrowsUp")]
-        GlyphDefinition GlyphDefinitionThreeArrowsUp { get; set; }
+        GlyphDefinition GlyphDefinitionThreeArrowsUp { get; }
 
         [DataMember(Name = "GlyphDefinitionTurned")]
-        GlyphDefinition GlyphDefinitionTurned { get; set; }
+        GlyphDefinition GlyphDefinitionTurned { get; }
 
         [DataMember(Name = "GlyphDefinitionTwoArrowsDown")]
-        GlyphDefinition GlyphDefinitionTwoArrowsDown { get; set; }
+        GlyphDefinition GlyphDefinitionTwoArrowsDown { get; }
 
         [DataMember(Name = "GlyphDefinitionTwoArrowsUp")]
-        GlyphDefinition GlyphDefinitionTwoArrowsUp { get; set; }
+        GlyphDefinition GlyphDefinitionTwoArrowsUp { get; }
 
         [DataMember(Name = "accidentalDoubleSharp")]
-        GlyphDefinition AccidentalDoubleSharp { get; set; }
+        GlyphDefinition AccidentalDoubleSharp { get; }
 
         [DataMember(Name = "accidentalDoubleSharpEqualTempered")]
-        GlyphDefinition AccidentalDoubleSharpEqualTempered { get; set; }
+        GlyphDefinition AccidentalDoubleSharpEqualTempered { get; }
 
         [DataMember(Name = "accidentalDoubleSharpOneArrowDown")]
-        GlyphDefinition AccidentalDoubleSharpOneArrowDown { get; set; }
+        GlyphDefinition AccidentalDoubleSharpOneArrowDown { get; }
 
         [DataMember(Name = "accidentalDoubleSharpOneArrowUp")]
-        GlyphDefinition AccidentalDoubleSharpOneArrowUp { get; set; }
+        GlyphDefinition AccidentalDoubleSharpOneArrowUp { get; }
 
         [DataMember(Name = "accidentalDoubleSharpThreeArrowsDown")]
-        GlyphDefinition AccidentalDoubleSharpThreeArrowsDown { get; set; }
+        GlyphDefinition AccidentalDoubleSharpThreeArrowsDown { get; }
 
         [DataMember(Name = "accidentalDoubleSharpThreeArrowsUp")]
-        GlyphDefinition AccidentalDoubleSharpThreeArrowsUp { get; set; }
+        GlyphDefinition AccidentalDoubleSharpThreeArrowsUp { get; }
 
         [DataMember(Name = "accidentalDoubleSharpTwoArrowsDown")]
-        GlyphDefinition AccidentalDoubleSharpTwoArrowsDown { get; set; }
+        GlyphDefinition AccidentalDoubleSharpTwoArrowsDown { get; }
 
         [DataMember(Name = "accidentalDoubleSharpTwoArrowsUp")]
-        GlyphDefinition AccidentalDoubleSharpTwoArrowsUp { get; set; }
+        GlyphDefinition AccidentalDoubleSharpTwoArrowsUp { get; }
 
         [DataMember(Name = "accidentalFilledReversedFlatAndFlat")]
-        GlyphDefinition AccidentalFilledReversedFlatAndFlat { get; set; }
+        GlyphDefinition AccidentalFilledReversedFlatAndFlat { get; }
 
         [DataMember(Name = "accidentalFilledReversedFlatAndFlatArrowDown")]
-        GlyphDefinition AccidentalFilledReversedFlatAndFlatArrowDown { get; set; }
+        GlyphDefinition AccidentalFilledReversedFlatAndFlatArrowDown { get; }
 
         [DataMember(Name = "accidentalFilledReversedFlatAndFlatArrowUp")]
-        GlyphDefinition AccidentalFilledReversedFlatAndFlatArrowUp { get; set; }
+        GlyphDefinition AccidentalFilledReversedFlatAndFlatArrowUp { get; }
 
         [DataMember(Name = "accidentalFilledReversedFlatArrowDown")]
-        GlyphDefinition AccidentalFilledReversedFlatArrowDown { get; set; }
+        GlyphDefinition AccidentalFilledReversedFlatArrowDown { get; }
 
         [DataMember(Name = "accidentalFilledReversedFlatArrowUp")]
-        GlyphDefinition AccidentalFilledReversedFlatArrowUp { get; set; }
+        GlyphDefinition AccidentalFilledReversedFlatArrowUp { get; }
 
         [DataMember(Name = "accidentalFiveQuarterTonesFlatArrowDown")]
-        GlyphDefinition AccidentalFiveQuarterTonesFlatArrowDown { get; set; }
+        GlyphDefinition AccidentalFiveQuarterTonesFlatArrowDown { get; }
 
         [DataMember(Name = "accidentalFiveQuarterTonesSharpArrowUp")]
-        GlyphDefinition AccidentalFiveQuarterTonesSharpArrowUp { get; set; }
+        GlyphDefinition AccidentalFiveQuarterTonesSharpArrowUp { get; }
 
         [DataMember(Name = "accidentalFlat")]
-        GlyphDefinition AccidentalFlat { get; set; }
+        GlyphDefinition AccidentalFlat { get; }
 
         [DataMember(Name = "accidentalFlatEqualTempered")]
-        GlyphDefinition AccidentalFlatEqualTempered { get; set; }
+        GlyphDefinition AccidentalFlatEqualTempered { get; }
 
         [DataMember(Name = "accidentalFlatOneArrowDown")]
-        GlyphDefinition AccidentalFlatOneArrowDown { get; set; }
+        GlyphDefinition AccidentalFlatOneArrowDown { get; }
 
         [DataMember(Name = "accidentalFlatOneArrowUp")]
-        GlyphDefinition AccidentalFlatOneArrowUp { get; set; }
+        GlyphDefinition AccidentalFlatOneArrowUp { get; }
 
         [DataMember(Name = "accidentalFlatThreeArrowsDown")]
-        GlyphDefinition AccidentalFlatThreeArrowsDown { get; set; }
+        GlyphDefinition AccidentalFlatThreeArrowsDown { get; }
 
         [DataMember(Name = "accidentalFlatThreeArrowsUp")]
-        GlyphDefinition AccidentalFlatThreeArrowsUp { get; set; }
+        GlyphDefinition AccidentalFlatThreeArrowsUp { get; }
 
         [DataMember(Name = "accidentalFlatTurned")]
-        GlyphDefinition AccidentalFlatTurned { get; set; }
+        GlyphDefinition AccidentalFlatTurned { get; }
 
         [DataMember(Name = "accidentalFlatTwoArrowsDown")]
-        GlyphDefinition AccidentalFlatTwoArrowsDown { get; set; }
+        GlyphDefinition AccidentalFlatTwoArrowsDown { get; }
 
         [DataMember(Name = "accidentalFlatTwoArrowsUp")]
-        GlyphDefinition AccidentalFlatTwoArrowsUp { get; set; }
+        GlyphDefinition AccidentalFlatTwoArrowsUp { get; }
 
         [DataMember(Name = "accidentalHalfSharpArrowDown")]
-        GlyphDefinition AccidentalHalfSharpArrowDown { get; set; }
+        GlyphDefinition AccidentalHalfSharpArrowDown { get; }
 
         [DataMember(Name = "accidentalHalfSharpArrowUp")]
-        GlyphDefinition AccidentalHalfSharpArrowUp { get; set; }
+        GlyphDefinition AccidentalHalfSharpArrowUp { get; }
 
         [DataMember(Name = "accidentalJohnston13")]
-        GlyphDefinition AccidentalJohnston13 { get; set; }
+        GlyphDefinition AccidentalJohnston13 { get; }
 
         [DataMember(Name = "accidentalJohnston31")]
-        GlyphDefinition AccidentalJohnston31 { get; set; }
+        GlyphDefinition AccidentalJohnston31 { get; }
 
         [DataMember(Name = "accidentalJohnstonDown")]
-        GlyphDefinition AccidentalJohnstonDown { get; set; }
+        GlyphDefinition AccidentalJohnstonDown { get; }
 
         [DataMember(Name = "accidentalJohnstonEl")]
-        GlyphDefinition AccidentalJohnstonEl { get; set; }
+        GlyphDefinition AccidentalJohnstonEl { get; }
 
         [DataMember(Name = "accidentalJohnstonMinus")]
-        GlyphDefinition AccidentalJohnstonMinus { get; set; }
+        GlyphDefinition AccidentalJohnstonMinus { get; }
 
         [DataMember(Name = "accidentalJohnstonPlus")]
-        GlyphDefinition AccidentalJohnstonPlus { get; set; }
+        GlyphDefinition AccidentalJohnstonPlus { get; }
 
         [DataMember(Name = "accidentalJohnstonSeven")]
-        GlyphDefinition AccidentalJohnstonSeven { get; set; }
+        GlyphDefinition AccidentalJohnstonSeven { get; }
 
         [DataMember(Name = "accidentalJohnstonUp")]
-        GlyphDefinition AccidentalJohnstonUp { get; set; }
+        GlyphDefinition AccidentalJohnstonUp { get; }
 
         [DataMember(Name = "accidentalKomaFlat")]
-        GlyphDefinition AccidentalKomaFlat { get; set; }
+        GlyphDefinition AccidentalKomaFlat { get; }
 
         [DataMember(Name = "accidentalKomaSharp")]
-        GlyphDefinition AccidentalKomaSharp { get; set; }
+        GlyphDefinition AccidentalKomaSharp { get; }
 
         [DataMember(Name = "accidentalKoron")]
-        GlyphDefinition AccidentalKoron { get; set; }
+        GlyphDefinition AccidentalKoron { get; }
 
         [DataMember(Name = "accidentalKucukMucennebFlat")]
-        GlyphDefinition AccidentalKucukMucennebFlat { get; set; }
+        GlyphDefinition AccidentalKucukMucennebFlat { get; }
 
         [DataMember(Name = "accidentalKucukMucennebSharp")]
-        GlyphDefinition AccidentalKucukMucennebSharp { get; set; }
+        GlyphDefinition AccidentalKucukMucennebSharp { get; }
 
         [DataMember(Name = "accidentalLargeDoubleSharp")]
-        GlyphDefinition AccidentalLargeDoubleSharp { get; set; }
+        GlyphDefinition AccidentalLargeDoubleSharp { get; }
 
         [DataMember(Name = "accidentalLowerOneSeptimalComma")]
-        GlyphDefinition AccidentalLowerOneSeptimalComma { get; set; }
+        GlyphDefinition AccidentalLowerOneSeptimalComma { get; }
 
         [DataMember(Name = "accidentalLowerOneTridecimalQuartertone")]
-        GlyphDefinition AccidentalLowerOneTridecimalQuartertone { get; set; }
+        GlyphDefinition AccidentalLowerOneTridecimalQuartertone { get; }
 
         [DataMember(Name = "accidentalLowerOneUndecimalQuartertone")]
-        GlyphDefinition AccidentalLowerOneUndecimalQuartertone { get; set; }
+        GlyphDefinition AccidentalLowerOneUndecimalQuartertone { get; }
 
         [DataMember(Name = "accidentalLowerTwoSeptimalCommas")]
-        GlyphDefinition AccidentalLowerTwoSeptimalCommas { get; set; }
+        GlyphDefinition AccidentalLowerTwoSeptimalCommas { get; }
 
         [DataMember(Name = "accidentalNarrowReversedFlat")]
-        GlyphDefinition AccidentalNarrowReversedFlat { get; set; }
+        GlyphDefinition AccidentalNarrowReversedFlat { get; }
 
         [DataMember(Name = "accidentalNarrowReversedFlatAndFlat")]
-        GlyphDefinition AccidentalNarrowReversedFlatAndFlat { get; set; }
+        GlyphDefinition AccidentalNarrowReversedFlatAndFlat { get; }
 
         [DataMember(Name = "accidentalNatural")]
-        GlyphDefinition AccidentalNatural { get; set; }
+        GlyphDefinition AccidentalNatural { get; }
 
         [DataMember(Name = "accidentalNaturalEqualTempered")]
-        GlyphDefinition AccidentalNaturalEqualTempered { get; set; }
+        GlyphDefinition AccidentalNaturalEqualTempered { get; }
 
         [DataMember(Name = "accidentalNaturalFlat")]
-        GlyphDefinition AccidentalNaturalFlat { get; set; }
+        GlyphDefinition AccidentalNaturalFlat { get; }
 
         [DataMember(Name = "accidentalNaturalOneArrowDown")]
-        GlyphDefinition AccidentalNaturalOneArrowDown { get; set; }
+        GlyphDefinition AccidentalNaturalOneArrowDown { get; }
 
         [DataMember(Name = "accidentalNaturalOneArrowUp")]
-        GlyphDefinition AccidentalNaturalOneArrowUp { get; set; }
+        GlyphDefinition AccidentalNaturalOneArrowUp { get; }
 
         [DataMember(Name = "accidentalNaturalReversed")]
-        GlyphDefinition AccidentalNaturalReversed { get; set; }
+        GlyphDefinition AccidentalNaturalReversed { get; }
 
         [DataMember(Name = "accidentalNaturalSharp")]
-        GlyphDefinition AccidentalNaturalSharp { get; set; }
+        GlyphDefinition AccidentalNaturalSharp { get; }
 
         [DataMember(Name = "accidentalNaturalThreeArrowsDown")]
-        GlyphDefinition AccidentalNaturalThreeArrowsDown { get; set; }
+        GlyphDefinition AccidentalNaturalThreeArrowsDown { get; }
 
         [DataMember(Name = "accidentalNaturalThreeArrowsUp")]
-        GlyphDefinition AccidentalNaturalThreeArrowsUp { get; set; }
+        GlyphDefinition AccidentalNaturalThreeArrowsUp { get; }
 
         [DataMember(Name = "accidentalNaturalTwoArrowsDown")]
-        GlyphDefinition AccidentalNaturalTwoArrowsDown { get; set; }
+        GlyphDefinition AccidentalNaturalTwoArrowsDown { get; }
 
         [DataMember(Name = "accidentalNaturalTwoArrowsUp")]
-        GlyphDefinition AccidentalNaturalTwoArrowsUp { get; set; }
+        GlyphDefinition AccidentalNaturalTwoArrowsUp { get; }
 
         [DataMember(Name = "accidentalOneAndAHalfSharpsArrowDown")]
-        GlyphDefinition AccidentalOneAndAHalfSharpsArrowDown { get; set; }
+        GlyphDefinition AccidentalOneAndAHalfSharpsArrowDown { get; }
 
         [DataMember(Name = "accidentalOneAndAHalfSharpsArrowUp")]
-        GlyphDefinition AccidentalOneAndAHalfSharpsArrowUp { get; set; }
+        GlyphDefinition AccidentalOneAndAHalfSharpsArrowUp { get; }
 
         [DataMember(Name = "accidentalOneThirdToneFlatFerneyhough")]
-        GlyphDefinition AccidentalOneThirdToneFlatFerneyhough { get; set; }
+        GlyphDefinition AccidentalOneThirdToneFlatFerneyhough { get; }
 
         [DataMember(Name = "accidentalOneThirdToneSharpFerneyhough")]
-        GlyphDefinition AccidentalOneThirdToneSharpFerneyhough { get; set; }
+        GlyphDefinition AccidentalOneThirdToneSharpFerneyhough { get; }
 
         [DataMember(Name = "accidentalParensLeft")]
-        GlyphDefinition AccidentalParensLeft { get; set; }
+        GlyphDefinition AccidentalParensLeft { get; }
 
         [DataMember(Name = "accidentalParensRight")]
-        GlyphDefinition AccidentalParensRight { get; set; }
+        GlyphDefinition AccidentalParensRight { get; }
 
         [DataMember(Name = "accidentalQuarterToneFlat4")]
-        GlyphDefinition AccidentalQuarterToneFlat4 { get; set; }
+        GlyphDefinition AccidentalQuarterToneFlat4 { get; }
 
         [DataMember(Name = "accidentalQuarterToneFlatArrowUp")]
-        GlyphDefinition AccidentalQuarterToneFlatArrowUp { get; set; }
+        GlyphDefinition AccidentalQuarterToneFlatArrowUp { get; }
 
         [DataMember(Name = "accidentalQuarterToneFlatFilledReversed")]
-        GlyphDefinition AccidentalQuarterToneFlatFilledReversed { get; set; }
+        GlyphDefinition AccidentalQuarterToneFlatFilledReversed { get; }
 
         [DataMember(Name = "accidentalQuarterToneFlatNaturalArrowDown")]
-        GlyphDefinition AccidentalQuarterToneFlatNaturalArrowDown { get; set; }
+        GlyphDefinition AccidentalQuarterToneFlatNaturalArrowDown { get; }
 
         [DataMember(Name = "accidentalQuarterToneFlatPenderecki")]
-        GlyphDefinition AccidentalQuarterToneFlatPenderecki { get; set; }
+        GlyphDefinition AccidentalQuarterToneFlatPenderecki { get; }
 
         [DataMember(Name = "accidentalQuarterToneFlatStein")]
-        GlyphDefinition AccidentalQuarterToneFlatStein { get; set; }
+        GlyphDefinition AccidentalQuarterToneFlatStein { get; }
 
         [DataMember(Name = "accidentalQuarterToneFlatVanBlankenburg")]
-        GlyphDefinition AccidentalQuarterToneFlatVanBlankenburg { get; set; }
+        GlyphDefinition AccidentalQuarterToneFlatVanBlankenburg { get; }
 
         [DataMember(Name = "accidentalQuarterToneSharp4")]
-        GlyphDefinition AccidentalQuarterToneSharp4 { get; set; }
+        GlyphDefinition AccidentalQuarterToneSharp4 { get; }
 
         [DataMember(Name = "accidentalQuarterToneSharpArrowDown")]
-        GlyphDefinition AccidentalQuarterToneSharpArrowDown { get; set; }
+        GlyphDefinition AccidentalQuarterToneSharpArrowDown { get; }
 
         [DataMember(Name = "accidentalQuarterToneSharpBusotti")]
-        GlyphDefinition AccidentalQuarterToneSharpBusotti { get; set; }
+        GlyphDefinition AccidentalQuarterToneSharpBusotti { get; }
 
         [DataMember(Name = "accidentalQuarterToneSharpNaturalArrowUp")]
-        GlyphDefinition AccidentalQuarterToneSharpNaturalArrowUp { get; set; }
+        GlyphDefinition AccidentalQuarterToneSharpNaturalArrowUp { get; }
 
         [DataMember(Name = "accidentalQuarterToneSharpStein")]
-        GlyphDefinition AccidentalQuarterToneSharpStein { get; set; }
+        GlyphDefinition AccidentalQuarterToneSharpStein { get; }
 
         [DataMember(Name = "accidentalQuarterToneSharpWiggle")]
-        GlyphDefinition AccidentalQuarterToneSharpWiggle { get; set; }
+        GlyphDefinition AccidentalQuarterToneSharpWiggle { get; }
 
         [DataMember(Name = "accidentalRaiseOneSeptimalComma")]
-        GlyphDefinition AccidentalRaiseOneSeptimalComma { get; set; }
+        GlyphDefinition AccidentalRaiseOneSeptimalComma { get; }
 
         [DataMember(Name = "accidentalRaiseOneTridecimalQuartertone")]
-        GlyphDefinition AccidentalRaiseOneTridecimalQuartertone { get; set; }
+        GlyphDefinition AccidentalRaiseOneTridecimalQuartertone { get; }
 
         [DataMember(Name = "accidentalRaiseOneUndecimalQuartertone")]
-        GlyphDefinition AccidentalRaiseOneUndecimalQuartertone { get; set; }
+        GlyphDefinition AccidentalRaiseOneUndecimalQuartertone { get; }
 
         [DataMember(Name = "accidentalRaiseTwoSeptimalCommas")]
-        GlyphDefinition AccidentalRaiseTwoSeptimalCommas { get; set; }
+        GlyphDefinition AccidentalRaiseTwoSeptimalCommas { get; }
 
         [DataMember(Name = "accidentalReversedFlatAndFlatArrowDown")]
-        GlyphDefinition AccidentalReversedFlatAndFlatArrowDown { get; set; }
+        GlyphDefinition AccidentalReversedFlatAndFlatArrowDown { get; }
 
         [DataMember(Name = "accidentalReversedFlatAndFlatArrowUp")]
-        GlyphDefinition AccidentalReversedFlatAndFlatArrowUp { get; set; }
+        GlyphDefinition AccidentalReversedFlatAndFlatArrowUp { get; }
 
         [DataMember(Name = "accidentalReversedFlatArrowDown")]
-        GlyphDefinition AccidentalReversedFlatArrowDown { get; set; }
+        GlyphDefinition AccidentalReversedFlatArrowDown { get; }
 
         [DataMember(Name = "accidentalReversedFlatArrowUp")]
-        GlyphDefinition AccidentalReversedFlatArrowUp { get; set; }
+        GlyphDefinition AccidentalReversedFlatArrowUp { get; }
 
         [DataMember(Name = "accidentalSharp")]
-        GlyphDefinition AccidentalSharp { get; set; }
+        GlyphDefinition AccidentalSharp { get; }
 
         [DataMember(Name = "accidentalSharpEqualTempered")]
-        GlyphDefinition AccidentalSharpEqualTempered { get; set; }
+        GlyphDefinition AccidentalSharpEqualTempered { get; }
 
         [DataMember(Name = "accidentalSharpOneArrowDown")]
-        GlyphDefinition AccidentalSharpOneArrowDown { get; set; }
+        GlyphDefinition AccidentalSharpOneArrowDown { get; }
 
         [DataMember(Name = "accidentalSharpOneArrowUp")]
-        GlyphDefinition AccidentalSharpOneArrowUp { get; set; }
+        GlyphDefinition AccidentalSharpOneArrowUp { get; }
 
         [DataMember(Name = "accidentalSharpOneHorizontalStroke")]
-        GlyphDefinition AccidentalSharpOneHorizontalStroke { get; set; }
+        GlyphDefinition AccidentalSharpOneHorizontalStroke { get; }
 
         [DataMember(Name = "accidentalSharpReversed")]
-        GlyphDefinition AccidentalSharpReversed { get; set; }
+        GlyphDefinition AccidentalSharpReversed { get; }
 
         [DataMember(Name = "accidentalSharpSharp")]
-        GlyphDefinition AccidentalSharpSharp { get; set; }
+        GlyphDefinition AccidentalSharpSharp { get; }
 
         [DataMember(Name = "accidentalSharpThreeArrowsDown")]
-        GlyphDefinition AccidentalSharpThreeArrowsDown { get; set; }
+        GlyphDefinition AccidentalSharpThreeArrowsDown { get; }
 
         [DataMember(Name = "accidentalSharpThreeArrowsUp")]
-        GlyphDefinition AccidentalSharpThreeArrowsUp { get; set; }
+        GlyphDefinition AccidentalSharpThreeArrowsUp { get; }
 
         [DataMember(Name = "accidentalSharpTwoArrowsDown")]
-        GlyphDefinition AccidentalSharpTwoArrowsDown { get; set; }
+        GlyphDefinition AccidentalSharpTwoArrowsDown { get; }
 
         [DataMember(Name = "accidentalSharpTwoArrowsUp")]
-        GlyphDefinition AccidentalSharpTwoArrowsUp { get; set; }
+        GlyphDefinition AccidentalSharpTwoArrowsUp { get; }
 
         [DataMember(Name = "accidentalSims12Down")]
-        GlyphDefinition AccidentalSims12Down { get; set; }
+        GlyphDefinition AccidentalSims12Down { get; }
 
         [DataMember(Name = "accidentalSims12Up")]
-        GlyphDefinition AccidentalSims12Up { get; set; }
+        GlyphDefinition AccidentalSims12Up { get; }
 
         [DataMember(Name = "accidentalSims4Down")]
-        GlyphDefinition AccidentalSims4Down { get; set; }
+        GlyphDefinition AccidentalSims4Down { get; }
 
         [DataMember(Name = "accidentalSims4Up")]
-        GlyphDefinition AccidentalSims4Up { get; set; }
+        GlyphDefinition AccidentalSims4Up { get; }
 
         [DataMember(Name = "accidentalSims6Down")]
-        GlyphDefinition AccidentalSims6Down { get; set; }
+        GlyphDefinition AccidentalSims6Down { get; }
 
         [DataMember(Name = "accidentalSims6Up")]
-        GlyphDefinition AccidentalSims6Up { get; set; }
+        GlyphDefinition AccidentalSims6Up { get; }
 
         [DataMember(Name = "accidentalSori")]
-        GlyphDefinition AccidentalSori { get; set; }
+        GlyphDefinition AccidentalSori { get; }
 
         [DataMember(Name = "accidentalTavenerFlat")]
-        GlyphDefinition AccidentalTavenerFlat { get; set; }
+        GlyphDefinition AccidentalTavenerFlat { get; }
 
         [DataMember(Name = "accidentalTavenerSharp")]
-        GlyphDefinition AccidentalTavenerSharp { get; set; }
+        GlyphDefinition AccidentalTavenerSharp { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesFlatArrowDown")]
-        GlyphDefinition AccidentalThreeQuarterTonesFlatArrowDown { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesFlatArrowDown { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesFlatArrowUp")]
-        GlyphDefinition AccidentalThreeQuarterTonesFlatArrowUp { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesFlatArrowUp { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesFlatCouper")]
-        GlyphDefinition AccidentalThreeQuarterTonesFlatCouper { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesFlatCouper { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesFlatGrisey")]
-        GlyphDefinition AccidentalThreeQuarterTonesFlatGrisey { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesFlatGrisey { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesFlatTartini")]
-        GlyphDefinition AccidentalThreeQuarterTonesFlatTartini { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesFlatTartini { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesFlatZimmermann")]
-        GlyphDefinition AccidentalThreeQuarterTonesFlatZimmermann { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesFlatZimmermann { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesSharpArrowDown")]
-        GlyphDefinition AccidentalThreeQuarterTonesSharpArrowDown { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesSharpArrowDown { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesSharpArrowUp")]
-        GlyphDefinition AccidentalThreeQuarterTonesSharpArrowUp { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesSharpArrowUp { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesSharpBusotti")]
-        GlyphDefinition AccidentalThreeQuarterTonesSharpBusotti { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesSharpBusotti { get; }
 
         [DataMember(Name = "accidentalThreeQuarterTonesSharpStein")]
-        GlyphDefinition AccidentalThreeQuarterTonesSharpStein { get; set; }
+        GlyphDefinition AccidentalThreeQuarterTonesSharpStein { get; }
 
         [DataMember(Name = "accidentalTripleFlat")]
-        GlyphDefinition AccidentalTripleFlat { get; set; }
+        GlyphDefinition AccidentalTripleFlat { get; }
 
         [DataMember(Name = "accidentalTripleSharp")]
-        GlyphDefinition AccidentalTripleSharp { get; set; }
+        GlyphDefinition AccidentalTripleSharp { get; }
 
         [DataMember(Name = "accidentalTwoThirdTonesFlatFerneyhough")]
-        GlyphDefinition AccidentalTwoThirdTonesFlatFerneyhough { get; set; }
+        GlyphDefinition AccidentalTwoThirdTonesFlatFerneyhough { get; }
 
         [DataMember(Name = "accidentalTwoThirdTonesSharpFerneyhough")]
-        GlyphDefinition AccidentalTwoThirdTonesSharpFerneyhough { get; set; }
+        GlyphDefinition AccidentalTwoThirdTonesSharpFerneyhough { get; }
 
         [DataMember(Name = "accidentalWilsonMinus")]
-        GlyphDefinition AccidentalWilsonMinus { get; set; }
+        GlyphDefinition AccidentalWilsonMinus { get; }
 
         [DataMember(Name = "accidentalWilsonPlus")]
-        GlyphDefinition AccidentalWilsonPlus { get; set; }
+        GlyphDefinition AccidentalWilsonPlus { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky10TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky10TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky10TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky10TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky10TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky10TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky11TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky11TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky11TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky11TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky11TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky11TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky1TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky1TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky1TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky1TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky1TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky1TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky2TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky2TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky2TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky2TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky2TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky2TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky3TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky3TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky3TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky3TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky3TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky3TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky4TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky4TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky4TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky4TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky4TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky4TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky5TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky5TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky5TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky5TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky5TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky5TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky6TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky6TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky6TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky6TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky6TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky6TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky7TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky7TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky7TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky7TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky7TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky7TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky8TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky8TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky8TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky8TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky8TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky8TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky9TwelfthsFlat")]
-        GlyphDefinition AccidentalWyschnegradsky9TwelfthsFlat { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky9TwelfthsFlat { get; }
 
         [DataMember(Name = "accidentalWyschnegradsky9TwelfthsSharp")]
-        GlyphDefinition AccidentalWyschnegradsky9TwelfthsSharp { get; set; }
+        GlyphDefinition AccidentalWyschnegradsky9TwelfthsSharp { get; }
 
         [DataMember(Name = "accidentalXenakisOneThirdToneSharp")]
-        GlyphDefinition AccidentalXenakisOneThirdToneSharp { get; set; }
+        GlyphDefinition AccidentalXenakisOneThirdToneSharp { get; }
 
         [DataMember(Name = "accidentalXenakisTwoThirdTonesSharp")]
-        GlyphDefinition AccidentalXenakisTwoThirdTonesSharp { get; set; }
+        GlyphDefinition AccidentalXenakisTwoThirdTonesSharp { get; }
 
         [DataMember(Name = "analyticsChoralmelodie")]
-        GlyphDefinition AnalyticsChoralmelodie { get; set; }
+        GlyphDefinition AnalyticsChoralmelodie { get; }
 
         [DataMember(Name = "analyticsEndStimme")]
-        GlyphDefinition AnalyticsEndStimme { get; set; }
+        GlyphDefinition AnalyticsEndStimme { get; }
 
         [DataMember(Name = "analyticsHauptrhythmus")]
-        GlyphDefinition AnalyticsHauptrhythmus { get; set; }
+        GlyphDefinition AnalyticsHauptrhythmus { get; }
 
         [DataMember(Name = "analyticsHauptstimme")]
-        GlyphDefinition AnalyticsHauptstimme { get; set; }
+        GlyphDefinition AnalyticsHauptstimme { get; }
 
         [DataMember(Name = "analyticsInversion1")]
-        GlyphDefinition AnalyticsInversion1 { get; set; }
+        GlyphDefinition AnalyticsInversion1 { get; }
 
         [DataMember(Name = "analyticsNebenstimme")]
-        GlyphDefinition AnalyticsNebenstimme { get; set; }
+        GlyphDefinition AnalyticsNebenstimme { get; }
 
         [DataMember(Name = "analyticsStartStimme")]
-        GlyphDefinition AnalyticsStartStimme { get; set; }
+        GlyphDefinition AnalyticsStartStimme { get; }
 
         [DataMember(Name = "analyticsTheme")]
-        GlyphDefinition AnalyticsTheme { get; set; }
+        GlyphDefinition AnalyticsTheme { get; }
 
         [DataMember(Name = "analyticsTheme1")]
-        GlyphDefinition AnalyticsTheme1 { get; set; }
+        GlyphDefinition AnalyticsTheme1 { get; }
 
         [DataMember(Name = "analyticsThemeInversion")]
-        GlyphDefinition AnalyticsThemeInversion { get; set; }
+        GlyphDefinition AnalyticsThemeInversion { get; }
 
         [DataMember(Name = "analyticsThemeRetrograde")]
-        GlyphDefinition AnalyticsThemeRetrograde { get; set; }
+        GlyphDefinition AnalyticsThemeRetrograde { get; }
 
         [DataMember(Name = "analyticsThemeRetrogradeInversion")]
-        GlyphDefinition AnalyticsThemeRetrogradeInversion { get; set; }
+        GlyphDefinition AnalyticsThemeRetrogradeInversion { get; }
 
         [DataMember(Name = "arpeggiatoDown")]
-        GlyphDefinition ArpeggiatoDown { get; set; }
+        GlyphDefinition ArpeggiatoDown { get; }
 
         [DataMember(Name = "arpeggiatoUp")]
-        GlyphDefinition ArpeggiatoUp { get; set; }
+        GlyphDefinition ArpeggiatoUp { get; }
 
         [DataMember(Name = "arrowBlackDown")]
-        GlyphDefinition ArrowBlackDown { get; set; }
+        GlyphDefinition ArrowBlackDown { get; }
 
         [DataMember(Name = "arrowBlackDownLeft")]
-        GlyphDefinition ArrowBlackDownLeft { get; set; }
+        GlyphDefinition ArrowBlackDownLeft { get; }
 
         [DataMember(Name = "arrowBlackDownRight")]
-        GlyphDefinition ArrowBlackDownRight { get; set; }
+        GlyphDefinition ArrowBlackDownRight { get; }
 
         [DataMember(Name = "arrowBlackLeft")]
-        GlyphDefinition ArrowBlackLeft { get; set; }
+        GlyphDefinition ArrowBlackLeft { get; }
 
         [DataMember(Name = "arrowBlackRight")]
-        GlyphDefinition ArrowBlackRight { get; set; }
+        GlyphDefinition ArrowBlackRight { get; }
 
         [DataMember(Name = "arrowBlackUp")]
-        GlyphDefinition ArrowBlackUp { get; set; }
+        GlyphDefinition ArrowBlackUp { get; }
 
         [DataMember(Name = "arrowBlackUpLeft")]
-        GlyphDefinition ArrowBlackUpLeft { get; set; }
+        GlyphDefinition ArrowBlackUpLeft { get; }
 
         [DataMember(Name = "arrowBlackUpRight")]
-        GlyphDefinition ArrowBlackUpRight { get; set; }
+        GlyphDefinition ArrowBlackUpRight { get; }
 
         [DataMember(Name = "arrowOpenDown")]
-        GlyphDefinition ArrowOpenDown { get; set; }
+        GlyphDefinition ArrowOpenDown { get; }
 
         [DataMember(Name = "arrowOpenDownLeft")]
-        GlyphDefinition ArrowOpenDownLeft { get; set; }
+        GlyphDefinition ArrowOpenDownLeft { get; }
 
         [DataMember(Name = "arrowOpenDownRight")]
-        GlyphDefinition ArrowOpenDownRight { get; set; }
+        GlyphDefinition ArrowOpenDownRight { get; }
 
         [DataMember(Name = "arrowOpenLeft")]
-        GlyphDefinition ArrowOpenLeft { get; set; }
+        GlyphDefinition ArrowOpenLeft { get; }
 
         [DataMember(Name = "arrowOpenRight")]
-        GlyphDefinition ArrowOpenRight { get; set; }
+        GlyphDefinition ArrowOpenRight { get; }
 
         [DataMember(Name = "arrowOpenUp")]
-        GlyphDefinition ArrowOpenUp { get; set; }
+        GlyphDefinition ArrowOpenUp { get; }
 
         [DataMember(Name = "arrowOpenUpLeft")]
-        GlyphDefinition ArrowOpenUpLeft { get; set; }
+        GlyphDefinition ArrowOpenUpLeft { get; }
 
         [DataMember(Name = "arrowOpenUpRight")]
-        GlyphDefinition ArrowOpenUpRight { get; set; }
+        GlyphDefinition ArrowOpenUpRight { get; }
 
         [DataMember(Name = "arrowWhiteDown")]
-        GlyphDefinition ArrowWhiteDown { get; set; }
+        GlyphDefinition ArrowWhiteDown { get; }
 
         [DataMember(Name = "arrowWhiteDownLeft")]
-        GlyphDefinition ArrowWhiteDownLeft { get; set; }
+        GlyphDefinition ArrowWhiteDownLeft { get; }
 
         [DataMember(Name = "arrowWhiteDownRight")]
-        GlyphDefinition ArrowWhiteDownRight { get; set; }
+        GlyphDefinition ArrowWhiteDownRight { get; }
 
         [DataMember(Name = "arrowWhiteLeft")]
-        GlyphDefinition ArrowWhiteLeft { get; set; }
+        GlyphDefinition ArrowWhiteLeft { get; }
 
         [DataMember(Name = "arrowWhiteRight")]
-        GlyphDefinition ArrowWhiteRight { get; set; }
+        GlyphDefinition ArrowWhiteRight { get; }
 
         [DataMember(Name = "arrowWhiteUp")]
-        GlyphDefinition ArrowWhiteUp { get; set; }
+        GlyphDefinition ArrowWhiteUp { get; }
 
         [DataMember(Name = "arrowWhiteUpLeft")]
-        GlyphDefinition ArrowWhiteUpLeft { get; set; }
+        GlyphDefinition ArrowWhiteUpLeft { get; }
 
         [DataMember(Name = "arrowWhiteUpRight")]
-        GlyphDefinition ArrowWhiteUpRight { get; set; }
+        GlyphDefinition ArrowWhiteUpRight { get; }
 
         [DataMember(Name = "arrowheadBlackDown")]
-        GlyphDefinition ArrowheadBlackDown { get; set; }
+        GlyphDefinition ArrowheadBlackDown { get; }
 
         [DataMember(Name = "arrowheadBlackDownLeft")]
-        GlyphDefinition ArrowheadBlackDownLeft { get; set; }
+        GlyphDefinition ArrowheadBlackDownLeft { get; }
 
         [DataMember(Name = "arrowheadBlackDownRight")]
-        GlyphDefinition ArrowheadBlackDownRight { get; set; }
+        GlyphDefinition ArrowheadBlackDownRight { get; }
 
         [DataMember(Name = "arrowheadBlackLeft")]
-        GlyphDefinition ArrowheadBlackLeft { get; set; }
+        GlyphDefinition ArrowheadBlackLeft { get; }
 
         [DataMember(Name = "arrowheadBlackRight")]
-        GlyphDefinition ArrowheadBlackRight { get; set; }
+        GlyphDefinition ArrowheadBlackRight { get; }
 
         [DataMember(Name = "arrowheadBlackUp")]
-        GlyphDefinition ArrowheadBlackUp { get; set; }
+        GlyphDefinition ArrowheadBlackUp { get; }
 
         [DataMember(Name = "arrowheadBlackUpLeft")]
-        GlyphDefinition ArrowheadBlackUpLeft { get; set; }
+        GlyphDefinition ArrowheadBlackUpLeft { get; }
 
         [DataMember(Name = "arrowheadBlackUpRight")]
-        GlyphDefinition ArrowheadBlackUpRight { get; set; }
+        GlyphDefinition ArrowheadBlackUpRight { get; }
 
         [DataMember(Name = "arrowheadOpenDown")]
-        GlyphDefinition ArrowheadOpenDown { get; set; }
+        GlyphDefinition ArrowheadOpenDown { get; }
 
         [DataMember(Name = "arrowheadOpenDownLeft")]
-        GlyphDefinition ArrowheadOpenDownLeft { get; set; }
+        GlyphDefinition ArrowheadOpenDownLeft { get; }
 
         [DataMember(Name = "arrowheadOpenDownRight")]
-        GlyphDefinition ArrowheadOpenDownRight { get; set; }
+        GlyphDefinition ArrowheadOpenDownRight { get; }
 
         [DataMember(Name = "arrowheadOpenLeft")]
-        GlyphDefinition ArrowheadOpenLeft { get; set; }
+        GlyphDefinition ArrowheadOpenLeft { get; }
 
         [DataMember(Name = "arrowheadOpenRight")]
-        GlyphDefinition ArrowheadOpenRight { get; set; }
+        GlyphDefinition ArrowheadOpenRight { get; }
 
         [DataMember(Name = "arrowheadOpenUp")]
-        GlyphDefinition ArrowheadOpenUp { get; set; }
+        GlyphDefinition ArrowheadOpenUp { get; }
 
         [DataMember(Name = "arrowheadOpenUpLeft")]
-        GlyphDefinition ArrowheadOpenUpLeft { get; set; }
+        GlyphDefinition ArrowheadOpenUpLeft { get; }
 
         [DataMember(Name = "arrowheadOpenUpRight")]
-        GlyphDefinition ArrowheadOpenUpRight { get; set; }
+        GlyphDefinition ArrowheadOpenUpRight { get; }
 
         [DataMember(Name = "arrowheadWhiteDown")]
-        GlyphDefinition ArrowheadWhiteDown { get; set; }
+        GlyphDefinition ArrowheadWhiteDown { get; }
 
         [DataMember(Name = "arrowheadWhiteDownLeft")]
-        GlyphDefinition ArrowheadWhiteDownLeft { get; set; }
+        GlyphDefinition ArrowheadWhiteDownLeft { get; }
 
         [DataMember(Name = "arrowheadWhiteDownRight")]
-        GlyphDefinition ArrowheadWhiteDownRight { get; set; }
+        GlyphDefinition ArrowheadWhiteDownRight { get; }
 
         [DataMember(Name = "arrowheadWhiteLeft")]
-        GlyphDefinition ArrowheadWhiteLeft { get; set; }
+        GlyphDefinition ArrowheadWhiteLeft { get; }
 
         [DataMember(Name = "arrowheadWhiteRight")]
-        GlyphDefinition ArrowheadWhiteRight { get; set; }
+        GlyphDefinition ArrowheadWhiteRight { get; }
 
         [DataMember(Name = "arrowheadWhiteUp")]
-        GlyphDefinition ArrowheadWhiteUp { get; set; }
+        GlyphDefinition ArrowheadWhiteUp { get; }
 
         [DataMember(Name = "arrowheadWhiteUpLeft")]
-        GlyphDefinition ArrowheadWhiteUpLeft { get; set; }
+        GlyphDefinition ArrowheadWhiteUpLeft { get; }
 
         [DataMember(Name = "arrowheadWhiteUpRight")]
-        GlyphDefinition ArrowheadWhiteUpRight { get; set; }
+        GlyphDefinition ArrowheadWhiteUpRight { get; }
 
         [DataMember(Name = "articAccentAbove")]
-        GlyphDefinition ArticAccentAbove { get; set; }
+        GlyphDefinition ArticAccentAbove { get; }
 
         [DataMember(Name = "articAccentBelow")]
-        GlyphDefinition ArticAccentBelow { get; set; }
+        GlyphDefinition ArticAccentBelow { get; }
 
         [DataMember(Name = "articAccentStaccatoAbove")]
-        GlyphDefinition ArticAccentStaccatoAbove { get; set; }
+        GlyphDefinition ArticAccentStaccatoAbove { get; }
 
         [DataMember(Name = "articAccentStaccatoBelow")]
-        GlyphDefinition ArticAccentStaccatoBelow { get; set; }
+        GlyphDefinition ArticAccentStaccatoBelow { get; }
 
         [DataMember(Name = "articLaissezVibrerAbove")]
-        GlyphDefinition ArticLaissezVibrerAbove { get; set; }
+        GlyphDefinition ArticLaissezVibrerAbove { get; }
 
         [DataMember(Name = "articLaissezVibrerBelow")]
-        GlyphDefinition ArticLaissezVibrerBelow { get; set; }
+        GlyphDefinition ArticLaissezVibrerBelow { get; }
 
         [DataMember(Name = "articMarcatoAbove")]
-        GlyphDefinition ArticMarcatoAbove { get; set; }
+        GlyphDefinition ArticMarcatoAbove { get; }
 
         [DataMember(Name = "articMarcatoBelow")]
-        GlyphDefinition ArticMarcatoBelow { get; set; }
+        GlyphDefinition ArticMarcatoBelow { get; }
 
         [DataMember(Name = "articMarcatoStaccatoAbove")]
-        GlyphDefinition ArticMarcatoStaccatoAbove { get; set; }
+        GlyphDefinition ArticMarcatoStaccatoAbove { get; }
 
         [DataMember(Name = "articMarcatoStaccatoBelow")]
-        GlyphDefinition ArticMarcatoStaccatoBelow { get; set; }
+        GlyphDefinition ArticMarcatoStaccatoBelow { get; }
 
         [DataMember(Name = "articStaccatissimoAbove")]
-        GlyphDefinition ArticStaccatissimoAbove { get; set; }
+        GlyphDefinition ArticStaccatissimoAbove { get; }
 
         [DataMember(Name = "articStaccatissimoBelow")]
-        GlyphDefinition ArticStaccatissimoBelow { get; set; }
+        GlyphDefinition ArticStaccatissimoBelow { get; }
 
         [DataMember(Name = "articStaccatissimoStrokeAbove")]
-        GlyphDefinition ArticStaccatissimoStrokeAbove { get; set; }
+        GlyphDefinition ArticStaccatissimoStrokeAbove { get; }
 
         [DataMember(Name = "articStaccatissimoStrokeBelow")]
-        GlyphDefinition ArticStaccatissimoStrokeBelow { get; set; }
+        GlyphDefinition ArticStaccatissimoStrokeBelow { get; }
 
         [DataMember(Name = "articStaccatissimoWedgeAbove")]
-        GlyphDefinition ArticStaccatissimoWedgeAbove { get; set; }
+        GlyphDefinition ArticStaccatissimoWedgeAbove { get; }
 
         [DataMember(Name = "articStaccatissimoWedgeBelow")]
-        GlyphDefinition ArticStaccatissimoWedgeBelow { get; set; }
+        GlyphDefinition ArticStaccatissimoWedgeBelow { get; }
 
         [DataMember(Name = "articStaccatoAbove")]
-        GlyphDefinition ArticStaccatoAbove { get; set; }
+        GlyphDefinition ArticStaccatoAbove { get; }
 
         [DataMember(Name = "articStaccatoBelow")]
-        GlyphDefinition ArticStaccatoBelow { get; set; }
+        GlyphDefinition ArticStaccatoBelow { get; }
 
         [DataMember(Name = "articStressAbove")]
-        GlyphDefinition ArticStressAbove { get; set; }
+        GlyphDefinition ArticStressAbove { get; }
 
         [DataMember(Name = "articStressBelow")]
-        GlyphDefinition ArticStressBelow { get; set; }
+        GlyphDefinition ArticStressBelow { get; }
 
         [DataMember(Name = "articTenutoAbove")]
-        GlyphDefinition ArticTenutoAbove { get; set; }
+        GlyphDefinition ArticTenutoAbove { get; }
 
         [DataMember(Name = "articTenutoAccentAbove")]
-        GlyphDefinition ArticTenutoAccentAbove { get; set; }
+        GlyphDefinition ArticTenutoAccentAbove { get; }
 
         [DataMember(Name = "articTenutoAccentBelow")]
-        GlyphDefinition ArticTenutoAccentBelow { get; set; }
+        GlyphDefinition ArticTenutoAccentBelow { get; }
 
         [DataMember(Name = "articTenutoBelow")]
-        GlyphDefinition ArticTenutoBelow { get; set; }
+        GlyphDefinition ArticTenutoBelow { get; }
 
         [DataMember(Name = "articTenutoStaccatoAbove")]
-        GlyphDefinition ArticTenutoStaccatoAbove { get; set; }
+        GlyphDefinition ArticTenutoStaccatoAbove { get; }
 
         [DataMember(Name = "articTenutoStaccatoBelow")]
-        GlyphDefinition ArticTenutoStaccatoBelow { get; set; }
+        GlyphDefinition ArticTenutoStaccatoBelow { get; }
 
         [DataMember(Name = "articUnstressAbove")]
-        GlyphDefinition ArticUnstressAbove { get; set; }
+        GlyphDefinition ArticUnstressAbove { get; }
 
         [DataMember(Name = "articUnstressBelow")]
-        GlyphDefinition ArticUnstressBelow { get; set; }
+        GlyphDefinition ArticUnstressBelow { get; }
 
         [DataMember(Name = "augmentationDot")]
-        GlyphDefinition AugmentationDot { get; set; }
+        GlyphDefinition AugmentationDot { get; }
 
         [DataMember(Name = "barlineDashed")]
-        GlyphDefinition BarlineDashed { get; set; }
+        GlyphDefinition BarlineDashed { get; }
 
         [DataMember(Name = "barlineDotted")]
-        GlyphDefinition BarlineDotted { get; set; }
+        GlyphDefinition BarlineDotted { get; }
 
         [DataMember(Name = "barlineDouble")]
-        GlyphDefinition BarlineDouble { get; set; }
+        GlyphDefinition BarlineDouble { get; }
 
         [DataMember(Name = "barlineFinal")]
-        GlyphDefinition BarlineFinal { get; set; }
+        GlyphDefinition BarlineFinal { get; }
 
         [DataMember(Name = "barlineHeavy")]
-        GlyphDefinition BarlineHeavy { get; set; }
+        GlyphDefinition BarlineHeavy { get; }
 
         [DataMember(Name = "barlineHeavyHeavy")]
-        GlyphDefinition BarlineHeavyHeavy { get; set; }
+        GlyphDefinition BarlineHeavyHeavy { get; }
 
         [DataMember(Name = "barlineReverseFinal")]
-        GlyphDefinition BarlineReverseFinal { get; set; }
+        GlyphDefinition BarlineReverseFinal { get; }
 
         [DataMember(Name = "barlineShort")]
-        GlyphDefinition BarlineShort { get; set; }
+        GlyphDefinition BarlineShort { get; }
 
         [DataMember(Name = "barlineSingle")]
-        GlyphDefinition BarlineSingle { get; set; }
+        GlyphDefinition BarlineSingle { get; }
 
         [DataMember(Name = "barlineTick")]
-        GlyphDefinition BarlineTick { get; set; }
+        GlyphDefinition BarlineTick { get; }
 
         [DataMember(Name = "beamAccelRit1")]
-        GlyphDefinition BeamAccelRit1 { get; set; }
+        GlyphDefinition BeamAccelRit1 { get; }
 
         [DataMember(Name = "beamAccelRit10")]
-        GlyphDefinition BeamAccelRit10 { get; set; }
+        GlyphDefinition BeamAccelRit10 { get; }
 
         [DataMember(Name = "beamAccelRit11")]
-        GlyphDefinition BeamAccelRit11 { get; set; }
+        GlyphDefinition BeamAccelRit11 { get; }
 
         [DataMember(Name = "beamAccelRit12")]
-        GlyphDefinition BeamAccelRit12 { get; set; }
+        GlyphDefinition BeamAccelRit12 { get; }
 
         [DataMember(Name = "beamAccelRit13")]
-        GlyphDefinition BeamAccelRit13 { get; set; }
+        GlyphDefinition BeamAccelRit13 { get; }
 
         [DataMember(Name = "beamAccelRit14")]
-        GlyphDefinition BeamAccelRit14 { get; set; }
+        GlyphDefinition BeamAccelRit14 { get; }
 
         [DataMember(Name = "beamAccelRit15")]
-        GlyphDefinition BeamAccelRit15 { get; set; }
+        GlyphDefinition BeamAccelRit15 { get; }
 
         [DataMember(Name = "beamAccelRit2")]
-        GlyphDefinition BeamAccelRit2 { get; set; }
+        GlyphDefinition BeamAccelRit2 { get; }
 
         [DataMember(Name = "beamAccelRit3")]
-        GlyphDefinition BeamAccelRit3 { get; set; }
+        GlyphDefinition BeamAccelRit3 { get; }
 
         [DataMember(Name = "beamAccelRit4")]
-        GlyphDefinition BeamAccelRit4 { get; set; }
+        GlyphDefinition BeamAccelRit4 { get; }
 
         [DataMember(Name = "beamAccelRit5")]
-        GlyphDefinition BeamAccelRit5 { get; set; }
+        GlyphDefinition BeamAccelRit5 { get; }
 
         [DataMember(Name = "beamAccelRit6")]
-        GlyphDefinition BeamAccelRit6 { get; set; }
+        GlyphDefinition BeamAccelRit6 { get; }
 
         [DataMember(Name = "beamAccelRit7")]
-        GlyphDefinition BeamAccelRit7 { get; set; }
+        GlyphDefinition BeamAccelRit7 { get; }
 
         [DataMember(Name = "beamAccelRit8")]
-        GlyphDefinition BeamAccelRit8 { get; set; }
+        GlyphDefinition BeamAccelRit8 { get; }
 
         [DataMember(Name = "beamAccelRit9")]
-        GlyphDefinition BeamAccelRit9 { get; set; }
+        GlyphDefinition BeamAccelRit9 { get; }
 
         [DataMember(Name = "beamAccelRitFinal")]
-        GlyphDefinition BeamAccelRitFinal { get; set; }
+        GlyphDefinition BeamAccelRitFinal { get; }
 
         [DataMember(Name = "brace")]
-        GlyphDefinition Brace { get; set; }
+        GlyphDefinition Brace { get; }
 
         [DataMember(Name = "bracket")]
-        GlyphDefinition Bracket { get; set; }
+        GlyphDefinition Bracket { get; }
 
         [DataMember(Name = "bracketBottom")]
-        GlyphDefinition BracketBottom { get; set; }
+        GlyphDefinition BracketBottom { get; }
 
         [DataMember(Name = "bracketTop")]
-        GlyphDefinition BracketTop { get; set; }
+        GlyphDefinition BracketTop { get; }
 
         [DataMember(Name = "brassBend")]
-        GlyphDefinition BrassBend { get; set; }
+        GlyphDefinition BrassBend { get; }
 
         [DataMember(Name = "brassDoitLong")]
-        GlyphDefinition BrassDoitLong { get; set; }
+        GlyphDefinition BrassDoitLong { get; }
 
         [DataMember(Name = "brassDoitMedium")]
-        GlyphDefinition BrassDoitMedium { get; set; }
+        GlyphDefinition BrassDoitMedium { get; }
 
         [DataMember(Name = "brassDoitShort")]
-        GlyphDefinition BrassDoitShort { get; set; }
+        GlyphDefinition BrassDoitShort { get; }
 
         [DataMember(Name = "brassFallLipLong")]
-        GlyphDefinition BrassFallLipLong { get; set; }
+        GlyphDefinition BrassFallLipLong { get; }
 
         [DataMember(Name = "brassFallLipMedium")]
-        GlyphDefinition BrassFallLipMedium { get; set; }
+        GlyphDefinition BrassFallLipMedium { get; }
 
         [DataMember(Name = "brassFallLipShort")]
-        GlyphDefinition BrassFallLipShort { get; set; }
+        GlyphDefinition BrassFallLipShort { get; }
 
         [DataMember(Name = "brassFallRoughLong")]
-        GlyphDefinition BrassFallRoughLong { get; set; }
+        GlyphDefinition BrassFallRoughLong { get; }
 
         [DataMember(Name = "brassFallRoughMedium")]
-        GlyphDefinition BrassFallRoughMedium { get; set; }
+        GlyphDefinition BrassFallRoughMedium { get; }
 
         [DataMember(Name = "brassFallRoughShort")]
-        GlyphDefinition BrassFallRoughShort { get; set; }
+        GlyphDefinition BrassFallRoughShort { get; }
 
         [DataMember(Name = "brassFallSmoothLong")]
-        GlyphDefinition BrassFallSmoothLong { get; set; }
+        GlyphDefinition BrassFallSmoothLong { get; }
 
         [DataMember(Name = "brassFallSmoothMedium")]
-        GlyphDefinition BrassFallSmoothMedium { get; set; }
+        GlyphDefinition BrassFallSmoothMedium { get; }
 
         [DataMember(Name = "brassFallSmoothShort")]
-        GlyphDefinition BrassFallSmoothShort { get; set; }
+        GlyphDefinition BrassFallSmoothShort { get; }
 
         [DataMember(Name = "brassFlip")]
-        GlyphDefinition BrassFlip { get; set; }
+        GlyphDefinition BrassFlip { get; }
 
         [DataMember(Name = "brassHarmonMuteClosed")]
-        GlyphDefinition BrassHarmonMuteClosed { get; set; }
+        GlyphDefinition BrassHarmonMuteClosed { get; }
 
         [DataMember(Name = "brassHarmonMuteStemHalfLeft")]
-        GlyphDefinition BrassHarmonMuteStemHalfLeft { get; set; }
+        GlyphDefinition BrassHarmonMuteStemHalfLeft { get; }
 
         [DataMember(Name = "brassHarmonMuteStemHalfRight")]
-        GlyphDefinition BrassHarmonMuteStemHalfRight { get; set; }
+        GlyphDefinition BrassHarmonMuteStemHalfRight { get; }
 
         [DataMember(Name = "brassHarmonMuteStemOpen")]
-        GlyphDefinition BrassHarmonMuteStemOpen { get; set; }
+        GlyphDefinition BrassHarmonMuteStemOpen { get; }
 
         [DataMember(Name = "brassJazzTurn")]
-        GlyphDefinition BrassJazzTurn { get; set; }
+        GlyphDefinition BrassJazzTurn { get; }
 
         [DataMember(Name = "brassLiftLong")]
-        GlyphDefinition BrassLiftLong { get; set; }
+        GlyphDefinition BrassLiftLong { get; }
 
         [DataMember(Name = "brassLiftMedium")]
-        GlyphDefinition BrassLiftMedium { get; set; }
+        GlyphDefinition BrassLiftMedium { get; }
 
         [DataMember(Name = "brassLiftShort")]
-        GlyphDefinition BrassLiftShort { get; set; }
+        GlyphDefinition BrassLiftShort { get; }
 
         [DataMember(Name = "brassLiftSmoothLong")]
-        GlyphDefinition BrassLiftSmoothLong { get; set; }
+        GlyphDefinition BrassLiftSmoothLong { get; }
 
         [DataMember(Name = "brassLiftSmoothMedium")]
-        GlyphDefinition BrassLiftSmoothMedium { get; set; }
+        GlyphDefinition BrassLiftSmoothMedium { get; }
 
         [DataMember(Name = "brassLiftSmoothShort")]
-        GlyphDefinition BrassLiftSmoothShort { get; set; }
+        GlyphDefinition BrassLiftSmoothShort { get; }
 
         [DataMember(Name = "brassMuteClosed")]
-        GlyphDefinition BrassMuteClosed { get; set; }
+        GlyphDefinition BrassMuteClosed { get; }
 
         [DataMember(Name = "brassMuteHalfClosed")]
-        GlyphDefinition BrassMuteHalfClosed { get; set; }
+        GlyphDefinition BrassMuteHalfClosed { get; }
 
         [DataMember(Name = "brassMuteOpen")]
-        GlyphDefinition BrassMuteOpen { get; set; }
+        GlyphDefinition BrassMuteOpen { get; }
 
         [DataMember(Name = "brassPlop")]
-        GlyphDefinition BrassPlop { get; set; }
+        GlyphDefinition BrassPlop { get; }
 
         [DataMember(Name = "brassScoop")]
-        GlyphDefinition BrassScoop { get; set; }
+        GlyphDefinition BrassScoop { get; }
 
         [DataMember(Name = "brassSmear")]
-        GlyphDefinition BrassSmear { get; set; }
+        GlyphDefinition BrassSmear { get; }
 
         [DataMember(Name = "breathMarkComma")]
-        GlyphDefinition BreathMarkComma { get; set; }
+        GlyphDefinition BreathMarkComma { get; }
 
         [DataMember(Name = "breathMarkSalzedo")]
-        GlyphDefinition BreathMarkSalzedo { get; set; }
+        GlyphDefinition BreathMarkSalzedo { get; }
 
         [DataMember(Name = "breathMarkTick")]
-        GlyphDefinition BreathMarkTick { get; set; }
+        GlyphDefinition BreathMarkTick { get; }
 
         [DataMember(Name = "breathMarkUpbow")]
-        GlyphDefinition BreathMarkUpbow { get; set; }
+        GlyphDefinition BreathMarkUpbow { get; }
 
         [DataMember(Name = "bridgeClef")]
-        GlyphDefinition BridgeClef { get; set; }
+        GlyphDefinition BridgeClef { get; }
 
         [DataMember(Name = "buzzRoll")]
-        GlyphDefinition BuzzRoll { get; set; }
+        GlyphDefinition BuzzRoll { get; }
 
         [DataMember(Name = "cClef")]
-        GlyphDefinition CClef { get; set; }
+        GlyphDefinition CClef { get; }
 
         [DataMember(Name = "cClef8vb")]
-        GlyphDefinition CClef8Vb { get; set; }
+        GlyphDefinition CClef8Vb { get; }
 
         [DataMember(Name = "cClefArrowDown")]
-        GlyphDefinition CClefArrowDown { get; set; }
+        GlyphDefinition CClefArrowDown { get; }
 
         [DataMember(Name = "cClefArrowUp")]
-        GlyphDefinition CClefArrowUp { get; set; }
+        GlyphDefinition CClefArrowUp { get; }
 
         [DataMember(Name = "cClefChange")]
-        GlyphDefinition CClefChange { get; set; }
+        GlyphDefinition CClefChange { get; }
 
         [DataMember(Name = "cClefCombining")]
-        GlyphDefinition CClefCombining { get; set; }
+        GlyphDefinition CClefCombining { get; }
 
         [DataMember(Name = "cClefReversed")]
-        GlyphDefinition CClefReversed { get; set; }
+        GlyphDefinition CClefReversed { get; }
 
         [DataMember(Name = "cClefSquare")]
-        GlyphDefinition CClefSquare { get; set; }
+        GlyphDefinition CClefSquare { get; }
 
         [DataMember(Name = "cClefTriangular")]
-        GlyphDefinition CClefTriangular { get; set; }
+        GlyphDefinition CClefTriangular { get; }
 
         [DataMember(Name = "cClefTriangularToFClef")]
-        GlyphDefinition CClefTriangularToFClef { get; set; }
+        GlyphDefinition CClefTriangularToFClef { get; }
 
         [DataMember(Name = "caesura")]
-        GlyphDefinition Caesura { get; set; }
+        GlyphDefinition Caesura { get; }
 
         [DataMember(Name = "caesuraCurved")]
-        GlyphDefinition CaesuraCurved { get; set; }
+        GlyphDefinition CaesuraCurved { get; }
 
         [DataMember(Name = "caesuraShort")]
-        GlyphDefinition CaesuraShort { get; set; }
+        GlyphDefinition CaesuraShort { get; }
 
         [DataMember(Name = "caesuraThick")]
-        GlyphDefinition CaesuraThick { get; set; }
+        GlyphDefinition CaesuraThick { get; }
 
         [DataMember(Name = "chantAccentusAbove")]
-        GlyphDefinition ChantAccentusAbove { get; set; }
+        GlyphDefinition ChantAccentusAbove { get; }
 
         [DataMember(Name = "chantAccentusBelow")]
-        GlyphDefinition ChantAccentusBelow { get; set; }
+        GlyphDefinition ChantAccentusBelow { get; }
 
         [DataMember(Name = "chantAuctumAsc")]
-        GlyphDefinition ChantAuctumAsc { get; set; }
+        GlyphDefinition ChantAuctumAsc { get; }
 
         [DataMember(Name = "chantAuctumDesc")]
-        GlyphDefinition ChantAuctumDesc { get; set; }
+        GlyphDefinition ChantAuctumDesc { get; }
 
         [DataMember(Name = "chantAugmentum")]
-        GlyphDefinition ChantAugmentum { get; set; }
+        GlyphDefinition ChantAugmentum { get; }
 
         [DataMember(Name = "chantCaesura")]
-        GlyphDefinition ChantCaesura { get; set; }
+        GlyphDefinition ChantCaesura { get; }
 
         [DataMember(Name = "chantCclef")]
-        GlyphDefinition ChantCclef { get; set; }
+        GlyphDefinition ChantCclef { get; }
 
         [DataMember(Name = "chantCirculusAbove")]
-        GlyphDefinition ChantCirculusAbove { get; set; }
+        GlyphDefinition ChantCirculusAbove { get; }
 
         [DataMember(Name = "chantCirculusBelow")]
-        GlyphDefinition ChantCirculusBelow { get; set; }
+        GlyphDefinition ChantCirculusBelow { get; }
 
         [DataMember(Name = "chantConnectingLineAsc2nd")]
-        GlyphDefinition ChantConnectingLineAsc2Nd { get; set; }
+        GlyphDefinition ChantConnectingLineAsc2Nd { get; }
 
         [DataMember(Name = "chantConnectingLineAsc3rd")]
-        GlyphDefinition ChantConnectingLineAsc3Rd { get; set; }
+        GlyphDefinition ChantConnectingLineAsc3Rd { get; }
 
         [DataMember(Name = "chantConnectingLineAsc4th")]
-        GlyphDefinition ChantConnectingLineAsc4Th { get; set; }
+        GlyphDefinition ChantConnectingLineAsc4Th { get; }
 
         [DataMember(Name = "chantConnectingLineAsc5th")]
-        GlyphDefinition ChantConnectingLineAsc5Th { get; set; }
+        GlyphDefinition ChantConnectingLineAsc5Th { get; }
 
         [DataMember(Name = "chantConnectingLineAsc6th")]
-        GlyphDefinition ChantConnectingLineAsc6Th { get; set; }
+        GlyphDefinition ChantConnectingLineAsc6Th { get; }
 
         [DataMember(Name = "chantCustosStemDownPosHigh")]
-        GlyphDefinition ChantCustosStemDownPosHigh { get; set; }
+        GlyphDefinition ChantCustosStemDownPosHigh { get; }
 
         [DataMember(Name = "chantCustosStemDownPosHighest")]
-        GlyphDefinition ChantCustosStemDownPosHighest { get; set; }
+        GlyphDefinition ChantCustosStemDownPosHighest { get; }
 
         [DataMember(Name = "chantCustosStemDownPosMiddle")]
-        GlyphDefinition ChantCustosStemDownPosMiddle { get; set; }
+        GlyphDefinition ChantCustosStemDownPosMiddle { get; }
 
         [DataMember(Name = "chantCustosStemUpPosLow")]
-        GlyphDefinition ChantCustosStemUpPosLow { get; set; }
+        GlyphDefinition ChantCustosStemUpPosLow { get; }
 
         [DataMember(Name = "chantCustosStemUpPosLowest")]
-        GlyphDefinition ChantCustosStemUpPosLowest { get; set; }
+        GlyphDefinition ChantCustosStemUpPosLowest { get; }
 
         [DataMember(Name = "chantCustosStemUpPosMiddle")]
-        GlyphDefinition ChantCustosStemUpPosMiddle { get; set; }
+        GlyphDefinition ChantCustosStemUpPosMiddle { get; }
 
         [DataMember(Name = "chantDeminutumLower")]
-        GlyphDefinition ChantDeminutumLower { get; set; }
+        GlyphDefinition ChantDeminutumLower { get; }
 
         [DataMember(Name = "chantDeminutumUpper")]
-        GlyphDefinition ChantDeminutumUpper { get; set; }
+        GlyphDefinition ChantDeminutumUpper { get; }
 
         [DataMember(Name = "chantDivisioFinalis")]
-        GlyphDefinition ChantDivisioFinalis { get; set; }
+        GlyphDefinition ChantDivisioFinalis { get; }
 
         [DataMember(Name = "chantDivisioMaior")]
-        GlyphDefinition ChantDivisioMaior { get; set; }
+        GlyphDefinition ChantDivisioMaior { get; }
 
         [DataMember(Name = "chantDivisioMaxima")]
-        GlyphDefinition ChantDivisioMaxima { get; set; }
+        GlyphDefinition ChantDivisioMaxima { get; }
 
         [DataMember(Name = "chantDivisioMinima")]
-        GlyphDefinition ChantDivisioMinima { get; set; }
+        GlyphDefinition ChantDivisioMinima { get; }
 
         [DataMember(Name = "chantEntryLineAsc2nd")]
-        GlyphDefinition ChantEntryLineAsc2Nd { get; set; }
+        GlyphDefinition ChantEntryLineAsc2Nd { get; }
 
         [DataMember(Name = "chantEntryLineAsc3rd")]
-        GlyphDefinition ChantEntryLineAsc3Rd { get; set; }
+        GlyphDefinition ChantEntryLineAsc3Rd { get; }
 
         [DataMember(Name = "chantEntryLineAsc4th")]
-        GlyphDefinition ChantEntryLineAsc4Th { get; set; }
+        GlyphDefinition ChantEntryLineAsc4Th { get; }
 
         [DataMember(Name = "chantEntryLineAsc5th")]
-        GlyphDefinition ChantEntryLineAsc5Th { get; set; }
+        GlyphDefinition ChantEntryLineAsc5Th { get; }
 
         [DataMember(Name = "chantEntryLineAsc6th")]
-        GlyphDefinition ChantEntryLineAsc6Th { get; set; }
+        GlyphDefinition ChantEntryLineAsc6Th { get; }
 
         [DataMember(Name = "chantEpisema")]
-        GlyphDefinition ChantEpisema { get; set; }
+        GlyphDefinition ChantEpisema { get; }
 
         [DataMember(Name = "chantFclef")]
-        GlyphDefinition ChantFclef { get; set; }
+        GlyphDefinition ChantFclef { get; }
 
         [DataMember(Name = "chantIctusAbove")]
-        GlyphDefinition ChantIctusAbove { get; set; }
+        GlyphDefinition ChantIctusAbove { get; }
 
         [DataMember(Name = "chantIctusBelow")]
-        GlyphDefinition ChantIctusBelow { get; set; }
+        GlyphDefinition ChantIctusBelow { get; }
 
         [DataMember(Name = "chantLigaturaDesc2nd")]
-        GlyphDefinition ChantLigaturaDesc2Nd { get; set; }
+        GlyphDefinition ChantLigaturaDesc2Nd { get; }
 
         [DataMember(Name = "chantLigaturaDesc3rd")]
-        GlyphDefinition ChantLigaturaDesc3Rd { get; set; }
+        GlyphDefinition ChantLigaturaDesc3Rd { get; }
 
         [DataMember(Name = "chantLigaturaDesc4th")]
-        GlyphDefinition ChantLigaturaDesc4Th { get; set; }
+        GlyphDefinition ChantLigaturaDesc4Th { get; }
 
         [DataMember(Name = "chantLigaturaDesc5th")]
-        GlyphDefinition ChantLigaturaDesc5Th { get; set; }
+        GlyphDefinition ChantLigaturaDesc5Th { get; }
 
         [DataMember(Name = "chantOriscusAscending")]
-        GlyphDefinition ChantOriscusAscending { get; set; }
+        GlyphDefinition ChantOriscusAscending { get; }
 
         [DataMember(Name = "chantOriscusDescending")]
-        GlyphDefinition ChantOriscusDescending { get; set; }
+        GlyphDefinition ChantOriscusDescending { get; }
 
         [DataMember(Name = "chantOriscusLiquescens")]
-        GlyphDefinition ChantOriscusLiquescens { get; set; }
+        GlyphDefinition ChantOriscusLiquescens { get; }
 
         [DataMember(Name = "chantPodatusLower")]
-        GlyphDefinition ChantPodatusLower { get; set; }
+        GlyphDefinition ChantPodatusLower { get; }
 
         [DataMember(Name = "chantPodatusUpper")]
-        GlyphDefinition ChantPodatusUpper { get; set; }
+        GlyphDefinition ChantPodatusUpper { get; }
 
         [DataMember(Name = "chantPunctum")]
-        GlyphDefinition ChantPunctum { get; set; }
+        GlyphDefinition ChantPunctum { get; }
 
         [DataMember(Name = "chantPunctumCavum")]
-        GlyphDefinition ChantPunctumCavum { get; set; }
+        GlyphDefinition ChantPunctumCavum { get; }
 
         [DataMember(Name = "chantPunctumDeminutum")]
-        GlyphDefinition ChantPunctumDeminutum { get; set; }
+        GlyphDefinition ChantPunctumDeminutum { get; }
 
         [DataMember(Name = "chantPunctumInclinatum")]
-        GlyphDefinition ChantPunctumInclinatum { get; set; }
+        GlyphDefinition ChantPunctumInclinatum { get; }
 
         [DataMember(Name = "chantPunctumInclinatumAuctum")]
-        GlyphDefinition ChantPunctumInclinatumAuctum { get; set; }
+        GlyphDefinition ChantPunctumInclinatumAuctum { get; }
 
         [DataMember(Name = "chantPunctumInclinatumDeminutum")]
-        GlyphDefinition ChantPunctumInclinatumDeminutum { get; set; }
+        GlyphDefinition ChantPunctumInclinatumDeminutum { get; }
 
         [DataMember(Name = "chantPunctumLinea")]
-        GlyphDefinition ChantPunctumLinea { get; set; }
+        GlyphDefinition ChantPunctumLinea { get; }
 
         [DataMember(Name = "chantPunctumLineaCavum")]
-        GlyphDefinition ChantPunctumLineaCavum { get; set; }
+        GlyphDefinition ChantPunctumLineaCavum { get; }
 
         [DataMember(Name = "chantPunctumVirga")]
-        GlyphDefinition ChantPunctumVirga { get; set; }
+        GlyphDefinition ChantPunctumVirga { get; }
 
         [DataMember(Name = "chantPunctumVirgaReversed")]
-        GlyphDefinition ChantPunctumVirgaReversed { get; set; }
+        GlyphDefinition ChantPunctumVirgaReversed { get; }
 
         [DataMember(Name = "chantQuilisma")]
-        GlyphDefinition ChantQuilisma { get; set; }
+        GlyphDefinition ChantQuilisma { get; }
 
         [DataMember(Name = "chantSemicirculusAbove")]
-        GlyphDefinition ChantSemicirculusAbove { get; set; }
+        GlyphDefinition ChantSemicirculusAbove { get; }
 
         [DataMember(Name = "chantSemicirculusBelow")]
-        GlyphDefinition ChantSemicirculusBelow { get; set; }
+        GlyphDefinition ChantSemicirculusBelow { get; }
 
         [DataMember(Name = "chantStaff")]
-        GlyphDefinition ChantStaff { get; set; }
+        GlyphDefinition ChantStaff { get; }
 
         [DataMember(Name = "chantStaffNarrow")]
-        GlyphDefinition ChantStaffNarrow { get; set; }
+        GlyphDefinition ChantStaffNarrow { get; }
 
         [DataMember(Name = "chantStaffWide")]
-        GlyphDefinition ChantStaffWide { get; set; }
+        GlyphDefinition ChantStaffWide { get; }
 
         [DataMember(Name = "chantStrophicus")]
-        GlyphDefinition ChantStrophicus { get; set; }
+        GlyphDefinition ChantStrophicus { get; }
 
         [DataMember(Name = "chantStrophicusAuctus")]
-        GlyphDefinition ChantStrophicusAuctus { get; set; }
+        GlyphDefinition ChantStrophicusAuctus { get; }
 
         [DataMember(Name = "chantStrophicusLiquescens2nd")]
-        GlyphDefinition ChantStrophicusLiquescens2Nd { get; set; }
+        GlyphDefinition ChantStrophicusLiquescens2Nd { get; }
 
         [DataMember(Name = "chantStrophicusLiquescens3rd")]
-        GlyphDefinition ChantStrophicusLiquescens3Rd { get; set; }
+        GlyphDefinition ChantStrophicusLiquescens3Rd { get; }
 
         [DataMember(Name = "chantStrophicusLiquescens4th")]
-        GlyphDefinition ChantStrophicusLiquescens4Th { get; set; }
+        GlyphDefinition ChantStrophicusLiquescens4Th { get; }
 
         [DataMember(Name = "chantStrophicusLiquescens5th")]
-        GlyphDefinition ChantStrophicusLiquescens5Th { get; set; }
+        GlyphDefinition ChantStrophicusLiquescens5Th { get; }
 
         [DataMember(Name = "chantVirgula")]
-        GlyphDefinition ChantVirgula { get; set; }
+        GlyphDefinition ChantVirgula { get; }
 
         [DataMember(Name = "clef15")]
-        GlyphDefinition Clef15 { get; set; }
+        GlyphDefinition Clef15 { get; }
 
         [DataMember(Name = "clef8")]
-        GlyphDefinition Clef8 { get; set; }
+        GlyphDefinition Clef8 { get; }
 
         [DataMember(Name = "clefChangeCombining")]
-        GlyphDefinition ClefChangeCombining { get; set; }
+        GlyphDefinition ClefChangeCombining { get; }
 
         [DataMember(Name = "coda")]
-        GlyphDefinition Coda { get; set; }
+        GlyphDefinition Coda { get; }
 
         [DataMember(Name = "codaSquare")]
-        GlyphDefinition CodaSquare { get; set; }
+        GlyphDefinition CodaSquare { get; }
 
         [DataMember(Name = "conductorBeat2Compound")]
-        GlyphDefinition ConductorBeat2Compound { get; set; }
+        GlyphDefinition ConductorBeat2Compound { get; }
 
         [DataMember(Name = "conductorBeat2Simple")]
-        GlyphDefinition ConductorBeat2Simple { get; set; }
+        GlyphDefinition ConductorBeat2Simple { get; }
 
         [DataMember(Name = "conductorBeat3Compound")]
-        GlyphDefinition ConductorBeat3Compound { get; set; }
+        GlyphDefinition ConductorBeat3Compound { get; }
 
         [DataMember(Name = "conductorBeat3Simple")]
-        GlyphDefinition ConductorBeat3Simple { get; set; }
+        GlyphDefinition ConductorBeat3Simple { get; }
 
         [DataMember(Name = "conductorBeat4Compound")]
-        GlyphDefinition ConductorBeat4Compound { get; set; }
+        GlyphDefinition ConductorBeat4Compound { get; }
 
         [DataMember(Name = "conductorBeat4Simple")]
-        GlyphDefinition ConductorBeat4Simple { get; set; }
+        GlyphDefinition ConductorBeat4Simple { get; }
 
         [DataMember(Name = "conductorLeftBeat")]
-        GlyphDefinition ConductorLeftBeat { get; set; }
+        GlyphDefinition ConductorLeftBeat { get; }
 
         [DataMember(Name = "conductorRightBeat")]
-        GlyphDefinition ConductorRightBeat { get; set; }
+        GlyphDefinition ConductorRightBeat { get; }
 
         [DataMember(Name = "conductorStrongBeat")]
-        GlyphDefinition ConductorStrongBeat { get; set; }
+        GlyphDefinition ConductorStrongBeat { get; }
 
         [DataMember(Name = "conductorWeakBeat")]
-        GlyphDefinition ConductorWeakBeat { get; set; }
+        GlyphDefinition ConductorWeakBeat { get; }
 
         [DataMember(Name = "controlBeginBeam")]
-        GlyphDefinition ControlBeginBeam { get; set; }
+        GlyphDefinition ControlBeginBeam { get; }
 
         [DataMember(Name = "controlBeginPhrase")]
-        GlyphDefinition ControlBeginPhrase { get; set; }
+        GlyphDefinition ControlBeginPhrase { get; }
 
         [DataMember(Name = "controlBeginSlur")]
-        GlyphDefinition ControlBeginSlur { get; set; }
+        GlyphDefinition ControlBeginSlur { get; }
 
         [DataMember(Name = "controlBeginTie")]
-        GlyphDefinition ControlBeginTie { get; set; }
+        GlyphDefinition ControlBeginTie { get; }
 
         [DataMember(Name = "controlEndBeam")]
-        GlyphDefinition ControlEndBeam { get; set; }
+        GlyphDefinition ControlEndBeam { get; }
 
         [DataMember(Name = "controlEndPhrase")]
-        GlyphDefinition ControlEndPhrase { get; set; }
+        GlyphDefinition ControlEndPhrase { get; }
 
         [DataMember(Name = "controlEndSlur")]
-        GlyphDefinition ControlEndSlur { get; set; }
+        GlyphDefinition ControlEndSlur { get; }
 
         [DataMember(Name = "controlEndTie")]
-        GlyphDefinition ControlEndTie { get; set; }
+        GlyphDefinition ControlEndTie { get; }
 
         [DataMember(Name = "csymAugmented")]
-        GlyphDefinition CsymAugmented { get; set; }
+        GlyphDefinition CsymAugmented { get; }
 
         [DataMember(Name = "csymBracketLeftTall")]
-        GlyphDefinition CsymBracketLeftTall { get; set; }
+        GlyphDefinition CsymBracketLeftTall { get; }
 
         [DataMember(Name = "csymBracketRightTall")]
-        GlyphDefinition CsymBracketRightTall { get; set; }
+        GlyphDefinition CsymBracketRightTall { get; }
 
         [DataMember(Name = "csymDiminished")]
-        GlyphDefinition CsymDiminished { get; set; }
+        GlyphDefinition CsymDiminished { get; }
 
         [DataMember(Name = "csymHalfDiminished")]
-        GlyphDefinition CsymHalfDiminished { get; set; }
+        GlyphDefinition CsymHalfDiminished { get; }
 
         [DataMember(Name = "csymMajorSeventh")]
-        GlyphDefinition CsymMajorSeventh { get; set; }
+        GlyphDefinition CsymMajorSeventh { get; }
 
         [DataMember(Name = "csymMinor")]
-        GlyphDefinition CsymMinor { get; set; }
+        GlyphDefinition CsymMinor { get; }
 
         [DataMember(Name = "csymParensLeftTall")]
-        GlyphDefinition CsymParensLeftTall { get; set; }
+        GlyphDefinition CsymParensLeftTall { get; }
 
         [DataMember(Name = "csymParensRightTall")]
-        GlyphDefinition CsymParensRightTall { get; set; }
+        GlyphDefinition CsymParensRightTall { get; }
 
         [DataMember(Name = "curlewSign")]
-        GlyphDefinition CurlewSign { get; set; }
+        GlyphDefinition CurlewSign { get; }
 
         [DataMember(Name = "daCapo")]
-        GlyphDefinition DaCapo { get; set; }
+        GlyphDefinition DaCapo { get; }
 
         [DataMember(Name = "dalSegno")]
-        GlyphDefinition DalSegno { get; set; }
+        GlyphDefinition DalSegno { get; }
 
         [DataMember(Name = "daseianExcellentes1")]
-        GlyphDefinition DaseianExcellentes1 { get; set; }
+        GlyphDefinition DaseianExcellentes1 { get; }
 
         [DataMember(Name = "daseianExcellentes2")]
-        GlyphDefinition DaseianExcellentes2 { get; set; }
+        GlyphDefinition DaseianExcellentes2 { get; }
 
         [DataMember(Name = "daseianExcellentes3")]
-        GlyphDefinition DaseianExcellentes3 { get; set; }
+        GlyphDefinition DaseianExcellentes3 { get; }
 
         [DataMember(Name = "daseianExcellentes4")]
-        GlyphDefinition DaseianExcellentes4 { get; set; }
+        GlyphDefinition DaseianExcellentes4 { get; }
 
         [DataMember(Name = "daseianFinales1")]
-        GlyphDefinition DaseianFinales1 { get; set; }
+        GlyphDefinition DaseianFinales1 { get; }
 
         [DataMember(Name = "daseianFinales2")]
-        GlyphDefinition DaseianFinales2 { get; set; }
+        GlyphDefinition DaseianFinales2 { get; }
 
         [DataMember(Name = "daseianFinales3")]
-        GlyphDefinition DaseianFinales3 { get; set; }
+        GlyphDefinition DaseianFinales3 { get; }
 
         [DataMember(Name = "daseianFinales4")]
-        GlyphDefinition DaseianFinales4 { get; set; }
+        GlyphDefinition DaseianFinales4 { get; }
 
         [DataMember(Name = "daseianGraves1")]
-        GlyphDefinition DaseianGraves1 { get; set; }
+        GlyphDefinition DaseianGraves1 { get; }
 
         [DataMember(Name = "daseianGraves2")]
-        GlyphDefinition DaseianGraves2 { get; set; }
+        GlyphDefinition DaseianGraves2 { get; }
 
         [DataMember(Name = "daseianGraves3")]
-        GlyphDefinition DaseianGraves3 { get; set; }
+        GlyphDefinition DaseianGraves3 { get; }
 
         [DataMember(Name = "daseianGraves4")]
-        GlyphDefinition DaseianGraves4 { get; set; }
+        GlyphDefinition DaseianGraves4 { get; }
 
         [DataMember(Name = "daseianResidua1")]
-        GlyphDefinition DaseianResidua1 { get; set; }
+        GlyphDefinition DaseianResidua1 { get; }
 
         [DataMember(Name = "daseianResidua2")]
-        GlyphDefinition DaseianResidua2 { get; set; }
+        GlyphDefinition DaseianResidua2 { get; }
 
         [DataMember(Name = "daseianSuperiores1")]
-        GlyphDefinition DaseianSuperiores1 { get; set; }
+        GlyphDefinition DaseianSuperiores1 { get; }
 
         [DataMember(Name = "daseianSuperiores2")]
-        GlyphDefinition DaseianSuperiores2 { get; set; }
+        GlyphDefinition DaseianSuperiores2 { get; }
 
         [DataMember(Name = "daseianSuperiores3")]
-        GlyphDefinition DaseianSuperiores3 { get; set; }
+        GlyphDefinition DaseianSuperiores3 { get; }
 
         [DataMember(Name = "daseianSuperiores4")]
-        GlyphDefinition DaseianSuperiores4 { get; set; }
+        GlyphDefinition DaseianSuperiores4 { get; }
 
         [DataMember(Name = "doubleTongueAbove")]
-        GlyphDefinition DoubleTongueAbove { get; set; }
+        GlyphDefinition DoubleTongueAbove { get; }
 
         [DataMember(Name = "doubleTongueBelow")]
-        GlyphDefinition DoubleTongueBelow { get; set; }
+        GlyphDefinition DoubleTongueBelow { get; }
 
         [DataMember(Name = "dynamicCrescendoHairpin")]
-        GlyphDefinition DynamicCrescendoHairpin { get; set; }
+        GlyphDefinition DynamicCrescendoHairpin { get; }
 
         [DataMember(Name = "dynamicDiminuendoHairpin")]
-        GlyphDefinition DynamicDiminuendoHairpin { get; set; }
+        GlyphDefinition DynamicDiminuendoHairpin { get; }
 
         [DataMember(Name = "dynamicFF")]
-        GlyphDefinition DynamicFf { get; set; }
+        GlyphDefinition DynamicFf { get; }
 
         [DataMember(Name = "dynamicFFF")]
-        GlyphDefinition DynamicFff { get; set; }
+        GlyphDefinition DynamicFff { get; }
 
         [DataMember(Name = "dynamicFFFF")]
-        GlyphDefinition DynamicFfff { get; set; }
+        GlyphDefinition DynamicFfff { get; }
 
         [DataMember(Name = "dynamicFFFFF")]
-        GlyphDefinition DynamicFffff { get; set; }
+        GlyphDefinition DynamicFffff { get; }
 
         [DataMember(Name = "dynamicFFFFFF")]
-        GlyphDefinition DynamicFfffff { get; set; }
+        GlyphDefinition DynamicFfffff { get; }
 
         [DataMember(Name = "dynamicForte")]
-        GlyphDefinition DynamicForte { get; set; }
+        GlyphDefinition DynamicForte { get; }
 
         [DataMember(Name = "dynamicFortePiano")]
-        GlyphDefinition DynamicFortePiano { get; set; }
+        GlyphDefinition DynamicFortePiano { get; }
 
         [DataMember(Name = "dynamicForzando")]
-        GlyphDefinition DynamicForzando { get; set; }
+        GlyphDefinition DynamicForzando { get; }
 
         [DataMember(Name = "dynamicMF")]
-        GlyphDefinition DynamicMf { get; set; }
+        GlyphDefinition DynamicMf { get; }
 
         [DataMember(Name = "dynamicMP")]
-        GlyphDefinition DynamicMp { get; set; }
+        GlyphDefinition DynamicMp { get; }
 
         [DataMember(Name = "dynamicMessaDiVoce")]
-        GlyphDefinition DynamicMessaDiVoce { get; set; }
+        GlyphDefinition DynamicMessaDiVoce { get; }
 
         [DataMember(Name = "dynamicMezzo")]
-        GlyphDefinition DynamicMezzo { get; set; }
+        GlyphDefinition DynamicMezzo { get; }
 
         [DataMember(Name = "dynamicNiente")]
-        GlyphDefinition DynamicNiente { get; set; }
+        GlyphDefinition DynamicNiente { get; }
 
         [DataMember(Name = "dynamicNienteForHairpin")]
-        GlyphDefinition DynamicNienteForHairpin { get; set; }
+        GlyphDefinition DynamicNienteForHairpin { get; }
 
         [DataMember(Name = "dynamicPF")]
-        GlyphDefinition DynamicPf { get; set; }
+        GlyphDefinition DynamicPf { get; }
 
         [DataMember(Name = "dynamicPP")]
-        GlyphDefinition DynamicPp { get; set; }
+        GlyphDefinition DynamicPp { get; }
 
         [DataMember(Name = "dynamicPPP")]
-        GlyphDefinition DynamicPpp { get; set; }
+        GlyphDefinition DynamicPpp { get; }
 
         [DataMember(Name = "dynamicPPPP")]
-        GlyphDefinition DynamicPppp { get; set; }
+        GlyphDefinition DynamicPppp { get; }
 
         [DataMember(Name = "dynamicPPPPP")]
-        GlyphDefinition DynamicPpppp { get; set; }
+        GlyphDefinition DynamicPpppp { get; }
 
         [DataMember(Name = "dynamicPPPPPP")]
-        GlyphDefinition DynamicPppppp { get; set; }
+        GlyphDefinition DynamicPppppp { get; }
 
         [DataMember(Name = "dynamicPiano")]
-        GlyphDefinition DynamicPiano { get; set; }
+        GlyphDefinition DynamicPiano { get; }
 
         [DataMember(Name = "dynamicRinforzando")]
-        GlyphDefinition DynamicRinforzando { get; set; }
+        GlyphDefinition DynamicRinforzando { get; }
 
         [DataMember(Name = "dynamicRinforzando1")]
-        GlyphDefinition DynamicRinforzando1 { get; set; }
+        GlyphDefinition DynamicRinforzando1 { get; }
 
         [DataMember(Name = "dynamicRinforzando2")]
-        GlyphDefinition DynamicRinforzando2 { get; set; }
+        GlyphDefinition DynamicRinforzando2 { get; }
 
         [DataMember(Name = "dynamicSforzando")]
-        GlyphDefinition DynamicSforzando { get; set; }
+        GlyphDefinition DynamicSforzando { get; }
 
         [DataMember(Name = "dynamicSforzando1")]
-        GlyphDefinition DynamicSforzando1 { get; set; }
+        GlyphDefinition DynamicSforzando1 { get; }
 
         [DataMember(Name = "dynamicSforzandoPianissimo")]
-        GlyphDefinition DynamicSforzandoPianissimo { get; set; }
+        GlyphDefinition DynamicSforzandoPianissimo { get; }
 
         [DataMember(Name = "dynamicSforzandoPiano")]
-        GlyphDefinition DynamicSforzandoPiano { get; set; }
+        GlyphDefinition DynamicSforzandoPiano { get; }
 
         [DataMember(Name = "dynamicSforzato")]
-        GlyphDefinition DynamicSforzato { get; set; }
+        GlyphDefinition DynamicSforzato { get; }
 
         [DataMember(Name = "dynamicSforzatoFF")]
-        GlyphDefinition DynamicSforzatoFf { get; set; }
+        GlyphDefinition DynamicSforzatoFf { get; }
 
         [DataMember(Name = "dynamicSforzatoPiano")]
-        GlyphDefinition DynamicSforzatoPiano { get; set; }
+        GlyphDefinition DynamicSforzatoPiano { get; }
 
         [DataMember(Name = "dynamicZ")]
-        GlyphDefinition DynamicZ { get; set; }
+        GlyphDefinition DynamicZ { get; }
 
         [DataMember(Name = "elecAudioChannelsEight")]
-        GlyphDefinition ElecAudioChannelsEight { get; set; }
+        GlyphDefinition ElecAudioChannelsEight { get; }
 
         [DataMember(Name = "elecAudioChannelsFive")]
-        GlyphDefinition ElecAudioChannelsFive { get; set; }
+        GlyphDefinition ElecAudioChannelsFive { get; }
 
         [DataMember(Name = "elecAudioChannelsFour")]
-        GlyphDefinition ElecAudioChannelsFour { get; set; }
+        GlyphDefinition ElecAudioChannelsFour { get; }
 
         [DataMember(Name = "elecAudioChannelsOne")]
-        GlyphDefinition ElecAudioChannelsOne { get; set; }
+        GlyphDefinition ElecAudioChannelsOne { get; }
 
         [DataMember(Name = "elecAudioChannelsSeven")]
-        GlyphDefinition ElecAudioChannelsSeven { get; set; }
+        GlyphDefinition ElecAudioChannelsSeven { get; }
 
         [DataMember(Name = "elecAudioChannelsSix")]
-        GlyphDefinition ElecAudioChannelsSix { get; set; }
+        GlyphDefinition ElecAudioChannelsSix { get; }
 
         [DataMember(Name = "elecAudioChannelsThreeFrontal")]
-        GlyphDefinition ElecAudioChannelsThreeFrontal { get; set; }
+        GlyphDefinition ElecAudioChannelsThreeFrontal { get; }
 
         [DataMember(Name = "elecAudioChannelsThreeSurround")]
-        GlyphDefinition ElecAudioChannelsThreeSurround { get; set; }
+        GlyphDefinition ElecAudioChannelsThreeSurround { get; }
 
         [DataMember(Name = "elecAudioChannelsTwo")]
-        GlyphDefinition ElecAudioChannelsTwo { get; set; }
+        GlyphDefinition ElecAudioChannelsTwo { get; }
 
         [DataMember(Name = "elecAudioIn")]
-        GlyphDefinition ElecAudioIn { get; set; }
+        GlyphDefinition ElecAudioIn { get; }
 
         [DataMember(Name = "elecAudioMono")]
-        GlyphDefinition ElecAudioMono { get; set; }
+        GlyphDefinition ElecAudioMono { get; }
 
         [DataMember(Name = "elecAudioOut")]
-        GlyphDefinition ElecAudioOut { get; set; }
+        GlyphDefinition ElecAudioOut { get; }
 
         [DataMember(Name = "elecAudioStereo")]
-        GlyphDefinition ElecAudioStereo { get; set; }
+        GlyphDefinition ElecAudioStereo { get; }
 
         [DataMember(Name = "elecCamera")]
-        GlyphDefinition ElecCamera { get; set; }
+        GlyphDefinition ElecCamera { get; }
 
         [DataMember(Name = "elecDataIn")]
-        GlyphDefinition ElecDataIn { get; set; }
+        GlyphDefinition ElecDataIn { get; }
 
         [DataMember(Name = "elecDataOut")]
-        GlyphDefinition ElecDataOut { get; set; }
+        GlyphDefinition ElecDataOut { get; }
 
         [DataMember(Name = "elecDisc")]
-        GlyphDefinition ElecDisc { get; set; }
+        GlyphDefinition ElecDisc { get; }
 
         [DataMember(Name = "elecDownload")]
-        GlyphDefinition ElecDownload { get; set; }
+        GlyphDefinition ElecDownload { get; }
 
         [DataMember(Name = "elecEject")]
-        GlyphDefinition ElecEject { get; set; }
+        GlyphDefinition ElecEject { get; }
 
         [DataMember(Name = "elecFastForward")]
-        GlyphDefinition ElecFastForward { get; set; }
+        GlyphDefinition ElecFastForward { get; }
 
         [DataMember(Name = "elecHeadphones")]
-        GlyphDefinition ElecHeadphones { get; set; }
+        GlyphDefinition ElecHeadphones { get; }
 
         [DataMember(Name = "elecHeadset")]
-        GlyphDefinition ElecHeadset { get; set; }
+        GlyphDefinition ElecHeadset { get; }
 
         [DataMember(Name = "elecLineIn")]
-        GlyphDefinition ElecLineIn { get; set; }
+        GlyphDefinition ElecLineIn { get; }
 
         [DataMember(Name = "elecLineOut")]
-        GlyphDefinition ElecLineOut { get; set; }
+        GlyphDefinition ElecLineOut { get; }
 
         [DataMember(Name = "elecLoop")]
-        GlyphDefinition ElecLoop { get; set; }
+        GlyphDefinition ElecLoop { get; }
 
         [DataMember(Name = "elecLoudspeaker")]
-        GlyphDefinition ElecLoudspeaker { get; set; }
+        GlyphDefinition ElecLoudspeaker { get; }
 
         [DataMember(Name = "elecMIDIController0")]
-        GlyphDefinition ElecMidiController0 { get; set; }
+        GlyphDefinition ElecMidiController0 { get; }
 
         [DataMember(Name = "elecMIDIController100")]
-        GlyphDefinition ElecMidiController100 { get; set; }
+        GlyphDefinition ElecMidiController100 { get; }
 
         [DataMember(Name = "elecMIDIController20")]
-        GlyphDefinition ElecMidiController20 { get; set; }
+        GlyphDefinition ElecMidiController20 { get; }
 
         [DataMember(Name = "elecMIDIController40")]
-        GlyphDefinition ElecMidiController40 { get; set; }
+        GlyphDefinition ElecMidiController40 { get; }
 
         [DataMember(Name = "elecMIDIController60")]
-        GlyphDefinition ElecMidiController60 { get; set; }
+        GlyphDefinition ElecMidiController60 { get; }
 
         [DataMember(Name = "elecMIDIController80")]
-        GlyphDefinition ElecMidiController80 { get; set; }
+        GlyphDefinition ElecMidiController80 { get; }
 
         [DataMember(Name = "elecMIDIIn")]
-        GlyphDefinition ElecMidiIn { get; set; }
+        GlyphDefinition ElecMidiIn { get; }
 
         [DataMember(Name = "elecMIDIOut")]
-        GlyphDefinition ElecMidiOut { get; set; }
+        GlyphDefinition ElecMidiOut { get; }
 
         [DataMember(Name = "elecMicrophone")]
-        GlyphDefinition ElecMicrophone { get; set; }
+        GlyphDefinition ElecMicrophone { get; }
 
         [DataMember(Name = "elecMicrophoneMute")]
-        GlyphDefinition ElecMicrophoneMute { get; set; }
+        GlyphDefinition ElecMicrophoneMute { get; }
 
         [DataMember(Name = "elecMicrophoneUnmute")]
-        GlyphDefinition ElecMicrophoneUnmute { get; set; }
+        GlyphDefinition ElecMicrophoneUnmute { get; }
 
         [DataMember(Name = "elecMixingConsole")]
-        GlyphDefinition ElecMixingConsole { get; set; }
+        GlyphDefinition ElecMixingConsole { get; }
 
         [DataMember(Name = "elecMonitor")]
-        GlyphDefinition ElecMonitor { get; set; }
+        GlyphDefinition ElecMonitor { get; }
 
         [DataMember(Name = "elecMute")]
-        GlyphDefinition ElecMute { get; set; }
+        GlyphDefinition ElecMute { get; }
 
         [DataMember(Name = "elecPause")]
-        GlyphDefinition ElecPause { get; set; }
+        GlyphDefinition ElecPause { get; }
 
         [DataMember(Name = "elecPlay")]
-        GlyphDefinition ElecPlay { get; set; }
+        GlyphDefinition ElecPlay { get; }
 
         [DataMember(Name = "elecPowerOnOff")]
-        GlyphDefinition ElecPowerOnOff { get; set; }
+        GlyphDefinition ElecPowerOnOff { get; }
 
         [DataMember(Name = "elecProjector")]
-        GlyphDefinition ElecProjector { get; set; }
+        GlyphDefinition ElecProjector { get; }
 
         [DataMember(Name = "elecReplay")]
-        GlyphDefinition ElecReplay { get; set; }
+        GlyphDefinition ElecReplay { get; }
 
         [DataMember(Name = "elecRewind")]
-        GlyphDefinition ElecRewind { get; set; }
+        GlyphDefinition ElecRewind { get; }
 
         [DataMember(Name = "elecShuffle")]
-        GlyphDefinition ElecShuffle { get; set; }
+        GlyphDefinition ElecShuffle { get; }
 
         [DataMember(Name = "elecSkipBackwards")]
-        GlyphDefinition ElecSkipBackwards { get; set; }
+        GlyphDefinition ElecSkipBackwards { get; }
 
         [DataMember(Name = "elecSkipForwards")]
-        GlyphDefinition ElecSkipForwards { get; set; }
+        GlyphDefinition ElecSkipForwards { get; }
 
         [DataMember(Name = "elecStop")]
-        GlyphDefinition ElecStop { get; set; }
+        GlyphDefinition ElecStop { get; }
 
         [DataMember(Name = "elecTape")]
-        GlyphDefinition ElecTape { get; set; }
+        GlyphDefinition ElecTape { get; }
 
         [DataMember(Name = "elecUSB")]
-        GlyphDefinition ElecUsb { get; set; }
+        GlyphDefinition ElecUsb { get; }
 
         [DataMember(Name = "elecUnmute")]
-        GlyphDefinition ElecUnmute { get; set; }
+        GlyphDefinition ElecUnmute { get; }
 
         [DataMember(Name = "elecUpload")]
-        GlyphDefinition ElecUpload { get; set; }
+        GlyphDefinition ElecUpload { get; }
 
         [DataMember(Name = "elecVideoCamera")]
-        GlyphDefinition ElecVideoCamera { get; set; }
+        GlyphDefinition ElecVideoCamera { get; }
 
         [DataMember(Name = "elecVideoIn")]
-        GlyphDefinition ElecVideoIn { get; set; }
+        GlyphDefinition ElecVideoIn { get; }
 
         [DataMember(Name = "elecVideoOut")]
-        GlyphDefinition ElecVideoOut { get; set; }
+        GlyphDefinition ElecVideoOut { get; }
 
         [DataMember(Name = "elecVolumeFader")]
-        GlyphDefinition ElecVolumeFader { get; set; }
+        GlyphDefinition ElecVolumeFader { get; }
 
         [DataMember(Name = "elecVolumeFaderThumb")]
-        GlyphDefinition ElecVolumeFaderThumb { get; set; }
+        GlyphDefinition ElecVolumeFaderThumb { get; }
 
         [DataMember(Name = "elecVolumeLevel0")]
-        GlyphDefinition ElecVolumeLevel0 { get; set; }
+        GlyphDefinition ElecVolumeLevel0 { get; }
 
         [DataMember(Name = "elecVolumeLevel100")]
-        GlyphDefinition ElecVolumeLevel100 { get; set; }
+        GlyphDefinition ElecVolumeLevel100 { get; }
 
         [DataMember(Name = "elecVolumeLevel20")]
-        GlyphDefinition ElecVolumeLevel20 { get; set; }
+        GlyphDefinition ElecVolumeLevel20 { get; }
 
         [DataMember(Name = "elecVolumeLevel40")]
-        GlyphDefinition ElecVolumeLevel40 { get; set; }
+        GlyphDefinition ElecVolumeLevel40 { get; }
 
         [DataMember(Name = "elecVolumeLevel60")]
-        GlyphDefinition ElecVolumeLevel60 { get; set; }
+        GlyphDefinition ElecVolumeLevel60 { get; }
 
         [DataMember(Name = "elecVolumeLevel80")]
-        GlyphDefinition ElecVolumeLevel80 { get; set; }
+        GlyphDefinition ElecVolumeLevel80 { get; }
 
         [DataMember(Name = "fClef")]
-        GlyphDefinition FClef { get; set; }
+        GlyphDefinition FClef { get; }
 
         [DataMember(Name = "fClef15ma")]
-        GlyphDefinition FClef15Ma { get; set; }
+        GlyphDefinition FClef15Ma { get; }
 
         [DataMember(Name = "fClef15mb")]
-        GlyphDefinition FClef15Mb { get; set; }
+        GlyphDefinition FClef15Mb { get; }
 
         [DataMember(Name = "fClef8va")]
-        GlyphDefinition FClef8Va { get; set; }
+        GlyphDefinition FClef8Va { get; }
 
         [DataMember(Name = "fClef8vb")]
-        GlyphDefinition FClef8Vb { get; set; }
+        GlyphDefinition FClef8Vb { get; }
 
         [DataMember(Name = "fClefArrowDown")]
-        GlyphDefinition FClefArrowDown { get; set; }
+        GlyphDefinition FClefArrowDown { get; }
 
         [DataMember(Name = "fClefArrowUp")]
-        GlyphDefinition FClefArrowUp { get; set; }
+        GlyphDefinition FClefArrowUp { get; }
 
         [DataMember(Name = "fClefChange")]
-        GlyphDefinition FClefChange { get; set; }
+        GlyphDefinition FClefChange { get; }
 
         [DataMember(Name = "fClefReversed")]
-        GlyphDefinition FClefReversed { get; set; }
+        GlyphDefinition FClefReversed { get; }
 
         [DataMember(Name = "fClefTriangular")]
-        GlyphDefinition FClefTriangular { get; set; }
+        GlyphDefinition FClefTriangular { get; }
 
         [DataMember(Name = "fClefTriangularToCClef")]
-        GlyphDefinition FClefTriangularToCClef { get; set; }
+        GlyphDefinition FClefTriangularToCClef { get; }
 
         [DataMember(Name = "fClefTurned")]
-        GlyphDefinition FClefTurned { get; set; }
+        GlyphDefinition FClefTurned { get; }
 
         [DataMember(Name = "fermataAbove")]
-        GlyphDefinition FermataAbove { get; set; }
+        GlyphDefinition FermataAbove { get; }
 
         [DataMember(Name = "fermataBelow")]
-        GlyphDefinition FermataBelow { get; set; }
+        GlyphDefinition FermataBelow { get; }
 
         [DataMember(Name = "fermataLongAbove")]
-        GlyphDefinition FermataLongAbove { get; set; }
+        GlyphDefinition FermataLongAbove { get; }
 
         [DataMember(Name = "fermataLongBelow")]
-        GlyphDefinition FermataLongBelow { get; set; }
+        GlyphDefinition FermataLongBelow { get; }
 
         [DataMember(Name = "fermataLongHenzeAbove")]
-        GlyphDefinition FermataLongHenzeAbove { get; set; }
+        GlyphDefinition FermataLongHenzeAbove { get; }
 
         [DataMember(Name = "fermataLongHenzeBelow")]
-        GlyphDefinition FermataLongHenzeBelow { get; set; }
+        GlyphDefinition FermataLongHenzeBelow { get; }
 
         [DataMember(Name = "fermataShortAbove")]
-        GlyphDefinition FermataShortAbove { get; set; }
+        GlyphDefinition FermataShortAbove { get; }
 
         [DataMember(Name = "fermataShortBelow")]
-        GlyphDefinition FermataShortBelow { get; set; }
+        GlyphDefinition FermataShortBelow { get; }
 
         [DataMember(Name = "fermataShortHenzeAbove")]
-        GlyphDefinition FermataShortHenzeAbove { get; set; }
+        GlyphDefinition FermataShortHenzeAbove { get; }
 
         [DataMember(Name = "fermataShortHenzeBelow")]
-        GlyphDefinition FermataShortHenzeBelow { get; set; }
+        GlyphDefinition FermataShortHenzeBelow { get; }
 
         [DataMember(Name = "fermataVeryLongAbove")]
-        GlyphDefinition FermataVeryLongAbove { get; set; }
+        GlyphDefinition FermataVeryLongAbove { get; }
 
         [DataMember(Name = "fermataVeryLongBelow")]
-        GlyphDefinition FermataVeryLongBelow { get; set; }
+        GlyphDefinition FermataVeryLongBelow { get; }
 
         [DataMember(Name = "fermataVeryShortAbove")]
-        GlyphDefinition FermataVeryShortAbove { get; set; }
+        GlyphDefinition FermataVeryShortAbove { get; }
 
         [DataMember(Name = "fermataVeryShortBelow")]
-        GlyphDefinition FermataVeryShortBelow { get; set; }
+        GlyphDefinition FermataVeryShortBelow { get; }
 
         [DataMember(Name = "figbass0")]
-        GlyphDefinition Figbass0 { get; set; }
+        GlyphDefinition Figbass0 { get; }
 
         [DataMember(Name = "figbass1")]
-        GlyphDefinition Figbass1 { get; set; }
+        GlyphDefinition Figbass1 { get; }
 
         [DataMember(Name = "figbass2")]
-        GlyphDefinition Figbass2 { get; set; }
+        GlyphDefinition Figbass2 { get; }
 
         [DataMember(Name = "figbass2Raised")]
-        GlyphDefinition Figbass2Raised { get; set; }
+        GlyphDefinition Figbass2Raised { get; }
 
         [DataMember(Name = "figbass3")]
-        GlyphDefinition Figbass3 { get; set; }
+        GlyphDefinition Figbass3 { get; }
 
         [DataMember(Name = "figbass4")]
-        GlyphDefinition Figbass4 { get; set; }
+        GlyphDefinition Figbass4 { get; }
 
         [DataMember(Name = "figbass4Raised")]
-        GlyphDefinition Figbass4Raised { get; set; }
+        GlyphDefinition Figbass4Raised { get; }
 
         [DataMember(Name = "figbass5")]
-        GlyphDefinition Figbass5 { get; set; }
+        GlyphDefinition Figbass5 { get; }
 
         [DataMember(Name = "figbass5Raised1")]
-        GlyphDefinition Figbass5Raised1 { get; set; }
+        GlyphDefinition Figbass5Raised1 { get; }
 
         [DataMember(Name = "figbass5Raised2")]
-        GlyphDefinition Figbass5Raised2 { get; set; }
+        GlyphDefinition Figbass5Raised2 { get; }
 
         [DataMember(Name = "figbass5Raised3")]
-        GlyphDefinition Figbass5Raised3 { get; set; }
+        GlyphDefinition Figbass5Raised3 { get; }
 
         [DataMember(Name = "figbass6")]
-        GlyphDefinition Figbass6 { get; set; }
+        GlyphDefinition Figbass6 { get; }
 
         [DataMember(Name = "figbass6Raised")]
-        GlyphDefinition Figbass6Raised { get; set; }
+        GlyphDefinition Figbass6Raised { get; }
 
         [DataMember(Name = "figbass7")]
-        GlyphDefinition Figbass7 { get; set; }
+        GlyphDefinition Figbass7 { get; }
 
         [DataMember(Name = "figbass7Raised1")]
-        GlyphDefinition Figbass7Raised1 { get; set; }
+        GlyphDefinition Figbass7Raised1 { get; }
 
         [DataMember(Name = "figbass7Raised2")]
-        GlyphDefinition Figbass7Raised2 { get; set; }
+        GlyphDefinition Figbass7Raised2 { get; }
 
         [DataMember(Name = "figbass8")]
-        GlyphDefinition Figbass8 { get; set; }
+        GlyphDefinition Figbass8 { get; }
 
         [DataMember(Name = "figbass9")]
-        GlyphDefinition Figbass9 { get; set; }
+        GlyphDefinition Figbass9 { get; }
 
         [DataMember(Name = "figbass9Raised")]
-        GlyphDefinition Figbass9Raised { get; set; }
+        GlyphDefinition Figbass9Raised { get; }
 
         [DataMember(Name = "figbassBracketLeft")]
-        GlyphDefinition FigbassBracketLeft { get; set; }
+        GlyphDefinition FigbassBracketLeft { get; }
 
         [DataMember(Name = "figbassBracketRight")]
-        GlyphDefinition FigbassBracketRight { get; set; }
+        GlyphDefinition FigbassBracketRight { get; }
 
         [DataMember(Name = "figbassCombiningLowering")]
-        GlyphDefinition FigbassCombiningLowering { get; set; }
+        GlyphDefinition FigbassCombiningLowering { get; }
 
         [DataMember(Name = "figbassCombiningRaising")]
-        GlyphDefinition FigbassCombiningRaising { get; set; }
+        GlyphDefinition FigbassCombiningRaising { get; }
 
         [DataMember(Name = "figbassDoubleFlat")]
-        GlyphDefinition FigbassDoubleFlat { get; set; }
+        GlyphDefinition FigbassDoubleFlat { get; }
 
         [DataMember(Name = "figbassDoubleSharp")]
-        GlyphDefinition FigbassDoubleSharp { get; set; }
+        GlyphDefinition FigbassDoubleSharp { get; }
 
         [DataMember(Name = "figbassFlat")]
-        GlyphDefinition FigbassFlat { get; set; }
+        GlyphDefinition FigbassFlat { get; }
 
         [DataMember(Name = "figbassNatural")]
-        GlyphDefinition FigbassNatural { get; set; }
+        GlyphDefinition FigbassNatural { get; }
 
         [DataMember(Name = "figbassParensLeft")]
-        GlyphDefinition FigbassParensLeft { get; set; }
+        GlyphDefinition FigbassParensLeft { get; }
 
         [DataMember(Name = "figbassParensRight")]
-        GlyphDefinition FigbassParensRight { get; set; }
+        GlyphDefinition FigbassParensRight { get; }
 
         [DataMember(Name = "figbassPlus")]
-        GlyphDefinition FigbassPlus { get; set; }
+        GlyphDefinition FigbassPlus { get; }
 
         [DataMember(Name = "figbassSharp")]
-        GlyphDefinition FigbassSharp { get; set; }
+        GlyphDefinition FigbassSharp { get; }
 
         [DataMember(Name = "flag1024thDown")]
-        GlyphDefinition Flag1024ThDown { get; set; }
+        GlyphDefinition Flag1024ThDown { get; }
 
         [DataMember(Name = "flag1024thUp")]
-        GlyphDefinition Flag1024ThUp { get; set; }
+        GlyphDefinition Flag1024ThUp { get; }
 
         [DataMember(Name = "flag128thDown")]
-        GlyphDefinition Flag128ThDown { get; set; }
+        GlyphDefinition Flag128ThDown { get; }
 
         [DataMember(Name = "flag128thUp")]
-        GlyphDefinition Flag128ThUp { get; set; }
+        GlyphDefinition Flag128ThUp { get; }
 
         [DataMember(Name = "flag16thDown")]
-        GlyphDefinition Flag16ThDown { get; set; }
+        GlyphDefinition Flag16ThDown { get; }
 
         [DataMember(Name = "flag16thUp")]
-        GlyphDefinition Flag16ThUp { get; set; }
+        GlyphDefinition Flag16ThUp { get; }
 
         [DataMember(Name = "flag256thDown")]
-        GlyphDefinition Flag256ThDown { get; set; }
+        GlyphDefinition Flag256ThDown { get; }
 
         [DataMember(Name = "flag256thUp")]
-        GlyphDefinition Flag256ThUp { get; set; }
+        GlyphDefinition Flag256ThUp { get; }
 
         [DataMember(Name = "flag32ndDown")]
-        GlyphDefinition Flag32NdDown { get; set; }
+        GlyphDefinition Flag32NdDown { get; }
 
         [DataMember(Name = "flag32ndUp")]
-        GlyphDefinition Flag32NdUp { get; set; }
+        GlyphDefinition Flag32NdUp { get; }
 
         [DataMember(Name = "flag512thDown")]
-        GlyphDefinition Flag512ThDown { get; set; }
+        GlyphDefinition Flag512ThDown { get; }
 
         [DataMember(Name = "flag512thUp")]
-        GlyphDefinition Flag512ThUp { get; set; }
+        GlyphDefinition Flag512ThUp { get; }
 
         [DataMember(Name = "flag64thDown")]
-        GlyphDefinition Flag64ThDown { get; set; }
+        GlyphDefinition Flag64ThDown { get; }
 
         [DataMember(Name = "flag64thUp")]
-        GlyphDefinition Flag64ThUp { get; set; }
+        GlyphDefinition Flag64ThUp { get; }
 
         [DataMember(Name = "flag8thDown")]
-        GlyphDefinition Flag8ThDown { get; set; }
+        GlyphDefinition Flag8ThDown { get; }
 
         [DataMember(Name = "flag8thUp")]
-        GlyphDefinition Flag8ThUp { get; set; }
+        GlyphDefinition Flag8ThUp { get; }
 
         [DataMember(Name = "flagInternalDown")]
-        GlyphDefinition FlagInternalDown { get; set; }
+        GlyphDefinition FlagInternalDown { get; }
 
         [DataMember(Name = "flagInternalUp")]
-        GlyphDefinition FlagInternalUp { get; set; }
+        GlyphDefinition FlagInternalUp { get; }
 
         [DataMember(Name = "fretboard3String")]
-        GlyphDefinition Fretboard3String { get; set; }
+        GlyphDefinition Fretboard3String { get; }
 
         [DataMember(Name = "fretboard3StringNut")]
-        GlyphDefinition Fretboard3StringNut { get; set; }
+        GlyphDefinition Fretboard3StringNut { get; }
 
         [DataMember(Name = "fretboard4String")]
-        GlyphDefinition Fretboard4String { get; set; }
+        GlyphDefinition Fretboard4String { get; }
 
         [DataMember(Name = "fretboard4StringNut")]
-        GlyphDefinition Fretboard4StringNut { get; set; }
+        GlyphDefinition Fretboard4StringNut { get; }
 
         [DataMember(Name = "fretboard5String")]
-        GlyphDefinition Fretboard5String { get; set; }
+        GlyphDefinition Fretboard5String { get; }
 
         [DataMember(Name = "fretboard5StringNut")]
-        GlyphDefinition Fretboard5StringNut { get; set; }
+        GlyphDefinition Fretboard5StringNut { get; }
 
         [DataMember(Name = "fretboard6String")]
-        GlyphDefinition Fretboard6String { get; set; }
+        GlyphDefinition Fretboard6String { get; }
 
         [DataMember(Name = "fretboard6StringNut")]
-        GlyphDefinition Fretboard6StringNut { get; set; }
+        GlyphDefinition Fretboard6StringNut { get; }
 
         [DataMember(Name = "fretboardFilledCircle")]
-        GlyphDefinition FretboardFilledCircle { get; set; }
+        GlyphDefinition FretboardFilledCircle { get; }
 
         [DataMember(Name = "fretboardO")]
-        GlyphDefinition FretboardO { get; set; }
+        GlyphDefinition FretboardO { get; }
 
         [DataMember(Name = "fretboardX")]
-        GlyphDefinition FretboardX { get; set; }
+        GlyphDefinition FretboardX { get; }
 
         [DataMember(Name = "functionAngleLeft")]
-        GlyphDefinition FunctionAngleLeft { get; set; }
+        GlyphDefinition FunctionAngleLeft { get; }
 
         [DataMember(Name = "functionAngleRight")]
-        GlyphDefinition FunctionAngleRight { get; set; }
+        GlyphDefinition FunctionAngleRight { get; }
 
         [DataMember(Name = "functionBracketLeft")]
-        GlyphDefinition FunctionBracketLeft { get; set; }
+        GlyphDefinition FunctionBracketLeft { get; }
 
         [DataMember(Name = "functionBracketRight")]
-        GlyphDefinition FunctionBracketRight { get; set; }
+        GlyphDefinition FunctionBracketRight { get; }
 
         [DataMember(Name = "functionDD")]
-        GlyphDefinition FunctionDd { get; set; }
+        GlyphDefinition FunctionDd { get; }
 
         [DataMember(Name = "functionDLower")]
-        GlyphDefinition FunctionDLower { get; set; }
+        GlyphDefinition FunctionDLower { get; }
 
         [DataMember(Name = "functionDUpper")]
-        GlyphDefinition FunctionDUpper { get; set; }
+        GlyphDefinition FunctionDUpper { get; }
 
         [DataMember(Name = "functionEight")]
-        GlyphDefinition FunctionEight { get; set; }
+        GlyphDefinition FunctionEight { get; }
 
         [DataMember(Name = "functionFive")]
-        GlyphDefinition FunctionFive { get; set; }
+        GlyphDefinition FunctionFive { get; }
 
         [DataMember(Name = "functionFour")]
-        GlyphDefinition FunctionFour { get; set; }
+        GlyphDefinition FunctionFour { get; }
 
         [DataMember(Name = "functionGLower")]
-        GlyphDefinition FunctionGLower { get; set; }
+        GlyphDefinition FunctionGLower { get; }
 
         [DataMember(Name = "functionGUpper")]
-        GlyphDefinition FunctionGUpper { get; set; }
+        GlyphDefinition FunctionGUpper { get; }
 
         [DataMember(Name = "functionGreaterThan")]
-        GlyphDefinition FunctionGreaterThan { get; set; }
+        GlyphDefinition FunctionGreaterThan { get; }
 
         [DataMember(Name = "functionLessThan")]
-        GlyphDefinition FunctionLessThan { get; set; }
+        GlyphDefinition FunctionLessThan { get; }
 
         [DataMember(Name = "functionMinus")]
-        GlyphDefinition FunctionMinus { get; set; }
+        GlyphDefinition FunctionMinus { get; }
 
         [DataMember(Name = "functionNLower")]
-        GlyphDefinition FunctionNLower { get; set; }
+        GlyphDefinition FunctionNLower { get; }
 
         [DataMember(Name = "functionNUpper")]
-        GlyphDefinition FunctionNUpper { get; set; }
+        GlyphDefinition FunctionNUpper { get; }
 
         [DataMember(Name = "functionNine")]
-        GlyphDefinition FunctionNine { get; set; }
+        GlyphDefinition FunctionNine { get; }
 
         [DataMember(Name = "functionOne")]
-        GlyphDefinition FunctionOne { get; set; }
+        GlyphDefinition FunctionOne { get; }
 
         [DataMember(Name = "functionPLower")]
-        GlyphDefinition FunctionPLower { get; set; }
+        GlyphDefinition FunctionPLower { get; }
 
         [DataMember(Name = "functionPUpper")]
-        GlyphDefinition FunctionPUpper { get; set; }
+        GlyphDefinition FunctionPUpper { get; }
 
         [DataMember(Name = "functionParensLeft")]
-        GlyphDefinition FunctionParensLeft { get; set; }
+        GlyphDefinition FunctionParensLeft { get; }
 
         [DataMember(Name = "functionParensRight")]
-        GlyphDefinition FunctionParensRight { get; set; }
+        GlyphDefinition FunctionParensRight { get; }
 
         [DataMember(Name = "functionPlus")]
-        GlyphDefinition FunctionPlus { get; set; }
+        GlyphDefinition FunctionPlus { get; }
 
         [DataMember(Name = "functionRepetition1")]
-        GlyphDefinition FunctionRepetition1 { get; set; }
+        GlyphDefinition FunctionRepetition1 { get; }
 
         [DataMember(Name = "functionRepetition2")]
-        GlyphDefinition FunctionRepetition2 { get; set; }
+        GlyphDefinition FunctionRepetition2 { get; }
 
         [DataMember(Name = "functionRing")]
-        GlyphDefinition FunctionRing { get; set; }
+        GlyphDefinition FunctionRing { get; }
 
         [DataMember(Name = "functionSLower")]
-        GlyphDefinition FunctionSLower { get; set; }
+        GlyphDefinition FunctionSLower { get; }
 
         [DataMember(Name = "functionSSLower")]
-        GlyphDefinition FunctionSsLower { get; set; }
+        GlyphDefinition FunctionSsLower { get; }
 
         [DataMember(Name = "functionSSUpper")]
-        GlyphDefinition FunctionSsUpper { get; set; }
+        GlyphDefinition FunctionSsUpper { get; }
 
         [DataMember(Name = "functionSUpper")]
-        GlyphDefinition FunctionSUpper { get; set; }
+        GlyphDefinition FunctionSUpper { get; }
 
         [DataMember(Name = "functionSeven")]
-        GlyphDefinition FunctionSeven { get; set; }
+        GlyphDefinition FunctionSeven { get; }
 
         [DataMember(Name = "functionSix")]
-        GlyphDefinition FunctionSix { get; set; }
+        GlyphDefinition FunctionSix { get; }
 
         [DataMember(Name = "functionSlashedDD")]
-        GlyphDefinition FunctionSlashedDd { get; set; }
+        GlyphDefinition FunctionSlashedDd { get; }
 
         [DataMember(Name = "functionTLower")]
-        GlyphDefinition FunctionTLower { get; set; }
+        GlyphDefinition FunctionTLower { get; }
 
         [DataMember(Name = "functionTUpper")]
-        GlyphDefinition FunctionTUpper { get; set; }
+        GlyphDefinition FunctionTUpper { get; }
 
         [DataMember(Name = "functionThree")]
-        GlyphDefinition FunctionThree { get; set; }
+        GlyphDefinition FunctionThree { get; }
 
         [DataMember(Name = "functionTwo")]
-        GlyphDefinition FunctionTwo { get; set; }
+        GlyphDefinition FunctionTwo { get; }
 
         [DataMember(Name = "functionVLower")]
-        GlyphDefinition FunctionVLower { get; set; }
+        GlyphDefinition FunctionVLower { get; }
 
         [DataMember(Name = "functionVUpper")]
-        GlyphDefinition FunctionVUpper { get; set; }
+        GlyphDefinition FunctionVUpper { get; }
 
         [DataMember(Name = "functionZero")]
-        GlyphDefinition FunctionZero { get; set; }
+        GlyphDefinition FunctionZero { get; }
 
         [DataMember(Name = "gClef")]
-        GlyphDefinition GClef { get; set; }
+        GlyphDefinition GClef { get; }
 
         [DataMember(Name = "gClef15ma")]
-        GlyphDefinition GClef15Ma { get; set; }
+        GlyphDefinition GClef15Ma { get; }
 
         [DataMember(Name = "gClef15mb")]
-        GlyphDefinition GClef15Mb { get; set; }
+        GlyphDefinition GClef15Mb { get; }
 
         [DataMember(Name = "gClef8va")]
-        GlyphDefinition GClef8Va { get; set; }
+        GlyphDefinition GClef8Va { get; }
 
         [DataMember(Name = "gClef8vb")]
-        GlyphDefinition GClef8Vb { get; set; }
+        GlyphDefinition GClef8Vb { get; }
 
         [DataMember(Name = "gClef8vbCClef")]
-        GlyphDefinition GClef8VbCClef { get; set; }
+        GlyphDefinition GClef8VbCClef { get; }
 
         [DataMember(Name = "gClef8vbOld")]
-        GlyphDefinition GClef8VbOld { get; set; }
+        GlyphDefinition GClef8VbOld { get; }
 
         [DataMember(Name = "gClef8vbParens")]
-        GlyphDefinition GClef8VbParens { get; set; }
+        GlyphDefinition GClef8VbParens { get; }
 
         [DataMember(Name = "gClefArrowDown")]
-        GlyphDefinition GClefArrowDown { get; set; }
+        GlyphDefinition GClefArrowDown { get; }
 
         [DataMember(Name = "gClefArrowUp")]
-        GlyphDefinition GClefArrowUp { get; set; }
+        GlyphDefinition GClefArrowUp { get; }
 
         [DataMember(Name = "gClefChange")]
-        GlyphDefinition GClefChange { get; set; }
+        GlyphDefinition GClefChange { get; }
 
         [DataMember(Name = "gClefLigatedNumberAbove")]
-        GlyphDefinition GClefLigatedNumberAbove { get; set; }
+        GlyphDefinition GClefLigatedNumberAbove { get; }
 
         [DataMember(Name = "gClefLigatedNumberBelow")]
-        GlyphDefinition GClefLigatedNumberBelow { get; set; }
+        GlyphDefinition GClefLigatedNumberBelow { get; }
 
         [DataMember(Name = "gClefReversed")]
-        GlyphDefinition GClefReversed { get; set; }
+        GlyphDefinition GClefReversed { get; }
 
         [DataMember(Name = "gClefTurned")]
-        GlyphDefinition GClefTurned { get; set; }
+        GlyphDefinition GClefTurned { get; }
 
         [DataMember(Name = "glissandoDown")]
-        GlyphDefinition GlissandoDown { get; set; }
+        GlyphDefinition GlissandoDown { get; }
 
         [DataMember(Name = "glissandoUp")]
-        GlyphDefinition GlissandoUp { get; set; }
+        GlyphDefinition GlissandoUp { get; }
 
         [DataMember(Name = "graceNoteAcciaccaturaStemDown")]
-        GlyphDefinition GraceNoteAcciaccaturaStemDown { get; set; }
+        GlyphDefinition GraceNoteAcciaccaturaStemDown { get; }
 
         [DataMember(Name = "graceNoteAcciaccaturaStemUp")]
-        GlyphDefinition GraceNoteAcciaccaturaStemUp { get; set; }
+        GlyphDefinition GraceNoteAcciaccaturaStemUp { get; }
 
         [DataMember(Name = "graceNoteAppoggiaturaStemDown")]
-        GlyphDefinition GraceNoteAppoggiaturaStemDown { get; set; }
+        GlyphDefinition GraceNoteAppoggiaturaStemDown { get; }
 
         [DataMember(Name = "graceNoteAppoggiaturaStemUp")]
-        GlyphDefinition GraceNoteAppoggiaturaStemUp { get; set; }
+        GlyphDefinition GraceNoteAppoggiaturaStemUp { get; }
 
         [DataMember(Name = "graceNoteSlashStemDown")]
-        GlyphDefinition GraceNoteSlashStemDown { get; set; }
+        GlyphDefinition GraceNoteSlashStemDown { get; }
 
         [DataMember(Name = "graceNoteSlashStemUp")]
-        GlyphDefinition GraceNoteSlashStemUp { get; set; }
+        GlyphDefinition GraceNoteSlashStemUp { get; }
 
         [DataMember(Name = "guitarClosePedal")]
-        GlyphDefinition GuitarClosePedal { get; set; }
+        GlyphDefinition GuitarClosePedal { get; }
 
         [DataMember(Name = "guitarFadeIn")]
-        GlyphDefinition GuitarFadeIn { get; set; }
+        GlyphDefinition GuitarFadeIn { get; }
 
         [DataMember(Name = "guitarFadeOut")]
-        GlyphDefinition GuitarFadeOut { get; set; }
+        GlyphDefinition GuitarFadeOut { get; }
 
         [DataMember(Name = "guitarGolpe")]
-        GlyphDefinition GuitarGolpe { get; set; }
+        GlyphDefinition GuitarGolpe { get; }
 
         [DataMember(Name = "guitarHalfOpenPedal")]
-        GlyphDefinition GuitarHalfOpenPedal { get; set; }
+        GlyphDefinition GuitarHalfOpenPedal { get; }
 
         [DataMember(Name = "guitarLeftHandTapping")]
-        GlyphDefinition GuitarLeftHandTapping { get; set; }
+        GlyphDefinition GuitarLeftHandTapping { get; }
 
         [DataMember(Name = "guitarOpenPedal")]
-        GlyphDefinition GuitarOpenPedal { get; set; }
+        GlyphDefinition GuitarOpenPedal { get; }
 
         [DataMember(Name = "guitarRightHandTapping")]
-        GlyphDefinition GuitarRightHandTapping { get; set; }
+        GlyphDefinition GuitarRightHandTapping { get; }
 
         [DataMember(Name = "guitarShake")]
-        GlyphDefinition GuitarShake { get; set; }
+        GlyphDefinition GuitarShake { get; }
 
         [DataMember(Name = "guitarString0")]
-        GlyphDefinition GuitarString0 { get; set; }
+        GlyphDefinition GuitarString0 { get; }
 
         [DataMember(Name = "guitarString1")]
-        GlyphDefinition GuitarString1 { get; set; }
+        GlyphDefinition GuitarString1 { get; }
 
         [DataMember(Name = "guitarString2")]
-        GlyphDefinition GuitarString2 { get; set; }
+        GlyphDefinition GuitarString2 { get; }
 
         [DataMember(Name = "guitarString3")]
-        GlyphDefinition GuitarString3 { get; set; }
+        GlyphDefinition GuitarString3 { get; }
 
         [DataMember(Name = "guitarString4")]
-        GlyphDefinition GuitarString4 { get; set; }
+        GlyphDefinition GuitarString4 { get; }
 
         [DataMember(Name = "guitarString5")]
-        GlyphDefinition GuitarString5 { get; set; }
+        GlyphDefinition GuitarString5 { get; }
 
         [DataMember(Name = "guitarString6")]
-        GlyphDefinition GuitarString6 { get; set; }
+        GlyphDefinition GuitarString6 { get; }
 
         [DataMember(Name = "guitarString7")]
-        GlyphDefinition GuitarString7 { get; set; }
+        GlyphDefinition GuitarString7 { get; }
 
         [DataMember(Name = "guitarString8")]
-        GlyphDefinition GuitarString8 { get; set; }
+        GlyphDefinition GuitarString8 { get; }
 
         [DataMember(Name = "guitarString9")]
-        GlyphDefinition GuitarString9 { get; set; }
+        GlyphDefinition GuitarString9 { get; }
 
         [DataMember(Name = "guitarStrumDown")]
-        GlyphDefinition GuitarStrumDown { get; set; }
+        GlyphDefinition GuitarStrumDown { get; }
 
         [DataMember(Name = "guitarStrumUp")]
-        GlyphDefinition GuitarStrumUp { get; set; }
+        GlyphDefinition GuitarStrumUp { get; }
 
         [DataMember(Name = "guitarVibratoBarDip")]
-        GlyphDefinition GuitarVibratoBarDip { get; set; }
+        GlyphDefinition GuitarVibratoBarDip { get; }
 
         [DataMember(Name = "guitarVibratoBarScoop")]
-        GlyphDefinition GuitarVibratoBarScoop { get; set; }
+        GlyphDefinition GuitarVibratoBarScoop { get; }
 
         [DataMember(Name = "guitarVibratoStroke")]
-        GlyphDefinition GuitarVibratoStroke { get; set; }
+        GlyphDefinition GuitarVibratoStroke { get; }
 
         [DataMember(Name = "guitarVolumeSwell")]
-        GlyphDefinition GuitarVolumeSwell { get; set; }
+        GlyphDefinition GuitarVolumeSwell { get; }
 
         [DataMember(Name = "guitarWideVibratoStroke")]
-        GlyphDefinition GuitarWideVibratoStroke { get; set; }
+        GlyphDefinition GuitarWideVibratoStroke { get; }
 
         [DataMember(Name = "handbellsBelltree")]
-        GlyphDefinition HandbellsBelltree { get; set; }
+        GlyphDefinition HandbellsBelltree { get; }
 
         [DataMember(Name = "handbellsDamp3")]
-        GlyphDefinition HandbellsDamp3 { get; set; }
+        GlyphDefinition HandbellsDamp3 { get; }
 
         [DataMember(Name = "handbellsEcho1")]
-        GlyphDefinition HandbellsEcho1 { get; set; }
+        GlyphDefinition HandbellsEcho1 { get; }
 
         [DataMember(Name = "handbellsEcho2")]
-        GlyphDefinition HandbellsEcho2 { get; set; }
+        GlyphDefinition HandbellsEcho2 { get; }
 
         [DataMember(Name = "handbellsGyro")]
-        GlyphDefinition HandbellsGyro { get; set; }
+        GlyphDefinition HandbellsGyro { get; }
 
         [DataMember(Name = "handbellsHandMartellato")]
-        GlyphDefinition HandbellsHandMartellato { get; set; }
+        GlyphDefinition HandbellsHandMartellato { get; }
 
         [DataMember(Name = "handbellsMalletBellOnTable")]
-        GlyphDefinition HandbellsMalletBellOnTable { get; set; }
+        GlyphDefinition HandbellsMalletBellOnTable { get; }
 
         [DataMember(Name = "handbellsMalletBellSuspended")]
-        GlyphDefinition HandbellsMalletBellSuspended { get; set; }
+        GlyphDefinition HandbellsMalletBellSuspended { get; }
 
         [DataMember(Name = "handbellsMalletLft")]
-        GlyphDefinition HandbellsMalletLft { get; set; }
+        GlyphDefinition HandbellsMalletLft { get; }
 
         [DataMember(Name = "handbellsMartellato")]
-        GlyphDefinition HandbellsMartellato { get; set; }
+        GlyphDefinition HandbellsMartellato { get; }
 
         [DataMember(Name = "handbellsMartellatoLift")]
-        GlyphDefinition HandbellsMartellatoLift { get; set; }
+        GlyphDefinition HandbellsMartellatoLift { get; }
 
         [DataMember(Name = "handbellsMutedMartellato")]
-        GlyphDefinition HandbellsMutedMartellato { get; set; }
+        GlyphDefinition HandbellsMutedMartellato { get; }
 
         [DataMember(Name = "handbellsPluckLift")]
-        GlyphDefinition HandbellsPluckLift { get; set; }
+        GlyphDefinition HandbellsPluckLift { get; }
 
         [DataMember(Name = "handbellsSwing")]
-        GlyphDefinition HandbellsSwing { get; set; }
+        GlyphDefinition HandbellsSwing { get; }
 
         [DataMember(Name = "handbellsSwingDown")]
-        GlyphDefinition HandbellsSwingDown { get; set; }
+        GlyphDefinition HandbellsSwingDown { get; }
 
         [DataMember(Name = "handbellsSwingUp")]
-        GlyphDefinition HandbellsSwingUp { get; set; }
+        GlyphDefinition HandbellsSwingUp { get; }
 
         [DataMember(Name = "handbellsTablePairBells")]
-        GlyphDefinition HandbellsTablePairBells { get; set; }
+        GlyphDefinition HandbellsTablePairBells { get; }
 
         [DataMember(Name = "handbellsTableSingleBell")]
-        GlyphDefinition HandbellsTableSingleBell { get; set; }
+        GlyphDefinition HandbellsTableSingleBell { get; }
 
         [DataMember(Name = "harpMetalRod")]
-        GlyphDefinition HarpMetalRod { get; set; }
+        GlyphDefinition HarpMetalRod { get; }
 
         [DataMember(Name = "harpPedalCentered")]
-        GlyphDefinition HarpPedalCentered { get; set; }
+        GlyphDefinition HarpPedalCentered { get; }
 
         [DataMember(Name = "harpPedalDivider")]
-        GlyphDefinition HarpPedalDivider { get; set; }
+        GlyphDefinition HarpPedalDivider { get; }
 
         [DataMember(Name = "harpPedalLowered")]
-        GlyphDefinition HarpPedalLowered { get; set; }
+        GlyphDefinition HarpPedalLowered { get; }
 
         [DataMember(Name = "harpPedalRaised")]
-        GlyphDefinition HarpPedalRaised { get; set; }
+        GlyphDefinition HarpPedalRaised { get; }
 
         [DataMember(Name = "harpSalzedoAeolianAscending")]
-        GlyphDefinition HarpSalzedoAeolianAscending { get; set; }
+        GlyphDefinition HarpSalzedoAeolianAscending { get; }
 
         [DataMember(Name = "harpSalzedoAeolianDescending")]
-        GlyphDefinition HarpSalzedoAeolianDescending { get; set; }
+        GlyphDefinition HarpSalzedoAeolianDescending { get; }
 
         [DataMember(Name = "harpSalzedoFluidicSoundsLeft")]
-        GlyphDefinition HarpSalzedoFluidicSoundsLeft { get; set; }
+        GlyphDefinition HarpSalzedoFluidicSoundsLeft { get; }
 
         [DataMember(Name = "harpSalzedoFluidicSoundsRight")]
-        GlyphDefinition HarpSalzedoFluidicSoundsRight { get; set; }
+        GlyphDefinition HarpSalzedoFluidicSoundsRight { get; }
 
         [DataMember(Name = "harpSalzedoMetallicSounds")]
-        GlyphDefinition HarpSalzedoMetallicSounds { get; set; }
+        GlyphDefinition HarpSalzedoMetallicSounds { get; }
 
         [DataMember(Name = "harpSalzedoMuffleTotally")]
-        GlyphDefinition HarpSalzedoMuffleTotally { get; set; }
+        GlyphDefinition HarpSalzedoMuffleTotally { get; }
 
         [DataMember(Name = "harpSalzedoOboicFlux")]
-        GlyphDefinition HarpSalzedoOboicFlux { get; set; }
+        GlyphDefinition HarpSalzedoOboicFlux { get; }
 
         [DataMember(Name = "harpSalzedoPlayUpperEnd")]
-        GlyphDefinition HarpSalzedoPlayUpperEnd { get; set; }
+        GlyphDefinition HarpSalzedoPlayUpperEnd { get; }
 
         [DataMember(Name = "harpSalzedoSlideWithSuppleness")]
-        GlyphDefinition HarpSalzedoSlideWithSuppleness { get; set; }
+        GlyphDefinition HarpSalzedoSlideWithSuppleness { get; }
 
         [DataMember(Name = "harpSalzedoTamTamSounds")]
-        GlyphDefinition HarpSalzedoTamTamSounds { get; set; }
+        GlyphDefinition HarpSalzedoTamTamSounds { get; }
 
         [DataMember(Name = "harpSalzedoThunderEffect")]
-        GlyphDefinition HarpSalzedoThunderEffect { get; set; }
+        GlyphDefinition HarpSalzedoThunderEffect { get; }
 
         [DataMember(Name = "harpSalzedoTimpanicSounds")]
-        GlyphDefinition HarpSalzedoTimpanicSounds { get; set; }
+        GlyphDefinition HarpSalzedoTimpanicSounds { get; }
 
         [DataMember(Name = "harpSalzedoWhistlingSounds")]
-        GlyphDefinition HarpSalzedoWhistlingSounds { get; set; }
+        GlyphDefinition HarpSalzedoWhistlingSounds { get; }
 
         [DataMember(Name = "harpStringNoiseStem")]
-        GlyphDefinition HarpStringNoiseStem { get; set; }
+        GlyphDefinition HarpStringNoiseStem { get; }
 
         [DataMember(Name = "harpTuningKey")]
-        GlyphDefinition HarpTuningKey { get; set; }
+        GlyphDefinition HarpTuningKey { get; }
 
         [DataMember(Name = "harpTuningKeyGlissando")]
-        GlyphDefinition HarpTuningKeyGlissando { get; set; }
+        GlyphDefinition HarpTuningKeyGlissando { get; }
 
         [DataMember(Name = "harpTuningKeyHandle")]
-        GlyphDefinition HarpTuningKeyHandle { get; set; }
+        GlyphDefinition HarpTuningKeyHandle { get; }
 
         [DataMember(Name = "harpTuningKeyShank")]
-        GlyphDefinition HarpTuningKeyShank { get; set; }
+        GlyphDefinition HarpTuningKeyShank { get; }
 
         [DataMember(Name = "keyboardBebung2DotsAbove")]
-        GlyphDefinition KeyboardBebung2DotsAbove { get; set; }
+        GlyphDefinition KeyboardBebung2DotsAbove { get; }
 
         [DataMember(Name = "keyboardBebung2DotsBelow")]
-        GlyphDefinition KeyboardBebung2DotsBelow { get; set; }
+        GlyphDefinition KeyboardBebung2DotsBelow { get; }
 
         [DataMember(Name = "keyboardBebung3DotsAbove")]
-        GlyphDefinition KeyboardBebung3DotsAbove { get; set; }
+        GlyphDefinition KeyboardBebung3DotsAbove { get; }
 
         [DataMember(Name = "keyboardBebung3DotsBelow")]
-        GlyphDefinition KeyboardBebung3DotsBelow { get; set; }
+        GlyphDefinition KeyboardBebung3DotsBelow { get; }
 
         [DataMember(Name = "keyboardBebung4DotsAbove")]
-        GlyphDefinition KeyboardBebung4DotsAbove { get; set; }
+        GlyphDefinition KeyboardBebung4DotsAbove { get; }
 
         [DataMember(Name = "keyboardBebung4DotsBelow")]
-        GlyphDefinition KeyboardBebung4DotsBelow { get; set; }
+        GlyphDefinition KeyboardBebung4DotsBelow { get; }
 
         [DataMember(Name = "keyboardLeftPedalPictogram")]
-        GlyphDefinition KeyboardLeftPedalPictogram { get; set; }
+        GlyphDefinition KeyboardLeftPedalPictogram { get; }
 
         [DataMember(Name = "keyboardMiddlePedalPictogram")]
-        GlyphDefinition KeyboardMiddlePedalPictogram { get; set; }
+        GlyphDefinition KeyboardMiddlePedalPictogram { get; }
 
         [DataMember(Name = "keyboardPedalD")]
-        GlyphDefinition KeyboardPedalD { get; set; }
+        GlyphDefinition KeyboardPedalD { get; }
 
         [DataMember(Name = "keyboardPedalDot")]
-        GlyphDefinition KeyboardPedalDot { get; set; }
+        GlyphDefinition KeyboardPedalDot { get; }
 
         [DataMember(Name = "keyboardPedalE")]
-        GlyphDefinition KeyboardPedalE { get; set; }
+        GlyphDefinition KeyboardPedalE { get; }
 
         [DataMember(Name = "keyboardPedalHalf")]
-        GlyphDefinition KeyboardPedalHalf { get; set; }
+        GlyphDefinition KeyboardPedalHalf { get; }
 
         [DataMember(Name = "keyboardPedalHalf2")]
-        GlyphDefinition KeyboardPedalHalf2 { get; set; }
+        GlyphDefinition KeyboardPedalHalf2 { get; }
 
         [DataMember(Name = "keyboardPedalHalf3")]
-        GlyphDefinition KeyboardPedalHalf3 { get; set; }
+        GlyphDefinition KeyboardPedalHalf3 { get; }
 
         [DataMember(Name = "keyboardPedalHeel1")]
-        GlyphDefinition KeyboardPedalHeel1 { get; set; }
+        GlyphDefinition KeyboardPedalHeel1 { get; }
 
         [DataMember(Name = "keyboardPedalHeel2")]
-        GlyphDefinition KeyboardPedalHeel2 { get; set; }
+        GlyphDefinition KeyboardPedalHeel2 { get; }
 
         [DataMember(Name = "keyboardPedalHeel3")]
-        GlyphDefinition KeyboardPedalHeel3 { get; set; }
+        GlyphDefinition KeyboardPedalHeel3 { get; }
 
         [DataMember(Name = "keyboardPedalHeelToe")]
-        GlyphDefinition KeyboardPedalHeelToe { get; set; }
+        GlyphDefinition KeyboardPedalHeelToe { get; }
 
         [DataMember(Name = "keyboardPedalHyphen")]
-        GlyphDefinition KeyboardPedalHyphen { get; set; }
+        GlyphDefinition KeyboardPedalHyphen { get; }
 
         [DataMember(Name = "keyboardPedalP")]
-        GlyphDefinition KeyboardPedalP { get; set; }
+        GlyphDefinition KeyboardPedalP { get; }
 
         [DataMember(Name = "keyboardPedalPed")]
-        GlyphDefinition KeyboardPedalPed { get; set; }
+        GlyphDefinition KeyboardPedalPed { get; }
 
         [DataMember(Name = "keyboardPedalS")]
-        GlyphDefinition KeyboardPedalS { get; set; }
+        GlyphDefinition KeyboardPedalS { get; }
 
         [DataMember(Name = "keyboardPedalSost")]
-        GlyphDefinition KeyboardPedalSost { get; set; }
+        GlyphDefinition KeyboardPedalSost { get; }
 
         [DataMember(Name = "keyboardPedalToe1")]
-        GlyphDefinition KeyboardPedalToe1 { get; set; }
+        GlyphDefinition KeyboardPedalToe1 { get; }
 
         [DataMember(Name = "keyboardPedalToe2")]
-        GlyphDefinition KeyboardPedalToe2 { get; set; }
+        GlyphDefinition KeyboardPedalToe2 { get; }
 
         [DataMember(Name = "keyboardPedalUp")]
-        GlyphDefinition KeyboardPedalUp { get; set; }
+        GlyphDefinition KeyboardPedalUp { get; }
 
         [DataMember(Name = "keyboardPedalUpNotch")]
-        GlyphDefinition KeyboardPedalUpNotch { get; set; }
+        GlyphDefinition KeyboardPedalUpNotch { get; }
 
         [DataMember(Name = "keyboardPedalUpSpecial")]
-        GlyphDefinition KeyboardPedalUpSpecial { get; set; }
+        GlyphDefinition KeyboardPedalUpSpecial { get; }
 
         [DataMember(Name = "keyboardPlayWithLH")]
-        GlyphDefinition KeyboardPlayWithLh { get; set; }
+        GlyphDefinition KeyboardPlayWithLh { get; }
 
         [DataMember(Name = "keyboardPlayWithLHEnd")]
-        GlyphDefinition KeyboardPlayWithLhEnd { get; set; }
+        GlyphDefinition KeyboardPlayWithLhEnd { get; }
 
         [DataMember(Name = "keyboardPlayWithRH")]
-        GlyphDefinition KeyboardPlayWithRh { get; set; }
+        GlyphDefinition KeyboardPlayWithRh { get; }
 
         [DataMember(Name = "keyboardPlayWithRHEnd")]
-        GlyphDefinition KeyboardPlayWithRhEnd { get; set; }
+        GlyphDefinition KeyboardPlayWithRhEnd { get; }
 
         [DataMember(Name = "keyboardPluckInside")]
-        GlyphDefinition KeyboardPluckInside { get; set; }
+        GlyphDefinition KeyboardPluckInside { get; }
 
         [DataMember(Name = "keyboardRightPedalPictogram")]
-        GlyphDefinition KeyboardRightPedalPictogram { get; set; }
+        GlyphDefinition KeyboardRightPedalPictogram { get; }
 
         [DataMember(Name = "kievanAccidentalFlat")]
-        GlyphDefinition KievanAccidentalFlat { get; set; }
+        GlyphDefinition KievanAccidentalFlat { get; }
 
         [DataMember(Name = "kievanAccidentalSharp")]
-        GlyphDefinition KievanAccidentalSharp { get; set; }
+        GlyphDefinition KievanAccidentalSharp { get; }
 
         [DataMember(Name = "kievanAugmentationDot")]
-        GlyphDefinition KievanAugmentationDot { get; set; }
+        GlyphDefinition KievanAugmentationDot { get; }
 
         [DataMember(Name = "kievanCClef")]
-        GlyphDefinition KievanCClef { get; set; }
+        GlyphDefinition KievanCClef { get; }
 
         [DataMember(Name = "kievanEndingSymbol")]
-        GlyphDefinition KievanEndingSymbol { get; set; }
+        GlyphDefinition KievanEndingSymbol { get; }
 
         [DataMember(Name = "kievanNote8thStemDown")]
-        GlyphDefinition KievanNote8ThStemDown { get; set; }
+        GlyphDefinition KievanNote8ThStemDown { get; }
 
         [DataMember(Name = "kievanNote8thStemUp")]
-        GlyphDefinition KievanNote8ThStemUp { get; set; }
+        GlyphDefinition KievanNote8ThStemUp { get; }
 
         [DataMember(Name = "kievanNoteBeam")]
-        GlyphDefinition KievanNoteBeam { get; set; }
+        GlyphDefinition KievanNoteBeam { get; }
 
         [DataMember(Name = "kievanNoteHalfStaffLine")]
-        GlyphDefinition KievanNoteHalfStaffLine { get; set; }
+        GlyphDefinition KievanNoteHalfStaffLine { get; }
 
         [DataMember(Name = "kievanNoteHalfStaffSpace")]
-        GlyphDefinition KievanNoteHalfStaffSpace { get; set; }
+        GlyphDefinition KievanNoteHalfStaffSpace { get; }
 
         [DataMember(Name = "kievanNoteQuarterStemDown")]
-        GlyphDefinition KievanNoteQuarterStemDown { get; set; }
+        GlyphDefinition KievanNoteQuarterStemDown { get; }
 
         [DataMember(Name = "kievanNoteQuarterStemUp")]
-        GlyphDefinition KievanNoteQuarterStemUp { get; set; }
+        GlyphDefinition KievanNoteQuarterStemUp { get; }
 
         [DataMember(Name = "kievanNoteReciting")]
-        GlyphDefinition KievanNoteReciting { get; set; }
+        GlyphDefinition KievanNoteReciting { get; }
 
         [DataMember(Name = "kievanNoteWhole")]
-        GlyphDefinition KievanNoteWhole { get; set; }
+        GlyphDefinition KievanNoteWhole { get; }
 
         [DataMember(Name = "kievanNoteWholeFinal")]
-        GlyphDefinition KievanNoteWholeFinal { get; set; }
+        GlyphDefinition KievanNoteWholeFinal { get; }
 
         [DataMember(Name = "kodalyHandDo")]
-        GlyphDefinition KodalyHandDo { get; set; }
+        GlyphDefinition KodalyHandDo { get; }
 
         [DataMember(Name = "kodalyHandFa")]
-        GlyphDefinition KodalyHandFa { get; set; }
+        GlyphDefinition KodalyHandFa { get; }
 
         [DataMember(Name = "kodalyHandLa")]
-        GlyphDefinition KodalyHandLa { get; set; }
+        GlyphDefinition KodalyHandLa { get; }
 
         [DataMember(Name = "kodalyHandMi")]
-        GlyphDefinition KodalyHandMi { get; set; }
+        GlyphDefinition KodalyHandMi { get; }
 
         [DataMember(Name = "kodalyHandRe")]
-        GlyphDefinition KodalyHandRe { get; set; }
+        GlyphDefinition KodalyHandRe { get; }
 
         [DataMember(Name = "kodalyHandSo")]
-        GlyphDefinition KodalyHandSo { get; set; }
+        GlyphDefinition KodalyHandSo { get; }
 
         [DataMember(Name = "kodalyHandTi")]
-        GlyphDefinition KodalyHandTi { get; set; }
+        GlyphDefinition KodalyHandTi { get; }
 
         [DataMember(Name = "leftRepeatSmall")]
-        GlyphDefinition LeftRepeatSmall { get; set; }
+        GlyphDefinition LeftRepeatSmall { get; }
 
         [DataMember(Name = "legerLine")]
-        GlyphDefinition LegerLine { get; set; }
+        GlyphDefinition LegerLine { get; }
 
         [DataMember(Name = "legerLineNarrow")]
-        GlyphDefinition LegerLineNarrow { get; set; }
+        GlyphDefinition LegerLineNarrow { get; }
 
         [DataMember(Name = "legerLineWide")]
-        GlyphDefinition LegerLineWide { get; set; }
+        GlyphDefinition LegerLineWide { get; }
 
         [DataMember(Name = "luteBarlineEndRepeat")]
-        GlyphDefinition LuteBarlineEndRepeat { get; set; }
+        GlyphDefinition LuteBarlineEndRepeat { get; }
 
         [DataMember(Name = "luteBarlineFinal")]
-        GlyphDefinition LuteBarlineFinal { get; set; }
+        GlyphDefinition LuteBarlineFinal { get; }
 
         [DataMember(Name = "luteBarlineStartRepeat")]
-        GlyphDefinition LuteBarlineStartRepeat { get; set; }
+        GlyphDefinition LuteBarlineStartRepeat { get; }
 
         [DataMember(Name = "luteDuration16th")]
-        GlyphDefinition LuteDuration16Th { get; set; }
+        GlyphDefinition LuteDuration16Th { get; }
 
         [DataMember(Name = "luteDuration32nd")]
-        GlyphDefinition LuteDuration32Nd { get; set; }
+        GlyphDefinition LuteDuration32Nd { get; }
 
         [DataMember(Name = "luteDuration8th")]
-        GlyphDefinition LuteDuration8Th { get; set; }
+        GlyphDefinition LuteDuration8Th { get; }
 
         [DataMember(Name = "luteDurationDoubleWhole")]
-        GlyphDefinition LuteDurationDoubleWhole { get; set; }
+        GlyphDefinition LuteDurationDoubleWhole { get; }
 
         [DataMember(Name = "luteDurationHalf")]
-        GlyphDefinition LuteDurationHalf { get; set; }
+        GlyphDefinition LuteDurationHalf { get; }
 
         [DataMember(Name = "luteDurationQuarter")]
-        GlyphDefinition LuteDurationQuarter { get; set; }
+        GlyphDefinition LuteDurationQuarter { get; }
 
         [DataMember(Name = "luteDurationWhole")]
-        GlyphDefinition LuteDurationWhole { get; set; }
+        GlyphDefinition LuteDurationWhole { get; }
 
         [DataMember(Name = "luteFingeringRHFirst")]
-        GlyphDefinition LuteFingeringRhFirst { get; set; }
+        GlyphDefinition LuteFingeringRhFirst { get; }
 
         [DataMember(Name = "luteFingeringRHSecond")]
-        GlyphDefinition LuteFingeringRhSecond { get; set; }
+        GlyphDefinition LuteFingeringRhSecond { get; }
 
         [DataMember(Name = "luteFingeringRHThird")]
-        GlyphDefinition LuteFingeringRhThird { get; set; }
+        GlyphDefinition LuteFingeringRhThird { get; }
 
         [DataMember(Name = "luteFingeringRHThumb")]
-        GlyphDefinition LuteFingeringRhThumb { get; set; }
+        GlyphDefinition LuteFingeringRhThumb { get; }
 
         [DataMember(Name = "luteFrench10thCourse")]
-        GlyphDefinition LuteFrench10ThCourse { get; set; }
+        GlyphDefinition LuteFrench10ThCourse { get; }
 
         [DataMember(Name = "luteFrench7thCourse")]
-        GlyphDefinition LuteFrench7ThCourse { get; set; }
+        GlyphDefinition LuteFrench7ThCourse { get; }
 
         [DataMember(Name = "luteFrench8thCourse")]
-        GlyphDefinition LuteFrench8ThCourse { get; set; }
+        GlyphDefinition LuteFrench8ThCourse { get; }
 
         [DataMember(Name = "luteFrench9thCourse")]
-        GlyphDefinition LuteFrench9ThCourse { get; set; }
+        GlyphDefinition LuteFrench9ThCourse { get; }
 
         [DataMember(Name = "luteFrenchAppoggiaturaAbove")]
-        GlyphDefinition LuteFrenchAppoggiaturaAbove { get; set; }
+        GlyphDefinition LuteFrenchAppoggiaturaAbove { get; }
 
         [DataMember(Name = "luteFrenchAppoggiaturaBelow")]
-        GlyphDefinition LuteFrenchAppoggiaturaBelow { get; set; }
+        GlyphDefinition LuteFrenchAppoggiaturaBelow { get; }
 
         [DataMember(Name = "luteFrenchFretA")]
-        GlyphDefinition LuteFrenchFretA { get; set; }
+        GlyphDefinition LuteFrenchFretA { get; }
 
         [DataMember(Name = "luteFrenchFretB")]
-        GlyphDefinition LuteFrenchFretB { get; set; }
+        GlyphDefinition LuteFrenchFretB { get; }
 
         [DataMember(Name = "luteFrenchFretC")]
-        GlyphDefinition LuteFrenchFretC { get; set; }
+        GlyphDefinition LuteFrenchFretC { get; }
 
         [DataMember(Name = "luteFrenchFretD")]
-        GlyphDefinition LuteFrenchFretD { get; set; }
+        GlyphDefinition LuteFrenchFretD { get; }
 
         [DataMember(Name = "luteFrenchFretE")]
-        GlyphDefinition LuteFrenchFretE { get; set; }
+        GlyphDefinition LuteFrenchFretE { get; }
 
         [DataMember(Name = "luteFrenchFretF")]
-        GlyphDefinition LuteFrenchFretF { get; set; }
+        GlyphDefinition LuteFrenchFretF { get; }
 
         [DataMember(Name = "luteFrenchFretG")]
-        GlyphDefinition LuteFrenchFretG { get; set; }
+        GlyphDefinition LuteFrenchFretG { get; }
 
         [DataMember(Name = "luteFrenchFretH")]
-        GlyphDefinition LuteFrenchFretH { get; set; }
+        GlyphDefinition LuteFrenchFretH { get; }
 
         [DataMember(Name = "luteFrenchFretI")]
-        GlyphDefinition LuteFrenchFretI { get; set; }
+        GlyphDefinition LuteFrenchFretI { get; }
 
         [DataMember(Name = "luteFrenchFretK")]
-        GlyphDefinition LuteFrenchFretK { get; set; }
+        GlyphDefinition LuteFrenchFretK { get; }
 
         [DataMember(Name = "luteFrenchFretL")]
-        GlyphDefinition LuteFrenchFretL { get; set; }
+        GlyphDefinition LuteFrenchFretL { get; }
 
         [DataMember(Name = "luteFrenchFretM")]
-        GlyphDefinition LuteFrenchFretM { get; set; }
+        GlyphDefinition LuteFrenchFretM { get; }
 
         [DataMember(Name = "luteFrenchFretN")]
-        GlyphDefinition LuteFrenchFretN { get; set; }
+        GlyphDefinition LuteFrenchFretN { get; }
 
         [DataMember(Name = "luteFrenchMordentInverted")]
-        GlyphDefinition LuteFrenchMordentInverted { get; set; }
+        GlyphDefinition LuteFrenchMordentInverted { get; }
 
         [DataMember(Name = "luteFrenchMordentLower")]
-        GlyphDefinition LuteFrenchMordentLower { get; set; }
+        GlyphDefinition LuteFrenchMordentLower { get; }
 
         [DataMember(Name = "luteFrenchMordentUpper")]
-        GlyphDefinition LuteFrenchMordentUpper { get; set; }
+        GlyphDefinition LuteFrenchMordentUpper { get; }
 
         [DataMember(Name = "luteGermanALower")]
-        GlyphDefinition LuteGermanALower { get; set; }
+        GlyphDefinition LuteGermanALower { get; }
 
         [DataMember(Name = "luteGermanAUpper")]
-        GlyphDefinition LuteGermanAUpper { get; set; }
+        GlyphDefinition LuteGermanAUpper { get; }
 
         [DataMember(Name = "luteGermanBLower")]
-        GlyphDefinition LuteGermanBLower { get; set; }
+        GlyphDefinition LuteGermanBLower { get; }
 
         [DataMember(Name = "luteGermanBUpper")]
-        GlyphDefinition LuteGermanBUpper { get; set; }
+        GlyphDefinition LuteGermanBUpper { get; }
 
         [DataMember(Name = "luteGermanCLower")]
-        GlyphDefinition LuteGermanCLower { get; set; }
+        GlyphDefinition LuteGermanCLower { get; }
 
         [DataMember(Name = "luteGermanCUpper")]
-        GlyphDefinition LuteGermanCUpper { get; set; }
+        GlyphDefinition LuteGermanCUpper { get; }
 
         [DataMember(Name = "luteGermanDLower")]
-        GlyphDefinition LuteGermanDLower { get; set; }
+        GlyphDefinition LuteGermanDLower { get; }
 
         [DataMember(Name = "luteGermanDUpper")]
-        GlyphDefinition LuteGermanDUpper { get; set; }
+        GlyphDefinition LuteGermanDUpper { get; }
 
         [DataMember(Name = "luteGermanELower")]
-        GlyphDefinition LuteGermanELower { get; set; }
+        GlyphDefinition LuteGermanELower { get; }
 
         [DataMember(Name = "luteGermanEUpper")]
-        GlyphDefinition LuteGermanEUpper { get; set; }
+        GlyphDefinition LuteGermanEUpper { get; }
 
         [DataMember(Name = "luteGermanFLower")]
-        GlyphDefinition LuteGermanFLower { get; set; }
+        GlyphDefinition LuteGermanFLower { get; }
 
         [DataMember(Name = "luteGermanFUpper")]
-        GlyphDefinition LuteGermanFUpper { get; set; }
+        GlyphDefinition LuteGermanFUpper { get; }
 
         [DataMember(Name = "luteGermanGLower")]
-        GlyphDefinition LuteGermanGLower { get; set; }
+        GlyphDefinition LuteGermanGLower { get; }
 
         [DataMember(Name = "luteGermanGUpper")]
-        GlyphDefinition LuteGermanGUpper { get; set; }
+        GlyphDefinition LuteGermanGUpper { get; }
 
         [DataMember(Name = "luteGermanHLower")]
-        GlyphDefinition LuteGermanHLower { get; set; }
+        GlyphDefinition LuteGermanHLower { get; }
 
         [DataMember(Name = "luteGermanHUpper")]
-        GlyphDefinition LuteGermanHUpper { get; set; }
+        GlyphDefinition LuteGermanHUpper { get; }
 
         [DataMember(Name = "luteGermanILower")]
-        GlyphDefinition LuteGermanILower { get; set; }
+        GlyphDefinition LuteGermanILower { get; }
 
         [DataMember(Name = "luteGermanIUpper")]
-        GlyphDefinition LuteGermanIUpper { get; set; }
+        GlyphDefinition LuteGermanIUpper { get; }
 
         [DataMember(Name = "luteGermanKLower")]
-        GlyphDefinition LuteGermanKLower { get; set; }
+        GlyphDefinition LuteGermanKLower { get; }
 
         [DataMember(Name = "luteGermanKUpper")]
-        GlyphDefinition LuteGermanKUpper { get; set; }
+        GlyphDefinition LuteGermanKUpper { get; }
 
         [DataMember(Name = "luteGermanLLower")]
-        GlyphDefinition LuteGermanLLower { get; set; }
+        GlyphDefinition LuteGermanLLower { get; }
 
         [DataMember(Name = "luteGermanLUpper")]
-        GlyphDefinition LuteGermanLUpper { get; set; }
+        GlyphDefinition LuteGermanLUpper { get; }
 
         [DataMember(Name = "luteGermanMLower")]
-        GlyphDefinition LuteGermanMLower { get; set; }
+        GlyphDefinition LuteGermanMLower { get; }
 
         [DataMember(Name = "luteGermanMUpper")]
-        GlyphDefinition LuteGermanMUpper { get; set; }
+        GlyphDefinition LuteGermanMUpper { get; }
 
         [DataMember(Name = "luteGermanNLower")]
-        GlyphDefinition LuteGermanNLower { get; set; }
+        GlyphDefinition LuteGermanNLower { get; }
 
         [DataMember(Name = "luteGermanNUpper")]
-        GlyphDefinition LuteGermanNUpper { get; set; }
+        GlyphDefinition LuteGermanNUpper { get; }
 
         [DataMember(Name = "luteGermanOLower")]
-        GlyphDefinition LuteGermanOLower { get; set; }
+        GlyphDefinition LuteGermanOLower { get; }
 
         [DataMember(Name = "luteGermanPLower")]
-        GlyphDefinition LuteGermanPLower { get; set; }
+        GlyphDefinition LuteGermanPLower { get; }
 
         [DataMember(Name = "luteGermanQLower")]
-        GlyphDefinition LuteGermanQLower { get; set; }
+        GlyphDefinition LuteGermanQLower { get; }
 
         [DataMember(Name = "luteGermanRLower")]
-        GlyphDefinition LuteGermanRLower { get; set; }
+        GlyphDefinition LuteGermanRLower { get; }
 
         [DataMember(Name = "luteGermanSLower")]
-        GlyphDefinition LuteGermanSLower { get; set; }
+        GlyphDefinition LuteGermanSLower { get; }
 
         [DataMember(Name = "luteGermanTLower")]
-        GlyphDefinition LuteGermanTLower { get; set; }
+        GlyphDefinition LuteGermanTLower { get; }
 
         [DataMember(Name = "luteGermanVLower")]
-        GlyphDefinition LuteGermanVLower { get; set; }
+        GlyphDefinition LuteGermanVLower { get; }
 
         [DataMember(Name = "luteGermanXLower")]
-        GlyphDefinition LuteGermanXLower { get; set; }
+        GlyphDefinition LuteGermanXLower { get; }
 
         [DataMember(Name = "luteGermanYLower")]
-        GlyphDefinition LuteGermanYLower { get; set; }
+        GlyphDefinition LuteGermanYLower { get; }
 
         [DataMember(Name = "luteGermanZLower")]
-        GlyphDefinition LuteGermanZLower { get; set; }
+        GlyphDefinition LuteGermanZLower { get; }
 
         [DataMember(Name = "luteItalianClefCSolFaUt")]
-        GlyphDefinition LuteItalianClefCSolFaUt { get; set; }
+        GlyphDefinition LuteItalianClefCSolFaUt { get; }
 
         [DataMember(Name = "luteItalianClefFFaUt")]
-        GlyphDefinition LuteItalianClefFFaUt { get; set; }
+        GlyphDefinition LuteItalianClefFFaUt { get; }
 
         [DataMember(Name = "luteItalianFret0")]
-        GlyphDefinition LuteItalianFret0 { get; set; }
+        GlyphDefinition LuteItalianFret0 { get; }
 
         [DataMember(Name = "luteItalianFret1")]
-        GlyphDefinition LuteItalianFret1 { get; set; }
+        GlyphDefinition LuteItalianFret1 { get; }
 
         [DataMember(Name = "luteItalianFret2")]
-        GlyphDefinition LuteItalianFret2 { get; set; }
+        GlyphDefinition LuteItalianFret2 { get; }
 
         [DataMember(Name = "luteItalianFret3")]
-        GlyphDefinition LuteItalianFret3 { get; set; }
+        GlyphDefinition LuteItalianFret3 { get; }
 
         [DataMember(Name = "luteItalianFret4")]
-        GlyphDefinition LuteItalianFret4 { get; set; }
+        GlyphDefinition LuteItalianFret4 { get; }
 
         [DataMember(Name = "luteItalianFret5")]
-        GlyphDefinition LuteItalianFret5 { get; set; }
+        GlyphDefinition LuteItalianFret5 { get; }
 
         [DataMember(Name = "luteItalianFret6")]
-        GlyphDefinition LuteItalianFret6 { get; set; }
+        GlyphDefinition LuteItalianFret6 { get; }
 
         [DataMember(Name = "luteItalianFret7")]
-        GlyphDefinition LuteItalianFret7 { get; set; }
+        GlyphDefinition LuteItalianFret7 { get; }
 
         [DataMember(Name = "luteItalianFret8")]
-        GlyphDefinition LuteItalianFret8 { get; set; }
+        GlyphDefinition LuteItalianFret8 { get; }
 
         [DataMember(Name = "luteItalianFret9")]
-        GlyphDefinition LuteItalianFret9 { get; set; }
+        GlyphDefinition LuteItalianFret9 { get; }
 
         [DataMember(Name = "luteItalianHoldFinger")]
-        GlyphDefinition LuteItalianHoldFinger { get; set; }
+        GlyphDefinition LuteItalianHoldFinger { get; }
 
         [DataMember(Name = "luteItalianHoldNote")]
-        GlyphDefinition LuteItalianHoldNote { get; set; }
+        GlyphDefinition LuteItalianHoldNote { get; }
 
         [DataMember(Name = "luteItalianReleaseFinger")]
-        GlyphDefinition LuteItalianReleaseFinger { get; set; }
+        GlyphDefinition LuteItalianReleaseFinger { get; }
 
         [DataMember(Name = "luteItalianTempoFast")]
-        GlyphDefinition LuteItalianTempoFast { get; set; }
+        GlyphDefinition LuteItalianTempoFast { get; }
 
         [DataMember(Name = "luteItalianTempoNeitherFastNorSlow")]
-        GlyphDefinition LuteItalianTempoNeitherFastNorSlow { get; set; }
+        GlyphDefinition LuteItalianTempoNeitherFastNorSlow { get; }
 
         [DataMember(Name = "luteItalianTempoSlow")]
-        GlyphDefinition LuteItalianTempoSlow { get; set; }
+        GlyphDefinition LuteItalianTempoSlow { get; }
 
         [DataMember(Name = "luteItalianTempoSomewhatFast")]
-        GlyphDefinition LuteItalianTempoSomewhatFast { get; set; }
+        GlyphDefinition LuteItalianTempoSomewhatFast { get; }
 
         [DataMember(Name = "luteItalianTempoVerySlow")]
-        GlyphDefinition LuteItalianTempoVerySlow { get; set; }
+        GlyphDefinition LuteItalianTempoVerySlow { get; }
 
         [DataMember(Name = "luteItalianTimeTriple")]
-        GlyphDefinition LuteItalianTimeTriple { get; set; }
+        GlyphDefinition LuteItalianTimeTriple { get; }
 
         [DataMember(Name = "luteItalianTremolo")]
-        GlyphDefinition LuteItalianTremolo { get; set; }
+        GlyphDefinition LuteItalianTremolo { get; }
 
         [DataMember(Name = "luteItalianVibrato")]
-        GlyphDefinition LuteItalianVibrato { get; set; }
+        GlyphDefinition LuteItalianVibrato { get; }
 
         [DataMember(Name = "luteStaff6Lines")]
-        GlyphDefinition LuteStaff6Lines { get; set; }
+        GlyphDefinition LuteStaff6Lines { get; }
 
         [DataMember(Name = "luteStaff6LinesNarrow")]
-        GlyphDefinition LuteStaff6LinesNarrow { get; set; }
+        GlyphDefinition LuteStaff6LinesNarrow { get; }
 
         [DataMember(Name = "luteStaff6LinesWide")]
-        GlyphDefinition LuteStaff6LinesWide { get; set; }
+        GlyphDefinition LuteStaff6LinesWide { get; }
 
         [DataMember(Name = "lyricsElision")]
-        GlyphDefinition LyricsElision { get; set; }
+        GlyphDefinition LyricsElision { get; }
 
         [DataMember(Name = "lyricsElisionNarrow")]
-        GlyphDefinition LyricsElisionNarrow { get; set; }
+        GlyphDefinition LyricsElisionNarrow { get; }
 
         [DataMember(Name = "lyricsElisionWide")]
-        GlyphDefinition LyricsElisionWide { get; set; }
+        GlyphDefinition LyricsElisionWide { get; }
 
         [DataMember(Name = "lyricsHyphenBaseline")]
-        GlyphDefinition LyricsHyphenBaseline { get; set; }
+        GlyphDefinition LyricsHyphenBaseline { get; }
 
         [DataMember(Name = "lyricsHyphenBaselineNonBreaking")]
-        GlyphDefinition LyricsHyphenBaselineNonBreaking { get; set; }
+        GlyphDefinition LyricsHyphenBaselineNonBreaking { get; }
 
         [DataMember(Name = "medRenFlatHardB")]
-        GlyphDefinition MedRenFlatHardB { get; set; }
+        GlyphDefinition MedRenFlatHardB { get; }
 
         [DataMember(Name = "medRenFlatSoftB")]
-        GlyphDefinition MedRenFlatSoftB { get; set; }
+        GlyphDefinition MedRenFlatSoftB { get; }
 
         [DataMember(Name = "medRenFlatWithDot")]
-        GlyphDefinition MedRenFlatWithDot { get; set; }
+        GlyphDefinition MedRenFlatWithDot { get; }
 
         [DataMember(Name = "medRenGClefCMN")]
-        GlyphDefinition MedRenGClefCmn { get; set; }
+        GlyphDefinition MedRenGClefCmn { get; }
 
         [DataMember(Name = "medRenLiquescenceCMN")]
-        GlyphDefinition MedRenLiquescenceCmn { get; set; }
+        GlyphDefinition MedRenLiquescenceCmn { get; }
 
         [DataMember(Name = "medRenLiquescentAscCMN")]
-        GlyphDefinition MedRenLiquescentAscCmn { get; set; }
+        GlyphDefinition MedRenLiquescentAscCmn { get; }
 
         [DataMember(Name = "medRenLiquescentDescCMN")]
-        GlyphDefinition MedRenLiquescentDescCmn { get; set; }
+        GlyphDefinition MedRenLiquescentDescCmn { get; }
 
         [DataMember(Name = "medRenNatural")]
-        GlyphDefinition MedRenNatural { get; set; }
+        GlyphDefinition MedRenNatural { get; }
 
         [DataMember(Name = "medRenNaturalWithCross")]
-        GlyphDefinition MedRenNaturalWithCross { get; set; }
+        GlyphDefinition MedRenNaturalWithCross { get; }
 
         [DataMember(Name = "medRenOriscusCMN")]
-        GlyphDefinition MedRenOriscusCmn { get; set; }
+        GlyphDefinition MedRenOriscusCmn { get; }
 
         [DataMember(Name = "medRenPlicaCMN")]
-        GlyphDefinition MedRenPlicaCmn { get; set; }
+        GlyphDefinition MedRenPlicaCmn { get; }
 
         [DataMember(Name = "medRenPunctumCMN")]
-        GlyphDefinition MedRenPunctumCmn { get; set; }
+        GlyphDefinition MedRenPunctumCmn { get; }
 
         [DataMember(Name = "medRenQuilismaCMN")]
-        GlyphDefinition MedRenQuilismaCmn { get; set; }
+        GlyphDefinition MedRenQuilismaCmn { get; }
 
         [DataMember(Name = "medRenSharpCroix")]
-        GlyphDefinition MedRenSharpCroix { get; set; }
+        GlyphDefinition MedRenSharpCroix { get; }
 
         [DataMember(Name = "medRenStrophicusCMN")]
-        GlyphDefinition MedRenStrophicusCmn { get; set; }
+        GlyphDefinition MedRenStrophicusCmn { get; }
 
         [DataMember(Name = "mensuralAlterationSign")]
-        GlyphDefinition MensuralAlterationSign { get; set; }
+        GlyphDefinition MensuralAlterationSign { get; }
 
         [DataMember(Name = "mensuralBlackBrevis")]
-        GlyphDefinition MensuralBlackBrevis { get; set; }
+        GlyphDefinition MensuralBlackBrevis { get; }
 
         [DataMember(Name = "mensuralBlackBrevisVoid")]
-        GlyphDefinition MensuralBlackBrevisVoid { get; set; }
+        GlyphDefinition MensuralBlackBrevisVoid { get; }
 
         [DataMember(Name = "mensuralBlackDragma")]
-        GlyphDefinition MensuralBlackDragma { get; set; }
+        GlyphDefinition MensuralBlackDragma { get; }
 
         [DataMember(Name = "mensuralBlackLonga")]
-        GlyphDefinition MensuralBlackLonga { get; set; }
+        GlyphDefinition MensuralBlackLonga { get; }
 
         [DataMember(Name = "mensuralBlackMaxima")]
-        GlyphDefinition MensuralBlackMaxima { get; set; }
+        GlyphDefinition MensuralBlackMaxima { get; }
 
         [DataMember(Name = "mensuralBlackMinima")]
-        GlyphDefinition MensuralBlackMinima { get; set; }
+        GlyphDefinition MensuralBlackMinima { get; }
 
         [DataMember(Name = "mensuralBlackMinimaVoid")]
-        GlyphDefinition MensuralBlackMinimaVoid { get; set; }
+        GlyphDefinition MensuralBlackMinimaVoid { get; }
 
         [DataMember(Name = "mensuralBlackSemibrevis")]
-        GlyphDefinition MensuralBlackSemibrevis { get; set; }
+        GlyphDefinition MensuralBlackSemibrevis { get; }
 
         [DataMember(Name = "mensuralBlackSemibrevisCaudata")]
-        GlyphDefinition MensuralBlackSemibrevisCaudata { get; set; }
+        GlyphDefinition MensuralBlackSemibrevisCaudata { get; }
 
         [DataMember(Name = "mensuralBlackSemibrevisOblique")]
-        GlyphDefinition MensuralBlackSemibrevisOblique { get; set; }
+        GlyphDefinition MensuralBlackSemibrevisOblique { get; }
 
         [DataMember(Name = "mensuralBlackSemibrevisVoid")]
-        GlyphDefinition MensuralBlackSemibrevisVoid { get; set; }
+        GlyphDefinition MensuralBlackSemibrevisVoid { get; }
 
         [DataMember(Name = "mensuralBlackSemiminima")]
-        GlyphDefinition MensuralBlackSemiminima { get; set; }
+        GlyphDefinition MensuralBlackSemiminima { get; }
 
         [DataMember(Name = "mensuralCclef")]
-        GlyphDefinition MensuralCclef { get; set; }
+        GlyphDefinition MensuralCclef { get; }
 
         [DataMember(Name = "mensuralCclefPetrucciPosHigh")]
-        GlyphDefinition MensuralCclefPetrucciPosHigh { get; set; }
+        GlyphDefinition MensuralCclefPetrucciPosHigh { get; }
 
         [DataMember(Name = "mensuralCclefPetrucciPosHighest")]
-        GlyphDefinition MensuralCclefPetrucciPosHighest { get; set; }
+        GlyphDefinition MensuralCclefPetrucciPosHighest { get; }
 
         [DataMember(Name = "mensuralCclefPetrucciPosLow")]
-        GlyphDefinition MensuralCclefPetrucciPosLow { get; set; }
+        GlyphDefinition MensuralCclefPetrucciPosLow { get; }
 
         [DataMember(Name = "mensuralCclefPetrucciPosLowest")]
-        GlyphDefinition MensuralCclefPetrucciPosLowest { get; set; }
+        GlyphDefinition MensuralCclefPetrucciPosLowest { get; }
 
         [DataMember(Name = "mensuralCclefPetrucciPosMiddle")]
-        GlyphDefinition MensuralCclefPetrucciPosMiddle { get; set; }
+        GlyphDefinition MensuralCclefPetrucciPosMiddle { get; }
 
         [DataMember(Name = "mensuralColorationEndRound")]
-        GlyphDefinition MensuralColorationEndRound { get; set; }
+        GlyphDefinition MensuralColorationEndRound { get; }
 
         [DataMember(Name = "mensuralColorationEndSquare")]
-        GlyphDefinition MensuralColorationEndSquare { get; set; }
+        GlyphDefinition MensuralColorationEndSquare { get; }
 
         [DataMember(Name = "mensuralColorationStartRound")]
-        GlyphDefinition MensuralColorationStartRound { get; set; }
+        GlyphDefinition MensuralColorationStartRound { get; }
 
         [DataMember(Name = "mensuralColorationStartSquare")]
-        GlyphDefinition MensuralColorationStartSquare { get; set; }
+        GlyphDefinition MensuralColorationStartSquare { get; }
 
         [DataMember(Name = "mensuralCombStemDiagonal")]
-        GlyphDefinition MensuralCombStemDiagonal { get; set; }
+        GlyphDefinition MensuralCombStemDiagonal { get; }
 
         [DataMember(Name = "mensuralCombStemDown")]
-        GlyphDefinition MensuralCombStemDown { get; set; }
+        GlyphDefinition MensuralCombStemDown { get; }
 
         [DataMember(Name = "mensuralCombStemDownFlagExtended")]
-        GlyphDefinition MensuralCombStemDownFlagExtended { get; set; }
+        GlyphDefinition MensuralCombStemDownFlagExtended { get; }
 
         [DataMember(Name = "mensuralCombStemDownFlagFlared")]
-        GlyphDefinition MensuralCombStemDownFlagFlared { get; set; }
+        GlyphDefinition MensuralCombStemDownFlagFlared { get; }
 
         [DataMember(Name = "mensuralCombStemDownFlagFusa")]
-        GlyphDefinition MensuralCombStemDownFlagFusa { get; set; }
+        GlyphDefinition MensuralCombStemDownFlagFusa { get; }
 
         [DataMember(Name = "mensuralCombStemDownFlagLeft")]
-        GlyphDefinition MensuralCombStemDownFlagLeft { get; set; }
+        GlyphDefinition MensuralCombStemDownFlagLeft { get; }
 
         [DataMember(Name = "mensuralCombStemDownFlagRight")]
-        GlyphDefinition MensuralCombStemDownFlagRight { get; set; }
+        GlyphDefinition MensuralCombStemDownFlagRight { get; }
 
         [DataMember(Name = "mensuralCombStemDownFlagSemiminima")]
-        GlyphDefinition MensuralCombStemDownFlagSemiminima { get; set; }
+        GlyphDefinition MensuralCombStemDownFlagSemiminima { get; }
 
         [DataMember(Name = "mensuralCombStemUp")]
-        GlyphDefinition MensuralCombStemUp { get; set; }
+        GlyphDefinition MensuralCombStemUp { get; }
 
         [DataMember(Name = "mensuralCombStemUpFlagExtended")]
-        GlyphDefinition MensuralCombStemUpFlagExtended { get; set; }
+        GlyphDefinition MensuralCombStemUpFlagExtended { get; }
 
         [DataMember(Name = "mensuralCombStemUpFlagFlared")]
-        GlyphDefinition MensuralCombStemUpFlagFlared { get; set; }
+        GlyphDefinition MensuralCombStemUpFlagFlared { get; }
 
         [DataMember(Name = "mensuralCombStemUpFlagFusa")]
-        GlyphDefinition MensuralCombStemUpFlagFusa { get; set; }
+        GlyphDefinition MensuralCombStemUpFlagFusa { get; }
 
         [DataMember(Name = "mensuralCombStemUpFlagLeft")]
-        GlyphDefinition MensuralCombStemUpFlagLeft { get; set; }
+        GlyphDefinition MensuralCombStemUpFlagLeft { get; }
 
         [DataMember(Name = "mensuralCombStemUpFlagRight")]
-        GlyphDefinition MensuralCombStemUpFlagRight { get; set; }
+        GlyphDefinition MensuralCombStemUpFlagRight { get; }
 
         [DataMember(Name = "mensuralCombStemUpFlagSemiminima")]
-        GlyphDefinition MensuralCombStemUpFlagSemiminima { get; set; }
+        GlyphDefinition MensuralCombStemUpFlagSemiminima { get; }
 
         [DataMember(Name = "mensuralCustosCheckmark")]
-        GlyphDefinition MensuralCustosCheckmark { get; set; }
+        GlyphDefinition MensuralCustosCheckmark { get; }
 
         [DataMember(Name = "mensuralCustosDown")]
-        GlyphDefinition MensuralCustosDown { get; set; }
+        GlyphDefinition MensuralCustosDown { get; }
 
         [DataMember(Name = "mensuralCustosTurn")]
-        GlyphDefinition MensuralCustosTurn { get; set; }
+        GlyphDefinition MensuralCustosTurn { get; }
 
         [DataMember(Name = "mensuralCustosUp")]
-        GlyphDefinition MensuralCustosUp { get; set; }
+        GlyphDefinition MensuralCustosUp { get; }
 
         [DataMember(Name = "mensuralFclef")]
-        GlyphDefinition MensuralFclef { get; set; }
+        GlyphDefinition MensuralFclef { get; }
 
         [DataMember(Name = "mensuralFclefPetrucci")]
-        GlyphDefinition MensuralFclefPetrucci { get; set; }
+        GlyphDefinition MensuralFclefPetrucci { get; }
 
         [DataMember(Name = "mensuralGclef")]
-        GlyphDefinition MensuralGclef { get; set; }
+        GlyphDefinition MensuralGclef { get; }
 
         [DataMember(Name = "mensuralGclefPetrucci")]
-        GlyphDefinition MensuralGclefPetrucci { get; set; }
+        GlyphDefinition MensuralGclefPetrucci { get; }
 
         [DataMember(Name = "mensuralModusImperfectumVert")]
-        GlyphDefinition MensuralModusImperfectumVert { get; set; }
+        GlyphDefinition MensuralModusImperfectumVert { get; }
 
         [DataMember(Name = "mensuralModusPerfectumVert")]
-        GlyphDefinition MensuralModusPerfectumVert { get; set; }
+        GlyphDefinition MensuralModusPerfectumVert { get; }
 
         [DataMember(Name = "mensuralNoteheadLongaBlack")]
-        GlyphDefinition MensuralNoteheadLongaBlack { get; set; }
+        GlyphDefinition MensuralNoteheadLongaBlack { get; }
 
         [DataMember(Name = "mensuralNoteheadLongaBlackVoid")]
-        GlyphDefinition MensuralNoteheadLongaBlackVoid { get; set; }
+        GlyphDefinition MensuralNoteheadLongaBlackVoid { get; }
 
         [DataMember(Name = "mensuralNoteheadLongaVoid")]
-        GlyphDefinition MensuralNoteheadLongaVoid { get; set; }
+        GlyphDefinition MensuralNoteheadLongaVoid { get; }
 
         [DataMember(Name = "mensuralNoteheadLongaWhite")]
-        GlyphDefinition MensuralNoteheadLongaWhite { get; set; }
+        GlyphDefinition MensuralNoteheadLongaWhite { get; }
 
         [DataMember(Name = "mensuralNoteheadMaximaBlack")]
-        GlyphDefinition MensuralNoteheadMaximaBlack { get; set; }
+        GlyphDefinition MensuralNoteheadMaximaBlack { get; }
 
         [DataMember(Name = "mensuralNoteheadMaximaBlackVoid")]
-        GlyphDefinition MensuralNoteheadMaximaBlackVoid { get; set; }
+        GlyphDefinition MensuralNoteheadMaximaBlackVoid { get; }
 
         [DataMember(Name = "mensuralNoteheadMaximaVoid")]
-        GlyphDefinition MensuralNoteheadMaximaVoid { get; set; }
+        GlyphDefinition MensuralNoteheadMaximaVoid { get; }
 
         [DataMember(Name = "mensuralNoteheadMaximaWhite")]
-        GlyphDefinition MensuralNoteheadMaximaWhite { get; set; }
+        GlyphDefinition MensuralNoteheadMaximaWhite { get; }
 
         [DataMember(Name = "mensuralNoteheadMinimaWhite")]
-        GlyphDefinition MensuralNoteheadMinimaWhite { get; set; }
+        GlyphDefinition MensuralNoteheadMinimaWhite { get; }
 
         [DataMember(Name = "mensuralNoteheadSemibrevisBlack")]
-        GlyphDefinition MensuralNoteheadSemibrevisBlack { get; set; }
+        GlyphDefinition MensuralNoteheadSemibrevisBlack { get; }
 
         [DataMember(Name = "mensuralNoteheadSemibrevisBlackVoid")]
-        GlyphDefinition MensuralNoteheadSemibrevisBlackVoid { get; set; }
+        GlyphDefinition MensuralNoteheadSemibrevisBlackVoid { get; }
 
         [DataMember(Name = "mensuralNoteheadSemibrevisBlackVoidTurned")]
-        GlyphDefinition MensuralNoteheadSemibrevisBlackVoidTurned { get; set; }
+        GlyphDefinition MensuralNoteheadSemibrevisBlackVoidTurned { get; }
 
         [DataMember(Name = "mensuralNoteheadSemibrevisVoid")]
-        GlyphDefinition MensuralNoteheadSemibrevisVoid { get; set; }
+        GlyphDefinition MensuralNoteheadSemibrevisVoid { get; }
 
         [DataMember(Name = "mensuralNoteheadSemiminimaWhite")]
-        GlyphDefinition MensuralNoteheadSemiminimaWhite { get; set; }
+        GlyphDefinition MensuralNoteheadSemiminimaWhite { get; }
 
         [DataMember(Name = "mensuralObliqueAsc2ndBlack")]
-        GlyphDefinition MensuralObliqueAsc2NdBlack { get; set; }
+        GlyphDefinition MensuralObliqueAsc2NdBlack { get; }
 
         [DataMember(Name = "mensuralObliqueAsc2ndBlackVoid")]
-        GlyphDefinition MensuralObliqueAsc2NdBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc2NdBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc2ndVoid")]
-        GlyphDefinition MensuralObliqueAsc2NdVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc2NdVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc2ndWhite")]
-        GlyphDefinition MensuralObliqueAsc2NdWhite { get; set; }
+        GlyphDefinition MensuralObliqueAsc2NdWhite { get; }
 
         [DataMember(Name = "mensuralObliqueAsc3rdBlack")]
-        GlyphDefinition MensuralObliqueAsc3RdBlack { get; set; }
+        GlyphDefinition MensuralObliqueAsc3RdBlack { get; }
 
         [DataMember(Name = "mensuralObliqueAsc3rdBlackVoid")]
-        GlyphDefinition MensuralObliqueAsc3RdBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc3RdBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc3rdVoid")]
-        GlyphDefinition MensuralObliqueAsc3RdVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc3RdVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc3rdWhite")]
-        GlyphDefinition MensuralObliqueAsc3RdWhite { get; set; }
+        GlyphDefinition MensuralObliqueAsc3RdWhite { get; }
 
         [DataMember(Name = "mensuralObliqueAsc4thBlack")]
-        GlyphDefinition MensuralObliqueAsc4ThBlack { get; set; }
+        GlyphDefinition MensuralObliqueAsc4ThBlack { get; }
 
         [DataMember(Name = "mensuralObliqueAsc4thBlackVoid")]
-        GlyphDefinition MensuralObliqueAsc4ThBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc4ThBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc4thVoid")]
-        GlyphDefinition MensuralObliqueAsc4ThVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc4ThVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc4thWhite")]
-        GlyphDefinition MensuralObliqueAsc4ThWhite { get; set; }
+        GlyphDefinition MensuralObliqueAsc4ThWhite { get; }
 
         [DataMember(Name = "mensuralObliqueAsc5thBlack")]
-        GlyphDefinition MensuralObliqueAsc5ThBlack { get; set; }
+        GlyphDefinition MensuralObliqueAsc5ThBlack { get; }
 
         [DataMember(Name = "mensuralObliqueAsc5thBlackVoid")]
-        GlyphDefinition MensuralObliqueAsc5ThBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc5ThBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc5thVoid")]
-        GlyphDefinition MensuralObliqueAsc5ThVoid { get; set; }
+        GlyphDefinition MensuralObliqueAsc5ThVoid { get; }
 
         [DataMember(Name = "mensuralObliqueAsc5thWhite")]
-        GlyphDefinition MensuralObliqueAsc5ThWhite { get; set; }
+        GlyphDefinition MensuralObliqueAsc5ThWhite { get; }
 
         [DataMember(Name = "mensuralObliqueDesc2ndBlack")]
-        GlyphDefinition MensuralObliqueDesc2NdBlack { get; set; }
+        GlyphDefinition MensuralObliqueDesc2NdBlack { get; }
 
         [DataMember(Name = "mensuralObliqueDesc2ndBlackVoid")]
-        GlyphDefinition MensuralObliqueDesc2NdBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc2NdBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc2ndVoid")]
-        GlyphDefinition MensuralObliqueDesc2NdVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc2NdVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc2ndWhite")]
-        GlyphDefinition MensuralObliqueDesc2NdWhite { get; set; }
+        GlyphDefinition MensuralObliqueDesc2NdWhite { get; }
 
         [DataMember(Name = "mensuralObliqueDesc3rdBlack")]
-        GlyphDefinition MensuralObliqueDesc3RdBlack { get; set; }
+        GlyphDefinition MensuralObliqueDesc3RdBlack { get; }
 
         [DataMember(Name = "mensuralObliqueDesc3rdBlackVoid")]
-        GlyphDefinition MensuralObliqueDesc3RdBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc3RdBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc3rdVoid")]
-        GlyphDefinition MensuralObliqueDesc3RdVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc3RdVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc3rdWhite")]
-        GlyphDefinition MensuralObliqueDesc3RdWhite { get; set; }
+        GlyphDefinition MensuralObliqueDesc3RdWhite { get; }
 
         [DataMember(Name = "mensuralObliqueDesc4thBlack")]
-        GlyphDefinition MensuralObliqueDesc4ThBlack { get; set; }
+        GlyphDefinition MensuralObliqueDesc4ThBlack { get; }
 
         [DataMember(Name = "mensuralObliqueDesc4thBlackVoid")]
-        GlyphDefinition MensuralObliqueDesc4ThBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc4ThBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc4thVoid")]
-        GlyphDefinition MensuralObliqueDesc4ThVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc4ThVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc4thWhite")]
-        GlyphDefinition MensuralObliqueDesc4ThWhite { get; set; }
+        GlyphDefinition MensuralObliqueDesc4ThWhite { get; }
 
         [DataMember(Name = "mensuralObliqueDesc5thBlack")]
-        GlyphDefinition MensuralObliqueDesc5ThBlack { get; set; }
+        GlyphDefinition MensuralObliqueDesc5ThBlack { get; }
 
         [DataMember(Name = "mensuralObliqueDesc5thBlackVoid")]
-        GlyphDefinition MensuralObliqueDesc5ThBlackVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc5ThBlackVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc5thVoid")]
-        GlyphDefinition MensuralObliqueDesc5ThVoid { get; set; }
+        GlyphDefinition MensuralObliqueDesc5ThVoid { get; }
 
         [DataMember(Name = "mensuralObliqueDesc5thWhite")]
-        GlyphDefinition MensuralObliqueDesc5ThWhite { get; set; }
+        GlyphDefinition MensuralObliqueDesc5ThWhite { get; }
 
         [DataMember(Name = "mensuralProlation1")]
-        GlyphDefinition MensuralProlation1 { get; set; }
+        GlyphDefinition MensuralProlation1 { get; }
 
         [DataMember(Name = "mensuralProlation10")]
-        GlyphDefinition MensuralProlation10 { get; set; }
+        GlyphDefinition MensuralProlation10 { get; }
 
         [DataMember(Name = "mensuralProlation11")]
-        GlyphDefinition MensuralProlation11 { get; set; }
+        GlyphDefinition MensuralProlation11 { get; }
 
         [DataMember(Name = "mensuralProlation2")]
-        GlyphDefinition MensuralProlation2 { get; set; }
+        GlyphDefinition MensuralProlation2 { get; }
 
         [DataMember(Name = "mensuralProlation3")]
-        GlyphDefinition MensuralProlation3 { get; set; }
+        GlyphDefinition MensuralProlation3 { get; }
 
         [DataMember(Name = "mensuralProlation4")]
-        GlyphDefinition MensuralProlation4 { get; set; }
+        GlyphDefinition MensuralProlation4 { get; }
 
         [DataMember(Name = "mensuralProlation5")]
-        GlyphDefinition MensuralProlation5 { get; set; }
+        GlyphDefinition MensuralProlation5 { get; }
 
         [DataMember(Name = "mensuralProlation6")]
-        GlyphDefinition MensuralProlation6 { get; set; }
+        GlyphDefinition MensuralProlation6 { get; }
 
         [DataMember(Name = "mensuralProlation7")]
-        GlyphDefinition MensuralProlation7 { get; set; }
+        GlyphDefinition MensuralProlation7 { get; }
 
         [DataMember(Name = "mensuralProlation8")]
-        GlyphDefinition MensuralProlation8 { get; set; }
+        GlyphDefinition MensuralProlation8 { get; }
 
         [DataMember(Name = "mensuralProlation9")]
-        GlyphDefinition MensuralProlation9 { get; set; }
+        GlyphDefinition MensuralProlation9 { get; }
 
         [DataMember(Name = "mensuralProlationCombiningDot")]
-        GlyphDefinition MensuralProlationCombiningDot { get; set; }
+        GlyphDefinition MensuralProlationCombiningDot { get; }
 
         [DataMember(Name = "mensuralProlationCombiningDotVoid")]
-        GlyphDefinition MensuralProlationCombiningDotVoid { get; set; }
+        GlyphDefinition MensuralProlationCombiningDotVoid { get; }
 
         [DataMember(Name = "mensuralProlationCombiningStroke")]
-        GlyphDefinition MensuralProlationCombiningStroke { get; set; }
+        GlyphDefinition MensuralProlationCombiningStroke { get; }
 
         [DataMember(Name = "mensuralProlationCombiningThreeDots")]
-        GlyphDefinition MensuralProlationCombiningThreeDots { get; set; }
+        GlyphDefinition MensuralProlationCombiningThreeDots { get; }
 
         [DataMember(Name = "mensuralProlationCombiningThreeDotsTri")]
-        GlyphDefinition MensuralProlationCombiningThreeDotsTri { get; set; }
+        GlyphDefinition MensuralProlationCombiningThreeDotsTri { get; }
 
         [DataMember(Name = "mensuralProlationCombiningTwoDots")]
-        GlyphDefinition MensuralProlationCombiningTwoDots { get; set; }
+        GlyphDefinition MensuralProlationCombiningTwoDots { get; }
 
         [DataMember(Name = "mensuralProportion1")]
-        GlyphDefinition MensuralProportion1 { get; set; }
+        GlyphDefinition MensuralProportion1 { get; }
 
         [DataMember(Name = "mensuralProportion2")]
-        GlyphDefinition MensuralProportion2 { get; set; }
+        GlyphDefinition MensuralProportion2 { get; }
 
         [DataMember(Name = "mensuralProportion3")]
-        GlyphDefinition MensuralProportion3 { get; set; }
+        GlyphDefinition MensuralProportion3 { get; }
 
         [DataMember(Name = "mensuralProportion4")]
-        GlyphDefinition MensuralProportion4 { get; set; }
+        GlyphDefinition MensuralProportion4 { get; }
 
         [DataMember(Name = "mensuralProportionMajor")]
-        GlyphDefinition MensuralProportionMajor { get; set; }
+        GlyphDefinition MensuralProportionMajor { get; }
 
         [DataMember(Name = "mensuralProportionMinor")]
-        GlyphDefinition MensuralProportionMinor { get; set; }
+        GlyphDefinition MensuralProportionMinor { get; }
 
         [DataMember(Name = "mensuralProportionProportioDupla1")]
-        GlyphDefinition MensuralProportionProportioDupla1 { get; set; }
+        GlyphDefinition MensuralProportionProportioDupla1 { get; }
 
         [DataMember(Name = "mensuralProportionProportioDupla2")]
-        GlyphDefinition MensuralProportionProportioDupla2 { get; set; }
+        GlyphDefinition MensuralProportionProportioDupla2 { get; }
 
         [DataMember(Name = "mensuralProportionProportioQuadrupla")]
-        GlyphDefinition MensuralProportionProportioQuadrupla { get; set; }
+        GlyphDefinition MensuralProportionProportioQuadrupla { get; }
 
         [DataMember(Name = "mensuralProportionProportioTripla")]
-        GlyphDefinition MensuralProportionProportioTripla { get; set; }
+        GlyphDefinition MensuralProportionProportioTripla { get; }
 
         [DataMember(Name = "mensuralProportionTempusPerfectum")]
-        GlyphDefinition MensuralProportionTempusPerfectum { get; set; }
+        GlyphDefinition MensuralProportionTempusPerfectum { get; }
 
         [DataMember(Name = "mensuralRestBrevis")]
-        GlyphDefinition MensuralRestBrevis { get; set; }
+        GlyphDefinition MensuralRestBrevis { get; }
 
         [DataMember(Name = "mensuralRestFusa")]
-        GlyphDefinition MensuralRestFusa { get; set; }
+        GlyphDefinition MensuralRestFusa { get; }
 
         [DataMember(Name = "mensuralRestLongaImperfecta")]
-        GlyphDefinition MensuralRestLongaImperfecta { get; set; }
+        GlyphDefinition MensuralRestLongaImperfecta { get; }
 
         [DataMember(Name = "mensuralRestLongaPerfecta")]
-        GlyphDefinition MensuralRestLongaPerfecta { get; set; }
+        GlyphDefinition MensuralRestLongaPerfecta { get; }
 
         [DataMember(Name = "mensuralRestMaxima")]
-        GlyphDefinition MensuralRestMaxima { get; set; }
+        GlyphDefinition MensuralRestMaxima { get; }
 
         [DataMember(Name = "mensuralRestMinima")]
-        GlyphDefinition MensuralRestMinima { get; set; }
+        GlyphDefinition MensuralRestMinima { get; }
 
         [DataMember(Name = "mensuralRestSemibrevis")]
-        GlyphDefinition MensuralRestSemibrevis { get; set; }
+        GlyphDefinition MensuralRestSemibrevis { get; }
 
         [DataMember(Name = "mensuralRestSemifusa")]
-        GlyphDefinition MensuralRestSemifusa { get; set; }
+        GlyphDefinition MensuralRestSemifusa { get; }
 
         [DataMember(Name = "mensuralRestSemiminima")]
-        GlyphDefinition MensuralRestSemiminima { get; set; }
+        GlyphDefinition MensuralRestSemiminima { get; }
 
         [DataMember(Name = "mensuralSignumDown")]
-        GlyphDefinition MensuralSignumDown { get; set; }
+        GlyphDefinition MensuralSignumDown { get; }
 
         [DataMember(Name = "mensuralSignumUp")]
-        GlyphDefinition MensuralSignumUp { get; set; }
+        GlyphDefinition MensuralSignumUp { get; }
 
         [DataMember(Name = "mensuralTempusImperfectumHoriz")]
-        GlyphDefinition MensuralTempusImperfectumHoriz { get; set; }
+        GlyphDefinition MensuralTempusImperfectumHoriz { get; }
 
         [DataMember(Name = "mensuralTempusPerfectumHoriz")]
-        GlyphDefinition MensuralTempusPerfectumHoriz { get; set; }
+        GlyphDefinition MensuralTempusPerfectumHoriz { get; }
 
         [DataMember(Name = "mensuralWhiteBrevis")]
-        GlyphDefinition MensuralWhiteBrevis { get; set; }
+        GlyphDefinition MensuralWhiteBrevis { get; }
 
         [DataMember(Name = "mensuralWhiteFusa")]
-        GlyphDefinition MensuralWhiteFusa { get; set; }
+        GlyphDefinition MensuralWhiteFusa { get; }
 
         [DataMember(Name = "mensuralWhiteLonga")]
-        GlyphDefinition MensuralWhiteLonga { get; set; }
+        GlyphDefinition MensuralWhiteLonga { get; }
 
         [DataMember(Name = "mensuralWhiteMaxima")]
-        GlyphDefinition MensuralWhiteMaxima { get; set; }
+        GlyphDefinition MensuralWhiteMaxima { get; }
 
         [DataMember(Name = "mensuralWhiteMinima")]
-        GlyphDefinition MensuralWhiteMinima { get; set; }
+        GlyphDefinition MensuralWhiteMinima { get; }
 
         [DataMember(Name = "mensuralWhiteSemiminima")]
-        GlyphDefinition MensuralWhiteSemiminima { get; set; }
+        GlyphDefinition MensuralWhiteSemiminima { get; }
 
         [DataMember(Name = "metricModulationArrowLeft")]
-        GlyphDefinition MetricModulationArrowLeft { get; set; }
+        GlyphDefinition MetricModulationArrowLeft { get; }
 
         [DataMember(Name = "metricModulationArrowRight")]
-        GlyphDefinition MetricModulationArrowRight { get; set; }
+        GlyphDefinition MetricModulationArrowRight { get; }
 
         [DataMember(Name = "miscDoNotCopy")]
-        GlyphDefinition MiscDoNotCopy { get; set; }
+        GlyphDefinition MiscDoNotCopy { get; }
 
         [DataMember(Name = "miscDoNotPhotocopy")]
-        GlyphDefinition MiscDoNotPhotocopy { get; set; }
+        GlyphDefinition MiscDoNotPhotocopy { get; }
 
         [DataMember(Name = "miscEyeglasses")]
-        GlyphDefinition MiscEyeglasses { get; set; }
+        GlyphDefinition MiscEyeglasses { get; }
 
         [DataMember(Name = "note1024thDown")]
-        GlyphDefinition Note1024ThDown { get; set; }
+        GlyphDefinition Note1024ThDown { get; }
 
         [DataMember(Name = "note1024thUp")]
-        GlyphDefinition Note1024ThUp { get; set; }
+        GlyphDefinition Note1024ThUp { get; }
 
         [DataMember(Name = "note128thDown")]
-        GlyphDefinition Note128ThDown { get; set; }
+        GlyphDefinition Note128ThDown { get; }
 
         [DataMember(Name = "note128thUp")]
-        GlyphDefinition Note128ThUp { get; set; }
+        GlyphDefinition Note128ThUp { get; }
 
         [DataMember(Name = "note16thDown")]
-        GlyphDefinition Note16ThDown { get; set; }
+        GlyphDefinition Note16ThDown { get; }
 
         [DataMember(Name = "note16thUp")]
-        GlyphDefinition Note16ThUp { get; set; }
+        GlyphDefinition Note16ThUp { get; }
 
         [DataMember(Name = "note256thDown")]
-        GlyphDefinition Note256ThDown { get; set; }
+        GlyphDefinition Note256ThDown { get; }
 
         [DataMember(Name = "note256thUp")]
-        GlyphDefinition Note256ThUp { get; set; }
+        GlyphDefinition Note256ThUp { get; }
 
         [DataMember(Name = "note32ndDown")]
-        GlyphDefinition Note32NdDown { get; set; }
+        GlyphDefinition Note32NdDown { get; }
 
         [DataMember(Name = "note32ndUp")]
-        GlyphDefinition Note32NdUp { get; set; }
+        GlyphDefinition Note32NdUp { get; }
 
         [DataMember(Name = "note512thDown")]
-        GlyphDefinition Note512ThDown { get; set; }
+        GlyphDefinition Note512ThDown { get; }
 
         [DataMember(Name = "note512thUp")]
-        GlyphDefinition Note512ThUp { get; set; }
+        GlyphDefinition Note512ThUp { get; }
 
         [DataMember(Name = "note64thDown")]
-        GlyphDefinition Note64ThDown { get; set; }
+        GlyphDefinition Note64ThDown { get; }
 
         [DataMember(Name = "note64thUp")]
-        GlyphDefinition Note64ThUp { get; set; }
+        GlyphDefinition Note64ThUp { get; }
 
         [DataMember(Name = "note8thDown")]
-        GlyphDefinition Note8ThDown { get; set; }
+        GlyphDefinition Note8ThDown { get; }
 
         [DataMember(Name = "note8thUp")]
-        GlyphDefinition Note8ThUp { get; set; }
+        GlyphDefinition Note8ThUp { get; }
 
         [DataMember(Name = "noteABlack")]
-        GlyphDefinition NoteABlack { get; set; }
+        GlyphDefinition NoteABlack { get; }
 
         [DataMember(Name = "noteAFlatBlack")]
-        GlyphDefinition NoteAFlatBlack { get; set; }
+        GlyphDefinition NoteAFlatBlack { get; }
 
         [DataMember(Name = "noteAFlatHalf")]
-        GlyphDefinition NoteAFlatHalf { get; set; }
+        GlyphDefinition NoteAFlatHalf { get; }
 
         [DataMember(Name = "noteAFlatWhole")]
-        GlyphDefinition NoteAFlatWhole { get; set; }
+        GlyphDefinition NoteAFlatWhole { get; }
 
         [DataMember(Name = "noteAHalf")]
-        GlyphDefinition NoteAHalf { get; set; }
+        GlyphDefinition NoteAHalf { get; }
 
         [DataMember(Name = "noteASharpBlack")]
-        GlyphDefinition NoteASharpBlack { get; set; }
+        GlyphDefinition NoteASharpBlack { get; }
 
         [DataMember(Name = "noteASharpHalf")]
-        GlyphDefinition NoteASharpHalf { get; set; }
+        GlyphDefinition NoteASharpHalf { get; }
 
         [DataMember(Name = "noteASharpWhole")]
-        GlyphDefinition NoteASharpWhole { get; set; }
+        GlyphDefinition NoteASharpWhole { get; }
 
         [DataMember(Name = "noteAWhole")]
-        GlyphDefinition NoteAWhole { get; set; }
+        GlyphDefinition NoteAWhole { get; }
 
         [DataMember(Name = "noteBBlack")]
-        GlyphDefinition NoteBBlack { get; set; }
+        GlyphDefinition NoteBBlack { get; }
 
         [DataMember(Name = "noteBFlatBlack")]
-        GlyphDefinition NoteBFlatBlack { get; set; }
+        GlyphDefinition NoteBFlatBlack { get; }
 
         [DataMember(Name = "noteBFlatHalf")]
-        GlyphDefinition NoteBFlatHalf { get; set; }
+        GlyphDefinition NoteBFlatHalf { get; }
 
         [DataMember(Name = "noteBFlatWhole")]
-        GlyphDefinition NoteBFlatWhole { get; set; }
+        GlyphDefinition NoteBFlatWhole { get; }
 
         [DataMember(Name = "noteBHalf")]
-        GlyphDefinition NoteBHalf { get; set; }
+        GlyphDefinition NoteBHalf { get; }
 
         [DataMember(Name = "noteBSharpBlack")]
-        GlyphDefinition NoteBSharpBlack { get; set; }
+        GlyphDefinition NoteBSharpBlack { get; }
 
         [DataMember(Name = "noteBSharpHalf")]
-        GlyphDefinition NoteBSharpHalf { get; set; }
+        GlyphDefinition NoteBSharpHalf { get; }
 
         [DataMember(Name = "noteBSharpWhole")]
-        GlyphDefinition NoteBSharpWhole { get; set; }
+        GlyphDefinition NoteBSharpWhole { get; }
 
         [DataMember(Name = "noteBWhole")]
-        GlyphDefinition NoteBWhole { get; set; }
+        GlyphDefinition NoteBWhole { get; }
 
         [DataMember(Name = "noteCBlack")]
-        GlyphDefinition NoteCBlack { get; set; }
+        GlyphDefinition NoteCBlack { get; }
 
         [DataMember(Name = "noteCFlatBlack")]
-        GlyphDefinition NoteCFlatBlack { get; set; }
+        GlyphDefinition NoteCFlatBlack { get; }
 
         [DataMember(Name = "noteCFlatHalf")]
-        GlyphDefinition NoteCFlatHalf { get; set; }
+        GlyphDefinition NoteCFlatHalf { get; }
 
         [DataMember(Name = "noteCFlatWhole")]
-        GlyphDefinition NoteCFlatWhole { get; set; }
+        GlyphDefinition NoteCFlatWhole { get; }
 
         [DataMember(Name = "noteCHalf")]
-        GlyphDefinition NoteCHalf { get; set; }
+        GlyphDefinition NoteCHalf { get; }
 
         [DataMember(Name = "noteCSharpBlack")]
-        GlyphDefinition NoteCSharpBlack { get; set; }
+        GlyphDefinition NoteCSharpBlack { get; }
 
         [DataMember(Name = "noteCSharpHalf")]
-        GlyphDefinition NoteCSharpHalf { get; set; }
+        GlyphDefinition NoteCSharpHalf { get; }
 
         [DataMember(Name = "noteCSharpWhole")]
-        GlyphDefinition NoteCSharpWhole { get; set; }
+        GlyphDefinition NoteCSharpWhole { get; }
 
         [DataMember(Name = "noteCWhole")]
-        GlyphDefinition NoteCWhole { get; set; }
+        GlyphDefinition NoteCWhole { get; }
 
         [DataMember(Name = "noteDBlack")]
-        GlyphDefinition NoteDBlack { get; set; }
+        GlyphDefinition NoteDBlack { get; }
 
         [DataMember(Name = "noteDFlatBlack")]
-        GlyphDefinition NoteDFlatBlack { get; set; }
+        GlyphDefinition NoteDFlatBlack { get; }
 
         [DataMember(Name = "noteDFlatHalf")]
-        GlyphDefinition NoteDFlatHalf { get; set; }
+        GlyphDefinition NoteDFlatHalf { get; }
 
         [DataMember(Name = "noteDFlatWhole")]
-        GlyphDefinition NoteDFlatWhole { get; set; }
+        GlyphDefinition NoteDFlatWhole { get; }
 
         [DataMember(Name = "noteDHalf")]
-        GlyphDefinition NoteDHalf { get; set; }
+        GlyphDefinition NoteDHalf { get; }
 
         [DataMember(Name = "noteDSharpBlack")]
-        GlyphDefinition NoteDSharpBlack { get; set; }
+        GlyphDefinition NoteDSharpBlack { get; }
 
         [DataMember(Name = "noteDSharpHalf")]
-        GlyphDefinition NoteDSharpHalf { get; set; }
+        GlyphDefinition NoteDSharpHalf { get; }
 
         [DataMember(Name = "noteDSharpWhole")]
-        GlyphDefinition NoteDSharpWhole { get; set; }
+        GlyphDefinition NoteDSharpWhole { get; }
 
         [DataMember(Name = "noteDWhole")]
-        GlyphDefinition NoteDWhole { get; set; }
+        GlyphDefinition NoteDWhole { get; }
 
         [DataMember(Name = "noteDoBlack")]
-        GlyphDefinition NoteDoBlack { get; set; }
+        GlyphDefinition NoteDoBlack { get; }
 
         [DataMember(Name = "noteDoHalf")]
-        GlyphDefinition NoteDoHalf { get; set; }
+        GlyphDefinition NoteDoHalf { get; }
 
         [DataMember(Name = "noteDoWhole")]
-        GlyphDefinition NoteDoWhole { get; set; }
+        GlyphDefinition NoteDoWhole { get; }
 
         [DataMember(Name = "noteDoubleWhole")]
-        GlyphDefinition NoteDoubleWhole { get; set; }
+        GlyphDefinition NoteDoubleWhole { get; }
 
         [DataMember(Name = "noteDoubleWholeSquare")]
-        GlyphDefinition NoteDoubleWholeSquare { get; set; }
+        GlyphDefinition NoteDoubleWholeSquare { get; }
 
         [DataMember(Name = "noteEBlack")]
-        GlyphDefinition NoteEBlack { get; set; }
+        GlyphDefinition NoteEBlack { get; }
 
         [DataMember(Name = "noteEFlatBlack")]
-        GlyphDefinition NoteEFlatBlack { get; set; }
+        GlyphDefinition NoteEFlatBlack { get; }
 
         [DataMember(Name = "noteEFlatHalf")]
-        GlyphDefinition NoteEFlatHalf { get; set; }
+        GlyphDefinition NoteEFlatHalf { get; }
 
         [DataMember(Name = "noteEFlatWhole")]
-        GlyphDefinition NoteEFlatWhole { get; set; }
+        GlyphDefinition NoteEFlatWhole { get; }
 
         [DataMember(Name = "noteEHalf")]
-        GlyphDefinition NoteEHalf { get; set; }
+        GlyphDefinition NoteEHalf { get; }
 
         [DataMember(Name = "noteESharpBlack")]
-        GlyphDefinition NoteESharpBlack { get; set; }
+        GlyphDefinition NoteESharpBlack { get; }
 
         [DataMember(Name = "noteESharpHalf")]
-        GlyphDefinition NoteESharpHalf { get; set; }
+        GlyphDefinition NoteESharpHalf { get; }
 
         [DataMember(Name = "noteESharpWhole")]
-        GlyphDefinition NoteESharpWhole { get; set; }
+        GlyphDefinition NoteESharpWhole { get; }
 
         [DataMember(Name = "noteEWhole")]
-        GlyphDefinition NoteEWhole { get; set; }
+        GlyphDefinition NoteEWhole { get; }
 
         [DataMember(Name = "noteEmptyBlack")]
-        GlyphDefinition NoteEmptyBlack { get; set; }
+        GlyphDefinition NoteEmptyBlack { get; }
 
         [DataMember(Name = "noteEmptyHalf")]
-        GlyphDefinition NoteEmptyHalf { get; set; }
+        GlyphDefinition NoteEmptyHalf { get; }
 
         [DataMember(Name = "noteEmptyWhole")]
-        GlyphDefinition NoteEmptyWhole { get; set; }
+        GlyphDefinition NoteEmptyWhole { get; }
 
         [DataMember(Name = "noteFBlack")]
-        GlyphDefinition NoteFBlack { get; set; }
+        GlyphDefinition NoteFBlack { get; }
 
         [DataMember(Name = "noteFFlatBlack")]
-        GlyphDefinition NoteFFlatBlack { get; set; }
+        GlyphDefinition NoteFFlatBlack { get; }
 
         [DataMember(Name = "noteFFlatHalf")]
-        GlyphDefinition NoteFFlatHalf { get; set; }
+        GlyphDefinition NoteFFlatHalf { get; }
 
         [DataMember(Name = "noteFFlatWhole")]
-        GlyphDefinition NoteFFlatWhole { get; set; }
+        GlyphDefinition NoteFFlatWhole { get; }
 
         [DataMember(Name = "noteFHalf")]
-        GlyphDefinition NoteFHalf { get; set; }
+        GlyphDefinition NoteFHalf { get; }
 
         [DataMember(Name = "noteFSharpBlack")]
-        GlyphDefinition NoteFSharpBlack { get; set; }
+        GlyphDefinition NoteFSharpBlack { get; }
 
         [DataMember(Name = "noteFSharpHalf")]
-        GlyphDefinition NoteFSharpHalf { get; set; }
+        GlyphDefinition NoteFSharpHalf { get; }
 
         [DataMember(Name = "noteFSharpWhole")]
-        GlyphDefinition NoteFSharpWhole { get; set; }
+        GlyphDefinition NoteFSharpWhole { get; }
 
         [DataMember(Name = "noteFWhole")]
-        GlyphDefinition NoteFWhole { get; set; }
+        GlyphDefinition NoteFWhole { get; }
 
         [DataMember(Name = "noteFaBlack")]
-        GlyphDefinition NoteFaBlack { get; set; }
+        GlyphDefinition NoteFaBlack { get; }
 
         [DataMember(Name = "noteFaHalf")]
-        GlyphDefinition NoteFaHalf { get; set; }
+        GlyphDefinition NoteFaHalf { get; }
 
         [DataMember(Name = "noteFaWhole")]
-        GlyphDefinition NoteFaWhole { get; set; }
+        GlyphDefinition NoteFaWhole { get; }
 
         [DataMember(Name = "noteGBlack")]
-        GlyphDefinition NoteGBlack { get; set; }
+        GlyphDefinition NoteGBlack { get; }
 
         [DataMember(Name = "noteGFlatBlack")]
-        GlyphDefinition NoteGFlatBlack { get; set; }
+        GlyphDefinition NoteGFlatBlack { get; }
 
         [DataMember(Name = "noteGFlatHalf")]
-        GlyphDefinition NoteGFlatHalf { get; set; }
+        GlyphDefinition NoteGFlatHalf { get; }
 
         [DataMember(Name = "noteGFlatWhole")]
-        GlyphDefinition NoteGFlatWhole { get; set; }
+        GlyphDefinition NoteGFlatWhole { get; }
 
         [DataMember(Name = "noteGHalf")]
-        GlyphDefinition NoteGHalf { get; set; }
+        GlyphDefinition NoteGHalf { get; }
 
         [DataMember(Name = "noteGSharpBlack")]
-        GlyphDefinition NoteGSharpBlack { get; set; }
+        GlyphDefinition NoteGSharpBlack { get; }
 
         [DataMember(Name = "noteGSharpHalf")]
-        GlyphDefinition NoteGSharpHalf { get; set; }
+        GlyphDefinition NoteGSharpHalf { get; }
 
         [DataMember(Name = "noteGSharpWhole")]
-        GlyphDefinition NoteGSharpWhole { get; set; }
+        GlyphDefinition NoteGSharpWhole { get; }
 
         [DataMember(Name = "noteGWhole")]
-        GlyphDefinition NoteGWhole { get; set; }
+        GlyphDefinition NoteGWhole { get; }
 
         [DataMember(Name = "noteHBlack")]
-        GlyphDefinition NoteHBlack { get; set; }
+        GlyphDefinition NoteHBlack { get; }
 
         [DataMember(Name = "noteHHalf")]
-        GlyphDefinition NoteHHalf { get; set; }
+        GlyphDefinition NoteHHalf { get; }
 
         [DataMember(Name = "noteHSharpBlack")]
-        GlyphDefinition NoteHSharpBlack { get; set; }
+        GlyphDefinition NoteHSharpBlack { get; }
 
         [DataMember(Name = "noteHSharpHalf")]
-        GlyphDefinition NoteHSharpHalf { get; set; }
+        GlyphDefinition NoteHSharpHalf { get; }
 
         [DataMember(Name = "noteHSharpWhole")]
-        GlyphDefinition NoteHSharpWhole { get; set; }
+        GlyphDefinition NoteHSharpWhole { get; }
 
         [DataMember(Name = "noteHWhole")]
-        GlyphDefinition NoteHWhole { get; set; }
+        GlyphDefinition NoteHWhole { get; }
 
         [DataMember(Name = "noteHalfDown")]
-        GlyphDefinition NoteHalfDown { get; set; }
+        GlyphDefinition NoteHalfDown { get; }
 
         [DataMember(Name = "noteHalfUp")]
-        GlyphDefinition NoteHalfUp { get; set; }
+        GlyphDefinition NoteHalfUp { get; }
 
         [DataMember(Name = "noteLaBlack")]
-        GlyphDefinition NoteLaBlack { get; set; }
+        GlyphDefinition NoteLaBlack { get; }
 
         [DataMember(Name = "noteLaHalf")]
-        GlyphDefinition NoteLaHalf { get; set; }
+        GlyphDefinition NoteLaHalf { get; }
 
         [DataMember(Name = "noteLaWhole")]
-        GlyphDefinition NoteLaWhole { get; set; }
+        GlyphDefinition NoteLaWhole { get; }
 
         [DataMember(Name = "noteMiBlack")]
-        GlyphDefinition NoteMiBlack { get; set; }
+        GlyphDefinition NoteMiBlack { get; }
 
         [DataMember(Name = "noteMiHalf")]
-        GlyphDefinition NoteMiHalf { get; set; }
+        GlyphDefinition NoteMiHalf { get; }
 
         [DataMember(Name = "noteMiWhole")]
-        GlyphDefinition NoteMiWhole { get; set; }
+        GlyphDefinition NoteMiWhole { get; }
 
         [DataMember(Name = "noteQuarterDown")]
-        GlyphDefinition NoteQuarterDown { get; set; }
+        GlyphDefinition NoteQuarterDown { get; }
 
         [DataMember(Name = "noteQuarterUp")]
-        GlyphDefinition NoteQuarterUp { get; set; }
+        GlyphDefinition NoteQuarterUp { get; }
 
         [DataMember(Name = "noteReBlack")]
-        GlyphDefinition NoteReBlack { get; set; }
+        GlyphDefinition NoteReBlack { get; }
 
         [DataMember(Name = "noteReHalf")]
-        GlyphDefinition NoteReHalf { get; set; }
+        GlyphDefinition NoteReHalf { get; }
 
         [DataMember(Name = "noteReWhole")]
-        GlyphDefinition NoteReWhole { get; set; }
+        GlyphDefinition NoteReWhole { get; }
 
         [DataMember(Name = "noteShapeArrowheadLeftBlack")]
-        GlyphDefinition NoteShapeArrowheadLeftBlack { get; set; }
+        GlyphDefinition NoteShapeArrowheadLeftBlack { get; }
 
         [DataMember(Name = "noteShapeArrowheadLeftWhite")]
-        GlyphDefinition NoteShapeArrowheadLeftWhite { get; set; }
+        GlyphDefinition NoteShapeArrowheadLeftWhite { get; }
 
         [DataMember(Name = "noteShapeDiamondBlack")]
-        GlyphDefinition NoteShapeDiamondBlack { get; set; }
+        GlyphDefinition NoteShapeDiamondBlack { get; }
 
         [DataMember(Name = "noteShapeDiamondWhite")]
-        GlyphDefinition NoteShapeDiamondWhite { get; set; }
+        GlyphDefinition NoteShapeDiamondWhite { get; }
 
         [DataMember(Name = "noteShapeIsoscelesTriangleBlack")]
-        GlyphDefinition NoteShapeIsoscelesTriangleBlack { get; set; }
+        GlyphDefinition NoteShapeIsoscelesTriangleBlack { get; }
 
         [DataMember(Name = "noteShapeIsoscelesTriangleWhite")]
-        GlyphDefinition NoteShapeIsoscelesTriangleWhite { get; set; }
+        GlyphDefinition NoteShapeIsoscelesTriangleWhite { get; }
 
         [DataMember(Name = "noteShapeKeystoneBlack")]
-        GlyphDefinition NoteShapeKeystoneBlack { get; set; }
+        GlyphDefinition NoteShapeKeystoneBlack { get; }
 
         [DataMember(Name = "noteShapeKeystoneWhite")]
-        GlyphDefinition NoteShapeKeystoneWhite { get; set; }
+        GlyphDefinition NoteShapeKeystoneWhite { get; }
 
         [DataMember(Name = "noteShapeMoonBlack")]
-        GlyphDefinition NoteShapeMoonBlack { get; set; }
+        GlyphDefinition NoteShapeMoonBlack { get; }
 
         [DataMember(Name = "noteShapeMoonLeftBlack")]
-        GlyphDefinition NoteShapeMoonLeftBlack { get; set; }
+        GlyphDefinition NoteShapeMoonLeftBlack { get; }
 
         [DataMember(Name = "noteShapeMoonLeftWhite")]
-        GlyphDefinition NoteShapeMoonLeftWhite { get; set; }
+        GlyphDefinition NoteShapeMoonLeftWhite { get; }
 
         [DataMember(Name = "noteShapeMoonWhite")]
-        GlyphDefinition NoteShapeMoonWhite { get; set; }
+        GlyphDefinition NoteShapeMoonWhite { get; }
 
         [DataMember(Name = "noteShapeQuarterMoonBlack")]
-        GlyphDefinition NoteShapeQuarterMoonBlack { get; set; }
+        GlyphDefinition NoteShapeQuarterMoonBlack { get; }
 
         [DataMember(Name = "noteShapeQuarterMoonWhite")]
-        GlyphDefinition NoteShapeQuarterMoonWhite { get; set; }
+        GlyphDefinition NoteShapeQuarterMoonWhite { get; }
 
         [DataMember(Name = "noteShapeRoundBlack")]
-        GlyphDefinition NoteShapeRoundBlack { get; set; }
+        GlyphDefinition NoteShapeRoundBlack { get; }
 
         [DataMember(Name = "noteShapeRoundWhite")]
-        GlyphDefinition NoteShapeRoundWhite { get; set; }
+        GlyphDefinition NoteShapeRoundWhite { get; }
 
         [DataMember(Name = "noteShapeSquareBlack")]
-        GlyphDefinition NoteShapeSquareBlack { get; set; }
+        GlyphDefinition NoteShapeSquareBlack { get; }
 
         [DataMember(Name = "noteShapeSquareWhite")]
-        GlyphDefinition NoteShapeSquareWhite { get; set; }
+        GlyphDefinition NoteShapeSquareWhite { get; }
 
         [DataMember(Name = "noteShapeTriangleLeftBlack")]
-        GlyphDefinition NoteShapeTriangleLeftBlack { get; set; }
+        GlyphDefinition NoteShapeTriangleLeftBlack { get; }
 
         [DataMember(Name = "noteShapeTriangleLeftWhite")]
-        GlyphDefinition NoteShapeTriangleLeftWhite { get; set; }
+        GlyphDefinition NoteShapeTriangleLeftWhite { get; }
 
         [DataMember(Name = "noteShapeTriangleRightBlack")]
-        GlyphDefinition NoteShapeTriangleRightBlack { get; set; }
+        GlyphDefinition NoteShapeTriangleRightBlack { get; }
 
         [DataMember(Name = "noteShapeTriangleRightWhite")]
-        GlyphDefinition NoteShapeTriangleRightWhite { get; set; }
+        GlyphDefinition NoteShapeTriangleRightWhite { get; }
 
         [DataMember(Name = "noteShapeTriangleRoundBlack")]
-        GlyphDefinition NoteShapeTriangleRoundBlack { get; set; }
+        GlyphDefinition NoteShapeTriangleRoundBlack { get; }
 
         [DataMember(Name = "noteShapeTriangleRoundLeftBlack")]
-        GlyphDefinition NoteShapeTriangleRoundLeftBlack { get; set; }
+        GlyphDefinition NoteShapeTriangleRoundLeftBlack { get; }
 
         [DataMember(Name = "noteShapeTriangleRoundLeftWhite")]
-        GlyphDefinition NoteShapeTriangleRoundLeftWhite { get; set; }
+        GlyphDefinition NoteShapeTriangleRoundLeftWhite { get; }
 
         [DataMember(Name = "noteShapeTriangleRoundWhite")]
-        GlyphDefinition NoteShapeTriangleRoundWhite { get; set; }
+        GlyphDefinition NoteShapeTriangleRoundWhite { get; }
 
         [DataMember(Name = "noteShapeTriangleUpBlack")]
-        GlyphDefinition NoteShapeTriangleUpBlack { get; set; }
+        GlyphDefinition NoteShapeTriangleUpBlack { get; }
 
         [DataMember(Name = "noteShapeTriangleUpWhite")]
-        GlyphDefinition NoteShapeTriangleUpWhite { get; set; }
+        GlyphDefinition NoteShapeTriangleUpWhite { get; }
 
         [DataMember(Name = "noteSiBlack")]
-        GlyphDefinition NoteSiBlack { get; set; }
+        GlyphDefinition NoteSiBlack { get; }
 
         [DataMember(Name = "noteSiHalf")]
-        GlyphDefinition NoteSiHalf { get; set; }
+        GlyphDefinition NoteSiHalf { get; }
 
         [DataMember(Name = "noteSiWhole")]
-        GlyphDefinition NoteSiWhole { get; set; }
+        GlyphDefinition NoteSiWhole { get; }
 
         [DataMember(Name = "noteSoBlack")]
-        GlyphDefinition NoteSoBlack { get; set; }
+        GlyphDefinition NoteSoBlack { get; }
 
         [DataMember(Name = "noteSoHalf")]
-        GlyphDefinition NoteSoHalf { get; set; }
+        GlyphDefinition NoteSoHalf { get; }
 
         [DataMember(Name = "noteSoWhole")]
-        GlyphDefinition NoteSoWhole { get; set; }
+        GlyphDefinition NoteSoWhole { get; }
 
         [DataMember(Name = "noteTiBlack")]
-        GlyphDefinition NoteTiBlack { get; set; }
+        GlyphDefinition NoteTiBlack { get; }
 
         [DataMember(Name = "noteTiHalf")]
-        GlyphDefinition NoteTiHalf { get; set; }
+        GlyphDefinition NoteTiHalf { get; }
 
         [DataMember(Name = "noteTiWhole")]
-        GlyphDefinition NoteTiWhole { get; set; }
+        GlyphDefinition NoteTiWhole { get; }
 
         [DataMember(Name = "noteWhole")]
-        GlyphDefinition NoteWhole { get; set; }
+        GlyphDefinition NoteWhole { get; }
 
         [DataMember(Name = "noteheadBlack")]
-        GlyphDefinition NoteheadBlack { get; set; }
+        GlyphDefinition NoteheadBlack { get; }
 
         [DataMember(Name = "noteheadCircleSlash")]
-        GlyphDefinition NoteheadCircleSlash { get; set; }
+        GlyphDefinition NoteheadCircleSlash { get; }
 
         [DataMember(Name = "noteheadCircleX")]
-        GlyphDefinition NoteheadCircleX { get; set; }
+        GlyphDefinition NoteheadCircleX { get; }
 
         [DataMember(Name = "noteheadCircleXDoubleWhole")]
-        GlyphDefinition NoteheadCircleXDoubleWhole { get; set; }
+        GlyphDefinition NoteheadCircleXDoubleWhole { get; }
 
         [DataMember(Name = "noteheadCircleXHalf")]
-        GlyphDefinition NoteheadCircleXHalf { get; set; }
+        GlyphDefinition NoteheadCircleXHalf { get; }
 
         [DataMember(Name = "noteheadCircleXWhole")]
-        GlyphDefinition NoteheadCircleXWhole { get; set; }
+        GlyphDefinition NoteheadCircleXWhole { get; }
 
         [DataMember(Name = "noteheadCircledBlack")]
-        GlyphDefinition NoteheadCircledBlack { get; set; }
+        GlyphDefinition NoteheadCircledBlack { get; }
 
         [DataMember(Name = "noteheadCircledBlackLarge")]
-        GlyphDefinition NoteheadCircledBlackLarge { get; set; }
+        GlyphDefinition NoteheadCircledBlackLarge { get; }
 
         [DataMember(Name = "noteheadCircledDoubleWhole")]
-        GlyphDefinition NoteheadCircledDoubleWhole { get; set; }
+        GlyphDefinition NoteheadCircledDoubleWhole { get; }
 
         [DataMember(Name = "noteheadCircledDoubleWholeLarge")]
-        GlyphDefinition NoteheadCircledDoubleWholeLarge { get; set; }
+        GlyphDefinition NoteheadCircledDoubleWholeLarge { get; }
 
         [DataMember(Name = "noteheadCircledHalf")]
-        GlyphDefinition NoteheadCircledHalf { get; set; }
+        GlyphDefinition NoteheadCircledHalf { get; }
 
         [DataMember(Name = "noteheadCircledHalfLarge")]
-        GlyphDefinition NoteheadCircledHalfLarge { get; set; }
+        GlyphDefinition NoteheadCircledHalfLarge { get; }
 
         [DataMember(Name = "noteheadCircledWhole")]
-        GlyphDefinition NoteheadCircledWhole { get; set; }
+        GlyphDefinition NoteheadCircledWhole { get; }
 
         [DataMember(Name = "noteheadCircledWholeLarge")]
-        GlyphDefinition NoteheadCircledWholeLarge { get; set; }
+        GlyphDefinition NoteheadCircledWholeLarge { get; }
 
         [DataMember(Name = "noteheadCircledXLarge")]
-        GlyphDefinition NoteheadCircledXLarge { get; set; }
+        GlyphDefinition NoteheadCircledXLarge { get; }
 
         [DataMember(Name = "noteheadClusterDoubleWhole2nd")]
-        GlyphDefinition NoteheadClusterDoubleWhole2Nd { get; set; }
+        GlyphDefinition NoteheadClusterDoubleWhole2Nd { get; }
 
         [DataMember(Name = "noteheadClusterDoubleWhole3rd")]
-        GlyphDefinition NoteheadClusterDoubleWhole3Rd { get; set; }
+        GlyphDefinition NoteheadClusterDoubleWhole3Rd { get; }
 
         [DataMember(Name = "noteheadClusterDoubleWholeBottom")]
-        GlyphDefinition NoteheadClusterDoubleWholeBottom { get; set; }
+        GlyphDefinition NoteheadClusterDoubleWholeBottom { get; }
 
         [DataMember(Name = "noteheadClusterDoubleWholeMiddle")]
-        GlyphDefinition NoteheadClusterDoubleWholeMiddle { get; set; }
+        GlyphDefinition NoteheadClusterDoubleWholeMiddle { get; }
 
         [DataMember(Name = "noteheadClusterDoubleWholeTop")]
-        GlyphDefinition NoteheadClusterDoubleWholeTop { get; set; }
+        GlyphDefinition NoteheadClusterDoubleWholeTop { get; }
 
         [DataMember(Name = "noteheadClusterHalf2nd")]
-        GlyphDefinition NoteheadClusterHalf2Nd { get; set; }
+        GlyphDefinition NoteheadClusterHalf2Nd { get; }
 
         [DataMember(Name = "noteheadClusterHalf3rd")]
-        GlyphDefinition NoteheadClusterHalf3Rd { get; set; }
+        GlyphDefinition NoteheadClusterHalf3Rd { get; }
 
         [DataMember(Name = "noteheadClusterHalfBottom")]
-        GlyphDefinition NoteheadClusterHalfBottom { get; set; }
+        GlyphDefinition NoteheadClusterHalfBottom { get; }
 
         [DataMember(Name = "noteheadClusterHalfMiddle")]
-        GlyphDefinition NoteheadClusterHalfMiddle { get; set; }
+        GlyphDefinition NoteheadClusterHalfMiddle { get; }
 
         [DataMember(Name = "noteheadClusterHalfTop")]
-        GlyphDefinition NoteheadClusterHalfTop { get; set; }
+        GlyphDefinition NoteheadClusterHalfTop { get; }
 
         [DataMember(Name = "noteheadClusterQuarter2nd")]
-        GlyphDefinition NoteheadClusterQuarter2Nd { get; set; }
+        GlyphDefinition NoteheadClusterQuarter2Nd { get; }
 
         [DataMember(Name = "noteheadClusterQuarter3rd")]
-        GlyphDefinition NoteheadClusterQuarter3Rd { get; set; }
+        GlyphDefinition NoteheadClusterQuarter3Rd { get; }
 
         [DataMember(Name = "noteheadClusterQuarterBottom")]
-        GlyphDefinition NoteheadClusterQuarterBottom { get; set; }
+        GlyphDefinition NoteheadClusterQuarterBottom { get; }
 
         [DataMember(Name = "noteheadClusterQuarterMiddle")]
-        GlyphDefinition NoteheadClusterQuarterMiddle { get; set; }
+        GlyphDefinition NoteheadClusterQuarterMiddle { get; }
 
         [DataMember(Name = "noteheadClusterQuarterTop")]
-        GlyphDefinition NoteheadClusterQuarterTop { get; set; }
+        GlyphDefinition NoteheadClusterQuarterTop { get; }
 
         [DataMember(Name = "noteheadClusterRoundBlack")]
-        GlyphDefinition NoteheadClusterRoundBlack { get; set; }
+        GlyphDefinition NoteheadClusterRoundBlack { get; }
 
         [DataMember(Name = "noteheadClusterRoundWhite")]
-        GlyphDefinition NoteheadClusterRoundWhite { get; set; }
+        GlyphDefinition NoteheadClusterRoundWhite { get; }
 
         [DataMember(Name = "noteheadClusterSquareBlack")]
-        GlyphDefinition NoteheadClusterSquareBlack { get; set; }
+        GlyphDefinition NoteheadClusterSquareBlack { get; }
 
         [DataMember(Name = "noteheadClusterSquareWhite")]
-        GlyphDefinition NoteheadClusterSquareWhite { get; set; }
+        GlyphDefinition NoteheadClusterSquareWhite { get; }
 
         [DataMember(Name = "noteheadClusterWhole2nd")]
-        GlyphDefinition NoteheadClusterWhole2Nd { get; set; }
+        GlyphDefinition NoteheadClusterWhole2Nd { get; }
 
         [DataMember(Name = "noteheadClusterWhole3rd")]
-        GlyphDefinition NoteheadClusterWhole3Rd { get; set; }
+        GlyphDefinition NoteheadClusterWhole3Rd { get; }
 
         [DataMember(Name = "noteheadClusterWholeBottom")]
-        GlyphDefinition NoteheadClusterWholeBottom { get; set; }
+        GlyphDefinition NoteheadClusterWholeBottom { get; }
 
         [DataMember(Name = "noteheadClusterWholeMiddle")]
-        GlyphDefinition NoteheadClusterWholeMiddle { get; set; }
+        GlyphDefinition NoteheadClusterWholeMiddle { get; }
 
         [DataMember(Name = "noteheadClusterWholeTop")]
-        GlyphDefinition NoteheadClusterWholeTop { get; set; }
+        GlyphDefinition NoteheadClusterWholeTop { get; }
 
         [DataMember(Name = "noteheadDiamondBlack")]
-        GlyphDefinition NoteheadDiamondBlack { get; set; }
+        GlyphDefinition NoteheadDiamondBlack { get; }
 
         [DataMember(Name = "noteheadDiamondBlackOld")]
-        GlyphDefinition NoteheadDiamondBlackOld { get; set; }
+        GlyphDefinition NoteheadDiamondBlackOld { get; }
 
         [DataMember(Name = "noteheadDiamondBlackWide")]
-        GlyphDefinition NoteheadDiamondBlackWide { get; set; }
+        GlyphDefinition NoteheadDiamondBlackWide { get; }
 
         [DataMember(Name = "noteheadDiamondClusterBlack2nd")]
-        GlyphDefinition NoteheadDiamondClusterBlack2Nd { get; set; }
+        GlyphDefinition NoteheadDiamondClusterBlack2Nd { get; }
 
         [DataMember(Name = "noteheadDiamondClusterBlack3rd")]
-        GlyphDefinition NoteheadDiamondClusterBlack3Rd { get; set; }
+        GlyphDefinition NoteheadDiamondClusterBlack3Rd { get; }
 
         [DataMember(Name = "noteheadDiamondClusterBlackBottom")]
-        GlyphDefinition NoteheadDiamondClusterBlackBottom { get; set; }
+        GlyphDefinition NoteheadDiamondClusterBlackBottom { get; }
 
         [DataMember(Name = "noteheadDiamondClusterBlackMiddle")]
-        GlyphDefinition NoteheadDiamondClusterBlackMiddle { get; set; }
+        GlyphDefinition NoteheadDiamondClusterBlackMiddle { get; }
 
         [DataMember(Name = "noteheadDiamondClusterBlackTop")]
-        GlyphDefinition NoteheadDiamondClusterBlackTop { get; set; }
+        GlyphDefinition NoteheadDiamondClusterBlackTop { get; }
 
         [DataMember(Name = "noteheadDiamondClusterWhite2nd")]
-        GlyphDefinition NoteheadDiamondClusterWhite2Nd { get; set; }
+        GlyphDefinition NoteheadDiamondClusterWhite2Nd { get; }
 
         [DataMember(Name = "noteheadDiamondClusterWhite3rd")]
-        GlyphDefinition NoteheadDiamondClusterWhite3Rd { get; set; }
+        GlyphDefinition NoteheadDiamondClusterWhite3Rd { get; }
 
         [DataMember(Name = "noteheadDiamondClusterWhiteBottom")]
-        GlyphDefinition NoteheadDiamondClusterWhiteBottom { get; set; }
+        GlyphDefinition NoteheadDiamondClusterWhiteBottom { get; }
 
         [DataMember(Name = "noteheadDiamondClusterWhiteMiddle")]
-        GlyphDefinition NoteheadDiamondClusterWhiteMiddle { get; set; }
+        GlyphDefinition NoteheadDiamondClusterWhiteMiddle { get; }
 
         [DataMember(Name = "noteheadDiamondClusterWhiteTop")]
-        GlyphDefinition NoteheadDiamondClusterWhiteTop { get; set; }
+        GlyphDefinition NoteheadDiamondClusterWhiteTop { get; }
 
         [DataMember(Name = "noteheadDiamondDoubleWhole")]
-        GlyphDefinition NoteheadDiamondDoubleWhole { get; set; }
+        GlyphDefinition NoteheadDiamondDoubleWhole { get; }
 
         [DataMember(Name = "noteheadDiamondDoubleWholeOld")]
-        GlyphDefinition NoteheadDiamondDoubleWholeOld { get; set; }
+        GlyphDefinition NoteheadDiamondDoubleWholeOld { get; }
 
         [DataMember(Name = "noteheadDiamondHalf")]
-        GlyphDefinition NoteheadDiamondHalf { get; set; }
+        GlyphDefinition NoteheadDiamondHalf { get; }
 
         [DataMember(Name = "noteheadDiamondHalfFilled")]
-        GlyphDefinition NoteheadDiamondHalfFilled { get; set; }
+        GlyphDefinition NoteheadDiamondHalfFilled { get; }
 
         [DataMember(Name = "noteheadDiamondHalfOld")]
-        GlyphDefinition NoteheadDiamondHalfOld { get; set; }
+        GlyphDefinition NoteheadDiamondHalfOld { get; }
 
         [DataMember(Name = "noteheadDiamondHalfWide")]
-        GlyphDefinition NoteheadDiamondHalfWide { get; set; }
+        GlyphDefinition NoteheadDiamondHalfWide { get; }
 
         [DataMember(Name = "noteheadDiamondOpen")]
-        GlyphDefinition NoteheadDiamondOpen { get; set; }
+        GlyphDefinition NoteheadDiamondOpen { get; }
 
         [DataMember(Name = "noteheadDiamondWhite")]
-        GlyphDefinition NoteheadDiamondWhite { get; set; }
+        GlyphDefinition NoteheadDiamondWhite { get; }
 
         [DataMember(Name = "noteheadDiamondWhiteWide")]
-        GlyphDefinition NoteheadDiamondWhiteWide { get; set; }
+        GlyphDefinition NoteheadDiamondWhiteWide { get; }
 
         [DataMember(Name = "noteheadDiamondWhole")]
-        GlyphDefinition NoteheadDiamondWhole { get; set; }
+        GlyphDefinition NoteheadDiamondWhole { get; }
 
         [DataMember(Name = "noteheadDiamondWholeOld")]
-        GlyphDefinition NoteheadDiamondWholeOld { get; set; }
+        GlyphDefinition NoteheadDiamondWholeOld { get; }
 
         [DataMember(Name = "noteheadDoubleWhole")]
-        GlyphDefinition NoteheadDoubleWhole { get; set; }
+        GlyphDefinition NoteheadDoubleWhole { get; }
 
         [DataMember(Name = "noteheadDoubleWholeSquare")]
-        GlyphDefinition NoteheadDoubleWholeSquare { get; set; }
+        GlyphDefinition NoteheadDoubleWholeSquare { get; }
 
         [DataMember(Name = "noteheadDoubleWholeWithX")]
-        GlyphDefinition NoteheadDoubleWholeWithX { get; set; }
+        GlyphDefinition NoteheadDoubleWholeWithX { get; }
 
         [DataMember(Name = "noteheadHalf")]
-        GlyphDefinition NoteheadHalf { get; set; }
+        GlyphDefinition NoteheadHalf { get; }
 
         [DataMember(Name = "noteheadHalfFilled")]
-        GlyphDefinition NoteheadHalfFilled { get; set; }
+        GlyphDefinition NoteheadHalfFilled { get; }
 
         [DataMember(Name = "noteheadHalfWithX")]
-        GlyphDefinition NoteheadHalfWithX { get; set; }
+        GlyphDefinition NoteheadHalfWithX { get; }
 
         [DataMember(Name = "noteheadHeavyX")]
-        GlyphDefinition NoteheadHeavyX { get; set; }
+        GlyphDefinition NoteheadHeavyX { get; }
 
         [DataMember(Name = "noteheadHeavyXHat")]
-        GlyphDefinition NoteheadHeavyXHat { get; set; }
+        GlyphDefinition NoteheadHeavyXHat { get; }
 
         [DataMember(Name = "noteheadLargeArrowDownBlack")]
-        GlyphDefinition NoteheadLargeArrowDownBlack { get; set; }
+        GlyphDefinition NoteheadLargeArrowDownBlack { get; }
 
         [DataMember(Name = "noteheadLargeArrowDownDoubleWhole")]
-        GlyphDefinition NoteheadLargeArrowDownDoubleWhole { get; set; }
+        GlyphDefinition NoteheadLargeArrowDownDoubleWhole { get; }
 
         [DataMember(Name = "noteheadLargeArrowDownHalf")]
-        GlyphDefinition NoteheadLargeArrowDownHalf { get; set; }
+        GlyphDefinition NoteheadLargeArrowDownHalf { get; }
 
         [DataMember(Name = "noteheadLargeArrowDownWhole")]
-        GlyphDefinition NoteheadLargeArrowDownWhole { get; set; }
+        GlyphDefinition NoteheadLargeArrowDownWhole { get; }
 
         [DataMember(Name = "noteheadLargeArrowUpBlack")]
-        GlyphDefinition NoteheadLargeArrowUpBlack { get; set; }
+        GlyphDefinition NoteheadLargeArrowUpBlack { get; }
 
         [DataMember(Name = "noteheadLargeArrowUpDoubleWhole")]
-        GlyphDefinition NoteheadLargeArrowUpDoubleWhole { get; set; }
+        GlyphDefinition NoteheadLargeArrowUpDoubleWhole { get; }
 
         [DataMember(Name = "noteheadLargeArrowUpHalf")]
-        GlyphDefinition NoteheadLargeArrowUpHalf { get; set; }
+        GlyphDefinition NoteheadLargeArrowUpHalf { get; }
 
         [DataMember(Name = "noteheadLargeArrowUpWhole")]
-        GlyphDefinition NoteheadLargeArrowUpWhole { get; set; }
+        GlyphDefinition NoteheadLargeArrowUpWhole { get; }
 
         [DataMember(Name = "noteheadMoonBlack")]
-        GlyphDefinition NoteheadMoonBlack { get; set; }
+        GlyphDefinition NoteheadMoonBlack { get; }
 
         [DataMember(Name = "noteheadMoonWhite")]
-        GlyphDefinition NoteheadMoonWhite { get; set; }
+        GlyphDefinition NoteheadMoonWhite { get; }
 
         [DataMember(Name = "noteheadNull")]
-        GlyphDefinition NoteheadNull { get; set; }
+        GlyphDefinition NoteheadNull { get; }
 
         [DataMember(Name = "noteheadParenthesis")]
-        GlyphDefinition NoteheadParenthesis { get; set; }
+        GlyphDefinition NoteheadParenthesis { get; }
 
         [DataMember(Name = "noteheadParenthesisLeft")]
-        GlyphDefinition NoteheadParenthesisLeft { get; set; }
+        GlyphDefinition NoteheadParenthesisLeft { get; }
 
         [DataMember(Name = "noteheadParenthesisRight")]
-        GlyphDefinition NoteheadParenthesisRight { get; set; }
+        GlyphDefinition NoteheadParenthesisRight { get; }
 
         [DataMember(Name = "noteheadPlusBlack")]
-        GlyphDefinition NoteheadPlusBlack { get; set; }
+        GlyphDefinition NoteheadPlusBlack { get; }
 
         [DataMember(Name = "noteheadPlusDoubleWhole")]
-        GlyphDefinition NoteheadPlusDoubleWhole { get; set; }
+        GlyphDefinition NoteheadPlusDoubleWhole { get; }
 
         [DataMember(Name = "noteheadPlusHalf")]
-        GlyphDefinition NoteheadPlusHalf { get; set; }
+        GlyphDefinition NoteheadPlusHalf { get; }
 
         [DataMember(Name = "noteheadPlusWhole")]
-        GlyphDefinition NoteheadPlusWhole { get; set; }
+        GlyphDefinition NoteheadPlusWhole { get; }
 
         [DataMember(Name = "noteheadRectangularClusterBlackBottom")]
-        GlyphDefinition NoteheadRectangularClusterBlackBottom { get; set; }
+        GlyphDefinition NoteheadRectangularClusterBlackBottom { get; }
 
         [DataMember(Name = "noteheadRectangularClusterBlackMiddle")]
-        GlyphDefinition NoteheadRectangularClusterBlackMiddle { get; set; }
+        GlyphDefinition NoteheadRectangularClusterBlackMiddle { get; }
 
         [DataMember(Name = "noteheadRectangularClusterBlackTop")]
-        GlyphDefinition NoteheadRectangularClusterBlackTop { get; set; }
+        GlyphDefinition NoteheadRectangularClusterBlackTop { get; }
 
         [DataMember(Name = "noteheadRectangularClusterWhiteBottom")]
-        GlyphDefinition NoteheadRectangularClusterWhiteBottom { get; set; }
+        GlyphDefinition NoteheadRectangularClusterWhiteBottom { get; }
 
         [DataMember(Name = "noteheadRectangularClusterWhiteMiddle")]
-        GlyphDefinition NoteheadRectangularClusterWhiteMiddle { get; set; }
+        GlyphDefinition NoteheadRectangularClusterWhiteMiddle { get; }
 
         [DataMember(Name = "noteheadRectangularClusterWhiteTop")]
-        GlyphDefinition NoteheadRectangularClusterWhiteTop { get; set; }
+        GlyphDefinition NoteheadRectangularClusterWhiteTop { get; }
 
         [DataMember(Name = "noteheadRoundBlack")]
-        GlyphDefinition NoteheadRoundBlack { get; set; }
+        GlyphDefinition NoteheadRoundBlack { get; }
 
         [DataMember(Name = "noteheadRoundBlackLarge")]
-        GlyphDefinition NoteheadRoundBlackLarge { get; set; }
+        GlyphDefinition NoteheadRoundBlackLarge { get; }
 
         [DataMember(Name = "noteheadRoundBlackSlashed")]
-        GlyphDefinition NoteheadRoundBlackSlashed { get; set; }
+        GlyphDefinition NoteheadRoundBlackSlashed { get; }
 
         [DataMember(Name = "noteheadRoundBlackSlashedLarge")]
-        GlyphDefinition NoteheadRoundBlackSlashedLarge { get; set; }
+        GlyphDefinition NoteheadRoundBlackSlashedLarge { get; }
 
         [DataMember(Name = "noteheadRoundWhite")]
-        GlyphDefinition NoteheadRoundWhite { get; set; }
+        GlyphDefinition NoteheadRoundWhite { get; }
 
         [DataMember(Name = "noteheadRoundWhiteLarge")]
-        GlyphDefinition NoteheadRoundWhiteLarge { get; set; }
+        GlyphDefinition NoteheadRoundWhiteLarge { get; }
 
         [DataMember(Name = "noteheadRoundWhiteSlashed")]
-        GlyphDefinition NoteheadRoundWhiteSlashed { get; set; }
+        GlyphDefinition NoteheadRoundWhiteSlashed { get; }
 
         [DataMember(Name = "noteheadRoundWhiteSlashedLarge")]
-        GlyphDefinition NoteheadRoundWhiteSlashedLarge { get; set; }
+        GlyphDefinition NoteheadRoundWhiteSlashedLarge { get; }
 
         [DataMember(Name = "noteheadRoundWhiteWithDot")]
-        GlyphDefinition NoteheadRoundWhiteWithDot { get; set; }
+        GlyphDefinition NoteheadRoundWhiteWithDot { get; }
 
         [DataMember(Name = "noteheadRoundWhiteWithDotLarge")]
-        GlyphDefinition NoteheadRoundWhiteWithDotLarge { get; set; }
+        GlyphDefinition NoteheadRoundWhiteWithDotLarge { get; }
 
         [DataMember(Name = "noteheadSlashDiamondWhite")]
-        GlyphDefinition NoteheadSlashDiamondWhite { get; set; }
+        GlyphDefinition NoteheadSlashDiamondWhite { get; }
 
         [DataMember(Name = "noteheadSlashHorizontalEnds")]
-        GlyphDefinition NoteheadSlashHorizontalEnds { get; set; }
+        GlyphDefinition NoteheadSlashHorizontalEnds { get; }
 
         [DataMember(Name = "noteheadSlashHorizontalEndsMuted")]
-        GlyphDefinition NoteheadSlashHorizontalEndsMuted { get; set; }
+        GlyphDefinition NoteheadSlashHorizontalEndsMuted { get; }
 
         [DataMember(Name = "noteheadSlashVerticalEnds")]
-        GlyphDefinition NoteheadSlashVerticalEnds { get; set; }
+        GlyphDefinition NoteheadSlashVerticalEnds { get; }
 
         [DataMember(Name = "noteheadSlashVerticalEndsMuted")]
-        GlyphDefinition NoteheadSlashVerticalEndsMuted { get; set; }
+        GlyphDefinition NoteheadSlashVerticalEndsMuted { get; }
 
         [DataMember(Name = "noteheadSlashVerticalEndsSmall")]
-        GlyphDefinition NoteheadSlashVerticalEndsSmall { get; set; }
+        GlyphDefinition NoteheadSlashVerticalEndsSmall { get; }
 
         [DataMember(Name = "noteheadSlashWhiteHalf")]
-        GlyphDefinition NoteheadSlashWhiteHalf { get; set; }
+        GlyphDefinition NoteheadSlashWhiteHalf { get; }
 
         [DataMember(Name = "noteheadSlashWhiteMuted")]
-        GlyphDefinition NoteheadSlashWhiteMuted { get; set; }
+        GlyphDefinition NoteheadSlashWhiteMuted { get; }
 
         [DataMember(Name = "noteheadSlashWhiteWhole")]
-        GlyphDefinition NoteheadSlashWhiteWhole { get; set; }
+        GlyphDefinition NoteheadSlashWhiteWhole { get; }
 
         [DataMember(Name = "noteheadSlashX")]
-        GlyphDefinition NoteheadSlashX { get; set; }
+        GlyphDefinition NoteheadSlashX { get; }
 
         [DataMember(Name = "noteheadSlashedBlack1")]
-        GlyphDefinition NoteheadSlashedBlack1 { get; set; }
+        GlyphDefinition NoteheadSlashedBlack1 { get; }
 
         [DataMember(Name = "noteheadSlashedBlack2")]
-        GlyphDefinition NoteheadSlashedBlack2 { get; set; }
+        GlyphDefinition NoteheadSlashedBlack2 { get; }
 
         [DataMember(Name = "noteheadSlashedDoubleWhole1")]
-        GlyphDefinition NoteheadSlashedDoubleWhole1 { get; set; }
+        GlyphDefinition NoteheadSlashedDoubleWhole1 { get; }
 
         [DataMember(Name = "noteheadSlashedDoubleWhole2")]
-        GlyphDefinition NoteheadSlashedDoubleWhole2 { get; set; }
+        GlyphDefinition NoteheadSlashedDoubleWhole2 { get; }
 
         [DataMember(Name = "noteheadSlashedHalf1")]
-        GlyphDefinition NoteheadSlashedHalf1 { get; set; }
+        GlyphDefinition NoteheadSlashedHalf1 { get; }
 
         [DataMember(Name = "noteheadSlashedHalf2")]
-        GlyphDefinition NoteheadSlashedHalf2 { get; set; }
+        GlyphDefinition NoteheadSlashedHalf2 { get; }
 
         [DataMember(Name = "noteheadSlashedWhole1")]
-        GlyphDefinition NoteheadSlashedWhole1 { get; set; }
+        GlyphDefinition NoteheadSlashedWhole1 { get; }
 
         [DataMember(Name = "noteheadSlashedWhole2")]
-        GlyphDefinition NoteheadSlashedWhole2 { get; set; }
+        GlyphDefinition NoteheadSlashedWhole2 { get; }
 
         [DataMember(Name = "noteheadSquareBlack")]
-        GlyphDefinition NoteheadSquareBlack { get; set; }
+        GlyphDefinition NoteheadSquareBlack { get; }
 
         [DataMember(Name = "noteheadSquareBlackLarge")]
-        GlyphDefinition NoteheadSquareBlackLarge { get; set; }
+        GlyphDefinition NoteheadSquareBlackLarge { get; }
 
         [DataMember(Name = "noteheadSquareBlackWhite")]
-        GlyphDefinition NoteheadSquareBlackWhite { get; set; }
+        GlyphDefinition NoteheadSquareBlackWhite { get; }
 
         [DataMember(Name = "noteheadSquareWhite")]
-        GlyphDefinition NoteheadSquareWhite { get; set; }
+        GlyphDefinition NoteheadSquareWhite { get; }
 
         [DataMember(Name = "noteheadTriangleDownBlack")]
-        GlyphDefinition NoteheadTriangleDownBlack { get; set; }
+        GlyphDefinition NoteheadTriangleDownBlack { get; }
 
         [DataMember(Name = "noteheadTriangleDownDoubleWhole")]
-        GlyphDefinition NoteheadTriangleDownDoubleWhole { get; set; }
+        GlyphDefinition NoteheadTriangleDownDoubleWhole { get; }
 
         [DataMember(Name = "noteheadTriangleDownHalf")]
-        GlyphDefinition NoteheadTriangleDownHalf { get; set; }
+        GlyphDefinition NoteheadTriangleDownHalf { get; }
 
         [DataMember(Name = "noteheadTriangleDownWhite")]
-        GlyphDefinition NoteheadTriangleDownWhite { get; set; }
+        GlyphDefinition NoteheadTriangleDownWhite { get; }
 
         [DataMember(Name = "noteheadTriangleDownWhole")]
-        GlyphDefinition NoteheadTriangleDownWhole { get; set; }
+        GlyphDefinition NoteheadTriangleDownWhole { get; }
 
         [DataMember(Name = "noteheadTriangleLeftBlack")]
-        GlyphDefinition NoteheadTriangleLeftBlack { get; set; }
+        GlyphDefinition NoteheadTriangleLeftBlack { get; }
 
         [DataMember(Name = "noteheadTriangleLeftWhite")]
-        GlyphDefinition NoteheadTriangleLeftWhite { get; set; }
+        GlyphDefinition NoteheadTriangleLeftWhite { get; }
 
         [DataMember(Name = "noteheadTriangleRightBlack")]
-        GlyphDefinition NoteheadTriangleRightBlack { get; set; }
+        GlyphDefinition NoteheadTriangleRightBlack { get; }
 
         [DataMember(Name = "noteheadTriangleRightWhite")]
-        GlyphDefinition NoteheadTriangleRightWhite { get; set; }
+        GlyphDefinition NoteheadTriangleRightWhite { get; }
 
         [DataMember(Name = "noteheadTriangleRoundDownBlack")]
-        GlyphDefinition NoteheadTriangleRoundDownBlack { get; set; }
+        GlyphDefinition NoteheadTriangleRoundDownBlack { get; }
 
         [DataMember(Name = "noteheadTriangleRoundDownWhite")]
-        GlyphDefinition NoteheadTriangleRoundDownWhite { get; set; }
+        GlyphDefinition NoteheadTriangleRoundDownWhite { get; }
 
         [DataMember(Name = "noteheadTriangleUpBlack")]
-        GlyphDefinition NoteheadTriangleUpBlack { get; set; }
+        GlyphDefinition NoteheadTriangleUpBlack { get; }
 
         [DataMember(Name = "noteheadTriangleUpDoubleWhole")]
-        GlyphDefinition NoteheadTriangleUpDoubleWhole { get; set; }
+        GlyphDefinition NoteheadTriangleUpDoubleWhole { get; }
 
         [DataMember(Name = "noteheadTriangleUpHalf")]
-        GlyphDefinition NoteheadTriangleUpHalf { get; set; }
+        GlyphDefinition NoteheadTriangleUpHalf { get; }
 
         [DataMember(Name = "noteheadTriangleUpRightBlack")]
-        GlyphDefinition NoteheadTriangleUpRightBlack { get; set; }
+        GlyphDefinition NoteheadTriangleUpRightBlack { get; }
 
         [DataMember(Name = "noteheadTriangleUpRightWhite")]
-        GlyphDefinition NoteheadTriangleUpRightWhite { get; set; }
+        GlyphDefinition NoteheadTriangleUpRightWhite { get; }
 
         [DataMember(Name = "noteheadTriangleUpWhite")]
-        GlyphDefinition NoteheadTriangleUpWhite { get; set; }
+        GlyphDefinition NoteheadTriangleUpWhite { get; }
 
         [DataMember(Name = "noteheadTriangleUpWhole")]
-        GlyphDefinition NoteheadTriangleUpWhole { get; set; }
+        GlyphDefinition NoteheadTriangleUpWhole { get; }
 
         [DataMember(Name = "noteheadVoidWithX")]
-        GlyphDefinition NoteheadVoidWithX { get; set; }
+        GlyphDefinition NoteheadVoidWithX { get; }
 
         [DataMember(Name = "noteheadWhole")]
-        GlyphDefinition NoteheadWhole { get; set; }
+        GlyphDefinition NoteheadWhole { get; }
 
         [DataMember(Name = "noteheadWholeFilled")]
-        GlyphDefinition NoteheadWholeFilled { get; set; }
+        GlyphDefinition NoteheadWholeFilled { get; }
 
         [DataMember(Name = "noteheadWholeWithX")]
-        GlyphDefinition NoteheadWholeWithX { get; set; }
+        GlyphDefinition NoteheadWholeWithX { get; }
 
         [DataMember(Name = "noteheadXBlack")]
-        GlyphDefinition NoteheadXBlack { get; set; }
+        GlyphDefinition NoteheadXBlack { get; }
 
         [DataMember(Name = "noteheadXDoubleWhole")]
-        GlyphDefinition NoteheadXDoubleWhole { get; set; }
+        GlyphDefinition NoteheadXDoubleWhole { get; }
 
         [DataMember(Name = "noteheadXHalf")]
-        GlyphDefinition NoteheadXHalf { get; set; }
+        GlyphDefinition NoteheadXHalf { get; }
 
         [DataMember(Name = "noteheadXOrnate")]
-        GlyphDefinition NoteheadXOrnate { get; set; }
+        GlyphDefinition NoteheadXOrnate { get; }
 
         [DataMember(Name = "noteheadXOrnateEllipse")]
-        GlyphDefinition NoteheadXOrnateEllipse { get; set; }
+        GlyphDefinition NoteheadXOrnateEllipse { get; }
 
         [DataMember(Name = "noteheadXWhole")]
-        GlyphDefinition NoteheadXWhole { get; set; }
+        GlyphDefinition NoteheadXWhole { get; }
 
         [DataMember(Name = "octaveBassa")]
-        GlyphDefinition OctaveBassa { get; set; }
+        GlyphDefinition OctaveBassa { get; }
 
         [DataMember(Name = "octaveLoco")]
-        GlyphDefinition OctaveLoco { get; set; }
+        GlyphDefinition OctaveLoco { get; }
 
         [DataMember(Name = "octaveParensLeft")]
-        GlyphDefinition OctaveParensLeft { get; set; }
+        GlyphDefinition OctaveParensLeft { get; }
 
         [DataMember(Name = "octaveParensRight")]
-        GlyphDefinition OctaveParensRight { get; set; }
+        GlyphDefinition OctaveParensRight { get; }
 
         [DataMember(Name = "ornamentBottomLeftConcaveStroke")]
-        GlyphDefinition OrnamentBottomLeftConcaveStroke { get; set; }
+        GlyphDefinition OrnamentBottomLeftConcaveStroke { get; }
 
         [DataMember(Name = "ornamentBottomLeftConcaveStrokeLarge")]
-        GlyphDefinition OrnamentBottomLeftConcaveStrokeLarge { get; set; }
+        GlyphDefinition OrnamentBottomLeftConcaveStrokeLarge { get; }
 
         [DataMember(Name = "ornamentBottomLeftConvexStroke")]
-        GlyphDefinition OrnamentBottomLeftConvexStroke { get; set; }
+        GlyphDefinition OrnamentBottomLeftConvexStroke { get; }
 
         [DataMember(Name = "ornamentBottomRightConcaveStroke")]
-        GlyphDefinition OrnamentBottomRightConcaveStroke { get; set; }
+        GlyphDefinition OrnamentBottomRightConcaveStroke { get; }
 
         [DataMember(Name = "ornamentBottomRightConvexStroke")]
-        GlyphDefinition OrnamentBottomRightConvexStroke { get; set; }
+        GlyphDefinition OrnamentBottomRightConvexStroke { get; }
 
         [DataMember(Name = "ornamentComma")]
-        GlyphDefinition OrnamentComma { get; set; }
+        GlyphDefinition OrnamentComma { get; }
 
         [DataMember(Name = "ornamentDoubleObliqueLinesAfterNote")]
-        GlyphDefinition OrnamentDoubleObliqueLinesAfterNote { get; set; }
+        GlyphDefinition OrnamentDoubleObliqueLinesAfterNote { get; }
 
         [DataMember(Name = "ornamentDoubleObliqueLinesBeforeNote")]
-        GlyphDefinition OrnamentDoubleObliqueLinesBeforeNote { get; set; }
+        GlyphDefinition OrnamentDoubleObliqueLinesBeforeNote { get; }
 
         [DataMember(Name = "ornamentDownCurve")]
-        GlyphDefinition OrnamentDownCurve { get; set; }
+        GlyphDefinition OrnamentDownCurve { get; }
 
         [DataMember(Name = "ornamentHaydn")]
-        GlyphDefinition OrnamentHaydn { get; set; }
+        GlyphDefinition OrnamentHaydn { get; }
 
         [DataMember(Name = "ornamentHighLeftConcaveStroke")]
-        GlyphDefinition OrnamentHighLeftConcaveStroke { get; set; }
+        GlyphDefinition OrnamentHighLeftConcaveStroke { get; }
 
         [DataMember(Name = "ornamentHighLeftConvexStroke")]
-        GlyphDefinition OrnamentHighLeftConvexStroke { get; set; }
+        GlyphDefinition OrnamentHighLeftConvexStroke { get; }
 
         [DataMember(Name = "ornamentHighRightConcaveStroke")]
-        GlyphDefinition OrnamentHighRightConcaveStroke { get; set; }
+        GlyphDefinition OrnamentHighRightConcaveStroke { get; }
 
         [DataMember(Name = "ornamentHighRightConvexStroke")]
-        GlyphDefinition OrnamentHighRightConvexStroke { get; set; }
+        GlyphDefinition OrnamentHighRightConvexStroke { get; }
 
         [DataMember(Name = "ornamentHookAfterNote")]
-        GlyphDefinition OrnamentHookAfterNote { get; set; }
+        GlyphDefinition OrnamentHookAfterNote { get; }
 
         [DataMember(Name = "ornamentHookBeforeNote")]
-        GlyphDefinition OrnamentHookBeforeNote { get; set; }
+        GlyphDefinition OrnamentHookBeforeNote { get; }
 
         [DataMember(Name = "ornamentLeftFacingHalfCircle")]
-        GlyphDefinition OrnamentLeftFacingHalfCircle { get; set; }
+        GlyphDefinition OrnamentLeftFacingHalfCircle { get; }
 
         [DataMember(Name = "ornamentLeftFacingHook")]
-        GlyphDefinition OrnamentLeftFacingHook { get; set; }
+        GlyphDefinition OrnamentLeftFacingHook { get; }
 
         [DataMember(Name = "ornamentLeftPlus")]
-        GlyphDefinition OrnamentLeftPlus { get; set; }
+        GlyphDefinition OrnamentLeftPlus { get; }
 
         [DataMember(Name = "ornamentLeftShakeT")]
-        GlyphDefinition OrnamentLeftShakeT { get; set; }
+        GlyphDefinition OrnamentLeftShakeT { get; }
 
         [DataMember(Name = "ornamentLeftVerticalStroke")]
-        GlyphDefinition OrnamentLeftVerticalStroke { get; set; }
+        GlyphDefinition OrnamentLeftVerticalStroke { get; }
 
         [DataMember(Name = "ornamentLeftVerticalStrokeWithCross")]
-        GlyphDefinition OrnamentLeftVerticalStrokeWithCross { get; set; }
+        GlyphDefinition OrnamentLeftVerticalStrokeWithCross { get; }
 
         [DataMember(Name = "ornamentLowLeftConcaveStroke")]
-        GlyphDefinition OrnamentLowLeftConcaveStroke { get; set; }
+        GlyphDefinition OrnamentLowLeftConcaveStroke { get; }
 
         [DataMember(Name = "ornamentLowLeftConvexStroke")]
-        GlyphDefinition OrnamentLowLeftConvexStroke { get; set; }
+        GlyphDefinition OrnamentLowLeftConvexStroke { get; }
 
         [DataMember(Name = "ornamentLowRightConcaveStroke")]
-        GlyphDefinition OrnamentLowRightConcaveStroke { get; set; }
+        GlyphDefinition OrnamentLowRightConcaveStroke { get; }
 
         [DataMember(Name = "ornamentLowRightConvexStroke")]
-        GlyphDefinition OrnamentLowRightConvexStroke { get; set; }
+        GlyphDefinition OrnamentLowRightConvexStroke { get; }
 
         [DataMember(Name = "ornamentMiddleVerticalStroke")]
-        GlyphDefinition OrnamentMiddleVerticalStroke { get; set; }
+        GlyphDefinition OrnamentMiddleVerticalStroke { get; }
 
         [DataMember(Name = "ornamentMordent")]
-        GlyphDefinition OrnamentMordent { get; set; }
+        GlyphDefinition OrnamentMordent { get; }
 
         [DataMember(Name = "ornamentMordentInverted")]
-        GlyphDefinition OrnamentMordentInverted { get; set; }
+        GlyphDefinition OrnamentMordentInverted { get; }
 
         [DataMember(Name = "ornamentObliqueLineAfterNote")]
-        GlyphDefinition OrnamentObliqueLineAfterNote { get; set; }
+        GlyphDefinition OrnamentObliqueLineAfterNote { get; }
 
         [DataMember(Name = "ornamentObliqueLineBeforeNote")]
-        GlyphDefinition OrnamentObliqueLineBeforeNote { get; set; }
+        GlyphDefinition OrnamentObliqueLineBeforeNote { get; }
 
         [DataMember(Name = "ornamentObliqueLineHorizAfterNote")]
-        GlyphDefinition OrnamentObliqueLineHorizAfterNote { get; set; }
+        GlyphDefinition OrnamentObliqueLineHorizAfterNote { get; }
 
         [DataMember(Name = "ornamentObliqueLineHorizBeforeNote")]
-        GlyphDefinition OrnamentObliqueLineHorizBeforeNote { get; set; }
+        GlyphDefinition OrnamentObliqueLineHorizBeforeNote { get; }
 
         [DataMember(Name = "ornamentOriscus")]
-        GlyphDefinition OrnamentOriscus { get; set; }
+        GlyphDefinition OrnamentOriscus { get; }
 
         [DataMember(Name = "ornamentPinceCouperin")]
-        GlyphDefinition OrnamentPinceCouperin { get; set; }
+        GlyphDefinition OrnamentPinceCouperin { get; }
 
         [DataMember(Name = "ornamentPortDeVoixV")]
-        GlyphDefinition OrnamentPortDeVoixV { get; set; }
+        GlyphDefinition OrnamentPortDeVoixV { get; }
 
         [DataMember(Name = "ornamentPrecompAppoggTrill")]
-        GlyphDefinition OrnamentPrecompAppoggTrill { get; set; }
+        GlyphDefinition OrnamentPrecompAppoggTrill { get; }
 
         [DataMember(Name = "ornamentPrecompAppoggTrillSuffix")]
-        GlyphDefinition OrnamentPrecompAppoggTrillSuffix { get; set; }
+        GlyphDefinition OrnamentPrecompAppoggTrillSuffix { get; }
 
         [DataMember(Name = "ornamentPrecompCadence")]
-        GlyphDefinition OrnamentPrecompCadence { get; set; }
+        GlyphDefinition OrnamentPrecompCadence { get; }
 
         [DataMember(Name = "ornamentPrecompCadenceUpperPrefix ")]
-        GlyphDefinition OrnamentPrecompCadenceUpperPrefix { get; set; }
+        GlyphDefinition OrnamentPrecompCadenceUpperPrefix { get; }
 
         [DataMember(Name = "ornamentPrecompCadenceUpperPrefixTurn")]
-        GlyphDefinition OrnamentPrecompCadenceUpperPrefixTurn { get; set; }
+        GlyphDefinition OrnamentPrecompCadenceUpperPrefixTurn { get; }
 
         [DataMember(Name = "ornamentPrecompCadenceWithTurn ")]
-        GlyphDefinition OrnamentPrecompCadenceWithTurn { get; set; }
+        GlyphDefinition OrnamentPrecompCadenceWithTurn { get; }
 
         [DataMember(Name = "ornamentPrecompDescendingSlide")]
-        GlyphDefinition OrnamentPrecompDescendingSlide { get; set; }
+        GlyphDefinition OrnamentPrecompDescendingSlide { get; }
 
         [DataMember(Name = "ornamentPrecompDoubleCadenceLowerPrefix")]
-        GlyphDefinition OrnamentPrecompDoubleCadenceLowerPrefix { get; set; }
+        GlyphDefinition OrnamentPrecompDoubleCadenceLowerPrefix { get; }
 
         [DataMember(Name = "ornamentPrecompDoubleCadenceUpperPrefix ")]
-        GlyphDefinition OrnamentPrecompDoubleCadenceUpperPrefix { get; set; }
+        GlyphDefinition OrnamentPrecompDoubleCadenceUpperPrefix { get; }
 
         [DataMember(Name = "ornamentPrecompDoubleCadenceUpperPrefixTurn")]
-        GlyphDefinition OrnamentPrecompDoubleCadenceUpperPrefixTurn { get; set; }
+        GlyphDefinition OrnamentPrecompDoubleCadenceUpperPrefixTurn { get; }
 
         [DataMember(Name = "ornamentPrecompInvertedMordentUpperPrefix")]
-        GlyphDefinition OrnamentPrecompInvertedMordentUpperPrefix { get; set; }
+        GlyphDefinition OrnamentPrecompInvertedMordentUpperPrefix { get; }
 
         [DataMember(Name = "ornamentPrecompMordentRelease")]
-        GlyphDefinition OrnamentPrecompMordentRelease { get; set; }
+        GlyphDefinition OrnamentPrecompMordentRelease { get; }
 
         [DataMember(Name = "ornamentPrecompMordentUpperPrefix")]
-        GlyphDefinition OrnamentPrecompMordentUpperPrefix { get; set; }
+        GlyphDefinition OrnamentPrecompMordentUpperPrefix { get; }
 
         [DataMember(Name = "ornamentPrecompPortDeVoixMordent")]
-        GlyphDefinition OrnamentPrecompPortDeVoixMordent { get; set; }
+        GlyphDefinition OrnamentPrecompPortDeVoixMordent { get; }
 
         [DataMember(Name = "ornamentPrecompSlide")]
-        GlyphDefinition OrnamentPrecompSlide { get; set; }
+        GlyphDefinition OrnamentPrecompSlide { get; }
 
         [DataMember(Name = "ornamentPrecompSlideTrillBach")]
-        GlyphDefinition OrnamentPrecompSlideTrillBach { get; set; }
+        GlyphDefinition OrnamentPrecompSlideTrillBach { get; }
 
         [DataMember(Name = "ornamentPrecompSlideTrillDAnglebert")]
-        GlyphDefinition OrnamentPrecompSlideTrillDAnglebert { get; set; }
+        GlyphDefinition OrnamentPrecompSlideTrillDAnglebert { get; }
 
         [DataMember(Name = "ornamentPrecompSlideTrillMarpurg")]
-        GlyphDefinition OrnamentPrecompSlideTrillMarpurg { get; set; }
+        GlyphDefinition OrnamentPrecompSlideTrillMarpurg { get; }
 
         [DataMember(Name = "ornamentPrecompSlideTrillMuffat")]
-        GlyphDefinition OrnamentPrecompSlideTrillMuffat { get; set; }
+        GlyphDefinition OrnamentPrecompSlideTrillMuffat { get; }
 
         [DataMember(Name = "ornamentPrecompSlideTrillSuffixMuffat")]
-        GlyphDefinition OrnamentPrecompSlideTrillSuffixMuffat { get; set; }
+        GlyphDefinition OrnamentPrecompSlideTrillSuffixMuffat { get; }
 
         [DataMember(Name = "ornamentPrecompTrillLowerSuffix")]
-        GlyphDefinition OrnamentPrecompTrillLowerSuffix { get; set; }
+        GlyphDefinition OrnamentPrecompTrillLowerSuffix { get; }
 
         [DataMember(Name = "ornamentPrecompTrillSuffixDandrieu")]
-        GlyphDefinition OrnamentPrecompTrillSuffixDandrieu { get; set; }
+        GlyphDefinition OrnamentPrecompTrillSuffixDandrieu { get; }
 
         [DataMember(Name = "ornamentPrecompTrillWithMordent")]
-        GlyphDefinition OrnamentPrecompTrillWithMordent { get; set; }
+        GlyphDefinition OrnamentPrecompTrillWithMordent { get; }
 
         [DataMember(Name = "ornamentPrecompTurnTrillBach")]
-        GlyphDefinition OrnamentPrecompTurnTrillBach { get; set; }
+        GlyphDefinition OrnamentPrecompTurnTrillBach { get; }
 
         [DataMember(Name = "ornamentPrecompTurnTrillDAnglebert")]
-        GlyphDefinition OrnamentPrecompTurnTrillDAnglebert { get; set; }
+        GlyphDefinition OrnamentPrecompTurnTrillDAnglebert { get; }
 
         [DataMember(Name = "ornamentQuilisma")]
-        GlyphDefinition OrnamentQuilisma { get; set; }
+        GlyphDefinition OrnamentQuilisma { get; }
 
         [DataMember(Name = "ornamentRightFacingHalfCircle")]
-        GlyphDefinition OrnamentRightFacingHalfCircle { get; set; }
+        GlyphDefinition OrnamentRightFacingHalfCircle { get; }
 
         [DataMember(Name = "ornamentRightFacingHook")]
-        GlyphDefinition OrnamentRightFacingHook { get; set; }
+        GlyphDefinition OrnamentRightFacingHook { get; }
 
         [DataMember(Name = "ornamentRightVerticalStroke")]
-        GlyphDefinition OrnamentRightVerticalStroke { get; set; }
+        GlyphDefinition OrnamentRightVerticalStroke { get; }
 
         [DataMember(Name = "ornamentSchleifer")]
-        GlyphDefinition OrnamentSchleifer { get; set; }
+        GlyphDefinition OrnamentSchleifer { get; }
 
         [DataMember(Name = "ornamentShake3")]
-        GlyphDefinition OrnamentShake3 { get; set; }
+        GlyphDefinition OrnamentShake3 { get; }
 
         [DataMember(Name = "ornamentShakeMuffat1")]
-        GlyphDefinition OrnamentShakeMuffat1 { get; set; }
+        GlyphDefinition OrnamentShakeMuffat1 { get; }
 
         [DataMember(Name = "ornamentShortObliqueLineAfterNote")]
-        GlyphDefinition OrnamentShortObliqueLineAfterNote { get; set; }
+        GlyphDefinition OrnamentShortObliqueLineAfterNote { get; }
 
         [DataMember(Name = "ornamentShortObliqueLineBeforeNote")]
-        GlyphDefinition OrnamentShortObliqueLineBeforeNote { get; set; }
+        GlyphDefinition OrnamentShortObliqueLineBeforeNote { get; }
 
         [DataMember(Name = "ornamentTopLeftConcaveStroke")]
-        GlyphDefinition OrnamentTopLeftConcaveStroke { get; set; }
+        GlyphDefinition OrnamentTopLeftConcaveStroke { get; }
 
         [DataMember(Name = "ornamentTopLeftConvexStroke")]
-        GlyphDefinition OrnamentTopLeftConvexStroke { get; set; }
+        GlyphDefinition OrnamentTopLeftConvexStroke { get; }
 
         [DataMember(Name = "ornamentTopRightConcaveStroke")]
-        GlyphDefinition OrnamentTopRightConcaveStroke { get; set; }
+        GlyphDefinition OrnamentTopRightConcaveStroke { get; }
 
         [DataMember(Name = "ornamentTopRightConvexStroke")]
-        GlyphDefinition OrnamentTopRightConvexStroke { get; set; }
+        GlyphDefinition OrnamentTopRightConvexStroke { get; }
 
         [DataMember(Name = "ornamentTremblement")]
-        GlyphDefinition OrnamentTremblement { get; set; }
+        GlyphDefinition OrnamentTremblement { get; }
 
         [DataMember(Name = "ornamentTremblementCouperin")]
-        GlyphDefinition OrnamentTremblementCouperin { get; set; }
+        GlyphDefinition OrnamentTremblementCouperin { get; }
 
         [DataMember(Name = "ornamentTrill")]
-        GlyphDefinition OrnamentTrill { get; set; }
+        GlyphDefinition OrnamentTrill { get; }
 
         [DataMember(Name = "ornamentTurn")]
-        GlyphDefinition OrnamentTurn { get; set; }
+        GlyphDefinition OrnamentTurn { get; }
 
         [DataMember(Name = "ornamentTurnInverted")]
-        GlyphDefinition OrnamentTurnInverted { get; set; }
+        GlyphDefinition OrnamentTurnInverted { get; }
 
         [DataMember(Name = "ornamentTurnSlash")]
-        GlyphDefinition OrnamentTurnSlash { get; set; }
+        GlyphDefinition OrnamentTurnSlash { get; }
 
         [DataMember(Name = "ornamentTurnUp")]
-        GlyphDefinition OrnamentTurnUp { get; set; }
+        GlyphDefinition OrnamentTurnUp { get; }
 
         [DataMember(Name = "ornamentTurnUpS")]
-        GlyphDefinition OrnamentTurnUpS { get; set; }
+        GlyphDefinition OrnamentTurnUpS { get; }
 
         [DataMember(Name = "ornamentUpCurve")]
-        GlyphDefinition OrnamentUpCurve { get; set; }
+        GlyphDefinition OrnamentUpCurve { get; }
 
         [DataMember(Name = "ornamentVerticalLine")]
-        GlyphDefinition OrnamentVerticalLine { get; set; }
+        GlyphDefinition OrnamentVerticalLine { get; }
 
         [DataMember(Name = "ornamentZigZagLineNoRightEnd")]
-        GlyphDefinition OrnamentZigZagLineNoRightEnd { get; set; }
+        GlyphDefinition OrnamentZigZagLineNoRightEnd { get; }
 
         [DataMember(Name = "ornamentZigZagLineWithRightEnd")]
-        GlyphDefinition OrnamentZigZagLineWithRightEnd { get; set; }
+        GlyphDefinition OrnamentZigZagLineWithRightEnd { get; }
 
         [DataMember(Name = "ottava")]
-        GlyphDefinition Ottava { get; set; }
+        GlyphDefinition Ottava { get; }
 
         [DataMember(Name = "ottavaAlta")]
-        GlyphDefinition OttavaAlta { get; set; }
+        GlyphDefinition OttavaAlta { get; }
 
         [DataMember(Name = "ottavaBassa")]
-        GlyphDefinition OttavaBassa { get; set; }
+        GlyphDefinition OttavaBassa { get; }
 
         [DataMember(Name = "ottavaBassaBa")]
-        GlyphDefinition OttavaBassaBa { get; set; }
+        GlyphDefinition OttavaBassaBa { get; }
 
         [DataMember(Name = "ottavaBassaVb")]
-        GlyphDefinition OttavaBassaVb { get; set; }
+        GlyphDefinition OttavaBassaVb { get; }
 
         [DataMember(Name = "pendereckiTremolo")]
-        GlyphDefinition PendereckiTremolo { get; set; }
+        GlyphDefinition PendereckiTremolo { get; }
 
         [DataMember(Name = "pictAgogo")]
-        GlyphDefinition PictAgogo { get; set; }
+        GlyphDefinition PictAgogo { get; }
 
         [DataMember(Name = "pictAlmglocken")]
-        GlyphDefinition PictAlmglocken { get; set; }
+        GlyphDefinition PictAlmglocken { get; }
 
         [DataMember(Name = "pictAnvil")]
-        GlyphDefinition PictAnvil { get; set; }
+        GlyphDefinition PictAnvil { get; }
 
         [DataMember(Name = "pictBambooChimes")]
-        GlyphDefinition PictBambooChimes { get; set; }
+        GlyphDefinition PictBambooChimes { get; }
 
         [DataMember(Name = "pictBambooScraper")]
-        GlyphDefinition PictBambooScraper { get; set; }
+        GlyphDefinition PictBambooScraper { get; }
 
         [DataMember(Name = "pictBassDrum")]
-        GlyphDefinition PictBassDrum { get; set; }
+        GlyphDefinition PictBassDrum { get; }
 
         [DataMember(Name = "pictBassDrumOnSide")]
-        GlyphDefinition PictBassDrumOnSide { get; set; }
+        GlyphDefinition PictBassDrumOnSide { get; }
 
         [DataMember(Name = "pictBeaterBow")]
-        GlyphDefinition PictBeaterBow { get; set; }
+        GlyphDefinition PictBeaterBow { get; }
 
         [DataMember(Name = "pictBeaterBox")]
-        GlyphDefinition PictBeaterBox { get; set; }
+        GlyphDefinition PictBeaterBox { get; }
 
         [DataMember(Name = "pictBeaterBrassMalletsDown")]
-        GlyphDefinition PictBeaterBrassMalletsDown { get; set; }
+        GlyphDefinition PictBeaterBrassMalletsDown { get; }
 
         [DataMember(Name = "pictBeaterBrassMalletsUp")]
-        GlyphDefinition PictBeaterBrassMalletsUp { get; set; }
+        GlyphDefinition PictBeaterBrassMalletsUp { get; }
 
         [DataMember(Name = "pictBeaterCombiningDashedCircle")]
-        GlyphDefinition PictBeaterCombiningDashedCircle { get; set; }
+        GlyphDefinition PictBeaterCombiningDashedCircle { get; }
 
         [DataMember(Name = "pictBeaterCombiningParentheses")]
-        GlyphDefinition PictBeaterCombiningParentheses { get; set; }
+        GlyphDefinition PictBeaterCombiningParentheses { get; }
 
         [DataMember(Name = "pictBeaterDoubleBassDrumDown")]
-        GlyphDefinition PictBeaterDoubleBassDrumDown { get; set; }
+        GlyphDefinition PictBeaterDoubleBassDrumDown { get; }
 
         [DataMember(Name = "pictBeaterDoubleBassDrumUp")]
-        GlyphDefinition PictBeaterDoubleBassDrumUp { get; set; }
+        GlyphDefinition PictBeaterDoubleBassDrumUp { get; }
 
         [DataMember(Name = "pictBeaterFinger")]
-        GlyphDefinition PictBeaterFinger { get; set; }
+        GlyphDefinition PictBeaterFinger { get; }
 
         [DataMember(Name = "pictBeaterFingernails")]
-        GlyphDefinition PictBeaterFingernails { get; set; }
+        GlyphDefinition PictBeaterFingernails { get; }
 
         [DataMember(Name = "pictBeaterFist")]
-        GlyphDefinition PictBeaterFist { get; set; }
+        GlyphDefinition PictBeaterFist { get; }
 
         [DataMember(Name = "pictBeaterGuiroScraper")]
-        GlyphDefinition PictBeaterGuiroScraper { get; set; }
+        GlyphDefinition PictBeaterGuiroScraper { get; }
 
         [DataMember(Name = "pictBeaterHammer")]
-        GlyphDefinition PictBeaterHammer { get; set; }
+        GlyphDefinition PictBeaterHammer { get; }
 
         [DataMember(Name = "pictBeaterHammerMetalDown")]
-        GlyphDefinition PictBeaterHammerMetalDown { get; set; }
+        GlyphDefinition PictBeaterHammerMetalDown { get; }
 
         [DataMember(Name = "pictBeaterHammerMetalUp")]
-        GlyphDefinition PictBeaterHammerMetalUp { get; set; }
+        GlyphDefinition PictBeaterHammerMetalUp { get; }
 
         [DataMember(Name = "pictBeaterHammerPlasticDown")]
-        GlyphDefinition PictBeaterHammerPlasticDown { get; set; }
+        GlyphDefinition PictBeaterHammerPlasticDown { get; }
 
         [DataMember(Name = "pictBeaterHammerPlasticUp")]
-        GlyphDefinition PictBeaterHammerPlasticUp { get; set; }
+        GlyphDefinition PictBeaterHammerPlasticUp { get; }
 
         [DataMember(Name = "pictBeaterHammerWoodDown")]
-        GlyphDefinition PictBeaterHammerWoodDown { get; set; }
+        GlyphDefinition PictBeaterHammerWoodDown { get; }
 
         [DataMember(Name = "pictBeaterHammerWoodUp")]
-        GlyphDefinition PictBeaterHammerWoodUp { get; set; }
+        GlyphDefinition PictBeaterHammerWoodUp { get; }
 
         [DataMember(Name = "pictBeaterHand")]
-        GlyphDefinition PictBeaterHand { get; set; }
+        GlyphDefinition PictBeaterHand { get; }
 
         [DataMember(Name = "pictBeaterHardBassDrumDown")]
-        GlyphDefinition PictBeaterHardBassDrumDown { get; set; }
+        GlyphDefinition PictBeaterHardBassDrumDown { get; }
 
         [DataMember(Name = "pictBeaterHardBassDrumUp")]
-        GlyphDefinition PictBeaterHardBassDrumUp { get; set; }
+        GlyphDefinition PictBeaterHardBassDrumUp { get; }
 
         [DataMember(Name = "pictBeaterHardGlockenspielDown")]
-        GlyphDefinition PictBeaterHardGlockenspielDown { get; set; }
+        GlyphDefinition PictBeaterHardGlockenspielDown { get; }
 
         [DataMember(Name = "pictBeaterHardGlockenspielLeft")]
-        GlyphDefinition PictBeaterHardGlockenspielLeft { get; set; }
+        GlyphDefinition PictBeaterHardGlockenspielLeft { get; }
 
         [DataMember(Name = "pictBeaterHardGlockenspielRight")]
-        GlyphDefinition PictBeaterHardGlockenspielRight { get; set; }
+        GlyphDefinition PictBeaterHardGlockenspielRight { get; }
 
         [DataMember(Name = "pictBeaterHardGlockenspielUp")]
-        GlyphDefinition PictBeaterHardGlockenspielUp { get; set; }
+        GlyphDefinition PictBeaterHardGlockenspielUp { get; }
 
         [DataMember(Name = "pictBeaterHardTimpaniDown")]
-        GlyphDefinition PictBeaterHardTimpaniDown { get; set; }
+        GlyphDefinition PictBeaterHardTimpaniDown { get; }
 
         [DataMember(Name = "pictBeaterHardTimpaniLeft")]
-        GlyphDefinition PictBeaterHardTimpaniLeft { get; set; }
+        GlyphDefinition PictBeaterHardTimpaniLeft { get; }
 
         [DataMember(Name = "pictBeaterHardTimpaniRight")]
-        GlyphDefinition PictBeaterHardTimpaniRight { get; set; }
+        GlyphDefinition PictBeaterHardTimpaniRight { get; }
 
         [DataMember(Name = "pictBeaterHardTimpaniUp")]
-        GlyphDefinition PictBeaterHardTimpaniUp { get; set; }
+        GlyphDefinition PictBeaterHardTimpaniUp { get; }
 
         [DataMember(Name = "pictBeaterHardXylophoneDown")]
-        GlyphDefinition PictBeaterHardXylophoneDown { get; set; }
+        GlyphDefinition PictBeaterHardXylophoneDown { get; }
 
         [DataMember(Name = "pictBeaterHardXylophoneLeft")]
-        GlyphDefinition PictBeaterHardXylophoneLeft { get; set; }
+        GlyphDefinition PictBeaterHardXylophoneLeft { get; }
 
         [DataMember(Name = "pictBeaterHardXylophoneRight")]
-        GlyphDefinition PictBeaterHardXylophoneRight { get; set; }
+        GlyphDefinition PictBeaterHardXylophoneRight { get; }
 
         [DataMember(Name = "pictBeaterHardXylophoneUp")]
-        GlyphDefinition PictBeaterHardXylophoneUp { get; set; }
+        GlyphDefinition PictBeaterHardXylophoneUp { get; }
 
         [DataMember(Name = "pictBeaterHardYarnDown")]
-        GlyphDefinition PictBeaterHardYarnDown { get; set; }
+        GlyphDefinition PictBeaterHardYarnDown { get; }
 
         [DataMember(Name = "pictBeaterHardYarnLeft")]
-        GlyphDefinition PictBeaterHardYarnLeft { get; set; }
+        GlyphDefinition PictBeaterHardYarnLeft { get; }
 
         [DataMember(Name = "pictBeaterHardYarnRight")]
-        GlyphDefinition PictBeaterHardYarnRight { get; set; }
+        GlyphDefinition PictBeaterHardYarnRight { get; }
 
         [DataMember(Name = "pictBeaterHardYarnUp")]
-        GlyphDefinition PictBeaterHardYarnUp { get; set; }
+        GlyphDefinition PictBeaterHardYarnUp { get; }
 
         [DataMember(Name = "pictBeaterJazzSticksDown")]
-        GlyphDefinition PictBeaterJazzSticksDown { get; set; }
+        GlyphDefinition PictBeaterJazzSticksDown { get; }
 
         [DataMember(Name = "pictBeaterJazzSticksUp")]
-        GlyphDefinition PictBeaterJazzSticksUp { get; set; }
+        GlyphDefinition PictBeaterJazzSticksUp { get; }
 
         [DataMember(Name = "pictBeaterKnittingNeedle")]
-        GlyphDefinition PictBeaterKnittingNeedle { get; set; }
+        GlyphDefinition PictBeaterKnittingNeedle { get; }
 
         [DataMember(Name = "pictBeaterMallet")]
-        GlyphDefinition PictBeaterMallet { get; set; }
+        GlyphDefinition PictBeaterMallet { get; }
 
         [DataMember(Name = "pictBeaterMediumBassDrumDown")]
-        GlyphDefinition PictBeaterMediumBassDrumDown { get; set; }
+        GlyphDefinition PictBeaterMediumBassDrumDown { get; }
 
         [DataMember(Name = "pictBeaterMediumBassDrumUp")]
-        GlyphDefinition PictBeaterMediumBassDrumUp { get; set; }
+        GlyphDefinition PictBeaterMediumBassDrumUp { get; }
 
         [DataMember(Name = "pictBeaterMediumTimpaniDown")]
-        GlyphDefinition PictBeaterMediumTimpaniDown { get; set; }
+        GlyphDefinition PictBeaterMediumTimpaniDown { get; }
 
         [DataMember(Name = "pictBeaterMediumTimpaniLeft")]
-        GlyphDefinition PictBeaterMediumTimpaniLeft { get; set; }
+        GlyphDefinition PictBeaterMediumTimpaniLeft { get; }
 
         [DataMember(Name = "pictBeaterMediumTimpaniRight")]
-        GlyphDefinition PictBeaterMediumTimpaniRight { get; set; }
+        GlyphDefinition PictBeaterMediumTimpaniRight { get; }
 
         [DataMember(Name = "pictBeaterMediumTimpaniUp")]
-        GlyphDefinition PictBeaterMediumTimpaniUp { get; set; }
+        GlyphDefinition PictBeaterMediumTimpaniUp { get; }
 
         [DataMember(Name = "pictBeaterMediumXylophoneDown")]
-        GlyphDefinition PictBeaterMediumXylophoneDown { get; set; }
+        GlyphDefinition PictBeaterMediumXylophoneDown { get; }
 
         [DataMember(Name = "pictBeaterMediumXylophoneLeft")]
-        GlyphDefinition PictBeaterMediumXylophoneLeft { get; set; }
+        GlyphDefinition PictBeaterMediumXylophoneLeft { get; }
 
         [DataMember(Name = "pictBeaterMediumXylophoneRight")]
-        GlyphDefinition PictBeaterMediumXylophoneRight { get; set; }
+        GlyphDefinition PictBeaterMediumXylophoneRight { get; }
 
         [DataMember(Name = "pictBeaterMediumXylophoneUp")]
-        GlyphDefinition PictBeaterMediumXylophoneUp { get; set; }
+        GlyphDefinition PictBeaterMediumXylophoneUp { get; }
 
         [DataMember(Name = "pictBeaterMediumYarnDown")]
-        GlyphDefinition PictBeaterMediumYarnDown { get; set; }
+        GlyphDefinition PictBeaterMediumYarnDown { get; }
 
         [DataMember(Name = "pictBeaterMediumYarnLeft")]
-        GlyphDefinition PictBeaterMediumYarnLeft { get; set; }
+        GlyphDefinition PictBeaterMediumYarnLeft { get; }
 
         [DataMember(Name = "pictBeaterMediumYarnRight")]
-        GlyphDefinition PictBeaterMediumYarnRight { get; set; }
+        GlyphDefinition PictBeaterMediumYarnRight { get; }
 
         [DataMember(Name = "pictBeaterMediumYarnUp")]
-        GlyphDefinition PictBeaterMediumYarnUp { get; set; }
+        GlyphDefinition PictBeaterMediumYarnUp { get; }
 
         [DataMember(Name = "pictBeaterMetalBassDrumDown")]
-        GlyphDefinition PictBeaterMetalBassDrumDown { get; set; }
+        GlyphDefinition PictBeaterMetalBassDrumDown { get; }
 
         [DataMember(Name = "pictBeaterMetalBassDrumUp")]
-        GlyphDefinition PictBeaterMetalBassDrumUp { get; set; }
+        GlyphDefinition PictBeaterMetalBassDrumUp { get; }
 
         [DataMember(Name = "pictBeaterMetalDown")]
-        GlyphDefinition PictBeaterMetalDown { get; set; }
+        GlyphDefinition PictBeaterMetalDown { get; }
 
         [DataMember(Name = "pictBeaterMetalHammer")]
-        GlyphDefinition PictBeaterMetalHammer { get; set; }
+        GlyphDefinition PictBeaterMetalHammer { get; }
 
         [DataMember(Name = "pictBeaterMetalLeft")]
-        GlyphDefinition PictBeaterMetalLeft { get; set; }
+        GlyphDefinition PictBeaterMetalLeft { get; }
 
         [DataMember(Name = "pictBeaterMetalRight")]
-        GlyphDefinition PictBeaterMetalRight { get; set; }
+        GlyphDefinition PictBeaterMetalRight { get; }
 
         [DataMember(Name = "pictBeaterMetalUp")]
-        GlyphDefinition PictBeaterMetalUp { get; set; }
+        GlyphDefinition PictBeaterMetalUp { get; }
 
         [DataMember(Name = "pictBeaterSnareSticksDown")]
-        GlyphDefinition PictBeaterSnareSticksDown { get; set; }
+        GlyphDefinition PictBeaterSnareSticksDown { get; }
 
         [DataMember(Name = "pictBeaterSnareSticksUp")]
-        GlyphDefinition PictBeaterSnareSticksUp { get; set; }
+        GlyphDefinition PictBeaterSnareSticksUp { get; }
 
         [DataMember(Name = "pictBeaterSoftBassDrumDown")]
-        GlyphDefinition PictBeaterSoftBassDrumDown { get; set; }
+        GlyphDefinition PictBeaterSoftBassDrumDown { get; }
 
         [DataMember(Name = "pictBeaterSoftBassDrumUp")]
-        GlyphDefinition PictBeaterSoftBassDrumUp { get; set; }
+        GlyphDefinition PictBeaterSoftBassDrumUp { get; }
 
         [DataMember(Name = "pictBeaterSoftGlockenspielDown")]
-        GlyphDefinition PictBeaterSoftGlockenspielDown { get; set; }
+        GlyphDefinition PictBeaterSoftGlockenspielDown { get; }
 
         [DataMember(Name = "pictBeaterSoftGlockenspielLeft")]
-        GlyphDefinition PictBeaterSoftGlockenspielLeft { get; set; }
+        GlyphDefinition PictBeaterSoftGlockenspielLeft { get; }
 
         [DataMember(Name = "pictBeaterSoftGlockenspielRight")]
-        GlyphDefinition PictBeaterSoftGlockenspielRight { get; set; }
+        GlyphDefinition PictBeaterSoftGlockenspielRight { get; }
 
         [DataMember(Name = "pictBeaterSoftGlockenspielUp")]
-        GlyphDefinition PictBeaterSoftGlockenspielUp { get; set; }
+        GlyphDefinition PictBeaterSoftGlockenspielUp { get; }
 
         [DataMember(Name = "pictBeaterSoftTimpaniDown")]
-        GlyphDefinition PictBeaterSoftTimpaniDown { get; set; }
+        GlyphDefinition PictBeaterSoftTimpaniDown { get; }
 
         [DataMember(Name = "pictBeaterSoftTimpaniLeft")]
-        GlyphDefinition PictBeaterSoftTimpaniLeft { get; set; }
+        GlyphDefinition PictBeaterSoftTimpaniLeft { get; }
 
         [DataMember(Name = "pictBeaterSoftTimpaniRight")]
-        GlyphDefinition PictBeaterSoftTimpaniRight { get; set; }
+        GlyphDefinition PictBeaterSoftTimpaniRight { get; }
 
         [DataMember(Name = "pictBeaterSoftTimpaniUp")]
-        GlyphDefinition PictBeaterSoftTimpaniUp { get; set; }
+        GlyphDefinition PictBeaterSoftTimpaniUp { get; }
 
         [DataMember(Name = "pictBeaterSoftXylophone")]
-        GlyphDefinition PictBeaterSoftXylophone { get; set; }
+        GlyphDefinition PictBeaterSoftXylophone { get; }
 
         [DataMember(Name = "pictBeaterSoftXylophoneDown")]
-        GlyphDefinition PictBeaterSoftXylophoneDown { get; set; }
+        GlyphDefinition PictBeaterSoftXylophoneDown { get; }
 
         [DataMember(Name = "pictBeaterSoftXylophoneLeft")]
-        GlyphDefinition PictBeaterSoftXylophoneLeft { get; set; }
+        GlyphDefinition PictBeaterSoftXylophoneLeft { get; }
 
         [DataMember(Name = "pictBeaterSoftXylophoneRight")]
-        GlyphDefinition PictBeaterSoftXylophoneRight { get; set; }
+        GlyphDefinition PictBeaterSoftXylophoneRight { get; }
 
         [DataMember(Name = "pictBeaterSoftXylophoneUp")]
-        GlyphDefinition PictBeaterSoftXylophoneUp { get; set; }
+        GlyphDefinition PictBeaterSoftXylophoneUp { get; }
 
         [DataMember(Name = "pictBeaterSoftYarnDown")]
-        GlyphDefinition PictBeaterSoftYarnDown { get; set; }
+        GlyphDefinition PictBeaterSoftYarnDown { get; }
 
         [DataMember(Name = "pictBeaterSoftYarnLeft")]
-        GlyphDefinition PictBeaterSoftYarnLeft { get; set; }
+        GlyphDefinition PictBeaterSoftYarnLeft { get; }
 
         [DataMember(Name = "pictBeaterSoftYarnRight")]
-        GlyphDefinition PictBeaterSoftYarnRight { get; set; }
+        GlyphDefinition PictBeaterSoftYarnRight { get; }
 
         [DataMember(Name = "pictBeaterSoftYarnUp")]
-        GlyphDefinition PictBeaterSoftYarnUp { get; set; }
+        GlyphDefinition PictBeaterSoftYarnUp { get; }
 
         [DataMember(Name = "pictBeaterSpoonWoodenMallet")]
-        GlyphDefinition PictBeaterSpoonWoodenMallet { get; set; }
+        GlyphDefinition PictBeaterSpoonWoodenMallet { get; }
 
         [DataMember(Name = "pictBeaterSuperballDown")]
-        GlyphDefinition PictBeaterSuperballDown { get; set; }
+        GlyphDefinition PictBeaterSuperballDown { get; }
 
         [DataMember(Name = "pictBeaterSuperballLeft")]
-        GlyphDefinition PictBeaterSuperballLeft { get; set; }
+        GlyphDefinition PictBeaterSuperballLeft { get; }
 
         [DataMember(Name = "pictBeaterSuperballRight")]
-        GlyphDefinition PictBeaterSuperballRight { get; set; }
+        GlyphDefinition PictBeaterSuperballRight { get; }
 
         [DataMember(Name = "pictBeaterSuperballUp")]
-        GlyphDefinition PictBeaterSuperballUp { get; set; }
+        GlyphDefinition PictBeaterSuperballUp { get; }
 
         [DataMember(Name = "pictBeaterTriangleDown")]
-        GlyphDefinition PictBeaterTriangleDown { get; set; }
+        GlyphDefinition PictBeaterTriangleDown { get; }
 
         [DataMember(Name = "pictBeaterTriangleUp")]
-        GlyphDefinition PictBeaterTriangleUp { get; set; }
+        GlyphDefinition PictBeaterTriangleUp { get; }
 
         [DataMember(Name = "pictBeaterWireBrushesDown")]
-        GlyphDefinition PictBeaterWireBrushesDown { get; set; }
+        GlyphDefinition PictBeaterWireBrushesDown { get; }
 
         [DataMember(Name = "pictBeaterWireBrushesUp")]
-        GlyphDefinition PictBeaterWireBrushesUp { get; set; }
+        GlyphDefinition PictBeaterWireBrushesUp { get; }
 
         [DataMember(Name = "pictBeaterWoodTimpaniDown")]
-        GlyphDefinition PictBeaterWoodTimpaniDown { get; set; }
+        GlyphDefinition PictBeaterWoodTimpaniDown { get; }
 
         [DataMember(Name = "pictBeaterWoodTimpaniLeft")]
-        GlyphDefinition PictBeaterWoodTimpaniLeft { get; set; }
+        GlyphDefinition PictBeaterWoodTimpaniLeft { get; }
 
         [DataMember(Name = "pictBeaterWoodTimpaniRight")]
-        GlyphDefinition PictBeaterWoodTimpaniRight { get; set; }
+        GlyphDefinition PictBeaterWoodTimpaniRight { get; }
 
         [DataMember(Name = "pictBeaterWoodTimpaniUp")]
-        GlyphDefinition PictBeaterWoodTimpaniUp { get; set; }
+        GlyphDefinition PictBeaterWoodTimpaniUp { get; }
 
         [DataMember(Name = "pictBeaterWoodXylophoneDown")]
-        GlyphDefinition PictBeaterWoodXylophoneDown { get; set; }
+        GlyphDefinition PictBeaterWoodXylophoneDown { get; }
 
         [DataMember(Name = "pictBeaterWoodXylophoneLeft")]
-        GlyphDefinition PictBeaterWoodXylophoneLeft { get; set; }
+        GlyphDefinition PictBeaterWoodXylophoneLeft { get; }
 
         [DataMember(Name = "pictBeaterWoodXylophoneRight")]
-        GlyphDefinition PictBeaterWoodXylophoneRight { get; set; }
+        GlyphDefinition PictBeaterWoodXylophoneRight { get; }
 
         [DataMember(Name = "pictBeaterWoodXylophoneUp")]
-        GlyphDefinition PictBeaterWoodXylophoneUp { get; set; }
+        GlyphDefinition PictBeaterWoodXylophoneUp { get; }
 
         [DataMember(Name = "pictBell")]
-        GlyphDefinition PictBell { get; set; }
+        GlyphDefinition PictBell { get; }
 
         [DataMember(Name = "pictBellOfCymbal")]
-        GlyphDefinition PictBellOfCymbal { get; set; }
+        GlyphDefinition PictBellOfCymbal { get; }
 
         [DataMember(Name = "pictBellPlate")]
-        GlyphDefinition PictBellPlate { get; set; }
+        GlyphDefinition PictBellPlate { get; }
 
         [DataMember(Name = "pictBellTree")]
-        GlyphDefinition PictBellTree { get; set; }
+        GlyphDefinition PictBellTree { get; }
 
         [DataMember(Name = "pictBirdWhistle")]
-        GlyphDefinition PictBirdWhistle { get; set; }
+        GlyphDefinition PictBirdWhistle { get; }
 
         [DataMember(Name = "pictBoardClapper")]
-        GlyphDefinition PictBoardClapper { get; set; }
+        GlyphDefinition PictBoardClapper { get; }
 
         [DataMember(Name = "pictBongos")]
-        GlyphDefinition PictBongos { get; set; }
+        GlyphDefinition PictBongos { get; }
 
         [DataMember(Name = "pictBrakeDrum")]
-        GlyphDefinition PictBrakeDrum { get; set; }
+        GlyphDefinition PictBrakeDrum { get; }
 
         [DataMember(Name = "pictCabasa")]
-        GlyphDefinition PictCabasa { get; set; }
+        GlyphDefinition PictCabasa { get; }
 
         [DataMember(Name = "pictCannon")]
-        GlyphDefinition PictCannon { get; set; }
+        GlyphDefinition PictCannon { get; }
 
         [DataMember(Name = "pictCarHorn")]
-        GlyphDefinition PictCarHorn { get; set; }
+        GlyphDefinition PictCarHorn { get; }
 
         [DataMember(Name = "pictCastanets")]
-        GlyphDefinition PictCastanets { get; set; }
+        GlyphDefinition PictCastanets { get; }
 
         [DataMember(Name = "pictCastanetsWithHandle")]
-        GlyphDefinition PictCastanetsWithHandle { get; set; }
+        GlyphDefinition PictCastanetsWithHandle { get; }
 
         [DataMember(Name = "pictCelesta")]
-        GlyphDefinition PictCelesta { get; set; }
+        GlyphDefinition PictCelesta { get; }
 
         [DataMember(Name = "pictCencerro")]
-        GlyphDefinition PictCencerro { get; set; }
+        GlyphDefinition PictCencerro { get; }
 
         [DataMember(Name = "pictCenter1")]
-        GlyphDefinition PictCenter1 { get; set; }
+        GlyphDefinition PictCenter1 { get; }
 
         [DataMember(Name = "pictCenter2")]
-        GlyphDefinition PictCenter2 { get; set; }
+        GlyphDefinition PictCenter2 { get; }
 
         [DataMember(Name = "pictCenter3")]
-        GlyphDefinition PictCenter3 { get; set; }
+        GlyphDefinition PictCenter3 { get; }
 
         [DataMember(Name = "pictChainRattle")]
-        GlyphDefinition PictChainRattle { get; set; }
+        GlyphDefinition PictChainRattle { get; }
 
         [DataMember(Name = "pictChimes")]
-        GlyphDefinition PictChimes { get; set; }
+        GlyphDefinition PictChimes { get; }
 
         [DataMember(Name = "pictChineseCymbal")]
-        GlyphDefinition PictChineseCymbal { get; set; }
+        GlyphDefinition PictChineseCymbal { get; }
 
         [DataMember(Name = "pictChokeCymbal")]
-        GlyphDefinition PictChokeCymbal { get; set; }
+        GlyphDefinition PictChokeCymbal { get; }
 
         [DataMember(Name = "pictClaves")]
-        GlyphDefinition PictClaves { get; set; }
+        GlyphDefinition PictClaves { get; }
 
         [DataMember(Name = "pictCoins")]
-        GlyphDefinition PictCoins { get; set; }
+        GlyphDefinition PictCoins { get; }
 
         [DataMember(Name = "pictConga")]
-        GlyphDefinition PictConga { get; set; }
+        GlyphDefinition PictConga { get; }
 
         [DataMember(Name = "pictCowBell")]
-        GlyphDefinition PictCowBell { get; set; }
+        GlyphDefinition PictCowBell { get; }
 
         [DataMember(Name = "pictCrashCymbals")]
-        GlyphDefinition PictCrashCymbals { get; set; }
+        GlyphDefinition PictCrashCymbals { get; }
 
         [DataMember(Name = "pictCrotales")]
-        GlyphDefinition PictCrotales { get; set; }
+        GlyphDefinition PictCrotales { get; }
 
         [DataMember(Name = "pictCrushStem")]
-        GlyphDefinition PictCrushStem { get; set; }
+        GlyphDefinition PictCrushStem { get; }
 
         [DataMember(Name = "pictCuica")]
-        GlyphDefinition PictCuica { get; set; }
+        GlyphDefinition PictCuica { get; }
 
         [DataMember(Name = "pictCymbalTongs")]
-        GlyphDefinition PictCymbalTongs { get; set; }
+        GlyphDefinition PictCymbalTongs { get; }
 
         [DataMember(Name = "pictDamp1")]
-        GlyphDefinition PictDamp1 { get; set; }
+        GlyphDefinition PictDamp1 { get; }
 
         [DataMember(Name = "pictDamp2")]
-        GlyphDefinition PictDamp2 { get; set; }
+        GlyphDefinition PictDamp2 { get; }
 
         [DataMember(Name = "pictDamp3")]
-        GlyphDefinition PictDamp3 { get; set; }
+        GlyphDefinition PictDamp3 { get; }
 
         [DataMember(Name = "pictDamp4")]
-        GlyphDefinition PictDamp4 { get; set; }
+        GlyphDefinition PictDamp4 { get; }
 
         [DataMember(Name = "pictDeadNoteStem")]
-        GlyphDefinition PictDeadNoteStem { get; set; }
+        GlyphDefinition PictDeadNoteStem { get; }
 
         [DataMember(Name = "pictDrumStick")]
-        GlyphDefinition PictDrumStick { get; set; }
+        GlyphDefinition PictDrumStick { get; }
 
         [DataMember(Name = "pictDuckCall")]
-        GlyphDefinition PictDuckCall { get; set; }
+        GlyphDefinition PictDuckCall { get; }
 
         [DataMember(Name = "pictEdgeOfCymbal")]
-        GlyphDefinition PictEdgeOfCymbal { get; set; }
+        GlyphDefinition PictEdgeOfCymbal { get; }
 
         [DataMember(Name = "pictEmptyTrap")]
-        GlyphDefinition PictEmptyTrap { get; set; }
+        GlyphDefinition PictEmptyTrap { get; }
 
         [DataMember(Name = "pictFingerCymbals")]
-        GlyphDefinition PictFingerCymbals { get; set; }
+        GlyphDefinition PictFingerCymbals { get; }
 
         [DataMember(Name = "pictFlexatone")]
-        GlyphDefinition PictFlexatone { get; set; }
+        GlyphDefinition PictFlexatone { get; }
 
         [DataMember(Name = "pictFootballRatchet")]
-        GlyphDefinition PictFootballRatchet { get; set; }
+        GlyphDefinition PictFootballRatchet { get; }
 
         [DataMember(Name = "pictGlassHarmonica")]
-        GlyphDefinition PictGlassHarmonica { get; set; }
+        GlyphDefinition PictGlassHarmonica { get; }
 
         [DataMember(Name = "pictGlassHarp")]
-        GlyphDefinition PictGlassHarp { get; set; }
+        GlyphDefinition PictGlassHarp { get; }
 
         [DataMember(Name = "pictGlassPlateChimes")]
-        GlyphDefinition PictGlassPlateChimes { get; set; }
+        GlyphDefinition PictGlassPlateChimes { get; }
 
         [DataMember(Name = "pictGlassTubeChimes")]
-        GlyphDefinition PictGlassTubeChimes { get; set; }
+        GlyphDefinition PictGlassTubeChimes { get; }
 
         [DataMember(Name = "pictGlsp")]
-        GlyphDefinition PictGlsp { get; set; }
+        GlyphDefinition PictGlsp { get; }
 
         [DataMember(Name = "pictGlspSmithBrindle")]
-        GlyphDefinition PictGlspSmithBrindle { get; set; }
+        GlyphDefinition PictGlspSmithBrindle { get; }
 
         [DataMember(Name = "pictGobletDrum")]
-        GlyphDefinition PictGobletDrum { get; set; }
+        GlyphDefinition PictGobletDrum { get; }
 
         [DataMember(Name = "pictGong")]
-        GlyphDefinition PictGong { get; set; }
+        GlyphDefinition PictGong { get; }
 
         [DataMember(Name = "pictGongWithButton")]
-        GlyphDefinition PictGongWithButton { get; set; }
+        GlyphDefinition PictGongWithButton { get; }
 
         [DataMember(Name = "pictGuiro")]
-        GlyphDefinition PictGuiro { get; set; }
+        GlyphDefinition PictGuiro { get; }
 
         [DataMember(Name = "pictGumHardDown")]
-        GlyphDefinition PictGumHardDown { get; set; }
+        GlyphDefinition PictGumHardDown { get; }
 
         [DataMember(Name = "pictGumHardLeft")]
-        GlyphDefinition PictGumHardLeft { get; set; }
+        GlyphDefinition PictGumHardLeft { get; }
 
         [DataMember(Name = "pictGumHardRight")]
-        GlyphDefinition PictGumHardRight { get; set; }
+        GlyphDefinition PictGumHardRight { get; }
 
         [DataMember(Name = "pictGumHardUp")]
-        GlyphDefinition PictGumHardUp { get; set; }
+        GlyphDefinition PictGumHardUp { get; }
 
         [DataMember(Name = "pictGumMediumDown")]
-        GlyphDefinition PictGumMediumDown { get; set; }
+        GlyphDefinition PictGumMediumDown { get; }
 
         [DataMember(Name = "pictGumMediumLeft")]
-        GlyphDefinition PictGumMediumLeft { get; set; }
+        GlyphDefinition PictGumMediumLeft { get; }
 
         [DataMember(Name = "pictGumMediumRight")]
-        GlyphDefinition PictGumMediumRight { get; set; }
+        GlyphDefinition PictGumMediumRight { get; }
 
         [DataMember(Name = "pictGumMediumUp")]
-        GlyphDefinition PictGumMediumUp { get; set; }
+        GlyphDefinition PictGumMediumUp { get; }
 
         [DataMember(Name = "pictGumSoftDown")]
-        GlyphDefinition PictGumSoftDown { get; set; }
+        GlyphDefinition PictGumSoftDown { get; }
 
         [DataMember(Name = "pictGumSoftLeft")]
-        GlyphDefinition PictGumSoftLeft { get; set; }
+        GlyphDefinition PictGumSoftLeft { get; }
 
         [DataMember(Name = "pictGumSoftRight")]
-        GlyphDefinition PictGumSoftRight { get; set; }
+        GlyphDefinition PictGumSoftRight { get; }
 
         [DataMember(Name = "pictGumSoftUp")]
-        GlyphDefinition PictGumSoftUp { get; set; }
+        GlyphDefinition PictGumSoftUp { get; }
 
         [DataMember(Name = "pictHalfOpen1")]
-        GlyphDefinition PictHalfOpen1 { get; set; }
+        GlyphDefinition PictHalfOpen1 { get; }
 
         [DataMember(Name = "pictHalfOpen2")]
-        GlyphDefinition PictHalfOpen2 { get; set; }
+        GlyphDefinition PictHalfOpen2 { get; }
 
         [DataMember(Name = "pictHandbell")]
-        GlyphDefinition PictHandbell { get; set; }
+        GlyphDefinition PictHandbell { get; }
 
         [DataMember(Name = "pictHiHat")]
-        GlyphDefinition PictHiHat { get; set; }
+        GlyphDefinition PictHiHat { get; }
 
         [DataMember(Name = "pictHiHatOnStand")]
-        GlyphDefinition PictHiHatOnStand { get; set; }
+        GlyphDefinition PictHiHatOnStand { get; }
 
         [DataMember(Name = "pictJawHarp")]
-        GlyphDefinition PictJawHarp { get; set; }
+        GlyphDefinition PictJawHarp { get; }
 
         [DataMember(Name = "pictJingleBells")]
-        GlyphDefinition PictJingleBells { get; set; }
+        GlyphDefinition PictJingleBells { get; }
 
         [DataMember(Name = "pictKlaxonHorn")]
-        GlyphDefinition PictKlaxonHorn { get; set; }
+        GlyphDefinition PictKlaxonHorn { get; }
 
         [DataMember(Name = "pictLeftHandCircle")]
-        GlyphDefinition PictLeftHandCircle { get; set; }
+        GlyphDefinition PictLeftHandCircle { get; }
 
         [DataMember(Name = "pictLionsRoar")]
-        GlyphDefinition PictLionsRoar { get; set; }
+        GlyphDefinition PictLionsRoar { get; }
 
         [DataMember(Name = "pictLithophone")]
-        GlyphDefinition PictLithophone { get; set; }
+        GlyphDefinition PictLithophone { get; }
 
         [DataMember(Name = "pictLogDrum")]
-        GlyphDefinition PictLogDrum { get; set; }
+        GlyphDefinition PictLogDrum { get; }
 
         [DataMember(Name = "pictLotusFlute")]
-        GlyphDefinition PictLotusFlute { get; set; }
+        GlyphDefinition PictLotusFlute { get; }
 
         [DataMember(Name = "pictMar")]
-        GlyphDefinition PictMar { get; set; }
+        GlyphDefinition PictMar { get; }
 
         [DataMember(Name = "pictMarSmithBrindle")]
-        GlyphDefinition PictMarSmithBrindle { get; set; }
+        GlyphDefinition PictMarSmithBrindle { get; }
 
         [DataMember(Name = "pictMaraca")]
-        GlyphDefinition PictMaraca { get; set; }
+        GlyphDefinition PictMaraca { get; }
 
         [DataMember(Name = "pictMaracas")]
-        GlyphDefinition PictMaracas { get; set; }
+        GlyphDefinition PictMaracas { get; }
 
         [DataMember(Name = "pictMegaphone")]
-        GlyphDefinition PictMegaphone { get; set; }
+        GlyphDefinition PictMegaphone { get; }
 
         [DataMember(Name = "pictMetalPlateChimes")]
-        GlyphDefinition PictMetalPlateChimes { get; set; }
+        GlyphDefinition PictMetalPlateChimes { get; }
 
         [DataMember(Name = "pictMetalTubeChimes")]
-        GlyphDefinition PictMetalTubeChimes { get; set; }
+        GlyphDefinition PictMetalTubeChimes { get; }
 
         [DataMember(Name = "pictMusicalSaw")]
-        GlyphDefinition PictMusicalSaw { get; set; }
+        GlyphDefinition PictMusicalSaw { get; }
 
         [DataMember(Name = "pictNormalPosition")]
-        GlyphDefinition PictNormalPosition { get; set; }
+        GlyphDefinition PictNormalPosition { get; }
 
         [DataMember(Name = "pictOnRim")]
-        GlyphDefinition PictOnRim { get; set; }
+        GlyphDefinition PictOnRim { get; }
 
         [DataMember(Name = "pictOpen")]
-        GlyphDefinition PictOpen { get; set; }
+        GlyphDefinition PictOpen { get; }
 
         [DataMember(Name = "pictOpenRimShot")]
-        GlyphDefinition PictOpenRimShot { get; set; }
+        GlyphDefinition PictOpenRimShot { get; }
 
         [DataMember(Name = "pictPistolShot")]
-        GlyphDefinition PictPistolShot { get; set; }
+        GlyphDefinition PictPistolShot { get; }
 
         [DataMember(Name = "pictPoliceWhistle")]
-        GlyphDefinition PictPoliceWhistle { get; set; }
+        GlyphDefinition PictPoliceWhistle { get; }
 
         [DataMember(Name = "pictQuijada")]
-        GlyphDefinition PictQuijada { get; set; }
+        GlyphDefinition PictQuijada { get; }
 
         [DataMember(Name = "pictRainstick")]
-        GlyphDefinition PictRainstick { get; set; }
+        GlyphDefinition PictRainstick { get; }
 
         [DataMember(Name = "pictRatchet")]
-        GlyphDefinition PictRatchet { get; set; }
+        GlyphDefinition PictRatchet { get; }
 
         [DataMember(Name = "pictRecoReco")]
-        GlyphDefinition PictRecoReco { get; set; }
+        GlyphDefinition PictRecoReco { get; }
 
         [DataMember(Name = "pictRightHandSquare")]
-        GlyphDefinition PictRightHandSquare { get; set; }
+        GlyphDefinition PictRightHandSquare { get; }
 
         [DataMember(Name = "pictRim1")]
-        GlyphDefinition PictRim1 { get; set; }
+        GlyphDefinition PictRim1 { get; }
 
         [DataMember(Name = "pictRim2")]
-        GlyphDefinition PictRim2 { get; set; }
+        GlyphDefinition PictRim2 { get; }
 
         [DataMember(Name = "pictRim3")]
-        GlyphDefinition PictRim3 { get; set; }
+        GlyphDefinition PictRim3 { get; }
 
         [DataMember(Name = "pictRimShotOnStem")]
-        GlyphDefinition PictRimShotOnStem { get; set; }
+        GlyphDefinition PictRimShotOnStem { get; }
 
         [DataMember(Name = "pictSandpaperBlocks")]
-        GlyphDefinition PictSandpaperBlocks { get; set; }
+        GlyphDefinition PictSandpaperBlocks { get; }
 
         [DataMember(Name = "pictScrapeAroundRim")]
-        GlyphDefinition PictScrapeAroundRim { get; set; }
+        GlyphDefinition PictScrapeAroundRim { get; }
 
         [DataMember(Name = "pictScrapeCenterToEdge")]
-        GlyphDefinition PictScrapeCenterToEdge { get; set; }
+        GlyphDefinition PictScrapeCenterToEdge { get; }
 
         [DataMember(Name = "pictScrapeEdgeToCenter")]
-        GlyphDefinition PictScrapeEdgeToCenter { get; set; }
+        GlyphDefinition PictScrapeEdgeToCenter { get; }
 
         [DataMember(Name = "pictShellBells")]
-        GlyphDefinition PictShellBells { get; set; }
+        GlyphDefinition PictShellBells { get; }
 
         [DataMember(Name = "pictShellChimes")]
-        GlyphDefinition PictShellChimes { get; set; }
+        GlyphDefinition PictShellChimes { get; }
 
         [DataMember(Name = "pictSiren")]
-        GlyphDefinition PictSiren { get; set; }
+        GlyphDefinition PictSiren { get; }
 
         [DataMember(Name = "pictSistrum")]
-        GlyphDefinition PictSistrum { get; set; }
+        GlyphDefinition PictSistrum { get; }
 
         [DataMember(Name = "pictSizzleCymbal")]
-        GlyphDefinition PictSizzleCymbal { get; set; }
+        GlyphDefinition PictSizzleCymbal { get; }
 
         [DataMember(Name = "pictSleighBell")]
-        GlyphDefinition PictSleighBell { get; set; }
+        GlyphDefinition PictSleighBell { get; }
 
         [DataMember(Name = "pictSlideBrushOnGong")]
-        GlyphDefinition PictSlideBrushOnGong { get; set; }
+        GlyphDefinition PictSlideBrushOnGong { get; }
 
         [DataMember(Name = "pictSlideWhistle")]
-        GlyphDefinition PictSlideWhistle { get; set; }
+        GlyphDefinition PictSlideWhistle { get; }
 
         [DataMember(Name = "pictSlitDrum")]
-        GlyphDefinition PictSlitDrum { get; set; }
+        GlyphDefinition PictSlitDrum { get; }
 
         [DataMember(Name = "pictSnareDrum")]
-        GlyphDefinition PictSnareDrum { get; set; }
+        GlyphDefinition PictSnareDrum { get; }
 
         [DataMember(Name = "pictSnareDrumMilitary")]
-        GlyphDefinition PictSnareDrumMilitary { get; set; }
+        GlyphDefinition PictSnareDrumMilitary { get; }
 
         [DataMember(Name = "pictSnareDrumSnaresOff")]
-        GlyphDefinition PictSnareDrumSnaresOff { get; set; }
+        GlyphDefinition PictSnareDrumSnaresOff { get; }
 
         [DataMember(Name = "pictSteelDrums")]
-        GlyphDefinition PictSteelDrums { get; set; }
+        GlyphDefinition PictSteelDrums { get; }
 
         [DataMember(Name = "pictStickShot")]
-        GlyphDefinition PictStickShot { get; set; }
+        GlyphDefinition PictStickShot { get; }
 
         [DataMember(Name = "pictSuperball")]
-        GlyphDefinition PictSuperball { get; set; }
+        GlyphDefinition PictSuperball { get; }
 
         [DataMember(Name = "pictSuspendedCymbal")]
-        GlyphDefinition PictSuspendedCymbal { get; set; }
+        GlyphDefinition PictSuspendedCymbal { get; }
 
         [DataMember(Name = "pictSwishStem")]
-        GlyphDefinition PictSwishStem { get; set; }
+        GlyphDefinition PictSwishStem { get; }
 
         [DataMember(Name = "pictTabla")]
-        GlyphDefinition PictTabla { get; set; }
+        GlyphDefinition PictTabla { get; }
 
         [DataMember(Name = "pictTamTam")]
-        GlyphDefinition PictTamTam { get; set; }
+        GlyphDefinition PictTamTam { get; }
 
         [DataMember(Name = "pictTamTamWithBeater")]
-        GlyphDefinition PictTamTamWithBeater { get; set; }
+        GlyphDefinition PictTamTamWithBeater { get; }
 
         [DataMember(Name = "pictTambourine")]
-        GlyphDefinition PictTambourine { get; set; }
+        GlyphDefinition PictTambourine { get; }
 
         [DataMember(Name = "pictTempleBlocks")]
-        GlyphDefinition PictTempleBlocks { get; set; }
+        GlyphDefinition PictTempleBlocks { get; }
 
         [DataMember(Name = "pictTenorDrum")]
-        GlyphDefinition PictTenorDrum { get; set; }
+        GlyphDefinition PictTenorDrum { get; }
 
         [DataMember(Name = "pictThundersheet")]
-        GlyphDefinition PictThundersheet { get; set; }
+        GlyphDefinition PictThundersheet { get; }
 
         [DataMember(Name = "pictTimbales")]
-        GlyphDefinition PictTimbales { get; set; }
+        GlyphDefinition PictTimbales { get; }
 
         [DataMember(Name = "pictTimpani")]
-        GlyphDefinition PictTimpani { get; set; }
+        GlyphDefinition PictTimpani { get; }
 
         [DataMember(Name = "pictTomTom")]
-        GlyphDefinition PictTomTom { get; set; }
+        GlyphDefinition PictTomTom { get; }
 
         [DataMember(Name = "pictTomTomChinese")]
-        GlyphDefinition PictTomTomChinese { get; set; }
+        GlyphDefinition PictTomTomChinese { get; }
 
         [DataMember(Name = "pictTomTomIndoAmerican")]
-        GlyphDefinition PictTomTomIndoAmerican { get; set; }
+        GlyphDefinition PictTomTomIndoAmerican { get; }
 
         [DataMember(Name = "pictTomTomJapanese")]
-        GlyphDefinition PictTomTomJapanese { get; set; }
+        GlyphDefinition PictTomTomJapanese { get; }
 
         [DataMember(Name = "pictTriangle")]
-        GlyphDefinition PictTriangle { get; set; }
+        GlyphDefinition PictTriangle { get; }
 
         [DataMember(Name = "pictTubaphone")]
-        GlyphDefinition PictTubaphone { get; set; }
+        GlyphDefinition PictTubaphone { get; }
 
         [DataMember(Name = "pictTubularBells")]
-        GlyphDefinition PictTubularBells { get; set; }
+        GlyphDefinition PictTubularBells { get; }
 
         [DataMember(Name = "pictTurnLeftStem")]
-        GlyphDefinition PictTurnLeftStem { get; set; }
+        GlyphDefinition PictTurnLeftStem { get; }
 
         [DataMember(Name = "pictTurnRightLeftStem")]
-        GlyphDefinition PictTurnRightLeftStem { get; set; }
+        GlyphDefinition PictTurnRightLeftStem { get; }
 
         [DataMember(Name = "pictTurnRightStem")]
-        GlyphDefinition PictTurnRightStem { get; set; }
+        GlyphDefinition PictTurnRightStem { get; }
 
         [DataMember(Name = "pictVib")]
-        GlyphDefinition PictVib { get; set; }
+        GlyphDefinition PictVib { get; }
 
         [DataMember(Name = "pictVibMotorOff")]
-        GlyphDefinition PictVibMotorOff { get; set; }
+        GlyphDefinition PictVibMotorOff { get; }
 
         [DataMember(Name = "pictVibSmithBrindle")]
-        GlyphDefinition PictVibSmithBrindle { get; set; }
+        GlyphDefinition PictVibSmithBrindle { get; }
 
         [DataMember(Name = "pictVibraslap")]
-        GlyphDefinition PictVibraslap { get; set; }
+        GlyphDefinition PictVibraslap { get; }
 
         [DataMember(Name = "pictVietnameseHat")]
-        GlyphDefinition PictVietnameseHat { get; set; }
+        GlyphDefinition PictVietnameseHat { get; }
 
         [DataMember(Name = "pictWhip")]
-        GlyphDefinition PictWhip { get; set; }
+        GlyphDefinition PictWhip { get; }
 
         [DataMember(Name = "pictWindChimesGlass")]
-        GlyphDefinition PictWindChimesGlass { get; set; }
+        GlyphDefinition PictWindChimesGlass { get; }
 
         [DataMember(Name = "pictWindMachine")]
-        GlyphDefinition PictWindMachine { get; set; }
+        GlyphDefinition PictWindMachine { get; }
 
         [DataMember(Name = "pictWindWhistle")]
-        GlyphDefinition PictWindWhistle { get; set; }
+        GlyphDefinition PictWindWhistle { get; }
 
         [DataMember(Name = "pictWoodBlock")]
-        GlyphDefinition PictWoodBlock { get; set; }
+        GlyphDefinition PictWoodBlock { get; }
 
         [DataMember(Name = "pictWoundHardDown")]
-        GlyphDefinition PictWoundHardDown { get; set; }
+        GlyphDefinition PictWoundHardDown { get; }
 
         [DataMember(Name = "pictWoundHardLeft")]
-        GlyphDefinition PictWoundHardLeft { get; set; }
+        GlyphDefinition PictWoundHardLeft { get; }
 
         [DataMember(Name = "pictWoundHardRight")]
-        GlyphDefinition PictWoundHardRight { get; set; }
+        GlyphDefinition PictWoundHardRight { get; }
 
         [DataMember(Name = "pictWoundHardUp")]
-        GlyphDefinition PictWoundHardUp { get; set; }
+        GlyphDefinition PictWoundHardUp { get; }
 
         [DataMember(Name = "pictWoundSoftDown")]
-        GlyphDefinition PictWoundSoftDown { get; set; }
+        GlyphDefinition PictWoundSoftDown { get; }
 
         [DataMember(Name = "pictWoundSoftLeft")]
-        GlyphDefinition PictWoundSoftLeft { get; set; }
+        GlyphDefinition PictWoundSoftLeft { get; }
 
         [DataMember(Name = "pictWoundSoftRight")]
-        GlyphDefinition PictWoundSoftRight { get; set; }
+        GlyphDefinition PictWoundSoftRight { get; }
 
         [DataMember(Name = "pictWoundSoftUp")]
-        GlyphDefinition PictWoundSoftUp { get; set; }
+        GlyphDefinition PictWoundSoftUp { get; }
 
         [DataMember(Name = "pictXyl")]
-        GlyphDefinition PictXyl { get; set; }
+        GlyphDefinition PictXyl { get; }
 
         [DataMember(Name = "pictXylBass")]
-        GlyphDefinition PictXylBass { get; set; }
+        GlyphDefinition PictXylBass { get; }
 
         [DataMember(Name = "pictXylSmithBrindle")]
-        GlyphDefinition PictXylSmithBrindle { get; set; }
+        GlyphDefinition PictXylSmithBrindle { get; }
 
         [DataMember(Name = "pictXylTenor")]
-        GlyphDefinition PictXylTenor { get; set; }
+        GlyphDefinition PictXylTenor { get; }
 
         [DataMember(Name = "pictXylTenorTrough")]
-        GlyphDefinition PictXylTenorTrough { get; set; }
+        GlyphDefinition PictXylTenorTrough { get; }
 
         [DataMember(Name = "pictXylTrough")]
-        GlyphDefinition PictXylTrough { get; set; }
+        GlyphDefinition PictXylTrough { get; }
 
         [DataMember(Name = "pluckedBuzzPizzicato")]
-        GlyphDefinition PluckedBuzzPizzicato { get; set; }
+        GlyphDefinition PluckedBuzzPizzicato { get; }
 
         [DataMember(Name = "pluckedDamp")]
-        GlyphDefinition PluckedDamp { get; set; }
+        GlyphDefinition PluckedDamp { get; }
 
         [DataMember(Name = "pluckedDampAll")]
-        GlyphDefinition PluckedDampAll { get; set; }
+        GlyphDefinition PluckedDampAll { get; }
 
         [DataMember(Name = "pluckedDampOnStem")]
-        GlyphDefinition PluckedDampOnStem { get; set; }
+        GlyphDefinition PluckedDampOnStem { get; }
 
         [DataMember(Name = "pluckedFingernailFlick")]
-        GlyphDefinition PluckedFingernailFlick { get; set; }
+        GlyphDefinition PluckedFingernailFlick { get; }
 
         [DataMember(Name = "pluckedLeftHandPizzicato")]
-        GlyphDefinition PluckedLeftHandPizzicato { get; set; }
+        GlyphDefinition PluckedLeftHandPizzicato { get; }
 
         [DataMember(Name = "pluckedPlectrum")]
-        GlyphDefinition PluckedPlectrum { get; set; }
+        GlyphDefinition PluckedPlectrum { get; }
 
         [DataMember(Name = "pluckedSnapPizzicatoAbove")]
-        GlyphDefinition PluckedSnapPizzicatoAbove { get; set; }
+        GlyphDefinition PluckedSnapPizzicatoAbove { get; }
 
         [DataMember(Name = "pluckedSnapPizzicatoBelow")]
-        GlyphDefinition PluckedSnapPizzicatoBelow { get; set; }
+        GlyphDefinition PluckedSnapPizzicatoBelow { get; }
 
         [DataMember(Name = "pluckedWithFingernails")]
-        GlyphDefinition PluckedWithFingernails { get; set; }
+        GlyphDefinition PluckedWithFingernails { get; }
 
         [DataMember(Name = "quindicesima")]
-        GlyphDefinition Quindicesima { get; set; }
+        GlyphDefinition Quindicesima { get; }
 
         [DataMember(Name = "quindicesimaAlta")]
-        GlyphDefinition QuindicesimaAlta { get; set; }
+        GlyphDefinition QuindicesimaAlta { get; }
 
         [DataMember(Name = "quindicesimaBassa")]
-        GlyphDefinition QuindicesimaBassa { get; set; }
+        GlyphDefinition QuindicesimaBassa { get; }
 
         [DataMember(Name = "quindicesimaBassaMb")]
-        GlyphDefinition QuindicesimaBassaMb { get; set; }
+        GlyphDefinition QuindicesimaBassaMb { get; }
 
         [DataMember(Name = "repeat1Bar")]
-        GlyphDefinition Repeat1Bar { get; set; }
+        GlyphDefinition Repeat1Bar { get; }
 
         [DataMember(Name = "repeat2Bars")]
-        GlyphDefinition Repeat2Bars { get; set; }
+        GlyphDefinition Repeat2Bars { get; }
 
         [DataMember(Name = "repeat4Bars")]
-        GlyphDefinition Repeat4Bars { get; set; }
+        GlyphDefinition Repeat4Bars { get; }
 
         [DataMember(Name = "repeatDot")]
-        GlyphDefinition RepeatDot { get; set; }
+        GlyphDefinition RepeatDot { get; }
 
         [DataMember(Name = "repeatDots")]
-        GlyphDefinition RepeatDots { get; set; }
+        GlyphDefinition RepeatDots { get; }
 
         [DataMember(Name = "repeatLeft")]
-        GlyphDefinition RepeatLeft { get; set; }
+        GlyphDefinition RepeatLeft { get; }
 
         [DataMember(Name = "repeatRight")]
-        GlyphDefinition RepeatRight { get; set; }
+        GlyphDefinition RepeatRight { get; }
 
         [DataMember(Name = "repeatRightLeft")]
-        GlyphDefinition RepeatRightLeft { get; set; }
+        GlyphDefinition RepeatRightLeft { get; }
 
         [DataMember(Name = "rest1024th")]
-        GlyphDefinition Rest1024Th { get; set; }
+        GlyphDefinition Rest1024Th { get; }
 
         [DataMember(Name = "rest128th")]
-        GlyphDefinition Rest128Th { get; set; }
+        GlyphDefinition Rest128Th { get; }
 
         [DataMember(Name = "rest16th")]
-        GlyphDefinition Rest16Th { get; set; }
+        GlyphDefinition Rest16Th { get; }
 
         [DataMember(Name = "rest256th")]
-        GlyphDefinition Rest256Th { get; set; }
+        GlyphDefinition Rest256Th { get; }
 
         [DataMember(Name = "rest32nd")]
-        GlyphDefinition Rest32Nd { get; set; }
+        GlyphDefinition Rest32Nd { get; }
 
         [DataMember(Name = "rest512th")]
-        GlyphDefinition Rest512Th { get; set; }
+        GlyphDefinition Rest512Th { get; }
 
         [DataMember(Name = "rest64th")]
-        GlyphDefinition Rest64Th { get; set; }
+        GlyphDefinition Rest64Th { get; }
 
         [DataMember(Name = "rest8th")]
-        GlyphDefinition Rest8Th { get; set; }
+        GlyphDefinition Rest8Th { get; }
 
         [DataMember(Name = "restDoubleWhole")]
-        GlyphDefinition RestDoubleWhole { get; set; }
+        GlyphDefinition RestDoubleWhole { get; }
 
         [DataMember(Name = "restDoubleWholeLegerLine")]
-        GlyphDefinition RestDoubleWholeLegerLine { get; set; }
+        GlyphDefinition RestDoubleWholeLegerLine { get; }
 
         [DataMember(Name = "restHBar")]
-        GlyphDefinition RestHBar { get; set; }
+        GlyphDefinition RestHBar { get; }
 
         [DataMember(Name = "restHBarLeft")]
-        GlyphDefinition RestHBarLeft { get; set; }
+        GlyphDefinition RestHBarLeft { get; }
 
         [DataMember(Name = "restHBarMiddle")]
-        GlyphDefinition RestHBarMiddle { get; set; }
+        GlyphDefinition RestHBarMiddle { get; }
 
         [DataMember(Name = "restHBarRight")]
-        GlyphDefinition RestHBarRight { get; set; }
+        GlyphDefinition RestHBarRight { get; }
 
         [DataMember(Name = "restHalf")]
-        GlyphDefinition RestHalf { get; set; }
+        GlyphDefinition RestHalf { get; }
 
         [DataMember(Name = "restHalfLegerLine")]
-        GlyphDefinition RestHalfLegerLine { get; set; }
+        GlyphDefinition RestHalfLegerLine { get; }
 
         [DataMember(Name = "restLonga")]
-        GlyphDefinition RestLonga { get; set; }
+        GlyphDefinition RestLonga { get; }
 
         [DataMember(Name = "restMaxima")]
-        GlyphDefinition RestMaxima { get; set; }
+        GlyphDefinition RestMaxima { get; }
 
         [DataMember(Name = "restQuarter")]
-        GlyphDefinition RestQuarter { get; set; }
+        GlyphDefinition RestQuarter { get; }
 
         [DataMember(Name = "restQuarterOld")]
-        GlyphDefinition RestQuarterOld { get; set; }
+        GlyphDefinition RestQuarterOld { get; }
 
         [DataMember(Name = "restWhole")]
-        GlyphDefinition RestWhole { get; set; }
+        GlyphDefinition RestWhole { get; }
 
         [DataMember(Name = "restWholeLegerLine")]
-        GlyphDefinition RestWholeLegerLine { get; set; }
+        GlyphDefinition RestWholeLegerLine { get; }
 
         [DataMember(Name = "reversedBrace")]
-        GlyphDefinition ReversedBrace { get; set; }
+        GlyphDefinition ReversedBrace { get; }
 
         [DataMember(Name = "reversedBracketBottom")]
-        GlyphDefinition ReversedBracketBottom { get; set; }
+        GlyphDefinition ReversedBracketBottom { get; }
 
         [DataMember(Name = "reversedBracketTop")]
-        GlyphDefinition ReversedBracketTop { get; set; }
+        GlyphDefinition ReversedBracketTop { get; }
 
         [DataMember(Name = "rightRepeatSmall")]
-        GlyphDefinition RightRepeatSmall { get; set; }
+        GlyphDefinition RightRepeatSmall { get; }
 
         [DataMember(Name = "segno")]
-        GlyphDefinition Segno { get; set; }
+        GlyphDefinition Segno { get; }
 
         [DataMember(Name = "segnoSerpent1")]
-        GlyphDefinition SegnoSerpent1 { get; set; }
+        GlyphDefinition SegnoSerpent1 { get; }
 
         [DataMember(Name = "segnoSerpent2")]
-        GlyphDefinition SegnoSerpent2 { get; set; }
+        GlyphDefinition SegnoSerpent2 { get; }
 
         [DataMember(Name = "semipitchedPercussionClef1")]
-        GlyphDefinition SemipitchedPercussionClef1 { get; set; }
+        GlyphDefinition SemipitchedPercussionClef1 { get; }
 
         [DataMember(Name = "semipitchedPercussionClef2")]
-        GlyphDefinition SemipitchedPercussionClef2 { get; set; }
+        GlyphDefinition SemipitchedPercussionClef2 { get; }
 
         [DataMember(Name = "smnFlat")]
-        GlyphDefinition SmnFlat { get; set; }
+        GlyphDefinition SmnFlat { get; }
 
         [DataMember(Name = "smnFlatWhite")]
-        GlyphDefinition SmnFlatWhite { get; set; }
+        GlyphDefinition SmnFlatWhite { get; }
 
         [DataMember(Name = "smnHistoryDoubleFlat")]
-        GlyphDefinition SmnHistoryDoubleFlat { get; set; }
+        GlyphDefinition SmnHistoryDoubleFlat { get; }
 
         [DataMember(Name = "smnHistoryDoubleSharp")]
-        GlyphDefinition SmnHistoryDoubleSharp { get; set; }
+        GlyphDefinition SmnHistoryDoubleSharp { get; }
 
         [DataMember(Name = "smnHistoryFlat")]
-        GlyphDefinition SmnHistoryFlat { get; set; }
+        GlyphDefinition SmnHistoryFlat { get; }
 
         [DataMember(Name = "smnHistorySharp")]
-        GlyphDefinition SmnHistorySharp { get; set; }
+        GlyphDefinition SmnHistorySharp { get; }
 
         [DataMember(Name = "smnNatural")]
-        GlyphDefinition SmnNatural { get; set; }
+        GlyphDefinition SmnNatural { get; }
 
         [DataMember(Name = "smnSharp")]
-        GlyphDefinition SmnSharp { get; set; }
+        GlyphDefinition SmnSharp { get; }
 
         [DataMember(Name = "smnSharpDown")]
-        GlyphDefinition SmnSharpDown { get; set; }
+        GlyphDefinition SmnSharpDown { get; }
 
         [DataMember(Name = "smnSharpWhite")]
-        GlyphDefinition SmnSharpWhite { get; set; }
+        GlyphDefinition SmnSharpWhite { get; }
 
         [DataMember(Name = "smnSharpWhiteDown")]
-        GlyphDefinition SmnSharpWhiteDown { get; set; }
+        GlyphDefinition SmnSharpWhiteDown { get; }
 
         [DataMember(Name = "splitBarDivider")]
-        GlyphDefinition SplitBarDivider { get; set; }
+        GlyphDefinition SplitBarDivider { get; }
 
         [DataMember(Name = "staff1Line")]
-        GlyphDefinition Staff1Line { get; set; }
+        GlyphDefinition Staff1Line { get; }
 
         [DataMember(Name = "staff1LineNarrow")]
-        GlyphDefinition Staff1LineNarrow { get; set; }
+        GlyphDefinition Staff1LineNarrow { get; }
 
         [DataMember(Name = "staff1LineWide")]
-        GlyphDefinition Staff1LineWide { get; set; }
+        GlyphDefinition Staff1LineWide { get; }
 
         [DataMember(Name = "staff2Lines")]
-        GlyphDefinition Staff2Lines { get; set; }
+        GlyphDefinition Staff2Lines { get; }
 
         [DataMember(Name = "staff2LinesNarrow")]
-        GlyphDefinition Staff2LinesNarrow { get; set; }
+        GlyphDefinition Staff2LinesNarrow { get; }
 
         [DataMember(Name = "staff2LinesWide")]
-        GlyphDefinition Staff2LinesWide { get; set; }
+        GlyphDefinition Staff2LinesWide { get; }
 
         [DataMember(Name = "staff3Lines")]
-        GlyphDefinition Staff3Lines { get; set; }
+        GlyphDefinition Staff3Lines { get; }
 
         [DataMember(Name = "staff3LinesNarrow")]
-        GlyphDefinition Staff3LinesNarrow { get; set; }
+        GlyphDefinition Staff3LinesNarrow { get; }
 
         [DataMember(Name = "staff3LinesWide")]
-        GlyphDefinition Staff3LinesWide { get; set; }
+        GlyphDefinition Staff3LinesWide { get; }
 
         [DataMember(Name = "staff4Lines")]
-        GlyphDefinition Staff4Lines { get; set; }
+        GlyphDefinition Staff4Lines { get; }
 
         [DataMember(Name = "staff4LinesNarrow")]
-        GlyphDefinition Staff4LinesNarrow { get; set; }
+        GlyphDefinition Staff4LinesNarrow { get; }
 
         [DataMember(Name = "staff4LinesWide")]
-        GlyphDefinition Staff4LinesWide { get; set; }
+        GlyphDefinition Staff4LinesWide { get; }
 
         [DataMember(Name = "staff5Lines")]
-        GlyphDefinition Staff5Lines { get; set; }
+        GlyphDefinition Staff5Lines { get; }
 
         [DataMember(Name = "staff5LinesNarrow")]
-        GlyphDefinition Staff5LinesNarrow { get; set; }
+        GlyphDefinition Staff5LinesNarrow { get; }
 
         [DataMember(Name = "staff5LinesWide")]
-        GlyphDefinition Staff5LinesWide { get; set; }
+        GlyphDefinition Staff5LinesWide { get; }
 
         [DataMember(Name = "staff6Lines")]
-        GlyphDefinition Staff6Lines { get; set; }
+        GlyphDefinition Staff6Lines { get; }
 
         [DataMember(Name = "staff6LinesNarrow")]
-        GlyphDefinition Staff6LinesNarrow { get; set; }
+        GlyphDefinition Staff6LinesNarrow { get; }
 
         [DataMember(Name = "staff6LinesWide")]
-        GlyphDefinition Staff6LinesWide { get; set; }
+        GlyphDefinition Staff6LinesWide { get; }
 
         [DataMember(Name = "staffDivideArrowDown")]
-        GlyphDefinition StaffDivideArrowDown { get; set; }
+        GlyphDefinition StaffDivideArrowDown { get; }
 
         [DataMember(Name = "staffDivideArrowUp")]
-        GlyphDefinition StaffDivideArrowUp { get; set; }
+        GlyphDefinition StaffDivideArrowUp { get; }
 
         [DataMember(Name = "staffDivideArrowUpDown")]
-        GlyphDefinition StaffDivideArrowUpDown { get; set; }
+        GlyphDefinition StaffDivideArrowUpDown { get; }
 
         [DataMember(Name = "staffPosLower1")]
-        GlyphDefinition StaffPosLower1 { get; set; }
+        GlyphDefinition StaffPosLower1 { get; }
 
         [DataMember(Name = "staffPosLower2")]
-        GlyphDefinition StaffPosLower2 { get; set; }
+        GlyphDefinition StaffPosLower2 { get; }
 
         [DataMember(Name = "staffPosLower3")]
-        GlyphDefinition StaffPosLower3 { get; set; }
+        GlyphDefinition StaffPosLower3 { get; }
 
         [DataMember(Name = "staffPosLower4")]
-        GlyphDefinition StaffPosLower4 { get; set; }
+        GlyphDefinition StaffPosLower4 { get; }
 
         [DataMember(Name = "staffPosLower5")]
-        GlyphDefinition StaffPosLower5 { get; set; }
+        GlyphDefinition StaffPosLower5 { get; }
 
         [DataMember(Name = "staffPosLower6")]
-        GlyphDefinition StaffPosLower6 { get; set; }
+        GlyphDefinition StaffPosLower6 { get; }
 
         [DataMember(Name = "staffPosLower7")]
-        GlyphDefinition StaffPosLower7 { get; set; }
+        GlyphDefinition StaffPosLower7 { get; }
 
         [DataMember(Name = "staffPosLower8")]
-        GlyphDefinition StaffPosLower8 { get; set; }
+        GlyphDefinition StaffPosLower8 { get; }
 
         [DataMember(Name = "staffPosRaise1")]
-        GlyphDefinition StaffPosRaise1 { get; set; }
+        GlyphDefinition StaffPosRaise1 { get; }
 
         [DataMember(Name = "staffPosRaise2")]
-        GlyphDefinition StaffPosRaise2 { get; set; }
+        GlyphDefinition StaffPosRaise2 { get; }
 
         [DataMember(Name = "staffPosRaise3")]
-        GlyphDefinition StaffPosRaise3 { get; set; }
+        GlyphDefinition StaffPosRaise3 { get; }
 
         [DataMember(Name = "staffPosRaise4")]
-        GlyphDefinition StaffPosRaise4 { get; set; }
+        GlyphDefinition StaffPosRaise4 { get; }
 
         [DataMember(Name = "staffPosRaise5")]
-        GlyphDefinition StaffPosRaise5 { get; set; }
+        GlyphDefinition StaffPosRaise5 { get; }
 
         [DataMember(Name = "staffPosRaise6")]
-        GlyphDefinition StaffPosRaise6 { get; set; }
+        GlyphDefinition StaffPosRaise6 { get; }
 
         [DataMember(Name = "staffPosRaise7")]
-        GlyphDefinition StaffPosRaise7 { get; set; }
+        GlyphDefinition StaffPosRaise7 { get; }
 
         [DataMember(Name = "staffPosRaise8")]
-        GlyphDefinition StaffPosRaise8 { get; set; }
+        GlyphDefinition StaffPosRaise8 { get; }
 
         [DataMember(Name = "stem")]
-        GlyphDefinition Stem { get; set; }
+        GlyphDefinition Stem { get; }
 
         [DataMember(Name = "stemBowOnBridge")]
-        GlyphDefinition StemBowOnBridge { get; set; }
+        GlyphDefinition StemBowOnBridge { get; }
 
         [DataMember(Name = "stemBowOnTailpiece")]
-        GlyphDefinition StemBowOnTailpiece { get; set; }
+        GlyphDefinition StemBowOnTailpiece { get; }
 
         [DataMember(Name = "stemBuzzRoll")]
-        GlyphDefinition StemBuzzRoll { get; set; }
+        GlyphDefinition StemBuzzRoll { get; }
 
         [DataMember(Name = "stemDamp")]
-        GlyphDefinition StemDamp { get; set; }
+        GlyphDefinition StemDamp { get; }
 
         [DataMember(Name = "stemHarpStringNoise")]
-        GlyphDefinition StemHarpStringNoise { get; set; }
+        GlyphDefinition StemHarpStringNoise { get; }
 
         [DataMember(Name = "stemMultiphonicsBlack")]
-        GlyphDefinition StemMultiphonicsBlack { get; set; }
+        GlyphDefinition StemMultiphonicsBlack { get; }
 
         [DataMember(Name = "stemMultiphonicsBlackWhite")]
-        GlyphDefinition StemMultiphonicsBlackWhite { get; set; }
+        GlyphDefinition StemMultiphonicsBlackWhite { get; }
 
         [DataMember(Name = "stemMultiphonicsWhite")]
-        GlyphDefinition StemMultiphonicsWhite { get; set; }
+        GlyphDefinition StemMultiphonicsWhite { get; }
 
         [DataMember(Name = "stemPendereckiTremolo")]
-        GlyphDefinition StemPendereckiTremolo { get; set; }
+        GlyphDefinition StemPendereckiTremolo { get; }
 
         [DataMember(Name = "stemRimShot")]
-        GlyphDefinition StemRimShot { get; set; }
+        GlyphDefinition StemRimShot { get; }
 
         [DataMember(Name = "stemSprechgesang")]
-        GlyphDefinition StemSprechgesang { get; set; }
+        GlyphDefinition StemSprechgesang { get; }
 
         [DataMember(Name = "stemSulPonticello")]
-        GlyphDefinition StemSulPonticello { get; set; }
+        GlyphDefinition StemSulPonticello { get; }
 
         [DataMember(Name = "stemSussurando")]
-        GlyphDefinition StemSussurando { get; set; }
+        GlyphDefinition StemSussurando { get; }
 
         [DataMember(Name = "stemSwished")]
-        GlyphDefinition StemSwished { get; set; }
+        GlyphDefinition StemSwished { get; }
 
         [DataMember(Name = "stemVibratoPulse")]
-        GlyphDefinition StemVibratoPulse { get; set; }
+        GlyphDefinition StemVibratoPulse { get; }
 
         [DataMember(Name = "stringsBowBehindBridge")]
-        GlyphDefinition StringsBowBehindBridge { get; set; }
+        GlyphDefinition StringsBowBehindBridge { get; }
 
         [DataMember(Name = "stringsBowOnBridge")]
-        GlyphDefinition StringsBowOnBridge { get; set; }
+        GlyphDefinition StringsBowOnBridge { get; }
 
         [DataMember(Name = "stringsBowOnTailpiece")]
-        GlyphDefinition StringsBowOnTailpiece { get; set; }
+        GlyphDefinition StringsBowOnTailpiece { get; }
 
         [DataMember(Name = "stringsChangeBowDirection")]
-        GlyphDefinition StringsChangeBowDirection { get; set; }
+        GlyphDefinition StringsChangeBowDirection { get; }
 
         [DataMember(Name = "stringsDownBow")]
-        GlyphDefinition StringsDownBow { get; set; }
+        GlyphDefinition StringsDownBow { get; }
 
         [DataMember(Name = "stringsDownBowTurned")]
-        GlyphDefinition StringsDownBowTurned { get; set; }
+        GlyphDefinition StringsDownBowTurned { get; }
 
         [DataMember(Name = "stringsFouette")]
-        GlyphDefinition StringsFouette { get; set; }
+        GlyphDefinition StringsFouette { get; }
 
         [DataMember(Name = "stringsHalfHarmonic")]
-        GlyphDefinition StringsHalfHarmonic { get; set; }
+        GlyphDefinition StringsHalfHarmonic { get; }
 
         [DataMember(Name = "stringsHarmonic")]
-        GlyphDefinition StringsHarmonic { get; set; }
+        GlyphDefinition StringsHarmonic { get; }
 
         [DataMember(Name = "stringsJeteAbove")]
-        GlyphDefinition StringsJeteAbove { get; set; }
+        GlyphDefinition StringsJeteAbove { get; }
 
         [DataMember(Name = "stringsJeteBelow")]
-        GlyphDefinition StringsJeteBelow { get; set; }
+        GlyphDefinition StringsJeteBelow { get; }
 
         [DataMember(Name = "stringsMuteOff")]
-        GlyphDefinition StringsMuteOff { get; set; }
+        GlyphDefinition StringsMuteOff { get; }
 
         [DataMember(Name = "stringsMuteOn")]
-        GlyphDefinition StringsMuteOn { get; set; }
+        GlyphDefinition StringsMuteOn { get; }
 
         [DataMember(Name = "stringsOverpressureDownBow")]
-        GlyphDefinition StringsOverpressureDownBow { get; set; }
+        GlyphDefinition StringsOverpressureDownBow { get; }
 
         [DataMember(Name = "stringsOverpressureNoDirection")]
-        GlyphDefinition StringsOverpressureNoDirection { get; set; }
+        GlyphDefinition StringsOverpressureNoDirection { get; }
 
         [DataMember(Name = "stringsOverpressurePossibileDownBow")]
-        GlyphDefinition StringsOverpressurePossibileDownBow { get; set; }
+        GlyphDefinition StringsOverpressurePossibileDownBow { get; }
 
         [DataMember(Name = "stringsOverpressurePossibileUpBow")]
-        GlyphDefinition StringsOverpressurePossibileUpBow { get; set; }
+        GlyphDefinition StringsOverpressurePossibileUpBow { get; }
 
         [DataMember(Name = "stringsOverpressureUpBow")]
-        GlyphDefinition StringsOverpressureUpBow { get; set; }
+        GlyphDefinition StringsOverpressureUpBow { get; }
 
         [DataMember(Name = "stringsThumbPosition")]
-        GlyphDefinition StringsThumbPosition { get; set; }
+        GlyphDefinition StringsThumbPosition { get; }
 
         [DataMember(Name = "stringsThumbPositionTurned")]
-        GlyphDefinition StringsThumbPositionTurned { get; set; }
+        GlyphDefinition StringsThumbPositionTurned { get; }
 
         [DataMember(Name = "stringsUpBow")]
-        GlyphDefinition StringsUpBow { get; set; }
+        GlyphDefinition StringsUpBow { get; }
 
         [DataMember(Name = "stringsUpBowTurned")]
-        GlyphDefinition StringsUpBowTurned { get; set; }
+        GlyphDefinition StringsUpBowTurned { get; }
 
         [DataMember(Name = "stringsVibratoPulse")]
-        GlyphDefinition StringsVibratoPulse { get; set; }
+        GlyphDefinition StringsVibratoPulse { get; }
 
         [DataMember(Name = "systemDivider")]
-        GlyphDefinition SystemDivider { get; set; }
+        GlyphDefinition SystemDivider { get; }
 
         [DataMember(Name = "systemDividerExtraLong")]
-        GlyphDefinition SystemDividerExtraLong { get; set; }
+        GlyphDefinition SystemDividerExtraLong { get; }
 
         [DataMember(Name = "systemDividerLong")]
-        GlyphDefinition SystemDividerLong { get; set; }
+        GlyphDefinition SystemDividerLong { get; }
 
         [DataMember(Name = "textAugmentationDot")]
-        GlyphDefinition TextAugmentationDot { get; set; }
+        GlyphDefinition TextAugmentationDot { get; }
 
         [DataMember(Name = "textBlackNoteFrac16thLongStem")]
-        GlyphDefinition TextBlackNoteFrac16ThLongStem { get; set; }
+        GlyphDefinition TextBlackNoteFrac16ThLongStem { get; }
 
         [DataMember(Name = "textBlackNoteFrac16thShortStem")]
-        GlyphDefinition TextBlackNoteFrac16ThShortStem { get; set; }
+        GlyphDefinition TextBlackNoteFrac16ThShortStem { get; }
 
         [DataMember(Name = "textBlackNoteFrac32ndLongStem")]
-        GlyphDefinition TextBlackNoteFrac32NdLongStem { get; set; }
+        GlyphDefinition TextBlackNoteFrac32NdLongStem { get; }
 
         [DataMember(Name = "textBlackNoteFrac8thLongStem")]
-        GlyphDefinition TextBlackNoteFrac8ThLongStem { get; set; }
+        GlyphDefinition TextBlackNoteFrac8ThLongStem { get; }
 
         [DataMember(Name = "textBlackNoteFrac8thShortStem")]
-        GlyphDefinition TextBlackNoteFrac8ThShortStem { get; set; }
+        GlyphDefinition TextBlackNoteFrac8ThShortStem { get; }
 
         [DataMember(Name = "textBlackNoteLongStem")]
-        GlyphDefinition TextBlackNoteLongStem { get; set; }
+        GlyphDefinition TextBlackNoteLongStem { get; }
 
         [DataMember(Name = "textBlackNoteShortStem")]
-        GlyphDefinition TextBlackNoteShortStem { get; set; }
+        GlyphDefinition TextBlackNoteShortStem { get; }
 
         [DataMember(Name = "textCont16thBeamLongStem")]
-        GlyphDefinition TextCont16ThBeamLongStem { get; set; }
+        GlyphDefinition TextCont16ThBeamLongStem { get; }
 
         [DataMember(Name = "textCont16thBeamShortStem")]
-        GlyphDefinition TextCont16ThBeamShortStem { get; set; }
+        GlyphDefinition TextCont16ThBeamShortStem { get; }
 
         [DataMember(Name = "textCont32ndBeamLongStem")]
-        GlyphDefinition TextCont32NdBeamLongStem { get; set; }
+        GlyphDefinition TextCont32NdBeamLongStem { get; }
 
         [DataMember(Name = "textCont8thBeamLongStem")]
-        GlyphDefinition TextCont8ThBeamLongStem { get; set; }
+        GlyphDefinition TextCont8ThBeamLongStem { get; }
 
         [DataMember(Name = "textCont8thBeamShortStem")]
-        GlyphDefinition TextCont8ThBeamShortStem { get; set; }
+        GlyphDefinition TextCont8ThBeamShortStem { get; }
 
         [DataMember(Name = "textTie")]
-        GlyphDefinition TextTie { get; set; }
+        GlyphDefinition TextTie { get; }
 
         [DataMember(Name = "textTuplet3LongStem")]
-        GlyphDefinition TextTuplet3LongStem { get; set; }
+        GlyphDefinition TextTuplet3LongStem { get; }
 
         [DataMember(Name = "textTuplet3ShortStem")]
-        GlyphDefinition TextTuplet3ShortStem { get; set; }
+        GlyphDefinition TextTuplet3ShortStem { get; }
 
         [DataMember(Name = "textTupletBracketEndLongStem")]
-        GlyphDefinition TextTupletBracketEndLongStem { get; set; }
+        GlyphDefinition TextTupletBracketEndLongStem { get; }
 
         [DataMember(Name = "textTupletBracketEndShortStem")]
-        GlyphDefinition TextTupletBracketEndShortStem { get; set; }
+        GlyphDefinition TextTupletBracketEndShortStem { get; }
 
         [DataMember(Name = "textTupletBracketStartLongStem")]
-        GlyphDefinition TextTupletBracketStartLongStem { get; set; }
+        GlyphDefinition TextTupletBracketStartLongStem { get; }
 
         [DataMember(Name = "textTupletBracketStartShortStem")]
-        GlyphDefinition TextTupletBracketStartShortStem { get; set; }
+        GlyphDefinition TextTupletBracketStartShortStem { get; }
 
         [DataMember(Name = "timeSig0")]
-        GlyphDefinition TimeSig0 { get; set; }
+        GlyphDefinition TimeSig0 { get; }
 
         [DataMember(Name = "timeSig1")]
-        GlyphDefinition TimeSig1 { get; set; }
+        GlyphDefinition TimeSig1 { get; }
 
         [DataMember(Name = "timeSig2")]
-        GlyphDefinition TimeSig2 { get; set; }
+        GlyphDefinition TimeSig2 { get; }
 
         [DataMember(Name = "timeSig3")]
-        GlyphDefinition TimeSig3 { get; set; }
+        GlyphDefinition TimeSig3 { get; }
 
         [DataMember(Name = "timeSig4")]
-        GlyphDefinition TimeSig4 { get; set; }
+        GlyphDefinition TimeSig4 { get; }
 
         [DataMember(Name = "timeSig5")]
-        GlyphDefinition TimeSig5 { get; set; }
+        GlyphDefinition TimeSig5 { get; }
 
         [DataMember(Name = "timeSig6")]
-        GlyphDefinition TimeSig6 { get; set; }
+        GlyphDefinition TimeSig6 { get; }
 
         [DataMember(Name = "timeSig7")]
-        GlyphDefinition TimeSig7 { get; set; }
+        GlyphDefinition TimeSig7 { get; }
 
         [DataMember(Name = "timeSig8")]
-        GlyphDefinition TimeSig8 { get; set; }
+        GlyphDefinition TimeSig8 { get; }
 
         [DataMember(Name = "timeSig9")]
-        GlyphDefinition TimeSig9 { get; set; }
+        GlyphDefinition TimeSig9 { get; }
 
         [DataMember(Name = "timeSigBracketLeft")]
-        GlyphDefinition TimeSigBracketLeft { get; set; }
+        GlyphDefinition TimeSigBracketLeft { get; }
 
         [DataMember(Name = "timeSigBracketLeftSmall")]
-        GlyphDefinition TimeSigBracketLeftSmall { get; set; }
+        GlyphDefinition TimeSigBracketLeftSmall { get; }
 
         [DataMember(Name = "timeSigBracketRight")]
-        GlyphDefinition TimeSigBracketRight { get; set; }
+        GlyphDefinition TimeSigBracketRight { get; }
 
         [DataMember(Name = "timeSigBracketRightSmall")]
-        GlyphDefinition TimeSigBracketRightSmall { get; set; }
+        GlyphDefinition TimeSigBracketRightSmall { get; }
 
         [DataMember(Name = "timeSigCombDenominator")]
-        GlyphDefinition TimeSigCombDenominator { get; set; }
+        GlyphDefinition TimeSigCombDenominator { get; }
 
         [DataMember(Name = "timeSigCombNumerator")]
-        GlyphDefinition TimeSigCombNumerator { get; set; }
+        GlyphDefinition TimeSigCombNumerator { get; }
 
         [DataMember(Name = "timeSigComma")]
-        GlyphDefinition TimeSigComma { get; set; }
+        GlyphDefinition TimeSigComma { get; }
 
         [DataMember(Name = "timeSigCommon")]
-        GlyphDefinition TimeSigCommon { get; set; }
+        GlyphDefinition TimeSigCommon { get; }
 
         [DataMember(Name = "timeSigCut2")]
-        GlyphDefinition TimeSigCut2 { get; set; }
+        GlyphDefinition TimeSigCut2 { get; }
 
         [DataMember(Name = "timeSigCutCommon")]
-        GlyphDefinition TimeSigCutCommon { get; set; }
+        GlyphDefinition TimeSigCutCommon { get; }
 
         [DataMember(Name = "timeSigEquals")]
-        GlyphDefinition TimeSigEquals { get; set; }
+        GlyphDefinition TimeSigEquals { get; }
 
         [DataMember(Name = "timeSigFractionHalf")]
-        GlyphDefinition TimeSigFractionHalf { get; set; }
+        GlyphDefinition TimeSigFractionHalf { get; }
 
         [DataMember(Name = "timeSigFractionOneThird")]
-        GlyphDefinition TimeSigFractionOneThird { get; set; }
+        GlyphDefinition TimeSigFractionOneThird { get; }
 
         [DataMember(Name = "timeSigFractionQuarter")]
-        GlyphDefinition TimeSigFractionQuarter { get; set; }
+        GlyphDefinition TimeSigFractionQuarter { get; }
 
         [DataMember(Name = "timeSigFractionThreeQuarters")]
-        GlyphDefinition TimeSigFractionThreeQuarters { get; set; }
+        GlyphDefinition TimeSigFractionThreeQuarters { get; }
 
         [DataMember(Name = "timeSigFractionTwoThirds")]
-        GlyphDefinition TimeSigFractionTwoThirds { get; set; }
+        GlyphDefinition TimeSigFractionTwoThirds { get; }
 
         [DataMember(Name = "timeSigFractionalSlash")]
-        GlyphDefinition TimeSigFractionalSlash { get; set; }
+        GlyphDefinition TimeSigFractionalSlash { get; }
 
         [DataMember(Name = "timeSigMinus")]
-        GlyphDefinition TimeSigMinus { get; set; }
+        GlyphDefinition TimeSigMinus { get; }
 
         [DataMember(Name = "timeSigMultiply")]
-        GlyphDefinition TimeSigMultiply { get; set; }
+        GlyphDefinition TimeSigMultiply { get; }
 
         [DataMember(Name = "timeSigOpenPenderecki")]
-        GlyphDefinition TimeSigOpenPenderecki { get; set; }
+        GlyphDefinition TimeSigOpenPenderecki { get; }
 
         [DataMember(Name = "timeSigParensLeft")]
-        GlyphDefinition TimeSigParensLeft { get; set; }
+        GlyphDefinition TimeSigParensLeft { get; }
 
         [DataMember(Name = "timeSigParensLeftSmall")]
-        GlyphDefinition TimeSigParensLeftSmall { get; set; }
+        GlyphDefinition TimeSigParensLeftSmall { get; }
 
         [DataMember(Name = "timeSigParensRight")]
-        GlyphDefinition TimeSigParensRight { get; set; }
+        GlyphDefinition TimeSigParensRight { get; }
 
         [DataMember(Name = "timeSigParensRightSmall")]
-        GlyphDefinition TimeSigParensRightSmall { get; set; }
+        GlyphDefinition TimeSigParensRightSmall { get; }
 
         [DataMember(Name = "timeSigPlus")]
-        GlyphDefinition TimeSigPlus { get; set; }
+        GlyphDefinition TimeSigPlus { get; }
 
         [DataMember(Name = "timeSigPlusSmall")]
-        GlyphDefinition TimeSigPlusSmall { get; set; }
+        GlyphDefinition TimeSigPlusSmall { get; }
 
         [DataMember(Name = "timeSigSlash")]
-        GlyphDefinition TimeSigSlash { get; set; }
+        GlyphDefinition TimeSigSlash { get; }
 
         [DataMember(Name = "timeSigX")]
-        GlyphDefinition TimeSigX { get; set; }
+        GlyphDefinition TimeSigX { get; }
 
         [DataMember(Name = "tremolo1")]
-        GlyphDefinition Tremolo1 { get; set; }
+        GlyphDefinition Tremolo1 { get; }
 
         [DataMember(Name = "tremolo2")]
-        GlyphDefinition Tremolo2 { get; set; }
+        GlyphDefinition Tremolo2 { get; }
 
         [DataMember(Name = "tremolo3")]
-        GlyphDefinition Tremolo3 { get; set; }
+        GlyphDefinition Tremolo3 { get; }
 
         [DataMember(Name = "tremolo4")]
-        GlyphDefinition Tremolo4 { get; set; }
+        GlyphDefinition Tremolo4 { get; }
 
         [DataMember(Name = "tremolo5")]
-        GlyphDefinition Tremolo5 { get; set; }
+        GlyphDefinition Tremolo5 { get; }
 
         [DataMember(Name = "tremoloDivisiDots2")]
-        GlyphDefinition TremoloDivisiDots2 { get; set; }
+        GlyphDefinition TremoloDivisiDots2 { get; }
 
         [DataMember(Name = "tremoloDivisiDots3")]
-        GlyphDefinition TremoloDivisiDots3 { get; set; }
+        GlyphDefinition TremoloDivisiDots3 { get; }
 
         [DataMember(Name = "tremoloDivisiDots4")]
-        GlyphDefinition TremoloDivisiDots4 { get; set; }
+        GlyphDefinition TremoloDivisiDots4 { get; }
 
         [DataMember(Name = "tremoloDivisiDots6")]
-        GlyphDefinition TremoloDivisiDots6 { get; set; }
+        GlyphDefinition TremoloDivisiDots6 { get; }
 
         [DataMember(Name = "tremoloFingered1")]
-        GlyphDefinition TremoloFingered1 { get; set; }
+        GlyphDefinition TremoloFingered1 { get; }
 
         [DataMember(Name = "tremoloFingered2")]
-        GlyphDefinition TremoloFingered2 { get; set; }
+        GlyphDefinition TremoloFingered2 { get; }
 
         [DataMember(Name = "tremoloFingered3")]
-        GlyphDefinition TremoloFingered3 { get; set; }
+        GlyphDefinition TremoloFingered3 { get; }
 
         [DataMember(Name = "tremoloFingered4")]
-        GlyphDefinition TremoloFingered4 { get; set; }
+        GlyphDefinition TremoloFingered4 { get; }
 
         [DataMember(Name = "tremoloFingered5")]
-        GlyphDefinition TremoloFingered5 { get; set; }
+        GlyphDefinition TremoloFingered5 { get; }
 
         [DataMember(Name = "tripleTongueAbove")]
-        GlyphDefinition TripleTongueAbove { get; set; }
+        GlyphDefinition TripleTongueAbove { get; }
 
         [DataMember(Name = "tripleTongueBelow")]
-        GlyphDefinition TripleTongueBelow { get; set; }
+        GlyphDefinition TripleTongueBelow { get; }
 
         [DataMember(Name = "tuplet0")]
-        GlyphDefinition Tuplet0 { get; set; }
+        GlyphDefinition Tuplet0 { get; }
 
         [DataMember(Name = "tuplet1")]
-        GlyphDefinition Tuplet1 { get; set; }
+        GlyphDefinition Tuplet1 { get; }
 
         [DataMember(Name = "tuplet2")]
-        GlyphDefinition Tuplet2 { get; set; }
+        GlyphDefinition Tuplet2 { get; }
 
         [DataMember(Name = "tuplet3")]
-        GlyphDefinition Tuplet3 { get; set; }
+        GlyphDefinition Tuplet3 { get; }
 
         [DataMember(Name = "tuplet4")]
-        GlyphDefinition Tuplet4 { get; set; }
+        GlyphDefinition Tuplet4 { get; }
 
         [DataMember(Name = "tuplet5")]
-        GlyphDefinition Tuplet5 { get; set; }
+        GlyphDefinition Tuplet5 { get; }
 
         [DataMember(Name = "tuplet6")]
-        GlyphDefinition Tuplet6 { get; set; }
+        GlyphDefinition Tuplet6 { get; }
 
         [DataMember(Name = "tuplet7")]
-        GlyphDefinition Tuplet7 { get; set; }
+        GlyphDefinition Tuplet7 { get; }
 
         [DataMember(Name = "tuplet8")]
-        GlyphDefinition Tuplet8 { get; set; }
+        GlyphDefinition Tuplet8 { get; }
 
         [DataMember(Name = "tuplet9")]
-        GlyphDefinition Tuplet9 { get; set; }
+        GlyphDefinition Tuplet9 { get; }
 
         [DataMember(Name = "tupletColon")]
-        GlyphDefinition TupletColon { get; set; }
+        GlyphDefinition TupletColon { get; }
 
         [DataMember(Name = "unmeasuredTremolo")]
-        GlyphDefinition UnmeasuredTremolo { get; set; }
+        GlyphDefinition UnmeasuredTremolo { get; }
 
         [DataMember(Name = "unmeasuredTremoloSimple")]
-        GlyphDefinition UnmeasuredTremoloSimple { get; set; }
+        GlyphDefinition UnmeasuredTremoloSimple { get; }
 
         [DataMember(Name = "unpitchedPercussionClef1")]
-        GlyphDefinition UnpitchedPercussionClef1 { get; set; }
+        GlyphDefinition UnpitchedPercussionClef1 { get; }
 
         [DataMember(Name = "unpitchedPercussionClef2")]
-        GlyphDefinition UnpitchedPercussionClef2 { get; set; }
+        GlyphDefinition UnpitchedPercussionClef2 { get; }
 
         [DataMember(Name = "ventiduesima")]
-        GlyphDefinition Ventiduesima { get; set; }
+        GlyphDefinition Ventiduesima { get; }
 
         [DataMember(Name = "ventiduesimaAlta")]
-        GlyphDefinition VentiduesimaAlta { get; set; }
+        GlyphDefinition VentiduesimaAlta { get; }
 
         [DataMember(Name = "ventiduesimaBassa")]
-        GlyphDefinition VentiduesimaBassa { get; set; }
+        GlyphDefinition VentiduesimaBassa { get; }
 
         [DataMember(Name = "ventiduesimaBassaMb")]
-        GlyphDefinition VentiduesimaBassaMb { get; set; }
+        GlyphDefinition VentiduesimaBassaMb { get; }
 
         [DataMember(Name = "vocalMouthClosed")]
-        GlyphDefinition VocalMouthClosed { get; set; }
+        GlyphDefinition VocalMouthClosed { get; }
 
         [DataMember(Name = "vocalMouthOpen")]
-        GlyphDefinition VocalMouthOpen { get; set; }
+        GlyphDefinition VocalMouthOpen { get; }
 
         [DataMember(Name = "vocalMouthPursed")]
-        GlyphDefinition VocalMouthPursed { get; set; }
+        GlyphDefinition VocalMouthPursed { get; }
 
         [DataMember(Name = "vocalMouthSlightlyOpen")]
-        GlyphDefinition VocalMouthSlightlyOpen { get; set; }
+        GlyphDefinition VocalMouthSlightlyOpen { get; }
 
         [DataMember(Name = "vocalMouthWideOpen")]
-        GlyphDefinition VocalMouthWideOpen { get; set; }
+        GlyphDefinition VocalMouthWideOpen { get; }
 
         [DataMember(Name = "vocalSprechgesang")]
-        GlyphDefinition VocalSprechgesang { get; set; }
+        GlyphDefinition VocalSprechgesang { get; }
 
         [DataMember(Name = "vocalsSussurando")]
-        GlyphDefinition VocalsSussurando { get; set; }
+        GlyphDefinition VocalsSussurando { get; }
 
         [DataMember(Name = "wiggleArpeggiatoDown")]
-        GlyphDefinition WiggleArpeggiatoDown { get; set; }
+        GlyphDefinition WiggleArpeggiatoDown { get; }
 
         [DataMember(Name = "wiggleArpeggiatoDownArrow")]
-        GlyphDefinition WiggleArpeggiatoDownArrow { get; set; }
+        GlyphDefinition WiggleArpeggiatoDownArrow { get; }
 
         [DataMember(Name = "wiggleArpeggiatoDownSwash")]
-        GlyphDefinition WiggleArpeggiatoDownSwash { get; set; }
+        GlyphDefinition WiggleArpeggiatoDownSwash { get; }
 
         [DataMember(Name = "wiggleArpeggiatoUp")]
-        GlyphDefinition WiggleArpeggiatoUp { get; set; }
+        GlyphDefinition WiggleArpeggiatoUp { get; }
 
         [DataMember(Name = "wiggleArpeggiatoUpArrow")]
-        GlyphDefinition WiggleArpeggiatoUpArrow { get; set; }
+        GlyphDefinition WiggleArpeggiatoUpArrow { get; }
 
         [DataMember(Name = "wiggleArpeggiatoUpSwash")]
-        GlyphDefinition WiggleArpeggiatoUpSwash { get; set; }
+        GlyphDefinition WiggleArpeggiatoUpSwash { get; }
 
         [DataMember(Name = "wiggleCircular")]
-        GlyphDefinition WiggleCircular { get; set; }
+        GlyphDefinition WiggleCircular { get; }
 
         [DataMember(Name = "wiggleCircularConstant")]
-        GlyphDefinition WiggleCircularConstant { get; set; }
+        GlyphDefinition WiggleCircularConstant { get; }
 
         [DataMember(Name = "wiggleCircularConstantFlipped")]
-        GlyphDefinition WiggleCircularConstantFlipped { get; set; }
+        GlyphDefinition WiggleCircularConstantFlipped { get; }
 
         [DataMember(Name = "wiggleCircularConstantFlippedLarge")]
-        GlyphDefinition WiggleCircularConstantFlippedLarge { get; set; }
+        GlyphDefinition WiggleCircularConstantFlippedLarge { get; }
 
         [DataMember(Name = "wiggleCircularConstantLarge")]
-        GlyphDefinition WiggleCircularConstantLarge { get; set; }
+        GlyphDefinition WiggleCircularConstantLarge { get; }
 
         [DataMember(Name = "wiggleCircularEnd")]
-        GlyphDefinition WiggleCircularEnd { get; set; }
+        GlyphDefinition WiggleCircularEnd { get; }
 
         [DataMember(Name = "wiggleCircularLarge")]
-        GlyphDefinition WiggleCircularLarge { get; set; }
+        GlyphDefinition WiggleCircularLarge { get; }
 
         [DataMember(Name = "wiggleCircularLarger")]
-        GlyphDefinition WiggleCircularLarger { get; set; }
+        GlyphDefinition WiggleCircularLarger { get; }
 
         [DataMember(Name = "wiggleCircularLargerStill")]
-        GlyphDefinition WiggleCircularLargerStill { get; set; }
+        GlyphDefinition WiggleCircularLargerStill { get; }
 
         [DataMember(Name = "wiggleCircularLargest")]
-        GlyphDefinition WiggleCircularLargest { get; set; }
+        GlyphDefinition WiggleCircularLargest { get; }
 
         [DataMember(Name = "wiggleCircularSmall")]
-        GlyphDefinition WiggleCircularSmall { get; set; }
+        GlyphDefinition WiggleCircularSmall { get; }
 
         [DataMember(Name = "wiggleCircularStart")]
-        GlyphDefinition WiggleCircularStart { get; set; }
+        GlyphDefinition WiggleCircularStart { get; }
 
         [DataMember(Name = "wiggleGlissando")]
-        GlyphDefinition WiggleGlissando { get; set; }
+        GlyphDefinition WiggleGlissando { get; }
 
         [DataMember(Name = "wiggleGlissandoGroup1")]
-        GlyphDefinition WiggleGlissandoGroup1 { get; set; }
+        GlyphDefinition WiggleGlissandoGroup1 { get; }
 
         [DataMember(Name = "wiggleGlissandoGroup2")]
-        GlyphDefinition WiggleGlissandoGroup2 { get; set; }
+        GlyphDefinition WiggleGlissandoGroup2 { get; }
 
         [DataMember(Name = "wiggleGlissandoGroup3")]
-        GlyphDefinition WiggleGlissandoGroup3 { get; set; }
+        GlyphDefinition WiggleGlissandoGroup3 { get; }
 
         [DataMember(Name = "wiggleRandom1")]
-        GlyphDefinition WiggleRandom1 { get; set; }
+        GlyphDefinition WiggleRandom1 { get; }
 
         [DataMember(Name = "wiggleRandom2")]
-        GlyphDefinition WiggleRandom2 { get; set; }
+        GlyphDefinition WiggleRandom2 { get; }
 
         [DataMember(Name = "wiggleRandom3")]
-        GlyphDefinition WiggleRandom3 { get; set; }
+        GlyphDefinition WiggleRandom3 { get; }
 
         [DataMember(Name = "wiggleRandom4")]
-        GlyphDefinition WiggleRandom4 { get; set; }
+        GlyphDefinition WiggleRandom4 { get; }
 
         [DataMember(Name = "wiggleSawtooth")]
-        GlyphDefinition WiggleSawtooth { get; set; }
+        GlyphDefinition WiggleSawtooth { get; }
 
         [DataMember(Name = "wiggleSawtoothNarrow")]
-        GlyphDefinition WiggleSawtoothNarrow { get; set; }
+        GlyphDefinition WiggleSawtoothNarrow { get; }
 
         [DataMember(Name = "wiggleSawtoothWide")]
-        GlyphDefinition WiggleSawtoothWide { get; set; }
+        GlyphDefinition WiggleSawtoothWide { get; }
 
         [DataMember(Name = "wiggleSquareWave")]
-        GlyphDefinition WiggleSquareWave { get; set; }
+        GlyphDefinition WiggleSquareWave { get; }
 
         [DataMember(Name = "wiggleSquareWaveNarrow")]
-        GlyphDefinition WiggleSquareWaveNarrow { get; set; }
+        GlyphDefinition WiggleSquareWaveNarrow { get; }
 
         [DataMember(Name = "wiggleSquareWaveWide")]
-        GlyphDefinition WiggleSquareWaveWide { get; set; }
+        GlyphDefinition WiggleSquareWaveWide { get; }
 
         [DataMember(Name = "wiggleTrill")]
-        GlyphDefinition WiggleTrill { get; set; }
+        GlyphDefinition WiggleTrill { get; }
 
         [DataMember(Name = "wiggleTrillFast")]
-        GlyphDefinition WiggleTrillFast { get; set; }
+        GlyphDefinition WiggleTrillFast { get; }
 
         [DataMember(Name = "wiggleTrillFaster")]
-        GlyphDefinition WiggleTrillFaster { get; set; }
+        GlyphDefinition WiggleTrillFaster { get; }
 
         [DataMember(Name = "wiggleTrillFasterStill")]
-        GlyphDefinition WiggleTrillFasterStill { get; set; }
+        GlyphDefinition WiggleTrillFasterStill { get; }
 
         [DataMember(Name = "wiggleTrillFastest")]
-        GlyphDefinition WiggleTrillFastest { get; set; }
+        GlyphDefinition WiggleTrillFastest { get; }
 
         [DataMember(Name = "wiggleTrillSlow")]
-        GlyphDefinition WiggleTrillSlow { get; set; }
+        GlyphDefinition WiggleTrillSlow { get; }
 
         [DataMember(Name = "wiggleTrillSlower")]
-        GlyphDefinition WiggleTrillSlower { get; set; }
+        GlyphDefinition WiggleTrillSlower { get; }
 
         [DataMember(Name = "wiggleTrillSlowerStill")]
-        GlyphDefinition WiggleTrillSlowerStill { get; set; }
+        GlyphDefinition WiggleTrillSlowerStill { get; }
 
         [DataMember(Name = "wiggleTrillSlowest")]
-        GlyphDefinition WiggleTrillSlowest { get; set; }
+        GlyphDefinition WiggleTrillSlowest { get; }
 
         [DataMember(Name = "wiggleVIbratoLargestSlower")]
-        GlyphDefinition WiggleVIbratoLargestSlower { get; set; }
+        GlyphDefinition WiggleVIbratoLargestSlower { get; }
 
         [DataMember(Name = "wiggleVIbratoMediumSlower")]
-        GlyphDefinition WiggleVIbratoMediumSlower { get; set; }
+        GlyphDefinition WiggleVIbratoMediumSlower { get; }
 
         [DataMember(Name = "wiggleVibrato")]
-        GlyphDefinition WiggleVibrato { get; set; }
+        GlyphDefinition WiggleVibrato { get; }
 
         [DataMember(Name = "wiggleVibratoLargeFast")]
-        GlyphDefinition WiggleVibratoLargeFast { get; set; }
+        GlyphDefinition WiggleVibratoLargeFast { get; }
 
         [DataMember(Name = "wiggleVibratoLargeFaster")]
-        GlyphDefinition WiggleVibratoLargeFaster { get; set; }
+        GlyphDefinition WiggleVibratoLargeFaster { get; }
 
         [DataMember(Name = "wiggleVibratoLargeFasterStill")]
-        GlyphDefinition WiggleVibratoLargeFasterStill { get; set; }
+        GlyphDefinition WiggleVibratoLargeFasterStill { get; }
 
         [DataMember(Name = "wiggleVibratoLargeFastest")]
-        GlyphDefinition WiggleVibratoLargeFastest { get; set; }
+        GlyphDefinition WiggleVibratoLargeFastest { get; }
 
         [DataMember(Name = "wiggleVibratoLargeSlow")]
-        GlyphDefinition WiggleVibratoLargeSlow { get; set; }
+        GlyphDefinition WiggleVibratoLargeSlow { get; }
 
         [DataMember(Name = "wiggleVibratoLargeSlower")]
-        GlyphDefinition WiggleVibratoLargeSlower { get; set; }
+        GlyphDefinition WiggleVibratoLargeSlower { get; }
 
         [DataMember(Name = "wiggleVibratoLargeSlowest")]
-        GlyphDefinition WiggleVibratoLargeSlowest { get; set; }
+        GlyphDefinition WiggleVibratoLargeSlowest { get; }
 
         [DataMember(Name = "wiggleVibratoLargestFast")]
-        GlyphDefinition WiggleVibratoLargestFast { get; set; }
+        GlyphDefinition WiggleVibratoLargestFast { get; }
 
         [DataMember(Name = "wiggleVibratoLargestFaster")]
-        GlyphDefinition WiggleVibratoLargestFaster { get; set; }
+        GlyphDefinition WiggleVibratoLargestFaster { get; }
 
         [DataMember(Name = "wiggleVibratoLargestFasterStill")]
-        GlyphDefinition WiggleVibratoLargestFasterStill { get; set; }
+        GlyphDefinition WiggleVibratoLargestFasterStill { get; }
 
         [DataMember(Name = "wiggleVibratoLargestFastest")]
-        GlyphDefinition WiggleVibratoLargestFastest { get; set; }
+        GlyphDefinition WiggleVibratoLargestFastest { get; }
 
         [DataMember(Name = "wiggleVibratoLargestSlow")]
-        GlyphDefinition WiggleVibratoLargestSlow { get; set; }
+        GlyphDefinition WiggleVibratoLargestSlow { get; }
 
         [DataMember(Name = "wiggleVibratoLargestSlowest")]
-        GlyphDefinition WiggleVibratoLargestSlowest { get; set; }
+        GlyphDefinition WiggleVibratoLargestSlowest { get; }
 
         [DataMember(Name = "wiggleVibratoMediumFast")]
-        GlyphDefinition WiggleVibratoMediumFast { get; set; }
+        GlyphDefinition WiggleVibratoMediumFast { get; }
 
         [DataMember(Name = "wiggleVibratoMediumFaster")]
-        GlyphDefinition WiggleVibratoMediumFaster { get; set; }
+        GlyphDefinition WiggleVibratoMediumFaster { get; }
 
         [DataMember(Name = "wiggleVibratoMediumFasterStill")]
-        GlyphDefinition WiggleVibratoMediumFasterStill { get; set; }
+        GlyphDefinition WiggleVibratoMediumFasterStill { get; }
 
         [DataMember(Name = "wiggleVibratoMediumFastest")]
-        GlyphDefinition WiggleVibratoMediumFastest { get; set; }
+        GlyphDefinition WiggleVibratoMediumFastest { get; }
 
         [DataMember(Name = "wiggleVibratoMediumSlow")]
-        GlyphDefinition WiggleVibratoMediumSlow { get; set; }
+        GlyphDefinition WiggleVibratoMediumSlow { get; }
 
         [DataMember(Name = "wiggleVibratoMediumSlowest")]
-        GlyphDefinition WiggleVibratoMediumSlowest { get; set; }
+        GlyphDefinition WiggleVibratoMediumSlowest { get; }
 
         [DataMember(Name = "wiggleVibratoSmallFast")]
-        GlyphDefinition WiggleVibratoSmallFast { get; set; }
+        GlyphDefinition WiggleVibratoSmallFast { get; }
 
         [DataMember(Name = "wiggleVibratoSmallFaster")]
-        GlyphDefinition WiggleVibratoSmallFaster { get; set; }
+        GlyphDefinition WiggleVibratoSmallFaster { get; }
 
         [DataMember(Name = "wiggleVibratoSmallFasterStill")]
-        GlyphDefinition WiggleVibratoSmallFasterStill { get; set; }
+        GlyphDefinition WiggleVibratoSmallFasterStill { get; }
 
         [DataMember(Name = "wiggleVibratoSmallFastest")]
-        GlyphDefinition WiggleVibratoSmallFastest { get; set; }
+        GlyphDefinition WiggleVibratoSmallFastest { get; }
 
         [DataMember(Name = "wiggleVibratoSmallSlow")]
-        GlyphDefinition WiggleVibratoSmallSlow { get; set; }
+        GlyphDefinition WiggleVibratoSmallSlow { get; }
 
         [DataMember(Name = "wiggleVibratoSmallSlower")]
-        GlyphDefinition WiggleVibratoSmallSlower { get; set; }
+        GlyphDefinition WiggleVibratoSmallSlower { get; }
 
         [DataMember(Name = "wiggleVibratoSmallSlowest")]
-        GlyphDefinition WiggleVibratoSmallSlowest { get; set; }
+        GlyphDefinition WiggleVibratoSmallSlowest { get; }
 
         [DataMember(Name = "wiggleVibratoSmallestFast")]
-        GlyphDefinition WiggleVibratoSmallestFast { get; set; }
+        GlyphDefinition WiggleVibratoSmallestFast { get; }
 
         [DataMember(Name = "wiggleVibratoSmallestFaster")]
-        GlyphDefinition WiggleVibratoSmallestFaster { get; set; }
+        GlyphDefinition WiggleVibratoSmallestFaster { get; }
 
         [DataMember(Name = "wiggleVibratoSmallestFasterStill")]
-        GlyphDefinition WiggleVibratoSmallestFasterStill { get; set; }
+        GlyphDefinition WiggleVibratoSmallestFasterStill { get; }
 
         [DataMember(Name = "wiggleVibratoSmallestFastest")]
-        GlyphDefinition WiggleVibratoSmallestFastest { get; set; }
+        GlyphDefinition WiggleVibratoSmallestFastest { get; }
 
         [DataMember(Name = "wiggleVibratoSmallestSlow")]
-        GlyphDefinition WiggleVibratoSmallestSlow { get; set; }
+        GlyphDefinition WiggleVibratoSmallestSlow { get; }
 
         [DataMember(Name = "wiggleVibratoSmallestSlower")]
-        GlyphDefinition WiggleVibratoSmallestSlower { get; set; }
+        GlyphDefinition WiggleVibratoSmallestSlower { get; }
 
         [DataMember(Name = "wiggleVibratoSmallestSlowest")]
-        GlyphDefinition WiggleVibratoSmallestSlowest { get; set; }
+        GlyphDefinition WiggleVibratoSmallestSlowest { get; }
 
         [DataMember(Name = "wiggleVibratoStart")]
-        GlyphDefinition WiggleVibratoStart { get; set; }
+        GlyphDefinition WiggleVibratoStart { get; }
 
         [DataMember(Name = "wiggleVibratoWide")]
-        GlyphDefinition WiggleVibratoWide { get; set; }
+        GlyphDefinition WiggleVibratoWide { get; }
 
         [DataMember(Name = "wiggleWavy")]
-        GlyphDefinition WiggleWavy { get; set; }
+        GlyphDefinition WiggleWavy { get; }
 
         [DataMember(Name = "wiggleWavyNarrow")]
-        GlyphDefinition WiggleWavyNarrow { get; set; }
+        GlyphDefinition WiggleWavyNarrow { get; }
 
         [DataMember(Name = "wiggleWavyWide")]
-        GlyphDefinition WiggleWavyWide { get; set; }
+        GlyphDefinition WiggleWavyWide { get; }
 
         [DataMember(Name = "windClosedHole")]
-        GlyphDefinition WindClosedHole { get; set; }
+        GlyphDefinition WindClosedHole { get; }
 
         [DataMember(Name = "windFlatEmbouchure")]
-        GlyphDefinition WindFlatEmbouchure { get; set; }
+        GlyphDefinition WindFlatEmbouchure { get; }
 
         [DataMember(Name = "windHalfClosedHole1")]
-        GlyphDefinition WindHalfClosedHole1 { get; set; }
+        GlyphDefinition WindHalfClosedHole1 { get; }
 
         [DataMember(Name = "windHalfClosedHole2")]
-        GlyphDefinition WindHalfClosedHole2 { get; set; }
+        GlyphDefinition WindHalfClosedHole2 { get; }
 
         [DataMember(Name = "windHalfClosedHole3")]
-        GlyphDefinition WindHalfClosedHole3 { get; set; }
+        GlyphDefinition WindHalfClosedHole3 { get; }
 
         [DataMember(Name = "windLessRelaxedEmbouchure")]
-        GlyphDefinition WindLessRelaxedEmbouchure { get; set; }
+        GlyphDefinition WindLessRelaxedEmbouchure { get; }
 
         [DataMember(Name = "windLessTightEmbouchure")]
-        GlyphDefinition WindLessTightEmbouchure { get; set; }
+        GlyphDefinition WindLessTightEmbouchure { get; }
 
         [DataMember(Name = "windMultiphonicsBlackStem")]
-        GlyphDefinition WindMultiphonicsBlackStem { get; set; }
+        GlyphDefinition WindMultiphonicsBlackStem { get; }
 
         [DataMember(Name = "windMultiphonicsBlackWhiteStem")]
-        GlyphDefinition WindMultiphonicsBlackWhiteStem { get; set; }
+        GlyphDefinition WindMultiphonicsBlackWhiteStem { get; }
 
         [DataMember(Name = "windMultiphonicsWhiteStem")]
-        GlyphDefinition WindMultiphonicsWhiteStem { get; set; }
+        GlyphDefinition WindMultiphonicsWhiteStem { get; }
 
         [DataMember(Name = "windOpenHole")]
-        GlyphDefinition WindOpenHole { get; set; }
+        GlyphDefinition WindOpenHole { get; }
 
         [DataMember(Name = "windReedPositionIn")]
-        GlyphDefinition WindReedPositionIn { get; set; }
+        GlyphDefinition WindReedPositionIn { get; }
 
         [DataMember(Name = "windReedPositionNormal")]
-        GlyphDefinition WindReedPositionNormal { get; set; }
+        GlyphDefinition WindReedPositionNormal { get; }
 
         [DataMember(Name = "windReedPositionOut")]
-        GlyphDefinition WindReedPositionOut { get; set; }
+        GlyphDefinition WindReedPositionOut { get; }
 
         [DataMember(Name = "windRelaxedEmbouchure")]
-        GlyphDefinition WindRelaxedEmbouchure { get; set; }
+        GlyphDefinition WindRelaxedEmbouchure { get; }
 
         [DataMember(Name = "windSharpEmbouchure")]
-        GlyphDefinition WindSharpEmbouchure { get; set; }
+        GlyphDefinition WindSharpEmbouchure { get; }
 
         [DataMember(Name = "windStrongAirPressure")]
-        GlyphDefinition WindStrongAirPressure { get; set; }
+        GlyphDefinition WindStrongAirPressure { get; }
 
         [DataMember(Name = "windThreeQuartersClosedHole")]
-        GlyphDefinition WindThreeQuartersClosedHole { get; set; }
+        GlyphDefinition WindThreeQuartersClosedHole { get; }
 
         [DataMember(Name = "windTightEmbouchure")]
-        GlyphDefinition WindTightEmbouchure { get; set; }
+        GlyphDefinition WindTightEmbouchure { get; }
 
         [DataMember(Name = "windTrillKey")]
-        GlyphDefinition WindTrillKey { get; set; }
+        GlyphDefinition WindTrillKey { get; }
 
         [DataMember(Name = "windVeryTightEmbouchure")]
-        GlyphDefinition WindVeryTightEmbouchure { get; set; }
+        GlyphDefinition WindVeryTightEmbouchure { get; }
 
         [DataMember(Name = "windWeakAirPressure")]
-        GlyphDefinition WindWeakAirPressure { get; set; }
+        GlyphDefinition WindWeakAirPressure { get; }
     }
 }

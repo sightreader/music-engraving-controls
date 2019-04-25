@@ -7,13 +7,14 @@ namespace Manufaktura.Controls.SMuFL
 {
     public class SMuFLFontProfile : FontProfile
     {
-        private readonly IMusicFont musicFont = new SMuFLMusicFont();
+        private readonly IMusicFont musicFont;
 
         private ISMuFLFontMetadata metadata;
 
-        internal SMuFLFontProfile(ISMuFLFontMetadata metadata)
+        internal SMuFLFontProfile(ISMuFLFontMetadata metadata, ISMuFLGlyphs glyphsInstance)
         {
             this.metadata = metadata;
+            musicFont = new SMuFLMusicFont(glyphsInstance);
         }
 
         public override IMusicFont MusicFont => musicFont;

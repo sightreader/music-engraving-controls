@@ -6,22 +6,28 @@ namespace Manufaktura.Controls.SMuFL.Utilities
 {
     public class TupletNumberUtility : NumberUtility
     {
+        private readonly ISMuFLGlyphs glyphsInstance;
+        public TupletNumberUtility(ISMuFLGlyphs glyphsInstance)
+        {
+            this.glyphsInstance = glyphsInstance;
+        }
+
         public override string BuildNumber(int number)
         {
             var sb = new StringBuilder();
             var digits = number.ToString();
             foreach (var digit in digits)
             {
-                if (digit == '0') sb.Append(SMuFLGlyphs.Instance.Tuplet0.Character);
-                if (digit == '1') sb.Append(SMuFLGlyphs.Instance.Tuplet1.Character);
-                if (digit == '2') sb.Append(SMuFLGlyphs.Instance.Tuplet2.Character);
-                if (digit == '3') sb.Append(SMuFLGlyphs.Instance.Tuplet3.Character);
-                if (digit == '4') sb.Append(SMuFLGlyphs.Instance.Tuplet4.Character);
-                if (digit == '5') sb.Append(SMuFLGlyphs.Instance.Tuplet5.Character);
-                if (digit == '6') sb.Append(SMuFLGlyphs.Instance.Tuplet6.Character);
-                if (digit == '7') sb.Append(SMuFLGlyphs.Instance.Tuplet7.Character);
-                if (digit == '8') sb.Append(SMuFLGlyphs.Instance.Tuplet8.Character);
-                if (digit == '9') sb.Append(SMuFLGlyphs.Instance.Tuplet9.Character);
+                if (digit == '0') sb.Append(glyphsInstance.Tuplet0.Character);
+                if (digit == '1') sb.Append(glyphsInstance.Tuplet1.Character);
+                if (digit == '2') sb.Append(glyphsInstance.Tuplet2.Character);
+                if (digit == '3') sb.Append(glyphsInstance.Tuplet3.Character);
+                if (digit == '4') sb.Append(glyphsInstance.Tuplet4.Character);
+                if (digit == '5') sb.Append(glyphsInstance.Tuplet5.Character);
+                if (digit == '6') sb.Append(glyphsInstance.Tuplet6.Character);
+                if (digit == '7') sb.Append(glyphsInstance.Tuplet7.Character);
+                if (digit == '8') sb.Append(glyphsInstance.Tuplet8.Character);
+                if (digit == '9') sb.Append(glyphsInstance.Tuplet9.Character);
             }
             return sb.ToString();
         }
