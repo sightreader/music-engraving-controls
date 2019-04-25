@@ -16,7 +16,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Skia;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -48,6 +47,7 @@ namespace Manufaktura.Controls.XamarinFormsSkia
 
         private void SKCanvasView_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs e)
         {
+            e.Surface.Canvas.Scale(3);
             using (var renderer = new SKCanvasScoreRenderer(e.Surface.Canvas, Settings))
             {
                 renderer.Render(ScoreSource);

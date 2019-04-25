@@ -15,6 +15,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 
 using Manufaktura.Controls.Model;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,6 +42,10 @@ namespace Manufaktura.Controls.Rendering
         }
 
         public TCanvas Canvas { get; internal set; }
+
+        public TimeSpan DeserializationTime => Settings.MusicFontProfile.Performance;
+
+        public TimeSpan TotalRenderingTime { get; private set; }
 
         public sealed override void Render(Measure measure)
         {
@@ -94,38 +99,48 @@ namespace Manufaktura.Controls.Rendering
         /// <param name="score">Score</param>
         public override sealed void Render(Score score)
         {
-            CurrentScore = score;
-            BeforeRenderScore(score);
-
-            scoreService.BeginNewScore(score);
-            foreach (Staff staff in score.Staves)
+            var sw = Debugger.IsAttached ? new Stopwatch() : null;
+            sw?.Start();
+            try
             {
-                try
+                CurrentScore = score;
+                BeforeRenderScore(score);
+
+                scoreService.BeginNewScore(score);
+                foreach (Staff staff in score.Staves)
                 {
-                    RenderStaff(staff);
+                    try
+                    {
+                        RenderStaff(staff);
+                    }
+                    catch (Exception ex)
+                    {
+                        Exceptions.Add(ex);
+                    }
                 }
-                catch (Exception ex)
+
+                //Set height of current system in Panorama mode. This is used for determining the size of the control:
+                if (Settings.RenderingMode == ScoreRenderingModes.Panorama && scoreService.CurrentSystem != null && scoreService.CurrentSystem.Height == 0)
                 {
-                    Exceptions.Add(ex);
+                    scoreService.CurrentSystem.Height = (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count;
+                }
+
+                foreach (var finishingTouch in FinishingTouches)
+                {
+                    try
+                    {
+                        finishingTouch.PerformOnScore(score, this);
+                    }
+                    catch (Exception ex)
+                    {
+                        Exceptions.Add(ex);
+                    }
                 }
             }
-
-            //Set height of current system in Panorama mode. This is used for determining the size of the control:
-            if (Settings.RenderingMode == ScoreRenderingModes.Panorama && scoreService.CurrentSystem != null && scoreService.CurrentSystem.Height == 0)
+            finally
             {
-                scoreService.CurrentSystem.Height = (scoreService.CurrentStaffHeight + Settings.LineSpacing) * scoreService.CurrentScore.Staves.Count;
-            }
-
-            foreach (var finishingTouch in FinishingTouches)
-            {
-                try
-                {
-                    finishingTouch.PerformOnScore(score, this);
-                }
-                catch (Exception ex)
-                {
-                    Exceptions.Add(ex);
-                }
+                sw?.Stop();
+                TotalRenderingTime = sw.Elapsed;
             }
         }
 
@@ -144,6 +159,5 @@ namespace Manufaktura.Controls.Rendering
         {
             return Settings.RenderingMode != ScoreRenderingModes.SinglePage || owner == null || !owner.PageNumber.HasValue || owner.PageNumber == Settings.CurrentPage;
         }
-
     }
 }

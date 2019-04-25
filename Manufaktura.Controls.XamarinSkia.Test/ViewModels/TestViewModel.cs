@@ -29,7 +29,9 @@ namespace Manufaktura.Controls.XamarinSkia.Test.ViewModels
         public TestViewModel()
         {
             var score = Score.CreateOneStaffScore(Clef.Treble, MajorScale.G);
-            score.FirstStaff.AddRange(StaffBuilder.FromPitches(new[] { Pitch.G4, Pitch.B5, Pitch.D5 }).AddUniformRhythm(RhythmicDuration.Quarter));
+            score.FirstStaff.AddRange(StaffBuilder
+                .FromPitches(new[] { Pitch.C4, Pitch.E4, Pitch.G4, Pitch.B4, Pitch.D5 })
+                .AddUniformRhythm(RhythmicDuration.Quarter));
             TestScore = score;
         }
     }

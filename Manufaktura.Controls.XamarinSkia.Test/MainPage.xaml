@@ -7,6 +7,6 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <xamarinformsskia:NoteViewer x:Name="noteViewer1" ScoreSource="{Binding TestScore}" />
+        <xamarinformsskia:NoteViewer x:Name="noteViewer1" ScoreSource="{Binding TestScore}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  />
     </StackLayout>
 </ContentPage>

@@ -39,10 +39,8 @@ namespace Manufaktura.Controls.Skia
         {
             var assembly = typeof(TSomeTypeInNamespace).Assembly;
             var resourceFullName = $"{typeof(TSomeTypeInNamespace).Namespace}.{resourceFileName}";
-            using (var stream = assembly.GetManifestResourceStream(resourceFullName))
-            {
-                return SKTypeface.FromStream(stream);
-            }
+            var stream = assembly.GetManifestResourceStream(resourceFullName);  //SKTypeface takes ownership of stream so don't dispose here
+            return SKTypeface.FromStream(stream);
         }
 
         public SKTypeface GetFont(MusicFontStyles style)

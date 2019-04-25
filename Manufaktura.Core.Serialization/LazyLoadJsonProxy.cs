@@ -21,6 +21,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -30,11 +31,12 @@ using System.Text;
 
 namespace Manufaktura.Core.Serialization
 {
-    public abstract class LazyLoadJsonProxy : DispatchProxy
+    public abstract class LazyLoadJsonProxy : DispatchProxy, IMeasureDeserializationPerformance
     {
-        protected ConcurrentDictionary<string, object> cache = new ConcurrentDictionary<string, object>();
+        protected readonly ConcurrentDictionary<string, object> cache = new ConcurrentDictionary<string, object>();
+        protected readonly ConcurrentDictionary<string, TimeSpan> performanceLog = new ConcurrentDictionary<string, TimeSpan>();
         public int NumberOfAccessedMethods => cache.Count;
-        public ConcurrentDictionary<string, TimeSpan> PerformanceLog { get; } = new ConcurrentDictionary<string, TimeSpan>();
+        public IDictionary<string, TimeSpan> PerformanceLog => performanceLog;
 
         public TimeSpan TotalTimeSpentOnDeserialization => TimeSpan.FromTicks(PerformanceLog.Sum(pl => pl.Value.Ticks));
 
@@ -43,30 +45,6 @@ namespace Manufaktura.Core.Serialization
             var proxyType = typeof(LazyLoadJsonProxy<>).MakeGenericType(interfaceType);
             var method = proxyType.GetTypeInfo().GetDeclaredMethods(nameof(Create)).First(m => m.GetParameters().First().ParameterType == typeof(string));
             return method.Invoke(null, new object[] { json });
-        }
-
-        public TimeSpan GetTotalDeserializationTimeWithChildElements()
-        {
-            var time = TotalTimeSpentOnDeserialization;
-            foreach (var prop in GetType().GetRuntimeProperties().Where(p => p.PropertyType.GetTypeInfo().IsInterface))
-            {
-                var proxy = prop.GetValue(this) as LazyLoadJsonProxy;
-                if (proxy == null) continue;
-                time += proxy.GetTotalDeserializationTimeWithChildElements();
-            }
-            return time;
-        }
-
-        public int GetTotalNumberOfAccessedMethodsWithChildElements()
-        {
-            var count = NumberOfAccessedMethods;
-            foreach (var prop in GetType().GetRuntimeProperties().Where(p => p.PropertyType.GetTypeInfo().IsInterface))
-            {
-                var proxy = prop.GetValue(this) as LazyLoadJsonProxy;
-                if (proxy == null) continue;
-                count += proxy.GetTotalNumberOfAccessedMethodsWithChildElements();
-            }
-            return count;
         }
 
         public string DumpCache(Type type)
@@ -101,6 +79,30 @@ namespace Manufaktura.Core.Serialization
                 writer.WriteEnd();
             }
             return sb.ToString();
+        }
+
+        public TimeSpan GetTotalDeserializationTimeWithChildElements()
+        {
+            var time = TotalTimeSpentOnDeserialization;
+            foreach (var prop in GetType().GetRuntimeProperties().Where(p => p.PropertyType.GetTypeInfo().IsInterface))
+            {
+                var proxy = prop.GetValue(this) as LazyLoadJsonProxy;
+                if (proxy == null) continue;
+                time += proxy.GetTotalDeserializationTimeWithChildElements();
+            }
+            return time;
+        }
+
+        public int GetTotalNumberOfAccessedMethodsWithChildElements()
+        {
+            var count = NumberOfAccessedMethods;
+            foreach (var prop in GetType().GetRuntimeProperties().Where(p => p.PropertyType.GetTypeInfo().IsInterface))
+            {
+                var proxy = prop.GetValue(this) as LazyLoadJsonProxy;
+                if (proxy == null) continue;
+                count += proxy.GetTotalNumberOfAccessedMethodsWithChildElements();
+            }
+            return count;
         }
     }
 
@@ -166,7 +168,7 @@ namespace Manufaktura.Core.Serialization
             finally
             {
                 sw.Stop();
-                PerformanceLog.TryAdd(targetMethod.Name, sw.Elapsed);
+                performanceLog.TryAdd(targetMethod.Name, sw.Elapsed);
             }
         }
 

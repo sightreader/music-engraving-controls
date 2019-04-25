@@ -6,16 +6,14 @@ using Manufaktura.Controls.Rendering;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Manufaktura.Controls.Skia
 {
     public class SKCanvasScoreRenderer : ScoreRenderer<SKCanvas>, IDisposable
     {
-        public Dictionary<SKObject, MusicalSymbol> OwnershipDictionary { get; private set; }
-
-        public SKScoreRendererSettings TypedSettings => Settings as SKScoreRendererSettings;
-
         private readonly Dictionary<Pen, SKPaint> penCache = new Dictionary<Pen, SKPaint>();
+        private readonly Dictionary<Color, Dictionary<MusicFontStyles, SKPaint>> textPaintCache = new Dictionary<Color, Dictionary<MusicFontStyles, SKPaint>>();
 
         public SKCanvasScoreRenderer(SKCanvas canvas) : base(canvas, new SKScoreRendererSettings())
         {
@@ -26,20 +24,15 @@ namespace Manufaktura.Controls.Skia
         }
 
         public override bool CanDrawCharacterInBounds => throw new NotImplementedException();
+        public Dictionary<SKObject, MusicalSymbol> OwnershipDictionary { get; private set; }
 
-        private SKRect Convert(Rectangle rect) => new SKRect((float)rect.Location.X, (float)rect.Location.Y, (float)rect.Location.X + (float)rect.Width, (float)rect.Location.Y + (float)rect.Height);
+        public SKScoreRendererSettings TypedSettings => Settings as SKScoreRendererSettings;
 
-        private SKColor Convert(Color color) => new SKColor(color.R, color.G, color.B, color.A);
-
-        private SKPaint Convert(Pen pen)
+        public void Dispose()
         {
-            if (penCache.ContainsKey(pen)) return penCache[pen];
-            var paint = new SKPaint { Color = Convert(pen.Color), StrokeWidth = (float)pen.Thickness };
-            penCache.Add(pen, paint);
-            return paint;
+            foreach (var penEntry in penCache) penEntry.Value.Dispose();
+            foreach (var textPaintEntry in textPaintCache.SelectMany(c => c.Value)) textPaintEntry.Value.Dispose();
         }
-
-        private SKPoint Convert(Point point) => new SKPoint((float)point.X, (float)point.Y);
 
         public override void DrawArc(Rectangle rect, double startAngle, double sweepAngle, Pen pen, MusicalSymbol owner)
         {
@@ -62,7 +55,6 @@ namespace Manufaktura.Controls.Skia
 
         public override void DrawCharacterInBounds(char character, MusicFontStyles fontStyle, Point location, Size size, Color color, MusicalSymbol owner)
         {
-            throw new NotImplementedException();
         }
 
         public override void DrawLine(Point startPoint, Point endPoint, Pen pen, MusicalSymbol owner)
@@ -72,23 +64,43 @@ namespace Manufaktura.Controls.Skia
 
         public override void DrawString(string text, MusicFontStyles fontStyle, Point location, Color color, MusicalSymbol owner)
         {
-            using (SKPaint paint = new SKPaint())
-            {
-                paint.Typeface = TypedSettings.GetFont(fontStyle);
-                paint.TextSize = TypedSettings.GetFontSize(fontStyle);
-                paint.Color = Convert(color);
-                Canvas.DrawText(text, Convert(location), paint);
-            }
+            var paint = GetTextPaint(fontStyle, color);
+            Canvas.DrawText(text, Convert(location), paint);
         }
 
         protected override void DrawPlaybackCursor(PlaybackCursorPosition position, Point start, Point end)
         {
-            throw new NotImplementedException();
         }
 
-        public void Dispose()
+        private SKRect Convert(Rectangle rect) => new SKRect((float)rect.Location.X, (float)rect.Location.Y, (float)rect.Location.X + (float)rect.Width, (float)rect.Location.Y + (float)rect.Height);
+
+        private SKColor Convert(Color color) => new SKColor(color.R, color.G, color.B, color.A);
+
+        private SKPaint Convert(Pen pen)
         {
-            foreach (var penEntry in penCache) penEntry.Value.Dispose();
+            if (penCache.ContainsKey(pen)) return penCache[pen];
+            var paint = new SKPaint { Color = Convert(pen.Color), StrokeWidth = (float)pen.Thickness };
+            penCache.Add(pen, paint);
+            return paint;
+        }
+
+        private SKPoint Convert(Point point) => new SKPoint((float)point.X, (float)point.Y);
+
+        private SKPaint GetTextPaint(MusicFontStyles fontStyle, Color color)
+        {
+            if (!textPaintCache.ContainsKey(color)) textPaintCache.Add(color, new Dictionary<MusicFontStyles, SKPaint>());
+            var paintsForThisColor = textPaintCache[color];
+            if (!paintsForThisColor.ContainsKey(fontStyle))
+            {
+                var paint = new SKPaint
+                {
+                    Typeface = TypedSettings.GetFont(fontStyle),
+                    TextSize = TypedSettings.GetFontSize(fontStyle),
+                    Color = Convert(color)
+                };
+                paintsForThisColor.Add(fontStyle, paint);
+            }
+            return paintsForThisColor[fontStyle];
         }
     }
 }
