@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Manufaktura.Controls.Avalonia.NoteViewer"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Manufaktura.Controls.Avalonia"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" 
+             x:Class="Manufaktura.Controls.Avalonia.NoteViewer">
     <Canvas x:Name="MainCanvas" MouseLeftButtonDown="canvas_MouseLeftButtonDown" MouseLeftButtonUp="MainCanvas_MouseLeftButtonUp" MouseMove="MainCanvas_MouseMove" UseLayoutRounding="True">
         <Canvas.RenderTransform>
             <ScaleTransform ScaleX="{Binding ZoomFactor, RelativeSource={RelativeSource FindAncestor, AncestorType=local:NoteViewer}}" 

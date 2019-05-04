@@ -38,7 +38,7 @@ namespace Manufaktura.Controls.Avalonia
     /// <summary>
     /// Interaction logic for NoteViewer.xaml
     /// </summary>
-    public partial class NoteViewer : UserControl
+    public class NoteViewer : UserControl
     {
         public static readonly StyledProperty<int> CurrentPageProperty = AvaloniaProperty.Register<NoteViewer, int>(nameof(CurrentPage), 1);
         public static readonly StyledProperty<InvalidatingModes> InvalidatingModeProperty = AvaloniaProperty.Register<NoteViewer, InvalidatingModes>(nameof(InvalidatingMode), InvalidatingModes.RedrawInvalidatedRegion);
@@ -217,7 +217,8 @@ namespace Manufaktura.Controls.Avalonia
         protected override Size MeasureOverride(Size availableSize)
         {
             if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);
-            var children = MainCanvas.Children.OfType<Control>();
+            var mainCanvas = this.FindControl<Canvas>("MainCanvas");
+            var children = mainCanvas.Children.OfType<Control>();
             foreach (var child in children) child.Measure(availableSize);
 
             if (children.Any())
@@ -294,7 +295,8 @@ namespace Manufaktura.Controls.Avalonia
 
         private void RenderOnCanvas(Measure measure)
         {
-            if (Renderer == null) Renderer = new AvaloniaCanvasScoreRenderer(MainCanvas, rendererSettings);
+            var mainCanvas = this.FindControl<Canvas>("MainCanvas");
+            if (Renderer == null) Renderer = new AvaloniaCanvasScoreRenderer(mainCanvas, rendererSettings);
             var beamGroupsForThisMeasure = measure.Staff.BeamGroups.Where(bg => bg.Members.Any(m => m.Measure == measure));
             foreach (var beamGroup in beamGroupsForThisMeasure)
             {
@@ -334,8 +336,9 @@ namespace Manufaktura.Controls.Avalonia
             score.StaffInvalidated -= Score_StaffInvalidated;
             score.ScoreInvalidated -= Score_ScoreInvalidated;
 
-            MainCanvas.Children.Clear();
-            Renderer = new AvaloniaCanvasScoreRenderer(MainCanvas, rendererSettings);
+            var mainCanvas = this.FindControl<Canvas>("MainCanvas");
+            mainCanvas.Children.Clear();
+            Renderer = new AvaloniaCanvasScoreRenderer(mainCanvas, rendererSettings);
             Renderer.Settings.RenderingMode = RenderingMode;
             Renderer.Settings.CurrentPage = CurrentPage;
             var brush = Foreground as SolidColorBrush;
