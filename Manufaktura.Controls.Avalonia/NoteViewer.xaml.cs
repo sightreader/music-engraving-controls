@@ -40,19 +40,19 @@ namespace Manufaktura.Controls.Avalonia
     /// </summary>
     public partial class NoteViewer : UserControl
     {
-        public static readonly StyledProperty<int> CurrentPageProperty = AvaloniaProperty.Register<NoteViewer, int>(nameof(CurrentPage), 1, CurrentPageChanged);
+        public static readonly StyledProperty<int> CurrentPageProperty = AvaloniaProperty.Register<NoteViewer, int>(nameof(CurrentPage), 1);
         public static readonly StyledProperty<InvalidatingModes> InvalidatingModeProperty = AvaloniaProperty.Register<NoteViewer, InvalidatingModes>(nameof(InvalidatingMode), InvalidatingModes.RedrawInvalidatedRegion);
         public static readonly StyledProperty<bool> IsInsertModeProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsInsertMode), false);
-        public static readonly StyledProperty<bool> IsMusicPaperModeProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsMusicPaperMode), false, (c, o, n) => c.rendererSettings.IsMusicPaperMode = n);
+        public static readonly StyledProperty<bool> IsMusicPaperModeProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsMusicPaperMode), false);
         public static readonly StyledProperty<bool> IsOccupyingSpaceProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsOccupyingSpace), true);
         public static readonly StyledProperty<bool> IsSelectableProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsSelectable), true);
-        public static readonly StyledProperty<PlaybackCursorPosition> PlaybackCursorPositionProperty = AvaloniaProperty.Register<NoteViewer, PlaybackCursorPosition>(nameof(PlaybackCursorPosition), default(PlaybackCursorPosition), PlaybackCursorPositionChanged);
-        public static readonly StyledProperty<ScoreRenderingModes> RenderingModeProperty = AvaloniaProperty.Register<NoteViewer, ScoreRenderingModes>(nameof(RenderingMode), ScoreRenderingModes.Panorama, RenderingModeChanged);
-        public static readonly StyledProperty<Score> ScoreSourceProperty = AvaloniaProperty.Register<NoteViewer, Score>(nameof(ScoreSource), null, ScoreSourceChanged);
+        public static readonly StyledProperty<PlaybackCursorPosition> PlaybackCursorPositionProperty = AvaloniaProperty.Register<NoteViewer, PlaybackCursorPosition>(nameof(PlaybackCursorPosition), default(PlaybackCursorPosition));
+        public static readonly StyledProperty<ScoreRenderingModes> RenderingModeProperty = AvaloniaProperty.Register<NoteViewer, ScoreRenderingModes>(nameof(RenderingMode), ScoreRenderingModes.Panorama);
+        public static readonly StyledProperty<Score> ScoreSourceProperty = AvaloniaProperty.Register<NoteViewer, Score>(nameof(ScoreSource), null);
         public static readonly StyledProperty<MusicalSymbol> SelectedElementProperty = AvaloniaProperty.Register<NoteViewer, MusicalSymbol>(nameof(SelectedElement), null);
-        public static readonly StyledProperty<string> XmlSourceProperty = AvaloniaProperty.Register<NoteViewer, string>(nameof(XmlSource), null, XmlSourceChanged);
+        public static readonly StyledProperty<string> XmlSourceProperty = AvaloniaProperty.Register<NoteViewer, string>(nameof(XmlSource), null);
         public static readonly StyledProperty<IEnumerable<XTransformerParser>> XmlTransformationsProperty = AvaloniaProperty.Register<NoteViewer, IEnumerable<XTransformerParser>>(nameof(XmlTransformations), null);
-        public static readonly StyledProperty<double> ZoomFactorProperty = AvaloniaProperty.Register<NoteViewer, double>(nameof(ZoomFactor), 1d, ZoomFactorChanged);
+        public static readonly StyledProperty<double> ZoomFactorProperty = AvaloniaProperty.Register<NoteViewer, double>(nameof(ZoomFactor), 1d);
         private DraggingState _draggingState = new DraggingState();
         private Score _innerScore;
         private Color previousColor;
@@ -61,6 +61,43 @@ namespace Manufaktura.Controls.Avalonia
         public NoteViewer()
         {
             AvaloniaXamlLoader.Load(this);
+            this.GetObservable(CurrentPageProperty).Subscribe(v => RenderOnCanvas(InnerScore));
+            this.GetObservable(IsMusicPaperModeProperty).Subscribe(v => rendererSettings.IsMusicPaperMode = v);
+            this.GetObservable(PlaybackCursorPositionProperty).Subscribe(v =>
+            {
+                if (InnerScore == null) return;
+                if (Renderer == null) return;
+
+                if (!v.IsValid) return;
+
+                Dispatcher.UIThread.InvokeAsync(new Action(() => Renderer.DrawPlaybackCursor(v)), DispatcherPriority.Background);
+            });
+            this.GetObservable(RenderingModeProperty).Subscribe(v =>
+            {
+                if (InnerScore == null) return;
+                RenderOnCanvas(InnerScore);
+            });
+            this.GetPropertyChangedObservable(ScoreSourceProperty).Subscribe(p =>
+            {
+                if (p.OldValue != null) ((Score)p.OldValue).Safety.BoundControl = null;
+                Score.SanityCheck((Score)p.NewValue, this);
+
+                RenderOnCanvas((Score)p.NewValue);
+            });
+            this.GetObservable(XmlSourceProperty).Subscribe(v =>
+            {
+                XDocument xmlDocument = XDocument.Parse(v);
+                //Apply transformations:
+                if (XmlTransformations != null)
+                {
+                    foreach (var transformation in XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
+                }
+
+                MusicXmlParser parser = new MusicXmlParser();
+                var score = parser.Parse(xmlDocument);
+                RenderOnCanvas(score);
+            });
+            this.GetObservable(ZoomFactorProperty).Subscribe(v => InvalidateMeasure());
         }
 
         public int CurrentPage
@@ -158,7 +195,7 @@ namespace Manufaktura.Controls.Avalonia
                 rendererSettings.SetFont(size.Key, family, size.Value);
         }
 
-        public void MoveLayout(StaffSystem system, Primitives.Point delta)
+        public void MoveLayout(StaffSystem system, Point delta)
         {
             if (Renderer == null) return;
             Renderer.MoveLayout(system, delta);
@@ -192,55 +229,7 @@ namespace Manufaktura.Controls.Avalonia
             return base.MeasureOverride(availableSize);
         }
 
-        private static void CurrentPageChanged(NoteViewer control, int oldValue, int newValue)
-        {
-            control.RenderOnCanvas(control.InnerScore);
-        }
-
-        private static void PlaybackCursorPositionChanged(NoteViewer control, PlaybackCursorPosition oldValue, PlaybackCursorPosition newValue)
-        {
-            if (control.InnerScore == null) return;
-            if (control.Renderer == null) return;
-
-            if (!newValue.IsValid) return;
-
-            control.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => control.Renderer.DrawPlaybackCursor(newValue)));
-        }
-
-        private static void RenderingModeChanged(NoteViewer control, ScoreRenderingModes oldValue, ScoreRenderingModes newValue)
-        {
-            if (control.InnerScore == null) return;
-            control.RenderOnCanvas(control.InnerScore);
-        }
-
-        private static void ScoreSourceChanged(NoteViewer control, Score oldValue, Score newValue)
-        {
-            if (oldValue != null) oldValue.Safety.BoundControl = null;
-            Score.SanityCheck(newValue, control);
-
-            control.RenderOnCanvas(newValue);
-        }
-
-        private static void XmlSourceChanged(NoteViewer contol, string oldValue, string newValue)
-        {
-            XDocument xmlDocument = XDocument.Parse(newValue);
-            //Apply transformations:
-            if (contol.XmlTransformations != null)
-            {
-                foreach (var transformation in contol.XmlTransformations) xmlDocument = transformation.Parse(xmlDocument);
-            }
-
-            MusicXmlParser parser = new MusicXmlParser();
-            var score = parser.Parse(xmlDocument);
-            contol.RenderOnCanvas(score);
-        }
-
-        private static void ZoomFactorChanged(NoteViewer control, double oldValue, double newValue)
-        {
-            control.InvalidateMeasure();
-        }
-
-        private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        /*private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (!IsSelectable) return;
             MainCanvas.CaptureMouse();  //Capture mouse to receive events even if the pointer is outside the control
@@ -255,7 +244,7 @@ namespace Manufaktura.Controls.Avalonia
 
             //Set selected element:
             Select(Renderer.OwnershipDictionary[element]);
-        }
+        }*/
 
         private void ColorElement(MusicalSymbol element, Color color)
         {
@@ -281,7 +270,7 @@ namespace Manufaktura.Controls.Avalonia
             }
         }
 
-        private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        /*private void MainCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (!IsSelectable) return;
             MainCanvas.ReleaseMouseCapture();
@@ -301,7 +290,7 @@ namespace Manufaktura.Controls.Avalonia
             }
 
             if (InvalidatingMode == InvalidatingModes.RedrawAllScore) RenderOnCanvas(_innerScore);
-        }
+        }*/
 
         private void RenderOnCanvas(Measure measure)
         {
