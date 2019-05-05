@@ -10,18 +10,25 @@ namespace Manufaktura.Controls.Avalonia.FontPresets
 {
     public abstract class SMuFLFontPreset : IFontPreset
     {
-        public abstract PredefinedMusicFonts PredefinedFont { get; }
-        public abstract string FontName { get; }
-        public FontFamily Family { get; private set; }
+        private readonly Lazy<FontFamily> family;
+        private readonly Lazy<SMuFLFontProfile> fontProfile;
         private Dictionary<MusicFontStyles, Typeface> fonts;
+
+        protected SMuFLFontPreset()
+        {
+            family = new Lazy<FontFamily>(() => new FontFamily(FontName, new Uri($"resm:Manufaktura.Controls.Avalonia.Assets.?assembly=Manufaktura.Controls.Avalonia#{FontName}")));
+            fontProfile = new Lazy<SMuFLFontProfile>(() => SMuFLMusicFont.CreateFromJsonResource<NoteViewer>($"Assets.{FontName.ToLowerInvariant()}_metadata.json", SMuFLMusicFont.JSONLoadingModes.LazyWithStaticProxy));
+        }
+
         public virtual double Baseline => 2.012;
+        public FontFamily Family => family.Value;
+        public abstract string FontName { get; }
+        public abstract PredefinedMusicFonts PredefinedFont { get; }
 
         public Typeface GetTypeface(MusicFontStyles style) => fonts[style];
 
         public void Load(ScoreRendererSettings settings)
         {
-            Family = new FontFamily(FontName, new Uri($"resm:Manufaktura.Controls.Avalonia.Assets.?assembly=Manufaktura.Controls.Avalonia#{FontName}"));
-            var fontProfile = SMuFLMusicFont.CreateFromJsonResource<NoteViewer>($"Assets.{FontName.ToLowerInvariant()}_metadata.json", SMuFLMusicFont.JSONLoadingModes.LazyWithStaticProxy);
             fonts = new Dictionary<MusicFontStyles, Typeface>()
             {
                 {MusicFontStyles.MusicFont, new Typeface(Family, 27.5, FontStyle.Normal, FontWeight.Normal)},
@@ -31,13 +38,14 @@ namespace Manufaktura.Controls.Avalonia.FontPresets
                 {MusicFontStyles.DirectionFont, new Typeface("Microsoft Sans Serif", 14.5)},
                 {MusicFontStyles.TimeSignatureFont, new Typeface(new FontFamily("Microsoft Sans Serif"), 14.5, FontStyle.Normal, FontWeight.Bold)}
             };
-            foreach (var size in fontProfile.FontSizes)
+
+            foreach (var size in fontProfile.Value.FontSizes)
             {
                 if (!fonts.ContainsKey(size.Key)) continue;
                 var tf = fonts[size.Key];
                 fonts[size.Key] = new Typeface(tf.FontFamily, size.Value, tf.Style, tf.Weight);
             }
-            settings.SetMusicFontProfile(fontProfile);
+            settings.SetMusicFontProfile(fontProfile.Value);
         }
     }
 }
