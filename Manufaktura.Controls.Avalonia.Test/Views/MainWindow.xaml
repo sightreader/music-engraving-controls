@@ -13,11 +13,19 @@
     <vm:MainWindowViewModel />
   </Design.DataContext>
 
-  <StackPanel>
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-    <av:NoteViewer ScoreSource="{Binding Data}" MusicFont="{Binding MusicFont}" x:Name="testViewer" />
-    <Button Command="{Binding SetPolihymniaFont}">Polihymnia</Button>
-    <Button Command="{Binding SetBravuraFont}">Bravura</Button>
-    <Button Command="{Binding SetGootvilleFont}">Gootville</Button>
-  </StackPanel>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition Width="120" />
+    </Grid.ColumnDefinitions>
+    <ScrollViewer Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      <av:NoteViewer ScoreSource="{Binding Data}" MusicFont="{Binding MusicFont}" RenderingMode="AllPages" x:Name="testViewer" />
+    </ScrollViewer>
+    <StackPanel Grid.Column="1">
+      <Button Command="{Binding SetPolihymniaFont}">Polihymnia</Button>
+      <Button Command="{Binding SetBravuraFont}">Bravura</Button>
+      <Button Command="{Binding SetGootvilleFont}">Gootville</Button>
+      <Button Command="{Binding OpenFileCommand}">Otwórz...</Button>
+    </StackPanel>
+  </Grid>
 </Window>

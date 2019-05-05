@@ -1,7 +1,11 @@
-﻿using Manufaktura.Controls.Extensions;
+﻿using Avalonia.Controls;
+using Manufaktura.Controls.Avalonia.Extensions;
+using Manufaktura.Controls.Extensions;
 using Manufaktura.Controls.Formatting;
+using Manufaktura.Controls.Linq;
 using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
+using System.IO;
 using System.Windows.Input;
 
 namespace Manufaktura.Controls.Avalonia.Test.ViewModels
@@ -30,6 +34,19 @@ namespace Manufaktura.Controls.Avalonia.Test.ViewModels
         public ICommand SetBravuraFont => new ActionCommand(() => MusicFont = PredefinedMusicFonts.Bravura);
 
         public ICommand SetGootvilleFont => new ActionCommand(() => MusicFont = PredefinedMusicFonts.Gootville);
+
+        public ICommand OpenFileCommand => new ActionCommand(async () =>
+        {
+            var dialog = new OpenFileDialog();
+            dialog.AddFilter("MusicXml", "xml");
+            dialog.AllowMultiple = false;
+            var dialogResult = await dialog.ShowAsync(App.Current.MainWindow);
+            if (dialogResult.Length == 1)
+            {
+                string xml = File.ReadAllText(dialogResult[0]);
+                Data = xml.ToScore();
+            }
+        });
 
         public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
         {
