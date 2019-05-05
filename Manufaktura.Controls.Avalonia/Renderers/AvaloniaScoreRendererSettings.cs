@@ -23,7 +23,7 @@ namespace Manufaktura.Controls.Avalonia.Renderers
 {
     public class AvaloniaScoreRendererSettings : ScoreRendererSettings
     {
-        private static FontFamily PolihymniaFamily = new FontFamily("./#Polihymnia", new Uri("pack://application:,,,/Manufaktura.Controls.Avalonia;component/"));
+        private static FontFamily PolihymniaFamily = new FontFamily("Polihymnia", new Uri("resm:Manufaktura.Controls.Avalonia.Assets.?assembly=Manufaktura.Controls.Avalonia#Polihymnia"));
 
         private Dictionary<MusicFontStyles, Typeface> defaultFonts = new Dictionary<MusicFontStyles, Typeface>()
             {

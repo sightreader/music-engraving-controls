@@ -15,6 +15,6 @@
 
   <StackPanel>
     <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-    <av:NoteViewer   /> 
+    <av:NoteViewer ScoreSource="{Binding Data}"  /> 
   </StackPanel>
 </Window>

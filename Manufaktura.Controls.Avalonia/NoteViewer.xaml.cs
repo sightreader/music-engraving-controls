@@ -86,6 +86,7 @@ namespace Manufaktura.Controls.Avalonia
             });
             this.GetObservable(XmlSourceProperty).Subscribe(v =>
             {
+                if (v == null) return;
                 XDocument xmlDocument = XDocument.Parse(v);
                 //Apply transformations:
                 if (XmlTransformations != null)

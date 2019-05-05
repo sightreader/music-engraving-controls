@@ -5,8 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Bravura.otf" />
+    <None Remove="Assets\bravura_metadata.json" />
+    <None Remove="Assets\Gootville.otf" />
+    <None Remove="Assets\gootville_metadata.json" />
+    <None Remove="Assets\Polihymnia.ttf" />
     <None Remove="NoteViewer.xaml" />
     <None Remove="RadarChart.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Bravura.otf" />
+    <EmbeddedResource Include="Assets\bravura_metadata.json" />
+    <EmbeddedResource Include="Assets\Gootville.otf" />
+    <EmbeddedResource Include="Assets\gootville_metadata.json" />
+    <EmbeddedResource Include="Assets\Polihymnia.ttf" />
   </ItemGroup>
 
   <ItemGroup>
