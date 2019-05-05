@@ -186,18 +186,16 @@ namespace Manufaktura.Controls.Avalonia.Renderers
             if (Settings.RenderingMode != ScoreRenderingModes.Panorama) location = location.Translate(CurrentScore.DefaultPageSettings);
 
             TextBlock textBlock = new TextBlock();
-            Typeface typeface = TypedSettings.GetFont(fontStyle);
-            textBlock.FontSize = TypedSettings.GetFontSize(fontStyle);
+            Typeface typeface = TypedSettings.SelectedFontPreset.GetTypeface(fontStyle);
+            textBlock.FontSize = typeface.FontSize;
             textBlock.FontFamily = typeface.FontFamily;
-            //textBlock.FontStretch = typeface.Stretch;
             textBlock.FontStyle = typeface.Style;
             textBlock.FontWeight = typeface.Weight;
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(ConvertColor(color));
             textBlock.IsVisible = owner.IsVisible; ;
 
-            var baseline = 1.2// typeface.FontFamily.Baseline
-                * textBlock.FontSize;
+            var baseline = TypedSettings.SelectedFontPreset.Baseline * textBlock.FontSize;
 
             Canvas.SetLeft(textBlock, location.X);
             Canvas.SetTop(textBlock, location.Y - baseline);

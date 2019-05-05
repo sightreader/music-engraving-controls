@@ -14,60 +14,41 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 
 using Avalonia.Media;
+using Manufaktura.Controls.Avalonia.FontPresets;
+using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model.Fonts;
 using Manufaktura.Controls.Rendering;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Manufaktura.Controls.Avalonia.Renderers
 {
     public class AvaloniaScoreRendererSettings : ScoreRendererSettings
     {
-        private static FontFamily PolihymniaFamily = new FontFamily("Polihymnia", new Uri("resm:Manufaktura.Controls.Avalonia.Assets.?assembly=Manufaktura.Controls.Avalonia#Polihymnia"));
+        private Lazy<IFontPreset[]> availableFontPresets = new Lazy<IFontPreset[]>(() => typeof(IFontPreset).Assembly.GetTypes()
+            .Where(t => !t.IsAbstract && typeof(IFontPreset).IsAssignableFrom(t) && t != typeof(CustomFontPreset))
+            .Select(t => Activator.CreateInstance(t))
+            .Cast<IFontPreset>()
+            .ToArray());
 
-        private Dictionary<MusicFontStyles, Typeface> defaultFonts = new Dictionary<MusicFontStyles, Typeface>()
-            {
-                {MusicFontStyles.MusicFont, new Typeface(PolihymniaFamily, 27.5, FontStyle.Normal, FontWeight.Normal)},
-                {MusicFontStyles.GraceNoteFont, new Typeface(PolihymniaFamily, 22, FontStyle.Normal, FontWeight.Normal)},
-                {MusicFontStyles.StaffFont, new Typeface(PolihymniaFamily, 30.5, FontStyle.Normal, FontWeight.Normal)},
-                {MusicFontStyles.LyricsFont, new Typeface("Times New Roman", 11)},
-                {MusicFontStyles.DirectionFont, new Typeface("Microsoft Sans Serif", 14.5)},
-                {MusicFontStyles.TimeSignatureFont, new Typeface(new FontFamily("Microsoft Sans Serif"), 14.5, FontStyle.Normal, FontWeight.Bold)}
-            };
+        public IFontPreset SelectedFontPreset { get; private set; } = new PolihymniaFontPreset();
 
-        private Dictionary<MusicFontStyles, Typeface> fonts = new Dictionary<MusicFontStyles, Typeface>()
-            {
-                {MusicFontStyles.MusicFont, new Typeface(PolihymniaFamily, 27.5, FontStyle.Normal, FontWeight.Normal)},
-                {MusicFontStyles.GraceNoteFont, new Typeface(PolihymniaFamily, 22, FontStyle.Normal, FontWeight.Normal)},
-                {MusicFontStyles.StaffFont, new Typeface(PolihymniaFamily, 30.5, FontStyle.Normal, FontWeight.Normal)},
-                {MusicFontStyles.LyricsFont, new Typeface("Times New Roman", 11)},
-                {MusicFontStyles.DirectionFont, new Typeface("Microsoft Sans Serif", 14.5)},
-                {MusicFontStyles.TimeSignatureFont, new Typeface(new FontFamily("Microsoft Sans Serif"), 14.5, FontStyle.Normal, FontWeight.Bold)}
-            };
-
-        public Typeface GetFont(MusicFontStyles style)
+        public void SetFontPreset(PredefinedMusicFonts predefinedFont)
         {
-            return fonts[style];
+            if (predefinedFont == PredefinedMusicFonts.Custom)
+                throw new Exception($"You can't set font preset directly to {PredefinedMusicFonts.Custom}. Use {nameof(SetCustomFontPreset)} instead.");
+
+            var matchingPreset = availableFontPresets.Value.FirstOrDefault(p => p.PredefinedFont == predefinedFont);
+            if (matchingPreset == null)
+                throw new Exception($"Unknown font preset {predefinedFont}.");
+
+            matchingPreset.Load(this);
+            SelectedFontPreset = matchingPreset;
         }
 
-        public double GetFontSize(MusicFontStyles style)
+        public void SetCustomFontPreset(FontFamily family, double baseline, FontProfile musicFontProfile)
         {
-            return fonts[style].FontSize;
-        }
-
-        public void SetFont(MusicFontStyles style, FontFamily family, double fontSize = 0)
-        {
-            fonts[style] = new Typeface(family, fontSize, FontStyle.Normal, FontWeight.Normal);
-        }
-
-        public override void SetPolihymniaFont()
-        {
-            base.SetPolihymniaFont();
-
-            fonts[MusicFontStyles.MusicFont] = defaultFonts[MusicFontStyles.MusicFont];
-            fonts[MusicFontStyles.GraceNoteFont] = defaultFonts[MusicFontStyles.GraceNoteFont];
-            fonts[MusicFontStyles.StaffFont] = defaultFonts[MusicFontStyles.StaffFont];
-            fonts[MusicFontStyles.TimeSignatureFont] = defaultFonts[MusicFontStyles.TimeSignatureFont];
+            SelectedFontPreset = new CustomFontPreset(family, baseline, musicFontProfile);
         }
     }
 }

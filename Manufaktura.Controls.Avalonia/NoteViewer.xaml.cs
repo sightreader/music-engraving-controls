@@ -187,13 +187,9 @@ namespace Manufaktura.Controls.Avalonia
 
         protected AvaloniaCanvasScoreRenderer Renderer { get; set; }
 
-        public void LoadDefaultFont() => rendererSettings.SetPolihymniaFont();
-
-        public void SetFont(FontFamily family, FontProfile musicFontProfile)
+        public void SetCustomFont(FontFamily family, double baseline, FontProfile musicFontProfile)
         {
-            rendererSettings.MusicFontProfile = musicFontProfile;
-            foreach (var size in musicFontProfile.FontSizes)
-                rendererSettings.SetFont(size.Key, family, size.Value);
+            rendererSettings.SetCustomFontPreset(family, baseline, musicFontProfile);
         }
 
         public void MoveLayout(StaffSystem system, Point delta)

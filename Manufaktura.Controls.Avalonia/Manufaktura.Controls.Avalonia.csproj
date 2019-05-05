@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Manufaktura.Controls.SMuFL\Manufaktura.Controls.SMuFL.csproj" />
     <ProjectReference Include="..\Manufaktura.Controls\Manufaktura.Controls.csproj" />
   </ItemGroup>
 
