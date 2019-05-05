@@ -17,6 +17,9 @@ namespace Manufaktura.Controls.Avalonia.Test.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+
+            //var noteViewer = this.FindControl<NoteViewer>("testViewer");
+            //noteViewer.SetCustomFont(new FontFamily("Arial"), 2, PolihymniaFont.CreateProfile());
         }
     }
 }

@@ -47,6 +47,7 @@ namespace Manufaktura.Controls.Avalonia
         public static readonly StyledProperty<bool> IsMusicPaperModeProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsMusicPaperMode), false);
         public static readonly StyledProperty<bool> IsOccupyingSpaceProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsOccupyingSpace), true);
         public static readonly StyledProperty<bool> IsSelectableProperty = AvaloniaProperty.Register<NoteViewer, bool>(nameof(IsSelectable), true);
+        public static readonly StyledProperty<PredefinedMusicFonts> MusicFontProperty = AvaloniaProperty.Register<NoteViewer, PredefinedMusicFonts>(nameof(MusicFont), PredefinedMusicFonts.Polihymnia);
         public static readonly StyledProperty<PlaybackCursorPosition> PlaybackCursorPositionProperty = AvaloniaProperty.Register<NoteViewer, PlaybackCursorPosition>(nameof(PlaybackCursorPosition), default(PlaybackCursorPosition));
         public static readonly StyledProperty<ScoreRenderingModes> RenderingModeProperty = AvaloniaProperty.Register<NoteViewer, ScoreRenderingModes>(nameof(RenderingMode), ScoreRenderingModes.Panorama);
         public static readonly StyledProperty<Score> ScoreSourceProperty = AvaloniaProperty.Register<NoteViewer, Score>(nameof(ScoreSource), null);
@@ -54,11 +55,12 @@ namespace Manufaktura.Controls.Avalonia
         public static readonly StyledProperty<string> XmlSourceProperty = AvaloniaProperty.Register<NoteViewer, string>(nameof(XmlSource), null);
         public static readonly StyledProperty<IEnumerable<XTransformerParser>> XmlTransformationsProperty = AvaloniaProperty.Register<NoteViewer, IEnumerable<XTransformerParser>>(nameof(XmlTransformations), null);
         public static readonly StyledProperty<double> ZoomFactorProperty = AvaloniaProperty.Register<NoteViewer, double>(nameof(ZoomFactor), 1d);
-        public static readonly StyledProperty<PredefinedMusicFonts> MusicFontProperty = AvaloniaProperty.Register<NoteViewer, PredefinedMusicFonts>(nameof(MusicFont), PredefinedMusicFonts.Polihymnia);
         private DraggingState _draggingState = new DraggingState();
         private Score _innerScore;
         private Color previousColor;
         private AvaloniaScoreRendererSettings rendererSettings = new AvaloniaScoreRendererSettings();
+
+        private bool suppressNotifyingMusiFontChanged = false;
 
         public NoteViewer()
         {
@@ -103,17 +105,11 @@ namespace Manufaktura.Controls.Avalonia
             this.GetObservable(ZoomFactorProperty).Subscribe(v => InvalidateMeasure());
             this.GetObservable(MusicFontProperty).Subscribe(v =>
             {
+                if (suppressNotifyingMusiFontChanged) return;
                 rendererSettings.SetFontPreset(v);
                 RenderOnCanvas(InnerScore);
             });
         }
-
-        public PredefinedMusicFonts MusicFont
-        {
-            get { return GetValue(MusicFontProperty); }
-            set { SetValue(MusicFontProperty, value); }
-        }
-
         public int CurrentPage
         {
             get { return (int)GetValue(CurrentPageProperty); }
@@ -156,6 +152,11 @@ namespace Manufaktura.Controls.Avalonia
             set { SetValue(IsSelectableProperty, value); }
         }
 
+        public PredefinedMusicFonts MusicFont
+        {
+            get { return GetValue(MusicFontProperty); }
+            set { SetValue(MusicFontProperty, value); }
+        }
         public PlaybackCursorPosition PlaybackCursorPosition
         {
             get { return (PlaybackCursorPosition)GetValue(PlaybackCursorPositionProperty); }
@@ -200,12 +201,6 @@ namespace Manufaktura.Controls.Avalonia
 
         protected AvaloniaCanvasScoreRenderer Renderer { get; set; }
 
-        public void SetCustomFont(FontFamily family, double baseline, FontProfile musicFontProfile)
-        {
-            rendererSettings.SetCustomFontPreset(family, baseline, musicFontProfile);
-            MusicFont = PredefinedMusicFonts.Custom;    //TODO: Will it trigger the event?
-        }
-
         public void MoveLayout(StaffSystem system, Point delta)
         {
             if (Renderer == null) return;
@@ -225,6 +220,13 @@ namespace Manufaktura.Controls.Avalonia
             Debug.WriteLine($"{element?.ToString()} Measure: {element?.Measure?.ToString()} System: {element?.Measure?.System?.ToString()}");
         }
 
+        public void SetCustomFont(FontFamily family, double baseline, FontProfile musicFontProfile)
+        {
+            rendererSettings.SetCustomFontPreset(family, baseline, musicFontProfile);
+            suppressNotifyingMusiFontChanged = true;
+            MusicFont = PredefinedMusicFonts.Custom;
+            suppressNotifyingMusiFontChanged = false;
+        }
         protected override Size MeasureOverride(Size availableSize)
         {
             if (Renderer == null || !IsOccupyingSpace) return base.MeasureOverride(availableSize);

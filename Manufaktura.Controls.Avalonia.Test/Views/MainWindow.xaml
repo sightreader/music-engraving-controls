@@ -15,7 +15,7 @@
 
   <StackPanel>
     <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-    <av:NoteViewer ScoreSource="{Binding Data}" MusicFont="{Binding MusicFont}" />
+    <av:NoteViewer ScoreSource="{Binding Data}" MusicFont="{Binding MusicFont}" x:Name="testViewer" />
     <Button Command="{Binding SetPolihymniaFont}">Polihymnia</Button>
     <Button Command="{Binding SetBravuraFont}">Bravura</Button>
     <Button Command="{Binding SetGootvilleFont}">Gootville</Button>
