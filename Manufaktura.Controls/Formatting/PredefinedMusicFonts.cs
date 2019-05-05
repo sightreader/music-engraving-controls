@@ -2,9 +2,9 @@
 {
     public enum PredefinedMusicFonts
     {
-        Custom,
-        Polihymnia,
-        Bravura,
-        Gootville
+        Custom = -1,
+        Polihymnia = 0,
+        Bravura = 1,
+        Gootville = 2
     }
 }

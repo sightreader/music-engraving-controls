@@ -25,7 +25,7 @@ namespace Manufaktura.Controls.Avalonia.Renderers
 {
     public class AvaloniaScoreRendererSettings : ScoreRendererSettings
     {
-        private Lazy<IFontPreset[]> availableFontPresets = new Lazy<IFontPreset[]>(() => typeof(IFontPreset).Assembly.GetTypes()
+        private static Lazy<IFontPreset[]> availableFontPresets = new Lazy<IFontPreset[]>(() => typeof(IFontPreset).Assembly.GetTypes()
             .Where(t => !t.IsAbstract && typeof(IFontPreset).IsAssignableFrom(t) && t != typeof(CustomFontPreset))
             .Select(t => Activator.CreateInstance(t))
             .Cast<IFontPreset>()

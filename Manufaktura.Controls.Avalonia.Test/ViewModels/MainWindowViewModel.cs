@@ -2,12 +2,14 @@
 using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Model;
 using Manufaktura.Music.Model;
+using System.Windows.Input;
 
 namespace Manufaktura.Controls.Avalonia.Test.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
         private Score data;
+        private PredefinedMusicFonts musicFont;
 
         public MainWindowViewModel()
         {
@@ -19,7 +21,15 @@ namespace Manufaktura.Controls.Avalonia.Test.ViewModels
             get { return data; }
             set { data = value; OnPropertyChanged(); }
         }
+
         public string Greeting => "Welcome to Avalonia!";
+
+        public PredefinedMusicFonts MusicFont { get => musicFont; set { musicFont = value; OnPropertyChanged(); } }
+
+        public ICommand SetPolihymniaFont => new ActionCommand(() => MusicFont = PredefinedMusicFonts.Polihymnia);
+        public ICommand SetBravuraFont => new ActionCommand(() => MusicFont = PredefinedMusicFonts.Bravura);
+
+        public ICommand SetGootvilleFont => new ActionCommand(() => MusicFont = PredefinedMusicFonts.Gootville);
 
         public void LoadTestData(HookDirectionAlgorithm hookDirectionAlgorithm)
         {

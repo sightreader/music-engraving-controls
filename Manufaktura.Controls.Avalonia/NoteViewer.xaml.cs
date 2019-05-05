@@ -22,6 +22,7 @@ using Avalonia.Threading;
 using Manufaktura.Controls.Audio;
 using Manufaktura.Controls.Avalonia.Bindings;
 using Manufaktura.Controls.Avalonia.Renderers;
+using Manufaktura.Controls.Formatting;
 using Manufaktura.Controls.Interactivity;
 using Manufaktura.Controls.Model;
 using Manufaktura.Controls.Model.Fonts;
@@ -53,6 +54,7 @@ namespace Manufaktura.Controls.Avalonia
         public static readonly StyledProperty<string> XmlSourceProperty = AvaloniaProperty.Register<NoteViewer, string>(nameof(XmlSource), null);
         public static readonly StyledProperty<IEnumerable<XTransformerParser>> XmlTransformationsProperty = AvaloniaProperty.Register<NoteViewer, IEnumerable<XTransformerParser>>(nameof(XmlTransformations), null);
         public static readonly StyledProperty<double> ZoomFactorProperty = AvaloniaProperty.Register<NoteViewer, double>(nameof(ZoomFactor), 1d);
+        public static readonly StyledProperty<PredefinedMusicFonts> MusicFontProperty = AvaloniaProperty.Register<NoteViewer, PredefinedMusicFonts>(nameof(MusicFont), PredefinedMusicFonts.Polihymnia);
         private DraggingState _draggingState = new DraggingState();
         private Score _innerScore;
         private Color previousColor;
@@ -99,6 +101,17 @@ namespace Manufaktura.Controls.Avalonia
                 RenderOnCanvas(score);
             });
             this.GetObservable(ZoomFactorProperty).Subscribe(v => InvalidateMeasure());
+            this.GetObservable(MusicFontProperty).Subscribe(v =>
+            {
+                rendererSettings.SetFontPreset(v);
+                RenderOnCanvas(InnerScore);
+            });
+        }
+
+        public PredefinedMusicFonts MusicFont
+        {
+            get { return GetValue(MusicFontProperty); }
+            set { SetValue(MusicFontProperty, value); }
         }
 
         public int CurrentPage
@@ -190,6 +203,7 @@ namespace Manufaktura.Controls.Avalonia
         public void SetCustomFont(FontFamily family, double baseline, FontProfile musicFontProfile)
         {
             rendererSettings.SetCustomFontPreset(family, baseline, musicFontProfile);
+            MusicFont = PredefinedMusicFonts.Custom;    //TODO: Will it trigger the event?
         }
 
         public void MoveLayout(StaffSystem system, Point delta)
